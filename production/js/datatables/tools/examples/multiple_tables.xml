@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dt-example table-type="html-office-edin|html-office-london" table-id="" order="1">
+
+<css lib="datatables tabletools" />
+<js lib="jquery datatables tabletools">
+<![CDATA[
+$(document).ready(function() {
+	$('#example').DataTable( {
+		dom: 'T<"clear">lfrtip'
+	} );
+} );
+]]>
+</js>
+
+<title lib="TableTools">Multiple tables</title>
+
+<info><![CDATA[
+
+This example shows how multiple tables can be initialised with DataTables and TableTools in a single call to the `$().DataTable()` function. Basically it works as you would expect - no special considerations need be made!
+
+]]></info>
+
+</dt-example>

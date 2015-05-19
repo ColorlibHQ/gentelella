@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dt-example table-type="html" order="1">
+
+<css lib="datatables tabletools" />
+<js lib="jquery datatables tabletools">
+<![CDATA[
+$(document).ready(function() {
+	var table = $('#example').DataTable();
+	var tt = new $.fn.dataTable.TableTools( table );
+
+	$( tt.fnContainer() ).insertAfter('div.info');
+} );
+]]>
+</js>
+
+<title lib="TableTools">Initialisation with `new`</title>
+
+<info><![CDATA[
+
+Typically when working with TableTools, the initialisation and insertion into the DOM will be done automatically by DataTables, through the use of the `dt-init dom` parameter. However, it is also possible to initialise TableTools manually as shown in the example below using `new $.fn.dataTable.TableTools();`.
+
+Once initialised you can insert the TableTools tool bar node anywhere you wish into the DOM using the `fnContainer()` API method to get the node.
+
+]]></info>
+
+</dt-example>
