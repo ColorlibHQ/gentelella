@@ -303,6 +303,7 @@ $(function () {
 });
 
 /** ******  Accordion  *********************** **/
+
 /** ******  scrollview  *********************** **/
 $(document).ready(function () {
   
@@ -313,3 +314,15 @@ $(document).ready(function () {
 
 });
 /** ******  /scrollview  *********************** **/
+
+/** ******  NProgress  *********************** **/
+if (typeof NProgress != 'undefined') {
+    $(document).ready(function () {
+        NProgress.start();
+    });
+
+    $(window).load(function () {
+        NProgress.done();
+    });
+}
+/** ******  NProgress  *********************** **/
