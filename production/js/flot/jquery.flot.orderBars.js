@@ -1,7 +1,8 @@
 /*
  * Flot plugin to order bars side by side.
- * 
+ *
  * Released under the MIT license by Benjamin BUFFET, 20-Sep-2010.
+ * Modifications made by Steven Hall <github.com/emmerich>, 01-May-2013.
  *
  * This plugin is an alpha version.
  *
@@ -20,6 +21,8 @@
  *
  */
 
+// INFO: decalage/decallage is French for gap. It's used to denote the spacing applied to each
+// bar.
 (function($){
     function init(plot){
         var orderedBarSeries;
@@ -29,35 +32,44 @@
         var pixelInXWidthEquivalent = 1;
         var isHorizontal = false;
 
+        // A mapping of order integers to decallage.
+        var decallageByOrder = {};
+
         /*
          * This method add shift to x values
          */
         function reOrderBars(plot, serie, datapoints){
             var shiftedPoints = null;
-            
-            if(serieNeedToBeReordered(serie)){                
+
+            if(serieNeedToBeReordered(serie)){
                 checkIfGraphIsHorizontal(serie);
                 calculPixel2XWidthConvert(plot);
                 retrieveBarSeries(plot);
                 calculBorderAndBarWidth(serie);
-                
-                if(nbOfBarsToOrder >= 2){  
+
+                if(nbOfBarsToOrder >= 2){
                     var position = findPosition(serie);
                     var decallage = 0;
-                    
+
                     var centerBarShift = calculCenterBarShift();
 
-                    if (isBarAtLeftOfCenter(position)){
-                        decallage = -1*(sumWidth(orderedBarSeries,position-1,Math.floor(nbOfBarsToOrder / 2)-1)) - centerBarShift;
-                    }else{
-                        decallage = sumWidth(orderedBarSeries,Math.ceil(nbOfBarsToOrder / 2),position-2) + centerBarShift + borderWidthInXabsWidth*2;
+                    // If we haven't already calculated the decallage for this order value, do it.
+                    if(typeof decallageByOrder[serie.bars.order] === 'undefined') {
+                        if (isBarAtLeftOfCenter(position)){
+                            decallageByOrder[serie.bars.order] = -1*(sumWidth(orderedBarSeries,position-1,Math.floor(nbOfBarsToOrder / 2)-1)) - centerBarShift;
+                        }else{
+                            decallageByOrder[serie.bars.order] = sumWidth(orderedBarSeries,Math.ceil(nbOfBarsToOrder / 2),position-2) + centerBarShift + borderWidthInXabsWidth*2;
+                        }
                     }
+
+                    // Lookup the decallage based on the series' order value.
+                    decallage = decallageByOrder[serie.bars.order];
 
                     shiftedPoints = shiftPoints(datapoints,serie,decallage);
                     datapoints.points = shiftedPoints;
-               }
-           }
-           return shiftedPoints;
+                }
+            }
+            return shiftedPoints;
         }
 
         function serieNeedToBeReordered(serie){
@@ -76,8 +88,8 @@
         function getAxeMinMaxValues(series,AxeIdx){
             var minMaxValues = new Array();
             for(var i = 0; i < series.length; i++){
-                minMaxValues[0] = series[i].data[0][AxeIdx];
-                minMaxValues[1] = series[i].data[series[i].data.length - 1][AxeIdx];
+                minMaxValues[0] = (series[i].data[0]) ? series[i].data[0][AxeIdx]: null;
+                minMaxValues[1] = (series[i].data[series[i].data.length - 1]) ? series[i].data[series[i].data.length - 1][AxeIdx]: null;
             }
             return minMaxValues;
         }
@@ -89,13 +101,16 @@
 
         function findOthersBarsToReOrders(series){
             var retSeries = new Array();
+            var orderValuesSeen = [];
 
             for(var i = 0; i < series.length; i++){
-                if(series[i].bars.order != null && series[i].bars.show){
+                if(series[i].bars.order != null && series[i].bars.show &&
+                    orderValuesSeen.indexOf(series[i].bars.order) < 0){
+
+                    orderValuesSeen.push(series[i].bars.order);
                     retSeries.push(series[i]);
                 }
             }
-
             return retSeries.sort(sortByOrder);
         }
 
@@ -106,10 +121,10 @@
         }
 
         function  calculBorderAndBarWidth(serie){
-            borderWidth = serie.bars.lineWidth ? serie.bars.lineWidth  : 2;
+            borderWidth = typeof serie.bars.lineWidth !== 'undefined' ? serie.bars.lineWidth  : 2;
             borderWidthInXabsWidth = borderWidth * pixelInXWidthEquivalent;
         }
-        
+
         function checkIfGraphIsHorizontal(serie){
             if(serie.bars.horizontal){
                 isHorizontal = true;
@@ -154,7 +169,7 @@
         function shiftPoints(datapoints,serie,dx){
             var ps = datapoints.pointsize;
             var points = datapoints.points;
-            var j = 0;           
+            var j = 0;
             for(var i = isHorizontal ? 1 : 0;i < points.length; i += ps){
                 points[i] += dx;
                 //Adding the new x value in the serie to be abble to display the right tooltip value,
@@ -183,5 +198,4 @@
         version: "0.2"
     });
 
-})(jQuery)
-
+})(jQuery);
