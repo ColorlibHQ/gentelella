@@ -13,3 +13,4 @@ Project is supported and maintained by [Colorlib](https://colorlib.com/ "Colorli
 * Bootstrap
 * Font Awesome
 * jQuery-Autocomplete
+* FullCalendar
