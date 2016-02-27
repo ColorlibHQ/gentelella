@@ -49,12 +49,10 @@
                         </div>
                         <div class="profile_info">
                             <span>Welcome,</span>
-                            <h2>Anthony Fernando</h2>
+                            <h2>John Doe</h2>
                         </div>
                     </div>
                     <!-- /menu prile quick info -->
-
-                    <br />
 
                     <!-- sidebar menu -->
                     <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
@@ -356,7 +354,7 @@
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
-                                    <canvas id="canvas000"></canvas>
+                                    <canvas id="lineChart"></canvas>
                                 </div>
                             </div>
                         </div>
@@ -383,7 +381,7 @@
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
-                                    <canvas id="canvas_bar"></canvas>
+                                    <canvas id="mybarChart"></canvas>
                                 </div>
                             </div>
                         </div>
@@ -410,7 +408,7 @@
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
-                                    <canvas id="canvas_doughnut"></canvas>
+                                    <canvas id="canvasDoughnut"></canvas>
                                 </div>
                             </div>
                         </div>
@@ -437,7 +435,7 @@
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
-                                    <canvas id="canvas_radar"></canvas>
+                                    <canvas id="canvasRadar"></canvas>
                                 </div>
                             </div>
                         </div>
@@ -464,7 +462,7 @@
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
-                                    <canvas id="canvas_area"></canvas>
+                                    <canvas id="polarArea"></canvas>
                                 </div>
                             </div>
                         </div>
@@ -491,7 +489,7 @@
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
-                                    <canvas id="canvas_pie"></canvas>
+                                    <canvas id="pieChart"></canvas>
                                 </div>
                             </div>
                         </div>
@@ -532,200 +530,213 @@
     <script src="js/custom.js"></script>
     <script src="js/pace/pace.min.js"></script>
 
+
     <script>
-        var randomScalingFactor = function () {
-            return Math.round(Math.random() * 100)
-        };
 
+      Chart.defaults.global.legend = {
+        enabled: false
+      };
 
+      // Line chart
+      var ctx = document.getElementById("lineChart");
+      var lineChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ["January", "February", "March", "April", "May", "June", "July"],
+          datasets: [
+            {
+              label: "My First dataset",
+              backgroundColor: "rgba(38, 185, 154, 0.31)",
+              borderColor: "rgba(38, 185, 154, 0.7)",
+              pointBorderColor: "rgba(38, 185, 154, 0.7)",
+              pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
+              pointHoverBackgroundColor: "#fff",
+              pointHoverBorderColor: "rgba(220,220,220,1)",
+              pointBorderWidth: 1,
+              data: [31, 74, 6, 39, 20, 85, 7]
+            },
+            {
+              label: "My Second dataset",
+              backgroundColor: "rgba(3, 88, 106, 0.3)",
+              borderColor: "rgba(3, 88, 106, 0.70)",
+              pointBorderColor: "rgba(3, 88, 106, 0.70)",
+              pointBackgroundColor: "rgba(3, 88, 106, 0.70)",
+              pointHoverBackgroundColor: "#fff",
+              pointHoverBorderColor: "rgba(151,187,205,1)",
+              pointBorderWidth: 1,
+              data: [82, 23, 66, 9, 99, 4, 2]
+          }]
+        },
+      });
 
-        var barChartData = {
+      // Bar chart
+      var ctx = document.getElementById("mybarChart");
+      var mybarChart = new Chart(ctx, {
+          type: 'bar',
+          data: {
             labels: ["January", "February", "March", "April", "May", "June", "July"],
             datasets: [
-                {
-                    fillColor: "#26B99A", //rgba(220,220,220,0.5)
-                    strokeColor: "#26B99A", //rgba(220,220,220,0.8)
-                    highlightFill: "#36CAAB", //rgba(220,220,220,0.75)
-                    highlightStroke: "#36CAAB", //rgba(220,220,220,1)
-                    data: [51, 30, 40, 28, 92, 50, 45]
+              {
+                label: '# of Votes',
+                backgroundColor: "#26B99A",
+                data: [51, 30, 40, 28, 92, 50, 45]
+              },
+              {
+                label: '# of Votes',
+                backgroundColor: "#03586A",
+                data: [41, 56, 25, 48, 72, 34, 12]
+              }]
             },
-                {
-                    fillColor: "#03586A", //rgba(151,187,205,0.5)
-                    strokeColor: "#03586A", //rgba(151,187,205,0.8)
-                    highlightFill: "#066477", //rgba(151,187,205,0.75)
-                    highlightStroke: "#066477", //rgba(151,187,205,1)
-                    data: [41, 56, 25, 48, 72, 34, 12]
+
+          options:{
+            scales:{
+              yAxes:[{
+                ticks:{
+                    beginAtZero:true
+                }
+              }]
             }
+          }
+      });
+
+      // Doughnut chart
+      var ctx = document.getElementById("canvasDoughnut");
+      var data = {
+        labels: [
+          "Dark Grey",
+          "Purple Color",
+          "Gray Color",
+          "Green Color",
+          "Blue Color"
         ],
-        }
+        datasets: [
+          {
+            data: [120, 50, 140, 180, 100],
+            backgroundColor: [
+              "#455C73",
+              "#9B59B6",
+              "#BDC3C7",
+              "#26B99A",
+              "#3498DB"
+            ],
+            hoverBackgroundColor: [
+              "#34495E",
+              "#B370CF",
+              "#CFD4D8",
+              "#36CAAB",
+              "#49A9EA"
+            ]
 
-        $(document).ready(function () {
-            new Chart($("#canvas_bar").get(0).getContext("2d")).Bar(barChartData, {
-                tooltipFillColor: "rgba(51, 51, 51, 0.55)",
-                responsive: true,
-                barDatasetSpacing: 6,
-                barValueSpacing: 5
-            });
-        });
+          }]
+      };
 
+      var canvasDoughnut = new Chart(ctx, {
+        type:'doughnut',
+        tooltipFillColor: "rgba(51, 51, 51, 0.55)",
+        data: data
+      });
 
-        var lineChartData = {
-            labels: ["January", "February", "March", "April", "May", "June", "July"],
-            datasets: [
-                {
-                    label: "My First dataset",
-                    fillColor: "rgba(38, 185, 154, 0.21)", //rgba(220,220,220,0.2)
-                    strokeColor: "rgba(38, 185, 154, 0.7)", //rgba(220,220,220,1)
-                    pointColor: "rgba(38, 185, 154, 0.7)", //rgba(220,220,220,1)
-                    pointStrokeColor: "#fff",
-                    pointHighlightFill: "#fff",
-                    pointHighlightStroke: "rgba(220,220,220,1)",
-                    data: [31, 74, 6, 39, 20, 85, 7]
-            },
-                {
-                    label: "My Second dataset",
-                    fillColor: "rgba(3, 88, 106, 0.2)", //rgba(151,187,205,0.2)
-                    strokeColor: "rgba(3, 88, 106, 0.70)", //rgba(151,187,205,1)
-                    pointColor: "rgba(3, 88, 106, 0.70)", //rgba(151,187,205,1)
-                    pointStrokeColor: "#fff",
-                    pointHighlightFill: "#fff",
-                    pointHighlightStroke: "rgba(151,187,205,1)",
-                    data: [82, 23, 66, 9, 99, 4, 2]
-            }
+      // Radar chart
+      var ctx = document.getElementById("canvasRadar");
+      var data = {
+        labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
+        datasets: [
+          {
+            label: "My First dataset",
+            backgroundColor: "rgba(3, 88, 106, 0.2)",
+            borderColor: "rgba(3, 88, 106, 0.80)",
+            pointBorderColor: "rgba(3, 88, 106, 0.80)",
+            pointBackgroundColor: "rgba(3, 88, 106, 0.80)",
+            pointHoverBackgroundColor: "#fff",
+            pointHoverBorderColor: "rgba(220,220,220,1)",
+            data: [65, 59, 90, 81, 56, 55, 40]
+          },
+          {
+            label: "My Second dataset",
+            backgroundColor: "rgba(38, 185, 154, 0.2)",
+            borderColor: "rgba(38, 185, 154, 0.85)",
+            pointColor: "rgba(38, 185, 154, 0.85)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+            data: [28, 48, 40, 19, 96, 27, 100]
+          }
         ]
+      };
 
-        }
+      var canvasRadar = new Chart(ctx, {
+        type:'radar',
+        data: data,
+      });
 
-        $(document).ready(function () {
-            new Chart(document.getElementById("canvas000").getContext("2d")).Line(lineChartData, {
-                responsive: true,
-                tooltipFillColor: "rgba(51, 51, 51, 0.55)"
-            });
-        });
-
-        var sharePiePolorDoughnutData = [
-            {
-                value: 120,
-                color: "#455C73",
-                highlight: "#34495E",
-                label: "Dark Grey"
-        },
-            {
-                value: 50,
-                color: "#9B59B6",
-                highlight: "#B370CF",
-                label: "Purple Color"
-        },
-            {
-                value: 150,
-                color: "#BDC3C7",
-                highlight: "#CFD4D8",
-                label: "Gray Color"
-        },
-            {
-                value: 180,
-                color: "#26B99A",
-                highlight: "#36CAAB",
-                label: "Green Color"
-        },
-            {
-                value: 100,
-                color: "#3498DB",
-                highlight: "#49A9EA",
-                label: "Blue Color"
-        }
-
-    ];
-
-        $(document).ready(function () {
-            window.myPie = new Chart(document.getElementById("canvas_pie").getContext("2d")).Pie(sharePiePolorDoughnutData, {
-                responsive: true,
-                tooltipFillColor: "rgba(51, 51, 51, 0.55)"
-            });
-        });
-
-        var radarChartData = {
-            labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
-            datasets: [
-                {
-                    label: "My First dataset",
-                    fillColor: "rgba(3, 88, 106, 0.2)",
-                    strokeColor: "rgba(3, 88, 106, 0.80)",
-                    pointColor: "rgba(3, 88, 106, 0.80)",
-                    pointStrokeColor: "#fff",
-                    pointHighlightFill: "#fff",
-                    pointHighlightStroke: "rgba(220,220,220,1)",
-                    data: [65, 59, 90, 81, 56, 55, 40]
-            },
-                {
-                    label: "My Second dataset",
-                    fillColor: "rgba(38, 185, 154, 0.2)",
-                    strokeColor: "rgba(38, 185, 154, 0.85)",
-                    pointColor: "rgba(38, 185, 154, 0.85)",
-                    pointStrokeColor: "#fff",
-                    pointHighlightFill: "#fff",
-                    pointHighlightStroke: "rgba(151,187,205,1)",
-                    data: [28, 48, 40, 19, 96, 27, 100]
-            }
+      // Pie chart
+      var ctx = document.getElementById("pieChart");
+      var data = {
+        datasets: [{
+          data: [120, 50, 140, 180, 100],
+          backgroundColor: [
+            "#455C73",
+            "#9B59B6",
+            "#BDC3C7",
+            "#26B99A",
+            "#3498DB"
+          ],
+          label: 'My dataset' // for legend
+        }],
+        labels: [
+          "Dark Gray",
+          "Purple",
+          "Gray",
+          "Green",
+          "Blue"
         ]
-        };
+      };
 
-        $(document).ready(function () {
-            window.myRadar = new Chart(document.getElementById("canvas_radar").getContext("2d")).Radar(radarChartData, {
-                responsive: true,
-                tooltipFillColor: "rgba(51, 51, 51, 0.55)"
-            });
-        });
-
-        var polarData = [
-            {
-                value: 300,
-                color: "#F7464A",
-                highlight: "#FF5A5E",
-                label: "Red"
-        },
-            {
-                value: 50,
-                color: "#46BFBD",
-                highlight: "#5AD3D1",
-                label: "Green"
-        },
-            {
-                value: 100,
-                color: "#FDB45C",
-                highlight: "#FFC870",
-                label: "Yellow"
-        },
-            {
-                value: 40,
-                color: "#949FB1",
-                highlight: "#A8B3C5",
-                label: "Grey"
-        },
-            {
-                value: 120,
-                color: "#4D5360",
-                highlight: "#616774",
-                label: "Dark Grey"
+      var pieChart = new Chart(ctx, {
+        data: data,
+        type: 'pie',
+        otpions: {
+          legend: false
         }
+      });
 
-    ];
+      // PolarArea chart
+      var ctx = document.getElementById("polarArea");
+      var data = {
+        datasets: [{
+          data: [120, 50, 140, 180, 100],
+          backgroundColor: [
+            "#455C73",
+            "#9B59B6",
+            "#BDC3C7",
+            "#26B99A",
+            "#3498DB"
+          ],
+          label: 'My dataset' // for legend
+        }],
+        labels: [
+          "Dark Gray",
+          "Purple",
+          "Gray",
+          "Green",
+          "Blue"
+        ]
+      };
 
-        $(document).ready(function () {
-            window.myPolarArea = new Chart(document.getElementById("canvas_area").getContext("2d")).PolarArea(sharePiePolorDoughnutData, {
-                responsive: true,
-                tooltipFillColor: "rgba(51, 51, 51, 0.55)"
-            });
-        });
+      var polarArea = new Chart(ctx, {
+        data: data,
+        type: 'polarArea',
+        options: {
+            scale: {
+                ticks: {
+                    beginAtZero: true
+                }
+            }
+        }
+      });
 
-
-        $(document).ready(function () {
-            window.myDoughnut = new Chart(document.getElementById("canvas_doughnut").getContext("2d")).Doughnut(sharePiePolorDoughnutData, {
-                responsive: true,
-                tooltipFillColor: "rgba(51, 51, 51, 0.55)"
-            });
-        });
     </script>
+
 </body>
 
 </html>
