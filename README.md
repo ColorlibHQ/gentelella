@@ -12,6 +12,10 @@ Gentellela is licensed under The MIT License (MIT). Which means that you can use
 
 Project is developed and maintained by [Colorlib](https://colorlib.com/ "Colorlib - Make Your First Blog") and @puikinsh
 
+## Theme Demo
+![Gentelella Bootstrap Admin Template](https://cdn.colorlib.com/wp/wp-content/uploads/sites/2/gentelella-admin-template-preview.jpg "Gentelella Theme Browser Preview")
+
+**[Template Demo](https://colorlib.com/polygon/gentelella/index.html)**
 
 ## Scripts included:
 * Bootstrap
