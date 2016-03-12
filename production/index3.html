@@ -1044,26 +1044,44 @@
         minSpotColor: '#26B99A'
       });
 
-      var doughnutData = [{
-        value: 30,
-        color: "#455C73"
-      }, {
-        value: 30,
-        color: "#9B59B6"
-      }, {
-        value: 60,
-        color: "#BDC3C7"
-      }, {
-        value: 100,
-        color: "#26B99A"
-      }, {
-        value: 120,
-        color: "#3498DB"
-      }];
-      var myDoughnut = new Chart(document.getElementById("canvas1").getContext("2d")).Doughnut(doughnutData);
+      Chart.defaults.global.legend = {
+        enabled: false
+      };
 
+      var data = {
+        labels: [
+          "Symbian",
+          "Blackberry",
+          "Other",
+          "Android",
+          "IOS"
+        ],
+        datasets: [{
+          data: [15, 20, 30, 10, 30],
+          backgroundColor: [
+            "#BDC3C7",
+            "#9B59B6",
+            "#455C73",
+            "#26B99A",
+            "#3498DB"
+          ],
+          hoverBackgroundColor: [
+            "#CFD4D8",
+            "#B370CF",
+            "#34495E",
+            "#36CAAB",
+            "#49A9EA"
+          ]
 
-    })
+        }]
+      };
+
+      var canvasDoughnut = new Chart(document.getElementById("canvas1"), {
+        type: 'doughnut',
+        tooltipFillColor: "rgba(51, 51, 51, 0.55)",
+        data: data
+      });
+    });
   </script>
   <!-- -->
   <!-- datepicker -->
