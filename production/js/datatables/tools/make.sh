@@ -36,17 +36,17 @@ rsync -r examples $OUT_DIR
 examples_process $OUT_DIR
 
 # AS3 build and copy - we keep the swf binaries in git as well at the moment
-if [ -e /usr/local/flex_sdk_4.0.0.14159 -a "$DEBUG" = "" ]; then
+if [ -e /usr/local/flex_sdk_4.12 -a "$DEBUG" = "" ]; then
 	cd as3
 
 	# Non PDF version
-	/usr/local/flex_sdk_4.0.0.14159/bin/mxmlc --target-player=10.0.0 -static-link-runtime-shared-libraries=true ZeroClipboard.as
+	/usr/local/flex_sdk_4.12/bin/mxmlc --target-player=10.0 -static-link-runtime-shared-libraries=true ZeroClipboard.as
 	mv ZeroClipboard.swf ../swf/copy_csv_xls.swf
 	mv ZeroClipboard.as ZeroClipboardNonePdf.as
 
 	# PDF version
 	mv ZeroClipboardPdf.as ZeroClipboard.as
-	/usr/local/flex_sdk_4.0.0.14159/bin/mxmlc --target-player=10.0.0 -static-link-runtime-shared-libraries=true -library-path+=lib ZeroClipboard.as
+	/usr/local/flex_sdk_4.12/bin/mxmlc --target-player=10.0 -static-link-runtime-shared-libraries=true -library-path+=lib ZeroClipboard.as
 	mv ZeroClipboard.swf ../swf/copy_csv_xls_pdf.swf
 
 	# Restore
@@ -59,4 +59,4 @@ fi
 rsync -r swf $OUT_DIR
 
 # Readme
-cp Readme.txt $OUT_DIR
+cp Readme.md $OUT_DIR

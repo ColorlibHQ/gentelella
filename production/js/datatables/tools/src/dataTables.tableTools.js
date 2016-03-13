@@ -1,5 +1,5 @@
-/*! TableTools 2.2.1
- * 2009-2014 SpryMedia Ltd - datatables.net/license
+/*! TableTools 2.2.4
+ * 2009-2015 SpryMedia Ltd - datatables.net/license
  *
  * ZeroClipboard 1.0.4
  * Author: Joseph Huckaby - MIT licensed
@@ -8,11 +8,11 @@
 /**
  * @summary     TableTools
  * @description Tools and buttons for DataTables
- * @version     2.2.1
+ * @version     2.2.4
  * @file        dataTables.tableTools.js
  * @author      SpryMedia Ltd (www.sprymedia.co.uk)
  * @contact     www.sprymedia.co.uk/contact
- * @copyright   Copyright 2009-2014 SpryMedia Ltd.
+ * @copyright   Copyright 2009-2015 SpryMedia Ltd.
  *
  * This source file is free software, available under the following license:
  *   MIT license - http://datatables.net/license/mit
@@ -77,7 +77,11 @@ return TableTools;
 
 // Define as an AMD module if possible
 if ( typeof define === 'function' && define.amd ) {
-	define( 'datatables-tabletools', ['jquery', 'datatables'], factory );
+	define( ['jquery', 'datatables'], factory );
+}
+else if ( typeof exports === 'object' ) {
+    // Node/CommonJS
+    factory( require('jquery'), require('datatables') );
 }
 else if ( jQuery && !jQuery.fn.dataTable.TableTools ) {
 	// Otherwise simply initialise as normal, stopping multiple evaluation

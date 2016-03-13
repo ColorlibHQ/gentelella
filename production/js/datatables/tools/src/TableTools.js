@@ -1,5 +1,5 @@
 /* TableTools
- * 2009-2014 SpryMedia Ltd - datatables.net/license
+ * 2009-2015 SpryMedia Ltd - datatables.net/license
  */
 
 /*globals TableTools,ZeroClipboard_TableTools*/
@@ -303,6 +303,8 @@ TableTools = function( oDT, oOpts )
 		oOpts = {};
 	}
 
+
+	TableTools._aInstances.push( this );
 	this._fnConstruct( oOpts );
 
 	return this;
@@ -382,6 +384,49 @@ TableTools.prototype = {
 
 
 	/**
+	 * Get the indexes of the selected rows
+	 *  @returns {array} List of row indexes
+	 *  @param {boolean} [filtered=false] Get only selected rows which are  
+	 *    available given the filtering applied to the table. By default
+	 *    this is false -  i.e. all rows, regardless of filtering are 
+	      selected.
+	 */
+	"fnGetSelectedIndexes": function ( filtered )
+	{
+		var
+			out = [],
+			data = this.s.dt.aoData,
+			displayed = this.s.dt.aiDisplay,
+			i, iLen;
+
+		if ( filtered )
+		{
+			// Only consider filtered rows
+			for ( i=0, iLen=displayed.length ; i<iLen ; i++ )
+			{
+				if ( data[ displayed[i] ]._DTTT_selected )
+				{
+					out.push( displayed[i] );
+				}
+			}
+		}
+		else
+		{
+			// Use all rows
+			for ( i=0, iLen=data.length ; i<iLen ; i++ )
+			{
+				if ( data[i]._DTTT_selected )
+				{
+					out.push( i );
+				}
+			}
+		}
+
+		return out;
+	},
+
+
+	/**
 	 * Check to see if a current row is selected or not
 	 *  @param {Node} n TR node to check if it is currently selected or not
 	 *  @returns {Boolean} true if select, false otherwise
@@ -401,11 +446,9 @@ TableTools.prototype = {
 	 */
 	"fnSelectAll": function ( filtered )
 	{
-		var s = this._fnGetMasterSettings();
-
-		this._fnRowSelect( (filtered === true) ?
-			s.dt.aiDisplay :
-			s.dt.aoData
+		this._fnRowSelect( filtered ?
+			this.s.dt.aiDisplay :
+			this.s.dt.aoData
 		);
 	},
 
@@ -418,9 +461,7 @@ TableTools.prototype = {
 	 */
 	"fnSelectNone": function ( filtered )
 	{
-		var s = this._fnGetMasterSettings();
-
-		this._fnRowDeselect( this.fnGetSelected(filtered) );
+		this._fnRowDeselect( this.fnGetSelectedIndexes(filtered) );
 	},
 
 
@@ -508,6 +549,7 @@ TableTools.prototype = {
 				aColWidths.push( iWidth );
 			}
 		}
+
 
 		for ( i=0, iLen=aColWidths.length ; i<iLen ; i++ )
 		{
@@ -681,7 +723,17 @@ TableTools.prototype = {
 		this.s.dt.aoDestroyCallback.push( {
 			"sName": "TableTools",
 			"fn": function () {
-				$(that.s.dt.nTBody).off( 'click.DTTT_Select', 'tr' );
+				$(that.s.dt.nTBody)
+					.off( 'click.DTTT_Select', that.s.custom.sRowSelector )
+					.off( 'mousedown.DTTT_Select', 'tr' )
+					.off( 'mouseup.DTTT_Select', 'tr' );
+
+				$.each( ZeroClipboard_TableTools.clients, function ( id, client ) {
+					if ( $(client.domElement).parents( that.dom.container ).length ) {
+						delete ZeroClipboard_TableTools.clients[ id ];
+					}
+				} );
+
 				$(that.dom.container).empty();
 
 				// Remove the instance
@@ -777,10 +829,14 @@ TableTools.prototype = {
 				buttonDef = $.extend( o, buttonSet[i], true );
 			}
 
-			wrapper.appendChild( this._fnCreateButton(
+			var button = this._fnCreateButton(
 				buttonDef,
 				$(wrapper).hasClass(this.classes.collection.container)
-			) );
+			);
+
+			if ( button ) {
+				wrapper.appendChild( button );
+			}
 		}
 	},
 
@@ -798,6 +854,10 @@ TableTools.prototype = {
 
 		if ( oConfig.sAction.match(/flash/) )
 		{
+			if ( ! this._fnHasFlash() ) {
+				return false;
+			}
+
 			this._fnFlashConfig( nButton, oConfig );
 		}
 		else if ( oConfig.sAction == "text" )
@@ -812,6 +872,33 @@ TableTools.prototype = {
 		{
 			this._fnTextConfig( nButton, oConfig );
 			this._fnCollectionConfig( nButton, oConfig );
+		}
+
+		if ( this.s.dt.iTabIndex !== -1 ) {
+			$(nButton)
+				.attr( 'tabindex', this.s.dt.iTabIndex )
+				.attr( 'aria-controls', this.s.dt.sTableId )
+				.on( 'keyup.DTTT', function (e) {
+					// Trigger the click event on return key when focused.
+					// Note that for Flash buttons this has no effect since we
+					// can't programmatically trigger the Flash export
+					if ( e.keyCode === 13 ) {
+						e.stopPropagation();
+
+						$(this).trigger( 'click' );
+					}
+				} )
+				.on( 'mousedown.DTTT', function (e) {
+					// On mousedown we want to stop the focus occurring on the
+					// button, focus is used only for the keyboard navigation.
+					// But using preventDefault for the flash buttons stops the
+					// flash action. However, it is not the button that gets
+					// focused but the flash element for flash buttons, so this
+					// works
+					if ( ! oConfig.sAction.match(/flash/) ) {
+						e.preventDefault();
+					}
+				} );
 		}
 
 		return nButton;
@@ -1294,6 +1381,10 @@ TableTools.prototype = {
 
 			return out;
 		}
+		else if ( typeof src === 'number' )
+		{
+			out.push(this.s.dt.aoData[src]);
+		}
 		else
 		{
 			// A single aoData point
@@ -1372,6 +1463,34 @@ TableTools.prototype = {
 	/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 	 * Flash button functions
 	 */
+	
+	/**
+	 * Check if the Flash plug-in is available
+	 *  @method  _fnHasFlash
+	 *  @returns {boolean} `true` if Flash available, `false` otherwise
+	 *  @private 
+	 */
+	"_fnHasFlash": function ()
+	{
+		try {
+			var fo = new ActiveXObject('ShockwaveFlash.ShockwaveFlash');
+			if (fo) {
+				return true;
+			}
+		}
+		catch (e) {
+			if (
+				navigator.mimeTypes &&
+				navigator.mimeTypes['application/x-shockwave-flash'] !== undefined &&
+				navigator.mimeTypes['application/x-shockwave-flash'].enabledPlugin
+			) {
+				return true;
+			}
+		}
+
+		return false;
+	},
+
 
 	/**
 	 * Configure a flash based button for interaction events
@@ -1438,6 +1557,13 @@ TableTools.prototype = {
 			}
 			that._fnCollectionHide( nButton, oConfig );
 		} );
+
+		if ( oConfig.fnSelect !== null )
+		{
+			TableTools._fnEventListen( this, 'select', function (n) {
+				oConfig.fnSelect.call( that, nButton, oConfig, n );
+			} );
+		}
 
 		this._fnFlashGlue( flash, nButton, oConfig.sToolTip );
 	},
@@ -1518,10 +1644,21 @@ TableTools.prototype = {
 		var aColumns = [];
 		var dt = this.s.dt;
 		var i, iLen;
+		var columns = dt.aoColumns;
+		var columnCount = columns.length;
 
-		if ( typeof mColumns == "object" )
+		if ( typeof mColumns == "function" )
 		{
-			for ( i=0, iLen=dt.aoColumns.length ; i<iLen ; i++ )
+			var a = mColumns.call( this, dt );
+
+			for ( i=0, iLen=columnCount ; i<iLen ; i++ )
+			{
+				aColumns.push( $.inArray( i, a ) !== -1 ? true : false );
+			}
+		}
+		else if ( typeof mColumns == "object" )
+		{
+			for ( i=0, iLen=columnCount ; i<iLen ; i++ )
 			{
 				aColumns.push( false );
 			}
@@ -1533,28 +1670,28 @@ TableTools.prototype = {
 		}
 		else if ( mColumns == "visible" )
 		{
-			for ( i=0, iLen=dt.aoColumns.length ; i<iLen ; i++ )
+			for ( i=0, iLen=columnCount ; i<iLen ; i++ )
 			{
-				aColumns.push( dt.aoColumns[i].bVisible ? true : false );
+				aColumns.push( columns[i].bVisible ? true : false );
 			}
 		}
 		else if ( mColumns == "hidden" )
 		{
-			for ( i=0, iLen=dt.aoColumns.length ; i<iLen ; i++ )
+			for ( i=0, iLen=columnCount ; i<iLen ; i++ )
 			{
-				aColumns.push( dt.aoColumns[i].bVisible ? false : true );
+				aColumns.push( columns[i].bVisible ? false : true );
 			}
 		}
 		else if ( mColumns == "sortable" )
 		{
-			for ( i=0, iLen=dt.aoColumns.length ; i<iLen ; i++ )
+			for ( i=0, iLen=columnCount ; i<iLen ; i++ )
 			{
-				aColumns.push( dt.aoColumns[i].bSortable ? true : false );
+				aColumns.push( columns[i].bSortable ? true : false );
 			}
 		}
 		else /* all */
 		{
-			for ( i=0, iLen=dt.aoColumns.length ; i<iLen ; i++ )
+			for ( i=0, iLen=columnCount ; i<iLen ; i++ )
 			{
 				aColumns.push( true );
 			}
@@ -1627,21 +1764,36 @@ TableTools.prototype = {
 			aData.push( aRow.join(oConfig.sFieldSeperator) );
 		}
 
+		bSelectedOnly = true;
+
 		/*
 		 * Body
 		 */
-		var aSelected = this.fnGetSelected();
+		var aDataIndex;
+		var aSelected = this.fnGetSelectedIndexes();
 		bSelectedOnly = this.s.select.type !== "none" && bSelectedOnly && aSelected.length !== 0;
 
-		var aDataIndex = dt.oInstance
-			.$('tr', oConfig.oSelectorOpts)
-			.map( function (id, row) {
-				// If "selected only", then ensure that the row is in the selected list
-				return bSelectedOnly && $.inArray( row, aSelected ) === -1 ?
-					null :
-					dt.oInstance.fnGetPosition( row );
-			} )
-			.get();
+		if ( bSelectedOnly ) {
+			// Use the selected indexes
+			aDataIndex = aSelected;
+		}
+		else if ( DataTable.Api ) {
+			// 1.10+ style
+			aDataIndex = new DataTable.Api( dt )
+				.rows( oConfig.oSelectorOpts )
+				.indexes()
+				.flatten()
+				.toArray();
+		}
+		else {
+			// 1.9- style
+			aDataIndex = dt.oInstance
+				.$('tr', oConfig.oSelectorOpts)
+				.map( function (id, row) {
+					return dt.oInstance.fnGetPosition( row );
+				} )
+				.get();
+		}
 
 		for ( j=0, jLen=aDataIndex.length ; j<jLen ; j++ )
 		{
@@ -1791,7 +1943,7 @@ TableTools.prototype = {
 
 		var n = document.createElement('div');
 
-		return sData.replace( /&([^\s]*);/g, function( match, match2 ) {
+		return sData.replace( /&([^\s]*?);/g, function( match, match2 ) {
 			if ( match.substr(1, 1) === '#' )
 			{
 				return String.fromCharCode( Number(match2.substr(1)) );
@@ -1937,7 +2089,7 @@ TableTools.prototype = {
 		$('div.'+this.classes.print.message).remove();
 
 		/* Styling class */
-		$(document.body).removeClass( 'DTTT_Print' );
+		$(document.body).removeClass( this.classes.print.body );
 
 		/* Restore the table length */
 		oSetDT._iDisplayStart = oSetPrint.saveStart;
@@ -2289,12 +2441,12 @@ TableTools.BUTTONS = {
 			this.fnSetText( flash, this.fnGetTableData(oConfig) );
 		},
 		"fnComplete": function(nButton, oConfig, flash, text) {
-			var
-				lines = text.split('\n').length,
-				len = this.s.dt.nTFoot === null ? lines-1 : lines-2,
-				plural = (len==1) ? "" : "s";
+			var lines = text.split('\n').length;
+            if (oConfig.bHeader) lines--;
+            if (this.s.dt.nTFoot !== null && oConfig.bFooter) lines--;
+			var plural = (lines==1) ? "" : "s";
 			this.fnInfo( '<h6>Table copied</h6>'+
-				'<p>Copied '+len+' row'+plural+' to the clipboard.</p>',
+				'<p>Copied '+lines+' row'+plural+' to the clipboard.</p>',
 				1500
 			);
 		}
@@ -2539,7 +2691,7 @@ TableTools.prototype.CLASS = "TableTools";
  *  @type	  String
  *  @default   See code
  */
-TableTools.version = "2.2.1";
+TableTools.version = "2.2.4";
 
 
 
@@ -2582,10 +2734,7 @@ if ( typeof $.fn.dataTable == "function" &&
 				init.tableTools || init.oTableTools || {} :
 				{};
 
-			var oTT = new TableTools( oDTSettings.oInstance, opts );
-			TableTools._aInstances.push( oTT );
-
-			return oTT.dom.container;
+			return new TableTools( oDTSettings.oInstance, opts ).dom.container;
 		},
 		"cFeature": "T",
 		"sFeature": "TableTools"

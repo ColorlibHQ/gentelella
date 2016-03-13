@@ -1,6 +1,6 @@
 {
 	"name": "datatables-tabletools",
-	"version": "2.2.0",
+	"version": "2.2.2",
 	"main": [
 		"js/dataTables.tableTools.js",
 		"css/dataTables.tableTools.css"

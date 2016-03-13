@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<dt-example table-type="html" order="1">
+<dt-example table-type="html" order="15">
 
 <css lib="datatables tabletools" />
 <js lib="jquery datatables tabletools">

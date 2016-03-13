@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<dt-example table-type="html" order="1">
+<dt-example table-type="html" order="12">
 
 <css lib="datatables tabletools" />
 <js lib="jquery datatables tabletools">
@@ -7,17 +7,18 @@
 
 $.fn.dataTable.TableTools.buttons.copy_to_div = $.extend(
 	true,
+	{},
 	$.fn.dataTable.TableTools.buttonBase,
 	{
-		"sNewLine": "<br>",
+		"sNewLine":    "<br>",
 		"sButtonText": "Copy to element",
-		"sDiv": "",
-		"fnClick": function( nButton, oConfig ) {
-			document.getElementById(oConfig.sDiv).innerHTML = 
-				this.fnGetTableData(oConfig);
+		"target":      "",
+		"fnClick": function( button, conf ) {
+			$(conf.target).html( this.fnGetTableData(conf) );
 		}
 	}
 );
+
 
 $(document).ready(function() {
 	$('#example').DataTable( {
@@ -25,8 +26,8 @@ $(document).ready(function() {
 		tableTools: {
 			"aButtons": [ {
 				"sExtends":    "copy_to_div",
-				"sButtonText": "Copy to div",
-				"sDiv":        "copy"
+				"sButtonText": "Copy to HTML",
+				"target":      "#copy"
 			} ]
 		}
 	} );
@@ -38,7 +39,9 @@ $(document).ready(function() {
 
 <info><![CDATA[
 
-This example shows how you can add a message to the saved PDF using the `sPdfMessage` parameter. It also shows that the orientation of the output PDF can be changed to landscape which is useful if you have a lot of columns.
+This example shows now a plug-in button type can be created for TableTools. Button types are attached to the `$.fn.dataTable.TableTools.buttons` object and extend `$.fn.dataTable.TableTools.buttonBase`. All of the [button options defined in the documentation](//datatables.net/extensions/tabletools/button_options) are available and can be overridden as required. Finally to use the button simply include its name in the `aButtons` array or use it as a button extender (`sExtends`).
+
+This example shows a button which will simply get the data contents of a table and set that as the contents of another element.
 
 ]]></info>
 

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dt-example table-type="ajax" order="14">
+
+<css lib="datatables tabletools" />
+<js lib="jquery datatables tabletools">
+<![CDATA[
+$(document).ready(function() {
+	$('#example').DataTable( {
+		dom: 'T<"clear">lfrtip',
+		"ajax": "../../../../examples/ajax/data/objects.txt",
+		"columns": [
+			{ "data": "name" },
+			{ "data": "position" },
+			{ "data": "office" },
+			{ "data": "extn" },
+			{ "data": "start_date" },
+			{ "data": "salary" }
+		],
+		deferRender: true
+	} );
+} );
+]]>
+</js>
+
+<title lib="TableTools">Ajax loaded data</title>
+
+<info><![CDATA[
+
+This TableTools example shows DataTables using its ability to [Ajax load object based data](//datatables.net/manual/data#Objects) and operate in exactly the same manner as when the data is read directly from the document.
+
+]]></info>
+
+</dt-example>

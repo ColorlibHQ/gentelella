@@ -33,6 +33,11 @@ package {
 			// import flashvars
 			var flashvars:Object = LoaderInfo( this.root.loaderInfo ).parameters;
 			domId = flashvars.id.split("\\").join("\\\\");
+
+			// Validate id to prevent scripting attacks. The id given is an integer
+			if ( domId !== parseInt( domId, 10 ).toString() ) {
+				throw new Error( 'Invalid DOM id' );
+			}
 			
 			// invisible button covers entire stage
 			button = new Sprite();
