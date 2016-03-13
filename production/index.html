@@ -1096,16 +1096,16 @@
   <!-- gauge js -->
   <script type="text/javascript" src="js/gauge/gauge.min.js"></script>
   <script type="text/javascript" src="js/gauge/gauge_demo.js"></script>
-  <!-- chart js -->
-  <script src="js/chartjs/chart.min.js"></script>
   <!-- bootstrap progress js -->
   <script src="js/progressbar/bootstrap-progressbar.min.js"></script>
   <script src="js/nicescroll/jquery.nicescroll.min.js"></script>
   <!-- icheck -->
   <script src="js/icheck/icheck.min.js"></script>
   <!-- daterangepicker -->
-  <script type="text/javascript" src="js/moment.min.js"></script>
+  <script type="text/javascript" src="js/moment/moment.min.js"></script>
   <script type="text/javascript" src="js/datepicker/daterangepicker.js"></script>
+  <!-- chart js -->
+  <script src="js/chartjs/chart.min.js"></script>
 
   <script src="js/custom.js"></script>
 
@@ -1244,23 +1244,43 @@
 
   <!-- dashbord linegraph -->
   <script>
-    var doughnutData = [{
-      value: 30,
-      color: "#455C73"
-    }, {
-      value: 30,
-      color: "#9B59B6"
-    }, {
-      value: 60,
-      color: "#BDC3C7"
-    }, {
-      value: 100,
-      color: "#26B99A"
-    }, {
-      value: 120,
-      color: "#3498DB"
-    }];
-    var myDoughnut = new Chart(document.getElementById("canvas1").getContext("2d")).Doughnut(doughnutData);
+    Chart.defaults.global.legend = {
+      enabled: false
+    };
+
+    var data = {
+      labels: [
+        "Symbian",
+        "Blackberry",
+        "Other",
+        "Android",
+        "IOS"
+      ],
+      datasets: [{
+        data: [15, 20, 30, 10, 30],
+        backgroundColor: [
+          "#BDC3C7",
+          "#9B59B6",
+          "#455C73",
+          "#26B99A",
+          "#3498DB"
+        ],
+        hoverBackgroundColor: [
+          "#CFD4D8",
+          "#B370CF",
+          "#34495E",
+          "#36CAAB",
+          "#49A9EA"
+        ]
+
+      }]
+    };
+
+    var canvasDoughnut = new Chart(document.getElementById("canvas1"), {
+      type: 'doughnut',
+      tooltipFillColor: "rgba(51, 51, 51, 0.55)",
+      data: data
+    });
   </script>
   <!-- /dashbord linegraph -->
   <!-- datepicker -->

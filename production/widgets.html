@@ -600,7 +600,7 @@
                                 </a>
                               </li>
                               <li>
-                                <img src="http://localhost/personal/njoroge/assets3/130.jpg" alt="..." class="img-circle profile_img">
+                                <img src="images/user.png" alt="..." class="img-circle profile_img">
                               </li>
                               <li>
                                 <a>
@@ -960,6 +960,7 @@
   <script src="js/bootstrap.min.js"></script>
 
   <!-- chart js -->
+  <script type="text/javascript" src="js/moment/moment.min.js"></script>
   <script src="js/chartjs/chart.min.js"></script>
   <!-- bootstrap progress js -->
   <script src="js/progressbar/bootstrap-progressbar.min.js"></script>
@@ -972,9 +973,6 @@
   <!-- pace -->
   <script src="js/pace/pace.min.js"></script>
 
-
-  <!-- chart js -->
-  <script src="js/chartjs/chart.min.js"></script>
   <!-- sparkline -->
   <script src="js/sparkline/jquery.sparkline.min.js"></script>
   <!-- easypie -->
@@ -1002,98 +1000,149 @@
   </script>
 
   <script>
-    var lineChartData = {
-      labels: ["", "", "", "", "", "", ""],
-      datasets: [{
-        label: "My First dataset",
-        fillColor: "rgba(38, 185, 154, 0.11)", //rgba(220,220,220,0.2)
-        strokeColor: "rgba(38, 185, 154, 0.7)", //rgba(220,220,220,1)
-        pointColor: "rgba(38, 185, 154, 0.7)", //rgba(220,220,220,1)
-        pointStrokeColor: "#fff",
-        pointHighlightFill: "#fff",
-        pointHighlightStroke: "rgba(220,220,220,1)",
-        data: [10, 30, 42, 23, 35, 55, 77]
-      }]
+    $(document).ready(function() {
+      Chart.defaults.global.legend = {
+        enabled: false
+      };
 
-    }
+      new Chart(document.getElementById("canvas_line"), {
+        type: 'line',
+        data: {
+          labels: ["January", "February", "March", "April", "May", "June", "July"],
+          datasets: [{
+            label: "My First dataset",
+            backgroundColor: "rgba(38, 185, 154, 0.31)",
+            borderColor: "rgba(38, 185, 154, 0.7)",
+            pointBorderColor: "rgba(38, 185, 154, 0.7)",
+            pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
+            pointHoverBackgroundColor: "#fff",
+            pointHoverBorderColor: "rgba(220,220,220,1)",
+            pointBorderWidth: 1,
+            data: [31, 74, 6, 39, 20, 85, 7]
+          }, {
+            label: "My Second dataset",
+            backgroundColor: "rgba(3, 88, 106, 0.3)",
+            borderColor: "rgba(3, 88, 106, 0.70)",
+            pointBorderColor: "rgba(3, 88, 106, 0.70)",
+            pointBackgroundColor: "rgba(3, 88, 106, 0.70)",
+            pointHoverBackgroundColor: "#fff",
+            pointHoverBorderColor: "rgba(151,187,205,1)",
+            pointBorderWidth: 1,
+            data: [82, 23, 66, 9, 99, 4, 2]
+          }]
+        },
+      });
 
-    $(document).ready(function() {
-      new Chart(document.getElementById("canvas_line").getContext("2d")).Line(lineChartData, {
-        responsive: true,
-        scaleShowLabels: false,
-        tooltipFillColor: "rgba(51, 51, 51, 0.55)"
+      new Chart(document.getElementById("canvas_line1"), {
+        type: 'line',
+        data: {
+          labels: ["January", "February", "March", "April", "May", "June", "July"],
+          datasets: [{
+            label: "My First dataset",
+            backgroundColor: "rgba(38, 185, 154, 0.31)",
+            borderColor: "rgba(38, 185, 154, 0.7)",
+            pointBorderColor: "rgba(38, 185, 154, 0.7)",
+            pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
+            pointHoverBackgroundColor: "#fff",
+            pointHoverBorderColor: "rgba(220,220,220,1)",
+            pointBorderWidth: 1,
+            data: [31, 74, 6, 39, 20, 85, 7]
+          }, {
+            label: "My Second dataset",
+            backgroundColor: "rgba(3, 88, 106, 0.3)",
+            borderColor: "rgba(3, 88, 106, 0.70)",
+            pointBorderColor: "rgba(3, 88, 106, 0.70)",
+            pointBackgroundColor: "rgba(3, 88, 106, 0.70)",
+            pointHoverBackgroundColor: "#fff",
+            pointHoverBorderColor: "rgba(151,187,205,1)",
+            pointBorderWidth: 1,
+            data: [82, 23, 66, 9, 99, 4, 2]
+          }]
+        },
       });
-    });
-    $(document).ready(function() {
-      new Chart(document.getElementById("canvas_line1").getContext("2d")).Line(lineChartData, {
-        responsive: true,
-        scaleShowLabels: false,
-        tooltipFillColor: "rgba(51, 51, 51, 0.55)"
-      });
-    });
-    $(document).ready(function() {
-      new Chart(document.getElementById("canvas_line2").getContext("2d")).Line(lineChartData, {
-        responsive: true,
-        scaleShowLabels: false,
-        tooltipFillColor: "rgba(51, 51, 51, 0.55)"
-      });
-    });
-    $(document).ready(function() {
-      new Chart(document.getElementById("canvas_line3").getContext("2d")).Line(lineChartData, {
-        responsive: true,
-        scaleShowLabels: false,
-        tooltipFillColor: "rgba(51, 51, 51, 0.55)"
-      });
-    });
-    $(document).ready(function() {
-      new Chart(document.getElementById("canvas_line4").getContext("2d")).Line(lineChartData, {
-        responsive: true,
-        scaleShowLabels: false,
-        tooltipFillColor: "rgba(51, 51, 51, 0.55)"
-      });
-    });
 
-    var sharePiePolorDoughnutData = [{
-      value: 125,
-      color: "rgba(38, 185, 154, 0.7)",
-      highlight: "rgba(38, 185, 154, 0.7)",
-      label: ""
-    }, {
-      value: 25,
-      color: "rgba(38, 185, 154, 0.01)",
-      highlight: "rgba(38, 185, 154, 0.01)",
-      label: ""
-    }];
-    $(document).ready(function() {
-      window.myDoughnut = new Chart(document.getElementById("canvas_doughnut").getContext("2d")).Doughnut(sharePiePolorDoughnutData, {
-        responsive: true,
-        scaleShowLabels: false,
-        segmentStrokeWidth: 2,
-        tooltipFillColor: "rgba(51, 51, 51, 0.55)"
+      new Chart(document.getElementById("canvas_line2"), {
+        type: 'line',
+        data: {
+          labels: ["January", "February", "March", "April", "May", "June", "July"],
+          datasets: [{
+            label: "My First dataset",
+            backgroundColor: "rgba(38, 185, 154, 0.31)",
+            borderColor: "rgba(38, 185, 154, 0.7)",
+            pointBorderColor: "rgba(38, 185, 154, 0.7)",
+            pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
+            pointHoverBackgroundColor: "#fff",
+            pointHoverBorderColor: "rgba(220,220,220,1)",
+            pointBorderWidth: 1,
+            data: [31, 74, 6, 39, 20, 85, 7]
+          }, {
+            label: "My Second dataset",
+            backgroundColor: "rgba(3, 88, 106, 0.3)",
+            borderColor: "rgba(3, 88, 106, 0.70)",
+            pointBorderColor: "rgba(3, 88, 106, 0.70)",
+            pointBackgroundColor: "rgba(3, 88, 106, 0.70)",
+            pointHoverBackgroundColor: "#fff",
+            pointHoverBorderColor: "rgba(151,187,205,1)",
+            pointBorderWidth: 1,
+            data: [82, 23, 66, 9, 99, 4, 2]
+          }]
+        },
       });
-    });
-    $(document).ready(function() {
-      window.myDoughnut = new Chart(document.getElementById("canvas_doughnut2").getContext("2d")).Doughnut(sharePiePolorDoughnutData, {
-        responsive: true,
-        scaleShowLabels: false,
-        segmentStrokeWidth: 2,
-        tooltipFillColor: "rgba(51, 51, 51, 0.55)"
+
+      new Chart(document.getElementById("canvas_line3"), {
+        type: 'line',
+        data: {
+          labels: ["January", "February", "March", "April", "May", "June", "July"],
+          datasets: [{
+            label: "My First dataset",
+            backgroundColor: "rgba(38, 185, 154, 0.31)",
+            borderColor: "rgba(38, 185, 154, 0.7)",
+            pointBorderColor: "rgba(38, 185, 154, 0.7)",
+            pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
+            pointHoverBackgroundColor: "#fff",
+            pointHoverBorderColor: "rgba(220,220,220,1)",
+            pointBorderWidth: 1,
+            data: [31, 74, 6, 39, 20, 85, 7]
+          }, {
+            label: "My Second dataset",
+            backgroundColor: "rgba(3, 88, 106, 0.3)",
+            borderColor: "rgba(3, 88, 106, 0.70)",
+            pointBorderColor: "rgba(3, 88, 106, 0.70)",
+            pointBackgroundColor: "rgba(3, 88, 106, 0.70)",
+            pointHoverBackgroundColor: "#fff",
+            pointHoverBorderColor: "rgba(151,187,205,1)",
+            pointBorderWidth: 1,
+            data: [82, 23, 66, 9, 99, 4, 2]
+          }]
+        },
       });
-    });
-    $(document).ready(function() {
-      window.myDoughnut = new Chart(document.getElementById("canvas_doughnut3").getContext("2d")).Doughnut(sharePiePolorDoughnutData, {
-        responsive: true,
-        scaleShowLabels: false,
-        segmentStrokeWidth: 2,
-        tooltipFillColor: "rgba(51, 51, 51, 0.55)"
-      });
-    });
-    $(document).ready(function() {
-      window.myDoughnut = new Chart(document.getElementById("canvas_doughnut4").getContext("2d")).Doughnut(sharePiePolorDoughnutData, {
-        responsive: true,
-        scaleShowLabels: false,
-        segmentStrokeWidth: 2,
-        tooltipFillColor: "rgba(51, 51, 51, 0.55)"
+
+      new Chart(document.getElementById("canvas_line4"), {
+        type: 'line',
+        data: {
+          labels: ["January", "February", "March", "April", "May", "June", "July"],
+          datasets: [{
+            label: "My First dataset",
+            backgroundColor: "rgba(38, 185, 154, 0.31)",
+            borderColor: "rgba(38, 185, 154, 0.7)",
+            pointBorderColor: "rgba(38, 185, 154, 0.7)",
+            pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
+            pointHoverBackgroundColor: "#fff",
+            pointHoverBorderColor: "rgba(220,220,220,1)",
+            pointBorderWidth: 1,
+            data: [31, 74, 6, 39, 20, 85, 7]
+          }, {
+            label: "My Second dataset",
+            backgroundColor: "rgba(3, 88, 106, 0.3)",
+            borderColor: "rgba(3, 88, 106, 0.70)",
+            pointBorderColor: "rgba(3, 88, 106, 0.70)",
+            pointBackgroundColor: "rgba(3, 88, 106, 0.70)",
+            pointHoverBackgroundColor: "#fff",
+            pointHoverBorderColor: "rgba(151,187,205,1)",
+            pointBorderWidth: 1,
+            data: [82, 23, 66, 9, 99, 4, 2]
+          }]
+        },
       });
     });
   </script>
