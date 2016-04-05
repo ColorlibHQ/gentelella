@@ -9,7 +9,7 @@ $(function () {
     $('#sidebar-menu li ul').slideUp();
     $('#sidebar-menu li').removeClass('active');
 
-    $('#sidebar-menu li').on('click touchstart', function() {
+    $('#sidebar-menu li').on('click', function() {
         var link = $('a', this).attr('href');
 
         if(link) { 
