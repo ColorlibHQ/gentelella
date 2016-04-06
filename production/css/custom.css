@@ -1327,8 +1327,7 @@ ul.msg_list li a .message {
 }
 .dropdown-menu {
   border: medium none;
-  border-radius: 3px;
-  box-shadow: 0 0 3px;
+  box-shadow: none;
   display: none;
   float: left;
   font-size: 12px;
@@ -1339,18 +1338,10 @@ ul.msg_list li a .message {
   text-shadow: none;
   top: 100%;
   z-index: 1000;
-  border-radius: 2px;
-  border-top: 1px solid #999999;
-}
-.dropdown-menu:after {
-  border-bottom: 6px solid #999999;
-  border-left: 6px solid transparent;
-  border-right: 6px solid transparent;
-  content: "";
-  display: inline-block;
-  right: 6%;
-  position: absolute;
-  top: -6px;
+  border: 1px solid #D9DEE4;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  
 }
 .dropdown-menu>li>a {
   color: #5A738E;
