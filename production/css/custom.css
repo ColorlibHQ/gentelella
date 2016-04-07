@@ -1,7 +1,6 @@
 body.nav-sm .container.body .left_col {
   width: 70px;
   padding: 0;
-  position: fixed;
   height: 100%;
   z-index: 200;
 }
