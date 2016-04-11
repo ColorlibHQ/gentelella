@@ -1,10 +1,10 @@
-/* 
+/**
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
-/** ******  left menu  *********************** **/
+// Sidebar
 $(function () {
     $('#sidebar-menu li ul').slideUp();
     $('#sidebar-menu li').removeClass('active');
@@ -48,7 +48,7 @@ $(function () {
     });
 });
 
-/* Sidebar Menu active class */
+// Sidebar Menu active class
 $(function () {
     var url = window.location;
     $('#sidebar-menu a[href="' + url + '"]').parent('li').addClass('current-page');
@@ -57,27 +57,24 @@ $(function () {
     }).parent('li').addClass('current-page').parent('ul').slideDown().parent().addClass('active');
 });
 
-/** ******  /left menu  *********************** **/
-/** ******  right_col height flexible  *********************** **/
+
+// Right column height
 $(".right_col").css("min-height", $(window).height());
 $(window).resize(function () {
     $(".right_col").css("min-height", $(window).height());
 });
-/** ******  /right_col height flexible  *********************** **/
 
-
-
-/** ******  tooltip  *********************** **/
+// Tooltip
 $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
-})
-/** ******  /tooltip  *********************** **/
-/** ******  progressbar  *********************** **/
+    $('[data-toggle="tooltip"]').tooltip();
+});
+
+// Progressbar
 if ($(".progress .progress-bar")[0]) {
     $('.progress .progress-bar').progressbar(); // bootstrap 3
 }
-/** ******  /progressbar  *********************** **/
-/** ******  switchery  *********************** **/
+
+// Switchery
 if ($(".js-switch")[0]) {
     var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
     elems.forEach(function (html) {
@@ -86,8 +83,7 @@ if ($(".js-switch")[0]) {
         });
     });
 }
-/** ******  /switcher  *********************** **/
-/** ******  collapse panel  *********************** **/
+
 // Close ibox function
 $('.close-link').click(function () {
     var content = $(this).closest('div.x_panel');
@@ -107,8 +103,8 @@ $('.collapse-link').click(function () {
         x_panel.resize();
     }, 50);
 });
-/** ******  /collapse panel  *********************** **/
-/** ******  iswitch  *********************** **/
+
+// iCheck
 if ($("input.flat")[0]) {
     $(document).ready(function () {
         $('input.flat').iCheck({
@@ -117,9 +113,8 @@ if ($("input.flat")[0]) {
         });
     });
 }
-/** ******  /iswitch  *********************** **/
-/** ******  star rating  *********************** **/
-// Starrr plugin (https://github.com/dobtco/starrr)
+
+// Starrr
 var __slice = [].slice;
 
 (function ($, window) {
@@ -142,7 +137,7 @@ var __slice = [].slice;
             _ref = this.defaults;
             for (i in _ref) {
                 _ = _ref[i];
-                if (this.$el.data(i) != null) {
+                if (this.$el.data(i) !== null) {
                     this.options[i] = this.$el.data(i);
                 }
             }
@@ -237,8 +232,8 @@ $(document).ready(function () {
     });
 
 });
-/** ******  /star rating  *********************** **/
-/** ******  table  *********************** **/
+
+// Table
 $('table input').on('ifChecked', function () {
     check_state = '';
     $(this).parent().parent().parent().addClass('selected');
@@ -287,15 +282,8 @@ function countChecked() {
         $('.bulk-actions').hide();
     }
 }
-/** ******  /table  *********************** **/
-/** ******    *********************** **/
-/** ******    *********************** **/
-/** ******    *********************** **/
-/** ******    *********************** **/
-/** ******    *********************** **/
-/** ******    *********************** **/
-/** ******  Accordion  *********************** **/
 
+// Accordion
 $(function () {
     $(".expand").on("click", function () {
         $(this).next().slideToggle(200);
@@ -309,20 +297,8 @@ $(function () {
     });
 });
 
-/** ******  Accordion  *********************** **/
 
-/** ******  scrollview  *********************** **/
-$(document).ready(function () {
-
-    $(".scroll-view").niceScroll({
-        touchbehavior: true,
-        cursorcolor: "rgba(42, 63, 84, 0.35)"
-    });
-
-});
-/** ******  /scrollview  *********************** **/
-
-/** ******  NProgress  *********************** **/
+// NProgress
 if (typeof NProgress != 'undefined') {
     $(document).ready(function () {
         NProgress.start();
@@ -332,4 +308,3 @@ if (typeof NProgress != 'undefined') {
         NProgress.done();
     });
 }
-/** ******  NProgress  *********************** **/
