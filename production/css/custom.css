@@ -27,7 +27,6 @@ body.nav-sm .navbar.nav_title a i {
   border-radius: 50%;
 }
 body.nav-sm .main_container .top_nav {
-  padding: 0 !important;
   display: block;
   margin-left: 70px;
   z-index: 2;
@@ -307,9 +306,7 @@ body {
   line-height: 1.471;
 }
 .main_container .top_nav {
-  padding: 0 !important;
   display: block;
-  padding: 10px 20px 0;
   margin-left: 230px;
 }
 .main_container {}
@@ -660,9 +657,13 @@ li.current-page a {
 .x_content canvas {}
 footer {
   background: #fff;
-  padding: 5px 20px 0;
-  height: 45px;
-  margin: 0 -17px;
+  padding: 15px 20px;
+  margin: 0 -10px;
+}
+@media (min-width: 768px) {
+  footer {
+    margin: 0 -20px;
+  }
 }
 .tile-stats.sparkline {
   padding: 10px;
@@ -5382,7 +5383,4 @@ ul.notifications {
   right: 100%;
   width: 100%;
   height: 2px;
-}
-.copyright-info {
-  padding: 8px 0;
 }
