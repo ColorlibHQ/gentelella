@@ -484,6 +484,7 @@ a:hover, a:focus {
 .nav.side-menu> li {
   position: relative;
   display: block;
+  cursor: pointer;
 }
 .nav.side-menu> li > a {
   margin-bottom: 6px;
@@ -635,6 +636,7 @@ li.current-page a {
 }
 .panel_toolbox>li {
   float: left;
+  cursor: pointer;
 }
 .panel_toolbox>li>a {
   padding: 5px;
