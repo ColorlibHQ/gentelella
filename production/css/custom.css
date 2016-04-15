@@ -154,12 +154,16 @@ body.nav-sm span.fa, body.nav-sm .menu_section h3 {
 }
 .nav_menu {
   float: left;
-  /*background: #F4F6F9;
-    border-bottom: 1px solid #E6E9ED;*/
   background: #EDEDED;
   border-bottom: 1px solid #D9DEE4;
   margin-bottom: 10px;
   width: 100%;
+  position: relative;
+}
+@media (min-width: 480px) {
+  .nav_menu {
+    position: static;
+  }
 }
 body.nav-md .container.body .col-md-3.left_col {
   width: 230px;
@@ -455,9 +459,12 @@ a:hover, a:focus {
 .top_nav .navbar-right li {
   display: inline-block;
   float: right;
+  position: static;
 }
-.top_nav .dropdown-menu {
-  min-width: 220px;
+@media (min-width: 480px) {
+  .top_nav .navbar-right li {
+    position: relative;
+  }
 }
 .top_nav .dropdown-menu li {
   width: 100%;
@@ -1324,9 +1331,6 @@ ul.msg_list li a .message {
   display: block !important;
   font-size: 11px;
 }
-.dropdown-menu.msg_list {
-  width: 300px !important;
-}
 .dropdown-menu.msg_list span {
   white-space: normal;
 }
@@ -1357,6 +1361,12 @@ ul.msg_list li a .message {
   margin-top: 0;
   border: 1px solid #D9DEE4;
   -webkit-box-shadow: none;
+  right: 0;
+  left: auto;
+  width: 220px;
+}
+.navbar-nav .open .dropdown-menu.msg_list {
+  width: 300px;
 }
 .info-number .badge {
   font-size: 10px;
