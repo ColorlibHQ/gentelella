@@ -65,6 +65,33 @@ $(function () {
     }).parent('li').addClass('current-page').parent('ul').slideDown().parent().addClass('active');
 });
 
+// Panel toolbox
+$(function () {
+    $('.collapse-link').on('click', function() {
+        var $BOX_PANEL = $(this).closest('.x_panel'),
+            $ICON = $(this).find('i'),
+            $BOX_CONTENT = $BOX_PANEL.find('.x_content');
+        
+        // fix for some div with hardcoded fix class
+        if ($BOX_PANEL.attr('style')) {
+            $BOX_CONTENT.slideToggle(200, function(){
+                $BOX_PANEL.removeAttr('style');
+            });
+        } else {
+            $BOX_CONTENT.slideToggle(200); 
+            $BOX_PANEL.css('height', 'auto');  
+        }
+
+        $ICON.toggleClass('fa-chevron-up fa-chevron-down');
+    });
+
+    $('.close-link').click(function () {
+        var $BOX_PANEL = $(this).closest('.x_panel');
+
+        $BOX_PANEL.remove();
+    });
+});
+
 // Right column height
 $(".right_col").css("min-height", $(window).height());
 $(window).resize(function () {
@@ -90,26 +117,6 @@ if ($(".js-switch")[0]) {
         });
     });
 }
-
-// Close ibox function
-$('.close-link').click(function () {
-    var content = $(this).closest('div.x_panel');
-    content.remove();
-});
-
-// Collapse ibox function
-$('.collapse-link').click(function () {
-    var x_panel = $(this).closest('div.x_panel');
-    var button = $(this).find('i');
-    var content = x_panel.find('div.x_content');
-    content.slideToggle(200);
-    (x_panel.hasClass('fixed_height_390') ? x_panel.toggleClass('').toggleClass('fixed_height_390') : '');
-    (x_panel.hasClass('fixed_height_320') ? x_panel.toggleClass('').toggleClass('fixed_height_320') : '');
-    button.toggleClass('fa-chevron-up').toggleClass('fa-chevron-down');
-    setTimeout(function () {
-        x_panel.resize();
-    }, 50);
-});
 
 // iCheck
 if ($("input.flat")[0]) {
