@@ -297,7 +297,7 @@ body.nav-md .container.body .right_col {
 .navbar-nav>li>a, .navbar-brand, .navbar-nav>li>a {
   color: #fff !important;
 }
-.nav>li>a:focus, .nav>li>a:hover, .nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
+.top_nav .nav>li>a:focus, .top_nav .nav>li>a:hover, .top_nav .nav .open>a, .top_nav .nav .open>a:focus, .top_nav .nav .open>a:hover {
   background: #D9DEE4;
 }
 body {
@@ -593,6 +593,9 @@ li.current-page a {
   display: block;
   padding: 10px 15px;
   color: #34495E !important;
+}
+.nav>li>a:hover, .nav>li>a:focus {
+  background-color: transparent;
 }
 .top_search {
   padding: 0;
