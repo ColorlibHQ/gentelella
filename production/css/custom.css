@@ -297,8 +297,8 @@ body.nav-md .container.body .right_col {
 .navbar-nav>li>a, .navbar-brand, .navbar-nav>li>a {
   color: #fff !important;
 }
-.navbar-brand, .navbar-nav>li>a {
-  margin-bottom: 5px
+.nav>li>a:focus, .nav>li>a:hover, .nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
+  background: #D9DEE4;
 }
 body {
   color: #73879C;
@@ -539,7 +539,7 @@ body.nav-md ul.nav.child_menu li:after {
 .nav>li>a {
   position: relative;
   display: block;
-  padding: 13px 15px 7px;
+  padding: 13px 15px 12px;
 }
 .nav.side-menu> li.current-page, .nav.side-menu> li.active {
   border-right: 5px solid #1ABB9C;
@@ -593,9 +593,6 @@ li.current-page a {
   display: block;
   padding: 10px 15px;
   color: #34495E !important;
-}
-.nav>li>a:hover, .nav>li>a:focus {
-  background-color: transparent;
 }
 .top_search {
   padding: 0;
