@@ -685,12 +685,6 @@ footer {
   height: 22px !important;
   text-decoration: none;
 }
-a.btn-success, a.btn-primary, a.btn-warning, a.btn-danger {
-  color: #fff !important;
-}
-.btn {
-  border-radius: 3px;
-}
 .tooltip {
   display: block !important;
 }
@@ -2388,12 +2382,35 @@ input.parsley-error, textarea.parsley-error, select.parsley-error {
   color: #3399ff;
   font-weight: bolder;
 }
-
 /* ***** /autocomplete *****/
 
-
 /* ***** buttons ********/
-
+.btn {
+  border-radius: 3px;
+}
+a.btn-success, a.btn-primary, a.btn-warning, a.btn-danger {
+  color: #fff;
+}
+.btn-success {
+  background: #26B99A;
+  border: 1px solid #169F85;
+}
+.btn-success:hover, .btn-success:focus, .btn-success:active, .btn-success.active, .open .dropdown-toggle.btn-success {
+  background: #169F85;
+}
+.btn-dark {
+  color: #E9EDEF;
+  background-color: #4B5F71;
+  border-color: #364B5F;
+}
+.btn-dark:hover, .btn-dark:focus, .btn-dark:active, .btn-dark.active, .open .dropdown-toggle.btn-dark {
+  color: #FFFFFF;
+  background-color: #394D5F;
+  border-color: #394D5F;
+}
+.btn-round {
+  border-radius: 30px;
+}
 .btn.btn-app {
   position: relative;
   padding: 15px 5px;
@@ -2433,12 +2450,9 @@ input.parsley-error, textarea.parsley-error, select.parsley-error {
   font-size: 10px;
   font-weight: 400;
 }
-
 /* ***** /buttons *******/
 
-
 /* *********  /form design  **************************** */
-
 
 /* *********  calender dropdown  **************************** */
 
@@ -3281,94 +3295,16 @@ html > body > .ui-pnotify {
   background-color: rgba(231, 76, 60, 0.88);
   border-color: rgba(231, 76, 60, 0.88);
 }
-.alert-dark, .btn-dark {
+.alert-dark {
   color: #E9EDEF;
   background-color: rgba(52, 73, 94, 0.88);
   border-color: rgba(52, 73, 94, 0.88);
 }
-.btn-dark:hover {
-  color: #F7F7F7;
-}
-
 /* /theming */
 
 
-/* /Pnotify by Hunter Perrin :: 2.0.1 */
-
-.btn.btn-outline {
-  background: transparent;
-}
-.btn-primary.btn-outline {
-  color: #1A82C3;
-  border-width: 2px;
-}
-.btn-default.btn-outline {
-  color: #34495e;
-  border-width: 2px;
-}
-.btn-success.btn-outline {
-  color: #1ABB9C;
-  border-width: 2px;
-}
-.btn-info.btn-outline {
-  color: #34495e;
-  border-width: 2px;
-}
-.btn-warning.btn-outline {
-  color: #5bc0de;
-  border-width: 2px;
-}
-.btn-danger.btn-outline {
-  color: #34495e;
-  border-width: 2px;
-}
-.btn-dark.btn-outline {
-  color: #c0392b;
-  border-width: 2px;
-}
-.btn-warning {
-  background: #f0ad4e;
-  border-color: #f0ad4e;
-}
-.btn-danger {
-  background: #d9534f;
-  border-color: #d9534f;
-}
-.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open .dropdown-toggle.btn-primary {
-  background-color: #1A82C3;
-  border-color: #1A82C3;
-  color: #FFFFFF;
-}
-.btn-success:hover, .btn-success:focus, .btn-success:active, .btn-success.active, .open .dropdown-toggle.btn-success {
-  background-color: #1ABB9C;
-  border-color: #1ABB9C;
-  color: #FFFFFF;
-}
-.btn-info:hover, .btn-info:focus, .btn-info:active, .btn-info.active, .open .dropdown-toggle.btn-info {
-  background-color: #4FB5D3;
-  border-color: #4FB5D3;
-  color: #FFFFFF;
-}
-.btn-warning:hover, .btn-warning:focus, .btn-warning:active, .btn-warning.active, .open .dropdown-toggle.btn-warning {
-  background-color: #d58512;
-  border-color: #d58512;
-  color: #FFFFFF;
-}
-.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open .dropdown-toggle.btn-primary {
-  background-color: #1479B8;
-  border-color: #1479B8;
-  color: #FFFFFF;
-}
-.btn-danger:hover, .btn-danger:focus, .btn-danger:active, .btn-danger.active, .open .dropdown-toggle.btn-danger {
-  background-color: #d43f3a;
-  border-color: #d43f3a;
-  color: #FFFFFF;
-}
-.btn-dark:hover, .btn-dark:focus, .btn-dark:active, .btn-dark.active, .open .dropdown-toggle.btn-dark {
-  background-color: #394D5F;
-  border-color: #394D5F;
-  color: #FFFFFF;
-}
+/* Pnotify */
+/* TODO: This class seems not use */
 .custom-notifications {
   position: fixed;
   margin: 15px;
@@ -3378,11 +3314,7 @@ html > body > .ui-pnotify {
   z-index: 4000;
   bottom: 0;
 }
-.btn-round {
-  border-radius: 30px;
-}
-
-/* *********  /notifications  **************************** */
+/* Pnotify */
 
 
 /* *********  profile/social  **************************** */
