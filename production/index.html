@@ -583,7 +583,6 @@
                 <div class="clearfix"></div>
               </div>
               <div class="x_content">
-
                 <table class="" style="width:100%">
                   <tr>
                     <th style="width:37%;">
@@ -1228,47 +1227,49 @@
     icons.play();
   </script>
 
-  <!-- dashbord linegraph -->
+  <!-- Doughnut Chart -->
   <script>
-    Chart.defaults.global.legend = {
-      enabled: false
-    };
+    $('document').ready(function() {
+      var options = {
+        legend: false,
+        responsive: false
+      };
 
-    var data = {
-      labels: [
-        "Symbian",
-        "Blackberry",
-        "Other",
-        "Android",
-        "IOS"
-      ],
-      datasets: [{
-        data: [15, 20, 30, 10, 30],
-        backgroundColor: [
-          "#BDC3C7",
-          "#9B59B6",
-          "#455C73",
-          "#26B99A",
-          "#3498DB"
-        ],
-        hoverBackgroundColor: [
-          "#CFD4D8",
-          "#B370CF",
-          "#34495E",
-          "#36CAAB",
-          "#49A9EA"
-        ]
-
-      }]
-    };
-
-    var canvasDoughnut = new Chart(document.getElementById("canvas1"), {
-      type: 'doughnut',
-      tooltipFillColor: "rgba(51, 51, 51, 0.55)",
-      data: data
+      new Chart(document.getElementById("canvas1"), {
+        type: 'doughnut',
+        tooltipFillColor: "rgba(51, 51, 51, 0.55)",
+        data: {
+          labels: [
+            "Symbian",
+            "Blackberry",
+            "Other",
+            "Android",
+            "IOS"
+          ],
+          datasets: [{
+            data: [15, 20, 30, 10, 30],
+            backgroundColor: [
+              "#BDC3C7",
+              "#9B59B6",
+              "#E74C3C",
+              "#26B99A",
+              "#3498DB"
+            ],
+            hoverBackgroundColor: [
+              "#CFD4D8",
+              "#B370CF",
+              "#E95E4F",
+              "#36CAAB",
+              "#49A9EA"
+            ]
+          }]
+        },
+        options: options
+      });
     });
   </script>
-  <!-- /dashbord linegraph -->
+  <!-- /Doughnut Chart -->
+  
   <!-- datepicker -->
   <script type="text/javascript">
     $(document).ready(function() {
