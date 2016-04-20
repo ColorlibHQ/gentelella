@@ -4,15 +4,18 @@
  * and open the template in the editor.
  */
 
+var URL = window.location,
+    $BODY = $('body'),
+    $MENU_TOGGLE = $('#menu_toggle'),
+    $SIDEBAR_MENU = $('#sidebar-menu'),
+    $SIDEBAR_FOOTER = $('.sidebar-footer'),
+    $LEFT_COL = $('.left_col'),
+    $RIGHT_COL = $('.right_col'),
+    $NAV_MENU = $('.nav_menu'),
+    $FOOTER = $('footer');
+
 // Sidebar
 $(function () {
-    var URL = window.location,
-        $BODY = $('body'),
-        $SIDEBAR_MENU = $('#sidebar-menu'),
-        $MENU_TOGGLE = $('#menu_toggle');
-        $SIDEBAR_FOOTER = $('.sidebar-footer');
-        $LEFT_COL = $('.left_col');
-
     $SIDEBAR_MENU.find('li ul').slideUp();
     $SIDEBAR_MENU.find('li').removeClass('active');
 

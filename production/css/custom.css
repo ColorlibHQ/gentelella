@@ -4234,16 +4234,11 @@ ul.project_files li a i {
 }
 .avatar-view {
   display: block;
-  height: 220px;
-  width: 220px;
   border: 3px solid #fff;
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, .15);
   cursor: pointer;
   overflow: hidden;
-}
-.avatar-view img {
-  width: 100%;
 }
 .avatar-body {
   padding-right: 15px;

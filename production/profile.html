@@ -368,9 +368,7 @@
                       <!-- end of image cropping -->
                       <div id="crop-avatar">
                         <!-- Current avatar -->
-                        <div class="avatar-view" title="Change the avatar">
-                          <img src="images/picture.jpg" alt="Avatar">
-                        </div>
+                        <img class="img-responsive avatar-view" src="images/picture.jpg" alt="Avatar" title="Change the avatar">
 
                         <!-- Cropping modal -->
                         <div class="modal fade" id="avatar-modal" aria-hidden="true" aria-labelledby="avatar-modal-label" role="dialog" tabindex="-1">
@@ -717,49 +715,35 @@
 
   <script>
     $(function() {
-      var day_data = [{
-        "period": "Jan",
-        "Hours worked": 80
-      }, {
-        "period": "Feb",
-        "Hours worked": 125
-      }, {
-        "period": "Mar",
-        "Hours worked": 176
-      }, {
-        "period": "Apr",
-        "Hours worked": 224
-      }, {
-        "period": "May",
-        "Hours worked": 265
-      }, {
-        "period": "Jun",
-        "Hours worked": 314
-      }, {
-        "period": "Jul",
-        "Hours worked": 347
-      }, {
-        "period": "Aug",
-        "Hours worked": 287
-      }, {
-        "period": "Sep",
-        "Hours worked": 240
-      }, {
-        "period": "Oct",
-        "Hours worked": 211
-      }];
       Morris.Bar({
         element: 'graph_bar',
-        data: day_data,
+        data: [
+          { "period": "Jan", "Hours worked": 80 }, 
+          { "period": "Feb", "Hours worked": 125 }, 
+          { "period": "Mar", "Hours worked": 176 }, 
+          { "period": "Apr", "Hours worked": 224 }, 
+          { "period": "May", "Hours worked": 265 }, 
+          { "period": "Jun", "Hours worked": 314 }, 
+          { "period": "Jul", "Hours worked": 347 }, 
+          { "period": "Aug", "Hours worked": 287 }, 
+          { "period": "Sep", "Hours worked": 240 }, 
+          { "period": "Oct", "Hours worked": 211 }
+        ],
         xkey: 'period',
         hideHover: 'auto',
         barColors: ['#26B99A', '#34495E', '#ACADAC', '#3498DB'],
         ykeys: ['Hours worked', 'sorned'],
         labels: ['Hours worked', 'SORN'],
-        xLabelAngle: 60
+        xLabelAngle: 60,
+        resize: true
+      });
+
+      $MENU_TOGGLE.on('click', function() {
+        $(window).resize();
       });
     });
   </script>
+
   <!-- datepicker -->
   <script type="text/javascript">
     $(document).ready(function() {

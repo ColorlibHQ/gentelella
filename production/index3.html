@@ -869,8 +869,9 @@
                       <h4>Goal</h4>
                       <canvas width="150" height="80" id="foo2" class="" style="width: 160px; height: 100px;"></canvas>
                       <div class="goal-wrapper">
+                        <span class="gauge-value pull-left">$</span>
                         <span id="gauge-text2" class="gauge-value pull-left">3,200</span>
-                        <span id="goal-text2" class="goal-value pull-right">5,000</span>
+                        <span id="goal-text2" class="goal-value pull-right">$5,000</span>
                       </div>
                     </div>
                   </div>
@@ -879,6 +880,7 @@
             </div>
           </div>
         </div>
+      </div>
 
         <!-- footer content -->
         <footer>
@@ -1143,39 +1145,38 @@
   <!-- moris js -->
   <script src="js/moris/raphael-min.js"></script>
   <script src="js/moris/morris.min.js"></script>
+  
   <script>
     $(function() {
-      var day_data = [{
-        "period": "Jan",
-        "Hours worked": 80
-      }, {
-        "period": "Feb",
-        "Hours worked": 125
-      }, {
-        "period": "Mar",
-        "Hours worked": 176
-      }, {
-        "period": "Apr",
-        "Hours worked": 224
-      }, {
-        "period": "May",
-        "Hours worked": 265
-      }, {
-        "period": "Jun",
-        "Hours worked": 314
-      }];
       Morris.Bar({
         element: 'graph_bar',
-        data: day_data,
-        hideHover: 'always',
+        data: [
+          { "period": "Jan", "Hours worked": 80 }, 
+          { "period": "Feb", "Hours worked": 125 }, 
+          { "period": "Mar", "Hours worked": 176 }, 
+          { "period": "Apr", "Hours worked": 224 }, 
+          { "period": "May", "Hours worked": 265 }, 
+          { "period": "Jun", "Hours worked": 314 }, 
+          { "period": "Jul", "Hours worked": 347 }, 
+          { "period": "Aug", "Hours worked": 287 }, 
+          { "period": "Sep", "Hours worked": 240 }, 
+          { "period": "Oct", "Hours worked": 211 }
+        ],
         xkey: 'period',
+        hideHover: 'auto',
         barColors: ['#26B99A', '#34495E', '#ACADAC', '#3498DB'],
         ykeys: ['Hours worked', 'sorned'],
         labels: ['Hours worked', 'SORN'],
-        xLabelAngle: 60
+        xLabelAngle: 60,
+        resize: true
+      });
+
+      $MENU_TOGGLE.on('click', function() {
+        $(window).resize();
       });
     });
   </script>
+
   <!-- skycons -->
   <script>
     var icons = new Skycons({
