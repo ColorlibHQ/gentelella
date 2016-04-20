@@ -1,7 +1,6 @@
 body.nav-sm .container.body .left_col {
   width: 70px;
   padding: 0;
-  height: 100%;
   z-index: 200;
   position: absolute;
 }
@@ -664,16 +663,18 @@ li.current-page a {
   display: block;
   padding: 4px 6px;
 }
-.x_content canvas {}
 footer {
   background: #fff;
   padding: 15px 20px;
-  margin: 0 -10px;
+  display: block;
 }
 @media (min-width: 768px) {
   footer {
-    margin: 0 -20px;
+    margin-left: 230px;
   }
+}
+.nav-sm footer {
+  margin-left: 70px ;  
 }
 .tile-stats.sparkline {
   padding: 10px;
@@ -4234,16 +4235,11 @@ ul.project_files li a i {
 }
 .avatar-view {
   display: block;
-  height: 220px;
-  width: 220px;
   border: 3px solid #fff;
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, .15);
   cursor: pointer;
   overflow: hidden;
-}
-.avatar-view img {
-  width: 100%;
 }
 .avatar-body {
   padding-right: 15px;

@@ -1,29 +1,5 @@
 $(function () {
 
-    /* data stolen from http://howmanyleft.co.uk/vehicle/jaguar_'e'_type */
-    var day_data = [
-        {"period": "2016-10-01", "licensed": 807, "sorned": 660},
-        {"period": "2016-09-30", "licensed": 1251, "sorned": 729},
-        {"period": "2016-09-29", "licensed": 1769, "sorned": 1018},
-        {"period": "2016-09-20", "licensed": 2246, "sorned": 1461},
-        {"period": "2016-09-19", "licensed": 2657, "sorned": 1967},
-        {"period": "2016-09-18", "licensed": 3148, "sorned": 2627},
-        {"period": "2016-09-17", "licensed": 3471, "sorned": 3740},
-        {"period": "2016-09-16", "licensed": 2871, "sorned": 2216},
-        {"period": "2016-09-15", "licensed": 2401, "sorned": 1656},
-        {"period": "2016-09-10", "licensed": 2115, "sorned": 1022}
-    ];
-    Morris.Bar({
-        element: 'graph_bar_group',
-        data: day_data,
-        xkey: 'period',
-        barColors: ['#26B99A', '#34495E', '#ACADAC', '#3498DB'],
-        ykeys: ['licensed', 'sorned'],
-        labels: ['Licensed', 'SORN'],
-        hideHover: 'auto',
-        xLabelAngle: 60
-    });
-
     Morris.Bar({
         element: 'graph_bar',
         data: [
@@ -44,7 +20,31 @@ $(function () {
         barRatio: 0.4,
         barColors: ['#26B99A', '#34495E', '#ACADAC', '#3498DB'],
         xLabelAngle: 35,
-        hideHover: 'auto'
+        hideHover: 'auto',
+        resize: true
+    });
+
+    Morris.Bar({
+        element: 'graph_bar_group',
+        data: [
+            {"period": "2016-10-01", "licensed": 807, "sorned": 660},
+            {"period": "2016-09-30", "licensed": 1251, "sorned": 729},
+            {"period": "2016-09-29", "licensed": 1769, "sorned": 1018},
+            {"period": "2016-09-20", "licensed": 2246, "sorned": 1461},
+            {"period": "2016-09-19", "licensed": 2657, "sorned": 1967},
+            {"period": "2016-09-18", "licensed": 3148, "sorned": 2627},
+            {"period": "2016-09-17", "licensed": 3471, "sorned": 3740},
+            {"period": "2016-09-16", "licensed": 2871, "sorned": 2216},
+            {"period": "2016-09-15", "licensed": 2401, "sorned": 1656},
+            {"period": "2016-09-10", "licensed": 2115, "sorned": 1022}
+        ],
+        xkey: 'period',
+        barColors: ['#26B99A', '#34495E', '#ACADAC', '#3498DB'],
+        ykeys: ['licensed', 'sorned'],
+        labels: ['Licensed', 'SORN'],
+        hideHover: 'auto',
+        xLabelAngle: 60,
+        resize: true
     });
 
     Morris.Bar({
@@ -59,7 +59,8 @@ $(function () {
         ykeys: ['y', 'z', 'a'],
         barColors: ['#26B99A', '#34495E', '#ACADAC', '#3498DB'],
         hideHover: 'auto',
-        labels: ['Y', 'Z', 'A']
+        labels: ['Y', 'Z', 'A'],
+        resize: true
     }).on('click', function (i, row) {
         console.log(i, row);
     });
@@ -83,7 +84,8 @@ $(function () {
         lineColors: ['#26B99A', '#34495E', '#ACADAC', '#3498DB'],
         labels: ['iPhone', 'iPad', 'iPod Touch'],
         pointSize: 2,
-        hideHover: 'auto'
+        hideHover: 'auto',
+        resize: true
     });
 
 
@@ -97,11 +99,12 @@ $(function () {
         ],
         colors: ['#26B99A', '#34495E', '#ACADAC', '#3498DB'],
         formatter: function (y) {
-            return y + "%"
-        }
+            return y + "%";
+        },
+        resize: true
     });
 
-    new Morris.Line({
+    Morris.Line({
         element: 'graph_line',
         xkey: 'year',
         ykeys: ['value'],
@@ -114,7 +117,11 @@ $(function () {
             {year: '2014', value: 5},
             {year: '2015', value: 5},
             {year: '2016', value: 20}
-        ]
+        ],
+        resize: true
     });
 
+    $MENU_TOGGLE.on('click', function() {
+        $(window).resize();
+    });
 });
