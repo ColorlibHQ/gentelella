@@ -30,20 +30,24 @@ $(function () {
         else {
             if ($(this).is('.active')) {
                 $(this).removeClass('active');
-                $('ul', this).slideUp();
+                $('ul', this).slideUp(function() {
+                    setContentHeight();
+                });
             } else {
                 $SIDEBAR_MENU.find('li').removeClass('active');
                 $SIDEBAR_MENU.find('li ul').slideUp();
                 
                 $(this).addClass('active');
-                $('ul', this).slideDown();
+                $('ul', this).slideDown(function() {
+                    setContentHeight();
+                });
             }
         }
     });
 
     $MENU_TOGGLE.on('click', function() {
         if ($BODY.hasClass('nav-md')) {
-            $BODY.removeClass('nav-md').addClass('nav-sm');
+            $BODY.removeClass('nav-md').addClass('nav-sm', 1000);
             $LEFT_COL.removeClass('scroll-view').removeAttr('style');
             $SIDEBAR_FOOTER.hide();
 
@@ -51,7 +55,7 @@ $(function () {
                 $SIDEBAR_MENU.find('li.active').addClass('active-sm').removeClass('active');
             }
         } else {
-            $BODY.removeClass('nav-sm').addClass('nav-md');
+            $BODY.removeClass('nav-sm').addClass('nav-md', 1000);
             $SIDEBAR_FOOTER.show();
 
             if ($SIDEBAR_MENU.find('li').hasClass('active-sm')) {
@@ -65,7 +69,29 @@ $(function () {
 
     $SIDEBAR_MENU.find('a').filter(function () {
         return this.href == URL;
-    }).parent('li').addClass('current-page').parent('ul').slideDown().parent().addClass('active');
+    }).parent('li').addClass('current-page').parent('ul').slideDown(function() {
+        setContentHeight();
+    }).parent().addClass('active');
+
+    // recompute content when resizing
+    $(window).smartresize(function(){  
+        setContentHeight();
+    });
+
+    // TODO: This is some kind of easy fix, maybe we can improve this
+    var setContentHeight = function () {
+        // reset height
+        $RIGHT_COL.css('min-height', $(window).height());
+
+        var bodyHeight = $BODY.height(),
+            leftColHeight = $LEFT_COL.height() + $SIDEBAR_FOOTER.height(),
+            contentHeight = bodyHeight < leftColHeight ? leftColHeight : bodyHeight;
+
+        // normalize content
+        contentHeight -= $NAV_MENU.height() + $FOOTER.height();
+
+        $RIGHT_COL.css('min-height', contentHeight);
+    };
 });
 
 // Panel toolbox
@@ -93,12 +119,6 @@ $(function () {
 
         $BOX_PANEL.remove();
     });
-});
-
-// Right column height
-$(".right_col").css("min-height", $(window).height());
-$(window).resize(function () {
-    $(".right_col").css("min-height", $(window).height());
 });
 
 // Tooltip
@@ -325,3 +345,39 @@ if (typeof NProgress != 'undefined') {
         NProgress.done();
     });
 }
+
+/**
+ * Resize function without multiple trigger
+ * 
+ * Usage:
+ * $(window).smartresize(function(){  
+ *     // code here
+ * });
+ */
+(function($,sr){
+    // debouncing function from John Hann
+    // http://unscriptable.com/index.php/2009/03/20/debouncing-javascript-methods/
+    var debounce = function (func, threshold, execAsap) {
+      var timeout;
+
+        return function debounced () {
+            var obj = this, args = arguments;
+            function delayed () {
+                if (!execAsap)
+                    func.apply(obj, args);
+                timeout = null; 
+            }
+
+            if (timeout)
+                clearTimeout(timeout);
+            else if (execAsap)
+                func.apply(obj, args);
+
+            timeout = setTimeout(delayed, threshold || 100); 
+        };
+    };
+
+    // smartresize 
+    jQuery.fn[sr] = function(fn){  return fn ? this.bind('resize', debounce(fn)) : this.trigger(sr); };
+
+})(jQuery,'smartresize');
