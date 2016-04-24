@@ -1,0 +1,13 @@
+{
+  "name": "starrr",
+  "version": "2.0.0",
+  "main": "Gruntfile.coffee",
+  "author": "ajb <adam@dobt.co>",
+  "license": "MIT",
+  "devDependencies": {
+    "grunt-contrib-sass": "^0.9.2",
+    "grunt-contrib-coffee": "^0.13.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt": "^0.4.5"
+  }
+}

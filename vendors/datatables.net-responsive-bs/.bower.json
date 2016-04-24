@@ -1,0 +1,49 @@
+{
+  "name": "datatables.net-responsive-bs",
+  "description": "Responsive for DataTables with styling for [Bootstrap](http://getbootstrap.com/)",
+  "main": [
+    "js/responsive.bootstrap.js",
+    "css/responsive.bootstrap.css"
+  ],
+  "keywords": [
+    "responsive",
+    "DataTables",
+    "jQuery",
+    "table",
+    "Bootstrap"
+  ],
+  "dependencies": {
+    "jquery": ">=1.7",
+    "datatables.net-bs": ">=1.10.9",
+    "datatables.net-responsive": ">=1.0.7"
+  },
+  "moduleType": [
+    "globals",
+    "amd",
+    "node"
+  ],
+  "ignore": [
+    "composer.json",
+    "datatables.json",
+    "package.json"
+  ],
+  "authors": [
+    {
+      "name": "SpryMedia Ltd",
+      "homepage": "https://datatables.net"
+    }
+  ],
+  "homepage": "https://datatables.net",
+  "license": "MIT",
+  "version": "2.0.2",
+  "_release": "2.0.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "2.0.2",
+    "commit": "925c96bb6b25e898bb66e89cbe4b9feb4f909642"
+  },
+  "_source": "https://github.com/DataTables/Dist-DataTables-Responsive-Bootstrap.git",
+  "_target": "^2.0.2",
+  "_originalSource": "datatables.net-responsive-bs",
+  "_direct": true
+}

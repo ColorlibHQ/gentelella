@@ -1,0 +1,155 @@
+{
+  "name": "update",
+  "description": "Easily keep anything in your project up-to-date by installing the updaters you want to use and running `update` in the command line! Update the copyright date, licence type, ensure that a project uses your latest eslint or jshint configuration, remove deprecated package.json fields, or anything you can think of!",
+  "version": "0.4.2",
+  "homepage": "https://github.com/update/update",
+  "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
+  "authors": [
+    "Brian Woodward <brian.woodward@gmail.com> (https://github.com/doowb)",
+    "Jon Schlinkert (https://github.com/jonschlinkert)"
+  ],
+  "contributors": [
+    "Brian Woodward <brian.woodward@gmail.com> (https://github.com/doowb)",
+    "Jon Schlinkert (https://github.com/jonschlinkert)"
+  ],
+  "repository": "update/update",
+  "bugs": {
+    "url": "https://github.com/update/update/issues"
+  },
+  "license": "MIT",
+  "files": [
+    "bin",
+    "index.js",
+    "lib/"
+  ],
+  "main": "index.js",
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "preferGlobal": true,
+  "bin": {
+    "update": "bin/update.js"
+  },
+  "dependencies": {
+    "ansi-cyan": "^0.1.1",
+    "ansi-gray": "^0.1.1",
+    "ansi-green": "^0.1.1",
+    "ansi-red": "^0.1.1",
+    "ansi-yellow": "^0.1.1",
+    "assemble-core": "^0.8.0",
+    "assemble-loader": "^0.2.6",
+    "async": "^1.5.2",
+    "base": "^0.6.3",
+    "base-cli": "^0.4.0",
+    "base-config": "^0.3.3",
+    "base-options": "^0.5.4",
+    "base-pipeline": "^0.1.4",
+    "base-store": "^0.3.2",
+    "composer-runtimes": "^0.7.0",
+    "define-property": "^0.2.5",
+    "engine-base": "^0.1.2",
+    "expand-args": "^0.3.1",
+    "expand-object": "^0.4.1",
+    "export-files": "^2.1.0",
+    "extend-shallow": "^2.0.1",
+    "for-own": "^0.1.3",
+    "get-value": "^2.0.2",
+    "global-modules": "^0.2.0",
+    "gulp-eslint": "^1.1.1",
+    "lazy-cache": "^1.0.3",
+    "load-pkg": "^3.0.1",
+    "matched": "^0.4.1",
+    "micromatch": "^2.3.7",
+    "minimist": "^1.2.0",
+    "object.omit": "^2.0.0",
+    "object.pick": "^1.1.1",
+    "parser-front-matter": "^1.3.0",
+    "project-name": "^0.2.3",
+    "question-cache": "^0.3.5",
+    "rimraf": "^2.5.0",
+    "set-value": "^0.3.2",
+    "sort-object-arrays": "^0.1.1",
+    "stream-exhaust": "^1.0.1",
+    "success-symbol": "^0.1.0",
+    "through2": "^2.0.0",
+    "time-stamp": "^0.1.3",
+    "union-value": "^0.2.1",
+    "use": "^1.1.2"
+  },
+  "devDependencies": {
+    "buffer-equal": "^1.0.0",
+    "consolidate": "^0.13.1",
+    "coveralls": "^2.11.6",
+    "data-store": "^0.12.1",
+    "engine-handlebars": "^0.8.0",
+    "event-stream": "^3.3.2",
+    "graceful-fs": "^4.1.2",
+    "gulp": "^3.9.0",
+    "gulp-format-md": "^0.1.5",
+    "gulp-istanbul": "^0.10.3",
+    "gulp-mocha": "^2.2.0",
+    "is-buffer": "^1.1.1",
+    "istanbul": "^0.4.1",
+    "kind-of": "^3.0.2",
+    "mocha": "^2.3.4",
+    "resolve-glob": "^0.1.8",
+    "should": "^8.0.2",
+    "sinon": "^1.17.2",
+    "swig": "^1.4.2",
+    "vinyl": "^1.1.0"
+  },
+  "keywords": [
+    "lint",
+    "next",
+    "repo",
+    "update"
+  ],
+  "verb": {
+    "related": {
+      "list": [
+        "assemble",
+        "boilerplate",
+        "composer",
+        "generate",
+        "scaffold",
+        "templates",
+        "update",
+        "verb"
+      ],
+      "description": ""
+    },
+    "reflinks": [
+      "boilerplate",
+      "scaffold",
+      "template",
+      "verb",
+      "vinyl"
+    ],
+    "plugins": [
+      "gulp-format-md"
+    ],
+    "data": {
+      "author": {
+        "username": "jonschlinkert"
+      }
+    }
+  },
+  "update": {
+    "note": "this is just pseudo data for tests. I'll update with real stuff soon.",
+    "cwd": "lib/pipeline",
+    "helpers": {
+      "related": "@/helper-related"
+    },
+    "plugins": {
+      "./lib/pipeline/a": {},
+      "./lib/pipeline/b": {},
+      "./lib/pipeline/c": {}
+    },
+    "set": {
+      "aaa": "yyy"
+    }
+  }
+}

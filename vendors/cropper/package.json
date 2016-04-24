@@ -1,0 +1,53 @@
+{
+  "name": "cropper",
+  "description": "A simple jQuery image cropping plugin.",
+  "version": "2.3.0",
+  "main": "dist/cropper.js",
+  "license": "MIT",
+  "repository": "fengyuanchen/cropper",
+  "homepage": "http://fengyuanchen.github.io/cropper",
+  "author": {
+    "name": "Fengyuan Chen",
+    "url": "http://chenfengyuan.com"
+  },
+  "keywords": [
+    "image",
+    "crop",
+    "cropper",
+    "cropping",
+    "move",
+    "zoom",
+    "rotate",
+    "scale",
+    "jquery",
+    "plugin",
+    "jqueryplugin",
+    "html",
+    "css",
+    "javascript",
+    "front-end",
+    "web",
+    "development"
+  ],
+  "dependencies": {
+    "jquery": ">= 1.9.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-csscomb": "^3.0.6",
+    "gulp-csslint": "^0.2.0",
+    "gulp-htmlcomb": "^0.1.0",
+    "gulp-jscs": "^3.0.2",
+    "gulp-jshint": "^1.12.0",
+    "gulp-load-plugins": "^1.2.0",
+    "gulp-minify-css": "^1.2.3",
+    "gulp-qunit": "^1.3.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.5.4",
+    "gulp-sass": "^2.1.1",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^1.5.1"
+  }
+}

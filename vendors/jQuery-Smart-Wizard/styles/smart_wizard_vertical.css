@@ -1,0 +1,306 @@
+/*   
+  SmartWizard 2.0 plugin 
+  jQuery Wizard control Plugin
+  by Dipu
+  
+  http://www.techlaboratory.net
+  http://tech-laboratory.blogspot.com
+*/
+.swMain {
+  position:relative;
+  display:block;
+  margin:0;
+  padding:0;
+  border: 0px solid #CCC;
+  overflow:visible;
+  float:left;
+  width:980px;/* */
+}
+.swMain .stepContainer {
+  display:block;
+  position: relative;
+  margin: 0;
+  padding:0;    
+  border: 0px solid #CCC;    
+  overflow:hidden;
+  clear:right;
+  height:300px;
+}
+
+.swMain .stepContainer div.content {
+  display:block;
+  position: absolute;  
+  float:left;
+  margin: 0;
+  padding:5px;    
+  border: 1px solid #CCC; 
+  font: normal 12px Verdana, Arial, Helvetica, sans-serif; 
+  color:#5A5655;   
+  background-color:#F8F8F8;  
+  height:300px;
+  text-align:left;
+  overflow:auto;    
+  z-index:88; 
+  -webkit-border-radius: 5px;
+  -moz-border-radius  : 5px;
+  width:720px;
+  clear:both;
+}
+
+.swMain div.actionBar {
+  display:block;
+  position: relative; 
+  clear:right;
+  margin:             3px 0 0 0;   
+  border:             1px solid #CCC;
+  padding:            0;    
+  color:              #5A5655;   
+  background-color:   #F8F8F8;
+  height:40px;
+/*  width:730px; 
+  float:right; */  
+  text-align:left;
+  overflow:auto;    
+  z-index:88; 
+  -webkit-border-radius: 5px;
+  -moz-border-radius  : 5px;
+
+}
+
+.swMain .stepContainer .StepTitle {
+  display:block;
+  position: relative;
+  margin:0;   
+  border:1px solid #E0E0E0;
+  padding:5px;   
+  font: bold 16px Verdana, Arial, Helvetica, sans-serif; 
+  color:#5A5655;   
+  background-color:#E0E0E0;
+  clear:both;
+  text-align:left; 
+  z-index:88;
+  -webkit-border-radius: 5px;
+  -moz-border-radius  : 5px;    
+}
+.swMain ul.anchor {
+  position: relative;
+  display:block;
+  float:left;
+  list-style: none;
+  padding: 0px;  
+  margin: 5px 10px 0 0;
+  border: 0px solid #CCCCCC;    
+  background: transparent; /*#EEEEEE */
+}
+.swMain ul.anchor li{ 
+  position: relative; 
+  display:block;
+  margin: 0;
+  padding: 0; 
+  padding-top:3px;
+  padding-bottom: 3px;
+  border: 0px solid #E0E0E0;      
+  float: left;
+  clear:both;
+}
+/* Anchor Element Style */
+.swMain ul.anchor li a {
+  display:block;
+  position:relative;
+  float:left;
+  margin:0;
+  padding:3px;
+  height:70px;
+  width:230px;
+  text-decoration: none;
+  outline-style:none;
+  -moz-border-radius  : 5px;
+  -webkit-border-radius: 5px;
+  z-index:99;
+}
+.swMain ul.anchor li a .stepNumber{
+  position:relative;
+  float:left;
+  width:30px;
+  text-align: center;
+  padding:5px;
+  padding-top:0;
+  font: bold 45px Verdana, Arial, Helvetica, sans-serif;
+}
+.swMain ul.anchor li a .stepDesc{
+  position:relative;
+  display:block;
+  float:left;
+  text-align: left;
+  padding:5px;
+  width:70%;
+  font: bold 20px Verdana, Arial, Helvetica, sans-serif;
+}
+.swMain ul.anchor li a .stepDesc small{
+  font: normal 12px Verdana, Arial, Helvetica, sans-serif;
+}
+.swMain ul.anchor li a.selected{
+  color:#F8F8F8;
+  background: #EA8511;  /* EA8511 */
+  border: 1px solid #EA8511;
+  cursor:text;
+  -moz-box-shadow: 1px 5px 10px #888;
+  -webkit-box-shadow: 1px 5px 10px #888;
+  box-shadow: 1px 5px 10px #888;
+}
+.swMain ul.anchor li a.selected:hover {
+  color:#F8F8F8;  
+  background: #EA8511;  
+}
+
+.swMain ul.anchor li a.done { 
+  position:relative;
+  color:#FFF;  
+  background: #8CC63F;  
+  border: 1px solid #8CC63F;   
+  z-index:99;
+}
+.swMain ul.anchor li a.done:hover {
+  color:#5A5655;  
+  background: #8CC63F; 
+  border: 1px solid #5A5655;   
+}
+.swMain ul.anchor li a.disabled {
+  color:#CCCCCC;  
+  background: #F8F8F8;
+  border: 1px solid #CCC;  
+  cursor:text;   
+}
+.swMain ul.anchor li a.disabled:hover {
+  color:#CCCCCC;  
+  background: #F8F8F8;     
+}
+
+.swMain ul.anchor li a.error {
+  color:#6c6c6c !important;  
+  background: #f08f75 !important;
+  border: 1px solid #fb3500 !important;      
+}
+.swMain ul.anchor li a.error:hover {
+  color:#000 !important;       
+}
+
+.swMain .buttonNext {
+  display:block;
+  float:right;
+  margin:5px 3px 0 3px;
+  padding:5px;
+  text-decoration: none;
+  text-align: center;
+  font: bold 13px Verdana, Arial, Helvetica, sans-serif;
+  width:100px;
+  color:#FFF;
+  outline-style:none;
+  background-color:   #5A5655;
+  border: 1px solid #5A5655;
+  -moz-border-radius  : 5px; 
+  -webkit-border-radius: 5px;    
+}
+.swMain .buttonDisabled {
+  color:#F8F8F8  !important;
+  background-color: #CCCCCC !important;
+  border: 1px solid #CCCCCC  !important;
+  cursor:text;    
+}
+.swMain .buttonPrevious {
+  display:block;
+  float:right;
+  margin:5px 3px 0 3px;
+  padding:5px;
+  text-decoration: none;
+  text-align: center;
+  font: bold 13px Verdana, Arial, Helvetica, sans-serif;
+  width:100px;
+  color:#FFF;
+  outline-style:none;
+  background-color:   #5A5655;
+  border: 1px solid #5A5655;
+  -moz-border-radius  : 5px; 
+  -webkit-border-radius: 5px;    
+}
+.swMain .buttonFinish {
+  display:block;
+  float:right;
+  margin:5px 10px 0 3px;
+  padding:5px;
+  text-decoration: none;
+  text-align: center;
+  font: bold 13px Verdana, Arial, Helvetica, sans-serif;
+  width:100px;
+  color:#FFF;
+  outline-style:none;
+  background-color:   #5A5655;
+  border: 1px solid #5A5655;
+  -moz-border-radius  : 5px; 
+  -webkit-border-radius: 5px;    
+}
+
+/* Form Styles */
+
+.txtBox {
+  border:1px solid #CCCCCC;
+  color:#5A5655;
+  font:13px Verdana,Arial,Helvetica,sans-serif;
+  padding:2px;
+  width:430px;
+}
+.txtBox:focus {
+  border:1px solid #EA8511;
+}
+
+.swMain .loader {
+  position:relative;  
+  display:none;
+  float:left;  
+  margin: 2px 0 0 2px;
+  padding:8px 10px 8px 40px;
+  border: 1px solid #FFD700; 
+  font: bold 13px Verdana, Arial, Helvetica, sans-serif; 
+  color:#5A5655;       
+  background: #FFF url(../images/loader.gif) no-repeat 5px;  
+  -moz-border-radius  : 5px;
+  -webkit-border-radius: 5px;
+  z-index:998;
+}
+.swMain .msgBox {
+  position:relative;  
+  display:none;
+  float:left;
+  margin: 4px 0 0 5px;
+  padding:5px;
+  border: 1px solid #FFD700; 
+  background-color: #FFFFDD;  
+  font: normal 12px Verdana, Arial, Helvetica, sans-serif; 
+  color:#5A5655;         
+  -moz-border-radius  : 5px;
+  -webkit-border-radius: 5px;
+  z-index:999;
+  min-width:200px;  
+}
+.swMain .msgBox .content {
+  font: normal 12px Verdana,Arial,Helvetica,sans-serif;
+  padding: 0px;
+  float:left;
+}
+.swMain .msgBox .close {
+  border: 1px solid #CCC;
+  border-radius: 3px;
+  color: #CCC;
+  display: block;
+  float: right;
+  margin: 0 0 0 5px;
+  outline-style: none;
+  padding: 0 2px 0 2px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+}
+.swMain .msgBox .close:hover{
+  color: #EA8511;
+  border: 1px solid #EA8511;  
+}

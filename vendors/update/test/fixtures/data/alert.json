@@ -1,0 +1,7 @@
+{
+  "success": {
+    "test": true,
+    "strong": "Heads up! This is a warning!",
+    "text": "You forgot a field!"
+  }
+}

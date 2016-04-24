@@ -1,0 +1,25 @@
+{
+  "name": "bernii/gauge.js",
+  "version": "1.2.1",
+  "main": [
+    "dist/gauge.js",
+    "dist/gauge.min.js",
+    "dist/gauge.coffee"
+  ],
+  "description": "100% native and cool looking animated JavaScript/CoffeScript gauge",
+  "license": "MIT",
+  "ignore": [],
+  "dependencies": {},
+  "devDependencies": {},
+  "homepage": "https://github.com/bernii/gauge.js",
+  "_release": "1.2.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.2.1",
+    "commit": "7ae09f41e1293f21ffbb9d233e9daed52629885b"
+  },
+  "_source": "https://github.com/bernii/gauge.js.git",
+  "_target": "^1.2.1",
+  "_originalSource": "gauge.js",
+  "_direct": true
+}
