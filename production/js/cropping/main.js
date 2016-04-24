@@ -33,7 +33,6 @@
     this.$avatarPreview = this.$avatarModal.find('.avatar-preview');
 
     this.init();
-    console.log(this);
   }
 
   CropAvatar.prototype = {
