@@ -1,0 +1,67 @@
+/*
+ *
+ * Main stylesheet for Switchery.
+ * http://abpetkov.github.io/switchery/
+ *
+ */
+
+/* Switchery defaults. */
+
+.switchery {
+  background-color: #fff;
+  border: 1px solid #dfdfdf;
+  border-radius: 20px;
+  cursor: pointer;
+  display: inline-block;
+  height: 30px;
+  position: relative;
+  vertical-align: middle;
+  width: 50px;
+
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+
+  -webkit-background-clip: content-box;
+  background-clip: content-box;
+}
+
+.switchery > small {
+  background: #fff;
+  border-radius: 100%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  height: 30px;
+  position: absolute;
+  top: 0;
+  width: 30px;
+}
+
+/* Switchery sizes. */
+
+.switchery-small {
+  border-radius: 20px;
+  height: 20px;
+  width: 33px;
+}
+
+.switchery-small > small {
+  height: 20px;
+  width: 20px;
+}
+
+.switchery-large {
+  border-radius: 40px;
+  height: 40px;
+  width: 66px;
+}
+
+.switchery-large > small {
+  height: 40px;
+  width: 40px;
+}

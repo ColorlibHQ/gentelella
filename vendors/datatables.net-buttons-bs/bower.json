@@ -1,0 +1,43 @@
+{
+    "name": "datatables.net-buttons-bs",
+    "description": "Buttons for DataTables with styling for [Bootstrap](http://getbootstrap.com/)",
+    "main": [
+        "js/buttons.bootstrap.js",
+        "css/buttons.bootstrap.css"
+    ],
+    "keywords": [
+        "buttons",
+        "excel",
+        "pdf",
+        "csv",
+        "column visibility",
+        "print",
+        "DataTables",
+        "jQuery",
+        "table",
+        "Bootstrap"
+    ],
+    "dependencies": {
+        "jquery": ">=1.7",
+        "datatables.net-bs": ">=1.10.9",
+        "datatables.net-buttons": ">=1.0.3"
+    },
+    "moduleType": [
+        "globals",
+        "amd",
+        "node"
+    ],
+    "ignore": [
+        "composer.json",
+        "datatables.json",
+        "package.json"
+    ],
+    "authors": [
+        {
+            "name": "SpryMedia Ltd",
+            "homepage": "https://datatables.net"
+        }
+    ],
+    "homepage": "https://datatables.net",
+    "license": "MIT"
+}

@@ -1,0 +1,37 @@
+{
+  "name": "font-awesome",
+  "description": "Font Awesome",
+  "keywords": [],
+  "homepage": "http://fontawesome.io",
+  "dependencies": {},
+  "devDependencies": {},
+  "license": [
+    "OFL-1.1",
+    "MIT",
+    "CC-BY-3.0"
+  ],
+  "main": [
+    "less/font-awesome.less",
+    "scss/font-awesome.scss"
+  ],
+  "ignore": [
+    "*/.*",
+    "*.json",
+    "src",
+    "*.yml",
+    "Gemfile",
+    "Gemfile.lock",
+    "*.md"
+  ],
+  "version": "4.6.1",
+  "_release": "4.6.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v4.6.1",
+    "commit": "2ea06070a708a56c260d4b60b23318ff55ce67f4"
+  },
+  "_source": "https://github.com/FortAwesome/Font-Awesome.git",
+  "_target": "^4.6.1",
+  "_originalSource": "fontawesome",
+  "_direct": true
+}

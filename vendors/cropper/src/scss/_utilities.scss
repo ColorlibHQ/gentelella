@@ -1,0 +1,49 @@
+// Helper classes for JavaScript
+// =========================
+
+// Visual
+// -------------------------
+
+.cropper-invisible {
+  @include opacity(0);
+}
+
+.cropper-bg {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAAA3NCSVQICAjb4U/gAAAABlBMVEXMzMz////TjRV2AAAACXBIWXMAAArrAAAK6wGCiw1aAAAAHHRFWHRTb2Z0d2FyZQBBZG9iZSBGaXJld29ya3MgQ1M26LyyjAAAABFJREFUCJlj+M/AgBVhF/0PAH6/D/HkDxOGAAAAAElFTkSuQmCC");
+}
+
+
+// Visibility
+// -------------------------
+
+.cropper-hide {
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+}
+
+.cropper-hidden {
+  display: none !important;
+}
+
+
+// Cursors
+// -------------------------
+
+.cropper-move {
+  cursor: move;
+}
+
+.cropper-crop {
+  cursor: crosshair;
+}
+
+.cropper-disabled {
+  .cropper-drag-box,
+  .cropper-face,
+  .cropper-line,
+  .cropper-point {
+    cursor: not-allowed;
+  }
+}

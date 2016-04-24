@@ -1,0 +1,38 @@
+{
+  "name": "transitionize",
+  "main": "dist/transitionize.js",
+  "version": "0.0.3",
+  "homepage": "https://github.com/abpetkov/transitionize",
+  "authors": [
+    "Alexander Petkov <abpetkov@gmail.com>"
+  ],
+  "description": "Create CSS3 transitions dynamically",
+  "keywords": [
+    "css3",
+    "transition",
+    "dynamic"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "build",
+    "components",
+    "node_modules",
+    "bower_components",
+    "component.json",
+    "index.html",
+    "Makefile",
+    "README.md",
+    ".*"
+  ],
+  "dependencies": {},
+  "devDependencies": {},
+  "_release": "0.0.3",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.0.3",
+    "commit": "13e53272b838a20c8551784a81de57b45dbe662f"
+  },
+  "_source": "https://github.com/abpetkov/transitionize.git",
+  "_target": "*",
+  "_originalSource": "transitionize"
+}

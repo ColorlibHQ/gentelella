@@ -1,0 +1,14 @@
+{
+  "name": "update",
+  "homepage": "https://github.com/jonschlinkert/update",
+  "_release": "cf42344639",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "cf423446393d68666c9f591b8eee7458191cea45"
+  },
+  "_source": "https://github.com/jonschlinkert/update.git",
+  "_target": "*",
+  "_originalSource": "update",
+  "_direct": true
+}
