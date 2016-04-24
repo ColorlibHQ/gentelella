@@ -1449,7 +1449,6 @@ table.jambo_table tbody tr.selected td {
     height: 19px;
     float: left;
     cursor: pointer;
-    *cursor: hand;
     color: #111 !important;
 }
 
