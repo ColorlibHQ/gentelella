@@ -1139,7 +1139,6 @@ table.dataTable td.focus {
   height: 19px;
   float: left;
   cursor: pointer;
-  *cursor: hand;
   color: #111 !important;
 }
 .paginate_disabled_previous:hover, .paginate_enabled_previous:hover, .paginate_disabled_next:hover, .paginate_enabled_next:hover {
