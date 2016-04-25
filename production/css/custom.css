@@ -491,6 +491,9 @@ a:hover, a:focus {
   text-decoration: none;
   background: transparent;
 }
+.nav.child_menu {
+  display: none;
+}
 .nav.child_menu li:hover,
 .nav.child_menu li.active {
   background-color: rgba(255, 255, 255, 0.06);
@@ -1185,7 +1188,6 @@ table.display thead th {
   border-bottom: 1px solid black;
   font-weight: bold;
   cursor: pointer;
-  cursor: hand;
 }
 table.display tfoot th {
   padding: 3px 18px 3px 10px;
@@ -1259,7 +1261,6 @@ td.details {
   padding: 2px 5px;
   margin: 0 3px;
   cursor: pointer;
-  *cursor: hand;
 }
 .paging_full_numbers a.paginate_button {
   background-color: #ddd;
