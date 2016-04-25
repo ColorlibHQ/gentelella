@@ -377,26 +377,6 @@ table.no-margin .progress {
   width: 50%;
   margin-bottom: 10px;
 }
-@media (max-width: 992px) {
-  .tile_stats_count {
-    margin-bottom: 10px;
-    border-bottom: 1px solid #D9DEE4;
-    padding-bottom: 10px;
-  }
-}
-@media (min-width: 992px) and (max-width: 1100px) {
-  .tile_stats_count .count {
-    font-size: 35px !important;
-  }
-}
-@media(max-width:768px) {
-  .tile_stats_count .count {
-    font-size: 30px !important;
-  }
-  .tile_stats_count .right span {
-    font-size: 12px;
-  }
-}
 @media (min-width: 768px) {
   .col-md-55 {
     width: 20%;
@@ -1530,47 +1510,68 @@ span.right {
 .sidebar-footer a:hover {
   background: #425567;
 }
+
+/** top tiles  */
 .tile_count {
   margin-bottom: 20px;
   margin-top: 20px;
 }
-.tile_count div:first-child .left {
-  border: 0;
-}
 .tile_count .tile_stats_count {
-  border-left: 0px solid #333;
-  padding: 0;
+  border-bottom: 1px solid #D9DEE4;
+  padding: 0 10px 0 20px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
 }
-.tile_stats_count .left {
-  width: 15%;
-  float: left;
+@media (min-width: 992px) {
+  .tile_count .tile_stats_count {
+    margin-bottom: 10px;
+    border-bottom: 0;
+    padding-bottom: 10px;
+  }
+}
+.tile_count .tile_stats_count:before {
+  content:""; 
+  position: absolute; 
+  left: 0; 
   height: 65px;
   border-left: 2px solid #ADB2B5;
   margin-top: 10px;
 }
-.tile_stats_count .right {
-  padding-left: 10px;
-  height: 100%;
-  text-overflow: ellipsis;
-  overflow: hidden;
+@media (min-width:992px) {
+  .tile_count .tile_stats_count:first-child:before {
+    border-left: 0;
+  }
 }
-.tile_stats_count .right span {
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.tile_stats_count .count {
-  font-size: 40px;
+.tile_count .tile_stats_count .count {
+  font-size: 30px;
   line-height: 47px;
   font-weight: 600;
 }
-.tile_stats_count .count small {
-  font-size: 20px;
-  line-height: 20px;
-  font-weight: 600;
+@media (min-width:768px) {
+  .tile_count .tile_stats_count .count {
+    font-size: 40px;
+  }
 }
-.count_bottom i {
+@media (min-width: 992px) and (max-width: 1100px) {
+  .tile_count .tile_stats_count .count {
+    font-size: 30px;
+  }
+}
+.tile_count .tile_stats_count span {
+  font-size: 12px;
+}
+@media (min-width:768px) {
+  .tile_count .tile_stats_count span {
+    font-size: 13px;
+  }
+}
+.tile_count .tile_stats_count .count_bottom i {
   width: 12px;
 }
+/** /top tiles **/
+
 .dashboard_graph {
   background: #fff;
   padding: 7px 10px;
