@@ -4682,3 +4682,10 @@ ul.notifications {
   background: #ccc;
 }
 /** /FullCalendar **/
+
+/** Dropzone.js **/
+.dropzone {
+  min-height: 300px;
+  border: 1px solid #e5e5e5;
+}
+/** /Dropzone.js **/
