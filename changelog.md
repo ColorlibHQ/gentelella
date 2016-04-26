@@ -8,3 +8,8 @@ Earlier there were no changelog at all and we have introduced one now and we wil
 
 * Fixed dataTables
 * Added new dataTable variations
+
+### 1.1.0 - 26.04.2016
+
+* Add multilevel menu
+* Mobile comptibility enhancement

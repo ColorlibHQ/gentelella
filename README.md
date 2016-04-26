@@ -52,6 +52,12 @@ We would love to see how you use this awesome admin template. You can notify us 
 * validator - HTML from validator using jQuery
 * jQuery Smart Wizard
 
+## Gentellela for other platforms and frameworks
+
+* [Gentelella on Ruby on Rails 4](https://github.com/iogbole/gentelella_on_rails) thanks to Israel Ogbole.
+
+Let us know if you have done integration for this admin template on other platforms and frameworks and we'll be happy to share your work.
+
 ## Other templates and useful resources
 * [Free Bootstrap Admin Templates](https://colorlib.com/wp/free-bootstrap-admin-dashboard-templates/ "Bootstrap Admin Templates on Colorlib") - List of the best Free Bootstrap admin dashboard templates that are available for free for personal and commercial use.
 * [Free Admin Templates](https://colorlib.com/wp/free-html5-admin-dashboard-templates/ "List of free HTML based admin templates by Colorlib") - Long list of the best free HTML5 powered admin dashboard templates. Available for personal and commercial use.
