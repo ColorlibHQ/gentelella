@@ -868,73 +868,81 @@ legend {
   height: 280px;
 }
 
-/* *********  contacts  ********************************** */
+/** Contacts **/
+.profile_details:nth-child(3n){
+    clear:both;
+}
 
-.profile_view {
-  margin-bottom: 20px;
+.profile_details .profile_view {
   display: inline-block;
-  width: 100%;
-}
-.well.profile_view {
   padding: 10px 0 0;
+  background: #fff;
 }
-.well.profile_view .divider {
+
+.profile_details .profile_view .divider {
   border-top: 1px solid #e5e5e5;
   padding-top: 5px;
   margin-top: 5px;
 }
-.well.profile_view .ratings {
+
+.profile_details .profile_view .ratings {
   margin-bottom: 0;
 }
+
+.profile_details .profile_view .bottom {
+  background: #F2F5F7;
+  padding: 9px 0;
+  border-top: 1px solid #E6E9ED;
+}
+
+.profile_details .profile_view .left {
+  margin-top: 20px;
+}
+
+.profile_details .profile_view .left p {
+  margin-bottom: 3px;
+}
+
+.profile_details .profile_view .right {
+  margin-top: 0px;
+  padding: 10px;
+}
+
+.profile_details .profile_view .img-circle {
+  border: 1px solid #E6E9ED;
+  padding: 2px;
+}
+
+.profile_details .profile_view h2 {
+  margin: 5px 0;
+}
+
+.profile_details .profile_view .ratings {
+  text-align: left;
+  font-size: 16px;
+}
+
+.profile_details .profile_view .brief {
+  margin: 0;
+  font-weight: 300;
+}
+
+.profile_details .profile_left {
+  background: white;
+}
+
 .pagination.pagination-split li {
   display: inline-block;
   margin-right: 3px;
 }
+
 .pagination.pagination-split li a {
   border-radius: 4px;
   color: #768399;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
 }
-.well.profile_view {
-  background: #fff;
-}
-.well.profile_view .bottom {
-  margin-top: -20px;
-  background: #F2F5F7;
-  padding: 9px 0;
-  border-top: 1px solid #E6E9ED;
-}
-.well.profile_view .left {
-  margin-top: 20px;
-}
-.well.profile_view .left p {
-  margin-bottom: 3px;
-}
-.well.profile_view .right {
-  margin-top: 0px;
-  padding: 10px;
-}
-.well.profile_view .img-circle {
-  border: 1px solid #E6E9ED;
-  padding: 2px;
-}
-.well.profile_view h2 {
-  margin: 5px 0;
-}
-.well.profile_view .ratings {
-  text-align: left;
-  font-size: 16px;
-}
-.well.profile_view .brief {
-  margin: 0;
-  font-weight: 300;
-}
-.profile_left {
-  background: white;
-}
-
-/* *********  /contacts  ********************************** */
+/** Contacts **/
 
 
 /* *********  /custom accordion  **************************** */
