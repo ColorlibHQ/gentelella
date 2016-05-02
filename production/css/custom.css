@@ -2379,10 +2379,8 @@ span.tag a {
 /* *********  /form tags input  **************************** */
 
 
-/* *********  tabs  **************************** */
-
+/** Tabs **/
 ul.bar_tabs {
-  /* border: 1px solid #ff0000; */
   overflow: visible;
   background: #F5F7FA;
   height: 25px;
@@ -2407,15 +2405,17 @@ ul.bar_tabs > li.active {
   border-top: 0;
   margin-top: -15px;
 }
-ul.bar_tabs > li.active a {
-  background: #fff;
-  border-color: transparent;
-}
 ul.bar_tabs > li a {
   padding: 10px 17px;
   background: #F5F7FA;
   margin: 0;
-  border-radius: 0;
+  border-top-right-radius: 0;
+}
+ul.bar_tabs > li a:hover {
+  border: 1px solid transparent;
+}
+ul.bar_tabs > li.active a {
+  border-bottom: none;
 }
 ul.bar_tabs.right {
   padding-right: 14px;
@@ -2426,8 +2426,7 @@ ul.bar_tabs.right li {
 a:focus {
   outline: none;
 }
-
-/* *********  /tabs  **************************** */
+/** /Tabs **/
 
 
 /* *********  timeline  **************************** */
