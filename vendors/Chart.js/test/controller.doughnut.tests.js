@@ -1,73 +1,76 @@
 // Test the bar controller
 describe('Doughnut controller tests', function() {
-	it('Should be constructed', function() {
-		var chart = {
+
+	beforeEach(function() {
+		window.addDefaultMatchers(jasmine);
+	});
+
+	afterEach(function() {
+		window.releaseAllCharts();
+	});
+
+	it('should be constructed', function() {
+		var chart = window.acquireChart({
+			type: 'doughnut',
 			data: {
 				datasets: [{
 					data: []
-				}]
+				}],
+				labels: []
 			}
-		};
+		});
 
-		var controller = new Chart.controllers.doughnut(chart, 0);
-		expect(controller).not.toBe(undefined);
-		expect(controller.index).toBe(0);
-		expect(chart.data.datasets[0].metaData).toEqual([]);
+		var meta = chart.getDatasetMeta(0);
+		expect(meta.type).toBe('doughnut');
+		expect(meta.controller).not.toBe(undefined);
+		expect(meta.controller.index).toBe(0);
+		expect(meta.data).toEqual([]);
 
-		controller.updateIndex(1);
-		expect(controller.index).toBe(1);
+		meta.controller.updateIndex(1);
+		expect(meta.controller.index).toBe(1);
 	});
 
-	it('Should create arc elements for each data item during initialization', function() {
-		var chart = {
+	it('should create arc elements for each data item during initialization', function() {
+		var chart = window.acquireChart({
+			type: 'doughnut',
 			data: {
 				datasets: [{
 					data: [10, 15, 0, 4]
-				}]
-			},
-			config: {
-				type: 'doughnut'
-			},
-			options: {
+				}],
+				labels: []
 			}
-		};
+		});
 
-		var controller = new Chart.controllers.doughnut(chart, 0);
-
-		expect(chart.data.datasets[0].metaData.length).toBe(4); // 4 rectangles created
-		expect(chart.data.datasets[0].metaData[0] instanceof Chart.elements.Arc).toBe(true);
-		expect(chart.data.datasets[0].metaData[1] instanceof Chart.elements.Arc).toBe(true);
-		expect(chart.data.datasets[0].metaData[2] instanceof Chart.elements.Arc).toBe(true);
-		expect(chart.data.datasets[0].metaData[3] instanceof Chart.elements.Arc).toBe(true);
+		var meta = chart.getDatasetMeta(0);
+		expect(meta.data.length).toBe(4); // 4 rectangles created
+		expect(meta.data[0] instanceof Chart.elements.Arc).toBe(true);
+		expect(meta.data[1] instanceof Chart.elements.Arc).toBe(true);
+		expect(meta.data[2] instanceof Chart.elements.Arc).toBe(true);
+		expect(meta.data[3] instanceof Chart.elements.Arc).toBe(true);
 	});
 
-	it ('Should reset and update elements', function() {
-		var chart = {
-			chartArea: {
-				left: 0,
-				top: 0,
-				right: 100,
-				bottom: 200,
-			},
+	it ('should reset and update elements', function() {
+		var chart = window.acquireChart({
+			type: 'doughnut',
 			data: {
 				datasets: [{
+					data: [1, 2, 3, 4],
 					hidden: true
 				}, {
-					data: [10, 15, 0, 4]
+					data: [5, 6, 0, 7]
 				}, {
-					data: [1]
+					data: [8, 9, 10, 11]
 				}],
 				labels: ['label0', 'label1', 'label2', 'label3']
 			},
-			config: {
-				type: 'doughnut'
-			},
 			options: {
 				animation: {
-					animateRotate: false,
+					animateRotate: true,
 					animateScale: false
 				},
 				cutoutPercentage: 50,
+				rotation: Math.PI * -0.5,
+				circumference: Math.PI * 2.0,
 				elements: {
 					arc: {
 						backgroundColor: 'rgb(255, 0, 0)',
@@ -77,165 +80,95 @@ describe('Doughnut controller tests', function() {
 					}
 				}
 			}
-		};
+		});
 
-		var controller = new Chart.controllers.doughnut(chart, 1);
-		controller.reset(); // reset first
+		var meta = chart.getDatasetMeta(1);
 
-		expect(chart.data.datasets[1].metaData[0]._model).toEqual(jasmine.objectContaining({
-			x: 50,
-			y: 100,
-			startAngle: Math.PI * -0.5,
-			endAngle: Math.PI * -0.5,
-			circumference: 2.166614539857563,
-			outerRadius: 49,
-			innerRadius: 36.75
-		}));
+		meta.controller.reset(); // reset first
 
-		expect(chart.data.datasets[1].metaData[1]._model).toEqual(jasmine.objectContaining({
-			x: 50,
-			y: 100,
-			startAngle: Math.PI * -0.5,
-			endAngle: Math.PI * -0.5,
-			circumference: 3.2499218097863447,
-			outerRadius: 49,
-			innerRadius: 36.75
-		}));
+		expect(meta.data.length).toBe(4);
 
-		expect(chart.data.datasets[1].metaData[2]._model).toEqual(jasmine.objectContaining({
-			x: 50,
-			y: 100,
-			startAngle: Math.PI * -0.5,
-			endAngle: Math.PI * -0.5,
-			circumference: 0,
-			outerRadius: 49,
-			innerRadius: 36.75
-		}));
+		[	{ c: 0 },
+			{ c: 0 },
+			{ c: 0,           },
+			{ c: 0 }
+		].forEach(function(expected, i) {
+			expect(meta.data[i]._model.x).toBeCloseToPixel(256);
+			expect(meta.data[i]._model.y).toBeCloseToPixel(272);
+			expect(meta.data[i]._model.outerRadius).toBeCloseToPixel(239);
+			expect(meta.data[i]._model.innerRadius).toBeCloseToPixel(179);
+			expect(meta.data[i]._model.circumference).toBeCloseTo(expected.c, 8);
+			expect(meta.data[i]._model).toEqual(jasmine.objectContaining({
+				startAngle: Math.PI * -0.5,
+				endAngle: Math.PI * -0.5,
+				label: chart.data.labels[i],
+				hoverBackgroundColor: 'rgb(255, 255, 255)',
+				backgroundColor: 'rgb(255, 0, 0)',
+				borderColor: 'rgb(0, 0, 255)',
+				borderWidth: 2
+			}));
+		})
 
-		expect(chart.data.datasets[1].metaData[3]._model).toEqual(jasmine.objectContaining({
-			x: 50,
-			y: 100,
-			startAngle: Math.PI * -0.5,
-			endAngle: Math.PI * -0.5,
-			circumference: 0.8666458159430251,
-			outerRadius: 49,
-			innerRadius: 36.75
-		}));
+		chart.update();
 
-		controller.update();
-
-		expect(chart.data.datasets[1].metaData[0]._model).toEqual(jasmine.objectContaining({
-			x: 50,
-			y: 100,
-			startAngle: Math.PI * -0.5,
-			endAngle: 0.5958182130626666,
-			circumference: 2.166614539857563,
-			outerRadius: 49,
-			innerRadius: 36.75,
-
-			backgroundColor: 'rgb(255, 0, 0)',
-			borderColor: 'rgb(0, 0, 255)',
-			borderWidth: 2,
-			hoverBackgroundColor: 'rgb(255, 255, 255)',
-
-			label: 'label0',
-		}));
-
-		expect(chart.data.datasets[1].metaData[1]._model).toEqual(jasmine.objectContaining({
-			x: 50,
-			y: 100,
-			startAngle: 0.5958182130626666,
-			endAngle: 3.8457400228490113,
-			circumference: 3.2499218097863447,
-			outerRadius: 49,
-			innerRadius: 36.75,
-
-			backgroundColor: 'rgb(255, 0, 0)',
-			borderColor: 'rgb(0, 0, 255)',
-			borderWidth: 2,
-			hoverBackgroundColor: 'rgb(255, 255, 255)',
-
-			label: 'label1'
-		}));
-
-		expect(chart.data.datasets[1].metaData[2]._model).toEqual(jasmine.objectContaining({
-			x: 50,
-			y: 100,
-			startAngle: 3.8457400228490113,
-			endAngle: 3.8457400228490113,
-			circumference: 0,
-			outerRadius: 49,
-			innerRadius: 36.75,
-
-			backgroundColor: 'rgb(255, 0, 0)',
-			borderColor: 'rgb(0, 0, 255)',
-			borderWidth: 2,
-			hoverBackgroundColor: 'rgb(255, 255, 255)',
-
-			label: 'label2'
-		}));
-
-		expect(chart.data.datasets[1].metaData[3]._model).toEqual(jasmine.objectContaining({
-			x: 50,
-			y: 100,
-			startAngle: 3.8457400228490113,
-			endAngle: 4.712385838792036,
-			circumference: 0.8666458159430251,
-			outerRadius: 49,
-			innerRadius: 36.75,
-
-			backgroundColor: 'rgb(255, 0, 0)',
-			borderColor: 'rgb(0, 0, 255)',
-			borderWidth: 2,
-			hoverBackgroundColor: 'rgb(255, 255, 255)',
-			
-			label: 'label3'
-		}));
+		[	{ c: 1.7453292519, s: -1.5707963267, e: 0.1745329251 },
+			{ c: 2.0943951023, s:  0.1745329251, e: 2.2689280275 },
+			{ c: 0,            s:  2.2689280275, e: 2.2689280275 },
+			{ c: 2.4434609527, s:  2.2689280275, e: 4.7123889803 }
+		].forEach(function(expected, i) {
+			expect(meta.data[i]._model.x).toBeCloseToPixel(256);
+			expect(meta.data[i]._model.y).toBeCloseToPixel(272);
+			expect(meta.data[i]._model.outerRadius).toBeCloseToPixel(239);
+			expect(meta.data[i]._model.innerRadius).toBeCloseToPixel(179);
+			expect(meta.data[i]._model.circumference).toBeCloseTo(expected.c, 8);
+			expect(meta.data[i]._model.startAngle).toBeCloseTo(expected.s, 8);
+			expect(meta.data[i]._model.endAngle).toBeCloseTo(expected.e, 8);
+			expect(meta.data[i]._model).toEqual(jasmine.objectContaining({
+				label: chart.data.labels[i],
+				hoverBackgroundColor: 'rgb(255, 255, 255)',
+				backgroundColor: 'rgb(255, 0, 0)',
+				borderColor: 'rgb(0, 0, 255)',
+				borderWidth: 2
+			}));
+		})
 
 		// Change the amount of data and ensure that arcs are updated accordingly
 		chart.data.datasets[1].data = [1, 2]; // remove 2 elements from dataset 0
-		controller.buildOrUpdateElements();
-		controller.update();
+		chart.update();
 
-		expect(chart.data.datasets[1].metaData.length).toBe(2);
-		expect(chart.data.datasets[1].metaData[0] instanceof Chart.elements.Arc).toBe(true);
-		expect(chart.data.datasets[1].metaData[1] instanceof Chart.elements.Arc).toBe(true);
+		expect(meta.data.length).toBe(2);
+		expect(meta.data[0] instanceof Chart.elements.Arc).toBe(true);
+		expect(meta.data[1] instanceof Chart.elements.Arc).toBe(true);
 
 		// Add data
 		chart.data.datasets[1].data = [1, 2, 3, 4];
-		controller.buildOrUpdateElements();
-		controller.update();
+		chart.update();
 
-		expect(chart.data.datasets[1].metaData.length).toBe(4);
-		expect(chart.data.datasets[1].metaData[0] instanceof Chart.elements.Arc).toBe(true);
-		expect(chart.data.datasets[1].metaData[1] instanceof Chart.elements.Arc).toBe(true);
-		expect(chart.data.datasets[1].metaData[2] instanceof Chart.elements.Arc).toBe(true);
-		expect(chart.data.datasets[1].metaData[3] instanceof Chart.elements.Arc).toBe(true);
+		expect(meta.data.length).toBe(4);
+		expect(meta.data[0] instanceof Chart.elements.Arc).toBe(true);
+		expect(meta.data[1] instanceof Chart.elements.Arc).toBe(true);
+		expect(meta.data[2] instanceof Chart.elements.Arc).toBe(true);
+		expect(meta.data[3] instanceof Chart.elements.Arc).toBe(true);
 	});
 
-	it ('should draw all arcs', function() {
-		var chart = {
-			chartArea: {
-				left: 0,
-				top: 0,
-				right: 100,
-				bottom: 200,
-			},
+	it ('should rotate and limit circumference', function() {
+		var chart = window.acquireChart({
+			type: 'doughnut',
 			data: {
 				datasets: [{
-					data: [10, 15, 0, 4]
+					data: [2, 4],
+					hidden: true
+				}, {
+					data: [1, 3]
+				}, {
+					data: [1, 0]
 				}],
-				labels: ['label0', 'label1', 'label2', 'label3']
-			},
-			config: {
-				type: 'doughnut'
+				labels: ['label0', 'label1']
 			},
 			options: {
-				animation: {
-					animateRotate: false,
-					animateScale: false
-				},
 				cutoutPercentage: 50,
+				rotation: Math.PI,
+				circumference: Math.PI * 0.5,
 				elements: {
 					arc: {
 						backgroundColor: 'rgb(255, 0, 0)',
@@ -245,46 +178,62 @@ describe('Doughnut controller tests', function() {
 					}
 				}
 			}
-		};
+		});
 
-		var controller = new Chart.controllers.doughnut(chart, 0);
+		var meta = chart.getDatasetMeta(1);
 
-		spyOn(chart.data.datasets[0].metaData[0], 'draw');
-		spyOn(chart.data.datasets[0].metaData[1], 'draw');
-		spyOn(chart.data.datasets[0].metaData[2], 'draw');
-		spyOn(chart.data.datasets[0].metaData[3], 'draw');
+		expect(meta.data.length).toBe(2);
 
-		controller.draw();
+		// Only startAngle, endAngle and circumference should be different.
+		[	{ c:     Math.PI / 8, s: Math.PI,               e: Math.PI + Math.PI / 8 },
+			{ c: 3 * Math.PI / 8, s: Math.PI + Math.PI / 8, e: Math.PI + Math.PI / 2 }
+		].forEach(function(expected, i) {
+			expect(meta.data[i]._model.x).toBeCloseToPixel(495);
+			expect(meta.data[i]._model.y).toBeCloseToPixel(511);
+			expect(meta.data[i]._model.outerRadius).toBeCloseToPixel(478);
+			expect(meta.data[i]._model.innerRadius).toBeCloseToPixel(359);
+			expect(meta.data[i]._model.circumference).toBeCloseTo(expected.c,8);
+			expect(meta.data[i]._model.startAngle).toBeCloseTo(expected.s, 8);
+			expect(meta.data[i]._model.endAngle).toBeCloseTo(expected.e, 8);
+		})
+	});
 
-		expect(chart.data.datasets[0].metaData[0].draw.calls.count()).toBe(1);
-		expect(chart.data.datasets[0].metaData[1].draw.calls.count()).toBe(1);
-		expect(chart.data.datasets[0].metaData[2].draw.calls.count()).toBe(1);
-		expect(chart.data.datasets[0].metaData[3].draw.calls.count()).toBe(1);
+	it ('should draw all arcs', function() {
+		var chart = window.acquireChart({
+			type: 'doughnut',
+			data: {
+				datasets: [{
+					data: [10, 15, 0, 4]
+				}],
+				labels: ['label0', 'label1', 'label2', 'label3']
+			}
+		});
+
+		var meta = chart.getDatasetMeta(0);
+
+		spyOn(meta.data[0], 'draw');
+		spyOn(meta.data[1], 'draw');
+		spyOn(meta.data[2], 'draw');
+		spyOn(meta.data[3], 'draw');
+
+		chart.update();
+
+		expect(meta.data[0].draw.calls.count()).toBe(1);
+		expect(meta.data[1].draw.calls.count()).toBe(1);
+		expect(meta.data[2].draw.calls.count()).toBe(1);
+		expect(meta.data[3].draw.calls.count()).toBe(1);
 	});
 
 	it ('should set the hover style of an arc', function() {
-		var chart = {
-			chartArea: {
-				left: 0,
-				top: 0,
-				right: 100,
-				bottom: 200,
-			},
+		var chart = window.acquireChart({
+			type: 'doughnut',
 			data: {
 				datasets: [{
 					data: [10, 15, 0, 4]
 				}],
 				labels: ['label0', 'label1', 'label2', 'label3']
 			},
-			config: {
-				type: 'doughnut'
-			},
 			options: {
-				animation: {
-					animateRotate: false,
-					animateScale: false
-				},
-				cutoutPercentage: 50,
 				elements: {
 					arc: {
 						backgroundColor: 'rgb(255, 0, 0)',
@@ -293,16 +242,12 @@ describe('Doughnut controller tests', function() {
 					}
 				}
 			}
-		};
+		});
 
-		var controller = new Chart.controllers.doughnut(chart, 0);
-		controller.reset(); // reset first
-		controller.update();
+		var meta = chart.getDatasetMeta(0);
+		var arc = meta.data[0];
 
-		var arc = chart.data.datasets[0].metaData[0];
-
-		controller.setHoverStyle(arc);
-
+		meta.controller.setHoverStyle(arc);
 		expect(arc._model.backgroundColor).toBe('rgb(230, 0, 0)');
 		expect(arc._model.borderColor).toBe('rgb(0, 0, 230)');
 		expect(arc._model.borderWidth).toBe(2);
@@ -312,8 +257,7 @@ describe('Doughnut controller tests', function() {
 		chart.data.datasets[0].hoverBorderColor = 'rgb(18, 18, 18)';
 		chart.data.datasets[0].hoverBorderWidth = 1.56;
 
-		controller.setHoverStyle(arc);
-
+		meta.controller.setHoverStyle(arc);
 		expect(arc._model.backgroundColor).toBe('rgb(9, 9, 9)');
 		expect(arc._model.borderColor).toBe('rgb(18, 18, 18)');
 		expect(arc._model.borderWidth).toBe(1.56);
@@ -323,8 +267,7 @@ describe('Doughnut controller tests', function() {
 		chart.data.datasets[0].hoverBorderColor = ['rgb(18, 18, 18)'];
 		chart.data.datasets[0].hoverBorderWidth = [0.1, 1.56];
 
-		controller.setHoverStyle(arc);
-
+		meta.controller.setHoverStyle(arc);
 		expect(arc._model.backgroundColor).toBe('rgb(255, 255, 255)');
 		expect(arc._model.borderColor).toBe('rgb(18, 18, 18)');
 		expect(arc._model.borderWidth).toBe(0.1);
@@ -336,36 +279,22 @@ describe('Doughnut controller tests', function() {
 			hoverBorderWidth: 3.14159,
 		};
 
-		controller.setHoverStyle(arc);
-
+		meta.controller.setHoverStyle(arc);
 		expect(arc._model.backgroundColor).toBe('rgb(7, 7, 7)');
 		expect(arc._model.borderColor).toBe('rgb(17, 17, 17)');
 		expect(arc._model.borderWidth).toBe(3.14159);
 	});
 
 	it ('should unset the hover style of an arc', function() {
-		var chart = {
-			chartArea: {
-				left: 0,
-				top: 0,
-				right: 100,
-				bottom: 200,
-			},
+		var chart = window.acquireChart({
+			type: 'doughnut',
 			data: {
 				datasets: [{
 					data: [10, 15, 0, 4]
 				}],
 				labels: ['label0', 'label1', 'label2', 'label3']
 			},
-			config: {
-				type: 'doughnut'
-			},
 			options: {
-				animation: {
-					animateRotate: false,
-					animateScale: false
-				},
-				cutoutPercentage: 50,
 				elements: {
 					arc: {
 						backgroundColor: 'rgb(255, 0, 0)',
@@ -374,16 +303,12 @@ describe('Doughnut controller tests', function() {
 					}
 				}
 			}
-		};
+		});
 
-		var controller = new Chart.controllers.doughnut(chart, 0);
-		controller.reset(); // reset first
-		controller.update();
+		var meta = chart.getDatasetMeta(0);
+		var arc = meta.data[0];
 
-		var arc = chart.data.datasets[0].metaData[0];
-
-		controller.removeHoverStyle(arc);
-
+		meta.controller.removeHoverStyle(arc);
 		expect(arc._model.backgroundColor).toBe('rgb(255, 0, 0)');
 		expect(arc._model.borderColor).toBe('rgb(0, 0, 255)');
 		expect(arc._model.borderWidth).toBe(2);
@@ -393,8 +318,7 @@ describe('Doughnut controller tests', function() {
 		chart.data.datasets[0].borderColor = 'rgb(18, 18, 18)';
 		chart.data.datasets[0].borderWidth = 1.56;
 
-		controller.removeHoverStyle(arc);
-
+		meta.controller.removeHoverStyle(arc);
 		expect(arc._model.backgroundColor).toBe('rgb(9, 9, 9)');
 		expect(arc._model.borderColor).toBe('rgb(18, 18, 18)');
 		expect(arc._model.borderWidth).toBe(1.56);
@@ -404,8 +328,7 @@ describe('Doughnut controller tests', function() {
 		chart.data.datasets[0].borderColor = ['rgb(18, 18, 18)'];
 		chart.data.datasets[0].borderWidth = [0.1, 1.56];
 
-		controller.removeHoverStyle(arc);
-
+		meta.controller.removeHoverStyle(arc);
 		expect(arc._model.backgroundColor).toBe('rgb(255, 255, 255)');
 		expect(arc._model.borderColor).toBe('rgb(18, 18, 18)');
 		expect(arc._model.borderWidth).toBe(0.1);
@@ -417,8 +340,7 @@ describe('Doughnut controller tests', function() {
 			borderWidth: 3.14159,
 		};
 
-		controller.removeHoverStyle(arc);
-
+		meta.controller.removeHoverStyle(arc);
 		expect(arc._model.backgroundColor).toBe('rgb(7, 7, 7)');
 		expect(arc._model.borderColor).toBe('rgb(17, 17, 17)');
 		expect(arc._model.borderWidth).toBe(3.14159);

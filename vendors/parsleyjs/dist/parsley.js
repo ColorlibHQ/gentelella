@@ -1,6 +1,6 @@
 /*!
 * Parsley.js
-* Version 2.3.10 - built Thu, Apr 14th 2016, 6:04 pm
+* Version 2.3.11 - built Fri, Apr 15th 2016, 9:21 am
 * http://parsleyjs.org
 * Guillaume Potier - <guillaume@wisembly.com>
 * Marc-Andre Lafortune - <petroselinum@marc-andre.ca>
@@ -1068,13 +1068,14 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       var _this3 = this;
 
       var $toBind = this._findRelated();
+      var trigger;
 
       // Remove Parsley events already bound on this field
       $toBind.off('.Parsley');
       if (this._failedOnce) $toBind.on(ParsleyUtils__default.namespaceEvents(this.options.triggerAfterFailure, 'Parsley'), function () {
         _this3.validate();
-      });else {
-        $toBind.on(ParsleyUtils__default.namespaceEvents(this.options.trigger, 'Parsley'), function (event) {
+      });else if (trigger = ParsleyUtils__default.namespaceEvents(this.options.trigger, 'Parsley')) {
+        $toBind.on(trigger, function (event) {
           _this3._eventValidate(event);
         });
       }
@@ -1853,7 +1854,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
   ParsleyFactory.prototype = {
     init: function init(options) {
       this.__class__ = 'Parsley';
-      this.__version__ = '2.3.10';
+      this.__version__ = '2.3.11';
       this.__id__ = ParsleyUtils__default.generateID();
 
       // Pre-compute options
@@ -1975,7 +1976,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
     actualizeOptions: null,
     _resetOptions: null,
     Factory: ParsleyFactory,
-    version: '2.3.10'
+    version: '2.3.11'
   });
 
   // Supplement ParsleyField and Form with ParsleyAbstract

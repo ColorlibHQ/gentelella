@@ -1,4 +1,16 @@
 
+v2.7.1 (2016-05-01)
+-------------------
+
+- dayClick not firing on touch devices (#3138)
+- icons for prev/next not working in MS Edge (#2852)
+- fix bad languages troubles with firewalls (#3133, #3132)
+- update all dev dependencies (#3145, #3010, #2901, #251)
+- git-ignore npm debug logs (#3011)
+- misc automated test updates (#3139, #3147)
+- Google Calendar htmlLink not always defined (#2844)
+
+
 v2.7.0 (2016-04-23)
 -------------------
 

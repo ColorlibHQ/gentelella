@@ -29,82 +29,61 @@ var myLineChart = Chart.Line(ctx, {
 ```
 ### Data structure
 
+The following options can be included in a line chart dataset to configure options for that specific dataset.
+
+All point* properties can be specified as an array. If these are set to an array value, the first value applies to the first point, the second value to the second point, and so on.
+
+Property | Type | Usage
+--- | --- | ---
+data | `Array<Number>` | The data to plot in a line
+label | `String` | The label for the dataset which appears in the legend and tooltips
+xAxisID | `String` | The ID of the x axis to plot this dataset on
+yAxisID | `String` | The ID of the y axis to plot this dataset on
+fill | `Boolean` | If true, fill the area under the line
+lineTension | `Number` | Bezier curve tension of the line. Set to 0 to draw straightlines. *Note* This was renamed from 'tension' but the old name still works.
+backgroundColor | `Color` | The fill color under the line. See [Colors](#getting-started-colors)
+borderWidth | `Number` | The width of the line in pixels
+borderColor | `Color` | The color of the line.
+borderCapStyle | `String` | Cap style of the line. See [MDN](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineCap)
+borderDash | `Array<Number>` | Length and spacing of dashes. See [MDN](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/setLineDash)
+borderDashOffset | `Number` | Offset for line dashes. See [MDN](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineDashOffset)
+borderJoinStyle | `String` | Line joint style. See [MDN](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineJoin)
+pointBorderColor | `Color or Array<Color>` | The border color for points.
+pointBackgroundColor | `Color or Array<Color>` | The fill color for points
+pointBorderWidth | `Number or Array<Number>` | The width of the point border in pixels
+pointRadius | `Number or Array<Number>` | The radius of the point shape. If set to 0, nothing is rendered. 
+pointHoverRadius | `Number or Array<Number>` | The radius of the point when hovered
+pointHitRadius | `Number or Array<Number>` | The pixel size of the non-displayed point that reacts to mouse events
+pointHoverBackgroundColor | `Color or Array<Color>` | Point background color when hovered
+pointHoverBorderColor | `Color or Array<Color>` | Point border color when hovered
+pointHoverBorderWidth | `Number or Array<Number>` | Border width of point when hovered
+pointStyle | `String or Array<String>` | The style of point. Options include 'circle', 'triangle', 'rect', 'rectRot', 'cross', 'crossRot', 'star', 'line', and 'dash'
+
+An example data object using these attributes is shown below.
 ```javascript
 var data = {
 	labels: ["January", "February", "March", "April", "May", "June", "July"],
 	datasets: [
 		{
 			label: "My First dataset",
-
-			// Boolean - if true fill the area under the line
 			fill: false,
-
-			// String - the color to fill the area under the line with if fill is true
-			backgroundColor: "rgba(220,220,220,0.2)",
-
-			// The properties below allow an array to be specified to change the value of the item at the given index
-
-			// String or array - Line color
-			borderColor: "rgba(220,220,220,1)",
-
-			// String - cap style of the line. See https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineCap
+			lineTension: 0.1,
+			backgroundColor: "rgba(75,192,192,0.4)",
+			borderColor: "rgba(75,192,192,1)",
 			borderCapStyle: 'butt',
-
-			// Array - Length and spacing of dashes. See https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/setLineDash
 			borderDash: [],
-
-			// Number - Offset for line dashes. See https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineDashOffset
 			borderDashOffset: 0.0,
-
-			// String - line join style. See https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineJoin
 			borderJoinStyle: 'miter',
-
-			// String or array - Point stroke color
-			pointBorderColor: "rgba(220,220,220,1)",
-
-			// String or array - Point fill color
+			pointBorderColor: "rgba(75,192,192,1)",
 			pointBackgroundColor: "#fff",
-
-			// Number or array - Stroke width of point border
 			pointBorderWidth: 1,
-
-			// Number or array - Radius of point when hovered
 			pointHoverRadius: 5,
-
-			// String or array - point background color when hovered
-			pointHoverBackgroundColor: "rgba(220,220,220,1)",
-
-			// Point border color when hovered
+			pointHoverBackgroundColor: "rgba(75,192,192,1)",
 			pointHoverBorderColor: "rgba(220,220,220,1)",
-
-			// Number or array - border width of point when hovered
 			pointHoverBorderWidth: 2,
-
-			// Tension - bezier curve tension of the line. Set to 0 to draw straight Wlines connecting points
-			tension: 0.1,
-
-			// Number - the pixel size of the point shape. Can be set to 0 to not render a circle over the point
-			radius: 1,
-
-			// The actual data
+			pointRadius: 1,
+			pointHitRadius: 10,
 			data: [65, 59, 80, 81, 56, 55, 40],
-
-			// String - If specified, binds the dataset to a certain y-axis. If not specified, the first y-axis is used. First id is y-axis-0
-			yAxisID: "y-axis-0",
-		},
-		{
-			label: "My Second dataset",
-			fill: false,
-			backgroundColor: "rgba(220,220,220,0.2)",
-			borderColor: "rgba(220,220,220,1)",
-			pointBorderColor: "rgba(220,220,220,1)",
-			pointBackgroundColor: "#fff",
-			pointBorderWidth: 1,
-			pointHoverRadius: 5,
-			pointHoverBackgroundColor: "rgba(220,220,220,1)",
-			pointHoverBorderColor: "rgba(220,220,220,1)",
-			pointHoverBorderWidth: 2,
-			data: [28, 48, 40, 19, 86, 27, 90]
 		}
 	]
 };
@@ -119,26 +98,26 @@ The label key on each dataset is optional, and can be used when generating a sca
 
 These are the customisation options specific to Line charts. These options are merged with the [global chart configuration options](#getting-started-global-chart-configuration), and form the options of the chart.
 
-The default options for line chart are defined in `Chart.defaults.Line`.
+The default options for line chart are defined in `Chart.defaults.line`.
 
 Name | Type | Default | Description
 --- | --- | --- | ---
 showLines | Boolean | true | If false, the lines between points are not drawn
 stacked | Boolean | false | If true, lines stack on top of each other along the y axis.
 *hover*.mode | String | "label" | Label's hover mode. "label" is used since the x axis displays data by the index in the dataset.
-elements | - | - | -
-*elements*.point | - | - | -
+elements | Object | - | -
+*elements*.point | Object | - | -
 *elements.point*.radius | Number | `3` | Defines the size of the Point shape. Can be set to zero to skip rendering a point.
-scales | - | - | -
-*scales*.xAxes | Array | `[{type:"category","id":"x-axis-1"}]` | Defines all of the x axes used in the chart. See the [scale documentation](#getting-started-scales) for details on the available options.
+scales | Object | - | -
+*scales*.xAxes | Array | `[{type:"category","id":"x-axis-0"}]` | Defines all of the x axes used in the chart. See the [scale documentation](#scales) for details on the available options.
 *Options for xAxes* | | |
 type | String | "category" | As defined in ["Category"](#scales-category-scale).
-id | String | "x-axis-1" | Id of the axis so that data can bind to it.
+id | String | "x-axis-0" | Id of the axis so that data can bind to it.
  | | |
- *scales*.yAxes | Array | `[{type:"linear","id":"y-axis-1"}]` | Defines all of the x axes used in the chart. See the [scale documentation](#getting-started-scales) for details on the available options.
+ *scales*.yAxes | Array | `[{type:"linear","id":"y-axis-0"}]` | Defines all of the y axes used in the chart. See the [scale documentation](#scales) for details on the available options.
  *Options for yAxes* | | |
  type | String | "linear" | As defined in ["Linear"](#scales-linear-scale).
- id | String | "y-axis-1" | Id of the axis so that data can bind to it.
+ id | String | "y-axis-0" | Id of the axis so that data can bind to it.
 
 You can override these for your `Chart` instance by passing a member `options` into the `Line` method.
 

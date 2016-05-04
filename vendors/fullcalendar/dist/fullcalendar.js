@@ -1,7 +1,7 @@
 /*!
- * FullCalendar v2.7.0
+ * FullCalendar v2.7.1
  * Docs & License: http://fullcalendar.io/
- * (c) 2015 Adam Shaw
+ * (c) 2016 Adam Shaw
  */
 
 (function(factory) {
@@ -19,7 +19,7 @@
 ;;
 
 var FC = $.fullCalendar = {
-	version: "2.7.0",
+	version: "2.7.1",
 	internalApiVersion: 3
 };
 var fcViews = FC.views = {};
@@ -271,7 +271,7 @@ function subtractInnerElHeight(outerEl, innerEl) {
 	var both = outerEl.add(innerEl);
 	var diff;
 
-	// fuckin IE8/9/10/11 sometimes returns 0 for dimensions. this weird hack was the only thing that worked
+	// effin' IE8/9/10/11 sometimes returns 0 for dimensions. this weird hack was the only thing that worked
 	both.css({
 		position: 'relative', // cause a reflow, which will force fresh dimension recalculation
 		left: -1 // ensure reflow in case the el was already relative. negative is less likely to cause new scroll
@@ -2931,8 +2931,6 @@ var HitDragListener = DragListener.extend({
 		var origPoint;
 		var point;
 
-		DragListener.prototype.handleInteractionStart.apply(this, arguments); // call the super-method
-
 		this.computeCoords();
 
 		if (ev) {
@@ -2966,6 +2964,9 @@ var HitDragListener = DragListener.extend({
 			this.origHit = null;
 			this.coordAdjust = null;
 		}
+
+		// call the super-method. do it after origHit has been computed
+		DragListener.prototype.handleInteractionStart.apply(this, arguments);
 	},
 
 
@@ -3591,12 +3592,20 @@ var Grid = FC.Grid = Class.extend(ListenerMixin, {
 		// if 'selectable' is enabled, this listener also detects selections.
 		var dragListener = this.dayDragListener = new HitDragListener(this, {
 			scroll: view.opt('dragScroll'),
+			interactionStart: function() {
+				dayClickHit = dragListener.origHit;
+			},
 			dragStart: function() {
 				view.unselect(); // since we could be rendering a new selection, we want to clear any old one
 			},
 			hitOver: function(hit, isOrig, origHit) {
 				if (origHit) { // click needs to have started on a hit
-					dayClickHit = isOrig ? hit : null; // single-hit selection is a day click
+
+					// if user dragged to another cell at any point, it can no longer be a dayClick
+					if (!isOrig) {
+						dayClickHit = null;
+					}
+
 					if (isSelectable) {
 						selectionSpan = _this.computeSelection(
 							_this.getHitSpan(origHit),

@@ -301,6 +301,7 @@ ParsleyUI.Field = {
 
   _actualizeTriggers: function () {
     var $toBind = this._findRelated();
+    var trigger;
 
     // Remove Parsley events already bound on this field
     $toBind.off('.Parsley');
@@ -308,8 +309,8 @@ ParsleyUI.Field = {
       $toBind.on(ParsleyUtils.namespaceEvents(this.options.triggerAfterFailure, 'Parsley'), () => {
         this.validate();
       });
-    else {
-      $toBind.on(ParsleyUtils.namespaceEvents(this.options.trigger, 'Parsley'), event => {
+    else if (trigger = ParsleyUtils.namespaceEvents(this.options.trigger, 'Parsley')) {
+      $toBind.on(trigger, event => {
         this._eventValidate(event);
       });
     }
