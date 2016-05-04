@@ -24,6 +24,7 @@
         @syncRating()
 
       @$el.on 'click.starrr', 'a', (e) =>
+        e.preventDefault()
         @setRating(@getStars().index(e.currentTarget) + 1)
 
       @$el.on 'starrr:change', @options.change

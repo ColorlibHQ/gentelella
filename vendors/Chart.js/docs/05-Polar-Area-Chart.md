@@ -23,22 +23,39 @@ new Chart(ctx, {
 
 ### Data structure
 
+The following options can be included in a polar area chart dataset to configure options for that specific dataset.
+
+Some properties are specified as arrays. The first value applies to the first bar, the second value to the second bar, and so on.
+
+Property | Type | Usage
+--- | --- | ---
+data | `Array<Number>` | The data to plot as bars
+label | `String` | The label for the dataset which appears in the legend and tooltips
+backgroundColor | `Array<Color>` | The fill color of the arcs. See [Colors](#getting-started-colors)
+borderColor | `Array<Color>` | Arc border color
+borderWidth | `Array<Number>` | Border width of arcs in pixels
+hoverBackgroundColor | `Array<Color>` | Arc background color when hovered
+hoverBorderColor | `Array<Color>` | Arc border color when hovered
+hoverBorderWidth | `Array<Number>` | Border width of arc when hovered
+
+An example data object using these attributes is shown below.
+
 ```javascript
 var data = {
 	datasets: [{
 		data: [
-			10,
-			32,
-			53,
-			14,
-			22,
+			11,
+			16,
+			7,
+			3,
+			14
 		],
 		backgroundColor: [
-			"#F7464A",
-			"#46BFBD",
-			"#FDB45C",
-			"#949FB1",
-			"#4D5360",
+			"#FF6384",
+			"#4BC0C0",
+			"#FFCE56",
+			"#E7E9ED",
+			"#36A2EB"
 		],
 		label: 'My dataset' // for legend
 	}],
@@ -47,7 +64,7 @@ var data = {
 		"Green",
 		"Yellow",
 		"Grey",
-		"Dark Grey"
+		"Blue"
 	]
 };
 ```
@@ -59,11 +76,11 @@ These are the customisation options specific to Polar Area charts. These options
 
 Name | Type | Default | Description
 --- | --- | --- | ---
-scale | Array | [See Scales](#scales) and [Defaults for Radial Linear Scale](#getting-started-radial-linear-scale) | Options for the one scale used on the chart. Use this to style the ticks, labels, and grid.
+scale | Object | [See Scales](#scales) and [Defaults for Radial Linear Scale](#scales-radial-linear-scale) | Options for the one scale used on the chart. Use this to style the ticks, labels, and grid.
 *scale*.type | String |"radialLinear" | As defined in ["Radial Linear"](#scales-radial-linear-scale).
 *scale*.lineArc | Boolean | true | When true, lines are circular.
-animateRotate | Boolean |true | If true, will animate the rotation of the chart.
-animateScale | Boolean | true | If true, will animate scaling the chart.
+*animation*.animateRotate | Boolean |true | If true, will animate the rotation of the chart.
+*animation*.animateScale | Boolean | true | If true, will animate scaling the chart.
 *legend*.*labels*.generateLabels | Function | `function(data) {} ` | Returns labels for each the legend
 *legend*.onClick | Function | function(event, legendItem) {} ` | Handles clicking an individual legend item
 legendCallback | Function | `function(chart) ` | Generates the HTML legend via calls to `generateLegend`

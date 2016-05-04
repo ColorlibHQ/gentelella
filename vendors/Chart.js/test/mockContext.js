@@ -57,7 +57,7 @@
 			},
 		});
 	};
-	
+
 	Context.prototype._initMethods = function() {
 		// define methods to test here
 		// no way to introspect so we have to do some extra work :(
@@ -121,4 +121,118 @@
 	window.createMockContext = function() {
 		return new Context();
 	};
+
+	// Custom matcher
+	function toBeCloseToPixel() {
+		return {
+			compare: function(actual, expected) {
+				var result = false;
+
+				if (!isNaN(actual) && !isNaN(expected)) {
+					var diff = Math.abs(actual - expected);
+					var A = Math.abs(actual);
+					var B = Math.abs(expected);
+					var percentDiff = 0.005; // 0.5% diff
+					result = (diff <= (A > B ? A : B) * percentDiff) || diff < 2; // 2 pixels is fine
+				}
+
+				return { pass: result };
+			}
+		}
+	};
+
+	function toEqualOneOf() {
+		return {
+			compare: function(actual, expecteds) {
+				var result = false;
+				for (var i = 0, l = expecteds.length; i < l; i++) {
+					if (actual === expecteds[i]) {
+						result = true;
+						break;
+					}
+				}
+				return {
+					pass: result
+				};
+			}
+		};
+	}
+
+	window.addDefaultMatchers = function(jasmine) {
+		jasmine.addMatchers({
+			toBeCloseToPixel: toBeCloseToPixel,
+			toEqualOneOf: toEqualOneOf
+		});
+	}
+
+	// Canvas injection helpers
+	var charts = {};
+
+	function acquireChart(config, style) {
+		var wrapper = document.createElement("div");
+		var canvas = document.createElement("canvas");
+		wrapper.className = 'chartjs-wrapper';
+
+		style = style || { height: '512px', width: '512px' };
+		for (var k in style) {
+			wrapper.style[k] = style[k];
+			canvas.style[k] = style[k];
+		}
+
+		canvas.height = canvas.style.height && parseInt(canvas.style.height);
+		canvas.width = canvas.style.width && parseInt(canvas.style.width);
+
+		// by default, remove chart animation and auto resize
+		var options = config.options = config.options || {};
+		options.animation = options.animation === undefined? false : options.animation;
+		options.responsive = options.responsive === undefined? false : options.responsive;
+		options.defaultFontFamily = options.defaultFontFamily || 'Arial';
+
+		wrapper.appendChild(canvas);
+		window.document.body.appendChild(wrapper);
+		var chart = new Chart(canvas.getContext("2d"), config);
+		charts[chart.id] = chart;
+		return chart;
+	}
+
+	function releaseChart(chart) {
+		chart.chart.canvas.parentNode.remove();
+		delete charts[chart.id];
+		delete chart;
+	}
+
+	function releaseAllCharts(scope) {
+		for (var id in charts) {
+			var chart = charts[id];
+			releaseChart(chart);
+		}
+	}
+
+	function injectCSS(css) {
+		// http://stackoverflow.com/q/3922139
+		var head = document.getElementsByTagName('head')[0];
+		var style = document.createElement('style');
+		style.setAttribute('type', 'text/css');
+		if (style.styleSheet) {   // IE
+			style.styleSheet.cssText = css;
+		} else {
+			style.appendChild(document.createTextNode(css));
+		}
+		head.appendChild(style);
+	}
+
+	window.acquireChart = acquireChart;
+	window.releaseChart = releaseChart;
+	window.releaseAllCharts = releaseAllCharts;
+
+	// some style initialization to limit differences between browsers across different plateforms.
+	injectCSS(
+		'.chartjs-wrapper, .chartjs-wrapper canvas {' +
+			'border: 0;' +
+			'margin: 0;' +
+			'padding: 0;' +
+		'}' +
+		'.chartjs-wrapper {' +
+			'position: absolute' +
+		'}');
 })();

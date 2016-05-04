@@ -2,6 +2,9 @@
 
 # Update History
 
+### Version 2.1.4. April 27, 2016
+* Issues: #330, #369
+
 ### Version 2.1.3. April 10, 2016
 * Issues: #342, #350
 

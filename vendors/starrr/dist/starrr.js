@@ -32,6 +32,7 @@ var slice = [].slice;
       })(this));
       this.$el.on('click.starrr', 'a', (function(_this) {
         return function(e) {
+          e.preventDefault();
           return _this.setRating(_this.getStars().index(e.currentTarget) + 1);
         };
       })(this));

@@ -1,7 +1,7 @@
 /*!
- * FullCalendar v2.7.0 Stylesheet
+ * FullCalendar v2.7.1 Stylesheet
  * Docs & License: http://fullcalendar.io/
- * (c) 2015 Adam Shaw
+ * (c) 2016 Adam Shaw
  */
 
 
@@ -73,7 +73,6 @@ body .fc { /* extra precedence to overcome jqui */
 
 .fc-icon {
 	display: inline-block;
-	width: 1em;
 	height: 1em;
 	line-height: 1em;
 	font-size: 1em;
@@ -100,7 +99,6 @@ NOTE: use percentage font sizes or else old IE chokes
 
 .fc-icon:after {
 	position: relative;
-	margin: 0 -1em; /* ensures character will be centered, regardless of width */
 }
 
 .fc-icon-left-single-arrow:after {
@@ -108,7 +106,6 @@ NOTE: use percentage font sizes or else old IE chokes
 	font-weight: bold;
 	font-size: 200%;
 	top: -7%;
-	left: 3%;
 }
 
 .fc-icon-right-single-arrow:after {
@@ -116,7 +113,6 @@ NOTE: use percentage font sizes or else old IE chokes
 	font-weight: bold;
 	font-size: 200%;
 	top: -7%;
-	left: -3%;
 }
 
 .fc-icon-left-double-arrow:after {
@@ -135,14 +131,12 @@ NOTE: use percentage font sizes or else old IE chokes
 	content: "\25C4";
 	font-size: 125%;
 	top: 3%;
-	left: -2%;
 }
 
 .fc-icon-right-triangle:after {
 	content: "\25BA";
 	font-size: 125%;
 	top: 3%;
-	left: 2%;
 }
 
 .fc-icon-down-triangle:after {

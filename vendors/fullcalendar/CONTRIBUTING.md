@@ -41,7 +41,7 @@ Also, you will need the [grunt-cli][grunt-cli] and [bower][bower] packages insta
 
 Then, clone FullCalendar's git repo:
 
-	git clone git://github.com/arshaw/fullcalendar.git
+	git clone git://github.com/fullcalendar/fullcalendar.git
 
 Enter the directory and install FullCalendar's development dependencies:
 

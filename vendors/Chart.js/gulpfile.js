@@ -7,6 +7,7 @@ var gulp = require('gulp'),
   connect = require('gulp-connect'),
   replace = require('gulp-replace'),
   htmlv = require('gulp-html-validator'),
+  insert = require('gulp-insert'),
   inquirer = require('inquirer'),
   semver = require('semver'),
   exec = require('child_process').exec,
@@ -23,13 +24,28 @@ var srcDir = './src/';
 var outDir = './dist/';
 var testDir = './test/';
 
+var header = "/*!\n\
+ * Chart.js\n\
+ * http://chartjs.org/\n\
+ * Version: {{ version }}\n\
+ *\n\
+ * Copyright 2016 Nick Downie\n\
+ * Released under the MIT license\n\
+ * https://github.com/chartjs/Chart.js/blob/master/LICENSE.md\n\
+ */\n";
+
 var preTestFiles = [
   './node_modules/moment/min/moment.min.js',
 ];
 
 var testFiles = [
   './test/mockContext.js',
-  './test/*.js'
+  './test/*.js',
+
+  // Disable tests which need to be rewritten based on changes introduced by
+  // the following changes: https://github.com/chartjs/Chart.js/pull/2346
+  '!./test/core.layoutService.tests.js',
+  '!./test/defaultConfig.tests.js',
 ];
 
 gulp.task('build', buildTask);
@@ -54,9 +70,10 @@ gulp.task('default', ['build', 'watch']);
 
 function buildTask() {
 
-  var bundled = browserify('./src/Chart.js')
+  var bundled = browserify('./src/chart.js')
     .bundle()
     .pipe(source('Chart.bundle.js'))
+    .pipe(insert.prepend(header))
     .pipe(streamify(replace('{{ version }}', package.version)))
     .pipe(gulp.dest(outDir))
     .pipe(streamify(uglify({
@@ -65,10 +82,11 @@ function buildTask() {
     .pipe(streamify(concat('Chart.bundle.min.js')))
     .pipe(gulp.dest(outDir));
 
-  var nonBundled = browserify('./src/Chart.js')
+  var nonBundled = browserify('./src/chart.js')
     .ignore('moment')
     .bundle()
     .pipe(source('Chart.js'))
+    .pipe(insert.prepend(header))
     .pipe(streamify(replace('{{ version }}', package.version)))
     .pipe(gulp.dest(outDir))
     .pipe(streamify(uglify({
