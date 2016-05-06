@@ -55,7 +55,8 @@ We would love to see how you use this awesome admin template. You can notify us 
 ## Gentellela for other platforms and frameworks
 
 * [Gentelella on Ruby on Rails 4](https://github.com/iogbole/gentelella_on_rails) thanks to Israel Ogbole.
-* [Gentella on Smarty 3](https://github.com/microvb/otp-thing) with one time password generator, validator, and QR code generator that has no web dependencies (self-contained) in PHP thanks to MicroVB INC
+* [Gentellela on Smarty 3](https://github.com/microvb/otp-thing) with one time password generator, validator, and QR code generator that has no web dependencies (self-contained) in PHP thanks to MicroVB INC
+* [Gentellela integrated into Symfony 3] full stack PHP framework (https://github.com/krzysiekpiasecki/Gentelella) thanks to Krzysztof Piasecki.
 
 Let us know if you have done integration for this admin template on other platforms and frameworks and we'll be happy to share your work.
 
