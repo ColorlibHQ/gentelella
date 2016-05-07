@@ -860,10 +860,6 @@ h2 {
 legend {
   padding-bottom: 7px;
 }
-.modal-title {
-  margin: 0;
-  line-height: 1.42857143;
-}
 .demo-placeholder {
   height: 280px;
 }
@@ -1692,8 +1688,7 @@ h4.graph_title {
 /* *********  /iconts-display  **************************** */
 
 
-/* *********  Tile stats  **************************** */
-
+/** tile stats **/
 .tile-stats {
   position: relative;
   display: block;
@@ -1713,6 +1708,7 @@ h4.graph_title {
   -webkit-transition: all 300ms ease-in-out;
   transition: all 300ms ease-in-out;
 }
+
 .tile-stats:hover .icon i {
   animation-name: tansformAnimation;
   animation-duration: .5s;
@@ -1731,6 +1727,7 @@ h4.graph_title {
   -moz-animation-timing-function: ease;
   -moz-animation-fill-mode: forwards;
 }
+
 .tile-stats .icon {
   width: 20px;
   height: 20px;
@@ -1740,6 +1737,7 @@ h4.graph_title {
   top: 22px;
   z-index: 1;
 }
+
 .tile-stats .icon i {
   margin: 0;
   font-size: 60px;
@@ -1747,11 +1745,13 @@ h4.graph_title {
   vertical-align: bottom;
   padding: 0;
 }
+
 .tile-stats .count {
   font-size: 38px;
   font-weight: bold;
   line-height: 1.65857143
 }
+
 .tile-stats .count, .tile-stats h3, .tile-stats p {
   position: relative;
   margin: 0;
@@ -1759,13 +1759,16 @@ h4.graph_title {
   z-index: 5;
   padding: 0;
 }
+
 .tile-stats h3 {
   color: #BAB8B8;
 }
+
 .tile-stats p {
   margin-top: 5px;
   font-size: 12px;
 }
+
 .tile-stats > .dash-box-footer {
   position: relative;
   text-align: center;
@@ -1778,36 +1781,44 @@ h4.graph_title {
   background: rgba(0, 0, 0, 0.1);
   text-decoration: none;
 }
+
 .tile-stats > .dash-box-footer:hover {
   color: #fff;
   background: rgba(0, 0, 0, 0.15);
 }
+
 .tile-stats > .dash-box-footer:hover {
   color: #fff;
   background: rgba(0, 0, 0, 0.15);
 }
+
 table.tile_info {
   padding: 10px 15px;
 }
+
 table.tile_info span.right {
   margin-right: 0;
   float: right;
   position: absolute;
   right: 4%;
 }
+
 .tile:hover {
   text-decoration: none;
 }
+
 .tile_header {
   border-bottom: transparent;
   padding: 7px 15px;
   margin-bottom: 15px;
   background: #E7E7E7;
 }
+
 .tile_head h4 {
   margin-top: 0;
   margin-bottom: 5px;
 }
+
 .tiles-bottom {
   padding: 5px 10px;
   margin-top: 10px;
@@ -1815,14 +1826,14 @@ table.tile_info span.right {
   text-align: left;
 }
 
-/* *********  /Tile stats  **************************** */
 
+/** /tile stats **/
 
-/* *********  /inbox design  **************************** */
-
+/** inbox **/
 a.star {
   color: #428bca !important
 }
+
 .mail_content {
   background: none repeat scroll 0 0 #FFFFFF;
   border-radius: 4px;
@@ -1831,19 +1842,23 @@ a.star {
   padding: 10px 11px;
   width: 100%;
 }
+
 .list-btn-mail {
   margin-bottom: 15px;
 }
+
 .list-btn-mail.active {
   border-bottom: 1px solid #39B3D7;
   padding: 0 0 14px;
 }
+
 .list-btn-mail > i {
   float: left;
   font-size: 18px;
   font-style: normal;
   width: 33px;
 }
+
 .list-btn-mail > .cn {
   background: none repeat scroll 0 0 #39B3D7;
   border-radius: 12px;
@@ -1852,71 +1867,86 @@ a.star {
   font-style: normal;
   padding: 0 5px;
 }
+
 .button-mail {
   margin: 0 0 15px !important;
   text-align: left;
   width: 100%;
 }
+
 .buttons, button, .btn {
   margin-bottom: 5px;
   margin-right: 5px;
 }
+
 .btn-group-vertical .btn, .btn-group .btn {
   margin-bottom: 0;
   margin-right: 0;
 }
+
 .mail_list_column {
   border-left: 1px solid #DBDBDB;
 }
+
 .mail_view {
   border-left: 1px solid #DBDBDB
 }
+
 .mail_list {
   width: 100%;
   border-bottom: 1px solid #DBDBDB;
   margin-bottom: 2px;
   display: inline-block;
 }
+
 .mail_list .left {
   width: 5%;
   float: left;
   margin-right: 3%
 }
+
 .mail_list .right {
   width: 90%;
   float: left
 }
+
 .mail_list h3 {
   font-size: 15px;
   font-weight: bold;
   margin: 0px 0 6px;
 }
+
 .mail_list h3 small {
   float: right;
   color: #ADABAB;
   font-size: 11px;
   line-height: 20px;
 }
+
 .mail_list .badge {
   padding: 3px 6px;
   font-size: 8px;
   background: #BAB7B7
 }
+
 @media (max-width: 767px) {
   .mail_list {
     margin-bottom: 5px;
     display: inline-block;
   }
 }
+
 .mail_heading h4 {
   font-size: 18px;
   border-bottom: 1px solid #ddd;
   padding-bottom: 10px;
   margin-top: 20px;
 }
+
 .attachment {
   margin-top: 30px;
 }
+
 .attachment ul {
   width: 100%;
   list-style: none;
@@ -1924,31 +1954,78 @@ a.star {
   display: inline-block;
   margin-bottom: 30px;
 }
+
 .attachment ul li {
   float: left;
   width: 150px;
   margin-right: 10px;
   margin-bottom: 10px;
 }
+
 .attachment ul li img {
   height: 150px;
   border: 1px solid #ddd;
   padding: 5px;
   margin-bottom: 10px;
 }
+
 .attachment ul li span {
   float: right;
 }
+
 .attachment .file-name {
   float: left;
 }
+
 .attachment .links {
   width: 100%;
   display: inline-block;
 }
 
-/* *********  /inbox design   **************************** */
+.compose {  
+  padding: 0;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  background: #fff;
+  border: 1px solid #D9DEE4;
+  border-right: 0;
+  border-bottom: 0;
+  border-top-left-radius: 5px;
+  z-index: 9999;
+  display: none;
+}
 
+.compose .compose-header {
+  padding: 5px;
+  background: #169F85;
+  color: #fff;
+  border-top-left-radius: 5px;
+}
+
+.compose .compose-header .close {
+  text-shadow: 0 1px 0 #ffffff;
+  line-height: .8;
+}
+
+.compose .compose-body .editor.btn-toolbar {
+  margin: 0;
+}
+
+.compose .compose-body .editor-wrapper {
+  height: 100%;
+  min-height: 50px;
+  max-height: 180px;
+  border-radius: 0;
+  border-left: none;
+  border-right: none;
+  overflow: auto;
+}
+
+.compose .compose-footer {
+  padding: 10px;
+}
+/** /inbox **/
 
 /* *********  form design  **************************** */
 
@@ -3726,7 +3803,7 @@ header {
 
 
 /** bootstrap-wysiwyg **/
-#editor {
+.editor-wrapper {
   min-height: 250px;
   background-color: white;
   border-collapse: separate; 

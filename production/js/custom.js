@@ -120,7 +120,9 @@ $(document).ready(function() {
 
 // Tooltip
 $(document).ready(function() {
-    $('[data-toggle="tooltip"]').tooltip();
+    $('[data-toggle="tooltip"]').tooltip({
+        container: 'body'
+    });
 });
 // /Tooltip
 
