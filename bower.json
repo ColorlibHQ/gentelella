@@ -71,5 +71,8 @@
     "pdfmake": "^0.1.20",
     "jszip": "Stuk/jszip#v2.6.0",
     "echarts": "^3.1.7"
+  },
+  "dependencies": {
+    "bernii/gauge.js": "gauge.js#^1.2.1"
   }
 }
