@@ -70,7 +70,6 @@ $(document).ready(function() {
                 $SIDEBAR_MENU.find('li.active-sm').addClass('active').removeClass('active-sm');
             }
         }
-
         setContentHeight();
     });
 
@@ -87,6 +86,7 @@ $(document).ready(function() {
     $(window).smartresize(function(){  
         setContentHeight();
     });
+    setContentHeight();
 });
 // /Sidebar
 
