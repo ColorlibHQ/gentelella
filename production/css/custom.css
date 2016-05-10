@@ -1,8 +1,16 @@
-.nav-sm .container.body .left_col {
+.nav-sm .container.body .col-md-3.left_col {
   width: 70px;
   padding: 0;
   z-index: 9999;
   position: absolute;
+}
+.nav-sm .container.body .col-md-3.left_col.menu_fixed {
+  position: fixed;
+  height: 100%;
+}
+.nav-sm .container.body .col-md-3.left_col .mCSB_container,
+.nav-sm .container.body .col-md-3.left_col .mCustomScrollBox {
+  overflow: visible;
 }
 .nav-sm .hidden-small {
   visibility: hidden;
@@ -182,6 +190,10 @@
   position: absolute;
   display: flex;
 }
+.nav-md .container.body .col-md-3.left_col.menu_fixed {
+  height: 100%;
+  position: fixed;
+}
 body .container.body .right_col {
   background: #F7F7F7;
 }
@@ -227,7 +239,12 @@ body .container.body .right_col {
     display: none
   }
 }
-
+.left_col .mCSB_scrollTools {
+  width: 6px;
+}
+.left_col .mCSB_dragger {
+  max-height: 400px !important;
+}
 /**  ------------------------------------------  **/
 
 .blue {
@@ -1499,7 +1516,6 @@ span.right {
   padding: 5px 0 0 0;
   position: fixed;
   width: 230px;
-  z-index: 1000;
   background: #2A3F54;
 }
 .sidebar-footer a {

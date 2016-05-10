@@ -58,7 +58,6 @@ $(document).ready(function() {
     $MENU_TOGGLE.on('click', function() {
         if ($BODY.hasClass('nav-md')) {
             $BODY.removeClass('nav-md').addClass('nav-sm');
-            $LEFT_COL.removeClass('scroll-view').removeAttr('style');
 
             if ($SIDEBAR_MENU.find('li').hasClass('active')) {
                 $SIDEBAR_MENU.find('li.active').addClass('active-sm').removeClass('active');
@@ -87,6 +86,15 @@ $(document).ready(function() {
     $(window).smartresize(function(){  
         setContentHeight();
     });
+
+    // fixed sidebar
+    if ($.fn.mCustomScrollbar) {
+        $('.menu_fixed').mCustomScrollbar({
+            autoHideScrollbar: true,
+            theme: 'minimal',
+            mouseWheel:{ preventDefault: true }
+        });
+    }
 });
 // /Sidebar
 
