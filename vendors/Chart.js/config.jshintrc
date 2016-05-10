@@ -1,4 +1,0 @@
-{
-	"node": true,
-	"predef": [ "require", "module" ]
-}
