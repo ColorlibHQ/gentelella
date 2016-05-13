@@ -2865,6 +2865,7 @@ ul.count2 li span {
 }
 ul.messages {
   padding: 0;
+  list-style: none;
 }
 ul.messages li, .tasks li {
   border-bottom: 1px dotted #e6e6e6;
