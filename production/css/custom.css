@@ -1,3 +1,6 @@
+.left_col {
+  background: #2A3F54;
+}
 .nav-sm .container.body .col-md-3.left_col {
   width: 70px;
   padding: 0;
@@ -189,6 +192,7 @@
   padding: 0;
   position: absolute;
   display: flex;
+  z-index: 9999;
 }
 .nav-md .container.body .col-md-3.left_col.menu_fixed {
   height: 100%;
@@ -331,7 +335,6 @@ body .container.body .right_col {
 body {
   color: #73879C;
   background: #2A3F54;
-  /*#ECF0F1; #FCFCFC*/
   font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif;
   font-size: 13px;
   font-weight: 400;
@@ -695,6 +698,22 @@ footer {
 }
 .nav-sm footer {
   margin-left: 70px ;  
+}
+.footer_fixed footer {
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .footer_fixed footer {
+    margin-left: 0;
+  }
+}
+@media (min-width: 768px) {
+  .footer_fixed .nav-sm footer {
+    margin-left: 0;
+  }
 }
 .tile-stats.sparkline {
   padding: 10px;
