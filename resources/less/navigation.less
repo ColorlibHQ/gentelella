@@ -1,0 +1,229 @@
+.nav-sm .container.body .left_col {
+  width: 70px;
+  padding: 0;
+  z-index: 9999;
+  position: absolute;
+}
+.nav-sm .hidden-small {
+  visibility: hidden;
+}
+.nav-sm .container.body .right_col {
+  padding: 10px 20px;
+  margin-left: 70px;
+  z-index: 2;
+}
+.nav-sm .navbar.nav_title {
+  width: 70px;
+}
+.nav-sm .navbar.nav_title a span {
+  display: none;
+}
+.nav-sm .navbar.nav_title a i {
+  font-size: 27px;
+  margin: 13px 0 0 3px;
+}
+.site_title i {
+  border: 1px solid #EAEAEA;
+  padding: 5px 6px;
+  border-radius: 50%;
+}
+.nav-sm .main_container .top_nav {
+  display: block;
+  margin-left: 70px;
+  z-index: 2;
+}
+.nav-sm .nav.side-menu li a {
+  text-align: center !important;
+  font-weight: 400;
+  font-size: 10px;
+  padding: 10px 5px;
+}
+.nav-sm .nav.child_menu li.active,
+.nav-sm .nav.side-menu li.active-sm {
+  border-right: 5px solid #1ABB9C;
+}
+.nav-sm ul.nav.child_menu ul,
+.nav-sm .nav.side-menu li.active-sm ul ul {
+    position: static;
+    width: 200px;
+    background: none;
+}
+.nav-sm > .nav.side-menu > li.active-sm > a {
+  color: #1ABB9C !important;
+}
+.nav-sm .nav.side-menu li a i.toggle-up {
+  display: none !important;
+}
+.nav-sm .nav.side-menu li a i {
+  font-size: 25px !important;
+  text-align: center;
+  width: 100% !important;
+  margin-bottom: 5px;
+}
+.nav-sm ul.nav.child_menu {
+  left: 100%;
+  position: absolute;
+  top: 0;
+  width: 210px;
+  z-index: 4000;
+  background: #3E5367;
+  display: none;
+}
+.nav-sm ul.nav.child_menu li {
+  padding: 0 10px;
+}
+.nav-sm ul.nav.child_menu li a {
+  text-align: left !important;
+}
+.nav-sm .profile {
+  display: none;
+}
+.menu_section {
+  margin-bottom: 35px;
+}
+.menu_section h3 {
+  padding-left: 23px;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  font-weight: bold;
+  font-size: 11px;
+  margin-bottom: 0;
+  margin-top: 0;
+  text-shadow: 1px 1px #000;
+}
+.menu_section >ul {
+  margin-top: 10px;
+}
+.profile_pic {
+  width: 35%;
+  float: left;
+}
+.img-circle.profile_img {
+  width: 70%;
+  background: #fff;
+  margin-left: 15%;
+  z-index: 1000;
+  position: inherit;
+  margin-top: 20px;
+  border: 1px solid rgba(52, 73, 94, 0.44);
+  padding: 4px;
+}
+.profile_info {
+  padding: 25px 10px 10px;
+  width: 65%;
+  float: left;
+}
+.profile_info span {
+  font-size: 13px;
+  line-height: 30px;
+  color: #BAB8B8;
+}
+.profile_info h2 {
+  font-size: 14px;
+  color: #ECF0F1;
+  margin: 0;
+  font-weight: 300;
+}
+.profile.img_2 {
+  text-align: center;
+}
+.profile.img_2 .profile_pic {
+  width: 100%;
+}
+.profile.img_2 .profile_pic .img-circle.profile_img {
+  width: 50%;
+  margin: 10px 0 0;
+}
+.profile.img_2 .profile_info {
+  padding: 15px 10px 0;
+  width: 100%;
+  margin-bottom: 10px;
+  float: left;
+}
+.main_menu span.fa {
+  float: right;
+  text-align: center;
+  margin-top: 5px;
+  font-size: 10px;
+  min-width: inherit;
+  color: #C4CFDA;
+}
+.active a span.fa {
+  text-align: right !important;
+  margin-right: 4px;
+}
+.nav-sm .menu_section {
+  margin: 0;
+}
+.nav-sm span.fa, 
+.nav-sm .menu_section h3 {
+  display: none;
+}
+.nav-sm li li span.fa {
+  display: inline-block;
+}
+.nav_menu {
+  float: left;
+  background: #EDEDED;
+  border-bottom: 1px solid #D9DEE4;
+  margin-bottom: 10px;
+  width: 100%;
+  position: relative;
+}
+@media (min-width: 480px) {
+  .nav_menu {
+    position: static;
+  }
+}
+.nav-md .container.body .col-md-3.left_col {
+  width: 230px;
+  padding: 0;
+  position: absolute;
+  display: flex;
+}
+body .container.body .right_col {
+  background: #F7F7F7;
+}
+.nav-md .container.body .right_col {
+  padding: 10px 20px 0;
+  margin-left: 230px;
+}
+.nav_title {
+  width: 230px;
+  float: left;
+  background: #2A3F54;
+  border-radius: 0;
+  height: 57px;
+}
+@media (max-width: 991px) {
+  .nav-md .container.body .right_col, .nav-md .container.body .top_nav {
+    width: 100%;
+    margin: 0;
+  }
+  .nav-md .container.body .col-md-3.left_col {
+    display: none;
+  }
+  .nav-md .container.body .right_col {
+    width: 100%;
+    padding-right: 0
+  }
+  .right_col {
+    padding: 10px !important;
+  }
+}
+@media (max-width: 1200px) {
+  .x_title h2 {
+    width: 62%;
+    font-size: 17px;
+  }
+  .tile, .graph {
+    zoom: 85%;
+    height: inherit;
+  }
+}
+@media (max-width: 1270px) and (min-width: 192px) {
+  .x_title h2 small {
+    display: none
+  }
+}

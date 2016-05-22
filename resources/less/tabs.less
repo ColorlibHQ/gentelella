@@ -1,0 +1,146 @@
+ul.bar_tabs {
+  overflow: visible;
+  background: #F5F7FA;
+  height: 25px;
+  margin: 21px 0 14px;
+  padding-left: 14px;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  border-bottom: 1px solid #E6E9ED;
+}
+ul.bar_tabs > li {
+  border: 1px solid #E6E9ED;
+  color: #333 !important;
+  margin-top: -17px;
+  margin-left: 8px;
+  background: #fff;
+  border-bottom: none;
+  border-radius: 4px 4px 0 0;
+}
+ul.bar_tabs > li.active {
+  border-right: 6px solid #D3D6DA;
+  border-top: 0;
+  margin-top: -15px;
+}
+ul.bar_tabs > li a {
+  padding: 10px 17px;
+  background: #F5F7FA;
+  margin: 0;
+  border-top-right-radius: 0;
+}
+ul.bar_tabs > li a:hover {
+  border: 1px solid transparent;
+}
+ul.bar_tabs > li.active a {
+  border-bottom: none;
+}
+ul.bar_tabs.right {
+  padding-right: 14px;
+}
+ul.bar_tabs.right li {
+  float: right
+}
+a:focus {
+  outline: none;
+}
+
+
+/* *********  verticle tabs  **************************** */
+
+
+/*!
+ * bootstrap-vertical-tabs - v1.2.1
+ * https://dbtek.github.io/bootstrap-vertical-tabs
+ * 2014-11-07
+ * Copyright (c) 2014 İsmail Demirbilek
+ * License: MIT
+ */
+
+.tabs-left, .tabs-right {
+  border-bottom: none;
+  padding-top: 2px;
+}
+.tabs-left {
+  border-right: 1px solid #F7F7F7;
+}
+.tabs-right {
+  border-left: 1px solid #F7F7F7;
+}
+.tabs-left>li, .tabs-right>li {
+  float: none;
+  margin-bottom: 2px;
+}
+.tabs-left>li {
+  margin-right: -1px;
+}
+.tabs-right>li {
+  margin-left: -1px;
+}
+.tabs-left>li.active>a, .tabs-left>li.active>a:hover, .tabs-left>li.active>a:focus {
+  border-bottom-color: #F7F7F7;
+  border-right-color: transparent;
+}
+.tabs-right>li.active>a, .tabs-right>li.active>a:hover, .tabs-right>li.active>a:focus {
+  border-bottom: 1px solid #F7F7F7;
+  border-left-color: transparent;
+}
+.tabs-left>li>a {
+  border-radius: 4px 0 0 4px;
+  margin-right: 0;
+  display: block;
+  background: #F7F7F7;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.tabs-right>li>a {
+  border-radius: 0 4px 4px 0;
+  margin-right: 0;
+  background: #F7F7F7;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.sideways {
+  margin-top: 50px;
+  border: none;
+  position: relative;
+}
+.sideways>li {
+  height: 20px;
+  width: 120px;
+  margin-bottom: 100px;
+}
+.sideways>li>a {
+  border-bottom: 1px solid #ddd;
+  border-right-color: transparent;
+  text-align: center;
+  border-radius: 4px 4px 0px 0px;
+}
+.sideways>li.active>a, .sideways>li.active>a:hover, .sideways>li.active>a:focus {
+  border-bottom-color: transparent;
+  border-right-color: #ddd;
+  border-left-color: #ddd;
+}
+.sideways.tabs-left {
+  left: -50px;
+}
+.sideways.tabs-right {
+  right: -50px;
+}
+.sideways.tabs-right>li {
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+.sideways.tabs-left>li {
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+
+/* *********  /verticle tabs  **************************** */
+
