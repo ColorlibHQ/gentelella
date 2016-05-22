@@ -3490,35 +3490,37 @@ ul.project_files li a i {
 
 /* *********  /ecommerce  **************************** */
 
-/********* login ****************/
-
+/** login **/
+.login {
+  background:#F7F7F7;
+}
+.login .fa-paw {
+  font-size: 26px;
+}
 a.hiddenanchor {
   display: none;
 }
-
-/** The wrapper that will contain our two forms **/
-
-#wrapper {
+.login_wrapper {
   right: 0px;
   margin: 0px auto;
   margin-top: 5%;
   max-width: 350px;
   position: relative;
 }
-#register, #login {
+.registration_form, .login_form {
   position: absolute;
   top: 0px;
   width: 100%;
 }
-#register {
+.registration_form {
   z-index: 21;
   opacity: 0;
   width: 100%;
 }
-#login {
+.login_form {
   z-index: 22;
 }
-#toregister:target ~ #wrapper #register, #tologin:target ~ #wrapper #login {
+#signup:target ~ .login_wrapper .registration_form, #signin:target ~ .login_wrapper .login_form {
   z-index: 22;
   -webkit-animation-name: fadeInLeft;
   -moz-animation-name: fadeInLeft;
@@ -3531,16 +3533,13 @@ a.hiddenanchor {
   -ms-animation-delay: .1s;
   animation-delay: .1s;
 }
-#toregister:target ~ #wrapper #login, #tologin:target ~ #wrapper #register {
+#signup:target ~ .login_wrapper .login_form, #signin:target ~ .login_wrapper .registration_form {
   -webkit-animation-name: fadeOutLeft;
   -moz-animation-name: fadeOutLeft;
   -ms-animation-name: fadeOutLeft;
   -o-animation-name: fadeOutLeft;
   animation-name: fadeOutLeft;
 }
-
-/** the actual animation, credit where due : http://daneden.me/animate/ ***/
-
 .animate {
   -webkit-animation-duration: 0.5s;
   -webkit-animation-timing-function: ease;
@@ -3558,12 +3557,9 @@ a.hiddenanchor {
   animation-timing-function: ease;
   animation-fill-mode: both;
 }
+/** /login **/
 
-/********* /login ***************/
-
-
-/********** sign in ***************************/
-
+/** signup **/
 .login_box {
   padding: 20px;
   margin: auto;
@@ -3754,8 +3750,7 @@ a.hiddenanchor {
 header {
   width: 100%;
 }
-
-/********** end of sign in ********************/
+/** signup **/
 
 
 /* *********  start nprogress  **************************** */
