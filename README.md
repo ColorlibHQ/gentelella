@@ -7,6 +7,26 @@ Theme uses several libraries for charts, calendar, form validation, wizard style
 
 We would love to see how you use this awesome admin template. You can notify us about your site, app or service by tweeting to [@colorlib](https://twitter.com/colorlib). Once the list will grown long enough we will write a post similar to [this](https://colorlib.com/wp/avada-theme-examples/) to showcase the best examples.
 
+## Installation
+First, ve sure you have `npm` installed. Then, download dependencies:
+
+```
+npm install --save-dev
+```
+
+It will install tools needed for compiling. The tools will be installed locally, into `node_modules` directory. Next, install all dependecies:
+
+```
+bower install
+```
+
+Dependencies will be downloaded and saved into `vendors` directory. Next, compile:
+
+```
+grunt
+```
+
+The `public` directory will ve populated with compiled files.
 
 ## Theme Demo
 ![Gentelella Bootstrap Admin Template](https://cdn.colorlib.com/wp/wp-content/uploads/sites/2/gentelella-admin-template-preview.jpg "Gentelella Theme Browser Preview")
