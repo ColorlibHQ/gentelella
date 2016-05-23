@@ -14,7 +14,7 @@ First, be sure you have `npm` installed. Then, download dependencies:
 npm install --save-dev
 ```
 
-It will install tools needed for compiling. The tools will be installed locally, into `node_modules` directory. Next, install all dependecies:
+It will install tools needed for compiling. The tools will be installed locally, into `node_modules` directory. Next, install all dependencies:
 
 ```
 bower install
