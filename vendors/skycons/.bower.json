@@ -7,8 +7,7 @@
     "branch": "master",
     "commit": "7095ecf5f653dbcadbddb0d317b42e65fe091eae"
   },
-  "_source": "git@github.com:darkskyapp/skycons.git",
+  "_source": "https://github.com/darkskyapp/skycons.git",
   "_target": "*",
-  "_originalSource": "git@github.com:darkskyapp/skycons.git",
-  "_direct": true
+  "_originalSource": "https://github.com/darkskyapp/skycons.git"
 }
