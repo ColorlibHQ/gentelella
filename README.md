@@ -26,7 +26,7 @@ Dependencies will be downloaded and saved into `vendors` directory. Next, compil
 grunt
 ```
 
-The `public` directory will be populated with compiled files.
+The `production` directory will be populated with compiled files.
 
 ## Theme Demo
 ![Gentelella Bootstrap Admin Template](https://cdn.colorlib.com/wp/wp-content/uploads/sites/2/gentelella-admin-template-preview.jpg "Gentelella Theme Browser Preview")
