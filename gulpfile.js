@@ -15,20 +15,26 @@ gulp.task('scripts', function() {
       .pipe(gulp.dest(DEST+'/js'));
 });
 
-gulp.task('sass', function() {
-    return sass('src/scss/*.scss')
-        .pipe(concat('custom.css'))
-        .pipe(gulp.dest(DEST+'/css'))
-        .pipe(rename({suffix: '.min'}))
-        .pipe(uglify())
+// TODO: Maybe we can simplify how sass compile the minify and unminify version
+var compileSASS = function (filename, options) {
+  return sass('src/scss/*.scss', options)
+        .pipe(concat(filename))
         .pipe(gulp.dest(DEST+'/css'));
+};
+
+gulp.task('sass', function() {
+    return compileSASS('custom.css', {});
+});
+
+gulp.task('sass-minify', function() {
+    return compileSASS('custom.min.css', {style: 'compressed'});
 });
 
 gulp.task('watch', function() {
    // Watch .js files
   gulp.watch('src/js/*.js', ['scripts']);
    // Watch .scss files
-  gulp.watch('src/scss/*.scss', ['sass']);
+  gulp.watch('src/scss/*.scss', ['sass', 'sass-minify']);
 });
 
 // Default Task
