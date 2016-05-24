@@ -1381,7 +1381,7 @@ ul.msg_list li a .message {
   position: absolute;
   text-shadow: none;
   top: 100%;
-  z-index: 1000;
+  z-index: 9998;
   border: 1px solid #D9DEE4;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
