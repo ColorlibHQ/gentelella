@@ -28,5 +28,12 @@
   "bugs": {
     "url": "https://github.com/puikinsh/gentelella/issues"
   },
-  "homepage": "https://github.com/puikinsh/gentelella#readme"
+  "homepage": "https://github.com/puikinsh/gentelella#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-ruby-sass": "^2.0.6",
+    "gulp-uglify": "^1.5.3"
+  }
 }
