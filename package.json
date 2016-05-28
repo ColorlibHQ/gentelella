@@ -30,7 +30,9 @@
   },
   "homepage": "https://github.com/puikinsh/gentelella#readme",
   "devDependencies": {
+    "browser-sync": "^2.12.10",
     "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
     "gulp-concat": "^2.6.0",
     "gulp-rename": "^1.2.2",
     "gulp-ruby-sass": "^2.0.6",
