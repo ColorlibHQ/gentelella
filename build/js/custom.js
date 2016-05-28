@@ -36,14 +36,14 @@ $(document).ready(function() {
         var $li = $(this).parent();
 
         if ($li.is('.active')) {
-            $li.removeClass('active');
+            $li.removeClass('active active-sm');
             $('ul:first', $li).slideUp(function() {
                 setContentHeight();
             });
         } else {
             // prevent closing menu if we are on child menu
             if (!$li.parent().is('.child_menu')) {
-                $SIDEBAR_MENU.find('li').removeClass('active');
+                $SIDEBAR_MENU.find('li').removeClass('active active-sm');
                 $SIDEBAR_MENU.find('li ul').slideUp();
             }
             
@@ -58,18 +58,14 @@ $(document).ready(function() {
     // toggle small or large menu
     $MENU_TOGGLE.on('click', function() {
         if ($BODY.hasClass('nav-md')) {
-            $BODY.removeClass('nav-md').addClass('nav-sm');
-
-            if ($SIDEBAR_MENU.find('li').hasClass('active')) {
-                $SIDEBAR_MENU.find('li.active').addClass('active-sm').removeClass('active');
-            }
+            $SIDEBAR_MENU.find('li.active ul').hide();
+            $SIDEBAR_MENU.find('li.active').addClass('active-sm').removeClass('active');
         } else {
-            $BODY.removeClass('nav-sm').addClass('nav-md');
-
-            if ($SIDEBAR_MENU.find('li').hasClass('active-sm')) {
-                $SIDEBAR_MENU.find('li.active-sm').addClass('active').removeClass('active-sm');
-            }
+            $SIDEBAR_MENU.find('li.active-sm ul').show();
+            $SIDEBAR_MENU.find('li.active-sm').addClass('active').removeClass('active-sm');
         }
+
+        $BODY.toggleClass('nav-md nav-sm');
 
         setContentHeight();
     });
@@ -137,7 +133,7 @@ $(document).ready(function() {
 
 // Progressbar
 if ($(".progress .progress-bar")[0]) {
-    $('.progress .progress-bar').progressbar(); // bootstrap 3
+    $('.progress .progress-bar').progressbar();
 }
 // /Progressbar
 
@@ -244,7 +240,6 @@ if (typeof NProgress != 'undefined') {
         NProgress.done();
     });
 }
-
 /**
  * Resize function without multiple trigger
  * 
