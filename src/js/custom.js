@@ -84,6 +84,8 @@ $(document).ready(function() {
         setContentHeight();
     });
 
+    setContentHeight();
+
     // fixed sidebar
     if ($.fn.mCustomScrollbar) {
         $('.menu_fixed').mCustomScrollbar({
