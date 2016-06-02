@@ -136,7 +136,8 @@ define(function(require) {
             var foundOtherAxisModel;
             ecModel.eachComponent(otherAxisDim + 'Axis', function (otherAxisModel) {
                 if ((otherAxisModel.get(coordSysIndexName) || 0)
-                    === (axisModel.get(coordSysIndexName) || 0)) {
+                    === (axisModel.get(coordSysIndexName) || 0)
+                ) {
                     foundOtherAxisModel = otherAxisModel;
                 }
             });
@@ -196,21 +197,25 @@ define(function(require) {
 
             // FIXME
             // Toolbox may has dataZoom injected. And if there are stacked bar chart
-            // with NaN data. NaN will be filtered and stack will be wrong.
-            // So we need to force the mode to be set empty
+            // with NaN data, NaN will be filtered and stack will be wrong.
+            // So we need to force the mode to be set empty.
+            // In fect, it is not a big deal that do not support filterMode-'filter'
+            // when using toolbox#dataZoom, utill tooltip#dataZoom support "single axis
+            // selection" some day, which might need "adapt to data extent on the
+            // otherAxis", which is disabled by filterMode-'empty'.
             var otherAxisModel = this.getOtherAxisModel();
             if (dataZoomModel.get('$fromToolbox')
-                && otherAxisModel && otherAxisModel.get('type') === 'category') {
+                && otherAxisModel
+                && otherAxisModel.get('type') === 'category'
+            ) {
                 filterMode = 'empty';
             }
+
             // Process series data
             each(seriesModels, function (seriesModel) {
                 var seriesData = seriesModel.getData();
-                if (!seriesData) {
-                    return;
-                }
 
-                each(seriesModel.coordDimToDataDim(axisDim), function (dim) {
+                seriesData && each(seriesModel.coordDimToDataDim(axisDim), function (dim) {
                     if (filterMode === 'empty') {
                         seriesModel.setData(
                             seriesData.map(dim, function (value) {
@@ -294,13 +299,10 @@ define(function(require) {
                     boundValue, dataExtent, percentExtent, true
                 );
             }
-            // Avoid rounding error.
-            // And make sure the window is larger than the original
-            function round(val) {
-                return Math[idx === 0 ? 'floor' : 'ceil'](val * 1e12) / 1e12;
-            }
-            valueWindow[idx] = round(boundValue);
-            percentWindow[idx] = round(boundPercent);
+            // valueWindow[idx] = round(boundValue);
+            // percentWindow[idx] = round(boundPercent);
+            valueWindow[idx] = boundValue;
+            percentWindow[idx] = boundPercent;
         });
 
         return {

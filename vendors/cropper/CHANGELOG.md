@@ -1,6 +1,13 @@
 # Changelog
 
 
+## 2.3.1 (May 28, 2016)
+
+- Improved the rotate and scale transform behaviour (#633, idea by afeibus).
+- Improved the `getCroppedCanvas` method to return the whole canvas if it is not cropped (#666, PR by @vinnymac).
+- Check cross origin setting when load image by XMLHTTPRequest (#669)
+
+
 ## 2.3.0 (Feb 22, 2016)
 
 - Added a new parameter to the `replace` method for applying filters.

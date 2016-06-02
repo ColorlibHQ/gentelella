@@ -15,6 +15,11 @@
     var each = zrUtil.each;
 
     var DRAG_THRESHOLD = 3;
+    var PATH_LABEL_NORMAL = ['label', 'normal'];
+    var PATH_LABEL_EMPHASIS = ['label', 'emphasis'];
+    var Z_BASE = 10; // Should bigger than every z.
+    var Z_BG = 1;
+    var Z_CONTENT = 2;
 
     return require('../../echarts').extendChartView({
 
@@ -101,7 +106,6 @@
             var containerGroup = this._giveContainerGroup(layoutInfo);
 
             var renderResult = this._doRender(containerGroup, seriesModel, reRoot);
-
             (
                 !isInit && (
                     !payloadType
@@ -146,15 +150,11 @@
             var thisStorage = createStorage();
             var oldStorage = this._storage;
             var willInvisibleEls = [];
-            var willVisibleEls = [];
-            var willDeleteEls = [];
-            var renderNode = bind(
-                this._renderNode, this,
+            var doRenderNode = zrUtil.curry(
+                renderNode, seriesModel,
                 thisStorage, oldStorage, reRoot,
-                lastsForAnimation, willInvisibleEls, willVisibleEls
+                lastsForAnimation, willInvisibleEls
             );
-            var viewRoot = seriesModel.getViewRoot();
-            var viewPath = helper.getPathToRoot(viewRoot);
 
             // Notice: when thisTree and oldTree are the same tree (see list.cloneShadow),
             // the oldTree is actually losted, so we can not find all of the old graphic
@@ -181,7 +181,7 @@
                 renderFinally: renderFinally
             };
 
-            function dualTravel(thisViewChildren, oldViewChildren, parentGroup, sameTree, viewPathIndex) {
+            function dualTravel(thisViewChildren, oldViewChildren, parentGroup, sameTree, depth) {
                 // When 'render' is triggered by action,
                 // 'this' and 'old' may be the same tree,
                 // we use rawIndex in that case.
@@ -210,25 +210,14 @@
                     var thisNode = newIndex != null ? thisViewChildren[newIndex] : null;
                     var oldNode = oldIndex != null ? oldViewChildren[oldIndex] : null;
 
-                    // Whether under viewRoot.
-                    if (!thisNode
-                        || isNaN(viewPathIndex)
-                        || (viewPathIndex < viewPath.length && viewPath[viewPathIndex] !== thisNode)
-                    ) {
-                        // Deleting nodes will be performed finally. This method just find
-                        // element from old storage, or create new element, set them to new
-                        // storage, and set styles.
-                        return;
-                    }
-
-                    var group = renderNode(thisNode, oldNode, parentGroup);
+                    var group = doRenderNode(thisNode, oldNode, parentGroup, depth);
 
                     group && dualTravel(
                         thisNode && thisNode.viewChildren || [],
                         oldNode && oldNode.viewChildren || [],
                         group,
                         sameTree,
-                        viewPathIndex + 1
+                        depth + 1
                     );
                 }
             }
@@ -238,7 +227,7 @@
                 storage && each(storage, function (store, storageName) {
                     var delEls = willDeleteEls[storageName];
                     each(store, function (el) {
-                        el && (delEls.push(el), el.__tmWillDelete = storageName);
+                        el && (delEls.push(el), el.__tmWillDelete = 1);
                     });
                 });
                 return willDeleteEls;
@@ -250,185 +239,12 @@
                         el.parent && el.parent.remove(el);
                     });
                 });
-                // Theoritically there is no intersection between willInvisibleEls
-                // and willVisibleEls have, but we set visible after for robustness.
                 each(willInvisibleEls, function (el) {
                     el.invisible = true;
                     // Setting invisible is for optimizing, so no need to set dirty,
                     // just mark as invisible.
                     el.dirty();
                 });
-                each(willVisibleEls, function (el) {
-                    el.invisible = false;
-                    el.__tmWillVisible = false;
-                    el.dirty();
-                });
-            }
-        },
-
-        /**
-         * @private
-         */
-        _renderNode: function (
-            thisStorage, oldStorage, reRoot,
-            lastsForAnimation, willInvisibleEls, willVisibleEls,
-            thisNode, oldNode, parentGroup
-        ) {
-            var thisRawIndex = thisNode && thisNode.getRawIndex();
-            var oldRawIndex = oldNode && oldNode.getRawIndex();
-
-            var layout = thisNode.getLayout();
-            var thisWidth = layout.width;
-            var thisHeight = layout.height;
-            var invisible = layout.invisible;
-
-            // Node group
-            var group = giveGraphic('nodeGroup', Group);
-            if (!group) {
-                return;
-            }
-            parentGroup.add(group);
-            group.position = [layout.x, layout.y];
-            group.__tmNodeWidth = thisWidth;
-            group.__tmNodeHeight = thisHeight;
-
-            // Background
-            var bg = giveGraphic('background', Rect, 0);
-            if (bg) {
-                bg.setShape({x: 0, y: 0, width: thisWidth, height: thisHeight});
-                updateStyle(bg, {fill: thisNode.getVisual('borderColor', true)});
-                group.add(bg);
-            }
-
-            var thisViewChildren = thisNode.viewChildren;
-
-            // No children, render content.
-            if (!thisViewChildren || !thisViewChildren.length) {
-                var borderWidth = layout.borderWidth;
-                var content = giveGraphic('content', Rect, 3);
-                if (content) {
-                    var contentWidth = Math.max(thisWidth - 2 * borderWidth, 0);
-                    var contentHeight = Math.max(thisHeight - 2 * borderWidth, 0);
-                    var labelModel = thisNode.getModel('label.normal');
-                    var textStyleModel = thisNode.getModel('label.normal.textStyle');
-                    var hoverStyle = thisNode.getModel('itemStyle.emphasis').getItemStyle();
-                    var text = thisNode.getModel().get('name');
-                    var textRect = textStyleModel.getTextRect(text);
-                    var showLabel = labelModel.get('show');
-
-                    if (!showLabel || textRect.height > contentHeight) {
-                        text = '';
-                    }
-                    else if (textRect.width > contentWidth) {
-                        text = textStyleModel.get('ellipsis')
-                            ? textStyleModel.ellipsis(text, contentWidth) : '';
-                    }
-
-                    graphic.setHoverStyle(content, hoverStyle);
-
-                    // For tooltip.
-                    content.dataIndex = thisNode.dataIndex;
-                    content.seriesIndex = this.seriesModel.seriesIndex;
-
-                    content.culling = true;
-                    content.setShape({
-                        x: borderWidth,
-                        y: borderWidth,
-                        width: contentWidth,
-                        height: contentHeight
-                    });
-
-                    updateStyle(content, {
-                        fill: thisNode.getVisual('color', true),
-                        text: text,
-                        textPosition: labelModel.get('position'),
-                        textFill: textStyleModel.getTextColor(),
-                        textAlign: textStyleModel.get('align'),
-                        textVerticalAlign: textStyleModel.get('baseline'),
-                        textFont: textStyleModel.getFont()
-                    });
-                    group.add(content);
-                }
-            }
-
-            return group;
-
-            function giveGraphic(storageName, Ctor, z) {
-                var element = oldRawIndex != null && oldStorage[storageName][oldRawIndex];
-                var lasts = lastsForAnimation[storageName];
-
-                if (element) {
-                    // Remove from oldStorage
-                    oldStorage[storageName][oldRawIndex] = null;
-                    prepareAnimationWhenHasOld(lasts, element, storageName);
-                }
-                // If invisible and no old element, do not create new element (for optimizing).
-                else if (!invisible) {
-                    element = new Ctor({z: z});
-                    prepareAnimationWhenNoOld(lasts, element, storageName);
-                }
-
-                // Set to thisStorage
-                return (thisStorage[storageName][thisRawIndex] = element);
-            }
-
-            function prepareAnimationWhenHasOld(lasts, element, storageName) {
-                var lastCfg = lasts[thisRawIndex] = {};
-                lastCfg.old = storageName === 'nodeGroup'
-                    ? element.position.slice()
-                    : zrUtil.extend({}, element.shape);
-            }
-
-            // If a element is new, we need to find the animation start point carefully,
-            // otherwise it will looks strange when 'zoomToNode'.
-            function prepareAnimationWhenNoOld(lasts, element, storageName) {
-                // New background do not animate but delay show.
-                if (storageName === 'background') {
-                    element.invisible = true;
-                    element.__tmWillVisible = true;
-                    willVisibleEls.push(element);
-                }
-                else {
-                    var lastCfg = lasts[thisRawIndex] = {};
-                    var parentNode = thisNode.parentNode;
-
-                    if (parentNode && (!reRoot || reRoot.direction === 'drilldown')) {
-                        var parentOldX = 0;
-                        var parentOldY = 0;
-                        // For convenience, get old bounding rect from background.
-                        var parentOldBg = lastsForAnimation.background[parentNode.getRawIndex()];
-
-                        if (parentOldBg && parentOldBg.old) {
-                            parentOldX = parentOldBg.old.width / 2; // Devided by 2 for reRoot effect.
-                            parentOldY = parentOldBg.old.height / 2;
-                        }
-                        // When no parent old shape found, its parent is new too,
-                        // so we can just use {x:0, y:0}.
-                        lastCfg.old = storageName === 'nodeGroup'
-                            ? [parentOldX, parentOldY]
-                            : {x: parentOldX, y: parentOldY, width: 0, height: 0};
-                    }
-
-                    // Fade in, user can be aware that these nodes are new.
-                    lastCfg.fadein = storageName !== 'nodeGroup';
-                }
-            }
-
-            function updateStyle(element, style) {
-                if (!invisible) {
-                    // If invisible, do not set visual, otherwise the element will
-                    // change immediately before animation. We think it is OK to
-                    // remain its origin color when moving out of the view window.
-                    element.setStyle(style);
-                    if (!element.__tmWillVisible) {
-                        element.invisible = false;
-                    }
-                }
-                else {
-                    // Delay invisible setting utill animation finished,
-                    // avoid element vanish suddenly before animation.
-                    !element.invisible && willInvisibleEls.push(element);
-                }
             }
         },
 
@@ -447,30 +263,31 @@
             // Make delete animations.
             each(renderResult.willDeleteEls, function (store, storageName) {
                 each(store, function (el, rawIndex) {
-                    var storageName;
-
-                    if (el.invisible || !(storageName = el.__tmWillDelete)) {
+                    if (el.invisible) {
                         return;
                     }
 
                     var parent = el.parent; // Always has parent, and parent is nodeGroup.
                     var target;
 
-                    if (reRoot && reRoot.direction === 'drilldown') {
-                        if (parent === reRoot.rootNodeGroup) {
-                            // Only 'content' will enter this branch, but not nodeGroup.
-                            target = {
+                    if (reRoot && reRoot.direction === 'drillDown') {
+                        target = parent === reRoot.rootNodeGroup
+                            // This is the content element of view root.
+                            // Only `content` will enter this branch, because
+                            // `background` and `nodeGroup` will not be deleted.
+                            ? {
                                 shape: {
-                                    x: 0, y: 0,
-                                    width: parent.__tmNodeWidth, height: parent.__tmNodeHeight
+                                    x: 0,
+                                    y: 0,
+                                    width: parent.__tmNodeWidth,
+                                    height: parent.__tmNodeHeight
+                                },
+                                style: {
+                                    opacity: 0
                                 }
-                            };
-                            el.z = 2;
-                        }
-                        else {
-                            target = {style: {opacity: 0}};
-                            el.z = 1;
-                        }
+                            }
+                            // Others.
+                            : {style: {opacity: 0}};
                     }
                     else {
                         var targetX = 0;
@@ -479,10 +296,11 @@
                         if (!parent.__tmWillDelete) {
                             // Let node animate to right-bottom corner, cooperating with fadeout,
                             // which is appropriate for user understanding.
-                            // Divided by 2 for reRoot rollup effect.
+                            // Divided by 2 for reRoot rolling up effect.
                             targetX = parent.__tmNodeWidth / 2;
                             targetY = parent.__tmNodeHeight / 2;
                         }
+
                         target = storageName === 'nodeGroup'
                             ? {position: [targetX, targetY], style: {opacity: 0}}
                             : {
@@ -527,6 +345,7 @@
                             target.style = {opacity: 1};
                         }
                     }
+
                     animationWrap.add(el, target, duration, easing);
                 });
             }, this);
@@ -555,7 +374,10 @@
                 controller.on('zoom', bind(this._onZoom, this));
             }
 
-            controller.rect = new BoundingRect(0, 0, api.getWidth(), api.getHeight());
+            var rect = new BoundingRect(0, 0, api.getWidth(), api.getHeight());
+            controller.rectProvider = function () {
+                return rect;
+            };
         },
 
         /**
@@ -579,13 +401,13 @@
                 && (Math.abs(dx) > DRAG_THRESHOLD || Math.abs(dy) > DRAG_THRESHOLD)
             ) {
                 // These param must not be cached.
-                var viewRoot = this.seriesModel.getViewRoot();
+                var root = this.seriesModel.getData().tree.root;
 
-                if (!viewRoot) {
+                if (!root) {
                     return;
                 }
 
-                var rootLayout = viewRoot.getLayout();
+                var rootLayout = root.getLayout();
 
                 if (!rootLayout) {
                     return;
@@ -611,13 +433,13 @@
 
             if (this._state !== 'animating') {
                 // These param must not be cached.
-                var viewRoot = this.seriesModel.getViewRoot();
+                var root = this.seriesModel.getData().tree.root;
 
-                if (!viewRoot) {
+                if (!root) {
                     return;
                 }
 
-                var rootLayout = viewRoot.getLayout();
+                var rootLayout = root.getLayout();
 
                 if (!rootLayout) {
                     return;
@@ -808,8 +630,243 @@
 
     });
 
+    /**
+     * @inner
+     */
     function createStorage() {
         return {nodeGroup: [], background: [], content: []};
+    }
+
+    /**
+     * @inner
+     * @return Return undefined means do not travel further.
+     */
+    function renderNode(
+        seriesModel, thisStorage, oldStorage, reRoot,
+        lastsForAnimation, willInvisibleEls,
+        thisNode, oldNode, parentGroup, depth
+    ) {
+        // Whether under viewRoot.
+        if (!thisNode) {
+            // Deleting nodes will be performed finally. This method just find
+            // element from old storage, or create new element, set them to new
+            // storage, and set styles.
+            return;
+        }
+
+        var thisLayout = thisNode.getLayout();
+
+        if (!thisLayout || !thisLayout.isInView) {
+            return;
+        }
+
+        var thisWidth = thisLayout.width;
+        var thisHeight = thisLayout.height;
+        var thisInvisible = thisLayout.invisible;
+
+        var thisRawIndex = thisNode.getRawIndex();
+        var oldRawIndex = oldNode && oldNode.getRawIndex();
+
+        // Node group
+        var group = giveGraphic('nodeGroup', Group);
+
+        if (!group) {
+            return;
+        }
+
+        parentGroup.add(group);
+        // x,y are not set when el is above view root.
+        group.position = [thisLayout.x || 0, thisLayout.y || 0];
+        group.__tmNodeWidth = thisWidth;
+        group.__tmNodeHeight = thisHeight;
+
+        if (thisLayout.isAboveViewRoot) {
+            return group;
+        }
+
+        // Background
+        var bg = giveGraphic('background', Rect, depth, Z_BG);
+        if (bg) {
+            bg.setShape({x: 0, y: 0, width: thisWidth, height: thisHeight});
+            updateStyle(bg, function () {
+                bg.setStyle('fill', thisNode.getVisual('borderColor', true));
+            });
+            group.add(bg);
+        }
+
+        var thisViewChildren = thisNode.viewChildren;
+
+        // No children, render content.
+        if (!thisViewChildren || !thisViewChildren.length) {
+            var content = giveGraphic('content', Rect, depth, Z_CONTENT);
+            content && renderContent(group);
+        }
+
+        return group;
+
+        // ----------------------------
+        // | Procedures in renderNode |
+        // ----------------------------
+
+        function renderContent(group) {
+            // For tooltip.
+            content.dataIndex = thisNode.dataIndex;
+            content.seriesIndex = seriesModel.seriesIndex;
+
+            var borderWidth = thisLayout.borderWidth;
+            var contentWidth = Math.max(thisWidth - 2 * borderWidth, 0);
+            var contentHeight = Math.max(thisHeight - 2 * borderWidth, 0);
+
+            content.culling = true;
+            content.setShape({
+                x: borderWidth,
+                y: borderWidth,
+                width: contentWidth,
+                height: contentHeight
+            });
+
+            var visualColor = thisNode.getVisual('color', true);
+            updateStyle(content, function () {
+                var normalStyle = {fill: visualColor};
+                var emphasisStyle = thisNode.getModel('itemStyle.emphasis').getItemStyle();
+
+                prepareText(normalStyle, emphasisStyle, visualColor, contentWidth, contentHeight);
+
+                content.setStyle(normalStyle);
+                graphic.setHoverStyle(content, emphasisStyle);
+            });
+
+            group.add(content);
+        }
+
+        function updateStyle(element, cb) {
+            if (!thisInvisible) {
+                // If invisible, do not set visual, otherwise the element will
+                // change immediately before animation. We think it is OK to
+                // remain its origin color when moving out of the view window.
+                cb();
+
+                if (!element.__tmWillVisible) {
+                    element.invisible = false;
+                }
+            }
+            else {
+                // Delay invisible setting utill animation finished,
+                // avoid element vanish suddenly before animation.
+                !element.invisible && willInvisibleEls.push(element);
+            }
+        }
+
+        function prepareText(normalStyle, emphasisStyle, visualColor, contentWidth, contentHeight) {
+            var nodeModel = thisNode.getModel();
+            var text = nodeModel.get('name');
+            if (thisLayout.isLeafRoot) {
+                var iconChar = seriesModel.get('drillDownIcon', true);
+                text += iconChar ? '  ' + iconChar : '';
+            }
+
+            setText(
+                text, normalStyle, nodeModel, PATH_LABEL_NORMAL,
+                visualColor, contentWidth, contentHeight
+            );
+            setText(
+                text, emphasisStyle, nodeModel, PATH_LABEL_EMPHASIS,
+                visualColor, contentWidth, contentHeight
+            );
+        }
+
+        function setText(text, style, nodeModel, labelPath, visualColor, contentWidth, contentHeight) {
+            var labelModel = nodeModel.getModel(labelPath);
+            var labelTextStyleModel = labelModel.getModel('textStyle');
+
+            graphic.setText(style, labelModel, visualColor);
+
+            // text.align and text.baseline is not included by graphic.setText,
+            // because in most cases the two attributes are not exposed to user,
+            // except in treemap.
+            style.textAlign = labelTextStyleModel.get('align');
+            style.textVerticalAlign = labelTextStyleModel.get('baseline');
+
+            var textRect = labelTextStyleModel.getTextRect(text);
+            if (!labelModel.getShallow('show') || textRect.height > contentHeight) {
+                style.text = '';
+            }
+            else if (textRect.width > contentWidth) {
+                style.text = labelTextStyleModel.get('ellipsis')
+                    ? labelTextStyleModel.ellipsis(text, contentWidth) : '';
+            }
+            else {
+                style.text = text;
+            }
+        }
+
+        function giveGraphic(storageName, Ctor, depth, z) {
+            var element = oldRawIndex != null && oldStorage[storageName][oldRawIndex];
+            var lasts = lastsForAnimation[storageName];
+
+            if (element) {
+                // Remove from oldStorage
+                oldStorage[storageName][oldRawIndex] = null;
+                prepareAnimationWhenHasOld(lasts, element, storageName);
+            }
+            // If invisible and no old element, do not create new element (for optimizing).
+            else if (!thisInvisible) {
+                element = new Ctor({z: calculateZ(depth, z)});
+                element.__tmDepth = depth;
+                element.__tmStorageName = storageName;
+                prepareAnimationWhenNoOld(lasts, element, storageName);
+            }
+
+            // Set to thisStorage
+            return (thisStorage[storageName][thisRawIndex] = element);
+        }
+
+        function prepareAnimationWhenHasOld(lasts, element, storageName) {
+            var lastCfg = lasts[thisRawIndex] = {};
+            lastCfg.old = storageName === 'nodeGroup'
+                ? element.position.slice()
+                : zrUtil.extend({}, element.shape);
+        }
+
+        // If a element is new, we need to find the animation start point carefully,
+        // otherwise it will looks strange when 'zoomToNode'.
+        function prepareAnimationWhenNoOld(lasts, element, storageName) {
+            var lastCfg = lasts[thisRawIndex] = {};
+            var parentNode = thisNode.parentNode;
+
+            if (parentNode && (!reRoot || reRoot.direction === 'drillDown')) {
+                var parentOldX = 0;
+                var parentOldY = 0;
+
+                // New nodes appear from right-bottom corner in 'zoomToNode' animation.
+                // For convenience, get old bounding rect from background.
+                var parentOldBg = lastsForAnimation.background[parentNode.getRawIndex()];
+                if (!reRoot && parentOldBg && parentOldBg.old) {
+                    parentOldX = parentOldBg.old.width;
+                    parentOldY = parentOldBg.old.height;
+                }
+
+                // When no parent old shape found, its parent is new too,
+                // so we can just use {x:0, y:0}.
+                lastCfg.old = storageName === 'nodeGroup'
+                    ? [0, parentOldY]
+                    : {x: parentOldX, y: parentOldY, width: 0, height: 0};
+            }
+
+            // Fade in, user can be aware that these nodes are new.
+            lastCfg.fadein = storageName !== 'nodeGroup';
+        }
+    }
+
+    // We can not set all backgroud with the same z, Because the behaviour of
+    // drill down and roll up differ background creation sequence from tree
+    // hierarchy sequence, which cause that lowser background element overlap
+    // upper ones. So we calculate z based on depth.
+    // Moreover, we try to shrink down z interval to [0, 1] to avoid that
+    // treemap with large z overlaps other components.
+    function calculateZ(depth, zInLevel) {
+        var zb = depth * Z_BASE + zInLevel;
+        return (zb - 1) / zb;
     }
 
 });

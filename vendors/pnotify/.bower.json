@@ -43,6 +43,5 @@
   },
   "_source": "https://github.com/sciactive/pnotify.git",
   "_target": "^3.0.0",
-  "_originalSource": "pnotify",
-  "_direct": true
+  "_originalSource": "pnotify"
 }

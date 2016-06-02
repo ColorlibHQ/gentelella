@@ -31,6 +31,5 @@
   },
   "_source": "https://github.com/devbridge/jQuery-Autocomplete.git",
   "_target": "^1.2.24",
-  "_originalSource": "devbridge-autocomplete",
-  "_direct": true
+  "_originalSource": "devbridge-autocomplete"
 }

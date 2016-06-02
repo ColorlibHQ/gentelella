@@ -5,7 +5,7 @@ define(function (require) {
     var SeriesModel = require('../../model/Series');
     var createGraphFromNodeEdge = require('../helper/createGraphFromNodeEdge');
 
-    return SeriesModel.extend({
+    var SankeySeries = SeriesModel.extend({
 
         type: 'series.sankey',
 
@@ -32,6 +32,25 @@ define(function (require) {
          */
         getEdgeData: function() {
             return this.getGraph().edgeData;
+        },
+
+        /**
+         * @override
+         */
+        formatTooltip: function (dataIndex, multipleSeries, dataType) {
+            if (dataType === 'edge') {
+                var params = this.getDataParams(dataIndex, dataType);
+                var rawDataOpt = params.data;
+                var html = rawDataOpt.source + ' -- ' + rawDataOpt.target;
+                if (params.value) {
+                    html += ' : ' + params.value;
+                }
+                return html;
+            }
+            else {
+                return SankeySeries.superCall(this, 'formatTooltip', dataIndex, multipleSeries);
+            }
+            // dataType === 'node' or empty do not show tooltip by default.
         },
 
         defaultOption: {
@@ -74,7 +93,7 @@ define(function (require) {
             itemStyle: {
                 normal: {
                     borderWidth: 1,
-                    borderColor: '#aaa'
+                    borderColor: '#333'
                 }
             },
 
@@ -89,12 +108,6 @@ define(function (require) {
                 }
             },
 
-
-            // colorEncoded node
-
-            color: ['#9e0142', '#d53e4f', '#f46d43', '#fdae61', '#fee08b','#ffffbf',
-                    '#e6f598', '#abdda4', '#66c2a5', '#3288bd', '#5e4fa2'],
-
             animationEasing: 'linear',
 
             animationDuration: 1000
@@ -102,4 +115,5 @@ define(function (require) {
 
     });
 
+    return SankeySeries;
 });

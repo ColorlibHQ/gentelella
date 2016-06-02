@@ -2,7 +2,7 @@
 
 > A simple jQuery image cropping plugin.
 
-- [Homepage](http://fengyuanchen.github.io/cropper)
+- [Website](https://fengyuanchen.github.io/cropper)
 - [Cropper without jQuery](https://github.com/fengyuanchen/cropperjs)
 
 [![Build Status Images](https://travis-ci.org/fengyuanchen/cropper.svg)](https://travis-ci.org/fengyuanchen/cropper)
@@ -48,8 +48,8 @@
 dist/
 ├── cropper.css     ( 5 KB)
 ├── cropper.min.css ( 4 KB)
-├── cropper.js      (77 KB)
-└── cropper.min.js  (27 KB)
+├── cropper.js      (79 KB)
+└── cropper.min.js  (28 KB)
 ```
 
 
@@ -77,7 +77,7 @@ Include files:
 <script src="/path/to/cropper.js"></script>
 ```
 
-The CDNJS provides CDN support for Cropper's CSS and JavaScript. You can find the links [here](https://cdnjs.com/libraries/cropper).
+The [cdnjs](https://github.com/cdnjs/cdnjs) provides CDN support for Cropper's CSS and JavaScript. You can find the links [here](https://cdnjs.com/libraries/cropper).
 
 
 ### Usage
@@ -85,10 +85,17 @@ The CDNJS provides CDN support for Cropper's CSS and JavaScript. You can find th
 Initialize with `$.fn.cropper` method.
 
 ```html
-<!-- Wrap the image or canvas element with a block element -->
+<!-- Wrap the image or canvas element with a block element (container) -->
 <div>
   <img id="image" src="picture.jpg">
 </div>
+```
+
+```css
+/* Limit image width to avoid overflow the container */
+img {
+  max-width: 100%; /* This rule is very important, please do not ignore this! */
+}
 ```
 
 ```js
@@ -114,7 +121,8 @@ See the [FAQ](FAQ.md) documentation.
 
 #### Notes
 
-- The size of the cropper inherits from the size of the image's parent element (wrapper), so be sure to wrap the image with a visible block element.
+- The size of the cropper inherits from the size of the image's parent element (wrapper), so be sure to wrap the image with a **visible block element**.
+  > If you are using cropper in a modal, you should initialize the cropper after the modal shown completely. Otherwise, you will not get a correct cropper.
 
 - The outputted cropped data bases on the original image size, so you can use them to crop the image directly.
 
@@ -124,6 +132,8 @@ See the [FAQ](FAQ.md) documentation.
 #### Known issues
 
 - [Known iOS resource limits](https://developer.apple.com/library/mac/documentation/AppleApplications/Reference/SafariWebContent/CreatingContentforSafarioniPhone/CreatingContentforSafarioniPhone.html): As iOS devices limit memory, the browser may crash when you are cropping a large image (iPhone camera resolution). To avoid this, you may resize the image first (below 1024px) before start a cropper.
+
+- Known image size increase: When export the cropped image on browser-side with the `HTMLCanvasElement.toDataURL` method, the the exported image'size may be greater than the original image's. This is because the exported image'type is not the same as the original image's. So just pass the original image's type as the first parameter to `toDataURL` to fix this. For example, if the original type is JPEG, then use `$().cropper('getCroppedCanvas').toDataURL('image/jpeg')` to export image.
 
 
 [⬆ back to top](#table-of-contents)
@@ -228,6 +238,8 @@ By adding `crossOrigin` attribute to image will stop adding timestamp to image u
 Check the current image's Exif Orientation information.
 
 More exactly, read the Orientation value for rotating or flipping the image, and then override the Orientation value with `1` (the default value) to avoid some issues (#120, #509) on iOS devices.
+
+**Note:** Don't trust this all the time as some JPG images have incorrect (not standard) Orientation values.
 
 > Requires [Typed Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray) support ([IE 10+](http://caniuse.com/typedarrays)).
 
@@ -349,7 +361,7 @@ Define zoom ratio when zoom the image by wheeling mouse.
 - Type: `Boolean`
 - Default: `true`
 
-Enable to move the crop box.
+Enable to move the crop box by dragging.
 
 
 ### cropBoxResizable
@@ -357,7 +369,7 @@ Enable to move the crop box.
 - Type: `Boolean`
 - Default: `true`
 
-Enable to resize the crop box.
+Enable to resize the crop box by dragging.
 
 
 ### toggleDragModeOnDblclick
@@ -607,7 +619,7 @@ $().cropper('zoom', -0.1);
 Zoom the canvas (image wrapper) to an absolute ratio.
 
 ```js
-$().cropper('zoom', 1); // 1:1 (canvasData.width === canvasData.naturalWidth)
+$().cropper('zoomTo', 1); // 1:1 (canvasData.width === canvasData.naturalWidth)
 ```
 
 
@@ -618,7 +630,7 @@ $().cropper('zoom', 1); // 1:1 (canvasData.width === canvasData.naturalWidth)
   - Rotate right: requires a positive number (degree > 0)
   - Rotate left: requires a negative number (degree < 0)
 
-Rotate the canvas (image wrapper) with a relative degree.
+Rotate the image with a relative degree.
 
 > Requires [CSS3 2D Transforms](http://caniuse.com/transforms2d) support (IE 9+).
 
@@ -633,7 +645,7 @@ $().cropper('rotate', -90);
 - **degree**:
   - Type: `Number`
 
-Rotate the canvas (image wrapper) to an absolute degree.
+Rotate the image to an absolute degree.
 
 
 ### scale(scaleX[, scaleY])
@@ -700,7 +712,9 @@ Scale the ordinate of the image.
     - `scaleX`: the scaling factor to apply on the abscissa of the image
     - `scaleY`: the scaling factor to apply on the ordinate of the image
 
-Output the cropped area position and size data (base on the original image).
+Output the final cropped area position and size data (base on the natural size of the original image).
+
+> You can send the data to server-side to crop the image directly.
 
 ![a schematic diagram of data's properties](assets/img/data.jpg)
 
@@ -713,7 +727,7 @@ Output the cropped area position and size data (base on the original image).
 
 Change the cropped area position and size with new data (base on the original image).
 
-**Note:** Only available in strict mode.
+> **Note:** This method only available when the `viewMode` option great than or equal to `1`.
 
 
 ### getContainerData()
@@ -829,9 +843,9 @@ Change the crop box position and size with new data.
   - Rotated image: requires [CSS3 2D Transforms](http://caniuse.com/transforms2d) support (IE 9+).
   - Cross-origin image: requires HTML5 [CORS settings attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes) support (IE 11+).
 
-Get a canvas drawn the cropped image.
+Get a canvas drawn the cropped image. If it is not cropped, then returns the whole canvas.
 
-> After then, you can display the canvas as an image directly, or use [canvas.toDataURL](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toDataURL) to get a Data URL, or use [canvas.toBlob](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toBlob) to get a blob and upload it to server with [FormData](https://developer.mozilla.org/en-US/docs/Web/API/FormData) if the browser supports these APIs.
+> After then, you can display the canvas as an image directly, or use [HTMLCanvasElement.toDataURL](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toDataURL) to get a Data URL, or use [HTMLCanvasElement.toBlob](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toBlob) to get a blob and upload it to server with [FormData](https://developer.mozilla.org/en-US/docs/Web/API/FormData) if the browser supports these APIs.
 
 ```js
 $().cropper('getCroppedCanvas');
@@ -841,7 +855,7 @@ $().cropper('getCroppedCanvas', {
   height: 90
 });
 
-// Upload cropped image to server if the browser supports `canvas.toBlob`
+// Upload cropped image to server if the browser supports `HTMLCanvasElement.toBlob`
 $().cropper('getCroppedCanvas').toBlob(function (blob) {
   var formData = new FormData();
 
@@ -1028,11 +1042,12 @@ If you have to use other plugin with the same namespace, just call the `$.fn.cro
 
 ## Browser support
 
-- Chrome (latest 2)
-- Firefox (latest 2)
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Opera (latest)
+- Edge (latest)
 - Internet Explorer 8+
-- Opera (latest 2)
-- Safari (latest 2)
 
 As a jQuery plugin, you also need to see the [jQuery Browser Support](http://jquery.com/browser-support/).
 

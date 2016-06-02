@@ -126,6 +126,9 @@
                 <label>
                   <input type="checkbox" id="locale"> locale (with example settings)
                 </label>
+                <label id="rtl-wrap">
+                  <input type="checkbox" id="rtl"> RTL (right-to-left)
+                </label>
               </div>
 
               <div class="checkbox">
@@ -287,7 +290,9 @@
           }
 
           if ($('#locale').is(':checked')) {
+            $('#rtl-wrap').show();
             options.locale = {
+              direction: $('#rtl').is(':checked') ? 'rtl' : 'ltr',
               format: 'MM/DD/YYYY HH:mm',
               separator: ' - ',
               applyLabel: 'Apply',
@@ -299,6 +304,8 @@
               monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
               firstDay: 1
             };
+          } else {
+            $('#rtl-wrap').hide();
           }
 
           if (!$('#linkedCalendars').is(':checked'))

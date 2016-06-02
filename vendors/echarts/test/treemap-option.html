@@ -77,18 +77,88 @@
                     name: 'option',
                     type: 'treemap',
                     visibleMin: 300,
-                    data: data.children,
+                    // animationDurationUpdate: 2000,
+                    // data: data.children,
+                    data: [
+                        {
+                            name: 'a',
+                            value: 10,
+                            children: [
+                                {
+                                    name: 'a1',
+                                    value: 11,
+                                    children: [
+                                        {
+                                            name: 'a11',
+                                            value: 111,
+                                        },
+                                        {
+                                            name: 'a111',
+                                            value: 1111
+                                        },
+                                        {
+                                            name: 'a112',
+                                            value: 1111
+                                        },
+                                        {
+                                            name: 'a113',
+                                            value: 111
+                                        },
+                                        {
+                                            name: 'a114',
+                                            value: 111
+                                        },
+                                        {
+                                            name: 'a115',
+                                            value: 1100
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            name: 'b',
+                            value: 6,
+                            children: [
+                                {
+                                    name: 'b1',
+                                    value: 15,
+                                    chidren: [
+                                        {
+                                            name: 'b11',
+                                            value: 120
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
                     leafDepth: 1,
                     nodeClick: 'link',
                     itemStyle: {
-                        normal: {
-                            // gapWidth: 1
-                            // borderWidth: 1
-                        }
+                        // normal: {
+                        //     gapWidth: 1,
+                        //     borderWidth: 1
+                        // }
                     },
                     levels: [
-                        {},
                         {
+                            itemStyle: {
+                                normal: {
+                                    borderColor: '#333',
+                                    borderWidth: 4,
+                                    gapWidth: 2
+                                }
+                            }
+                        },
+                        {
+                            itemStyle: {
+                                normal: {
+                                    borderColor: '#aaa',
+                                    gapWidth: 2,
+                                    borderWidth: 2
+                                }
+                            },
                             colorSaturation: [0.2, 0.7]
                         }
                     ]

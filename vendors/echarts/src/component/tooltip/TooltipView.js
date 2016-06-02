@@ -124,8 +124,8 @@ define(function (require) {
         var rect = el && el.getBoundingRect().clone();
         el && rect.applyTransform(el.transform);
         if (typeof positionExpr === 'function') {
-            // Callback of position can be an array or a string specify the positiont
-            positionExpr = positionExpr([x, y], params, rect);
+            // Callback of position can be an array or a string specify the position
+            positionExpr = positionExpr([x, y], params, content.el, rect);
         }
 
         if (zrUtil.isArray(positionExpr)) {
@@ -448,7 +448,7 @@ define(function (require) {
                     // Reset last hover and dispatch downplay action
                     this._resetLastHover();
 
-                    this._showItemTooltipContent(dataModel, dataIndex, e);
+                    this._showItemTooltipContent(dataModel, dataIndex, el.dataType, e);
                 }
 
                 api.dispatchAction({
@@ -496,7 +496,7 @@ define(function (require) {
                 if (el && el.dataIndex != null) {
                     var seriesModel = ecModel.getSeriesByIndex(el.seriesIndex);
                     var dataIndex = el.dataIndex;
-                    this._showItemTooltipContent(seriesModel, dataIndex, e);
+                    this._showItemTooltipContent(seriesModel, dataIndex, el.dataType, e);
                 }
             }
 
@@ -569,6 +569,10 @@ define(function (require) {
                     );
                 }
             }, this);
+
+            if (!this._tooltipModel.get('show')) {
+                this._hideAxisPointer();
+            }
 
             if (allNotShow) {
                 this._hide();
@@ -858,7 +862,7 @@ define(function (require) {
                 ? (isShadow ? 'Sector' : (axisType === 'radius' ? 'Circle' : 'Line'))
                 : (isShadow ? 'Rect' : 'Line');
 
-           isShadow ? (style.stroke = null) : (style.fill = null);
+            isShadow ? (style.stroke = null) : (style.fill = null);
 
             var el = axisPointers[coordSysName][axisType] = new graphic[elementType]({
                 style: style,
@@ -926,7 +930,7 @@ define(function (require) {
                 from: this.uid
             });
 
-            if (baseAxis && rootTooltipModel.get('showContent')) {
+            if (baseAxis && rootTooltipModel.get('showContent') && rootTooltipModel.get('show')) {
 
                 var formatter = rootTooltipModel.get('formatter');
                 var positionExpr = rootTooltipModel.get('position');
@@ -995,12 +999,13 @@ define(function (require) {
          * Show tooltip on item
          * @param {module:echarts/model/Series} seriesModel
          * @param {number} dataIndex
+         * @param {string} dataType
          * @param {Object} e
          */
-        _showItemTooltipContent: function (seriesModel, dataIndex, e) {
+        _showItemTooltipContent: function (seriesModel, dataIndex, dataType, e) {
             // FIXME Graph data
             var api = this._api;
-            var data = seriesModel.getData();
+            var data = seriesModel.getData(dataType);
             var itemModel = data.getItemModel(dataIndex);
 
             var rootTooltipModel = this._tooltipModel;
@@ -1017,13 +1022,13 @@ define(function (require) {
                 tooltipModel.parentModel = this._tooltipModel;
             }
 
-            if (tooltipModel.get('showContent')) {
+            if (tooltipModel.get('showContent') && tooltipModel.get('show')) {
                 var formatter = tooltipModel.get('formatter');
                 var positionExpr = tooltipModel.get('position');
-                var params = seriesModel.getDataParams(dataIndex);
+                var params = seriesModel.getDataParams(dataIndex, dataType);
                 var html;
                 if (!formatter) {
-                    html = seriesModel.formatTooltip(dataIndex);
+                    html = seriesModel.formatTooltip(dataIndex, false, dataType);
                 }
                 else {
                     if (typeof formatter === 'string') {

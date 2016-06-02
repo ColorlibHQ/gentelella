@@ -1,4 +1,4 @@
-/*! FixedHeader 3.1.1
+/*! FixedHeader 3.1.2
  * ©2009-2016 SpryMedia Ltd - datatables.net/license
  */
 
@@ -6,7 +6,7 @@
  * @summary     FixedHeader
  * @description Fix a table's header or footer, so it is always visible while
  *              scrolling
- * @version     3.1.1
+ * @version     3.1.2
  * @file        dataTables.fixedHeader.js
  * @author      SpryMedia Ltd (www.sprymedia.co.uk)
  * @contact     www.sprymedia.co.uk/contact
@@ -220,6 +220,16 @@ $.extend( FixedHeader.prototype, {
 				that.update();
 			} );
 
+		var autoHeader = $('.fh-fixedHeader');
+		if ( ! this.c.headerOffset && autoHeader.length ) {
+			this.c.headerOffset = autoHeader.outerHeight();
+		}
+
+		var autoFooter = $('.fh-fixedFooter');
+		if ( ! this.c.footerOffset && autoFooter.length ) {
+			this.c.footerOffset = autoFooter.outerHeight();
+		}
+
 		dt.on( 'column-reorder.dt.dtfc column-visibility.dt.dtfc draw.dt.dtfc column-sizing.dt.dtfc', function () {
 			that.update();
 		} );
@@ -383,6 +393,13 @@ $.extend( FixedHeader.prototype, {
 		var itemDom = this.dom[ item ];
 		var position = this.s.position;
 
+		// Record focus. Browser's will cause input elements to loose focus if
+		// they are inserted else where in the doc
+		var tablePart = this.dom[ item==='footer' ? 'tfoot' : 'thead' ];
+		var focus = $.contains( tablePart[0], document.activeElement ) ?
+			document.activeElement :
+			null;
+
 		if ( mode === 'in-place' ) {
 			// Insert the header back into the table's real header
 			if ( itemDom.placeholder ) {
@@ -438,6 +455,11 @@ $.extend( FixedHeader.prototype, {
 				.css( 'top', position.tbodyTop )
 				.css( 'left', position.left+'px' )
 				.css( 'width', position.width+'px' );
+		}
+
+		// Restore focus if it was lost
+		if ( focus && focus !== document.activeElement ) {
+			focus.focus();
 		}
 
 		this.s.scrollLeft.header = -1;
@@ -549,7 +571,7 @@ $.extend( FixedHeader.prototype, {
  * @type {String}
  * @static
  */
-FixedHeader.version = "3.1.1";
+FixedHeader.version = "3.1.2";
 
 /**
  * Defaults

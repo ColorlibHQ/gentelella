@@ -35,6 +35,5 @@
   },
   "_source": "https://github.com/jackmoore/autosize.git",
   "_target": "^3.0.15",
-  "_originalSource": "autosize",
-  "_direct": true
+  "_originalSource": "autosize"
 }

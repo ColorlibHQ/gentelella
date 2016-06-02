@@ -34,15 +34,14 @@
   ],
   "homepage": "https://datatables.net",
   "license": "MIT",
-  "version": "3.1.1",
-  "_release": "3.1.1",
+  "version": "3.1.2",
+  "_release": "3.1.2",
   "_resolution": {
     "type": "version",
-    "tag": "3.1.1",
-    "commit": "dd1aadf69821f91fc2e686b8cee90f6b5e2c7bbf"
+    "tag": "3.1.2",
+    "commit": "762ce1822c9b10180c4359ab4036a0c78d846e73"
   },
   "_source": "https://github.com/DataTables/Dist-DataTables-FixedHeader.git",
   "_target": "^3.1.1",
-  "_originalSource": "datatables.net-fixedheader",
-  "_direct": true
+  "_originalSource": "datatables.net-fixedheader"
 }

@@ -367,6 +367,7 @@ define(function (require) {
                 return;
             }
 
+            // Fixme First time update ?
             ecModel.restoreData();
 
             // TODO
@@ -838,14 +839,13 @@ define(function (require) {
      * @private
      */
     echartsProto._initEvents = function () {
-        var zr = this._zr;
         each(MOUSE_EVENT_NAMES, function (eveName) {
-            zr.on(eveName, function (e) {
+            this._zr.on(eveName, function (e) {
                 var ecModel = this.getModel();
                 var el = e.target;
                 if (el && el.dataIndex != null) {
                     var dataModel = el.dataModel || ecModel.getSeriesByIndex(el.seriesIndex);
-                    var params = dataModel && dataModel.getDataParams(el.dataIndex) || {};
+                    var params = dataModel && dataModel.getDataParams(el.dataIndex, el.dataType) || {};
                     params.event = e;
                     params.type = eveName;
                     this.trigger(eveName, params);
@@ -970,9 +970,9 @@ define(function (require) {
         /**
          * @type {number}
          */
-        version: '3.1.7',
+        version: '3.1.10',
         dependencies: {
-            zrender: '3.0.8'
+            zrender: '3.1.0'
         }
     };
 

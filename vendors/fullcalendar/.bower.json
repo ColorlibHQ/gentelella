@@ -1,7 +1,7 @@
 {
   "name": "fullcalendar",
   "title": "FullCalendar",
-  "version": "2.7.1",
+  "version": "2.7.3",
   "description": "Full-sized drag & drop event calendar",
   "keywords": [
     "calendar",
@@ -48,11 +48,11 @@
     "!/CHANGELOG.*",
     "!/CONTRIBUTING.*"
   ],
-  "_release": "2.7.1",
+  "_release": "2.7.3",
   "_resolution": {
     "type": "version",
-    "tag": "v2.7.1",
-    "commit": "c0cf46d19d632bf4402ef7198b3619ad63953582"
+    "tag": "v2.7.3",
+    "commit": "87dcd3f73c21d91c296830c7589b77c4fc8f386e"
   },
   "_source": "https://github.com/arshaw/fullcalendar.git",
   "_target": "^2.6.1",

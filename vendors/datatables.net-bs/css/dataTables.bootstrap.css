@@ -3,6 +3,7 @@ table.dataTable {
   margin-top: 6px !important;
   margin-bottom: 6px !important;
   max-width: none !important;
+  border-collapse: separate !important;
 }
 table.dataTable td,
 table.dataTable th {
@@ -155,9 +156,6 @@ table.dataTable.table-condensed .sorting_desc:after {
   right: 6px;
 }
 
-table.table-bordered.dataTable {
-  border-collapse: separate !important;
-}
 table.table-bordered.dataTable th,
 table.table-bordered.dataTable td {
   border-left-width: 0;

@@ -5,7 +5,6 @@ define(function(require) {
     var zrUtil = require('zrender/core/util');
     var Model = require('../../model/Model');
     var formatUtil = require('../../util/format');
-    var helper = require('./helper');
     var encodeHTML = formatUtil.encodeHTML;
     var addCommas = formatUtil.addCommas;
 
@@ -36,6 +35,8 @@ define(function(require) {
             squareRatio: 0.5 * (1 + Math.sqrt(5)), // golden ratio
             leafDepth: null,                    // Nodes on depth from root are regarded as leaves.
                                                 // Count from zero (zero represents only view root).
+            drillDownIcon: '▶',                 // Use html character temporarily because it is complicated
+                                                // to align specialized icon. ▷▶❒❐▼✚
             visualDimension: 0,                 // Can be 0, 1, 2, 3.
             zoomToNodeRatio: 0.32 * 0.32,       // Be effective when using zoomToNode. Specify the proportion of the
                                                 // target node area in the view area.
@@ -76,10 +77,8 @@ define(function(require) {
             label: {
                 normal: {
                     show: true,
-                    position: ['50%', '50%'], // Can be 5, '5%' or position stirng like 'insideTopLeft', ...
+                    position: 'inside', // Can be [5, '5%'] or position stirng like 'insideTopLeft', ...
                     textStyle: {
-                        align: 'center',
-                        baseline: 'middle',
                         color: '#fff',
                         ellipsis: true
                     }
@@ -258,7 +257,6 @@ define(function(require) {
 
         /**
          * @param {module:echarts/data/Tree~Node} [viewRoot]
-         * @return {string} direction 'drilldown' or 'rollup'
          */
         resetViewRoot: function (viewRoot) {
             viewRoot

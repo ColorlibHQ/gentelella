@@ -5,15 +5,15 @@
 // Colors
 // -------------------------
 
-$color-brand: #39f;
-$color-black: #000;
-$color-white: #fff;
+$color-brand: #39f !default;
+$color-black: #000 !default;
+$color-white: #fff !default;
 
 
 // Media queries breakpoints
 // -------------------------
 
-$screen-xs: 480px; // Extra small screen / phone
-$screen-sm: 768px; // Small screen / tablet
-$screen-md: 992px; // Medium screen / desktop
-$screen-lg: 1200px; // Large screen / wide desktop
+$screen-xs: 480px !default; // Extra small screen / phone
+$screen-sm: 768px !default; // Small screen / tablet
+$screen-md: 992px !default; // Medium screen / desktop
+$screen-lg: 1200px !default; // Large screen / wide desktop

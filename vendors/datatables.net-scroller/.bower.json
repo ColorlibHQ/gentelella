@@ -33,15 +33,14 @@
   ],
   "homepage": "https://datatables.net",
   "license": "MIT",
-  "version": "1.4.1",
-  "_release": "1.4.1",
+  "version": "1.4.2",
+  "_release": "1.4.2",
   "_resolution": {
     "type": "version",
-    "tag": "1.4.1",
-    "commit": "b268f65fceb1fe05725040c299d56c9b426453f8"
+    "tag": "1.4.2",
+    "commit": "8626dca4ad6777ed440e8cd9c46703d63a344ecf"
   },
   "_source": "https://github.com/DataTables/Dist-DataTables-Scroller.git",
   "_target": "^1.4.1",
-  "_originalSource": "datatables.net-scroller",
-  "_direct": true
+  "_originalSource": "datatables.net-scroller"
 }

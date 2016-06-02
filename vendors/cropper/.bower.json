@@ -47,20 +47,19 @@
   },
   "devDependencies": {
     "bootstrap": "~3.3.6",
-    "fontawesome": "~4.5.0",
-    "html5-boilerplate": "~5.2.0",
-    "jquery": "~1.12.0",
-    "qunit": "~1.20.0"
+    "fontawesome": "~4.6.1",
+    "html5-boilerplate": "~5.3.0",
+    "jquery": "~1.12.3",
+    "qunit": "~1.22.0"
   },
-  "version": "2.3.0",
-  "_release": "2.3.0",
+  "version": "2.3.1",
+  "_release": "2.3.1",
   "_resolution": {
     "type": "version",
-    "tag": "v2.3.0",
-    "commit": "2cbe834845b19c79b84a4d889dc38a156911ebd8"
+    "tag": "v2.3.1",
+    "commit": "91547592292e2f296e40bbab4881e41013b80d27"
   },
   "_source": "https://github.com/fengyuanchen/cropper.git",
   "_target": "^2.3.0",
-  "_originalSource": "cropper",
-  "_direct": true
+  "_originalSource": "cropper"
 }

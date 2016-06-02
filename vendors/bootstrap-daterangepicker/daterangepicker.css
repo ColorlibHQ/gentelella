@@ -90,7 +90,9 @@
     white-space: nowrap;
     cursor: pointer; }
     .daterangepicker td.available:hover, .daterangepicker th.available:hover {
-      background: #eee; }
+      background-color: #eee;
+      border-color: transparent;
+      color: inherit; }
     .daterangepicker td.week, .daterangepicker th.week {
       font-size: 80%;
       color: #ccc; }
@@ -153,6 +155,12 @@
       position: absolute;
       left: 8px;
       top: 8px; }
+  .daterangepicker.rtl .input-mini {
+    padding-right: 28px;
+    padding-left: 6px; }
+  .daterangepicker.rtl .daterangepicker_input i {
+    left: auto;
+    right: 8px; }
   .daterangepicker .calendar-time {
     text-align: center;
     margin: 5px auto;
@@ -201,32 +209,61 @@
       width: 100%; }
     .daterangepicker.single .calendar.left {
       clear: none; }
-    .daterangepicker.single .ranges, .daterangepicker.single .calendar {
+    .daterangepicker.single.ltr .ranges, .daterangepicker.single.ltr .calendar {
       float: left; }
-    .daterangepicker .calendar.left {
-      clear: left;
-      margin-right: 0; }
-      .daterangepicker .calendar.left .calendar-table {
-        border-right: none;
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0; }
-    .daterangepicker .calendar.right {
-      margin-left: 0; }
-      .daterangepicker .calendar.right .calendar-table {
-        border-left: none;
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0; }
-    .daterangepicker .left .daterangepicker_input {
-      padding-right: 12px; }
-    .daterangepicker .calendar.left .calendar-table {
-      padding-right: 12px; }
-    .daterangepicker .ranges, .daterangepicker .calendar {
-      float: left; } }
-
+    .daterangepicker.single.rtl .ranges, .daterangepicker.single.rtl .calendar {
+      float: right; }
+    .daterangepicker.ltr {
+      direction: ltr;
+      text-align: left; }
+      .daterangepicker.ltr .calendar.left {
+        clear: left;
+        margin-right: 0; }
+        .daterangepicker.ltr .calendar.left .calendar-table {
+          border-right: none;
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0; }
+      .daterangepicker.ltr .calendar.right {
+        margin-left: 0; }
+        .daterangepicker.ltr .calendar.right .calendar-table {
+          border-left: none;
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0; }
+      .daterangepicker.ltr .left .daterangepicker_input {
+        padding-right: 12px; }
+      .daterangepicker.ltr .calendar.left .calendar-table {
+        padding-right: 12px; }
+      .daterangepicker.ltr .ranges, .daterangepicker.ltr .calendar {
+        float: left; }
+    .daterangepicker.rtl {
+      direction: rtl;
+      text-align: right; }
+      .daterangepicker.rtl .calendar.left {
+        clear: right;
+        margin-left: 0; }
+        .daterangepicker.rtl .calendar.left .calendar-table {
+          border-left: none;
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0; }
+      .daterangepicker.rtl .calendar.right {
+        margin-right: 0; }
+        .daterangepicker.rtl .calendar.right .calendar-table {
+          border-right: none;
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0; }
+      .daterangepicker.rtl .left .daterangepicker_input {
+        padding-left: 12px; }
+      .daterangepicker.rtl .calendar.left .calendar-table {
+        padding-left: 12px; }
+      .daterangepicker.rtl .ranges, .daterangepicker.rtl .calendar {
+        text-align: right;
+        float: right; } }
 @media (min-width: 730px) {
   .daterangepicker .ranges {
-    width: auto;
+    width: auto; }
+  .daterangepicker.ltr .ranges {
     float: left; }
+  .daterangepicker.rtl .ranges {
+    float: right; }
   .daterangepicker .calendar.left {
-    clear: none; } }
-
+    clear: none !important; } }
