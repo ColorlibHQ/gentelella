@@ -1,7 +1,6 @@
 define(function (require) {
 
     var graphic = require('../../util/graphic');
-    var modelUtil = require('../../util/model');
     var zrUtil = require('zrender/core/util');
 
     var SankeyShape = graphic.extendShape({
@@ -46,28 +45,14 @@ define(function (require) {
             var graph = seriesModel.getGraph();
             var group = this.group;
             var layoutInfo = seriesModel.layoutInfo;
+            var nodeData = seriesModel.getData();
+            var edgeData = seriesModel.getData('edge');
 
             this._model = seriesModel;
 
             group.removeAll();
 
             group.position = [layoutInfo.x, layoutInfo.y];
-
-            var edgeData = graph.edgeData;
-            var rawOption = seriesModel.option;
-            var formatModel = modelUtil.createDataFormatModel(
-                seriesModel, edgeData, rawOption.edges || rawOption.links
-            );
-
-            formatModel.formatTooltip = function (dataIndex) {
-                var params = this.getDataParams(dataIndex);
-                var rawDataOpt = params.data;
-                var html = rawDataOpt.source + ' -- ' + rawDataOpt.target;
-                if (params.value) {
-                    html += ':' + params.value;
-                }
-                return html;
-            };
 
             // generate a rect  for each node
             graph.eachNode(function (node) {
@@ -117,6 +102,10 @@ define(function (require) {
                 ));
 
                 group.add(rect);
+
+                nodeData.setItemGraphicEl(node.dataIndex, rect);
+
+                rect.dataType = 'node';
             });
 
             // generate a bezire Curve for each edge
@@ -124,7 +113,8 @@ define(function (require) {
                 var curve = new SankeyShape();
 
                 curve.dataIndex = edge.dataIndex;
-                curve.dataModel = formatModel;
+                curve.seriesIndex = seriesModel.seriesIndex;
+                curve.dataType = 'edge';
 
                 var lineStyleModel = edge.getModel('lineStyle.normal');
                 var curvature = lineStyleModel.get('curveness');
@@ -159,8 +149,9 @@ define(function (require) {
 
                 group.add(curve);
 
+                edgeData.setItemGraphicEl(edge.dataIndex, curve);
             });
-            if (!this._data) {
+            if (!this._data && seriesModel.get('animation')) {
                 group.setClipPath(createGridClipShape(group.getBoundingRect(), seriesModel, function () {
                     group.removeClipPath();
                 }));

@@ -1,4 +1,3 @@
-
 /**
  * @file Data zoom model
  */
@@ -19,13 +18,16 @@ define(function(require) {
          * @protected
          */
         defaultOption: {
-            align: 'auto',     // 'auto', 'left', 'right', 'top', 'bottom'
-            calculable: false,         // 是否值域漫游，启用后无视splitNumber和pieces，线性渐变
-            range: [-Infinity, Infinity], // 当前选中范围
-            hoverLink: true,
-            realtime: true,
-            itemWidth: null,            // 值域图形宽度
-            itemHeight: null            // 值域图形高度
+            align: 'auto',          // 'auto', 'left', 'right', 'top', 'bottom'
+            calculable: false,      // This prop effect default component type determine,
+                                    // See echarts/component/visualMap/typeDefaulter.
+            range: null,            // selected range. In default case `range` is [min, max]
+                                    // and can auto change along with modification of min max,
+                                    // util use specifid a range.
+            realtime: true,         // Whether realtime update.
+            itemHeight: null,       // The length of the range control edge.
+            itemWidth: null,        // The length of the other side.
+            hoverLink: true         // Enable hover highlight.
         },
 
         /**
@@ -65,11 +67,20 @@ define(function(require) {
         _resetRange: function () {
             var dataExtent = this.getExtent();
             var range = this.option.range;
-            if (range[0] > range[1]) {
-                range.reverse();
+
+            if (!range || range.auto) {
+                // `range` should always be array (so we dont use other
+                // value like 'auto') for user-friend. (consider getOption).
+                dataExtent.auto = 1;
+                this.option.range = dataExtent;
             }
-            range[0] = Math.max(range[0], dataExtent[0]);
-            range[1] = Math.min(range[1], dataExtent[1]);
+            else if (zrUtil.isArray(range)) {
+                if (range[0] > range[1]) {
+                    range.reverse();
+                }
+                range[0] = Math.max(range[0], dataExtent[0]);
+                range[1] = Math.min(range[1], dataExtent[1]);
+            }
         },
 
         /**
@@ -129,6 +140,28 @@ define(function(require) {
                 (range[0] <= dataExtent[0] || range[0] <= value)
                 && (range[1] >= dataExtent[1] || value <= range[1])
             ) ? 'inRange' : 'outOfRange';
+        },
+
+        /**
+         * @public
+         * @params {Array.<number>} range target value: range[0] <= value && value <= range[1]
+         * @return {Array.<Object>} [{seriesId, dataIndices: <Array.<number>>}, ...]
+         */
+        findTargetDataIndices: function (range) {
+            var result = [];
+
+            this.eachTargetSeries(function (seriesModel) {
+                var dataIndices = [];
+                var data = seriesModel.getData();
+
+                data.each(this.getDataDimension(data), function (value, dataIndex) {
+                    range[0] <= value && value <= range[1] && dataIndices.push(dataIndex);
+                }, true, this);
+
+                result.push({seriesId: seriesModel.id, dataIndices: dataIndices});
+            }, this);
+
+            return result;
         }
 
     });

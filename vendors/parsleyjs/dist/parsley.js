@@ -1,6 +1,6 @@
 /*!
 * Parsley.js
-* Version 2.3.11 - built Fri, Apr 15th 2016, 9:21 am
+* Version 2.3.13 - built Tue, May 31st 2016, 8:55 am
 * http://parsleyjs.org
 * Guillaume Potier - <guillaume@wisembly.com>
 * Marc-Andre Lafortune - <petroselinum@marc-andre.ca>
@@ -1373,10 +1373,9 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
   ConstraintFactory.prototype = {
     validate: function validate(value, instance) {
-      var args = this.requirementList.slice(0); // Make copy
-      args.unshift(value);
-      args.push(instance);
-      return this.validator.validate.apply(this.validator, args);
+      var _validator;
+
+      return (_validator = this.validator).validate.apply(_validator, [value].concat(_toConsumableArray(this.requirementList), [instance]));
     },
 
     _parseRequirements: function _parseRequirements(options) {
@@ -1854,7 +1853,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
   ParsleyFactory.prototype = {
     init: function init(options) {
       this.__class__ = 'Parsley';
-      this.__version__ = '2.3.11';
+      this.__version__ = '2.3.13';
       this.__id__ = ParsleyUtils__default.generateID();
 
       // Pre-compute options
@@ -1976,7 +1975,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
     actualizeOptions: null,
     _resetOptions: null,
     Factory: ParsleyFactory,
-    version: '2.3.11'
+    version: '2.3.13'
   });
 
   // Supplement ParsleyField and Form with ParsleyAbstract

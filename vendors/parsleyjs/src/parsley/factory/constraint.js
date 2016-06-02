@@ -27,10 +27,7 @@ var capitalize = function(str) {
 
 ConstraintFactory.prototype = {
   validate: function(value, instance) {
-    var args = this.requirementList.slice(0); // Make copy
-    args.unshift(value);
-    args.push(instance);
-    return this.validator.validate.apply(this.validator, args);
+    return this.validator.validate(value, ...this.requirementList, instance);
   },
 
   _parseRequirements: function(options) {

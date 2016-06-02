@@ -10,7 +10,7 @@ var Utils = require('select2/utils');
 var options = new Options({});
 
 test('backspace will remove a choice', function (assert) {
-  expect(3);
+  assert.expect(3);
 
   var KEYS = require('select2/keys');
 
@@ -52,7 +52,7 @@ test('backspace will remove a choice', function (assert) {
 });
 
 test('backspace will set the search text', function (assert) {
-  expect(3);
+  assert.expect(3);
 
   var KEYS = require('select2/keys');
 
@@ -94,7 +94,7 @@ test('updating selection does not shift the focus', function (assert) {
   // Check for IE 8, which triggers a false negative during testing
   if (window.attachEvent && !window.addEventListener) {
     // We must expect 0 assertions or the test will fail
-    expect(0);
+    assert.expect(0);
     return;
   }
 
@@ -135,5 +135,57 @@ test('updating selection does not shift the focus', function (assert) {
     document.activeElement,
     $search[0],
     'The search did not have focus after the selection was updated'
+  );
+});
+
+test('the focus event shifts the focus', function (assert) {
+  // Check for IE 8, which triggers a false negative during testing
+  if (window.attachEvent && !window.addEventListener) {
+    // We must expect 0 assertions or the test will fail
+    assert.expect(0);
+    return;
+  }
+
+  var $container = $('#qunit-fixture .event-container');
+  var container = new MockContainer();
+
+  var CustomSelection = Utils.Decorate(MultipleSelection, InlineSearch);
+
+  var $element = $('#qunit-fixture .multiple');
+  var selection = new CustomSelection($element, options);
+
+  var $selection = selection.render();
+  selection.bind(container, $container);
+
+  // Update the selection so the search is rendered
+  selection.update([]);
+
+  // Make it visible so the browser can place focus on the search
+  $container.append($selection);
+
+  // The search should not be automatically focused
+
+  var $search = $selection.find('input');
+
+  assert.notEqual(
+    document.activeElement,
+    $search[0],
+    'The search had focus originally'
+  );
+
+  assert.equal($search.length, 1, 'The search was not visible');
+
+  // Focus the container
+
+  container.trigger('focus');
+
+  // Make sure it focuses the search
+
+  assert.equal($search.length, 1, 'The search box disappeared');
+
+  assert.equal(
+    document.activeElement,
+    $search[0],
+    'The search did not have focus originally'
   );
 });

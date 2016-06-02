@@ -29,6 +29,10 @@ define(function(require) {
         // If data is undefined
         data = data || [];
 
+        if (!zrUtil.isArray(data)) {
+            throw new Error('Invalid data.');
+        }
+
         var coordSysName = seriesModel.get('coordinateSystem');
         var creator = creators[coordSysName];
         var registeredCoordSys = CoordinateSystem.get(coordSysName);
@@ -101,6 +105,10 @@ define(function(require) {
         cartesian2d: function (data, seriesModel, ecModel) {
             var xAxisModel = ecModel.getComponent('xAxis', seriesModel.get('xAxisIndex'));
             var yAxisModel = ecModel.getComponent('yAxis', seriesModel.get('yAxisIndex'));
+            if (!xAxisModel || !yAxisModel) {
+                throw new Error('Axis option not found');
+            }
+
             var xAxisType = xAxisModel.get('type');
             var yAxisType = yAxisModel.get('type');
 
@@ -144,6 +152,10 @@ define(function(require) {
             var radiusAxisModel = ecModel.findComponents({
                 mainType: 'radiusAxis', filter: axisFinder
             })[0];
+
+            if (!angleAxisModel || !radiusAxisModel) {
+                throw new Error('Axis option not found');
+            }
 
             var radiusAxisType = radiusAxisModel.get('type');
             var angleAxisType = angleAxisModel.get('type');

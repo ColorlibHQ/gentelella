@@ -1,7 +1,5 @@
 define(function (require) {
 
-    require('./GeoModel');
-
     var Geo = require('./Geo');
 
     var layout = require('../../util/layout');
@@ -28,14 +26,8 @@ define(function (require) {
 
         this.setViewRect(viewRect.x, viewRect.y, viewRect.width, viewRect.height);
 
-        var roamDetailModel = geoModel.getModel('roamDetail');
-
-        var panX = roamDetailModel.get('x') || 0;
-        var panY = roamDetailModel.get('y') || 0;
-        var zoom = roamDetailModel.get('zoom') || 1;
-
-        this.setPan(panX, panY);
-        this.setZoom(zoom);
+        this.setCenter(geoModel.get('center'));
+        this.setZoom(geoModel.get('zoom'));
     }
 
     /**
@@ -176,6 +168,36 @@ define(function (require) {
          */
         getMap: function (mapName) {
             return mapDataStores[mapName];
+        },
+
+        /**
+         * Fill given regions array
+         * @param  {Array.<Object>} originRegionArr
+         * @param  {string} mapName
+         * @return {Array}
+         */
+        getFilledRegions: function (originRegionArr, mapName) {
+            // Not use the original
+            var regionsArr = (originRegionArr || []).slice();
+
+            var map = geoCreator.getMap(mapName);
+            var geoJson = map && map.geoJson;
+
+            var dataNameMap = {};
+            var features = geoJson.features;
+            for (var i = 0; i < regionsArr.length; i++) {
+                dataNameMap[regionsArr[i].name] = regionsArr[i];
+            }
+
+            for (var i = 0; i < features.length; i++) {
+                var name = features[i].properties.name;
+                if (!dataNameMap[name]) {
+                    regionsArr.push({
+                        name: name
+                    });
+                }
+            }
+            return regionsArr;
         }
     };
 
@@ -190,4 +212,6 @@ define(function (require) {
     echarts.loadMap = function () {};
 
     echarts.registerCoordinateSystem('geo', geoCreator);
+
+    return geoCreator;
 });

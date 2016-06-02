@@ -63,6 +63,10 @@ define(function (require) {
         var layout = data.getItemLayout(idx);
         var opacity = data.getItemModel(idx).get(opacityAccessPath);
         opacity = opacity == null ? 1 : opacity;
+
+        // Reset style
+        polygon.useStyle({});
+
         if (firstCreate) {
             polygon.setShape({
                 points: layout.points
@@ -72,7 +76,7 @@ define(function (require) {
                 style: {
                     opacity: opacity
                 }
-            }, seriesModel);
+            }, seriesModel, idx);
         }
         else {
             graphic.updateProps(polygon, {
@@ -82,7 +86,7 @@ define(function (require) {
                 shape: {
                     points: layout.points
                 }
-            }, seriesModel);
+            }, seriesModel, idx);
         }
 
         // Update common style
@@ -119,14 +123,14 @@ define(function (require) {
             shape: {
                 points: labelLayout.linePoints || labelLayout.linePoints
             }
-        }, seriesModel);
+        }, seriesModel, idx);
 
         graphic.updateProps(labelText, {
             style: {
                 x: labelLayout.x,
                 y: labelLayout.y
             }
-        }, seriesModel);
+        }, seriesModel, idx);
         labelText.attr({
             style: {
                 textAlign: labelLayout.textAlign,

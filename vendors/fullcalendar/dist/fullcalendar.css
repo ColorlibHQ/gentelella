@@ -1,5 +1,5 @@
 /*!
- * FullCalendar v2.7.1 Stylesheet
+ * FullCalendar v2.7.3 Stylesheet
  * Docs & License: http://fullcalendar.io/
  * (c) 2016 Adam Shaw
  */
@@ -551,24 +551,19 @@ temporary rendered events).
 
 /* resizer (touch devices) */
 
-.fc-touch .fc-event .fc-resizer {
-	display: none; /* only show when selected */
+.fc-event .fc-resizer {
+	display: none;
 }
 
-.fc-touch .fc-event.fc-selected .fc-resizer {
+.fc-event.fc-allow-mouse-resize .fc-resizer,
+.fc-event.fc-selected .fc-resizer {
+	/* only show when hovering or selected (with touch) */
 	display: block;
 }
 
+/* hit area */
 
-/* Hit Area (for events and expander)
---------------------------------------------------------------------------------------------------*/
-
-.fc-expander { /* fc-event is already position:relative */
-	position: relative;
-}
-
-.fc-touch .fc-expander:before,
-.fc-touch .fc-event .fc-resizer:before {
+.fc-event.fc-selected .fc-resizer:before {
 	/* 40x40 touch area */
 	content: "";
 	position: absolute;
@@ -645,9 +640,9 @@ temporary rendered events).
 	right: -1px; /* overcome border */
 }
 
-/* resizer (cursor devices) */
+/* resizer (mouse devices) */
 
-.fc-cursor .fc-h-event .fc-resizer {
+.fc-h-event.fc-allow-mouse-resize .fc-resizer {
 	width: 7px;
 	top: -1px; /* overcome top border */
 	bottom: -1px; /* overcome bottom border */
@@ -655,7 +650,7 @@ temporary rendered events).
 
 /* resizer (touch devices) */
 
-.fc-touch .fc-h-event .fc-resizer {
+.fc-h-event.fc-selected .fc-resizer {
 	/* 8x8 little dot */
 	border-radius: 4px;
 	border-width: 1px;
@@ -670,14 +665,14 @@ temporary rendered events).
 }
 
 /* left resizer  */
-.fc-touch.fc-ltr .fc-h-event .fc-start-resizer,
-.fc-touch.fc-rtl .fc-h-event .fc-end-resizer {
+.fc-ltr .fc-h-event.fc-selected .fc-start-resizer,
+.fc-rtl .fc-h-event.fc-selected .fc-end-resizer {
 	margin-left: -4px; /* centers the 8x8 dot on the left edge */
 }
 
 /* right resizer */
-.fc-touch.fc-ltr .fc-h-event .fc-end-resizer,
-.fc-touch.fc-rtl .fc-h-event .fc-start-resizer {
+.fc-ltr .fc-h-event.fc-selected .fc-end-resizer,
+.fc-rtl .fc-h-event.fc-selected .fc-start-resizer {
 	margin-right: -4px; /* centers the 8x8 dot on the right edge */
 }
 
@@ -720,14 +715,14 @@ be a descendant of the grid when it is being dragged.
 /* resizer (cursor devices) */
 
 /* left resizer  */
-.fc-cursor.fc-ltr .fc-day-grid-event .fc-start-resizer,
-.fc-cursor.fc-rtl .fc-day-grid-event .fc-end-resizer {
+.fc-ltr .fc-day-grid-event.fc-allow-mouse-resize .fc-start-resizer,
+.fc-rtl .fc-day-grid-event.fc-allow-mouse-resize .fc-end-resizer {
 	margin-left: -2px; /* to the day cell's edge */
 }
 
 /* right resizer */
-.fc-cursor.fc-ltr .fc-day-grid-event .fc-end-resizer,
-.fc-cursor.fc-rtl .fc-day-grid-event .fc-start-resizer {
+.fc-ltr .fc-day-grid-event.fc-allow-mouse-resize .fc-end-resizer,
+.fc-rtl .fc-day-grid-event.fc-allow-mouse-resize .fc-start-resizer {
 	margin-right: -2px; /* to the day cell's edge */
 }
 
@@ -1197,7 +1192,7 @@ be a descendant of the grid when it is being dragged.
 
 /* resizer (cursor device) */
 
-.fc-cursor .fc-time-grid-event .fc-resizer {
+.fc-time-grid-event.fc-allow-mouse-resize .fc-resizer {
 	left: 0;
 	right: 0;
 	bottom: 0;
@@ -1210,13 +1205,13 @@ be a descendant of the grid when it is being dragged.
 	cursor: s-resize;
 }
 
-.fc-cursor .fc-time-grid-event .fc-resizer:after {
+.fc-time-grid-event.fc-allow-mouse-resize .fc-resizer:after {
 	content: "=";
 }
 
 /* resizer (touch device) */
 
-.fc-touch .fc-time-grid-event .fc-resizer {
+.fc-time-grid-event.fc-selected .fc-resizer {
 	/* 10x10 dot */
 	border-radius: 5px;
 	border-width: 1px;

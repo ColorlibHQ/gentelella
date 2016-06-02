@@ -1,4 +1,23 @@
 
+v2.7.3 (2016-06-02)
+-------------------
+
+internal enhancements that plugins can benefit from:
+- EventEmitter not correctly working with stopListeningTo
+- normalizeEvent hook for manipulating event data
+
+
+v2.7.2 (2016-05-20)
+-------------------
+
+- fixed desktops/laptops with touch support not accepting mouse events for
+  dayClick/dragging/resizing (#3154, #3149)
+- fixed dayClick incorrectly triggered on touch scroll (#3152)
+- fixed touch event dragging wrongfully beginning upon scrolling document (#3160)
+- fixed minified JS still contained comments
+- UI change: mouse users must hover over an event to reveal its resizers
+
+
 v2.7.1 (2016-05-01)
 -------------------
 
