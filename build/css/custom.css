@@ -1746,7 +1746,10 @@ a.star {
   text-align: left;
   width: 100%; }
 
-.buttons, button, .btn {
+button,
+.buttons,
+.btn,
+.modal-footer .btn + .btn {
   margin-bottom: 5px;
   margin-right: 5px; }
 
