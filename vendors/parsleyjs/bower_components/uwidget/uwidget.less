@@ -1,0 +1,54 @@
+@lightgrey: #999;
+@extralightgrey: #f5f5f5;
+@border: #e5e5e5;
+@black: #111;
+
+.uwidget {
+  border: 1px solid @border;
+
+  .uwidget-actions {
+    display: block;
+    height: 22px;
+    background-color: @extralightgrey;
+
+    .filters {
+      float:right;
+    }
+  }
+
+  .uwidget-info {
+    display: block;
+    height: 15px;
+    color: @lightgrey;
+    font-size: 10px;
+    text-align: right;
+    background-color: @extralightgrey;
+
+    a, a:hover, a:visited {
+      color: @lightgrey;
+      text-decoration: none;
+    }
+  }
+
+  ul.uwidget-container {
+    display: block;
+    margin: 0;
+    padding: 2px;
+    list-style: none;
+    text-align: justify;
+    overflow-x: hidden;
+    overflow-y: scroll;
+
+    li {
+      position: relative;
+      display: block;
+      margin-bottom: -1px;
+      padding: 8px;
+      border-bottom: 1px solid @border;
+
+      &:last-child {
+        border: none;
+      }
+    }
+  }
+}

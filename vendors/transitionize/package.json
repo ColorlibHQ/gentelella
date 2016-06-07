@@ -1,0 +1,19 @@
+{
+  "name": "transitionize",
+  "version": "0.0.3",
+  "description": "Create CSS3 transitions dynamically",
+  "main": "transitionize.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/abpetkov/transitionize.git"
+  },
+  "author": "Alexander Petkov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/abpetkov/transitionize/issues"
+  },
+  "devDependencies": {
+    "uglify-js": "~2.4.8",
+    "component": "~0.18.0"
+  }
+}

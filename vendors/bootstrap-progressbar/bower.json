@@ -1,0 +1,29 @@
+{
+  "name": "bootstrap-progressbar",
+  "version": "0.9.0",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Stephan Groß",
+      "homepage": "http://www.minddust.com"
+    }
+  ],
+  "homepage": "http://www.minddust.com/project/bootstrap-progressbar/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/minddust/bootstrap-progressbar.git"
+  },
+  "main": "./bootstrap-progressbar.js",
+  "ignore": [
+    "**/.*",
+    "Gulpfile.js",
+    "Rakefile",
+    "bower_components",
+    "node_modules",
+    "resources",
+    "tasks"
+  ],
+  "dependencies": {
+    "jquery": ">= 1.9.1"
+  }
+}

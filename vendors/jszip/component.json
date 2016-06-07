@@ -1,0 +1,16 @@
+{
+  "name": "jszip",
+  "repo": "Stuk/jszip",
+  "description": "Create, read and edit .zip files with Javascript http://stuartk.com/jszip",
+  "version": "2.6.0",
+  "keywords": [
+    "zip",
+    "deflate",
+    "inflate"
+  ],
+  "main": "dist/jszip.js",
+  "license": "MIT or GPLv3",
+  "scripts": [
+    "dist/jszip.js"
+  ]
+}

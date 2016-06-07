@@ -1,0 +1,31 @@
+{
+  "name": "bootstrap-daterangepicker",
+  "main": [
+    "daterangepicker.js",
+    "daterangepicker.css"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "moment.js",
+    "moment.min.js"
+  ],
+  "dependencies": {
+    "jquery": ">=1.10",
+    "moment": ">=2.9.0"
+  },
+  "homepage": "https://github.com/dangrossman/bootstrap-daterangepicker",
+  "version": "2.1.21",
+  "_release": "2.1.21",
+  "_resolution": {
+    "type": "version",
+    "tag": "v2.1.21",
+    "commit": "d39abc8b91b662b8b60a75e18c2de09fd6c04299"
+  },
+  "_source": "https://github.com/dangrossman/bootstrap-daterangepicker.git",
+  "_target": "^2.1.19",
+  "_originalSource": "bootstrap-daterangepicker"
+}

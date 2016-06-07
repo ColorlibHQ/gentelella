@@ -1,0 +1,13 @@
+{
+  "name": "eve",
+  "repo": "DmitryBaranovskiy/eve",
+  "description": "Custom Events",
+  "version": "0.4.1",
+  "keywords": ["events"],
+  "dependencies": {},
+  "development": {},
+  "main": "eve.js",
+  "scripts": [
+    "eve.js"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "jquery.easy-pie-chart",
+  "version": "2.1.6",
+  "main": [
+    "dist/jquery.easypiechart.js"
+  ],
+  "ignore": [
+    "demo",
+    ".editorconfig"
+  ],
+  "dependencies": {
+    "jquery": ">=1.9.0",
+    "requirejs": "~2.1.10"
+  },
+  "devDependencies": {
+    "angular": "~1.2.9",
+    "angular-mocks": "~1.2.9"
+  }
+}

@@ -1,0 +1,143 @@
+
+/* The styles given to the associated form element in order to hide it */
+.fd-form-element-hidden, input.fd-form-element-hidden
+        {
+        display:none;
+        }
+/* Horizontal Outer wrapper - all other DOM elements added as children to this top level wrapper */
+.fd-slider
+        {
+        width:100%;
+        /* The height of the slider handle */
+        height:20px;
+        margin:0;
+        }
+/* Vertical Outer wrapper - all other DOM elements added as children to this top level wrapper */
+.fd-slider-vertical
+        {
+        /* The width of the slider handle */
+        width:20px;
+        /* Fill the available space */
+        height:100%;
+        /* Set a 10 pixel right and bottom margin */
+        margin:0 10px 10px 0;
+        /* You may wish to float the vertical sliders left or display:inline-block */
+        /* float:left; */
+        }
+/* Shared rules - both horizontal & vertical sliders */
+.fd-slider,
+.fd-slider-vertical
+        {
+        /* display:block required as the wrapper element is a span */
+        display:block;
+        /* This lets us absolutely position the drag handle */
+        position:relative;
+        text-decoration:none;
+        border:0 none;
+        -moz-user-select:none;
+        -khtml-user-select:none;
+        -webkit-touch-callout:none;
+        user-select:none;
+        }
+.fd-slider-inner
+        {
+        /* Used by IE for the onfocus blur effect */
+        display:none;
+        }
+
+/* The inner track bar */
+.fd-slider-bar
+        {
+        position:absolute;
+        display:block;
+        z-index:2;
+        height:6px;
+        width:100%;
+        border:1px solid #bbb;
+        border-bottom:1px solid #fff;
+        border-right:1px solid #fff;
+        margin:0;
+        padding:0;
+        overflow:hidden;
+        line-height:4px;
+        top:8px;
+        -moz-border-radius:4px;
+        -webkit-border-radius:4px;
+        border-radius:4px;
+        -moz-background-clip: padding;
+        -webkit-background-clip: padding-box;
+        background-clip: padding-box;
+        background-color: #333;
+        }
+/* The animated range bar */
+.fd-slider-range
+        {
+        position:absolute;
+        display:block;
+        z-index:3;
+        height:6px;
+        margin:0;
+        padding:0 2px 0 0;
+        overflow:hidden;
+        top:9px;
+        -moz-border-radius:2px;
+        -webkit-border-radius:2px;
+        border-radius:2px;
+        -moz-background-clip: padding;
+        -webkit-background-clip: padding-box;
+        background-clip: padding-box;
+        background-color: #eee;
+        }
+/* The drag handle */
+.fd-slider-handle
+        {
+        position:absolute;
+        display:block;
+        padding:0;
+        border:0 none;
+        margin:0 0 0 1px;
+        z-index:3;
+        top:5px;
+        left:0;
+        width:12px;
+        height:12px;
+        line-height: 1px !important;
+        outline:0 none;
+        background: #eee;
+        border: 1px solid #aaa;
+        border-radius: 12px;
+        -webkit-user-select: none;
+        -webkit-touch-callout:none;
+        -moz-user-select:none;
+        -moz-user-focus:none;
+        -moz-outline:0 none;
+        user-select:none;
+        }
+/* Focus styles */
+.fd-slider-handle:focus
+        {
+        outline:0 none;
+        border:0 none;
+        -moz-user-focus:normal;
+        }
+button.fd-slider-handle:focus::-moz-focus-inner
+        {
+        border-color: transparent;
+        }
+
+body.fd-slider-drag-vertical,
+body.fd-slider-drag-vertical *
+        {
+        /* Stop text selection */
+        -moz-user-select:none;
+        -webkit-user-select:none;
+        user-select:none;
+        }
+body.fd-slider-drag-horizontal,
+body.fd-slider-drag-horizontal *
+        {
+        /* Stop text selection */
+        -moz-user-select:none;
+        -webkit-user-select:none;
+        user-select:none;
+        }

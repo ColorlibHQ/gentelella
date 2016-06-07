@@ -1,0 +1,51 @@
+{
+  "name": "iCheck",
+  "version": "1.0.2",
+  "description": "Highly customizable checkboxes and radio buttons (jQuery & Zepto)",
+  "keywords": [
+    "icheck",
+    "checkbox",
+    "radio",
+    "input",
+    "field",
+    "form",
+    "custom",
+    "replacement",
+    "accessibility",
+    "skins",
+    "ui",
+    "checked",
+    "disabled",
+    "indeterminate"
+  ],
+  "main": [
+    "./icheck.min.js"
+  ],
+  "dependencies": {
+    "jquery": ">=1.7"
+  },
+  "ignore": [
+    ".gitignore",
+    "CHANGELOG.md",
+    "README.md",
+    "demo/"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Damir Sultanov",
+      "email": "info@fronteed.com",
+      "homepage": "http://fronteed.com/"
+    }
+  ],
+  "homepage": "http://fronteed.com/iCheck/",
+  "_release": "1.0.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "1.0.2",
+    "commit": "8a6eb37bd7dab1e843c1b630c91c6398ff409d05"
+  },
+  "_source": "https://github.com/fronteed/iCheck.git",
+  "_target": "^1.0.2",
+  "_originalSource": "icheck"
+}
