@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Total Form Validation</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
 	<link rel="stylesheet" href="fv.css" type="text/css" />
 	<!--[if IE]>
 	<style>
@@ -12,6 +13,7 @@
 	<![endif]-->
 </head>
 <body>
+	<a class='btn github' href='https://github.com/yairEO/validator'>Github</a>
 	<div id='wrap'>
 		<div class='options'>
 			<label>
@@ -30,7 +32,7 @@
 					<div class="item">
 						<label>
 							<span>Name</span>
-							<input data-validate-length-range="6" data-validate-words="2" name="name" placeholder="ex. John f. Kennedy" required="required" type="text" />		
+							<input data-validate-length-range="6" data-validate-words="2" name="name" placeholder="ex. John f. Kennedy" required="required" />
 						</label>
 						<div class='tooltip help'>
 							<span>?</span>
@@ -56,6 +58,20 @@
 					</div>
 					<div class="item">
 						<label>
+							<span>HTML5 Regex</span>
+							<!--<input required="required" type="text" pattern='\d+' />-->
+							<input type="text" data-validate-length-range="2,6" required="required" placeholder="eg. 123456"  pattern="alphanumeric" />
+						</label>
+						<div class='tooltip help'>
+							<span>?</span>
+							<div class='content'>
+								<b></b>
+								<p>This field uses HTML5 "pattern" attribute to be validated.<br /><em>"<strong>\d+</strong>" - only digits are allowed</em></p>
+							</div>
+						</div>
+					</div>
+					<div class="item">
+						<label>
 							<span>email</span>
 							<input name="email" class='email' required="required" type="email" />
 						</label>
@@ -69,7 +85,7 @@
 					<div class="item">
 						<label>
 							<span>Number</span>
-							<input type="number" class='number' name="number" data-validate-minmax="10,100" data-validate-pattern="numeric" required='required'>
+							<input type="number" class='number' name="number" data-validate-minmax="10,100" required='required'>
 						</label>
 						<div class='tooltip help'>
 							<span>?</span>
@@ -141,6 +157,14 @@
 							<input name="url" placeholder="http://www.website.com" required="required" type="url" />
 						</label>
 					</div>
+
+					<div class="item">
+						<label>
+							<span>Checkboxes</span>
+							<label><input required="required" type="checkbox" />I agree</label>
+						</label>
+					</div>
+
 					<div class="item multi required">
 						<label for='multi_first'>
 							<span>Multifield</span>
@@ -164,6 +188,12 @@
 					</div>
 					<div class="item">
 						<label>
+							<span>File upload</span>
+							<input type='file' required>
+						</label>
+					</div>
+					<div class="item">
+						<label>
 							<span>message</span>
 							<textarea required="required" name='message'></textarea>
 						</label>
@@ -174,43 +204,50 @@
 					<input name="somethingHidden" required="required" type="text" style='display:none' />
 				</fieldset>
 				<button id='send' type='submit'>Submit</button>
-			</form>	
+			</form>
 		</section>
 	</div>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="multifield.js"></script>
     <script src="validator.js"></script>
 	<script>
 		// initialize the validator function
 		validator.message['date'] = 'not a real date';
+
 		// validate a field on "blur" event, a 'select' on 'change' event & a '.reuired' classed multifield on 'keyup':
-		$('form').on('blur', 'input[required], input.optional', validator.checkField)
-			.on('change', 'select.required', validator.checkField);;
-		$('.multi.required').on('keyup', 'input', function(){ 
-			validator.checkField.apply($(this).siblings().last()[0]);
-		});
-		
+		$('form')
+			.on('blur', 'input[required], input.optional, select.required', validator.checkField)
+			.on('change', 'select.required', validator.checkField)
+			.on('keypress', 'input[required][pattern]', validator.keypress);
+
+		$('.multi.required')
+			.on('keyup blur', 'input', function(){
+				validator.checkField.apply( $(this).siblings().last()[0] );
+			});
+
 		// bind the validation to the form submit event
 		//$('#send').click('submit');//.prop('disabled', true);
-		
+
 		$('form').submit(function(e){
 			e.preventDefault();
 			var submit = true;
-			// evaluate the form using generic validaing
+
+			// Validate the form using generic validaing
 			if( !validator.checkAll( $(this) ) ){
 				submit = false;
 			}
 
 			if( submit )
 				this.submit();
+
 			return false;
 		});
-		
+
 		/* FOR DEMO ONLY */
 		$('#vfields').change(function(){
 			$('form').toggleClass('mode2');
 		}).prop('checked',false);
-		
+
 		$('#alerts').change(function(){
 			validator.defaults.alerts = (this.checked) ? false : true;
 			if( this.checked )
