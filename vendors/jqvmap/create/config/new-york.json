@@ -1,0 +1,16 @@
+[
+  {
+    "name": "read_data",
+    "file_name": "./source/nybb_15d/nybb.shp"
+  },
+  {
+    "name": "write_data",
+    "format": "jqvmap",
+    "file_name": "./output/jquery.vmap.new-york.js",
+    "params": {
+      "code_field": "BoroCode",
+      "name_field": "BoroName",
+      "name": "us-ny-new-york"
+    }
+  }
+]
