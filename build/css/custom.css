@@ -1,3 +1,8 @@
+/*define left bard width easily*/
+:root {
+	  --barwidth: 240px;
+  }
+
 @charset "UTF-8";
 .left_col {
   background: #2A3F54; }
@@ -187,7 +192,7 @@
   .nav_menu {
     position: static; } }
 .nav-md .container.body .col-md-3.left_col {
-  width: 230px;
+  width: var(--barwidth);
   padding: 0;
   position: absolute;
   display: -ms-flexbox;
@@ -203,10 +208,10 @@ body .container.body .right_col {
 
 .nav-md .container.body .right_col {
   padding: 10px 20px 0;
-  margin-left: 230px; }
+  margin-left: var(--barwidth); }
 
 .nav_title {
-  width: 230px;
+  width: var(--barwidth);
   float: left;
   background: #2A3F54;
   border-radius: 0;
@@ -335,7 +340,7 @@ body {
 
 .main_container .top_nav {
   display: block;
-  margin-left: 230px; }
+  margin-left: var(--barwidth); }
 
 .no-padding {
   padding: 0 !important; }
@@ -665,9 +670,9 @@ footer {
   padding: 15px 20px;
   display: block; }
 
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   footer {
-    margin-left: 230px; } }
+    margin-left: var(--barwidth) } }
 .nav-sm footer {
   margin-left: 70px; }
 
@@ -1419,7 +1424,7 @@ span.right {
   display: block;
   padding: 5px 0 0 0;
   position: fixed;
-  width: 230px;
+  width: var(--barwidth);
   background: #2A3F54; }
 
 .sidebar-footer a {
