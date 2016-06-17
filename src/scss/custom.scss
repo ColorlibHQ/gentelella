@@ -1,3 +1,8 @@
+:root {
+    --sidebarwidth: 230px;
+  }
+
+
 .left_col {
   background: #2A3F54;
 }
@@ -188,7 +193,7 @@
   }
 }
 .nav-md .container.body .col-md-3.left_col {
-  width: 230px;
+  width: var(--sidebarwidth);
   padding: 0;
   position: absolute;
   display: flex;
@@ -203,10 +208,10 @@ body .container.body .right_col {
 }
 .nav-md .container.body .right_col {
   padding: 10px 20px 0;
-  margin-left: 230px;
+  margin-left: var(--sidebarwidth);
 }
 .nav_title {
-  width: 230px;
+  width: var(--sidebarwidth);
   float: left;
   background: #2A3F54;
   border-radius: 0;
@@ -342,7 +347,7 @@ body {
 }
 .main_container .top_nav {
   display: block;
-  margin-left: 230px;
+  margin-left: var(--sidebarwidth);
 }
 .main_container {}
 .no-padding {
@@ -1530,7 +1535,7 @@ span.right {
   display: block;
   padding: 5px 0 0 0;
   position: fixed;
-  width: 230px;
+  width: var(--sidebarwidth);
   background: #2A3F54;
 }
 .sidebar-footer a {
@@ -1562,7 +1567,7 @@ span.right {
 
 @media (min-width: 992px) {
   footer {
-    margin-left: 230px;
+    margin-left: var(--sidebarwidth);
   }
 }
 
@@ -4477,7 +4482,7 @@ ul.notifications {
   margin-bottom: 20px;
   border: 1px solid rgba(0, 0, 0, .15);
   border-radius: 4px;
-  width: 230px;
+  width: var(--sidebarwidth);
   overflow: hidden;
   -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
   box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
