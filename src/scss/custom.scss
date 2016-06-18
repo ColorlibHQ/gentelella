@@ -1,8 +1,3 @@
-:root {
-    --sidebarwidth: 230px;
-  }
-
-
 .left_col {
   background: #2A3F54;
 }
@@ -193,7 +188,7 @@
   }
 }
 .nav-md .container.body .col-md-3.left_col {
-  width: var(--sidebarwidth);
+  width: 230px;
   padding: 0;
   position: absolute;
   display: flex;
@@ -208,10 +203,10 @@ body .container.body .right_col {
 }
 .nav-md .container.body .right_col {
   padding: 10px 20px 0;
-  margin-left: var(--sidebarwidth);
+  margin-left: 230px;
 }
 .nav_title {
-  width: var(--sidebarwidth);
+  width: 230px;
   float: left;
   background: #2A3F54;
   border-radius: 0;
@@ -347,7 +342,7 @@ body {
 }
 .main_container .top_nav {
   display: block;
-  margin-left: var(--sidebarwidth);
+  margin-left: 230px;
 }
 .main_container {}
 .no-padding {
@@ -1535,7 +1530,7 @@ span.right {
   display: block;
   padding: 5px 0 0 0;
   position: fixed;
-  width: var(--sidebarwidth);
+  width: 230px;
   background: #2A3F54;
 }
 .sidebar-footer a {
@@ -1567,7 +1562,7 @@ span.right {
 
 @media (min-width: 992px) {
   footer {
-    margin-left: var(--sidebarwidth);
+    margin-left: 230px;
   }
 }
 
@@ -4482,7 +4477,7 @@ ul.notifications {
   margin-bottom: 20px;
   border: 1px solid rgba(0, 0, 0, .15);
   border-radius: 4px;
-  width: var(--sidebarwidth);
+  width: 230px;
   overflow: hidden;
   -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
   box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
