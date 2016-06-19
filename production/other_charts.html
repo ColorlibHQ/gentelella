@@ -13,10 +13,12 @@
     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-    <!-- jVectorMap -->
-    <link href="css/maps/jquery-jvectormap-2.0.3.css" rel="stylesheet"/>
+    <!-- JQVMap -->
+    <link href="../vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
 
     <!-- Custom Theme Style -->
     <link href="../build/css/custom.min.css" rel="stylesheet">
@@ -445,98 +447,61 @@
     <script src="../vendors/nprogress/nprogress.js"></script>
     <!-- jQuery Sparklines -->
     <script src="../vendors/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
-    <!-- jVectorMap -->
-    <script src="js/maps/jquery-jvectormap-2.0.3.min.js"></script>
+    <!-- JQVMap -->
+    <script src="../vendors/jqvmap/dist/jquery.vmap.js"></script>
+    <script src="../vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script src="../vendors/jqvmap/dist/maps/jquery.vmap.usa.js"></script>
+    <script src="../vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
     <!-- easy-pie-chart -->
     <script src="../vendors/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js"></script>
 
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
-
-    <!-- jVectorMap -->
-    <script src="js/maps/gdp-data.js"></script>
-    <script src="js/maps/jquery-jvectormap-world-mill-en.js"></script>
-    <script src="js/maps/jquery-jvectormap-us-aea-en.js"></script>
+    
+    <!-- JQVMap -->
     <script>
-      $(document).ready(function() {
-        $.getJSON('js/maps/us-unemployment.json', function(data) {
-          var val = 2009,
-            statesValues = jvm.values.apply({}, jvm.values(data.states)),
-            metroPopValues = Array.prototype.concat.apply([], jvm.values(data.metro.population)),
-            metroUnemplValues = Array.prototype.concat.apply([], jvm.values(data.metro.unemployment));
-
-          $('#usa_map').vectorMap({
-            map: 'us_aea_en',
-            markers: data.metro.coords,
-            backgroundColor: 'transparent',
-            zoomOnScroll: false,
-            series: {
-              markers: [{
-                attribute: 'fill',
-                scale: ['#FEE5D9', '#A50F15'],
-                values: data.metro.unemployment[val],
-                min: jvm.min(metroUnemplValues),
-                max: jvm.max(metroUnemplValues)
-              }, {
-                attribute: 'r',
-                scale: [5, 20],
-                values: data.metro.population[val],
-                min: jvm.min(metroPopValues),
-                max: jvm.max(metroPopValues)
-              }],
-              regions: [{
-                scale: ['#E6F2F0', '#149B7E'],
-                attribute: 'fill',
-                values: data.states[val],
-                min: jvm.min(statesValues),
-                max: jvm.max(statesValues)
-              }]
-            },
-            onMarkerTipShow: function(event, label, index) {
-              label.html(
-                '<b>' + data.metro.names[index] + '</b><br/>' +
-                '<b>Population: </b>' + data.metro.population[val][index] + '</br>' +
-                '<b>Unemployment rate: </b>' + data.metro.unemployment[val][index] + '%'
-              );
-            },
-            onRegionTipShow: function(event, label, code) {
-              label.html(
-                '<b>' + label.html() + '</b></br>' +
-                '<b>Unemployment rate: </b>' + data.states[val][code] + '%'
-              );
-            }
-          });
+      $(document).ready(function(){
+        $('#usa_map').vectorMap({
+            map: 'usa_en',
+            backgroundColor: null,
+            color: '#ffffff',
+            hoverOpacity: 0.7,
+            selectedColor: '#666666',
+            enableZoom: true,
+            showTooltip: true,
+            values: sample_data,
+            scaleColors: ['#E6F2F0', '#149B7E'],
+            normalizeFunction: 'polynomial'
         });
-      });
-    </script>
-    <script>
-      $(document).ready(function() {
+
         $('#world-map-gdp').vectorMap({
-          map: 'world_mill_en',
-          backgroundColor: 'transparent',
-          zoomOnScroll: false,
-          series: {
-            regions: [{
-              values: gdpData,
-              scale: ['#E6F2F0', '#149B7E'],
-              normalizeFunction: 'polynomial'
-            }]
-          },
-          onRegionTipShow: function(e, el, code) {
-            el.html(el.html() + ' (GDP - ' + gdpData[code] + ')');
-          }
+            map: 'world_en',
+            backgroundColor: null,
+            color: '#ffffff',
+            hoverOpacity: 0.7,
+            selectedColor: '#666666',
+            enableZoom: true,
+            showTooltip: true,
+            values: sample_data,
+            scaleColors: ['#E6F2F0', '#149B7E'],
+            normalizeFunction: 'polynomial'
         });
       });
     </script>
-    <!-- /jVectorMap -->
+    <!-- /JQVMap -->
 
     <!-- easy-pie-chart -->
     <script>
       $(document).ready(function() {
         $('.chart').easyPieChart({
-          easing: 'easeOutBounce',
-          lineWidth: '6',
-          barColor: '#75BCDD',
+          easing: 'easeOutElastic',
+          delay: 3000,
+          barColor: '#26B99A',
+          trackColor: '#fff',
+          scaleColor: false,
+          lineWidth: 20,
+          trackWidth: 16,
+          lineCap: 'butt',
           onStep: function(from, to, percent) {
             $(this.el).find('.percent').text(Math.round(percent));
           }
