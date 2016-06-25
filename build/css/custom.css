@@ -191,8 +191,7 @@
   padding: 0;
   position: absolute;
   display: -ms-flexbox;
-  display: flex;
-  z-index: 9999; }
+  display: flex; }
 
 .nav-md .container.body .col-md-3.left_col.menu_fixed {
   height: 100%;
