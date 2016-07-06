@@ -38,7 +38,7 @@ Test if Gulp CLI is installed by running `gulp --version`.  If the command isn't
 If `gulp` is installed, follow the steps below.
 
 1. Fork and clone the repo.
-2. Run `gulp`, this will will open gentelella on your default browser
+2. Run `gulp`, this will open gentelella on your default browser
 3. Now you can code, code and code!
 4. Submit a pull request
 
