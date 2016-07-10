@@ -22,7 +22,7 @@ $(document).ready(function() {
         $RIGHT_COL.css('min-height', $(window).height());
 
         var bodyHeight = $BODY.outerHeight(),
-            footerHeight = $BODY.hasClass('footer_fixed') ? 0 : $FOOTER.height(),
+            footerHeight = $BODY.hasClass('footer_fixed') ? -10 : $FOOTER.height(),
             leftColHeight = $LEFT_COL.eq(1).height() + $SIDEBAR_FOOTER.height(),
             contentHeight = bodyHeight < leftColHeight ? leftColHeight : bodyHeight;
 
