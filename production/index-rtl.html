@@ -68,7 +68,7 @@
                   </li>
                   <li><a><i class="fa fa-edit"></i> فرم <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="form.html">فرم عمومی</a></li>
+                      <li><a href="form-rtl.html">فرم عمومی</a></li>
                       <li><a href="form_advanced.html">کامپوننت پیشرفته</a></li>
                       <li><a href="form_validation.html">اعتبارسنجی</a></li>
                       <li><a href="form_wizards.html">ویزارد فرم</a></li>
@@ -1008,7 +1008,7 @@
     <script src="../vendors/Flot/jquery.flot.resize.js"></script>
     <!-- Flot plugins -->
     <script src="js/flot/jquery.flot.orderBars.js"></script>
-    <script src="js/flot/date.js"></script>
+    <script src="js/flot/date-fa-IR.js"></script>
     <script src="js/flot/jquery.flot.spline.js"></script>
     <script src="js/flot/curvedLines.js"></script>
     <!-- JQVMap -->
@@ -1016,7 +1016,7 @@
     <script src="../vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
     <script src="../vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
     <!-- bootstrap-daterangepicker -->
-    <script src="js/moment/moment.min.js"></script>
+    <script src="js/moment/moment-with-locales.js"></script>
     <script src="js/datepicker/daterangepicker.js"></script>
 
     <!-- Custom Theme Scripts -->
@@ -1184,12 +1184,12 @@
     <!-- bootstrap-daterangepicker -->
     <script>
       $(document).ready(function() {
-
+        moment.locale('fa');
         var cb = function(start, end, label) {
           console.log(start.toISOString(), end.toISOString(), label);
           $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
         };
-
+        
         var optionSet1 = {
           startDate: moment().subtract(29, 'days'),
           endDate: moment(),
@@ -1204,26 +1204,26 @@
           timePickerIncrement: 1,
           timePicker12Hour: true,
           ranges: {
-            'Today': [moment(), moment()],
-            'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-            'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-            'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-            'This Month': [moment().startOf('month'), moment().endOf('month')],
-            'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+            'امروز': [moment(), moment()],
+            'دیروز': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+            '7 روز گدشته': [moment().subtract(6, 'days'), moment()],
+            '30 روز گذشته': [moment().subtract(29, 'days'), moment()],
+            'ماه جاری': [moment().startOf('month'), moment().endOf('month')],
+            'ماه گذشته': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
           },
-          opens: 'left',
+          opens: 'right',
           buttonClasses: ['btn btn-default'],
           applyClass: 'btn-small btn-primary',
           cancelClass: 'btn-small',
           format: 'MM/DD/YYYY',
-          separator: ' to ',
+          separator: ' تا ',
           locale: {
-            applyLabel: 'Submit',
-            cancelLabel: 'Clear',
-            fromLabel: 'From',
-            toLabel: 'To',
-            customRangeLabel: 'Custom',
-            daysOfWeek: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+            applyLabel: 'ثبت',
+            cancelLabel: 'پاک کردن',
+            fromLabel: 'از',
+            toLabel: 'تا',
+            customRangeLabel: 'دلخواه',
+            daysOfWeek: ['یک', 'دو', 'سه', 'چهار', 'پنج', 'جمعه', 'شنبه'],
             monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
             firstDay: 1
           }

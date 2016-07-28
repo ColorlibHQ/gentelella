@@ -373,8 +373,9 @@ body {
 
 .page-title .title_right {
   width: 55%;
-  float: left;
-  display: block; }
+  float: right;
+  display: block;
+  }
 
 .page-title .title_right .pull-right {
   margin: 10px 0; }
@@ -627,21 +628,23 @@ a:hover, a:focus {
 .top_search .form-control {
   border-right: 0;
   box-shadow: inset 0 1px 0px rgba(0, 0, 0, 0.075);
-  border-radius: 25px 0px 0px 25px;
+  border-radius: 25px 25px 25px 25px;
   padding-left: 20px;
-  border: 1px solid rgba(221, 226, 232, 0.49); }
+  border: 1px solid rgba(221, 226, 232, 0.49);
+  }
 
 .top_search .form-control:focus {
   border: 1px solid rgba(221, 226, 232, 0.49);
   border-right: 0; }
 
 .top_search .input-group-btn button {
-  border-radius: 0px 25px 25px 0px;
+  border-radius: 25px 25px 25px 25px;
   border: 1px solid rgba(221, 226, 232, 0.49);
-  border-left: 0;
+  border-right: 0;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   color: #93A2B2;
-  margin-bottom: 0 !important; }
+  margin-bottom: 0 !important;
+  }
 
 .toggle {
   float: right;
@@ -4141,10 +4144,13 @@ ul.notifications {
   margin: 4px; }
 
 .daterangepicker .ranges .range_inputs > div {
-  float: left; }
+  float: right;
+  }
 
 .daterangepicker .ranges .range_inputs > div:nth-child(2) {
-  padding-left: 11px; }
+  padding-right: 11px;
+  padding-left: 0;
+  }
 
 .daterangepicker.opensleft .ranges, .daterangepicker.opensleft .calendar {
   float: left;
@@ -4174,3 +4180,22 @@ ul.notifications {
   border: 1px solid #e5e5e5; }
 
 /** /Dropzone.js **/
+
+.input-group .form-control:first-child, .input-group-addon:first-child, .input-group-btn:first-child>.btn, .input-group-btn:first-child>.btn-group>.btn, .input-group-btn:first-child>.dropdown-toggle, .input-group-btn:last-child>.btn-group:not(:last-child)>.btn, .input-group-btn:last-child>.btn:not(:last-child):not(.dropdown-toggle){
+  border-top-left-radius:0px;
+  border-bottom-left-radius:0px;
+  border-top-right-radius:25px;
+  border-bottom-right-radius:25px;
+  }
+
+  .input-group-btn:last-child>.btn, .input-group-btn:last-child>.btn-group{
+    margin-left: 0px;
+    margin-right: -1px;
+  }
+
+  .input-group .form-control:last-child, .input-group-addon:last-child, .input-group-btn:first-child>.btn-group:not(:first-child)>.btn, .input-group-btn:first-child>.btn:not(:first-child), .input-group-btn:last-child>.btn, .input-group-btn:last-child>.btn-group>.btn, .input-group-btn:last-child>.dropdown-toggle{
+  border-top-left-radius:25px;
+  border-bottom-left-radius:25px;
+  border-top-right-radius:0px;
+  border-bottom-right-radius:0px;
+  }
