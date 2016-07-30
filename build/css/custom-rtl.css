@@ -867,7 +867,7 @@ h2 {
   }
 
 .x_title h2 small {
-  margin-left: 10px; }
+  margin-right: 10px; }
 
 .x_title span {
   color: #BDBDBD; }
@@ -2265,7 +2265,7 @@ span.tag {
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
   display: block;
-  float: left;
+  float: right;
   padding: 5px 9px;
   text-decoration: none;
   background: #1ABB9C;
@@ -2273,7 +2273,8 @@ span.tag {
   margin-right: 5px;
   font-weight: 500;
   margin-bottom: 5px;
-  font-family: helvetica; }
+  /* font-family: helvetica; */
+  }
 
 span.tag a {
   color: #F1F6F7 !important; }
@@ -4198,4 +4199,30 @@ ul.notifications {
   border-bottom-left-radius:25px;
   border-top-right-radius:0px;
   border-bottom-right-radius:0px;
+  }
+  .select2-container--default .select2-selection--single .select2-selection__arrow{
+    right: auto;
+    left: 1px;
+  }
+  .select2-container .select2-selection--single .select2-selection__rendered
+  {
+    padding-right: 8px;
+    padding-left: 20px;
+  }
+  .select2-container--default .select2-selection--single .select2-selection__clear{
+    float: left;
+  }
+  .select2-container--default .select2-selection--multiple .select2-selection__choice{
+    float: right;
+    margin-left:5px;
+  }
+  .select2-container--default .select2-selection--multiple .select2-selection__clear{
+    float: left;
+    margin-left: 10px;
+  }
+  .checkbox label, .radio label{
+    padding-right: 20px;
+  }
+  .checkbox input[type=checkbox], .checkbox-inline input[type=checkbox], .radio input[type=radio], .radio-inline input[type=radio]{
+    margin-right: -20px;
   }

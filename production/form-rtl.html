@@ -527,8 +527,8 @@
 
                       <label>جنسیت *:</label>
                       <p>
-                        M:
-                        <input type="radio" class="flat" name="gender" id="genderM" value="M" checked="" required /> F:
+                        مرد:
+                        <input type="radio" class="flat" name="gender" id="genderM" value="M" checked="" required /> زن:
                         <input type="radio" class="flat" name="gender" id="genderF" value="F" />
                       </p>
 
@@ -919,17 +919,19 @@
 
                         <div class="col-sm-9">
                           <div class="input-group">
+                            <input type="text" class="form-control">
                             <span class="input-group-btn">
                                               <button type="button" class="btn btn-primary">برو!</button>
                                           </span>
-                            <input type="text" class="form-control">
                           </div>
+
                           <div class="input-group">
-                            <input type="text" class="form-control">
                             <span class="input-group-btn">
                                               <button type="button" class="btn btn-primary">برو!</button>
                                           </span>
+                            <input type="text" class="form-control">
                           </div>
+                          
                         </div>
                       </div>
                       <div class="divider-dashed"></div>
@@ -1072,9 +1074,9 @@
                   <div class="ln_solid"></div>
 
                   <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Resizable Text area</label>
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12">متن طولانی قابل تغییر</label>
                     <div class="col-md-9 col-sm-9 col-xs-12">
-                      <textarea class="resizable_textarea form-control" placeholder="This text area automatically resizes its height as you fill in more text courtesy of autosize-master it out..."></textarea>
+                      <textarea class="resizable_textarea form-control" placeholder="با اضافه شده متن ارتفاع این ورودی بطور خودکار افزوده می شود"></textarea>
                     </div>
                   </div>
                 </div>
@@ -1367,7 +1369,6 @@
   <!-- bootstrap-daterangepicker -->
   <script>
       $(document).ready(function() {
-        debugger;
         $('#birthday').daterangepicker({
           singleDatePicker: true,
           calender_style: "picker_4"
@@ -1449,13 +1450,13 @@
   <script>
       $(document).ready(function() {
         $(".select2_single").select2({
-          placeholder: "Select a state",
+          placeholder: "انتخاب استان",
           allowClear: true
         });
         $(".select2_group").select2({});
         $(".select2_multiple").select2({
           maximumSelectionLength: 4,
-          placeholder: "With Max Selection limit 4",
+          placeholder: "حداکثر 4 انتخاب",
           allowClear: true
         });
       });
