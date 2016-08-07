@@ -1952,8 +1952,11 @@ span.section {
 
 .form-control {
   border-radius: 0;
-  width: 100%; }
-
+  width: 100%;
+  }
+.form-horizontal.padding-right .form-control{
+  padding-right: 45px;
+}
 .form-horizontal .control-label {
   padding-top: 8px; }
 
@@ -1986,9 +1989,6 @@ legend {
 
 .form-control.has-feedback-left {
   padding-left: 45px; }
-
-.form-control.has-feedback-right {
-  padding-right: 45px; }
 
 .form-group {
   margin-bottom: 10px; }
