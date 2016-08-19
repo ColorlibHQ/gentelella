@@ -666,7 +666,7 @@ a:hover, a:focus {
   padding: 9px; }
 
 .panel_toolbox {
-  float: right;
+  float: left !important;
   min-width: 70px; }
 
 .panel_toolbox > li {
@@ -749,7 +749,6 @@ article.media {
 *, *:before, *:after {
   box-sizing: border-box;
   direction: rtl;
-  text-align: justify;
   }
 
 #integration-list {
@@ -855,7 +854,7 @@ h2 {
 
 .x_title .filter {
   width: 40%;
-  float: right; }
+  float: left; }
 
 .x_title h2 {
   margin: 5px 0 6px;
@@ -1561,7 +1560,7 @@ ul.top_profiles li:nth-child(odd) {
   border: 1px solid;
   width: 50px;
   height: 50px;
-  margin: 5px 10px 5px 0;
+  margin: 5px 0 5px 10px;
   border-radius: 50%;
   padding: 9px 12px; }
 
@@ -1571,7 +1570,7 @@ ul.top_profiles li:nth-child(odd) {
 .media .date {
   background: #ccc;
   width: 52px;
-  margin-right: 10px;
+  margin-left: 10px;
   border-radius: 10px;
   padding: 5px; }
 
@@ -1675,7 +1674,7 @@ h4.graph_title {
   height: 20px;
   color: #BAB8B8;
   position: absolute;
-  right: 53px;
+  left: 53px;
   top: 22px;
   z-index: 1; }
 
