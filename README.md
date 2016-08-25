@@ -65,7 +65,6 @@ If `gulp` is installed, follow the steps below.
 * jVectorMap
 * moment.js
 * Morris.js - pretty time-series line graphs
-* jquery-nicescroll plugin
 * PNotify - Awesome JavaScript notifications
 * NProgress
 * Pace
