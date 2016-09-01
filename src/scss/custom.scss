@@ -1,3 +1,13 @@
+html,body{
+  height:100%;
+}
+
+.full-width{
+  width:100%;
+}
+.full-height{
+  height:100%;
+}
 .left_col {
   background: #2A3F54;
 }
@@ -1049,7 +1059,7 @@ td span {
   margin-top: 5%;
 }
 .mid_center {
-  width: 370px;
+  max-width: 320px;
   margin: 0 auto;
   text-align: center;
   padding: 10px 20px;
