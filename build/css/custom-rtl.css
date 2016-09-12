@@ -2037,7 +2037,7 @@ input.parsley-error, textarea.parsley-error, select.parsley-error {
 
 /* alerts (when validation fails) */
 .item .alert {
-  float: left;
+  float: right;
   margin: 0 0 0 20px;
   padding: 3px 10px;
   color: #FFF;
@@ -2056,11 +2056,11 @@ input.parsley-error, textarea.parsley-error, select.parsley-error {
   display: block;
   height: 0;
   width: 0;
-  border-color: transparent #CE5454 transparent transparent;
+  border-color: transparent transparent transparent #CE5454;
   border-style: solid;
   border-width: 11px 7px;
   position: absolute;
-  left: -13px;
+  right: -13px;
   top: 1px; }
 
 .item.bad .alert {
