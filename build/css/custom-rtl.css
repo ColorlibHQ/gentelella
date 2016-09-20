@@ -3661,12 +3661,12 @@ fieldset {
   color: #fff; }
 
 .wizard_horizontal ul.wizard_steps li:first-child a:before {
-  left: 50%; }
+  right: 50%; }
 
 .wizard_horizontal ul.wizard_steps li:last-child a:before {
-  right: 50%;
+  left: 50%;
   width: 50%;
-  left: auto; }
+  right: auto; }
 
 .wizard_verticle .stepContainer {
   width: 80%;
