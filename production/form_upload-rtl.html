@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fa">
+
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
@@ -15,7 +16,9 @@
     <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
     <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
-    
+    <!-- Dropzone.js -->
+    <link href="../vendors/dropzone/dist/min/dropzone.min.css" rel="stylesheet">
+
     <!-- Custom Theme Style -->
     <link href="../build/css/custom-rtl.css" rel="stylesheet">
   </head>
@@ -26,7 +29,7 @@
         <div class="col-md-3 right_col">
           <div class="right_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index-rtl.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentellela Alela!</span></a>
+              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentellela Alela!</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -46,7 +49,7 @@
             <br />
 
             <!-- sidebar menu -->
-             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <h3>عمومی</h3>
                 <ul class="nav side-menu">
@@ -149,7 +152,7 @@
             <!-- /sidebar menu -->
 
             <!-- /menu footer buttons -->
-           <div class="sidebar-footer hidden-small">
+            <div class="sidebar-footer hidden-small">
               <a data-toggle="tooltip" data-placement="top" title="تنظیمات">
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
               </a>
@@ -168,7 +171,7 @@
         </div>
 
         <!-- top navigation -->
-         <div class="top_nav">
+        <div class="top_nav">
           <div class="nav_menu">
             <nav>
               <div class="nav toggle">
@@ -268,28 +271,29 @@
         <div class="left_col" role="main">
           <div class="">
             <div class="page-title">
-              <div class="title_right">
-                <h3>اعتبار سنجی فرم</h3>
+              <div class="title_left">
+                <h3>فرم آپلود </h3>
               </div>
 
               <div class="title_right">
                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                   <div class="input-group">
-                    <input type="text" class="form-control" placeholder="متن جستجو ...">
+                    <input type="text" class="form-control" placeholder="جستجو برای">
                     <span class="input-group-btn">
-                              <button class="btn btn-default" type="button">برو!</button>
-                          </span>
+                      <button class="btn btn-default" type="button">برو</button>
+                    </span>
                   </div>
                 </div>
               </div>
             </div>
+
             <div class="clearfix"></div>
 
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>اعتبار سنجی فرم <small>عنوان</small></h2>
+                    <h2>چند فایل را اینجا قرار دهید</h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -298,7 +302,7 @@
                         <ul class="dropdown-menu" role="menu">
                           <li><a href="#">تنظیمات 1</a>
                           </li>
-                          <li><a href="#">تنظیمات 2</a>
+                          <li><a href="#">تنطیمات 2</a>
                           </li>
                         </ul>
                       </li>
@@ -308,89 +312,12 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-
-                    <form class="form-horizontal form-label-left" novalidate>
-
-                      <p>برای سایر اعتبار سنجی ها <code>parsleyJS</code> در اینجا مشاهده کنید <a href="form-rtl.html">صفحه فرم</a>
-                      </p>
-                      <span class="section">اطلاعات پرصنلی</span>
-
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">نام <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="محمد رضا پازوکی" required="required" type="text">
-                        </div>
-                      </div>
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">ایمیل <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="email" id="email" name="email" required="required" class="form-control col-md-7 col-xs-12">
-                        </div>
-                      </div>
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">تکرار ایمیل <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="email" id="email2" name="confirm_email" data-validate-linked="email" required="required" class="form-control col-md-7 col-xs-12">
-                        </div>
-                      </div>
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">شماره <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="number" id="number" name="number" required="required" data-validate-minmax="10,100" class="form-control col-md-7 col-xs-12">
-                        </div>
-                      </div>
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="website">آدرس وب سایت <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="url" id="website" name="website" required="required" placeholder="www.mrpazooki.com" class="form-control col-md-7 col-xs-12">
-                        </div>
-                      </div>
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="occupation">شغل <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="occupation" type="text" name="occupation" data-validate-length-range="5,20" class="optional form-control col-md-7 col-xs-12">
-                        </div>
-                      </div>
-                      <div class="item form-group">
-                        <label for="password" class="control-label col-md-3">رمز عبور</label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="password" type="password" name="password" data-validate-length="6,8" class="form-control col-md-7 col-xs-12" required="required">
-                        </div>
-                      </div>
-                      <div class="item form-group">
-                        <label for="password2" class="control-label col-md-3 col-sm-3 col-xs-12">تکرار رمز عبور</label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="password2" type="password" name="password2" data-validate-linked="password" class="form-control col-md-7 col-xs-12" required="required">
-                        </div>
-                      </div>
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="telephone">تلفن <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="tel" id="telephone" name="phone" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12">
-                        </div>
-                      </div>
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">متن <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <textarea id="textarea" required="required" name="textarea" class="form-control col-md-7 col-xs-12"></textarea>
-                        </div>
-                      </div>
-                      <div class="ln_solid"></div>
-                      <div class="form-group">
-                        <div class="col-md-6 col-md-offset-3">
-                          <button type="submit" class="btn btn-primary">انصراف</button>
-                          <button id="send" type="submit" class="btn btn-success">تایید</button>
-                        </div>
-                      </div>
-                    </form>
+                    <p>چندین فایل را در اینجا قرار دهید، این فایل ها به سمت سرور ارسال نمی شوند و فقط برای نمایش می باشد</p>
+                    <form action="form_upload.html" class="dropzone"></form>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
                   </div>
                 </div>
               </div>
@@ -402,7 +329,7 @@
         <!-- footer content -->
         <footer>
           <div class="pull-right">
-            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+            طراحی و توسعه توسط <a href="https://colorlib.com">Colorlib</a> | فارسی شده توسط  <a href="https://mrpazooki.com">محمد رضا پازوکی</a>
           </div>
           <div class="clearfix"></div>
         </footer>
@@ -418,42 +345,10 @@
     <script src="../vendors/fastclick/lib/fastclick.js"></script>
     <!-- NProgress -->
     <script src="../vendors/nprogress/nprogress.js"></script>
-    <!-- validator -->
-    <script src="../vendors/validator/validator.js"></script>
+    <!-- Dropzone.js -->
+    <script src="../vendors/dropzone/dist/min/dropzone.min.js"></script>
 
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
-
-    <!-- validator -->
-    <script>
-      // initialize the validator function
-      validator.message.date = 'not a real date';
-
-      // validate a field on "blur" event, a 'select' on 'change' event & a '.reuired' classed multifield on 'keyup':
-      $('form')
-        .on('blur', 'input[required], input.optional, select.required', validator.checkField)
-        .on('change', 'select.required', validator.checkField)
-        .on('keypress', 'input[required][pattern]', validator.keypress);
-
-      $('.multi.required').on('keyup blur', 'input', function() {
-        validator.checkField.apply($(this).siblings().last()[0]);
-      });
-
-      $('form').submit(function(e) {
-        e.preventDefault();
-        var submit = true;
-
-        // evaluate the form using generic validaing
-        if (!validator.checkAll($(this))) {
-          submit = false;
-        }
-
-        if (submit)
-          this.submit();
-
-        return false;
-      });
-    </script>
-    <!-- /validator -->
   </body>
 </html>
