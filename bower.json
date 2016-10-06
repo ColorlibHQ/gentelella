@@ -24,7 +24,7 @@
   ],
   "devDependencies": {
     "jquery": "^2.2.3",
-    "bootstrap": "^3.3.6",
+    "bootstrap": "^3.3.7",
     "font-awesome": "fontawesome#^4.6.1",
     "fastclick": "^1.0.6",
     "nprogress": "^0.2.0",
