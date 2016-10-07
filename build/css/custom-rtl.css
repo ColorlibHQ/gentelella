@@ -2382,7 +2382,7 @@ ul.timeline li {
 .timeline .tags {
   position: absolute;
   top: 15px;
-  left: 0;
+  right: 0;
   width: 84px; }
 
 .timeline .tag {
@@ -2408,13 +2408,13 @@ ul.timeline li {
   height: 30px;
   width: 0;
   position: absolute;
-  left: 100%;
+  right: 100%;
   top: 0;
   margin: 0;
   pointer-events: none;
   border-top: 14px solid transparent;
   border-bottom: 14px solid transparent;
-  border-left: 11px solid #1ABB9C; }
+  border-right: 11px solid #1ABB9C; }
 
 .timeline h2.title {
   position: relative;
@@ -3024,7 +3024,7 @@ ul.project_files li a i {
 
 .tabs-left > li.active > a, .tabs-left > li.active > a:hover, .tabs-left > li.active > a:focus {
   border-bottom-color: #F7F7F7;
-  border-right-color: transparent; }
+  border-left-color: transparent; }
 
 .tabs-right > li.active > a, .tabs-right > li.active > a:hover, .tabs-right > li.active > a:focus {
   border-bottom: 1px solid #F7F7F7;
