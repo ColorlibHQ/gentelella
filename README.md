@@ -46,5 +46,4 @@
  -Gentellela is licensed under The MIT License (MIT). Which means that you can use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software. But you always need to state that Colorlib is the original author of this template.		
  -		
  -Project is developed and maintained by [Colorlib](https://colorlib.com/ "Colorlib - Make Your First Blog") and Aigars Silkalns
-  -		
- -Project is RTL by [Mohammad Reza Pazooki](http://mrpazooki.com/ "Mohammad Reza Pazooki")
+  -	Project is RTL by [Mohammad Reza Pazooki](http://mrpazooki.com/ "Mohammad Reza Pazooki")
