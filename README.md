@@ -1,10 +1,8 @@
 پنل مدیریت فارسی	
- -		
- -		
+	
  - پیش نمایش پنل		
  -![Gentelella Bootstrap Admin Template](http://mrpazooki.com/img/index-rtl.jpg "Gentelella Theme پیش نمایش")		
  
-
  -## Scripts included:		
  -* Bootstrap		
  -* Font Awesome		
