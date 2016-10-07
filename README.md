@@ -1,12 +1,7 @@
-Gentellela Admin پنل مدیریت فارسی با استفاده از bootstrap می باشد
- -This template uses the default Bootstrap 3 styles along with a variety of powerful jQuery plugins and tools to create a powerful framework for creating admin panels or back-end dashboards.		 +This template uses the Right To Left version and is optimised for persian websites
- -		
- -Theme uses several libraries for charts, calendar, form validation, wizard style interface, off-canvas navigation menu, text forms, date range, upload area, form autocomplete, range slider, progress bars, notifications and much more.		
- -		
- -We would love to see how you use this awesome admin template. You can notify us about your site, app or service by tweeting to [@colorlib](https://twitter.com/colorlib). Once the list will grown long enough we will write a post similar to [this](https://colorlib.com/wp/avada-theme-examples/) to showcase the best examples.		
+پنل مدیریت فارسی	
  -		
  -		
- -## پیش نمایش پنل		
+ - پیش نمایش پنل		
  -![Gentelella Bootstrap Admin Template](http://mrpazooki.com/img/index-rtl.jpg "Gentelella Theme پیش نمایش")		
  
 
@@ -54,4 +49,4 @@ Gentellela Admin پنل مدیریت فارسی با استفاده از bootstr
  -		
  -Project is developed and maintained by [Colorlib](https://colorlib.com/ "Colorlib - Make Your First Blog") and Aigars Silkalns
   -		
- -Project is RTL by [Colorlib](http://mrpazooki.com/ "Mohammad Reza Pazooki")
+ -Project is RTL by [Mohammad Reza Pazooki](http://mrpazooki.com/ "Mohammad Reza Pazooki")
