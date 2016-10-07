@@ -17,7 +17,7 @@ Gentellela Admin پنل مدیریت فارسی با استفاده از bootstr
  -* FullCalendar		
  -* Charts.js		
  -* Bootstrap Colorpicker		
- -* Cropper		
+ -* Cropper		 
  -* dataTables		
  -* Date Range Picker for Bootstrap		
  -* Dropzone		
