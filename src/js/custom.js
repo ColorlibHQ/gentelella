@@ -15,7 +15,7 @@ var CURRENT_URL = window.location.href.split('#')[0].split('?')[0],
     $FOOTER = $('footer');
 
 // Sidebar
-$(document).ready(function() {
+$(document).ready( window.gentelella_sidebar_doc_ready = function() {
     // TODO: This is some kind of easy fix, maybe we can improve this
     var setContentHeight = function () {
         // reset height
@@ -32,7 +32,7 @@ $(document).ready(function() {
         $RIGHT_COL.css('min-height', contentHeight);
     };
 
-    $SIDEBAR_MENU.find('a').on('click', function(ev) {
+    $SIDEBAR_MENU.find('a').off('click').on('click', window.gentelella_sidebar_menu_click = function(ev) {
         var $li = $(this).parent();
 
         if ($li.is('.active')) {
@@ -56,7 +56,7 @@ $(document).ready(function() {
     });
 
     // toggle small or large menu
-    $MENU_TOGGLE.on('click', function() {
+    $MENU_TOGGLE.off('click').on('click', window.gentelella_sidebar_toggle_click = function () {
         if ($BODY.hasClass('nav-md')) {
             $SIDEBAR_MENU.find('li.active ul').hide();
             $SIDEBAR_MENU.find('li.active').addClass('active-sm').removeClass('active');
@@ -70,14 +70,17 @@ $(document).ready(function() {
         setContentHeight();
     });
 
-    // check active menu
-    $SIDEBAR_MENU.find('a[href="' + CURRENT_URL + '"]').parent('li').addClass('current-page');
-
-    $SIDEBAR_MENU.find('a').filter(function () {
-        return this.href == CURRENT_URL;
-    }).parent('li').addClass('current-page').parents('ul').slideDown(function() {
-        setContentHeight();
-    }).parent().addClass('active');
+	// check active menu
+    window.gentelella_sidebar_check_activemenu = function() {
+    	$SIDEBAR_MENU.find('a[href="' + CURRENT_URL + '"]').parent('li').addClass('current-page');
+    
+    	$SIDEBAR_MENU.find('a').filter(function () {
+    		return this.href == CURRENT_URL;
+    	}).parent('li').addClass('current-page').parents('ul').slideDown(function() {
+    		setContentHeight();
+    	}).parent().addClass('active');
+    }
+    window.gentelella_sidebar_check_activemenu();
 
     // recompute content when resizing
     $(window).smartresize(function(){  
@@ -98,8 +101,8 @@ $(document).ready(function() {
 // /Sidebar
 
 // Panel toolbox
-$(document).ready(function() {
-    $('.collapse-link').on('click', function() {
+$(document).ready( window.gentelella_panel_doc_ready = function() {
+	$('.collapse-link').off('click').on('click', window.gentelella_panel_collapse_click = function () {
         var $BOX_PANEL = $(this).closest('.x_panel'),
             $ICON = $(this).find('i'),
             $BOX_CONTENT = $BOX_PANEL.find('.x_content');
@@ -117,7 +120,7 @@ $(document).ready(function() {
         $ICON.toggleClass('fa-chevron-up fa-chevron-down');
     });
 
-    $('.close-link').click(function () {
+	$('.close-link').off('click').on('click', window.gentelella_panel_close_click = function () {
         var $BOX_PANEL = $(this).closest('.x_panel');
 
         $BOX_PANEL.remove();
@@ -126,7 +129,7 @@ $(document).ready(function() {
 // /Panel toolbox
 
 // Tooltip
-$(document).ready(function() {
+$(document).ready( window.gentelella_tooltip_doc_ready = function() {
     $('[data-toggle="tooltip"]').tooltip({
         container: 'body'
     });
@@ -140,7 +143,7 @@ if ($(".progress .progress-bar")[0]) {
 // /Progressbar
 
 // Switchery
-$(document).ready(function() {
+$(document).ready( window.gentelella_switchery_doc_ready = function () {
     if ($(".js-switch")[0]) {
         var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
         elems.forEach(function (html) {
@@ -153,9 +156,9 @@ $(document).ready(function() {
 // /Switchery
 
 // iCheck
-$(document).ready(function() {
+$(document).ready( window.gentelella_iCheck_doc_ready = function () {
     if ($("input.flat")[0]) {
-        $(document).ready(function () {
+    	$(document).ready( window.gentelella_inputflat_doc_ready = function () {
             $('input.flat').iCheck({
                 checkboxClass: 'icheckbox_flat-green',
                 radioClass: 'iradio_flat-green'
@@ -166,12 +169,12 @@ $(document).ready(function() {
 // /iCheck
 
 // Table
-$('table input').on('ifChecked', function () {
+$('table input').on('ifChecked', window.gentelella_table_ifChecked = function () {
     checkState = '';
     $(this).parent().parent().parent().addClass('selected');
     countChecked();
 });
-$('table input').on('ifUnchecked', function () {
+$('table input').on('ifUnchecked', window.gentelella_table_ifUnchecked = function () {
     checkState = '';
     $(this).parent().parent().parent().removeClass('selected');
     countChecked();
@@ -179,21 +182,21 @@ $('table input').on('ifUnchecked', function () {
 
 var checkState = '';
 
-$('.bulk_action input').on('ifChecked', function () {
+$('.bulk_action input').on('ifChecked', window.gentelella_bulkaction_ifChecked = function () {
     checkState = '';
     $(this).parent().parent().parent().addClass('selected');
     countChecked();
 });
-$('.bulk_action input').on('ifUnchecked', function () {
+$('.bulk_action input').on('ifUnchecked', window.gentelella_bulkaction_ifUnchecked = function () {
     checkState = '';
     $(this).parent().parent().parent().removeClass('selected');
     countChecked();
 });
-$('.bulk_action input#check-all').on('ifChecked', function () {
+$('.bulk_action input#check-all').on('ifChecked', window.gentelella_bulkactionall_ifChecked = function () {
     checkState = 'all';
     countChecked();
 });
-$('.bulk_action input#check-all').on('ifUnchecked', function () {
+$('.bulk_action input#check-all').on('ifUnchecked', window.gentelella_bulkactionall_ifUnchecked = function () {
     checkState = 'none';
     countChecked();
 });
@@ -219,8 +222,8 @@ function countChecked() {
 }
 
 // Accordion
-$(document).ready(function() {
-    $(".expand").on("click", function () {
+$(document).ready( window.gentelella_accordion_doc_ready = function() {
+	$(".expand").off('click').on("click", window.gentelella_accordion_expand_click = function () {
         $(this).next().slideToggle(200);
         $expand = $(this).find(">:first-child");
 
@@ -234,11 +237,11 @@ $(document).ready(function() {
 
 // NProgress
 if (typeof NProgress != 'undefined') {
-    $(document).ready(function () {
+	$(document).ready( window.gentelella_nprogress_doc_ready = function () {
         NProgress.start();
     });
 
-    $(window).load(function () {
+	$(window).load( window.gentelella_nprogress_window_load = function () {
         NProgress.done();
     });
 }
