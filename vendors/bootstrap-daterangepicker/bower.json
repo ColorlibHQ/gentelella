@@ -14,7 +14,7 @@
     "moment.min.js"
   ],
   "dependencies": {
-    "jquery": ">=1.10",
+    "jquery": "1.9.1 - 3",
     "moment": ">=2.9.0"
  }
 }

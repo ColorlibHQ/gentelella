@@ -1,0 +1,182 @@
+.daterangepicker {
+  .ranges {
+    li {
+      color: #73879C;
+      
+      &.active, &:hover {
+        background: #536A7F;
+        border: 1px solid #536A7F;
+        color: #fff;  
+      }
+    }
+  }
+
+  .input-mini {
+      background-color: #eee;
+      border: 1px solid #ccc;
+      box-shadow: none !important;
+
+      &.active {
+        border: 1px solid #ccc;
+      }
+  }
+
+  select {
+    &.monthselect, &.yearselect {
+      font-size: 12px;
+      padding: 1px;
+      height: auto;
+      margin: 0;
+      cursor: default;
+      height: 30px;
+      border: 1px solid #ADB2B5;
+      line-height: 30px;
+      border-radius: 0px !important;
+    }
+
+    &.monthselect {
+      margin-right: 2%;
+    }
+  }
+
+  td {
+    &.in-range {
+      background: #E4E7EA;
+      color: #73879C;
+    }
+
+    &.active, &.active:hover {
+      background-color: #536A7F;
+      color: #fff;
+    }      
+  }
+
+  th.available:hover {
+    background: #eee;
+    color: #34495E;
+  }
+
+  &:before, &:after {
+    content: none;
+  }
+
+  .calendar.single {
+    margin: 0 0 4px 0;
+
+    .calendar-table {
+      width: 224px;
+      padding: 0 0 4px 0 !important;
+
+      thead {
+        & tr:first-child {
+          th {
+            padding: 8px 5px;
+          }
+        }
+
+        th {
+          border-radius: 0;
+        }
+      }
+    }
+  }
+
+  &.picker_1 {
+    color: #fff;
+    background: #34495E;
+
+    .calendar-table {
+      background: #34495E;
+
+      thead {
+        & tr {
+          background: #213345;
+        }
+
+        & tr:first-child {
+          background: #1ABB9C;
+        }
+      }
+
+      td.off {
+        background: #34495E;
+        color: #999;
+      }
+
+      td.available:hover {
+        color: #34495E;
+      }
+    }
+  }
+
+  &.picker_2 {
+    .calendar-table {
+      thead {
+        & tr {
+          color: #1ABB9C;
+        }
+
+        & tr:first-child {
+          color: #73879C;
+        }
+      }
+    }
+  }
+
+  &.picker_3 {
+    .calendar-table {
+      thead {
+        & tr:first-child {
+          color: #fff;
+          background: #1ABB9C;
+        }
+      }
+    }
+  }
+
+  &.picker_4 {
+    .calendar-table {
+      thead {
+        & tr:first-child {
+          color: #fff;
+          background: #34495E;;
+        }
+      }
+
+      td, td.off  {
+        background: #ECF0F1;
+        border: 1px solid #fff;
+        border-radius: 0;
+      }
+
+      td.active {
+        background: #34495E;
+      }
+    }
+  }
+}
+
+.calendar-exibit {
+  .show-calendar {
+    float: none;
+    display: block;
+    position: relative;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    border: 1px solid rgba(0,0,0,0.15);
+    overflow: hidden;
+
+    .calendar {
+      margin: 0 0 4px 0;
+    }
+
+    &.picker_1 {
+      background: #34495E;
+    }
+  }
+
+  .calendar-table {
+    padding: 0 0 4px 0;
+  }
+}
