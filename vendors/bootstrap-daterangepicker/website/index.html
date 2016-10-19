@@ -137,15 +137,15 @@
                         </ul>
 
                         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                        <!-- DRP 336x280 -->
+                        <!-- DRP Responsive -->
                         <ins class="adsbygoogle"
-                             style="display:inline-block;width:336px;height:280px"
+                             style="display:block"
                              data-ad-client="ca-pub-9095657276960731"
-                             data-ad-slot="1626914594"></ins>
+                             data-ad-slot="8963174596"
+                             data-ad-format="auto"></ins>
                         <script>
                         (adsbygoogle = window.adsbygoogle || []).push({});
                         </script>
-
                     </div>
 
                 </div>
@@ -160,7 +160,7 @@
                             for selecting dates, times, or from predefined ranges like "Last 30 Days".
                         </p>
 
-                        <a style="display: block; height: 300px; background: url('drp.png') top right no-repeat; background-size: auto 100%; border: 1px solid #ccc; margin-bottom: 20px" href="https://awio.iljmp.com/5/drpdemo" title="Click for a Live Demo"></a>
+                        <a style="display: block; height: 300px; background: url('drp.png') top right no-repeat; background-size: cover; border: 1px solid #ccc; margin-bottom: 20px" href="https://awio.iljmp.com/5/drpdemo" title="Click for a Live Demo"></a>
                     
                     </div>
 
@@ -313,15 +313,19 @@
                                 </div>
                             </div>
 
-			    <script type="text/javascript">
+            			    <script type="text/javascript">
                             $(function() {
+
+                                var start = moment().subtract(29, 'days');
+                                var end = moment();
 
                                 function cb(start, end) {
                                     $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
                                 }
-                                cb(moment().subtract(29, 'days'), moment());
 
                                 $('#reportrange').daterangepicker({
+                                    startDate: start,
+                                    endDate: end,
                                     ranges: {
                                        'Today': [moment(), moment()],
                                        'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
@@ -331,6 +335,8 @@
                                        'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
                                     }
                                 }, cb);
+
+                                cb(start, end);
 
                             });
                             </script>
@@ -422,20 +428,25 @@
                                 <input type="text" class="form-control" id="maxDate" value="" placeholder="MM/DD/YYYY">
                               </div>
 
+                              <div class="form-group">
+                                <label for="opens">opens</label>
+                                <select id="opens" class="form-control">
+                                  <option value="right" selected>right</option>
+                                  <option value="left">left</option>
+                                  <option value="center">center</option>
+                                </select>
+                              </div>
+
+                              <div class="form-group">
+                                <label for="drops">drops</label>
+                                <select id="drops" class="form-control">
+                                  <option value="down" selected>down</option>
+                                  <option value="up">up</option>
+                                </select>
+                              </div>
+
                             </div>
                             <div class="col-md-4">
-
-                              <div class="checkbox">
-                                <label>
-                                  <input type="checkbox" id="autoApply"> autoApply
-                                </label>
-                              </div>
-
-                              <div class="checkbox">
-                                <label>
-                                  <input type="checkbox" id="singleDatePicker"> singleDatePicker
-                                </label>
-                              </div>
 
                               <div class="checkbox">
                                 <label>
@@ -452,6 +463,12 @@
                               <div class="checkbox">
                                 <label>
                                   <input type="checkbox" id="showISOWeekNumbers"> showISOWeekNumbers
+                                </label>
+                              </div>
+
+                              <div class="checkbox">
+                                <label>
+                                  <input type="checkbox" id="singleDatePicker"> singleDatePicker
                                 </label>
                               </div>
 
@@ -486,13 +503,13 @@
 
                               <div class="checkbox">
                                 <label>
-                                  <input type="checkbox" id="ranges"> ranges (with example predefined ranges)
+                                  <input type="checkbox" id="locale"> locale (with example settings)
                                 </label>
                               </div>
 
                               <div class="checkbox">
                                 <label>
-                                  <input type="checkbox" id="locale"> locale (with example settings)
+                                  <input type="checkbox" id="autoApply"> autoApply
                                 </label>
                               </div>
 
@@ -508,31 +525,8 @@
                                 </label>
                               </div>
 
-                              <div class="checkbox">
-                                <label>
-                                  <input type="checkbox" id="alwaysShowCalendars"> alwaysShowCalendars
-                                </label>
-                              </div>
-
                             </div>
                             <div class="col-md-4">
-
-                              <div class="form-group">
-                                <label for="opens">opens</label>
-                                <select id="opens" class="form-control">
-                                  <option value="right" selected>right</option>
-                                  <option value="left">left</option>
-                                  <option value="center">center</option>
-                                </select>
-                              </div>
-
-                              <div class="form-group">
-                                <label for="drops">drops</label>
-                                <select id="drops" class="form-control">
-                                  <option value="down" selected>down</option>
-                                  <option value="up">up</option>
-                                </select>
-                              </div>
 
                               <div class="form-group">
                                 <label for="buttonClasses">buttonClasses</label>
@@ -547,6 +541,24 @@
                               <div class="form-group">
                                 <label for="cancelClass">cancelClass</label>
                                 <input type="text" class="form-control" id="cancelClass" value="btn-default">
+                              </div>
+
+                              <div class="checkbox">
+                                <label>
+                                  <input type="checkbox" id="ranges"> ranges (with example predefined ranges)
+                                </label>
+                              </div>
+
+                              <div class="checkbox">
+                                <label>
+                                  <input type="checkbox" id="alwaysShowCalendars"> alwaysShowCalendars
+                                </label>
+                              </div>
+
+                              <div class="checkbox">
+                                <label>
+                                  <input type="checkbox" id="showCustomRangeLabel" checked="checked"> showCustomRangeLabel
+                                </label>
                               </div>
 
                             </div>
@@ -621,6 +633,16 @@
                                 <code>ranges</code>: (object) Set predefined date ranges the user can select from. Each key is the label for the range, and its value an array with two dates representing the bounds of the range
                             </li>
                             <li>
+                                <code>showCustomRangeLabel</code>: (boolean) Displays an item labeled "Custom Range" at
+                                the end of the list of predefined ranges, when the <code>ranges</code> option is used.
+                                This option will be highlighted whenever the current date range selection does not match
+                                one of the predefined ranges. Clicking it will display the calendars to select a new range.
+                            </li>
+                            <li>
+                                <code>alwaysShowCalendars</code>: (boolean) Normally, if you use the <code>ranges</code>
+                                option to specify pre-defined date ranges, calendars for choosing a custom date range are not shown until the user clicks "Custom Range". When this option is set to true, the calendars for choosing a custom date range are always shown instead.
+                            </li>
+                            <li>
                                 <code>opens</code>: (string</code>: 'left'/'right'/'center') Whether the picker appears aligned to the left, to the right, or centered under the HTML element it's attached to
                             </li>
                             <li>
@@ -636,7 +658,9 @@
                                 <code>cancelClass</code>: (string) CSS class string that will be added to the cancel button
                             </li>
                             <li>
-                                <code>locale</code>: (object) Allows you to provide localized strings for buttons and labels, customize the date display format, and change the first day of week for the calendars
+                                <code>locale</code>: (object) Allows you to provide localized strings for buttons and labels, customize the date format, and change the first day of week for the calendars.
+                                Check off "locale (with example settings)" in the configuration generator to see how
+                                to customize these options.
                             </li>
                             <li>
                                 <code>singleDatePicker</code>: (boolean) Show only a single calendar to choose one date, instead of a range picker with two calendars; the start and end dates provided to your callback will be the same single date chosen
@@ -646,9 +670,6 @@
                             </li>
                             <li>
                                 <code>linkedCalendars</code>: (boolean) When enabled, the two calendars displayed will always be for two sequential months (i.e. January and February), and both will be advanced when clicking the left or right arrows above the calendars. When disabled, the two calendars can be individually advanced and display any month/year.
-                            </li>
-                            <li>
-                                <code>parentEl</code>: (string) jQuery selector of the parent element that the date range picker will be added to, if not provided this will be 'body'
                             </li>
                             <li>
                                 <code>isInvalidDate</code>: (function) A function that is passed each date in the two
@@ -666,8 +687,7 @@
                                 at initialization and when the selected dates change.
                             </li>
                             <li>
-                                <code>alwaysShowCalendars</code>: (boolean) Normally, if you use the <code>ranges</code>
-                                option to specify pre-defined date ranges, calendars for choosing a custom date range are not shown until the user clicks "Custom Range". When this option is set to true, the calendars for choosing a custom date range are always shown instead.
+                                <code>parentEl</code>: (string) jQuery selector of the parent element that the date range picker will be added to, if not provided this will be 'body'
                             </li>
                         </ul>
 

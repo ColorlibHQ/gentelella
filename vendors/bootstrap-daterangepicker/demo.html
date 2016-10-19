@@ -133,6 +133,15 @@
 
               <div class="checkbox">
                 <label>
+                  <input type="checkbox" id="alwaysShowCalendars"> alwaysShowCalendars
+                </label>
+              </div>
+
+            </div>
+            <div class="col-md-4">
+
+              <div class="checkbox">
+                <label>
                   <input type="checkbox" id="linkedCalendars" checked="checked"> linkedCalendars
                 </label>
               </div>
@@ -145,12 +154,9 @@
 
               <div class="checkbox">
                 <label>
-                  <input type="checkbox" id="alwaysShowCalendars"> alwaysShowCalendars
+                  <input type="checkbox" id="showCustomRangeLabel" checked="checked"> showCustomRangeLabel
                 </label>
               </div>
-
-            </div>
-            <div class="col-md-4">
 
               <div class="form-group">
                 <label for="opens">opens</label>
@@ -313,6 +319,9 @@
 
           if (!$('#autoUpdateInput').is(':checked'))
             options.autoUpdateInput = false;
+
+          if (!$('#showCustomRangeLabel').is(':checked'))
+            options.showCustomRangeLabel = false;
 
           if ($('#alwaysShowCalendars').is(':checked'))
             options.alwaysShowCalendars = true;

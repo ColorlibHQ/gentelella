@@ -32,7 +32,7 @@ li {
 }
 #sidebar {
     top: 20px;
-    width: 336px;
+    width: 300px;
 }
 #sidebar ul {
     margin-bottom: 5px;
@@ -108,7 +108,7 @@ input[type="text"] {
 #config .demo i { position: absolute; bottom: 10px; right: 24px; top: auto; cursor: pointer; }
 
 #rightcol {
-    margin-left: 366px;
+    margin-left: 330px;
 }
 
 #nav-spy {
