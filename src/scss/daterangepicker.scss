@@ -22,7 +22,12 @@
   }
 
   select {
-    &.monthselect, &.yearselect {
+    &.monthselect,
+    &.yearselect,
+    &.hourselect,
+    &.minuteselect,
+    &.secondselect,
+    &.ampmselect {
       font-size: 12px;
       padding: 1px;
       height: auto;
