@@ -2720,7 +2720,10 @@ ul.messages li .message_wrapper h4.heading {
   cursor: pointer;
   margin-bottom: 10px;
   line-height: 100%; }
-
+blockquote footer{
+  margin-right: auto;
+  margin-left: 230px;
+}
 ul.messages li .message_wrapper blockquote {
   padding: 0px 10px;
   margin: 0;
@@ -4224,4 +4227,8 @@ ul.notifications {
   }
   .checkbox input[type=checkbox], .checkbox-inline input[type=checkbox], .radio input[type=radio], .radio-inline input[type=radio]{
     margin-right: -20px;
+  }
+  .navbar-right .dropdown-menu{
+    right: auto;
+    left: 0;
   }
