@@ -2852,8 +2852,8 @@ ul.project_files li a i {
   overflow: hidden;
   width: 85px;
   height: 88px;
-  top: -3px;
-  right: -3px; }
+  top: 0;
+  left: 0; }
 
 .ui-ribbon-container.ui-ribbon-primary .ui-ribbon {
   background-color: #5b90bf; }
@@ -2861,12 +2861,12 @@ ul.project_files li a i {
 .ui-ribbon-container .ui-ribbon {
   position: relative;
   display: block;
-  text-align: center;
+  text-align: right;
   font-size: 15px;
   font-weight: 700;
   color: #fff;
   transform: rotate(45deg);
-  padding: 7px 0;
+  padding: 7px 4px 7px 0;
   left: -5px;
   top: 15px;
   width: 120px;
