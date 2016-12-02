@@ -43,7 +43,7 @@ gulp.task('browser-sync', function() {
         server: {
             baseDir: './'
         },
-        startPath: './production/index.html'
+        startPath: './production/index-rtl.html'
     });
 });
 
