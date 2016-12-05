@@ -426,6 +426,7 @@
 
     <!-- FullCalendar -->
     <script>
+	
       $(window).load(function() {
         var date = new Date(),
             d = date.getDate(),
@@ -438,7 +439,7 @@
           header: {
             left: 'prev,next today',
             center: 'title',
-            right: 'month,agendaWeek,agendaDay'
+            right: 'month,agendaWeek,agendaDay,listMonth'
           },
           selectable: true,
           selectHelper: true,
@@ -521,6 +522,7 @@
           }]
         });
       });
+	  
     </script>
     <!-- /FullCalendar -->
   </body>
