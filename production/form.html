@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+	
     <title>Gentellela Alela! | </title>
 
     <!-- Bootstrap -->
@@ -366,7 +366,8 @@
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                          <button type="submit" class="btn btn-primary">Cancel</button>
+                          <button class="btn btn-primary" type="button">Cancel</button>
+						  <button class="btn btn-primary" type="reset">Reset</button>
                           <button type="submit" class="btn btn-success">Submit</button>
                         </div>
                       </div>
@@ -451,7 +452,8 @@
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-                          <button type="submit" class="btn btn-primary">Cancel</button>
+                          <button type="button" class="btn btn-primary">Cancel</button>
+						   <button class="btn btn-primary" type="reset">Reset</button>
                           <button type="submit" class="btn btn-success">Submit</button>
                         </div>
                       </div>
@@ -876,7 +878,8 @@
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-                          <button type="submit" class="btn btn-primary">Cancel</button>
+                          <button type="button" class="btn btn-primary">Cancel</button>
+                          <button type="reset" class="btn btn-primary">Reset</button>
                           <button type="submit" class="btn btn-success">Submit</button>
                         </div>
                       </div>
@@ -992,7 +995,7 @@
                 </div>
                 <div class="x_content">
                   <div id="alerts"></div>
-                  <div class="btn-toolbar editor" data-role="editor-toolbar" data-target="editor-one">
+                  <div class="btn-toolbar editor" data-role="editor-toolbar" data-target="#editor-one">
                     <div class="btn-group">
                       <a class="btn dropdown-toggle" data-toggle="dropdown" title="Font"><i class="fa fa-font"></i><b class="caret"></b></a>
                       <ul class="dropdown-menu">
@@ -1488,13 +1491,18 @@
     <!-- Parsley -->
     <script>
       $(document).ready(function() {
+	  
+	  
+	  
         $.listen('parsley:field:validate', function() {
           validateFront();
         });
-        $('#demo-form .btn').on('click', function() {
+		
+        $('#demo-form .btn[type:submit]').on('click', function() {
           $('#demo-form').parsley().validate();
           validateFront();
         });
+		
         var validateFront = function() {
           if (true === $('#demo-form').parsley().isValid()) {
             $('.bs-callout-info').removeClass('hidden');
@@ -1504,13 +1512,16 @@
             $('.bs-callout-warning').removeClass('hidden');
           }
         };
+		
+		
+		
       });
 
       $(document).ready(function() {
         $.listen('parsley:field:validate', function() {
           validateFront();
         });
-        $('#demo-form2 .btn').on('click', function() {
+        $('#demo-form2 .btn[type:submit]'').on('click', function() {
           $('#demo-form2').parsley().validate();
           validateFront();
         });
