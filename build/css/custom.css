@@ -260,10 +260,13 @@
 .nav-sm .menu_section {
   margin: 0; }
 
+ 
 .nav-sm span.fa,
 .nav-sm .menu_section h3 {
   display: none; }
 
+
+  
 .nav-sm li li span.fa {
   display: inline-block; }
 
@@ -2021,8 +2024,11 @@ legend {
   height: 23px;
   color: #bbb;
   line-height: 24px;
-  font-size: 15px; }
+  font-size: 15px;
+  
+  }
 
+  
 .form-control-feedback.left {
   border-right: 1px solid #ccc;
   left: 13px; }
