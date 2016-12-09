@@ -124,7 +124,7 @@
 
 .nav-sm .navbar.nav_title a i {
   font-size: 27px;
-  margin: 13px 0 0 3px; }
+  margin: 13px 0 0 5px; }
 
 .site_title i {
   border: 1px solid #EAEAEA;
@@ -183,6 +183,7 @@
   display: none; }
 
 .menu_section {
+  margin-top: 25px;
   margin-bottom: 35px; }
 
 .menu_section h3 {
@@ -901,7 +902,6 @@ h2 {
   display: inline-block;
   background: #fff;
   border: 1px solid #E6E9ED;
-  -webkit-column-break-inside: avoid;
   -moz-column-break-inside: avoid;
   column-break-inside: avoid;
   opacity: 1;
@@ -3316,12 +3316,12 @@ a.hiddenanchor {
 
 .login_content h1:after {
   background: #7e7e7e;
-  background: linear-gradient(left, #7e7e7e 0%, white 100%);
+  background: linear-gradient(to right, #7e7e7e 0%, white 100%);
   right: 0; }
 
 .login_content h1:before {
   background: #7e7e7e;
-  background: linear-gradient(right, #7e7e7e 0%, white 100%);
+  background: linear-gradient(to left, #7e7e7e 0%, white 100%);
   left: 0; }
 
 .login_content h1:before, .login_content h1:after {
@@ -3333,12 +3333,12 @@ a.hiddenanchor {
 
 .login_content h1:after {
   background: #7e7e7e;
-  background: linear-gradient(left, #7e7e7e 0%, white 100%);
+  background: linear-gradient(to right, #7e7e7e 0%, white 100%);
   right: 0; }
 
 .login_content h1:before {
   background: #7e7e7e;
-  background: linear-gradient(right, #7e7e7e 0%, white 100%);
+  background: linear-gradient(to left, #7e7e7e 0%, white 100%);
   left: 0; }
 
 .login_content form {
@@ -3388,7 +3388,7 @@ a.hiddenanchor {
 
 .button {
   background: #f7f9fa;
-  background: linear-gradient(top, #f7f9fa 0%, #f0f0f0 100%);
+  background: linear-gradient(to bottom, #f7f9fa 0%, #f0f0f0 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f9fa', endColorstr='#f0f0f0', GradientType=0);
   -ms-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
   -o-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
