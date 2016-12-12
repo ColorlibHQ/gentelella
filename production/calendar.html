@@ -20,7 +20,7 @@
     <link href="../vendors/fullcalendar/dist/fullcalendar.print.css" rel="stylesheet" media="print">
 
     <!-- Custom styling plus plugins -->
-    <link href="../build/css/custom.min.css" rel="stylesheet">
+    <link href="../build/css/style.css" rel="stylesheet">
   </head>
 
   <body class="nav-md">
@@ -524,6 +524,17 @@
       });
 	  
     </script>
+	
+	
+	<script>
+	
+		eventAfterRender: function render (event, element, view) { 
+			element.append(event.title);
+			}
+
+	
+	</script>
+	
     <!-- /FullCalendar -->
   </body>
 </html>
