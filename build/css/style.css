@@ -4135,9 +4135,13 @@ ul.notifications {
     min-height: 300px;
     border: 1px solid #e5e5e5
 }
+
+/*
 .x_content {
     direction: rtl;
 }
+*/
+
 .main_menu .label {
     line-height: 11px;
     margin-top: 4px;
@@ -4156,5 +4160,60 @@ ul.notifications {
 @media (max-width: 767px) {
    .dataTables_length { float:none; }
 }
+
+
+
+
+/* CSS3 Checkbox */
+
+.checkbox-input { display:block;position:relative; }
+.checkbox-input:before { display:block;content:"";position:absolute;top:2px;left:0;height:20px;width:20px;background:red;border-radius:3px; }
+
+
+ #input + label:after {
+    content: 'click my input';
+    color: blue;
+  }
+
+  #input:focus + label:after {
+    content: 'not valid yet';
+    color: blue;
+  }
+
+  #input:valid + label:after {
+    content: 'looks good';
+    color: red;
+  }
+
+/* CSS3 Checkbox - end */
+
+
+
+/*
+.checkbox 																										{ display: block;position:relative;cursor:pointer; }
+.checkbox input 																								{ position:absolute;z-index:-1;opacity:0;left:0;top:0; }
+.checkbox div 																									{ position:absolute;top:2px;left:0;height:20px;width:20px;background:#e6e6e6;border-radius:3px; }
+.checkbox input:checked ~ div 																			{ background: #1ABC9C; }
+.checkbox:hover input:not([disabled]):checked ~ div,
+.checkbox input:checked:focus ~ div 																	{ background: #1ABC9C; }
+.checkbox input:disabled ~ div 																			{ background: #1ABC9C;opacity: 0.6;pointer-events: none; }
+.checkbox div:after 																							{ content: '';position: absolute;display: none; }
+.checkbox input:checked ~ div:after 																	{ display: block; }
+.checkbox-wp div:after 																					{ left: 7px;top: 3px;width: 7px;height: 11px;border: solid #fff;border-width: 0 2px 2px 0;transform: rotate(40deg); }
+.checkbox-wp input:disabled ~ div:after 																{ border-color: #F2F2F2; }
+
+
+.checkbox-radio div 																							{ border-radius: 50%; }
+.checkbox-radio div:after 																					{ left: 7px;top: 7px;height: 6px;width: 6px;border-radius: 50%;background: #fff; }
+.checkbox-radio input:disabled ~ div:after 															{ background: #F2F2F2; }
+
+
+.checkbox, .radio { margin-top:-3px; }
+
+table thead .checkbox { margin-top:-7px;margin-top:-21px; }
+table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
+*/
+			
+
 
 
