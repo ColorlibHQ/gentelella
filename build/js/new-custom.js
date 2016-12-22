@@ -1,52 +1,46 @@
 
-(function($) {
-	"use strict";
 	
-	
+	/**
+	* Resize function without multiple trigger
+	* 
+	* Usage:
+	* $(window).smartresize(function(){  
+	*     // code here
+	* });
+	*/
 	(function($,sr){
-    // debouncing function from John Hann
-    // http://unscriptable.com/index.php/2009/03/20/debouncing-javascript-methods/
-    var debounce = function (func, threshold, execAsap) {
-      var timeout;
+		// debouncing function from John Hann
+		// http://unscriptable.com/index.php/2009/03/20/debouncing-javascript-methods/
+		var debounce = function (func, threshold, execAsap) {
+		  var timeout;
 
-        return function debounced () {
-            var obj = this, args = arguments;
-            function delayed () {
-                if (!execAsap)
-                    func.apply(obj, args); 
-                timeout = null; 
-            }
+			return function debounced () {
+				var obj = this, args = arguments;
+				function delayed () {
+					if (!execAsap)
+						func.apply(obj, args); 
+					timeout = null; 
+				}
 
-            if (timeout)
-                clearTimeout(timeout);
-            else if (execAsap)
-                func.apply(obj, args);
+				if (timeout)
+					clearTimeout(timeout);
+				else if (execAsap)
+					func.apply(obj, args);
 
-            timeout = setTimeout(delayed, threshold || 100); 
-        };
-    };
+				timeout = setTimeout(delayed, threshold || 100); 
+			};
+		};
 
-    // smartresize 
-    jQuery.fn[sr] = function(fn){  return fn ? this.bind('resize', debounce(fn)) : this.trigger(sr); };
+		 // smartresize 
+		jQuery.fn[sr] = function(fn){  return fn ? this.bind('resize', debounce(fn)) : this.trigger(sr); };
 
 	})(jQuery,'smartresize');
-
-		/**
+	/**
 	 * To change this license header, choose License Headers in Project Properties.
 	 * To change this template file, choose Tools | Templates
 	 * and open the template in the editor.
 	 */
-	
-	
-	/* ==========================================================================
-   exists - Check if an element exists
-   ========================================================================== */		
-	
-	function exists(e) {
-		return $(e).length > 0;
-	}
-
-	
+		
 	var CURRENT_URL = window.location.href.split('#')[0].split('?')[0],
     $BODY = $('body'),
     $MENU_TOGGLE = $('#menu_toggle'),
@@ -137,7 +131,7 @@
 					mouseWheel:{ preventDefault: true }
 				});
 			}
-		});
+		};
 		// /Sidebar
 
 		/* PROGRESSBAR */
@@ -146,65 +140,70 @@
 			$('.progress .progress-bar').progressbar();
 		}
 		
+		/*
 		  Chart.defaults.global.legend = {
         enabled: false
       };
-
+*/
 		/* KNOB */
 	  
-		$(function($) {
+		function init_knob() {
 
-				$(".knob").knob({
-				  change: function(value) {
-					//console.log("change : " + value);
-				  },
-				  release: function(value) {
-					//console.log(this.$.attr('value'));
-					console.log("release : " + value);
-				  },
-				  cancel: function() {
-					console.log("cancel : ", this);
-				  },
-				  /*format : function (value) {
-				   return value + '%';
-				   },*/
-				  draw: function() {
+					if( typeof (knob) === 'undefined'){ return; }
+					console.log('init_knob');
+		
+					$(".knob").knob({
+					  change: function(value) {
+						//console.log("change : " + value);
+					  },
+					  release: function(value) {
+						//console.log(this.$.attr('value'));
+						console.log("release : " + value);
+					  },
+					  cancel: function() {
+						console.log("cancel : ", this);
+					  },
+					  /*format : function (value) {
+					   return value + '%';
+					   },*/
+					  draw: function() {
 
-					// "tron" case
-					if (this.$.data('skin') == 'tron') {
+						// "tron" case
+						if (this.$.data('skin') == 'tron') {
 
-					  this.cursorExt = 0.3;
+						  this.cursorExt = 0.3;
 
-					  var a = this.arc(this.cv) // Arc
-						,
-						pa // Previous arc
-						, r = 1;
+						  var a = this.arc(this.cv) // Arc
+							,
+							pa // Previous arc
+							, r = 1;
 
-					  this.g.lineWidth = this.lineWidth;
+						  this.g.lineWidth = this.lineWidth;
 
-					  if (this.o.displayPrevious) {
-						pa = this.arc(this.v);
-						this.g.beginPath();
-						this.g.strokeStyle = this.pColor;
-						this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, pa.s, pa.e, pa.d);
-						this.g.stroke();
+						  if (this.o.displayPrevious) {
+							pa = this.arc(this.v);
+							this.g.beginPath();
+							this.g.strokeStyle = this.pColor;
+							this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, pa.s, pa.e, pa.d);
+							this.g.stroke();
+						  }
+
+						  this.g.beginPath();
+						  this.g.strokeStyle = r ? this.o.fgColor : this.fgColor;
+						  this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, a.s, a.e, a.d);
+						  this.g.stroke();
+
+						  this.g.lineWidth = 2;
+						  this.g.beginPath();
+						  this.g.strokeStyle = this.o.fgColor;
+						  this.g.arc(this.xy, this.xy, this.radius - this.lineWidth + 1 + this.lineWidth * 2 / 3, 0, 2 * Math.PI, false);
+						  this.g.stroke();
+
+						  return false;
+						}
 					  }
-
-					  this.g.beginPath();
-					  this.g.strokeStyle = r ? this.o.fgColor : this.fgColor;
-					  this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, a.s, a.e, a.d);
-					  this.g.stroke();
-
-					  this.g.lineWidth = 2;
-					  this.g.beginPath();
-					  this.g.strokeStyle = this.o.fgColor;
-					  this.g.arc(this.xy, this.xy, this.radius - this.lineWidth + 1 + this.lineWidth * 2 / 3, 0, 2 * Math.PI, false);
-					  this.g.stroke();
-
-					  return false;
-					}
-				  }
-				});
+					  
+					});
 
 				// Example of infinite knob, iPod click wheel
 				var v, up = 0,
@@ -249,11 +248,17 @@
 					v = this.cv;
 				  }
 				});
-	});
+				
+		};
 	 
 
 	  /* VALIDATOR */
 
+	  function init_validator () {
+		 
+		if( typeof (validator) === 'undefined'){ return; }
+		console.log('init_validator'); 
+	  
 	  // initialize the validator function
       validator.message.date = 'not a real date';
 
@@ -282,202 +287,497 @@
         return false;
 		});
 	  
+	  };
+	  
 	  /* VALIDATOR --- end */	
 	 
 	  /* CHARTS */
 	  
-      // Line chart
-      var ctx = document.getElementById("lineChart");
-      var lineChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: ["January", "February", "March", "April", "May", "June", "July"],
-          datasets: [{
-            label: "My First dataset",
-            backgroundColor: "rgba(38, 185, 154, 0.31)",
-            borderColor: "rgba(38, 185, 154, 0.7)",
-            pointBorderColor: "rgba(38, 185, 154, 0.7)",
-            pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
-            pointHoverBackgroundColor: "#fff",
-            pointHoverBorderColor: "rgba(220,220,220,1)",
-            pointBorderWidth: 1,
-            data: [31, 74, 6, 39, 20, 85, 7]
-          }, {
-            label: "My Second dataset",
-            backgroundColor: "rgba(3, 88, 106, 0.3)",
-            borderColor: "rgba(3, 88, 106, 0.70)",
-            pointBorderColor: "rgba(3, 88, 106, 0.70)",
-            pointBackgroundColor: "rgba(3, 88, 106, 0.70)",
-            pointHoverBackgroundColor: "#fff",
-            pointHoverBorderColor: "rgba(151,187,205,1)",
-            pointBorderWidth: 1,
-            data: [82, 23, 66, 9, 99, 4, 2]
-          }]
-        },
-      });
+	  /*
+	  function init_chart_line(){
+		  
+		if( typeof (Chart) === 'undefined'){ return; }
+		console.log('init_chart_line');    
+		  
+		// Line chart
+		  var ctx = document.getElementById("lineChart");
+		  var lineChart = new Chart(ctx, {
+			type: 'line',
+			data: {
+			  labels: ["January", "February", "March", "April", "May", "June", "July"],
+			  datasets: [{
+				label: "My First dataset",
+				backgroundColor: "rgba(38, 185, 154, 0.31)",
+				borderColor: "rgba(38, 185, 154, 0.7)",
+				pointBorderColor: "rgba(38, 185, 154, 0.7)",
+				pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
+				pointHoverBackgroundColor: "#fff",
+				pointHoverBorderColor: "rgba(220,220,220,1)",
+				pointBorderWidth: 1,
+				data: [31, 74, 6, 39, 20, 85, 7]
+			  }, {
+				label: "My Second dataset",
+				backgroundColor: "rgba(3, 88, 106, 0.3)",
+				borderColor: "rgba(3, 88, 106, 0.70)",
+				pointBorderColor: "rgba(3, 88, 106, 0.70)",
+				pointBackgroundColor: "rgba(3, 88, 106, 0.70)",
+				pointHoverBackgroundColor: "#fff",
+				pointHoverBorderColor: "rgba(151,187,205,1)",
+				pointBorderWidth: 1,
+				data: [82, 23, 66, 9, 99, 4, 2]
+			  }]
+			},
+		  });		  
+		  
+	  }
+	  */
+	  
+	  
+	  /*
+	 function init_bar_chart(){
 
-      // Bar chart
-      var ctx = document.getElementById("mybarChart");
-      var mybarChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-          labels: ["January", "February", "March", "April", "May", "June", "July"],
-          datasets: [{
-            label: '# of Votes',
-            backgroundColor: "#26B99A",
-            data: [51, 30, 40, 28, 92, 50, 45]
-          }, {
-            label: '# of Votes',
-            backgroundColor: "#03586A",
-            data: [41, 56, 25, 48, 72, 34, 12]
-          }]
-        },
+	 if(typeof (Chart) === 'undefined'){ return; }
+		console.log('init_bar_chart');    
+	
+	 
+		  // Bar chart
+		  var ctx = document.getElementById("mybarChart");
+		  var mybarChart = new Chart(ctx, {
+			type: 'bar',
+			data: {
+			  labels: ["January", "February", "March", "April", "May", "June", "July"],
+			  datasets: [{
+				label: '# of Votes',
+				backgroundColor: "#26B99A",
+				data: [51, 30, 40, 28, 92, 50, 45]
+			  }, {
+				label: '# of Votes',
+				backgroundColor: "#03586A",
+				data: [41, 56, 25, 48, 72, 34, 12]
+			  }]
+			},
 
-        options: {
-          scales: {
-            yAxes: [{
-              ticks: {
-                beginAtZero: true
-              }
-            }]
-          }
-        }
-      });
+			options: {
+			  scales: {
+				yAxes: [{
+				  ticks: {
+					beginAtZero: true
+				  }
+				}]
+			  }
+			}
+		  });
 
-      // Doughnut chart
-      var ctx = document.getElementById("canvasDoughnut");
-      var data = {
-        labels: [
-          "Dark Grey",
-          "Purple Color",
-          "Gray Color",
-          "Green Color",
-          "Blue Color"
-        ],
-        datasets: [{
-          data: [120, 50, 140, 180, 100],
-          backgroundColor: [
-            "#455C73",
-            "#9B59B6",
-            "#BDC3C7",
-            "#26B99A",
-            "#3498DB"
-          ],
-          hoverBackgroundColor: [
-            "#34495E",
-            "#B370CF",
-            "#CFD4D8",
-            "#36CAAB",
-            "#49A9EA"
-          ]
+		}
+	  	  
+	function init_doughnut_chart(){ 
+	
+		 if(typeof (Chart) === 'undefined'){ return; }
+		console.log('init_doughnut_chart');  
+	
+		  // Doughnut chart
+		  var ctx = document.getElementById("canvasDoughnut");
+		  var data = {
+			labels: [
+			  "Dark Grey",
+			  "Purple Color",
+			  "Gray Color",
+			  "Green Color",
+			  "Blue Color"
+			],
+			datasets: [{
+			  data: [120, 50, 140, 180, 100],
+			  backgroundColor: [
+				"#455C73",
+				"#9B59B6",
+				"#BDC3C7",
+				"#26B99A",
+				"#3498DB"
+			  ],
+			  hoverBackgroundColor: [
+				"#34495E",
+				"#B370CF",
+				"#CFD4D8",
+				"#36CAAB",
+				"#49A9EA"
+			  ]
 
-        }]
-      };
+			}]
+		  };
 
-      var canvasDoughnut = new Chart(ctx, {
-        type: 'doughnut',
-        tooltipFillColor: "rgba(51, 51, 51, 0.55)",
-        data: data
-      });
+		  var canvasDoughnut = new Chart(ctx, {
+			type: 'doughnut',
+			tooltipFillColor: "rgba(51, 51, 51, 0.55)",
+			data: data
+		  }); 
+	  
+	  }
+	  
+	 function init_radar_chart(){	
+	 
+		if(typeof (Chart) === 'undefined'){ return; }
+		console.log('init_radar_chart'); 
+	 
+		  // Radar chart
+		  var ctx = document.getElementById("canvasRadar");
+		  var data = {
+			labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
+			datasets: [{
+			  label: "My First dataset",
+			  backgroundColor: "rgba(3, 88, 106, 0.2)",
+			  borderColor: "rgba(3, 88, 106, 0.80)",
+			  pointBorderColor: "rgba(3, 88, 106, 0.80)",
+			  pointBackgroundColor: "rgba(3, 88, 106, 0.80)",
+			  pointHoverBackgroundColor: "#fff",
+			  pointHoverBorderColor: "rgba(220,220,220,1)",
+			  data: [65, 59, 90, 81, 56, 55, 40]
+			}, {
+			  label: "My Second dataset",
+			  backgroundColor: "rgba(38, 185, 154, 0.2)",
+			  borderColor: "rgba(38, 185, 154, 0.85)",
+			  pointColor: "rgba(38, 185, 154, 0.85)",
+			  pointStrokeColor: "#fff",
+			  pointHighlightFill: "#fff",
+			  pointHighlightStroke: "rgba(151,187,205,1)",
+			  data: [28, 48, 40, 19, 96, 27, 100]
+			}]
+		  };
 
-      // Radar chart
-      var ctx = document.getElementById("canvasRadar");
-      var data = {
-        labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
-        datasets: [{
-          label: "My First dataset",
-          backgroundColor: "rgba(3, 88, 106, 0.2)",
-          borderColor: "rgba(3, 88, 106, 0.80)",
-          pointBorderColor: "rgba(3, 88, 106, 0.80)",
-          pointBackgroundColor: "rgba(3, 88, 106, 0.80)",
-          pointHoverBackgroundColor: "#fff",
-          pointHoverBorderColor: "rgba(220,220,220,1)",
-          data: [65, 59, 90, 81, 56, 55, 40]
-        }, {
-          label: "My Second dataset",
-          backgroundColor: "rgba(38, 185, 154, 0.2)",
-          borderColor: "rgba(38, 185, 154, 0.85)",
-          pointColor: "rgba(38, 185, 154, 0.85)",
-          pointStrokeColor: "#fff",
-          pointHighlightFill: "#fff",
-          pointHighlightStroke: "rgba(151,187,205,1)",
-          data: [28, 48, 40, 19, 96, 27, 100]
-        }]
-      };
+		  var canvasRadar = new Chart(ctx, {
+			type: 'radar',
+			data: data,
+		  });
+		  
+	 }
+	  
+	 function init_pie_chart(){ 
+	  
+	   if(typeof (Chart) === 'undefined'){ return; }
+	   console.log('init_pie_chart'); 
+	  
+			  // Pie chart
+			  var ctx = document.getElementById("pieChart");
+			  var data = {
+				datasets: [{
+				  data: [120, 50, 140, 180, 100],
+				  backgroundColor: [
+					"#455C73",
+					"#9B59B6",
+					"#BDC3C7",
+					"#26B99A",
+					"#3498DB"
+				  ],
+				  label: 'My dataset' // for legend
+				}],
+				labels: [
+				  "Dark Gray",
+				  "Purple",
+				  "Gray",
+				  "Green",
+				  "Blue"
+				]
+			  };
 
-      var canvasRadar = new Chart(ctx, {
-        type: 'radar',
-        data: data,
-      });
+			  var pieChart = new Chart(ctx, {
+				data: data,
+				type: 'pie',
+				otpions: {
+				  legend: false
+				}
+			  });
+	  
+	  }
+	  
+		function init_flot_chart3(){ 
+	
+				if(typeof ($.plot) === 'undefined'){ return; }
+				console.log('init_flot_chart3'); 
+	
+				//random data
+				var d1 = [
+				  [0, 1],
+				  [1, 9],
+				  [2, 6],
+				  [3, 10],
+				  [4, 5],
+				  [5, 17],
+				  [6, 6],
+				  [7, 10],
+				  [8, 7],
+				  [9, 11],
+				  [10, 35],
+				  [11, 9],
+				  [12, 12],
+				  [13, 5],
+				  [14, 3],
+				  [15, 4],
+				  [16, 9]
+				];
 
-      // Pie chart
-      var ctx = document.getElementById("pieChart");
-      var data = {
-        datasets: [{
-          data: [120, 50, 140, 180, 100],
-          backgroundColor: [
-            "#455C73",
-            "#9B59B6",
-            "#BDC3C7",
-            "#26B99A",
-            "#3498DB"
-          ],
-          label: 'My dataset' // for legend
-        }],
-        labels: [
-          "Dark Gray",
-          "Purple",
-          "Gray",
-          "Green",
-          "Blue"
-        ]
-      };
-
-      var pieChart = new Chart(ctx, {
-        data: data,
-        type: 'pie',
-        otpions: {
-          legend: false
-        }
-      });
-
-      // PolarArea chart
-      var ctx = document.getElementById("polarArea");
-      var data = {
-        datasets: [{
-          data: [120, 50, 140, 180, 100],
-          backgroundColor: [
-            "#455C73",
-            "#9B59B6",
-            "#BDC3C7",
-            "#26B99A",
-            "#3498DB"
-          ],
-          label: 'My dataset'
-        }],
-        labels: [
-          "Dark Gray",
-          "Purple",
-          "Gray",
-          "Green",
-          "Blue"
-        ]
-      };
-
-      var polarArea = new Chart(ctx, {
-        data: data,
-        type: 'polarArea',
-        options: {
-          scale: {
-            ticks: {
-              beginAtZero: true
-            }
-          }
-        }
-      });
+				//flot options
+				var options = {
+				  series: {
+					curvedLines: {
+					  apply: true,
+					  active: true,
+					  monotonicFit: true
+					}
+				  },
+				  colors: ["#26B99A"],
+				  grid: {
+					borderWidth: {
+					  top: 0,
+					  right: 0,
+					  bottom: 1,
+					  left: 1
+					},
+					borderColor: {
+					  bottom: "#7F8790",
+					  left: "#7F8790"
+					}
+				  }
+				};
+				var plot = $.plot($("#placeholder3xx3"), [{
+				  label: "Registrations",
+				  data: d1,
+				  lines: {
+					fillColor: "rgba(150, 202, 89, 0.12)"
+				  }, //#96CA59 rgba(150, 202, 89, 0.42)
+				  points: {
+					fillColor: "#fff"
+				  }
+				}], options);
 		
+		}
+			  
+	 function init_flot_chart2(){ 
+	
+		if(typeof ($.plot) === 'undefined'){ return; }
+		console.log('init_flot_chart2'); 
+		
+		//define chart clolors ( you maybe add more colors if you want or flot will add it automatic )
+		var chartColours = ['#96CA59', '#3F97EB', '#72c380', '#6f7a8a', '#f7cb38', '#5a8022', '#2c7282'];
+
+		//generate random number for charts
+		randNum = function() {
+		  return (Math.floor(Math.random() * (1 + 40 - 20))) + 20;
+		};
+
+		var d1 = [];
+		//var d2 = [];
+
+		//here we generate data for chart
+		for (var i = 0; i < 30; i++) {
+		  d1.push([new Date(Date.today().add(i).days()).getTime(), randNum() + i + i + 10]);
+		  //    d2.push([new Date(Date.today().add(i).days()).getTime(), randNum()]);
+		}
+
+		var chartMinDate = d1[0][0]; //first day
+		var chartMaxDate = d1[20][0]; //last day
+
+		var tickSize = [1, "day"];
+		var tformat = "%d/%m/%y";
+
+		//graph options
+		var options = {
+		  grid: {
+			show: true,
+			aboveData: true,
+			color: "#3f3f3f",
+			labelMargin: 10,
+			axisMargin: 0,
+			borderWidth: 0,
+			borderColor: null,
+			minBorderMargin: 5,
+			clickable: true,
+			hoverable: true,
+			autoHighlight: true,
+			mouseActiveRadius: 100
+		  },
+		  series: {
+			lines: {
+			  show: true,
+			  fill: true,
+			  lineWidth: 2,
+			  steps: false
+			},
+			points: {
+			  show: true,
+			  radius: 4.5,
+			  symbol: "circle",
+			  lineWidth: 3.0
+			}
+		  },
+		  legend: {
+			position: "ne",
+			margin: [0, -25],
+			noColumns: 0,
+			labelBoxBorderColor: null,
+			labelFormatter: function(label, series) {
+			  // just add some space to labes
+			  return label + '&nbsp;&nbsp;';
+			},
+			width: 40,
+			height: 1
+		  },
+		  colors: chartColours,
+		  shadowSize: 0,
+		  tooltip: true, //activate tooltip
+		  tooltipOpts: {
+			content: "%s: %y.0",
+			xDateFormat: "%d/%m",
+			shifts: {
+			  x: -30,
+			  y: -50
+			},
+			defaultTheme: false
+		  },
+		  yaxis: {
+			min: 0
+		  },
+		  xaxis: {
+			mode: "time",
+			minTickSize: tickSize,
+			timeformat: tformat,
+			min: chartMinDate,
+			max: chartMaxDate
+		  }
+		};
+		var plot = $.plot($("#placeholder33x"), [{
+		  label: "Email Sent",
+		  data: d1,
+		  lines: {
+			fillColor: "rgba(150, 202, 89, 0.12)"
+		  }, //#96CA59 rgba(150, 202, 89, 0.42)
+		  points: {
+			fillColor: "#fff"
+		  }
+		}], options);
+		
+	 }
+	  
+	function init_flot_chart(){
+	  
+			if( typeof ($.plot) === 'undefined'){ return; }
+			console.log('init_flot_chart');
+	  
+			   var data1 = [
+			  [gd(2012, 1, 1), 17],
+			  [gd(2012, 1, 2), 74],
+			  [gd(2012, 1, 3), 6],
+			  [gd(2012, 1, 4), 39],
+			  [gd(2012, 1, 5), 20],
+			  [gd(2012, 1, 6), 85],
+			  [gd(2012, 1, 7), 7]
+			];
+
+			var data2 = [
+			  [gd(2012, 1, 1), 82],
+			  [gd(2012, 1, 2), 23],
+			  [gd(2012, 1, 3), 66],
+			  [gd(2012, 1, 4), 9],
+			  [gd(2012, 1, 5), 119],
+			  [gd(2012, 1, 6), 6],
+			  [gd(2012, 1, 7), 9]
+			];
+			$("#canvas_dahs").length && $.plot($("#canvas_dahs"), [
+			  data1, data2
+			], {
+			  series: {
+				lines: {
+				  show: false,
+				  fill: true
+				},
+				splines: {
+				  show: true,
+				  tension: 0.4,
+				  lineWidth: 1,
+				  fill: 0.4
+				},
+				points: {
+				  radius: 0,
+				  show: true
+				},
+				shadowSize: 2
+			  },
+			  grid: {
+				verticalLines: true,
+				hoverable: true,
+				clickable: true,
+				tickColor: "#d5d5d5",
+				borderWidth: 1,
+				color: '#fff'
+			  },
+			  colors: ["rgba(38, 185, 154, 0.38)", "rgba(3, 88, 106, 0.38)"],
+			  xaxis: {
+				tickColor: "rgba(51, 51, 51, 0.06)",
+				mode: "time",
+				tickSize: [1, "day"],
+				//tickLength: 10,
+				axisLabel: "Date",
+				axisLabelUseCanvas: true,
+				axisLabelFontSizePixels: 12,
+				axisLabelFontFamily: 'Verdana, Arial',
+				axisLabelPadding: 10
+			  },
+			  yaxis: {
+				ticks: 8,
+				tickColor: "rgba(51, 51, 51, 0.06)",
+			  },
+			  tooltip: false
+			});
+
+			function gd(year, month, day) {
+			  return new Date(year, month - 1, day).getTime();
+			}
+	  
+	   } 
+	  
+	function init_polar_area_chart(){ 
+	  
+		if(typeof (Chart) === 'undefined'){ return; }
+		console.log('init_polar_area_chart');
+  
+		  // PolarArea chart
+		  var ctx = document.getElementById("polarArea");
+		  var data = {
+			datasets: [{
+			  data: [120, 50, 140, 180, 100],
+			  backgroundColor: [
+				"#455C73",
+				"#9B59B6",
+				"#BDC3C7",
+				"#26B99A",
+				"#3498DB"
+			  ],
+			  label: 'My dataset'
+			}],
+			labels: [
+			  "Dark Gray",
+			  "Purple",
+			  "Gray",
+			  "Green",
+			  "Blue"
+			]
+		  };
+		  
+		  var polarArea = new Chart(ctx, {
+			data: data,
+			type: 'polarArea',
+			options: {
+			  scale: {
+				ticks: {
+				  beginAtZero: true
+				}
+			  }
+			}
+		  });
+	
+	}	
+		*/
 		
 		/* ECHARTS */
+	
 		
 		 var theme = {
           color: [
@@ -691,393 +991,433 @@
           }
       };
 
-      var echartBar = echarts.init(document.getElementById('mainb'), theme);
+	  
+	  function init_echarts() {
+	  
+		if(typeof (echarts) === 'undefined'){ return; }
+		console.log('init_echarts'); 
+	  
+		var echartBar = echarts.init(document.getElementById('mainb'), theme);
+		  echartBar.setOption({
+			title: {
+			  text: 'Graph title',
+			  subtext: 'Graph Sub-text'
+			},
+			tooltip: {
+			  trigger: 'axis'
+			},
+			legend: {
+			  data: ['sales', 'purchases']
+			},
+			toolbox: {
+			  show: false
+			},
+			calculable: false,
+			xAxis: [{
+			  type: 'category',
+			  data: ['1?', '2?', '3?', '4?', '5?', '6?', '7?', '8?', '9?', '10?', '11?', '12?']
+			}],
+			yAxis: [{
+			  type: 'value'
+			}],
+			series: [{
+			  name: 'sales',
+			  type: 'bar',
+			  data: [2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3],
+			  markPoint: {
+				data: [{
+				  type: 'max',
+				  name: '???'
+				}, {
+				  type: 'min',
+				  name: '???'
+				}]
+			  },
+			  markLine: {
+				data: [{
+				  type: 'average',
+				  name: '???'
+				}]
+			  }
+			}, {
+			  name: 'purchases',
+			  type: 'bar',
+			  data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3],
+			  markPoint: {
+				data: [{
+				  name: 'sales',
+				  value: 182.2,
+				  xAxis: 7,
+				  yAxis: 183,
+				}, {
+				  name: 'purchases',
+				  value: 2.3,
+				  xAxis: 11,
+				  yAxis: 3
+				}]
+			  },
+			  markLine: {
+				data: [{
+				  type: 'average',
+				  name: '???'
+				}]
+			  }
+			}]
+			
+		});
+	  
+	  }
+	  
+	  function init_echart_radar () {
+	  
+		if( typeof (echarts) === 'undefined'){ return; }
+		console.log('init_echart_radar');
+	  
+		var echartRadar = echarts.init(document.getElementById('echart_sonar'), theme);
 
-      echartBar.setOption({
-        title: {
-          text: 'Graph title',
-          subtext: 'Graph Sub-text'
-        },
-        tooltip: {
-          trigger: 'axis'
-        },
-        legend: {
-          data: ['sales', 'purchases']
-        },
-        toolbox: {
-          show: false
-        },
-        calculable: false,
-        xAxis: [{
-          type: 'category',
-          data: ['1?', '2?', '3?', '4?', '5?', '6?', '7?', '8?', '9?', '10?', '11?', '12?']
-        }],
-        yAxis: [{
-          type: 'value'
-        }],
-        series: [{
-          name: 'sales',
-          type: 'bar',
-          data: [2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3],
-          markPoint: {
-            data: [{
-              type: 'max',
-              name: '???'
-            }, {
-              type: 'min',
-              name: '???'
-            }]
-          },
-          markLine: {
-            data: [{
-              type: 'average',
-              name: '???'
-            }]
-          }
-        }, {
-          name: 'purchases',
-          type: 'bar',
-          data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3],
-          markPoint: {
-            data: [{
-              name: 'sales',
-              value: 182.2,
-              xAxis: 7,
-              yAxis: 183,
-            }, {
-              name: 'purchases',
-              value: 2.3,
-              xAxis: 11,
-              yAxis: 3
-            }]
-          },
-          markLine: {
-            data: [{
-              type: 'average',
-              name: '???'
-            }]
-          }
-        }]
-      });
+		  echartRadar.setOption({
+			title: {
+			  text: 'Budget vs spending',
+			  subtext: 'Subtitle'
+			},
+			 tooltip: {
+				trigger: 'item'
+			},
+			legend: {
+			  orient: 'vertical',
+			  x: 'right',
+			  y: 'bottom',
+			  data: ['Allocated Budget', 'Actual Spending']
+			},
+			toolbox: {
+			  show: true,
+			  feature: {
+				restore: {
+				  show: true,
+				  title: "Restore"
+				},
+				saveAsImage: {
+				  show: true,
+				  title: "Save Image"
+				}
+			  }
+			},
+			polar: [{
+			  indicator: [{
+				text: 'Sales',
+				max: 6000
+			  }, {
+				text: 'Administration',
+				max: 16000
+			  }, {
+				text: 'Information Techology',
+				max: 30000
+			  }, {
+				text: 'Customer Support',
+				max: 38000
+			  }, {
+				text: 'Development',
+				max: 52000
+			  }, {
+				text: 'Marketing',
+				max: 25000
+			  }]
+			}],
+			calculable: true,
+			series: [{
+			  name: 'Budget vs spending',
+			  type: 'radar',
+			  data: [{
+				value: [4300, 10000, 28000, 35000, 50000, 19000],
+				name: 'Allocated Budget'
+			  }, {
+				value: [5000, 14000, 28000, 31000, 42000, 21000],
+				name: 'Actual Spending'
+			  }]
+			}]
+		  });	  
 
-      var echartRadar = echarts.init(document.getElementById('echart_sonar'), theme);
+	  }
+	  
+	  function init_echart_funnel () {
+	  
+		if( typeof (echarts) === 'undefined'){ return; }
+		console.log('init_echart_funnel');
+	  
+	  
+		  var echartFunnel = echarts.init(document.getElementById('echart_pyramid'), theme);
 
-      echartRadar.setOption({
-        title: {
-          text: 'Budget vs spending',
-          subtext: 'Subtitle'
-        },
-         tooltip: {
-            trigger: 'item'
-        },
-        legend: {
-          orient: 'vertical',
-          x: 'right',
-          y: 'bottom',
-          data: ['Allocated Budget', 'Actual Spending']
-        },
-        toolbox: {
-          show: true,
-          feature: {
-            restore: {
-              show: true,
-              title: "Restore"
-            },
-            saveAsImage: {
-              show: true,
-              title: "Save Image"
-            }
-          }
-        },
-        polar: [{
-          indicator: [{
-            text: 'Sales',
-            max: 6000
-          }, {
-            text: 'Administration',
-            max: 16000
-          }, {
-            text: 'Information Techology',
-            max: 30000
-          }, {
-            text: 'Customer Support',
-            max: 38000
-          }, {
-            text: 'Development',
-            max: 52000
-          }, {
-            text: 'Marketing',
-            max: 25000
-          }]
-        }],
-        calculable: true,
-        series: [{
-          name: 'Budget vs spending',
-          type: 'radar',
-          data: [{
-            value: [4300, 10000, 28000, 35000, 50000, 19000],
-            name: 'Allocated Budget'
-          }, {
-            value: [5000, 14000, 28000, 31000, 42000, 21000],
-            name: 'Actual Spending'
-          }]
-        }]
-      });
+		  echartFunnel.setOption({
+			title: {
+			  text: 'Echart Pyramid Graph',
+			  subtext: 'Subtitle'
+			},
+			tooltip: {
+			  trigger: 'item',
+			  formatter: "{a} <br/>{b} : {c}%"
+			},
+			toolbox: {
+			  show: true,
+			  feature: {
+				restore: {
+				  show: true,
+				  title: "Restore"
+				},
+				saveAsImage: {
+				  show: true,
+				  title: "Save Image"
+				}
+			  }
+			},
+			legend: {
+			  data: ['Something #1', 'Something #2', 'Something #3', 'Something #4', 'Something #5'],
+			  orient: 'vertical',
+			  x: 'left',
+			  y: 'bottom'
+			},
+			calculable: true,
+			series: [{
+			  name: '???',
+			  type: 'funnel',
+			  width: '40%',
+			  data: [{
+				value: 60,
+				name: 'Something #1'
+			  }, {
+				value: 40,
+				name: 'Something #2'
+			  }, {
+				value: 20,
+				name: 'Something #3'
+			  }, {
+				value: 80,
+				name: 'Something #4'
+			  }, {
+				value: 100,
+				name: 'Something #5'
+			  }]
+			}]
+		  });		
+		  
+	  }
+	  
+	  function init_echart_gauge () {
+	  
+		if( typeof (echarts) === 'undefined'){ return; }
+		console.log('init_echart_gauge');
+	  
+			  var echartGauge = echarts.init(document.getElementById('echart_guage'), theme);
 
-      var echartFunnel = echarts.init(document.getElementById('echart_pyramid'), theme);
+			  echartGauge.setOption({
+				tooltip: {
+				  formatter: "{a} <br/>{b} : {c}%"
+				},
+				toolbox: {
+				  show: true,
+				  feature: {
+					restore: {
+					  show: true,
+					  title: "Restore"
+					},
+					saveAsImage: {
+					  show: true,
+					  title: "Save Image"
+					}
+				  }
+				},
+				series: [{
+				  name: 'Performance',
+				  type: 'gauge',
+				  center: ['50%', '50%'],
+				  startAngle: 140,
+				  endAngle: -140,
+				  min: 0,
+				  max: 100,
+				  precision: 0,
+				  splitNumber: 10,
+				  axisLine: {
+					show: true,
+					lineStyle: {
+					  color: [
+						[0.2, 'lightgreen'],
+						[0.4, 'orange'],
+						[0.8, 'skyblue'],
+						[1, '#ff4500']
+					  ],
+					  width: 30
+					}
+				  },
+				  axisTick: {
+					show: true,
+					splitNumber: 5,
+					length: 8,
+					lineStyle: {
+					  color: '#eee',
+					  width: 1,
+					  type: 'solid'
+					}
+				  },
+				  axisLabel: {
+					show: true,
+					formatter: function(v) {
+					  switch (v + '') {
+						case '10':
+						  return 'a';
+						case '30':
+						  return 'b';
+						case '60':
+						  return 'c';
+						case '90':
+						  return 'd';
+						default:
+						  return '';
+					  }
+					},
+					textStyle: {
+					  color: '#333'
+					}
+				  },
+				  splitLine: {
+					show: true,
+					length: 30,
+					lineStyle: {
+					  color: '#eee',
+					  width: 2,
+					  type: 'solid'
+					}
+				  },
+				  pointer: {
+					length: '80%',
+					width: 8,
+					color: 'auto'
+				  },
+				  title: {
+					show: true,
+					offsetCenter: ['-65%', -10],
+					textStyle: {
+					  color: '#333',
+					  fontSize: 15
+					}
+				  },
+				  detail: {
+					show: true,
+					backgroundColor: 'rgba(0,0,0,0)',
+					borderWidth: 0,
+					borderColor: '#ccc',
+					width: 100,
+					height: 40,
+					offsetCenter: ['-60%', 10],
+					formatter: '{value}%',
+					textStyle: {
+					  color: 'auto',
+					  fontSize: 30
+					}
+				  },
+				  data: [{
+					value: 50,
+					name: 'Performance'
+				  }]
+				}]
+			  });
+	  }
+	  
+	  function init_echart_line () {
+	  
+		if( typeof (echarts) === 'undefined' ){ return; }
+		console.log('init_echart_line');
+	  
+		var echartLine = echarts.init(document.getElementById('echart_line'), theme);
 
-      echartFunnel.setOption({
-        title: {
-          text: 'Echart Pyramid Graph',
-          subtext: 'Subtitle'
-        },
-        tooltip: {
-          trigger: 'item',
-          formatter: "{a} <br/>{b} : {c}%"
-        },
-        toolbox: {
-          show: true,
-          feature: {
-            restore: {
-              show: true,
-              title: "Restore"
-            },
-            saveAsImage: {
-              show: true,
-              title: "Save Image"
-            }
-          }
-        },
-        legend: {
-          data: ['Something #1', 'Something #2', 'Something #3', 'Something #4', 'Something #5'],
-          orient: 'vertical',
-          x: 'left',
-          y: 'bottom'
-        },
-        calculable: true,
-        series: [{
-          name: '???',
-          type: 'funnel',
-          width: '40%',
-          data: [{
-            value: 60,
-            name: 'Something #1'
-          }, {
-            value: 40,
-            name: 'Something #2'
-          }, {
-            value: 20,
-            name: 'Something #3'
-          }, {
-            value: 80,
-            name: 'Something #4'
-          }, {
-            value: 100,
-            name: 'Something #5'
-          }]
-        }]
-      });
-
-      var echartGauge = echarts.init(document.getElementById('echart_guage'), theme);
-
-      echartGauge.setOption({
-        tooltip: {
-          formatter: "{a} <br/>{b} : {c}%"
-        },
-        toolbox: {
-          show: true,
-          feature: {
-            restore: {
-              show: true,
-              title: "Restore"
-            },
-            saveAsImage: {
-              show: true,
-              title: "Save Image"
-            }
-          }
-        },
-        series: [{
-          name: 'Performance',
-          type: 'gauge',
-          center: ['50%', '50%'],
-          startAngle: 140,
-          endAngle: -140,
-          min: 0,
-          max: 100,
-          precision: 0,
-          splitNumber: 10,
-          axisLine: {
-            show: true,
-            lineStyle: {
-              color: [
-                [0.2, 'lightgreen'],
-                [0.4, 'orange'],
-                [0.8, 'skyblue'],
-                [1, '#ff4500']
-              ],
-              width: 30
-            }
-          },
-          axisTick: {
-            show: true,
-            splitNumber: 5,
-            length: 8,
-            lineStyle: {
-              color: '#eee',
-              width: 1,
-              type: 'solid'
-            }
-          },
-          axisLabel: {
-            show: true,
-            formatter: function(v) {
-              switch (v + '') {
-                case '10':
-                  return 'a';
-                case '30':
-                  return 'b';
-                case '60':
-                  return 'c';
-                case '90':
-                  return 'd';
-                default:
-                  return '';
-              }
-            },
-            textStyle: {
-              color: '#333'
-            }
-          },
-          splitLine: {
-            show: true,
-            length: 30,
-            lineStyle: {
-              color: '#eee',
-              width: 2,
-              type: 'solid'
-            }
-          },
-          pointer: {
-            length: '80%',
-            width: 8,
-            color: 'auto'
-          },
-          title: {
-            show: true,
-            offsetCenter: ['-65%', -10],
-            textStyle: {
-              color: '#333',
-              fontSize: 15
-            }
-          },
-          detail: {
-            show: true,
-            backgroundColor: 'rgba(0,0,0,0)',
-            borderWidth: 0,
-            borderColor: '#ccc',
-            width: 100,
-            height: 40,
-            offsetCenter: ['-60%', 10],
-            formatter: '{value}%',
-            textStyle: {
-              color: 'auto',
-              fontSize: 30
-            }
-          },
-          data: [{
-            value: 50,
-            name: 'Performance'
-          }]
-        }]
-      });
-
-      var echartLine = echarts.init(document.getElementById('echart_line'), theme);
-
-      echartLine.setOption({
-        title: {
-          text: 'Line Graph',
-          subtext: 'Subtitle'
-        },
-        tooltip: {
-          trigger: 'axis'
-        },
-        legend: {
-          x: 220,
-          y: 40,
-          data: ['Intent', 'Pre-order', 'Deal']
-        },
-        toolbox: {
-          show: true,
-          feature: {
-            magicType: {
-              show: true,
-              title: {
-                line: 'Line',
-                bar: 'Bar',
-                stack: 'Stack',
-                tiled: 'Tiled'
-              },
-              type: ['line', 'bar', 'stack', 'tiled']
-            },
-            restore: {
-              show: true,
-              title: "Restore"
-            },
-            saveAsImage: {
-              show: true,
-              title: "Save Image"
-            }
-          }
-        },
-        calculable: true,
-        xAxis: [{
-          type: 'category',
-          boundaryGap: false,
-          data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-        }],
-        yAxis: [{
-          type: 'value'
-        }],
-        series: [{
-          name: 'Deal',
-          type: 'line',
-          smooth: true,
-          itemStyle: {
-            normal: {
-              areaStyle: {
-                type: 'default'
-              }
-            }
-          },
-          data: [10, 12, 21, 54, 260, 830, 710]
-        }, {
-          name: 'Pre-order',
-          type: 'line',
-          smooth: true,
-          itemStyle: {
-            normal: {
-              areaStyle: {
-                type: 'default'
-              }
-            }
-          },
-          data: [30, 182, 434, 791, 390, 30, 10]
-        }, {
-          name: 'Intent',
-          type: 'line',
-          smooth: true,
-          itemStyle: {
-            normal: {
-              areaStyle: {
-                type: 'default'
-              }
-            }
-          },
-          data: [1320, 1132, 601, 234, 120, 90, 20]
-        }]
-      });
-
+		  echartLine.setOption({
+			title: {
+			  text: 'Line Graph',
+			  subtext: 'Subtitle'
+			},
+			tooltip: {
+			  trigger: 'axis'
+			},
+			legend: {
+			  x: 220,
+			  y: 40,
+			  data: ['Intent', 'Pre-order', 'Deal']
+			},
+			toolbox: {
+			  show: true,
+			  feature: {
+				magicType: {
+				  show: true,
+				  title: {
+					line: 'Line',
+					bar: 'Bar',
+					stack: 'Stack',
+					tiled: 'Tiled'
+				  },
+				  type: ['line', 'bar', 'stack', 'tiled']
+				},
+				restore: {
+				  show: true,
+				  title: "Restore"
+				},
+				saveAsImage: {
+				  show: true,
+				  title: "Save Image"
+				}
+			  }
+			},
+			calculable: true,
+			xAxis: [{
+			  type: 'category',
+			  boundaryGap: false,
+			  data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+			}],
+			yAxis: [{
+			  type: 'value'
+			}],
+			series: [{
+			  name: 'Deal',
+			  type: 'line',
+			  smooth: true,
+			  itemStyle: {
+				normal: {
+				  areaStyle: {
+					type: 'default'
+				  }
+				}
+			  },
+			  data: [10, 12, 21, 54, 260, 830, 710]
+			}, {
+			  name: 'Pre-order',
+			  type: 'line',
+			  smooth: true,
+			  itemStyle: {
+				normal: {
+				  areaStyle: {
+					type: 'default'
+				  }
+				}
+			  },
+			  data: [30, 182, 434, 791, 390, 30, 10]
+			}, {
+			  name: 'Intent',
+			  type: 'line',
+			  smooth: true,
+			  itemStyle: {
+				normal: {
+				  areaStyle: {
+					type: 'default'
+				  }
+				}
+			  },
+			  data: [1320, 1132, 601, 234, 120, 90, 20]
+			}]
+		  }); 
+	  } 
+	  
+	  function init_echart_scatter () {
+	  
+	  if( typeof (echarts) === 'undefined'){ return; }
+	  console.log('init_echart_scatter');
+	  
       var echartScatter = echarts.init(document.getElementById('echart_scatter'), theme);
 
       echartScatter.setOption({
@@ -1691,7 +2031,14 @@
           }
         }]
       });
-
+	  
+	  }
+	  
+	  function init_echart_bar_horizontal () {
+	  
+	  if( typeof (echarts) === 'undefined'){ return; }
+	  console.log('init_echart_bar_horizontal');
+	  
       var echartBar = echarts.init(document.getElementById('echart_bar_horizontal'), theme);
 
       echartBar.setOption({
@@ -1734,7 +2081,14 @@
           data: [19325, 23438, 31000, 121594, 134141, 681807]
         }]
       });
-
+	  
+	  }
+	  
+	  function init_echart_pie_collapse () {
+	  
+	  if( typeof (echarts) === 'undefined'){ return; }
+	  console.log('init_echart_pie_collapse');
+	  
       var echartPieCollapse = echarts.init(document.getElementById('echart_pie2'), theme);
       
       echartPieCollapse.setOption({
@@ -1796,6 +2150,13 @@
         }]
       });
 
+	  }
+	  
+	  function init_echart_donut () {
+	  
+	  if( typeof (echarts) === 'undefined'){ return; }
+	  console.log('init_echart_donut');
+	  
       var echartDonut = echarts.init(document.getElementById('echart_donut'), theme);
       
       echartDonut.setOption({
@@ -1876,7 +2237,14 @@
           }]
         }]
       });
-
+	  
+	  }
+	  
+	  function init_echart_pie () {
+	  
+	 if( typeof (echarts) === 'undefined'){ return; }
+	 console.log('init_echart_pie');
+	  
       var echartPie = echarts.init(document.getElementById('echart_pie'), theme);
 
       echartPie.setOption({
@@ -1964,7 +2332,14 @@
           color: 'rgba(0,0,0,0)'
         }
       };
-
+	  
+	  }
+	  
+	  function init_echart_bar () {
+	  
+	 if( typeof (echarts) === 'undefined'){ return; }
+	 console.log('init_ehcart_bar');
+	  
       var echartMiniPie = echarts.init(document.getElementById('echart_mini_pie'), theme);
 
       echartMiniPie .setOption({
@@ -2063,7 +2438,14 @@
           }]
         }]
       });
-
+	  
+	  }
+	  
+	  function init_echart_map () {
+	  
+	  if( typeof (echarts) === 'undefined'){ return; }
+	  console.log('init_echart_map');
+	  
       var echartMap = echarts.init(document.getElementById('echart_world_map'), theme);
       
       echartMap.setOption({
@@ -2667,12 +3049,19 @@
           }]
         }]
       });
+	
+	  }
+	
 		
 		/* ECHARTS --- end */
 		
 		/* SMART WIZARD */
 		
 		function init_SmartWizard() {
+			
+			if( typeof (smartWizard) === 'undefined'){ return; }
+			console.log('init_SmartWizard');
+			
 			$('#wizard').smartWizard();
 
 			$('#wizard_verticle').smartWizard({
@@ -2682,11 +3071,16 @@
 			$('.buttonNext').addClass('btn btn-success');
 			$('.buttonPrevious').addClass('btn btn-primary');
 			$('.buttonFinish').addClass('btn btn-default');
-		});
+			
+		};
 		
 		/* CROPPER */
 		
 		function init_cropper() {
+			
+			if( typeof (cropper) === 'undefined'){ return; }
+			console.log('init_cropper');
+			
 			var $image = $('#image');
 			var $download = $('#download');
 			var $dataX = $('#dataX');
@@ -2908,13 +3302,19 @@
 			} else {
 			  $inputImage.prop('disabled', true).parent().addClass('disabled');
 			}
-		});
+			
+			
+		};
 		
 		/* CROPPER --- end */
 		
 		/* PANEL TOOLBOX */
 		
 		function init_toolbox() {
+			
+			if( typeof ($BOX_PANEL) === 'undefined'){ return; }
+			console.log('init_toolbox');
+			
 			$('.collapse-link').on('click', function() {
 				var $BOX_PANEL = $(this).closest('.x_panel'),
 					$ICON = $(this).find('i'),
@@ -2938,15 +3338,19 @@
 
 				$BOX_PANEL.remove();
 			});
-		});
+		};
 		// /Panel toolbox
 
 		// Tooltip
 		function init_tooltip() {
+			
+			if( typeof (tooltip) === 'undefined'){ return; }
+			console.log('init_toolbox');
+			
 			$('[data-toggle="tooltip"]').tooltip({
 				container: 'body'
 			});
-		});
+		};
 		// /Tooltip
 
 		/* SWITCHERY */
@@ -2960,21 +3364,21 @@
 					});
 				});
 			}
-		});
+		};
 		
 
 		/* ICHECK */
 		
 		function init_icheck() {
-			if ($("input.checkbox")[0]) {
+			if ($("input.flat")[0]) {
 				$(document).ready(function () {
-					$('input.checkbox').iCheck({
+					$('input.flat').iCheck({
 						checkboxClass: 'icheckbox_flat-green',
 						radioClass: 'iradio_flat-green'
 					});
 				});
 			}
-		});
+		};
 
 
 		// Table
@@ -3041,7 +3445,7 @@
 			}, function(start, end, label) {
 			  console.log(start.toISOString(), end.toISOString(), label);
 			});
-		  });
+		  };
 		
 		/* COMPOSE */
 		
@@ -3054,9 +3458,9 @@
 		};
 		
 		/* WYSIWYG EDITOR */
-		
+		/*
 		function init_wysiwyg() {
-        function initToolbarBootstrapBindings() {
+        function init_ToolbarBootstrapBindings() {
           var fonts = ['Serif', 'Sans', 'Arial', 'Arial Black', 'Courier',
               'Courier New', 'Comic Sans MS', 'Helvetica', 'Impact', 'Lucida Grande', 'Lucida Sans', 'Tahoma', 'Times',
               'Times New Roman', 'Verdana'
@@ -3108,8 +3512,6 @@
             '<strong>File upload error</strong> ' + msg + ' </div>').prependTo('#alerts');
         }
 
-        initToolbarBootstrapBindings();
-
        $('.editor-wrapper').each(function(){
 			var id = $(this).attr('id');	//editor-one
 			
@@ -3119,10 +3521,12 @@
 			});	
 		});
  
+		
         window.prettyPrint;
         prettyPrint();
-      });
-		
+	
+      };
+		*/
 		
 		/* ACCORDION */
 		
@@ -3137,12 +3541,16 @@
 					$expand.text("+");
 				}
 			});
-		});
+		};
 			
 		
 		/* MORRIS CHART */	
 			
-		function init_morris_chart() {
+		function init_morris_chart() {		
+		
+		if( typeof (Morris) === 'undefined'){ return;}
+		console.log('init_morris_chart');
+			
         Morris.Bar({
           element: 'graph_bar',
           data: [
@@ -3169,11 +3577,16 @@
         $MENU_TOGGLE.on('click', function() {
           $(window).resize();
         });
-      });
+		
+      };
 
 		/* SELECT2 */
 	  
 		 function init_select2() {
+			 
+			if( typeof (select2) === 'undefined'){ return; }
+			console.log('init_toolbox');
+			 
 			$(".select2_single").select2({
 			  placeholder: "Select a state",
 			  allowClear: true
@@ -3184,11 +3597,16 @@
 			  placeholder: "With Max Selection limit 4",
 			  allowClear: true
 			});
-		  });
+			
+		  };
 	  
 		/* CHART - MORRIS PAGE */
 		
 		function init_MorrisChartPage() {
+			
+			if( typeof (Morris) === 'undefined'){ return; }
+			console.log('init_MorrisChartPage');
+			
 			Morris.Bar({
 			  element: 'graph_bar',
 			  data: [
@@ -3312,7 +3730,8 @@
 			$MENU_TOGGLE.on('click', function() {
 			  $(window).resize();
 			});
-		  });
+			
+		  };
 	  
 		/* DATE PEACKER */
 	  
@@ -3385,7 +3804,7 @@
 			$('#destroy').click(function() {
 			  $('#reportrange').data('daterangepicker').remove();
 			});
-		  });
+		  };
 
 		  /* INPUTS */
 		  
@@ -3403,70 +3822,81 @@
 
 			  //tags input
 			  function init_TagsInput() {
+				  
+				if(typeof $.fn.tagsInput !== 'undefined'){	
+				 
 				$('#tags_1').tagsInput({
 				  width: 'auto'
 				});
-			  });
+				
+				}
+				
+			  };
 			
 			/* PARSLEY */
 			
 			function init_parsley() {
-	  
-				$.listen('parsley:field:validate', function() {
-				  validateFront();
-				});
 				
-				$('#demo-form .btn[type:submit]').on('click', function() {
-				  $('#demo-form').parsley().validate();
-				  validateFront();
-				});
+					$/*.listen*/('parsley:field:validate', function() {
+					  validateFront();
+					});
+					$('#demo-form .btn').on('click', function() {
+					  $('#demo-form').parsley().validate();
+					  validateFront();
+					});
+					var validateFront = function() {
+					  if (true === $('#demo-form').parsley().isValid()) {
+						$('.bs-callout-info').removeClass('hidden');
+						$('.bs-callout-warning').addClass('hidden');
+					  } else {
+						$('.bs-callout-info').addClass('hidden');
+						$('.bs-callout-warning').removeClass('hidden');
+					  }
+					};
+				  
+					$/*.listen*/('parsley:field:validate', function() {
+					  validateFront();
+					});
+					$('#demo-form2 .btn').on('click', function() {
+					  $('#demo-form2').parsley().validate();
+					  validateFront();
+					});
+					var validateFront = function() {
+					  if (true === $('#demo-form2').parsley().isValid()) {
+						$('.bs-callout-info').removeClass('hidden');
+						$('.bs-callout-warning').addClass('hidden');
+					  } else {
+						$('.bs-callout-info').addClass('hidden');
+						$('.bs-callout-warning').removeClass('hidden');
+					  }
+					};
+					
+					  try {
+						hljs.initHighlightingOnLoad();
+					  } catch (err) {}
 				
-				var validateFront = function() {
-				  if (true === $('#demo-form').parsley().isValid()) {
-					$('.bs-callout-info').removeClass('hidden');
-					$('.bs-callout-warning').addClass('hidden');
-				  } else {
-					$('.bs-callout-info').addClass('hidden');
-					$('.bs-callout-warning').removeClass('hidden');
-				  }
-				};
-				
-			  });
+			  };
 			
-			/* PARSLEY 2 */
-			
-			function init_parsley2() {
-				$.listen('parsley:field:validate', function() {
-				  validateFront();
-				});
-				$('#demo-form2 .btn[type:submit]').on('click', function() {
-				  $('#demo-form2').parsley().validate(); 
-				  validateFront();
-				});
-				
-				var validateFront = function() {
-				  if (true === $('#demo-form2').parsley().isValid()) {
-					$('.bs-callout-info').removeClass('hidden');
-					$('.bs-callout-warning').addClass('hidden');
-				  } else {
-					$('.bs-callout-info').addClass('hidden');
-					$('.bs-callout-warning').removeClass('hidden');
-				  }
-				};
-			  });
-			  try {
-				hljs.initHighlightingOnLoad();
-			  } catch (err) {}
 			
 			/* AUTOSIZE */
 			
 			function init_autosize() {
+				
+				if(typeof $.fn.autosize !== 'undefined'){
+				
 				autosize($('.resizable_textarea'));
-			});
+				
+				}
+				
+			};
 			
 			/* AUTOCOMPLETE */
 			
 			function init_autocomplete() {
+				
+				if( typeof (autocomplete) === 'undefined'){ return; }
+				console.log('init_autocomplete');
+				
 				var countries = { AD:"Andorra",A2:"Andorra Test",AE:"United Arab Emirates",AF:"Afghanistan",AG:"Antigua and Barbuda",AI:"Anguilla",AL:"Albania",AM:"Armenia",AN:"Netherlands Antilles",AO:"Angola",AQ:"Antarctica",AR:"Argentina",AS:"American Samoa",AT:"Austria",AU:"Australia",AW:"Aruba",AX:"Åland Islands",AZ:"Azerbaijan",BA:"Bosnia and Herzegovina",BB:"Barbados",BD:"Bangladesh",BE:"Belgium",BF:"Burkina Faso",BG:"Bulgaria",BH:"Bahrain",BI:"Burundi",BJ:"Benin",BL:"Saint Barthélemy",BM:"Bermuda",BN:"Brunei",BO:"Bolivia",BQ:"British Antarctic Territory",BR:"Brazil",BS:"Bahamas",BT:"Bhutan",BV:"Bouvet Island",BW:"Botswana",BY:"Belarus",BZ:"Belize",CA:"Canada",CC:"Cocos [Keeling] Islands",CD:"Congo - Kinshasa",CF:"Central African Republic",CG:"Congo - Brazzaville",CH:"Switzerland",CI:"Côte d’Ivoire",CK:"Cook Islands",CL:"Chile",CM:"Cameroon",CN:"China",CO:"Colombia",CR:"Costa Rica",CS:"Serbia and Montenegro",CT:"Canton and Enderbury Islands",CU:"Cuba",CV:"Cape Verde",CX:"Christmas Island",CY:"Cyprus",CZ:"Czech Republic",DD:"East Germany",DE:"Germany",DJ:"Djibouti",DK:"Denmark",DM:"Dominica",DO:"Dominican Republic",DZ:"Algeria",EC:"Ecuador",EE:"Estonia",EG:"Egypt",EH:"Western Sahara",ER:"Eritrea",ES:"Spain",ET:"Ethiopia",FI:"Finland",FJ:"Fiji",FK:"Falkland Islands",FM:"Micronesia",FO:"Faroe Islands",FQ:"French Southern and Antarctic Territories",FR:"France",FX:"Metropolitan France",GA:"Gabon",GB:"United Kingdom",GD:"Grenada",GE:"Georgia",GF:"French Guiana",GG:"Guernsey",GH:"Ghana",GI:"Gibraltar",GL:"Greenland",GM:"Gambia",GN:"Guinea",GP:"Guadeloupe",GQ:"Equatorial Guinea",GR:"Greece",GS:"South Georgia and the South Sandwich Islands",GT:"Guatemala",GU:"Guam",GW:"Guinea-Bissau",GY:"Guyana",HK:"Hong Kong SAR China",HM:"Heard Island and McDonald Islands",HN:"Honduras",HR:"Croatia",HT:"Haiti",HU:"Hungary",ID:"Indonesia",IE:"Ireland",IL:"Israel",IM:"Isle of Man",IN:"India",IO:"British Indian Ocean Territory",IQ:"Iraq",IR:"Iran",IS:"Iceland",IT:"Italy",JE:"Jersey",JM:"Jamaica",JO:"Jordan",JP:"Japan",JT:"Johnston Island",KE:"Kenya",KG:"Kyrgyzstan",KH:"Cambodia",KI:"Kiribati",KM:"Comoros",KN:"Saint Kitts and Nevis",KP:"North Korea",KR:"South Korea",KW:"Kuwait",KY:"Cayman Islands",KZ:"Kazakhstan",LA:"Laos",LB:"Lebanon",LC:"Saint Lucia",LI:"Liechtenstein",LK:"Sri Lanka",LR:"Liberia",LS:"Lesotho",LT:"Lithuania",LU:"Luxembourg",LV:"Latvia",LY:"Libya",MA:"Morocco",MC:"Monaco",MD:"Moldova",ME:"Montenegro",MF:"Saint Martin",MG:"Madagascar",MH:"Marshall Islands",MI:"Midway Islands",MK:"Macedonia",ML:"Mali",MM:"Myanmar [Burma]",MN:"Mongolia",MO:"Macau SAR China",MP:"Northern Mariana Islands",MQ:"Martinique",MR:"Mauritania",MS:"Montserrat",MT:"Malta",MU:"Mauritius",MV:"Maldives",MW:"Malawi",MX:"Mexico",MY:"Malaysia",MZ:"Mozambique",NA:"Namibia",NC:"New Caledonia",NE:"Niger",NF:"Norfolk Island",NG:"Nigeria",NI:"Nicaragua",NL:"Netherlands",NO:"Norway",NP:"Nepal",NQ:"Dronning Maud Land",NR:"Nauru",NT:"Neutral Zone",NU:"Niue",NZ:"New Zealand",OM:"Oman",PA:"Panama",PC:"Pacific Islands Trust Territory",PE:"Peru",PF:"French Polynesia",PG:"Papua New Guinea",PH:"Philippines",PK:"Pakistan",PL:"Poland",PM:"Saint Pierre and Miquelon",PN:"Pitcairn Islands",PR:"Puerto Rico",PS:"Palestinian Territories",PT:"Portugal",PU:"U.S. Miscellaneous Pacific Islands",PW:"Palau",PY:"Paraguay",PZ:"Panama Canal Zone",QA:"Qatar",RE:"Réunion",RO:"Romania",RS:"Serbia",RU:"Russia",RW:"Rwanda",SA:"Saudi Arabia",SB:"Solomon Islands",SC:"Seychelles",SD:"Sudan",SE:"Sweden",SG:"Singapore",SH:"Saint Helena",SI:"Slovenia",SJ:"Svalbard and Jan Mayen",SK:"Slovakia",SL:"Sierra Leone",SM:"San Marino",SN:"Senegal",SO:"Somalia",SR:"Suriname",ST:"São Tomé and Príncipe",SU:"Union of Soviet Socialist Republics",SV:"El Salvador",SY:"Syria",SZ:"Swaziland",TC:"Turks and Caicos Islands",TD:"Chad",TF:"French Southern Territories",TG:"Togo",TH:"Thailand",TJ:"Tajikistan",TK:"Tokelau",TL:"Timor-Leste",TM:"Turkmenistan",TN:"Tunisia",TO:"Tonga",TR:"Turkey",TT:"Trinidad and Tobago",TV:"Tuvalu",TW:"Taiwan",TZ:"Tanzania",UA:"Ukraine",UG:"Uganda",UM:"U.S. Minor Outlying Islands",US:"United States",UY:"Uruguay",UZ:"Uzbekistan",VA:"Vatican City",VC:"Saint Vincent and the Grenadines",VD:"North Vietnam",VE:"Venezuela",VG:"British Virgin Islands",VI:"U.S. Virgin Islands",VN:"Vietnam",VU:"Vanuatu",WF:"Wallis and Futuna",WK:"Wake Island",WS:"Samoa",YD:"People's Democratic Republic of Yemen",YE:"Yemen",YT:"Mayotte",ZA:"South Africa",ZM:"Zambia",ZW:"Zimbabwe",ZZ:"Unknown or Invalid Region" };
 
 				var countriesArray = $.map(countries, function(value, key) {
@@ -3480,11 +3910,16 @@
 				$('#autocomplete-custom-append').autocomplete({
 				  lookup: countriesArray
 				});
-			  });
+				
+			  };
 			
 			/* STARRR */
 			
 			function init_starrr() {
+				
+				if( typeof (starrr) === 'undefined'){ return; }
+				console.log('init_starrr');
+				
 				$(".stars").starrr();
 
 				$('.stars-existing').starrr({
@@ -3498,12 +3933,17 @@
 				$('.stars-existing').on('starrr:change', function (e, value) {
 				  $('.stars-count-existing').html(value);
 				});
-			  });
+				
+			  };
 			
 			/* BOOTSTRAP DATERANGEPICKER */
 			
 			//1
 			function init_bootstrap_daterangepicker() {
+				
+				if( typeof (daterangepicker) === 'undefined'){ return; }
+				console.log('init_bootstrap_daterangepicker');
+				
 				var cb = function(start, end, label) {
 				  console.log(start.toISOString(), end.toISOString(), label);
 				  $('#reportrange_right span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
@@ -3576,12 +4016,16 @@
 				$('#destroy').click(function() {
 				  $('#reportrange_right').data('daterangepicker').remove();
 				});
-
-			  });
+				
+			  };
 			
 			//2
 			
-			function init_daterangepicker2() {
+			function init_bootstrap_daterangepicker2() {
+				
+				if( typeof (daterangepicker) === 'undefined'){ return; }
+				console.log('init_bootstrap_daterangepicker2');
+				
 				var cb = function(start, end, label) {
 				  console.log(start.toISOString(), end.toISOString(), label);
 				  $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
@@ -3648,11 +4092,16 @@
 				$('#destroy').click(function() {
 				  $('#reportrange').data('daterangepicker').remove();
 				});
-			  });
+				
+			  };
 			
 			//3
 			
-			function init_daterangepicker3() {
+			function init_bootstrap_daterangepicker3() {
+				
+				if( typeof (daterangepicker) === 'undefined'){ return; }
+				console.log('init_daterangepicker3');
+				
 				$('#single_cal1').daterangepicker({
 				  singleDatePicker: true,
 				  singleClasses: "picker_1"
@@ -3677,11 +4126,17 @@
 				}, function(start, end, label) {
 				  console.log(start.toISOString(), end.toISOString(), label);
 				});
-			 });
+				
+				
+			 };
 			
 			//4
 			
-			function init_daterangepicker4() {
+			function init_bootstrap_daterangepicker4() {
+				
+				if( typeof (daterangepicker) === 'undefined'){ return; }
+				console.log('init_bootstrap_daterangepicker4');
+				
 				$('#reservation').daterangepicker(null, function(start, end, label) {
 				  console.log(start.toISOString(), end.toISOString(), label);
 				});
@@ -3693,11 +4148,16 @@
 					format: 'MM/DD/YYYY h:mm A'
 				  }
 				});
-			  });
+					
+			  };
 			
 			/* ION RANGE SLIDER */
 			
 			function init_IonRangeSlider() {
+				
+				if( typeof (ionRangeSlider) === 'undefined'){ return; }
+				console.log('init_IonRangeSlider');
+				
 				$("#range_27").ionRangeSlider({
 				  type: "double",
 				  min: 1000000,
@@ -3758,11 +4218,16 @@
 					return m.format("Do MMMM, HH:mm");
 				  }
 				});
-			  });
+				
+			  };
 			
 			/* COLOR PICKER */
 			 
 			function init_ColorPicker() {
+				
+				if( typeof (daterangepicker) === 'undefined'){ return; }
+				console.log('init_ColorPicker');
+				
 				$('#reservation').daterangepicker(null, function(start, end, label) {
 				  console.log(start.toISOString(), end.toISOString(), label);
 				});
@@ -3774,17 +4239,27 @@
 					format: 'MM/DD/YYYY h:mm A'
 				  }
 				});
-			  }); 
+				
+			  }; 
 			
 			/* INPUT MASK */
 			
 			function init_InputMask() {
-				$(":input").inputmask();
-			});
+				
+				if( typeof (inputmask) === 'undefined'){ return; }
+				console.log('init_InputMask');
+				
+					$(":input").inputmask();
+					
+			};
 			
 			/* PNotify */
 			
 			function init_PNotify() {
+				
+				if( typeof (PNotify) === 'undefined'){ return; }
+				console.log('init_PNotify');
+				
 				new PNotify({
 				  title: "PNotify",
 				  type: "info",
@@ -3807,11 +4282,15 @@
 				  }
 				});
 
-			});
+			};
 			
 			/* CUSTOM NOTIFICATION */
 			
 			function init_CustomNotification() {
+				
+				if( typeof (CustomTabs) === 'undefined'){ return; }
+				console.log('init_CustomTabs');
+				
 				var cnt = 10;
 
 				TabbedNotification = function(options) {
@@ -3857,41 +4336,180 @@
 				  $('.notifications a').first().addClass('active');
 				  $('#notif-group div').first().css('display', 'block');
 				});
-			});
+				
+			};
+			
+			
+			/* GAUGE */
+			
+			
+			function init_gauge() {
+			
+					if( typeof (Gauge) === 'undefined'){ return; }
+					console.log('init_gauge');
+			
+					  var opts = {
+					  lines: 12,
+					  angle: 0,
+					  lineWidth: 0.4,
+					  pointer: {
+						  length: 0.75,
+						  strokeWidth: 0.042,
+						  color: '#1D212A'
+					  },
+					  limitMax: 'false',
+					  colorStart: '#1ABC9C',
+					  colorStop: '#1ABC9C',
+					  strokeColor: '#F0F3F3',
+					  generateGradient: true
+				  };
+				  var target = document.getElementById('foo'),
+					  gauge = new Gauge(target).setOptions(opts);
+
+				  gauge.maxValue = 6000;
+				  gauge.animationSpeed = 32;
+				  gauge.set(3200);
+				  gauge.setTextField(document.getElementById("gauge-text"));
+			
+			}
+			
+			function init_gauge2() {
+			
+					if( typeof (Gauge) === 'undefined'){ return; }
+					console.log('init_gauge2');
+			
+					  var opts = {
+					  lines: 12,
+					  angle: 0,
+					  lineWidth: 0.4,
+					  pointer: {
+						  length: 0.75,
+						  strokeWidth: 0.042,
+						  color: '#1D212A'
+					  },
+					  limitMax: 'false',
+					  colorStart: '#1ABC9C',
+					  colorStop: '#1ABC9C',
+					  strokeColor: '#F0F3F3',
+					  generateGradient: true
+				  };
+				  var target = document.getElementById('foo2'),
+					  gauge = new Gauge(target).setOptions(opts);
+
+				  gauge.maxValue = 6000;
+				  gauge.animationSpeed = 32;
+				  gauge.set(3200);
+				  gauge.setTextField(document.getElementById("gauge-text2"));
+			
+			}
 			
 			/* JQVMAP */
 			
+			
 			function init_JQVmap(){
-				$('#usa_map').vectorMap({
-					map: 'usa_en',
-					backgroundColor: null,
-					color: '#ffffff',
-					hoverOpacity: 0.7,
-					selectedColor: '#666666',
-					enableZoom: true,
-					showTooltip: true,
-					values: sample_data,
-					scaleColors: ['#E6F2F0', '#149B7E'],
-					normalizeFunction: 'polynomial'
-				});
-
-				$('#world-map-gdp').vectorMap({
-					map: 'world_en',
-					backgroundColor: null,
-					color: '#ffffff',
-					hoverOpacity: 0.7,
-					selectedColor: '#666666',
-					enableZoom: true,
-					showTooltip: true,
-					values: sample_data,
-					scaleColors: ['#E6F2F0', '#149B7E'],
-					normalizeFunction: 'polynomial'
-				});
-			  });
+				
+				if( typeof (vectorMap) === 'undefined'){ return; }
+				console.log('init_JQVmap');
+			
+					$('#world-map-gdp').vectorMap({
+						map: 'world_en',
+						backgroundColor: null,
+						color: '#ffffff',
+						hoverOpacity: 0.7,
+						selectedColor: '#666666',
+						enableZoom: true,
+						showTooltip: true,
+						values: sample_data,
+						scaleColors: ['#E6F2F0', '#149B7E'],
+						normalizeFunction: 'polynomial'
+					});
+				
+			  };
+			
+			function init_JQVmap2(){
+				
+				if( typeof (vectorMap) === 'undefined'){ return; }
+				console.log('init_JQVmap2');
+				
+					$('#usa_map').vectorMap({
+						map: 'usa_en',
+						backgroundColor: null,
+						color: '#ffffff',
+						hoverOpacity: 0.7,
+						selectedColor: '#666666',
+						enableZoom: true,
+						showTooltip: true,
+						values: sample_data,
+						scaleColors: ['#E6F2F0', '#149B7E'],
+						normalizeFunction: 'polynomial'
+					});
+				
+			  };
+			
 			
 			/* SPARKLINES */
 			
 			function init_sparklines() {
+				/*
+				if( typeof (sparkline) === 'undefined'){ return; }
+				console.log('init_sparklines');
+				*/
+				
+				 $(".sparkline_one").sparkline([2, 4, 3, 4, 5, 4, 5, 4, 3, 4, 5, 6, 4, 5, 6, 3, 5, 4, 5, 4, 5, 4, 3, 4, 5, 6, 7, 5, 4, 3, 5, 6], {
+				  type: 'bar',
+				  height: '125',
+				  barWidth: 13,
+				  colorMap: {
+					'7': '#a1a1a1'
+				  },
+				  barSpacing: 2,
+				  barColor: '#26B99A'
+				});
+				
+				  $(".sparkline_two").sparkline([2, 4, 3, 4, 5, 4, 5, 4, 3, 4, 5, 6, 7, 5, 4, 3, 5, 6], {
+					  type: 'bar',
+					  height: '40',
+					  barWidth: 9,
+					  colorMap: {
+						'7': '#a1a1a1'
+					  },
+					  barSpacing: 2,
+					  barColor: '#26B99A'
+					});
+
+					$(".sparkline_three").sparkline([2, 4, 3, 4, 5, 4, 5, 4, 3, 4, 5, 6, 7, 5, 4, 3, 5, 6], {
+					  type: 'line',
+					  width: '200',
+					  height: '40',
+					  lineColor: '#26B99A',
+					  fillColor: 'rgba(223, 223, 223, 0.57)',
+					  lineWidth: 2,
+					  spotColor: '#26B99A',
+					  minSpotColor: '#26B99A'
+					});
+				
+				$(".sparkline11").sparkline([2, 4, 3, 4, 5, 4, 5, 4, 3, 4, 6, 2, 4, 3, 4, 5, 4, 5, 4, 3], {
+				  type: 'bar',
+				  height: '40',
+				  barWidth: 8,
+				  colorMap: {
+					'7': '#a1a1a1'
+				  },
+				  barSpacing: 2,
+				  barColor: '#26B99A'
+				});
+				
+				 $(".sparkline22").sparkline([2, 4, 3, 4, 7, 5, 4, 3, 5, 6, 2, 4, 3, 4, 5, 4, 5, 4, 3, 4, 6], {
+				  type: 'line',
+				  height: '40',
+				  width: '200',
+				  lineColor: '#26B99A',
+				  fillColor: '#ffffff',
+				  lineWidth: 3,
+				  spotColor: '#34495E',
+				  minSpotColor: '#34495E'
+				});
+    	
 				$(".sparkline_bar").sparkline([2, 4, 3, 4, 5, 4, 5, 4, 3, 4, 5, 6, 4, 5, 6, 3, 5], {
 				  type: 'bar',
 				  colorMap: {
@@ -3899,7 +4517,7 @@
 				  },
 				  barColor: '#26B99A'
 				});
-
+				
 				$(".sparkline_area").sparkline([5, 6, 7, 9, 9, 5, 3, 2, 2, 4, 6, 7], {
 				  type: 'line',
 				  lineColor: '#26B99A',
@@ -3933,12 +4551,40 @@
 				  lineColor: '#26B99A',
 				  width: '85',
 				});
+				
+			};
+			
+			/* SKYICONS */
+			
+			function init_skycons(){
+				
+					if( typeof (Skycons) === 'undefined'){ return; }
+					console.log('init_skycons');
+				
+					var icons = new Skycons({
+						"color": "#73879C"
+					  }),
+					  list = [
+						"clear-day", "clear-night", "partly-cloudy-day",
+						"partly-cloudy-night", "cloudy", "rain", "sleet", "snow", "wind",
+						"fog"
+					  ],
+					  i;
 
-			});
+					for (i = list.length; i--;)
+					  icons.set(list[i], list[i]);
+
+					icons.play();
+			
+			}
 			
 			/* EASYPIECHART */
 			
 			function init_EasyPieChart() {
+				
+				if( typeof (easyPieChart) === 'undefined'){ return; }
+				console.log('init_EasyPieChart');
+				
 				$('.chart').easyPieChart({
 				  easing: 'easeOutElastic',
 				  delay: 3000,
@@ -3988,11 +4634,16 @@
 					hide: 400
 				  }
 				});
-			});
+				
+			};
 			
 			/* DATA TABLES */
 			
 			function init_DataTables() {
+				
+				if( typeof (DataTable) === 'undefined'){ return; }
+				console.log('init_DataTables');
+				
 				var handleDataTableButtons = function() {
 				  if ($("#datatable-buttons").length) {
 					$("#datatable-buttons").DataTable({
@@ -4068,11 +4719,16 @@
 				});
 
 				TableManageButtons.init();
-			});
+				
+			};
 			
 			/* CALENDAR */
 		  
 		        /*$(window).load*/function  init_calendar() {
+					
+				if( typeof (fullCalendar) === 'undefined'){ return; }
+				console.log('init_calendar');
+					
 				var date = new Date(),
 					d = date.getDate(),
 					m = date.getMonth(),
@@ -4166,17 +4822,21 @@
 					url: 'http://google.com/'
 				  }]
 				});
-			  });
+				
+			  };
 				  
+				  /*
 				eventAfterRender: function render (event, element, view) { 
 				element.append(event.title);
 			
 				}	  
-
+				*/
+				
 			$(document).ready(function() {
 				
+				init_sidebar();
 				init_daterangepicker();
-				init_wysiwyg();
+				/*init_wysiwyg();*/
 				init_select2();
 				init_TagsInput();
 				init_toolbox();
@@ -4192,33 +4852,66 @@
 				init_IonRangeSlider();
 				init_ColorPicker();
 				init_InputMask();
-				init_parsley2();
 				init_tooltip();
 				init_DataTables();
 				init_JQVmap();
+				init_JQVmap2();
 				init_SmartWizard();
 				init_compose();
 				init_autocomplete();
+				/*init_ToolbarBootstrapBindings();*/
 				init_icheck();
+				init_knob();
+				init_skycons();
 				init_PNotify();
+				
+				//charts
+				/*
+				init_bar_chart();
+				init_doughnut_chart();
+				init_radar_chart();
+				init_pie_chart();
+				init_polar_area_chart();
+				init_flot_chart3();
+				init_flot_chart2();
+				init_flot_chart();
+				*/
+				//end
+				
+				
+				init_echarts();
+				init_echart_map();
+				init_echart_bar();
+				init_echart_pie();
+				init_echart_donut();
+				init_echart_pie_collapse();
+				init_echart_bar_horizontal();
+				init_echart_scatter();
+				init_echart_line();
+				init_echart_gauge();
+				init_echart_funnel();
+				init_echart_radar();
+				init_echart_bar();
+				init_gauge();
+				init_gauge2();
+				init_validator();
 				init_CustomNotification();
 				init_countChecked();
 				init_accordion();
 				init_sparklines();
+				init_sparklines2();
+				init_sparklines3();
 				init_EasyPieChart();
 				init_morris_chart();
 				init_MorrisChartPage();
 				init_date_picker();
 				init_calendar();
 				
-			});
-		
-
-		
-		
-})(jQuery);
-
+			});	
 	
+		
+
+
 
 
 
