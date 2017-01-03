@@ -190,9 +190,9 @@ $(document).ready(function() {
 
 // iCheck
 $(document).ready(function() {
-    if ($("input.checkbox")[0]) {
+    if ($("input.flat")[0]) {
         $(document).ready(function () {
-            $('input.checkbox').iCheck({
+            $('input.flat').iCheck({
                 checkboxClass: 'icheckbox_flat-green',
                 radioClass: 'iradio_flat-green'
             });

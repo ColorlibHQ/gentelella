@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Gentellela Alela! | </title>
+    <title>Gentelella Alela! | </title>
 
     <!-- Bootstrap -->
     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -29,7 +29,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentellela Alela!</span></a>
+              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentelella Alela!</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -422,7 +422,107 @@
     <script src="../vendors/fullcalendar/dist/fullcalendar.min.js"></script>
 
     <!-- Custom Theme Scripts -->
-    <script src="../build/js/new-custom.js"></script>
+    <script src="../build/js/new-custom2.js"></script>
 
+		    <!-- FullCalendar -->
+    <script>
+      $(window).load(function() {
+        var date = new Date(),
+            d = date.getDate(),
+            m = date.getMonth(),
+            y = date.getFullYear(),
+            started,
+            categoryClass;
+
+        var calendar = $('#calendar').fullCalendar({
+          header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'month,agendaWeek,agendaDay'
+          },
+          selectable: true,
+          selectHelper: true,
+          select: function(start, end, allDay) {
+            $('#fc_create').click();
+
+            started = start;
+            ended = end;
+
+            $(".antosubmit").on("click", function() {
+              var title = $("#title").val();
+              if (end) {
+                ended = end;
+              }
+
+              categoryClass = $("#event_type").val();
+
+              if (title) {
+                calendar.fullCalendar('renderEvent', {
+                    title: title,
+                    start: started,
+                    end: end,
+                    allDay: allDay
+                  },
+                  true // make the event "stick"
+                );
+              }
+
+              $('#title').val('');
+
+              calendar.fullCalendar('unselect');
+
+              $('.antoclose').click();
+
+              return false;
+            });
+          },
+          eventClick: function(calEvent, jsEvent, view) {
+            $('#fc_edit').click();
+            $('#title2').val(calEvent.title);
+
+            categoryClass = $("#event_type").val();
+
+            $(".antosubmit2").on("click", function() {
+              calEvent.title = $("#title2").val();
+
+              calendar.fullCalendar('updateEvent', calEvent);
+              $('.antoclose2').click();
+            });
+
+            calendar.fullCalendar('unselect');
+          },
+          editable: true,
+          events: [{
+            title: 'All Day Event',
+            start: new Date(y, m, 1)
+          }, {
+            title: 'Long Event',
+            start: new Date(y, m, d - 5),
+            end: new Date(y, m, d - 2)
+          }, {
+            title: 'Meeting',
+            start: new Date(y, m, d, 10, 30),
+            allDay: false
+          }, {
+            title: 'Lunch',
+            start: new Date(y, m, d + 14, 12, 0),
+            end: new Date(y, m, d, 14, 0),
+            allDay: false
+          }, {
+            title: 'Birthday Party',
+            start: new Date(y, m, d + 1, 19, 0),
+            end: new Date(y, m, d + 1, 22, 30),
+            allDay: false
+          }, {
+            title: 'Click for Google',
+            start: new Date(y, m, 28),
+            end: new Date(y, m, 29),
+            url: 'http://google.com/'
+          }]
+        });
+      });
+    </script>
+    <!-- /FullCalendar -->
+	
   </body>
 </html>
