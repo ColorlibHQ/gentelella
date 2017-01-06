@@ -16,7 +16,7 @@
     <!-- NProgress -->
     <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
-    <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <!--<link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">-->
     <!-- Datatables -->
     <link href="../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
     <link href="../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
@@ -25,7 +25,7 @@
     <link href="../vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="../build/css/custom.min.css" rel="stylesheet">
+    <link href="../build/css/style.css" rel="stylesheet">
   </head>
 
   <body class="nav-md">
@@ -168,7 +168,7 @@
               <a data-toggle="tooltip" data-placement="top" title="Lock">
                 <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
               </a>
-              <a data-toggle="tooltip" data-placement="top" title="Logout">
+              <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
               </a>
             </div>
@@ -825,7 +825,12 @@
                     <table id="datatable-checkbox" class="table table-striped table-bordered bulk_action">
                       <thead>
                         <tr>
-                          <th><input type="checkbox" id="check-all" class="flat"></th>
+                          <th>
+							<label class="checkbox checkbox-wp">
+								<input type="checkbox" name='table_records' class="checkbox-action" />
+								<div></div>
+							</label>
+						  </th>
                           <th>Name</th>
                           <th>Position</th>
                           <th>Office</th>
@@ -838,7 +843,12 @@
 
                       <tbody>
                         <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
+                          <td>
+							<label class="checkbox checkbox-wp">
+								<input type="checkbox" name='table_records' class="checkbox-action" />
+								<div></div>
+							</label>
+						  </td>
                           <td>Tiger Nixon</td>
                           <td>System Architect</td>
                           <td>Edinburgh</td>
@@ -847,7 +857,12 @@
                           <td>$320,800</td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
+                         <td>
+							<label class="checkbox checkbox-wp">
+								<input type="checkbox" name='table_records' class="checkbox-action" />
+								<div></div>
+							</label>
+						  </td>
                           <td>Garrett Winters</td>
                           <td>Accountant</td>
                           <td>Tokyo</td>
@@ -856,7 +871,12 @@
                           <td>$170,750</td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
+							<td>
+								<label class="checkbox checkbox-wp">
+									<input type="checkbox" name='table_records' class="checkbox-action" />
+									<div></div>
+								</label>
+						  </td>
                           <td>Ashton Cox</td>
                           <td>Junior Technical Author</td>
                           <td>San Francisco</td>
@@ -865,7 +885,12 @@
                           <td>$86,000</td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
+                          <td>
+							<label class="checkbox checkbox-wp">
+								<input type="checkbox" name='table_records' class="checkbox-action" />
+								<div></div>
+							</label>
+						  </td>
                           <td>Cedric Kelly</td>
                           <td>Senior Javascript Developer</td>
                           <td>Edinburgh</td>
@@ -874,7 +899,12 @@
                           <td>$433,060</td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
+                          <td>
+							<label class="checkbox checkbox-wp">
+								<input type="checkbox" name='table_records' class="checkbox-action" />
+								<div></div>
+							</label>
+						  </td>
                           <td>Airi Satou</td>
                           <td>Accountant</td>
                           <td>Tokyo</td>
@@ -883,7 +913,12 @@
                           <td>$162,700</td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
+                          <td>
+							<label class="checkbox checkbox-wp">
+								<input type="checkbox" name='table_records' class="checkbox-action" />
+								<div></div>
+							</label>
+						  </td>
                           <td>Brielle Williamson</td>
                           <td>Integration Specialist</td>
                           <td>New York</td>
@@ -892,7 +927,12 @@
                           <td>$372,000</td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
+                          <td>
+							<label class="checkbox checkbox-wp">
+								<input type="checkbox" name='table_records' class="checkbox-action" />
+								<div></div>
+							</label>
+						  </td>
                           <td>Herrod Chandler</td>
                           <td>Sales Assistant</td>
                           <td>San Francisco</td>
@@ -901,7 +941,12 @@
                           <td>$137,500</td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
+                          <td>
+							<label class="checkbox checkbox-wp">
+								<input type="checkbox" name='table_records' class="checkbox-action" />
+								<div></div>
+							</label>
+						  </td>
                           <td>Rhona Davidson</td>
                           <td>Integration Specialist</td>
                           <td>Tokyo</td>
@@ -910,7 +955,12 @@
                           <td>$327,900</td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
+                          <td>
+							<label class="checkbox checkbox-wp">
+								<input type="checkbox" name='table_records' class="checkbox-action" />
+								<div></div>
+							</label>
+						  </td>
                           <td>Colleen Hurst</td>
                           <td>Javascript Developer</td>
                           <td>San Francisco</td>
@@ -919,7 +969,12 @@
                           <td>$205,500</td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
+                          <td>
+							<label class="checkbox checkbox-wp">
+								<input type="checkbox" name='table_records' class="checkbox-action" />
+								<div></div>
+							</label>
+						  </td>
                           <td>Sonya Frost</td>
                           <td>Software Engineer</td>
                           <td>Edinburgh</td>
@@ -928,7 +983,12 @@
                           <td>$103,600</td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
+                          <td>
+							<label class="checkbox checkbox-wp">
+								<input type="checkbox" name='table_records' class="checkbox-action" />
+								<div></div>
+							</label>
+						  </td>
                           <td>Jena Gaines</td>
                           <td>Office Manager</td>
                           <td>London</td>
@@ -937,7 +997,12 @@
                           <td>$90,560</td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
+                          <td>
+							<label class="checkbox checkbox-wp">
+								<input type="checkbox" name='table_records' class="checkbox-action" />
+								<div></div>
+							</label>
+						  </td>
                           <td>Quinn Flynn</td>
                           <td>Support Lead</td>
                           <td>Edinburgh</td>
@@ -946,7 +1011,12 @@
                           <td>$342,000</td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
+						  <td>
+							<label class="checkbox checkbox-wp">
+								<input type="checkbox" name='table_records' class="checkbox-action" />
+								<div></div>
+							</label>
+						  </td>
                           <td>Charde Marshall</td>
                           <td>Regional Director</td>
                           <td>San Francisco</td>
@@ -955,7 +1025,12 @@
                           <td>$470,600</td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
+						   <td>
+							<label class="checkbox checkbox-wp">
+								<input type="checkbox" name='table_records' class="checkbox-action" />
+								<div></div>
+							</label>
+						  </td>
                           <td>Haley Kennedy</td>
                           <td>Senior Marketing Designer</td>
                           <td>London</td>
@@ -964,7 +1039,12 @@
                           <td>$313,500</td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
+                          <td>
+							<label class="checkbox checkbox-wp">
+								<input type="checkbox" name='table_records' class="checkbox-action" />
+								<div></div>
+							</label>
+						  </td>
                           <td>Tatyana Fitzpatrick</td>
                           <td>Regional Director</td>
                           <td>London</td>
@@ -973,7 +1053,12 @@
                           <td>$385,750</td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
+                          <td>
+							<label class="checkbox checkbox-wp">
+								<input type="checkbox" name='table_records' class="checkbox-action" />
+								<div></div>
+							</label>
+						  </td>
                           <td>Michael Silva</td>
                           <td>Marketing Designer</td>
                           <td>London</td>
@@ -982,7 +1067,12 @@
                           <td>$198,500</td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
+                          <td>
+							<label class="checkbox checkbox-wp">
+								<input type="checkbox" name='table_records' class="checkbox-action" />
+								<div></div>
+							</label>
+						  </td>
                           <td>Paul Byrd</td>
                           <td>Chief Financial Officer (CFO)</td>
                           <td>New York</td>
@@ -991,7 +1081,12 @@
                           <td>$725,000</td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
+                          <td>
+							<label class="checkbox checkbox-wp">
+								<input type="checkbox" name='table_records' class="checkbox-action" />
+								<div></div>
+							</label>
+						  </td>
                           <td>Gloria Little</td>
                           <td>Systems Administrator</td>
                           <td>New York</td>
@@ -1000,7 +1095,12 @@
                           <td>$237,500</td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
+                          <td>
+							<label class="checkbox checkbox-wp">
+								<input type="checkbox" name='table_records' class="checkbox-action" />
+								<div></div>
+							</label>
+						  </td>
                           <td>Bradley Greer</td>
                           <td>Software Engineer</td>
                           <td>London</td>
@@ -1009,7 +1109,12 @@
                           <td>$132,000</td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
+                          <td>
+							<label class="checkbox checkbox-wp">
+								<input type="checkbox" name='table_records' class="checkbox-action" />
+								<div></div>
+							</label>
+						  </td>
                           <td>Dai Rios</td>
                           <td>Personnel Lead</td>
                           <td>Edinburgh</td>
@@ -1018,7 +1123,12 @@
                           <td>$217,500</td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
+                          <td>
+							<label class="checkbox checkbox-wp">
+								<input type="checkbox" name='table_records' class="checkbox-action" />
+								<div></div>
+							</label>
+						  </td>
                           <td>Jenette Caldwell</td>
                           <td>Development Lead</td>
                           <td>New York</td>
@@ -1027,7 +1137,12 @@
                           <td>$345,000</td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
+                          <td>
+							<label class="checkbox checkbox-wp">
+								<input type="checkbox" name='table_records' class="checkbox-action" />
+								<div></div>
+							</label>
+						  </td>
                           <td>Yuri Berry</td>
                           <td>Chief Marketing Officer (CMO)</td>
                           <td>New York</td>
@@ -1036,7 +1151,12 @@
                           <td>$675,000</td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
+                          <td>
+							<label class="checkbox checkbox-wp">
+								<input type="checkbox" name='table_records' class="checkbox-action" />
+								<div></div>
+							</label>
+						  </td>
                           <td>Caesar Vance</td>
                           <td>Pre-Sales Support</td>
                           <td>New York</td>
@@ -1045,7 +1165,12 @@
                           <td>$106,450</td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
+                          <td>
+							<label class="checkbox checkbox-wp">
+								<input type="checkbox" name='table_records' class="checkbox-action" />
+								<div></div>
+							</label>
+						  </td>
                           <td>Doris Wilder</td>
                           <td>Sales Assistant</td>
                           <td>Sidney</td>
@@ -1054,7 +1179,12 @@
                           <td>$85,600</td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
+                          <td>
+							<label class="checkbox checkbox-wp">
+								<input type="checkbox" name='table_records' class="checkbox-action" />
+								<div></div>
+							</label>
+						  </td>
                           <td>Angelica Ramos</td>
                           <td>Chief Executive Officer (CEO)</td>
                           <td>London</td>
@@ -1063,7 +1193,12 @@
                           <td>$1,200,000</td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
+                          <td>
+							<label class="checkbox checkbox-wp">
+								<input type="checkbox" name='table_records' class="checkbox-action" />
+								<div></div>
+							</label>
+						  </td>
                           <td>Gavin Joyce</td>
                           <td>Developer</td>
                           <td>Edinburgh</td>
@@ -1072,7 +1207,12 @@
                           <td>$92,575</td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
+                          <td>
+							<label class="checkbox checkbox-wp">
+								<input type="checkbox" name='table_records' class="checkbox-action" />
+								<div></div>
+							</label>
+						  </td>
                           <td>Jennifer Chang</td>
                           <td>Regional Director</td>
                           <td>Singapore</td>
@@ -1081,7 +1221,12 @@
                           <td>$357,650</td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
+                          <td>
+							<label class="checkbox checkbox-wp">
+								<input type="checkbox" name='table_records' class="checkbox-action" />
+								<div></div>
+							</label>
+						  </td>
                           <td>Brenden Wagner</td>
                           <td>Software Engineer</td>
                           <td>San Francisco</td>
@@ -1090,7 +1235,12 @@
                           <td>$206,850</td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
+                          <td>
+							<label class="checkbox checkbox-wp">
+								<input type="checkbox" name='table_records' class="checkbox-action" />
+								<div></div>
+							</label>
+						  </td>
                           <td>Fiona Green</td>
                           <td>Chief Operating Officer (COO)</td>
                           <td>San Francisco</td>
@@ -1099,7 +1249,12 @@
                           <td>$850,000</td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
+                          <td>
+							<label class="checkbox checkbox-wp">
+								<input type="checkbox" name='table_records' class="checkbox-action" />
+								<div></div>
+							</label>
+						  </td>
                           <td>Shou Itou</td>
                           <td>Regional Marketing</td>
                           <td>Tokyo</td>
@@ -1108,7 +1263,12 @@
                           <td>$163,000</td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
+                          <td>
+							<label class="checkbox checkbox-wp">
+								<input type="checkbox" name='table_records' class="checkbox-action" />
+								<div></div>
+							</label>
+						  </td>
                           <td>Michelle House</td>
                           <td>Integration Specialist</td>
                           <td>Sidney</td>
@@ -1117,7 +1277,12 @@
                           <td>$95,400</td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
+                          <td>
+							<label class="checkbox checkbox-wp">
+								<input type="checkbox" name='table_records' class="checkbox-action" />
+								<div></div>
+							</label>
+						  </td>
                           <td>Suki Burks</td>
                           <td>Developer</td>
                           <td>London</td>
@@ -1126,7 +1291,12 @@
                           <td>$114,500</td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
+                          <td>
+							<label class="checkbox checkbox-wp">
+								<input type="checkbox" name='table_records' class="checkbox-action" />
+								<div></div>
+							</label>
+						  </td>
                           <td>Prescott Bartlett</td>
                           <td>Technical Author</td>
                           <td>London</td>
@@ -1135,7 +1305,12 @@
                           <td>$145,000</td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
+                          <td>
+							<label class="checkbox checkbox-wp">
+								<input type="checkbox" name='table_records' class="checkbox-action" />
+								<div></div>
+							</label>
+						  </td>
                           <td>Gavin Cortez</td>
                           <td>Team Leader</td>
                           <td>San Francisco</td>
@@ -1144,7 +1319,12 @@
                           <td>$235,500</td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
+                          <td>
+							<label class="checkbox checkbox-wp">
+								<input type="checkbox" name='table_records' class="checkbox-action" />
+								<div></div>
+							</label>
+						  </td>
                           <td>Martena Mccray</td>
                           <td>Post-Sales support</td>
                           <td>Edinburgh</td>
@@ -1153,7 +1333,12 @@
                           <td>$324,050</td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
+                          <td>
+							<label class="checkbox checkbox-wp">
+								<input type="checkbox" name='table_records' class="checkbox-action" />
+								<div></div>
+							</label>
+						  </td>
                           <td>Unity Butler</td>
                           <td>Marketing Designer</td>
                           <td>San Francisco</td>
@@ -1162,7 +1347,12 @@
                           <td>$85,675</td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
+                          <td>
+							<label class="checkbox checkbox-wp">
+								<input type="checkbox" name='table_records' class="checkbox-action" />
+								<div></div>
+							</label>
+						  </td>
                           <td>Howard Hatfield</td>
                           <td>Office Manager</td>
                           <td>San Francisco</td>
@@ -1171,7 +1361,12 @@
                           <td>$164,500</td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
+                          <td>
+							<label class="checkbox checkbox-wp">
+								<input type="checkbox" name='table_records' class="checkbox-action" />
+								<div></div>
+							</label>
+						  </td>
                           <td>Hope Fuentes</td>
                           <td>Secretary</td>
                           <td>San Francisco</td>
@@ -1180,7 +1375,12 @@
                           <td>$109,850</td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
+                          <td>
+							<label class="checkbox checkbox-wp">
+								<input type="checkbox" name='table_records' class="checkbox-action" />
+								<div></div>
+							</label>
+						  </td>
                           <td>Vivian Harrell</td>
                           <td>Financial Controller</td>
                           <td>San Francisco</td>
@@ -1189,7 +1389,12 @@
                           <td>$452,500</td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
+                          <td>
+							<label class="checkbox checkbox-wp">
+								<input type="checkbox" name='table_records' class="checkbox-action" />
+								<div></div>
+							</label>
+						  </td>
                           <td>Timothy Mooney</td>
                           <td>Office Manager</td>
                           <td>London</td>
@@ -1198,7 +1403,12 @@
                           <td>$136,200</td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
+                          <td>
+							<label class="checkbox checkbox-wp">
+								<input type="checkbox" name='table_records' class="checkbox-action" />
+								<div></div>
+							</label>
+						  </td>
                           <td>Jackson Bradshaw</td>
                           <td>Director</td>
                           <td>New York</td>
@@ -1207,7 +1417,12 @@
                           <td>$645,750</td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
+                          <td>
+							<label class="checkbox checkbox-wp">
+								<input type="checkbox" name='table_records' class="checkbox-action" />
+								<div></div>
+							</label>
+						  </td>
                           <td>Olivia Liang</td>
                           <td>Support Engineer</td>
                           <td>Singapore</td>
@@ -1216,7 +1431,12 @@
                           <td>$234,500</td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
+                          <td>
+							<label class="checkbox checkbox-wp">
+								<input type="checkbox" name='table_records' class="checkbox-action" />
+								<div></div>
+							</label>
+						  </td>
                           <td>Bruno Nash</td>
                           <td>Software Engineer</td>
                           <td>London</td>
@@ -1225,7 +1445,12 @@
                           <td>$163,500</td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
+                          <td>
+							<label class="checkbox checkbox-wp">
+								<input type="checkbox" name='table_records' class="checkbox-action" />
+								<div></div>
+							</label>
+						  </td>
                           <td>Sakura Yamamoto</td>
                           <td>Support Engineer</td>
                           <td>Tokyo</td>
@@ -1234,7 +1459,12 @@
                           <td>$139,575</td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
+                          <td>
+							<label class="checkbox checkbox-wp">
+								<input type="checkbox" name='table_records' class="checkbox-action" />
+								<div></div>
+							</label>
+						  </td>
                           <td>Thor Walton</td>
                           <td>Developer</td>
                           <td>New York</td>
@@ -1243,7 +1473,12 @@
                           <td>$98,540</td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
+                          <td>
+							<label class="checkbox checkbox-wp">
+								<input type="checkbox" name='table_records' class="checkbox-action" />
+								<div></div>
+							</label>
+						  </td>
                           <td>Finn Camacho</td>
                           <td>Support Engineer</td>
                           <td>San Francisco</td>
@@ -1252,7 +1487,12 @@
                           <td>$87,500</td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
+                          <td>
+							<label class="checkbox checkbox-wp">
+								<input type="checkbox" name='table_records' class="checkbox-action" />
+								<div></div>
+							</label>
+						  </td>
                           <td>Serge Baldwin</td>
                           <td>Data Coordinator</td>
                           <td>Singapore</td>
@@ -1261,7 +1501,12 @@
                           <td>$138,575</td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
+                          <td>
+							<label class="checkbox checkbox-wp">
+								<input type="checkbox" name='table_records' class="checkbox-action" />
+								<div></div>
+							</label>
+						  </td>
                           <td>Zenaida Frank</td>
                           <td>Software Engineer</td>
                           <td>New York</td>
@@ -1270,7 +1515,12 @@
                           <td>$125,250</td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
+                          <td>
+							<label class="checkbox checkbox-wp">
+								<input type="checkbox" name='table_records' class="checkbox-action" />
+								<div></div>
+							</label>
+						  </td>
                           <td>Zorita Serrano</td>
                           <td>Software Engineer</td>
                           <td>San Francisco</td>
@@ -1279,7 +1529,12 @@
                           <td>$115,000</td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
+                          <td>
+							<label class="checkbox checkbox-wp">
+								<input type="checkbox" name='table_records' class="checkbox-action" />
+								<div></div>
+							</label>
+						  </td>
                           <td>Jennifer Acosta</td>
                           <td>Junior Javascript Developer</td>
                           <td>Edinburgh</td>
@@ -1288,7 +1543,12 @@
                           <td>$75,650</td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
+                          <td>
+							<label class="checkbox checkbox-wp">
+								<input type="checkbox" name='table_records' class="checkbox-action" />
+								<div></div>
+							</label>
+						  </td>
                           <td>Cara Stevens</td>
                           <td>Sales Assistant</td>
                           <td>New York</td>
@@ -1297,7 +1557,12 @@
                           <td>$145,600</td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
+                          <td>
+							<label class="checkbox checkbox-wp">
+								<input type="checkbox" name='table_records' class="checkbox-action" />
+								<div></div>
+							</label>
+						  </td>
                           <td>Hermione Butler</td>
                           <td>Regional Director</td>
                           <td>London</td>
@@ -1306,7 +1571,12 @@
                           <td>$356,250</td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
+                          <td>
+							<label class="checkbox checkbox-wp">
+								<input type="checkbox" name='table_records' class="checkbox-action" />
+								<div></div>
+							</label>
+						  </td>
                           <td>Lael Greer</td>
                           <td>Systems Administrator</td>
                           <td>London</td>
@@ -1315,7 +1585,12 @@
                           <td>$103,500</td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
+                          <td>
+							<label class="checkbox checkbox-wp">
+								<input type="checkbox" name='table_records' class="checkbox-action" />
+								<div></div>
+							</label>
+						  </td>
                           <td>Jonas Alexander</td>
                           <td>Developer</td>
                           <td>San Francisco</td>
@@ -1324,7 +1599,12 @@
                           <td>$86,500</td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
+                          <td>
+							<label class="checkbox checkbox-wp">
+								<input type="checkbox" name='table_records' class="checkbox-action" />
+								<div></div>
+							</label>
+						  </td>
                           <td>Shad Decker</td>
                           <td>Regional Director</td>
                           <td>Edinburgh</td>
@@ -1333,7 +1613,12 @@
                           <td>$183,000</td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
+                          <td>
+							<label class="checkbox checkbox-wp">
+								<input type="checkbox" name='table_records' class="checkbox-action" />
+								<div></div>
+							</label>
+						  </td>
                           <td>Michael Bruce</td>
                           <td>Javascript Developer</td>
                           <td>Singapore</td>
@@ -1342,7 +1627,12 @@
                           <td>$183,000</td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" class="flat" name="table_records"></td>
+                          <td>
+							<label class="checkbox checkbox-wp">
+								<input type="checkbox" name='table_records' class="checkbox-action" />
+								<div></div>
+							</label>
+						  </td>
                           <td>Donna Snider</td>
                           <td>Customer Support</td>
                           <td>New York</td>
@@ -2869,7 +3159,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Responsive example <small>Users</small></h2>
+                    <h2>Responsive example<small>Users</small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -2891,6 +3181,7 @@
                     <p class="text-muted font-13 m-b-30">
                       Responsive is an extension for DataTables that resolves that problem by optimising the table's layout for different screen sizes through the dynamic insertion and removal of columns from the table.
                     </p>
+					
                     <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                       <thead>
                         <tr>
@@ -3535,7 +3826,8 @@
                         </tr>
                       </tbody>
                     </table>
-
+					
+					
                   </div>
                 </div>
               </div>
@@ -3583,88 +3875,7 @@
     <script src="../vendors/pdfmake/build/vfs_fonts.js"></script>
 
     <!-- Custom Theme Scripts -->
-    <script src="../build/js/custom.min.js"></script>
+    <script src="../build/js/new-custom.js"></script>
 
-    <!-- Datatables -->
-    <script>
-      $(document).ready(function() {
-        var handleDataTableButtons = function() {
-          if ($("#datatable-buttons").length) {
-            $("#datatable-buttons").DataTable({
-              dom: "Bfrtip",
-              buttons: [
-                {
-                  extend: "copy",
-                  className: "btn-sm"
-                },
-                {
-                  extend: "csv",
-                  className: "btn-sm"
-                },
-                {
-                  extend: "excel",
-                  className: "btn-sm"
-                },
-                {
-                  extend: "pdfHtml5",
-                  className: "btn-sm"
-                },
-                {
-                  extend: "print",
-                  className: "btn-sm"
-                },
-              ],
-              responsive: true
-            });
-          }
-        };
-
-        TableManageButtons = function() {
-          "use strict";
-          return {
-            init: function() {
-              handleDataTableButtons();
-            }
-          };
-        }();
-
-        $('#datatable').dataTable();
-
-        $('#datatable-keytable').DataTable({
-          keys: true
-        });
-
-        $('#datatable-responsive').DataTable();
-
-        $('#datatable-scroller').DataTable({
-          ajax: "js/datatables/json/scroller-demo.json",
-          deferRender: true,
-          scrollY: 380,
-          scrollCollapse: true,
-          scroller: true
-        });
-
-        $('#datatable-fixed-header').DataTable({
-          fixedHeader: true
-        });
-
-        var $datatable = $('#datatable-checkbox');
-
-        $datatable.dataTable({
-          'order': [[ 1, 'asc' ]],
-          'columnDefs': [
-            { orderable: false, targets: [0] }
-          ]
-        });
-        $datatable.on('draw.dt', function() {
-          $('input').iCheck({
-            checkboxClass: 'icheckbox_flat-green'
-          });
-        });
-
-        TableManageButtons.init();
-      });
-    </script>
-    <!-- /Datatables -->
   </body>
 </html>

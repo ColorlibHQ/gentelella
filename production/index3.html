@@ -22,7 +22,7 @@
     <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
     
     <!-- Custom Theme Style -->
-    <link href="../build/css/custom.min.css" rel="stylesheet">
+    <link href="../build/css/style.css" rel="stylesheet">
   </head>
 
   <body class="nav-md">
@@ -165,7 +165,7 @@
               <a data-toggle="tooltip" data-placement="top" title="Lock">
                 <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
               </a>
-              <a data-toggle="tooltip" data-placement="top" title="Logout">
+              <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
               </a>
             </div>
@@ -277,20 +277,13 @@
               <div class="col-md-3 col-sm-3 col-xs-6 tile">
                 <span>Total Sessions</span>
                 <h2>231,809</h2>
-                <span class="sparkline_one" style="height: 160px;">
+                <span class="sparkline_two" style="height: 160px;">
                       <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
                   </span>
               </div>
               <div class="col-md-3 col-sm-3 col-xs-6 tile">
                 <span>Total Revenue</span>
                 <h2>$ 231,809</h2>
-                <span class="sparkline_one" style="height: 160px;">
-                      <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
-                  </span>
-              </div>
-              <div class="col-md-3 col-sm-3 col-xs-6 tile">
-                <span>Total Sessions</span>
-                <h2>231,809</h2>
                 <span class="sparkline_two" style="height: 160px;">
                       <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
                   </span>
@@ -298,7 +291,14 @@
               <div class="col-md-3 col-sm-3 col-xs-6 tile">
                 <span>Total Sessions</span>
                 <h2>231,809</h2>
-                <span class="sparkline_one" style="height: 160px;">
+                <span class="sparkline_three" style="height: 160px;">
+                      <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
+                  </span>
+              </div>
+              <div class="col-md-3 col-sm-3 col-xs-6 tile">
+                <span>Total Sessions</span>
+                <h2>231,809</h2>
+                <span class="sparkline_two" style="height: 160px;">
                       <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
                   </span>
               </div>
@@ -882,9 +882,10 @@
     <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
 
     <!-- Custom Theme Scripts -->
-    <script src="../build/js/custom.min.js"></script>
+    <script src="../build/js/new-custom.js"></script>
 
     <!-- Flot -->
+	<!--
     <script>
       $(document).ready(function() {
         //random data
@@ -943,12 +944,14 @@
         }], options);
       });
     </script>
+	-->
     <!-- /Flot -->
 
     <!-- jQuery Sparklines -->
+	<!--
     <script>
       $(document).ready(function() {
-        $(".sparkline_one").sparkline([2, 4, 3, 4, 5, 4, 5, 4, 3, 4, 5, 6, 7, 5, 4, 3, 5, 6], {
+        $(".sparkline_two").sparkline([2, 4, 3, 4, 5, 4, 5, 4, 3, 4, 5, 6, 7, 5, 4, 3, 5, 6], {
           type: 'bar',
           height: '40',
           barWidth: 9,
@@ -959,7 +962,7 @@
           barColor: '#26B99A'
         });
 
-        $(".sparkline_two").sparkline([2, 4, 3, 4, 5, 4, 5, 4, 3, 4, 5, 6, 7, 5, 4, 3, 5, 6], {
+        $(".sparkline_three").sparkline([2, 4, 3, 4, 5, 4, 5, 4, 3, 4, 5, 6, 7, 5, 4, 3, 5, 6], {
           type: 'line',
           width: '200',
           height: '40',
@@ -971,9 +974,11 @@
         });
       });
     </script>
+	-->
     <!-- /jQuery Sparklines -->
 
     <!-- Doughnut Chart -->
+	<!--
     <script>
       $(document).ready(function() {
         var options = {
@@ -1014,9 +1019,11 @@
         });
       });
     </script>
+	-->
     <!-- /Doughnut Chart -->
 
     <!-- bootstrap-daterangepicker -->
+	<!--
     <script type="text/javascript">
       $(document).ready(function() {
 
@@ -1088,9 +1095,11 @@
         });
       });
     </script>
+	-->
     <!-- /bootstrap-daterangepicker -->
 
     <!-- morris.js -->
+	<!--
     <script>
       $(document).ready(function() {
         Morris.Bar({
@@ -1121,9 +1130,11 @@
         });
       });
     </script>
+	-->
     <!-- /morris.js -->
 
     <!-- Skycons -->
+	<!--
     <script>
       var icons = new Skycons({
           "color": "#73879C"
@@ -1140,9 +1151,11 @@
 
       icons.play();
     </script>
+	-->
     <!-- /Skycons -->
 
     <!-- gauge.js -->
+	<!--
     <script>
       var opts = {
         lines: 12,
@@ -1175,6 +1188,7 @@
       gauge.set(4200);
       gauge.setTextField(document.getElementById("gauge-text2"));
     </script>
+	-->
     <!-- /gauge.js -->
   </body>
 </html>
