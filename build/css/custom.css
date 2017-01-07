@@ -1164,6 +1164,10 @@ table.jambo_table tbody tr.selected td {
   clear: both;
   zoom: 1; }
 
+.dataTables_wrapper > .row{
+  overflow:auto; /*prevent datatables overflowing its container*/
+}
+
 .dataTables_processing {
   position: absolute;
   top: 50%;
