@@ -277,14 +277,14 @@
               <div class="col-md-3 col-sm-3 col-xs-6 tile">
                 <span>Total Sessions</span>
                 <h2>231,809</h2>
-                <span class="sparkline_two" style="height: 160px;">
+                <span class="sparkline_one" style="height: 160px;">
                       <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
                   </span>
               </div>
               <div class="col-md-3 col-sm-3 col-xs-6 tile">
                 <span>Total Revenue</span>
                 <h2>$ 231,809</h2>
-                <span class="sparkline_two" style="height: 160px;">
+                <span class="sparkline_one" style="height: 160px;">
                       <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
                   </span>
               </div>
@@ -298,7 +298,7 @@
               <div class="col-md-3 col-sm-3 col-xs-6 tile">
                 <span>Total Sessions</span>
                 <h2>231,809</h2>
-                <span class="sparkline_two" style="height: 160px;">
+                <span class="sparkline_one" style="height: 160px;">
                       <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
                   </span>
               </div>
@@ -322,7 +322,7 @@
                   </div>
                   <div class="x_content">
                     <div class="demo-container" style="height:250px">
-                      <div id="placeholder3xx3" class="demo-placeholder" style="width: 100%; height:250px;"></div>
+                      <div id="chart_plot_03" class="demo-placeholder"></div>
                     </div>
                   </div>
                 </div>
@@ -553,9 +553,9 @@
 
                       <div class="sidebar-widget">
                         <h4>Profile Completion</h4>
-                        <canvas width="150" height="80" id="foo" class="" style="width: 160px; height: 100px;"></canvas>
+                        <canvas width="150" height="80" id="chart_gauge_01" class="" style="width: 160px; height: 100px;"></canvas>
                         <div class="goal-wrapper">
-                          <span id="gauge-text" class="gauge-value pull-left">0</span>
+                          <span id="gauge-text" class="gauge-value gauge-chart pull-left">0</span>
                           <span class="gauge-value pull-left">%</span>
                           <span id="goal-text" class="goal-value pull-right">100%</span>
                         </div>
@@ -817,7 +817,7 @@
 
                       <div class="sidebar-widget">
                         <h4>Goal</h4>
-                        <canvas width="150" height="80" id="foo2" class="" style="width: 160px; height: 100px;"></canvas>
+                        <canvas width="150" height="80" id="chart_gauge_02" class="" style="width: 160px; height: 100px;"></canvas>
                         <div class="goal-wrapper">
                           <span class="gauge-value pull-left">$</span>
                           <span id="gauge-text2" class="gauge-value pull-left">3,200</span>
@@ -883,66 +883,7 @@
 
     <!-- Custom Theme Scripts -->
     <script src="../build/js/new-custom2.js"></script>
-  <!-- Flot -->
-    <script>
-      $(document).ready(function() {
-        //random data
-        var d1 = [
-          [0, 1],
-          [1, 9],
-          [2, 6],
-          [3, 10],
-          [4, 5],
-          [5, 17],
-          [6, 6],
-          [7, 10],
-          [8, 7],
-          [9, 11],
-          [10, 35],
-          [11, 9],
-          [12, 12],
-          [13, 5],
-          [14, 3],
-          [15, 4],
-          [16, 9]
-        ];
-
-        //flot options
-        var options = {
-          series: {
-            curvedLines: {
-              apply: true,
-              active: true,
-              monotonicFit: true
-            }
-          },
-          colors: ["#26B99A"],
-          grid: {
-            borderWidth: {
-              top: 0,
-              right: 0,
-              bottom: 1,
-              left: 1
-            },
-            borderColor: {
-              bottom: "#7F8790",
-              left: "#7F8790"
-            }
-          }
-        };
-        var plot = $.plot($("#placeholder3xx3"), [{
-          label: "Registrations",
-          data: d1,
-          lines: {
-            fillColor: "rgba(150, 202, 89, 0.12)"
-          }, //#96CA59 rgba(150, 202, 89, 0.42)
-          points: {
-            fillColor: "#fff"
-          }
-        }], options);
-      });
-    </script>
-    <!-- /Flot -->
+ 
 
     <!-- jQuery Sparklines -->
     <script>
@@ -1139,41 +1080,6 @@
 
       icons.play();
     </script>
-    <!-- /Skycons -->
 
-    <!-- gauge.js -->
-    <script>
-      var opts = {
-        lines: 12,
-        angle: 0,
-        lineWidth: 0.4,
-        pointer: {
-          length: 0.75,
-          strokeWidth: 0.042,
-          color: '#1D212A'
-        },
-        limitMax: 'false',
-        colorStart: '#1ABC9C',
-        colorStop: '#1ABC9C',
-        strokeColor: '#F0F3F3',
-        generateGradient: true
-      };
-      var target = document.getElementById('foo'),
-          gauge = new Gauge(target).setOptions(opts);
-
-      gauge.maxValue = 100;
-      gauge.animationSpeed = 32;
-      gauge.set(80);
-      gauge.setTextField(document.getElementById("gauge-text"));
-
-      var target = document.getElementById('foo2'),
-          gauge = new Gauge(target).setOptions(opts);
-
-      gauge.maxValue = 5000;
-      gauge.animationSpeed = 32;
-      gauge.set(4200);
-      gauge.setTextField(document.getElementById("gauge-text2"));
-    </script>
-    <!-- /gauge.js -->
   </body>
 </html>
