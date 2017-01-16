@@ -4219,4 +4219,6 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 			
 .daterangepicker.xdisplay { width:228px; }
 
-
+.dataTables_wrapper > .row{
+  overflow:auto !important; /*prevent datatables overflowing its container*/
+}
