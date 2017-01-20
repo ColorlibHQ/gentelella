@@ -70,6 +70,7 @@ var setContentHeight = function () {
 };
 
   $SIDEBAR_MENU.find('a').on('click', function(ev) {
+	  console.log('clicked - sidebar_menu');
         var $li = $(this).parent();
 
         if ($li.is('.active')) {
@@ -100,6 +101,8 @@ var setContentHeight = function () {
 
 // toggle small or large menu
 $MENU_TOGGLE.on('click', function() {
+		console.log('clicked - menu toggle');
+		
 		if ($BODY.hasClass('nav-md')) {
 			$SIDEBAR_MENU.find('li.active ul').hide();
 			$SIDEBAR_MENU.find('li.active').addClass('active-sm').removeClass('active');
@@ -2745,7 +2748,7 @@ if (typeof NProgress != 'undefined') {
 		
 		
 		/* ECHRTS */
-		
+	
 		
 		function init_echarts() {
 		
@@ -3041,6 +3044,9 @@ if (typeof NProgress != 'undefined') {
 
 			}
 			  
+			  
+			  
+			  
 			   //echart Radar
 			  
 			if ($('#echart_sonar').length ){ 
@@ -3175,7 +3181,7 @@ if (typeof NProgress != 'undefined') {
 			  
 			if ($('#echart_gauge').length ){ 
 			  
-			  var echartGauge = echarts.init(document.getElementById('echart_guage'), theme);
+			  var echartGauge = echarts.init(document.getElementById('echart_gauge'), theme);
 
 			  echartGauge.setOption({
 				tooltip: {
@@ -4411,6 +4417,7 @@ if (typeof NProgress != 'undefined') {
 			  
 				  var echartMap = echarts.init(document.getElementById('echart_world_map'), theme);
 				  
+				   
 				  echartMap.setOption({
 					title: {
 					  text: 'World Population (2010)',
