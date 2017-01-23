@@ -35,6 +35,8 @@ To contribute, please ensure that you have stable [Node.js](https://nodejs.org/)
 
 Test if Gulp CLI is installed by running `gulp --version`.  If the command isn't found, run `npm install -g gulp`.  For more information about installing Gulp, see the Gulp's [Getting Started](https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md).
 
+To have all gulp dependencies run ```npm install```
+
 If `gulp` is installed, follow the steps below.
 
 1. Fork and clone the repo.
