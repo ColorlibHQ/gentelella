@@ -1,0 +1,64 @@
+[
+  {
+    "name": "read_data",
+    "file_name": "./source/natural_earth_vector/110m_cultural/ne_110m_admin_0_countries_lakes.shp",
+    "filter": "continent != \"Antarctica\" AND continent != \"Seven seas (open ocean)\"",
+    "longitude0": 11.5
+  },
+  {
+    "name": "join_data",
+    "data": [
+      [
+        "Africa",
+        "AF"
+      ],
+      [
+        "Asia",
+        "AS"
+      ],
+      [
+        "Europe",
+        "EU"
+      ],
+      [
+        "North America",
+        "NA"
+      ],
+      [
+        "South America",
+        "SA"
+      ],
+      [
+        "Oceania",
+        "OC"
+      ]
+    ],
+    "fields": [
+      {
+        "name": "continent",
+        "type": 4,
+        "width": 100
+      },
+      {
+        "name": "cont_code",
+        "type": 4,
+        "width": 4
+      }
+    ],
+    "on": "continent"
+  },
+  {
+    "name": "union",
+    "by": "cont_code"
+  },
+  {
+    "name": "write_data",
+    "format": "jqvmap",
+    "file_name": "./output/jquery.vmap.world.js",
+    "params": {
+      "code_field": "cont_code",
+      "name_field": "continent",
+      "name": "continents"
+    }
+  }
+]

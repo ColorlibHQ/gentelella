@@ -1,0 +1,73 @@
+body {
+  margin:0;
+  padding:0;      
+}
+.demoHead { 
+  display:block;  
+  margin-bottom:10px;   
+  border: 0;
+  padding: 0;
+  padding-top: 8px;
+  padding-bottom:10px;    
+  border-bottom: 1px solid #CCC;
+  font: normal 12px Verdana, Arial, Helvetica, sans-serif; 
+  color: #5A5655;   
+  background-color: #FAFAFA;    
+}
+.demoHead .demoExampleLinks {
+  text-align:center;
+}
+.demoHead h1,.demoHead h2,.demoHead h3{
+  margin-top:0;
+  margin-bottom:0;
+  margin-left:25px;
+  padding-top:0;
+  padding-bottom:0;
+}
+.demoHead h1{
+  font: bold 22px Verdana, Arial, Helvetica, sans-serif;
+}
+.demoHead h2{
+  font: bold 18px Verdana, Arial, Helvetica, sans-serif;
+}
+.demoHead h3{
+  font: normal 12px Verdana, Arial, Helvetica, sans-serif;
+}
+.demoHead a.btn{
+  -moz-border-radius    : 5px;
+  -webkit-border-radius : 5px;
+  background            : #7D7D7D;
+  color                 : #FFF;
+  margin                : 2px 2px 0px 2px;
+  padding               : 5px 12px 5px 12px;
+  text-align            : center;
+  border                : 1px solid #7D7D7D;    
+  text-decoration       : none; 
+}
+.demoHead .demoNavLinks a.btn {
+  color:#FFF;
+  background: #8CC63F;
+  border: 1px solid #8CC63F;
+}
+.demoHead a.btn:hover{
+  background      : #EA8511;
+  color           : #FFFFFF;
+  border          : 1px solid #EA8511; 
+  text-decoration : none; 
+}
+.demoHead .demoNavLinks a.btn:hover {
+  color:#5A5655;
+  background: #8CC63F;
+  border: 1px solid #5A5655;
+}
+.demoHead a.selected{
+  -moz-border-radius    : 5px;
+  -webkit-border-radius : 5px;
+  background            : #EA8511;
+  color                 : #FFFFFF;
+  margin                : 2px 2px 0px 2px;
+  padding               : 5px 12px 5px 12px;
+  text-align            : center;
+  border                : 1px solid #EA8511;    
+  text-decoration       : none; 
+}

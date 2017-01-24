@@ -1,0 +1,33 @@
+{
+  "name": "flot-spline",
+  "version": "0.8.2",
+  "homepage": "https://github.com/JohnPozy/flot-spline",
+  "authors": [
+    "Alex Bardas < alex.bardas@gmail.com >"
+  ],
+  "description": "Flot plugin that provides spline interpolation for line graphs",
+  "keywords": [
+    "jquery",
+    "flot",
+    "spline"
+  ],
+  "license": "SEE LICENSE IN LICENSE",
+  "main": "js/jquery.flot.spline.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "_release": "0.8.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.8.2",
+    "commit": "2ddbb1782735cc269dd57a7c7c69381ce8221159"
+  },
+  "_source": "https://github.com/JohnPozy/flot-spline.git",
+  "_target": "^0.8.2",
+  "_originalSource": "flot-spline",
+  "_direct": true
+}

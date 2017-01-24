@@ -1,0 +1,4 @@
+bower_components
+node_modules
+libtests/browserify/node_modules
+libtests/browserify/bundle.js
