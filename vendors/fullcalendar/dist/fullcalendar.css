@@ -1,5 +1,5 @@
 /*!
- * FullCalendar v2.7.3 Stylesheet
+ * FullCalendar v3.1.0 Stylesheet
  * Docs & License: http://fullcalendar.io/
  * (c) 2016 Adam Shaw
  */
@@ -22,14 +22,18 @@ body .fc { /* extra precedence to overcome jqui */
 /* Colors
 --------------------------------------------------------------------------------------------------*/
 
+/* for gutter border */
+
 .fc-unthemed th,
 .fc-unthemed td,
 .fc-unthemed thead,
 .fc-unthemed tbody,
 .fc-unthemed .fc-divider,
 .fc-unthemed .fc-row,
-.fc-unthemed .fc-content, /* for gutter border */
-.fc-unthemed .fc-popover {
+.fc-unthemed .fc-content, 
+.fc-unthemed .fc-popover,
+.fc-unthemed .fc-list-view,
+.fc-unthemed .fc-list-heading td {
 	border-color: #ddd;
 }
 
@@ -38,7 +42,8 @@ body .fc { /* extra precedence to overcome jqui */
 }
 
 .fc-unthemed .fc-divider,
-.fc-unthemed .fc-popover .fc-header {
+.fc-unthemed .fc-popover .fc-header,
+.fc-unthemed .fc-list-heading td {
 	background: #eee;
 }
 
@@ -46,20 +51,18 @@ body .fc { /* extra precedence to overcome jqui */
 	color: #666;
 }
 
-.fc-unthemed .fc-today {
+.fc-unthemed td.fc-today {
 	background: #fcf8e3;
 }
 
 .fc-highlight { /* when user is selecting cells */
 	background: #bce8f1;
 	opacity: .3;
-	filter: alpha(opacity=30); /* for IE */
 }
 
 .fc-bgevent { /* default look for background events */
 	background: rgb(143, 223, 130);
 	opacity: .3;
-	filter: alpha(opacity=30); /* for IE */
 }
 
 .fc-nonbusiness { /* default look for non-business-hours areas */
@@ -231,9 +234,9 @@ NOTE: use percentage font sizes or else old IE chokes
 	text-decoration: none;
 	background-position: 0 -15px;
 	-webkit-transition: background-position 0.1s linear;
-	   -moz-transition: background-position 0.1s linear;
-	     -o-transition: background-position 0.1s linear;
-	        transition: background-position 0.1s linear;
+	-moz-transition: background-position 0.1s linear;
+	-o-transition: background-position 0.1s linear;
+	 transition: background-position 0.1s linear;
 }
 
 .fc-state-down,
@@ -247,7 +250,6 @@ NOTE: use percentage font sizes or else old IE chokes
 	cursor: default;
 	background-image: none;
 	opacity: 0.65;
-	filter: alpha(opacity=65);
 	box-shadow: none;
 }
 
@@ -367,6 +369,7 @@ hr.fc-divider {
 
 .fc table {
 	width: 100%;
+	box-sizing: border-box; /* fix scrollbar issue in firefox */
 	table-layout: fixed;
 	border-collapse: collapse;
 	border-spacing: 0;
@@ -387,6 +390,18 @@ hr.fc-divider {
 
 .fc td.fc-today {
 	border-style: double; /* overcome neighboring borders */
+}
+
+
+/* Internal Nav Links
+--------------------------------------------------------------------------------------------------*/
+
+a[data-goto] {
+	cursor: pointer;
+}
+
+a[data-goto]:hover {
+	text-decoration: underline;
 }
 
 
@@ -508,8 +523,12 @@ temporary rendered events).
 	line-height: 1.3;
 	border-radius: 3px;
 	border: 1px solid #3a87ad; /* default BORDER color */
-	background-color: #3a87ad; /* default BACKGROUND color */
 	font-weight: normal; /* undo jqui's ui-widget-header bold */
+}
+
+.fc-event,
+.fc-event-dot {
+	background-color: #3a87ad; /* default BACKGROUND color */
 }
 
 /* overpower some of bootstrap's and jqui's styles on <a> tags */
@@ -534,7 +553,6 @@ temporary rendered events).
 	z-index: 1;
 	background: #fff;
 	opacity: .25;
-	filter: alpha(opacity=25); /* for IE */
 }
 
 .fc-event .fc-content {
@@ -688,6 +706,10 @@ be a descendant of the grid when it is being dragged.
 	padding: 0 1px;
 }
 
+tr:first-child > td > .fc-day-grid-event {
+	margin-top: 2px; /* a little bit more space before the first event */
+}
+
 .fc-day-grid-event.fc-selected:after {
 	content: "";
 	position: absolute;
@@ -700,7 +722,6 @@ be a descendant of the grid when it is being dragged.
 	/* darkening effect */
 	background: #000;
 	opacity: .25;
-	filter: alpha(opacity=25); /* for IE */
 }
 
 .fc-day-grid-event .fc-content { /* force events to be one-line tall */
@@ -785,12 +806,21 @@ a.fc-more:hover {
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+
+
 /* Toolbar
 --------------------------------------------------------------------------------------------------*/
 
 .fc-toolbar {
 	text-align: center;
+}
+
+.fc-toolbar.fc-header-toolbar {
 	margin-bottom: 1em;
+}
+
+.fc-toolbar.fc-footer-toolbar {
+	margin-top: 1em;
 }
 
 .fc-toolbar .fc-left {
@@ -866,6 +896,8 @@ a.fc-more:hover {
 	z-index: 1;
 }
 
+
+
 /* BasicView
 --------------------------------------------------------------------------------------------------*/
 
@@ -873,8 +905,7 @@ a.fc-more:hover {
 
 .fc-basicWeek-view .fc-content-skeleton,
 .fc-basicDay-view .fc-content-skeleton {
-	/* we are sure there are no day numbers in these views, so... */
-	padding-top: 1px; /* add a pixel to make sure there are 2px padding above events */
+	/* there may be week numbers in these views, so no padding-top */
 	padding-bottom: 1em; /* ensure a space at bottom of cell for user selecting/clicking */
 }
 
@@ -897,42 +928,45 @@ a.fc-more:hover {
 
 /* week and day number styling */
 
+.fc-day-top.fc-other-month {
+	opacity: 0.3;
+}
+
 .fc-basic-view .fc-week-number,
 .fc-basic-view .fc-day-number {
-	padding: 0 2px;
+	padding: 2px;
 }
 
-.fc-basic-view td.fc-week-number span,
-.fc-basic-view td.fc-day-number {
-	padding-top: 2px;
-	padding-bottom: 2px;
+.fc-basic-view th.fc-week-number,
+.fc-basic-view th.fc-day-number {
+	padding: 0 2px; /* column headers can't have as much v space */
 }
 
-.fc-basic-view .fc-week-number {
+.fc-ltr .fc-basic-view .fc-day-top .fc-day-number { float: right; }
+.fc-rtl .fc-basic-view .fc-day-top .fc-day-number { float: left; }
+
+.fc-ltr .fc-basic-view .fc-day-top .fc-week-number { float: left; border-radius: 0 0 3px 0; }
+.fc-rtl .fc-basic-view .fc-day-top .fc-week-number { float: right; border-radius: 0 0 0 3px; }
+
+.fc-basic-view .fc-day-top .fc-week-number {
+	min-width: 1.5em;
+	text-align: center;
+	background-color: #f2f2f2;
+	color: #808080;
+}
+
+/* when week/day number have own column */
+
+.fc-basic-view td.fc-week-number {
 	text-align: center;
 }
 
-.fc-basic-view .fc-week-number span {
+.fc-basic-view td.fc-week-number > * {
 	/* work around the way we do column resizing and ensure a minimum width */
 	display: inline-block;
 	min-width: 1.25em;
 }
 
-.fc-ltr .fc-basic-view .fc-day-number {
-	text-align: right;
-}
-
-.fc-rtl .fc-basic-view .fc-day-number {
-	text-align: left;
-}
-
-.fc-day-number.fc-other-month {
-	opacity: 0.3;
-	filter: alpha(opacity=30); /* for IE */
-	/* opacity with small font can sometimes look too faded
-	   might want to set the 'color' property instead
-	   making day-numbers bold also fixes the problem */
-}
 
 /* AgendaView all-day area
 --------------------------------------------------------------------------------------------------*/
@@ -947,7 +981,6 @@ a.fc-more:hover {
 }
 
 .fc-agenda-view .fc-day-grid .fc-row .fc-content-skeleton {
-	padding-top: 1px; /* add a pixel to make sure there are 2px padding above events */
 	padding-bottom: 1em; /* give space underneath events for clicking/selecting days */
 }
 
@@ -1257,4 +1290,117 @@ be a descendant of the grid when it is being dragged.
 	border-width: 5px 6px 5px 0;
 	border-top-color: transparent;
 	border-bottom-color: transparent;
+}
+
+
+
+/* List View
+--------------------------------------------------------------------------------------------------*/
+
+/* possibly reusable */
+
+.fc-event-dot {
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	border-radius: 5px;
+}
+
+/* view wrapper */
+
+.fc-rtl .fc-list-view {
+	direction: rtl; /* unlike core views, leverage browser RTL */
+}
+
+.fc-list-view {
+	border-width: 1px;
+	border-style: solid;
+}
+
+/* table resets */
+
+.fc .fc-list-table {
+	table-layout: auto; /* for shrinkwrapping cell content */
+}
+
+.fc-list-table td {
+	border-width: 1px 0 0;
+	padding: 8px 14px;
+}
+
+.fc-list-table tr:first-child td {
+	border-top-width: 0;
+}
+
+/* day headings with the list */
+
+.fc-list-heading {
+	border-bottom-width: 1px;
+}
+
+.fc-list-heading td {
+	font-weight: bold;
+}
+
+.fc-ltr .fc-list-heading-main { float: left; }
+.fc-ltr .fc-list-heading-alt { float: right; }
+
+.fc-rtl .fc-list-heading-main { float: right; }
+.fc-rtl .fc-list-heading-alt { float: left; }
+
+/* event list items */
+
+.fc-list-item.fc-has-url {
+	cursor: pointer; /* whole row will be clickable */
+}
+
+.fc-list-item:hover td {
+	background-color: #f5f5f5;
+}
+
+.fc-list-item-marker,
+.fc-list-item-time {
+	white-space: nowrap;
+	width: 1px;
+}
+
+/* make the dot closer to the event title */
+.fc-ltr .fc-list-item-marker { padding-right: 0; }
+.fc-rtl .fc-list-item-marker { padding-left: 0; }
+
+.fc-list-item-title a {
+	/* every event title cell has an <a> tag */
+	text-decoration: none;
+	color: inherit;
+}
+
+.fc-list-item-title a[href]:hover {
+	/* hover effect only on titles with hrefs */
+	text-decoration: underline;
+}
+
+/* message when no events */
+
+.fc-list-empty-wrap2 {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+.fc-list-empty-wrap1 {
+	width: 100%;
+	height: 100%;
+	display: table;
+}
+
+.fc-list-empty {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.fc-unthemed .fc-list-empty { /* theme will provide own background */
+	background-color: #eee;
 }
