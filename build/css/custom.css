@@ -1648,7 +1648,8 @@ span.right {
     padding: 5px 0 0 0;
     position: fixed;
     width: 230px;
-    background: #2A3F54
+    background: #2A3F54;
+	z-index:999;
 }
 .sidebar-footer a {
     padding: 7px 0 3px;
@@ -3198,6 +3199,9 @@ ul.project_files li a i {
 .form-group .btn {
     margin-bottom: -6px;
 }
+
+.input-group-btn .btn { margin-bottom:0; }
+
 /*!
  * bootstrap-vertical-tabs - v1.2.1
  * https://dbtek.github.io/bootstrap-vertical-tabs
@@ -4165,7 +4169,7 @@ ul.notifications {
 
 
 /* CSS3 Checkbox */
-
+/*
 .checkbox-input { display:block;position:relative; }
 .checkbox-input:before { display:block;content:"";position:absolute;top:2px;left:0;height:20px;width:20px;background:red;border-radius:3px; }
 
@@ -4186,8 +4190,7 @@ ul.notifications {
   }
 
 /* CSS3 Checkbox - end */
-
-
+/*
 
 /*
 .checkbox 																										{ display: block;position:relative;cursor:pointer; }
@@ -4214,6 +4217,8 @@ table thead .checkbox { margin-top:-7px;margin-top:-21px; }
 table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 */
 			
+.daterangepicker.xdisplay { width:228px; }
 
-
-
+.dataTables_wrapper > .row{
+  overflow:auto !important; /*prevent datatables overflowing its container*/
+}
