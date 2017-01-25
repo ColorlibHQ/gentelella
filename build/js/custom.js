@@ -99,7 +99,7 @@ var setContentHeight = function () {
         }
     });
 
-// toggle small or large menu
+// toggle small or large menu 
 $MENU_TOGGLE.on('click', function() {
 		console.log('clicked - menu toggle');
 		
