@@ -1,3 +1,20 @@
+
+html , body{
+	
+ height:100%;
+ 
+}
+ 
+.full-width {
+	
+ width:100%;
+ 
+ }
+ 
+.full-height{
+ height:100%;
+ }
+
 .daterangepicker .ranges li {
     color: #73879C
 }
