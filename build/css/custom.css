@@ -56,6 +56,10 @@
       color: #999; }
     .daterangepicker.picker_1 .calendar-table td.available:hover {
       color: #34495E; }
+    .daterangepicker.picker_1 .calendar-table .monthselect {
+      color: #73879C; }
+    .daterangepicker.picker_1 .calendar-table .yearselect {
+      color: #73879C; }
 .daterangepicker.picker_2 .calendar-table thead tr {
   color: #1ABB9C; }
 .daterangepicker.picker_2 .calendar-table thead tr:first-child {
@@ -63,6 +67,10 @@
 .daterangepicker.picker_3 .calendar-table thead tr:first-child {
   color: #fff;
   background: #1ABB9C; }
+.daterangepicker.picker_3 .calendar-table .monthselect {
+  color: #73879C; }
+.daterangepicker.picker_3 .calendar-table .yearselect {
+  color: #73879C; }
 .daterangepicker.picker_4 .calendar-table thead tr:first-child {
   color: #fff;
   background: #34495E; }
@@ -72,6 +80,10 @@
   border-radius: 0; }
 .daterangepicker.picker_4 .calendar-table td.active {
   background: #34495E; }
+.daterangepicker.picker_4 .calendar-table .monthselect {
+  color: #73879C; }
+.daterangepicker.picker_4 .calendar-table .yearselect {
+  color: #73879C; }
 
 .calendar-exibit .show-calendar {
   float: none;
