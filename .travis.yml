@@ -1,0 +1,13 @@
+dist: trusty
+
+language: node_js
+node_js:
+  - "6"
+
+install:
+  - npm install -g phantomjs casperjs gulp
+  - npm install
+
+script:
+  #npm test
+  npm run build
