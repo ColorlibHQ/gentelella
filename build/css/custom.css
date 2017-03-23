@@ -1864,18 +1864,18 @@ h4.graph_title {
     transition: all 300ms ease-in-out
 }
 .tile-stats:hover .icon i {
-    animation-name: tansformAnimation;
+    animation-name: transformAnimation;
     animation-duration: .5s;
     animation-iteration-count: 1;
     color: rgba(58, 58, 58, 0.41);
     animation-timing-function: ease;
     animation-fill-mode: forwards;
-    -webkit-animation-name: tansformAnimation;
+    -webkit-animation-name: transformAnimation;
     -webkit-animation-duration: .5s;
     -webkit-animation-iteration-count: 1;
     -webkit-animation-timing-function: ease;
     -webkit-animation-fill-mode: forwards;
-    -moz-animation-name: tansformAnimation;
+    -moz-animation-name: transformAnimation;
     -moz-animation-duration: .5s;
     -moz-animation-iteration-count: 1;
     -moz-animation-timing-function: ease;
