@@ -546,6 +546,9 @@ a:hover, a:focus {
   position: absolute;
   top: 0;
 }
+.nav-md ul.nav.child_menu li:last-child::after {
+  bottom: 50%;
+}
 .nav.side-menu>li>a, .nav.child_menu>li>a {
   color: #E7E7E7;
   font-weight: 500;
