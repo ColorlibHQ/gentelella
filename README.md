@@ -93,6 +93,7 @@ If `gulp` is installed, follow the steps below.
 * [Gentelella on Aurelia](https://github.com/kmkatsma/aurelia-gentelella) Typescript webpack skeleton modified to utilize the Gentelella.
 * [Gentelella on Laravel](https://github.com/Labs64/laravel-boilerplate) PHP / Laravel 5 boilerplate project with Gentelella Admin theme support.
 * [Gentelella on Django](https://github.com/GiriB/django-gentelella) Genetellela modified to fit as a Django app
+* [Gentelella on CakePHP](https://github.com/backstageel/cakephp-gentelella-theme) Gentelella modified to work on CakePHP
 
 Let us know if you have done integration for this admin template on other platforms and frameworks and we'll be happy to share your work.
 
