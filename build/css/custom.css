@@ -4242,3 +4242,10 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 .dataTables_wrapper > .row{
   overflow:auto !important; /*prevent datatables overflowing its container*/
 }
+
+/** bootstrap-datetimepicker **/
+.input-group.date .input-group-addon{
+    border-radius: 0px !important;
+    background-color: #ffff !important;
+}
+/** /bootstrap-datetimepicker **/
