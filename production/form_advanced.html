@@ -17,6 +17,8 @@
     <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- bootstrap-daterangepicker -->
     <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <!-- bootstrap-datetimepicker -->
+    <link href="../vendors/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css" rel="stylesheet">
     <!-- Ion.RangeSlider -->
     <link href="../vendors/normalize-css/normalize.css" rel="stylesheet">
     <link href="../vendors/ion.rangeSlider/css/ion.rangeSlider.css" rel="stylesheet">
@@ -661,6 +663,109 @@
                 </div>
                 <!-- /form datepicker -->
 
+        
+               <!-- form datetimepicker -->
+<div class="x_panel" style="">
+    <div class="x_title">
+        <h2>Date Pickers <small> Available with multiple designs</small></h2>
+        <ul class="nav navbar-right panel_toolbox">
+            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">Settings 1</a>
+                    </li>
+                    <li><a href="#">Settings 2</a>
+                    </li>
+                </ul>
+            </li>
+            <li><a class="close-link"><i class="fa fa-close"></i></a>
+            </li>
+        </ul>
+        <div class="clearfix"></div>
+    </div>
+    <div class="x_content">
+
+        <div class="container">
+            <div class="row">
+
+                <div class='col-sm-4'>
+                    Basic Example
+                    <div class="form-group">
+                        <div class='input-group date' id='myDatepicker'>
+                            <input type='text' class="form-control" />
+                            <span class="input-group-addon">
+                               <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class='col-sm-4'>
+                    Only Date Picker
+                    <div class="form-group">
+                        <div class='input-group date' id='myDatepicker2'>
+                            <input type='text' class="form-control" />
+                            <span class="input-group-addon">
+                               <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                 <div class='col-sm-4'>
+                    Only Time Picker <small>For 24H format use format: 'HH:mm'</small>
+                    <div class="form-group">
+                        <div class='input-group date' id='myDatepicker3'>
+                            <input type='text' class="form-control" />
+                            <span class="input-group-addon">
+                               <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class='col-sm-4'>
+                    Using ReadOnly
+                    <div class="form-group">
+                        <div class='input-group date' id='myDatepicker4'>
+                            <input type='text' class="form-control" readonly="readonly" />
+                            <span class="input-group-addon">
+                               <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                 <div class='col-sm-4'>
+                    Linked Picker Parent
+                    <div class="form-group">
+                        <div class='input-group date' id='datetimepicker6'>
+                            <input type='text' class="form-control" />
+                            <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class='col-sm-4'>
+                    Linked Picker Children
+                    <div class="form-group">
+                        <div class='input-group date' id='datetimepicker7'>
+                            <input type='text' class="form-control" />
+                            <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+                <!-- /form datetimepicker -->
 
                 <!-- form grid slider -->
                 <div class="x_panel" style="">
@@ -1211,6 +1316,8 @@
     <!-- bootstrap-daterangepicker -->
     <script src="../vendors/moment/min/moment.min.js"></script>
     <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!-- bootstrap-datetimepicker -->    
+    <script src="../vendors/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
     <!-- Ion.RangeSlider -->
     <script src="../vendors/ion.rangeSlider/js/ion.rangeSlider.min.js"></script>
     <!-- Bootstrap Colorpicker -->
@@ -1224,6 +1331,37 @@
 
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
+    
+    <!-- Initialize datetimepicker -->
+<script>
+    $('#myDatepicker').datetimepicker();
+    
+    $('#myDatepicker2').datetimepicker({
+        format: 'DD.MM.YYYY'
+    });
+    
+    $('#myDatepicker3').datetimepicker({
+        format: 'hh:mm A'
+    });
+    
+    $('#myDatepicker4').datetimepicker({
+        ignoreReadonly: true,
+        allowInputToggle: true
+    });
 
+    $('#datetimepicker6').datetimepicker();
+    
+    $('#datetimepicker7').datetimepicker({
+        useCurrent: false
+    });
+    
+    $("#datetimepicker6").on("dp.change", function(e) {
+        $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+    });
+    
+    $("#datetimepicker7").on("dp.change", function(e) {
+        $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+    });
+</script>
   </body>
 </html>
