@@ -136,9 +136,11 @@ $(document).ready(function() {
 // /Tooltip
 
 // Progressbar
-if ($(".progress .progress-bar")[0]) {
-    $('.progress .progress-bar').progressbar();
-}
+$(document).ready(function() {
+	if ($(".progress .progress-bar")[0]) {
+	    $('.progress .progress-bar').progressbar();
+	}
+});
 // /Progressbar
 
 // Switchery
