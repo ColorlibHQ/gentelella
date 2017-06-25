@@ -933,8 +933,8 @@ if (typeof NProgress != 'undefined') {
 			  };
 			});
 
-			// initialize autocomplete with custom appendTo
-			$('#autocomplete-custom-append').autocomplete({
+			// initialize autocomplete
+			$('#autocomplete').autocomplete({
 			  lookup: countriesArray
 			});
 			
