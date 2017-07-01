@@ -2,6 +2,7 @@ nbproject
 npm-debug.log
 node_modules
 .sass-cache
-failures/
-screenshots/*.fail.png
-screenshots/*.diff.png
+tests/screenshots/
+tests/failures/
+tests/screenshots/*.fail.png
+tests/screenshots/*.diff.png
