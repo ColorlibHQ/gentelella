@@ -22,6 +22,17 @@ casper.test.begin('Gentelella visual tests', function (test) {
     screenshotRoot: fs.absolute(fs.workingDirectory + '/tests/screenshots'),
     failedComparisonsRoot: fs.absolute(fs.workingDirectory + '/tests/failures'),
     addLabelToFailedImage: true,
+    addIteratorToImage: false,
+    mismatchTolerance: 0.05,
+    onFail: _onFail,
+    onPass: _onPass,
+    outputSettings: {
+      errorColor: {
+        red: 255, green: 255, blue: 0
+      },
+      errorType: 'movement',
+      transparency: 0.3
+    },
   });
 
   // CasperJS error handlers.
