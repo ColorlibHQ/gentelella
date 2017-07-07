@@ -51,19 +51,53 @@ casper.test.begin('Gentelella visual tests', function (test) {
   casper.start();
   casper.viewport(1920, 1080);
 
-  // Test screenshot: index.html.
-  casper.open('http://localhost:3000/./production/index.html', function () {
-    phantomcss.screenshot('body', 'index');
+  // TEST login.html login_form.
+  casper.thenOpen('http://localhost:3000/./production/login.html', function () {
+    phantomcss.screenshot('.login_form', 'login_form');
   });
 
-  // // index.html user-profile dropdown.
+  // TEST login.html registration_form.
   casper.then(function () {
-    casper.click('.user-profile');
+    casper.click('.to_register');
+
+    // wait for modal to fade-in
+    casper.wait(1200, function done() {
+      phantomcss.screenshot('.registration_form', 'registration_form');
+    });
+  });
+
+  // TEST index.html.
+  casper.thenOpen('http://localhost:3000/./production/index.html', function () {
+    // tests are below
+  })
+  .then(function() { phantomcss.screenshot('.left_col', 'index-left_col'); })
+  .then(function() { phantomcss.screenshot('.nav_menu', 'index-nav_menu'); })
+  .then(function() { phantomcss.screenshot('.row.tile_count', 'index-tile_count'); })
+  .then(function() { phantomcss.screenshot('.dashboard_graph', 'index-dashboard_graph'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="app-versions"]', 'index-x_panel-app_versions'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="device-usage"]', 'index-x_panel-device_usage'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="recent-activities"]', 'index-x_panel-recent_activities'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="visitors-location"]', 'index-x_panel-visitors_location'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="todo-list"]', 'index-x_panel-todo_list'); })
+  .then(function() { phantomcss.screenshot('footer', 'index-footer'); })
+  .then(function() {
+    casper.wait(300, function done() {
+      phantomcss.screenshot('.x_panel[data-test="quick-settings"]', 'index-x_panel-quick_settings');
+    });
+  })
+  .then(function() {
+    // The screenshot always changes
+    // phantomcss.screenshot('.x_panel[data-test="daily-active-users"]', 'index-x_panel-daily_active_users');
+  });
+
+  // TEST index.html user-profile dropdown.
+  casper.then(function () {
+    casper.click(".user-profile");
 
     // wait for modal to fade-in
     casper.waitForSelector('li.open .user-profile.dropdown-toggle',
       function success() {
-        phantomcss.screenshot('body', 'index-with-user-profile-dropdown');
+        phantomcss.screenshot('li.open .dropdown-menu', 'index-user_profile');
       },
       function timeout() {
         casper.test.fail('Should see user profile dropdown.');
@@ -71,204 +105,39 @@ casper.test.begin('Gentelella visual tests', function (test) {
     );
   });
 
-  // Test screenshot: login.html login-form.
-  casper.thenOpen('http://localhost:3000/./production/login.html', function () {
-    phantomcss.screenshot('body', 'login-form');
+  // TEST: index2.html
+  casper.thenOpen('http://localhost:3000/./production/index2.html', function() {
+    // tests are below
+  })
+  .then(function() { phantomcss.screenshot('.top_tiles', 'index2-top_tiles'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="top-profiles-1"]', 'index2-x_panel-top_profiles_1'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="top-profiles-2"]', 'index2-x_panel-top_profiles_2'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="top-profiles-3"]', 'index2-x_panel-top_profiles_3'); })
+  .then(function() {
+    casper.wait(3000, function() {
+      phantomcss.screenshot('.x_panel[data-test="weekly-summary"]', 'index2-x_panel-weekly_summary');
+    })
+  })
+  .then(function() {
+    // the screenshots always changes with random data.
+    // phantomcss.screenshot('.x_panel[data-test="transaction-summary"]', 'index2-x_panel-transaction_summary');
   });
 
-  // Test screenshot: login.html register-form.
-  casper.then(function () {
-    casper.click('.to_register');
-
-    // wait for modal to fade-in
-    casper.wait(1000,
-      function done() {
-        phantomcss.screenshot('body', 'register-form');
-      }
-    );
+  // TEST: index3.html
+  casper.thenOpen('http://localhost:3000/./production/index3.html', function() {
+    // tests are below
+  })
+  .then(function() { phantomcss.screenshot('.top_tiles', 'index3-top_tiles'); })
+  .then(function() { phantomcss.screenshot('.dashboard_graph', 'index3-dashboard_graph'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="app-devices"]', 'index3-x_panel-app_devices'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="daily-users"]', 'index3-x_panel-daily_users'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="profile-settings"]', 'index3-x_panel-profile_settings'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="user-uptake"]', 'index3-x_panel-user_uptake'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="incomes"]', 'index3-x_panel-incomes'); })
+  .then(function() {
+    // the screenshots always changes
+    // phantomcss.screenshot('.x_panel[data-test="today-weather"]', 'index3-x_panel-today_weather');
   });
-
-  // Test screenshot: calendar.html
-  casper.thenOpen('http://localhost:3000/./production/calendar.html', function () {
-    phantomcss.screenshot('body', 'calendar');
-  });
-
-  // Test screenshot: chartjs.html
-  casper.thenOpen('http://localhost:3000/./production/chartjs.html', function () {
-    phantomcss.screenshot('body', 'chartjs');
-  });
-
-  // Test screenshot: contacts.html
-  casper.thenOpen('http://localhost:3000/./production/contacts.html', function () {
-    phantomcss.screenshot('body', 'contacts');
-  });
-
-  // Test screenshot: echarts.html
-  casper.thenOpen('http://localhost:3000/./production/echarts.html', function () {
-    phantomcss.screenshot('body', 'echarts');
-  });
-
-  // Test screenshot: e_commerce.html
-  casper.thenOpen('http://localhost:3000/./production/e_commerce.html', function () {
-    phantomcss.screenshot('body', 'e_commerce');
-  });
-
-  // Test screenshot: fixed_footer.html
-  casper.thenOpen('http://localhost:3000/./production/fixed_footer.html', function () {
-    phantomcss.screenshot('body', 'fixed_footer');
-  });
-
-  // Test screenshot: fixed_sidebar.html
-  casper.thenOpen('http://localhost:3000/./production/fixed_sidebar.html', function () {
-    phantomcss.screenshot('body', 'fixed_sidebar');
-  });
-
-  // Test screenshot: form_advanced.html
-  casper.thenOpen('http://localhost:3000/./production/form_advanced.html', function () {
-    phantomcss.screenshot('body', 'form_advanced');
-  });
-
-  // Test screenshot: form_buttons.html
-  casper.thenOpen('http://localhost:3000/./production/form_buttons.html', function () {
-    phantomcss.screenshot('body', 'form_buttons');
-  });
-
-  // Test screenshot: form.html
-  casper.thenOpen('http://localhost:3000/./production/form.html', function () {
-    phantomcss.screenshot('body', 'form');
-  });
-
-  // Test screenshot: form_upload.html
-  casper.thenOpen('http://localhost:3000/./production/form_upload.html', function () {
-    phantomcss.screenshot('body', 'form_upload');
-  });
-
-  // Test screenshot: form_validation.html
-  casper.thenOpen('http://localhost:3000/./production/form_validation.html', function () {
-    phantomcss.screenshot('body', 'form_validation');
-  });
-
-  // Test screenshot: form_wizards.html
-  casper.thenOpen('http://localhost:3000/./production/form_wizards.html', function () {
-    phantomcss.screenshot('body', 'form_wizards');
-  });
-
-  // Test screenshot: general_elements.html
-  casper.thenOpen('http://localhost:3000/./production/general_elements.html', function () {
-    phantomcss.screenshot('body', 'general_elements');
-  });
-
-  // Test screenshot: glyphicons.html
-  casper.thenOpen('http://localhost:3000/./production/glyphicons.html', function () {
-    phantomcss.screenshot('body', 'glyphicons');
-  });
-
-  // Test screenshot: icons.html
-  casper.thenOpen('http://localhost:3000/./production/icons.html', function () {
-    phantomcss.screenshot('body', 'icons');
-  });
-
-  // Test screenshot: inbox.html
-  casper.thenOpen('http://localhost:3000/./production/inbox.html', function () {
-    phantomcss.screenshot('body', 'inbox');
-  });
-
-  // Test screenshot: invoice.html
-  casper.thenOpen('http://localhost:3000/./production/invoice.html', function () {
-    phantomcss.screenshot('body', 'invoice');
-  });
-
-  // Test screenshot: map.html
-  casper.thenOpen('http://localhost:3000/./production/map.html', function () {
-    phantomcss.screenshot('body', 'map');
-  });
-
-  // Test screenshot: media_gallery.html
-  casper.thenOpen('http://localhost:3000/./production/media_gallery.html', function () {
-    phantomcss.screenshot('body', 'media_gallery');
-  });
-
-  // Test screenshot: morisjs.html
-  casper.thenOpen('http://localhost:3000/./production/morisjs.html', function () {
-    phantomcss.screenshot('body', 'morisjs');
-  });
-
-  // Test screenshot: other_charts.html
-  casper.thenOpen('http://localhost:3000/./production/other_charts.html', function () {
-    phantomcss.screenshot('body', 'other_charts');
-  });
-
-  // Test screenshot: page_403.html
-  casper.thenOpen('http://localhost:3000/./production/page_403.html', function () {
-    phantomcss.screenshot('body', 'page_403');
-  });
-
-  // Test screenshot: page_404.html
-  casper.thenOpen('http://localhost:3000/./production/page_404.html', function () {
-    phantomcss.screenshot('body', 'page_404');
-  });
-
-  // Test screenshot: page_500.html
-  casper.thenOpen('http://localhost:3000/./production/page_500.html', function () {
-    phantomcss.screenshot('body', 'page_500');
-  });
-
-  // Test screenshot: plain_page.html
-  casper.thenOpen('http://localhost:3000/./production/plain_page.html', function () {
-    phantomcss.screenshot('body', 'plain_page');
-  });
-
-  // Test screenshot: pricing_tables.html
-  casper.thenOpen('http://localhost:3000/./production/pricing_tables.html', function () {
-    phantomcss.screenshot('body', 'pricing_tables');
-  });
-
-  // Test screenshot: profile.html
-  casper.thenOpen('http://localhost:3000/./production/profile.html', function () {
-    phantomcss.screenshot('body', 'profile');
-  });
-
-  // Test screenshot: project_detail.html
-  casper.thenOpen('http://localhost:3000/./production/project_detail.html', function () {
-    phantomcss.screenshot('body', 'project_detail');
-  });
-
-  // Test screenshot: projects.html
-  casper.thenOpen('http://localhost:3000/./production/projects.html', function () {
-    phantomcss.screenshot('body', 'projects');
-  });
-
-  // Test screenshot: projects.html
-  casper.thenOpen('http://localhost:3000/./production/projects.html', function () {
-    phantomcss.screenshot('body', 'projects');
-  });
-
-  // Test screenshot: tables.html
-  casper.thenOpen('http://localhost:3000/./production/tables.html', function () {
-    phantomcss.screenshot('body', 'tables');
-  });
-
-  // Test screenshot: tables_dynamic.html
-  casper.thenOpen('http://localhost:3000/./production/tables_dynamic.html', function () {
-    phantomcss.screenshot('body', 'tables_dynamic');
-  });
-
-  // Test screenshot: typography.html
-  casper.thenOpen('http://localhost:3000/./production/typography.html', function () {
-    phantomcss.screenshot('body', 'typography');
-  });
-
-  // Test screenshot: widgets.html
-  casper.thenOpen('http://localhost:3000/./production/widgets.html', function () {
-    phantomcss.screenshot('body', 'widgets');
-  });
-
-  // Test screenshot: widgets.html
-  casper.thenOpen('http://localhost:3000/./production/widgets.html', function () {
-    phantomcss.screenshot('body', 'widgets');
-  });
-
-
 
   // Check all screenshots.
   casper.then(function now_check_the_screenshots() {
@@ -284,12 +153,44 @@ casper.test.begin('Gentelella visual tests', function (test) {
   });
 });
 
-/**
- * Skipped pages:
- * production/xx.html
- * production/chartjs2.html
- * production/index2.html
- * production/index3.html
- * production/level2.html
- */
-
+/*
+production/calendar.html
+production/chartjs2.html
+production/chartjs.html
+production/contacts.html
+production/echarts.html
+production/e_commerce.html
+production/fixed_footer.html
+production/fixed_sidebar.html
+production/form_advanced.html
+production/form_buttons.html
+production/form.html
+production/form_upload.html
+production/form_validation.html
+production/form_wizards.html
+production/general_elements.html
+production/glyphicons.html
+production/icons.html
+production/inbox.html
+production/index2.html
+production/index3.html
+production/invoice.html
+production/level2.html
+production/map.html
+production/media_gallery.html
+production/morisjs.html
+production/other_charts.html
+production/page_403.html
+production/page_404.html
+production/page_500.html
+production/plain_page.html
+production/pricing_tables.html
+production/profile.html
+production/project_detail.html
+production/projects.html
+production/tables_dynamic.html
+production/tables.html
+production/typography.html
+production/widgets.html
+production/xx.html
+*/

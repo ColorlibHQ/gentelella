@@ -41,5 +41,8 @@
     "gulp-uglify": "^1.5.3",
     "phantomcss": "^1.1.5",
     "phantomjs-prebuilt": "^2.1.14"
+  },
+  "dependencies": {
+    "phantomflow": "^1.1.5"
   }
 }
