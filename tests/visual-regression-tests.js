@@ -2,13 +2,13 @@ var fs = require('fs');
 var phantomcss = require('phantomcss');
 
 function _onPass(test) {
-  console.log('\n');
+  // console.log('\n');
   var name = 'Should look the same ' + test.filename;
   casper.test.pass(name, { name: name });
 }
 
 function _onFail(test) {
-  console.log('\n');
+  // console.log('\n');
   var name = 'Should look the same ' + test.filename;
   casper.test.fail(name, { name: name, message: 'Looks different (' + test.mismatch + '% mismatch) ' + test.failFile });
 }
@@ -139,6 +139,77 @@ casper.test.begin('Gentelella visual tests', function (test) {
     // phantomcss.screenshot('.x_panel[data-test="today-weather"]', 'index3-x_panel-today_weather');
   });
 
+  // TEST: calendar.html
+  casper.thenOpen('http://localhost:3000/./production/calendar.html', function() {
+    phantomcss.screenshot('.right_col', 'calendar-right_col');
+  });
+
+  // TEST: contacts.html
+  casper.thenOpen('http://localhost:3000/./production/contacts.html', function() {
+    // tests are below
+  })
+  .then(function() { phantomcss.screenshot('.page-title', 'contacts-page_title'); })
+  .then(function() { phantomcss.screenshot('.x_panel', 'contacts-x_panel'); });
+
+
+  // TEST: form.html
+  casper.thenOpen('http://localhost:3000/./production/form.html', function() {
+    // tests are below
+  })
+  .then(function() { phantomcss.screenshot('.page-title', 'form-page_title'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="form-design-1"]', 'form-x_panel-form_design_1'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="form-design-2"]', 'form-x_panel-form_design_2'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="form-design-3"]', 'form-x_panel-form_design_3'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="star-rating"]', 'form-x_panel-star_rating'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="registration-form"]', 'form-x_panel-registration_form'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="form-basic-elements"]', 'form-x_panel-form_basic_elements'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="form-buttons"]', 'form-x_panel-form_buttons'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="text-areas"]', 'form-x_panel-text_areas'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="form-input-grid"]', 'form-x_panel-form_input_grid'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="form-input-grid"]', 'form-x_panel-form_input_grid'); });
+
+  // TEST: form_advanced.html
+  casper.thenOpen('http://localhost:3000/./production/form_advanced.html', function() {
+    // tests are below
+  })
+  .then(function() { phantomcss.screenshot('.page-title', 'form_advanced-page_title'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="input-mask"]', 'form_advanced-x_panel-input_mask'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="color-picker"]', 'form_advanced-x_panel-color_picker'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="input-knob"]', 'form_advanced-x_panel-input_knob'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="date-pickers"]', 'form_advanced-x_panel-date_pickers'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="grid-slider"]', 'form_advanced-x_panel-grid_slider'); })
+  .then(function() { phantomcss.screenshot('.container.cropper', 'form_advanced-x_panel-image_cropper'); });
+
+  // TEST: form_buttons.html
+  casper.thenOpen('http://localhost:3000/./production/form_buttons.html', function() {
+    // tests are below
+  })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="default-buttons"]', 'form_buttons-x_panel-default_buttons'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="rounded-buttons"]', 'form_buttons-x_panel-rounded_buttons'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="button-dropdown"]', 'form_buttons-x_panel-button_dropdown'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="split-button-dropdown"]', 'form_buttons-x_panel-split_button_dropdown'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="button-app-design"]', 'form_buttons-x_panel-button_app_design'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="button-sizes"]', 'form_buttons-x_panel-button_sizes'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="button-groups"]', 'form_buttons-x_panel-button_groups'); });
+
+  // TEST: form_upload.html
+  casper.thenOpen('http://localhost:3000/./production/form_upload.html', function() {
+    // tests are below
+  })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="dropzone"]', 'form_upload-x_panel-dropzone'); });
+
+  // TEST: form_validation.html
+  casper.thenOpen('http://localhost:3000/./production/form_validation.html', function() {
+    // tests are below
+  })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="form-validation"]', 'form_validation-x_panel-form_validation'); });
+
+  // TEST: form_wizards.html
+  casper.thenOpen('http://localhost:3000/./production/form_wizards.html', function() {
+    // tests are below
+  })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="form-wizards"]', 'form_wizards-x_panel-form_wizards'); });
+
   // Check all screenshots.
   casper.then(function now_check_the_screenshots() {
     // compare screenshots
@@ -153,27 +224,18 @@ casper.test.begin('Gentelella visual tests', function (test) {
   });
 });
 
+
 /*
-production/calendar.html
 production/chartjs2.html
 production/chartjs.html
-production/contacts.html
 production/echarts.html
 production/e_commerce.html
 production/fixed_footer.html
 production/fixed_sidebar.html
-production/form_advanced.html
-production/form_buttons.html
-production/form.html
-production/form_upload.html
-production/form_validation.html
-production/form_wizards.html
 production/general_elements.html
 production/glyphicons.html
 production/icons.html
 production/inbox.html
-production/index2.html
-production/index3.html
 production/invoice.html
 production/level2.html
 production/map.html
