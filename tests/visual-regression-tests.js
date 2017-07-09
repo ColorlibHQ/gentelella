@@ -210,6 +210,213 @@ casper.test.begin('Gentelella visual tests', function (test) {
   })
   .then(function() { phantomcss.screenshot('.x_panel[data-test="form-wizards"]', 'form_wizards-x_panel-form_wizards'); });
 
+  // TEST: general_elements.html
+  casper.thenOpen('http://localhost:3000/./production/general_elements.html', function() {
+    // tests are below
+  })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="tabs-1"]', 'general_elements-x_panel-tabs-1'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="tabs-2"]', 'general_elements-x_panel-tabs-2'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="vertical-tabs-1"]', 'general_elements-x_panel-vertical_tabs_1'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="vertical-tabs-2"]', 'general_elements-x_panel-vertical_tabs_2'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="collapsible-1"]', 'general_elements-x_panel-collapsible_1'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="collapsible-2"]', 'general_elements-x_panel-collapsible_2'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="tooltips-1"]', 'general_elements-x_panel-tooltips_1'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="tooltips-2"]', 'general_elements-x_panel-tooltips_2'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="daily-active-users-1"]', 'general_elements-x_panel-daily_active_user_1'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="daily-active-users-2"]', 'general_elements-x_panel-daily_active_user_2'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="daily-active-users-3"]', 'general_elements-x_panel-daily_active_user_3'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="dropdowns"]', 'general_elements-x_panel-dropdowns'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="modals"]', 'general_elements-x_panel-modals'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="notifications"]', 'general_elements-x_panel-notifications'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="popovers"]', 'general_elements-x_panel-popovers'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="progress-bar"]', 'general_elements-x_panel-progress_bar'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="simple-tasks"]', 'general_elements-x_panel-simple_tasks'); });
+
+  // TEST: chartjs.html
+  casper.thenOpen('http://localhost:3000/./production/chartjs.html', function() {
+    // tests are below
+    casper.wait(2000, function() {});
+  })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="line-graph"]', 'chartjs-x_panel-line_graph'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="bar-graph"]', 'chartjs-x_panel-bar_graph'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="radar"]', 'chartjs-x_panel-radar'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="donut-graph"]', 'chartjs-x_panel-donut_graph'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="pie-graph-chart"]', 'chartjs-x_panel-pie_graph_chart'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="pie-area-graph"]', 'chartjs-x_panel-pie_area_graph'); });
+
+  // TEST: chartjs2.html
+  casper.thenOpen('http://localhost:3000/./production/chartjs2.html', function() {
+    // tests are below
+    casper.wait(2000, function() {});    
+  })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="line-graph"]', 'chartjs2-x_panel-line_graph'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="bar-graph"]', 'chartjs2-x_panel-bar_graph'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="donut-graph"]', 'chartjs2-x_panel-donut_graph'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="radar"]', 'chartjs2-x_panel-radar'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="pie-area-chart"]', 'chartjs2-x_panel-pie_area_chart'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="pie-graph-chart"]', 'chartjs2-x_panel-pie_graph_chart'); });
+
+  // TEST: echarts.html
+  casper.thenOpen('http://localhost:3000/./production/echarts.html', function() {
+    // tests are below
+    casper.wait(2000, function() {});    
+  })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="line-graph"]', 'echarts-x_panel-line_graph'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="bar-graph"]', 'echarts-x_panel-bar_graph'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="mini-pie"]', 'echarts-x_panel-mini_pie'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="pie-graph"]', 'echarts-x_panel-pie_graph'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="pie-graph"]', 'echarts-x_panel-pie_graph'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="pie-area"]', 'echarts-x_panel-pie_area'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="donut-graph"]', 'echarts-x_panel-donut_graph'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="scatter-graph"]', 'echarts-x_panel-scatter_graph'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="horizontal-bar"]', 'echarts-x_panel-horizontal_bar'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="world-map"]', 'echarts-x_panel-world_map'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="pyramid"]', 'echarts-x_panel-pyramid'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="sonar"]', 'echarts-x_panel-sonar'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="guage"]', 'echarts-x_panel-guage'); });
+
+  // TEST: morisjs.html
+  casper.thenOpen('http://localhost:3000/./production/morisjs.html', function() {
+    // tests are below
+  })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="bar-chart"]', 'morisjs-x_panel-bar_chart'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="bar-chart-group-1"]', 'morisjs-x_panel-bar_chart_group_1'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="bar-chart-group-2"]', 'morisjs-x_panel-bar_chart_group_2'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="pie-chart"]', 'morisjs-x_panel-pie_chart'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="graph-area"]', 'morisjs-x_panel-graph_area'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="line-graph"]', 'morisjs-x_panel-line_graph'); });
+
+  // TEST: other_charts.html
+  casper.thenOpen('http://localhost:3000/./production/other_charts.html', function() {
+    // tests are below
+  })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="other-graph-types"]', 'other_charts-x_panel-other_graph_types'); });
+
+  // TEST: e_commerce.html
+  casper.thenOpen('http://localhost:3000/./production/e_commerce.html', function() {
+    // tests are below
+  })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="e-commerce-page-design"]', 'e_commerce-x_panel-e_commerce_page_design'); });
+
+  // TEST: glyphicons.html
+  casper.thenOpen('http://localhost:3000/./production/glyphicons.html', function() {
+    // tests are below
+  })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="glyphicons"]', 'glyphicons-x_panel-glyphicons'); });
+
+  // TEST: icons.html
+  casper.thenOpen('http://localhost:3000/./production/icons.html', function() {
+    // tests are below
+  })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="font-awesome-icons"]', 'icons-x_panel-font_awesome_icons'); });
+
+  // TEST: inbox.html
+  casper.thenOpen('http://localhost:3000/./production/inbox.html', function() {
+    // tests are below
+  })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="inbox-design"]', 'inbox-x_panel-inbox_design'); });
+
+  // TEST: invoice.html
+  casper.thenOpen('http://localhost:3000/./production/invoice.html', function() {
+    // tests are below
+  })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="invoice-design"]', 'invoice-x_panel-invoice_design'); });
+
+  // TEST: media_gallery.html
+  casper.thenOpen('http://localhost:3000/./production/media_gallery.html', function() {
+    // tests are below
+  })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="media-gallery"]', 'media_gallery-x_panel-media_gallery'); });
+
+  // TEST: page_403.html
+  casper.thenOpen('http://localhost:3000/./production/page_403.html', function() {
+    phantomcss.screenshot('body', 'page_403');
+  });
+
+  // TEST: page_404.html
+  casper.thenOpen('http://localhost:3000/./production/page_404.html', function() {
+    phantomcss.screenshot('body', 'page_404');
+  });
+
+  // TEST: page_500.html
+  casper.thenOpen('http://localhost:3000/./production/page_500.html', function() {
+    phantomcss.screenshot('body', 'page_500');
+  });
+
+  // TEST: plain_page.html
+  casper.thenOpen('http://localhost:3000/./production/plain_page.html', function() {
+    //
+  })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="plain-page"]', 'plain_page-x_panel-plain_page'); });
+
+  // TEST: pricing_tables.html
+  casper.thenOpen('http://localhost:3000/./production/pricing_tables.html', function() {
+    //
+  })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="pricing-tables"]', 'pricing_tables-x_panel-pricing_tables'); });
+
+  // TEST: profile.html
+  casper.thenOpen('http://localhost:3000/./production/profile.html', function() {
+    //
+  })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="user-report"]', 'profile-x_panel-user_report'); });
+
+  // TEST: projects.html
+  casper.thenOpen('http://localhost:3000/./production/projects.html', function() {
+    //
+  })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="projects"]', 'projects-x_panel-projects'); });
+
+  // TEST: project_detail.html
+  casper.thenOpen('http://localhost:3000/./production/project_detail.html', function() {
+    //
+  })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="new-partner"]', 'project_detail-x_panel-new_partner'); });
+
+  // TEST: tables.html
+  casper.thenOpen('http://localhost:3000/./production/tables.html', function() {
+    //
+  })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="basic-tables"]', 'tables-x_panel-basic_tables'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="stripped-table"]', 'tables-x_panel-stripped_table'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="hover-rows"]', 'tables-x_panel-hover_rows'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="bordered-table"]', 'tables-x_panel-bordered_table'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="table-design"]', 'tables-x_panel-table_design'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="table-design"]', 'tables-x_panel-table_design'); });
+
+  // TEST: tables_dynamic.html
+  casper.thenOpen('http://localhost:3000/./production/tables_dynamic.html', function() {
+    //
+  })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="default-example"]', 'tables_dynamic-x_panel-default_example'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="plus-table-design"]', 'tables_dynamic-x_panel-plus_table_design'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="button-example"]', 'tables_dynamic-x_panel-button_example'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="fixed-header-example"]', 'tables_dynamic-x_panel-fixed_header_example'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="keytable-example"]', 'tables_dynamic-x_panel-keytable_example'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="responsive-example"]', 'tables_dynamic-x_panel-responsive_example'); });
+
+  // TEST: typography.html
+  casper.thenOpen('http://localhost:3000/./production/typography.html', function() {
+    //
+  })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="typography"]', 'typography-x_panel-typography'); });
+
+  // TEST: widgets.html
+  casper.thenOpen('http://localhost:3000/./production/widgets.html', function() {
+    //
+  })
+  .then(function() { phantomcss.screenshot('[data-test="row-1"]', 'widgets-row_1'); })
+  .then(function() { phantomcss.screenshot('[data-test="row-2"]', 'widgets-row_2'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="tally-design-1"]', 'widgets-x_panel-tally_design_1'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="tally-design-2"]', 'widgets-x_panel-tally_design_2'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="tally-design-3"]', 'widgets-x_panel-tally_design_3'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="tally-design-4"]', 'widgets-x_panel-tally_design_4'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="tally-design-5"]', 'widgets-x_panel-tally_design_5'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="sales-close"]', 'widgets-x_panel-sales_close'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="user-mail"]', 'widgets-x_panel-user_mail'); })
+  .then(function() { phantomcss.screenshot('.x_panel[data-test="panel-1"]', 'widgets-x_panel-panel_1'); });
+
+
   // Check all screenshots.
   casper.then(function now_check_the_screenshots() {
     // compare screenshots
@@ -226,33 +433,9 @@ casper.test.begin('Gentelella visual tests', function (test) {
 
 
 /*
-production/chartjs2.html
-production/chartjs.html
-production/echarts.html
-production/e_commerce.html
-production/fixed_footer.html
-production/fixed_sidebar.html
-production/general_elements.html
-production/glyphicons.html
-production/icons.html
-production/inbox.html
-production/invoice.html
 production/level2.html
 production/map.html
-production/media_gallery.html
-production/morisjs.html
-production/other_charts.html
-production/page_403.html
-production/page_404.html
-production/page_500.html
-production/plain_page.html
-production/pricing_tables.html
-production/profile.html
-production/project_detail.html
-production/projects.html
-production/tables_dynamic.html
-production/tables.html
-production/typography.html
-production/widgets.html
+production/fixed_footer.html
+production/fixed_sidebar.html
 production/xx.html
 */
