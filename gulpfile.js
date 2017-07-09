@@ -40,6 +40,7 @@ gulp.task('sass-minify', function() {
 
 gulp.task('browser-sync', function() {
     browserSync.init({
+        notify: false,
         server: {
             baseDir: './'
         },
