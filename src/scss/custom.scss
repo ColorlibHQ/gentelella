@@ -4341,3 +4341,32 @@ ul.notifications {
   border: 1px solid #e5e5e5;
 }
 /** /Dropzone.js **/
+
+
+/* Add Collumn DataTable */
+#sample_2_column_toggler label{
+    padding: 2px 10px;
+    display: block;
+    line-height: 22px;
+}
+
+#sample_2_column_toggler label input[type=checkbox]{
+    width: 20px;
+    height: 20px;
+    float: left;
+}
+
+#sample_2_column_toggler label span{
+    line-height: 28px;
+    color: #73879c;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+#sample_2_column_toggler{
+    left: 0;
+}
+
+#btn-custom-column{
+    margin: 10px 0;
+}

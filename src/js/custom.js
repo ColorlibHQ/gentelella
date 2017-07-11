@@ -246,3 +246,44 @@ if (typeof NProgress != 'undefined') {
         NProgress.done();
     });
 }
+
+// Language DataTable and Add Collumn 
+var addCollumnTable;
+$(document).ready(function(){
+  	addCollumnTable = $("#datatable-responsive-collumn").dataTable( {           
+        "aoColumnDefs": [
+            { "bVisible": false, "aTargets": [ 7, 8 ] }
+        ],
+        "aaSorting": [[1, 'asc']],
+            "aLengthMenu": [
+            [5, 15, 20, -1],
+            [5, 15, 20, "Todos"] // change per page values here
+        ],
+        // set the initial value
+        "iDisplayLength": 10,
+        "oLanguage": {
+                "sProcessing": '<i class="fa fa-coffee"></i>&nbsp;Aguarde...',
+                "sLengthMenu": "_MENU_ Quantidade",
+                "sInfo": "Total de _TOTAL_ registros - de _START_ até _END_",
+                "sSearch": "Buscar",
+                "sEmptyTable": "Nenhum registro na tabela",
+                "sInfoEmpty": "Mostrando 0 até 0 de 0 no total",
+                "sInfo": "_START_ até _END_ de _TOTAL_",
+                "sInfoFiltered": "- de _MAX_ até total ",
+                "sZeroRecords": "Nenhum registro encontrado",
+                "oPaginate": {
+                    "sPrevious": "Anterior",
+                    "sNext": "Próximo"
+                }
+            },  
+        "sEmptyTable": "Nenhum registro na tabela",
+    });
+
+	$('#sample_2_column_toggler input[type="checkbox"]').change(function(){ console.log("Entrou");
+        /* Get the DataTables object again - this is not a recreation, just a get of the object */
+        var iCol = parseInt($(this).attr("data-column"));
+        var bVis = addCollumnTable.fnSettings().aoColumns[iCol].bVisible;
+        addCollumnTable.fnSetColumnVis(iCol, (bVis ? false : true));
+    });
+    
+})
