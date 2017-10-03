@@ -5,7 +5,7 @@ module.exports = function(grunt) {
   var banner = [
       '/**',
       '*  Ajax Autocomplete for jQuery, version ' + pkg.version, 
-      '*  (c) 2014 Tomas Kirda',
+      '*  (c) 2017 Tomas Kirda',
       '*',
       '*  Ajax Autocomplete for jQuery is freely distributable under the terms of an MIT-style license.',
       '*  For details, see the web site: https://github.com/devbridge/jQuery-Autocomplete',
