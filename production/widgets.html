@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Gentellela Alela! | </title>
+    <title>Gentelella Alela! | </title>
 
     <!-- Bootstrap -->
     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -28,13 +28,13 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentellela Alela!</span></a>
+              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentelella Alela!</span></a>
             </div>
 
             <div class="clearfix"></div>
 
             <!-- menu profile quick info -->
-            <div class="profile">
+            <div class="profile clearfix">
               <div class="profile_pic">
                 <img src="images/img.jpg" alt="..." class="img-circle profile_img">
               </div>
@@ -162,7 +162,7 @@
               <a data-toggle="tooltip" data-placement="top" title="Lock">
                 <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
               </a>
-              <a data-toggle="tooltip" data-placement="top" title="Logout">
+              <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
               </a>
             </div>
@@ -340,20 +340,13 @@
                       <div class="col-md-3 tile">
                         <span>Total Sessions</span>
                         <h2>231,809</h2>
-                        <span class="sparkline_one" style="height: 160px;">
+                        <span class="sparkline_two" style="height: 160px;">
                                       <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
                                   </span>
                       </div>
                       <div class="col-md-3 tile">
                         <span>Total Revenue</span>
                         <h2>$ 1,231,809</h2>
-                        <span class="sparkline_one" style="height: 160px;">
-                                      <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
-                                  </span>
-                      </div>
-                      <div class="col-md-3 tile">
-                        <span>Total Sessions</span>
-                        <h2>231,809</h2>
                         <span class="sparkline_two" style="height: 160px;">
                                       <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
                                   </span>
@@ -361,7 +354,14 @@
                       <div class="col-md-3 tile">
                         <span>Total Sessions</span>
                         <h2>231,809</h2>
-                        <span class="sparkline_one" style="height: 160px;">
+                        <span class="sparkline_three" style="height: 160px;">
+                                      <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
+                                  </span>
+                      </div>
+                      <div class="col-md-3 tile">
+                        <span>Total Sessions</span>
+                        <h2>231,809</h2>
+                        <span class="sparkline_two" style="height: 160px;">
                                       <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
                                   </span>
                       </div>
@@ -910,214 +910,6 @@
 
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
-
-    <!-- chart js -->
-    <!-- <script type="text/javascript" src="js/moment/moment.min.js"></script> -->
-    <!-- <script src="js/chartjs/chart.min.js"></script> -->
-    <!-- bootstrap progress js -->
-    <!-- <script src="js/progressbar/bootstrap-progressbar.min.js"></script> -->
-    <!-- icheck -->
-    <!-- <script src="js/icheck/icheck.min.js"></script> -->
-
-    <!-- <script src="../build/js/custom.min.js"></script> -->
-
-    <!-- pace -->
-    <!-- <script src="js/pace/pace.min.js"></script> -->
-
-    <!-- sparkline -->
-    <!-- <script src="js/sparkline/jquery.sparkline.min.js"></script> -->
-    <!-- easypie -->
-    <!-- <script src="js/easypie/jquery.easypiechart.min.js"></script> -->
-    <script>
-      $(function() {
-        $('.chart').easyPieChart({
-          easing: 'easeOutElastic',
-          delay: 3000,
-          barColor: '#26B99A',
-          trackColor: '#fff',
-          scaleColor: false,
-          lineWidth: 20,
-          trackWidth: 16,
-          lineCap: 'butt',
-          onStep: function(from, to, percent) {
-            $(this.el).find('.percent').text(Math.round(percent));
-          }
-        });
-      });
-    </script>
-
-    <script>
-      $(document).ready(function() {
-        Chart.defaults.global.legend = {
-          enabled: false
-        };
-
-        new Chart(document.getElementById("canvas_line"), {
-          type: 'line',
-          data: {
-            labels: ["January", "February", "March", "April", "May", "June", "July"],
-            datasets: [{
-              label: "My First dataset",
-              backgroundColor: "rgba(38, 185, 154, 0.31)",
-              borderColor: "rgba(38, 185, 154, 0.7)",
-              pointBorderColor: "rgba(38, 185, 154, 0.7)",
-              pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
-              pointHoverBackgroundColor: "#fff",
-              pointHoverBorderColor: "rgba(220,220,220,1)",
-              pointBorderWidth: 1,
-              data: [31, 74, 6, 39, 20, 85, 7]
-            }, {
-              label: "My Second dataset",
-              backgroundColor: "rgba(3, 88, 106, 0.3)",
-              borderColor: "rgba(3, 88, 106, 0.70)",
-              pointBorderColor: "rgba(3, 88, 106, 0.70)",
-              pointBackgroundColor: "rgba(3, 88, 106, 0.70)",
-              pointHoverBackgroundColor: "#fff",
-              pointHoverBorderColor: "rgba(151,187,205,1)",
-              pointBorderWidth: 1,
-              data: [82, 23, 66, 9, 99, 4, 2]
-            }]
-          },
-        });
-
-        new Chart(document.getElementById("canvas_line1"), {
-          type: 'line',
-          data: {
-            labels: ["January", "February", "March", "April", "May", "June", "July"],
-            datasets: [{
-              label: "My First dataset",
-              backgroundColor: "rgba(38, 185, 154, 0.31)",
-              borderColor: "rgba(38, 185, 154, 0.7)",
-              pointBorderColor: "rgba(38, 185, 154, 0.7)",
-              pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
-              pointHoverBackgroundColor: "#fff",
-              pointHoverBorderColor: "rgba(220,220,220,1)",
-              pointBorderWidth: 1,
-              data: [31, 74, 6, 39, 20, 85, 7]
-            }, {
-              label: "My Second dataset",
-              backgroundColor: "rgba(3, 88, 106, 0.3)",
-              borderColor: "rgba(3, 88, 106, 0.70)",
-              pointBorderColor: "rgba(3, 88, 106, 0.70)",
-              pointBackgroundColor: "rgba(3, 88, 106, 0.70)",
-              pointHoverBackgroundColor: "#fff",
-              pointHoverBorderColor: "rgba(151,187,205,1)",
-              pointBorderWidth: 1,
-              data: [82, 23, 66, 9, 99, 4, 2]
-            }]
-          },
-        });
-
-        new Chart(document.getElementById("canvas_line2"), {
-          type: 'line',
-          data: {
-            labels: ["January", "February", "March", "April", "May", "June", "July"],
-            datasets: [{
-              label: "My First dataset",
-              backgroundColor: "rgba(38, 185, 154, 0.31)",
-              borderColor: "rgba(38, 185, 154, 0.7)",
-              pointBorderColor: "rgba(38, 185, 154, 0.7)",
-              pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
-              pointHoverBackgroundColor: "#fff",
-              pointHoverBorderColor: "rgba(220,220,220,1)",
-              pointBorderWidth: 1,
-              data: [31, 74, 6, 39, 20, 85, 7]
-            }, {
-              label: "My Second dataset",
-              backgroundColor: "rgba(3, 88, 106, 0.3)",
-              borderColor: "rgba(3, 88, 106, 0.70)",
-              pointBorderColor: "rgba(3, 88, 106, 0.70)",
-              pointBackgroundColor: "rgba(3, 88, 106, 0.70)",
-              pointHoverBackgroundColor: "#fff",
-              pointHoverBorderColor: "rgba(151,187,205,1)",
-              pointBorderWidth: 1,
-              data: [82, 23, 66, 9, 99, 4, 2]
-            }]
-          },
-        });
-
-        new Chart(document.getElementById("canvas_line3"), {
-          type: 'line',
-          data: {
-            labels: ["January", "February", "March", "April", "May", "June", "July"],
-            datasets: [{
-              label: "My First dataset",
-              backgroundColor: "rgba(38, 185, 154, 0.31)",
-              borderColor: "rgba(38, 185, 154, 0.7)",
-              pointBorderColor: "rgba(38, 185, 154, 0.7)",
-              pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
-              pointHoverBackgroundColor: "#fff",
-              pointHoverBorderColor: "rgba(220,220,220,1)",
-              pointBorderWidth: 1,
-              data: [31, 74, 6, 39, 20, 85, 7]
-            }, {
-              label: "My Second dataset",
-              backgroundColor: "rgba(3, 88, 106, 0.3)",
-              borderColor: "rgba(3, 88, 106, 0.70)",
-              pointBorderColor: "rgba(3, 88, 106, 0.70)",
-              pointBackgroundColor: "rgba(3, 88, 106, 0.70)",
-              pointHoverBackgroundColor: "#fff",
-              pointHoverBorderColor: "rgba(151,187,205,1)",
-              pointBorderWidth: 1,
-              data: [82, 23, 66, 9, 99, 4, 2]
-            }]
-          },
-        });
-
-        new Chart(document.getElementById("canvas_line4"), {
-          type: 'line',
-          data: {
-            labels: ["January", "February", "March", "April", "May", "June", "July"],
-            datasets: [{
-              label: "My First dataset",
-              backgroundColor: "rgba(38, 185, 154, 0.31)",
-              borderColor: "rgba(38, 185, 154, 0.7)",
-              pointBorderColor: "rgba(38, 185, 154, 0.7)",
-              pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
-              pointHoverBackgroundColor: "#fff",
-              pointHoverBorderColor: "rgba(220,220,220,1)",
-              pointBorderWidth: 1,
-              data: [31, 74, 6, 39, 20, 85, 7]
-            }, {
-              label: "My Second dataset",
-              backgroundColor: "rgba(3, 88, 106, 0.3)",
-              borderColor: "rgba(3, 88, 106, 0.70)",
-              pointBorderColor: "rgba(3, 88, 106, 0.70)",
-              pointBackgroundColor: "rgba(3, 88, 106, 0.70)",
-              pointHoverBackgroundColor: "#fff",
-              pointHoverBorderColor: "rgba(151,187,205,1)",
-              pointBorderWidth: 1,
-              data: [82, 23, 66, 9, 99, 4, 2]
-            }]
-          },
-        });
-      });
-    </script>
-    
-    <script>
-      $('document').ready(function() {
-        $(".sparkline_one").sparkline([2, 4, 3, 4, 5, 4, 5, 4, 3, 4, 5, 6, 7, 5, 4, 3, 5, 6], {
-          type: 'bar',
-          height: '40',
-          barWidth: 9,
-          colorMap: {
-            '7': '#a1a1a1'
-          },
-          barSpacing: 2,
-          barColor: '#26B99A'
-        });
-
-        $(".sparkline_two").sparkline([2, 4, 3, 4, 5, 4, 5, 4, 3, 4, 5, 6, 7, 5, 4, 3, 5, 6], {
-          type: 'line',
-          width: '200',
-          height: '40',
-          lineColor: '#26B99A',
-          fillColor: 'rgba(223, 223, 223, 0.57)',
-          lineWidth: 2,
-          spotColor: '#26B99A',
-          minSpotColor: '#26B99A'
-        });
-      })
-    </script>
+	
   </body>
 </html>

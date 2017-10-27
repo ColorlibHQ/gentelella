@@ -90,6 +90,9 @@ $(document).ready(function() {
       if (!$('#autoUpdateInput').is(':checked'))
         options.autoUpdateInput = false;
 
+      if (!$('#showCustomRangeLabel').is(':checked'))
+        options.showCustomRangeLabel = false;
+
       if ($('#alwaysShowCalendars').is(':checked'))
         options.alwaysShowCalendars = true;
 

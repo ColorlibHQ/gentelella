@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Gentellela Alela! | </title>
+    <title>Gentelella Alela! | </title>
 
     <!-- Bootstrap -->
     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -15,6 +15,10 @@
     <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
     <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- bootstrap-daterangepicker -->
+    <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <!-- bootstrap-datetimepicker -->
+    <link href="../vendors/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css" rel="stylesheet">
     <!-- Ion.RangeSlider -->
     <link href="../vendors/normalize-css/normalize.css" rel="stylesheet">
     <link href="../vendors/ion.rangeSlider/css/ion.rangeSlider.css" rel="stylesheet">
@@ -34,13 +38,13 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentellela Alela!</span></a>
+              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentelella Alela!</span></a>
             </div>
 
             <div class="clearfix"></div>
 
             <!-- menu profile quick info -->
-            <div class="profile">
+            <div class="profile clearfix">
               <div class="profile_pic">
                 <img src="images/img.jpg" alt="..." class="img-circle profile_img">
               </div>
@@ -168,7 +172,7 @@
               <a data-toggle="tooltip" data-placement="top" title="Lock">
                 <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
               </a>
-              <a data-toggle="tooltip" data-placement="top" title="Logout">
+              <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
               </a>
             </div>
@@ -551,203 +555,43 @@
                     </div>
 
 
-                    <div class="well">
-
-                      <form class="form-horizontal">
-                        <fieldset>
-                          <div class="control-group">
-                            <div class="controls">
-                              <div class="input-prepend input-group">
-                                <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
-                                <input type="text" style="width: 200px" name="reservation" id="reservation" class="form-control" value="03/18/2013 - 03/23/2013" />
+                    <div class="well" style="overflow: auto">
+                      <div class="col-md-4">
+                        Date Range Picker
+                        <form class="form-horizontal">
+                          <fieldset>
+                            <div class="control-group">
+                              <div class="controls">
+                                <div class="input-prepend input-group">
+                                  <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
+                                  <input type="text" style="width: 200px" name="reservation" id="reservation" class="form-control" value="01/01/2016 - 01/25/2016" />
+                                </div>
                               </div>
                             </div>
-                          </div>
-                        </fieldset>
-                      </form>
+                          </fieldset>
+                        </form>
+                      </div>
 
-
-
+                      <div class="col-md-5">
+                        Date and Time
+                        <form class="form-horizontal">
+                          <fieldset>
+                            <div class="control-group">
+                              <div class="controls">
+                                <div class="input-prepend input-group">
+                                  <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
+                                  <input type="text" name="reservation-time" id="reservation-time" class="form-control" value="01/01/2016 - 01/25/2016" />
+                                </div>
+                              </div>
+                            </div>
+                          </fieldset>
+                        </form>
+                      </div>
                     </div>
-                    <div class="row">
 
+                    <div class="row calendar-exibit">
                       <div class="col-md-3">
-                        <div class="daterangepicker xdisplay picker_1 single opensright show-calendar">
-                          <div class="calendar first single right" style="display: block;">
-                            <div class="calendar-date">
-                              <table class="table-condensed">
-                                <thead>
-                                  <tr>
-                                    <th class="prev available"><i class="fa fa-arrow-left icon icon-arrow-left glyphicon glyphicon-arrow-left"></i>
-                                    </th>
-                                    <th colspan="5" class="month">Mar 2013</th>
-                                    <th class="next available"><i class="fa fa-arrow-right icon icon-arrow-right glyphicon glyphicon-arrow-right"></i>
-                                    </th>
-                                  </tr>
-                                  <tr>
-                                    <th>Su</th>
-                                    <th>Mo</th>
-                                    <th>Tu</th>
-                                    <th>We</th>
-                                    <th>Th</th>
-                                    <th>Fr</th>
-                                    <th>Sa</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr>
-                                    <td class="available off" data-title="r0c0">24</td>
-                                    <td class="available off" data-title="r0c1">25</td>
-                                    <td class="available off" data-title="r0c2">26</td>
-                                    <td class="available off" data-title="r0c3">27</td>
-                                    <td class="available off" data-title="r0c4">28</td>
-                                    <td class="available" data-title="r0c5">1</td>
-                                    <td class="available" data-title="r0c6">2</td>
-                                  </tr>
-                                  <tr>
-                                    <td class="available" data-title="r1c0">3</td>
-                                    <td class="available" data-title="r1c1">4</td>
-                                    <td class="available" data-title="r1c2">5</td>
-                                    <td class="available" data-title="r1c3">6</td>
-                                    <td class="available" data-title="r1c4">7</td>
-                                    <td class="available" data-title="r1c5">8</td>
-                                    <td class="available" data-title="r1c6">9</td>
-                                  </tr>
-                                  <tr>
-                                    <td class="available" data-title="r2c0">10</td>
-                                    <td class="available" data-title="r2c1">11</td>
-                                    <td class="available" data-title="r2c2">12</td>
-                                    <td class="available" data-title="r2c3">13</td>
-                                    <td class="available" data-title="r2c4">14</td>
-                                    <td class="available" data-title="r2c5">15</td>
-                                    <td class="available" data-title="r2c6">16</td>
-                                  </tr>
-                                  <tr>
-                                    <td class="available" data-title="r3c0">17</td>
-                                    <td class="available active start-date end-date" data-title="r3c1">18</td>
-                                    <td class="available" data-title="r3c2">19</td>
-                                    <td class="available" data-title="r3c3">20</td>
-                                    <td class="available" data-title="r3c4">21</td>
-                                    <td class="available" data-title="r3c5">22</td>
-                                    <td class="available" data-title="r3c6">23</td>
-                                  </tr>
-                                  <tr>
-                                    <td class="available" data-title="r4c0">24</td>
-                                    <td class="available" data-title="r4c1">25</td>
-                                    <td class="available" data-title="r4c2">26</td>
-                                    <td class="available" data-title="r4c3">27</td>
-                                    <td class="available" data-title="r4c4">28</td>
-                                    <td class="available" data-title="r4c5">29</td>
-                                    <td class="available" data-title="r4c6">30</td>
-                                  </tr>
-                                  <tr>
-                                    <td class="available" data-title="r5c0">31</td>
-                                    <td class="available off" data-title="r5c1">1</td>
-                                    <td class="available off" data-title="r5c2">2</td>
-                                    <td class="available off" data-title="r5c3">3</td>
-                                    <td class="available off" data-title="r5c4">4</td>
-                                    <td class="available off" data-title="r5c5">5</td>
-                                    <td class="available off" data-title="r5c6">6</td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                            </div>
-                          </div>
-                          <div class="calendar second left" style="display: none;">
-                            <div class="calendar-date">
-                              <table class="table-condensed">
-                                <thead>
-                                  <tr>
-                                    <th class="prev available"><i class="fa fa-arrow-left icon icon-arrow-left glyphicon glyphicon-arrow-left"></i>
-                                    </th>
-                                    <th colspan="5" class="month">Mar 2013</th>
-                                    <th class="next available"><i class="fa fa-arrow-right icon icon-arrow-right glyphicon glyphicon-arrow-right"></i>
-                                    </th>
-                                  </tr>
-                                  <tr>
-                                    <th>Su</th>
-                                    <th>Mo</th>
-                                    <th>Tu</th>
-                                    <th>We</th>
-                                    <th>Th</th>
-                                    <th>Fr</th>
-                                    <th>Sa</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr>
-                                    <td class="available off" data-title="r0c0">24</td>
-                                    <td class="available off" data-title="r0c1">25</td>
-                                    <td class="available off" data-title="r0c2">26</td>
-                                    <td class="available off" data-title="r0c3">27</td>
-                                    <td class="available off" data-title="r0c4">28</td>
-                                    <td class="available" data-title="r0c5">1</td>
-                                    <td class="available" data-title="r0c6">2</td>
-                                  </tr>
-                                  <tr>
-                                    <td class="available" data-title="r1c0">3</td>
-                                    <td class="available" data-title="r1c1">4</td>
-                                    <td class="available" data-title="r1c2">5</td>
-                                    <td class="available" data-title="r1c3">6</td>
-                                    <td class="available" data-title="r1c4">7</td>
-                                    <td class="available" data-title="r1c5">8</td>
-                                    <td class="available" data-title="r1c6">9</td>
-                                  </tr>
-                                  <tr>
-                                    <td class="available" data-title="r2c0">10</td>
-                                    <td class="available" data-title="r2c1">11</td>
-                                    <td class="available" data-title="r2c2">12</td>
-                                    <td class="available" data-title="r2c3">13</td>
-                                    <td class="available" data-title="r2c4">14</td>
-                                    <td class="available" data-title="r2c5">15</td>
-                                    <td class="available" data-title="r2c6">16</td>
-                                  </tr>
-                                  <tr>
-                                    <td class="available" data-title="r3c0">17</td>
-                                    <td class="available active start-date end-date" data-title="r3c1">18</td>
-                                    <td class="available" data-title="r3c2">19</td>
-                                    <td class="available" data-title="r3c3">20</td>
-                                    <td class="available" data-title="r3c4">21</td>
-                                    <td class="available" data-title="r3c5">22</td>
-                                    <td class="available" data-title="r3c6">23</td>
-                                  </tr>
-                                  <tr>
-                                    <td class="available" data-title="r4c0">24</td>
-                                    <td class="available" data-title="r4c1">25</td>
-                                    <td class="available" data-title="r4c2">26</td>
-                                    <td class="available" data-title="r4c3">27</td>
-                                    <td class="available" data-title="r4c4">28</td>
-                                    <td class="available" data-title="r4c5">29</td>
-                                    <td class="available" data-title="r4c6">30</td>
-                                  </tr>
-                                  <tr>
-                                    <td class="available" data-title="r5c0">31</td>
-                                    <td class="available off" data-title="r5c1">1</td>
-                                    <td class="available off" data-title="r5c2">2</td>
-                                    <td class="available off" data-title="r5c3">3</td>
-                                    <td class="available off" data-title="r5c4">4</td>
-                                    <td class="available off" data-title="r5c5">5</td>
-                                    <td class="available off" data-title="r5c6">6</td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                            </div>
-                          </div>
-                          <div class="ranges" style="display: none;">
-                            <div class="range_inputs">
-                              <div class="daterangepicker_start_input">
-                                <label for="daterangepicker_start">From</label>
-                                <input id="daterangepicker_start" class="input-mini" type="text" name="daterangepicker_start" value="">
-                              </div>
-                              <div class="daterangepicker_end_input">
-                                <label for="daterangepicker_end">To</label>
-                                <input id="daterangepicker_end" class="input-mini" type="text" name="daterangepicker_end" value="">
-                              </div>
-                              <button class="applyBtn btn btn-small btn-sm btn-success">Apply</button>&nbsp;
-                              <button class="cancelBtn btn btn-small btn-sm btn-default">Cancel</button>
-                            </div>
-                          </div>
-                        </div>
+                       <div class="daterangepicker dropdown-menu ltr single opensright show-calendar picker_1 xdisplay"><div class="calendar left single" style="display: block;"><div class="daterangepicker_input"><input class="input-mini form-control active" type="text" name="daterangepicker_start" value="" style="display: none;"><i class="fa fa-calendar glyphicon glyphicon-calendar" style="display: none;"></i><div class="calendar-time" style="display: none;"><div></div><i class="fa fa-clock-o glyphicon glyphicon-time"></i></div></div><div class="calendar-table"><table class="table-condensed"><thead><tr><th class="prev available"><i class="fa fa-chevron-left glyphicon glyphicon-chevron-left"></i></th><th colspan="5" class="month">Oct 2016</th><th class="next available"><i class="fa fa-chevron-right glyphicon glyphicon-chevron-right"></i></th></tr><tr><th>Su</th><th>Mo</th><th>Tu</th><th>We</th><th>Th</th><th>Fr</th><th>Sa</th></tr></thead><tbody><tr><td class="weekend off available" data-title="r0c0">25</td><td class="off available" data-title="r0c1">26</td><td class="off available" data-title="r0c2">27</td><td class="off available" data-title="r0c3">28</td><td class="off available" data-title="r0c4">29</td><td class="off available" data-title="r0c5">30</td><td class="weekend available" data-title="r0c6">1</td></tr><tr><td class="weekend available" data-title="r1c0">2</td><td class="available" data-title="r1c1">3</td><td class="available" data-title="r1c2">4</td><td class="available" data-title="r1c3">5</td><td class="available" data-title="r1c4">6</td><td class="available" data-title="r1c5">7</td><td class="weekend available" data-title="r1c6">8</td></tr><tr><td class="weekend available" data-title="r2c0">9</td><td class="available" data-title="r2c1">10</td><td class="available" data-title="r2c2">11</td><td class="available" data-title="r2c3">12</td><td class="available" data-title="r2c4">13</td><td class="available" data-title="r2c5">14</td><td class="weekend available" data-title="r2c6">15</td></tr><tr><td class="weekend available" data-title="r3c0">16</td><td class="available" data-title="r3c1">17</td><td class="today active start-date active end-date available" data-title="r3c2">18</td><td class="available" data-title="r3c3">19</td><td class="available" data-title="r3c4">20</td><td class="available" data-title="r3c5">21</td><td class="weekend available" data-title="r3c6">22</td></tr><tr><td class="weekend available" data-title="r4c0">23</td><td class="available" data-title="r4c1">24</td><td class="available" data-title="r4c2">25</td><td class="available" data-title="r4c3">26</td><td class="available" data-title="r4c4">27</td><td class="available" data-title="r4c5">28</td><td class="weekend available" data-title="r4c6">29</td></tr><tr><td class="weekend available" data-title="r5c0">30</td><td class="available" data-title="r5c1">31</td><td class="off available" data-title="r5c2">1</td><td class="off available" data-title="r5c3">2</td><td class="off available" data-title="r5c4">3</td><td class="off available" data-title="r5c5">4</td><td class="weekend off available" data-title="r5c6">5</td></tr></tbody></table></div></div><div class="calendar right" style="display: none;"><div class="daterangepicker_input"><input class="input-mini form-control" type="text" name="daterangepicker_end" value="" style="display: none;"><i class="fa fa-calendar glyphicon glyphicon-calendar" style="display: none;"></i><div class="calendar-time" style="display: none;"><div></div><i class="fa fa-clock-o glyphicon glyphicon-time"></i></div></div><div class="calendar-table"><table class="table-condensed"><thead><tr><th></th><th colspan="5" class="month">Nov 2016</th><th class="next available"><i class="fa fa-chevron-right glyphicon glyphicon-chevron-right"></i></th></tr><tr><th>Su</th><th>Mo</th><th>Tu</th><th>We</th><th>Th</th><th>Fr</th><th>Sa</th></tr></thead><tbody><tr><td class="weekend off available" data-title="r0c0">30</td><td class="off available" data-title="r0c1">31</td><td class="available" data-title="r0c2">1</td><td class="available" data-title="r0c3">2</td><td class="available" data-title="r0c4">3</td><td class="available" data-title="r0c5">4</td><td class="weekend available" data-title="r0c6">5</td></tr><tr><td class="weekend available" data-title="r1c0">6</td><td class="available" data-title="r1c1">7</td><td class="available" data-title="r1c2">8</td><td class="available" data-title="r1c3">9</td><td class="available" data-title="r1c4">10</td><td class="available" data-title="r1c5">11</td><td class="weekend available" data-title="r1c6">12</td></tr><tr><td class="weekend available" data-title="r2c0">13</td><td class="available" data-title="r2c1">14</td><td class="available" data-title="r2c2">15</td><td class="available" data-title="r2c3">16</td><td class="available" data-title="r2c4">17</td><td class="available" data-title="r2c5">18</td><td class="weekend available" data-title="r2c6">19</td></tr><tr><td class="weekend available" data-title="r3c0">20</td><td class="available" data-title="r3c1">21</td><td class="available" data-title="r3c2">22</td><td class="available" data-title="r3c3">23</td><td class="available" data-title="r3c4">24</td><td class="available" data-title="r3c5">25</td><td class="weekend available" data-title="r3c6">26</td></tr><tr><td class="weekend available" data-title="r4c0">27</td><td class="available" data-title="r4c1">28</td><td class="available" data-title="r4c2">29</td><td class="available" data-title="r4c3">30</td><td class="off available" data-title="r4c4">1</td><td class="off available" data-title="r4c5">2</td><td class="weekend off available" data-title="r4c6">3</td></tr><tr><td class="weekend off available" data-title="r5c0">4</td><td class="off available" data-title="r5c1">5</td><td class="off available" data-title="r5c2">6</td><td class="off available" data-title="r5c3">7</td><td class="off available" data-title="r5c4">8</td><td class="off available" data-title="r5c5">9</td><td class="weekend off available" data-title="r5c6">10</td></tr></tbody></table></div></div><div class="ranges" style="display: none;"><div class="range_inputs"><button class="applyBtn btn btn-sm btn-success" type="button">Apply</button> <button class="cancelBtn btn btn-sm btn-default" type="button">Cancel</button></div></div></div>
 
 
                         <fieldset>
@@ -765,182 +609,7 @@
                       </div>
 
                       <div class="col-md-3">
-                        <div class="daterangepicker xdisplay picker_2 single opensright show-calendar">
-                          <div class="calendar first single right" style="display: block;">
-                            <div class="calendar-date">
-                              <table class="table-condensed">
-                                <thead>
-                                  <tr>
-                                    <th class="prev available"><i class="fa fa-arrow-left icon icon-arrow-left glyphicon glyphicon-arrow-left"></i>
-                                    </th>
-                                    <th colspan="5" class="month">Mar 2013</th>
-                                    <th class="next available"><i class="fa fa-arrow-right icon icon-arrow-right glyphicon glyphicon-arrow-right"></i>
-                                    </th>
-                                  </tr>
-                                  <tr>
-                                    <th>Su</th>
-                                    <th>Mo</th>
-                                    <th>Tu</th>
-                                    <th>We</th>
-                                    <th>Th</th>
-                                    <th>Fr</th>
-                                    <th>Sa</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr>
-                                    <td class="available off" data-title="r0c0">24</td>
-                                    <td class="available off" data-title="r0c1">25</td>
-                                    <td class="available off" data-title="r0c2">26</td>
-                                    <td class="available off" data-title="r0c3">27</td>
-                                    <td class="available off" data-title="r0c4">28</td>
-                                    <td class="available" data-title="r0c5">1</td>
-                                    <td class="available" data-title="r0c6">2</td>
-                                  </tr>
-                                  <tr>
-                                    <td class="available" data-title="r1c0">3</td>
-                                    <td class="available" data-title="r1c1">4</td>
-                                    <td class="available" data-title="r1c2">5</td>
-                                    <td class="available" data-title="r1c3">6</td>
-                                    <td class="available" data-title="r1c4">7</td>
-                                    <td class="available" data-title="r1c5">8</td>
-                                    <td class="available" data-title="r1c6">9</td>
-                                  </tr>
-                                  <tr>
-                                    <td class="available" data-title="r2c0">10</td>
-                                    <td class="available" data-title="r2c1">11</td>
-                                    <td class="available" data-title="r2c2">12</td>
-                                    <td class="available" data-title="r2c3">13</td>
-                                    <td class="available" data-title="r2c4">14</td>
-                                    <td class="available" data-title="r2c5">15</td>
-                                    <td class="available" data-title="r2c6">16</td>
-                                  </tr>
-                                  <tr>
-                                    <td class="available" data-title="r3c0">17</td>
-                                    <td class="available active start-date end-date" data-title="r3c1">18</td>
-                                    <td class="available" data-title="r3c2">19</td>
-                                    <td class="available" data-title="r3c3">20</td>
-                                    <td class="available" data-title="r3c4">21</td>
-                                    <td class="available" data-title="r3c5">22</td>
-                                    <td class="available" data-title="r3c6">23</td>
-                                  </tr>
-                                  <tr>
-                                    <td class="available" data-title="r4c0">24</td>
-                                    <td class="available" data-title="r4c1">25</td>
-                                    <td class="available" data-title="r4c2">26</td>
-                                    <td class="available" data-title="r4c3">27</td>
-                                    <td class="available" data-title="r4c4">28</td>
-                                    <td class="available" data-title="r4c5">29</td>
-                                    <td class="available" data-title="r4c6">30</td>
-                                  </tr>
-                                  <tr>
-                                    <td class="available" data-title="r5c0">31</td>
-                                    <td class="available off" data-title="r5c1">1</td>
-                                    <td class="available off" data-title="r5c2">2</td>
-                                    <td class="available off" data-title="r5c3">3</td>
-                                    <td class="available off" data-title="r5c4">4</td>
-                                    <td class="available off" data-title="r5c5">5</td>
-                                    <td class="available off" data-title="r5c6">6</td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                            </div>
-                          </div>
-                          <div class="calendar second left" style="display: none;">
-                            <div class="calendar-date">
-                              <table class="table-condensed">
-                                <thead>
-                                  <tr>
-                                    <th class="prev available"><i class="fa fa-arrow-left icon icon-arrow-left glyphicon glyphicon-arrow-left"></i>
-                                    </th>
-                                    <th colspan="5" class="month">Mar 2013</th>
-                                    <th class="next available"><i class="fa fa-arrow-right icon icon-arrow-right glyphicon glyphicon-arrow-right"></i>
-                                    </th>
-                                  </tr>
-                                  <tr>
-                                    <th>Su</th>
-                                    <th>Mo</th>
-                                    <th>Tu</th>
-                                    <th>We</th>
-                                    <th>Th</th>
-                                    <th>Fr</th>
-                                    <th>Sa</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr>
-                                    <td class="available off" data-title="r0c0">24</td>
-                                    <td class="available off" data-title="r0c1">25</td>
-                                    <td class="available off" data-title="r0c2">26</td>
-                                    <td class="available off" data-title="r0c3">27</td>
-                                    <td class="available off" data-title="r0c4">28</td>
-                                    <td class="available" data-title="r0c5">1</td>
-                                    <td class="available" data-title="r0c6">2</td>
-                                  </tr>
-                                  <tr>
-                                    <td class="available" data-title="r1c0">3</td>
-                                    <td class="available" data-title="r1c1">4</td>
-                                    <td class="available" data-title="r1c2">5</td>
-                                    <td class="available" data-title="r1c3">6</td>
-                                    <td class="available" data-title="r1c4">7</td>
-                                    <td class="available" data-title="r1c5">8</td>
-                                    <td class="available" data-title="r1c6">9</td>
-                                  </tr>
-                                  <tr>
-                                    <td class="available" data-title="r2c0">10</td>
-                                    <td class="available" data-title="r2c1">11</td>
-                                    <td class="available" data-title="r2c2">12</td>
-                                    <td class="available" data-title="r2c3">13</td>
-                                    <td class="available" data-title="r2c4">14</td>
-                                    <td class="available" data-title="r2c5">15</td>
-                                    <td class="available" data-title="r2c6">16</td>
-                                  </tr>
-                                  <tr>
-                                    <td class="available" data-title="r3c0">17</td>
-                                    <td class="available active start-date end-date" data-title="r3c1">18</td>
-                                    <td class="available" data-title="r3c2">19</td>
-                                    <td class="available" data-title="r3c3">20</td>
-                                    <td class="available" data-title="r3c4">21</td>
-                                    <td class="available" data-title="r3c5">22</td>
-                                    <td class="available" data-title="r3c6">23</td>
-                                  </tr>
-                                  <tr>
-                                    <td class="available" data-title="r4c0">24</td>
-                                    <td class="available" data-title="r4c1">25</td>
-                                    <td class="available" data-title="r4c2">26</td>
-                                    <td class="available" data-title="r4c3">27</td>
-                                    <td class="available" data-title="r4c4">28</td>
-                                    <td class="available" data-title="r4c5">29</td>
-                                    <td class="available" data-title="r4c6">30</td>
-                                  </tr>
-                                  <tr>
-                                    <td class="available" data-title="r5c0">31</td>
-                                    <td class="available off" data-title="r5c1">1</td>
-                                    <td class="available off" data-title="r5c2">2</td>
-                                    <td class="available off" data-title="r5c3">3</td>
-                                    <td class="available off" data-title="r5c4">4</td>
-                                    <td class="available off" data-title="r5c5">5</td>
-                                    <td class="available off" data-title="r5c6">6</td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                            </div>
-                          </div>
-                          <div class="ranges" style="display: none;">
-                            <div class="range_inputs">
-                              <div class="daterangepicker_start_input">
-                                <label for="daterangepicker_start3">From</label>
-                                <input id="daterangepicker_start3" class="input-mini" type="text" name="daterangepicker_start" value="">
-                              </div>
-                              <div class="daterangepicker_end_input">
-                                <label for="daterangepicker_end3">To</label>
-                                <input id="daterangepicker_end3" class="input-mini" type="text" name="daterangepicker_end" value="">
-                              </div>
-                              <button class="applyBtn btn btn-small btn-sm btn-success">Apply</button>&nbsp;
-                              <button class="cancelBtn btn btn-small btn-sm btn-default">Cancel</button>
-                            </div>
-                          </div>
-                        </div>
+                         <div class="daterangepicker dropdown-menu ltr single opensright show-calendar picker_2 xdisplay"><div class="calendar left single" style="display: block;"><div class="daterangepicker_input"><input class="input-mini form-control active" type="text" name="daterangepicker_start" value="" style="display: none;"><i class="fa fa-calendar glyphicon glyphicon-calendar" style="display: none;"></i><div class="calendar-time" style="display: none;"><div></div><i class="fa fa-clock-o glyphicon glyphicon-time"></i></div></div><div class="calendar-table"><table class="table-condensed"><thead><tr><th class="prev available"><i class="fa fa-chevron-left glyphicon glyphicon-chevron-left"></i></th><th colspan="5" class="month">Oct 2016</th><th class="next available"><i class="fa fa-chevron-right glyphicon glyphicon-chevron-right"></i></th></tr><tr><th>Su</th><th>Mo</th><th>Tu</th><th>We</th><th>Th</th><th>Fr</th><th>Sa</th></tr></thead><tbody><tr><td class="weekend off available" data-title="r0c0">25</td><td class="off available" data-title="r0c1">26</td><td class="off available" data-title="r0c2">27</td><td class="off available" data-title="r0c3">28</td><td class="off available" data-title="r0c4">29</td><td class="off available" data-title="r0c5">30</td><td class="weekend available" data-title="r0c6">1</td></tr><tr><td class="weekend available" data-title="r1c0">2</td><td class="available" data-title="r1c1">3</td><td class="available" data-title="r1c2">4</td><td class="available" data-title="r1c3">5</td><td class="available" data-title="r1c4">6</td><td class="available" data-title="r1c5">7</td><td class="weekend available" data-title="r1c6">8</td></tr><tr><td class="weekend available" data-title="r2c0">9</td><td class="available" data-title="r2c1">10</td><td class="available" data-title="r2c2">11</td><td class="available" data-title="r2c3">12</td><td class="available" data-title="r2c4">13</td><td class="available" data-title="r2c5">14</td><td class="weekend available" data-title="r2c6">15</td></tr><tr><td class="weekend available" data-title="r3c0">16</td><td class="available" data-title="r3c1">17</td><td class="today active start-date active end-date available" data-title="r3c2">18</td><td class="available" data-title="r3c3">19</td><td class="available" data-title="r3c4">20</td><td class="available" data-title="r3c5">21</td><td class="weekend available" data-title="r3c6">22</td></tr><tr><td class="weekend available" data-title="r4c0">23</td><td class="available" data-title="r4c1">24</td><td class="available" data-title="r4c2">25</td><td class="available" data-title="r4c3">26</td><td class="available" data-title="r4c4">27</td><td class="available" data-title="r4c5">28</td><td class="weekend available" data-title="r4c6">29</td></tr><tr><td class="weekend available" data-title="r5c0">30</td><td class="available" data-title="r5c1">31</td><td class="off available" data-title="r5c2">1</td><td class="off available" data-title="r5c3">2</td><td class="off available" data-title="r5c4">3</td><td class="off available" data-title="r5c5">4</td><td class="weekend off available" data-title="r5c6">5</td></tr></tbody></table></div></div><div class="calendar right" style="display: none;"><div class="daterangepicker_input"><input class="input-mini form-control" type="text" name="daterangepicker_end" value="" style="display: none;"><i class="fa fa-calendar glyphicon glyphicon-calendar" style="display: none;"></i><div class="calendar-time" style="display: none;"><div></div><i class="fa fa-clock-o glyphicon glyphicon-time"></i></div></div><div class="calendar-table"><table class="table-condensed"><thead><tr><th></th><th colspan="5" class="month">Nov 2016</th><th class="next available"><i class="fa fa-chevron-right glyphicon glyphicon-chevron-right"></i></th></tr><tr><th>Su</th><th>Mo</th><th>Tu</th><th>We</th><th>Th</th><th>Fr</th><th>Sa</th></tr></thead><tbody><tr><td class="weekend off available" data-title="r0c0">30</td><td class="off available" data-title="r0c1">31</td><td class="available" data-title="r0c2">1</td><td class="available" data-title="r0c3">2</td><td class="available" data-title="r0c4">3</td><td class="available" data-title="r0c5">4</td><td class="weekend available" data-title="r0c6">5</td></tr><tr><td class="weekend available" data-title="r1c0">6</td><td class="available" data-title="r1c1">7</td><td class="available" data-title="r1c2">8</td><td class="available" data-title="r1c3">9</td><td class="available" data-title="r1c4">10</td><td class="available" data-title="r1c5">11</td><td class="weekend available" data-title="r1c6">12</td></tr><tr><td class="weekend available" data-title="r2c0">13</td><td class="available" data-title="r2c1">14</td><td class="available" data-title="r2c2">15</td><td class="available" data-title="r2c3">16</td><td class="available" data-title="r2c4">17</td><td class="available" data-title="r2c5">18</td><td class="weekend available" data-title="r2c6">19</td></tr><tr><td class="weekend available" data-title="r3c0">20</td><td class="available" data-title="r3c1">21</td><td class="available" data-title="r3c2">22</td><td class="available" data-title="r3c3">23</td><td class="available" data-title="r3c4">24</td><td class="available" data-title="r3c5">25</td><td class="weekend available" data-title="r3c6">26</td></tr><tr><td class="weekend available" data-title="r4c0">27</td><td class="available" data-title="r4c1">28</td><td class="available" data-title="r4c2">29</td><td class="available" data-title="r4c3">30</td><td class="off available" data-title="r4c4">1</td><td class="off available" data-title="r4c5">2</td><td class="weekend off available" data-title="r4c6">3</td></tr><tr><td class="weekend off available" data-title="r5c0">4</td><td class="off available" data-title="r5c1">5</td><td class="off available" data-title="r5c2">6</td><td class="off available" data-title="r5c3">7</td><td class="off available" data-title="r5c4">8</td><td class="off available" data-title="r5c5">9</td><td class="weekend off available" data-title="r5c6">10</td></tr></tbody></table></div></div><div class="ranges" style="display: none;"><div class="range_inputs"><button class="applyBtn btn btn-sm btn-success" type="button">Apply</button> <button class="cancelBtn btn btn-sm btn-default" type="button">Cancel</button></div></div></div>
 
 
                         <fieldset>
@@ -957,182 +626,7 @@
                       </div>
 
                       <div class="col-md-3">
-                        <div class="daterangepicker picker_3 xdisplay single opensright show-calendar">
-                          <div class="calendar first single right" style="display: block;">
-                            <div class="calendar-date">
-                              <table class="table-condensed">
-                                <thead>
-                                  <tr>
-                                    <th class="prev available"><i class="fa fa-arrow-left icon icon-arrow-left glyphicon glyphicon-arrow-left"></i>
-                                    </th>
-                                    <th colspan="5" class="month">Mar 2013</th>
-                                    <th class="next available"><i class="fa fa-arrow-right icon icon-arrow-right glyphicon glyphicon-arrow-right"></i>
-                                    </th>
-                                  </tr>
-                                  <tr>
-                                    <th>Su</th>
-                                    <th>Mo</th>
-                                    <th>Tu</th>
-                                    <th>We</th>
-                                    <th>Th</th>
-                                    <th>Fr</th>
-                                    <th>Sa</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr>
-                                    <td class="available off" data-title="r0c0">24</td>
-                                    <td class="available off" data-title="r0c1">25</td>
-                                    <td class="available off" data-title="r0c2">26</td>
-                                    <td class="available off" data-title="r0c3">27</td>
-                                    <td class="available off" data-title="r0c4">28</td>
-                                    <td class="available" data-title="r0c5">1</td>
-                                    <td class="available" data-title="r0c6">2</td>
-                                  </tr>
-                                  <tr>
-                                    <td class="available" data-title="r1c0">3</td>
-                                    <td class="available" data-title="r1c1">4</td>
-                                    <td class="available" data-title="r1c2">5</td>
-                                    <td class="available" data-title="r1c3">6</td>
-                                    <td class="available" data-title="r1c4">7</td>
-                                    <td class="available" data-title="r1c5">8</td>
-                                    <td class="available" data-title="r1c6">9</td>
-                                  </tr>
-                                  <tr>
-                                    <td class="available" data-title="r2c0">10</td>
-                                    <td class="available" data-title="r2c1">11</td>
-                                    <td class="available" data-title="r2c2">12</td>
-                                    <td class="available" data-title="r2c3">13</td>
-                                    <td class="available" data-title="r2c4">14</td>
-                                    <td class="available" data-title="r2c5">15</td>
-                                    <td class="available" data-title="r2c6">16</td>
-                                  </tr>
-                                  <tr>
-                                    <td class="available" data-title="r3c0">17</td>
-                                    <td class="available active start-date end-date" data-title="r3c1">18</td>
-                                    <td class="available" data-title="r3c2">19</td>
-                                    <td class="available" data-title="r3c3">20</td>
-                                    <td class="available" data-title="r3c4">21</td>
-                                    <td class="available" data-title="r3c5">22</td>
-                                    <td class="available" data-title="r3c6">23</td>
-                                  </tr>
-                                  <tr>
-                                    <td class="available" data-title="r4c0">24</td>
-                                    <td class="available" data-title="r4c1">25</td>
-                                    <td class="available" data-title="r4c2">26</td>
-                                    <td class="available" data-title="r4c3">27</td>
-                                    <td class="available" data-title="r4c4">28</td>
-                                    <td class="available" data-title="r4c5">29</td>
-                                    <td class="available" data-title="r4c6">30</td>
-                                  </tr>
-                                  <tr>
-                                    <td class="available" data-title="r5c0">31</td>
-                                    <td class="available off" data-title="r5c1">1</td>
-                                    <td class="available off" data-title="r5c2">2</td>
-                                    <td class="available off" data-title="r5c3">3</td>
-                                    <td class="available off" data-title="r5c4">4</td>
-                                    <td class="available off" data-title="r5c5">5</td>
-                                    <td class="available off" data-title="r5c6">6</td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                            </div>
-                          </div>
-                          <div class="calendar second left" style="display: none;">
-                            <div class="calendar-date">
-                              <table class="table-condensed">
-                                <thead>
-                                  <tr>
-                                    <th class="prev available"><i class="fa fa-arrow-left icon icon-arrow-left glyphicon glyphicon-arrow-left"></i>
-                                    </th>
-                                    <th colspan="5" class="month">Mar 2013</th>
-                                    <th class="next available"><i class="fa fa-arrow-right icon icon-arrow-right glyphicon glyphicon-arrow-right"></i>
-                                    </th>
-                                  </tr>
-                                  <tr>
-                                    <th>Su</th>
-                                    <th>Mo</th>
-                                    <th>Tu</th>
-                                    <th>We</th>
-                                    <th>Th</th>
-                                    <th>Fr</th>
-                                    <th>Sa</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr>
-                                    <td class="available off" data-title="r0c0">24</td>
-                                    <td class="available off" data-title="r0c1">25</td>
-                                    <td class="available off" data-title="r0c2">26</td>
-                                    <td class="available off" data-title="r0c3">27</td>
-                                    <td class="available off" data-title="r0c4">28</td>
-                                    <td class="available" data-title="r0c5">1</td>
-                                    <td class="available" data-title="r0c6">2</td>
-                                  </tr>
-                                  <tr>
-                                    <td class="available" data-title="r1c0">3</td>
-                                    <td class="available" data-title="r1c1">4</td>
-                                    <td class="available" data-title="r1c2">5</td>
-                                    <td class="available" data-title="r1c3">6</td>
-                                    <td class="available" data-title="r1c4">7</td>
-                                    <td class="available" data-title="r1c5">8</td>
-                                    <td class="available" data-title="r1c6">9</td>
-                                  </tr>
-                                  <tr>
-                                    <td class="available" data-title="r2c0">10</td>
-                                    <td class="available" data-title="r2c1">11</td>
-                                    <td class="available" data-title="r2c2">12</td>
-                                    <td class="available" data-title="r2c3">13</td>
-                                    <td class="available" data-title="r2c4">14</td>
-                                    <td class="available" data-title="r2c5">15</td>
-                                    <td class="available" data-title="r2c6">16</td>
-                                  </tr>
-                                  <tr>
-                                    <td class="available" data-title="r3c0">17</td>
-                                    <td class="available active start-date end-date" data-title="r3c1">18</td>
-                                    <td class="available" data-title="r3c2">19</td>
-                                    <td class="available" data-title="r3c3">20</td>
-                                    <td class="available" data-title="r3c4">21</td>
-                                    <td class="available" data-title="r3c5">22</td>
-                                    <td class="available" data-title="r3c6">23</td>
-                                  </tr>
-                                  <tr>
-                                    <td class="available" data-title="r4c0">24</td>
-                                    <td class="available" data-title="r4c1">25</td>
-                                    <td class="available" data-title="r4c2">26</td>
-                                    <td class="available" data-title="r4c3">27</td>
-                                    <td class="available" data-title="r4c4">28</td>
-                                    <td class="available" data-title="r4c5">29</td>
-                                    <td class="available" data-title="r4c6">30</td>
-                                  </tr>
-                                  <tr>
-                                    <td class="available" data-title="r5c0">31</td>
-                                    <td class="available off" data-title="r5c1">1</td>
-                                    <td class="available off" data-title="r5c2">2</td>
-                                    <td class="available off" data-title="r5c3">3</td>
-                                    <td class="available off" data-title="r5c4">4</td>
-                                    <td class="available off" data-title="r5c5">5</td>
-                                    <td class="available off" data-title="r5c6">6</td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                            </div>
-                          </div>
-                          <div class="ranges" style="display: none;">
-                            <div class="range_inputs">
-                              <div class="daterangepicker_start_input">
-                                <label for="daterangepicker_start2">From</label>
-                                <input id="daterangepicker_start2" class="input-mini" type="text" name="daterangepicker_start" value="">
-                              </div>
-                              <div class="daterangepicker_end_input">
-                                <label for="daterangepicker_end2">To</label>
-                                <input id="daterangepicker_end2" class="input-mini" type="text" name="daterangepicker_end" value="">
-                              </div>
-                              <button class="applyBtn btn btn-small btn-sm btn-success">Apply</button>&nbsp;
-                              <button class="cancelBtn btn btn-small btn-sm btn-default">Cancel</button>
-                            </div>
-                          </div>
-                        </div>
+                         <div class="daterangepicker dropdown-menu ltr single opensright show-calendar picker_3 xdisplay"><div class="calendar left single" style="display: block;"><div class="daterangepicker_input"><input class="input-mini form-control active" type="text" name="daterangepicker_start" value="" style="display: none;"><i class="fa fa-calendar glyphicon glyphicon-calendar" style="display: none;"></i><div class="calendar-time" style="display: none;"><div></div><i class="fa fa-clock-o glyphicon glyphicon-time"></i></div></div><div class="calendar-table"><table class="table-condensed"><thead><tr><th class="prev available"><i class="fa fa-chevron-left glyphicon glyphicon-chevron-left"></i></th><th colspan="5" class="month">Oct 2016</th><th class="next available"><i class="fa fa-chevron-right glyphicon glyphicon-chevron-right"></i></th></tr><tr><th>Su</th><th>Mo</th><th>Tu</th><th>We</th><th>Th</th><th>Fr</th><th>Sa</th></tr></thead><tbody><tr><td class="weekend off available" data-title="r0c0">25</td><td class="off available" data-title="r0c1">26</td><td class="off available" data-title="r0c2">27</td><td class="off available" data-title="r0c3">28</td><td class="off available" data-title="r0c4">29</td><td class="off available" data-title="r0c5">30</td><td class="weekend available" data-title="r0c6">1</td></tr><tr><td class="weekend available" data-title="r1c0">2</td><td class="available" data-title="r1c1">3</td><td class="available" data-title="r1c2">4</td><td class="available" data-title="r1c3">5</td><td class="available" data-title="r1c4">6</td><td class="available" data-title="r1c5">7</td><td class="weekend available" data-title="r1c6">8</td></tr><tr><td class="weekend available" data-title="r2c0">9</td><td class="available" data-title="r2c1">10</td><td class="available" data-title="r2c2">11</td><td class="available" data-title="r2c3">12</td><td class="available" data-title="r2c4">13</td><td class="available" data-title="r2c5">14</td><td class="weekend available" data-title="r2c6">15</td></tr><tr><td class="weekend available" data-title="r3c0">16</td><td class="available" data-title="r3c1">17</td><td class="today active start-date active end-date available" data-title="r3c2">18</td><td class="available" data-title="r3c3">19</td><td class="available" data-title="r3c4">20</td><td class="available" data-title="r3c5">21</td><td class="weekend available" data-title="r3c6">22</td></tr><tr><td class="weekend available" data-title="r4c0">23</td><td class="available" data-title="r4c1">24</td><td class="available" data-title="r4c2">25</td><td class="available" data-title="r4c3">26</td><td class="available" data-title="r4c4">27</td><td class="available" data-title="r4c5">28</td><td class="weekend available" data-title="r4c6">29</td></tr><tr><td class="weekend available" data-title="r5c0">30</td><td class="available" data-title="r5c1">31</td><td class="off available" data-title="r5c2">1</td><td class="off available" data-title="r5c3">2</td><td class="off available" data-title="r5c4">3</td><td class="off available" data-title="r5c5">4</td><td class="weekend off available" data-title="r5c6">5</td></tr></tbody></table></div></div><div class="calendar right" style="display: none;"><div class="daterangepicker_input"><input class="input-mini form-control" type="text" name="daterangepicker_end" value="" style="display: none;"><i class="fa fa-calendar glyphicon glyphicon-calendar" style="display: none;"></i><div class="calendar-time" style="display: none;"><div></div><i class="fa fa-clock-o glyphicon glyphicon-time"></i></div></div><div class="calendar-table"><table class="table-condensed"><thead><tr><th></th><th colspan="5" class="month">Nov 2016</th><th class="next available"><i class="fa fa-chevron-right glyphicon glyphicon-chevron-right"></i></th></tr><tr><th>Su</th><th>Mo</th><th>Tu</th><th>We</th><th>Th</th><th>Fr</th><th>Sa</th></tr></thead><tbody><tr><td class="weekend off available" data-title="r0c0">30</td><td class="off available" data-title="r0c1">31</td><td class="available" data-title="r0c2">1</td><td class="available" data-title="r0c3">2</td><td class="available" data-title="r0c4">3</td><td class="available" data-title="r0c5">4</td><td class="weekend available" data-title="r0c6">5</td></tr><tr><td class="weekend available" data-title="r1c0">6</td><td class="available" data-title="r1c1">7</td><td class="available" data-title="r1c2">8</td><td class="available" data-title="r1c3">9</td><td class="available" data-title="r1c4">10</td><td class="available" data-title="r1c5">11</td><td class="weekend available" data-title="r1c6">12</td></tr><tr><td class="weekend available" data-title="r2c0">13</td><td class="available" data-title="r2c1">14</td><td class="available" data-title="r2c2">15</td><td class="available" data-title="r2c3">16</td><td class="available" data-title="r2c4">17</td><td class="available" data-title="r2c5">18</td><td class="weekend available" data-title="r2c6">19</td></tr><tr><td class="weekend available" data-title="r3c0">20</td><td class="available" data-title="r3c1">21</td><td class="available" data-title="r3c2">22</td><td class="available" data-title="r3c3">23</td><td class="available" data-title="r3c4">24</td><td class="available" data-title="r3c5">25</td><td class="weekend available" data-title="r3c6">26</td></tr><tr><td class="weekend available" data-title="r4c0">27</td><td class="available" data-title="r4c1">28</td><td class="available" data-title="r4c2">29</td><td class="available" data-title="r4c3">30</td><td class="off available" data-title="r4c4">1</td><td class="off available" data-title="r4c5">2</td><td class="weekend off available" data-title="r4c6">3</td></tr><tr><td class="weekend off available" data-title="r5c0">4</td><td class="off available" data-title="r5c1">5</td><td class="off available" data-title="r5c2">6</td><td class="off available" data-title="r5c3">7</td><td class="off available" data-title="r5c4">8</td><td class="off available" data-title="r5c5">9</td><td class="weekend off available" data-title="r5c6">10</td></tr></tbody></table></div></div><div class="ranges" style="display: none;"><div class="range_inputs"><button class="applyBtn btn btn-sm btn-success" type="button">Apply</button> <button class="cancelBtn btn btn-sm btn-default" type="button">Cancel</button></div></div></div>
 
                         <fieldset>
                           <div class="control-group">
@@ -1148,182 +642,7 @@
                       </div>
 
                       <div class="col-md-3">
-                        <div class="daterangepicker picker_4 xdisplay single opensright show-calendar">
-                          <div class="calendar first single right" style="display: block;">
-                            <div class="calendar-date">
-                              <table class="table-condensed">
-                                <thead>
-                                  <tr>
-                                    <th class="prev available"><i class="fa fa-arrow-left icon icon-arrow-left glyphicon glyphicon-arrow-left"></i>
-                                    </th>
-                                    <th colspan="5" class="month">Mar 2013</th>
-                                    <th class="next available"><i class="fa fa-arrow-right icon icon-arrow-right glyphicon glyphicon-arrow-right"></i>
-                                    </th>
-                                  </tr>
-                                  <tr>
-                                    <th>Su</th>
-                                    <th>Mo</th>
-                                    <th>Tu</th>
-                                    <th>We</th>
-                                    <th>Th</th>
-                                    <th>Fr</th>
-                                    <th>Sa</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr>
-                                    <td class="available off" data-title="r0c0">24</td>
-                                    <td class="available off" data-title="r0c1">25</td>
-                                    <td class="available off" data-title="r0c2">26</td>
-                                    <td class="available off" data-title="r0c3">27</td>
-                                    <td class="available off" data-title="r0c4">28</td>
-                                    <td class="available" data-title="r0c5">1</td>
-                                    <td class="available" data-title="r0c6">2</td>
-                                  </tr>
-                                  <tr>
-                                    <td class="available" data-title="r1c0">3</td>
-                                    <td class="available" data-title="r1c1">4</td>
-                                    <td class="available" data-title="r1c2">5</td>
-                                    <td class="available" data-title="r1c3">6</td>
-                                    <td class="available" data-title="r1c4">7</td>
-                                    <td class="available" data-title="r1c5">8</td>
-                                    <td class="available" data-title="r1c6">9</td>
-                                  </tr>
-                                  <tr>
-                                    <td class="available" data-title="r2c0">10</td>
-                                    <td class="available" data-title="r2c1">11</td>
-                                    <td class="available" data-title="r2c2">12</td>
-                                    <td class="available" data-title="r2c3">13</td>
-                                    <td class="available" data-title="r2c4">14</td>
-                                    <td class="available" data-title="r2c5">15</td>
-                                    <td class="available" data-title="r2c6">16</td>
-                                  </tr>
-                                  <tr>
-                                    <td class="available" data-title="r3c0">17</td>
-                                    <td class="available active start-date end-date" data-title="r3c1">18</td>
-                                    <td class="available" data-title="r3c2">19</td>
-                                    <td class="available" data-title="r3c3">20</td>
-                                    <td class="available" data-title="r3c4">21</td>
-                                    <td class="available" data-title="r3c5">22</td>
-                                    <td class="available" data-title="r3c6">23</td>
-                                  </tr>
-                                  <tr>
-                                    <td class="available" data-title="r4c0">24</td>
-                                    <td class="available" data-title="r4c1">25</td>
-                                    <td class="available" data-title="r4c2">26</td>
-                                    <td class="available" data-title="r4c3">27</td>
-                                    <td class="available" data-title="r4c4">28</td>
-                                    <td class="available" data-title="r4c5">29</td>
-                                    <td class="available" data-title="r4c6">30</td>
-                                  </tr>
-                                  <tr>
-                                    <td class="available" data-title="r5c0">31</td>
-                                    <td class="available off" data-title="r5c1">1</td>
-                                    <td class="available off" data-title="r5c2">2</td>
-                                    <td class="available off" data-title="r5c3">3</td>
-                                    <td class="available off" data-title="r5c4">4</td>
-                                    <td class="available off" data-title="r5c5">5</td>
-                                    <td class="available off" data-title="r5c6">6</td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                            </div>
-                          </div>
-                          <div class="calendar second left" style="display: none;">
-                            <div class="calendar-date">
-                              <table class="table-condensed">
-                                <thead>
-                                  <tr>
-                                    <th class="prev available"><i class="fa fa-arrow-left icon icon-arrow-left glyphicon glyphicon-arrow-left"></i>
-                                    </th>
-                                    <th colspan="5" class="month">Mar 2013</th>
-                                    <th class="next available"><i class="fa fa-arrow-right icon icon-arrow-right glyphicon glyphicon-arrow-right"></i>
-                                    </th>
-                                  </tr>
-                                  <tr>
-                                    <th>Su</th>
-                                    <th>Mo</th>
-                                    <th>Tu</th>
-                                    <th>We</th>
-                                    <th>Th</th>
-                                    <th>Fr</th>
-                                    <th>Sa</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr>
-                                    <td class="available off" data-title="r0c0">24</td>
-                                    <td class="available off" data-title="r0c1">25</td>
-                                    <td class="available off" data-title="r0c2">26</td>
-                                    <td class="available off" data-title="r0c3">27</td>
-                                    <td class="available off" data-title="r0c4">28</td>
-                                    <td class="available" data-title="r0c5">1</td>
-                                    <td class="available" data-title="r0c6">2</td>
-                                  </tr>
-                                  <tr>
-                                    <td class="available" data-title="r1c0">3</td>
-                                    <td class="available" data-title="r1c1">4</td>
-                                    <td class="available" data-title="r1c2">5</td>
-                                    <td class="available" data-title="r1c3">6</td>
-                                    <td class="available" data-title="r1c4">7</td>
-                                    <td class="available" data-title="r1c5">8</td>
-                                    <td class="available" data-title="r1c6">9</td>
-                                  </tr>
-                                  <tr>
-                                    <td class="available" data-title="r2c0">10</td>
-                                    <td class="available" data-title="r2c1">11</td>
-                                    <td class="available" data-title="r2c2">12</td>
-                                    <td class="available" data-title="r2c3">13</td>
-                                    <td class="available" data-title="r2c4">14</td>
-                                    <td class="available" data-title="r2c5">15</td>
-                                    <td class="available" data-title="r2c6">16</td>
-                                  </tr>
-                                  <tr>
-                                    <td class="available" data-title="r3c0">17</td>
-                                    <td class="available active start-date end-date" data-title="r3c1">18</td>
-                                    <td class="available" data-title="r3c2">19</td>
-                                    <td class="available" data-title="r3c3">20</td>
-                                    <td class="available" data-title="r3c4">21</td>
-                                    <td class="available" data-title="r3c5">22</td>
-                                    <td class="available" data-title="r3c6">23</td>
-                                  </tr>
-                                  <tr>
-                                    <td class="available" data-title="r4c0">24</td>
-                                    <td class="available" data-title="r4c1">25</td>
-                                    <td class="available" data-title="r4c2">26</td>
-                                    <td class="available" data-title="r4c3">27</td>
-                                    <td class="available" data-title="r4c4">28</td>
-                                    <td class="available" data-title="r4c5">29</td>
-                                    <td class="available" data-title="r4c6">30</td>
-                                  </tr>
-                                  <tr>
-                                    <td class="available" data-title="r5c0">31</td>
-                                    <td class="available off" data-title="r5c1">1</td>
-                                    <td class="available off" data-title="r5c2">2</td>
-                                    <td class="available off" data-title="r5c3">3</td>
-                                    <td class="available off" data-title="r5c4">4</td>
-                                    <td class="available off" data-title="r5c5">5</td>
-                                    <td class="available off" data-title="r5c6">6</td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                            </div>
-                          </div>
-                          <div class="ranges" style="display: none;">
-                            <div class="range_inputs">
-                              <div class="daterangepicker_start_input">
-                                <label for="daterangepicker_start">From</label>
-                                <input class="input-mini" type="text" name="daterangepicker_start" value="">
-                              </div>
-                              <div class="daterangepicker_end_input">
-                                <label for="daterangepicker_end">To</label>
-                                <input class="input-mini" type="text" name="daterangepicker_end" value="">
-                              </div>
-                              <button class="applyBtn btn btn-small btn-sm btn-success">Apply</button>&nbsp;
-                              <button class="cancelBtn btn btn-small btn-sm btn-default">Cancel</button>
-                            </div>
-                          </div>
-                        </div>
+                         <div class="daterangepicker dropdown-menu ltr single opensright show-calendar picker_4 xdisplay"><div class="calendar left single" style="display: block;"><div class="daterangepicker_input"><input class="input-mini form-control active" type="text" name="daterangepicker_start" value="" style="display: none;"><i class="fa fa-calendar glyphicon glyphicon-calendar" style="display: none;"></i><div class="calendar-time" style="display: none;"><div></div><i class="fa fa-clock-o glyphicon glyphicon-time"></i></div></div><div class="calendar-table"><table class="table-condensed"><thead><tr><th class="prev available"><i class="fa fa-chevron-left glyphicon glyphicon-chevron-left"></i></th><th colspan="5" class="month">Oct 2016</th><th class="next available"><i class="fa fa-chevron-right glyphicon glyphicon-chevron-right"></i></th></tr><tr><th>Su</th><th>Mo</th><th>Tu</th><th>We</th><th>Th</th><th>Fr</th><th>Sa</th></tr></thead><tbody><tr><td class="weekend off available" data-title="r0c0">25</td><td class="off available" data-title="r0c1">26</td><td class="off available" data-title="r0c2">27</td><td class="off available" data-title="r0c3">28</td><td class="off available" data-title="r0c4">29</td><td class="off available" data-title="r0c5">30</td><td class="weekend available" data-title="r0c6">1</td></tr><tr><td class="weekend available" data-title="r1c0">2</td><td class="available" data-title="r1c1">3</td><td class="available" data-title="r1c2">4</td><td class="available" data-title="r1c3">5</td><td class="available" data-title="r1c4">6</td><td class="available" data-title="r1c5">7</td><td class="weekend available" data-title="r1c6">8</td></tr><tr><td class="weekend available" data-title="r2c0">9</td><td class="available" data-title="r2c1">10</td><td class="available" data-title="r2c2">11</td><td class="available" data-title="r2c3">12</td><td class="available" data-title="r2c4">13</td><td class="available" data-title="r2c5">14</td><td class="weekend available" data-title="r2c6">15</td></tr><tr><td class="weekend available" data-title="r3c0">16</td><td class="available" data-title="r3c1">17</td><td class="today active start-date active end-date available" data-title="r3c2">18</td><td class="available" data-title="r3c3">19</td><td class="available" data-title="r3c4">20</td><td class="available" data-title="r3c5">21</td><td class="weekend available" data-title="r3c6">22</td></tr><tr><td class="weekend available" data-title="r4c0">23</td><td class="available" data-title="r4c1">24</td><td class="available" data-title="r4c2">25</td><td class="available" data-title="r4c3">26</td><td class="available" data-title="r4c4">27</td><td class="available" data-title="r4c5">28</td><td class="weekend available" data-title="r4c6">29</td></tr><tr><td class="weekend available" data-title="r5c0">30</td><td class="available" data-title="r5c1">31</td><td class="off available" data-title="r5c2">1</td><td class="off available" data-title="r5c3">2</td><td class="off available" data-title="r5c4">3</td><td class="off available" data-title="r5c5">4</td><td class="weekend off available" data-title="r5c6">5</td></tr></tbody></table></div></div><div class="calendar right" style="display: none;"><div class="daterangepicker_input"><input class="input-mini form-control" type="text" name="daterangepicker_end" value="" style="display: none;"><i class="fa fa-calendar glyphicon glyphicon-calendar" style="display: none;"></i><div class="calendar-time" style="display: none;"><div></div><i class="fa fa-clock-o glyphicon glyphicon-time"></i></div></div><div class="calendar-table"><table class="table-condensed"><thead><tr><th></th><th colspan="5" class="month">Nov 2016</th><th class="next available"><i class="fa fa-chevron-right glyphicon glyphicon-chevron-right"></i></th></tr><tr><th>Su</th><th>Mo</th><th>Tu</th><th>We</th><th>Th</th><th>Fr</th><th>Sa</th></tr></thead><tbody><tr><td class="weekend off available" data-title="r0c0">30</td><td class="off available" data-title="r0c1">31</td><td class="available" data-title="r0c2">1</td><td class="available" data-title="r0c3">2</td><td class="available" data-title="r0c4">3</td><td class="available" data-title="r0c5">4</td><td class="weekend available" data-title="r0c6">5</td></tr><tr><td class="weekend available" data-title="r1c0">6</td><td class="available" data-title="r1c1">7</td><td class="available" data-title="r1c2">8</td><td class="available" data-title="r1c3">9</td><td class="available" data-title="r1c4">10</td><td class="available" data-title="r1c5">11</td><td class="weekend available" data-title="r1c6">12</td></tr><tr><td class="weekend available" data-title="r2c0">13</td><td class="available" data-title="r2c1">14</td><td class="available" data-title="r2c2">15</td><td class="available" data-title="r2c3">16</td><td class="available" data-title="r2c4">17</td><td class="available" data-title="r2c5">18</td><td class="weekend available" data-title="r2c6">19</td></tr><tr><td class="weekend available" data-title="r3c0">20</td><td class="available" data-title="r3c1">21</td><td class="available" data-title="r3c2">22</td><td class="available" data-title="r3c3">23</td><td class="available" data-title="r3c4">24</td><td class="available" data-title="r3c5">25</td><td class="weekend available" data-title="r3c6">26</td></tr><tr><td class="weekend available" data-title="r4c0">27</td><td class="available" data-title="r4c1">28</td><td class="available" data-title="r4c2">29</td><td class="available" data-title="r4c3">30</td><td class="off available" data-title="r4c4">1</td><td class="off available" data-title="r4c5">2</td><td class="weekend off available" data-title="r4c6">3</td></tr><tr><td class="weekend off available" data-title="r5c0">4</td><td class="off available" data-title="r5c1">5</td><td class="off available" data-title="r5c2">6</td><td class="off available" data-title="r5c3">7</td><td class="off available" data-title="r5c4">8</td><td class="off available" data-title="r5c5">9</td><td class="weekend off available" data-title="r5c6">10</td></tr></tbody></table></div></div><div class="ranges" style="display: none;"><div class="range_inputs"><button class="applyBtn btn btn-sm btn-success" type="button">Apply</button> <button class="cancelBtn btn btn-sm btn-default" type="button">Cancel</button></div></div></div>
 
 
                         <fieldset>
@@ -1344,6 +663,109 @@
                 </div>
                 <!-- /form datepicker -->
 
+        
+               <!-- form datetimepicker -->
+<div class="x_panel" style="">
+    <div class="x_title">
+        <h2>Date Pickers <small> Available with multiple designs</small></h2>
+        <ul class="nav navbar-right panel_toolbox">
+            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">Settings 1</a>
+                    </li>
+                    <li><a href="#">Settings 2</a>
+                    </li>
+                </ul>
+            </li>
+            <li><a class="close-link"><i class="fa fa-close"></i></a>
+            </li>
+        </ul>
+        <div class="clearfix"></div>
+    </div>
+    <div class="x_content">
+
+        <div class="container">
+            <div class="row">
+
+                <div class='col-sm-4'>
+                    Basic Example
+                    <div class="form-group">
+                        <div class='input-group date' id='myDatepicker'>
+                            <input type='text' class="form-control" />
+                            <span class="input-group-addon">
+                               <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class='col-sm-4'>
+                    Only Date Picker
+                    <div class="form-group">
+                        <div class='input-group date' id='myDatepicker2'>
+                            <input type='text' class="form-control" />
+                            <span class="input-group-addon">
+                               <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                 <div class='col-sm-4'>
+                    Only Time Picker <small>For 24H format use format: 'HH:mm'</small>
+                    <div class="form-group">
+                        <div class='input-group date' id='myDatepicker3'>
+                            <input type='text' class="form-control" />
+                            <span class="input-group-addon">
+                               <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class='col-sm-4'>
+                    Using ReadOnly
+                    <div class="form-group">
+                        <div class='input-group date' id='myDatepicker4'>
+                            <input type='text' class="form-control" readonly="readonly" />
+                            <span class="input-group-addon">
+                               <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                 <div class='col-sm-4'>
+                    Linked Picker Parent
+                    <div class="form-group">
+                        <div class='input-group date' id='datetimepicker6'>
+                            <input type='text' class="form-control" />
+                            <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class='col-sm-4'>
+                    Linked Picker Children
+                    <div class="form-group">
+                        <div class='input-group date' id='datetimepicker7'>
+                            <input type='text' class="form-control" />
+                            <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+                <!-- /form datetimepicker -->
 
                 <!-- form grid slider -->
                 <div class="x_panel" style="">
@@ -1892,8 +1314,10 @@
     <!-- NProgress -->
     <script src="../vendors/nprogress/nprogress.js"></script>
     <!-- bootstrap-daterangepicker -->
-    <script src="js/moment/moment.min.js"></script>
-    <script src="js/datepicker/daterangepicker.js"></script>
+    <script src="../vendors/moment/min/moment.min.js"></script>
+    <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!-- bootstrap-datetimepicker -->    
+    <script src="../vendors/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
     <!-- Ion.RangeSlider -->
     <script src="../vendors/ion.rangeSlider/js/ion.rangeSlider.min.js"></script>
     <!-- Bootstrap Colorpicker -->
@@ -1907,619 +1331,37 @@
 
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
-
-    <!-- bootstrap-daterangepicker -->
-    <script>
-      $(document).ready(function() {
-        var cb = function(start, end, label) {
-          console.log(start.toISOString(), end.toISOString(), label);
-          $('#reportrange_right span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-        };
-
-        var optionSet1 = {
-          startDate: moment().subtract(29, 'days'),
-          endDate: moment(),
-          minDate: '01/01/2012',
-          maxDate: '12/31/2015',
-          dateLimit: {
-            days: 60
-          },
-          showDropdowns: true,
-          showWeekNumbers: true,
-          timePicker: false,
-          timePickerIncrement: 1,
-          timePicker12Hour: true,
-          ranges: {
-            'Today': [moment(), moment()],
-            'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-            'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-            'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-            'This Month': [moment().startOf('month'), moment().endOf('month')],
-            'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-          },
-          opens: 'right',
-          buttonClasses: ['btn btn-default'],
-          applyClass: 'btn-small btn-primary',
-          cancelClass: 'btn-small',
-          format: 'MM/DD/YYYY',
-          separator: ' to ',
-          locale: {
-            applyLabel: 'Submit',
-            cancelLabel: 'Clear',
-            fromLabel: 'From',
-            toLabel: 'To',
-            customRangeLabel: 'Custom',
-            daysOfWeek: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
-            monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-            firstDay: 1
-          }
-        };
-
-        $('#reportrange_right span').html(moment().subtract(29, 'days').format('MMMM D, YYYY') + ' - ' + moment().format('MMMM D, YYYY'));
-
-        $('#reportrange_right').daterangepicker(optionSet1, cb);
-
-        $('#reportrange_right').on('show.daterangepicker', function() {
-          console.log("show event fired");
-        });
-        $('#reportrange_right').on('hide.daterangepicker', function() {
-          console.log("hide event fired");
-        });
-        $('#reportrange_right').on('apply.daterangepicker', function(ev, picker) {
-          console.log("apply event fired, start/end dates are " + picker.startDate.format('MMMM D, YYYY') + " to " + picker.endDate.format('MMMM D, YYYY'));
-        });
-        $('#reportrange_right').on('cancel.daterangepicker', function(ev, picker) {
-          console.log("cancel event fired");
-        });
-
-        $('#options1').click(function() {
-          $('#reportrange_right').data('daterangepicker').setOptions(optionSet1, cb);
-        });
-
-        $('#options2').click(function() {
-          $('#reportrange_right').data('daterangepicker').setOptions(optionSet2, cb);
-        });
-
-        $('#destroy').click(function() {
-          $('#reportrange_right').data('daterangepicker').remove();
-        });
-
-      });
-    </script>
-
-    <script>
-      $(document).ready(function() {
-        var cb = function(start, end, label) {
-          console.log(start.toISOString(), end.toISOString(), label);
-          $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-        };
-
-        var optionSet1 = {
-          startDate: moment().subtract(29, 'days'),
-          endDate: moment(),
-          minDate: '01/01/2012',
-          maxDate: '12/31/2015',
-          dateLimit: {
-            days: 60
-          },
-          showDropdowns: true,
-          showWeekNumbers: true,
-          timePicker: false,
-          timePickerIncrement: 1,
-          timePicker12Hour: true,
-          ranges: {
-            'Today': [moment(), moment()],
-            'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-            'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-            'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-            'This Month': [moment().startOf('month'), moment().endOf('month')],
-            'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-          },
-          opens: 'left',
-          buttonClasses: ['btn btn-default'],
-          applyClass: 'btn-small btn-primary',
-          cancelClass: 'btn-small',
-          format: 'MM/DD/YYYY',
-          separator: ' to ',
-          locale: {
-            applyLabel: 'Submit',
-            cancelLabel: 'Clear',
-            fromLabel: 'From',
-            toLabel: 'To',
-            customRangeLabel: 'Custom',
-            daysOfWeek: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
-            monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-            firstDay: 1
-          }
-        };
-        $('#reportrange span').html(moment().subtract(29, 'days').format('MMMM D, YYYY') + ' - ' + moment().format('MMMM D, YYYY'));
-        $('#reportrange').daterangepicker(optionSet1, cb);
-        $('#reportrange').on('show.daterangepicker', function() {
-          console.log("show event fired");
-        });
-        $('#reportrange').on('hide.daterangepicker', function() {
-          console.log("hide event fired");
-        });
-        $('#reportrange').on('apply.daterangepicker', function(ev, picker) {
-          console.log("apply event fired, start/end dates are " + picker.startDate.format('MMMM D, YYYY') + " to " + picker.endDate.format('MMMM D, YYYY'));
-        });
-        $('#reportrange').on('cancel.daterangepicker', function(ev, picker) {
-          console.log("cancel event fired");
-        });
-        $('#options1').click(function() {
-          $('#reportrange').data('daterangepicker').setOptions(optionSet1, cb);
-        });
-        $('#options2').click(function() {
-          $('#reportrange').data('daterangepicker').setOptions(optionSet2, cb);
-        });
-        $('#destroy').click(function() {
-          $('#reportrange').data('daterangepicker').remove();
-        });
-      });
-    </script>
-
-    <script>
-      $(document).ready(function() {
-        $('#single_cal1').daterangepicker({
-          singleDatePicker: true,
-          calender_style: "picker_1"
-        }, function(start, end, label) {
-          console.log(start.toISOString(), end.toISOString(), label);
-        });
-        $('#single_cal2').daterangepicker({
-          singleDatePicker: true,
-          calender_style: "picker_2"
-        }, function(start, end, label) {
-          console.log(start.toISOString(), end.toISOString(), label);
-        });
-        $('#single_cal3').daterangepicker({
-          singleDatePicker: true,
-          calender_style: "picker_3"
-        }, function(start, end, label) {
-          console.log(start.toISOString(), end.toISOString(), label);
-        });
-        $('#single_cal4').daterangepicker({
-          singleDatePicker: true,
-          calender_style: "picker_4"
-        }, function(start, end, label) {
-          console.log(start.toISOString(), end.toISOString(), label);
-        });
-      });
-    </script>
-
-    <script>
-      $(document).ready(function() {
-        $('#reservation').daterangepicker(null, function(start, end, label) {
-          console.log(start.toISOString(), end.toISOString(), label);
-        });
-      });
-    </script>
-    <!-- /bootstrap-daterangepicker -->
-
-    <!-- Ion.RangeSlider -->
-    <script>
-      $(document).ready(function() {
-        $("#range_27").ionRangeSlider({
-          type: "double",
-          min: 1000000,
-          max: 2000000,
-          grid: true,
-          force_edges: true
-        });
-        $("#range").ionRangeSlider({
-          hide_min_max: true,
-          keyboard: true,
-          min: 0,
-          max: 5000,
-          from: 1000,
-          to: 4000,
-          type: 'double',
-          step: 1,
-          prefix: "$",
-          grid: true
-        });
-        $("#range_25").ionRangeSlider({
-          type: "double",
-          min: 1000000,
-          max: 2000000,
-          grid: true
-        });
-        $("#range_26").ionRangeSlider({
-          type: "double",
-          min: 0,
-          max: 10000,
-          step: 500,
-          grid: true,
-          grid_snap: true
-        });
-        $("#range_31").ionRangeSlider({
-          type: "double",
-          min: 0,
-          max: 100,
-          from: 30,
-          to: 70,
-          from_fixed: true
-        });
-        $(".range_min_max").ionRangeSlider({
-          type: "double",
-          min: 0,
-          max: 100,
-          from: 30,
-          to: 70,
-          max_interval: 50
-        });
-        $(".range_time24").ionRangeSlider({
-          min: +moment().subtract(12, "hours").format("X"),
-          max: +moment().format("X"),
-          from: +moment().subtract(6, "hours").format("X"),
-          grid: true,
-          force_edges: true,
-          prettify: function(num) {
-            var m = moment(num, "X");
-            return m.format("Do MMMM, HH:mm");
-          }
-        });
-      });
-    </script>
-    <!-- /Ion.RangeSlider -->
-
-    <!-- Bootstrap Colorpicker -->
-    <script>
-      $(document).ready(function() {
-        $('.demo1').colorpicker();
-        $('.demo2').colorpicker();
-
-        $('#demo_forceformat').colorpicker({
-            format: 'rgba',
-            horizontal: true
-        });
-
-        $('#demo_forceformat3').colorpicker({
-            format: 'rgba',
-        });
-
-        $('.demo-auto').colorpicker();
-      });
-    </script>
-    <!-- /Bootstrap Colorpicker -->
-
-    <!-- jquery.inputmask -->
-    <script>
-      $(document).ready(function() {
-        $(":input").inputmask();
-      });
-    </script>
-    <!-- /jquery.inputmask -->
-
-    <!-- jQuery Knob -->
-    <script>
-      $(function($) {
-
-        $(".knob").knob({
-          change: function(value) {
-            //console.log("change : " + value);
-          },
-          release: function(value) {
-            //console.log(this.$.attr('value'));
-            console.log("release : " + value);
-          },
-          cancel: function() {
-            console.log("cancel : ", this);
-          },
-          /*format : function (value) {
-           return value + '%';
-           },*/
-          draw: function() {
-
-            // "tron" case
-            if (this.$.data('skin') == 'tron') {
-
-              this.cursorExt = 0.3;
-
-              var a = this.arc(this.cv) // Arc
-                ,
-                pa // Previous arc
-                , r = 1;
-
-              this.g.lineWidth = this.lineWidth;
-
-              if (this.o.displayPrevious) {
-                pa = this.arc(this.v);
-                this.g.beginPath();
-                this.g.strokeStyle = this.pColor;
-                this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, pa.s, pa.e, pa.d);
-                this.g.stroke();
-              }
-
-              this.g.beginPath();
-              this.g.strokeStyle = r ? this.o.fgColor : this.fgColor;
-              this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, a.s, a.e, a.d);
-              this.g.stroke();
-
-              this.g.lineWidth = 2;
-              this.g.beginPath();
-              this.g.strokeStyle = this.o.fgColor;
-              this.g.arc(this.xy, this.xy, this.radius - this.lineWidth + 1 + this.lineWidth * 2 / 3, 0, 2 * Math.PI, false);
-              this.g.stroke();
-
-              return false;
-            }
-          }
-        });
-
-        // Example of infinite knob, iPod click wheel
-        var v, up = 0,
-          down = 0,
-          i = 0,
-          $idir = $("div.idir"),
-          $ival = $("div.ival"),
-          incr = function() {
-            i++;
-            $idir.show().html("+").fadeOut();
-            $ival.html(i);
-          },
-          decr = function() {
-            i--;
-            $idir.show().html("-").fadeOut();
-            $ival.html(i);
-          };
-        $("input.infinite").knob({
-          min: 0,
-          max: 20,
-          stopper: false,
-          change: function() {
-            if (v > this.cv) {
-              if (up) {
-                decr();
-                up = 0;
-              } else {
-                up = 1;
-                down = 0;
-              }
-            } else {
-              if (v < this.cv) {
-                if (down) {
-                  incr();
-                  down = 0;
-                } else {
-                  down = 1;
-                  up = 0;
-                }
-              }
-            }
-            v = this.cv;
-          }
-        });
-      });
-    </script>
-    <!-- /jQuery Knob -->
-
-    <!-- Cropper -->
-    <script>
-      $(document).ready(function() {
-        var $image = $('#image');
-        var $download = $('#download');
-        var $dataX = $('#dataX');
-        var $dataY = $('#dataY');
-        var $dataHeight = $('#dataHeight');
-        var $dataWidth = $('#dataWidth');
-        var $dataRotate = $('#dataRotate');
-        var $dataScaleX = $('#dataScaleX');
-        var $dataScaleY = $('#dataScaleY');
-        var options = {
-              aspectRatio: 16 / 9,
-              preview: '.img-preview',
-              crop: function (e) {
-                $dataX.val(Math.round(e.x));
-                $dataY.val(Math.round(e.y));
-                $dataHeight.val(Math.round(e.height));
-                $dataWidth.val(Math.round(e.width));
-                $dataRotate.val(e.rotate);
-                $dataScaleX.val(e.scaleX);
-                $dataScaleY.val(e.scaleY);
-              }
-            };
-
-
-        // Tooltip
-        $('[data-toggle="tooltip"]').tooltip();
-
-
-        // Cropper
-        $image.on({
-          'build.cropper': function (e) {
-            console.log(e.type);
-          },
-          'built.cropper': function (e) {
-            console.log(e.type);
-          },
-          'cropstart.cropper': function (e) {
-            console.log(e.type, e.action);
-          },
-          'cropmove.cropper': function (e) {
-            console.log(e.type, e.action);
-          },
-          'cropend.cropper': function (e) {
-            console.log(e.type, e.action);
-          },
-          'crop.cropper': function (e) {
-            console.log(e.type, e.x, e.y, e.width, e.height, e.rotate, e.scaleX, e.scaleY);
-          },
-          'zoom.cropper': function (e) {
-            console.log(e.type, e.ratio);
-          }
-        }).cropper(options);
-
-
-        // Buttons
-        if (!$.isFunction(document.createElement('canvas').getContext)) {
-          $('button[data-method="getCroppedCanvas"]').prop('disabled', true);
-        }
-
-        if (typeof document.createElement('cropper').style.transition === 'undefined') {
-          $('button[data-method="rotate"]').prop('disabled', true);
-          $('button[data-method="scale"]').prop('disabled', true);
-        }
-
-
-        // Download
-        if (typeof $download[0].download === 'undefined') {
-          $download.addClass('disabled');
-        }
-
-
-        // Options
-        $('.docs-toggles').on('change', 'input', function () {
-          var $this = $(this);
-          var name = $this.attr('name');
-          var type = $this.prop('type');
-          var cropBoxData;
-          var canvasData;
-
-          if (!$image.data('cropper')) {
-            return;
-          }
-
-          if (type === 'checkbox') {
-            options[name] = $this.prop('checked');
-            cropBoxData = $image.cropper('getCropBoxData');
-            canvasData = $image.cropper('getCanvasData');
-
-            options.built = function () {
-              $image.cropper('setCropBoxData', cropBoxData);
-              $image.cropper('setCanvasData', canvasData);
-            };
-          } else if (type === 'radio') {
-            options[name] = $this.val();
-          }
-
-          $image.cropper('destroy').cropper(options);
-        });
-
-
-        // Methods
-        $('.docs-buttons').on('click', '[data-method]', function () {
-          var $this = $(this);
-          var data = $this.data();
-          var $target;
-          var result;
-
-          if ($this.prop('disabled') || $this.hasClass('disabled')) {
-            return;
-          }
-
-          if ($image.data('cropper') && data.method) {
-            data = $.extend({}, data); // Clone a new one
-
-            if (typeof data.target !== 'undefined') {
-              $target = $(data.target);
-
-              if (typeof data.option === 'undefined') {
-                try {
-                  data.option = JSON.parse($target.val());
-                } catch (e) {
-                  console.log(e.message);
-                }
-              }
-            }
-
-            result = $image.cropper(data.method, data.option, data.secondOption);
-
-            switch (data.method) {
-              case 'scaleX':
-              case 'scaleY':
-                $(this).data('option', -data.option);
-                break;
-
-              case 'getCroppedCanvas':
-                if (result) {
-
-                  // Bootstrap's Modal
-                  $('#getCroppedCanvasModal').modal().find('.modal-body').html(result);
-
-                  if (!$download.hasClass('disabled')) {
-                    $download.attr('href', result.toDataURL());
-                  }
-                }
-
-                break;
-            }
-
-            if ($.isPlainObject(result) && $target) {
-              try {
-                $target.val(JSON.stringify(result));
-              } catch (e) {
-                console.log(e.message);
-              }
-            }
-
-          }
-        });
-
-        // Keyboard
-        $(document.body).on('keydown', function (e) {
-          if (!$image.data('cropper') || this.scrollTop > 300) {
-            return;
-          }
-
-          switch (e.which) {
-            case 37:
-              e.preventDefault();
-              $image.cropper('move', -1, 0);
-              break;
-
-            case 38:
-              e.preventDefault();
-              $image.cropper('move', 0, -1);
-              break;
-
-            case 39:
-              e.preventDefault();
-              $image.cropper('move', 1, 0);
-              break;
-
-            case 40:
-              e.preventDefault();
-              $image.cropper('move', 0, 1);
-              break;
-          }
-        });
-
-        // Import image
-        var $inputImage = $('#inputImage');
-        var URL = window.URL || window.webkitURL;
-        var blobURL;
-
-        if (URL) {
-          $inputImage.change(function () {
-            var files = this.files;
-            var file;
-
-            if (!$image.data('cropper')) {
-              return;
-            }
-
-            if (files && files.length) {
-              file = files[0];
-
-              if (/^image\/\w+$/.test(file.type)) {
-                blobURL = URL.createObjectURL(file);
-                $image.one('built.cropper', function () {
-
-                  // Revoke when load complete
-                  URL.revokeObjectURL(blobURL);
-                }).cropper('reset').cropper('replace', blobURL);
-                $inputImage.val('');
-              } else {
-                window.alert('Please choose an image file.');
-              }
-            }
-          });
-        } else {
-          $inputImage.prop('disabled', true).parent().addClass('disabled');
-        }
-      });
-    </script>
-    <!-- /Cropper -->
+    
+    <!-- Initialize datetimepicker -->
+<script>
+    $('#myDatepicker').datetimepicker();
+    
+    $('#myDatepicker2').datetimepicker({
+        format: 'DD.MM.YYYY'
+    });
+    
+    $('#myDatepicker3').datetimepicker({
+        format: 'hh:mm A'
+    });
+    
+    $('#myDatepicker4').datetimepicker({
+        ignoreReadonly: true,
+        allowInputToggle: true
+    });
+
+    $('#datetimepicker6').datetimepicker();
+    
+    $('#datetimepicker7').datetimepicker({
+        useCurrent: false
+    });
+    
+    $("#datetimepicker6").on("dp.change", function(e) {
+        $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+    });
+    
+    $("#datetimepicker7").on("dp.change", function(e) {
+        $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+    });
+</script>
   </body>
 </html>

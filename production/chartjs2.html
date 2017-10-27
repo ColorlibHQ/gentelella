@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Chart JS Graph Examples Part 2 | Gentellela Alela! by Colorlib</title>
+    <title>Chart JS Graph Examples Part 2 | Gentelella Alela! by Colorlib</title>
 
     <!-- Bootstrap -->
     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -26,13 +26,13 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentellela Alela!</span></a>
+              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentelella Alela!</span></a>
             </div>
 
             <div class="clearfix"></div>
 
             <!-- menu profile quick info -->
-            <div class="profile">
+            <div class="profile clearfix">
               <div class="profile_pic">
                 <img src="images/img.jpg" alt="..." class="img-circle profile_img">
               </div>
@@ -160,7 +160,7 @@
               <a data-toggle="tooltip" data-placement="top" title="Lock">
                 <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
               </a>
-              <a data-toggle="tooltip" data-placement="top" title="Logout">
+              <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
               </a>
             </div>
@@ -481,202 +481,5 @@
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
 
-    <!-- Chart.js -->
-    <script>
-      Chart.defaults.global.legend = {
-        enabled: false
-      };
-
-      // Line chart
-      var ctx = document.getElementById("lineChart");
-      var lineChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: ["January", "February", "March", "April", "May", "June", "July"],
-          datasets: [{
-            label: "My First dataset",
-            backgroundColor: "rgba(38, 185, 154, 0.31)",
-            borderColor: "rgba(38, 185, 154, 0.7)",
-            pointBorderColor: "rgba(38, 185, 154, 0.7)",
-            pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
-            pointHoverBackgroundColor: "#fff",
-            pointHoverBorderColor: "rgba(220,220,220,1)",
-            pointBorderWidth: 1,
-            data: [31, 74, 6, 39, 20, 85, 7]
-          }, {
-            label: "My Second dataset",
-            backgroundColor: "rgba(3, 88, 106, 0.3)",
-            borderColor: "rgba(3, 88, 106, 0.70)",
-            pointBorderColor: "rgba(3, 88, 106, 0.70)",
-            pointBackgroundColor: "rgba(3, 88, 106, 0.70)",
-            pointHoverBackgroundColor: "#fff",
-            pointHoverBorderColor: "rgba(151,187,205,1)",
-            pointBorderWidth: 1,
-            data: [82, 23, 66, 9, 99, 4, 2]
-          }]
-        },
-      });
-
-      // Bar chart
-      var ctx = document.getElementById("mybarChart");
-      var mybarChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-          labels: ["January", "February", "March", "April", "May", "June", "July"],
-          datasets: [{
-            label: '# of Votes',
-            backgroundColor: "#26B99A",
-            data: [51, 30, 40, 28, 92, 50, 45]
-          }, {
-            label: '# of Votes',
-            backgroundColor: "#03586A",
-            data: [41, 56, 25, 48, 72, 34, 12]
-          }]
-        },
-
-        options: {
-          scales: {
-            yAxes: [{
-              ticks: {
-                beginAtZero: true
-              }
-            }]
-          }
-        }
-      });
-
-      // Doughnut chart
-      var ctx = document.getElementById("canvasDoughnut");
-      var data = {
-        labels: [
-          "Dark Grey",
-          "Purple Color",
-          "Gray Color",
-          "Green Color",
-          "Blue Color"
-        ],
-        datasets: [{
-          data: [120, 50, 140, 180, 100],
-          backgroundColor: [
-            "#455C73",
-            "#9B59B6",
-            "#BDC3C7",
-            "#26B99A",
-            "#3498DB"
-          ],
-          hoverBackgroundColor: [
-            "#34495E",
-            "#B370CF",
-            "#CFD4D8",
-            "#36CAAB",
-            "#49A9EA"
-          ]
-
-        }]
-      };
-
-      var canvasDoughnut = new Chart(ctx, {
-        type: 'doughnut',
-        tooltipFillColor: "rgba(51, 51, 51, 0.55)",
-        data: data
-      });
-
-      // Radar chart
-      var ctx = document.getElementById("canvasRadar");
-      var data = {
-        labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
-        datasets: [{
-          label: "My First dataset",
-          backgroundColor: "rgba(3, 88, 106, 0.2)",
-          borderColor: "rgba(3, 88, 106, 0.80)",
-          pointBorderColor: "rgba(3, 88, 106, 0.80)",
-          pointBackgroundColor: "rgba(3, 88, 106, 0.80)",
-          pointHoverBackgroundColor: "#fff",
-          pointHoverBorderColor: "rgba(220,220,220,1)",
-          data: [65, 59, 90, 81, 56, 55, 40]
-        }, {
-          label: "My Second dataset",
-          backgroundColor: "rgba(38, 185, 154, 0.2)",
-          borderColor: "rgba(38, 185, 154, 0.85)",
-          pointColor: "rgba(38, 185, 154, 0.85)",
-          pointStrokeColor: "#fff",
-          pointHighlightFill: "#fff",
-          pointHighlightStroke: "rgba(151,187,205,1)",
-          data: [28, 48, 40, 19, 96, 27, 100]
-        }]
-      };
-
-      var canvasRadar = new Chart(ctx, {
-        type: 'radar',
-        data: data,
-      });
-
-      // Pie chart
-      var ctx = document.getElementById("pieChart");
-      var data = {
-        datasets: [{
-          data: [120, 50, 140, 180, 100],
-          backgroundColor: [
-            "#455C73",
-            "#9B59B6",
-            "#BDC3C7",
-            "#26B99A",
-            "#3498DB"
-          ],
-          label: 'My dataset' // for legend
-        }],
-        labels: [
-          "Dark Gray",
-          "Purple",
-          "Gray",
-          "Green",
-          "Blue"
-        ]
-      };
-
-      var pieChart = new Chart(ctx, {
-        data: data,
-        type: 'pie',
-        otpions: {
-          legend: false
-        }
-      });
-
-      // PolarArea chart
-      var ctx = document.getElementById("polarArea");
-      var data = {
-        datasets: [{
-          data: [120, 50, 140, 180, 100],
-          backgroundColor: [
-            "#455C73",
-            "#9B59B6",
-            "#BDC3C7",
-            "#26B99A",
-            "#3498DB"
-          ],
-          label: 'My dataset' // for legend
-        }],
-        labels: [
-          "Dark Gray",
-          "Purple",
-          "Gray",
-          "Green",
-          "Blue"
-        ]
-      };
-
-      var polarArea = new Chart(ctx, {
-        data: data,
-        type: 'polarArea',
-        options: {
-          scale: {
-            ticks: {
-              beginAtZero: true
-            }
-          }
-        }
-      });
-    </script>
-    <!-- /Chart.js -->
   </body>
 </html>
