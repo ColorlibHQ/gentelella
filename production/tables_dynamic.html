@@ -4206,39 +4206,8 @@
     <script src="../vendors/pdfmake/build/pdfmake.min.js"></script>
     <script src="../vendors/pdfmake/build/vfs_fonts.js"></script>
  
-     
-     
-    
-    
-
- <script>
-
-   $(document).ready(function() {
-      
-    $('#data-file-name').DataTable( {
-     dom: 'lBfrtip',
-         buttons: [
-            { extend: 'csv',
-              text : 'Export to CSV',
-              filename: function(){
-               var fileName = prompt("Please enter your File Name");
-    if (fileName == null || fileName == "") {
-        return "Default name";
-    } else {
-         return fileName;
-    }
-             
-            },
-            }
-            
-        ]
-    } );
-} );
-        
-        
-    </script>
     <!-- Custom Theme Scripts -->
-    <script src="../build/js/custom.min.js"></script>
+    <script src="../build/js/custom.js"></script>
   
   </body>
    
