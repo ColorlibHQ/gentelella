@@ -13,7 +13,7 @@ We would love to see how you use this awesome admin template. You can notify us 
 
 **[Template Demo](https://colorlib.com/polygon/gentelella/index.html)**
 
-## Installation via Package Manger
+## Installation via Package Manager
 
 Our goal is to make it installable on different Package Manager! Do you want to use it on your favorite Package Manager and you know how? Pull request all the way! 
 
