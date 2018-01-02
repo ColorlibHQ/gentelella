@@ -2592,12 +2592,12 @@ ul.timeline li {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-.tag {
+.timeline .tag {
   line-height: 1;
   background: #1ABB9C;
   color: #fff !important;
 }
-.tag:after {
+.timeline .tag:after {
   content: " ";
   height: 30px;
   width: 0;
