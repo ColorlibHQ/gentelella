@@ -14,6 +14,8 @@ We would love to see how you use this awesome admin template. You can notify us 
 
 **[Template Demo](https://colorlib.com/polygon/gentelella/index.html)**
 
+## Documentation
+
 **[Documentation](https://puikinsh.github.io/gentelella/)**
 
 ## Installation via Package Manager
