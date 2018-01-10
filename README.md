@@ -9,9 +9,14 @@ We would love to see how you use this awesome admin template. You can notify us 
 
 
 ## Theme Demo
-![Gentelella Bootstrap Admin Template](https://cdn.colorlib.com/wp/wp-content/uploads/sites/2/gentelella-admin-template-preview.jpg "Gentelella Theme Browser Preview")
+![Gentelella Bootstrap Admin Template](https://cdn.colorlib.com/wp/wp-content/uploads/sites/2/gentelella-admin-template-preview.jpg 
+"Gentelella Theme Browser Preview")
 
 **[Template Demo](https://colorlib.com/polygon/gentelella/index.html)**
+
+## Documentation
+
+**[Documentation](https://puikinsh.github.io/gentelella/)**
 
 ## Installation via Package Manager
 
