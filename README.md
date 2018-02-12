@@ -62,6 +62,7 @@ If `gulp` is installed, follow the steps below.
 * [Gentelella on Django](https://github.com/GiriB/django-gentelella) Gentelella modified to fit as a Django app
 * [Gentelella on Flask](https://github.com/afourmy/flask-gentelella) Gentelella modified to fit as a Flask app
 * [Gentelella on CakePHP 3](https://github.com/backstageel/cakephp-gentelella-theme) Gentelella modified to work on CakePHP
+* [Gentelella right to left](https://github.com/mortezakarimi/gentelella-rtl) Gentelella modified to work with right to left languages like Persian
 
 Let us know if you have done integration for this admin template on other platforms and frameworks and we'll be happy to share your work.
 
