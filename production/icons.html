@@ -1354,12 +1354,12 @@
                         <ul class="fa-ul">
                           <li>
                             <i class="fa fa-info-circle fa-lg fa-li"></i> These icons work great with the <code>fa-spin</code> class. Check out the
-                            <a href="../examples/#spinning" id="sping-icons" class="alert-link">spinning icons example</a>.
+                            <a href="../examples/#spinning" class="alert-link">spinning icons example</a>.
                           </li>
                         </ul>
                       </div>
 
-                      <div class="row fontawesome-icon-list ready-spin">
+                      <div class="row fontawesome-icon-list">
 
 
 
@@ -2344,17 +2344,5 @@
 
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
-    <script>
-        $(function () {
-            $(document).on('click', '#sping-icons', function (e) {
-                e.preventDefault();
-                if ($('.ready-spin').find('i.fa').hasClass('fa-spin')) {
-                    $('.ready-spin').find('i.fa').removeClass('fa-spin');
-                } else {
-                    $('.ready-spin').find('i.fa').addClass('fa-spin');
-                }
-            })
-        });
-   </script>
   </body>
 </html>
