@@ -1,3 +1,4 @@
+
 .left_col {
   background: #2A3F54;
 }
@@ -3411,7 +3412,7 @@ ul.project_files li a i {
   font-size: 26px;
 }
 a.hiddenanchor {
-  display: none;
+display:none;
 }
 .login_wrapper {
   right: 0px;
@@ -3452,6 +3453,7 @@ a.hiddenanchor {
   -ms-animation-name: fadeOutLeft;
   -o-animation-name: fadeOutLeft;
   animation-name: fadeOutLeft;
+  pointer-events:none;
 }
 .animate {
   -webkit-animation-duration: 0.5s;
