@@ -17,7 +17,7 @@
 .nav-sm .container.body .col-md-3.left_col .mCustomScrollBox {
   overflow: visible;
 }
-.nav-sm .hidden-small {
+.nav-sm .hidden-small {  
   visibility: hidden;
 }
 .nav-sm .container.body .right_col {
@@ -405,6 +405,10 @@ table.no-margin .progress {
     width: 20%;
   }
 }
+
+
+
+	
 @media (min-width: 992px) {
   .col-md-55 {
     width: 20%;
@@ -477,6 +481,9 @@ a:hover, a:focus {
     position: relative;
   }
 }
+
+
+
 .top_nav .dropdown-menu li {
   width: 100%;
 }
@@ -4343,3 +4350,10 @@ ul.notifications {
   border: 1px solid #e5e5e5;
 }
 /** /Dropzone.js **/
+
+@media (max-width: 767px) {
+  .x_panel .dropdown-menu { 
+	left:initial;
+	right:0;
+  }   
+} 
