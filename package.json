@@ -3,7 +3,7 @@
   "version": "1.4.0",
   "description": "Gentelella Admin is a free to use Bootstrap admin template",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "gulp"
   },
   "repository": {
     "type": "git",
