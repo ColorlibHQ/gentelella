@@ -4,44 +4,119 @@
  * and open the template in the editor.
  */
 
+/* SIDEBAR */
 
+$(document).ready(function() {
+    // TODO: This is some kind of easy fix, maybe we can improve this
+    var setContentHeight = function () {
+        // reset height
+        $RIGHT_COL.css('min-height', $(window).height());
 
-/* siidebar */
+        var bodyHeight = $BODY.outerHeight(),
+            footerHeight = $BODY.hasClass('footer_fixed') ? -10 : $FOOTER.height(),
+            leftColHeight = $LEFT_COL.eq(1).height() + $SIDEBAR_FOOTER.height(),
+            contentHeight = bodyHeight < leftColHeight ? leftColHeight : bodyHeight;
 
-function init_sidebar() {
-    var a = function() {
-        $RIGHT_COL.css("min-height", $(window).height());
-        var a = $BODY.outerHeight(),
-            b = $BODY.hasClass("footer_fixed") ? -10 : $FOOTER.height(),
-            c = $LEFT_COL.eq(1).height() + $SIDEBAR_FOOTER.height(),
-            d = a < c ? c : a;
-        d -= $NAV_MENU.height() + b, $RIGHT_COL.css("min-height", d)
+        // normalize content
+        contentHeight -= $NAV_MENU.height() + footerHeight;
+
+        $RIGHT_COL.css('min-height', contentHeight);
     };
-    $SIDEBAR_MENU.find("a").on("click", function(b) {
-        var c = $(this).parent();
-        c.is(".active") ? (c.removeClass("active active-sm"), $("ul:first", c).slideUp(function() {
-            a()
-        })) : (c.parent().is(".child_menu") ? $BODY.is(".nav-sm") && ($SIDEBAR_MENU.find("li").removeClass("active active-sm"), $SIDEBAR_MENU.find("li ul").slideUp()) : ($SIDEBAR_MENU.find("li").removeClass("active active-sm"), $SIDEBAR_MENU.find("li ul").slideUp()), c.addClass("active"), $("ul:first", c).slideDown(function() {
-            a()
-        }))
-    }), $MENU_TOGGLE.on("click", function() {
-        $BODY.hasClass("nav-md") ? ($SIDEBAR_MENU.find("li.active ul").hide(), $SIDEBAR_MENU.find("li.active").addClass("active-sm").removeClass("active")) : ($SIDEBAR_MENU.find("li.active-sm ul").show(), $SIDEBAR_MENU.find("li.active-sm").addClass("active").removeClass("active-sm")), $BODY.toggleClass("nav-md nav-sm"), a()
-    }), $SIDEBAR_MENU.find('a[href="' + CURRENT_URL + '"]').parent("li").addClass("current-page"), $SIDEBAR_MENU.find("a").filter(function() {
-        return this.href == CURRENT_URL
-    }).parent("li").addClass("current-page").parents("ul").slideDown(function() {
-        a()
-    }).parent().addClass("active"), $(window).smartresize(function() {
-        a()
-    }), a(), $.fn.mCustomScrollbar && $(".menu_fixed").mCustomScrollbar({
-        autoHideScrollbar: !0,
-        theme: "minimal",
-        mouseWheel: {
-            preventDefault: !0
-        }
-    })
-}
 
-/* siidebar - end */
+    $SIDEBAR_MENU.find('a').on('click', function(ev) {
+		var $li = $(this).parent();
+		if ($li.is('.active')) {
+			$li.removeClass('active active-sm');
+			$('ul:first', $li).slideUp(function() {
+				setContentHeight();
+			});
+		}
+		else
+		{
+			// prevent closing menu if we are on child menu
+			if (!$li.parent().is('.child_menu')) {
+				$SIDEBAR_MENU.find('li').removeClass('active active-sm');
+				$SIDEBAR_MENU.find('li ul').slideUp();
+			}else
+			{
+				if ( $BODY.is( ".nav-sm" ) )
+				{
+					if (!$li.parent().is('.child_menu')) {
+						$SIDEBAR_MENU.find('li').removeClass('active active-sm');
+						$SIDEBAR_MENU.find('li ul').slideUp();
+					}
+				}
+			}
+			$li.addClass('active');
+
+			$('ul:first', $li).slideDown(function() {
+				
+			});
+		}
+	});
+
+
+    // toggle small or large menu
+    $MENU_TOGGLE.on('click', function() {
+        if ($BODY.hasClass('nav-md')) {
+            $SIDEBAR_MENU.find('li.active ul').hide();
+            $SIDEBAR_MENU.find('li.active').addClass('active-sm').removeClass('active');
+        } else {
+            $SIDEBAR_MENU.find('li.active-sm ul').show();
+            $SIDEBAR_MENU.find('li.active-sm').addClass('active').removeClass('active-sm');
+        }
+
+        $BODY.toggleClass('nav-md nav-sm');
+
+        setContentHeight();
+
+        $('.dataTable').each ( function () { $(this).dataTable().fnDraw(); });
+    });
+
+    // check active menu
+
+    var $cur_menu = $SIDEBAR_MENU.find('a').filter(function () { // find nav element with exact match
+        return this.href == CURRENT_URL;
+    });
+
+    if ($cur_menu.length == 0) { // if no exact match, try to find best match
+        var $cur_menu = $SIDEBAR_MENU.find('a').filter(function () {
+            return CURRENT_URL.startsWith(this.href) && this.href != '';
+        });
+
+        if ($cur_menu.length > 1) { // get ONLY one with longest href as best match
+            var l = 0;
+            for (var i = 0; i < $cur_menu.length; i++) {
+                if ($cur_menu.eq(l).attr('href').length < $cur_menu.eq(i).attr('href').length) l = i;
+            }
+            $cur_menu = $cur_menu.eq(l);
+        }
+    }
+
+    // original code below, but executed for $cur_menu
+    $cur_menu.parent('li').addClass('current-page').parents('ul').slideDown(function() {
+        setContentHeight();
+    }).parent().addClass('active');
+
+    // recompute content when resizing
+    $(window).smartresize(function(){
+        setContentHeight();
+    });
+
+    setContentHeight();
+
+    // fixed sidebar
+    if ($.fn.mCustomScrollbar) {
+        $('.menu_fixed').mCustomScrollbar({
+            autoHideScrollbar: true,
+            theme: 'minimal',
+            mouseWheel:{ preventDefault: true }
+        });
+    }
+});
+
+
+/* SIDEBAR - end */
 
 function countChecked() {
     "all" === checkState && $(".bulk_action input[name='table_records']").iCheck("check"), "none" === checkState && $(".bulk_action input[name='table_records']").iCheck("uncheck");
@@ -4073,7 +4148,7 @@ function init_echarts() {
         var d;
         return function() {
             function h() {
-                c || a.apply(f, g), d = null
+                c || a.apply(f, g), d = null 
             }
             var f = this,
                 g = arguments;
@@ -4084,6 +4159,8 @@ function init_echarts() {
         return a ? this.bind("resize", c(a)) : this.trigger(b)
     }
 }(jQuery, "smartresize");
+
+
 var CURRENT_URL = window.location.href.split("#")[0].split("?")[0],
     $BODY = $("body"),
     $MENU_TOGGLE = $("#menu_toggle"),
@@ -4169,8 +4246,7 @@ $.fn.popover.Constructor.prototype.leave = function(a) {
 	
 }), $(document).ready(function() {
     init_sparklines(), 
-	init_flot_chart(), 
-	init_sidebar(), 
+	init_flot_chart(),  
 	init_wysiwyg(), 
 	init_InputMask(), 
 	init_JQVmap(), init_cropper(),
@@ -4202,4 +4278,4 @@ $.fn.popover.Constructor.prototype.leave = function(a) {
 	init_autosize(), 
 	init_autocomplete()
 });
- 
+  
