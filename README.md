@@ -35,6 +35,12 @@ bower install gentelella --save
 ```
 npm install gentelella --save
 ```
+
+**yarn**
+
+```
+yarn add gentelella --save
+```
 ## How to contribute
 To contribute, please ensure that you have stable [Node.js](https://nodejs.org/) and [npm](https://npmjs.com) installed.
 
