@@ -3480,6 +3480,9 @@ a.hiddenanchor {
 .left {
   float: left;
 }
+.calendar.left {
+  float: initial !important;
+}
 .alignleft {
   float: left;
   margin-right: 15px;
