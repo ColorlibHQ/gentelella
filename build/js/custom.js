@@ -87,8 +87,8 @@ var setContentHeight = function () {
             {
 				if ( $BODY.is( ".nav-sm" ) )
 				{
-					$SIDEBAR_MENU.find( "li" ).removeClass( "active active-sm" );
-					$SIDEBAR_MENU.find( "li ul" ).slideUp();
+					$li.parent().find( "li" ).removeClass( "active active-sm" );
+					$li.parent().find( "li ul" ).slideUp();
 				}
 			}
             $li.addClass('active');
