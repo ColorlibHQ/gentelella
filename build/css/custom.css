@@ -1230,8 +1230,7 @@ ul.msg_list li {
   width: 96% !important; }
 
 ul.msg_list li:last-child {
-  margin-bottom: 6px;
-  padding: 10px; }
+  margin-bottom: 6px; }
 
 ul.msg_list li a {
   padding: 3px 5px !important; }
