@@ -96,7 +96,7 @@ var validator = (function($){
                 }
                 return true;
             }
-            if( !skip && lengthRange && a.length < lengthRange[0] ){
+            if( !skip && lengthRange || a.length < lengthRange[0] ){
                 alertTxt = message.min;
                 return false;
             }
@@ -152,7 +152,7 @@ var validator = (function($){
                 return false;
             }
             // not enough numbers
-            else if( lengthRange && a.length < lengthRange[0] ){
+            else if( lengthRange || a.length < lengthRange[0] ){
                 alertTxt = message.min;
                 return false;
             }
