@@ -4260,7 +4260,7 @@ $(".bulk_action input").on("ifChecked", function() {
     })
 }), "undefined" != typeof NProgress && ($(document).ready(function() {
     NProgress.start()
-}), $(window).on('load', function() {
+}), $(window).load(function() {
     NProgress.done()
 }));
 var originalLeave = $.fn.popover.Constructor.prototype.leave;

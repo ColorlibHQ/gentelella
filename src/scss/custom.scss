@@ -121,7 +121,6 @@
   margin-top: 20px;
   border: 1px solid rgba(52, 73, 94, 0.44);
   padding: 4px;
-
 }
 .profile_info {
   padding: 25px 10px 10px;
@@ -190,7 +189,7 @@
     position: static;
   }
 }
-.nav-md .container-fluid.body .left_col {
+.nav-md .container.body .col-md-3.left_col {
   min-height: 100%;
   width: 230px;
   padding: 0;
