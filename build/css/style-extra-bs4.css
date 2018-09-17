@@ -1,6 +1,7 @@
-/*
-@media (min-width: 1200px) {
-  .container { max-width:100% !important; }
-  }
-} 
-*/
+
+
+.container.test  .col.one {  background:gold; }
+.container.test  .col.two {  background:red; }
+
+.container.body .col-md-3 { background:orange; }
+
