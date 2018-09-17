@@ -2,25 +2,25 @@
 .left_col {
   background: #2A3F54;
 }
-.nav-sm container-fluid.body .col-md-3.left_col {
+.nav-sm .container-fluid.body .col-md-3.left_col {
   min-height: 100%;
   width: 70px;
   padding: 0;
   z-index: 9999;
   position: absolute;
 }
-.nav-sm container-fluid.body .col-md-3.left_col.menu_fixed {
+.nav-sm .container-fluid.body .col-md-3.left_col.menu_fixed {
   position: fixed;
   height: 100%;
 }
-.nav-sm container-fluid.body .col-md-3.left_col .mCSB_container,
-.nav-sm container-fluid.body .col-md-3.left_col .mCustomScrollBox {
+.nav-sm .container-fluid.body .col-md-3.left_col .mCSB_container,
+.nav-sm .container-fluid.body .col-md-3.left_col .mCustomScrollBox {
   overflow: visible;
 }
 .nav-sm .hidden-small {  
   visibility: hidden;
 }
-.nav-sm container-fluid.body .right_col {
+.nav-sm .container-fluid.body .right_col {
   padding: 10px 20px;
   margin-left: 70px;
   z-index: 2;
@@ -190,22 +190,21 @@
     position: static;
   }
 }
-.nav-md container-fluid-fluid.body .left_col {
+.nav-md .container-fluid.body .left_col {
   min-height: 100%;
   width: 230px;
   padding: 0;
   position: absolute;
-  display: flex;
   z-index: 1;
 }
-.nav-md container-fluid.body .col-md-3.left_col.menu_fixed {
+.nav-md .container-fluid.body .col-md-3.left_col.menu_fixed {
   height: 100%;
   position: fixed;
 }
-body container-fluid.body .right_col {
+body .container-fluid.body .right_col {
   background: #F7F7F7;
 }
-.nav-md container-fluid.body .right_col {
+.nav-md .container-fluid.body .right_col {
   padding: 10px 20px 0;
   margin-left: 230px;
 }
@@ -217,14 +216,14 @@ body container-fluid.body .right_col {
   height: 57px;
 }
 @media (max-width: 991px) {
-  .nav-md container-fluid.body .right_col, .nav-md container-fluid.body .top_nav {
+  .nav-md .container-fluid.body .right_col, .nav-md .container-fluid.body .top_nav {
     width: 100%;
     margin: 0;
   }
-  .nav-md container-fluid.body .col-md-3.left_col {
+  .nav-md .container-fluid.body .col-md-3.left_col {
     display: none;
   }
-  .nav-md container-fluid.body .right_col {
+  .nav-md .container-fluid.body .right_col {
     width: 100%;
     padding-right: 0
   }
@@ -326,7 +325,7 @@ body container-fluid.body .right_col {
   border: 1px solid #50C1CF !important;
   color: #fff;
 }
-container-fluid {
+.container-fluid {
   width: 100%;
   padding: 0
 }
@@ -551,7 +550,7 @@ a:hover, a:focus {
   border-left: 1px solid #425668;
   bottom: 0;
   content: "";
-  left: 27px;
+  left: 26px;
   position: absolute;
   top: 0;
 }
