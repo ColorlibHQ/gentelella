@@ -39,7 +39,7 @@ npm install gentelella --save
 **yarn**
 
 ```
-yarn add gentelella --save
+yarn add gentelella
 ```
 ## How to contribute
 To contribute, please ensure that you have stable [Node.js](https://nodejs.org/) and [npm](https://npmjs.com) installed.
