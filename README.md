@@ -9,11 +9,16 @@ We would love to see how you use this awesome admin template. You can notify us 
 
 
 ## Theme Demo
-![Gentelella Bootstrap Admin Template](https://cdn.colorlib.com/wp/wp-content/uploads/sites/2/gentelella-admin-template-preview.jpg "Gentelella Theme Browser Preview")
+![Gentelella Bootstrap Admin Template](https://cdn.colorlib.com/wp/wp-content/uploads/sites/2/gentelella-admin-template-preview.jpg 
+"Gentelella Theme Browser Preview")
 
 **[Template Demo](https://colorlib.com/polygon/gentelella/index.html)**
 
-## Installation via Package Manger
+## Documentation
+
+**[Documentation](https://puikinsh.github.io/gentelella/)**
+
+## Installation via Package Manager
 
 Our goal is to make it installable on different Package Manager! Do you want to use it on your favorite Package Manager and you know how? Pull request all the way! 
 
@@ -54,8 +59,11 @@ If `gulp` is installed, follow the steps below.
 * [Gentelella on Angular 2](https://github.com/kmkatsma/angular2-webpack-starter-gentelella) Angular Webpack Starter modified to utilize the Gentelella.
 * [Gentelella on Aurelia](https://github.com/kmkatsma/aurelia-gentelella) Typescript webpack skeleton modified to utilize the Gentelella.
 * [Gentelella on Laravel](https://github.com/Labs64/laravel-boilerplate) PHP / Laravel 5 boilerplate project with Gentelella Admin theme support.
-* [Gentelella on Django](https://github.com/GiriB/django-gentelella) Genetellela modified to fit as a Django app
+* [Gentelella on Django](https://github.com/GiriB/django-gentelella) Gentelella modified to fit as a Django app
+* [Gentelella on Flask](https://github.com/afourmy/flask-gentelella) Gentelella modified to fit as a Flask app
+* [Gentelella on Beego] (https://github.com/jun283/beegoAdmin) Gentelella for Beego Framework
 * [Gentelella on CakePHP 3](https://github.com/backstageel/cakephp-gentelella-theme) Gentelella modified to work on CakePHP
+* [Gentelella right to left](https://github.com/mortezakarimi/gentelella-rtl) Gentelella modified to work with right to left languages like Persian
 
 Let us know if you have done integration for this admin template on other platforms and frameworks and we'll be happy to share your work.
 

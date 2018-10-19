@@ -1,3 +1,4 @@
+
 .left_col {
   background: #2A3F54;
 }
@@ -16,7 +17,7 @@
 .nav-sm .container.body .col-md-3.left_col .mCustomScrollBox {
   overflow: visible;
 }
-.nav-sm .hidden-small {
+.nav-sm .hidden-small {  
   visibility: hidden;
 }
 .nav-sm .container.body .right_col {
@@ -404,6 +405,10 @@ table.no-margin .progress {
     width: 20%;
   }
 }
+
+
+
+	
 @media (min-width: 992px) {
   .col-md-55 {
     width: 20%;
@@ -476,6 +481,9 @@ a:hover, a:focus {
     position: relative;
   }
 }
+
+
+
 .top_nav .dropdown-menu li {
   width: 100%;
 }
@@ -693,7 +701,7 @@ a:hover, a:focus {
 }
 footer {
   background: #fff;
-  padding: 15px 20px;
+  padding: 10px 20px;
   display: block;
 }
 
@@ -1344,7 +1352,6 @@ ul.msg_list li {
 }
 ul.msg_list li:last-child {
   margin-bottom: 6px;
-  padding: 10px;
 }
 ul.msg_list li a {
   padding: 3px 5px !important;
@@ -1694,7 +1701,7 @@ h4.graph_title {
 /* *********  iconts-display  **************************** */
 
 .fontawesome-icon-list .fa-hover a:hover {
-  background-color: #ddd;
+  background-color: #B7B7B7;
   color: #fff;
   text-decoration: none;
 }
@@ -1728,7 +1735,7 @@ h4.graph_title {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* *********  /iconts-display  **************************** */
+/* *********  /iconts-display  *********************** */
 
 
 /** tile stats **/
@@ -2376,10 +2383,10 @@ textarea:focus {
   background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
   background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
+  filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0)";
   border-color: #e6e6e6 #e6e6e6 #bfbfbf;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+  filter: "progid:DXImageTransform.Microsoft.gradient(enabled=false)";
   border: 1px solid #cccccc;
   border-bottom-color: #b3b3b3;
   -webkit-border-radius: 4px;
@@ -2770,8 +2777,8 @@ ul.widget_tally .count {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+  filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0)";
+  filter: "progid:DXImageTransform.Microsoft.gradient(enabled=false)";
   padding-bottom: 10px;
   -webkit-box-shadow: 0 4px 6px -6px #222;
   -moz-box-shadow: 0 4px 6px -6px #222;
@@ -3411,7 +3418,7 @@ ul.project_files li a i {
   font-size: 26px;
 }
 a.hiddenanchor {
-  display: none;
+display:none;
 }
 .login_wrapper {
   right: 0px;
@@ -3452,6 +3459,7 @@ a.hiddenanchor {
   -ms-animation-name: fadeOutLeft;
   -o-animation-name: fadeOutLeft;
   animation-name: fadeOutLeft;
+  pointer-events:none;
 }
 .animate {
   -webkit-animation-duration: 0.5s;
@@ -3480,6 +3488,11 @@ a.hiddenanchor {
 .left {
   float: left;
 }
+
+.calendar.left {
+  float:initial !important;
+}
+
 .alignleft {
   float: left;
   margin-right: 15px;
@@ -3626,7 +3639,7 @@ a.hiddenanchor {
   background: -o-linear-gradient(top, rgba(247, 249, 250, 1) 0%, rgba(240, 240, 240, 1) 100%);
   background: -ms-linear-gradient(top, rgba(247, 249, 250, 1) 0%, rgba(240, 240, 240, 1) 100%);
   background: linear-gradient(to bottom, rgba(247, 249, 250, 1) 0%, rgba(240, 240, 240, 1) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f9fa', endColorstr='#f0f0f0', GradientType=0);
+  filter: "progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f9fa', endColorstr='#f0f0f0', GradientType=0)";
   -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
   -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
   -ms-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
@@ -4341,3 +4354,10 @@ ul.notifications {
   border: 1px solid #e5e5e5;
 }
 /** /Dropzone.js **/
+
+@media (max-width: 767px) {
+  .x_panel .dropdown-menu { 
+	left:initial;
+	right:0;
+  }   
+} 
