@@ -35,6 +35,14 @@ bower install gentelella --save
 ```
 npm install gentelella --save
 ```
+## Get paid to contribute :heavy_dollar_sign: :heavy_dollar_sign:
+
+This project has been growing and reaching people in so many forms that we can't simply believe it. We set out to build, maintain & improve (what we believe to be) one of the greatest HTML Admin dashboard templates and we've been fortunate enough to see it grow beyond our wildest dreams. As such, Colorlib (known previously as puikinsih), is opening up the 'get paid to contribute' project. 
+
+Anyone interested in getting paid to contribute to this project, should contact us here: https://colorlib.com/wp/contact-us. 
+
+We're looking for people that love this project as much as we do, to help us reach our mission - build the greatest Admin HTML template the Internet has seen. 
+
 ## How to contribute
 To contribute, please ensure that you have stable [Node.js](https://nodejs.org/) and [npm](https://npmjs.com) installed.
 
