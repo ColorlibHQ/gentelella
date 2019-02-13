@@ -551,11 +551,6 @@ body .container-fluid.body .right_col {
     color: #fff;
 }
 
-.container-fluid {
-    width: 100%;
-    padding: 0;
-}
-
 .navbar-nav > li > a, .navbar-brand, .navbar-nav > li > a {
     color: #fff !important;
 }
@@ -679,13 +674,7 @@ table.no-margin .progress {
     position: relative;
     min-height: 1px;
     float: left;
-    padding-right: 10px;
-    padding-left: 10px;
-}
 
-.row {
-    margin-right: -10px;
-    margin-left: -10px;
 }
 
 .grid_slider .col-md-6 {
@@ -997,10 +986,6 @@ footer {
     background: #fff;
     padding: 10px 20px;
     display: block;
-}
-
-.nav-sm footer {
-    margin-left: 70px;
 }
 
 .footer_fixed footer {
