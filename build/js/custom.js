@@ -96,13 +96,13 @@ $(document).ready(function() {
         if ($BODY.hasClass('nav-md')) {
             $SIDEBAR_MENU.find('li.active ul').hide();
             $SIDEBAR_MENU.find('li.active').addClass('active-sm').removeClass('active');
-            $('.main_container > .row > .left_col').removeClass('col-md-2').addClass('col-md-1');
-            $('.main_container > .row > .left_col').next('div').removeClass('col-md-10').addClass('col-md-11');
+            $('.main_container > .row > .left_col').removeClass('col-lg-2').addClass('col-lg-1');
+            $('.main_container > .row > .left_col').next('div').removeClass('col-lg-10').addClass('col-lg-11');
         } else {
             $SIDEBAR_MENU.find('li.active-sm ul').show();
             $SIDEBAR_MENU.find('li.active-sm').addClass('active').removeClass('active-sm');
-            $('.main_container > .row > .left_col').removeClass('col-md-1').addClass('col-md-2');
-            $('.main_container > .row > .left_col').next('div').removeClass('col-md-11').addClass('col-md-10');
+            $('.main_container > .row > .left_col').removeClass('col-lg-1').addClass('col-lg-2');
+            $('.main_container > .row > .left_col').next('div').removeClass('col-lg-11').addClass('col-lg-10');
         }
 
         $BODY.toggleClass('nav-md nav-sm');
