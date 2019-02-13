@@ -2510,12 +2510,18 @@ legend {
 
 .form-control-feedback.left {
     border-right: 1px solid #ccc;
-    left: 13px;
+    left: 28px;
+    top:0px;
+    padding-right:10px;
+    position: absolute;
 }
 
 .form-control-feedback.right {
     border-left: 1px solid #ccc;
-    right: 13px;
+    right: 28px;
+    top:0px;
+    padding-left:10px;
+    position: absolute;
 }
 
 .form-control.has-feedback-left {
