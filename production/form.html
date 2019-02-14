@@ -1127,60 +1127,64 @@
                                             <form class="form-horizontal form-label-left">
 
                                                 <div class="form-group">
-                                                    <label class="col-sm-3 control-label">Button addons</label>
+                                                    <div class="row">
+                                                        <label class="col-sm-3 control-label">Button addons</label>
 
-                                                    <div class="col-sm-9">
-                                                        <div class="input-group">
+                                                        <div class="col-sm-9">
+                                                            <div class="input-group">
                             <span class="input-group-btn">
                                               <button type="button" class="btn btn-primary">Go!</button>
                                           </span>
-                                                            <input type="text" class="form-control">
-                                                        </div>
-                                                        <div class="input-group">
-                                                            <input type="text" class="form-control">
-                                                            <span class="input-group-btn">
+                                                                <input type="text" class="form-control">
+                                                            </div>
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control">
+                                                                <span class="input-group-btn">
                                               <button type="button" class="btn btn-primary">Go!</button>
                                           </span>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="divider-dashed"></div>
 
                                                 <div class="form-group">
-                                                    <label class="col-sm-3 control-label">Button addons</label>
+                                                    <div class="row">
+                                                        <label class="col-sm-3 control-label">Button addons</label>
 
-                                                    <div class="col-sm-9">
-                                                        <div class="input-group">
-                                                            <input type="text" class="form-control"
-                                                                   aria-label="Text input with dropdown button">
-                                                            <div class="input-group-btn">
-                                                                <button type="button"
-                                                                        class="btn btn-default dropdown-toggle"
-                                                                        data-toggle="dropdown"
-                                                                        aria-expanded="false">
-                                                                    Action
-                                                                    <span class="caret"></span>
-                                                                </button>
-                                                                <ul class="dropdown-menu dropdown-menu-right"
-                                                                    role="menu">
-                                                                    <li><a href="#">Action</a>
-                                                                    </li>
-                                                                    <li><a href="#">Another action</a>
-                                                                    </li>
-                                                                    <li><a href="#">Something else here</a>
-                                                                    </li>
-                                                                    <li class="divider"></li>
-                                                                    <li><a href="#">Separated link</a>
-                                                                    </li>
-                                                                </ul>
+                                                        <div class="col-sm-9">
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control"
+                                                                       aria-label="Text input with dropdown button">
+                                                                <div class="input-group-btn">
+                                                                    <button type="button"
+                                                                            class="btn btn-default dropdown-toggle"
+                                                                            data-toggle="dropdown"
+                                                                            aria-expanded="false">
+                                                                        Action
+                                                                        <span class="caret"></span>
+                                                                    </button>
+                                                                    <ul class="dropdown-menu dropdown-menu-right"
+                                                                        role="menu">
+                                                                        <li><a href="#">Action</a>
+                                                                        </li>
+                                                                        <li><a href="#">Another action</a>
+                                                                        </li>
+                                                                        <li><a href="#">Something else here</a>
+                                                                        </li>
+                                                                        <li class="divider"></li>
+                                                                        <li><a href="#">Separated link</a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                                <!-- /btn-group -->
                                                             </div>
-                                                            <!-- /btn-group -->
-                                                        </div>
-                                                        <div class="input-group">
-                                                            <input type="text" class="form-control">
-                                                            <span class="input-group-btn">
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control">
+                                                                <span class="input-group-btn">
                               <button type="button" class="btn btn-primary">Go!</button>
                             </span>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1342,11 +1346,14 @@
                                             <div class="ln_solid"></div>
 
                                             <div class="form-group">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Resizable Text
-                                                    area</label>
-                                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                                <div class="row">
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Resizable
+                                                        Text
+                                                        area</label>
+                                                    <div class="col-md-9 col-sm-9 col-xs-12">
                                         <textarea class="resizable_textarea form-control"
                                                   placeholder="This text area automatically resizes its height as you fill in more text courtesy of autosize-master it out..."></textarea>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -1550,7 +1557,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <div clas="row">
+                                            <div class="row">
                                                 <label class="control-label col-md-3" for="last-name">Last Name <span
                                                         class="required">*</span>
                                                 </label>
@@ -1570,7 +1577,7 @@
                                         grid
                                         <b>.col-</b> class or wrap the form in the <b>form-vertical</b> class.
                                     </p>
-                                    <div class="col-md-8 center-margin">
+                                    <div class="col-md-8 offset-md-2">
                                         <form class="form-horizontal form-label-left">
                                             <div class="form-group">
                                                 <label>Email address</label>
@@ -1590,21 +1597,32 @@
                                         left-aligned
                                         and inline-block controls.
                                     </p>
-                                    <form class="form-inline">
-                                        <div class="form-group">
-                                            <label for="ex3">Email address</label>
-                                            <input type="text" id="ex3" class="form-control" placeholder=" ">
+                                    <form class="row">
+                                        <div class="form-group col-md-12">
+                                            <div class="row">
+                                                <label for="ex3" class="col-md-12">Email address</label>
+                                                <div class=" col-md-12">
+                                                    <input type="text" id="ex3" class="form-control"
+                                                           placeholder=" ">
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="ex4">Email address</label>
-                                            <input type="email" id="ex4" class="form-control" placeholder=" ">
+                                        <div class="form-group col-md-12">
+                                            <div class="row">
+                                                <label for="ex4" class="col-md-12">Email address</label>
+                                                <div class=" col-md-12">
+                                                    <input type="email" id="ex4" class="form-control" placeholder=" ">
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="checkbox">
+                                        <div class="checkbox col-md-12">
                                             <label>
                                                 <input type="checkbox"> Remember me
                                             </label>
                                         </div>
-                                        <button type="submit" class="btn btn-default">Send invitation</button>
+                                        <div class="col-md-12">
+                                            <button type="submit" class="btn btn-default">Send invitation</button>
+                                        </div>
                                     </form>
                                 </div>
                             </div>
