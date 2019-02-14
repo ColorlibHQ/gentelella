@@ -128,7 +128,9 @@
     background: #34495E;
 }
 
-.calendar-exibit .show-calendar {
+/* TODO check if calendar should be showed even if not working clicking it */
+
+/*.calendar-exibit .show-calendar {
     float: none;
     display: block;
     position: relative;
@@ -137,7 +139,7 @@
     margin-bottom: 20px;
     border: 1px solid rgba(0, 0, 0, 0.15);
     overflow: hidden;
-}
+}*/
 
 .calendar-exibit .show-calendar .calendar {
     margin: 0 0 4px 0;
@@ -2616,7 +2618,7 @@ input.parsley-error, textarea.parsley-error, select.parsley-error {
     display: inline-block;
 }
 
-.well .markup {
+.card .markup {
     background: #fff;
     color: #777;
     position: relative;
@@ -2627,7 +2629,7 @@ input.parsley-error, textarea.parsley-error, select.parsley-error {
     box-shadow: none;
 }
 
-.well .markup::after {
+.card .markup::after {
     content: "Example";
     position: absolute;
     top: 15px;

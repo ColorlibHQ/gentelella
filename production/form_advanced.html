@@ -484,7 +484,7 @@
                                                             <div class="input-group demo2">
                                                                 <input type="text" value="#e01ab5"
                                                                        class="form-control"/>
-                                                                <span class="input-group-addon"><i></i></span>
+                                                                <span class="input-group-prepend input-group-text"><i></i></span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -517,15 +517,19 @@
                                                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Inline
                                                             picker</label>
                                                         <div class="col-md-9 col-sm-9 col-xs-12">
-                                                            <div class="well">
-                                                                <div id="demo_cont"
-                                                                     class="demo demo-auto inl-bl colorpicker-element"
-                                                                     data-container="#demo_cont"
-                                                                     data-color="rgba(150,216,62,0.55)"
-                                                                     data-inline="true"></div>
-                                                                <div class="demo demo-auto inl-bl colorpicker-element"
-                                                                     data-container="true" data-color="rgb(50,216,62)"
-                                                                     data-inline="true" style="margin-left:20px;"></div>
+                                                            <div class="card bg-light mt-1">
+                                                                <div class="card-body">
+                                                                    <div id="demo_cont"
+                                                                         class="demo demo-auto inl-bl colorpicker-element"
+                                                                         data-container="#demo_cont"
+                                                                         data-color="rgba(150,216,62,0.55)"
+                                                                         data-inline="true"></div>
+                                                                    <div class="demo demo-auto inl-bl colorpicker-element"
+                                                                         data-container="true"
+                                                                         data-color="rgb(50,216,62)"
+                                                                         data-inline="true"
+                                                                         style="margin-left:20px;"></div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -641,73 +645,79 @@
                                             <div class="clearfix"></div>
                                         </div>
                                         <div class="x_content">
-                                            <div class="well" style="overflow: auto">
-                                                <div class="row">
-                                                    <div class="col-md-4">
-                                                        <div id="reportrange_right" class="pull-left"
-                                                             style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
-                                                            <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
-                                                            <span>December 30, 2014 - January 28, 2015</span> <b
-                                                                class="caret"></b>
+                                            <div class="card bg-light mt-2" style="overflow: auto">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <div id="reportrange_right" class="pull-left"
+                                                                 style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
+                                                                <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                                                                <span>December 30, 2014 - January 28, 2015</span> <b
+                                                                    class="caret"></b>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <p>Date Range Picker with opening to right and left</p>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div id="reportrange" class="pull-right"
-                                                             style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
-                                                            <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
-                                                            <span>December 30, 2014 - January 28, 2015</span> <b
-                                                                class="caret"></b>
+                                                        <div class="col-md-4">
+                                                            <p>Date Range Picker with opening to right and left</p>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div id="reportrange" class="pull-right"
+                                                                 style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
+                                                                <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                                                                <span>December 30, 2014 - January 28, 2015</span> <b
+                                                                    class="caret"></b>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="well" style="overflow: auto">
-                                                <div class="row">
-                                                    <div class="col-md-4">
-                                                        Date Range Picker
-                                                        <form class="form-horizontal">
-                                                            <fieldset>
-                                                                <div class="control-group">
-                                                                    <div class="controls">
-                                                                        <div class="input-prepend input-group">
-                                                                    <span class="add-on input-group-addon"><i
+                                            <div class="card bg-light mt-2" style="overflow: auto">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            Date Range Picker
+                                                            <form class="form-horizontal">
+                                                                <fieldset>
+                                                                    <div class="control-group">
+                                                                        <div class="controls">
+                                                                            <div class="input-prepend input-group">
+                                                                    <span class="add-on input-group-prepend input-group-text"><i
                                                                             class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
-                                                                            <input type="text" style="width: 200px"
-                                                                                   name="reservation" id="reservation"
-                                                                                   class="form-control"
-                                                                                   value="01/01/2016 - 01/25/2016"/>
+                                                                                <input type="text" style="width: 200px"
+                                                                                       name="reservation"
+                                                                                       id="reservation"
+                                                                                       class="form-control"
+                                                                                       value="01/01/2016 - 01/25/2016"/>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
-                                                            </fieldset>
-                                                        </form>
-                                                    </div>
+                                                                </fieldset>
+                                                            </form>
+                                                        </div>
 
-                                                    <div class="col-md-5">
-                                                        Date and Time
-                                                        <form class="form-horizontal">
-                                                            <fieldset>
-                                                                <div class="control-group">
-                                                                    <div class="controls">
-                                                                        <div class="input-prepend input-group">
-                                                                    <span class="add-on input-group-addon"><i
+                                                        <div class="col-md-5">
+                                                            Date and Time
+                                                            <form class="form-horizontal">
+                                                                <fieldset>
+                                                                    <div class="control-group">
+                                                                        <div class="controls">
+                                                                            <div class="input-prepend input-group">
+                                                                    <span class="add-on input-group-prepend input-group-text"><i
                                                                             class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
-                                                                            <input type="text" name="reservation-time"
-                                                                                   id="reservation-time"
-                                                                                   class="form-control"
-                                                                                   value="01/01/2016 - 01/25/2016"/>
+                                                                                <input type="text"
+                                                                                       name="reservation-time"
+                                                                                       id="reservation-time"
+                                                                                       class="form-control"
+                                                                                       value="01/01/2016 - 01/25/2016"/>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
-                                                            </fieldset>
-                                                        </form>
+                                                                </fieldset>
+                                                            </form>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="row calendar-exibit">
+                                            <div class="row calendar-exibit mt-2">
                                                 <div class="col-md-3">
                                                     <div class="daterangepicker dropdown-menu ltr single opensright show-calendar picker_1 xdisplay">
                                                         <div class="calendar left single" style="display: block;">
@@ -983,7 +993,7 @@
                                                     <fieldset>
                                                         <div class="control-group">
                                                             <div class="controls">
-                                                                <div class="col-md-11 xdisplay_inputx form-group has-feedback">
+                                                                <div class=" xdisplay_inputx form-group has-feedback">
                                                                     <input type="text"
                                                                            class="form-control has-feedback-left"
                                                                            id="single_cal1" placeholder="First Name"
@@ -1274,7 +1284,7 @@
                                                     <fieldset>
                                                         <div class="control-group">
                                                             <div class="controls">
-                                                                <div class="col-md-11 xdisplay_inputx form-group has-feedback">
+                                                                <div class="xdisplay_inputx form-group has-feedback">
                                                                     <input type="text"
                                                                            class="form-control has-feedback-left"
                                                                            id="single_cal2" placeholder="First Name"
@@ -1562,7 +1572,7 @@
                                                     <fieldset>
                                                         <div class="control-group">
                                                             <div class="controls">
-                                                                <div class="col-md-11 xdisplay_inputx form-group has-feedback">
+                                                                <div class="xdisplay_inputx form-group has-feedback">
                                                                     <input type="text"
                                                                            class="form-control has-feedback-left"
                                                                            id="single_cal3" placeholder="First Name"
@@ -1851,7 +1861,7 @@
                                                     <fieldset>
                                                         <div class="control-group">
                                                             <div class="controls">
-                                                                <div class="col-md-11 xdisplay_inputx form-group has-feedback">
+                                                                <div class="xdisplay_inputx form-group has-feedback">
                                                                     <input type="text"
                                                                            class="form-control has-feedback-left"
                                                                            id="single_cal4" placeholder="First Name"
@@ -1906,7 +1916,7 @@
                                                         <div class="form-group">
                                                             <div class='input-group date' id='myDatepicker'>
                                                                 <input type='text' class="form-control"/>
-                                                                <span class="input-group-addon">
+                                                                <span class="input-group-prepend input-group-text">
                                <span class="glyphicon glyphicon-calendar"></span>
                             </span>
                                                             </div>
@@ -1918,7 +1928,7 @@
                                                         <div class="form-group">
                                                             <div class='input-group date' id='myDatepicker2'>
                                                                 <input type='text' class="form-control"/>
-                                                                <span class="input-group-addon">
+                                                                <span class="input-group-prepend input-group-text">
                                <span class="glyphicon glyphicon-calendar"></span>
                             </span>
                                                             </div>
@@ -1931,7 +1941,7 @@
                                                         <div class="form-group">
                                                             <div class='input-group date' id='myDatepicker3'>
                                                                 <input type='text' class="form-control"/>
-                                                                <span class="input-group-addon">
+                                                                <span class="input-group-prepend input-group-text">
                                <span class="glyphicon glyphicon-calendar"></span>
                             </span>
                                                             </div>
@@ -1944,7 +1954,7 @@
                                                             <div class='input-group date' id='myDatepicker4'>
                                                                 <input type='text' class="form-control"
                                                                        readonly="readonly"/>
-                                                                <span class="input-group-addon">
+                                                                <span class="input-group-prepend input-group-text">
                                <span class="glyphicon glyphicon-calendar"></span>
                             </span>
                                                             </div>
@@ -1956,7 +1966,7 @@
                                                         <div class="form-group">
                                                             <div class='input-group date' id='datetimepicker6'>
                                                                 <input type='text' class="form-control"/>
-                                                                <span class="input-group-addon">
+                                                                <span class="input-group-prepend input-group-text">
                                     <span class="glyphicon glyphicon-calendar"></span>
                             </span>
                                                             </div>
@@ -1967,7 +1977,7 @@
                                                         <div class="form-group">
                                                             <div class='input-group date' id='datetimepicker7'>
                                                                 <input type='text' class="form-control"/>
-                                                                <span class="input-group-addon">
+                                                                <span class="input-group-prepend input-group-text">
                                     <span class="glyphicon glyphicon-calendar"></span>
                             </span>
                                                             </div>
@@ -2059,42 +2069,42 @@
 
                                                 <div class="docs-data">
                                                     <div class="input-group input-group-sm">
-                                                        <label class="input-group-addon" for="dataX">X</label>
+                                                        <label class="input-group-prepend input-group-text" for="dataX">X</label>
                                                         <input type="text" class="form-control" id="dataX"
                                                                placeholder="x">
-                                                        <span class="input-group-addon">px</span>
+                                                        <span class="input-group-prepend input-group-text">px</span>
                                                     </div>
                                                     <div class="input-group input-group-sm">
-                                                        <label class="input-group-addon" for="dataY">Y</label>
+                                                        <label class="input-group-prepend input-group-text" for="dataY">Y</label>
                                                         <input type="text" class="form-control" id="dataY"
                                                                placeholder="y">
-                                                        <span class="input-group-addon">px</span>
+                                                        <span class="input-group-prepend input-group-text">px</span>
                                                     </div>
                                                     <div class="input-group input-group-sm">
-                                                        <label class="input-group-addon" for="dataWidth">Width</label>
+                                                        <label class="input-group-prepend input-group-text" for="dataWidth">Width</label>
                                                         <input type="text" class="form-control" id="dataWidth"
                                                                placeholder="width">
-                                                        <span class="input-group-addon">px</span>
+                                                        <span class="input-group-prepend input-group-text">px</span>
                                                     </div>
                                                     <div class="input-group input-group-sm">
-                                                        <label class="input-group-addon" for="dataHeight">Height</label>
+                                                        <label class="input-group-prepend input-group-text" for="dataHeight">Height</label>
                                                         <input type="text" class="form-control" id="dataHeight"
                                                                placeholder="height">
-                                                        <span class="input-group-addon">px</span>
+                                                        <span class="input-group-prepend input-group-text">px</span>
                                                     </div>
                                                     <div class="input-group input-group-sm">
-                                                        <label class="input-group-addon" for="dataRotate">Rotate</label>
+                                                        <label class="input-group-prepend input-group-text" for="dataRotate">Rotate</label>
                                                         <input type="text" class="form-control" id="dataRotate"
                                                                placeholder="rotate">
-                                                        <span class="input-group-addon">deg</span>
+                                                        <span class="input-group-prepend input-group-text">deg</span>
                                                     </div>
                                                     <div class="input-group input-group-sm">
-                                                        <label class="input-group-addon" for="dataScaleX">ScaleX</label>
+                                                        <label class="input-group-prepend input-group-text" for="dataScaleX">ScaleX</label>
                                                         <input type="text" class="form-control" id="dataScaleX"
                                                                placeholder="scaleX">
                                                     </div>
                                                     <div class="input-group input-group-sm">
-                                                        <label class="input-group-addon" for="dataScaleY">ScaleY</label>
+                                                        <label class="input-group-prepend input-group-text" for="dataScaleY">ScaleY</label>
                                                         <input type="text" class="form-control" id="dataScaleY"
                                                                placeholder="scaleY">
                                                     </div>
