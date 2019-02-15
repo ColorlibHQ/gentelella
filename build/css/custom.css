@@ -158,21 +158,22 @@
     background: #2A3F54;
 }
 
-.nav-sm .container-fluid.body .col-md-3.left_col {
+.left_col {
     min-height: 100%;
-    width: 70px;
     padding: 0;
     z-index: 9999;
     position: absolute;
 }
 
-.nav-sm .container-fluid.body .col-md-3.left_col.menu_fixed {
+.left_col.menu_fixed {
     position: fixed;
     height: 100%;
 }
-
-.nav-sm .container-fluid.body .col-md-3.left_col .mCSB_container,
-.nav-sm .container-fluid.body .col-md-3.left_col .mCustomScrollBox {
+.left_col.menu_fixed + .right_col_wrapper {
+    float:right;
+}
+.left_col .mCSB_container,
+.left_col .mCustomScrollBox {
     overflow: visible;
 }
 
@@ -2067,6 +2068,7 @@ h4.graph_title {
     padding-left: 10px;
     border-radius: 4px;
 }
+
 /* TODO Delete commented lines */
 /*.fontawesome-icon-list .fa-hover a:hover .fa {
     font-size: 28px;
@@ -3596,8 +3598,8 @@ ul.project_files li a i {
 .thumbnail {
     height: 190px;
     overflow: hidden;
-    padding:5px;
-    border:1px solid #ddd;
+    padding: 5px;
+    border: 1px solid #ddd;
 }
 
 .view {
@@ -4839,7 +4841,7 @@ ul.notifications {
 }
 
 .fc-view-container .fc-content {
-    color:#fff;
+    color: #fff;
 }
 
 /** /Dropzone.js **/
