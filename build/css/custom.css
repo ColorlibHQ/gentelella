@@ -1092,11 +1092,6 @@ article.media {
     float: left;
 }
 
-h2 {
-    font-size: 18px;
-    font-weight: 400;
-}
-
 #left, #right {
     display: table;
 }
@@ -1200,11 +1195,6 @@ h2 {
     float: left;
     clear: both;
     margin-top: 5px;
-}
-
-.x_content h4 {
-    font-size: 16px;
-    font-weight: 500;
 }
 
 legend {
