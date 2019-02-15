@@ -162,7 +162,6 @@
     min-height: 100%;
     padding: 0;
     z-index: 9999;
-    position: absolute;
 }
 
 .left_col.menu_fixed {
@@ -3854,10 +3853,6 @@ ul.project_files li a i {
 
 .product-image img {
     width: 90%;
-}
-
-.prod_color li {
-    margin: 0 10px;
 }
 
 .prod_color li p {
