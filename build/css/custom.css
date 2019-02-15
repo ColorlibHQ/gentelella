@@ -4838,6 +4838,10 @@ ul.notifications {
     border: 1px solid #e5e5e5;
 }
 
+.fc-view-container .fc-content {
+    color:#fff;
+}
+
 /** /Dropzone.js **/
 @media (max-width: 767px) {
     .x_panel .dropdown-menu {
