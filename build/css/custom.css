@@ -676,7 +676,7 @@ table.no-margin .progress {
     position: relative;
     min-height: 1px;
     float: left;
-
+    padding: 15px;
 }
 
 h1, .h1, h2, .h2, h3, .h3 {
@@ -2501,16 +2501,16 @@ legend {
 .form-control-feedback.left {
     border-right: 1px solid #ccc;
     left: 28px;
-    top:0px;
-    padding-right:10px;
+    top: 0px;
+    padding-right: 10px;
     position: absolute;
 }
 
 .form-control-feedback.right {
     border-left: 1px solid #ccc;
     right: 28px;
-    top:0px;
-    padding-left:10px;
+    top: 0px;
+    padding-left: 10px;
     position: absolute;
 }
 
@@ -3606,6 +3606,8 @@ ul.project_files li a i {
 .thumbnail {
     height: 190px;
     overflow: hidden;
+    padding:5px;
+    border:1px solid #ddd;
 }
 
 .view {
