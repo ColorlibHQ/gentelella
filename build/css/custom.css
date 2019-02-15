@@ -2067,19 +2067,19 @@ h4.graph_title {
     padding-left: 10px;
     border-radius: 4px;
 }
-
-.fontawesome-icon-list .fa-hover a:hover .fa {
+/* TODO Delete commented lines */
+/*.fontawesome-icon-list .fa-hover a:hover .fa {
     font-size: 28px;
     vertical-align: -6px;
-}
+}*/
 
-.fontawesome-icon-list .fa-hover a .fa {
+/*.fontawesome-icon-list .fa-hover a .fa {
     width: 32px;
     font-size: 16px;
     display: inline-block;
     text-align: right;
     margin-right: 10px;
-}
+}*/
 
 .main_menu .fa {
     width: 26px;
