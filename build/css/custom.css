@@ -386,13 +386,14 @@
     }
 }
 
-.nav-md .container-fluid .left_col {
+/* TODO to be deleted */
+/*.nav-md .container-fluid .left_col {
     min-height: 100%;
     width: 230px;
     padding: 0;
     position: absolute;
     z-index: 1;
-}
+}*/
 
 .nav-md .container-fluid .left_col.menu_fixed {
     height: 100%;
