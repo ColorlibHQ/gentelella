@@ -4863,6 +4863,8 @@ ul.notifications {
 @media (max-width:510px) {
     .dataTables_filter {
         float:none;
-        width:100%;
+    }
+    div.dataTables_wrapper div.dataTables_length, div.dataTables_wrapper div.dataTables_filter, div.dataTables_wrapper div.dataTables_info, div.dataTables_wrapper div.dataTables_paginate {
+        text-align: left;
     }
 }
