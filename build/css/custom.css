@@ -2163,7 +2163,7 @@ h4.graph_title {
     line-height: 1.65857;
 }
 
-.tile-stats .count, .tile-stats h3, .tile-stats p {
+.tile-stats .count, .tile-stats h5, .tile-stats p {
     position: relative;
     margin: 0;
     margin-left: 10px;
@@ -2171,7 +2171,7 @@ h4.graph_title {
     padding: 0;
 }
 
-.tile-stats h3 {
+.tile-stats h5 {
     color: #BAB8B8;
 }
 
