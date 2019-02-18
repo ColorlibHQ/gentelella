@@ -580,11 +580,12 @@ body {
     padding: 0 !important;
 }
 
-.page-title {
+/* TODO to be deleted */
+/*.page-title {
     width: 100%;
     height: 65px;
     padding: 10px 0;
-}
+}*/
 
 .page-title .title_left {
     width: 45%;
@@ -900,9 +901,10 @@ a:hover, a:focus {
     background-color: transparent;
 }
 
-.top_search {
+/*TODO to be deleted */
+/*.top_search {
     padding: 0;
-}
+}*/
 
 .top_search .form-control {
     border-right: 0;
