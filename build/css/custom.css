@@ -1206,6 +1206,9 @@ legend {
 }
 
 /** Contacts **/
+.profile_details {
+    padding:15px;
+}
 .profile_details:nth-child(3n) {
     clear: both;
 }
@@ -1214,6 +1217,8 @@ legend {
     display: inline-block;
     padding: 10px 0 0;
     background: #fff;
+    width:100%;
+    height:100%;
 }
 
 .profile_details .profile_view .divider {
@@ -1248,6 +1253,8 @@ legend {
 .profile_details .profile_view .img-circle {
     border: 1px solid #E6E9ED;
     padding: 2px;
+    max-width:150px;
+    border-radius:75px;
 }
 
 .profile_details .profile_view h2 {
