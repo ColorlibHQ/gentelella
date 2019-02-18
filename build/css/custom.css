@@ -879,7 +879,7 @@ a:hover, a:focus {
     display: block;
     height: 55px;
     margin: 0;
-    padding-left: 10px;
+  /*  padding-left: 10px;*/
 }
 
 .site_title:hover, .site_title:focus {
@@ -1504,7 +1504,7 @@ table.jambo_table tbody tr.selected td {
 }
 
 .dataTables_filter {
-    width: 50%;
+   /* width: 50%;*/
     float: right;
     text-align: right;
 }
@@ -2121,6 +2121,12 @@ h4.graph_title {
     background-clip: padding-box;
     background: #FFF;
     transition: all 300ms ease-in-out;
+    padding-left:10px;
+    padding-right:10px;
+}
+
+.tile-stats h3 {
+    padding-left:10px;
 }
 
 .tile-stats:hover .icon i {
@@ -3159,10 +3165,11 @@ ul.social li {
     margin-top: 0;
 }
 
-.widget {
+/* TODO to be deleted */
+/*.widget {
     min-width: 250px;
     max-width: 310px;
-}
+}*/
 
 .widget_tally_box .btn-group button {
     text-align: center;
@@ -4849,5 +4856,13 @@ ul.notifications {
     .x_panel .dropdown-menu {
         left: initial;
         right: 0;
+    }
+}
+
+
+@media (max-width:510px) {
+    .dataTables_filter {
+        float:none;
+        width:100%;
     }
 }
