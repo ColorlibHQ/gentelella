@@ -1130,20 +1130,20 @@ article.media {
     font-size: 20px;
 }
 
-.accordion .panel {
+.accordion .card {
     margin-bottom: 5px;
     border-radius: 0;
     border-bottom: 1px solid #efefef;
 }
-
-.accordion .panel-heading {
+/* TODO to be deleted */
+/*.accordion .card-title {
     background: #F2F5F7;
     padding: 13px;
     width: 100%;
     display: block;
-}
+}*/
 
-.accordion .panel:hover {
+.accordion .card:hover {
     background: #F2F5F7;
 }
 
