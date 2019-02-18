@@ -290,14 +290,14 @@
 
                                 <div class="col-md-6 text-right">
                                     <div class="row">
-                                    <div class="offset-md-7 col-md-5 col-sm-5 col-12 form-group pull-right top_search">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="Search for...">
-                                            <span class="input-group-btn">
+                                        <div class="offset-md-7 col-md-5 col-sm-5 col-12 form-group pull-right top_search">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" placeholder="Search for...">
+                                                <span class="input-group-btn">
                       <button class="btn btn-light" type="button">Go!</button>
                     </span>
+                                            </div>
                                         </div>
-                                    </div>
                                     </div>
                                 </div>
                             </div>
@@ -332,7 +332,7 @@
                                             <p>Simple table with project listing with progress and editing options</p>
 
                                             <!-- start project list -->
-                                            <table class="table table-striped projects">
+                                            <table class="table table-striped projects responsive-experimental">
                                                 <thead>
                                                 <tr>
                                                     <th style="width: 1%">#</th>
@@ -345,369 +345,488 @@
                                                 </thead>
                                                 <tbody>
                                                 <tr>
-                                                    <td>#</td>
-                                                    <td>
-                                                        <a>Pesamakini Backend UI</a>
-                                                        <br/>
-                                                        <small>Created 01.01.2015</small>
-                                                    </td>
-                                                    <td>
-                                                        <ul class="list-inline">
-                                                            <li>
-                                                                <img src="images/user.png" class="avatar" alt="Avatar">
-                                                            </li>
-                                                            <li>
-                                                                <img src="images/user.png" class="avatar" alt="Avatar">
-                                                            </li>
-                                                            <li>
-                                                                <img src="images/user.png" class="avatar" alt="Avatar">
-                                                            </li>
-                                                            <li>
-                                                                <img src="images/user.png" class="avatar" alt="Avatar">
-                                                            </li>
-                                                        </ul>
-                                                    </td>
-                                                    <td class="project_progress">
-                                                        <div class="progress progress_sm">
-                                                            <div class="progress-bar bg-green" role="progressbar"
-                                                                 data-transitiongoal="57"></div>
+                                                    <td data-label="#">#</td>
+                                                    <td data-label="Project Name" class="clearfix">
+                                                        <div class="td-wraper">
+                                                            <a>Pesamakini Backend UI</a>
+                                                            <br/>
+                                                            <small>Created 01.01.2015</small>
                                                         </div>
-                                                        <small>57% Complete</small>
                                                     </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-success btn-xs">Success
-                                                        </button>
+                                                    <td data-label="Team Members" class="clearfix">
+                                                        <div class="td-wrapper">
+                                                            <ul class="list-inline">
+                                                                <li>
+                                                                    <img src="images/user.png" class="avatar"
+                                                                         alt="Avatar">
+                                                                </li>
+                                                                <li>
+                                                                    <img src="images/user.png" class="avatar"
+                                                                         alt="Avatar">
+                                                                </li>
+                                                                <li>
+                                                                    <img src="images/user.png" class="avatar"
+                                                                         alt="Avatar">
+                                                                </li>
+                                                                <li>
+                                                                    <img src="images/user.png" class="avatar"
+                                                                         alt="Avatar">
+                                                                </li>
+                                                            </ul>
+                                                        </div>
                                                     </td>
-                                                    <td>
-                                                        <a href="#" class="btn btn-primary btn-xs"><i
-                                                                class="fa fa-folder"></i> View </a>
-                                                        <a href="#" class="btn btn-info btn-xs"><i
-                                                                class="fa fa-pencil"></i> Edit </a>
-                                                        <a href="#" class="btn btn-danger btn-xs"><i
-                                                                class="fa fa-trash-o"></i> Delete </a>
+                                                    <td class="project_progress clearfix" data-label="Project Progress">
+                                                        <div class="td-wrapper">
+                                                            <div class="progress progress_sm">
+                                                                <div class="progress-bar bg-green" role="progressbar"
+                                                                     data-transitiongoal="57"></div>
+                                                            </div>
+                                                            <small>57% Complete</small>
+                                                        </div>
+                                                    </td>
+                                                    <td data-label="Status" class="clearfix">
+                                                        <div class="td-wrapper">
+                                                            <button type="button" class="btn btn-success btn-xs">Success
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                    <td data-label="Edit" class="clearfix">
+                                                        <div class="td-wrapper">
+                                                            <a href="#" class="btn btn-primary btn-xs"><i
+                                                                    class="fa fa-folder"></i> View </a>
+                                                            <a href="#" class="btn btn-info btn-xs"><i
+                                                                    class="fa fa-pencil"></i> Edit </a>
+                                                            <a href="#" class="btn btn-danger btn-xs"><i
+                                                                    class="fa fa-trash-o"></i> Delete </a>
+                                                        </div>
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>#</td>
-                                                    <td>
-                                                        <a>Pesamakini Backend UI</a>
-                                                        <br/>
-                                                        <small>Created 01.01.2015</small>
-                                                    </td>
-                                                    <td>
-                                                        <ul class="list-inline">
-                                                            <li>
-                                                                <img src="images/user.png" class="avatar" alt="Avatar">
-                                                            </li>
-                                                            <li>
-                                                                <img src="images/user.png" class="avatar" alt="Avatar">
-                                                            </li>
-                                                        </ul>
-                                                    </td>
-                                                    <td class="project_progress">
-                                                        <div class="progress progress_sm">
-                                                            <div class="progress-bar bg-green" role="progressbar"
-                                                                 data-transitiongoal="47"></div>
+                                                    <td data-label="#">#</td>
+                                                    <td data-label="Project Name" class="clearfix">
+                                                        <div class="td-wrapper">
+                                                            <a>Pesamakini Backend UI</a>
+                                                            <br/>
+                                                            <small>Created 01.01.2015</small>
                                                         </div>
-                                                        <small>47% Complete</small>
                                                     </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-success btn-xs">Success
-                                                        </button>
+                                                    <td data-label="Team Members" class="clearfix">
+                                                        <div class="td-wrapper">
+                                                            <ul class="list-inline">
+                                                                <li>
+                                                                    <img src="images/user.png" class="avatar"
+                                                                         alt="Avatar">
+                                                                </li>
+                                                                <li>
+                                                                    <img src="images/user.png" class="avatar"
+                                                                         alt="Avatar">
+                                                                </li>
+                                                            </ul>
+                                                        </div>
                                                     </td>
-                                                    <td>
-                                                        <a href="#" class="btn btn-primary btn-xs"><i
-                                                                class="fa fa-folder"></i> View </a>
-                                                        <a href="#" class="btn btn-info btn-xs"><i
-                                                                class="fa fa-pencil"></i> Edit </a>
-                                                        <a href="#" class="btn btn-danger btn-xs"><i
-                                                                class="fa fa-trash-o"></i> Delete </a>
+                                                    <td class="project_progress clearfix" data-label="Project Progress">
+                                                        <div class="td-wrapper">
+                                                            <div class="progress progress_sm">
+                                                                <div class="progress-bar bg-green" role="progressbar"
+                                                                     data-transitiongoal="47"></div>
+                                                            </div>
+                                                            <small>47% Complete</small>
+                                                        </div>
+                                                    </td>
+                                                    <td data-label="Status" class="clearfix">
+                                                        <div class="td-wrapper">
+                                                            <button type="button" class="btn btn-success btn-xs">Success
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                    <td data-label="Edit" class="clearfix">
+                                                        <div class="td-wrapper">
+                                                            <a href="#" class="btn btn-primary btn-xs"><i
+                                                                    class="fa fa-folder"></i> View </a>
+                                                            <a href="#" class="btn btn-info btn-xs"><i
+                                                                    class="fa fa-pencil"></i> Edit </a>
+                                                            <a href="#" class="btn btn-danger btn-xs"><i
+                                                                    class="fa fa-trash-o"></i> Delete </a>
+                                                        </div>
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>#</td>
-                                                    <td>
-                                                        <a>Pesamakini Backend UI</a>
-                                                        <br/>
-                                                        <small>Created 01.01.2015</small>
-                                                    </td>
-                                                    <td>
-                                                        <ul class="list-inline">
-                                                            <li>
-                                                                <img src="images/user.png" class="avatar" alt="Avatar">
-                                                            </li>
-                                                            <li>
-                                                                <img src="images/user.png" class="avatar" alt="Avatar">
-                                                            </li>
-                                                            <li>
-                                                                <img src="images/user.png" class="avatar" alt="Avatar">
-                                                            </li>
-                                                        </ul>
-                                                    </td>
-                                                    <td class="project_progress">
-                                                        <div class="progress progress_sm">
-                                                            <div class="progress-bar bg-green" role="progressbar"
-                                                                 data-transitiongoal="77"></div>
+                                                    <td data-label="#">#</td>
+                                                    <td data-label="Project Name" class="clearfix">
+                                                        <div class="td-wrapper">
+                                                            <a>Pesamakini Backend UI</a>
+                                                            <br/>
+                                                            <small>Created 01.01.2015</small>
                                                         </div>
-                                                        <small>77% Complete</small>
                                                     </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-success btn-xs">Success
-                                                        </button>
+                                                    <td data-abel="Team Members" class="clearfix">
+                                                        <div class="td-wrapper">
+                                                            <ul class="list-inline">
+                                                                <li>
+                                                                    <img src="images/user.png" class="avatar"
+                                                                         alt="Avatar">
+                                                                </li>
+                                                                <li>
+                                                                    <img src="images/user.png" class="avatar"
+                                                                         alt="Avatar">
+                                                                </li>
+                                                                <li>
+                                                                    <img src="images/user.png" class="avatar"
+                                                                         alt="Avatar">
+                                                                </li>
+                                                            </ul>
+                                                        </div>
                                                     </td>
-                                                    <td>
-                                                        <a href="#" class="btn btn-primary btn-xs"><i
-                                                                class="fa fa-folder"></i> View </a>
-                                                        <a href="#" class="btn btn-info btn-xs"><i
-                                                                class="fa fa-pencil"></i> Edit </a>
-                                                        <a href="#" class="btn btn-danger btn-xs"><i
-                                                                class="fa fa-trash-o"></i> Delete </a>
+                                                    <td class="project_progress clearfix" da ta-label="Project Progress">
+                                                        <div class="td-wrapper">
+                                                            <div class="progress progress_sm">
+                                                                <div class="progress-bar bg-green" role="progressbar"
+                                                                     data-transitiongoal="77"></div>
+                                                            </div>
+                                                            <small>77% Complete</small>
+                                                        </div>
+                                                    </td>
+                                                    <td data-label="Status" class="clearfix">
+                                                        <div class="td-wrapper">
+                                                            <button type="button" class="btn btn-success btn-xs">Success
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                    <td data-label="Edit" class="clearfix">
+                                                        <div class="td-wrapper">
+                                                            <a href="#" class="btn btn-primary btn-xs"><i
+                                                                    class="fa fa-folder"></i> View </a>
+                                                            <a href="#" class="btn btn-info btn-xs"><i
+                                                                    class="fa fa-pencil"></i> Edit </a>
+                                                            <a href="#" class="btn btn-danger btn-xs"><i
+                                                                    class="fa fa-trash-o"></i> Delete </a>
+                                                        </div>
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>#</td>
-                                                    <td>
-                                                        <a>Pesamakini Backend UI</a>
-                                                        <br/>
-                                                        <small>Created 01.01.2015</small>
-                                                    </td>
-                                                    <td>
-                                                        <ul class="list-inline">
-                                                            <li>
-                                                                <img src="images/user.png" class="avatar" alt="Avatar">
-                                                            </li>
-                                                            <li>
-                                                                <img src="images/user.png" class="avatar" alt="Avatar">
-                                                            </li>
-                                                            <li>
-                                                                <img src="images/user.png" class="avatar" alt="Avatar">
-                                                            </li>
-                                                            <li>
-                                                                <img src="images/user.png" class="avatar" alt="Avatar">
-                                                            </li>
-                                                        </ul>
-                                                    </td>
-                                                    <td class="project_progress">
-                                                        <div class="progress progress_sm">
-                                                            <div class="progress-bar bg-green" role="progressbar"
-                                                                 data-transitiongoal="60"></div>
+                                                    <td data-label="#">#</td>
+                                                    <td data-label="Project Name" class="clearfix">
+                                                        <div class="td-wrapper">
+                                                            <a>Pesamakini Backend UI</a>
+                                                            <br/>
+                                                            <small>Created 01.01.2015</small>
                                                         </div>
-                                                        <small>60% Complete</small>
                                                     </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-success btn-xs">Success
-                                                        </button>
+                                                    <td data-label="Team Members" class="clearfix">
+                                                        <div class="td-wrapper">
+                                                            <ul class="list-inline">
+                                                                <li>
+                                                                    <img src="images/user.png" class="avatar"
+                                                                         alt="Avatar">
+                                                                </li>
+                                                                <li>
+                                                                    <img src="images/user.png" class="avatar"
+                                                                         alt="Avatar">
+                                                                </li>
+                                                                <li>
+                                                                    <img src="images/user.png" class="avatar"
+                                                                         alt="Avatar">
+                                                                </li>
+                                                                <li>
+                                                                    <img src="images/user.png" class="avatar"
+                                                                         alt="Avatar">
+                                                                </li>
+                                                            </ul>
+                                                        </div>
                                                     </td>
-                                                    <td>
-                                                        <a href="#" class="btn btn-primary btn-xs"><i
-                                                                class="fa fa-folder"></i> View </a>
-                                                        <a href="#" class="btn btn-info btn-xs"><i
-                                                                class="fa fa-pencil"></i> Edit </a>
-                                                        <a href="#" class="btn btn-danger btn-xs"><i
-                                                                class="fa fa-trash-o"></i> Delete </a>
+                                                    <td class="project_progress clearfix" data-label="Project Progress">
+                                                        <div class="td-wrapper">
+                                                            <div class="progress progress_sm">
+                                                                <div class="progress-bar bg-green" role="progressbar"
+                                                                     data-transitiongoal="60"></div>
+                                                            </div>
+                                                            <small>60% Complete</small>
+                                                        </div>
+                                                    </td>
+                                                    <td data-label="Status" class="clearfix">
+                                                        <div class="td-wrapper">
+                                                            <button type="button" class="btn btn-success btn-xs">Success
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                    <td data-label="Edit" class="clearfix">
+                                                        <div class="td-wrapper">
+                                                            <a href="#" class="btn btn-primary btn-xs"><i
+                                                                    class="fa fa-folder"></i> View </a>
+                                                            <a href="#" class="btn btn-info btn-xs"><i
+                                                                    class="fa fa-pencil"></i> Edit </a>
+                                                            <a href="#" class="btn btn-danger btn-xs"><i
+                                                                    class="fa fa-trash-o"></i> Delete </a>
+                                                        </div>
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>#</td>
-                                                    <td>
-                                                        <a>Pesamakini Backend UI</a>
-                                                        <br/>
-                                                        <small>Created 01.01.2015</small>
-                                                    </td>
-                                                    <td>
-                                                        <ul class="list-inline">
-                                                            <li>
-                                                                <img src="images/user.png" class="avatar" alt="Avatar">
-                                                            </li>
-                                                            <li>
-                                                                <img src="images/user.png" class="avatar" alt="Avatar">
-                                                            </li>
-                                                            <li>
-                                                                <img src="images/user.png" class="avatar" alt="Avatar">
-                                                            </li>
-                                                        </ul>
-                                                    </td>
-                                                    <td class="project_progress">
-                                                        <div class="progress progress_sm">
-                                                            <div class="progress-bar bg-green" role="progressbar"
-                                                                 data-transitiongoal="12"></div>
+                                                    <td data-label="#">#</td>
+                                                    <td data-label="Project Name" class="clearfix">
+                                                        <div class="td-wrapper">
+                                                            <a>Pesamakini Backend UI</a>
+                                                            <br/>
+                                                            <small>Created 01.01.2015</small>
                                                         </div>
-                                                        <small>12% Complete</small>
                                                     </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-success btn-xs">Success
-                                                        </button>
+                                                    <td data-label="Team Members" class="clearfix">
+                                                        <div class="td-wrapper">
+                                                            <ul class="list-inline">
+                                                                <li>
+                                                                    <img src="images/user.png" class="avatar"
+                                                                         alt="Avatar">
+                                                                </li>
+                                                                <li>
+                                                                    <img src="images/user.png" class="avatar"
+                                                                         alt="Avatar">
+                                                                </li>
+                                                                <li>
+                                                                    <img src="images/user.png" class="avatar"
+                                                                         alt="Avatar">
+                                                                </li>
+                                                            </ul>
+                                                        </div>
                                                     </td>
-                                                    <td>
-                                                        <a href="#" class="btn btn-primary btn-xs"><i
-                                                                class="fa fa-folder"></i> View </a>
-                                                        <a href="#" class="btn btn-info btn-xs"><i
-                                                                class="fa fa-pencil"></i> Edit </a>
-                                                        <a href="#" class="btn btn-danger btn-xs"><i
-                                                                class="fa fa-trash-o"></i> Delete </a>
+                                                    <td class="project_progress clearfix" data-label="Project Progress">
+                                                        <div class="td-wrapper">
+                                                            <div class="progress progress_sm">
+                                                                <div class="progress-bar bg-green" role="progressbar"
+                                                                     data-transitiongoal="12"></div>
+                                                            </div>
+                                                            <small>12% Complete</small>
+                                                        </div>
+                                                    </td>
+                                                    <td data-label="Status" class="clearfix">
+                                                        <div class="td-wrapper">
+                                                            <button type="button" class="btn btn-success btn-xs">Success
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                    <td data-label="Edit" class="clearfix">
+                                                        <div class="td-wrapper">
+                                                            <a href="#" class="btn btn-primary btn-xs"><i
+                                                                    class="fa fa-folder"></i> View </a>
+                                                            <a href="#" class="btn btn-info btn-xs"><i
+                                                                    class="fa fa-pencil"></i> Edit </a>
+                                                            <a href="#" class="btn btn-danger btn-xs"><i
+                                                                    class="fa fa-trash-o"></i> Delete </a>
+                                                        </div>
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>#</td>
-                                                    <td>
-                                                        <a>Pesamakini Backend UI</a>
-                                                        <br/>
-                                                        <small>Created 01.01.2015</small>
-                                                    </td>
-                                                    <td>
-                                                        <ul class="list-inline">
-                                                            <li>
-                                                                <img src="images/user.png" class="avatar" alt="Avatar">
-                                                            </li>
-                                                            <li>
-                                                                <img src="images/user.png" class="avatar" alt="Avatar">
-                                                            </li>
-                                                            <li>
-                                                                <img src="images/user.png" class="avatar" alt="Avatar">
-                                                            </li>
-                                                            <li>
-                                                                <img src="images/user.png" class="avatar" alt="Avatar">
-                                                            </li>
-                                                        </ul>
-                                                    </td>
-                                                    <td class="project_progress">
-                                                        <div class="progress progress_sm">
-                                                            <div class="progress-bar bg-green" role="progressbar"
-                                                                 data-transitiongoal="35"></div>
+                                                    <td data-label="#">#</td>
+                                                    <td data-label="Project Name" class="clearfix">
+                                                        <div class="td-wrapper">
+                                                            <a>Pesamakini Backend UI</a>
+                                                            <br/>
+                                                            <small>Created 01.01.2015</small>
                                                         </div>
-                                                        <small>35% Complete</small>
                                                     </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-success btn-xs">Success
-                                                        </button>
+                                                    <td data-label="Team Members" class="clearfix">
+                                                        <div class="td-wrapper">
+                                                            <ul class="list-inline">
+                                                                <li>
+                                                                    <img src="images/user.png" class="avatar"
+                                                                         alt="Avatar">
+                                                                </li>
+                                                                <li>
+                                                                    <img src="images/user.png" class="avatar"
+                                                                         alt="Avatar">
+                                                                </li>
+                                                                <li>
+                                                                    <img src="images/user.png" class="avatar"
+                                                                         alt="Avatar">
+                                                                </li>
+                                                                <li>
+                                                                    <img src="images/user.png" class="avatar"
+                                                                         alt="Avatar">
+                                                                </li>
+                                                            </ul>
+                                                        </div>
                                                     </td>
-                                                    <td>
-                                                        <a href="#" class="btn btn-primary btn-xs"><i
-                                                                class="fa fa-folder"></i> View </a>
-                                                        <a href="#" class="btn btn-info btn-xs"><i
-                                                                class="fa fa-pencil"></i> Edit </a>
-                                                        <a href="#" class="btn btn-danger btn-xs"><i
-                                                                class="fa fa-trash-o"></i> Delete </a>
+                                                    <td class="project_progress clearfix" data-label="Project Progress">
+                                                        <div class="td-wrapper">
+                                                            <div class="progress progress_sm">
+                                                                <div class="progress-bar bg-green" role="progressbar"
+                                                                     data-transitiongoal="35"></div>
+                                                            </div>
+                                                            <small>35% Complete</small>
+                                                        </div>
+                                                    </td>
+                                                    <td data-label="Status" class="clearfix">
+                                                        <div class="td-wrapper">
+                                                            <button type="button" class="btn btn-success btn-xs">Success
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                    <td data-label="Edit" class="clearfix">
+                                                        <div class="td-wrapper">
+                                                            <a href="#" class="btn btn-primary btn-xs"><i
+                                                                    class="fa fa-folder"></i> View </a>
+                                                            <a href="#" class="btn btn-info btn-xs"><i
+                                                                    class="fa fa-pencil"></i> Edit </a>
+                                                            <a href="#" class="btn btn-danger btn-xs"><i
+                                                                    class="fa fa-trash-o"></i> Delete </a>
+                                                        </div>
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>#</td>
-                                                    <td>
-                                                        <a>Pesamakini Backend UI</a>
-                                                        <br/>
-                                                        <small>Created 01.01.2015</small>
-                                                    </td>
-                                                    <td>
-                                                        <ul class="list-inline">
-                                                            <li>
-                                                                <img src="images/user.png" class="avatar" alt="Avatar">
-                                                            </li>
-                                                            <li>
-                                                                <img src="images/user.png" class="avatar" alt="Avatar">
-                                                            </li>
-                                                        </ul>
-                                                    </td>
-                                                    <td class="project_progress">
-                                                        <div class="progress progress_sm">
-                                                            <div class="progress-bar bg-green" role="progressbar"
-                                                                 data-transitiongoal="87"></div>
+                                                    <td data-label="#">#</td>
+                                                    <td data-label="Project Name" class="clearfix">
+                                                        <div class="td-wrapper">
+                                                            <a>Pesamakini Backend UI</a>
+                                                            <br/>
+                                                            <small>Created 01.01.2015</small>
                                                         </div>
-                                                        <small>87% Complete</small>
                                                     </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-success btn-xs">Success
-                                                        </button>
+                                                    <td data-label="Team Members" class="clearfix">
+                                                        <div class="td-wrapper">
+                                                            <ul class="list-inline">
+                                                                <li>
+                                                                    <img src="images/user.png" class="avatar"
+                                                                         alt="Avatar">
+                                                                </li>
+                                                                <li>
+                                                                    <img src="images/user.png" class="avatar"
+                                                                         alt="Avatar">
+                                                                </li>
+                                                            </ul>
+                                                        </div>
                                                     </td>
-                                                    <td>
-                                                        <a href="#" class="btn btn-primary btn-xs"><i
-                                                                class="fa fa-folder"></i> View </a>
-                                                        <a href="#" class="btn btn-info btn-xs"><i
-                                                                class="fa fa-pencil"></i> Edit </a>
-                                                        <a href="#" class="btn btn-danger btn-xs"><i
-                                                                class="fa fa-trash-o"></i> Delete </a>
+                                                    <td class="project_progress clearfix" data-label="Project Progress">
+                                                        <div class="td-wrapper">
+                                                            <div class="progress progress_sm">
+                                                                <div class="progress-bar bg-green" role="progressbar"
+                                                                     data-transitiongoal="87"></div>
+                                                            </div>
+                                                            <small>87% Complete</small>
+                                                        </div>
+                                                    </td>
+                                                    <td data-label="Status" class="clearfix">
+                                                        <div class="td-wrapper">
+                                                            <button type="button" class="btn btn-success btn-xs">Success
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                    <td data-label="Edit" class="clearfix">
+                                                        <div class="td-wrapper">
+                                                            <a href="#" class="btn btn-primary btn-xs"><i
+                                                                    class="fa fa-folder"></i> View </a>
+                                                            <a href="#" class="btn btn-info btn-xs"><i
+                                                                    class="fa fa-pencil"></i> Edit </a>
+                                                            <a href="#" class="btn btn-danger btn-xs"><i
+                                                                    class="fa fa-trash-o"></i> Delete </a>
+                                                        </div>
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>#</td>
-                                                    <td>
-                                                        <a>Pesamakini Backend UI</a>
-                                                        <br/>
-                                                        <small>Created 01.01.2015</small>
-                                                    </td>
-                                                    <td>
-                                                        <ul class="list-inline">
-                                                            <li>
-                                                                <img src="images/user.png" class="avatar" alt="Avatar">
-                                                            </li>
-                                                            <li>
-                                                                <img src="images/user.png" class="avatar" alt="Avatar">
-                                                            </li>
-                                                            <li>
-                                                                <img src="images/user.png" class="avatar" alt="Avatar">
-                                                            </li>
-                                                        </ul>
-                                                    </td>
-                                                    <td class="project_progress">
-                                                        <div class="progress progress_sm">
-                                                            <div class="progress-bar bg-green" role="progressbar"
-                                                                 data-transitiongoal="77"></div>
+                                                    <td data-label="#">#</td>
+                                                    <td data-label="Project Name" class="clearfix">
+                                                        <div class="td-wrapper">
+                                                            <a>Pesamakini Backend UI</a>
+                                                            <br/>
+                                                            <small>Created 01.01.2015</small>
                                                         </div>
-                                                        <small>77% Complete</small>
                                                     </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-success btn-xs">Success
-                                                        </button>
+                                                    <td data-label="Team Members" class="clearfix">
+                                                        <div class="td-wrapper">
+                                                            <ul class="list-inline">
+                                                                <li>
+                                                                    <img src="images/user.png" class="avatar"
+                                                                         alt="Avatar">
+                                                                </li>
+                                                                <li>
+                                                                    <img src="images/user.png" class="avatar"
+                                                                         alt="Avatar">
+                                                                </li>
+                                                                <li>
+                                                                    <img src="images/user.png" class="avatar"
+                                                                         alt="Avatar">
+                                                                </li>
+                                                            </ul>
+                                                        </div>
                                                     </td>
-                                                    <td>
-                                                        <a href="#" class="btn btn-primary btn-xs"><i
-                                                                class="fa fa-folder"></i> View </a>
-                                                        <a href="#" class="btn btn-info btn-xs"><i
-                                                                class="fa fa-pencil"></i> Edit </a>
-                                                        <a href="#" class="btn btn-danger btn-xs"><i
-                                                                class="fa fa-trash-o"></i> Delete </a>
+                                                    <td class="project_progress clearfix" data-label="Project Progress">
+                                                        <div class="td-wrapper">
+                                                            <div class="progress progress_sm">
+                                                                <div class="progress-bar bg-green" role="progressbar"
+                                                                     data-transitiongoal="77"></div>
+                                                            </div>
+                                                            <small>77% Complete</small>
+                                                        </div>
+                                                    </td>
+                                                    <td data-label="Status" class="clearfix">
+                                                        <div class="td-wrapper">
+                                                            <button type="button" class="btn btn-success btn-xs">Success
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                    <td data-label="Edit" class="clearfix">
+                                                        <div class="td-wrapper">
+                                                            <a href="#" class="btn btn-primary btn-xs"><i
+                                                                    class="fa fa-folder"></i> View </a>
+                                                            <a href="#" class="btn btn-info btn-xs"><i
+                                                                    class="fa fa-pencil"></i> Edit </a>
+                                                            <a href="#" class="btn btn-danger btn-xs"><i
+                                                                    class="fa fa-trash-o"></i> Delete </a>
+                                                        </div>
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>#</td>
-                                                    <td>
-                                                        <a>Pesamakini Backend UI</a>
-                                                        <br/>
-                                                        <small>Created 01.01.2015</small>
-                                                    </td>
-                                                    <td>
-                                                        <ul class="list-inline">
-                                                            <li>
-                                                                <img src="images/user.png" class="avatar" alt="Avatar">
-                                                            </li>
-                                                            <li>
-                                                                <img src="images/user.png" class="avatar" alt="Avatar">
-                                                            </li>
-                                                            <li>
-                                                                <img src="images/user.png" class="avatar" alt="Avatar">
-                                                            </li>
-                                                            <li>
-                                                                <img src="images/user.png" class="avatar" alt="Avatar">
-                                                            </li>
-                                                        </ul>
-                                                    </td>
-                                                    <td class="project_progress">
-                                                        <div class="progress progress_sm">
-                                                            <div class="progress-bar bg-green" role="progressbar"
-                                                                 data-transitiongoal="77"></div>
+                                                    <td data-label="#">#</td>
+                                                    <td data-label="Project Name" class="clearfix">
+                                                        <div class="td-wrapper">
+                                                            <a>Pesamakini Backend UI</a>
+                                                            <br/>
+                                                            <small>Created 01.01.2015</small>
                                                         </div>
-                                                        <small>77% Complete</small>
                                                     </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-success btn-xs">Success
-                                                        </button>
+                                                    <td data-label="Team Members" class="clearfix">
+                                                        <div class="td-wrapper">
+                                                            <ul class="list-inline">
+                                                                <li>
+                                                                    <img src="images/user.png" class="avatar"
+                                                                         alt="Avatar">
+                                                                </li>
+                                                                <li>
+                                                                    <img src="images/user.png" class="avatar"
+                                                                         alt="Avatar">
+                                                                </li>
+                                                                <li>
+                                                                    <img src="images/user.png" class="avatar"
+                                                                         alt="Avatar">
+                                                                </li>
+                                                                <li>
+                                                                    <img src="images/user.png" class="avatar"
+                                                                         alt="Avatar">
+                                                                </li>
+                                                            </ul>
+                                                        </div>
                                                     </td>
-                                                    <td>
-                                                        <a href="#" class="btn btn-primary btn-xs"><i
-                                                                class="fa fa-folder"></i> View </a>
-                                                        <a href="#" class="btn btn-info btn-xs"><i
-                                                                class="fa fa-pencil"></i> Edit </a>
-                                                        <a href="#" class="btn btn-danger btn-xs"><i
-                                                                class="fa fa-trash-o"></i> Delete </a>
+                                                    <td class="project_progress clearfix" data-label="Project Progress">
+                                                        <div class="td-wrapper">
+                                                            <div class="progress progress_sm">
+                                                                <div class="progress-bar bg-green" role="progressbar"
+                                                                     data-transitiongoal="77"></div>
+                                                            </div>
+                                                            <small>77% Complete</small>
+                                                        </div>
+                                                    </td>
+                                                    <td data-label="Status" class="clearfix">
+                                                        <div class="td-wrapper">
+                                                            <button type="button" class="btn btn-success btn-xs">Success
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                    <td data-label="Edit" class="clearfix">
+                                                        <div class="td-wrapper">
+                                                            <a href="#" class="btn btn-primary btn-xs"><i
+                                                                    class="fa fa-folder"></i> View </a>
+                                                            <a href="#" class="btn btn-info btn-xs"><i
+                                                                    class="fa fa-pencil"></i> Edit </a>
+                                                            <a href="#" class="btn btn-danger btn-xs"><i
+                                                                    class="fa fa-trash-o"></i> Delete </a>
+                                                        </div>
                                                     </td>
                                                 </tr>
                                                 </tbody>

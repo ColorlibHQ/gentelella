@@ -4868,3 +4868,65 @@ ul.notifications {
         text-align: left;
     }
 }
+
+/* Experiment for responsive tables - from https://codepen.io/AllThingsSmitty/pen/MyqmdM */
+@media screen and (max-width: 600px) {
+    table.responsive-experimental {
+        border: 0;
+    }
+
+    table.responsive-experimental caption {
+        font-size: 1.3em;
+    }
+
+    table.responsive-experimental thead {
+        border: none;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+
+    table.responsive-experimental tr {
+        border-bottom: 3px solid #ddd;
+        display: block;
+        margin-bottom: .625em;
+    }
+
+    table.responsive-experimental td {
+        border-bottom: 1px solid #ddd;
+        display: block;
+        font-size: .8em;
+        text-align: right;
+        clear:both;
+    }
+
+    table.responsive-experimental td::before {
+        /*
+        * aria-label has no advantage, it won't be read inside a table
+        content: attr(aria-label);
+        */
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        font-size:13px;
+        width: 30%;
+        text-align: left;
+    }
+
+    table.responsive-experimental td:last-child {
+        border-bottom: 0;
+    }
+
+    table.responsive-experimental ul {
+        float:right;
+    }
+
+    table.responsive-experimental .td-wrapper {
+        width:70%;
+        float:right;
+    }
+}
