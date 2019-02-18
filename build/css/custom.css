@@ -4112,16 +4112,11 @@ a.hiddenanchor {
 .login_content form div a {
     font-size: 12px;
     margin: 10px 15px 0 0;
+    margin-right: 0px;
 }
 
 .reset_pass {
     margin-top: 10px !important;
-}
-
-.login_content div .reset_pass {
-    margin-top: 13px !important;
-    margin-right: 39px;
-    float: right;
 }
 
 .separator {
