@@ -2671,7 +2671,7 @@ input.parsley-error, textarea.parsley-error, select.parsley-error {
 }
 
 a.btn-success, a.btn-primary, a.btn-warning, a.btn-danger {
-    color: #fff;
+    color: #fff !important;
 }
 
 .btn-success {
