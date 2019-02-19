@@ -4870,7 +4870,7 @@ ul.notifications {
 }
 
 /* Experiment for responsive tables - from https://codepen.io/AllThingsSmitty/pen/MyqmdM */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
     table.responsive-experimental {
         border: 0;
     }
