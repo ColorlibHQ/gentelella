@@ -1,5 +1,10 @@
 .body .main_container .right_col {
     background: #F7F7F7;
+    min-height:100vh;
+}
+
+.right_col_wrapper {
+    min-height:100vh;
 }
 
 .daterangepicker .ranges li {
