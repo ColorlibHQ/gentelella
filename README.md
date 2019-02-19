@@ -16,7 +16,7 @@ We would love to see how you use this awesome admin template. You can notify us 
 
 ## Documentation
 
-**[Documentation](https://puikinsh.github.io/gentelella/)**
+**[Documentation](https://colorlibhq.github.io/gentelella/)**
 
 ## Installation via Package Manager
 
