@@ -55,10 +55,7 @@ function setContentHeight() {
         $LEFT_COL = $(".left_col"),
         $RIGHT_COL = $(".right_col"),
         $NAV_MENU = $(".nav_menu"),
-        $FOOTER = $("footer"),
-        randNum = function () {
-            return Math.floor(21 * Math.random()) + 20
-        };
+        $FOOTER = $("footer");
 
     // reset height
     $RIGHT_COL.css('min-height', $(window).height());
@@ -74,21 +71,7 @@ function setContentHeight() {
 };
 
 $(document).ready(function () {
-    var CURRENT_URL = window.location.href.split("#")[0].split("?")[0],
-        $BODY = $("body"),
-        $MENU_TOGGLE = $("#menu_toggle"),
-        $SIDEBAR_MENU = $("#sidebar-menu"),
-        $SIDEBAR_FOOTER = $(".sidebar-footer"),
-        $LEFT_COL = $(".left_col"),
-        $RIGHT_COL = $(".right_col"),
-        $NAV_MENU = $(".nav_menu"),
-        $FOOTER = $("footer"),
-        randNum = function () {
-            return Math.floor(21 * Math.random()) + 20
-        };
-
-
-    $SIDEBAR_MENU.find('a').on('click', function (ev) {
+     $SIDEBAR_MENU.find('a').on('click', function (ev) {
         var $li = $(this).parent();
         var child_menu = $('ul:first', $li);
         var other_list_items = $li.parent().find('li').not($li);
@@ -4271,6 +4254,19 @@ function init_echarts() {
         return a ? this.bind("resize", c(a)) : this.trigger(b)
     }
 }(jQuery, "smartresize");
+
+var CURRENT_URL = window.location.href.split("#")[0].split("?")[0],
+    $BODY = $("body"),
+    $MENU_TOGGLE = $("#menu_toggle"),
+    $SIDEBAR_MENU = $("#sidebar-menu"),
+    $SIDEBAR_FOOTER = $(".sidebar-footer"),
+    $LEFT_COL = $(".left_col"),
+    $RIGHT_COL = $(".right_col"),
+    $NAV_MENU = $(".nav_menu"),
+    $FOOTER = $("footer"),
+    randNum = function () {
+        return Math.floor(21 * Math.random()) + 20
+    };
 
 $(document).ready(function () {
     $(".collapse-link").on("click", function () {
