@@ -415,7 +415,7 @@ body .container-fluid.body .right_col {
 }
 
 .nav_title {
-    width: 230px;
+    width: auto;
     float: left;
     background: #2A3F54;
     border-radius: 0;
@@ -1270,7 +1270,8 @@ legend {
 }
 
 .profile_details .profile_view .ratings {
-    text-align: left;
+    /* TODO Commented text to be deleted */
+    /*text-align: left;*/
     font-size: 16px;
 }
 
@@ -2005,7 +2006,7 @@ a.user-profile {
 }
 
 ul.top_profiles {
-    height: 330px;
+    height: auto;
     width: 100%;
 }
 

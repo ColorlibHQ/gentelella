@@ -131,7 +131,7 @@ $(document).ready(function () {
                 }
 
             }
-            $('.main_container > .row > .right_col_wrapper').removeClass('col-lg-10 col-md-10').addClass('col-lg-11 col-md-11 col-10');
+            $('.main_container > .row > .right_col_wrapper').removeClass('col-lg-10 col-md-12').addClass('col-lg-11 col-md-11 col-10');
         } else {
             $SIDEBAR_MENU.find('li.active-sm ul').show();
             $SIDEBAR_MENU.find('li.active-sm').addClass('active').removeClass('active-sm');
@@ -144,7 +144,7 @@ $(document).ready(function () {
                 }
 
             }
-            $('.main_container > .row > .right_col_wrapper').removeClass('col-lg-11 col-10 col-md-11').addClass('col-lg-10 col-md-10');
+            $('.main_container > .row > .right_col_wrapper').removeClass('col-lg-11 col-10 col-md-11').addClass('col-lg-10 col-md-12');
         }
 
         $BODY.toggleClass('nav-md nav-sm');
@@ -4321,7 +4321,7 @@ $(".bulk_action input").on("ifChecked", function () {
 }), "undefined" != typeof NProgress && ($(document).ready(function () {
     NProgress.start();
 }), $(window).on('load', function () {
-    // setTimeout fix for Firefox 
+    // setTimeout fix for Firefox
     setTimeout(function(){ NProgress.done() },100);
 }));
 var originalLeave = $.fn.popover.Constructor.prototype.leave;
