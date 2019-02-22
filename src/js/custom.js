@@ -6,16 +6,15 @@
  *     // code here
  * });
  */
-(function ($, sr) {
+(function($,sr){
     // debouncing function from John Hann
     // http://unscriptable.com/index.php/2009/03/20/debouncing-javascript-methods/
     var debounce = function (func, threshold, execAsap) {
         var timeout;
 
-        return function debounced() {
+        return function debounced () {
             var obj = this, args = arguments;
-
-            function delayed() {
+            function delayed () {
                 if (!execAsap)
                     func.apply(obj, args);
                 timeout = null;
@@ -31,19 +30,30 @@
     };
 
     // smartresize
-    jQuery.fn[sr] = function (fn) {
-        return fn ? this.bind('resize', debounce(fn)) : this.trigger(sr);
-    };
+    jQuery.fn[sr] = function(fn){  return fn ? this.bind('resize', debounce(fn)) : this.trigger(sr); };
 
-})(jQuery, 'smartresize');
+})(jQuery,'smartresize');
 /**
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
+
+var CURRENT_URL = window.location.href.split("#")[0].split("?")[0],
+    $BODY = $("body"),
+    $MENU_TOGGLE = $("#menu_toggle"),
+    $SIDEBAR_MENU = $("#sidebar-menu"),
+    $SIDEBAR_FOOTER = $(".sidebar-footer"),
+    $LEFT_COL = $(".left_col"),
+    $RIGHT_COL = $(".right_col"),
+    $NAV_MENU = $(".nav_menu"),
+    $FOOTER = $("footer"),
+    randNum = function() {
+        return Math.floor(21 * Math.random()) + 20
+    };
+
 var setContentHeight = function () {
-    // reset height
     $RIGHT_COL.css('min-height', $(window).height());
 
     var bodyHeight = $BODY.outerHeight(),
@@ -58,24 +68,32 @@ var setContentHeight = function () {
 
 /* SIDEBAR */
 
-$(document).ready(function () {
-    $SIDEBAR_MENU.find('a').on('click', function (ev) {
+$(document).ready(function() {
+
+    $SIDEBAR_MENU.find('a').on('click', function(ev) {
         var $li = $(this).parent();
         var child_menu = $('ul:first', $li);
         var other_list_items = $li.parent().find('li').not($li);
         var other_level_menus = $li.parents('.child_menu').find('ul.child_menu').not(child_menu);
         if ($li.is('.active')) {
             $li.removeClass('active active-sm');
-            $('ul:first', $li).slideUp(function () {
+            $('ul:first', $li).slideUp(function() {
                 setContentHeight();
+                if ($('.left_col.menu_fixed > .mCustomScrollBox > .mCSB_container ').length) {
+                    $('.left_col.menu_fixed > .mCustomScrollBox > .mCSB_container ').css('min-height', '0');
+                }
             });
-        } else {
+        }
+        else
+        {
             // prevent closing menu if we are on child menu
             if (!$li.parent().is('.child_menu')) {
                 $SIDEBAR_MENU.find('li').removeClass('active active-sm');
                 $SIDEBAR_MENU.find('li ul').slideUp();
-            } else {
-                if ($BODY.is(".nav-sm")) {
+            }else
+            {
+                if ( $BODY.is( ".nav-sm" ) )
+                {
                     if (!$li.parent().is('.child_menu')) {
                         $SIDEBAR_MENU.find('li').removeClass('active active-sm');
                         $SIDEBAR_MENU.find('li ul').slideUp();
@@ -83,6 +101,7 @@ $(document).ready(function () {
                 }
             }
             $li.addClass('active');
+
             child_menu.slideDown(function () {
                 setContentHeight();
                 // fix for fixed sidebar menu
@@ -101,14 +120,14 @@ $(document).ready(function () {
 
 
     // toggle small or large menu
-    $MENU_TOGGLE.on('click', function () {
+    $MENU_TOGGLE.on('click', function() {
         if ($BODY.hasClass('nav-md')) {
             $SIDEBAR_MENU.find('li.active ul').hide();
             $SIDEBAR_MENU.find('li.active').addClass('active-sm').removeClass('active');
 
             $('.main_container > .row > .left_col').removeClass('col-md-2 col-lg-2').addClass('col-md-1 col-lg-1 col-2');
-            if ($('.main_container > .row > .left_col.menu_fixed').length) {
-                if ($(window).width() < 1024) {
+            if( $('.main_container > .row > .left_col.menu_fixed').length){
+                if($(window).width() < 1024){
                     $('.main_container > .row > .right_col_wrapper').addClass('offset-2');
                 } else {
                     $('.main_container > .row > .right_col_wrapper').removeClass('offset-md-2').addClass('offset-md-1');
@@ -120,8 +139,8 @@ $(document).ready(function () {
             $SIDEBAR_MENU.find('li.active-sm ul').show();
             $SIDEBAR_MENU.find('li.active-sm').addClass('active').removeClass('active-sm');
             $('.main_container > .row > .left_col').removeClass('col-lg-1 col-2 col-md-1').addClass('col-lg-2 col-md-2');
-            if ($('.main_container > .row > .left_col.menu_fixed').length) {
-                if ($(window).width() < 1024) {
+            if( $('.main_container > .row > .left_col.menu_fixed').length){
+                if($(window).width() < 1024){
                     $('.main_container > .row > .right_col_wrapper').removeClass('offset-2');
                 } else {
                     $('.main_container > .row > .right_col_wrapper').removeClass('offset-1').addClass('offset-md-2');
@@ -135,9 +154,7 @@ $(document).ready(function () {
 
         setContentHeight();
 
-        $('.dataTable').each(function () {
-            $(this).dataTable().fnDraw();
-        });
+        $('.dataTable').each ( function () { $(this).dataTable().fnDraw(); });
     });
 
     // check active menu
@@ -161,12 +178,12 @@ $(document).ready(function () {
     }
 
     // original code below, but executed for $cur_menu
-    $cur_menu.parent('li').addClass('current-page').parents('ul').slideDown(function () {
+    $cur_menu.parent('li').addClass('current-page').parents('ul').slideDown(function() {
         setContentHeight();
     }).parent().addClass('active');
 
     // recompute content when resizing
-    $(window).smartresize(function () {
+    $(window).smartresize(function(){
         setContentHeight();
     });
 
@@ -177,15 +194,11 @@ $(document).ready(function () {
         $('.menu_fixed').mCustomScrollbar({
             autoHideScrollbar: true,
             theme: 'minimal',
-            mouseWheel: {preventDefault: true}
+            mouseWheel:{ preventDefault: true }
         });
     }
 });
 
-// fix for content height using js and not overwriting with CSS. Function should be called after the DataTable function has run it's corse.
-$(window).load(function () {
-    setContentHeight();
-});
 
 /* SIDEBAR - end */
 
@@ -315,7 +328,7 @@ function init_flot_chart() {
                     margin: [0, -25],
                     noColumns: 0,
                     labelBoxBorderColor: null,
-                    labelFormatter: function (a, b) {
+                    labelFormatter: function(a, b) {
                         return a + "&nbsp;&nbsp;"
                     },
                     width: 40,
@@ -393,9 +406,9 @@ function init_flot_chart() {
 function init_starrr() {
     "undefined" != typeof starrr && (console.log("init_starrr"), $(".stars").starrr(), $(".stars-existing").starrr({
         rating: 4
-    }), $(".stars").on("starrr:change", function (a, b) {
+    }), $(".stars").on("starrr:change", function(a, b) {
         $(".stars-count").html(b)
-    }), $(".stars-existing").on("starrr:change", function (a, b) {
+    }), $(".stars-existing").on("starrr:change", function(a, b) {
         $(".stars-count-existing").html(b)
     }))
 }
@@ -456,7 +469,7 @@ function init_chart_doughnut() {
                 responsive: !1
             }
         };
-        $(".canvasDoughnut").each(function () {
+        $(".canvasDoughnut").each(function() {
             var b = $(this);
             new Chart(b, a)
         })
@@ -840,7 +853,7 @@ function init_autocomplete() {
                 ZW: "Zimbabwe",
                 ZZ: "Unknown or Invalid Region"
             },
-            b = $.map(a, function (a, b) {
+            b = $.map(a, function(a, b) {
                 return {
                     value: a,
                     data: b
@@ -858,26 +871,25 @@ function init_autosize() {
 
 function init_parsley() {
     if ("undefined" != typeof parsley) {
-        console.log("init_parsley"), $("parsley:field:validate", function () {
+        console.log("init_parsley"), $("parsley:field:validate", function() {
             a()
-        }), $("#demo-form .btn").on("click", function () {
+        }), $("#demo-form .btn").on("click", function() {
             $("#demo-form").parsley().validate(), a()
         });
-        var a = function () {
+        var a = function() {
             !0 === $("#demo-form").parsley().isValid() ? ($(".bs-callout-info").removeClass("hidden"), $(".bs-callout-warning").addClass("hidden")) : ($(".bs-callout-info").addClass("hidden"), $(".bs-callout-warning").removeClass("hidden"))
         };
-        $("parsley:field:validate", function () {
+        $("parsley:field:validate", function() {
             a()
-        }), $("#demo-form2 .btn").on("click", function () {
+        }), $("#demo-form2 .btn").on("click", function() {
             $("#demo-form2").parsley().validate(), a()
         });
-        var a = function () {
+        var a = function() {
             !0 === $("#demo-form2").parsley().isValid() ? ($(".bs-callout-info").removeClass("hidden"), $(".bs-callout-warning").addClass("hidden")) : ($(".bs-callout-info").addClass("hidden"), $(".bs-callout-warning").removeClass("hidden"))
         };
         try {
             hljs.initHighlightingOnLoad()
-        } catch (a) {
-        }
+        } catch (a) {}
     }
 }
 
@@ -915,8 +927,7 @@ function init_wysiwyg() {
         var c = "";
         "unsupported-file-type" === a ? c = "Unsupported format " + b : console.log("error uploading file", a, b), $('<div class="alert"> <button type="button" class="close" data-dismiss="alert">&times;</button><strong>File upload error</strong> ' + c + " </div>").prependTo("#alerts")
     }
-
-    "undefined" != typeof $.fn.wysiwyg && (console.log("init_wysiwyg"), $(".editor-wrapper").each(function () {
+    "undefined" != typeof $.fn.wysiwyg && (console.log("init_wysiwyg"), $(".editor-wrapper").each(function() {
         var a = $(this).attr("id");
         $(this).wysiwyg({
             toolbarSelector: '[data-target="#' + a + '"]',
@@ -940,40 +951,40 @@ function init_cropper() {
             j = {
                 aspectRatio: 16 / 9,
                 preview: ".img-preview",
-                crop: function (a) {
+                crop: function(a) {
                     c.val(Math.round(a.x)), d.val(Math.round(a.y)), e.val(Math.round(a.height)), f.val(Math.round(a.width)), g.val(a.rotate), h.val(a.scaleX), i.val(a.scaleY)
                 }
             };
         $('[data-toggle="tooltip"]').tooltip(), a.on({
-            "build.cropper": function (a) {
+            "build.cropper": function(a) {
                 console.log(a.type)
             },
-            "built.cropper": function (a) {
+            "built.cropper": function(a) {
                 console.log(a.type)
             },
-            "cropstart.cropper": function (a) {
+            "cropstart.cropper": function(a) {
                 console.log(a.type, a.action)
             },
-            "cropmove.cropper": function (a) {
+            "cropmove.cropper": function(a) {
                 console.log(a.type, a.action)
             },
-            "cropend.cropper": function (a) {
+            "cropend.cropper": function(a) {
                 console.log(a.type, a.action)
             },
-            "crop.cropper": function (a) {
+            "crop.cropper": function(a) {
                 console.log(a.type, a.x, a.y, a.width, a.height, a.rotate, a.scaleX, a.scaleY)
             },
-            "zoom.cropper": function (a) {
+            "zoom.cropper": function(a) {
                 console.log(a.type, a.ratio)
             }
-        }).cropper(j), $.isFunction(document.createElement("canvas").getContext) || $('button[data-method="getCroppedCanvas"]').prop("disabled", !0), "undefined" == typeof document.createElement("cropper").style.transition && ($('button[data-method="rotate"]').prop("disabled", !0), $('button[data-method="scale"]').prop("disabled", !0)), "undefined" == typeof b[0].download && b.addClass("disabled"), $(".docs-toggles").on("change", "input", function () {
+        }).cropper(j), $.isFunction(document.createElement("canvas").getContext) || $('button[data-method="getCroppedCanvas"]').prop("disabled", !0), "undefined" == typeof document.createElement("cropper").style.transition && ($('button[data-method="rotate"]').prop("disabled", !0), $('button[data-method="scale"]').prop("disabled", !0)), "undefined" == typeof b[0].download && b.addClass("disabled"), $(".docs-toggles").on("change", "input", function() {
             var e, f, b = $(this),
                 c = b.attr("name"),
                 d = b.prop("type");
-            a.data("cropper") && ("checkbox" === d ? (j[c] = b.prop("checked"), e = a.cropper("getCropBoxData"), f = a.cropper("getCanvasData"), j.built = function () {
+            a.data("cropper") && ("checkbox" === d ? (j[c] = b.prop("checked"), e = a.cropper("getCropBoxData"), f = a.cropper("getCanvasData"), j.built = function() {
                 a.cropper("setCropBoxData", e), a.cropper("setCanvasData", f)
             }) : "radio" === d && (j[c] = b.val()), a.cropper("destroy").cropper(j))
-        }), $(".docs-buttons").on("click", "[data-method]", function () {
+        }), $(".docs-buttons").on("click", "[data-method]", function() {
             var e, f, c = $(this),
                 d = c.data();
             if (!c.prop("disabled") && !c.hasClass("disabled") && a.data("cropper") && d.method) {
@@ -996,7 +1007,7 @@ function init_cropper() {
                     console.log(a.message)
                 }
             }
-        }), $(document.body).on("keydown", function (b) {
+        }), $(document.body).on("keydown", function(b) {
             if (a.data("cropper") && !(this.scrollTop > 300)) switch (b.which) {
                 case 37:
                     b.preventDefault(), a.cropper("move", -1, 0);
@@ -1013,9 +1024,9 @@ function init_cropper() {
         });
         var m, k = $("#inputImage"),
             l = window.URL || window.webkitURL;
-        l ? k.change(function () {
+        l ? k.change(function() {
             var c, b = this.files;
-            a.data("cropper") && b && b.length && (c = b[0], /^image\/\w+$/.test(c.type) ? (m = l.createObjectURL(c), a.one("built.cropper", function () {
+            a.data("cropper") && b && b.length && (c = b[0], /^image\/\w+$/.test(c.type) ? (m = l.createObjectURL(c), a.one("built.cropper", function() {
                 l.revokeObjectURL(m)
             }).cropper("reset").cropper("replace", m), k.val("")) : window.alert("Please choose an image file."))
         }) : k.prop("disabled", !0).parent().addClass("disabled")
@@ -1025,15 +1036,14 @@ function init_cropper() {
 function init_knob() {
     if ("undefined" != typeof $.fn.knob) {
         console.log("init_knob"), $(".knob").knob({
-            change: function (a) {
-            },
-            release: function (a) {
+            change: function(a) {},
+            release: function(a) {
                 console.log("release : " + a)
             },
-            cancel: function () {
+            cancel: function() {
                 console.log("cancel : ", this)
             },
-            draw: function () {
+            draw: function() {
                 if ("tron" == this.$.data("skin")) {
                     this.cursorExt = .3;
                     var b, a = this.arc(this.cv),
@@ -1047,17 +1057,17 @@ function init_knob() {
             d = 0,
             e = $("div.idir"),
             f = $("div.ival"),
-            g = function () {
+            g = function() {
                 d++, e.show().html("+").fadeOut(), f.html(d)
             },
-            h = function () {
+            h = function() {
                 d--, e.show().html("-").fadeOut(), f.html(d)
             };
         $("input.infinite").knob({
             min: 0,
             max: 20,
             stopper: !1,
-            change: function () {
+            change: function() {
                 a > this.cv ? b ? (h(), b = 0) : (b = 1, c = 0) : a < this.cv && (c ? (g(), c = 0) : (c = 1, b = 0)), a = this.cv
             }
         })
@@ -1127,7 +1137,7 @@ function init_IonRangeSlider() {
         from: +moment().subtract(6, "hours").format("X"),
         grid: !0,
         force_edges: !0,
-        prettify: function (a) {
+        prettify: function(a) {
             var b = moment(a, "X");
             return b.format("Do MMMM, HH:mm")
         }
@@ -1137,7 +1147,7 @@ function init_IonRangeSlider() {
 function init_daterangepicker() {
     if ("undefined" != typeof $.fn.daterangepicker) {
         console.log("init_daterangepicker");
-        var a = function (a, b, c) {
+        var a = function(a, b, c) {
                 console.log(a.toISOString(), b.toISOString(), c), $("#reportrange span").html(a.format("MMMM D, YYYY") + " - " + b.format("MMMM D, YYYY"))
             },
             b = {
@@ -1178,19 +1188,19 @@ function init_daterangepicker() {
                     firstDay: 1
                 }
             };
-        $("#reportrange span").html(moment().subtract(29, "days").format("MMMM D, YYYY") + " - " + moment().format("MMMM D, YYYY")), $("#reportrange").daterangepicker(b, a), $("#reportrange").on("show.daterangepicker", function () {
+        $("#reportrange span").html(moment().subtract(29, "days").format("MMMM D, YYYY") + " - " + moment().format("MMMM D, YYYY")), $("#reportrange").daterangepicker(b, a), $("#reportrange").on("show.daterangepicker", function() {
             console.log("show event fired")
-        }), $("#reportrange").on("hide.daterangepicker", function () {
+        }), $("#reportrange").on("hide.daterangepicker", function() {
             console.log("hide event fired")
-        }), $("#reportrange").on("apply.daterangepicker", function (a, b) {
+        }), $("#reportrange").on("apply.daterangepicker", function(a, b) {
             console.log("apply event fired, start/end dates are " + b.startDate.format("MMMM D, YYYY") + " to " + b.endDate.format("MMMM D, YYYY"))
-        }), $("#reportrange").on("cancel.daterangepicker", function (a, b) {
+        }), $("#reportrange").on("cancel.daterangepicker", function(a, b) {
             console.log("cancel event fired")
-        }), $("#options1").click(function () {
+        }), $("#options1").click(function() {
             $("#reportrange").data("daterangepicker").setOptions(b, a)
-        }), $("#options2").click(function () {
+        }), $("#options2").click(function() {
             $("#reportrange").data("daterangepicker").setOptions(optionSet2, a)
-        }), $("#destroy").click(function () {
+        }), $("#destroy").click(function() {
             $("#reportrange").data("daterangepicker").remove()
         })
     }
@@ -1199,7 +1209,7 @@ function init_daterangepicker() {
 function init_daterangepicker_right() {
     if ("undefined" != typeof $.fn.daterangepicker) {
         console.log("init_daterangepicker_right");
-        var a = function (a, b, c) {
+        var a = function(a, b, c) {
                 console.log(a.toISOString(), b.toISOString(), c), $("#reportrange_right span").html(a.format("MMMM D, YYYY") + " - " + b.format("MMMM D, YYYY"))
             },
             b = {
@@ -1240,19 +1250,19 @@ function init_daterangepicker_right() {
                     firstDay: 1
                 }
             };
-        $("#reportrange_right span").html(moment().subtract(29, "days").format("MMMM D, YYYY") + " - " + moment().format("MMMM D, YYYY")), $("#reportrange_right").daterangepicker(b, a), $("#reportrange_right").on("show.daterangepicker", function () {
+        $("#reportrange_right span").html(moment().subtract(29, "days").format("MMMM D, YYYY") + " - " + moment().format("MMMM D, YYYY")), $("#reportrange_right").daterangepicker(b, a), $("#reportrange_right").on("show.daterangepicker", function() {
             console.log("show event fired")
-        }), $("#reportrange_right").on("hide.daterangepicker", function () {
+        }), $("#reportrange_right").on("hide.daterangepicker", function() {
             console.log("hide event fired")
-        }), $("#reportrange_right").on("apply.daterangepicker", function (a, b) {
+        }), $("#reportrange_right").on("apply.daterangepicker", function(a, b) {
             console.log("apply event fired, start/end dates are " + b.startDate.format("MMMM D, YYYY") + " to " + b.endDate.format("MMMM D, YYYY"))
-        }), $("#reportrange_right").on("cancel.daterangepicker", function (a, b) {
+        }), $("#reportrange_right").on("cancel.daterangepicker", function(a, b) {
             console.log("cancel event fired")
-        }), $("#options1").click(function () {
+        }), $("#options1").click(function() {
             $("#reportrange_right").data("daterangepicker").setOptions(b, a)
-        }), $("#options2").click(function () {
+        }), $("#options2").click(function() {
             $("#reportrange_right").data("daterangepicker").setOptions(optionSet2, a)
-        }), $("#destroy").click(function () {
+        }), $("#destroy").click(function() {
             $("#reportrange_right").data("daterangepicker").remove()
         })
     }
@@ -1262,28 +1272,28 @@ function init_daterangepicker_single_call() {
     "undefined" != typeof $.fn.daterangepicker && (console.log("init_daterangepicker_single_call"), $("#single_cal1").daterangepicker({
         singleDatePicker: !0,
         singleClasses: "picker_1"
-    }, function (a, b, c) {
+    }, function(a, b, c) {
         console.log(a.toISOString(), b.toISOString(), c)
     }), $("#single_cal2").daterangepicker({
         singleDatePicker: !0,
         singleClasses: "picker_2"
-    }, function (a, b, c) {
+    }, function(a, b, c) {
         console.log(a.toISOString(), b.toISOString(), c)
     }), $("#single_cal3").daterangepicker({
         singleDatePicker: !0,
         singleClasses: "picker_3"
-    }, function (a, b, c) {
+    }, function(a, b, c) {
         console.log(a.toISOString(), b.toISOString(), c)
     }), $("#single_cal4").daterangepicker({
         singleDatePicker: !0,
         singleClasses: "picker_4"
-    }, function (a, b, c) {
+    }, function(a, b, c) {
         console.log(a.toISOString(), b.toISOString(), c)
     }))
 }
 
 function init_daterangepicker_reservation() {
-    "undefined" != typeof $.fn.daterangepicker && (console.log("init_daterangepicker_reservation"), $("#reservation").daterangepicker(null, function (a, b, c) {
+    "undefined" != typeof $.fn.daterangepicker && (console.log("init_daterangepicker_reservation"), $("#reservation").daterangepicker(null, function(a, b, c) {
         console.log(a.toISOString(), b.toISOString(), c)
     }), $("#reservation-time").daterangepicker({
         timePicker: !0,
@@ -1301,9 +1311,9 @@ function init_SmartWizard() {
 }
 
 function init_validator() {
-    "undefined" != typeof validator && (console.log("init_validator"), validator.message.date = "not a real date", $("form").on("blur", "input[required], input.optional, select.required", validator.checkField).on("change", "select.required", validator.checkField).on("keypress", "input[required][pattern]", validator.keypress), $(".multi.required").on("keyup blur", "input", function () {
+    "undefined" != typeof validator && (console.log("init_validator"), validator.message.date = "not a real date", $("form").on("blur", "input[required], input.optional, select.required", validator.checkField).on("change", "select.required", validator.checkField).on("keypress", "input[required][pattern]", validator.keypress), $(".multi.required").on("keyup blur", "input", function() {
         validator.checkField.apply($(this).siblings().last()[0])
-    }), $("form").submit(function (a) {
+    }), $("form").submit(function(a) {
         a.preventDefault();
         var b = !0;
         return validator.checkAll($(this)) || (b = !1), b && this.submit(), !1
@@ -1321,7 +1331,7 @@ function init_PNotify() {
         addclass: "dark",
         styling: "bootstrap3",
         hide: !1,
-        before_close: function (a) {
+        before_close: function(a) {
             return a.update({
                 title: a.options.title + " - Enjoy your Stay",
                 before_close: null
@@ -1334,11 +1344,11 @@ function init_CustomNotification() {
     if (console.log("run_customtabs"), "undefined" != typeof CustomTabs) {
         console.log("init_CustomTabs");
         var a = 10;
-        TabbedNotification = function (b) {
+        TabbedNotification = function(b) {
             var c = "<div id='ntf" + a + "' class='text alert-" + b.type + "' style='display:none'><h2><i class='fa fa-bell'></i> " + b.title + "</h2><div class='close'><a href='javascript:;' class='notification_close'><i class='fa fa-close'></i></a></div><p>" + b.text + "</p></div>";
             document.getElementById("custom_notifications") ? ($("#custom_notifications ul.notifications").append("<li><a id='ntlink" + a + "' class='alert-" + b.type + "' href='#ntf" + a + "'><i class='fa fa-bell animated shake'></i></a></li>"), $("#custom_notifications #notif-group").append(c), a++, CustomTabs(b)) : alert("doesnt exists")
-        }, CustomTabs = function (a) {
-            $(".tabbed_notifications > div").hide(), $(".tabbed_notifications > div:first-of-type").show(), $("#custom_notifications").removeClass("dsp_none"), $(".notifications a").click(function (a) {
+        }, CustomTabs = function(a) {
+            $(".tabbed_notifications > div").hide(), $(".tabbed_notifications > div:first-of-type").show(), $("#custom_notifications").removeClass("dsp_none"), $(".notifications a").click(function(a) {
                 a.preventDefault();
                 var b = $(this),
                     c = "#" + b.parents(".notifications").data("tabbed_notifications"),
@@ -1348,7 +1358,7 @@ function init_CustomNotification() {
             })
         }, CustomTabs();
         var b = idname = "";
-        $(document).on("click", ".notification_close", function (a) {
+        $(document).on("click", ".notification_close", function(a) {
             idname = $(this).parent().parent().attr("id"), b = idname.substr(-2), $("#ntf" + b).remove(), $("#ntlink" + b).parent().remove(), $(".notifications a").first().addClass("active"), $("#notif-group div").first().css("display", "block")
         })
     }
@@ -1365,20 +1375,19 @@ function init_EasyPieChart() {
             lineWidth: 20,
             trackWidth: 16,
             lineCap: "butt",
-            onStep: function (a, b, c) {
+            onStep: function(a, b, c) {
                 $(this.el).find(".percent").text(Math.round(c))
             }
         });
         var a = window.chart = $(".chart").data("easyPieChart");
-        $(".js_update").on("click", function () {
+        $(".js_update").on("click", function() {
             a.update(200 * Math.random() - 100)
         });
         var b = $.fn.popover.Constructor.prototype.leave;
-        $.fn.popover.Constructor.prototype.leave = function (a) {
-            var d, e,
-                c = a instanceof this.constructor ? a : $(a.currentTarget)[this.type](this.getDelegateOptions()).data("bs." + this.type);
-            b.call(this, a), a.currentTarget && (d = $(a.currentTarget).siblings(".popover"), e = c.timeout, d.one("mouseenter", function () {
-                clearTimeout(e), d.one("mouseleave", function () {
+        $.fn.popover.Constructor.prototype.leave = function(a) {
+            var d, e, c = a instanceof this.constructor ? a : $(a.currentTarget)[this.type](this.getDelegateOptions()).data("bs." + this.type);
+            b.call(this, a), a.currentTarget && (d = $(a.currentTarget).siblings(".popover"), e = c.timeout, d.one("mouseenter", function() {
+                clearTimeout(e), d.one("mouseleave", function() {
                     $.fn.popover.Constructor.prototype.leave.call(c, c)
                 })
             }))
@@ -1688,7 +1697,7 @@ function init_charts() {
 }
 
 function init_compose() {
-    "undefined" != typeof $.fn.slideToggle && (console.log("init_compose"), $("#compose, .compose-close").click(function () {
+    "undefined" != typeof $.fn.slideToggle && (console.log("init_compose"), $("#compose, .compose-close").click(function() {
         $(".compose").slideToggle()
     }))
 }
@@ -1708,8 +1717,8 @@ function init_calendar() {
                 },
                 selectable: !0,
                 selectHelper: !0,
-                select: function (a, b, c) {
-                    $("#fc_create").click(), e = a, ended = b, $(".antosubmit").on("click", function () {
+                select: function(a, b, c) {
+                    $("#fc_create").click(), e = a, ended = b, $(".antosubmit").on("click", function() {
                         var a = $("#title").val();
                         return b && (ended = b), f = $("#event_type").val(), a && g.fullCalendar("renderEvent", {
                             title: a,
@@ -1719,8 +1728,8 @@ function init_calendar() {
                         }, !0), $("#title").val(""), g.fullCalendar("unselect"), $(".antoclose").click(), !1
                     })
                 },
-                eventClick: function (a, b, c) {
-                    $("#fc_edit").click(), $("#title2").val(a.title), f = $("#event_type").val(), $(".antosubmit2").on("click", function () {
+                eventClick: function(a, b, c) {
+                    $("#fc_edit").click(), $("#title2").val(a.title), f = $("#event_type").val(), $(".antosubmit2").on("click", function() {
                         a.title = $("#title2").val(), g.fullCalendar("updateEvent", a), $(".antoclose2").click()
                     }), g.fullCalendar("unselect")
                 },
@@ -1759,7 +1768,7 @@ function init_calendar() {
 function init_DataTables() {
     if (console.log("run_datatables"), "undefined" != typeof $.fn.DataTable) {
         console.log("init_DataTables");
-        var a = function () {
+        var a = function() {
             $("#datatable-buttons").length && $("#datatable-buttons").DataTable({
                 dom: "Bfrtip",
                 buttons: [{
@@ -1781,10 +1790,10 @@ function init_DataTables() {
                 responsive: !0
             })
         };
-        TableManageButtons = function () {
+        TableManageButtons = function() {
             "use strict";
             return {
-                init: function () {
+                init: function() {
                     a()
                 }
             }
@@ -1808,7 +1817,7 @@ function init_DataTables() {
                 orderable: !1,
                 targets: [0]
             }]
-        }), b.on("draw.dt", function () {
+        }), b.on("draw.dt", function() {
             $("checkbox input").iCheck({
                 checkboxClass: "icheckbox_flat-green"
             })
@@ -1937,7 +1946,7 @@ function init_morris_charts() {
         hideHover: "auto",
         labels: ["Y", "Z", "A"],
         resize: !0
-    }).on("click", function (a, b) {
+    }).on("click", function(a, b) {
         console.log(a, b)
     }), $("#graph_area").length && Morris.Area({
         element: "graph_area",
@@ -2015,7 +2024,7 @@ function init_morris_charts() {
             value: 10
         }],
         colors: ["#26B99A", "#34495E", "#ACADAC", "#3498DB"],
-        formatter: function (a) {
+        formatter: function(a) {
             return a + "%"
         },
         resize: !0
@@ -2043,7 +2052,7 @@ function init_morris_charts() {
             value: 20
         }],
         resize: !0
-    }), $MENU_TOGGLE.on("click", function () {
+    }), $MENU_TOGGLE.on("click", function() {
         $(window).resize()
     })))
 }
@@ -2499,7 +2508,7 @@ function init_echarts() {
                     },
                     axisLabel: {
                         show: !0,
-                        formatter: function (a) {
+                        formatter: function(a) {
                             switch (a + "") {
                                 case "10":
                                     return "a";
@@ -2695,7 +2704,7 @@ function init_echarts() {
                     type: "scatter",
                     tooltip: {
                         trigger: "item",
-                        formatter: function (a) {
+                        formatter: function(a) {
                             return a.value.length > 1 ? a.seriesName + " :<br/>" + a.value[0] + "cm " + a.value[1] + "kg " : a.seriesName + " :<br/>" + a.name + " : " + a.value + "kg "
                         }
                     },
@@ -2981,7 +2990,7 @@ function init_echarts() {
                     type: "scatter",
                     tooltip: {
                         trigger: "item",
-                        formatter: function (a) {
+                        formatter: function(a) {
                             return a.value.length > 1 ? a.seriesName + " :<br/>" + a.value[0] + "cm " + a.value[1] + "kg " : a.seriesName + " :<br/>" + a.name + " : " + a.value + "kg "
                         }
                     },
@@ -3629,7 +3638,7 @@ function init_echarts() {
                 },
                 tooltip: {
                     trigger: "item",
-                    formatter: function (a) {
+                    formatter: function(a) {
                         var b = (a.value + "").split(".");
                         return b = b[0].replace(/(\d{1,3})(?=(?:\d{3})+(?!\d))/g, "$1,") + "." + b[1], a.seriesName + "<br/>" + a.name + " : " + b
                     }
@@ -4218,100 +4227,83 @@ function init_echarts() {
             })
         }
     }
-}
-
-!function (a, b) {
-    var c = function (a, b, c) {
+}! function(a, b) {
+    var c = function(a, b, c) {
         var d;
-        return function () {
+        return function() {
             function h() {
                 c || a.apply(f, g), d = null
             }
-
             var f = this,
                 g = arguments;
             d ? clearTimeout(d) : c && a.apply(f, g), d = setTimeout(h, b || 100)
         }
     };
-    jQuery.fn[b] = function (a) {
+    jQuery.fn[b] = function(a) {
         return a ? this.bind("resize", c(a)) : this.trigger(b)
     }
 }(jQuery, "smartresize");
 
-
-var CURRENT_URL = window.location.href.split("#")[0].split("?")[0],
-    $BODY = $("body"),
-    $MENU_TOGGLE = $("#menu_toggle"),
-    $SIDEBAR_MENU = $("#sidebar-menu"),
-    $SIDEBAR_FOOTER = $(".sidebar-footer"),
-    $LEFT_COL = $(".left_col"),
-    $RIGHT_COL = $(".right_col"),
-    $NAV_MENU = $(".nav_menu"),
-    $FOOTER = $("footer"),
-    randNum = function () {
-        return Math.floor(21 * Math.random()) + 20
-    };
-$(document).ready(function () {
-    $(".collapse-link").on("click", function () {
+$(document).ready(function() {
+    $(".collapse-link").on("click", function() {
         var a = $(this).closest(".x_panel"),
             b = $(this).find("i"),
             c = a.find(".x_content");
-        a.attr("style") ? c.slideToggle(200, function () {
+        a.attr("style") ? c.slideToggle(200, function() {
             a.removeAttr("style")
         }) : (c.slideToggle(200), a.css("height", "auto")), b.toggleClass("fa-chevron-up fa-chevron-down")
-    }), $(".close-link").click(function () {
+    }), $(".close-link").click(function() {
         var a = $(this).closest(".x_panel");
         a.remove()
     })
-}), $(document).ready(function () {
+}), $(document).ready(function() {
     $('[data-toggle="tooltip"]').tooltip({
         container: "body"
     })
-}), $(".progress .progress-bar")[0] && $(".progress .progress-bar").progressbar(), $(document).ready(function () {
+}), $(".progress .progress-bar")[0] && $(".progress .progress-bar").progressbar(), $(document).ready(function() {
     if ($(".js-switch")[0]) {
         var a = Array.prototype.slice.call(document.querySelectorAll(".js-switch"));
-        a.forEach(function (a) {
+        a.forEach(function(a) {
             new Switchery(a, {
                 color: "#26B99A"
             })
         })
     }
-}), $(document).ready(function () {
-    $("input.flat")[0] && $(document).ready(function () {
+}), $(document).ready(function() {
+    $("input.flat")[0] && $(document).ready(function() {
         $("input.flat").iCheck({
             checkboxClass: "icheckbox_flat-green",
             radioClass: "iradio_flat-green"
         })
     })
-}), $("table input").on("ifChecked", function () {
+}), $("table input").on("ifChecked", function() {
     checkState = "", $(this).parent().parent().parent().addClass("selected"), countChecked()
-}), $("table input").on("ifUnchecked", function () {
+}), $("table input").on("ifUnchecked", function() {
     checkState = "", $(this).parent().parent().parent().removeClass("selected"), countChecked()
 });
 var checkState = "";
-$(".bulk_action input").on("ifChecked", function () {
+$(".bulk_action input").on("ifChecked", function() {
     checkState = "", $(this).parent().parent().parent().addClass("selected"), countChecked()
-}), $(".bulk_action input").on("ifUnchecked", function () {
+}), $(".bulk_action input").on("ifUnchecked", function() {
     checkState = "", $(this).parent().parent().parent().removeClass("selected"), countChecked()
-}), $(".bulk_action input#check-all").on("ifChecked", function () {
+}), $(".bulk_action input#check-all").on("ifChecked", function() {
     checkState = "all", countChecked()
-}), $(".bulk_action input#check-all").on("ifUnchecked", function () {
+}), $(".bulk_action input#check-all").on("ifUnchecked", function() {
     checkState = "none", countChecked()
-}), $(document).ready(function () {
-    $(".expand").on("click", function () {
+}), $(document).ready(function() {
+    $(".expand").on("click", function() {
         $(this).next().slideToggle(200), $expand = $(this).find(">:first-child"), "+" == $expand.text() ? $expand.text("-") : $expand.text("+")
     })
-}), "undefined" != typeof NProgress && ($(document).ready(function () {
+}), "undefined" != typeof NProgress && ($(document).ready(function() {
     NProgress.start()
-}), $(window).on('load', function () {
+}), $(window).on('load', function() {
     NProgress.done()
 }));
 var originalLeave = $.fn.popover.Constructor.prototype.leave;
-$.fn.popover.Constructor.prototype.leave = function (a) {
-    var c, d,
-        b = a instanceof this.constructor ? a : $(a.currentTarget)[this.type](this.getDelegateOptions()).data("bs." + this.type);
-    originalLeave.call(this, a), a.currentTarget && (c = $(a.currentTarget).siblings(".popover"), d = b.timeout, c.one("mouseenter", function () {
-        clearTimeout(d), c.one("mouseleave", function () {
+$.fn.popover.Constructor.prototype.leave = function(a) {
+    var c, d, b = a instanceof this.constructor ? a : $(a.currentTarget)[this.type](this.getDelegateOptions()).data("bs." + this.type);
+    originalLeave.call(this, a), a.currentTarget && (c = $(a.currentTarget).siblings(".popover"), d = b.timeout, c.one("mouseenter", function() {
+        clearTimeout(d), c.one("mouseleave", function() {
             $.fn.popover.Constructor.prototype.leave.call(b, b)
         })
     }))
@@ -4323,7 +4315,7 @@ $.fn.popover.Constructor.prototype.leave = function (a) {
         hide: 400
     }
 
-}), $(document).ready(function () {
+}), $(document).ready(function() {
     init_sparklines(),
         init_flot_chart(),
         init_wysiwyg(),
