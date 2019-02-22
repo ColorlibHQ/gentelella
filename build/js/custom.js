@@ -44,6 +44,7 @@
 
 
 /* SIDEBAR */
+
 // fix for dynamic tables
 function setContentHeight() {
     var CURRENT_URL = window.location.href.split("#")[0].split("?")[0],
@@ -209,7 +210,11 @@ $(document).ready(function () {
         $('.menu_fixed').mCustomScrollbar({
             autoHideScrollbar: true,
             theme: 'minimal',
-            mouseWheel: {preventDefault: true}
+            scrollInertia: 600,
+            mouseWheel: {
+                preventDefault: true,
+                scrollAmount: 100
+            }
         });
     }
 });
