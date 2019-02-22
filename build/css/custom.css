@@ -3150,6 +3150,12 @@ ul.social li {
     left: 0;
 }
 
+/* TODO To be tested furthermore. This is a fix for canvas distorsion */
+canvas {
+    max-width:100%;
+    height:auto !important;
+}
+
 .percent {
     display: inline-block;
     line-height: 110px;
