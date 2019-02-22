@@ -4319,9 +4319,10 @@ $(".bulk_action input").on("ifChecked", function () {
         $(this).next().slideToggle(200), $expand = $(this).find(">:first-child"), "+" == $expand.text() ? $expand.text("-") : $expand.text("+")
     })
 }), "undefined" != typeof NProgress && ($(document).ready(function () {
-    NProgress.start()
+    NProgress.start();
 }), $(window).on('load', function () {
-    NProgress.done()
+    // setTimeout fix for Firefox 
+    setTimeout(function(){ NProgress.done() },100);
 }));
 var originalLeave = $.fn.popover.Constructor.prototype.leave;
 $.fn.popover.Constructor.prototype.leave = function (a) {
