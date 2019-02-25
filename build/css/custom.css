@@ -392,15 +392,6 @@
     }
 }
 
-/* TODO to be deleted */
-/*.nav-md .container-fluid .left_col {
-    min-height: 100%;
-    width: 230px;
-    padding: 0;
-    position: absolute;
-    z-index: 1;
-}*/
-
 .nav-md .container-fluid .left_col.menu_fixed {
     height: 100%;
     position: fixed;
@@ -580,13 +571,6 @@ body {
 .no-padding {
     padding: 0 !important;
 }
-
-/* TODO to be deleted */
-/*.page-title {
-    width: 100%;
-    height: 65px;
-    padding: 10px 0;
-}*/
 
 .page-title .title_left {
     width: 45%;
@@ -902,11 +886,6 @@ a:hover, a:focus {
     background-color: transparent;
 }
 
-/*TODO to be deleted */
-/*.top_search {
-    padding: 0;
-}*/
-
 .top_search .form-control {
     border-right: 0;
     box-shadow: inset 0 1px 0px rgba(0, 0, 0, 0.075);
@@ -1138,13 +1117,6 @@ article.media {
     border-radius: 0;
     border-bottom: 1px solid #efefef;
 }
-/* TODO to be deleted */
-/*.accordion .card-title {
-    background: #F2F5F7;
-    padding: 13px;
-    width: 100%;
-    display: block;
-}*/
 
 .accordion .card:hover {
     background: #F2F5F7;
@@ -1266,8 +1238,6 @@ legend {
 }
 
 .profile_details .profile_view .ratings {
-    /* TODO Commented text to be deleted */
-    /*text-align: left;*/
     font-size: 16px;
 }
 
@@ -1922,8 +1892,6 @@ span.right {
 
 .tile_count .tile_stats_count {
     border-bottom: 1px solid #D9DEE4;
-    /* TODO commented line to be deleted */
-   /* padding: 0 10px 0 20px;*/
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
@@ -2080,20 +2048,6 @@ h4.graph_title {
     padding-left: 10px;
     border-radius: 4px;
 }
-
-/* TODO Delete commented lines */
-/*.fontawesome-icon-list .fa-hover a:hover .fa {
-    font-size: 28px;
-    vertical-align: -6px;
-}*/
-
-/*.fontawesome-icon-list .fa-hover a .fa {
-    width: 32px;
-    font-size: 16px;
-    display: inline-block;
-    text-align: right;
-    margin-right: 10px;
-}*/
 
 .main_menu .fa {
     width: 26px;
@@ -3173,12 +3127,6 @@ canvas {
 .angular .chart {
     margin-top: 0;
 }
-
-/* TODO to be deleted */
-/*.widget {
-    min-width: 250px;
-    max-width: 310px;
-}*/
 
 .widget_tally_box .btn-group button {
     text-align: center;
