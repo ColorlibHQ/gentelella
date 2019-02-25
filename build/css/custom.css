@@ -434,11 +434,6 @@ body .container-fluid.body .right_col {
 
     .nav-md .container-fluid .right_col {
         width: 100%;
-        padding-right: 0;
-    }
-
-    .right_col {
-        padding: 10px !important;
     }
 }
 
@@ -1926,7 +1921,8 @@ span.right {
 
 .tile_count .tile_stats_count {
     border-bottom: 1px solid #D9DEE4;
-    padding: 0 10px 0 20px;
+    /* TODO commented line to be deleted */
+   /* padding: 0 10px 0 20px;*/
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
