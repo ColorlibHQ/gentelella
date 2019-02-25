@@ -1123,7 +1123,7 @@ function init_InputMask() {
 }
 
 function init_ColorPicker() {
-    "undefined" != typeof $.fn.colorpicker && (console.log("init_ColorPicker"), $(".demo1").colorpicker(), $(".demo2").colorpicker(), $("#demo_forceformat").colorpicker({
+    "undefined" != typeof $.fn.colorpicker && (console.log("init_ColorPicker"), $(".demo1").colorpicker(), $(".demo2").colorpicker( {format: 'auto'}), $("#demo_forceformat").colorpicker({
         format: "rgba",
         horizontal: !0
     }), $("#demo_forceformat3").colorpicker({
