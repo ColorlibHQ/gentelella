@@ -194,6 +194,7 @@
 .nav-sm .navbar.nav_title {
     width: 100%;
     text-align: center;
+    padding:0px;
 }
 
 .nav-sm .navbar.nav_title a span {
