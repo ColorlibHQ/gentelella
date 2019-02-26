@@ -41,6 +41,41 @@
  *     // code here
  * });
  */
+(function($,sr){
+    // debouncing function from John Hann
+    // http://unscriptable.com/index.php/2009/03/20/debouncing-javascript-methods/
+    var debounce = function (func, threshold, execAsap) {
+        var timeout;
+
+        return function debounced () {
+            var obj = this, args = arguments;
+            function delayed () {
+                if (!execAsap)
+                    func.apply(obj, args);
+                timeout = null;
+            }
+
+            if (timeout)
+                clearTimeout(timeout);
+            else if (execAsap)
+                func.apply(obj, args);
+
+            timeout = setTimeout(delayed, threshold || 100);
+        };
+    };
+
+    // smartresize
+    jQuery.fn[sr] = function(fn){  return fn ? this.bind('resize', debounce(fn)) : this.trigger(sr); };
+
+})(jQuery,'smartresize');
+/**
+ * Resize function without multiple trigger
+ *
+ * Usage:
+ * $(window).smartresize(function(){
+ *     // code here
+ * });
+ */
 (function ($, sr) {
     // debouncing function from John Hann
     // http://unscriptable.com/index.php/2009/03/20/debouncing-javascript-methods/
@@ -164,7 +199,7 @@ $(document).ready(function () {
             $('.main_container > .row > .left_col').removeClass('col-md-2 col-lg-2').addClass('col-md-1 col-lg-1 col-2');
             if ($('.main_container > .row > .left_col.menu_fixed').length) {
                 if ($(window).width() < 992) {
-                    $('.main_container > .row > .right_col_wrapper').addClass('offset-2');
+                    $('.main_container > .row > .right_col_wrapper').addClass('offset-2 offset-md-1');
                 } else {
                     $('.main_container > .row > .right_col_wrapper').removeClass('offset-md-2 offset-lg-2').addClass('offset-md-1');
                 }
@@ -177,7 +212,7 @@ $(document).ready(function () {
             $('.main_container > .row > .left_col').removeClass('col-lg-1 col-2 col-md-1').addClass('col-lg-2 col-md-2');
             if ($('.main_container > .row > .left_col.menu_fixed').length) {
                 if ($(window).width() < 992) {
-                    $('.main_container > .row > .right_col_wrapper').removeClass('offset-2');
+                    $('.main_container > .row > .right_col_wrapper').removeClass('offset-2 offset-md-1');
                 } else {
                     $('.main_container > .row > .right_col_wrapper').removeClass('offset-1').addClass('offset-md-2');
                 }

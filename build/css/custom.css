@@ -427,6 +427,9 @@ body .container-fluid.body .right_col {
     .nav-md .container-fluid .right_col {
         width: 100%;
     }
+    .nav > li > a {
+        padding:10px !important;
+    }
 }
 
 @media (max-width: 1200px) {
