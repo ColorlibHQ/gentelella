@@ -427,9 +427,6 @@ body .container-fluid.body .right_col {
     .nav-md .container-fluid .right_col {
         width: 100%;
     }
-    .nav > li > a {
-        padding:10px !important;
-    }
 }
 
 @media (max-width: 1200px) {
@@ -441,6 +438,10 @@ body .container-fluid.body .right_col {
     .tile, .graph {
         zoom: 85%;
         height: inherit;
+    }
+
+    .x_content .nav > li > a {
+        padding:10px !important;
     }
 }
 
@@ -3226,6 +3227,10 @@ ul.widget_profile_box li .profile_img {
     height: 85px;
     margin: 0;
     margin-top: -28px;
+}
+
+.profile_img img {
+    max-width:100%;
 }
 
 .widget_tally_box p, .widget_tally_box span {
