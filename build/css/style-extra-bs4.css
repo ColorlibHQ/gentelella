@@ -1,0 +1,33 @@
+
+.container-fluid.test .col.one {
+    background: gold;
+}
+
+.container-fluid.test .col.two {
+    background: red;
+}
+
+.container.body .col-md-3 {
+}
+
+
+.nav.side-menu > li {
+    width: 100%;
+}
+
+.nav.side-menu > li.active > a {
+    z-index: 1;
+}
+
+.input-group {
+    text-align: right;
+}
+
+
+.title_left {
+    /*background: red;*/
+}
+
+.title_right {
+    /*background: grey;*/
+}

@@ -16,7 +16,7 @@ We would love to see how you use this awesome admin template. You can notify us 
 
 ## Documentation
 
-**[Documentation](https://puikinsh.github.io/gentelella/)**
+**[Documentation](https://colorlibhq.github.io/gentelella/)**
 
 ## Installation via Package Manager
 
@@ -41,6 +41,16 @@ npm install gentelella --save
 ```
 yarn add gentelella --save
 ```
+
+## Get paid to contribute :heavy_dollar_sign: :heavy_dollar_sign:
+
+This project has been growing and reaching people in so many forms that we can't simply believe it. We set out to build, maintain & improve (what we believe to be) one of the greatest HTML Admin dashboard templates and we've been fortunate enough to see it grow beyond our wildest dreams. As such, Colorlib (known previously as puikinsih), is opening up the 'get paid to contribute' project. 
+
+Anyone interested in getting paid to contribute to this project, should contact us here: https://colorlib.com/wp/contact-us. 
+
+We're looking for people that love this project as much as we do, to help us reach our mission - build the greatest Admin HTML template the Internet has seen. 
+
+
 ## How to contribute
 To contribute, please ensure that you have stable [Node.js](https://nodejs.org/) and [npm](https://npmjs.com) installed.
 
@@ -67,6 +77,7 @@ If `gulp` is installed, follow the steps below.
 * [Gentelella on Laravel](https://github.com/Labs64/laravel-boilerplate) PHP / Laravel 5 boilerplate project with Gentelella Admin theme support.
 * [Gentelella on Django](https://github.com/GiriB/django-gentelella) Gentelella modified to fit as a Django app
 * [Gentelella on Flask](https://github.com/afourmy/flask-gentelella) Gentelella modified to fit as a Flask app
+* [Gentelella on Beego] (https://github.com/jun283/beegoAdmin) Gentelella for Beego Framework
 * [Gentelella on CakePHP 3](https://github.com/backstageel/cakephp-gentelella-theme) Gentelella modified to work on CakePHP
 * [Gentelella right to left](https://github.com/mortezakarimi/gentelella-rtl) Gentelella modified to work with right to left languages like Persian
 * [Gentelella-rtl on Yii framework 2](https://github.com/mortezakarimi/yii2-gentelella-rtl) with an asset bundle, a layout template and some widgets. inspired from [Gentelella on Yii framework 2](https://github.com/yiister/yii2-gentelella)
