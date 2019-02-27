@@ -1941,6 +1941,11 @@ span.right {
     .tile_count .tile_stats_count .count {
         font-size: 30px;
     }
+
+    .main_menu span.fa {
+        position:absolute;
+        right:0;
+    }
 }
 
 .tile_count .tile_stats_count span {
