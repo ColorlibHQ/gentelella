@@ -194,6 +194,7 @@ $(document).ready(function () {
             if (!$li.parent().is('.child_menu')) {
                 $SIDEBAR_MENU.find('li').removeClass('active active-sm');
                 $SIDEBAR_MENU.find('li ul').slideUp();
+
             } else {
                 if ($BODY.is(".nav-sm")) {
                     if (!$li.parent().is('.child_menu')) {
@@ -202,6 +203,7 @@ $(document).ready(function () {
                     }
                 }
             }
+
             $li.addClass('active');
 
             child_menu.slideDown(function () {
