@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Flot Examples: Axes autoscaling options</title>
+    <link href="../examples.css" rel="stylesheet" type="text/css">
+	<script language="javascript" type="text/javascript" src="../../source/jquery.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.canvaswrapper.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.colorhelpers.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.saturated.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.browser.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.drawSeries.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.errorbars.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.uiConstants.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.logaxis.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.symbol.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.flatdata.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.navigate.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.fillbetween.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.stack.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.touchNavigate.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.hover.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.touch.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.time.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.axislabels.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.selection.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.composeImages.js"></script>
+    <script language="javascript" type="text/javascript" src="../../source/jquery.flot.legend.js"></script>
+    <script type="text/javascript">
+
+    $(function() {
+        var index = 0;
+        function generate(start, end, fn) {
+            var res = [];
+            for (var i = 0; i <= 40; ++i) {
+                var x = start + i / 40 * (end - start);
+                res.push([x, fn(x)]);
+            }
+            return res;
+        }
+
+        var data = [
+            { data: generate(index, 2, function (x) { return Math.cos(x);}), xaxis: 1, yaxis:1, lines: { show: true}}
+        ];
+
+        var plot = $.plot("#placeholder", data, {
+            xaxes: [
+                { position: 'bottom' }
+            ],
+            yaxes: [
+                { position: 'left', autoScale: 'none', min: -2.0, max: 2.0 }
+            ],
+			zoom: {
+				interactive: true
+			},
+			pan: {
+				interactive: true
+			}
+        });
+
+        function update () {
+            index += 0.01;
+            data = [
+                { data: generate(index, index + 2, function (x) { return Math.cos(x);}), xaxis: 1, yaxis:1, lines: { show: true}}
+            ];
+            plot.setData(data);
+            plot.setupGrid(true);
+            plot.draw();
+            window.requestAnimationFrame(update);
+        }
+
+        window.requestAnimationFrame(update);
+
+        $('#myForm input').on('change', function() {
+            var val = $('input[name="myRadio"]:checked', '#myForm').val()
+            var y = plot.getAxes().yaxis;
+            y.options.min = -2.0;
+            y.options.max = 2.0;
+            y.options.autoScaleMargin = null;
+            y.options.autoScale = "loose";
+            y.options.growOnly = false;
+
+            switch (val) {
+                case '1':
+                    y.options.autoScale = "none";
+                    break;
+                case '2':
+                    y.options.autoScaleMargin = 0.1;
+                    y.options.autoScale = "loose";
+                    break;
+                case '3':
+                    y.options.autoScale = "exact";
+                    break;
+                case '4':
+                    y.options.autoScaleMargin = 0.1;
+                    y.options.autoScale = "loose";
+                    y.options.growOnly = true;
+                    break;
+                case '5':
+                    y.options.autoScale = "exact";
+                    y.options.growOnly = true;
+                    break;
+            }
+        });
+    });
+
+    </script>
+</head>
+<body>
+
+    <div id="header">
+        <h2>Axes autoscaling options</h2>
+    </div>
+
+    <div id="content">
+
+        <div class="demo-container">
+            <div id="placeholder" class="demo-placeholder"></div>
+        </div>
+        <fieldset id="myForm">
+            <legend>Vertical axis autoscaling options</legend>
+            <input type="radio" name="myRadio" value="1" checked="checked" /> None (min = -2.0, max = 2.0) <br />
+            <input type="radio" name="myRadio" value="2" /> fit loosely <br />
+            <input type="radio" name="myRadio" value="3" /> fit exactly <br />
+            <input type="radio" name="myRadio" value="4" /> grow loosely <br />
+            <input type="radio" name="myRadio" value="5" /> grow exactly <br />
+        </fieldset>
+    </div>
+</body>
+</html>

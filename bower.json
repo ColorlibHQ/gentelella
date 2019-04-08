@@ -24,7 +24,7 @@
   ],
   "devDependencies": {
     "jquery": "^2.2.3",
-    "bootstrap": "^3.3.7",
+    "bootstrap": "^3.4.1",
     "font-awesome": "fontawesome#^4.6.1",
     "fastclick": "^1.0.6",
     "nprogress": "^0.2.0",
@@ -33,7 +33,7 @@
     "bootstrap-progressbar": "^0.9.0",
     "iCheck": "icheck#^1.0.2",
     "Flot": "flot#^0.8.3",
-    "bootstrap-daterangepicker": "git@github.com:christianesperar/bootstrap-daterangepicker.git#master",
+    "bootstrap-daterangepicker": "git@github.com:dangrossman/daterangepicker.git#master",
     "skycons": "https://github.com/darkskyapp/skycons.git",
     "jquery-sparkline": "^2.1.3",
     "morris.js": "^0.5.1",

@@ -3,11 +3,15 @@
    <head>
       <meta charset="UTF-8" />
       <title>A date range picker for Bootstrap</title>
-      <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+
+      <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" />-->
+
       <link rel="stylesheet" type="text/css" media="all" href="daterangepicker.css" />
-      <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-      <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-      <script type="text/javascript" src="moment.js"></script>
+
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
+
       <script type="text/javascript" src="daterangepicker.js"></script>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -89,7 +93,7 @@
 
               <div class="checkbox">
                 <label>
-                  <input type="checkbox" id="timePicker"> timePicker
+                  <input type="checkbox" id="timePicker" checked="checked"> timePicker
                 </label>
               </div>
 
@@ -118,7 +122,7 @@
 
               <div class="checkbox">
                 <label>
-                  <input type="checkbox" id="ranges"> ranges (with example predefined ranges)
+                  <input type="checkbox" id="ranges" checked="checked"> ranges (with example predefined ranges)
                 </label>
               </div>
 
@@ -201,8 +205,9 @@
 
           <div class="col-md-4 col-md-offset-2 demo">
             <h4>Your Date Range Picker</h4>
-            <input type="text" id="config-demo" class="form-control">
-            <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+            <center>
+              <input type="text" id="config-demo" class="form-control">
+            </center>
           </div>
 
           <div class="col-md-6">
@@ -358,7 +363,7 @@
 
           $('#config-text').val("$('#demo').daterangepicker(" + JSON.stringify(options, null, '    ') + ", function(start, end, label) {\n  console.log(\"New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')\");\n});");
 
-          $('#config-demo').daterangepicker(options, function(start, end, label) { console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')'); });
+          $('#config-demo').daterangepicker(options, function(start, end, label) { console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')'); }).click();;
           
         }
 

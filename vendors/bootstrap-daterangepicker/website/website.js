@@ -22,7 +22,7 @@ $(document).ready(function() {
       startDate: moment()
     });
 
-    updateConfig();
+    //updateConfig();
 
     function updateConfig() {
       var options = {};
@@ -32,6 +32,12 @@ $(document).ready(function() {
       
       if ($('#showDropdowns').is(':checked'))
         options.showDropdowns = true;
+
+      if ($('#minYear').val().length && $('#minYear').val() != 1)
+        options.minYear = parseInt($('#minYear').val(), 10);
+
+      if ($('#maxYear').val().length && $('#maxYear').val() != 1)
+        options.maxYear = parseInt($('#maxYear').val(), 10);
 
       if ($('#showWeekNumbers').is(':checked'))
         options.showWeekNumbers = true;
@@ -54,8 +60,8 @@ $(document).ready(function() {
       if ($('#autoApply').is(':checked'))
         options.autoApply = true;
 
-      if ($('#dateLimit').is(':checked'))
-        options.dateLimit = { days: 7 };
+      if ($('#maxSpan').is(':checked'))
+        options.maxSpan = { days: 7 };
 
       if ($('#ranges').is(':checked')) {
         options.ranges = {
@@ -120,27 +126,54 @@ $(document).ready(function() {
       if ($('#buttonClasses').val().length && $('#buttonClasses').val() != 'btn btn-sm')
         options.buttonClasses = $('#buttonClasses').val();
 
-      if ($('#applyClass').val().length && $('#applyClass').val() != 'btn-success')
-        options.applyClass = $('#applyClass').val();
+      if ($('#applyButtonClasses').val().length && $('#applyButtonClasses').val() != 'btn-primary')
+        options.applyButtonClasses = $('#applyButtonClasses').val();
 
-      if ($('#cancelClass').val().length && $('#cancelClass').val() != 'btn-default')
-        options.cancelClass = $('#cancelClass').val();
-
-      $('#config-text').val("$('#demo').daterangepicker(" + JSON.stringify(options, null, '    ') + ", function(start, end, label) {\n  console.log(\"New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')\");\n});");
+      if ($('#cancelButtonClasses').val().length && $('#cancelButtonClasses').val() != 'btn-default')
+        options.cancelClass = $('#cancelButtonClasses').val();
 
       $('#config-demo').daterangepicker(options, function(start, end, label) { console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')'); });
       
+      if (typeof options.ranges !== 'undefined') {
+        options.ranges = {};
+      }
+
+      var option_text = JSON.stringify(options, null, '    ');
+
+      var replacement = "ranges: {\n"
+          + "        'Today': [moment(), moment()],\n"
+          + "        'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],\n"
+          + "        'Last 7 Days': [moment().subtract(6, 'days'), moment()],\n"
+          + "        'Last 30 Days': [moment().subtract(29, 'days'), moment()],\n"
+          + "        'This Month': [moment().startOf('month'), moment().endOf('month')],\n"
+          + "        'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]\n"
+          + "    }";
+      option_text = option_text.replace(new RegExp('"ranges"\: \{\}', 'g'), replacement);
+
+      $('#config-text').val("$('#demo').daterangepicker(" + option_text + ", function(start, end, label) {\n  console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');\n});");
+
     }
 
-    if ($(window).width() > 980) {
-        $('#sidebar').affix({
-          offset: {
-            top: 300,
-            bottom: function () {
-              return (this.bottom = $('.footer').outerHeight(true))
-            }
-          }
-        });
-    }
-    $('body').scrollspy({ target: '#nav-spy', offset: 20 });
+    $(window).scroll(function (event) {
+        var scroll = $(window).scrollTop();
+        if (scroll > 180) {
+          $('.leftcol').css('position', 'fixed');
+          $('.leftcol').css('top', '10px');
+        } else {
+          $('.leftcol').css('position', 'absolute');
+          $('.leftcol').css('top', '180px');
+        }
+    });
+
+    var bg = new Trianglify({
+      x_colors: ["#e1f3fd", "#eeeeee", "#407dbf"],
+      y_colors: 'match_x',
+      width: document.body.clientWidth,
+      height: 150,
+      stroke_width: 0,
+      cell_size: 20
+    });
+
+    $('#jumbo').css('background-image', 'url(' + bg.png() + ')');
+
 });
