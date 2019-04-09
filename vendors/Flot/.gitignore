@@ -1,3 +1,5 @@
-*.min.js
-!excanvas.min.js
 node_modules/
+debug.log
+coverage/**
+dist/
+.vscode

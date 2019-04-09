@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Flot Examples: Axes tick labels options</title>
+    <link href="../examples.css" rel="stylesheet" type="text/css">
+    <script language="javascript" type="text/javascript" src="../../source/jquery.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.canvaswrapper.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.colorhelpers.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.saturated.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.browser.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.drawSeries.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.errorbars.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.uiConstants.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.logaxis.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.symbol.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.flatdata.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.navigate.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.fillbetween.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.stack.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.touchNavigate.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.hover.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.touch.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.time.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.axislabels.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.selection.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.composeImages.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.legend.js"></script>
+    <style>
+        fieldset {
+            display: inline-block;
+            height: 180px;
+        }
+    </style>
+
+    <script type="text/javascript">
+
+
+    $(function() {
+        var index = 10000;
+        function generate(start, end, fn) {
+            var res = [];
+            for (var i = 0; i <= 40; ++i) {
+                var x = start + i / 40 * (end - start);
+                res.push([x, fn(x)]);
+            }
+            return res;
+        }
+
+        var data = [
+            { data: generate(index, 2, function (x) { return Math.cos(x);}), xaxis: 1, yaxis:1, lines: { show: true}}
+        ];
+
+        var plot = $.plot("#placeholder", data, {
+            xaxes: [
+                { position: 'bottom' }
+            ],
+            yaxes: [
+                { position: 'left', autoScale: 'none', min: -3, max: 3 }
+            ]
+        });
+
+        function update () {
+            index += 0.01;
+            data = [
+                { data: generate(index, index + 2, function (x) { return Math.cos(x);}), xaxis: 1, yaxis:1, lines: { show: true}}
+            ];
+            plot.setData(data);
+            plot.setupGrid(true);
+            plot.draw();
+            window.requestAnimationFrame(update);
+        }
+
+        window.requestAnimationFrame(update);
+
+        $('#tickLabels input').on('change', function() {
+            var val = $('input[name="tickLabels"]:checked', '#tickLabels').val()
+            var axes = plot.getXAxes().concat(plot.getYAxes());
+            axes.forEach(function(axis) {
+                axis.options.showTickLabels = val;
+            });
+        });
+
+        $('#tickMarks input').on('change', function() {
+            var val = $('input[name="tickMarks"]:checked', '#tickMarks').val()
+            var axes = plot.getXAxes().concat(plot.getYAxes());
+            axes.forEach(function(axis) {
+                switch(val) {
+                    case 'none':
+                        axis.options.showTicks = false;
+                        break;
+                    case 'major':
+                        axis.options.showTicks = true;
+                        axis.options.showMinorTicks = false;
+                        break;
+                    case 'all':
+                        axis.options.showTicks = true;
+                        axis.options.showMinorTicks = true;
+                        break;
+                }
+            });
+        });
+
+        $('#scaling input').on('change', function() {
+            var val = $('input[name="scaling"]:checked', '#scaling').val()
+            var y = plot.getAxes().yaxis;
+
+            switch (val) {
+                case 'none':
+                    y.options.autoScale = 'none';
+                    y.options.min = -3;
+                    y.options.max = 3;
+                    y.options.autoScaleMargin = null;
+                    y.options.growOnly = null;
+                    break;
+                case 'fitLoosely':
+                    y.options.autoScale = 'loose';
+                    y.options.min = undefined;
+                    y.options.max = undefined;
+                    y.options.autoScaleMargin = 0.1;
+                    y.options.growOnly = false;
+                    break;
+                case 'fitExactly':
+                    y.options.autoScale = 'exact';
+                    y.options.min = undefined;
+                    y.options.max = undefined;
+                    y.options.autoScaleMargin = null;
+                    y.options.growOnly = false;
+                    break;
+                case 'growLoosely':
+                    y.options.autoScale = 'loose';
+                    y.options.min = -2.0;
+                    y.options.max = 2.0;
+                    y.options.autoScaleMargin = 0.1;
+                    y.options.growOnly = true;
+                    break;
+                case 'growExactly':
+                    y.options.autoScale = 'exact';
+                    y.options.min = undefined;
+                    y.options.max = undefined;
+                    y.options.autoScaleMargin = null;
+                    y.options.growOnly = true;
+                    break;
+            }
+        });
+
+        $('#verticalPosition input').on('change', function() {
+            var val = $('input[name="verticalPosition"]:checked', '#verticalPosition').val()
+            var axes = plot.getYAxes();
+            axes.forEach(function(axis) {
+                axis.options.position = val;
+            });
+        });
+
+        $('#horizontalPosition input').on('change', function() {
+            var val = $('input[name="horizontalPosition"]:checked', '#horizontalPosition').val()
+            var axes = plot.getXAxes();
+            axes.forEach(function(axis) {
+                axis.options.position = val;
+            });
+        });
+    });
+
+    </script>
+</head>
+<body>
+
+    <div id="header">
+        <h2>Flot Examples: Axes tick labels options</h2>
+    </div>
+
+    <div id="content">
+
+        <div class="demo-container">
+            <div id="placeholder" class="demo-placeholder"></div>
+        </div>
+        <fieldset id="tickLabels">
+            <legend>Axis tick labels options</legend>
+            <input type="radio" name="tickLabels" value="none" /> none <br />
+            <input type="radio" name="tickLabels" value="endpoints" /> endpoints <br />
+            <input type="radio" name="tickLabels" value="major" checked="checked"/> major <br />
+            <input type="radio" name="tickLabels" value="all" /> all <br />
+        </fieldset>
+        <fieldset id="tickMarks">
+            <legend>Axis tick marks options</legend>
+            <input type="radio" name="tickMarks" value="none" /> none <br />
+            <input type="radio" name="tickMarks" value="major" /> major <br />
+            <input type="radio" name="tickMarks" value="all" checked="checked"/> all <br />
+        </fieldset>
+        <fieldset id="scaling">
+            <legend>Vertical axis autoscaling options</legend>
+            <input type="radio" name="scaling" value="none" checked="checked" /> None (min = -3, max = 3) <br />
+            <input type="radio" name="scaling" value="fitLoosely"/> fit loosely <br />
+            <input type="radio" name="scaling" value="fitExactly" /> fit exactly <br />
+            <input type="radio" name="scaling" value="growLoosely" /> grow loosely <br />
+            <input type="radio" name="scaling" value="growExactly" /> grow exactly <br />
+        </fieldset>
+        <fieldset id="verticalPosition">
+            <legend>Vertical axis position options</legend>
+            <input type="radio" name="verticalPosition" value="right" /> right <br />
+            <input type="radio" name="verticalPosition" value="left" checked="checked"/> left <br />
+        </fieldset>
+        <fieldset id="horizontalPosition">
+            <legend>Horizontal axis position options</legend>
+            <input type="radio" name="horizontalPosition" value="top" /> top <br />
+            <input type="radio" name="horizontalPosition" value="bottom" checked="bottom"/> left <br />
+        </fieldset>
+    </div>
+</body>
+</html>

@@ -1,0 +1,5 @@
+/* Used in a test from composeImages. */
+circle.externalCSS {
+    stroke: black;
+    stroke-width: 4px;
+}
