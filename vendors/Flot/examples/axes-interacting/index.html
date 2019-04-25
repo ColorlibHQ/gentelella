@@ -4,62 +4,39 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>Flot Examples: Interacting with axes</title>
 	<link href="../examples.css" rel="stylesheet" type="text/css">
-	<script language="javascript" type="text/javascript" src="../../source/jquery.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.canvaswrapper.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.colorhelpers.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.saturated.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.browser.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.drawSeries.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.errorbars.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.uiConstants.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.logaxis.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.symbol.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.flatdata.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.navigate.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.fillbetween.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.stack.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.touchNavigate.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.hover.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.touch.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.time.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.axislabels.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.selection.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.composeImages.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.legend.js"></script>
+	<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="../../excanvas.min.js"></script><![endif]-->
+	<script language="javascript" type="text/javascript" src="../../jquery.js"></script>
+	<script language="javascript" type="text/javascript" src="../../jquery.flot.js"></script>
 	<script type="text/javascript">
 
 	$(function() {
 
 		function generate(start, end, fn) {
 			var res = [];
-			for (var i = 0; i <= 40; ++i) {
-				var x = start + i / 40 * (end - start);
+			for (var i = 0; i <= 100; ++i) {
+				var x = start + i / 100 * (end - start);
 				res.push([x, fn(x)]);
 			}
 			return res;
 		}
 
 		var data = [
-			{ data: generate(0, 10, function (x) { return Math.sqrt(x);}), xaxis: 1, yaxis:1, lines: { show: true, fill: true }},
-			{ data: generate(0, 10, function (x) { return Math.sin(x);}), xaxis: 1, yaxis:2, points: { show: true }},
-			{ data: generate(0, 10, function (x) { return (x < 3 || x > 5) ? Math.cos(x) : null;}), xaxis: 1, yaxis:3 },
-			{ data: generate(2, 10, function (x) { return Math.tan(x);}), xaxis: 2, yaxis: 4, lines: { show: true, steps: true }},
-			{ data: generate(5, 15, function (x) { return 30 * Math.sin(x/2+3);}), xaxis: 3, yaxis: 5, bars: {show: true, fill: true, barWidth:0.1, align: "center"}}
+			{ data: generate(0, 10, function (x) { return Math.sqrt(x);}), xaxis: 1, yaxis:1 },
+			{ data: generate(0, 10, function (x) { return Math.sin(x);}), xaxis: 1, yaxis:2 },
+			{ data: generate(0, 10, function (x) { return Math.cos(x);}), xaxis: 1, yaxis:3 },
+			{ data: generate(2, 10, function (x) { return Math.tan(x);}), xaxis: 2, yaxis: 4 }
 		];
 
 		var plot = $.plot("#placeholder", data, {
 			xaxes: [
 				{ position: 'bottom' },
-				{ position: 'bottom'},
 				{ position: 'top'}
 			],
 			yaxes: [
 				{ position: 'left' },
 				{ position: 'left' },
 				{ position: 'right' },
-				{ position: 'left' },
-				{ position: 'right' }
+				{ position: 'left' }
 			]
 		});
 

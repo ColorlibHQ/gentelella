@@ -302,7 +302,9 @@ html , body{
     margin-bottom: 10px;
     float: left
 }
-.main_menu span.fa {
+.main_menu span.fa,
+.main_menu span.fab,
+.main_menu span.fas {
     float: right;
     text-align: center;
     margin-top: 5px;
@@ -310,7 +312,9 @@ html , body{
     min-width: inherit;
     color: #C4CFDA
 }
-.active a span.fa {
+.active a span.fa,
+.active a span.fab,
+.active a span.fas {
     text-align: right !important;
     margin-right: 4px
 }
@@ -318,10 +322,14 @@ html , body{
     margin: 0
 }
 .nav-sm span.fa,
+.nav-sm span.fab,
+.nav-sm span.fas,
 .nav-sm .menu_section h3 {
     display: none
 }
-.nav-sm li li span.fa {
+.nav-sm li li span.fa,
+.nav-sm li li span.fab,
+.nav-sm li li span.fas {
     display: inline-block
 }
 .nav_menu {
@@ -1832,25 +1840,27 @@ h4.graph_title {
     padding-left: 10px;
     border-radius: 4px
 }
-.fontawesome-icon-list .fa-hover a:hover .fa {
+.fontawesome-icon-list .fa-hover a:hover .fa,
+.fontawesome-icon-list .fb-hover a:hover .fab,
+.fontawesome-icon-list .fa-hover a:hover .fas {
     font-size: 28px;
     vertical-align: -6px
 }
-.fontawesome-icon-list .fa-hover a .fa {
+.fontawesome-icon-list .fa-hover a .fa,
+.fontawesome-icon-list .fa-hover a .fab,
+.fontawesome-icon-list .fa-hover a .fas {
     width: 32px;
     font-size: 16px;
     display: inline-block;
     text-align: right;
     margin-right: 10px
 }
-.main_menu .fa {
+.main_menu .fa,
+.main_menu .fab,
+.main_menu .fas {
     width: 26px;
     opacity: .99;
     display: inline-block;
-    font-family: FontAwesome;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 18px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale
 }
