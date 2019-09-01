@@ -7,9 +7,9 @@ Theme uses several libraries for charts, calendar, form validation, wizard style
 
 We would love to see how you use this awesome admin template. You can notify us about your site, app or service by tweeting to [@colorlib](https://twitter.com/colorlib). Once the list will grown long enough we will write a post similar to [this](https://colorlib.com/wp/avada-theme-examples/) to showcase the best examples.
 
-
 ## Theme Demo
-![Gentelella Bootstrap Admin Template](https://cdn.colorlib.com/wp/wp-content/uploads/sites/2/gentelella-admin-template-preview.jpg 
+
+![Gentelella Bootstrap Admin Template](https://cdn.colorlib.com/wp/wp-content/uploads/sites/2/gentelella-admin-template-preview.jpg
 "Gentelella Theme Browser Preview")
 
 **[Template Demo](https://colorlib.com/polygon/gentelella/index.html)**
@@ -20,38 +20,32 @@ We would love to see how you use this awesome admin template. You can notify us 
 
 ## Installation via Package Manager
 
-Our goal is to make it installable on different Package Manager! Do you want to use it on your favorite Package Manager and you know how? Pull request all the way! 
+Our goal is to make it installable on different Package Managers! Do you want to use it on your favorite Package Manager and you know how? Pull request all the way!
 
 As of now, this is some installation available:
 
-**Bower**
+### Bower
 
-```
-bower install gentelella --save
-```
+    bower install gentelella --save
 
-**npm**
+### npm
 
-```
-npm install gentelella --save
-```
+    npm install gentelella --save
 
-**yarn**
+### yarn
 
-```
-yarn add gentelella --save
-```
+    yarn add gentelella --save
 
 ## Get paid to contribute :heavy_dollar_sign: :heavy_dollar_sign:
 
-This project has been growing and reaching people in so many forms that we can't simply believe it. We set out to build, maintain & improve (what we believe to be) one of the greatest HTML Admin dashboard templates and we've been fortunate enough to see it grow beyond our wildest dreams. As such, Colorlib (known previously as puikinsih), is opening up the 'get paid to contribute' project. 
+This project has been growing and reaching people in so many forms that we can't simply believe it. We set out to build, maintain & improve (what we believe to be) one of the greatest HTML Admin dashboard templates and we've been fortunate enough to see it grow beyond our wildest dreams. As such, Colorlib (known previously as puikinsih), is opening up the 'get paid to contribute' project.
 
-Anyone interested in getting paid to contribute to this project, should contact us here: https://colorlib.com/wp/contact-us. 
+Anyone interested in getting paid to contribute to this project, should contact us here: <https://colorlib.com/wp/contact-us>
 
-We're looking for people that love this project as much as we do, to help us reach our mission - build the greatest Admin HTML template the Internet has seen. 
-
+We're looking for people that love this project as much as we do, to help us reach our mission - build the greatest Admin HTML template the Internet has seen.
 
 ## How to contribute
+
 To contribute, please ensure that you have stable [Node.js](https://nodejs.org/) and [npm](https://npmjs.com) installed.
 
 Test if Gulp CLI is installed by running `gulp --version`.  If the command isn't found, run `npm install -g gulp`.  For more information about installing Gulp, see the Gulp's [Getting Started](https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md).
@@ -84,7 +78,8 @@ If `gulp` is installed, follow the steps below.
 
 Let us know if you have done integration for this admin template on other platforms and frameworks and we'll be happy to share your work.
 
-## Scripts included:
+## Scripts included
+
 * Bootstrap
 * Font Awesome
 * jQuery-Autocomplete
@@ -123,6 +118,7 @@ Let us know if you have done integration for this admin template on other platfo
 * jQuery Smart Wizard
 
 ## Other templates and useful resources
+
 * [Free Bootstrap Admin Templates](https://colorlib.com/wp/free-bootstrap-admin-dashboard-templates/ "Bootstrap Admin Templates on Colorlib") - List of the best Free Bootstrap admin dashboard templates that are available for free for personal and commercial use.
 * [Free Admin Templates](https://colorlib.com/wp/free-html5-admin-dashboard-templates/ "List of free HTML based admin templates by Colorlib") - Long list of the best free HTML5 powered admin dashboard templates. Available for personal and commercial use.
 * [Angular Templates](https://colorlib.com/wp/angularjs-admin-templates/ "Angular Admin Templates on Colorlib") - List of the most popular admin templates based on AngularJS.
@@ -132,6 +128,7 @@ Let us know if you have done integration for this admin template on other platfo
 * [WordPress Themes](https://colorlib.com/wp/free-wordpress-themes/ "List of Free WordPress themes by Colorlib") - A huge selection of the best free WordPress themes that are all licensed under GPL and are available for personal and commercial use without restrictions.
 
 ## License information
+
 Gentelella is licensed under The MIT License (MIT). Which means that you can use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software. But you always need to state that Colorlib is the original author of this template.
 
 Project is developed and maintained by [Colorlib](https://colorlib.com/ "Colorlib - Make Your First Blog") and Aigars Silkalns
