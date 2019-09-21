@@ -1,6 +1,20 @@
+html, 
+body {
+  height: 100%;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.full-height{
+  height: 100%;
+}
+
 .left_col {
   background: #2A3F54;
 }
+
 .nav-sm .container.body .col-md-3.left_col {
   min-height: 100%;
   width: 70px;
@@ -34,10 +48,19 @@
   font-size: 27px;
   margin: 13px 0 0 3px;
 }
-.site_title i {
-  border: 1px solid #EAEAEA;
-  padding: 5px 6px;
-  border-radius: 50%;
+.site_title {
+  
+  img {
+    max-height: 66px;
+    max-width: 180px;
+  }
+
+  i {
+    border: 1px solid #EAEAEA;
+    padding: 5px 6px;
+    border-radius: 50%;
+  }
+
 }
 .nav-sm .main_container .top_nav {
   display: block;
@@ -117,12 +140,12 @@
   margin-left: 15%;
   z-index: 1000;
   position: inherit;
-  margin-top: 20px;
+  margin-top: 10px;
   border: 1px solid rgba(52, 73, 94, 0.44);
   padding: 4px;
 }
 .profile_info {
-  padding: 25px 10px 10px;
+  padding: 10px;
   width: 65%;
   float: left;
 }
@@ -193,6 +216,7 @@
   width: 230px;
   padding: 0;
   position: absolute;
+  display: -ms-flexbox;  
   display: flex;
   z-index: 1;
 }
@@ -793,7 +817,7 @@ article.media {
   float: left;
 }
 h2 {
-  font-size: 18px;
+  font-size: 30px;
   font-weight: 400;
 }
 #left, #right {
@@ -1038,7 +1062,7 @@ table.tile_info td:first-child {
   width: 83%;
 }
 td span {
-  line-height: 28px;
+  line-height: inherit;
 }
 .sidebar-widget {
   overflow: hidden;
@@ -1338,6 +1362,7 @@ div.box {
 ul.msg_list li {
   background: #f7f7f7;
   padding: 5px;
+  display: -ms-flexbox;
   display: flex;
   margin: 6px 6px 0;
   width: 96% !important;
@@ -1489,6 +1514,7 @@ ul.quick-list li i {
 }
 .widget_summary {
   width: 100%;
+  display: -ms-inline-flexbox;
   display: inline-flex;
 }
 .widget_summary .w_left {
@@ -1537,6 +1563,7 @@ span.right {
   position: fixed;
   width: 230px;
   background: #2A3F54;
+	z-index:999;
 }
 .sidebar-footer a {
   padding: 7px 0 3px;
@@ -1546,6 +1573,7 @@ span.right {
   display: block;
   float: left;
   background: #172D44;
+  cursor: pointer;
 }
 .sidebar-footer a:hover {
   background: #425567;
@@ -1753,18 +1781,18 @@ h4.graph_title {
 }
 
 .tile-stats:hover .icon i {
-  animation-name: tansformAnimation;
+  animation-name: transformAnimation;
   animation-duration: .5s;
   animation-iteration-count: 1;
   color: rgba(58, 58, 58, 0.41);
   animation-timing-function: ease;
   animation-fill-mode: forwards;
-  -webkit-animation-name: tansformAnimation;
+  -webkit-animation-name: transformAnimation;
   -webkit-animation-duration: .5s;
   -webkit-animation-iteration-count: 1;
   -webkit-animation-timing-function: ease;
   -webkit-animation-fill-mode: forwards;
-  -moz-animation-name: tansformAnimation;
+  -moz-animation-name: transformAnimation;
   -moz-animation-duration: .5s;
   -moz-animation-iteration-count: 1;
   -moz-animation-timing-function: ease;
@@ -1792,7 +1820,7 @@ h4.graph_title {
 .tile-stats .count {
   font-size: 38px;
   font-weight: bold;
-  line-height: 1.65857143
+  line-height: 1.65857
 }
 
 .tile-stats .count, .tile-stats h3, .tile-stats p {
@@ -2778,6 +2806,7 @@ ul.widget_tally .count {
   box-shadow: 0 4px 6px -6px #222;
 }
 .widget_tally_box .flex {
+  display: -ms-flexbox;
   display: flex;
 }
 ul.widget_profile_box {
@@ -2953,6 +2982,7 @@ ul.user_data li .progress {
   background: #F5F7FA;
   border: 0;
   padding: 7px 0;
+  display: -ms-flexbox;
   display: flex;
 }
 ul.stats-overview {
@@ -3209,6 +3239,14 @@ ul.project_files li a i {
 .view-first:hover p {
   transition-delay: 0.1s;
 }
+.form-group.has-feedback span {
+  display: block !important;
+}
+.form-group .btn {
+  margin-bottom: -6px;
+}
+
+.input-group-btn .btn { margin-bottom:0; }
 
 /* *********  /media gallery  **************************** */
 
@@ -3480,9 +3518,7 @@ a.hiddenanchor {
 .left {
   float: left;
 }
-.calendar.left {
-  float: initial !important;
-}
+
 .alignleft {
   float: left;
   margin-right: 15px;
@@ -3691,8 +3727,8 @@ header {
   border: 1px solid rgb(204, 204, 204);
   padding: 4px;
   box-sizing: content-box;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.0745098) 0px 1px 1px 0px inset;
-  box-shadow: rgba(0, 0, 0, 0.0745098) 0px 1px 1px 0px inset;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.07451) 0px 1px 1px 0px inset;
+  box-shadow: rgba(0, 0, 0, 0.07451) 0px 1px 1px 0px inset;
   border-top-right-radius: 3px; border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px; border-top-left-radius: 3px;
   overflow: scroll;
@@ -4344,3 +4380,46 @@ ul.notifications {
   border: 1px solid #e5e5e5;
 }
 /** /Dropzone.js **/
+
+
+/*
+.x_content {
+    direction: rtl;
+}
+*/
+
+.main_menu .label {
+  line-height: 11px;
+  margin-top: 4px;
+}
+@media (max-width: 460px) {
+  .dataTables_wrapper .col-sm-6 {
+      width: 100%;
+      margin-bottom: 5px;
+  }
+  .dataTables_wrapper .col-sm-6 .dataTables_filter {
+      float: none;
+  }
+}
+
+
+@media (max-width: 767px) {
+ .dataTables_length { 
+    float: none; 
+  }
+}
+    
+.daterangepicker.xdisplay { 
+  width: 228px; 
+}
+
+.dataTables_wrapper > .row {
+  overflow: auto !important; /*prevent datatables overflowing its container*/
+}
+
+/** bootstrap-datetimepicker **/
+.input-group.date .input-group-addon{
+  border-radius: 0px !important;
+  background-color: #ffff !important;
+}
+/** /bootstrap-datetimepicker **/
