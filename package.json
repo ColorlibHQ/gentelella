@@ -31,12 +31,12 @@
   },
   "homepage": "https://github.com/puikinsh/gentelella#readme",
   "devDependencies": {
-    "browser-sync": "^2.12.10",
-    "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^3.1.0",
+    "browser-sync": "^2.26.7",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.0",
     "gulp-concat": "^2.6.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-ruby-sass": "^2.0.6",
-    "gulp-uglify": "^1.5.3"
+    "gulp-rename": "^1.4.0",
+    "gulp-ruby-sass": "^4.0.0",
+    "gulp-uglify": "^3.0.2"
   }
 }
