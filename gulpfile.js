@@ -1,4 +1,5 @@
-var gulp = require('gulp'),
+const
+    gulp = require('gulp'),
     concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
     rename = require('gulp-rename'),
@@ -6,7 +7,7 @@ var gulp = require('gulp'),
     autoprefixer = require('gulp-autoprefixer'),
     browserSync = require('browser-sync').create();
 
-var DEST = 'build/';
+const DEST = 'build/';
 
 gulp.task('scripts', function() {
     return gulp.src([
@@ -47,17 +48,22 @@ gulp.task('browser-sync', function() {
     });
 });
 
-gulp.task('watch', function() {
+gulp.task('watch', function(done) {
   // Watch .html files
-  gulp.watch('production/*.html', browserSync.reload);
+  gulp.watch('production/*.html').
+    on('change', browserSync.reload);
   // Watch .js files
-  gulp.watch('src/js/*.js', ['scripts']);
+  gulp.watch('src/js/*.js').
+    on('change', gulp.series(['scripts']));
   // Watch .scss files
-  gulp.watch('src/scss/*.scss', ['sass', 'sass-minify']);
+  gulp.watch('src/scss/*.scss').
+    on('change', gulp.series(['sass', 'sass-minify']));
+
+  done();
 });
 
 // Default Task
 gulp.task('default', 
     gulp.series(
         gulp.parallel('scripts', 'sass', 'sass-minify'), 
-        'browser-sync', 'watch'));
+        gulp.parallel('browser-sync', 'watch')));
