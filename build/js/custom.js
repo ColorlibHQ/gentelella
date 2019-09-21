@@ -344,8 +344,6 @@ if (typeof NProgress != 'undefined') {
 		
 		console.log('init_flot_chart');
 		
-		
-		
 		var arr_data1 = [
 			[gd(2012, 1, 1), 17],
 			[gd(2012, 1, 2), 74],
@@ -408,11 +406,9 @@ if (typeof NProgress != 'undefined') {
 			[16, 9]
 		];
 		
-		
 		for (var i = 0; i < 30; i++) {
-		  chart_plot_02_data.push([new Date(Date.today().add(i).days()).getTime(), randNum() + i + i + 10]);
+		  chart_plot_02_data.push([new Date(moment().add(i, 'days').calendar()), randNum() + i + i + 10]);
 		}
-		
 		
 		var chart_plot_01_settings = {
           series: {
