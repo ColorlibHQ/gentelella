@@ -35,17 +35,17 @@
 		// Browser
 		factory( jQuery, window, document );
 	}
-}(function( $, window, document, jsZip, pdfMake, undefined ) {
+}(function( $, window, document, jszip, pdfmake, undefined ) {
 'use strict';
 var DataTable = $.fn.dataTable;
 
 // Allow the constructor to pass in JSZip and PDFMake from external requires.
 // Otherwise, use globally defined variables, if they are available.
-if ( jsZip === undefined ) {
-	jsZip = window.JSZip;
+function _jsZip () {
+	return jszip || window.JSZip;
 }
-if ( pdfMake === undefined ) {
-	pdfMake = window.pdfMake;
+function _pdfMake () {
+	return pdfmake || window.pdfMake;
 }
 
 
@@ -673,7 +673,7 @@ var excelStrings = {
 			'<sheetData/>'+
 		'</worksheet>',
 
-	"xl/styles.xml": 
+	"xl/styles.xml":
 		'<?xml version="1.0" encoding="UTF-8"?>'+
 		'<styleSheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="x14ac" xmlns:x14ac="http://schemas.microsoft.com/office/spreadsheetml/2009/9/ac">'+
 			'<fonts count="5" x14ac:knownFonts="1">'+
@@ -759,7 +759,7 @@ var excelStrings = {
 			'<cellStyleXfs count="1">'+
 				'<xf numFmtId="0" fontId="0" fillId="0" borderId="0" />'+
 			'</cellStyleXfs>'+
-			'<cellXfs count="2">'+
+			'<cellXfs count="56">'+
 				'<xf numFmtId="0" fontId="0" fillId="0" borderId="0" applyFont="1" applyFill="1" applyBorder="1"/>'+
 				'<xf numFmtId="0" fontId="1" fillId="0" borderId="0" applyFont="1" applyFill="1" applyBorder="1"/>'+
 				'<xf numFmtId="0" fontId="2" fillId="0" borderId="0" applyFont="1" applyFill="1" applyBorder="1"/>'+
@@ -810,6 +810,24 @@ var excelStrings = {
 				'<xf numFmtId="0" fontId="2" fillId="5" borderId="1" applyFont="1" applyFill="1" applyBorder="1"/>'+
 				'<xf numFmtId="0" fontId="3" fillId="5" borderId="1" applyFont="1" applyFill="1" applyBorder="1"/>'+
 				'<xf numFmtId="0" fontId="4" fillId="5" borderId="1" applyFont="1" applyFill="1" applyBorder="1"/>'+
+				'<xf numFmtId="0" fontId="0" fillId="0" borderId="0" applyFont="1" applyFill="1" applyBorder="1" xfId="0" applyAlignment="1">'+
+					'<alignment horizontal="left"/>'+
+				'</xf>'+
+				'<xf numFmtId="0" fontId="0" fillId="0" borderId="0" applyFont="1" applyFill="1" applyBorder="1" xfId="0" applyAlignment="1">'+
+					'<alignment horizontal="center"/>'+
+				'</xf>'+
+				'<xf numFmtId="0" fontId="0" fillId="0" borderId="0" applyFont="1" applyFill="1" applyBorder="1" xfId="0" applyAlignment="1">'+
+					'<alignment horizontal="right"/>'+
+				'</xf>'+
+				'<xf numFmtId="0" fontId="0" fillId="0" borderId="0" applyFont="1" applyFill="1" applyBorder="1" xfId="0" applyAlignment="1">'+
+					'<alignment horizontal="fill"/>'+
+				'</xf>'+
+				'<xf numFmtId="0" fontId="0" fillId="0" borderId="0" applyFont="1" applyFill="1" applyBorder="1" xfId="0" applyAlignment="1">'+
+					'<alignment textRotation="90"/>'+
+				'</xf>'+
+				'<xf numFmtId="0" fontId="0" fillId="0" borderId="0" applyFont="1" applyFill="1" applyBorder="1" xfId="0" applyAlignment="1">'+
+					'<alignment wrapText="1"/>'+
+				'</xf>'+
 			'</cellXfs>'+
 			'<cellStyles count="1">'+
 				'<cellStyle name="Normal" xfId="0" builtinId="0" />'+
@@ -865,19 +883,20 @@ DataTable.ext.buttons.copyHtml5 = {
 			textarea[0].select();
 
 			try {
-				document.execCommand( 'copy' );
+				var successful = document.execCommand( 'copy' );
 				hiddenDiv.remove();
 
-				dt.buttons.info(
-					dt.i18n( 'buttons.copyTitle', 'Copy to clipboard' ),
-					dt.i18n( 'buttons.copySuccess', {
-							1: "Copied one row to clipboard",
-							_: "Copied %d rows to clipboard"
+				if (successful) {
+					dt.buttons.info(
+						dt.i18n( 'buttons.copyTitle', 'Copy to clipboard' ),
+						dt.i18n( 'buttons.copySuccess', {
+							1: 'Copied one row to clipboard',
+							_: 'Copied %d rows to clipboard'
 						}, exportData.rows ),
-					2000
-				);
-
-				return;
+						2000
+					);
+					return;
+				}
 			}
 			catch (t) {}
 		}
@@ -931,6 +950,8 @@ DataTable.ext.buttons.copyHtml5 = {
 // CSV export
 //
 DataTable.ext.buttons.csvHtml5 = {
+	bom: false,
+
 	className: 'buttons-csv buttons-html5',
 
 	available: function () {
@@ -963,9 +984,14 @@ DataTable.ext.buttons.csvHtml5 = {
 			charset = '';
 		}
 
+		if ( config.bom ) {
+			output = '\ufeff' + output;
+		}
+
 		_saveAs(
 			new Blob( [output], {type: 'text/csv'+charset} ),
-			_filename( config )
+			_filename( config ),
+			true
 		);
 	},
 
@@ -995,7 +1021,7 @@ DataTable.ext.buttons.excelHtml5 = {
 	className: 'buttons-excel buttons-html5',
 
 	available: function () {
-		return window.FileReader !== undefined && jsZip !== undefined && ! _isSafari() && _serialiser;
+		return window.FileReader !== undefined && _jsZip() !== undefined && ! _isSafari() && _serialiser;
 	},
 
 	text: function ( dt ) {
@@ -1068,11 +1094,7 @@ DataTable.ext.buttons.excelHtml5 = {
 					// Replace non standard characters for text output
 					var text = ! row[i].replace ?
 						row[i] :
-						row[i]
-							.replace(/&(?!amp;)/g, '&amp;')
-							.replace(/</g, '&lt;')
-							.replace(/>/g, '&gt;')
-							.replace(/[\x00-\x09\x0B\x0C\x0E-\x1F\x7F-\x9F]/g, '');
+						row[i].replace(/[\x00-\x09\x0B\x0C\x0E-\x1F\x7F-\x9F]/g, '');
 
 					cell = _createNode( rels, 'c', {
 						attr: {
@@ -1137,7 +1159,8 @@ DataTable.ext.buttons.excelHtml5 = {
 			config.customize( xlsx );
 		}
 
-		var zip = new jsZip();
+		var jszip = _jsZip();
+		var zip = new jszip();
 		var zipConfig = {
 			type: 'blob',
 			mimeType: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
@@ -1180,7 +1203,7 @@ DataTable.ext.buttons.pdfHtml5 = {
 	className: 'buttons-pdf buttons-html5',
 
 	available: function () {
-		return window.FileReader !== undefined && pdfMake;
+		return window.FileReader !== undefined && _pdfMake();
 	},
 
 	text: function ( dt ) {
@@ -1261,11 +1284,11 @@ DataTable.ext.buttons.pdfHtml5 = {
 		};
 
 		if ( config.message ) {
-			doc.content.unshift( {
-				text: config.message,
-				style: 'message',
-				margin: [ 0, 0, 0, 12 ]
-			} );
+      doc.content.unshift( {
+        text: typeof config.message == 'function' ? config.message(dt, button, config) : config.message,
+        style: 'message',
+        margin: [ 0, 0, 0, 12 ]
+      } );
 		}
 
 		if ( config.title ) {
@@ -1280,7 +1303,7 @@ DataTable.ext.buttons.pdfHtml5 = {
 			config.customize( doc, config );
 		}
 
-		var pdf = pdfMake.createPdf( doc );
+		var pdf = _pdfMake().createPdf( doc );
 
 		if ( config.download === 'open' && ! _isSafari() ) {
 			pdf.open();
