@@ -4,29 +4,10 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>Flot Examples: Selection</title>
 	<link href="../examples.css" rel="stylesheet" type="text/css">
-	<script language="javascript" type="text/javascript" src="../../source/jquery.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.canvaswrapper.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.colorhelpers.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.saturated.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.browser.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.drawSeries.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.errorbars.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.uiConstants.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.logaxis.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.symbol.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.flatdata.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.navigate.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.fillbetween.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.stack.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.touchNavigate.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.hover.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.touch.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.time.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.axislabels.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.selection.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.composeImages.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.legend.js"></script>
+	<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="../../excanvas.min.js"></script><![endif]-->
+	<script language="javascript" type="text/javascript" src="../../jquery.js"></script>
+	<script language="javascript" type="text/javascript" src="../../jquery.flot.js"></script>
+	<script language="javascript" type="text/javascript" src="../../jquery.flot.selection.js"></script>
 	<script type="text/javascript">
 
 	$(function() {
@@ -44,7 +25,7 @@
 			label: "United States",
 			data: [[1990, 18.9], [1991, 18.7], [1992, 18.4], [1993, 19.3], [1994, 19.5], [1995, 19.3], [1996, 19.4], [1997, 20.2], [1998, 19.8], [1999, 19.9], [2000, 20.4], [2001, 20.1], [2002, 20.0], [2003, 19.8], [2004, 20.4]]
 		}, {
-			label: "Russia",
+			label: "Russia", 
 			data: [[1992, 13.4], [1993, 12.2], [1994, 10.6], [1995, 10.2], [1996, 10.1], [1997, 9.7], [1998, 9.5], [1999, 9.7], [2000, 9.9], [2001, 9.9], [2002, 9.9], [2003, 10.3], [2004, 10.5]]
 		}, {
 			label: "United Kingdom",
@@ -76,12 +57,9 @@
 				noColumns: 2
 			},
 			xaxis: {
-                autoScale: "exact",
 				tickDecimals: 0
 			},
 			yaxis: {
-                autoScale: "loose",
-                autoScaleMargin: 0.2,
 				min: 0
 			},
 			selection: {
