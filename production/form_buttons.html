@@ -622,12 +622,10 @@
                     <li class="dropdown">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i
                           class="fa fa-wrench"></i></a>
-                      <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Settings 1</a>
-                        </li>
-                        <li><a href="#">Settings 2</a>
-                        </li>
-                      </ul>
+                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" href="#">Settings 1</a>
+                              <a class="dropdown-item" href="#">Settings 2</a>
+                            </div>
                     </li>
                     <li><a class="close-link"><i class="fa fa-close"></i></a>
                     </li>
@@ -636,16 +634,20 @@
                 </div>
                 <div class="x_content">
                   <div class="row">
+                    <div class="col-md-6">
                     <div class="btn-group">
                       <button class="btn btn-secondary" type="button">Left</button>
                       <button class="btn btn-secondary" type="button">Middle</button>
                       <button class="btn btn-secondary" type="button">Right</button>
                     </div>
+                  </div>
+                  <div class="col-md-6">
                     <div class="btn-group btn-group-sm" role="group" aria-label="...">
                       <button class="btn btn-secondary" type="button">Left</button>
                       <button class="btn btn-secondary" type="button">Middle</button>
                       <button class="btn btn-secondary" type="button">Right</button>
                     </div>
+                  </div>
                   </div>
                   <p class="text-muted">Vertical button groups</p>
                   <div class="row">
