@@ -143,7 +143,7 @@ the plot, see below.
 
 The rest of the options are all documented below as they are the same
 as the default options passed in via the options parameter in the plot
-command. When you specify them for a specific data series, they will
+commmand. When you specify them for a specific data series, they will
 override the default options for the plot for that data series.
 
 Here's a complete example of a simple data specification:
@@ -531,18 +531,14 @@ calendars don't follow a simple base 10 system. For many cases, Flot
 abstracts most of this away, but it can still be a bit difficult to
 get the data into Flot. So we'll first discuss the data format.
 
-The time series support in Flot is based on Epoch timestamps, i.e.,
-everywhere a time value is expected or handed over, a number is used.
-This is a number, not a Date object. Flot supports three different time
-bases in which the timestamps can be given: seconds, milliseconds and
-microseconds. The timestamp is therefore the number of microseconds,
-milliseconds or seconds since January 1, 1970 00:00:00 UTC.
+The time series support in Flot is based on Javascript timestamps,
+i.e. everywhere a time value is expected or handed over, a Javascript
+timestamp number is used. This is a number, not a Date object. A
+Javascript timestamp is the number of milliseconds since January 1,
+1970 00:00:00 UTC. This is almost the same as Unix timestamps, except it's
+in milliseconds, so remember to multiply by 1000!
 
-The time base in which the timestamps are given to Flot can be selected
-by setting the "timeBase" option to "microseconds", "milliseconds"
-or "seconds" in axis options. If not set, it defaults to "seconds".
-
-You can see a native Javascript timestamp (in milliseconds) like this
+You can see a timestamp like this
 
 ```js
 alert((new Date()).getTime())
@@ -649,7 +645,6 @@ this:
 ```js
 xaxis: {
     mode: "time",
-    timeBase: "milliseconds",
     timeformat: "%Y/%m/%d"
 }
 ```
@@ -668,7 +663,6 @@ standard strftime specifiers are supported (plus the nonstandard %q):
 %M: minutes, zero-padded (00-59)
 %q: quarter (1-4)
 %S: seconds, zero-padded (00-59)
-%s: sub-seconds, accuracy can be denoted with a number (e.g., %3s)
 %y: year (two digits)
 %Y: year (four digits)
 %p: am/pm
@@ -699,12 +693,6 @@ will use 12 hour AM/PM timestamps instead of 24 hour. This only
 applies if you have not set "timeformat". Use the "%I" and "%p" or
 "%P" options if you want to build your own format string with 12-hour
 times.
-
-If you want to have ticks with a fixed sub-second accuracy, you can add
-a number in the subsecond specifier (e.g., "%3s" for millisecond
-accuracy) in the "timeformat" string". If the accuracy for the sub-second
-timestamps is not given, Flot will automatically determine the accuracy
-depending on the timespan of the axis and the number of ticks, to create.
 
 If the Date object has a strftime property (and it is a function), it
 will be used instead of the built-in formatter. Thus you can include

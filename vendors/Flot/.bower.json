@@ -13,6 +13,6 @@
     "commit": "453b017cc5acfd75e252b93e8635f57f4196d45d"
   },
   "_source": "https://github.com/flot/flot.git",
-  "_target": ">=0.8.0",
+  "_target": "^0.8.3",
   "_originalSource": "flot"
 }

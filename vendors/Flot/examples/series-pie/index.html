@@ -75,30 +75,10 @@
 	}
 
 	</style>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.canvaswrapper.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.colorhelpers.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.saturated.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.browser.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.drawSeries.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.errorbars.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.uiConstants.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.logaxis.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.symbol.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.flatdata.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.navigate.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.fillbetween.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.stack.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.touchNavigate.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.hover.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.touch.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.time.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.axislabels.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.selection.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.composeImages.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.legend.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.pie.js"></script>
+	<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="../../excanvas.min.js"></script><![endif]-->
+	<script language="javascript" type="text/javascript" src="../../jquery.js"></script>
+	<script language="javascript" type="text/javascript" src="../../jquery.flot.js"></script>
+	<script language="javascript" type="text/javascript" src="../../jquery.flot.pie.js"></script>
 	<script type="text/javascript">
 
 	$(function() {
@@ -151,7 +131,7 @@
 
 			$.plot(placeholder, data, {
 				series: {
-					pie: {
+					pie: { 
 						show: true
 					}
 				}
@@ -177,7 +157,7 @@
 
 			$.plot(placeholder, data, {
 				series: {
-					pie: {
+					pie: { 
 						show: true
 					}
 				},
@@ -209,7 +189,7 @@
 
 			$.plot(placeholder, data, {
 				series: {
-					pie: {
+					pie: { 
 						show: true,
 						radius: 1,
 						label: {
@@ -259,7 +239,7 @@
 
 			$.plot(placeholder, data, {
 				series: {
-					pie: {
+					pie: { 
 						show: true,
 						radius: 1,
 						label: {
@@ -309,14 +289,14 @@
 
 			$.plot(placeholder, data, {
 				series: {
-					pie: {
+					pie: { 
 						show: true,
 						radius: 1,
 						label: {
 							show: true,
 							radius: 3/4,
 							formatter: labelFormatter,
-							background: {
+							background: { 
 								opacity: 0.5,
 								color: "#000"
 							}
@@ -361,14 +341,14 @@
 
 			$.plot(placeholder, data, {
 				series: {
-					pie: {
+					pie: { 
 						show: true,
 						radius: 3/4,
 						label: {
 							show: true,
 							radius: 3/4,
 							formatter: labelFormatter,
-							background: {
+							background: { 
 								opacity: 0.5,
 								color: "#000"
 							}
@@ -413,7 +393,7 @@
 
 			$.plot(placeholder, data, {
 				series: {
-					pie: {
+					pie: { 
 						show: true,
 						radius: 1,
 						label: {
@@ -459,7 +439,7 @@
 
 			$.plot(placeholder, data, {
 				series: {
-					pie: {
+					pie: { 
 						show: true,
 						combine: {
 							color: "#999",
@@ -499,7 +479,7 @@
 
 			$.plot(placeholder, data, {
 				series: {
-					pie: {
+					pie: { 
 						show: true,
 						radius: 500,
 						label: {
@@ -543,7 +523,7 @@
 
 			$.plot(placeholder, data, {
 				series: {
-					pie: {
+					pie: { 
 						show: true,
 						radius: 1,
 						tilt: 0.5,
@@ -603,7 +583,7 @@
 
 			$.plot(placeholder, data, {
 				series: {
-					pie: {
+					pie: { 
 						innerRadius: 0.5,
 						show: true
 					}
@@ -631,7 +611,7 @@
 
 			$.plot(placeholder, data, {
 				series: {
-					pie: {
+					pie: { 
 						show: true
 					}
 				},
@@ -775,7 +755,7 @@
 				<li><b>opacity:</b> <i>0.5</i> - Opacity of the highlight overlay on top of the current pie slice. Currently this just uses a white overlay, but support for changing the color of the overlay will also be added at a later date.
 			</ul>
 		</ul>
-
+		
 		<h2>Changes/Features</h2>
 		<ul>
 			<li style="list-style: none;"><i>v1.0 - November 20th, 2009 - Brian Medendorp</i></li>
@@ -820,7 +800,7 @@
 			<li>Merged original pie modifications by Sergey Nosenko into the latest SVN version <i>(as of May 15th, 2009)</i> so that it will work with ie8.</li>
 			<li>Pie graph will now be centered in the canvas unless moved because of the legend or manually via the options. Additionally it prevents the pie from being moved beyond the edge of the canvas.</li>
 			<li>Modified the code related to the labelFormatter option to apply flot's legend labelFormatter first. This is so that the labels will be consistent, but still provide extra formatting for the positioned labels (such as adding the percentage value).</li>
-			<li>Positioned labels now have their backgrounds applied as a separate element (much like the legend background) so that the opacity value can be set independently from the label itself (foreground). Additionally, the background color defaults to that of the matching slice.</li>
+			<li>Positioned labels now have their backgrounds applied as a seperate element (much like the legend background) so that the opacity value can be set independently from the label itself (foreground). Additionally, the background color defaults to that of the matching slice.</li>
 			<li>As long as the labelOffset and radiusLimit are not set to hard values, the pie will be shrunk if the labels will extend outside the edge of the canvas</li>
 			<li>Added new options "radiusLimitFactor" and "radiusLimit" which limits how large the (visual) radius of the pie is in relation to the full radius (as calculated from the canvas dimensions) or a hard-pixel value (respectively). This allows for pushing the labels "outside" the pie.</li>
 			<li>Added a new option "labelHidePercent" that does not show the positioned labels of slices smaller than the specified percentage. This is to help prevent a bunch of overlapping labels from small slices.</li>

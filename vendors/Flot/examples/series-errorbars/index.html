@@ -5,30 +5,10 @@
 	<title>Flot Examples: Error Bars</title>
 	<link href="../examples.css" rel="stylesheet" type="text/css">
 	<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="../../excanvas.min.js"></script><![endif]-->
-	<script language="javascript" type="text/javascript" src="../../source/jquery.js"></script>
-	<script language="javascript" type="text/javascript" src="../../lib/jquery.mousewheel.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.canvaswrapper.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.colorhelpers.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.saturated.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.browser.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.drawSeries.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.errorbars.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.uiConstants.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.logaxis.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.symbol.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.flatdata.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.navigate.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.fillbetween.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.stack.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.touchNavigate.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.hover.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.touch.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.time.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.axislabels.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.selection.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.composeImages.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.legend.js"></script>
+	<script language="javascript" type="text/javascript" src="../../jquery.js"></script>
+	<script language="javascript" type="text/javascript" src="../../jquery.flot.js"></script>
+	<script language="javascript" type="text/javascript" src="../../jquery.flot.errorbars.js"></script>
+	<script language="javascript" type="text/javascript" src="../../jquery.flot.navigate.js"></script>
 	<script type="text/javascript">
 
 	$(function() {
@@ -61,9 +41,9 @@
 		var data1_points = {
 			show: true,
 			radius: 5,
-			fillColor: "blue",
-			errorbars: "xy",
-			xerr: {show: true, asymmetric: true, upperCap: "-", lowerCap: "-"},
+			fillColor: "blue", 
+			errorbars: "xy", 
+			xerr: {show: true, asymmetric: true, upperCap: "-", lowerCap: "-"}, 
 			yerr: {show: true, color: "red", upperCap: "-"}
 		};
 
@@ -76,7 +56,7 @@
 		var data2_points = {
 			show: true,
 			radius: 5,
-			errorbars: "y",
+			errorbars: "y", 
 			yerr: {show:true, asymmetric:true, upperCap: drawArrow, lowerCap: drawSemiCircle}
 		};
 
@@ -89,7 +69,7 @@
 		var data3_points = {
 			//do not show points
 			radius: 0,
-			errorbars: "y",
+			errorbars: "y", 
 			yerr: {show:true, upperCap: "-", lowerCap: "-", radius: 5}
 		};
 
@@ -105,7 +85,7 @@
 		}
 
 		var data = [
-			{color: "blue", points: data1_points, data: data1, label: "data1"},
+			{color: "blue", points: data1_points, data: data1, label: "data1"}, 
 			{color: "red",  points: data2_points, data: data2, label: "data2"},
 			{color: "green", lines: {show: true}, points: data3_points, data: data3, label: "data3"},
 			// bars with errors
@@ -124,12 +104,10 @@
 				}
 			},
 			xaxis: {
-				autoScale: 'none',
 				min: 0.6,
 				max: 3.1
 			},
 			yaxis: {
-				autoScale: 'none',
 				min: 0,
 				max: 3.5
 			},

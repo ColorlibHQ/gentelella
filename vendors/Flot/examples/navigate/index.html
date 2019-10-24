@@ -22,32 +22,11 @@
 		font-size: smaller;
 	}
 
-    </style>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.js"></script>
-	<script language="javascript" type="text/javascript" src="../../lib/jquery.event.drag.js"></script>
-	<script language="javascript" type="text/javascript" src="../../lib/jquery.mousewheel.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.canvaswrapper.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.colorhelpers.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.saturated.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.browser.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.drawSeries.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.errorbars.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.uiConstants.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.logaxis.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.symbol.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.flatdata.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.navigate.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.fillbetween.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.stack.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.touchNavigate.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.hover.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.touch.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.time.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.axislabels.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.selection.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.composeImages.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.legend.js"></script>
+	</style>
+	<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="../../excanvas.min.js"></script><![endif]-->
+	<script language="javascript" type="text/javascript" src="../../jquery.js"></script>
+	<script language="javascript" type="text/javascript" src="../../jquery.flot.js"></script>
+	<script language="javascript" type="text/javascript" src="../../jquery.flot.navigate.js"></script>
 	<script type="text/javascript">
 
 	$(function() {
@@ -73,20 +52,17 @@
 		var plot = $.plot(placeholder, data, {
 			series: {
 				lines: {
-                    show: true
-                },
+					show: true
+				},
 				shadowSize: 0
 			},
 			xaxis: {
 				zoomRange: [0.1, 10],
-				panRange: [-10, 10],
-				gridLines: true
+				panRange: [-10, 10]
 			},
 			yaxis: {
 				zoomRange: [0.1, 10],
-				panRange: [-10, 10],
-				gridLines: true,
-				autoScale: 'exact'
+				panRange: [-10, 10]
 			},
 			zoom: {
 				interactive: true
@@ -96,7 +72,7 @@
 			}
 		});
 
-		// show pan/zoom messages to illustrate events
+		// show pan/zoom messages to illustrate events 
 
 		placeholder.bind("plotpan", function (event, plot) {
 			var axes = plot.getAxes();
@@ -114,7 +90,7 @@
 			+ " &ndash; " + axes.yaxis.max.toFixed(2));
 		});
 
-		// add zoom out button
+		// add zoom out button 
 
 		$("<div class='button' style='right:20px;top:20px'>zoom out</div>")
 			.appendTo(placeholder)
