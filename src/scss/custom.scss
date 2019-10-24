@@ -1485,12 +1485,13 @@ table.jambo_table tbody tr.selected td {
 }
 
 .dataTables_length {
-  width: 40%;
+  width: auto;
   float: left;
+  margin-right: 20px;
 }
 
 .dataTables_filter {
-  width: 50%;
+  width: 59%;
   float: right;
   text-align: right;
 }
@@ -4700,6 +4701,9 @@ ul.notifications {
   background: #F2F5F7;
     padding: 9px 0;
     border-top: 1px solid #E6E9ED;
+}
+.form-inline{
+  display: block;
 }
 
 /** /PNotify **/
