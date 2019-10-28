@@ -4717,6 +4717,23 @@ ul.notifications {
 
 /** /Dropzone.js **/
 
+.daterangepicker.dropdown-menu {
+  border: 0;
+  z-index: auto;
+}
+
+.daterangepicker.dropdown-menu .calendar {
+  margin: 0;
+}
+
+.daterangepicker.dropdown-menu .calendar .calendar-table {
+  border: 0;
+}
+
+.daterangepicker.dropdown-menu .calendar .calendar-table table {
+  border-collapse: separate;
+}
+
 .daterangepicker .ranges li {
   color: #73879C;
 }

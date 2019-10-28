@@ -1,12 +1,25 @@
 .daterangepicker {
+  &.dropdown-menu {
+    border: 0;
+    z-index: auto;
+    .calendar {
+      margin: 0;
+      .calendar-table {
+        border: 0;
+        table {
+          border-collapse: separate;
+        }
+      }
+    }
+  }
   .ranges {
     li {
       color: #73879C;
-      
+
       &.active, &:hover {
         background: #536A7F;
         border: 1px solid #536A7F;
-        color: #fff;  
+        color: #fff;
       }
     }
   }
@@ -53,7 +66,7 @@
     &.active, &.active:hover {
       background-color: #536A7F;
       color: #fff;
-    }      
+    }
   }
 
   th.available:hover {
