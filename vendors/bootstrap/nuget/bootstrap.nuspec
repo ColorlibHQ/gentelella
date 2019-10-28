@@ -2,30 +2,34 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>bootstrap</id>
-    <version>3.4.1</version>
+    <version>4.3.0</version>
     <title>Bootstrap CSS</title>
-    <authors>Twitter, Inc.</authors>
+    <authors>The Bootstrap Authors, Twitter Inc.</authors>
     <owners>bootstrap</owners>
     <description>The most popular front-end framework for developing responsive, mobile first projects on the web.</description>
     <releaseNotes>https://blog.getbootstrap.com/</releaseNotes>
     <summary>Bootstrap framework in CSS. Includes fonts and JavaScript</summary>
     <language>en-us</language>
     <projectUrl>https://getbootstrap.com/</projectUrl>
-    <iconUrl>https://getbootstrap.com/apple-touch-icon.png</iconUrl>
-    <licenseUrl>https://github.com/twbs/bootstrap/blob/master/LICENSE</licenseUrl>
-    <copyright>Copyright 2019</copyright>
+    <iconUrl>https://getbootstrap.com/docs/4.3/assets/img/favicons/apple-touch-icon.png</iconUrl>
+    <license type="file">LICENSE.txt</license>
+    <copyright>Copyright 2017-2019</copyright>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <dependencies>
-      <dependency id="jQuery" version="[1.9.1,4)" />
+      <dependency id="jQuery" version="[3.0.0,4)" />
+      <dependency id="popper.js" version="[1.14.0,2)" />
     </dependencies>
-    <tags>css js less mobile-first responsive front-end framework web</tags>
+    <tags>css mobile-first responsive front-end framework web</tags>
   </metadata>
   <files>
+    <file src="LICENSE.txt" target="" />
+
     <file src="dist\css\*.*" target="content\Content" />
-    <file src="dist\fonts\*.*" target="content\fonts" />
     <file src="dist\js\bootstrap*.js" target="content\Scripts" />
+    <file src="dist\js\bootstrap*.js.map" target="content\Scripts" />
+
     <file src="dist\css\*.*" target="contentFiles\Content" />
-    <file src="dist\fonts\*.*" target="contentFiles\fonts" />
     <file src="dist\js\bootstrap*.js" target="contentFiles\Scripts" />
+    <file src="dist\js\bootstrap*.js.map" target="contentFiles\Scripts" />
   </files>
 </package>

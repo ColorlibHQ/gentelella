@@ -4,29 +4,9 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>Flot Examples: Toggling Series</title>
 	<link href="../examples.css" rel="stylesheet" type="text/css">
-	<script language="javascript" type="text/javascript" src="../../source/jquery.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.canvaswrapper.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.colorhelpers.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.saturated.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.browser.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.drawSeries.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.errorbars.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.uiConstants.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.logaxis.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.symbol.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.flatdata.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.navigate.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.fillbetween.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.stack.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.touchNavigate.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.hover.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.touch.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.time.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.axislabels.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.selection.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.composeImages.js"></script>
-	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.legend.js"></script>
+	<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="../../excanvas.min.js"></script><![endif]-->
+	<script language="javascript" type="text/javascript" src="../../jquery.js"></script>
+	<script language="javascript" type="text/javascript" src="../../jquery.flot.js"></script>
 	<script type="text/javascript">
 
 	$(function() {
@@ -35,7 +15,7 @@
 			"usa": {
 				label: "USA",
 				data: [[1988, 483994], [1989, 479060], [1990, 457648], [1991, 401949], [1992, 424705], [1993, 402375], [1994, 377867], [1995, 357382], [1996, 337946], [1997, 336185], [1998, 328611], [1999, 329421], [2000, 342172], [2001, 344932], [2002, 387303], [2003, 440813], [2004, 480451], [2005, 504638], [2006, 528692]]
-			},
+			},        
 			"russia": {
 				label: "Russia",
 				data: [[1988, 218000], [1989, 203000], [1990, 171000], [1992, 42500], [1993, 37600], [1994, 36600], [1995, 21700], [1996, 19200], [1997, 21300], [1998, 13600], [1999, 14000], [2000, 19100], [2001, 21300], [2002, 23600], [2003, 25100], [2004, 26100], [2005, 31100], [2006, 34700]]
@@ -71,7 +51,7 @@
 			++i;
 		});
 
-		// insert checkboxes
+		// insert checkboxes 
 		var choiceContainer = $("#choices");
 		$.each(datasets, function(key, val) {
 			choiceContainer.append("<br/><input type='checkbox' name='" + key +
@@ -95,9 +75,6 @@
 
 			if (data.length > 0) {
 				$.plot("#placeholder", data, {
-					legend: {
-						show: true
-					},
 					yaxis: {
 						min: 0
 					},
