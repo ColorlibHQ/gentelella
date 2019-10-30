@@ -471,6 +471,8 @@
   right: -2px;
   top: -8px;
 }
+
+
 @media (min-width: 480px) {
   
   .nav_menu {
@@ -1456,11 +1458,11 @@ table.jambo_table tbody tr.selected td {
   background: #ff0000;
 }
 
-.dataTables_wrapper {
-  position: relative;
-  clear: both;
-  zoom: 1;
-}
+// .dataTables_wrapper {
+//   position: relative;
+//   clear: both;
+//   zoom: 1;
+// }
 
 .dataTables_processing {
   position: absolute;
@@ -1478,17 +1480,17 @@ table.jambo_table tbody tr.selected td {
   background-color: white;
 }
 
-.dataTables_length {
-  width: auto;
-  float: left;
-  margin-right: 20px;
-}
+// .dataTables_length {
+//   width: auto;
+//   float: left;
+//   margin-right: 20px;
+// }
 
-.dataTables_filter {
-  width: 59%;
-  float: right;
-  text-align: right;
-}
+// .dataTables_filter {
+//   width: 59%;
+//   float: right;
+//   text-align: right;
+// }
 
 .dataTables_info {
   width: 60%;
@@ -4696,9 +4698,7 @@ ul.notifications {
     padding: 9px 0;
     border-top: 1px solid #E6E9ED;
 }
-.form-inline{
-  display: block;
-}
+
 @media (min-width: 360px) and (max-width: 812px){
   .info-number .badge {
     font-size: 10px;
