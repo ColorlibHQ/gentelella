@@ -29,3 +29,11 @@ Earlier there were no changelog at all and we have introduced one now and we wil
 * Remove invalid css
 * Add compose message functionalities
 * Add fixed footer functionalities
+
+### Gentelella 2.0-beta1
+
+* Updated Bootstrap to 4.3.1
+* Updated all dependencies
+* Fixed all reported bugs
+
+This version is tested but we would recommend not to use it in production right away. Please install it for testing purposes and report back if there are any problems to be fixed.

@@ -104,12 +104,11 @@ $.extend( DataTable.ext.buttons, {
 		},
 		init: function ( dt, button, conf ) {
 			var that = this;
-			var col = dt.column( conf.columns );
 
 			dt
 				.on( 'column-visibility.dt'+conf.namespace, function (e, settings) {
 					if ( ! settings.bDestroying ) {
-						that.active( col.visible() );
+						that.active( dt.column( conf.columns ).visible() );
 					}
 				} )
 				.on( 'column-reorder.dt'+conf.namespace, function (e, settings, details) {
@@ -129,7 +128,7 @@ $.extend( DataTable.ext.buttons, {
 					that.active( col.visible() );
 				} );
 
-			this.active( col.visible() );
+			this.active( dt.column( conf.columns ).visible() );
 		},
 		destroy: function ( dt, button, conf ) {
 			dt

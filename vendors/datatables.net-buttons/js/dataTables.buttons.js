@@ -1,4 +1,4 @@
-/*! Buttons for DataTables 1.2.1
+/*! Buttons for DataTables 1.2.2
  * ©2016 SpryMedia Ltd - datatables.net/license
  */
 
@@ -879,7 +879,9 @@ Buttons.background = function ( show, className, fade ) {
 	else {
 		$('body > div.'+className)
 			.fadeOut( fade, function () {
-				$(this).remove();
+				$(this)
+					.removeClass( className )
+					.remove();
 			} );
 	}
 };
@@ -1116,7 +1118,7 @@ Buttons.defaults = {
  * @type {string}
  * @static
  */
-Buttons.version = '1.2.1';
+Buttons.version = '1.2.2';
 
 
 $.extend( _dtButtons, {
@@ -1187,7 +1189,10 @@ $.extend( _dtButtons, {
 				$('div.dt-button-background').on( 'click.dtb-collection', function () {} );
 
 				$('body').on( 'click.dtb-collection', function (e) {
-					if ( ! $(e.target).parents().andSelf().filter( config._collection ).length ) {
+					// andSelf is deprecated in jQ1.8, but we want 1.7 compat
+					var back = $.fn.addBack ? 'addBack' : 'andSelf';
+
+					if ( ! $(e.target).parents()[back]().filter( config._collection ).length ) {
 						config._collection
 							.fadeOut( config.fade, function () {
 								config._collection.detach();
@@ -1314,7 +1319,9 @@ DataTable.Api.register( 'buttons()', function ( group, selector ) {
 		group = undefined;
 	}
 
-	return this.iterator( true, 'table', function ( ctx ) {
+	this.selector.buttonGroup = group;
+
+	var res = this.iterator( true, 'table', function ( ctx ) {
 		if ( ctx._buttons ) {
 			return Buttons.buttonSelector(
 				Buttons.instanceSelector( group, ctx._buttons ),
@@ -1322,6 +1329,9 @@ DataTable.Api.register( 'buttons()', function ( group, selector ) {
 			);
 		}
 	}, true );
+
+	res._groupSelector = group;
+	return res;
 } );
 
 // Individual button selector
@@ -1408,25 +1418,40 @@ DataTable.Api.registerPlural( 'buttons().trigger()', 'button().trigger()', funct
 	} );
 } );
 
-// Get the container elements for the button sets selected
+// Get the container elements
 DataTable.Api.registerPlural( 'buttons().containers()', 'buttons().container()', function () {
 	var jq = $();
+	var groupSelector = this._groupSelector;
 
-	// jQuery will automatically reduce duplicates to a single entry
-	$( this.each( function ( set ) {
-		jq = jq.add( set.inst.container() );
-	} ) );
+	// We need to use the group selector directly, since if there are no buttons
+	// the result set will be empty
+	this.iterator( true, 'table', function ( ctx ) {
+		if ( ctx._buttons ) {
+			var insts = Buttons.instanceSelector( groupSelector, ctx._buttons );
+
+			for ( var i=0, ien=insts.length ; i<ien ; i++ ) {
+				jq = jq.add( insts[i].container() );
+			}
+		}
+	} );
 
 	return jq;
 } );
 
 // Add a new button
 DataTable.Api.register( 'button().add()', function ( idx, conf ) {
-	if ( this.length === 1 ) {
-		this[0].inst.add( conf, idx );
+	var ctx = this.context;
+
+	// Don't use `this` as it could be empty - select the instances directly
+	if ( ctx.length ) {
+		var inst = Buttons.instanceSelector( this._groupSelector, ctx[0]._buttons );
+
+		if ( inst.length ) {
+			inst[0].add( conf, idx );
+		}
 	}
 
-	return this.button( idx );
+	return this.button( this._groupSelector, idx );
 } );
 
 // Destroy the button sets selected
@@ -1552,13 +1577,14 @@ var _exportData = function ( dt, inOpts )
 
 
 	var header = dt.columns( config.columns ).indexes().map( function (idx) {
-		return config.format.header( dt.column( idx ).header().innerHTML, idx );
+		var el = dt.column( idx ).header();
+		return config.format.header( el.innerHTML, idx, el );
 	} ).toArray();
 
 	var footer = dt.table().footer() ?
 		dt.columns( config.columns ).indexes().map( function (idx) {
 			var el = dt.column( idx ).footer();
-			return config.format.footer( el ? el.innerHTML : '', idx );
+			return config.format.footer( el ? el.innerHTML : '', idx, el );
 		} ).toArray() :
 		null;
 
@@ -1567,6 +1593,11 @@ var _exportData = function ( dt, inOpts )
 		.cells( rowIndexes, config.columns )
 		.render( config.orthogonal )
 		.toArray();
+	var cellNodes = dt
+		.cells( rowIndexes, config.columns )
+		.nodes()
+		.toArray();
+
 	var columns = header.length;
 	var rows = columns > 0 ? cells.length / columns : 0;
 	var body = new Array( rows );
@@ -1576,7 +1607,7 @@ var _exportData = function ( dt, inOpts )
 		var row = new Array( columns );
 
 		for ( var j=0 ; j<columns ; j++ ) {
-			row[j] = config.format.body( cells[ cellCounter ], j, i );
+			row[j] = config.format.body( cells[ cellCounter ], i, j, cellNodes[ cellCounter ] );
 			cellCounter++;
 		}
 
