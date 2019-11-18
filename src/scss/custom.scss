@@ -481,6 +481,7 @@
   .item{
     display:block;
   }
+
 }
 .nav-md .container.body .col-md-3.left_col {
   min-height: 100%;
@@ -538,7 +539,7 @@ body .container.body .right_col {
     font-size: 17px;
   }
   .tile, .graph {
-    zoom: 85%;
+    zoom: 75%;
     height: inherit;
   }
   .item{
@@ -1464,21 +1465,21 @@ table.jambo_table tbody tr.selected td {
 //   zoom: 1;
 // }
 
-.dataTables_processing {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 250px;
-  height: 30px;
-  margin-left: -125px;
-  margin-top: -15px;
-  padding: 14px 0 2px 0;
-  border: 1px solid #ddd;
-  text-align: center;
-  color: #999;
-  font-size: 14px;
-  background-color: white;
-}
+// .dataTables_processing {
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+//   width: 250px;
+//   height: 30px;
+//   margin-left: -125px;
+//   margin-top: -15px;
+//   padding: 14px 0 2px 0;
+//   border: 1px solid #ddd;
+//   text-align: center;
+//   color: #999;
+//   font-size: 14px;
+//   background-color: white;
+// }
 
 // .dataTables_length {
 //   width: auto;
@@ -1492,10 +1493,10 @@ table.jambo_table tbody tr.selected td {
 //   text-align: right;
 // }
 
-.dataTables_info {
-  width: 60%;
-  float: left;
-}
+// .dataTables_info {
+//   width: 60%;
+//   float: left;
+// }
 
 .dataTables_paginate {
   float: right;
@@ -1543,27 +1544,27 @@ table.display thead th:active, table.display thead td:active {
   outline: none;
 }
 
-.dataTables_scroll {
-  clear: both;
-}
+// .dataTables_scroll {
+//   clear: both;
+// }
 
-.dataTables_scrollBody {
-  *margin-top: -1px;
-  -webkit-overflow-scrolling: touch;
-}
+// .dataTables_scrollBody {
+//   *margin-top: -1px;
+//   -webkit-overflow-scrolling: touch;
+// }
 
-.top, .bottom {}
-.top .dataTables_info {
-  float: none;
-}
+// .top, .bottom {}
+// .top .dataTables_info {
+//   float: none;
+// }
 
 .clear {
   clear: both;
 }
 
-.dataTables_empty {
-  text-align: center;
-}
+// .dataTables_empty {
+//   text-align: center;
+// }
 
 tfoot input {
   margin: 0.5em 0;
@@ -1586,9 +1587,9 @@ td.details {
   border: 2px solid #A19B9E;
 }
 
-.example_alt_pagination div.dataTables_info {
-  width: 40%;
-}
+// .example_alt_pagination div.dataTables_info {
+//   width: 40%;
+// }
 
 .paging_full_numbers {
   width: 400px;
@@ -4708,6 +4709,10 @@ ul.notifications {
     position: absolute;
     right: 135px;
     top: 7px;
+}
+.tile, .graph {
+  zoom: 70%;
+  height: inherit;
 }
 }
 @media (min-width: 768px) and (max-width: 1024px){
