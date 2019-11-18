@@ -481,6 +481,7 @@
   .item{
     display:block;
   }
+
 }
 .nav-md .container.body .col-md-3.left_col {
   min-height: 100%;
@@ -538,7 +539,7 @@ body .container.body .right_col {
     font-size: 17px;
   }
   .tile, .graph {
-    zoom: 85%;
+    zoom: 76%;
     height: inherit;
   }
   .item{
@@ -1458,11 +1459,11 @@ table.jambo_table tbody tr.selected td {
   background: #ff0000;
 }
 
-// .dataTables_wrapper {
-//   position: relative;
-//   clear: both;
-//   zoom: 1;
-// }
+.dataTables_wrapper {
+  position: relative;
+  clear: both;
+  zoom: 1;
+}
 
 .dataTables_processing {
   position: absolute;
@@ -4708,6 +4709,10 @@ ul.notifications {
     position: absolute;
     right: 135px;
     top: 7px;
+}
+.tile, .graph {
+  zoom: 71%;
+  height: inherit;
 }
 }
 @media (min-width: 768px) and (max-width: 1024px){
