@@ -50,7 +50,7 @@
     "jquery.inputmask": "^3.3.1",
     "jquery-knob": "^1.2.13",
     "cropper": "^2.3.0",
-    "validator": "https://github.com/yairEO/validator.git#^1.0.6",
+    "validator": "https://github.com/yairEO/validator.git#^3.3.5",
     "jQuery-Smart-Wizard": "^3.3.1",
     "dropzone": "^4.3.0",
     "pnotify": "^3.0.0",

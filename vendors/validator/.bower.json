@@ -1,14 +1,14 @@
 {
   "name": "validator",
   "homepage": "https://github.com/yairEO/validator",
-  "version": "1.1.0",
-  "_release": "1.1.0",
+  "version": "3.3.5",
+  "_release": "3.3.5",
   "_resolution": {
     "type": "version",
-    "tag": "1.1.0",
-    "commit": "f855eb37c626f2ad712583d25afdd30147a40d8e"
+    "tag": "3.3.5",
+    "commit": "01a570d68fa748f87a6a90166f157a64225e9e4d"
   },
   "_source": "https://github.com/yairEO/validator.git",
-  "_target": "^1.0.6",
+  "_target": "^3.3.5",
   "_originalSource": "https://github.com/yairEO/validator.git"
 }
