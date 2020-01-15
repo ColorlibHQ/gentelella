@@ -812,6 +812,10 @@ a:hover, a:focus {
 .sidebar-header:first-of-type {
   margin-top: 0
 }
+.nav > li {
+  position: relative;
+  display: block;
+}
 .nav.side-menu> li {
   position: relative;
   display: block;
