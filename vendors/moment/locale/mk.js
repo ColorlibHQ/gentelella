@@ -1,13 +1,11 @@
 //! moment.js locale configuration
-//! locale : macedonian (mk)
-//! author : Borislav Mickov : https://github.com/B0k0
 
 ;(function (global, factory) {
    typeof exports === 'object' && typeof module !== 'undefined'
        && typeof require === 'function' ? factory(require('../moment')) :
-   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
-}(this, function (moment) { 'use strict';
+}(this, (function (moment) { 'use strict';
 
 
     var mk = moment.defineLocale('mk', {
@@ -31,15 +29,15 @@
             lastDay : '[Вчера во] LT',
             lastWeek : function () {
                 switch (this.day()) {
-                case 0:
-                case 3:
-                case 6:
-                    return '[Изминатата] dddd [во] LT';
-                case 1:
-                case 2:
-                case 4:
-                case 5:
-                    return '[Изминатиот] dddd [во] LT';
+                    case 0:
+                    case 3:
+                    case 6:
+                        return '[Изминатата] dddd [во] LT';
+                    case 1:
+                    case 2:
+                    case 4:
+                    case 5:
+                        return '[Изминатиот] dddd [во] LT';
                 }
             },
             sameElse : 'L'
@@ -48,6 +46,7 @@
             future : 'после %s',
             past : 'пред %s',
             s : 'неколку секунди',
+            ss : '%d секунди',
             m : 'минута',
             mm : '%d минути',
             h : 'час',
@@ -59,7 +58,7 @@
             y : 'година',
             yy : '%d години'
         },
-        ordinalParse: /\d{1,2}-(ев|ен|ти|ви|ри|ми)/,
+        dayOfMonthOrdinalParse: /\d{1,2}-(ев|ен|ти|ви|ри|ми)/,
         ordinal : function (number) {
             var lastDigit = number % 10,
                 last2Digits = number % 100;
@@ -81,10 +80,10 @@
         },
         week : {
             dow : 1, // Monday is the first day of the week.
-            doy : 7  // The week that contains Jan 1st is the first week of the year.
+            doy : 7  // The week that contains Jan 7th is the first week of the year.
         }
     });
 
     return mk;
 
-}));
+})));

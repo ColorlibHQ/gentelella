@@ -1,13 +1,11 @@
 //! moment.js locale configuration
-//! locale : vietnamese (vi)
-//! author : Bang Nguyen : https://github.com/bangnk
 
 ;(function (global, factory) {
    typeof exports === 'object' && typeof module !== 'undefined'
        && typeof require === 'function' ? factory(require('../moment')) :
-   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
-}(this, function (moment) { 'use strict';
+}(this, (function (moment) { 'use strict';
 
 
     var vi = moment.defineLocale('vi', {
@@ -53,6 +51,7 @@
             future : '%s tới',
             past : '%s trước',
             s : 'vài giây',
+            ss : '%d giây' ,
             m : 'một phút',
             mm : '%d phút',
             h : 'một giờ',
@@ -64,7 +63,7 @@
             y : 'một năm',
             yy : '%d năm'
         },
-        ordinalParse: /\d{1,2}/,
+        dayOfMonthOrdinalParse: /\d{1,2}/,
         ordinal : function (number) {
             return number;
         },
@@ -76,4 +75,4 @@
 
     return vi;
 
-}));
+})));

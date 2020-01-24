@@ -36,6 +36,12 @@ This plugin is used by flot for drawing lines, plots, bars or area.
                     continue;
                 }
 
+                if (isNaN(x1) || isNaN(x2) || isNaN(y1) || isNaN(y2)) {
+                    prevx = null;
+                    prevy = null;
+                    continue;
+                }
+
                 if(steps){
                     if (mx !== null && my !== null) {
                         // if middle point exists, transfer p2 -> p1 and p1 -> mp
@@ -184,6 +190,7 @@ This plugin is used by flot for drawing lines, plots, bars or area.
                         ctx.fill();
                         areaOpen = false;
                         ps = -ps;
+                        ypos = 1;
                         i = segmentStart = segmentEnd + ps;
                         continue;
                     }
@@ -580,7 +587,7 @@ This plugin is used by flot for drawing lines, plots, bars or area.
                 var points = datapoints.points,
                     ps = datapoints.pointsize,
                     fillTowards = series.bars.fillTowards || 0,
-                    calculatedBottom = fillTowards > axisy.min ? Math.min(axisy.max, fillTowards) : axisy.min;
+                    defaultBottom = fillTowards > axisy.min ? Math.min(axisy.max, fillTowards) : axisy.min;
 
                 for (var i = 0; i < points.length; i += ps) {
                     if (points[i] == null) {
@@ -588,7 +595,7 @@ This plugin is used by flot for drawing lines, plots, bars or area.
                     }
 
                     // Use third point as bottom if pointsize is 3
-                    var bottom = ps === 3 ? points[i + 2] : calculatedBottom;
+                    var bottom = ps === 3 ? points[i + 2] : defaultBottom;
                     drawBar(points[i], points[i + 1], bottom, barLeft, barRight, fillStyleCallback, axisx, axisy, ctx, series.bars.horizontal, series.bars.lineWidth);
                 }
             }

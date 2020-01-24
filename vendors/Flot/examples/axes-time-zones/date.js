@@ -1,3 +1,4 @@
+/* eslint-disable */
 // -----
 // The `timezoneJS.Date` object gives you full-blown timezone support, independent from the timezone set on the end-user's machine running the browser. It uses the Olson zoneinfo files for its timezone data.
 //

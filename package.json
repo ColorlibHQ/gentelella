@@ -32,11 +32,16 @@
   "homepage": "https://github.com/puikinsh/gentelella#readme",
   "devDependencies": {
     "browser-sync": "^2.26.7",
-    "gulp": "^4.0.2",
     "gulp-autoprefixer": "^7.0.1",
     "gulp-concat": "^2.6.1",
     "gulp-rename": "^2.0.0",
     "gulp-ruby-sass": "^4.0.0",
-    "gulp-uglify": "^3.0.2"
+    "gulp-sass": "^4.0.2",
+    "gulp-uglify": "^3.0.2",
+    "node-sass": "^4.13.1"
+  },
+  "dependencies": {
+    "bower": "^1.8.8",
+    "gulp": "^4.0.2"
   }
 }

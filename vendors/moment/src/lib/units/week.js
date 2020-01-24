@@ -1,5 +1,6 @@
 import { addFormatToken } from '../format/format';
 import { addUnitAlias } from './aliases';
+import { addUnitPriority } from './priorities';
 import { addRegexToken, match1to2, match2 } from '../parse/regex';
 import { addWeekParseToken } from '../parse/token';
 import toInt from '../utils/to-int';
@@ -15,6 +16,11 @@ addFormatToken('W', ['WW', 2], 'Wo', 'isoWeek');
 
 addUnitAlias('week', 'w');
 addUnitAlias('isoWeek', 'W');
+
+// PRIORITIES
+
+addUnitPriority('week', 5);
+addUnitPriority('isoWeek', 5);
 
 // PARSING
 
@@ -37,7 +43,7 @@ export function localeWeek (mom) {
 
 export var defaultLocaleWeek = {
     dow : 0, // Sunday is the first day of the week.
-    doy : 6  // The week that contains Jan 1st is the first week of the year.
+    doy : 6  // The week that contains Jan 6th is the first week of the year.
 };
 
 export function localeFirstDayOfWeek () {

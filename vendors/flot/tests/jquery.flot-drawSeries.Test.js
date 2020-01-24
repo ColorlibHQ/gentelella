@@ -142,6 +142,81 @@ describe('drawSeries', function() {
             expect(ctx.fill).toHaveBeenCalled();
         });
 
+        /*
+        Should draw something like this (big gap between first two slopes, smaller gap between next two)
+
+         /    \    /
+        /      \  /
+        */
+        it('should move pen when NaNs are encountered', function () {
+            series.datapoints.points = [-1, -1, 0, 0, 1, NaN, 2, NaN, 3, 0, 4, -1, NaN, 34, 6, -1, 7, 0];
+
+            spyOn(ctx, 'moveTo').and.callThrough();
+            spyOn(ctx, 'lineTo').and.callThrough();
+
+            drawSeriesLines(series, ctx, plotOffset, plotWidth, plotHeight, null, getColorOrGradient);
+
+            expect(ctx.moveTo).toHaveBeenCalledTimes(3);
+            expect(ctx.lineTo).toHaveBeenCalledTimes(3);
+        });
+
+        it('should draw area fills before and after nulls', function () {
+            const format = {
+                x: true,
+                y: false,
+                number: true,
+                required: true,
+                computeRange: true,
+                defaultValue: null
+            };
+            const filledSeries = {
+                lines: {
+                    lineWidth: 1,
+                    fill: true,
+                },
+                xaxis: {
+                    min: minx,
+                    max: maxx,
+                    p2c: function(p) { return p; }
+                },
+                yaxis: {
+                    min: miny,
+                    max: maxy,
+                    p2c: function(p) { return p; }
+                },
+                datapoints: {
+                    points: [
+                        0, 100, 0,
+                        25, 80, 20,
+                        null, null, null,
+                        75, 80, 20,
+                        100, 100, 0,
+                    ],
+                    format: [format, format, format],
+                    pointsize: 3,
+                }
+            };
+
+            drawSeriesLines(filledSeries, ctx, plotOffset, plotWidth, plotHeight, null, getColorOrGradient);
+
+            function isPixelFilled(ctx, x, y) {
+                return ctx.getImageData(x, y, 1, 1).data[3] > 0;
+            }
+
+            /**
+            The plot drawn looks something like this:
+              |\  /|
+              |/  \|
+            */
+            const leftFilled = isPixelFilled(ctx, 10, 50);
+            const middleFilled = isPixelFilled(ctx, 50, 50);
+            const rightFilled = isPixelFilled(ctx, 90, 50);
+
+            expect(leftFilled).toBe(true);
+            expect(middleFilled).toBe(false);
+            expect(rightFilled).toBe(true);
+        });
+
         function validatePointsAreInsideTheAxisRanges(points) {
             points.forEach(function(point) {
                 var x = point[0], y = point[1];
@@ -481,7 +556,7 @@ describe('drawSeries', function() {
             var axes = plot.getAxes();
 
             var barWidth = plot.getData()[0].bars.barWidth[0] || plot.getData()[0].bars.barWidth;
-            expect(barWidth).toEqual(4);
+            expect(barWidth).toEqual(1.6); // expected width will be .8 * (10 - 8)
         });
     });
 });

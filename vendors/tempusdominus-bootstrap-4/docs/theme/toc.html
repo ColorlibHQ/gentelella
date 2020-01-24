@@ -1,0 +1,13 @@
+<script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CK7DC5QN&placement=eonasdangithubio" id="_carbonads_js"></script>
+<nav class="bd-links" id="docsNavbarContent">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+            {%- for toc_item in page.toc %}
+            <li class="{% if toc_item.active %}active bd-sidenav-active{% endif %}"><a href="{{ toc_item.url }}">{{ toc_item.title }}</a></li>
+            {%- for toc_item in toc_item.children %}
+            <li><a href="{{ toc_item.url }}">{{ toc_item.title }}</a></li>
+            {%- endfor %}
+            {%- endfor %}
+        </ul>
+    </div>
+</nav>

@@ -77,7 +77,8 @@
     "DateJS": "^1.0.0-rc3",
     "flot.curvedlines": "^1.1.1",
     "flot.orderbars": "*",
-    "flot-spline": "^0.8.2"
+    "flot-spline": "^0.8.2",
+    "moment": "^2.24.0"
   },
   "resolutions": {
     "jquery": "^2.2.3",

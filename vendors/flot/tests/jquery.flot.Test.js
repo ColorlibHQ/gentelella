@@ -225,6 +225,21 @@ describe('flot', function() {
             expect(axes.yaxis.max).toBe(120);
         });
 
+        it('should use the specified axis min and max for loose autoscaling if no data is set', function () {
+            options.xaxis = {autoScale: 'loose', min: 1, max: 50};
+            options.yaxis = {autoScale: 'loose', min: 1, max: 100};
+            plot = $.plot(placeholder, [[]], options);
+
+            var axes = plot.getAxes();
+            plot.setupGrid(true);
+            plot.draw();
+
+            expect(axes.xaxis.min).toBe(1);
+            expect(axes.xaxis.max).toBe(50);
+            expect(axes.yaxis.min).toBe(1);
+            expect(axes.yaxis.max).toBe(100);
+        });
+
         it('should keep the axis min 0 for loose autoscaling if all values are positive', function () {
             options.xaxis = {autoScale: 'loose', min: 0, max: 50};
             options.yaxis = {autoScale: 'loose', min: 0, max: 100};
@@ -404,6 +419,19 @@ describe('flot', function() {
             expect(limits.xmax).toBe(12 + 6 / 2);
         });
 
+        it('should change the limits of y to fit the width of the bars when they are horizontal', function () {
+            var series = {
+                    lines: { show: false },
+                    bars: { show: true, align: 'center', barWidth: 6, horizontal: true }
+                },
+                limits = {xmin: 10, ymin: 11, xmax: 12, ymax: 13};
+
+            limits = plot.adjustSeriesDataRange(series, limits);
+
+            expect(limits.ymin).toBe(11 - 6 / 2);
+            expect(limits.ymax).toBe(13 + 6 / 2);
+        });
+
         it('should change the limits of x to reserve only the needed space given by width of the bars', function () {
             var series = {
                     lines: { show: false },
@@ -459,6 +487,96 @@ describe('flot', function() {
                 return true;
             }, 1000);
             expect(item).not.toEqual(null);
+        });
+    });
+
+    describe('findNearbyItems', function() {
+        var placeholder, plot, sampledata = [[[0, 1], [1, 1.1], [2, 1.2]], [[0, 2], [1, 2.1], [2, 2.2]]];
+        var options = {
+            series: {
+                shadowSize: 0, // don't draw shadows
+                lines: { show: false },
+                points: { show: true, fill: false, symbol: 'circle' }
+            }
+        };
+
+        beforeEach(function() {
+            placeholder = setFixtures('<div id="test-container" style="width: 600px;height: 400px">')
+                .find('#test-container');
+        });
+
+        it('should be able to find the nearest points to the given coordinates', function() {
+            plot = $.plot(placeholder, sampledata, {});
+            var items = plot.findNearbyItems(0, 0, function() {
+                return true;
+            }, Number.MAX_VALUE);
+            expect(items.length).toEqual(2);
+            expect(items[0].datapoint[0]).toEqual(sampledata[1][0][0]);
+            expect(items[0].datapoint[1]).toEqual(sampledata[1][0][1]);
+            expect(items[0].dataIndex).toEqual(0);
+            expect(items[1].datapoint[0]).toEqual(sampledata[0][0][0]);
+            expect(items[1].datapoint[1]).toEqual(sampledata[0][0][1]);
+            expect(items[1].dataIndex).toEqual(0);
+        });
+
+        it('should be able to search in a certain radius', function() {
+            options.xaxis = {autoScale: 'none', min: 0, max: 2};
+            options.yaxis = {autoScale: 'none', min: 0, max: 3};
+            plot = $.plot(placeholder, sampledata, options);
+            var items = plot.findNearbyItems(2, 0.5, function() {
+                return true;
+            }, 1);
+            expect(items.length).toEqual(0);
+
+            var mouseCanvasLocation = plot.p2c({ x: 2, y: 1.5 }); // y-location is closer to first series than second
+            var lowerSeriesLastYCanvasLocation = plot.p2c({ x: 2, y: 1.2 });
+            items = plot.findNearbyItems(mouseCanvasLocation.left, mouseCanvasLocation.top, function() {
+                return true;
+            }, Math.abs(mouseCanvasLocation.top - lowerSeriesLastYCanvasLocation.top) + 1);
+            expect(items.length).toEqual(1);
+            expect(items[0].datapoint[0]).toEqual(sampledata[0][2][0]);
+            expect(items[0].datapoint[1]).toEqual(sampledata[0][2][1]);
+            expect(items[0].dataIndex).toEqual(2);
+        });
+
+        it('should return arbitrary items specified by hook callback', function() {
+            options.xaxis = {autoScale: 'none', min: 0, max: 2};
+            options.yaxis = {autoScale: 'none', min: 0, max: 3};
+            var hookCallback = function(_0, x, y, series, seriesIndex, distance, _6, items) {
+                var ps = series[seriesIndex].datapoints.pointsize;
+                var dataIndex;
+                if (seriesIndex === 0) {
+                    dataIndex = 1;
+                    items.push({ // return 2nd value in 1st series
+                        datapoint: series[seriesIndex].datapoints.points.slice(dataIndex * ps, (dataIndex + 1) * ps),
+                        dataIndex: dataIndex,
+                        series: series[seriesIndex],
+                        seriesIndex: seriesIndex,
+                        distance: 3
+                    });
+                } else {
+                    dataIndex = 0;
+                    items.push({ // return 1st value in 2nd series
+                        datapoint: series[seriesIndex].datapoints.points.slice(dataIndex * ps, (dataIndex + 1) * ps),
+                        dataIndex: dataIndex,
+                        series: series[seriesIndex],
+                        seriesIndex: seriesIndex,
+                        distance: 1 // artificially make this point closer for testing purposes
+                    });
+                }
+            }
+            options.hooks = {findNearbyItems: [hookCallback]};
+            plot = $.plot(placeholder, sampledata, options);
+            var items = plot.findNearbyItems(2, 0.5, function() {
+                return true;
+            }, 0);
+
+            expect(items.length).toEqual(2);
+            expect(items[0].distance).toBeLessThan(items[1].distance);
+            expect(items[0].datapoint[0]).toEqual(sampledata[1][0][0]);
+            expect(items[0].datapoint[1]).toEqual(sampledata[1][0][1]);
+            expect(items[1].datapoint[0]).toEqual(sampledata[0][1][0]);
+            expect(items[1].datapoint[1]).toEqual(sampledata[0][1][1]);
         });
     });
 

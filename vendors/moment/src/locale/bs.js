@@ -1,5 +1,5 @@
 //! moment.js locale configuration
-//! locale : bosnian (bs)
+//! locale : Bosnian [bs]
 //! author : Nedim Cholich : https://github.com/frontyard
 //! based on (hr) translation by Bojan Marković
 
@@ -8,53 +8,62 @@ import moment from '../moment';
 function translate(number, withoutSuffix, key) {
     var result = number + ' ';
     switch (key) {
-    case 'm':
-        return withoutSuffix ? 'jedna minuta' : 'jedne minute';
-    case 'mm':
-        if (number === 1) {
-            result += 'minuta';
-        } else if (number === 2 || number === 3 || number === 4) {
-            result += 'minute';
-        } else {
-            result += 'minuta';
-        }
-        return result;
-    case 'h':
-        return withoutSuffix ? 'jedan sat' : 'jednog sata';
-    case 'hh':
-        if (number === 1) {
-            result += 'sat';
-        } else if (number === 2 || number === 3 || number === 4) {
-            result += 'sata';
-        } else {
-            result += 'sati';
-        }
-        return result;
-    case 'dd':
-        if (number === 1) {
-            result += 'dan';
-        } else {
-            result += 'dana';
-        }
-        return result;
-    case 'MM':
-        if (number === 1) {
-            result += 'mjesec';
-        } else if (number === 2 || number === 3 || number === 4) {
-            result += 'mjeseca';
-        } else {
-            result += 'mjeseci';
-        }
-        return result;
-    case 'yy':
-        if (number === 1) {
-            result += 'godina';
-        } else if (number === 2 || number === 3 || number === 4) {
-            result += 'godine';
-        } else {
-            result += 'godina';
-        }
-        return result;
+        case 'ss':
+            if (number === 1) {
+                result += 'sekunda';
+            } else if (number === 2 || number === 3 || number === 4) {
+                result += 'sekunde';
+            } else {
+                result += 'sekundi';
+            }
+            return result;
+        case 'm':
+            return withoutSuffix ? 'jedna minuta' : 'jedne minute';
+        case 'mm':
+            if (number === 1) {
+                result += 'minuta';
+            } else if (number === 2 || number === 3 || number === 4) {
+                result += 'minute';
+            } else {
+                result += 'minuta';
+            }
+            return result;
+        case 'h':
+            return withoutSuffix ? 'jedan sat' : 'jednog sata';
+        case 'hh':
+            if (number === 1) {
+                result += 'sat';
+            } else if (number === 2 || number === 3 || number === 4) {
+                result += 'sata';
+            } else {
+                result += 'sati';
+            }
+            return result;
+        case 'dd':
+            if (number === 1) {
+                result += 'dan';
+            } else {
+                result += 'dana';
+            }
+            return result;
+        case 'MM':
+            if (number === 1) {
+                result += 'mjesec';
+            } else if (number === 2 || number === 3 || number === 4) {
+                result += 'mjeseca';
+            } else {
+                result += 'mjeseci';
+            }
+            return result;
+        case 'yy':
+            if (number === 1) {
+                result += 'godina';
+            } else if (number === 2 || number === 3 || number === 4) {
+                result += 'godine';
+            } else {
+                result += 'godina';
+            }
+            return result;
     }
 }
 
@@ -69,7 +78,7 @@ export default moment.defineLocale('bs', {
     longDateFormat : {
         LT : 'H:mm',
         LTS : 'H:mm:ss',
-        L : 'DD. MM. YYYY',
+        L : 'DD.MM.YYYY',
         LL : 'D. MMMM YYYY',
         LLL : 'D. MMMM YYYY H:mm',
         LLLL : 'dddd, D. MMMM YYYY H:mm'
@@ -79,32 +88,32 @@ export default moment.defineLocale('bs', {
         nextDay  : '[sutra u] LT',
         nextWeek : function () {
             switch (this.day()) {
-            case 0:
-                return '[u] [nedjelju] [u] LT';
-            case 3:
-                return '[u] [srijedu] [u] LT';
-            case 6:
-                return '[u] [subotu] [u] LT';
-            case 1:
-            case 2:
-            case 4:
-            case 5:
-                return '[u] dddd [u] LT';
+                case 0:
+                    return '[u] [nedjelju] [u] LT';
+                case 3:
+                    return '[u] [srijedu] [u] LT';
+                case 6:
+                    return '[u] [subotu] [u] LT';
+                case 1:
+                case 2:
+                case 4:
+                case 5:
+                    return '[u] dddd [u] LT';
             }
         },
         lastDay  : '[jučer u] LT',
         lastWeek : function () {
             switch (this.day()) {
-            case 0:
-            case 3:
-                return '[prošlu] dddd [u] LT';
-            case 6:
-                return '[prošle] [subote] [u] LT';
-            case 1:
-            case 2:
-            case 4:
-            case 5:
-                return '[prošli] dddd [u] LT';
+                case 0:
+                case 3:
+                    return '[prošlu] dddd [u] LT';
+                case 6:
+                    return '[prošle] [subote] [u] LT';
+                case 1:
+                case 2:
+                case 4:
+                case 5:
+                    return '[prošli] dddd [u] LT';
             }
         },
         sameElse : 'L'
@@ -113,6 +122,7 @@ export default moment.defineLocale('bs', {
         future : 'za %s',
         past   : 'prije %s',
         s      : 'par sekundi',
+        ss     : translate,
         m      : translate,
         mm     : translate,
         h      : translate,
@@ -124,11 +134,10 @@ export default moment.defineLocale('bs', {
         y      : 'godinu',
         yy     : translate
     },
-    ordinalParse: /\d{1,2}\./,
+    dayOfMonthOrdinalParse: /\d{1,2}\./,
     ordinal : '%d.',
     week : {
         dow : 1, // Monday is the first day of the week.
-        doy : 7  // The week that contains Jan 1st is the first week of the year.
+        doy : 7  // The week that contains Jan 7th is the first week of the year.
     }
 });
-

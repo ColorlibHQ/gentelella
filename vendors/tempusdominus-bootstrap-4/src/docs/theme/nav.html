@@ -1,0 +1,32 @@
+<header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
+    <a class="navbar-brand" href="https://tempusdominus.github.io/bootstrap-4/"><img src="https://tempusdominus.github.io/bootstrap-4/favicon-32x32.png" alt="home" /></a>
+
+    <div class="navbar-nav-scroll">
+        <ul class="navbar-nav bd-navbar-nav flex-row">
+            {% for nav_item in nav %}
+            {% if nav_item.children %}
+            <li class="nav-item dropdown">
+                <a href="#" class="nav-item nav-link dropdown-toggle mr-md-2" data-toggle="dropdown" id="{{ nav_item.title }}">{{ nav_item.title }}</a>
+                <div class="dropdown-menu dropdown-menu-right show" aria-labelledby="{{ nav_item.title }}">
+                    {% for nav_item in nav_item.children %}
+                    <a class="dropdown-item {% if nav_item.active %}active{% endif %}" href="{{ nav_item.url }}">{{ nav_item.title }}</a>
+                    {% endfor %}
+                </div>
+            </li>
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-link {% if nav_item.active %}active{% endif %}" href="{{ nav_item.url }}">{{ nav_item.title }}</a>
+            </li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+
+    <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+        <li class="nav-item">
+            <a class="nav-link p-2" href="https://github.com/tempusdominus/bootstrap-4" target="_blank" rel="noopener" aria-label="GitHub">
+                <span class="fa fa-github"></span>
+            </a>
+        </li>
+    </ul>
+</header>

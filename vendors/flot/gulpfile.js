@@ -20,6 +20,7 @@ var files = [
     './source/jquery.flot.flatdata.js',
     './source/jquery.flot.navigate.js',
     './source/jquery.flot.fillbetween.js',
+    './source/jquery.flot.categories.js',
     './source/jquery.flot.stack.js',
     './source/jquery.flot.touchNavigate.js',
     './source/jquery.flot.hover.js',

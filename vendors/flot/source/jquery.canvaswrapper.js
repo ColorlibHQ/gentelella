@@ -39,9 +39,9 @@ don't work unless the canvas is attached to the DOM.
         this.pixelRatio = $.plot.browser.getPixelRatio(context);
 
         // Size the canvas to match the internal dimensions of its container
-
-        var box = container.getBoundingClientRect();
-        this.resize(box.width, box.height);
+        var width = $(container).width();
+        var height = $(container).height();
+        this.resize(width, height);
 
         // Collection of HTML div layers for text overlaid onto the canvas
 
@@ -345,6 +345,15 @@ don't work unless the canvas is attached to the DOM.
         return info;
     };
 
+    function updateTransforms (element, transforms) {
+        element.transform.baseVal.clear();
+        if (transforms) {
+            transforms.forEach(function(t) {
+                element.transform.baseVal.appendItem(t);
+            });
+        }
+    }
+
     /**
     - addText (layer, x, y, text, font, angle, width, halign, valign, transforms)
 
@@ -377,6 +386,7 @@ don't work unless the canvas is attached to the DOM.
 
         y += 0.75 * info.height;
 
+
         // Determine whether this text already exists at this position.
         // If so, mark it for inclusion in the next render pass.
 
@@ -384,6 +394,9 @@ don't work unless the canvas is attached to the DOM.
             position = positions[i];
             if (position.x === x && position.y === y && position.text === text) {
                 position.active = true;
+                // update the transforms
+                updateTransforms(position.element, transforms);
+
                 return;
             } else if (position.active === false) {
                 position.active = true;
@@ -398,6 +411,9 @@ don't work unless the canvas is attached to the DOM.
                 position.element.setAttributeNS(null, 'y', y);
                 position.x = x;
                 position.y = y;
+                // update the transforms
+                updateTransforms(position.element, transforms);
+
                 return;
             }
         }
@@ -429,13 +445,9 @@ don't work unless the canvas is attached to the DOM.
         position.element.setAttributeNS(null, 'x', x);
         position.element.setAttributeNS(null, 'y', y);
         position.element.style.textAlign = halign;
-
-        if (transforms) {
-            transforms.forEach(function(t) {
-                info.element.transform.baseVal.appendItem(t);
-            });
-        }
-    };
+        // update the transforms
+        updateTransforms(position.element, transforms);
+   };
 
     var addTspanElements = function(text, element, x) {
         var lines = text.split('<br>'),

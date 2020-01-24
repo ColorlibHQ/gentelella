@@ -1,5 +1,5 @@
 //! moment.js locale configuration
-//! locale : hindi (hi)
+//! locale : Hindi [hi]
 //! author : Mayank Singhal : https://github.com/mayanksinghal
 
 import moment from '../moment';
@@ -56,6 +56,7 @@ export default moment.defineLocale('hi', {
         future : '%s में',
         past : '%s पहले',
         s : 'कुछ ही क्षण',
+        ss : '%d सेकंड',
         m : 'एक मिनट',
         mm : '%d मिनट',
         h : 'एक घंटा',
@@ -109,7 +110,7 @@ export default moment.defineLocale('hi', {
     },
     week : {
         dow : 0, // Sunday is the first day of the week.
-        doy : 6  // The week that contains Jan 1st is the first week of the year.
+        doy : 6  // The week that contains Jan 6th is the first week of the year.
     }
 });
 

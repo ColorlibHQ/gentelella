@@ -1,5 +1,5 @@
 //! moment.js locale configuration
-//! locale : swahili (sw)
+//! locale : Swahili [sw]
 //! author : Fahad Kassim : https://github.com/fadsel
 
 import moment from '../moment';
@@ -31,6 +31,7 @@ export default moment.defineLocale('sw', {
         future : '%s baadaye',
         past : 'tokea %s',
         s : 'hivi punde',
+        ss : 'sekunde %d',
         m : 'dakika moja',
         mm : 'dakika %d',
         h : 'saa limoja',
@@ -44,7 +45,7 @@ export default moment.defineLocale('sw', {
     },
     week : {
         dow : 1, // Monday is the first day of the week.
-        doy : 7  // The week that contains Jan 1st is the first week of the year.
+        doy : 7  // The week that contains Jan 7th is the first week of the year.
     }
 });
 

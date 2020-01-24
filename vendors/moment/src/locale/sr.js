@@ -1,11 +1,12 @@
 //! moment.js locale configuration
-//! locale : Serbian-latin (sr)
+//! locale : Serbian [sr]
 //! author : Milan Janačković<milanjanackovic@gmail.com> : https://github.com/milan-j
 
 import moment from '../moment';
 
 var translator = {
     words: { //Different grammatical cases
+        ss: ['sekunda', 'sekunde', 'sekundi'],
         m: ['jedan minut', 'jedne minute'],
         mm: ['minut', 'minute', 'minuta'],
         h: ['jedan sat', 'jednog sata'],
@@ -38,7 +39,7 @@ export default moment.defineLocale('sr', {
     longDateFormat: {
         LT: 'H:mm',
         LTS : 'H:mm:ss',
-        L: 'DD. MM. YYYY',
+        L: 'DD.MM.YYYY',
         LL: 'D. MMMM YYYY',
         LLL: 'D. MMMM YYYY H:mm',
         LLLL: 'dddd, D. MMMM YYYY H:mm'
@@ -48,17 +49,17 @@ export default moment.defineLocale('sr', {
         nextDay: '[sutra u] LT',
         nextWeek: function () {
             switch (this.day()) {
-            case 0:
-                return '[u] [nedelju] [u] LT';
-            case 3:
-                return '[u] [sredu] [u] LT';
-            case 6:
-                return '[u] [subotu] [u] LT';
-            case 1:
-            case 2:
-            case 4:
-            case 5:
-                return '[u] dddd [u] LT';
+                case 0:
+                    return '[u] [nedelju] [u] LT';
+                case 3:
+                    return '[u] [sredu] [u] LT';
+                case 6:
+                    return '[u] [subotu] [u] LT';
+                case 1:
+                case 2:
+                case 4:
+                case 5:
+                    return '[u] dddd [u] LT';
             }
         },
         lastDay  : '[juče u] LT',
@@ -80,6 +81,7 @@ export default moment.defineLocale('sr', {
         future : 'za %s',
         past   : 'pre %s',
         s      : 'nekoliko sekundi',
+        ss     : translator.translate,
         m      : translator.translate,
         mm     : translator.translate,
         h      : translator.translate,
@@ -91,11 +93,10 @@ export default moment.defineLocale('sr', {
         y      : 'godinu',
         yy     : translator.translate
     },
-    ordinalParse: /\d{1,2}\./,
+    dayOfMonthOrdinalParse: /\d{1,2}\./,
     ordinal : '%d.',
     week : {
         dow : 1, // Monday is the first day of the week.
-        doy : 7  // The week that contains Jan 1st is the first week of the year.
+        doy : 7  // The week that contains Jan 7th is the first week of the year.
     }
 });
-

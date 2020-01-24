@@ -1,13 +1,11 @@
 //! moment.js locale configuration
-//! locale : danish (da)
-//! author : Ulrik Nielsen : https://github.com/mrbase
 
 ;(function (global, factory) {
    typeof exports === 'object' && typeof module !== 'undefined'
        && typeof require === 'function' ? factory(require('../moment')) :
-   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
-}(this, function (moment) { 'use strict';
+}(this, (function (moment) { 'use strict';
 
 
     var da = moment.defineLocale('da', {
@@ -19,23 +17,24 @@
         longDateFormat : {
             LT : 'HH:mm',
             LTS : 'HH:mm:ss',
-            L : 'DD/MM/YYYY',
+            L : 'DD.MM.YYYY',
             LL : 'D. MMMM YYYY',
             LLL : 'D. MMMM YYYY HH:mm',
-            LLLL : 'dddd [d.] D. MMMM YYYY HH:mm'
+            LLLL : 'dddd [d.] D. MMMM YYYY [kl.] HH:mm'
         },
         calendar : {
-            sameDay : '[I dag kl.] LT',
-            nextDay : '[I morgen kl.] LT',
-            nextWeek : 'dddd [kl.] LT',
-            lastDay : '[I går kl.] LT',
-            lastWeek : '[sidste] dddd [kl] LT',
+            sameDay : '[i dag kl.] LT',
+            nextDay : '[i morgen kl.] LT',
+            nextWeek : 'på dddd [kl.] LT',
+            lastDay : '[i går kl.] LT',
+            lastWeek : '[i] dddd[s kl.] LT',
             sameElse : 'L'
         },
         relativeTime : {
             future : 'om %s',
             past : '%s siden',
             s : 'få sekunder',
+            ss : '%d sekunder',
             m : 'et minut',
             mm : '%d minutter',
             h : 'en time',
@@ -47,7 +46,7 @@
             y : 'et år',
             yy : '%d år'
         },
-        ordinalParse: /\d{1,2}\./,
+        dayOfMonthOrdinalParse: /\d{1,2}\./,
         ordinal : '%d.',
         week : {
             dow : 1, // Monday is the first day of the week.
@@ -57,4 +56,4 @@
 
     return da;
 
-}));
+})));

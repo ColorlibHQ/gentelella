@@ -1,0 +1,1084 @@
+{
+    "docs": [
+        {
+            "location": "/",
+            "text": "Tempus Dominus\n\n        \n\n          Tempus Dominus is the successor to the very popular Eonasdan/bootstrap-datetimepicker. \n          The plugin provide a robust date and time picker designed to integrate into your Bootstrap project.\n        \n\n        \n\n          \nGet started\n\n          \nDownload\n\n        \n\n        \n\n         Currently v5.0.1\n         \n\n        \n\n      \n\n    \n\n  \n\n\n\n\n\n\n    \n\n        \n\n        \nInstallation\n\n        \nInclude Tempus Dominus's source Sass and JavaScript files via npm\n\n        \n\n\n\nnpm i tempusdominus-bootstrap-4\n\n\n        \n\n        \n\n        \nRead installation docs\n\n    \n\n    \n\n        \n\n        \nCDNJS\n\n        \nWhen you only need to include Tempus Dominus's compiled CSS or JS, you can use CDNJS.\n\n        \n\n\n\n<script type=\"text/javascript\" src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>\n<script type=\"text/javascript\" src=\"https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js\"></script>\n<script type=\"text/javascript\" src=\"https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js\"></script>\n<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css\" />\n\n\n        \n\n        \n\n        \nExplore the docs",
+            "title": "Tempus Dominus Bootstrap 4"
+        },
+        {
+            "location": "/Usage/",
+            "text": "Bootstrap4 v5 Docs\n\n\n\n    \nNote\n\n    All functions are accessed via the \n$('#datetimepicker').datetimepicker(FUNCTION)\n\n\n\n\n\nMinimum Setup\n\n\n\n    \n\n        \n\n            \n\n                \n\n                    \n\n                    \n\n                        \n\n                    \n\n                \n\n            \n\n        \n\n        \n\n            $(function () {\n                $('#datetimepicker1').datetimepicker();\n            });\n        \n\n    \n\n\n\n\n\nCode\n\n\n<div class=\"container\">\n    <div class=\"row\">\n        <div class=\"col-sm-6\">\n            <div class=\"form-group\">\n                <div class=\"input-group date\" id=\"datetimepicker1\" data-target-input=\"nearest\">\n                    <input type=\"text\" class=\"form-control datetimepicker-input\" data-target=\"#datetimepicker1\"/>\n                    <div class=\"input-group-append\" data-target=\"#datetimepicker1\" data-toggle=\"datetimepicker\">\n                        <div class=\"input-group-text\"><i class=\"fa fa-calendar\"></i></div>\n                    </div>\n                </div>\n            </div>\n        </div>\n        <script type=\"text/javascript\">\n            $(function () {\n                $('#datetimepicker1').datetimepicker();\n            });\n        </script>\n    </div>\n</div>\n\n\n\n\n\n\nUsing Locales\n\n\n\n    \n\n        \n\n            \n\n                \n\n                    \n\n                    \n\n                        \n\n                    \n\n                \n\n            \n\n        \n\n        \n\n            $(function () {\n                $('#datetimepicker2').datetimepicker({\n                    locale: 'ru'\n                });\n            });\n        \n\n    \n\n\n\n\n\nCode\n\n\n<div class=\"container\">\n    <div class=\"row\">\n        <div class=\"col-sm-6\">\n            <div class=\"form-group\">\n                <div class=\"input-group date\" id=\"datetimepicker2\" data-target-input=\"nearest\">\n                    <input type=\"text\" class=\"form-control datetimepicker-input\" data-target=\"#datetimepicker2\"/>\n                    <div class=\"input-group-append\" data-target=\"#datetimepicker2\" data-toggle=\"datetimepicker\">\n                        <div class=\"input-group-text\"><i class=\"fa fa-calendar\"></i></div>\n                    </div>\n                </div>\n            </div>\n        </div>\n        <script type=\"text/javascript\">\n            $(function () {\n                $('#datetimepicker2').datetimepicker({\n                    locale: 'ru'\n                });\n            });\n        </script>\n    </div>\n</div>\n\n\n\n\n\n\nTime Only\n\n\n\n    \n\n        \n\n            \n\n                \n\n                    \n\n                    \n\n                        \n\n                    \n\n                \n\n            \n\n        \n\n        \n\n            $(function () {\n                $('#datetimepicker3').datetimepicker({\n                    format: 'LT'\n                });\n            });\n        \n\n    \n\n\n\n\n\nCode\n\n\n<div class=\"container\">\n    <div class=\"row\">\n        <div class=\"col-sm-6\">\n            <div class=\"form-group\">\n                <div class=\"input-group date\" id=\"datetimepicker3\" data-target-input=\"nearest\">\n                    <input type=\"text\" class=\"form-control datetimepicker-input\" data-target=\"#datetimepicker3\"/>\n                    <div class=\"input-group-append\" data-target=\"#datetimepicker3\" data-toggle=\"datetimepicker\">\n                        <div class=\"input-group-text\"><i class=\"fa fa-clock-o\"></i></div>\n                    </div>\n                </div>\n            </div>\n        </div>\n        <script type=\"text/javascript\">\n            $(function () {\n                $('#datetimepicker3').datetimepicker({\n                    format: 'LT'\n                });\n            });\n        </script>\n    </div>\n</div>\n\n\n\n\n\n\nDate Only\n\n\n\n    \n\n        \n\n            \n\n                \n\n                    \n\n                    \n\n                        \n\n                    \n\n                \n\n            \n\n        \n\n        \n\n            $(function () {\n                $('#datetimepicker4').datetimepicker({\n                    format: 'L'\n                });\n            });\n        \n\n    \n\n\n\n\n\nCode\n\n\n<div class=\"container\">\n    <div class=\"row\">\n        <div class=\"col-sm-6\">\n            <div class=\"form-group\">\n                <div class=\"input-group date\" id=\"datetimepicker4\" data-target-input=\"nearest\">\n                    <input type=\"text\" class=\"form-control datetimepicker-input\" data-target=\"#datetimepicker4\"/>\n                    <div class=\"input-group-append\" data-target=\"#datetimepicker4\" data-toggle=\"datetimepicker\">\n                        <div class=\"input-group-text\"><i class=\"fa fa-calendar\"></i></div>\n                    </div>\n                </div>\n            </div>\n        </div>\n        <script type=\"text/javascript\">\n            $(function () {\n                $('#datetimepicker4').datetimepicker({\n                    format: 'L'\n                });\n            });\n        </script>\n    </div>\n</div>\n\n\n\n\n\n\nNo Icon (input field only):\n\n\n\n    \n\n        \n\n            \n\n        \n\n        \n\n            $(function () {\n                $('#datetimepicker5').datetimepicker();\n            });\n        \n\n    \n\n\n\n\n\nCode\n\n\n\n<div class=\"container\">\n    <div class=\"row\">\n        <div class=\"col-sm-6\">\n            <input type=\"text\" class=\"form-control datetimepicker-input\" id=\"datetimepicker5\" data-toggle=\"datetimepicker\" data-target=\"#datetimepicker5\"/>\n        </div>\n        <script type=\"text/javascript\">\n            $(function () {\n                $('#datetimepicker5').datetimepicker();\n            });\n        </script>\n    </div>\n</div>\n\n\n\n\n\n\nEnabled/Disabled Dates\n\n\n\n    \n\n         \n\n            \n\n                \n\n                    \n\n                    \n\n                        \n\n                    \n\n                \n\n            \n\n        \n\n        \n\n            $(function () {\n                $('#datetimepicker6').datetimepicker({\n                    defaultDate: \"11/1/2013\",\n                    disabledDates: [\n                        moment(\"12/25/2013\"),\n                        new Date(2013, 11 - 1, 21),\n                        \"11/22/2013 00:53\"\n                    ]\n                });\n            });\n        \n\n    \n\n\n\n\n\nCode\n\n\n<div class=\"container\">\n    <div class=\"row\">\n         <div class=\"col-sm-6\">\n            <div class=\"form-group\">\n                <div class=\"input-group date\" id=\"datetimepicker6\" data-target-input=\"nearest\">\n                    <input type=\"text\" class=\"form-control datetimepicker-input\" data-target=\"#datetimepicker6\"/>\n                    <div class=\"input-group-append\" data-target=\"#datetimepicker6\" data-toggle=\"datetimepicker\">\n                        <div class=\"input-group-text\"><i class=\"fa fa-calendar\"></i></div>\n                    </div>\n                </div>\n            </div>\n        </div>\n        <script type=\"text/javascript\">\n            $(function () {\n                $('#datetimepicker6').datetimepicker({\n                    defaultDate: \"11/1/2013\",\n                    disabledDates: [\n                        moment(\"12/25/2013\"),\n                        new Date(2013, 11 - 1, 21),\n                        \"11/22/2013 00:53\"\n                    ]\n                });\n            });\n        </script>\n    </div>\n</div>\n\n\n\n\n\n\nLinked Pickers\n\n\n\n    \n\n        \n\n           \n\n                \n\n                \n\n                    \n\n                \n\n            \n\n        \n\n    \n\n    \n\n        \n\n           \n\n                \n\n                \n\n                    \n\n                \n\n            \n\n        \n\n    \n\n\n\n\n\n\n    $(function () {\n        $('#datetimepicker7').datetimepicker();\n        $('#datetimepicker8').datetimepicker({\n            useCurrent: false\n        });\n        $(\"#datetimepicker7\").on(\"change.datetimepicker\", function (e) {\n            $('#datetimepicker8').datetimepicker('minDate', e.date);\n        });\n        $(\"#datetimepicker8\").on(\"change.datetimepicker\", function (e) {\n            $('#datetimepicker7').datetimepicker('maxDate', e.date);\n        });\n    });\n\n\n\n\nCode\n\n\n<div class=\"container\">\n    <div class='col-md-5'>\n        <div class=\"form-group\">\n           <div class=\"input-group date\" id=\"datetimepicker7\" data-target-input=\"nearest\">\n                <input type=\"text\" class=\"form-control datetimepicker-input\" data-target=\"#datetimepicker7\"/>\n                <div class=\"input-group-append\" data-target=\"#datetimepicker7\" data-toggle=\"datetimepicker\">\n                    <div class=\"input-group-text\"><i class=\"fa fa-calendar\"></i></div>\n                </div>\n            </div>\n        </div>\n    </div>\n    <div class='col-md-5'>\n        <div class=\"form-group\">\n           <div class=\"input-group date\" id=\"datetimepicker8\" data-target-input=\"nearest\">\n                <input type=\"text\" class=\"form-control datetimepicker-input\" data-target=\"#datetimepicker8\"/>\n                <div class=\"input-group-append\" data-target=\"#datetimepicker8\" data-toggle=\"datetimepicker\">\n                    <div class=\"input-group-text\"><i class=\"fa fa-calendar\"></i></div>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n<script type=\"text/javascript\">\n    $(function () {\n        $('#datetimepicker7').datetimepicker();\n        $('#datetimepicker8').datetimepicker({\n            useCurrent: false\n        });\n        $(\"#datetimepicker7\").on(\"change.datetimepicker\", function (e) {\n            $('#datetimepicker8').datetimepicker('minDate', e.date);\n        });\n        $(\"#datetimepicker8\").on(\"change.datetimepicker\", function (e) {\n            $('#datetimepicker7').datetimepicker('maxDate', e.date);\n        });\n    });\n</script>\n\n\n\n\n\n\nCustom Icons\n\n\n\n    \n\n        \n\n            \n\n                \n\n                \n\n                    \n\n                \n\n            \n\n        \n\n    \n\n    \n\n        $(function () {\n            $('#datetimepicker9').datetimepicker({\n                icons: {\n                    time: \"fa fa-clock-o\",\n                    date: \"fa fa-calendar\",\n                    up: \"fa fa-arrow-up\",\n                    down: \"fa fa-arrow-down\"\n                }\n            });\n        });\n    \n\n\n\n\n\nCode\n\n\n<div class=\"container\">\n    <div class=\"col-sm-6\">\n        <div class=\"form-group\">\n            <div class=\"input-group date\" id=\"datetimepicker9\" data-target-input=\"nearest\">\n                <input type=\"text\" class=\"form-control datetimepicker-input\" data-target=\"#datetimepicker9\"/>\n                <div class=\"input-group-append\" data-target=\"#datetimepicker9\" data-toggle=\"datetimepicker\">\n                    <div class=\"input-group-text\"><i class=\"fa fa-calendar\"></i></div>\n                </div>\n            </div>\n        </div>\n    </div>\n    <script type=\"text/javascript\">\n        $(function () {\n            $('#datetimepicker9').datetimepicker({\n                icons: {\n                    time: \"fa fa-clock-o\",\n                    date: \"fa fa-calendar\",\n                    up: \"fa fa-arrow-up\",\n                    down: \"fa fa-arrow-down\"\n                }\n            });\n        });\n    </script>\n</div>\n\n\n\n\n\n\nView Mode\n\n\n\n    \n\n        \n\n            \n\n                \n\n                \n\n                    \n\n                \n\n            \n\n        \n\n    \n\n    \n\n        $(function () {\n            $('#datetimepicker10').datetimepicker({\n                viewMode: 'years'\n            });\n        });\n    \n\n\n\n\n\nCode\n\n\n<div class=\"container\">\n    <div class=\"col-sm-6\">\n        <div class=\"form-group\">\n            <div class=\"input-group date\" id=\"datetimepicker10\" data-target-input=\"nearest\">\n                <input type=\"text\" class=\"form-control datetimepicker-input\" data-target=\"#datetimepicker10\"/>\n                <div class=\"input-group-append\" data-target=\"#datetimepicker10\" data-toggle=\"datetimepicker\">\n                    <div class=\"input-group-text\"><i class=\"fa fa-calendar\"></i></div>\n                </div>\n            </div>\n        </div>\n    </div>\n    <script type=\"text/javascript\">\n        $(function () {\n            $('#datetimepicker10').datetimepicker({\n                viewMode: 'years'\n            });\n        });\n    </script>\n</div>\n\n\n\n\n\n\nMin View Mode\n\n\n\n    \n\n        \n\n            \n\n                \n\n                \n\n                    \n\n                \n\n            \n\n        \n\n    \n\n    \n\n        $(function () {\n            $('#datetimepicker11').datetimepicker({\n                viewMode: 'years',\n                format: 'MM/YYYY'\n            });\n        });\n    \n\n\n\n\n\nCode\n\n\n<div class=\"container\">\n    <div class=\"col-sm-6\">\n        <div class=\"form-group\">\n            <div class=\"input-group date\" id=\"datetimepicker11\" data-target-input=\"nearest\">\n                <input type=\"text\" class=\"form-control datetimepicker-input\" data-target=\"#datetimepicker11\"/>\n                <div class=\"input-group-append\" data-target=\"#datetimepicker11\" data-toggle=\"datetimepicker\">\n                    <div class=\"input-group-text\"><i class=\"fa fa-calendar\"></i></div>\n                </div>\n            </div>\n        </div>\n    </div>\n    <script type=\"text/javascript\">\n        $(function () {\n            $('#datetimepicker11').datetimepicker({\n                viewMode: 'years',\n                format: 'MM/YYYY'\n            });\n        });\n    </script>\n</div>\n\n\n\n\n\n\n\nDisabled Days of the Week\n\n\n\n    \n\n        \n\n            \n\n                \n\n                \n\n                    \n\n                \n\n            \n\n        \n\n    \n\n    \n\n        $(function () {\n            $('#datetimepicker12').datetimepicker({\n                daysOfWeekDisabled: [0, 6]\n            });\n        });\n    \n\n\n\n\n\nCode\n\n\n<div class=\"container\">\n    <div class=\"col-sm-6\">\n        <div class=\"form-group\">\n            <div class=\"input-group date\" id=\"datetimepicker12\" data-target-input=\"nearest\">\n                <input type=\"text\" class=\"form-control datetimepicker-input\" data-target=\"#datetimepicker12\"/>\n                <div class=\"input-group-append\" data-target=\"#datetimepicker12\" data-toggle=\"datetimepicker\">\n                    <div class=\"input-group-text\"><i class=\"fa fa-calendar\"></i></div>\n                </div>\n            </div>\n        </div>\n    </div>\n    <script type=\"text/javascript\">\n        $(function () {\n            $('#datetimepicker12').datetimepicker({\n                daysOfWeekDisabled: [0, 6]\n            });\n        });\n    </script>\n</div>\n\n\n\n\n\n\nInline\n\n\n\n    \n\n        \n\n            \n\n                \n\n            \n\n        \n\n    \n\n    \n\n        $(function () {\n            $('#datetimepicker13').datetimepicker({\n                inline: true,\n                sideBySide: true,\n                buttons:{\n                    showToday:true\n                }\n            });\n        });\n    \n\n\n\n\n\nCode\n\n\n<div style=\"overflow:hidden;\">\n    <div class=\"form-group\">\n        <div class=\"row\">\n            <div class=\"col-md-8\">\n                <div id=\"datetimepicker13\"></div>\n            </div>\n        </div>\n    </div>\n    <script type=\"text/javascript\">\n        $(function () {\n            $('#datetimepicker13').datetimepicker({\n                inline: true,\n                sideBySide: true\n            });\n        });\n    </script>\n</div>\n\n\n\n\n\n\nMultidate\n\n\n\n    \n\n        \n\n            \n\n                \n\n                    \n\n                    \n\n                        \n\n                    \n\n                \n\n            \n\n        \n\n        \n\n            $(function () {\n                $('#datetimepicker14').datetimepicker({\n                    allowMultidate: true,\n                    multidateSeparator: ',',\n                    format: 'L' //this is here just to make the demo prettier.\n                });\n            });\n        \n\n    \n\n\n\n\n\nCode\n\n\n<div class=\"container\">\n    <div class=\"row\">\n        <div class=\"col-sm-6\">\n            <div class=\"form-group\">\n                <div class=\"input-group date\" id=\"datetimepicker14\" data-target-input=\"nearest\">\n                    <input type=\"text\" class=\"form-control datetimepicker-input\" data-target=\"#datetimepicker14\"/>\n                    <div class=\"input-group-append\" data-target=\"#datetimepicker14\" data-toggle=\"datetimepicker\">\n                        <div class=\"input-group-text\"><i class=\"fa fa-calendar\"></i></div>\n                    </div>\n                </div>\n            </div>\n        </div>\n        <script type=\"text/javascript\">\n            $(function () {\n                $('#datetimepicker14').datetimepicker({\n                    allowMultidate: true,\n                    multidateSeparator: ','\n                });\n            });\n        </script>\n    </div>\n</div>\n\n\n\n\n\n\nSetting Options\n\n\n\n    \n\n        \n\n            \n\n                \n\n                \n\n                    \n\n                \n\n            \n\n        \n\n        \n\n            \nSet Option\n\n        \n\n    \n\n    \n\n        $(function () {\n            $('#datetimepicker15').datetimepicker();\n\n            $('#setOption').click(function () {\n                $('#datetimepicker15').datetimepicker('daysOfWeekDisabled', [0, 6]);\n            });\n        });",
+            "title": "Usage"
+        },
+        {
+            "location": "/Usage/#bootstrap4-v5-docs",
+            "text": "Note \n    All functions are accessed via the  $('#datetimepicker').datetimepicker(FUNCTION)",
+            "title": "Bootstrap4 v5 Docs"
+        },
+        {
+            "location": "/Usage/#minimum-setup",
+            "text": "$(function () {\n                $('#datetimepicker1').datetimepicker();\n            });",
+            "title": "Minimum Setup"
+        },
+        {
+            "location": "/Usage/#code",
+            "text": "<div class=\"container\">\n    <div class=\"row\">\n        <div class=\"col-sm-6\">\n            <div class=\"form-group\">\n                <div class=\"input-group date\" id=\"datetimepicker1\" data-target-input=\"nearest\">\n                    <input type=\"text\" class=\"form-control datetimepicker-input\" data-target=\"#datetimepicker1\"/>\n                    <div class=\"input-group-append\" data-target=\"#datetimepicker1\" data-toggle=\"datetimepicker\">\n                        <div class=\"input-group-text\"><i class=\"fa fa-calendar\"></i></div>\n                    </div>\n                </div>\n            </div>\n        </div>\n        <script type=\"text/javascript\">\n            $(function () {\n                $('#datetimepicker1').datetimepicker();\n            });\n        </script>\n    </div>\n</div>",
+            "title": "Code"
+        },
+        {
+            "location": "/Usage/#using-locales",
+            "text": "$(function () {\n                $('#datetimepicker2').datetimepicker({\n                    locale: 'ru'\n                });\n            });",
+            "title": "Using Locales"
+        },
+        {
+            "location": "/Usage/#code_1",
+            "text": "<div class=\"container\">\n    <div class=\"row\">\n        <div class=\"col-sm-6\">\n            <div class=\"form-group\">\n                <div class=\"input-group date\" id=\"datetimepicker2\" data-target-input=\"nearest\">\n                    <input type=\"text\" class=\"form-control datetimepicker-input\" data-target=\"#datetimepicker2\"/>\n                    <div class=\"input-group-append\" data-target=\"#datetimepicker2\" data-toggle=\"datetimepicker\">\n                        <div class=\"input-group-text\"><i class=\"fa fa-calendar\"></i></div>\n                    </div>\n                </div>\n            </div>\n        </div>\n        <script type=\"text/javascript\">\n            $(function () {\n                $('#datetimepicker2').datetimepicker({\n                    locale: 'ru'\n                });\n            });\n        </script>\n    </div>\n</div>",
+            "title": "Code"
+        },
+        {
+            "location": "/Usage/#time-only",
+            "text": "$(function () {\n                $('#datetimepicker3').datetimepicker({\n                    format: 'LT'\n                });\n            });",
+            "title": "Time Only"
+        },
+        {
+            "location": "/Usage/#code_2",
+            "text": "<div class=\"container\">\n    <div class=\"row\">\n        <div class=\"col-sm-6\">\n            <div class=\"form-group\">\n                <div class=\"input-group date\" id=\"datetimepicker3\" data-target-input=\"nearest\">\n                    <input type=\"text\" class=\"form-control datetimepicker-input\" data-target=\"#datetimepicker3\"/>\n                    <div class=\"input-group-append\" data-target=\"#datetimepicker3\" data-toggle=\"datetimepicker\">\n                        <div class=\"input-group-text\"><i class=\"fa fa-clock-o\"></i></div>\n                    </div>\n                </div>\n            </div>\n        </div>\n        <script type=\"text/javascript\">\n            $(function () {\n                $('#datetimepicker3').datetimepicker({\n                    format: 'LT'\n                });\n            });\n        </script>\n    </div>\n</div>",
+            "title": "Code"
+        },
+        {
+            "location": "/Usage/#date-only",
+            "text": "$(function () {\n                $('#datetimepicker4').datetimepicker({\n                    format: 'L'\n                });\n            });",
+            "title": "Date Only"
+        },
+        {
+            "location": "/Usage/#code_3",
+            "text": "<div class=\"container\">\n    <div class=\"row\">\n        <div class=\"col-sm-6\">\n            <div class=\"form-group\">\n                <div class=\"input-group date\" id=\"datetimepicker4\" data-target-input=\"nearest\">\n                    <input type=\"text\" class=\"form-control datetimepicker-input\" data-target=\"#datetimepicker4\"/>\n                    <div class=\"input-group-append\" data-target=\"#datetimepicker4\" data-toggle=\"datetimepicker\">\n                        <div class=\"input-group-text\"><i class=\"fa fa-calendar\"></i></div>\n                    </div>\n                </div>\n            </div>\n        </div>\n        <script type=\"text/javascript\">\n            $(function () {\n                $('#datetimepicker4').datetimepicker({\n                    format: 'L'\n                });\n            });\n        </script>\n    </div>\n</div>",
+            "title": "Code"
+        },
+        {
+            "location": "/Usage/#no-icon-input-field-only",
+            "text": "$(function () {\n                $('#datetimepicker5').datetimepicker();\n            });",
+            "title": "No Icon (input field only):"
+        },
+        {
+            "location": "/Usage/#code_4",
+            "text": "<div class=\"container\">\n    <div class=\"row\">\n        <div class=\"col-sm-6\">\n            <input type=\"text\" class=\"form-control datetimepicker-input\" id=\"datetimepicker5\" data-toggle=\"datetimepicker\" data-target=\"#datetimepicker5\"/>\n        </div>\n        <script type=\"text/javascript\">\n            $(function () {\n                $('#datetimepicker5').datetimepicker();\n            });\n        </script>\n    </div>\n</div>",
+            "title": "Code"
+        },
+        {
+            "location": "/Usage/#enableddisabled-dates",
+            "text": "$(function () {\n                $('#datetimepicker6').datetimepicker({\n                    defaultDate: \"11/1/2013\",\n                    disabledDates: [\n                        moment(\"12/25/2013\"),\n                        new Date(2013, 11 - 1, 21),\n                        \"11/22/2013 00:53\"\n                    ]\n                });\n            });",
+            "title": "Enabled/Disabled Dates"
+        },
+        {
+            "location": "/Usage/#code_5",
+            "text": "<div class=\"container\">\n    <div class=\"row\">\n         <div class=\"col-sm-6\">\n            <div class=\"form-group\">\n                <div class=\"input-group date\" id=\"datetimepicker6\" data-target-input=\"nearest\">\n                    <input type=\"text\" class=\"form-control datetimepicker-input\" data-target=\"#datetimepicker6\"/>\n                    <div class=\"input-group-append\" data-target=\"#datetimepicker6\" data-toggle=\"datetimepicker\">\n                        <div class=\"input-group-text\"><i class=\"fa fa-calendar\"></i></div>\n                    </div>\n                </div>\n            </div>\n        </div>\n        <script type=\"text/javascript\">\n            $(function () {\n                $('#datetimepicker6').datetimepicker({\n                    defaultDate: \"11/1/2013\",\n                    disabledDates: [\n                        moment(\"12/25/2013\"),\n                        new Date(2013, 11 - 1, 21),\n                        \"11/22/2013 00:53\"\n                    ]\n                });\n            });\n        </script>\n    </div>\n</div>",
+            "title": "Code"
+        },
+        {
+            "location": "/Usage/#linked-pickers",
+            "text": "$(function () {\n        $('#datetimepicker7').datetimepicker();\n        $('#datetimepicker8').datetimepicker({\n            useCurrent: false\n        });\n        $(\"#datetimepicker7\").on(\"change.datetimepicker\", function (e) {\n            $('#datetimepicker8').datetimepicker('minDate', e.date);\n        });\n        $(\"#datetimepicker8\").on(\"change.datetimepicker\", function (e) {\n            $('#datetimepicker7').datetimepicker('maxDate', e.date);\n        });\n    });",
+            "title": "Linked Pickers"
+        },
+        {
+            "location": "/Usage/#code_6",
+            "text": "<div class=\"container\">\n    <div class='col-md-5'>\n        <div class=\"form-group\">\n           <div class=\"input-group date\" id=\"datetimepicker7\" data-target-input=\"nearest\">\n                <input type=\"text\" class=\"form-control datetimepicker-input\" data-target=\"#datetimepicker7\"/>\n                <div class=\"input-group-append\" data-target=\"#datetimepicker7\" data-toggle=\"datetimepicker\">\n                    <div class=\"input-group-text\"><i class=\"fa fa-calendar\"></i></div>\n                </div>\n            </div>\n        </div>\n    </div>\n    <div class='col-md-5'>\n        <div class=\"form-group\">\n           <div class=\"input-group date\" id=\"datetimepicker8\" data-target-input=\"nearest\">\n                <input type=\"text\" class=\"form-control datetimepicker-input\" data-target=\"#datetimepicker8\"/>\n                <div class=\"input-group-append\" data-target=\"#datetimepicker8\" data-toggle=\"datetimepicker\">\n                    <div class=\"input-group-text\"><i class=\"fa fa-calendar\"></i></div>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n<script type=\"text/javascript\">\n    $(function () {\n        $('#datetimepicker7').datetimepicker();\n        $('#datetimepicker8').datetimepicker({\n            useCurrent: false\n        });\n        $(\"#datetimepicker7\").on(\"change.datetimepicker\", function (e) {\n            $('#datetimepicker8').datetimepicker('minDate', e.date);\n        });\n        $(\"#datetimepicker8\").on(\"change.datetimepicker\", function (e) {\n            $('#datetimepicker7').datetimepicker('maxDate', e.date);\n        });\n    });\n</script>",
+            "title": "Code"
+        },
+        {
+            "location": "/Usage/#custom-icons",
+            "text": "$(function () {\n            $('#datetimepicker9').datetimepicker({\n                icons: {\n                    time: \"fa fa-clock-o\",\n                    date: \"fa fa-calendar\",\n                    up: \"fa fa-arrow-up\",\n                    down: \"fa fa-arrow-down\"\n                }\n            });\n        });",
+            "title": "Custom Icons"
+        },
+        {
+            "location": "/Usage/#code_7",
+            "text": "<div class=\"container\">\n    <div class=\"col-sm-6\">\n        <div class=\"form-group\">\n            <div class=\"input-group date\" id=\"datetimepicker9\" data-target-input=\"nearest\">\n                <input type=\"text\" class=\"form-control datetimepicker-input\" data-target=\"#datetimepicker9\"/>\n                <div class=\"input-group-append\" data-target=\"#datetimepicker9\" data-toggle=\"datetimepicker\">\n                    <div class=\"input-group-text\"><i class=\"fa fa-calendar\"></i></div>\n                </div>\n            </div>\n        </div>\n    </div>\n    <script type=\"text/javascript\">\n        $(function () {\n            $('#datetimepicker9').datetimepicker({\n                icons: {\n                    time: \"fa fa-clock-o\",\n                    date: \"fa fa-calendar\",\n                    up: \"fa fa-arrow-up\",\n                    down: \"fa fa-arrow-down\"\n                }\n            });\n        });\n    </script>\n</div>",
+            "title": "Code"
+        },
+        {
+            "location": "/Usage/#view-mode",
+            "text": "$(function () {\n            $('#datetimepicker10').datetimepicker({\n                viewMode: 'years'\n            });\n        });",
+            "title": "View Mode"
+        },
+        {
+            "location": "/Usage/#code_8",
+            "text": "<div class=\"container\">\n    <div class=\"col-sm-6\">\n        <div class=\"form-group\">\n            <div class=\"input-group date\" id=\"datetimepicker10\" data-target-input=\"nearest\">\n                <input type=\"text\" class=\"form-control datetimepicker-input\" data-target=\"#datetimepicker10\"/>\n                <div class=\"input-group-append\" data-target=\"#datetimepicker10\" data-toggle=\"datetimepicker\">\n                    <div class=\"input-group-text\"><i class=\"fa fa-calendar\"></i></div>\n                </div>\n            </div>\n        </div>\n    </div>\n    <script type=\"text/javascript\">\n        $(function () {\n            $('#datetimepicker10').datetimepicker({\n                viewMode: 'years'\n            });\n        });\n    </script>\n</div>",
+            "title": "Code"
+        },
+        {
+            "location": "/Usage/#min-view-mode",
+            "text": "$(function () {\n            $('#datetimepicker11').datetimepicker({\n                viewMode: 'years',\n                format: 'MM/YYYY'\n            });\n        });",
+            "title": "Min View Mode"
+        },
+        {
+            "location": "/Usage/#code_9",
+            "text": "<div class=\"container\">\n    <div class=\"col-sm-6\">\n        <div class=\"form-group\">\n            <div class=\"input-group date\" id=\"datetimepicker11\" data-target-input=\"nearest\">\n                <input type=\"text\" class=\"form-control datetimepicker-input\" data-target=\"#datetimepicker11\"/>\n                <div class=\"input-group-append\" data-target=\"#datetimepicker11\" data-toggle=\"datetimepicker\">\n                    <div class=\"input-group-text\"><i class=\"fa fa-calendar\"></i></div>\n                </div>\n            </div>\n        </div>\n    </div>\n    <script type=\"text/javascript\">\n        $(function () {\n            $('#datetimepicker11').datetimepicker({\n                viewMode: 'years',\n                format: 'MM/YYYY'\n            });\n        });\n    </script>\n</div>",
+            "title": "Code"
+        },
+        {
+            "location": "/Usage/#disabled-days-of-the-week",
+            "text": "$(function () {\n            $('#datetimepicker12').datetimepicker({\n                daysOfWeekDisabled: [0, 6]\n            });\n        });",
+            "title": "Disabled Days of the Week"
+        },
+        {
+            "location": "/Usage/#code_10",
+            "text": "<div class=\"container\">\n    <div class=\"col-sm-6\">\n        <div class=\"form-group\">\n            <div class=\"input-group date\" id=\"datetimepicker12\" data-target-input=\"nearest\">\n                <input type=\"text\" class=\"form-control datetimepicker-input\" data-target=\"#datetimepicker12\"/>\n                <div class=\"input-group-append\" data-target=\"#datetimepicker12\" data-toggle=\"datetimepicker\">\n                    <div class=\"input-group-text\"><i class=\"fa fa-calendar\"></i></div>\n                </div>\n            </div>\n        </div>\n    </div>\n    <script type=\"text/javascript\">\n        $(function () {\n            $('#datetimepicker12').datetimepicker({\n                daysOfWeekDisabled: [0, 6]\n            });\n        });\n    </script>\n</div>",
+            "title": "Code"
+        },
+        {
+            "location": "/Usage/#inline",
+            "text": "$(function () {\n            $('#datetimepicker13').datetimepicker({\n                inline: true,\n                sideBySide: true,\n                buttons:{\n                    showToday:true\n                }\n            });\n        });",
+            "title": "Inline"
+        },
+        {
+            "location": "/Usage/#code_11",
+            "text": "<div style=\"overflow:hidden;\">\n    <div class=\"form-group\">\n        <div class=\"row\">\n            <div class=\"col-md-8\">\n                <div id=\"datetimepicker13\"></div>\n            </div>\n        </div>\n    </div>\n    <script type=\"text/javascript\">\n        $(function () {\n            $('#datetimepicker13').datetimepicker({\n                inline: true,\n                sideBySide: true\n            });\n        });\n    </script>\n</div>",
+            "title": "Code"
+        },
+        {
+            "location": "/Usage/#multidate",
+            "text": "$(function () {\n                $('#datetimepicker14').datetimepicker({\n                    allowMultidate: true,\n                    multidateSeparator: ',',\n                    format: 'L' //this is here just to make the demo prettier.\n                });\n            });",
+            "title": "Multidate"
+        },
+        {
+            "location": "/Usage/#code_12",
+            "text": "<div class=\"container\">\n    <div class=\"row\">\n        <div class=\"col-sm-6\">\n            <div class=\"form-group\">\n                <div class=\"input-group date\" id=\"datetimepicker14\" data-target-input=\"nearest\">\n                    <input type=\"text\" class=\"form-control datetimepicker-input\" data-target=\"#datetimepicker14\"/>\n                    <div class=\"input-group-append\" data-target=\"#datetimepicker14\" data-toggle=\"datetimepicker\">\n                        <div class=\"input-group-text\"><i class=\"fa fa-calendar\"></i></div>\n                    </div>\n                </div>\n            </div>\n        </div>\n        <script type=\"text/javascript\">\n            $(function () {\n                $('#datetimepicker14').datetimepicker({\n                    allowMultidate: true,\n                    multidateSeparator: ','\n                });\n            });\n        </script>\n    </div>\n</div>",
+            "title": "Code"
+        },
+        {
+            "location": "/Usage/#setting-options",
+            "text": "Set Option \n         \n     \n     \n        $(function () {\n            $('#datetimepicker15').datetimepicker();\n\n            $('#setOption').click(function () {\n                $('#datetimepicker15').datetimepicker('daysOfWeekDisabled', [0, 6]);\n            });\n        });",
+            "title": "Setting Options"
+        },
+        {
+            "location": "/Installing/",
+            "text": "This guide still needs a lot of work\n\n\n\n\nMinimal Requirements\n\n\n\n\njQuery\n\n\nMoment.js\n\n\nLocales: Moment's locale files are \nhere\n\n\n\n\nInstallation Guides\n\n\n\n\nCDN\n\n\nRails\n\n\nDjango\n\n\nAngular\n\n\nMeteor.js\n\n\nManual\n\n\n\n\nCDN\n\n\n<head>\n  <script type=\"text/javascript\" src=\"https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js\"></script>\n  <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css\" />\n</head>\n\n\n\n\nPackage Managers\n\n\nRails\n\n\nRails 5.1 Support - \nBootstrap 4 Datetime Picker Rails\n\n\n\n\nAdd \ngem 'bootstrap4-datetime-picker-rails'\n to your \nGemfile\n\n\nExecute \nbundle\n\n\nAdd \n//= require tempusdominus-bootstrap-4.js\n to your \napplication.js\n\n\nAdd \n@import \"tempusdominus-bootstrap-4.css\"\n to your \napplication.scss\n\n\n\n\nDjango\n\n\nPython package for Django: \nDjango Tempus Dominus\n\n\n\n\nInstall via pip: \npip install django-tempus-dominus\n\n\nWidgets are provided for Date, DateTime, and Time.\n\n\nFull examples are available with Django Forms, Widgets, and Templates\n.\n\n\n\n\nAngular Wrapper\n\n\nFollow instructions at \nngx-tempusdominus-bootstrap\n \n\n\nMeteor.js\n\n\nNeed new wrapper for this version.\n\n\nManual\n\n\n\n\nAcquire \njQuery\n\n\nAcquire \nMoment.js\n\n\nAcquire\n\n\n\n\n<script type=\"text/javascript\" src=\"/path/to/jquery.js\"></script>\n<script type=\"text/javascript\" src=\"/path/to/moment.js\"></script>\n<script type=\"text/javascript\" src=\"/path/to/tempusdominus-bootstrap-4.min.js\"></script>\n\n\n\n\nKnockout\n\n\nNeed new wrapper for this version.",
+            "title": "Installing"
+        },
+        {
+            "location": "/Installing/#minimal-requirements",
+            "text": "jQuery  Moment.js  Locales: Moment's locale files are  here",
+            "title": "Minimal Requirements"
+        },
+        {
+            "location": "/Installing/#installation-guides",
+            "text": "CDN  Rails  Django  Angular  Meteor.js  Manual",
+            "title": "Installation Guides"
+        },
+        {
+            "location": "/Installing/#cdn",
+            "text": "<head>\n  <script type=\"text/javascript\" src=\"https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js\"></script>\n  <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css\" />\n</head>",
+            "title": "CDN"
+        },
+        {
+            "location": "/Installing/#package-managers",
+            "text": "",
+            "title": "Package Managers"
+        },
+        {
+            "location": "/Installing/#rails",
+            "text": "Rails 5.1 Support -  Bootstrap 4 Datetime Picker Rails   Add  gem 'bootstrap4-datetime-picker-rails'  to your  Gemfile  Execute  bundle  Add  //= require tempusdominus-bootstrap-4.js  to your  application.js  Add  @import \"tempusdominus-bootstrap-4.css\"  to your  application.scss",
+            "title": "Rails"
+        },
+        {
+            "location": "/Installing/#django",
+            "text": "Python package for Django:  Django Tempus Dominus   Install via pip:  pip install django-tempus-dominus  Widgets are provided for Date, DateTime, and Time.  Full examples are available with Django Forms, Widgets, and Templates .",
+            "title": "Django"
+        },
+        {
+            "location": "/Installing/#angular-wrapper",
+            "text": "Follow instructions at  ngx-tempusdominus-bootstrap",
+            "title": "Angular Wrapper"
+        },
+        {
+            "location": "/Installing/#meteorjs",
+            "text": "Need new wrapper for this version.",
+            "title": "Meteor.js"
+        },
+        {
+            "location": "/Installing/#manual",
+            "text": "Acquire  jQuery  Acquire  Moment.js  Acquire   <script type=\"text/javascript\" src=\"/path/to/jquery.js\"></script>\n<script type=\"text/javascript\" src=\"/path/to/moment.js\"></script>\n<script type=\"text/javascript\" src=\"/path/to/tempusdominus-bootstrap-4.min.js\"></script>",
+            "title": "Manual"
+        },
+        {
+            "location": "/Installing/#knockout",
+            "text": "Need new wrapper for this version.",
+            "title": "Knockout"
+        },
+        {
+            "location": "/Functions/",
+            "text": "Functions\n\n\n\n    \nNote\n\n    All functions are accessed via the \ndata\n attribute e.g. \n$('#datetimepicker').datetimepicker(FUNCTION)\n\n\n\n\n\ndestroy\n\n\nDestroys the widget and removes all attached event listeners\n\n\n\n\ntoggle\n\n\nShows or hides the widget\n\n\nEmits\n\n\n\n\n\n\nhide.datetimepicker\n - if the widget is hidden after the toggle call\n\n\n\n\n\n\nshow.datetimepicker\n - if the widget is show after the toggle call\n\n\n\n\n\n\nchange.datetimepicker\n - if the widget is opened for the first time and the input element is empty and \noptions.useCurrent != false\n\n\n\n\n\n\n\n\nshow\n\n\nShows the widget\n\n\nEmits\n\n\n\n\n\n\nshow.datetimepicker\n - if the widget was hidden before that call\n\n\n\n\n\n\nchange.datetimepicker\n - if the widget is opened for the first time and the \nuseCurrent\n is set to true or to a granularity value and the input element the component is attached to has an empty value\n\n\n\n\n\n\n\n\nhide\n\n\nHides the widget\n\n\nEmits\n\n\n\n\nhide.datetimepicker\n - if the widget was visible before that call\n\n\n\n\n\n\ndisable\n\n\nDisables the input element, the component is attached to, by adding a \ndisabled=\"true\"\n attribute to it. If the widget was visible before that call it is hidden.\n\n\nEmits\n\n\n\n\nhide.datetimepicker\n - if the widget was visible before that call\n\n\n\n\n\n\nenable\n\n\nEnables the input element, the component is attached to, by removing \ndisabled\n attribute from it.\n\n\n\n\nclear\n\n\nClears the date picker by setting the value to \nnull\n\n\n\n\nviewDate\n\n\nviewDate\n\n\nReturns a \nmoment\n variable with the currently set \noptions.viewDate\n option.\n\n\nviewDate(viewDate)\n\n\nTakes a \nstring, moment or Date\n value.\n\n\nThis will change the \nviewDate\n without changing or setting the selected date.",
+            "title": "Functions"
+        },
+        {
+            "location": "/Functions/#functions",
+            "text": "Note \n    All functions are accessed via the  data  attribute e.g.  $('#datetimepicker').datetimepicker(FUNCTION)",
+            "title": "Functions"
+        },
+        {
+            "location": "/Functions/#destroy",
+            "text": "Destroys the widget and removes all attached event listeners",
+            "title": "destroy"
+        },
+        {
+            "location": "/Functions/#toggle",
+            "text": "Shows or hides the widget",
+            "title": "toggle"
+        },
+        {
+            "location": "/Functions/#emits",
+            "text": "hide.datetimepicker  - if the widget is hidden after the toggle call    show.datetimepicker  - if the widget is show after the toggle call    change.datetimepicker  - if the widget is opened for the first time and the input element is empty and  options.useCurrent != false",
+            "title": "Emits"
+        },
+        {
+            "location": "/Functions/#show",
+            "text": "Shows the widget",
+            "title": "show"
+        },
+        {
+            "location": "/Functions/#emits_1",
+            "text": "show.datetimepicker  - if the widget was hidden before that call    change.datetimepicker  - if the widget is opened for the first time and the  useCurrent  is set to true or to a granularity value and the input element the component is attached to has an empty value",
+            "title": "Emits"
+        },
+        {
+            "location": "/Functions/#hide",
+            "text": "Hides the widget",
+            "title": "hide"
+        },
+        {
+            "location": "/Functions/#emits_2",
+            "text": "hide.datetimepicker  - if the widget was visible before that call",
+            "title": "Emits"
+        },
+        {
+            "location": "/Functions/#disable",
+            "text": "Disables the input element, the component is attached to, by adding a  disabled=\"true\"  attribute to it. If the widget was visible before that call it is hidden.",
+            "title": "disable"
+        },
+        {
+            "location": "/Functions/#emits_3",
+            "text": "hide.datetimepicker  - if the widget was visible before that call",
+            "title": "Emits"
+        },
+        {
+            "location": "/Functions/#enable",
+            "text": "Enables the input element, the component is attached to, by removing  disabled  attribute from it.",
+            "title": "enable"
+        },
+        {
+            "location": "/Functions/#clear",
+            "text": "Clears the date picker by setting the value to  null",
+            "title": "clear"
+        },
+        {
+            "location": "/Functions/#viewdate",
+            "text": "",
+            "title": "viewDate"
+        },
+        {
+            "location": "/Functions/#viewdate_1",
+            "text": "Returns a  moment  variable with the currently set  options.viewDate  option.",
+            "title": "viewDate"
+        },
+        {
+            "location": "/Functions/#viewdateviewdate",
+            "text": "Takes a  string, moment or Date  value.  This will change the  viewDate  without changing or setting the selected date.",
+            "title": "viewDate(viewDate)"
+        },
+        {
+            "location": "/Options/",
+            "text": "Options\n\n\n\n    \nNote\n\n   Initialize options as \n   \n$('#datetimepicker').datetimepicker({\n       sideBySide: true,\n       debug: true\n   })\n\n\n\n\n\n\n    \nNote\n\n    To set options use \n$('#datetimepicker').datetimepicker('sideBySide', true)\n\n\n\n\n\n\n    \nNote\n\n    To get option value use \n$('#datetimepicker').datetimepicker('sideBySide')\n\n\n\n\n\nGlobal defaults can be get/set by \n$.fn.datetimepicker.Constructor.Default\n\n\ne.g. To set icons to use Font Awesome 5\n\n\n$.fn.datetimepicker.Constructor.Default = $.extend({}, $.fn.datetimepicker.Constructor.Default, {\n            icons: {\n                time: 'far fa-clock',\n                date: 'far fa-calendar',\n                up: 'far fa-arrow-up',\n                down: 'far fa-arrow-down',\n                previous: 'far fa-chevron-left',\n                next: 'far fa-chevron-right',\n                today: 'far fa-calendar-check-o',\n                clear: 'far fa-trash',\n                close: 'far fa-times'\n            } });\n\n\n\n\nDo this \nbefore\n you init pickers.\n\n\n\n\n\noptions\n\n\nReturns the components current options object. Note that the changing the values of the returned object does not change the components actual configuration. Use \noptions(options)\n to set the components options massively or the other methods for setting config options individually.\n\n\noptions, [options]\n\n\nTakes an object variable with option key:value properties and configures the component. Use this to update multiple options on the component.\n\n\n\n\ndate\n\n\nReturns the component's model current date, a \nmoment\n object or \nnull\n if not set.\n\n\ndate, [newDate]\n\n\nTakes \nstring, Date, moment, null\n parameter and sets the components model current moment to it. Passing a \nnull\n value unsets the components model current moment. Parsing of the \nnewDate\n parameter is made using moment library with the \noptions.format\n and \noptions.useStrict\n components configuration.\n\n\nThrows\n\n\n\n\nTypeError\n - in case the \nnewDate\n cannot be parsed\n\n\n\n\nEmits\n\n\n\n\nchange.datetimepicker\n - In case \nnewDate\n is different from current moment\n\n\n\n\n\n\nformat\n\n\nDefault: false\n\n\n\nSee \nmomentjs' docs\n for valid formats. Format also dictates what components are shown, e.g. \nMM/dd/YYYY\n will not display the time picker.\n\n\nformat\n\n\nReturns the component's \noptions.format\n \nstring\n\n\nformat, [format]\n\n\nTakes a \nmoment.js\n format \nstring\n and sets the components  \noptions.format\n. This is used for displaying and also for parsing input strings either from the input element the component is attached to or the \ndate()\n function.\nThe parameter can also be a \nboolean:false\n in which case the format is set to the locale's \nL LT\n.\n\n\nNote:\n this is also used to determine if the time picker sub component will display the hours in 12 or 24 format. (if \na\n or \nh\n exists in the passed \nstring\n then a 12 hour mode is set)\n\n\n\n\ndayViewHeaderFormat\n\n\nDefault: 'MMMM YYYY'\n\n\n\nChanges the heading of the date picker when in \"days\" view.\n\n\n\n\ndayViewHeaderFormat\n\n\nReturns a \nstring\n variable with the currently set \noptions.dayViewHeaderFormat\n option.\n\n\ndayViewHeaderFormat, [string]\n\n\nTakes a \nstring\n value.\n\n\nUsed to customize the header of the day view.\n\n\n\n\nextraFormats\n\n\nDefault: false\n\n\n\nAllows for several input formats to be valid. See \nthis PR\n.\n\n\nextraFormats\n\n\nReturns a \nboolean\n or array with the \noptions.extraFormats\n option configuration\n\n\nextraFormats, [formats]\n\n\nTakes an array of valid input moment format options.\n\n\n\n\nstepping\n\n\nDefault: 1\n\n\n\nNumber of minutes the up/down arrow's will move the minutes value in the time picker\n\n\nstepping\n\n\nReturns a \nnumber\n with the \noptions.stepping\n option configuration\n\n\nstepping, [number]\n\n\nTakes a \nnumber\n. This be the amount the up/down arrows move the minute value with a time picker.\n\n\n\n\nmin/maxDate\n\n\nDefault: false\nAccepts: date, moment, string\n\n\n\nPrevents date/time selections before this date. Will override \ndefaultDate\n and \nuseCurrent\n if either of these settings are the same day since both options are invalid according to the rules you've selected.\n\n\nminDate\n\n\nReturns the currently set moment of the \noptions.minDate\n or \nfalse\n if not set\n\n\nminDate, [minDate]\n\n\nTakes a \nminDate\n \nstring, Date, moment, boolean:false\n parameter and disallows the user to select a moment that is before that moment. If a \nboolean:false\n value is passed the \noptions.minDate\n parameter is cleared and there is no restriction to the minimum moment the user can select. \n\n\nNote:\n If the \nminDate\n parameter is after the currently selected moment the currently selected moment changes to minDate parameter\n\n\nThrows\n\n\n\n\n\n\nTypeError\n - if \nminDate\n parameter cannot be parsed using the \noptions.format\n and \noptions.useStrict\n configuration settings\n\n\n\n\n\n\nTypeError\n - if \nminDate\n parameter is after \noptions.maxDate\n\n\n\n\n\n\nEmits\n\n\n\n\n\n\nchange.datetimepicker\n - if the new \nminDate\n is after currently selected moment (waiting for #472 to close in order to finalize this part)\n\n\n\n\n\n\ndp.error\n - if the new \nminDate\n is after currently selected moment (waiting for #472 to close in order to finalize this part)\n\n\n\n\n\n\n\n\nmaxDate\n\n\nReturns the currently set moment of the \noptions.maxDate\n or \nfalse\n if not set\n\n\nmaxDate, [maxDate]\n\n\nTakes a [maxDate] \nstring, Date, moment, boolean:false\n parameter and disallows the user to select a moment that is after that moment. If a \nboolean:false\n value is passed \noptions.maxDate\n is cleared and there is no restriction to the maximum moment the user can select.\n\n\nNote:\n If [maxDate] is before the currently selected moment the currently selected moment changes to [maxDate]\n\n\nThrows\n\n\n\n\n\n\nTypeError\n - if \nmaxDate\n parameter cannot be parsed using the \noptions.format\n and \noptions.useStrict\n configuration settings\n\n\n\n\n\n\nTypeError\n - if \nmaxDate\n parameter is before \noptions.minDate\n\n\n\n\n\n\nEmits\n\n\n\n\n\n\nchange.datetimepicker\n - if the new \nmaxDate\n is after currently selected moment  (waiting for #472 to close in order to finalize this part)\n\n\n\n\n\n\ndp.error\n - if the new \nmaxDate\n is after currently selected moment  (waiting for #472 to close in order to finalize this part)\n\n\n\n\n\n\n\n\nuseCurrent\n\n\nDefault: true\n\n\n\nOn \nshow\n, will set the picker to the current date/time.\n\n\nuseCurrent\n\n\nReturns a \nboolean\n or \nstring\n with the \noptions.useCurrent\n option configuration\n\n\nuseCurrent, boolean or string\n\n\nTakes a \nboolean\n or \nstring\n. If a \nboolean\n true is passed and the components model moment is not set (either through \nsetDate\n or through a valid value on the input element the component is attached to) then the first time the user opens the datetimepicker widget the value is initialized to the current moment of the action. If a false \nboolean\n is passed then no initialization happens on the input element. You can select the granularity on the initialized moment by passing one of the following strings (\n'year', 'month', 'day', 'hour', 'minute'\n) in the variable.\n\n\nIf for example you pass \n'day'\n to the \nsetUseCurrent\n function and the input field is empty the first time the user opens the datetimepicker widget the input text will be initialized to the current date time with day granularity (e.g. if current time = \n2014-08-10 13:32:33\n the input value will be initialized to \n2014-08-10 00:00:00\n)\n\n\nNote:\n If the \noptions.defaultDate\n is set or the input element the component is attached to has already a value that takes precedence and the functionality of \nuseCurrent\n is not triggered!\n\n\n\n\ncollapse\n\n\nDefault: true\n\n\n\nUsing a Bootstraps collapse to switch between date/time pickers.\n\n\ncollapse\n\n\nReturns a \nboolean\n of the \noptions.sideBySide\n.\n\n\ncollapse, [collapse]\n\n\nTakes a \nboolean\n. If set to \nfalse\n the picker will display similar to \nsideBySide\n except vertical.\n\n\n\n\nlocale\n\n\nDefault: moment.locale()\nAccepts: string, moment.local('locale')\n\n\n\nSee \nmomentjs\n for valid locales.\n\n\nYou must include \nmoment-with-locales.js\n or a local js file.\n\n\nlocale\n\n\nReturns the currently set locale of the \noptions.locale\n\n\nlocale, [newLocale]\n\n\nTakes a \nstring\n of any valid \nmoment locale\n e.g. \nde\n for German.\n\n\nThrows\n\n\n\n\nTypeError\n - if the locale is not loaded via a separate script or \nmoment-with-locales\n\n\n\n\n\n\ndefaultDate\n\n\nDefault: false\nAccepts: date, moment, string\n\n\n\nSets the picker default date/time. Overrides \nuseCurrent\n\n\ndefaultDate\n\n\nReturns a \nmoment\n with the \noptions.defaultDate\n option configuration or \nfalse\n if not set\n\n\ndefaultDate, [defaultDate]\n\n\nTakes a \nstring, Date, moment, boolean:false\n. Will set the picker's initial date. If a \nboolean:false\n value is passed the \noptions.defaultDate\n parameter is cleared. \n\n\n\n\n\n\nTypeError\n - if the provided date pass validation, including \ndisabledDates\n, \nenabledDates\n, \nminDate\n, \nmaxDate\n, and \ndaysOfWeekDisabled\n\n\n\n\n\n\nTypeError\n - if the provided date cannot be parsed by moment.js\n\n\n\n\n\n\n\n\nen/disabledDates\n\n\nDefault: false\nAccepts: array of [date, moment, string]\n\n\n\ndisabledDates\n\n\nReturns an array with the currently set disabled dates on the component.\n\n\ndisabledDates, [dates]\n\n\nTakes an \n[\n \nstring\n or \nDate\n or \nmoment\n \n]\n of values and disallows the user to select those days. Setting this takes precedence over \noptions.minDate\n, \noptions.maxDate\n configuration. Also calling this function removes the configuration of options.enabledDates if such exist.\n\n\nNote:\n These values are matched with \nDay\n granularity.\n\n\n\n\nenabledDates\n\n\nReturns an array with the currently set enabled dates on the component.\n\n\nenabledDates, [dates]\n\n\nTakes an \n[\n \nstring\n or \nDate\n or \nmoment\n \n]\n of values and allows the user to select only from those days. Setting this takes precedence over \noptions.minDate\n, \noptions.maxDate\n configuration. Also calling this function removes the configuration of \noptions.disabledDates\n if such exist.\n\n\nNote:\n These values are matched with \nDay\n granularity.\n\n\n\n\nicons\n\n\nDefault: {\n            time: 'fa fa-clock-o',\n            date: 'fa fa-calendar',\n            up: 'fa fa-arrow-up',\n            down: 'fa fa-arrow-down',\n            previous: 'fa fa-chevron-left',\n            next: 'fa fa-chevron-right',\n            today: 'fa fa-calendar-check-o',\n            clear: 'fa fa-delete',\n            close: 'fa fa-times'\n        }\nAccepts: object with all or some of the parameters above\n\n\n\nChange the default icons for the pickers functions.\n\n\nicons\n\n\nReturns an \nOjbect\n of \noptions.icons\n \n\n\nicons, [icons]\n\n\nTakes an \nOjbect\n of \nstrings\n.\n\n\nThrows\n\n\n\n\nTypeError\n - if icons parameter is not an \nOjbect\n\n\n\n\n\n\nuseStrict\n\n\nDefault: false\n\n\n\nDefines if moment should use strict date parsing when considering a date to be valid.\n\n\nuseStrict\n\n\nReturns a \nboolean\n of the \noptions.useStrict\n\n\nuseStrict, [useStrict]\n\n\nTakes a \nboolean\n. If \nuseStrict\n is \ntrue\n, moment.js parsing rules will be stricter when determining if a date is valid or not.\n\n\n\n\nsideBySide\n\n\nDefault: false\n\n\n\nShows the picker side by side when using the time and date together.\n\n\n\n\nsideBySide\n\n\nReturns a \nboolean\n of the \noptions.sideBySide\n.\n\n\nsideBySide, [sideBySide]\n\n\nTakes a \nboolean\n. If \nsideBySide\n is \ntrue\n and the time picker is used, both components will display side by side instead of collapsing.\n\n\n\n\ndaysOfWeekDisabled\n\n\nDefault: []\nAccepts: array of numbers from 0-6\n\n\n\nDisables the section of days of the week, e.g. weekends.\n\n\ndaysOfWeekDisabled\n\n\nReturns an array with the \noptions.daysOfWeekDisabled\n configuration setting of the component.\n\n\ndaysOfWeekDisabled, [daysOfWeek]\n\n\nTakes an \n[\n \nNumber\n:\n0\n to \n6\n \n]\n and disallow the user to select weekdays that exist in this array. This has lower priority over the \noptions.minDate\n, \noptions.maxDate\n, \noptions.disabledDates\n and \noptions.enabledDates\n configuration settings.\n\n\nEmits\n\n\n\n\n\n\nchange.datetimepicker\n - if the currently selected moment falls in the values passed on the daysOfWeek parameter. (waiting for #472 to close in order to finalize this part)\n\n\n\n\n\n\ndp.error\n - if the currently selected moment falls in the values passed on the daysOfWeek parameter. (waiting for #472 to close in order to finalize this part)\n\n\n\n\n\n\n\n\ncalendarWeeks\n\n\nDefault: false\n\n\n\nShows the week of the year to the left of first day of the week.\n\n\n\n\ncalendarWeeks\n\n\nReturns a \nboolean\n with the current \noptions.calendarWeeks\n option configuration\n\n\ncalendarWeeks, [boolean]\n\n\nTakes a \nboolean\n variable to set if the week numbers will appear to the left on the days view\n\n\n\n\nviewMode\n\n\nDefault: 'days'\nAccepts: 'decades','years','months','days', 'times'\n\n\n\nThe default view to display when the picker is shown.\n\n\nNote\n: To limit the picker to selecting, for instance the year and month, use \nformat: MM/YYYY\n.\n\n\nviewMode\n\n\nReturns a \nstring\n of the \noptions.viewMode\n.\n\n\nviewMode, [newViewMode]\n\n\nTakes a \nstring\n. Valid values are \n'days'\n, \n'months'\n, \n'years'\n and \n'decades'\n\n\nThrows\n\n\n\n\nTypeError\n - if \nnewViewMode\n parameter is not an a \nstring\n or if \nnewViewMode\n is not a valid value.\n\n\n\n\n\n\ntoolbarPlacement\n\n\nDefault: 'default'\nAccepts: 'default', 'top', 'bottom'\n\n\n\nChanges the placement of the icon toolbar.\n\n\n\n\ntoolbarplacement\n\n\nReturns a \nstring\n variable with the currently set \noptions.toolbarplacement\n option.\n\n\ntoolbarplacement, [string]\n\n\nTakes a \nstring\n value. Valid values are \n'default'\n, \n'top'\n and \n'bottom'\n.\n\n\nChanges the placement of the toolbar where the today, clear, component switch icon are located.\n\n\n\n\nbuttons\n\n\nDefault: {\n            showToday: false,\n            showClear: false,\n            showClose: false\n        }\nAccepts: object with all or some of the parameters above\n\n\n\nChange the default toolbar buttons for the pickers functions.\n\n\nbuttons\n\n\nReturns an \nOjbect\n of \noptions.buttons\n \n\n\nbuttons, [buttons]\n\n\nTakes an \nOjbect\n of \nboolean\n.\n\n\nThrows\n\n\n\n\nTypeError\n - if buttons parameter is not an \nOjbect\n\n\n\n\n\n\nwidgetPositioning\n\n\nDefault: {\n            horizontal: 'auto'\n            vertical: 'auto'\n         }\nAccepts: object with the all or one of the parameters above\n         horizontal: 'auto', 'left', 'right'\n         vertical: 'auto', 'top', 'bottom'\n\n\n\nwidgetPositioning\n\n\nReturns the currently set \noptions.widgetPositioning\n object containing two keys \nhorizontal\n and \nvertical\n\n\nwidgetPositioning, [positioningObject]\n\n\nTakes an object parameter that can contain two keys \nvertical\n and \nhorizontal\n each having a value of \n'auto', 'top', 'bottom'\n for \nvertical\n and \n'auto', 'left', 'right'\n for \nhorizontal\n which defines where the dropdown with the widget will appear relative to the input element the component is attached to.\n\n\n'auto'\n is the default value for both \nhorizontal\n and \nvertical\n keys and it tries to automatically place the dropdown in a position that is visible to the user. Usually you should not override those options unless you have a special need in your layout.\n\n\n\n\nwidgetParent\n\n\nDefault: null\nAccepts: string or jQuery object\n\n\n\nOn picker show, places the widget at the identifier (string) or jQuery object \nif\n the element has css \nposition: 'relative'\n\n\nwidgetParent\n\n\nReturns a \n$(element)\n variable with the currently set \noptions.widgetParent\n option.\n\n\nwidgetParent, [widgetParent]\n\n\nTakes a \nstring\n or \n$(element)\n value.\n\n\n\n\nkeepOpen\n\n\nDefault: false\n\n\n\nWill cause the date picker to stay open after selecting a date.\n\n\nkeepOpen\n\n\nReturns a \nboolean\n variable with the currently set \noptions.keepOpen\n option.\n\n\nkeepOpen, [boolean]\n\n\nTakes a \nboolean\n value.\n\n\n\n\ninline\n\n\nDefault: false\n\n\n\nWill display the picker inline without the need of a input field. This will also hide borders and shadows.\n\n\ninline\n\n\nReturns a \nboolean\n variable with the currently set \noptions.inline\n option.\n\n\ninline, [boolean]\n\n\nTakes a \nboolean\n value.\n\n\n\n\nkeepInvalid\n\n\n4.7.14\n\n\nDefault: false\n\n\n\nWill cause the date picker to \nnot\n revert or overwrite invalid dates.\n\n\nkeepInvalid\n\n\nReturns a \nstring\n variable with the currently set \noptions.keepInvalid\n option.\n\n\nkeepInvalid, [boolean]\n\n\nTakes a \nboolean\n value.\n\n\nIf \ntrue\n, invalid dates will not be reverted to a previous selection or changed.\n\n\n\n\nkeyBinds\n\n\nDefault: up: function (widget) {\n            if (widget.find('.datepicker').is(':visible')) {\n                this.date(this.date().clone().subtract(7, 'd'));\n            } else {\n                this.date(this.date().clone().add(1, 'm'));\n            }\n        },\n        down: function (widget) {\n            if (!widget) {\n                this.show();\n            }\n            else if (widget.find('.datepicker').is(':visible')) {\n                this.date(this.date().clone().add(7, 'd'));\n            } else {\n                this.date(this.date().clone().subtract(1, 'm'));\n            }\n        },\n        'control up': function (widget) {\n            if (widget.find('.datepicker').is(':visible')) {\n                this.date(this.date().clone().subtract(1, 'y'));\n            } else {\n                this.date(this.date().clone().add(1, 'h'));\n            }\n        },\n        'control down': function (widget) {\n            if (widget.find('.datepicker').is(':visible')) {\n                this.date(this.date().clone().add(1, 'y'));\n            } else {\n                this.date(this.date().clone().subtract(1, 'h'));\n            }\n        },\n        left: function (widget) {\n            if (widget.find('.datepicker').is(':visible')) {\n                this.date(this.date().clone().subtract(1, 'd'));\n            }\n        },\n        right: function (widget) {\n            if (widget.find('.datepicker').is(':visible')) {\n                this.date(this.date().clone().add(1, 'd'));\n            }\n        },\n        pageUp: function (widget) {\n            if (widget.find('.datepicker').is(':visible')) {\n                this.date(this.date().clone().subtract(1, 'M'));\n            }\n        },\n        pageDown: function (widget) {\n            if (widget.find('.datepicker').is(':visible')) {\n                this.date(this.date().clone().add(1, 'M'));\n            }\n        },\n        enter: function () {\n            this.hide();\n        },\n        escape: function () {\n            this.hide();\n        },\n        'control space': function (widget) {\n            if (widget.find('.timepicker').is(':visible')) {\n                widget.find('.btn[data-action=\"togglePeriod\"]').click();\n            }\n        },\n        t: function () {\n            this.date(moment());\n        },\n        'delete': function () {\n            this.clear();\n        }\n\n\n\nAllows for custom events to fire on keyboard press.\n\n\nkeyBinds\n\n\nReturns a \nstring\n variable with the currently set \noptions.keyBinds\n option.\n\n\nkeyBinds, [object]\n\n\nTakes an \nobject\n value.\n\n\nAllows for several \nkeyBinding\n functions to be specified for ease of access or accessibility. See the options page for defaults.\n\n\n\n\ndebug\n\n\nDefault: false\n\n\n\nWill cause the date picker to stay open after a \nblur\n event.\n\n\n\n\nignoreReadonly\n\n\nDefault: false\n\n\n\nAllow date picker show event to fire even when the associated input element has the \nreadonly=\"readonly\"\n property.\n\n\nignoreReadonly\n\n\nReturns a \nboolean\n variable with the currently set \noptions.ignoreReadonly\n option.\n\n\nignoreReadonly, [boolean]\n\n\nTakes a \nboolean\n value.\n\n\nSet this to \ntrue\n to allow the picker to be used even if the input field is \nreadonly\n. This will \nnot\n bypass the \ndisabled\n property\n\n\n\n\ndisabledTimeIntervals\n\n\nDefault: false\n\n\n\nDisables time selection between the given \nmoments\n.\n\n\ndisabledTimeIntervals\n\n\nReturns an \narray\n variable with the currently set \noptions.disabledTimeIntervals\n option.\n\n\ndisabledTimeIntervals, [array]\n\n\nTakes a \narray\n value.\n\n\nThe array \nmust\n be in the following format \n[moment(),moment()]\n\n\nFor example:\n\n\ndisabledTimeIntervals: [[moment({ h: 0 }), moment({ h: 8 })], [moment({ h: 18 }), moment({ h: 24 })]]\n\n\n\nWill disable times between 12-8am and 6-12pm today\n\n\n\n\nallowInputToggle\n\n\nDefault: false\n\n\n\nIf \ntrue\n, the picker will show on textbox focus and icon click when used in a button group.\n\n\nallowInputToggle\n\n\nReturns a \nboolean\n variable with the currently set \noptions.allowInputToggle\n option.\n\n\nallowInputToggle, [boolean]\n\n\nTakes a \nboolean\n value.\n\n\nIf \ntrue\n, the picker will show on textbox focus and icon click when used in a button group\n\n\n\n\nfocusOnShow\n\n\nDefault: true\n\n\n\nIf \nfalse\n, the textbox will not be given focus when the picker is shown.\n\n\nfocusOnShow\n\n\nReturns a \nboolean\n variable with the currently set \noptions.focusOnShow\n option.\n\n\nfocusOnShow, [boolean]\n\n\nTakes a \nboolean\n value.\n\n\nIf \nfalse\n, the textbox will not be given focus when the picker is shown\n\n\n\n\nen/disabledHours\n\n\nDefault: false\n\n\n\ndisabledHours\n\n\nReturns an \narray\n variable with the currently set \noptions.en/disabledHours\n option.\n\n\ndisabledHours, boolean\n\n\nTakes a \narray\n value.\n\n\nMust be in 24 hour format. Will allow or disallow hour selections (much like \ndisabledTimeIntervals\n) but will affect all days.\n\n\nLike \nen/disabledDates\n, these options are mutually exclusive and will reset one of the options back to false.\n\n\ndisabledHours: [0, 1, 2, 3, 4, 5, 6, 7, 8, 18, 19, 20, 21, 22, 23, 24]\nenabledHours: [9, 10, 11, 12, 13, 14, 15, 16]\n\n\n\n\n\nviewDate\n\n\nDefault: false\n\n\n\nThis will change the \nviewDate\n without changing or setting the selected date.\n\n\n\n\nparseInputDate\n\n\nparseInputDate\n\n\nReturns a \nfunction\n with the currently set \noptions.parseInputDate\n\n\nparseInputDate, [function]\n\n\nTakes a \nfunction\n\n\nAllows custom input formatting For example: the user can enter 'yesterday' or '30 days ago.\n\n\nExample:\n\n\nvar parseRelativeDate = function(relativeDate) {\n\n    switch (relativeDate) {\n        case 'today':\n            return moment()\n        case 'yesterday':\n            return moment().subtract(1, 'day');\n        default:\n            return moment()\n                .subtract(Number(relativeDate.replace(\"days ago\", \"\").trim()), 'days');\n    }\n}\n\nvar parseInputDate = function(inputDate) {\n    var relativeDatePattern = /today|yesterday|[0-9]+\\s+(days ago)/,\n        resultDate;\n\n    if (moment.isMoment(inputDate) || inputDate instanceof Date) {\n        resultDate = moment(inputDate);\n    } else {\n        var relativeDate = inputDate.match(relativeDatePattern),\n            parseDate = null;\n\n        if (relativeDate !== null) \n          parseDate = this.parseRelativeDate(inputDate.match(relativeDatePattern)[0]);\n        else \n          parseDate = moment();\n\n        resultDate = moment(parseDate, \"YYYY-MM-DD\");\n    }\n\n    return resultDate;\n}\n\n\n\n\n\n\ntooltips\n\n\ntooltips: {\n    today: 'Go to today',\n    clear: 'Clear selection',\n    close: 'Close the picker',\n    selectMonth: 'Select Month',\n    prevMonth: 'Previous Month',\n    nextMonth: 'Next Month',\n    selectYear: 'Select Year',\n    prevYear: 'Previous Year',\n    nextYear: 'Next Year',\n    selectDecade: 'Select Decade',\n    prevDecade: 'Previous Decade',\n    nextDecade: 'Next Decade',\n    prevCentury: 'Previous Century',\n    nextCentury: 'Next Century',,\n    incrementHour: 'Increment Hour',\n    pickHour: 'Pick Hour',\n    decrementHour:'Decrement Hour',\n    incrementMinute: 'Increment Minute',\n    pickMinute: 'Pick Minute',\n    decrementMinute:'Decrement Minute',\n    incrementSecond: 'Increment Second',\n    pickSecond: 'Pick Second',\n    decrementSecond:'Decrement Second'\n}\n\n\n\n\nThis will change the \ntooltips\n over each icon to a custom string.\n\n\ntooltips\n\n\nReturns an \nOjbect\n of \noptions.tooltips\n \n\n\ntooltips, [tooltips]\n\n\nTakes an \nOjbect\n of \nstrings\n.\n\n\nThrows\n\n\n\n\nTypeError\n - if \ntooltips\n parameter is not an \nOjbect\n\n\n\n\n\n\ntimeZone\n\n\ntimeZone: ''\n\n\n\nAllows the setting of the Time Zone. You must include \nmoment-timezone.js\n and \nmoment-timzone\n data. See moment timezone documentation for usage.\n\n\ntimeZone\n\n\nReturns an \nstring\n of \noptions.timeZone\n \n\n\ntimeZone, [timeZone]\n\n\nTakes an \nstring\n of a valid timezone.\n\n\nThrows\n\n\n\n\nTypeError\n - if \ntooltips\n parameter is not an \nstring\n\n\n\n\n\n\nallowMultidate\n\n\nallowMultidate: false\n\n\n\nAllows the setting of multiple dates.\n\n\nallowMultidate\n\n\nReturns an \nboolean\n of \noptions.allowMultidate\n \n\n\nallowMultidate, [allowMultidate]\n\n\nTakes an \nboolean\n.\n\n\nThrows\n\n\n\n\nTypeError\n - if \nallowMultidate\n parameter is not an \nboolean\n\n\n\n\n\n\nmultidateSeparator\n\n\nmultidateSeparator: ','\n\n\n\nUsed with \nallowMultidate\n. E.g. \n1/1/2017,1/2/2017\n\n\nmultidateSeparator\n\n\nReturns an \nstring\n of \noptions.multidateSeparator\n \n\n\nmultidateSeparator, [multidateSeparator]\n\n\nTakes an \nstring\n of a valid timezone.\n\n\nThrows\n\n\n\n\nTypeError\n - if \nmultidateSeparator\n parameter is not an \nstring\n\n\nTypeError\n - if \nmultidateSeparator\n parameter is longer then 1 character",
+            "title": "Options"
+        },
+        {
+            "location": "/Options/#options",
+            "text": "Note \n   Initialize options as \n    $('#datetimepicker').datetimepicker({\n       sideBySide: true,\n       debug: true\n   })   \n     Note \n    To set options use  $('#datetimepicker').datetimepicker('sideBySide', true)   \n     Note \n    To get option value use  $('#datetimepicker').datetimepicker('sideBySide')   Global defaults can be get/set by  $.fn.datetimepicker.Constructor.Default  e.g. To set icons to use Font Awesome 5  $.fn.datetimepicker.Constructor.Default = $.extend({}, $.fn.datetimepicker.Constructor.Default, {\n            icons: {\n                time: 'far fa-clock',\n                date: 'far fa-calendar',\n                up: 'far fa-arrow-up',\n                down: 'far fa-arrow-down',\n                previous: 'far fa-chevron-left',\n                next: 'far fa-chevron-right',\n                today: 'far fa-calendar-check-o',\n                clear: 'far fa-trash',\n                close: 'far fa-times'\n            } });  Do this  before  you init pickers.",
+            "title": "Options"
+        },
+        {
+            "location": "/Options/#options_1",
+            "text": "Returns the components current options object. Note that the changing the values of the returned object does not change the components actual configuration. Use  options(options)  to set the components options massively or the other methods for setting config options individually.",
+            "title": "options"
+        },
+        {
+            "location": "/Options/#options-options",
+            "text": "Takes an object variable with option key:value properties and configures the component. Use this to update multiple options on the component.",
+            "title": "options, [options]"
+        },
+        {
+            "location": "/Options/#date",
+            "text": "Returns the component's model current date, a  moment  object or  null  if not set.",
+            "title": "date"
+        },
+        {
+            "location": "/Options/#date-newdate",
+            "text": "Takes  string, Date, moment, null  parameter and sets the components model current moment to it. Passing a  null  value unsets the components model current moment. Parsing of the  newDate  parameter is made using moment library with the  options.format  and  options.useStrict  components configuration.",
+            "title": "date, [newDate]"
+        },
+        {
+            "location": "/Options/#throws",
+            "text": "TypeError  - in case the  newDate  cannot be parsed",
+            "title": "Throws"
+        },
+        {
+            "location": "/Options/#emits",
+            "text": "change.datetimepicker  - In case  newDate  is different from current moment",
+            "title": "Emits"
+        },
+        {
+            "location": "/Options/#format",
+            "text": "Default: false  See  momentjs' docs  for valid formats. Format also dictates what components are shown, e.g.  MM/dd/YYYY  will not display the time picker.",
+            "title": "format"
+        },
+        {
+            "location": "/Options/#format_1",
+            "text": "Returns the component's  options.format   string",
+            "title": "format"
+        },
+        {
+            "location": "/Options/#format-format",
+            "text": "Takes a  moment.js  format  string  and sets the components   options.format . This is used for displaying and also for parsing input strings either from the input element the component is attached to or the  date()  function.\nThe parameter can also be a  boolean:false  in which case the format is set to the locale's  L LT .  Note:  this is also used to determine if the time picker sub component will display the hours in 12 or 24 format. (if  a  or  h  exists in the passed  string  then a 12 hour mode is set)",
+            "title": "format, [format]"
+        },
+        {
+            "location": "/Options/#dayviewheaderformat",
+            "text": "Default: 'MMMM YYYY'  Changes the heading of the date picker when in \"days\" view.",
+            "title": "dayViewHeaderFormat"
+        },
+        {
+            "location": "/Options/#dayviewheaderformat_1",
+            "text": "Returns a  string  variable with the currently set  options.dayViewHeaderFormat  option.",
+            "title": "dayViewHeaderFormat"
+        },
+        {
+            "location": "/Options/#dayviewheaderformat-string",
+            "text": "Takes a  string  value.  Used to customize the header of the day view.",
+            "title": "dayViewHeaderFormat, [string]"
+        },
+        {
+            "location": "/Options/#extraformats",
+            "text": "Default: false  Allows for several input formats to be valid. See  this PR .",
+            "title": "extraFormats"
+        },
+        {
+            "location": "/Options/#extraformats_1",
+            "text": "Returns a  boolean  or array with the  options.extraFormats  option configuration",
+            "title": "extraFormats"
+        },
+        {
+            "location": "/Options/#extraformats-formats",
+            "text": "Takes an array of valid input moment format options.",
+            "title": "extraFormats, [formats]"
+        },
+        {
+            "location": "/Options/#stepping",
+            "text": "Default: 1  Number of minutes the up/down arrow's will move the minutes value in the time picker",
+            "title": "stepping"
+        },
+        {
+            "location": "/Options/#stepping_1",
+            "text": "Returns a  number  with the  options.stepping  option configuration",
+            "title": "stepping"
+        },
+        {
+            "location": "/Options/#stepping-number",
+            "text": "Takes a  number . This be the amount the up/down arrows move the minute value with a time picker.",
+            "title": "stepping, [number]"
+        },
+        {
+            "location": "/Options/#minmaxdate",
+            "text": "Default: false\nAccepts: date, moment, string  Prevents date/time selections before this date. Will override  defaultDate  and  useCurrent  if either of these settings are the same day since both options are invalid according to the rules you've selected.",
+            "title": "min/maxDate"
+        },
+        {
+            "location": "/Options/#mindate",
+            "text": "Returns the currently set moment of the  options.minDate  or  false  if not set",
+            "title": "minDate"
+        },
+        {
+            "location": "/Options/#mindate-mindate",
+            "text": "Takes a  minDate   string, Date, moment, boolean:false  parameter and disallows the user to select a moment that is before that moment. If a  boolean:false  value is passed the  options.minDate  parameter is cleared and there is no restriction to the minimum moment the user can select.   Note:  If the  minDate  parameter is after the currently selected moment the currently selected moment changes to minDate parameter",
+            "title": "minDate, [minDate]"
+        },
+        {
+            "location": "/Options/#throws_1",
+            "text": "TypeError  - if  minDate  parameter cannot be parsed using the  options.format  and  options.useStrict  configuration settings    TypeError  - if  minDate  parameter is after  options.maxDate",
+            "title": "Throws"
+        },
+        {
+            "location": "/Options/#emits_1",
+            "text": "change.datetimepicker  - if the new  minDate  is after currently selected moment (waiting for #472 to close in order to finalize this part)    dp.error  - if the new  minDate  is after currently selected moment (waiting for #472 to close in order to finalize this part)",
+            "title": "Emits"
+        },
+        {
+            "location": "/Options/#maxdate",
+            "text": "Returns the currently set moment of the  options.maxDate  or  false  if not set",
+            "title": "maxDate"
+        },
+        {
+            "location": "/Options/#maxdate-maxdate",
+            "text": "Takes a [maxDate]  string, Date, moment, boolean:false  parameter and disallows the user to select a moment that is after that moment. If a  boolean:false  value is passed  options.maxDate  is cleared and there is no restriction to the maximum moment the user can select.  Note:  If [maxDate] is before the currently selected moment the currently selected moment changes to [maxDate]",
+            "title": "maxDate, [maxDate]"
+        },
+        {
+            "location": "/Options/#throws_2",
+            "text": "TypeError  - if  maxDate  parameter cannot be parsed using the  options.format  and  options.useStrict  configuration settings    TypeError  - if  maxDate  parameter is before  options.minDate",
+            "title": "Throws"
+        },
+        {
+            "location": "/Options/#emits_2",
+            "text": "change.datetimepicker  - if the new  maxDate  is after currently selected moment  (waiting for #472 to close in order to finalize this part)    dp.error  - if the new  maxDate  is after currently selected moment  (waiting for #472 to close in order to finalize this part)",
+            "title": "Emits"
+        },
+        {
+            "location": "/Options/#usecurrent",
+            "text": "Default: true  On  show , will set the picker to the current date/time.",
+            "title": "useCurrent"
+        },
+        {
+            "location": "/Options/#usecurrent_1",
+            "text": "Returns a  boolean  or  string  with the  options.useCurrent  option configuration",
+            "title": "useCurrent"
+        },
+        {
+            "location": "/Options/#usecurrent-boolean-or-string",
+            "text": "Takes a  boolean  or  string . If a  boolean  true is passed and the components model moment is not set (either through  setDate  or through a valid value on the input element the component is attached to) then the first time the user opens the datetimepicker widget the value is initialized to the current moment of the action. If a false  boolean  is passed then no initialization happens on the input element. You can select the granularity on the initialized moment by passing one of the following strings ( 'year', 'month', 'day', 'hour', 'minute' ) in the variable.  If for example you pass  'day'  to the  setUseCurrent  function and the input field is empty the first time the user opens the datetimepicker widget the input text will be initialized to the current date time with day granularity (e.g. if current time =  2014-08-10 13:32:33  the input value will be initialized to  2014-08-10 00:00:00 )  Note:  If the  options.defaultDate  is set or the input element the component is attached to has already a value that takes precedence and the functionality of  useCurrent  is not triggered!",
+            "title": "useCurrent, boolean or string"
+        },
+        {
+            "location": "/Options/#collapse",
+            "text": "Default: true  Using a Bootstraps collapse to switch between date/time pickers.",
+            "title": "collapse"
+        },
+        {
+            "location": "/Options/#collapse_1",
+            "text": "Returns a  boolean  of the  options.sideBySide .",
+            "title": "collapse"
+        },
+        {
+            "location": "/Options/#collapse-collapse",
+            "text": "Takes a  boolean . If set to  false  the picker will display similar to  sideBySide  except vertical.",
+            "title": "collapse, [collapse]"
+        },
+        {
+            "location": "/Options/#locale",
+            "text": "Default: moment.locale()\nAccepts: string, moment.local('locale')  See  momentjs  for valid locales.  You must include  moment-with-locales.js  or a local js file.",
+            "title": "locale"
+        },
+        {
+            "location": "/Options/#locale_1",
+            "text": "Returns the currently set locale of the  options.locale",
+            "title": "locale"
+        },
+        {
+            "location": "/Options/#locale-newlocale",
+            "text": "Takes a  string  of any valid  moment locale  e.g.  de  for German.",
+            "title": "locale, [newLocale]"
+        },
+        {
+            "location": "/Options/#throws_3",
+            "text": "TypeError  - if the locale is not loaded via a separate script or  moment-with-locales",
+            "title": "Throws"
+        },
+        {
+            "location": "/Options/#defaultdate",
+            "text": "Default: false\nAccepts: date, moment, string  Sets the picker default date/time. Overrides  useCurrent",
+            "title": "defaultDate"
+        },
+        {
+            "location": "/Options/#defaultdate_1",
+            "text": "Returns a  moment  with the  options.defaultDate  option configuration or  false  if not set",
+            "title": "defaultDate"
+        },
+        {
+            "location": "/Options/#defaultdate-defaultdate",
+            "text": "Takes a  string, Date, moment, boolean:false . Will set the picker's initial date. If a  boolean:false  value is passed the  options.defaultDate  parameter is cleared.     TypeError  - if the provided date pass validation, including  disabledDates ,  enabledDates ,  minDate ,  maxDate , and  daysOfWeekDisabled    TypeError  - if the provided date cannot be parsed by moment.js",
+            "title": "defaultDate, [defaultDate]"
+        },
+        {
+            "location": "/Options/#endisableddates",
+            "text": "Default: false\nAccepts: array of [date, moment, string]",
+            "title": "en/disabledDates"
+        },
+        {
+            "location": "/Options/#disableddates",
+            "text": "Returns an array with the currently set disabled dates on the component.",
+            "title": "disabledDates"
+        },
+        {
+            "location": "/Options/#disableddates-dates",
+            "text": "Takes an  [   string  or  Date  or  moment   ]  of values and disallows the user to select those days. Setting this takes precedence over  options.minDate ,  options.maxDate  configuration. Also calling this function removes the configuration of options.enabledDates if such exist.  Note:  These values are matched with  Day  granularity.",
+            "title": "disabledDates, [dates]"
+        },
+        {
+            "location": "/Options/#enableddates",
+            "text": "Returns an array with the currently set enabled dates on the component.",
+            "title": "enabledDates"
+        },
+        {
+            "location": "/Options/#enableddates-dates",
+            "text": "Takes an  [   string  or  Date  or  moment   ]  of values and allows the user to select only from those days. Setting this takes precedence over  options.minDate ,  options.maxDate  configuration. Also calling this function removes the configuration of  options.disabledDates  if such exist.  Note:  These values are matched with  Day  granularity.",
+            "title": "enabledDates, [dates]"
+        },
+        {
+            "location": "/Options/#icons",
+            "text": "Default: {\n            time: 'fa fa-clock-o',\n            date: 'fa fa-calendar',\n            up: 'fa fa-arrow-up',\n            down: 'fa fa-arrow-down',\n            previous: 'fa fa-chevron-left',\n            next: 'fa fa-chevron-right',\n            today: 'fa fa-calendar-check-o',\n            clear: 'fa fa-delete',\n            close: 'fa fa-times'\n        }\nAccepts: object with all or some of the parameters above  Change the default icons for the pickers functions.",
+            "title": "icons"
+        },
+        {
+            "location": "/Options/#icons_1",
+            "text": "Returns an  Ojbect  of  options.icons",
+            "title": "icons"
+        },
+        {
+            "location": "/Options/#icons-icons",
+            "text": "Takes an  Ojbect  of  strings .",
+            "title": "icons, [icons]"
+        },
+        {
+            "location": "/Options/#throws_4",
+            "text": "TypeError  - if icons parameter is not an  Ojbect",
+            "title": "Throws"
+        },
+        {
+            "location": "/Options/#usestrict",
+            "text": "Default: false  Defines if moment should use strict date parsing when considering a date to be valid.",
+            "title": "useStrict"
+        },
+        {
+            "location": "/Options/#usestrict_1",
+            "text": "Returns a  boolean  of the  options.useStrict",
+            "title": "useStrict"
+        },
+        {
+            "location": "/Options/#usestrict-usestrict",
+            "text": "Takes a  boolean . If  useStrict  is  true , moment.js parsing rules will be stricter when determining if a date is valid or not.",
+            "title": "useStrict, [useStrict]"
+        },
+        {
+            "location": "/Options/#sidebyside",
+            "text": "Default: false  Shows the picker side by side when using the time and date together.",
+            "title": "sideBySide"
+        },
+        {
+            "location": "/Options/#sidebyside_1",
+            "text": "Returns a  boolean  of the  options.sideBySide .",
+            "title": "sideBySide"
+        },
+        {
+            "location": "/Options/#sidebyside-sidebyside",
+            "text": "Takes a  boolean . If  sideBySide  is  true  and the time picker is used, both components will display side by side instead of collapsing.",
+            "title": "sideBySide, [sideBySide]"
+        },
+        {
+            "location": "/Options/#daysofweekdisabled",
+            "text": "Default: []\nAccepts: array of numbers from 0-6  Disables the section of days of the week, e.g. weekends.",
+            "title": "daysOfWeekDisabled"
+        },
+        {
+            "location": "/Options/#daysofweekdisabled_1",
+            "text": "Returns an array with the  options.daysOfWeekDisabled  configuration setting of the component.",
+            "title": "daysOfWeekDisabled"
+        },
+        {
+            "location": "/Options/#daysofweekdisabled-daysofweek",
+            "text": "Takes an  [   Number : 0  to  6   ]  and disallow the user to select weekdays that exist in this array. This has lower priority over the  options.minDate ,  options.maxDate ,  options.disabledDates  and  options.enabledDates  configuration settings.",
+            "title": "daysOfWeekDisabled, [daysOfWeek]"
+        },
+        {
+            "location": "/Options/#emits_3",
+            "text": "change.datetimepicker  - if the currently selected moment falls in the values passed on the daysOfWeek parameter. (waiting for #472 to close in order to finalize this part)    dp.error  - if the currently selected moment falls in the values passed on the daysOfWeek parameter. (waiting for #472 to close in order to finalize this part)",
+            "title": "Emits"
+        },
+        {
+            "location": "/Options/#calendarweeks",
+            "text": "Default: false  Shows the week of the year to the left of first day of the week.",
+            "title": "calendarWeeks"
+        },
+        {
+            "location": "/Options/#calendarweeks_1",
+            "text": "Returns a  boolean  with the current  options.calendarWeeks  option configuration",
+            "title": "calendarWeeks"
+        },
+        {
+            "location": "/Options/#calendarweeks-boolean",
+            "text": "Takes a  boolean  variable to set if the week numbers will appear to the left on the days view",
+            "title": "calendarWeeks, [boolean]"
+        },
+        {
+            "location": "/Options/#viewmode",
+            "text": "Default: 'days'\nAccepts: 'decades','years','months','days', 'times'  The default view to display when the picker is shown.  Note : To limit the picker to selecting, for instance the year and month, use  format: MM/YYYY .",
+            "title": "viewMode"
+        },
+        {
+            "location": "/Options/#viewmode_1",
+            "text": "Returns a  string  of the  options.viewMode .",
+            "title": "viewMode"
+        },
+        {
+            "location": "/Options/#viewmode-newviewmode",
+            "text": "Takes a  string . Valid values are  'days' ,  'months' ,  'years'  and  'decades'",
+            "title": "viewMode, [newViewMode]"
+        },
+        {
+            "location": "/Options/#throws_5",
+            "text": "TypeError  - if  newViewMode  parameter is not an a  string  or if  newViewMode  is not a valid value.",
+            "title": "Throws"
+        },
+        {
+            "location": "/Options/#toolbarplacement",
+            "text": "Default: 'default'\nAccepts: 'default', 'top', 'bottom'  Changes the placement of the icon toolbar.",
+            "title": "toolbarPlacement"
+        },
+        {
+            "location": "/Options/#toolbarplacement_1",
+            "text": "Returns a  string  variable with the currently set  options.toolbarplacement  option.",
+            "title": "toolbarplacement"
+        },
+        {
+            "location": "/Options/#toolbarplacement-string",
+            "text": "Takes a  string  value. Valid values are  'default' ,  'top'  and  'bottom' .  Changes the placement of the toolbar where the today, clear, component switch icon are located.",
+            "title": "toolbarplacement, [string]"
+        },
+        {
+            "location": "/Options/#buttons",
+            "text": "Default: {\n            showToday: false,\n            showClear: false,\n            showClose: false\n        }\nAccepts: object with all or some of the parameters above  Change the default toolbar buttons for the pickers functions.",
+            "title": "buttons"
+        },
+        {
+            "location": "/Options/#buttons_1",
+            "text": "Returns an  Ojbect  of  options.buttons",
+            "title": "buttons"
+        },
+        {
+            "location": "/Options/#buttons-buttons",
+            "text": "Takes an  Ojbect  of  boolean .",
+            "title": "buttons, [buttons]"
+        },
+        {
+            "location": "/Options/#throws_6",
+            "text": "TypeError  - if buttons parameter is not an  Ojbect",
+            "title": "Throws"
+        },
+        {
+            "location": "/Options/#widgetpositioning",
+            "text": "Default: {\n            horizontal: 'auto'\n            vertical: 'auto'\n         }\nAccepts: object with the all or one of the parameters above\n         horizontal: 'auto', 'left', 'right'\n         vertical: 'auto', 'top', 'bottom'",
+            "title": "widgetPositioning"
+        },
+        {
+            "location": "/Options/#widgetpositioning_1",
+            "text": "Returns the currently set  options.widgetPositioning  object containing two keys  horizontal  and  vertical",
+            "title": "widgetPositioning"
+        },
+        {
+            "location": "/Options/#widgetpositioning-positioningobject",
+            "text": "Takes an object parameter that can contain two keys  vertical  and  horizontal  each having a value of  'auto', 'top', 'bottom'  for  vertical  and  'auto', 'left', 'right'  for  horizontal  which defines where the dropdown with the widget will appear relative to the input element the component is attached to.  'auto'  is the default value for both  horizontal  and  vertical  keys and it tries to automatically place the dropdown in a position that is visible to the user. Usually you should not override those options unless you have a special need in your layout.",
+            "title": "widgetPositioning, [positioningObject]"
+        },
+        {
+            "location": "/Options/#widgetparent",
+            "text": "Default: null\nAccepts: string or jQuery object  On picker show, places the widget at the identifier (string) or jQuery object  if  the element has css  position: 'relative'",
+            "title": "widgetParent"
+        },
+        {
+            "location": "/Options/#widgetparent_1",
+            "text": "Returns a  $(element)  variable with the currently set  options.widgetParent  option.",
+            "title": "widgetParent"
+        },
+        {
+            "location": "/Options/#widgetparent-widgetparent",
+            "text": "Takes a  string  or  $(element)  value.",
+            "title": "widgetParent, [widgetParent]"
+        },
+        {
+            "location": "/Options/#keepopen",
+            "text": "Default: false  Will cause the date picker to stay open after selecting a date.",
+            "title": "keepOpen"
+        },
+        {
+            "location": "/Options/#keepopen_1",
+            "text": "Returns a  boolean  variable with the currently set  options.keepOpen  option.",
+            "title": "keepOpen"
+        },
+        {
+            "location": "/Options/#keepopen-boolean",
+            "text": "Takes a  boolean  value.",
+            "title": "keepOpen, [boolean]"
+        },
+        {
+            "location": "/Options/#inline",
+            "text": "Default: false  Will display the picker inline without the need of a input field. This will also hide borders and shadows.",
+            "title": "inline"
+        },
+        {
+            "location": "/Options/#inline_1",
+            "text": "Returns a  boolean  variable with the currently set  options.inline  option.",
+            "title": "inline"
+        },
+        {
+            "location": "/Options/#inline-boolean",
+            "text": "Takes a  boolean  value.",
+            "title": "inline, [boolean]"
+        },
+        {
+            "location": "/Options/#keepinvalid",
+            "text": "4.7.14  Default: false  Will cause the date picker to  not  revert or overwrite invalid dates.",
+            "title": "keepInvalid"
+        },
+        {
+            "location": "/Options/#keepinvalid_1",
+            "text": "Returns a  string  variable with the currently set  options.keepInvalid  option.",
+            "title": "keepInvalid"
+        },
+        {
+            "location": "/Options/#keepinvalid-boolean",
+            "text": "Takes a  boolean  value.  If  true , invalid dates will not be reverted to a previous selection or changed.",
+            "title": "keepInvalid, [boolean]"
+        },
+        {
+            "location": "/Options/#keybinds",
+            "text": "Default: up: function (widget) {\n            if (widget.find('.datepicker').is(':visible')) {\n                this.date(this.date().clone().subtract(7, 'd'));\n            } else {\n                this.date(this.date().clone().add(1, 'm'));\n            }\n        },\n        down: function (widget) {\n            if (!widget) {\n                this.show();\n            }\n            else if (widget.find('.datepicker').is(':visible')) {\n                this.date(this.date().clone().add(7, 'd'));\n            } else {\n                this.date(this.date().clone().subtract(1, 'm'));\n            }\n        },\n        'control up': function (widget) {\n            if (widget.find('.datepicker').is(':visible')) {\n                this.date(this.date().clone().subtract(1, 'y'));\n            } else {\n                this.date(this.date().clone().add(1, 'h'));\n            }\n        },\n        'control down': function (widget) {\n            if (widget.find('.datepicker').is(':visible')) {\n                this.date(this.date().clone().add(1, 'y'));\n            } else {\n                this.date(this.date().clone().subtract(1, 'h'));\n            }\n        },\n        left: function (widget) {\n            if (widget.find('.datepicker').is(':visible')) {\n                this.date(this.date().clone().subtract(1, 'd'));\n            }\n        },\n        right: function (widget) {\n            if (widget.find('.datepicker').is(':visible')) {\n                this.date(this.date().clone().add(1, 'd'));\n            }\n        },\n        pageUp: function (widget) {\n            if (widget.find('.datepicker').is(':visible')) {\n                this.date(this.date().clone().subtract(1, 'M'));\n            }\n        },\n        pageDown: function (widget) {\n            if (widget.find('.datepicker').is(':visible')) {\n                this.date(this.date().clone().add(1, 'M'));\n            }\n        },\n        enter: function () {\n            this.hide();\n        },\n        escape: function () {\n            this.hide();\n        },\n        'control space': function (widget) {\n            if (widget.find('.timepicker').is(':visible')) {\n                widget.find('.btn[data-action=\"togglePeriod\"]').click();\n            }\n        },\n        t: function () {\n            this.date(moment());\n        },\n        'delete': function () {\n            this.clear();\n        }  Allows for custom events to fire on keyboard press.",
+            "title": "keyBinds"
+        },
+        {
+            "location": "/Options/#keybinds_1",
+            "text": "Returns a  string  variable with the currently set  options.keyBinds  option.",
+            "title": "keyBinds"
+        },
+        {
+            "location": "/Options/#keybinds-object",
+            "text": "Takes an  object  value.  Allows for several  keyBinding  functions to be specified for ease of access or accessibility. See the options page for defaults.",
+            "title": "keyBinds, [object]"
+        },
+        {
+            "location": "/Options/#debug",
+            "text": "Default: false  Will cause the date picker to stay open after a  blur  event.",
+            "title": "debug"
+        },
+        {
+            "location": "/Options/#ignorereadonly",
+            "text": "Default: false  Allow date picker show event to fire even when the associated input element has the  readonly=\"readonly\"  property.",
+            "title": "ignoreReadonly"
+        },
+        {
+            "location": "/Options/#ignorereadonly_1",
+            "text": "Returns a  boolean  variable with the currently set  options.ignoreReadonly  option.",
+            "title": "ignoreReadonly"
+        },
+        {
+            "location": "/Options/#ignorereadonly-boolean",
+            "text": "Takes a  boolean  value.  Set this to  true  to allow the picker to be used even if the input field is  readonly . This will  not  bypass the  disabled  property",
+            "title": "ignoreReadonly, [boolean]"
+        },
+        {
+            "location": "/Options/#disabledtimeintervals",
+            "text": "Default: false  Disables time selection between the given  moments .",
+            "title": "disabledTimeIntervals"
+        },
+        {
+            "location": "/Options/#disabledtimeintervals_1",
+            "text": "Returns an  array  variable with the currently set  options.disabledTimeIntervals  option.",
+            "title": "disabledTimeIntervals"
+        },
+        {
+            "location": "/Options/#disabledtimeintervals-array",
+            "text": "Takes a  array  value.  The array  must  be in the following format  [moment(),moment()]  For example:  disabledTimeIntervals: [[moment({ h: 0 }), moment({ h: 8 })], [moment({ h: 18 }), moment({ h: 24 })]]  Will disable times between 12-8am and 6-12pm today",
+            "title": "disabledTimeIntervals, [array]"
+        },
+        {
+            "location": "/Options/#allowinputtoggle",
+            "text": "Default: false  If  true , the picker will show on textbox focus and icon click when used in a button group.",
+            "title": "allowInputToggle"
+        },
+        {
+            "location": "/Options/#allowinputtoggle_1",
+            "text": "Returns a  boolean  variable with the currently set  options.allowInputToggle  option.",
+            "title": "allowInputToggle"
+        },
+        {
+            "location": "/Options/#allowinputtoggle-boolean",
+            "text": "Takes a  boolean  value.  If  true , the picker will show on textbox focus and icon click when used in a button group",
+            "title": "allowInputToggle, [boolean]"
+        },
+        {
+            "location": "/Options/#focusonshow",
+            "text": "Default: true  If  false , the textbox will not be given focus when the picker is shown.",
+            "title": "focusOnShow"
+        },
+        {
+            "location": "/Options/#focusonshow_1",
+            "text": "Returns a  boolean  variable with the currently set  options.focusOnShow  option.",
+            "title": "focusOnShow"
+        },
+        {
+            "location": "/Options/#focusonshow-boolean",
+            "text": "Takes a  boolean  value.  If  false , the textbox will not be given focus when the picker is shown",
+            "title": "focusOnShow, [boolean]"
+        },
+        {
+            "location": "/Options/#endisabledhours",
+            "text": "Default: false",
+            "title": "en/disabledHours"
+        },
+        {
+            "location": "/Options/#disabledhours",
+            "text": "Returns an  array  variable with the currently set  options.en/disabledHours  option.",
+            "title": "disabledHours"
+        },
+        {
+            "location": "/Options/#disabledhours-boolean",
+            "text": "Takes a  array  value.  Must be in 24 hour format. Will allow or disallow hour selections (much like  disabledTimeIntervals ) but will affect all days.  Like  en/disabledDates , these options are mutually exclusive and will reset one of the options back to false.  disabledHours: [0, 1, 2, 3, 4, 5, 6, 7, 8, 18, 19, 20, 21, 22, 23, 24]\nenabledHours: [9, 10, 11, 12, 13, 14, 15, 16]",
+            "title": "disabledHours, boolean"
+        },
+        {
+            "location": "/Options/#viewdate",
+            "text": "Default: false  This will change the  viewDate  without changing or setting the selected date.",
+            "title": "viewDate"
+        },
+        {
+            "location": "/Options/#parseinputdate",
+            "text": "",
+            "title": "parseInputDate"
+        },
+        {
+            "location": "/Options/#parseinputdate_1",
+            "text": "Returns a  function  with the currently set  options.parseInputDate",
+            "title": "parseInputDate"
+        },
+        {
+            "location": "/Options/#parseinputdate-function",
+            "text": "Takes a  function  Allows custom input formatting For example: the user can enter 'yesterday' or '30 days ago.  Example:  var parseRelativeDate = function(relativeDate) {\n\n    switch (relativeDate) {\n        case 'today':\n            return moment()\n        case 'yesterday':\n            return moment().subtract(1, 'day');\n        default:\n            return moment()\n                .subtract(Number(relativeDate.replace(\"days ago\", \"\").trim()), 'days');\n    }\n}\n\nvar parseInputDate = function(inputDate) {\n    var relativeDatePattern = /today|yesterday|[0-9]+\\s+(days ago)/,\n        resultDate;\n\n    if (moment.isMoment(inputDate) || inputDate instanceof Date) {\n        resultDate = moment(inputDate);\n    } else {\n        var relativeDate = inputDate.match(relativeDatePattern),\n            parseDate = null;\n\n        if (relativeDate !== null) \n          parseDate = this.parseRelativeDate(inputDate.match(relativeDatePattern)[0]);\n        else \n          parseDate = moment();\n\n        resultDate = moment(parseDate, \"YYYY-MM-DD\");\n    }\n\n    return resultDate;\n}",
+            "title": "parseInputDate, [function]"
+        },
+        {
+            "location": "/Options/#tooltips",
+            "text": "tooltips: {\n    today: 'Go to today',\n    clear: 'Clear selection',\n    close: 'Close the picker',\n    selectMonth: 'Select Month',\n    prevMonth: 'Previous Month',\n    nextMonth: 'Next Month',\n    selectYear: 'Select Year',\n    prevYear: 'Previous Year',\n    nextYear: 'Next Year',\n    selectDecade: 'Select Decade',\n    prevDecade: 'Previous Decade',\n    nextDecade: 'Next Decade',\n    prevCentury: 'Previous Century',\n    nextCentury: 'Next Century',,\n    incrementHour: 'Increment Hour',\n    pickHour: 'Pick Hour',\n    decrementHour:'Decrement Hour',\n    incrementMinute: 'Increment Minute',\n    pickMinute: 'Pick Minute',\n    decrementMinute:'Decrement Minute',\n    incrementSecond: 'Increment Second',\n    pickSecond: 'Pick Second',\n    decrementSecond:'Decrement Second'\n}  This will change the  tooltips  over each icon to a custom string.",
+            "title": "tooltips"
+        },
+        {
+            "location": "/Options/#tooltips_1",
+            "text": "Returns an  Ojbect  of  options.tooltips",
+            "title": "tooltips"
+        },
+        {
+            "location": "/Options/#tooltips-tooltips",
+            "text": "Takes an  Ojbect  of  strings .",
+            "title": "tooltips, [tooltips]"
+        },
+        {
+            "location": "/Options/#throws_7",
+            "text": "TypeError  - if  tooltips  parameter is not an  Ojbect",
+            "title": "Throws"
+        },
+        {
+            "location": "/Options/#timezone",
+            "text": "timeZone: ''  Allows the setting of the Time Zone. You must include  moment-timezone.js  and  moment-timzone  data. See moment timezone documentation for usage.",
+            "title": "timeZone"
+        },
+        {
+            "location": "/Options/#timezone_1",
+            "text": "Returns an  string  of  options.timeZone",
+            "title": "timeZone"
+        },
+        {
+            "location": "/Options/#timezone-timezone",
+            "text": "Takes an  string  of a valid timezone.",
+            "title": "timeZone, [timeZone]"
+        },
+        {
+            "location": "/Options/#throws_8",
+            "text": "TypeError  - if  tooltips  parameter is not an  string",
+            "title": "Throws"
+        },
+        {
+            "location": "/Options/#allowmultidate",
+            "text": "allowMultidate: false  Allows the setting of multiple dates.",
+            "title": "allowMultidate"
+        },
+        {
+            "location": "/Options/#allowmultidate_1",
+            "text": "Returns an  boolean  of  options.allowMultidate",
+            "title": "allowMultidate"
+        },
+        {
+            "location": "/Options/#allowmultidate-allowmultidate",
+            "text": "Takes an  boolean .",
+            "title": "allowMultidate, [allowMultidate]"
+        },
+        {
+            "location": "/Options/#throws_9",
+            "text": "TypeError  - if  allowMultidate  parameter is not an  boolean",
+            "title": "Throws"
+        },
+        {
+            "location": "/Options/#multidateseparator",
+            "text": "multidateSeparator: ','  Used with  allowMultidate . E.g.  1/1/2017,1/2/2017",
+            "title": "multidateSeparator"
+        },
+        {
+            "location": "/Options/#multidateseparator_1",
+            "text": "Returns an  string  of  options.multidateSeparator",
+            "title": "multidateSeparator"
+        },
+        {
+            "location": "/Options/#multidateseparator-multidateseparator",
+            "text": "Takes an  string  of a valid timezone.",
+            "title": "multidateSeparator, [multidateSeparator]"
+        },
+        {
+            "location": "/Options/#throws_10",
+            "text": "TypeError  - if  multidateSeparator  parameter is not an  string  TypeError  - if  multidateSeparator  parameter is longer then 1 character",
+            "title": "Throws"
+        },
+        {
+            "location": "/Events/",
+            "text": "Events\n\n\nhide.datetimepicker\n\n\nFired when the widget is hidden.\n\n\nParameters:\n\n\ne = {\n    date //the currently set date. Type: moment object (clone)\n}\n\n\n\n\nEmitted from:\n\n\n\n\ntoggle()\n\n\nhide()\n\n\ndisable()\n\n\n\n\n\n\nshow.datetimepicker\n\n\nFired when the widget is shown.\n\n\nParameters:\n\n\nNo parameters are include, listen to \nchange.datetimepicker\n instead\n\n\nEmitted from:\n\n\n\n\ntoggle()\n\n\nshow()\n\n\n\n\n\n\nchange.datetimepicker\n\n\nFired when the date is changed, including when changed to a non-date (e.g. When keepInvalid=true).\n\n\nParameters:\n\n\ne = {\n    date, //date the picker changed to. Type: moment object (clone)\n    oldDate //previous date. Type: moment object (clone) or false in the event of a null\n}\n\n\n\n\nEmitted from:\n\n\n\n\ntoggle() \nNote\n: Only fired when using \nuseCurrent\n\n\nshow() \nNote\n: Only fired when using \nuseCurrent\n or when or the date is changed to comply with date rules (min/max etc)\n\n\ndate(newDate)\n\n\nminDate(minDate)\n\n\nmaxDate(maxDate)\n\n\ndaysOfWeekDisabled()\n\n\n\n\n\n\nerror.datetimepicker\n\n\nFired when a selected date fails to pass validation.\n\n\nParameters:\n\n\ne = {\n    date //the invalid date. Type: moment object (clone)\n    oldDate //previous date. Type: moment object (clone) or false in the event of a null\n}\n\n\n\n\nEmmited from:\n\n\n\n\nminDate(minDate)\n\n\nmaxDate(maxDate)\n\n\ndaysOfWeekDisabled()\n\n\nsetValue() \nprivate function\n\n\n\n\n\n\nupdate.datetimepicker\n\n\nFired (in most cases) when the \nviewDate\n changes. E.g. Next and Previous buttons, selecting a year.\n\n\nParameters:\n\n\ne = {\n   change, //Change type as a momentjs format token. Type: string e.g. yyyy on year change\n   viewDate //new viewDate. Type: moment object\n}",
+            "title": "Events"
+        },
+        {
+            "location": "/Events/#events",
+            "text": "",
+            "title": "Events"
+        },
+        {
+            "location": "/Events/#hidedatetimepicker",
+            "text": "Fired when the widget is hidden.  Parameters:  e = {\n    date //the currently set date. Type: moment object (clone)\n}  Emitted from:   toggle()  hide()  disable()",
+            "title": "hide.datetimepicker"
+        },
+        {
+            "location": "/Events/#showdatetimepicker",
+            "text": "Fired when the widget is shown.  Parameters:  No parameters are include, listen to  change.datetimepicker  instead  Emitted from:   toggle()  show()",
+            "title": "show.datetimepicker"
+        },
+        {
+            "location": "/Events/#changedatetimepicker",
+            "text": "Fired when the date is changed, including when changed to a non-date (e.g. When keepInvalid=true).  Parameters:  e = {\n    date, //date the picker changed to. Type: moment object (clone)\n    oldDate //previous date. Type: moment object (clone) or false in the event of a null\n}  Emitted from:   toggle()  Note : Only fired when using  useCurrent  show()  Note : Only fired when using  useCurrent  or when or the date is changed to comply with date rules (min/max etc)  date(newDate)  minDate(minDate)  maxDate(maxDate)  daysOfWeekDisabled()",
+            "title": "change.datetimepicker"
+        },
+        {
+            "location": "/Events/#errordatetimepicker",
+            "text": "Fired when a selected date fails to pass validation.  Parameters:  e = {\n    date //the invalid date. Type: moment object (clone)\n    oldDate //previous date. Type: moment object (clone) or false in the event of a null\n}  Emmited from:   minDate(minDate)  maxDate(maxDate)  daysOfWeekDisabled()  setValue()  private function",
+            "title": "error.datetimepicker"
+        },
+        {
+            "location": "/Events/#updatedatetimepicker",
+            "text": "Fired (in most cases) when the  viewDate  changes. E.g. Next and Previous buttons, selecting a year.  Parameters:  e = {\n   change, //Change type as a momentjs format token. Type: string e.g. yyyy on year change\n   viewDate //new viewDate. Type: moment object\n}",
+            "title": "update.datetimepicker"
+        },
+        {
+            "location": "/Changelog/",
+            "text": "Version 5\n\n\n5.0.0-alpha\n\n\nNew Features\n\n\n\n\nES6 rewrite\n\n\nStripped UI/UX related code and shunted it into its own module\n\n\nMore configuration based setup\n\n\nBootstrap 4-esk plugin creation style\n\n\nAll events are namespaced properly \n{event}.datetimepicker\n\n\nAdded a jquery no conflict option\n\n\nRemoved LESS files. Bootstrap 4 doesn't use LESS any more. Now using SASS to build CSS\n\n\nPicker will also look for window.debug and will keep the picker from closing\n\n\nAdded support for setting global defaults\n\n\n\n\nOther changes\n\n\n\n\nmoved \nshowTodayButton\n, \nshowClear\n and \nshowClose\n into \noptions.buttons\n\n\nmanually merged #1946, #1939, #1921, #1913",
+            "title": "Change Log"
+        },
+        {
+            "location": "/Changelog/#version-5",
+            "text": "",
+            "title": "Version 5"
+        },
+        {
+            "location": "/Changelog/#500-alpha",
+            "text": "",
+            "title": "5.0.0-alpha"
+        },
+        {
+            "location": "/Changelog/#new-features",
+            "text": "ES6 rewrite  Stripped UI/UX related code and shunted it into its own module  More configuration based setup  Bootstrap 4-esk plugin creation style  All events are namespaced properly  {event}.datetimepicker  Added a jquery no conflict option  Removed LESS files. Bootstrap 4 doesn't use LESS any more. Now using SASS to build CSS  Picker will also look for window.debug and will keep the picker from closing  Added support for setting global defaults",
+            "title": "New Features"
+        },
+        {
+            "location": "/Changelog/#other-changes",
+            "text": "moved  showTodayButton ,  showClear  and  showClose  into  options.buttons  manually merged #1946, #1939, #1921, #1913",
+            "title": "Other changes"
+        },
+        {
+            "location": "/ContributorsGuide/",
+            "text": "This guide is aimed to contributors wishing to understand the internals of the code in order to change/evolve the component. \n\n\nNote:\n this guide refers to \nversion 5\n which is currently in alpha and will be updated as we progress\n\n\nIntroduction\n\n\nThis component consists actually of 2 subcomponent UI widgets one for the date and one for the time selection process. The developers can configure which of those are needed and also the granularity that the component will allow the users to select a date/time. Developers also choose the format that the selected date/time will be displayed in the input field.\nThe component uses on \njQuery\n, \nmoment.js\n libraries.\n\n\nCode\n\n\nPrivate variables\n\n\n\n\n\n\nelement\n - Holds the DOM element this instance is attached to\n\n\n\n\n\n\noptions\n - Holds an object with the currently set options for the specific instance of the component. Don't directly change the properties of that object use the public API methods instead. DO NOT expose this object or its properties outside of the component.\n\n\n\n\n\n\ndate\n - Holds the moment object for the model value of the component. \nDON'T\n directly change this variable unless you \nREALLY\n know what you are doing. Use \nsetValue()\n function to set it. It handles all component logic for updating the model value and emitting all the appropriate events\n\n\n\n\n\n\nviewDate\n - Holds the currently selected value that the user has selected through the widget. This is not the model value this is the view value. Changing this usually requires a subsequent call to \nupdate()\n function\n\n\n\n\n\n\nunset\n - A \nboolean\n variable that holds whether the components model value is set or not. Model's value starts as \nunset = true\n and if is either set by the user or programmatically through the api to a valid value then it is set to \nfalse\n. If subsequent events lead to an invalid value then this variable is set to \ntrue\n again. Setting this variable usually takes place in the \nsetValue()\n function.\n\n\n\n\n\n\ninput\n - Hold the DOM input element this instance is attached to\n\n\n\n\n\n\ncomponent\n - Holds a reference to the .input-group DOM element that the widget is attached or false if it is attached directly on an input field\n\n\n\n\n\n\nwidget\n - Holds a reference to the DOM element containing the widget or \nfalse\n if the widget is hidden\n\n\n\n\n\n\nuse24hours\n - Holds whether the component uses 24 hours format or not. This is initialized on the \nformat()\n function\n\n\n\n\n\n\nminViewModeNumber\n - Holds the Numeric equivalent of the options.minViewMode parameter\n\n\n\n\n\n\nformat\n - Holds the current format string that is used for formatting the date model value. Note this is not the same thing as the \noptions.format\n as the second could be set to \nfalse\n in which case the first takes the locale's \nL\n or \nLT\n value\n\n\n\n\n\n\ncurrentViewMode\n - Hold the state of the current viewMode for the DatePicker subcomponent\n\n\n\n\n\n\ndatePickerModes\n - An array of objects with configuration parameters for the different views of the DatePicker subcomponent\n\n\n\n\n\n\nviewModes\n - An array of strings containing all the possible strings that \noptions.viewMode\n can take through \nviewMode()\n public api function\n\n\n\n\n\n\ndirectionModes\n - An array of strings containing all the possible strings that \noptions.direction\n can take through \ndirection()\n public api function\n\n\n\n\n\n\norientationModes\n - An array of strings containing all the possible strings that \noptions.orientation\n can take through \norientation()\n public api function\n\n\n\n\n\n\nPrivate functions\n\n\nEvents related\n\n\n\n\n\n\nnotifyEvent(e)\n - Use this function when you want to send en event to listener this could be used as a filter later\n\n\n\n\n\n\nstopEvent(e)\n - Shortcut for stopping propagation of events\n\n\n\n\n\n\nkeydown(e)\n - Function to trap \n\n\n\n\n\n\nchange(e)\n - Listener function to track change events occurring on the \ninput\n dom element the component is attached to\n\n\n\n\n\n\nattachDatePickerElementEvents()\n - Attaches listeners to the existing DOM elements the component is attached to. Called upon construction of each datetimepicker instance\n\n\n\n\n\n\ndetachDatePickerElementEvents()\n - Detaches listeners from the DOM element the component is attached to. Called on \ndestroy()\n\n\n\n\n\n\nattachDatePickerWidgetEvents()\n - Attaches listeners on the components widget. Called on \nshow()\n\n\n\n\n\n\ndetachDatePickerWidgetEvents()\n - Detaches listeners on the components widget. Called on \nhide()\n\n\n\n\n\n\nModel related\n\n\n\n\n\n\nsetValue(targetMoment)\n - Sets the model value of the component takes a moment object. An \nerror\n event will be emmited if the \ntargetMoment\n does not pass the configured validations. Otherwise the \ndate\n variable will be set and the relevant events will be fired.\n\n\n\n\n\n\nisValid(targetMoment, granularity)\n - returns \ntrue\n if the \ntargetMoment\n moment object is valid according to the components set validation rules (\nmin/maxDates\n, \ndisabled/enabledDates\n and \ndaysOfWeekDisabled\n). You may pass a second variable to check only up the the specific granularity \nyear, month, day, hour, minute, second\n\n\n\n\n\n\nUtilities\n\n\n\n\n\n\nindexGivenDates (givenDatesArray)\n - Function that takes the array from \nenabledDates()\n and \ndisabledDates()\n public functions and stores them as object keys to enable quick lookup\n\n\n\n\n\n\nisInEnableDates(date)\n - Checks whether if the given moment object exists in the \noptions.enabledDates\n object\n\n\n\n\n\n\nisInDisableDates(date)\n - Checks whether if the given moment object exists in the \noptions.disabledDates\n array\n\n\n\n\n\n\ndataToOptions()\n - Parses \ndata-date-*\n options set on the input dom element the component is attached to and returns an object with them\n\n\n\n\n\n\nisInFixed()\n - Checks if the dom element or its parents has a fixed position css rule.\n\n\n\n\n\n\nparseInputDate(date)\n - Parses a date parameter with moment using the component's \noptions.format\n and \noptions.useStrict\n. It returns a \nmoment\n object or false if \nparsedMoment#isValid()\n returns \nfalse\n. Use this to parse date inputs from outside the component (public API calls).\n\n\n\n\n\n\ninit()\n - Initializes the component. Called when the component instance is created",
+            "title": "Dev Guide"
+        },
+        {
+            "location": "/ContributorsGuide/#introduction",
+            "text": "This component consists actually of 2 subcomponent UI widgets one for the date and one for the time selection process. The developers can configure which of those are needed and also the granularity that the component will allow the users to select a date/time. Developers also choose the format that the selected date/time will be displayed in the input field.\nThe component uses on  jQuery ,  moment.js  libraries.",
+            "title": "Introduction"
+        },
+        {
+            "location": "/ContributorsGuide/#code",
+            "text": "",
+            "title": "Code"
+        },
+        {
+            "location": "/ContributorsGuide/#private-variables",
+            "text": "element  - Holds the DOM element this instance is attached to    options  - Holds an object with the currently set options for the specific instance of the component. Don't directly change the properties of that object use the public API methods instead. DO NOT expose this object or its properties outside of the component.    date  - Holds the moment object for the model value of the component.  DON'T  directly change this variable unless you  REALLY  know what you are doing. Use  setValue()  function to set it. It handles all component logic for updating the model value and emitting all the appropriate events    viewDate  - Holds the currently selected value that the user has selected through the widget. This is not the model value this is the view value. Changing this usually requires a subsequent call to  update()  function    unset  - A  boolean  variable that holds whether the components model value is set or not. Model's value starts as  unset = true  and if is either set by the user or programmatically through the api to a valid value then it is set to  false . If subsequent events lead to an invalid value then this variable is set to  true  again. Setting this variable usually takes place in the  setValue()  function.    input  - Hold the DOM input element this instance is attached to    component  - Holds a reference to the .input-group DOM element that the widget is attached or false if it is attached directly on an input field    widget  - Holds a reference to the DOM element containing the widget or  false  if the widget is hidden    use24hours  - Holds whether the component uses 24 hours format or not. This is initialized on the  format()  function    minViewModeNumber  - Holds the Numeric equivalent of the options.minViewMode parameter    format  - Holds the current format string that is used for formatting the date model value. Note this is not the same thing as the  options.format  as the second could be set to  false  in which case the first takes the locale's  L  or  LT  value    currentViewMode  - Hold the state of the current viewMode for the DatePicker subcomponent    datePickerModes  - An array of objects with configuration parameters for the different views of the DatePicker subcomponent    viewModes  - An array of strings containing all the possible strings that  options.viewMode  can take through  viewMode()  public api function    directionModes  - An array of strings containing all the possible strings that  options.direction  can take through  direction()  public api function    orientationModes  - An array of strings containing all the possible strings that  options.orientation  can take through  orientation()  public api function",
+            "title": "Private variables"
+        },
+        {
+            "location": "/ContributorsGuide/#private-functions",
+            "text": "",
+            "title": "Private functions"
+        },
+        {
+            "location": "/ContributorsGuide/#events-related",
+            "text": "notifyEvent(e)  - Use this function when you want to send en event to listener this could be used as a filter later    stopEvent(e)  - Shortcut for stopping propagation of events    keydown(e)  - Function to trap     change(e)  - Listener function to track change events occurring on the  input  dom element the component is attached to    attachDatePickerElementEvents()  - Attaches listeners to the existing DOM elements the component is attached to. Called upon construction of each datetimepicker instance    detachDatePickerElementEvents()  - Detaches listeners from the DOM element the component is attached to. Called on  destroy()    attachDatePickerWidgetEvents()  - Attaches listeners on the components widget. Called on  show()    detachDatePickerWidgetEvents()  - Detaches listeners on the components widget. Called on  hide()",
+            "title": "Events related"
+        },
+        {
+            "location": "/ContributorsGuide/#model-related",
+            "text": "setValue(targetMoment)  - Sets the model value of the component takes a moment object. An  error  event will be emmited if the  targetMoment  does not pass the configured validations. Otherwise the  date  variable will be set and the relevant events will be fired.    isValid(targetMoment, granularity)  - returns  true  if the  targetMoment  moment object is valid according to the components set validation rules ( min/maxDates ,  disabled/enabledDates  and  daysOfWeekDisabled ). You may pass a second variable to check only up the the specific granularity  year, month, day, hour, minute, second",
+            "title": "Model related"
+        },
+        {
+            "location": "/ContributorsGuide/#utilities",
+            "text": "indexGivenDates (givenDatesArray)  - Function that takes the array from  enabledDates()  and  disabledDates()  public functions and stores them as object keys to enable quick lookup    isInEnableDates(date)  - Checks whether if the given moment object exists in the  options.enabledDates  object    isInDisableDates(date)  - Checks whether if the given moment object exists in the  options.disabledDates  array    dataToOptions()  - Parses  data-date-*  options set on the input dom element the component is attached to and returns an object with them    isInFixed()  - Checks if the dom element or its parents has a fixed position css rule.    parseInputDate(date)  - Parses a date parameter with moment using the component's  options.format  and  options.useStrict . It returns a  moment  object or false if  parsedMoment#isValid()  returns  false . Use this to parse date inputs from outside the component (public API calls).    init()  - Initializes the component. Called when the component instance is created",
+            "title": "Utilities"
+        },
+        {
+            "location": "/Extras/",
+            "text": "Extras\n\n\nGuides for making the picker work better with rails, IE, etc. \nNote:\n I have no idea if these guides still apply for v5 or not.\n\n\nRails 3\n\n\nby \ndhulihan\n\n\nYou can easily override the default rails form helpers (\ndate_select\n and \ndatetime_select\n) with bootstrap-datetimepicker for a much nicer experience. \n\n\n# Add to config/initializers/form.rb or the end of app/helpers/application_helper.rb\nmodule ActionView\n  module Helpers\n    class FormBuilder \n      def date_select(method, options = {}, html_options = {})\n        existing_date = @object.send(method) \n        formatted_date = existing_date.to_date.strftime(\"%F\") if existing_date.present?\n        @template.content_tag(:div, :class => \"input-group\") do    \n          text_field(method, :value => formatted_date, :class => \"form-control datepicker\", :\"data-date-format\" => \"YYYY-MM-DD\") +\n          @template.content_tag(:span, @template.content_tag(:span, \"\", :class => \"glyphicon glyphicon-calendar\") ,:class => \"input-group-addon\")\n        end\n      end\n\n      def datetime_select(method, options = {}, html_options = {})\n        existing_time = @object.send(method) \n        formatted_time = existing_time.to_time.strftime(\"%F %I:%M %p\") if existing_time.present?\n        @template.content_tag(:div, :class => \"input-group\") do    \n          text_field(method, :value => formatted_time, :class => \"form-control datetimepicker\", :\"data-date-format\" => \"YYYY-MM-DD hh:mm A\") +\n          @template.content_tag(:span, @template.content_tag(:span, \"\", :class => \"glyphicon glyphicon-calendar\") ,:class => \"input-group-addon\")\n        end\n      end\n    end\n  end\nend\n\n\n\n\nThe time format used here is ActiveRecord-friendly, which means it will be parsed correctly when passed in through \nparams\n to your record.\n\n\nThat's all there is to it! Now all of your forms that use \ndatetime_select\n or \ndate_select\n will be automatically updated:\n\n\n<% form_for @post do |f| %>\n    <div class=\"form-group\">\n        <label>Published At</label>\n        <%= f.datetime_select :published_at %>\n    </div>\n<% end %>",
+            "title": "Extras"
+        },
+        {
+            "location": "/Extras/#extras",
+            "text": "Guides for making the picker work better with rails, IE, etc.  Note:  I have no idea if these guides still apply for v5 or not.",
+            "title": "Extras"
+        },
+        {
+            "location": "/Extras/#rails-3",
+            "text": "by  dhulihan  You can easily override the default rails form helpers ( date_select  and  datetime_select ) with bootstrap-datetimepicker for a much nicer experience.   # Add to config/initializers/form.rb or the end of app/helpers/application_helper.rb\nmodule ActionView\n  module Helpers\n    class FormBuilder \n      def date_select(method, options = {}, html_options = {})\n        existing_date = @object.send(method) \n        formatted_date = existing_date.to_date.strftime(\"%F\") if existing_date.present?\n        @template.content_tag(:div, :class => \"input-group\") do    \n          text_field(method, :value => formatted_date, :class => \"form-control datepicker\", :\"data-date-format\" => \"YYYY-MM-DD\") +\n          @template.content_tag(:span, @template.content_tag(:span, \"\", :class => \"glyphicon glyphicon-calendar\") ,:class => \"input-group-addon\")\n        end\n      end\n\n      def datetime_select(method, options = {}, html_options = {})\n        existing_time = @object.send(method) \n        formatted_time = existing_time.to_time.strftime(\"%F %I:%M %p\") if existing_time.present?\n        @template.content_tag(:div, :class => \"input-group\") do    \n          text_field(method, :value => formatted_time, :class => \"form-control datetimepicker\", :\"data-date-format\" => \"YYYY-MM-DD hh:mm A\") +\n          @template.content_tag(:span, @template.content_tag(:span, \"\", :class => \"glyphicon glyphicon-calendar\") ,:class => \"input-group-addon\")\n        end\n      end\n    end\n  end\nend  The time format used here is ActiveRecord-friendly, which means it will be parsed correctly when passed in through  params  to your record.  That's all there is to it! Now all of your forms that use  datetime_select  or  date_select  will be automatically updated:  <% form_for @post do |f| %>\n    <div class=\"form-group\">\n        <label>Published At</label>\n        <%= f.datetime_select :published_at %>\n    </div>\n<% end %>",
+            "title": "Rails 3"
+        },
+        {
+            "location": "/FAQ/",
+            "text": "FAQs\n\n\nHow do I disable the date or time element\n\n\nHow do I format ...; How do I add seconds; etc.\n\n\nThe picker uses the \nformat\n option to decide what components to show. Set \nformat\n to \nLT\n, \nLTS\n or another valid \nMomentJs format string\n to display certain components\n\n\nHow do I change the language/locale\n\n\nThe picker uses MomentJs to determine the language string. You can use \nmoment-with-locales\n or you can include whatever local file you need. Set the picker's \nlocale\n option to \nde\n or whatever the locale string is.\n\n\nHow do I change the styles? The picker closes.\n\n\nSet \ndebug:true\n which will force the picker to stay open, even \nonBlur\n. You can hide the picker manually by calling \nhide()\n\n\nHow do I change the start of the week?\n\n\nStart of the week is based on the \nlocale\n provided\n. This is defined by moment's locales. If you want to change it, create your own locale file or override. \nSee moment's docs\n.\n\n\nHow I use the picker as birthday picker?\n\n\nUse the \nviewMode\n option to \n'years'",
+            "title": "FAQs"
+        },
+        {
+            "location": "/FAQ/#faqs",
+            "text": "",
+            "title": "FAQs"
+        },
+        {
+            "location": "/FAQ/#how-do-i-disable-the-date-or-time-element",
+            "text": "How do I format ...; How do I add seconds; etc.  The picker uses the  format  option to decide what components to show. Set  format  to  LT ,  LTS  or another valid  MomentJs format string  to display certain components",
+            "title": "How do I disable the date or time element"
+        },
+        {
+            "location": "/FAQ/#how-do-i-change-the-languagelocale",
+            "text": "The picker uses MomentJs to determine the language string. You can use  moment-with-locales  or you can include whatever local file you need. Set the picker's  locale  option to  de  or whatever the locale string is.",
+            "title": "How do I change the language/locale"
+        },
+        {
+            "location": "/FAQ/#how-do-i-change-the-styles-the-picker-closes",
+            "text": "Set  debug:true  which will force the picker to stay open, even  onBlur . You can hide the picker manually by calling  hide()",
+            "title": "How do I change the styles? The picker closes."
+        },
+        {
+            "location": "/FAQ/#how-do-i-change-the-start-of-the-week",
+            "text": "Start of the week is based on the  locale  provided . This is defined by moment's locales. If you want to change it, create your own locale file or override.  See moment's docs .",
+            "title": "How do I change the start of the week?"
+        },
+        {
+            "location": "/FAQ/#how-i-use-the-picker-as-birthday-picker",
+            "text": "Use the  viewMode  option to  'years'",
+            "title": "How I use the picker as birthday picker?"
+        }
+    ]
+}

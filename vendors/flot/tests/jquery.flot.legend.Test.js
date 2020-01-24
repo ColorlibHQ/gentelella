@@ -68,7 +68,7 @@ describe("flot legend plugin", function() {
         options.legend.container = legendContainer;
         plot = $.plot(placeholder, [[1, 3, 5, 6]], options);
 
-        expect(legendContainer.style.width).toContain('em');
+        expect(legendContainer.style.width).toContain('px');
         expect(legendContainer.style.height).toContain('em');
         document.body.removeChild(legendContainer);
     });
@@ -95,6 +95,18 @@ describe("flot legend plugin", function() {
         expect(entryLabel.textContent).toBe(label);
     });
 
+    it('should display the plot icon', function(){
+        var label = 'custom label';
+        options.series.label = label;
+        plot = $.plot(placeholder, [[1, 3, 5, 6]], options);
+
+        var legendSvg = document.getElementsByClassName('legendLayer')[0];
+        var firstLegendEntry = legendSvg.getElementsByTagNameNS('http://www.w3.org/2000/svg', 'g')[0];
+        var entryHTML =  firstLegendEntry.innerHTML;
+
+        expect(entryHTML.includes('#line')).toBe(true);
+    });
+
     it('should take into account the show option', function() {
         options.legend.show = false;
         plot = $.plot(placeholder, [[1, 3, 5, 6]], options);
@@ -102,6 +114,28 @@ describe("flot legend plugin", function() {
         var legendSvg = document.getElementsByClassName('legendLayer')[0];
 
         expect(legendSvg).toBe(undefined);
+    });
+    it('should take into account the noColumns option value of 2', function() {
+        options.legend.noColumns = 2;
+        plot = $.plot(placeholder, [[1, 3, 5, 6], [2, 4, 6, 7],[3, 5, 7, 8]], options);
+
+        var legendSvg = document.getElementsByClassName('legendLayer')[0];
+        var firstLegendEntry = legendSvg.getElementsByTagNameNS('http://www.w3.org/2000/svg', 'g')[0];
+        var secondLegendEntry = legendSvg.getElementsByTagNameNS('http://www.w3.org/2000/svg', 'g')[1];
+        var thirdLegendEntry = legendSvg.getElementsByTagNameNS('http://www.w3.org/2000/svg', 'g')[2];
+        expect(firstLegendEntry.childNodes[0].x.baseVal.value < secondLegendEntry.childNodes[0].x.baseVal.value).toBe(true);
+        expect(secondLegendEntry.childNodes[0].x.baseVal.value > thirdLegendEntry.childNodes[0].x.baseVal.value).toBe(true);
+    });
+    it('should take into account the noColumns option value of 3', function() {
+        options.legend.noColumns = 3;
+        plot = $.plot(placeholder, [[1, 3, 5, 6], [2, 4, 6, 7],[3, 5, 7, 8]], options);
+
+        var legendSvg = document.getElementsByClassName('legendLayer')[0];
+        var firstLegendEntry = legendSvg.getElementsByTagNameNS('http://www.w3.org/2000/svg', 'g')[0];
+        var secondLegendEntry = legendSvg.getElementsByTagNameNS('http://www.w3.org/2000/svg', 'g')[1];
+        var thirdLegendEntry = legendSvg.getElementsByTagNameNS('http://www.w3.org/2000/svg', 'g')[2];
+        expect(firstLegendEntry.childNodes[0].x.baseVal.value < secondLegendEntry.childNodes[0].x.baseVal.value).toBe(true);
+        expect(secondLegendEntry.childNodes[0].x.baseVal.value < thirdLegendEntry.childNodes[0].x.baseVal.value).toBe(true);
     });
 });
 

@@ -4860,6 +4860,11 @@ ul.notifications {
   border: 1px solid #e5e5e5; }
 
 /** /Dropzone.js **/
+/** Tempus-Dominus **/
+.timepicker-picker .separator {
+  display: none; }
+
+/** /Tempus-Dominus **/
 
 .daterangepicker .ranges li {
   color: #73879C; }

@@ -35,7 +35,7 @@ formatters and transformers to and from logarithmic representation.
             val, range, vals = [];
 
         for (var power = log10Start; power <= log10End; power++) {
-            range = Math.pow(10, power);
+            range = parseFloat('1e' + power);
             for (var mult = 1; mult < 9; mult += rangeStep) {
                 val = range * mult;
                 vals.push(val);

@@ -1,12 +1,14 @@
 ## Frequently asked questions ##
 
+#### Which browsers are supported by Flot? ####
+
+Flot's distribution source is transpiled to ES5, which all major browsers support.
+For more information, [check here.](https://caniuse.com/#feat=es5)
+
 #### How much data can Flot cope with? ####
 
 Flot will happily draw everything you send to it so the answer
-depends on the browser. The excanvas emulation used for IE (built with
-VML) makes IE by far the slowest browser so be sure to test with that
-if IE users are in your target group (for large plots in IE, you can
-also check out Flashcanvas which may be faster).
+depends on the browser.
 
 1000 points is not a problem, but as soon as you start having more
 points than the pixel width, you should probably start thinking about
@@ -27,9 +29,7 @@ conversion automatically.
 
 You can grab the image rendered by the canvas element used by Flot
 as a PNG or JPEG (remember to set a background). Note that it won't
-include anything not drawn in the canvas (such as the legend). And it
-doesn't work with excanvas which uses VML, but you could try
-Flashcanvas.
+include anything not drawn in the canvas (such as the legend).
 
 
 #### The bars are all tiny in time mode? ####

@@ -1,16 +1,14 @@
 //! moment.js locale configuration
-//! locale : Tagalog/Filipino (tl-ph)
-//! author : Dan Hagman
 
 ;(function (global, factory) {
    typeof exports === 'object' && typeof module !== 'undefined'
        && typeof require === 'function' ? factory(require('../moment')) :
-   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
-}(this, function (moment) { 'use strict';
+}(this, (function (moment) { 'use strict';
 
 
-    var tl_ph = moment.defineLocale('tl-ph', {
+    var tlPh = moment.defineLocale('tl-ph', {
         months : 'Enero_Pebrero_Marso_Abril_Mayo_Hunyo_Hulyo_Agosto_Setyembre_Oktubre_Nobyembre_Disyembre'.split('_'),
         monthsShort : 'Ene_Peb_Mar_Abr_May_Hun_Hul_Ago_Set_Okt_Nob_Dis'.split('_'),
         weekdays : 'Linggo_Lunes_Martes_Miyerkules_Huwebes_Biyernes_Sabado'.split('_'),
@@ -25,17 +23,18 @@
             LLLL : 'dddd, MMMM DD, YYYY HH:mm'
         },
         calendar : {
-            sameDay: '[Ngayon sa] LT',
-            nextDay: '[Bukas sa] LT',
-            nextWeek: 'dddd [sa] LT',
-            lastDay: '[Kahapon sa] LT',
-            lastWeek: 'dddd [huling linggo] LT',
+            sameDay: 'LT [ngayong araw]',
+            nextDay: '[Bukas ng] LT',
+            nextWeek: 'LT [sa susunod na] dddd',
+            lastDay: 'LT [kahapon]',
+            lastWeek: 'LT [noong nakaraang] dddd',
             sameElse: 'L'
         },
         relativeTime : {
             future : 'sa loob ng %s',
             past : '%s ang nakalipas',
             s : 'ilang segundo',
+            ss : '%d segundo',
             m : 'isang minuto',
             mm : '%d minuto',
             h : 'isang oras',
@@ -47,7 +46,7 @@
             y : 'isang taon',
             yy : '%d taon'
         },
-        ordinalParse: /\d{1,2}/,
+        dayOfMonthOrdinalParse: /\d{1,2}/,
         ordinal : function (number) {
             return number;
         },
@@ -57,6 +56,6 @@
         }
     });
 
-    return tl_ph;
+    return tlPh;
 
-}));
+})));

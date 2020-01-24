@@ -1,13 +1,11 @@
 //! moment.js locale configuration
-//! locale : lao (lo)
-//! author : Ryan Hart : https://github.com/ryanhart2
 
 ;(function (global, factory) {
    typeof exports === 'object' && typeof module !== 'undefined'
        && typeof require === 'function' ? factory(require('../moment')) :
-   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
-}(this, function (moment) { 'use strict';
+}(this, (function (moment) { 'use strict';
 
 
     var lo = moment.defineLocale('lo', {
@@ -48,6 +46,7 @@
             future : 'ອີກ %s',
             past : '%sຜ່ານມາ',
             s : 'ບໍ່ເທົ່າໃດວິນາທີ',
+            ss : '%d ວິນາທີ' ,
             m : '1 ນາທີ',
             mm : '%d ນາທີ',
             h : '1 ຊົ່ວໂມງ',
@@ -59,7 +58,7 @@
             y : '1 ປີ',
             yy : '%d ປີ'
         },
-        ordinalParse: /(ທີ່)\d{1,2}/,
+        dayOfMonthOrdinalParse: /(ທີ່)\d{1,2}/,
         ordinal : function (number) {
             return 'ທີ່' + number;
         }
@@ -67,4 +66,4 @@
 
     return lo;
 
-}));
+})));

@@ -1,5 +1,6 @@
 //! moment.js locale configuration
-//! locale  : Tunisian Arabic (ar-tn)
+//! locale  :  Arabic (Tunisia) [ar-tn]
+//! author : Nader Toukabri : https://github.com/naderio
 
 import moment from '../moment';
 
@@ -30,6 +31,7 @@ export default moment.defineLocale('ar-tn', {
         future: 'في %s',
         past: 'منذ %s',
         s: 'ثوان',
+        ss : '%d ثانية',
         m: 'دقيقة',
         mm: '%d دقائق',
         h: 'ساعة',

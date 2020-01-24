@@ -1,5 +1,5 @@
 //! moment.js locale configuration
-//! locale : azerbaijani (az)
+//! locale : Azerbaijani [az]
 //! author : topchiyev : https://github.com/topchiyev
 
 import moment from '../moment';
@@ -51,7 +51,8 @@ export default moment.defineLocale('az', {
     relativeTime : {
         future : '%s sonra',
         past : '%s əvvəl',
-        s : 'birneçə saniyyə',
+        s : 'birneçə saniyə',
+        ss : '%d saniyə',
         m : 'bir dəqiqə',
         mm : '%d dəqiqə',
         h : 'bir saat',
@@ -78,7 +79,7 @@ export default moment.defineLocale('az', {
             return 'axşam';
         }
     },
-    ordinalParse: /\d{1,2}-(ıncı|inci|nci|üncü|ncı|uncu)/,
+    dayOfMonthOrdinalParse: /\d{1,2}-(ıncı|inci|nci|üncü|ncı|uncu)/,
     ordinal : function (number) {
         if (number === 0) {  // special case for zero
             return number + '-ıncı';
@@ -90,7 +91,7 @@ export default moment.defineLocale('az', {
     },
     week : {
         dow : 1, // Monday is the first day of the week.
-        doy : 7  // The week that contains Jan 1st is the first week of the year.
+        doy : 7  // The week that contains Jan 7th is the first week of the year.
     }
 });
 

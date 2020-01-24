@@ -1,5 +1,5 @@
 //! moment.js locale configuration
-//! locale : Persian (fa)
+//! locale : Persian [fa]
 //! author : Ebrahim Byagowi : https://github.com/ebraminio
 
 import moment from '../moment';
@@ -65,7 +65,8 @@ export default moment.defineLocale('fa', {
     relativeTime : {
         future : 'در %s',
         past : '%s پیش',
-        s : 'چندین ثانیه',
+        s : 'چند ثانیه',
+        ss : 'ثانیه d%',
         m : 'یک دقیقه',
         mm : '%d دقیقه',
         h : 'یک ساعت',
@@ -87,11 +88,11 @@ export default moment.defineLocale('fa', {
             return symbolMap[match];
         }).replace(/,/g, '،');
     },
-    ordinalParse: /\d{1,2}م/,
+    dayOfMonthOrdinalParse: /\d{1,2}م/,
     ordinal : '%dم',
     week : {
         dow : 6, // Saturday is the first day of the week.
-        doy : 12 // The week that contains Jan 1st is the first week of the year.
+        doy : 12 // The week that contains Jan 12th is the first week of the year.
     }
 });
 

@@ -3,16 +3,23 @@ import { normalizeUnits } from '../units/aliases';
 import toInt from '../utils/to-int';
 
 export function as (units) {
+    if (!this.isValid()) {
+        return NaN;
+    }
     var days;
     var months;
     var milliseconds = this._milliseconds;
 
     units = normalizeUnits(units);
 
-    if (units === 'month' || units === 'year') {
-        days   = this._days   + milliseconds / 864e5;
+    if (units === 'month' || units === 'quarter' || units === 'year') {
+        days = this._days + milliseconds / 864e5;
         months = this._months + daysToMonths(days);
-        return units === 'month' ? months : months / 12;
+        switch (units) {
+            case 'month':   return months;
+            case 'quarter': return months / 3;
+            case 'year':    return months / 12;
+        }
     } else {
         // handle milliseconds separately because of floating point math errors (issue #1867)
         days = this._days + Math.round(monthsToDays(this._months));
@@ -31,6 +38,9 @@ export function as (units) {
 
 // TODO: Use this.as('ms')?
 export function valueOf () {
+    if (!this.isValid()) {
+        return NaN;
+    }
     return (
         this._milliseconds +
         this._days * 864e5 +
@@ -52,4 +62,5 @@ export var asHours        = makeAs('h');
 export var asDays         = makeAs('d');
 export var asWeeks        = makeAs('w');
 export var asMonths       = makeAs('M');
+export var asQuarters     = makeAs('Q');
 export var asYears        = makeAs('y');

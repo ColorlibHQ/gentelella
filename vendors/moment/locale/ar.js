@@ -1,15 +1,11 @@
 //! moment.js locale configuration
-//! Locale: Arabic (ar)
-//! Author: Abdel Said: https://github.com/abdelsaid
-//! Changes in months, weekdays: Ahmed Elkhatib
-//! Native plural forms: forabi https://github.com/forabi
 
 ;(function (global, factory) {
    typeof exports === 'object' && typeof module !== 'undefined'
        && typeof require === 'function' ? factory(require('../moment')) :
-   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
-}(this, function (moment) { 'use strict';
+}(this, (function (moment) { 'use strict';
 
 
     var symbolMap = {
@@ -53,18 +49,18 @@
             return str.replace(/%d/i, number);
         };
     }, months = [
-        'كانون الثاني يناير',
-        'شباط فبراير',
-        'آذار مارس',
-        'نيسان أبريل',
-        'أيار مايو',
-        'حزيران يونيو',
-        'تموز يوليو',
-        'آب أغسطس',
-        'أيلول سبتمبر',
-        'تشرين الأول أكتوبر',
-        'تشرين الثاني نوفمبر',
-        'كانون الأول ديسمبر'
+        'يناير',
+        'فبراير',
+        'مارس',
+        'أبريل',
+        'مايو',
+        'يونيو',
+        'يوليو',
+        'أغسطس',
+        'سبتمبر',
+        'أكتوبر',
+        'نوفمبر',
+        'ديسمبر'
     ];
 
     var ar = moment.defineLocale('ar', {
@@ -105,6 +101,7 @@
             future : 'بعد %s',
             past : 'منذ %s',
             s : pluralize('s'),
+            ss : pluralize('s'),
             m : pluralize('m'),
             mm : pluralize('m'),
             h : pluralize('h'),
@@ -117,7 +114,7 @@
             yy : pluralize('y')
         },
         preparse: function (string) {
-            return string.replace(/\u200f/g, '').replace(/[١٢٣٤٥٦٧٨٩٠]/g, function (match) {
+            return string.replace(/[١٢٣٤٥٦٧٨٩٠]/g, function (match) {
                 return numberMap[match];
             }).replace(/،/g, ',');
         },
@@ -128,10 +125,10 @@
         },
         week : {
             dow : 6, // Saturday is the first day of the week.
-            doy : 12  // The week that contains Jan 1st is the first week of the year.
+            doy : 12  // The week that contains Jan 12th is the first week of the year.
         }
     });
 
     return ar;
 
-}));
+})));

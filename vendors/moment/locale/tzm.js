@@ -1,13 +1,11 @@
 //! moment.js locale configuration
-//! locale : Morocco Central Atlas Tamaziɣt (tzm)
-//! author : Abdel Said : https://github.com/abdelsaid
 
 ;(function (global, factory) {
    typeof exports === 'object' && typeof module !== 'undefined'
        && typeof require === 'function' ? factory(require('../moment')) :
-   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
-}(this, function (moment) { 'use strict';
+}(this, (function (moment) { 'use strict';
 
 
     var tzm = moment.defineLocale('tzm', {
@@ -36,6 +34,7 @@
             future : 'ⴷⴰⴷⵅ ⵙ ⵢⴰⵏ %s',
             past : 'ⵢⴰⵏ %s',
             s : 'ⵉⵎⵉⴽ',
+            ss : '%d ⵉⵎⵉⴽ',
             m : 'ⵎⵉⵏⵓⴺ',
             mm : '%d ⵎⵉⵏⵓⴺ',
             h : 'ⵙⴰⵄⴰ',
@@ -49,10 +48,10 @@
         },
         week : {
             dow : 6, // Saturday is the first day of the week.
-            doy : 12  // The week that contains Jan 1st is the first week of the year.
+            doy : 12  // The week that contains Jan 12th is the first week of the year.
         }
     });
 
     return tzm;
 
-}));
+})));

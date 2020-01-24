@@ -48,7 +48,8 @@ $.extend( DataTable.ext.buttons, {
 			className: 'buttons-colvis',
 			buttons: [ {
 				extend: 'columnsToggle',
-				columns: conf.columns
+				columns: conf.columns,
+				columnText: conf.columnText
 			} ]
 		};
 	},
@@ -58,7 +59,8 @@ $.extend( DataTable.ext.buttons, {
 		var columns = dt.columns( conf.columns ).indexes().map( function ( idx ) {
 			return {
 				extend: 'columnToggle',
-				columns: idx
+				columns: idx,
+				columnText: conf.columnText
 			};
 		} ).toArray();
 
@@ -69,7 +71,8 @@ $.extend( DataTable.ext.buttons, {
 	columnToggle: function ( dt, conf ) {
 		return {
 			extend: 'columnVisibility',
-			columns: conf.columns
+			columns: conf.columns,
+			columnText: conf.columnText
 		};
 	},
 
@@ -79,7 +82,8 @@ $.extend( DataTable.ext.buttons, {
 			return {
 				extend: 'columnVisibility',
 				columns: idx,
-				visibility: conf.visibility
+				visibility: conf.visibility,
+				columnText: conf.columnText
 			};
 		} ).toArray();
 
@@ -90,7 +94,7 @@ $.extend( DataTable.ext.buttons, {
 	columnVisibility: {
 		columns: undefined, // column selector
 		text: function ( dt, button, conf ) {
-			return conf._columnText( dt, conf.columns );
+			return conf._columnText( dt, conf );
 		},
 		className: 'buttons-columnVisibility',
 		action: function ( e, dt, button, conf ) {
@@ -104,28 +108,25 @@ $.extend( DataTable.ext.buttons, {
 		},
 		init: function ( dt, button, conf ) {
 			var that = this;
+			button.attr( 'data-cv-idx', conf.columns );
 
 			dt
 				.on( 'column-visibility.dt'+conf.namespace, function (e, settings) {
-					if ( ! settings.bDestroying ) {
+					if ( ! settings.bDestroying && settings.nTable == dt.settings()[0].nTable ) {
 						that.active( dt.column( conf.columns ).visible() );
 					}
 				} )
 				.on( 'column-reorder.dt'+conf.namespace, function (e, settings, details) {
-					// Don't rename buttons based on column name if the button
-					// controls more than one column!
 					if ( dt.columns( conf.columns ).count() !== 1 ) {
 						return;
 					}
 
-					if ( typeof conf.columns === 'number' ) {
-						conf.columns = details.mapping[ conf.columns ];
-					}
+					// This button controls the same column index but the text for the column has
+					// changed
+					button.text( conf._columnText( dt, conf ) );
 
-					var col = dt.column( conf.columns );
-
-					that.text( conf._columnText( dt, conf.columns ) );
-					that.active( col.visible() );
+					// Since its a different column, we need to check its visibility
+					that.active( dt.column( conf.columns ).visible() );
 				} );
 
 			this.active( dt.column( conf.columns ).visible() );
@@ -136,16 +137,23 @@ $.extend( DataTable.ext.buttons, {
 				.off( 'column-reorder.dt'+conf.namespace );
 		},
 
-		_columnText: function ( dt, col ) {
+		_columnText: function ( dt, conf ) {
 			// Use DataTables' internal data structure until this is presented
 			// is a public API. The other option is to use
 			// `$( column(col).node() ).text()` but the node might not have been
 			// populated when Buttons is constructed.
-			var idx = dt.column( col ).index();
-			return dt.settings()[0].aoColumns[ idx ].sTitle
+			var idx = dt.column( conf.columns ).index();
+			var title = dt.settings()[0].aoColumns[ idx ].sTitle
 				.replace(/\n/g," ")        // remove new lines
-				.replace( /<.*?>/g, "" )   // strip HTML
+				.replace(/<br\s*\/?>/gi, " ")  // replace line breaks with spaces
+				.replace(/<select(.*?)<\/select>/g, "") // remove select tags, including options text
+				.replace(/<!\-\-.*?\-\->/g, "") // strip HTML comments
+				.replace(/<.*?>/g, "")   // strip HTML
 				.replace(/^\s+|\s+$/g,""); // trim
+
+			return conf.columnText ?
+				conf.columnText( dt, idx, title ) :
+				title;
 		}
 	},
 

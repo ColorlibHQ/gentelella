@@ -119,11 +119,19 @@ More detail and specific examples can be found in the included HTML file.
             if (options.series.pie.show) {
                 if (options.grid.hoverable) {
                     eventHolder.unbind("mousemove").mousemove(onMouseMove);
+                    eventHolder.bind("mouseleave", onMouseMove);
                 }
                 if (options.grid.clickable) {
                     eventHolder.unbind("click").click(onClick);
                 }
             }
+        });
+
+        plot.hooks.shutdown.push(function (plot, eventHolder) {
+            eventHolder.unbind("mousemove", onMouseMove);
+            eventHolder.unbind("mouseleave", onMouseMove);
+            eventHolder.unbind("click", onClick);
+            highlights = [];
         });
 
         plot.hooks.processDatapoints.push(function(plot, series, data, datapoints) {

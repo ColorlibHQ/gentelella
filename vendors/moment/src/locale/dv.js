@@ -1,5 +1,5 @@
 //! moment.js locale configuration
-//! locale : dhivehi (dv)
+//! locale : Maldivian [dv]
 //! author : Jawish Hameed : https://github.com/jawish
 
 import moment from '../moment';
@@ -65,6 +65,7 @@ export default moment.defineLocale('dv', {
         future : 'ތެރޭގައި %s',
         past : 'ކުރިން %s',
         s : 'ސިކުންތުކޮޅެއް',
+        ss : 'd% ސިކުންތު',
         m : 'މިނިޓެއް',
         mm : 'މިނިޓު %d',
         h : 'ގަޑިއިރެއް',
@@ -84,6 +85,6 @@ export default moment.defineLocale('dv', {
     },
     week : {
         dow : 7,  // Sunday is the first day of the week.
-        doy : 12  // The week that contains Jan 1st is the first week of the year.
+        doy : 12  // The week that contains Jan 12th is the first week of the year.
     }
 });

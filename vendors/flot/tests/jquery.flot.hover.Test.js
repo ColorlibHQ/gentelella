@@ -190,8 +190,11 @@ describe("flot hover plugin", function () {
         });
 
         it('should update the current hover point to the placeholder when the plot created again', function () {
+            var hovered = false;
             plot = $.plot(placeholder, [ [ [0, 0], [2, 3], [10, 10] ] ], options);
-
+            $(placeholder).bind("plothover", function (event, pos, item) {
+                hovered = true;
+            });
             var eventHolder = plot.getEventHolder(),
                 offset = plot.getPlotOffset(),
                 axisx = plot.getXAxes()[0],
@@ -202,11 +205,12 @@ describe("flot hover plugin", function () {
 
             let evt = simulate.mouseMove(eventHolder, x, y, noButton);
             jasmine.clock().tick(1000);
-
+            hovered = false;
             plot = $.plot(placeholder, [ [ [0, 0], [2, 3], [10, 10] ] ], options);
 
             expect(plot.getPlaceholder()[0].lastMouseMoveEvent.originalEvent.x).toEqual(evt.x);
             expect(plot.getPlaceholder()[0].lastMouseMoveEvent.originalEvent.y).toEqual(evt.y);
+            expect(hovered).toEqual(true);
         });
 
         it('should highlight a bar when hovered', function() {
@@ -227,6 +231,112 @@ describe("flot hover plugin", function () {
             jasmine.clock().tick(100);
 
             expect(getEntireCanvasData(canvas)).toContainPixelColor(rgba(10, 20, 30, 1));
+        });
+
+        it('should correctly highlight bars with bottom points specified', function() {
+            options.series.bars = { show: true, barWidth: 0.5 };
+            options.series.lines = undefined;
+            plot = $.plot(placeholder, [ [ [0, 5, 2], [1, 7, 2], [2, 6, 2] ] ], options);
+
+            var eventHolder = plot.getEventHolder(),
+                canvas = eventHolder,
+                offset = plot.getPlotOffset(),
+                axisx = plot.getXAxes()[0],
+                axisy = plot.getYAxes()[0],
+                x = axisx.p2c(1.25) + offset.left,
+                y = axisy.p2c(1) + offset.top,
+                noButton = 0;
+
+            simulate.mouseMove(eventHolder, x, y, noButton);
+            jasmine.clock().tick(100);
+
+            expect(getEntireCanvasData(canvas)).not.toContainPixelColor(rgba(10, 20, 30, 1));
+
+            y = axisy.p2c(4) + offset.top;
+            simulate.mouseMove(eventHolder, x, y, noButton);
+            jasmine.clock().tick(100);
+
+            expect(getEntireCanvasData(canvas)).toContainPixelColor(rgba(10, 20, 30, 1));
+        });
+
+        it('should call hooked function when canvas is hovered over', function(done) {
+            var spy = jasmine.createSpy('spy');
+            var hookCallback = function() {
+                spy();
+                done();
+            }
+
+            options.hooks = {findNearbyItems: [hookCallback]};
+            plot = $.plot(placeholder, [ [ [0, 0], [2, 3], [10, 10] ] ], options);
+
+            var eventHolder = plot.getEventHolder(),
+                offset = plot.getPlotOffset(),
+                axisx = plot.getXAxes()[0],
+                axisy = plot.getYAxes()[0],
+                x = axisx.p2c(2) + offset.left,
+                y = axisy.p2c(3) + offset.top,
+                noButton = 0;
+
+            simulate.mouseMove(eventHolder, x, y, noButton);
+
+            expect(spy).toHaveBeenCalled();
+        });
+
+        it('should pass item returned from hook in items', function(done) {
+            var testItem = {distance: 5};
+            var hook = function(_0, _1, _2, _3, _4, _5, _6, items) {
+                items.push(testItem);
+            }
+
+            options.hooks = {findNearbyItems: [hook]};
+            plot = $.plot(placeholder, [ [ [0, 0], [2, 3], [10, 10] ] ], options);
+
+            $(plot.getPlaceholder()).on('plothover', function(event, pos, item, items) {
+                var seenTestItem = false;
+                for (const i of items) {
+                    if (i === testItem) {
+                        seenTestItem = true;
+                    }
+                }
+                expect(seenTestItem).toBe(true);
+                done();
+            });
+
+            var eventHolder = plot.getEventHolder(),
+                offset = plot.getPlotOffset(),
+                axisx = plot.getXAxes()[0],
+                axisy = plot.getYAxes()[0],
+                x = axisx.p2c(2) + offset.left,
+                y = axisy.p2c(3) + offset.top,
+                noButton = 0;
+
+            simulate.mouseMove(eventHolder, x, y, noButton);
+        })
+
+        it('should choose closest item from items returned by hooks', function(done) {
+            var distance = 5,
+                testItem = {distance: distance};
+            var hook = function(_0, _1, _2, _3, _4, _5, _6, items) {
+                items.push(testItem);
+            }
+
+            options.hooks = {findNearbyItems: [hook]};
+            plot = $.plot(placeholder, [ [ [0, 0], [2, 3], [10, 10] ] ], options);
+
+            $(plot.getPlaceholder()).on('plothover', function(event, pos, item, items) {
+                expect(item.distance < distance).toBe(true);
+                done();
+            });
+
+            var eventHolder = plot.getEventHolder(),
+                offset = plot.getPlotOffset(),
+                axisx = plot.getXAxes()[0],
+                axisy = plot.getYAxes()[0],
+                x = axisx.p2c(2) + offset.left,
+                y = axisy.p2c(3) + offset.top,
+                noButton = 0;
+
+            simulate.mouseMove(eventHolder, x, y, noButton);
         });
     });
 });

@@ -128,6 +128,53 @@ describe('CanvasWrapper', function() {
         expect(box2.top).not.toBe(box1.top);
     });
 
+    it('should add the same text with the correct horizontal alignment', function() {
+        var canvas = newCanvas(placeholder);
+        canvas.addText('layerA', 100, 200, '123', 'a', 0, 200, 'center', 'top');
+        canvas.addText('layerA', 100, 200, '234', 'a');
+        canvas.render();
+
+        var elem1 = placeholder.find('.a')[0],
+            elem2 = placeholder.find('.a')[1],
+            box1 = elem1.getBoundingClientRect(),
+            box2 = elem2.getBoundingClientRect();
+        expect(box2.left).not.toBe(box1.left);
+        expect(box2.top).toBe(box1.top);
+    });
+
+    it('should add the same text with the correct vertical alignment', function() {
+        var canvas = newCanvas(placeholder);
+        canvas.addText('layerA', 100, 200, '123', 'a', 0, 200, 'left', 'bottom');
+        canvas.addText('layerA', 100, 200, '234', 'a');
+        canvas.render();
+
+        var elem1 = placeholder.find('.a')[0],
+            elem2 = placeholder.find('.a')[1],
+            box1 = elem1.getBoundingClientRect(),
+            box2 = elem2.getBoundingClientRect();
+        expect(box2.left).toBe(box1.left);
+        expect(box2.top).not.toBe(box1.top);
+    });
+
+    it('should add the same text with the correct tranforms', function() {
+        var canvas = newCanvas(placeholder);
+        var transforms = [], translate;
+        var svgLayer = canvas.getSVGLayer('layerA');
+        translate = svgLayer.parentNode.createSVGTransform();
+        translate.setTranslate(100, 100);
+        transforms.push(translate);
+
+        canvas.addText('layerA', 100, 200, '123', 'a', 0, 200, 'left', 'top', transforms);
+        canvas.addText('layerA', 100, 200, '234', 'a');
+        canvas.render();
+
+        var elem1 = placeholder.find('.a')[0],
+            elem2 = placeholder.find('.a')[1];
+        expect(elem2.transform.baseVal.length).toBe(0);
+        expect(elem1.transform.baseVal[0].matrix.e).toBe(100);
+        expect(elem1.transform.baseVal[0].matrix.f).toBe(100);
+    });
+
     it('should add different text with the same CSS at different coords', function() {
         var canvas = newCanvas(placeholder);
         canvas.addText('layerA', 100, 200, '123', 'a');

@@ -1,18 +1,14 @@
 {
-  "name": "Flot",
-  "version": "0.8.3",
-  "main": "jquery.flot.js",
-  "dependencies": {
-    "jquery": ">= 1.2.6"
-  },
+  "name": "flot",
   "homepage": "https://github.com/flot/flot",
-  "_release": "0.8.3",
+  "version": "4.1.1",
+  "_release": "4.1.1",
   "_resolution": {
     "type": "version",
-    "tag": "v0.8.3",
-    "commit": "453b017cc5acfd75e252b93e8635f57f4196d45d"
+    "tag": "v4.1.1",
+    "commit": "01490257a542c48188ba6a5785bdc50cc0624c17"
   },
   "_source": "https://github.com/flot/flot.git",
-  "_target": "^0.8.3",
+  "_target": ">=0.8.0",
   "_originalSource": "flot"
 }

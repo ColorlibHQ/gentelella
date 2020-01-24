@@ -1,13 +1,11 @@
 //! moment.js locale configuration
-//! locale : Luxembourgish (lb)
-//! author : mweimerskirch : https://github.com/mweimerskirch, David Raison : https://github.com/kwisatz
 
 ;(function (global, factory) {
    typeof exports === 'object' && typeof module !== 'undefined'
        && typeof require === 'function' ? factory(require('../moment')) :
-   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
-}(this, function (moment) { 'use strict';
+}(this, (function (moment) { 'use strict';
 
 
     function processRelativeTime(number, withoutSuffix, key, isFuture) {
@@ -112,6 +110,7 @@
             future : processFutureTime,
             past : processPastTime,
             s : 'e puer Sekonnen',
+            ss : '%d Sekonnen',
             m : processRelativeTime,
             mm : '%d Minutten',
             h : processRelativeTime,
@@ -123,7 +122,7 @@
             y : processRelativeTime,
             yy : '%d Joer'
         },
-        ordinalParse: /\d{1,2}\./,
+        dayOfMonthOrdinalParse: /\d{1,2}\./,
         ordinal: '%d.',
         week: {
             dow: 1, // Monday is the first day of the week.
@@ -133,4 +132,4 @@
 
     return lb;
 
-}));
+})));

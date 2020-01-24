@@ -35,15 +35,15 @@ API.txt for details.
 
             // Round epoch to 3 decimal accuracy
             microEpoch = Math.round(microEpoch*1000)/1000;
-            this.microEpoch = microEpoch;
 
             // Microseconds are stored as integers
-            var seconds = microEpoch/1000;
-            this.microseconds = 1000000 * (seconds - Math.floor(seconds));
+            this.microseconds = 1000 * (microEpoch - Math.floor(microEpoch));
         };
 
+        var oldGetTime = newDate.getTime.bind(newDate);
         newDate.getTime = function () {
-            return this.microEpoch;
+            var microEpoch = oldGetTime() + this.microseconds / 1000;
+            return microEpoch;
         };
 
         newDate.setTime = function (microEpoch) {
@@ -55,8 +55,7 @@ API.txt for details.
         };
 
         newDate.setMicroseconds = function(microseconds) {
-            // Replace the microsecond part (6 last digits) in microEpoch
-            var epochWithoutMicroseconds = 1000*Math.floor(this.microEpoch/1000);
+            var epochWithoutMicroseconds = oldGetTime();
             var newEpoch = epochWithoutMicroseconds + microseconds/1000;
             this.update(newEpoch);
         };
@@ -85,16 +84,18 @@ API.txt for details.
 			return n.length == 1 ? pad + n : n;
 		};
 
-		var formatMicroseconds = function(n, dec) {
-			if (dec < 6 && dec > 0) {
-				var magnitude = Math.pow(10,dec-6);
-				n = Math.round(Math.round(n*magnitude)/magnitude);
-				n = ('00000' + n).slice(-6,-(6 - dec));
+		var formatSubSeconds = function(milliseconds, microseconds, numberDecimalPlaces) {
+            var totalMicroseconds = milliseconds * 1000 + microseconds;
+            var formattedString;
+			if (numberDecimalPlaces < 6 && numberDecimalPlaces > 0) {
+				var magnitude = parseFloat('1e' + (numberDecimalPlaces - 6));
+				totalMicroseconds = Math.round(Math.round(totalMicroseconds * magnitude) / magnitude);
+				formattedString = ('00000' + totalMicroseconds).slice(-6,-(6 - numberDecimalPlaces));
 			} else {
-                n = Math.round(n)
-				n = ('00000' + n).slice(-6);
+                totalMicroseconds = Math.round(totalMicroseconds)
+				formattedString = ('00000' + totalMicroseconds).slice(-6);
 			}
-			return n;
+			return formattedString;
 		};
 
         var r = [];
@@ -141,7 +142,7 @@ API.txt for details.
 					case 'q':
 						c = "" + (Math.floor(d.getMonth() / 3) + 1); break;
 					case 'S': c = leftPad(d.getSeconds()); break;
-					case 's': c = "" + formatMicroseconds(d.getMicroseconds(),decimals); break;
+					case 's': c = "" + formatSubSeconds(d.getMilliseconds(), d.getMicroseconds(), decimals); break;
 					case 'y': c = leftPad(d.getFullYear() % 100); break;
 					case 'Y': c = "" + d.getFullYear(); break;
 					case 'p': c = (isAM) ? ("" + "am") : ("" + "pm"); break;
@@ -344,7 +345,7 @@ API.txt for details.
             if (opts.minTickSize !== null && opts.minTickSize !== undefined && opts.minTickSize[1] === "year") {
                 size = Math.floor(opts.minTickSize[0]);
             } else {
-                var magn = Math.pow(10, Math.floor(Math.log(axis.delta / timeUnitSize.year) / Math.LN10));
+                var magn = parseFloat('1e' + Math.floor(Math.log(axis.delta / timeUnitSize.year) / Math.LN10));
                 var norm = (axis.delta / timeUnitSize.year) / magn;
 
                 if (norm < 1.5) {

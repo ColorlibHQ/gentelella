@@ -1,5 +1,5 @@
 //! moment.js locale configuration
-//! locale : Hebrew (he)
+//! locale : Hebrew [he]
 //! author : Tomer Cohen : https://github.com/tomer
 //! author : Moshe Simantov : https://github.com/DevelopmentIL
 //! author : Tal Ater : https://github.com/TalAter
@@ -36,6 +36,7 @@ export default moment.defineLocale('he', {
         future : 'בעוד %s',
         past : 'לפני %s',
         s : 'מספר שניות',
+        ss : '%d שניות',
         m : 'דקה',
         mm : '%d דקות',
         h : 'שעה',

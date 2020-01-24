@@ -1,0 +1,79 @@
+{
+  "license": "MIT",
+  "main": "build/js/tempusdominus-bootstrap-4.js",
+  "name": "tempusdominus-bootstrap-4",
+  "author": "Jonathan Peterson",
+  "bugs": {
+    "url": "https://github.com/tempusdominus/bootstrap-4/issues"
+  },
+  "dependencies": {
+    "bootstrap": ">=4.1.2",
+    "jquery": "^3.0",
+    "moment": "^2.22.2",
+    "moment-timezone": "^0.5.11",
+    "popper.js": "^1.14.3"
+  },
+  "peerDependencies": {
+    "bootstrap": ">=4.1.2",
+    "jquery": "^3.0",
+    "popper.js": "^1.14.3",
+    "moment": "^2.17",
+    "moment-timezone": "^0.5.11",
+    "tempusdominus-core": "5.0.3"
+  },
+  "scripts": {
+    "change-version": "node grunt/change-version.js",
+    "clean-css": "cleancss --skip-advanced --source-map --output dist/css/bootstrap.min.css dist/css/bootstrap.css && cleancss --skip-advanced --source-map --output dist/css/bootstrap-grid.min.css dist/css/bootstrap-grid.css && cleancss --skip-advanced --source-map --output dist/css/bootstrap-reboot.min.css dist/css/bootstrap-reboot.css",
+    "clean-css-docs": "cleancss --skip-advanced --source-map --output docs/assets/css/docs.min.css docs/assets/css/docs.min.css",
+    "eslint": "eslint --ignore-path .eslintignore js && eslint --config js/tests/.eslintrc.json --env node grunt Gruntfile.js && eslint --config js/tests/.eslintrc.json docs/assets/js/src docs/assets/js/ie-emulation-modes-warning.js docs/assets/js/ie10-viewport-bug-workaround.js",
+    "htmlhint": "htmlhint --config docs/.htmlhintrc _gh_pages/",
+    "postcss": "postcss --config grunt/postcss.js --replace dist/css/*.css",
+    "postcss-docs": "postcss --config grunt/postcss.js --no-map --replace docs/assets/css/docs.min.css && postcss --config grunt/postcss.js --no-map --replace docs/examples/**/*.css",
+    "scss-lint": "bundle exec scss-lint --config scss/.scss-lint.yml --exclude scss/_normalize.scss scss/*.scss",
+    "scss-lint-docs": "bundle exec scss-lint --config scss/.scss-lint.yml --exclude docs/assets/scss/docs.scss docs/assets/scss/*.scss",
+    "uglify": "uglifyjs --compress warnings=false --mangle --output build/js/tempusdominus-bootstrap-3.min.js build/js/tempusdominus-bootstrap-3.js",
+    "uglify-docs": "uglifyjs --compress warnings=false --mangle --comments '/^!/' --output docs/assets/js/docs.min.js docs/assets/js/vendor/*.js docs/assets/js/src/application.js",
+    "update-shrinkwrap": "npm shrinkwrap --dev && shx mv ./npm-shrinkwrap.json ./grunt/npm-shrinkwrap.json",
+    "test": "npm run eslint && grunt test"
+  },
+  "description": "A date/time picker component designed to work with Bootstrap 4 and Momentjs. For usage, installation and demos see Project Site on GitHub",
+  "devDependencies": {
+    "babel-plugin-transform-es2015-modules-strip": "^0.1.0",
+    "babel-preset-es2015": "^6.24.1",
+    "grunt": "^1.0.3",
+    "grunt-babel": "6.0.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-uglify": "latest",
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-eslint": "^19.0.0",
+    "grunt-jscs": "latest",
+    "grunt-mkdocs": "^0.2.3",
+    "grunt-sass": "3.0.0",
+    "grunt-sass-tilde-importer": "^1.0.2",
+    "grunt-stamp": "^0.3.0",
+    "grunt-string-replace": "latest",
+    "load-grunt-tasks": "latest",
+    "node-sass": "^4.9.3",
+    "tempusdominus-core": "^5.0.3",
+    "uglify-js": "^2.7.5"
+  },
+  "homepage": "https://tempusdominus.github.io/bootstrap-4/",
+  "keywords": [
+    "bootstrap",
+    "datepicker",
+    "datetimepicker",
+    "timepicker",
+    "moment"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tempusdominus/bootstrap-4.git"
+  },
+  "version": "5.1.2",
+  "files": [
+    "build",
+    "src/js/**/*.js",
+    "src/sass/**/*.scss",
+    "Gruntfile.js"
+  ]
+}

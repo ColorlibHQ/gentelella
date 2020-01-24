@@ -6,6 +6,7 @@
     var defaultOptions = {
         legend: {
             show: false,
+            noColumns: 1,
             labelFormatter: null, // fn: string -> string
             container: null, // container (as jQuery object) to put legend in, null means default on top of graph
             position: 'ne', // position of default legend container within plot
@@ -31,8 +32,8 @@
             plotOffset = options.legend.plotOffset = plot.getPlotOffset(),
             html = [],
             entry, labelHtml, iconHtml,
-            maxLabelLength = 0,
             j = 0,
+            i,
             pos = "",
             p = options.legend.position,
             m = options.legend.margin,
@@ -47,13 +48,46 @@
         html[j++] = '<rect class="background" width="100%" height="100%"/>';
         html[j++] = svgShapeDefs;
 
+        var left = 0;
+        var columnWidths = [];
+        var style = window.getComputedStyle(document.querySelector('body'));
+        for (i = 0; i < entries.length; ++i) {
+            var columnIndex = i % options.legend.noColumns;
+            entry = entries[i];
+            shape.label = entry.label;
+            var info = plot.getSurface().getTextInfo('', shape.label, {
+                style: style.fontStyle,
+                variant: style.fontVariant,
+                weight: style.fontWeight,
+                size: parseInt(style.fontSize),
+                lineHeight: parseInt(style.lineHeight),
+                family: style.fontFamily
+            });
+
+            var labelWidth = info.width;
+            // 36px = 1.5em + 6px margin
+            var iconWidth = 48;
+            if (columnWidths[columnIndex]) {
+                if (labelWidth > columnWidths[columnIndex]) {
+                    columnWidths[columnIndex] = labelWidth + iconWidth;
+                }
+            } else {
+                columnWidths[columnIndex] = labelWidth + iconWidth;
+            }
+        }
+
         // Generate html for icons and labels from a list of entries
-        for (var i = 0; i < entries.length; ++i) {
+        for (i = 0; i < entries.length; ++i) {
+            var columnIndex = i % options.legend.noColumns;
             entry = entries[i];
             iconHtml = '';
             shape.label = entry.label;
-            shape.xPos = '0em';
-            shape.yPos = i * 1.5 + 'em';
+            shape.xPos = (left + 3) + 'px';
+            left += columnWidths[columnIndex];
+            if ((i + 1) % options.legend.noColumns === 0) {
+                left = 0;
+            }
+            shape.yPos = Math.floor(i / options.legend.noColumns) * 1.5 + 'em';
             // area
             if (entry.options.lines.show && entry.options.lines.fill) {
                 shape.name = 'area';
@@ -82,7 +116,6 @@
                 iconHtml += getEntryIconHtml(shape);
             }
 
-            maxLabelLength = maxLabelLength < shape.label.length ? shape.label.length : maxLabelLength;
             labelHtml = '<text x="' + shape.xPos + '" y="' + shape.yPos + '" text-anchor="start"><tspan dx="2em" dy="1.2em">' + shape.label + '</tspan></text>'
             html[j++] = '<g>' + iconHtml + labelHtml + '</g>';
         }
@@ -104,17 +137,21 @@
             pos += 'left:' + (m[0] + plotOffset.left) + 'px;';
         }
 
+        var width = 6;
+        for (i = 0; i < columnWidths.length; ++i) {
+            width += columnWidths[i];
+        }
+
         var legendEl,
-            width = 3 + maxLabelLength / 2,
-            height = entries.length * 1.6;
+            height = Math.ceil(entries.length / options.legend.noColumns) * 1.6;
         if (!options.legend.container) {
             legendEl = $('<div class="legend" style="position:absolute;' + pos + '">' + html.join('') + '</div>').appendTo(placeholder);
-            legendEl.css('width', width + 'em');
+            legendEl.css('width', width + 'px');
             legendEl.css('height', height + 'em');
             legendEl.css('pointerEvents', 'none');
         } else {
             legendEl = $(html.join('')).appendTo(options.legend.container)[0];
-            options.legend.container.style.width = width + 'em';
+            options.legend.container.style.width = width + 'px';
             options.legend.container.style.height = height + 'em';
         }
     }
@@ -278,17 +315,22 @@
     // Generate a list of legend entries in their final order
     function getLegendEntries(series, labelFormatter, sorted) {
         var lf = labelFormatter,
-            legendEntries = series.map(function(s, i) {
-                return {
-                    label: (lf ? lf(s.label, s) : s.label) || 'Plot ' + (i + 1),
-                    color: s.color,
-                    options: {
-                        lines: s.lines,
-                        points: s.points,
-                        bars: s.bars
+            legendEntries = series.reduce(function(validEntries, s, i) {
+                var labelEval = (lf ? lf(s.label, s) : s.label)
+                if (s.hasOwnProperty("label") ? labelEval : true) {
+                    var entry = {
+                        label: labelEval || 'Plot ' + (i + 1),
+                        color: s.color,
+                        options: {
+                            lines: s.lines,
+                            points: s.points,
+                            bars: s.bars
+                        }
                     }
-                };
-            });
+                    validEntries.push(entry)
+                }
+                return validEntries;
+            }, []);
 
         // Sort the legend using either the default or a custom comparator
         if (sorted) {

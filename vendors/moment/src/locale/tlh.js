@@ -1,5 +1,5 @@
 //! moment.js locale configuration
-//! locale : Klingon (tlh)
+//! locale : Klingon [tlh]
 //! author : Dominika Kruk : https://github.com/amaranthrose
 
 import moment from '../moment';
@@ -9,30 +9,32 @@ var numbersNouns = 'pagh_wa’_cha’_wej_loS_vagh_jav_Soch_chorgh_Hut'.split('_
 function translateFuture(output) {
     var time = output;
     time = (output.indexOf('jaj') !== -1) ?
-	time.slice(0, -3) + 'leS' :
-	(output.indexOf('jar') !== -1) ?
-	time.slice(0, -3) + 'waQ' :
-	(output.indexOf('DIS') !== -1) ?
-	time.slice(0, -3) + 'nem' :
-	time + ' pIq';
+    time.slice(0, -3) + 'leS' :
+    (output.indexOf('jar') !== -1) ?
+    time.slice(0, -3) + 'waQ' :
+    (output.indexOf('DIS') !== -1) ?
+    time.slice(0, -3) + 'nem' :
+    time + ' pIq';
     return time;
 }
 
 function translatePast(output) {
     var time = output;
     time = (output.indexOf('jaj') !== -1) ?
-	time.slice(0, -3) + 'Hu’' :
-	(output.indexOf('jar') !== -1) ?
-	time.slice(0, -3) + 'wen' :
-	(output.indexOf('DIS') !== -1) ?
-	time.slice(0, -3) + 'ben' :
-	time + ' ret';
+    time.slice(0, -3) + 'Hu’' :
+    (output.indexOf('jar') !== -1) ?
+    time.slice(0, -3) + 'wen' :
+    (output.indexOf('DIS') !== -1) ?
+    time.slice(0, -3) + 'ben' :
+    time + ' ret';
     return time;
 }
 
 function translate(number, withoutSuffix, string, isFuture) {
     var numberNoun = numberAsNoun(number);
     switch (string) {
+        case 'ss':
+            return numberNoun + ' lup';
         case 'mm':
             return numberNoun + ' tup';
         case 'hh':
@@ -48,9 +50,9 @@ function translate(number, withoutSuffix, string, isFuture) {
 
 function numberAsNoun(number) {
     var hundred = Math.floor((number % 1000) / 100),
-	ten = Math.floor((number % 100) / 10),
-	one = number % 10,
-	word = '';
+    ten = Math.floor((number % 100) / 10),
+    one = number % 10,
+    word = '';
     if (hundred > 0) {
         word += numbersNouns[hundred] + 'vatlh';
     }
@@ -90,6 +92,7 @@ export default moment.defineLocale('tlh', {
         future : translateFuture,
         past : translatePast,
         s : 'puS lup',
+        ss : translate,
         m : 'wa’ tup',
         mm : translate,
         h : 'wa’ rep',
@@ -101,7 +104,7 @@ export default moment.defineLocale('tlh', {
         y : 'wa’ DIS',
         yy : translate
     },
-    ordinalParse: /\d{1,2}\./,
+    dayOfMonthOrdinalParse: /\d{1,2}\./,
     ordinal : '%d.',
     week : {
         dow : 1, // Monday is the first day of the week.

@@ -1,12 +1,12 @@
 //! moment.js
-//! version : 2.13.0
+//! version : 2.24.0
 //! authors : Tim Wood, Iskren Chernev, Moment.js contributors
 //! license : MIT
 //! momentjs.com
 
 import { hooks as moment, setHookCallback } from './lib/utils/hooks';
 
-moment.version = '2.13.0';
+moment.version = '2.24.0';
 
 import {
     min,
@@ -20,6 +20,10 @@ import {
     createInvalid   as invalid,
     createInZone    as parseZone
 } from './lib/moment/moment';
+
+import {
+    getCalendarFormat
+} from './lib/moment/calendar';
 
 import {
     defineLocale,
@@ -36,7 +40,8 @@ import {
 
 import {
     isDuration,
-    createDuration as duration,
+    createDuration              as duration,
+    getSetRelativeTimeRounding  as relativeTimeRounding,
     getSetRelativeTimeThreshold as relativeTimeThreshold
 } from './lib/duration/duration';
 
@@ -69,7 +74,22 @@ moment.updateLocale          = updateLocale;
 moment.locales               = locales;
 moment.weekdaysShort         = weekdaysShort;
 moment.normalizeUnits        = normalizeUnits;
+moment.relativeTimeRounding  = relativeTimeRounding;
 moment.relativeTimeThreshold = relativeTimeThreshold;
+moment.calendarFormat        = getCalendarFormat;
 moment.prototype             = fn;
+
+// currently HTML5 input type only supports 24-hour formats
+moment.HTML5_FMT = {
+    DATETIME_LOCAL: 'YYYY-MM-DDTHH:mm',             // <input type="datetime-local" />
+    DATETIME_LOCAL_SECONDS: 'YYYY-MM-DDTHH:mm:ss',  // <input type="datetime-local" step="1" />
+    DATETIME_LOCAL_MS: 'YYYY-MM-DDTHH:mm:ss.SSS',   // <input type="datetime-local" step="0.001" />
+    DATE: 'YYYY-MM-DD',                             // <input type="date" />
+    TIME: 'HH:mm',                                  // <input type="time" />
+    TIME_SECONDS: 'HH:mm:ss',                       // <input type="time" step="1" />
+    TIME_MS: 'HH:mm:ss.SSS',                        // <input type="time" step="0.001" />
+    WEEK: 'GGGG-[W]WW',                             // <input type="week" />
+    MONTH: 'YYYY-MM'                                // <input type="month" />
+};
 
 export default moment;

@@ -1,6 +1,34 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [3.2.0]
+
+### Changes ###
+
+- Removed CORS stylesheet support
+- Added the category plugin back into the distribution
+- [Changed how bar width is computed.](https://github.com/flot/flot/pull/1663) - We now will filter unique x-values and then sort them before computing bar width.
+
+### Bug Fixes ###
+
+- [Issue 1645](https://github.com/flot/flot/issues/1645) (change [1656](https://github.com/flot/flot/pull/1656)) - Refactoring hover plugin so events get registered in proper order.
+- [Issue 1642](https://github.com/flot/flot/issues/1642) (change [1657](https://github.com/flot/flot/pull/1657)) - Remove a canvas resizing implementation that doesn't support scaling.
+- [Issue 1638](https://github.com/flot/flot/issues/1638) (change [1660](https://github.com/flot/flot/pull/1660)) - Fix overloading of date types to allow using methods like 'setFullYear()'
+- [Issue 1664](https://github.com/flot/flot/issues/1664) (change [1665](https://github.com/flot/flot/pull/1665)) - Fix issue with fill when data has null values.
+
+## [3.1.0]
+
+### Changes ###
+
+- We now are triggering a second onDrawingDone event on the placeholder object (in addition to the eventholder).
+- Added support for loading stylesheets in cross origin scenarios (this has since been removed as this was deemed a bit of a hack and can still be accomplished by the user of flot through other means).
+
+## [3.0.0]
+
+### Breaking Change ###
+
+- Setting 'pan: {enableTouch: true}' in the options will no longer automatically turn on pinch gestures for touch support. You must set 'zoom: {enableTouch: true}' in the options to enable pinch support (which was always a zoom operation).
+
 ## [2.2.0]
 
 ### Changes ###

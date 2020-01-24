@@ -1,13 +1,11 @@
 //! moment.js locale configuration
-//! locale : uzbek (uz)
-//! author : Sardor Muminov : https://github.com/muminoff
 
 ;(function (global, factory) {
    typeof exports === 'object' && typeof module !== 'undefined'
        && typeof require === 'function' ? factory(require('../moment')) :
-   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
    factory(global.moment)
-}(this, function (moment) { 'use strict';
+}(this, (function (moment) { 'use strict';
 
 
     var uz = moment.defineLocale('uz', {
@@ -36,6 +34,7 @@
             future : 'Якин %s ичида',
             past : 'Бир неча %s олдин',
             s : 'фурсат',
+            ss : '%d фурсат',
             m : 'бир дакика',
             mm : '%d дакика',
             h : 'бир соат',
@@ -55,4 +54,4 @@
 
     return uz;
 
-}));
+})));

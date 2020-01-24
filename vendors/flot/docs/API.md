@@ -1032,7 +1032,7 @@ You can use "plotclick" and "plothover" events like this:
 ```js
 $.plot($("#placeholder"), [ d ], { grid: { clickable: true } });
 
-$("#placeholder").bind("plotclick", function (event, pos, item) {
+$("#placeholder").bind("plotclick", function (event, pos, items) {
     alert("You clicked at " + pos.x + ", " + pos.y);
     // axis coordinates for other axes, if present, are in pos.x2, pos.x3, ...
     // if you need global screen coordinates, they are pos.pageX, pos.pageY
@@ -1052,6 +1052,7 @@ item: {
     dataIndex: the index of the point in the data array
     series: the series object
     seriesIndex: the index of the series
+    distance: the distance from the cursor
     pageX, pageY: the global screen coordinates of the point
 }
 ```
@@ -1193,11 +1194,15 @@ can call:
     redraws (e.g. from a mousemove). You can get to the overlay by
     setting up a drawOverlay hook.
     This function will also trigger the dispatching of the
-    'onDrawingDone' custom event, which can be used to notify listeners
-    (drawOverlay hooks) about the finishing of a drawing operation.
+    'onDrawingDone' custom event on the eventholder, and 'drawingdone'
+    event on the placeholder, which can be used to notify listeners
+    about the finishing of a drawing operation (drawOverlay hooks).
     Use addEventListener('onDrawingDone', callback) and
-    removeEventListener('onDrawingDone', callback), to register and unregister
-    handlers for 'onDrawingDone' event.
+    removeEventListener('onDrawingDone', callback) to register and
+    unregister handlers for 'onDrawingDone' event, or use
+    $('#placeholder').bind('drawingdone', callback) and
+    $('#placeholder').unbind('drawingdone', callback) to 
+    register and unregister handlers for 'drawingdone' event.
 
  - width()/height()
 
@@ -1648,17 +1653,69 @@ hooks in the plugins bundled with Flot.
     metrics computed by Flot, e.g. plot.width()/plot.height(). See the
     crosshair plugin for an example.
 
-    This hook dispatches the 'onDrawingDone' custom event.
-    It notifies listeners about the finishing of a drawing operation.
-    Use addEventListener('onDrawingDone', callback) and
-    removeEventListener('onDrawingDone', callback), to register and unregister
-    handlers for 'onDrawingDone' event.
+    After this hook executes, the dispatching of the 'onDrawingDone'
+    custom event on the eventholder will be triggered, as well as the
+    'drawingdone' event will be fired on the placeholder, which can
+    be used to notify listeners about the finishing of a drawing
+    operation. Use addEventListener('onDrawingDone', callback) and
+    removeEventListener('onDrawingDone', callback) to register and
+    unregister handlers for 'onDrawingDone' event, or use
+    $('#placeholder').bind('drawingdone', callback) and
+    $('#placeholder').unbind('drawingdone', callback) to
+    register and unregister handlers for 'drawingdone' event.
 
  - resize   [phase 7]
 
     ```function (plot, width, height)```
 
     The resize hook is used to be notified after the plot was resized.
+
+ - findNearbyItems   [phase 7]
+     ```function (canvasX, canvasY, series, radius, computeDistance, items)```
+    
+    The findNearbyItems hook is used to extend the default behavior of
+    the flot-provided 'findNearbyItems' function. The hover plugin, as an 
+    example, will report items discovered through this hook through the 
+    hover and click events it raises.
+    
+    canvasX and canvasY are the canvas-space coordinates used to search from 
+    for the nearby items.
+    
+    series is the current data series for which the findNearbyItems hook should return nearby data. The hook will be called for each data series separately, as long as it is not filtered out by the seriesFilter function used by the caller.
+
+    seriesIndex is the index of the data series. This is largely being provided
+    as it is needed in the returned item (if found).
+    
+    radius is the base distance from an item that you should use
+    as an area to search in if you aren't searching in strict bounds
+    
+    computeDistance is a function to utilize to compute the distance
+    from the cursor. It may not be provided, so you will still need
+    to provide your own distance calculation
+    
+    items is an array you should push your found items into. It is
+    unsorted and may hold items from any other plugin or flot's 
+    base calculation. Note that the items returned by flot's base 
+    findNearbyItems method will be sorted by distance.
+    
+    The item to be returned should have the following:
+    
+    datapoint - The specific bit of information hovered over
+    
+    dataIndex - The index of the passed in datapoint in a series
+    
+    series - The information about the series that was hovered over
+    
+    seriesIndex - The index of the series hovered over
+    
+    distance - Distance, in pixels, between the item and cursor.
+               If distance is returned as undefined, the item will
+               be treated as "infinite" distance, and will not be
+               chosen instead of an item with a distance returned
+               
+    Distance is added here to the items previously returned from
+    'findNearbyItem' so that we can decide which item should be
+    returned as 'item' to 'plothover' and 'plotclick' events
 
  - shutdown  [phase 8]
 

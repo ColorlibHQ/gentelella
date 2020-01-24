@@ -1,5 +1,6 @@
 import { addFormatToken } from '../format/format';
 import { addUnitAlias } from './aliases';
+import { addUnitPriority } from './priorities';
 import { addRegexToken, match1to2, matchWord, regexEscape } from '../parse/regex';
 import { addWeekParseToken } from '../parse/token';
 import toInt from '../utils/to-int';
@@ -33,6 +34,11 @@ addFormatToken('E', 0, 0, 'isoWeekday');
 addUnitAlias('day', 'd');
 addUnitAlias('weekday', 'e');
 addUnitAlias('isoWeekday', 'E');
+
+// PRIORITY
+addUnitPriority('day', 11);
+addUnitPriority('weekday', 11);
+addUnitPriority('isoWeekday', 11);
 
 // PARSING
 
@@ -82,22 +88,36 @@ function parseWeekday(input, locale) {
     return null;
 }
 
+function parseIsoWeekday(input, locale) {
+    if (typeof input === 'string') {
+        return locale.weekdaysParse(input) % 7 || 7;
+    }
+    return isNaN(input) ? null : input;
+}
+
 // LOCALES
+function shiftWeekdays (ws, n) {
+    return ws.slice(n, 7).concat(ws.slice(0, n));
+}
 
 export var defaultLocaleWeekdays = 'Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday'.split('_');
 export function localeWeekdays (m, format) {
-    return isArray(this._weekdays) ? this._weekdays[m.day()] :
-        this._weekdays[this._weekdays.isFormat.test(format) ? 'format' : 'standalone'][m.day()];
+    var weekdays = isArray(this._weekdays) ? this._weekdays :
+        this._weekdays[(m && m !== true && this._weekdays.isFormat.test(format)) ? 'format' : 'standalone'];
+    return (m === true) ? shiftWeekdays(weekdays, this._week.dow)
+        : (m) ? weekdays[m.day()] : weekdays;
 }
 
 export var defaultLocaleWeekdaysShort = 'Sun_Mon_Tue_Wed_Thu_Fri_Sat'.split('_');
 export function localeWeekdaysShort (m) {
-    return this._weekdaysShort[m.day()];
+    return (m === true) ? shiftWeekdays(this._weekdaysShort, this._week.dow)
+        : (m) ? this._weekdaysShort[m.day()] : this._weekdaysShort;
 }
 
 export var defaultLocaleWeekdaysMin = 'Su_Mo_Tu_We_Th_Fr_Sa'.split('_');
 export function localeWeekdaysMin (m) {
-    return this._weekdaysMin[m.day()];
+    return (m === true) ? shiftWeekdays(this._weekdaysMin, this._week.dow)
+        : (m) ? this._weekdaysMin[m.day()] : this._weekdaysMin;
 }
 
 function handleStrictParse(weekdayName, format, strict) {
@@ -183,9 +203,9 @@ export function localeWeekdaysParse (weekdayName, format, strict) {
 
         mom = createUTC([2000, 1]).day(i);
         if (strict && !this._fullWeekdaysParse[i]) {
-            this._fullWeekdaysParse[i] = new RegExp('^' + this.weekdays(mom, '').replace('.', '\.?') + '$', 'i');
-            this._shortWeekdaysParse[i] = new RegExp('^' + this.weekdaysShort(mom, '').replace('.', '\.?') + '$', 'i');
-            this._minWeekdaysParse[i] = new RegExp('^' + this.weekdaysMin(mom, '').replace('.', '\.?') + '$', 'i');
+            this._fullWeekdaysParse[i] = new RegExp('^' + this.weekdays(mom, '').replace('.', '\\.?') + '$', 'i');
+            this._shortWeekdaysParse[i] = new RegExp('^' + this.weekdaysShort(mom, '').replace('.', '\\.?') + '$', 'i');
+            this._minWeekdaysParse[i] = new RegExp('^' + this.weekdaysMin(mom, '').replace('.', '\\.?') + '$', 'i');
         }
         if (!this._weekdaysParse[i]) {
             regex = '^' + this.weekdays(mom, '') + '|^' + this.weekdaysShort(mom, '') + '|^' + this.weekdaysMin(mom, '');
@@ -231,13 +251,20 @@ export function getSetISODayOfWeek (input) {
     if (!this.isValid()) {
         return input != null ? this : NaN;
     }
+
     // behaves the same as moment#day except
     // as a getter, returns 7 instead of 0 (1-7 range instead of 0-6)
     // as a setter, sunday should belong to the previous week.
-    return input == null ? this.day() || 7 : this.day(this.day() % 7 ? input : input - 7);
+
+    if (input != null) {
+        var weekday = parseIsoWeekday(input, this.localeData());
+        return this.day(this.day() % 7 ? weekday : weekday - 7);
+    } else {
+        return this.day() || 7;
+    }
 }
 
-export var defaultWeekdaysRegex = matchWord;
+var defaultWeekdaysRegex = matchWord;
 export function weekdaysRegex (isStrict) {
     if (this._weekdaysParseExact) {
         if (!hasOwnProp(this, '_weekdaysRegex')) {
@@ -249,12 +276,15 @@ export function weekdaysRegex (isStrict) {
             return this._weekdaysRegex;
         }
     } else {
+        if (!hasOwnProp(this, '_weekdaysRegex')) {
+            this._weekdaysRegex = defaultWeekdaysRegex;
+        }
         return this._weekdaysStrictRegex && isStrict ?
             this._weekdaysStrictRegex : this._weekdaysRegex;
     }
 }
 
-export var defaultWeekdaysShortRegex = matchWord;
+var defaultWeekdaysShortRegex = matchWord;
 export function weekdaysShortRegex (isStrict) {
     if (this._weekdaysParseExact) {
         if (!hasOwnProp(this, '_weekdaysRegex')) {
@@ -266,12 +296,15 @@ export function weekdaysShortRegex (isStrict) {
             return this._weekdaysShortRegex;
         }
     } else {
+        if (!hasOwnProp(this, '_weekdaysShortRegex')) {
+            this._weekdaysShortRegex = defaultWeekdaysShortRegex;
+        }
         return this._weekdaysShortStrictRegex && isStrict ?
             this._weekdaysShortStrictRegex : this._weekdaysShortRegex;
     }
 }
 
-export var defaultWeekdaysMinRegex = matchWord;
+var defaultWeekdaysMinRegex = matchWord;
 export function weekdaysMinRegex (isStrict) {
     if (this._weekdaysParseExact) {
         if (!hasOwnProp(this, '_weekdaysRegex')) {
@@ -283,6 +316,9 @@ export function weekdaysMinRegex (isStrict) {
             return this._weekdaysMinRegex;
         }
     } else {
+        if (!hasOwnProp(this, '_weekdaysMinRegex')) {
+            this._weekdaysMinRegex = defaultWeekdaysMinRegex;
+        }
         return this._weekdaysMinStrictRegex && isStrict ?
             this._weekdaysMinStrictRegex : this._weekdaysMinRegex;
     }

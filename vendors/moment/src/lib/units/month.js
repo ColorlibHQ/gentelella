@@ -2,18 +2,27 @@ import { get } from '../moment/get-set';
 import hasOwnProp from '../utils/has-own-prop';
 import { addFormatToken } from '../format/format';
 import { addUnitAlias } from './aliases';
+import { addUnitPriority } from './priorities';
 import { addRegexToken, match1to2, match2, matchWord, regexEscape } from '../parse/regex';
 import { addParseToken } from '../parse/token';
 import { hooks } from '../utils/hooks';
 import { MONTH } from './constants';
 import toInt from '../utils/to-int';
 import isArray from '../utils/is-array';
+import isNumber from '../utils/is-number';
+import mod from '../utils/mod';
 import indexOf from '../utils/index-of';
 import { createUTC } from '../create/utc';
 import getParsingFlags from '../create/parsing-flags';
+import { isLeapYear } from '../units/year';
 
 export function daysInMonth(year, month) {
-    return new Date(Date.UTC(year, month + 1, 0)).getUTCDate();
+    if (isNaN(year) || isNaN(month)) {
+        return NaN;
+    }
+    var modMonth = mod(month, 12);
+    year += (month - modMonth) / 12;
+    return modMonth === 1 ? (isLeapYear(year) ? 29 : 28) : (31 - modMonth % 7 % 2);
 }
 
 // FORMATTING
@@ -33,6 +42,10 @@ addFormatToken('MMMM', 0, 0, function (format) {
 // ALIASES
 
 addUnitAlias('month', 'M');
+
+// PRIORITY
+
+addUnitPriority('month', 8);
 
 // PARSING
 
@@ -61,15 +74,23 @@ addParseToken(['MMM', 'MMMM'], function (input, array, config, token) {
 
 // LOCALES
 
-var MONTHS_IN_FORMAT = /D[oD]?(\[[^\[\]]*\]|\s+)+MMMM?/;
+var MONTHS_IN_FORMAT = /D[oD]?(\[[^\[\]]*\]|\s)+MMMM?/;
 export var defaultLocaleMonths = 'January_February_March_April_May_June_July_August_September_October_November_December'.split('_');
 export function localeMonths (m, format) {
+    if (!m) {
+        return isArray(this._months) ? this._months :
+            this._months['standalone'];
+    }
     return isArray(this._months) ? this._months[m.month()] :
-        this._months[MONTHS_IN_FORMAT.test(format) ? 'format' : 'standalone'][m.month()];
+        this._months[(this._months.isFormat || MONTHS_IN_FORMAT).test(format) ? 'format' : 'standalone'][m.month()];
 }
 
 export var defaultLocaleMonthsShort = 'Jan_Feb_Mar_Apr_May_Jun_Jul_Aug_Sep_Oct_Nov_Dec'.split('_');
 export function localeMonthsShort (m, format) {
+    if (!m) {
+        return isArray(this._monthsShort) ? this._monthsShort :
+            this._monthsShort['standalone'];
+    }
     return isArray(this._monthsShort) ? this._monthsShort[m.month()] :
         this._monthsShort[MONTHS_IN_FORMAT.test(format) ? 'format' : 'standalone'][m.month()];
 }
@@ -169,7 +190,7 @@ export function setMonth (mom, value) {
         } else {
             value = mom.localeData().monthsParse(value);
             // TODO: Another silent failure?
-            if (typeof value !== 'number') {
+            if (!isNumber(value)) {
                 return mom;
             }
         }
@@ -194,7 +215,7 @@ export function getDaysInMonth () {
     return daysInMonth(this.year(), this.month());
 }
 
-export var defaultMonthsShortRegex = matchWord;
+var defaultMonthsShortRegex = matchWord;
 export function monthsShortRegex (isStrict) {
     if (this._monthsParseExact) {
         if (!hasOwnProp(this, '_monthsRegex')) {
@@ -206,12 +227,15 @@ export function monthsShortRegex (isStrict) {
             return this._monthsShortRegex;
         }
     } else {
+        if (!hasOwnProp(this, '_monthsShortRegex')) {
+            this._monthsShortRegex = defaultMonthsShortRegex;
+        }
         return this._monthsShortStrictRegex && isStrict ?
             this._monthsShortStrictRegex : this._monthsShortRegex;
     }
 }
 
-export var defaultMonthsRegex = matchWord;
+var defaultMonthsRegex = matchWord;
 export function monthsRegex (isStrict) {
     if (this._monthsParseExact) {
         if (!hasOwnProp(this, '_monthsRegex')) {
@@ -223,6 +247,9 @@ export function monthsRegex (isStrict) {
             return this._monthsRegex;
         }
     } else {
+        if (!hasOwnProp(this, '_monthsRegex')) {
+            this._monthsRegex = defaultMonthsRegex;
+        }
         return this._monthsStrictRegex && isStrict ?
             this._monthsStrictRegex : this._monthsRegex;
     }
@@ -251,6 +278,8 @@ function computeMonthsParse () {
     for (i = 0; i < 12; i++) {
         shortPieces[i] = regexEscape(shortPieces[i]);
         longPieces[i] = regexEscape(longPieces[i]);
+    }
+    for (i = 0; i < 24; i++) {
         mixedPieces[i] = regexEscape(mixedPieces[i]);
     }
 
