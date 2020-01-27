@@ -1,0 +1,63 @@
+{
+  "_from": "datatables.net-buttons-bs4",
+  "_id": "datatables.net-buttons-bs4@1.6.1",
+  "_inBundle": false,
+  "_integrity": "sha512-PdE1vrnRIeX+p++wnbpdnr97kgTCs+DDomtTccsQvMrFm29lxVa7uTz1awasfGRrCrJzpb5HjPrPJBzbGHrUyg==",
+  "_location": "/datatables.net-buttons-bs4",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "datatables.net-buttons-bs4",
+    "name": "datatables.net-buttons-bs4",
+    "escapedName": "datatables.net-buttons-bs4",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/datatables.net-buttons-bs4/-/datatables.net-buttons-bs4-1.6.1.tgz",
+  "_shasum": "4abd9c83fbd753ffa4913adca1fae094df64b3ba",
+  "_spec": "datatables.net-buttons-bs4",
+  "_where": "C:\\Users\\William\\Documents\\proyectos\\gentelella",
+  "author": {
+    "name": "SpryMedia Ltd",
+    "url": "http://datatables.net"
+  },
+  "bugs": {
+    "url": "https://datatables.net/forums"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "datatables.net-bs4": "^1.10.15",
+    "datatables.net-buttons": "1.6.1",
+    "jquery": ">=1.7"
+  },
+  "deprecated": false,
+  "description": "Buttons for DataTables with styling for [Bootstrap 4](http://getbootstrap.com/)",
+  "files": [
+    "css/**/*.css",
+    "js/**/*.js"
+  ],
+  "homepage": "https://datatables.net",
+  "keywords": [
+    "buttons",
+    "excel",
+    "pdf",
+    "csv",
+    "column visibility",
+    "print",
+    "DataTables",
+    "jQuery",
+    "table",
+    "Bootstrap 4"
+  ],
+  "license": "MIT",
+  "main": "js/buttons.bootstrap4.js",
+  "name": "datatables.net-buttons-bs4",
+  "style": "css/buttons.bootstrap4.css",
+  "version": "1.6.1"
+}

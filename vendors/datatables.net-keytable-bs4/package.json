@@ -1,0 +1,60 @@
+{
+  "_from": "datatables.net-keytable-bs4",
+  "_id": "datatables.net-keytable-bs4@2.5.1",
+  "_inBundle": false,
+  "_integrity": "sha512-K3WlmCxVsmUpIKNEbP+2gggJ4eVnHI8NUleSDagmpromxErxmvsli7Sa35ZCRaCkMn/81TwFMIA2cHKfYotJyQ==",
+  "_location": "/datatables.net-keytable-bs4",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "datatables.net-keytable-bs4",
+    "name": "datatables.net-keytable-bs4",
+    "escapedName": "datatables.net-keytable-bs4",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/datatables.net-keytable-bs4/-/datatables.net-keytable-bs4-2.5.1.tgz",
+  "_shasum": "011b1950322d9038b1a1958d0a3e58679d902cb2",
+  "_spec": "datatables.net-keytable-bs4",
+  "_where": "C:\\Users\\William\\Documents\\proyectos\\gentelella",
+  "author": {
+    "name": "SpryMedia Ltd",
+    "url": "http://datatables.net"
+  },
+  "bugs": {
+    "url": "https://datatables.net/forums"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "datatables.net-bs4": "^1.10.15",
+    "datatables.net-keytable": "2.5.1",
+    "jquery": ">=1.7"
+  },
+  "deprecated": false,
+  "description": "KeyTable for DataTables with styling for [Bootstrap 4](http://getbootstrap.com/)",
+  "files": [
+    "css/**/*.css",
+    "js/**/*.js"
+  ],
+  "homepage": "https://datatables.net",
+  "keywords": [
+    "spreadsheet",
+    "excel",
+    "keyboard",
+    "DataTables",
+    "jQuery",
+    "table",
+    "Bootstrap 4"
+  ],
+  "license": "MIT",
+  "main": "js/keyTable.bootstrap4.js",
+  "name": "datatables.net-keytable-bs4",
+  "style": "css/keyTable.bootstrap4.css",
+  "version": "2.5.1"
+}

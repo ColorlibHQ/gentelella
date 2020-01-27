@@ -1,0 +1,58 @@
+{
+  "_from": "datatables.net-scroller@2.0.1",
+  "_id": "datatables.net-scroller@2.0.1",
+  "_inBundle": false,
+  "_integrity": "sha512-FnbJXT1Zu8FVK+wXcMuEVyFJkLXDi65i+jPCSVH2ZkNSPp+mfeBVtZH41MLGspNouP/IdudKIoCXzPNR/+OhpQ==",
+  "_location": "/datatables.net-scroller",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "datatables.net-scroller@2.0.1",
+    "name": "datatables.net-scroller",
+    "escapedName": "datatables.net-scroller",
+    "rawSpec": "2.0.1",
+    "saveSpec": null,
+    "fetchSpec": "2.0.1"
+  },
+  "_requiredBy": [
+    "/datatables.net-scroller-bs4"
+  ],
+  "_resolved": "https://registry.npmjs.org/datatables.net-scroller/-/datatables.net-scroller-2.0.1.tgz",
+  "_shasum": "17040d3f1da9b4e174729b6b7f0e36b6bf818adc",
+  "_spec": "datatables.net-scroller@2.0.1",
+  "_where": "C:\\Users\\William\\Documents\\proyectos\\gentelella\\node_modules\\datatables.net-scroller-bs4",
+  "author": {
+    "name": "SpryMedia Ltd",
+    "url": "http://datatables.net"
+  },
+  "bugs": {
+    "url": "https://datatables.net/forums"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "datatables.net": "^1.10.15",
+    "jquery": ">=1.7"
+  },
+  "deprecated": false,
+  "description": "Scroller for DataTables ",
+  "files": [
+    "js/**/*.js"
+  ],
+  "homepage": "https://datatables.net",
+  "keywords": [
+    "virtual scrolling",
+    "DataTables",
+    "jQuery",
+    "table",
+    "DataTables"
+  ],
+  "license": "MIT",
+  "main": "js/dataTables.scroller.js",
+  "name": "datatables.net-scroller",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DataTables/Dist-DataTables-Scroller.git"
+  },
+  "version": "2.0.1"
+}

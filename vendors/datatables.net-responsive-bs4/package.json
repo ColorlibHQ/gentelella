@@ -1,0 +1,58 @@
+{
+  "_from": "datatables.net-responsive-bs4",
+  "_id": "datatables.net-responsive-bs4@2.2.3",
+  "_inBundle": false,
+  "_integrity": "sha512-SQaWI0uLuPcaiBBin9zX+MuQfTSIkK1bYxbXqUV6NLkHCVa6PMQK7Rvftj0ywG4R7uOtjbzY8nSVqxEKvQI0Vg==",
+  "_location": "/datatables.net-responsive-bs4",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "datatables.net-responsive-bs4",
+    "name": "datatables.net-responsive-bs4",
+    "escapedName": "datatables.net-responsive-bs4",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/datatables.net-responsive-bs4/-/datatables.net-responsive-bs4-2.2.3.tgz",
+  "_shasum": "639de17c1d31210ebf2b3c25f1c774c13f729e94",
+  "_spec": "datatables.net-responsive-bs4",
+  "_where": "C:\\Users\\William\\Documents\\proyectos\\gentelella",
+  "author": {
+    "name": "SpryMedia Ltd",
+    "url": "http://datatables.net"
+  },
+  "bugs": {
+    "url": "https://datatables.net/forums"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "datatables.net-bs4": "^1.10.15",
+    "datatables.net-responsive": "2.2.3",
+    "jquery": ">=1.7"
+  },
+  "deprecated": false,
+  "description": "Responsive for DataTables with styling for [Bootstrap 4](http://getbootstrap.com/)",
+  "files": [
+    "css/**/*.css",
+    "js/**/*.js"
+  ],
+  "homepage": "https://datatables.net",
+  "keywords": [
+    "responsive",
+    "DataTables",
+    "jQuery",
+    "table",
+    "Bootstrap 4"
+  ],
+  "license": "MIT",
+  "main": "js/responsive.bootstrap4.js",
+  "name": "datatables.net-responsive-bs4",
+  "style": "css/responsive.bootstrap4.css",
+  "version": "2.2.3"
+}

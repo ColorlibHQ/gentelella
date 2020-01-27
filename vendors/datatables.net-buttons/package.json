@@ -1,0 +1,64 @@
+{
+  "_from": "datatables.net-buttons@1.6.1",
+  "_id": "datatables.net-buttons@1.6.1",
+  "_inBundle": false,
+  "_integrity": "sha512-Lcgvi/xGB2X0jr1n/uQMmg43Z1JQO6aaGjPHO+sAQAMfBGBi9cK1hhfM4Vg8gzC5fz3sW4QrtjAdKvOPnQ1A3w==",
+  "_location": "/datatables.net-buttons",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "datatables.net-buttons@1.6.1",
+    "name": "datatables.net-buttons",
+    "escapedName": "datatables.net-buttons",
+    "rawSpec": "1.6.1",
+    "saveSpec": null,
+    "fetchSpec": "1.6.1"
+  },
+  "_requiredBy": [
+    "/datatables.net-buttons-bs4"
+  ],
+  "_resolved": "https://registry.npmjs.org/datatables.net-buttons/-/datatables.net-buttons-1.6.1.tgz",
+  "_shasum": "f62847e7c6f905fcf7339e7541a40741bbb3b8fb",
+  "_spec": "datatables.net-buttons@1.6.1",
+  "_where": "C:\\Users\\William\\Documents\\proyectos\\gentelella\\node_modules\\datatables.net-buttons-bs4",
+  "author": {
+    "name": "SpryMedia Ltd",
+    "url": "http://datatables.net"
+  },
+  "bugs": {
+    "url": "https://datatables.net/forums"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "datatables.net": "^1.10.15",
+    "jquery": ">=1.7"
+  },
+  "deprecated": false,
+  "description": "Buttons for DataTables ",
+  "files": [
+    "js/**/*.js",
+    "swf/flashExport.swf"
+  ],
+  "homepage": "https://datatables.net",
+  "keywords": [
+    "buttons",
+    "excel",
+    "pdf",
+    "csv",
+    "column visibility",
+    "print",
+    "DataTables",
+    "jQuery",
+    "table",
+    "DataTables"
+  ],
+  "license": "MIT",
+  "main": "js/dataTables.buttons.js",
+  "name": "datatables.net-buttons",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DataTables/Dist-DataTables-Buttons.git"
+  },
+  "version": "1.6.1"
+}

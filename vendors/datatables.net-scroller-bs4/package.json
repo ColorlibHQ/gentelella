@@ -1,0 +1,58 @@
+{
+  "_from": "datatables.net-scroller-bs4",
+  "_id": "datatables.net-scroller-bs4@2.0.1",
+  "_inBundle": false,
+  "_integrity": "sha512-NMZNU36aAfNYmryZz8j5EsO6mnUxoyx+5j8PxSNfyrNhMVFtFmSCRJrWNfmfYN5zpOe3/XgjbXytaD5LdWHszg==",
+  "_location": "/datatables.net-scroller-bs4",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "datatables.net-scroller-bs4",
+    "name": "datatables.net-scroller-bs4",
+    "escapedName": "datatables.net-scroller-bs4",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/datatables.net-scroller-bs4/-/datatables.net-scroller-bs4-2.0.1.tgz",
+  "_shasum": "aa7d33eee1cd26e03c6e5598116292d91874acae",
+  "_spec": "datatables.net-scroller-bs4",
+  "_where": "C:\\Users\\William\\Documents\\proyectos\\gentelella",
+  "author": {
+    "name": "SpryMedia Ltd",
+    "url": "http://datatables.net"
+  },
+  "bugs": {
+    "url": "https://datatables.net/forums"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "datatables.net-bs4": "^1.10.15",
+    "datatables.net-scroller": "2.0.1",
+    "jquery": ">=1.7"
+  },
+  "deprecated": false,
+  "description": "Scroller for DataTables with styling for [Bootstrap 4](http://getbootstrap.com/)",
+  "files": [
+    "css/**/*.css",
+    "js/**/*.js"
+  ],
+  "homepage": "https://datatables.net",
+  "keywords": [
+    "virtual scrolling",
+    "DataTables",
+    "jQuery",
+    "table",
+    "Bootstrap 4"
+  ],
+  "license": "MIT",
+  "main": "js/scroller.bootstrap4.js",
+  "name": "datatables.net-scroller-bs4",
+  "style": "css/scroller.bootstrap4.css",
+  "version": "2.0.1"
+}

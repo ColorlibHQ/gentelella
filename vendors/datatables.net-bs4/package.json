@@ -1,0 +1,58 @@
+{
+  "_from": "datatables.net-bs4",
+  "_id": "datatables.net-bs4@1.10.20",
+  "_inBundle": false,
+  "_integrity": "sha512-kQmMUMsHMOlAW96ztdoFqjSbLnlGZQ63iIM82kHbmldsfYdzuyhbb4hTx6YNBi481WCO3iPSvI6YodNec46ZAw==",
+  "_location": "/datatables.net-bs4",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "datatables.net-bs4",
+    "name": "datatables.net-bs4",
+    "escapedName": "datatables.net-bs4",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/datatables.net-bs4/-/datatables.net-bs4-1.10.20.tgz",
+  "_shasum": "beff1c8d3510826c0678eaa055270607c0e53882",
+  "_spec": "datatables.net-bs4",
+  "_where": "C:\\Users\\William\\Documents\\proyectos\\gentelella",
+  "author": {
+    "name": "SpryMedia Ltd",
+    "url": "http://datatables.net"
+  },
+  "bugs": {
+    "url": "https://datatables.net/forums"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "datatables.net": "1.10.20",
+    "jquery": ">=1.7"
+  },
+  "deprecated": false,
+  "description": "DataTables for jQuery with styling for [Bootstrap 4](http://getbootstrap.com/)",
+  "files": [
+    "css/**/*.css",
+    "js/**/*.js"
+  ],
+  "homepage": "https://datatables.net",
+  "keywords": [
+    "filter",
+    "sort",
+    "DataTables",
+    "jQuery",
+    "table",
+    "Bootstrap 4"
+  ],
+  "license": "MIT",
+  "main": "./js/dataTables.bootstrap4.js",
+  "name": "datatables.net-bs4",
+  "style": "./css/dataTables.bootstrap4.css",
+  "version": "1.10.20"
+}

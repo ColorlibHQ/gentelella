@@ -111,6 +111,7 @@ Let us know if you have done integration for this admin template on other platfo
 * Autosize - resizes text area to fit text
 * validator - HTML from validator using jQuery
 * jQuery Smart Wizard
+* Tempus Dominus Bootstrap 4
 
 ## Other templates and useful resources
 * [Free Bootstrap Admin Templates](https://colorlib.com/wp/free-bootstrap-admin-dashboard-templates/ "Bootstrap Admin Templates on Colorlib") - List of the best Free Bootstrap admin dashboard templates that are available for free for personal and commercial use.

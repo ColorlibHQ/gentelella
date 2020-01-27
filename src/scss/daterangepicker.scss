@@ -2,26 +2,28 @@
   .ranges {
     li {
       color: #73879C;
-      
-      &.active, &:hover {
+
+      &.active,
+      &:hover {
         background: #536A7F;
         border: 1px solid #536A7F;
-        color: #fff;  
+        color: #fff;
       }
     }
   }
 
   .input-mini {
-      background-color: #eee;
-      border: 1px solid #ccc;
-      box-shadow: none !important;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    box-shadow: none !important;
 
-      &.active {
-        border: 1px solid #ccc;
-      }
+    &.active {
+      border: 1px solid #ccc;
+    }
   }
 
   select {
+
     &.monthselect,
     &.yearselect,
     &.hourselect,
@@ -50,10 +52,11 @@
       color: #73879C;
     }
 
-    &.active, &.active:hover {
+    &.active,
+    &.active:hover {
       background-color: #536A7F;
       color: #fff;
-    }      
+    }
   }
 
   th.available:hover {
@@ -61,7 +64,8 @@
     color: #34495E;
   }
 
-  &:before, &:after {
+  &:before,
+  &:after {
     content: none;
   }
 
@@ -144,11 +148,13 @@
       thead {
         & tr:first-child {
           color: #fff;
-          background: #34495E;;
+          background: #34495E;
+          ;
         }
       }
 
-      td, td.off  {
+      td,
+      td.off {
         background: #ECF0F1;
         border: 1px solid #fff;
         border-radius: 0;
@@ -169,8 +175,11 @@
     background-color: #fff;
     border: 1px solid #ccc;
     margin-bottom: 20px;
-    border: 1px solid rgba(0,0,0,0.15);
+    border: 1px solid rgba(0, 0, 0, 0.15);
     overflow: hidden;
+    top: auto;
+    z-index: auto;
+    left: 0;
 
     .calendar {
       margin: 0 0 4px 0;

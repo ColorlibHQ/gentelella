@@ -1,0 +1,60 @@
+{
+  "_from": "datatables.net-keytable@2.5.1",
+  "_id": "datatables.net-keytable@2.5.1",
+  "_inBundle": false,
+  "_integrity": "sha512-06b1ilIyIaEK3jcCqHjcZCIBjgSBwW/Aj/H8TMS/J0pO//UR/N0t3O9lvklqZurTtKCkP2HDaS+hgTavgyWnJA==",
+  "_location": "/datatables.net-keytable",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "datatables.net-keytable@2.5.1",
+    "name": "datatables.net-keytable",
+    "escapedName": "datatables.net-keytable",
+    "rawSpec": "2.5.1",
+    "saveSpec": null,
+    "fetchSpec": "2.5.1"
+  },
+  "_requiredBy": [
+    "/datatables.net-keytable-bs4"
+  ],
+  "_resolved": "https://registry.npmjs.org/datatables.net-keytable/-/datatables.net-keytable-2.5.1.tgz",
+  "_shasum": "7a6ba0b8085eaacc2cdc20f6348e8abd77b899c6",
+  "_spec": "datatables.net-keytable@2.5.1",
+  "_where": "C:\\Users\\William\\Documents\\proyectos\\gentelella\\node_modules\\datatables.net-keytable-bs4",
+  "author": {
+    "name": "SpryMedia Ltd",
+    "url": "http://datatables.net"
+  },
+  "bugs": {
+    "url": "https://datatables.net/forums"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "datatables.net": "^1.10.15",
+    "jquery": ">=1.7"
+  },
+  "deprecated": false,
+  "description": "KeyTable for DataTables ",
+  "files": [
+    "js/**/*.js"
+  ],
+  "homepage": "https://datatables.net",
+  "keywords": [
+    "spreadsheet",
+    "excel",
+    "keyboard",
+    "DataTables",
+    "jQuery",
+    "table",
+    "DataTables"
+  ],
+  "license": "MIT",
+  "main": "js/dataTables.keyTable.js",
+  "name": "datatables.net-keytable",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DataTables/Dist-DataTables-KeyTable.git"
+  },
+  "version": "2.5.1"
+}

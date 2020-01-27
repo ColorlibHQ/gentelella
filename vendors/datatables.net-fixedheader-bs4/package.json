@@ -1,0 +1,59 @@
+{
+  "_from": "datatables.net-fixedheader-bs4",
+  "_id": "datatables.net-fixedheader-bs4@3.1.6",
+  "_inBundle": false,
+  "_integrity": "sha512-mat50UvCNhE5E2jhqEAO07LJ7I++pxFwpbNUfVtuFg866Tf3uHAKHgsXnsXW8kqiER931g4LbxO28axyquj1tw==",
+  "_location": "/datatables.net-fixedheader-bs4",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "datatables.net-fixedheader-bs4",
+    "name": "datatables.net-fixedheader-bs4",
+    "escapedName": "datatables.net-fixedheader-bs4",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/datatables.net-fixedheader-bs4/-/datatables.net-fixedheader-bs4-3.1.6.tgz",
+  "_shasum": "d1b12981bf127cfef658a0a742719aaeac6894eb",
+  "_spec": "datatables.net-fixedheader-bs4",
+  "_where": "C:\\Users\\William\\Documents\\proyectos\\gentelella",
+  "author": {
+    "name": "SpryMedia Ltd",
+    "url": "http://datatables.net"
+  },
+  "bugs": {
+    "url": "https://datatables.net/forums"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "datatables.net-bs4": "^1.10.15",
+    "datatables.net-fixedheader": "3.1.6",
+    "jquery": ">=1.7"
+  },
+  "deprecated": false,
+  "description": "FixedHeader for DataTables with styling for [Bootstrap 4](http://getbootstrap.com/)",
+  "files": [
+    "css/**/*.css",
+    "js/**/*.js"
+  ],
+  "homepage": "https://datatables.net",
+  "keywords": [
+    "fixed headers",
+    "sticky",
+    "DataTables",
+    "jQuery",
+    "table",
+    "Bootstrap 4"
+  ],
+  "license": "MIT",
+  "main": "js/fixedHeader.bootstrap4.js",
+  "name": "datatables.net-fixedheader-bs4",
+  "style": "css/fixedHeader.bootstrap4.css",
+  "version": "3.1.6"
+}
