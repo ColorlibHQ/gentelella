@@ -20,84 +20,133 @@
 
     <!-- Custom Theme Style -->
     <link href="../build/css/custom.min.css" rel="stylesheet">
-  </head>
+</head>
 
-  <body class="login">
+<body class="login">
     <div>
-      <a class="hiddenanchor" id="signup"></a>
-      <a class="hiddenanchor" id="signin"></a>
+        <a class="hiddenanchor" id="signup"></a>
+        <a class="hiddenanchor" id="signin"></a>
 
-      <div class="login_wrapper">
-        <div class="animate form login_form">
-          <section class="login_content">
-            <form>
-              <h1>Login Form</h1>
-              <div>
-                <input type="text" class="form-control" placeholder="Username" required="" />
-              </div>
-              <div>
-                <input type="password" class="form-control" placeholder="Password" required="" />
-              </div>
-              <div>
-                <a class="btn btn-default submit" href="index.html">Log in</a>
-                <a class="reset_pass" href="#">Lost your password?</a>
-              </div>
+        <div class="login_wrapper">
+            <div class="animate form login_form">
+                <section class="login_content">
+                    <form>
+                        <h1>Login Form</h1>
+                        <div>
+                            <input type="text" class="form-control" placeholder="Username" required />
+                        </div>
+                        <div>
+                            <input id="passlogin" type="password" class="form-control" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}" title="Minimum 8 Characters Including An Upper And Lower Case Letter, A Number And A Unique Character" required />
+                            <span style="position: absolute;right:10px;top:120px;" onclick="hideshowlogin()">
+                                <i id="slash1" class="fa fa-eye-slash"></i>
+                                <i id="eye1" class="fa fa-eye"></i>
+                            </span>
+                        </div>
+                        <div>
+                            <a class="btn btn-default submit" href="index.html">Log in</a>
+                            <a class="reset_pass" href="#">Lost your password?</a>
+                        </div>
 
-              <div class="clearfix"></div>
+                        <div class="clearfix"></div>
 
-              <div class="separator">
-                <p class="change_link">New to site?
-                  <a href="#signup" class="to_register"> Create Account </a>
-                </p>
+                        <div class="separator">
+                            <p class="change_link">New to site?
+                                <a href="#signup" class="to_register"> Create Account </a>
+                            </p>
 
-                <div class="clearfix"></div>
-                <br />
+                            <div class="clearfix"></div>
+                            <br />
 
-                <div>
-                  <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
-                  <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
-                </div>
-              </div>
-            </form>
-          </section>
+                            <div>
+                                <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
+                                <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+            </div>
+
+            <div id="register" class="animate form registration_form">
+                <section class="login_content">
+                    <form>
+                        <h1>Create Account</h1>
+                        <div>
+                            <input type="text" class="form-control" placeholder="Username" required="" />
+                        </div>
+                        <div>
+                            <input type="email" class="form-control" placeholder="Email" required="" />
+                        </div>
+                        <div>
+                            <input id="passsignup" type="password" class="form-control" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}" title="Minimum 8 Characters Including An Upper And Lower Case Letter, A Number And A Unique Character" required />
+                            <span style="position: absolute;right:10px;top:174px;" onclick="hideshowsignup()">
+                                <i id="slash" class="fa fa-eye-slash"></i>
+                                <i id="eye" class="fa fa-eye"></i>
+                            </span>
+                        </div>
+                        <div>
+                            <a class="btn btn-default submit" href="index.html">Submit</a>
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <div class="separator">
+                            <p class="change_link">Already a member ?
+                                <a href="#signin" class="to_register"> Log in </a>
+                            </p>
+
+                            <div class="clearfix"></div>
+                            <br />
+
+                            <div>
+                                <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
+                                <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+            </div>
         </div>
-
-        <div id="register" class="animate form registration_form">
-          <section class="login_content">
-            <form>
-              <h1>Create Account</h1>
-              <div>
-                <input type="text" class="form-control" placeholder="Username" required="" />
-              </div>
-              <div>
-                <input type="email" class="form-control" placeholder="Email" required="" />
-              </div>
-              <div>
-                <input type="password" class="form-control" placeholder="Password" required="" />
-              </div>
-              <div>
-                <a class="btn btn-default submit" href="index.html">Submit</a>
-              </div>
-
-              <div class="clearfix"></div>
-
-              <div class="separator">
-                <p class="change_link">Already a member ?
-                  <a href="#signin" class="to_register"> Log in </a>
-                </p>
-
-                <div class="clearfix"></div>
-                <br />
-
-                <div>
-                  <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
-                  <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
-                </div>
-              </div>
-            </form>
-          </section>
-        </div>
-      </div>
     </div>
-  </body>
-</html>
+    
+    
+    <!-- Javascript functions	-->
+	<script>
+        function hideshowlogin(){
+			var password = document.getElementById("passlogin");
+			var slash = document.getElementById("slash1");
+			var eye = document.getElementById("eye1");
+			
+			if(password.type === 'password'){
+				password.type = "text";
+				slash.style.display = "block";
+				eye.style.display = "none";
+			}
+			else{
+				password.type = "password";
+				slash.style.display = "none";
+				eye.style.display = "block";
+			}
+
+		}
+        
+		function hideshowsignup(){
+			var password = document.getElementById("passsignup");
+			var slash = document.getElementById("slash");
+			var eye = document.getElementById("eye");
+			
+			if(password.type === 'password'){
+				password.type = "text";
+				slash.style.display = "block";
+				eye.style.display = "none";
+			}
+			else{
+				password.type = "password";
+				slash.style.display = "none";
+				eye.style.display = "block";
+			}
+
+		}
+	</script>
+</body></html>
+
+
