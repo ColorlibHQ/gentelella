@@ -71,6 +71,7 @@ If `gulp` is installed, follow the steps below.
 * [Gentelella right to left](https://github.com/mortezakarimi/gentelella-rtl) Gentelella modified to work with right to left languages like Persian
 * [Gentelella-rtl on Yii framework 2](https://github.com/mortezakarimi/yii2-gentelella-rtl) with an asset bundle, a layout template and some widgets. inspired from [Gentelella on Yii framework 2](https://github.com/yiister/yii2-gentelella)
 * [Gentelella by React](https://github.com/thomaslwq/react-admin) Gentelella realized by React
+* [Gentelella for Blazor WASM](https://github.com/frankodoom/gentelella-blazor) Gentelella admin template bootstrapped with .NET Blazor Wasm webclient project
 
 Let us know if you have done integration for this admin template on other platforms and frameworks and we'll be happy to share your work.
 
