@@ -85,7 +85,7 @@ if(isset($_POST['login']))
         $query->execute();
 
         echo '<script>alert("Login Successfully!")</script>';
-        echo "<script type ='text/javascript'> document.location='http://localhost/developgetpet/apps/dashboard/PetAdopterDashboard.php'</script>";
+        echo "<script type ='text/javascript'> document.location='http://localhost/developgetpet/dashboard/PetAdopterDashboard.php'</script>";
         echo $_SESSION['ID'];
         echo $_SESSION['Firstname'];
         echo $_SESSION['Lastname'];
@@ -167,7 +167,7 @@ if(isset($_POST['login']))
       <div class="container">
         <div class="row align-items-center justify-content-center">
           <div class="col-md-7">
-          <a href="http://localhost/developgetpet/apps/web/Dashboard.php">
+          <a href="http://localhost/developgetpet/web/Dashboard.php">
           <p style="text-align:center;"><img src="images/Logo.png" style="width:450px;height:450px;margin-top:-80px;" alt=" " class="img-responsive"/></p>
           </a>
           <h3>Login to <strong>GetPet</strong></h3>
@@ -190,7 +190,7 @@ if(isset($_POST['login']))
               </div>
 
               <input type="submit" name="login" value="Log In" class="btn btn-block btn-primary" style="background-color:#00cdc1;border:#00cdc1;">
-              <p  style="text-align:center;"><span class="ml-auto"><a href="http://localhost/developgetpet/apps/login-page/selectrole.php" class="forgot-pass">Don't have an account yet?Click here to register!</a></span></p>
+              <p  style="text-align:center;"><span class="ml-auto"><a href="http://localhost/developgetpet/login-page/selectrole.php" class="forgot-pass">Don't have an account yet?Click here to register!</a></span></p>
             </form>
           </div>
         </div>

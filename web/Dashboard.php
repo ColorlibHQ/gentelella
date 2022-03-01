@@ -48,7 +48,7 @@ include('C:\xampp\htdocs\GETPET\includes\config.php');
 			<div class="header">
 				<div class="logo" style="width:200px;height:200px;">
 					<h1>
-						<a href="http://localhost/GETPET/Dashboard.php">
+						<a href="http://localhost/developgetpet/web/Dashboard.php">
 							<img class="logo-img center-block" src="images/Logo/Logo.png" alt="" style="width:250px;height:250px;margin-left: -60px;margin-top: -50px;" />
 						</a>
 					</h1>
@@ -169,7 +169,7 @@ include('C:\xampp\htdocs\GETPET\includes\config.php');
 
                            if(isset($_POST['login']))
                             {
-								echo "<script type ='text/javascript'> document.location='http://localhost/developgetpet/apps/login-page/login.php'</script>";
+								echo "<script type ='text/javascript'> document.location='http://localhost/developgetpet/login-page/login.php'</script>";
 							}
 							?>
 						</li>
@@ -189,7 +189,7 @@ include('C:\xampp\htdocs\GETPET\includes\config.php');
 
                            if(isset($_POST['signup']))
                             {
-								echo "<script type ='text/javascript'> document.location='http://localhost/developgetpet/apps/login-page/selectrole.php'</script>";
+								echo "<script type ='text/javascript'> document.location='http://localhost/developgetpet/login-page/selectrole.php'</script>";
 							}
 							?>
 						</li>	

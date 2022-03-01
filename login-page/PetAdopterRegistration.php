@@ -64,7 +64,7 @@ $query3->bindParam(':Password',$AccountPassword,PDO::PARAM_STR);
 $query3->execute();
 
 echo '<script>alert("Registered Successfully!")</script>';
-echo "<script type ='text/javascript'> document.location='http://localhost/developgetpet/apps/dashboard/login-page/login.php'</script>";
+echo "<script type ='text/javascript'> document.location='http://localhost/developgetpet/dashboard/login-page/login.php'</script>";
 
 }
 ?>
@@ -146,7 +146,7 @@ echo "<script type ='text/javascript'> document.location='http://localhost/devel
 						</button>
 					</div><br>
 	        </form>
-          <p  style="margin-left : 17vw;"><span class="ml-auto"><a href="http://localhost/developgetpet/apps/login-page/login.php" class="forgot-pass">I am already a member</a></span></p>
+          <p  style="margin-left : 17vw;"><span class="ml-auto"><a href="http://localhost/developgetpet/login-page/login.php" class="forgot-pass">I am already a member</a></span></p>
           </div>       
       </div>
     </div>

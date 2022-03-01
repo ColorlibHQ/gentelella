@@ -4,7 +4,7 @@ include('C:\xampp\htdocs\developgetpet\includes\config.php');
 if(isset($_POST['PetAdopter']))
 {
 	
-   echo "<script type ='text/javascript'> document.location='http://localhost/developgetpet/apps/login-page/PetAdopterRegistration.php'</script>";
+   echo "<script type ='text/javascript'> document.location='http://localhost/developgetpet/login-page/PetAdopterRegistration.php'</script>";
 
 }
 if(isset($_POST['PetOwner']))
@@ -58,13 +58,13 @@ if(isset($_POST['AnimalWelfareAgency']))
               <br>
           <p style="text-align:center;"><img src="images/Logo.png" style="width:450px;height:450px;margin-top:-80px;" alt=" " class="img-responsive"/></p>
             <h3>Select <strong>Role:</strong></h3>
-            <a href="http://localhost/developgetpet/apps/login-page/PetAdopterRegistration.php" style="color:White;"><button type="button" name="PetAdopter" href="http://localhost/GETPET/login-page/login.php" class="btn btn-block btn-primary" style="background-color:#00cdc1;border:#00cdc1;">Pet Adopter</button></a>
+            <a href="http://localhost/developgetpet/login-page/PetAdopterRegistration.php" style="color:White;"><button type="button" name="PetAdopter" href="http://localhost/GETPET/login-page/login.php" class="btn btn-block btn-primary" style="background-color:#00cdc1;border:#00cdc1;">Pet Adopter</button></a>
             <br>
             <a href="http://localhost/GETPET/login-page/PetAdopterRegistration.php" style="color:White;"><button type="button" name="PetAdopter" href="http://localhost/GETPET/login-page/login.php" class="btn btn-block btn-primary" style="background-color:#00cdc1;border:#00cdc1;">Pet Owner</button></a>
             <br>
             <a href="http://localhost/GETPET/login-page/PetAdopterRegistration.php" style="color:White;"><button type="button" name="PetAdopter" href="http://localhost/GETPET/login-page/login.php" class="btn btn-block btn-primary" style="background-color:#00cdc1;border:#00cdc1;">Animal Welfare Organization</button></a>
             <br>
-              <p  style="text-align:center;"><span class="ml-auto"><a href="http://localhost/developgetpet/apps/login-page/login.php" class="forgot-pass">I am already a member</a></span></p>
+              <p  style="text-align:center;"><span class="ml-auto"><a href="http://localhost/developgetpet/login-page/login.php" class="forgot-pass">I am already a member</a></span></p>
             </form>
           </div>
         </div>
