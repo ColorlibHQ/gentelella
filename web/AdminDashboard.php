@@ -1,7 +1,7 @@
 <?php 
 session_start();
-include('C:\xampp\htdocs\GETPET\includes\config.php');
-$query=$dbh->prepare("SELECT COUNT(ID) FROM pet_owner");
+include('C:\xampp\htdocs\developgetpet\includes\config.php');
+$query=$dbh->prepare("SELECT COUNT(ownerID) FROM petowner");
 $query->execute();
 
 $pet_owner=$query->fetchColumn();
@@ -9,7 +9,7 @@ $pet_owner=$query->fetchColumn();
 ?>
 
 <?php
-$query=$dbh->prepare("SELECT COUNT(ID) FROM pet_adopter");
+$query=$dbh->prepare("SELECT COUNT(adopterID) FROM petadopter");
 $query->execute();
 
 $pet_adopter=$query->fetchColumn();
@@ -17,7 +17,7 @@ $pet_adopter=$query->fetchColumn();
 ?>
 
 <?php
-$query=$dbh->prepare("SELECT COUNT(ID) FROM animal_welfare_agency");
+$query=$dbh->prepare("SELECT COUNT(orgID) FROM animalwelfareorganization");
 $query->execute();
 
 $animal_welfare_agency=$query->fetchColumn();
@@ -25,7 +25,7 @@ $animal_welfare_agency=$query->fetchColumn();
 ?>
 
 <?php
-$query=$dbh->prepare("SELECT COUNT(*) FROM registered ");
+$query=$dbh->prepare("SELECT COUNT(*) FROM register ");
 $query->execute();
 
 $Registered=$query->fetchColumn();
@@ -33,7 +33,7 @@ $Registered=$query->fetchColumn();
 ?>
 
 <?php
-$query=$dbh->prepare("SELECT COUNT(*) FROM login WHERE (Date) = (CURDATE())");
+$query=$dbh->prepare("SELECT COUNT(*) FROM login WHERE (loginDate) = (CURDATE())");
 $query->execute();
 
 $Date=$query->fetchColumn();

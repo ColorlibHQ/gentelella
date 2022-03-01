@@ -6,7 +6,7 @@ if(isset($_POST['login']))
 	$Username=$_POST['Username'];
     $Password=$_POST['Password'];
 
-    $sql = "SELECT * FROM admin WHERE Username = :Username AND Password =:Password";
+    $sql = "SELECT * FROM admin WHERE adUsername = :Username AND adPassword =:Password";
     $query = $dbh->prepare($sql);
     $query->bindParam(':Username', $Username,PDO::PARAM_STR);
     $query->bindParam(':Password', $Password,PDO::PARAM_STR);
@@ -18,15 +18,15 @@ if(isset($_POST['login']))
     {
 
         session_regenerate_id();
-		    $_SESSION['ID'] = $results['ID'];
+		    $_SESSION['adID'] = $results['adID'];
        
         echo '<script>alert("Login Successfully!")</script>';
-        echo "<script type ='text/javascript'> document.location='http://localhost/GETPET/web/AdminDashboard.php'</script>";
+        echo "<script type ='text/javascript'> document.location='http://localhost/developgetpet/web/AdminDashboard.php'</script>";
 
 
     }
 
-    $sql1 = "SELECT * FROM pet_owner WHERE Username = :Username AND Password =:Password";
+    $sql1 = "SELECT * FROM petowner WHERE Username = :Username AND Password =:Password";
     $query1 = $dbh->prepare($sql1);
     $query1->bindParam(':Username', $Username,PDO::PARAM_STR);
     $query1->bindParam(':Password', $Password,PDO::PARAM_STR);
