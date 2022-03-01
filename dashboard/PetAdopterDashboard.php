@@ -80,7 +80,7 @@ $query3->bindParam(':Username',$AccountUsername,PDO::PARAM_STR);
 $query3->bindParam(':Password',$AccountPassword,PDO::PARAM_STR);
 $query3->execute();
 {
-echo '<script>alert("Your Account Updated Successfully!!!")</script>';
+echo '<script>alert("Your Account Updated Successfully!")</script>';
 $ID=$_SESSION['ID'];
 $sql = "SELECT * from pet_adopter where ID=:ID";
 $query=$dbh->prepare($sql);
