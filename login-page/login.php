@@ -181,6 +181,13 @@ if(isset($_POST['login']))
                 <input type="password" name="Password" class="form-control" placeholder="Password" id="Password" required="required">
               </div>
               
+              <?php
+                date_default_timezone_set("Asia/Manila");
+                ?>
+              <div hidden style="text-align: center" class="wrap-input100 validate-input">
+						    <input class="input100" style="background-color:#f1f1f1;width:250px;height:40px;border:none;" name="Date" required="required" value="<?php echo date('Y-m-d'); ?>" autocomplete="off">
+					    </div>
+              
               <div class="d-flex mb-5 align-items-center" >
                 <label class="control control--checkbox mb-0" ><span class="caption">Remember me</span>
                   <input type="checkbox">
