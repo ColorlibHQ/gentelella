@@ -11,7 +11,7 @@ $pet_owner=$query->fetchColumn();
 <?php
 $query=$dbh->prepare("SELECT COUNT(adopterID) FROM petadopter");
 $query->execute();
-
+	
 $pet_adopter=$query->fetchColumn();
 
 ?>
