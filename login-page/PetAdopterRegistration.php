@@ -97,7 +97,7 @@ echo "<script type ='text/javascript'> document.location='http://localhost/devel
   
 
   <div class="d-lg-flex half">
-    <div class="bg order-1 order-md-2" style="background-image: url('images/doggy.jpg');"></div>
+    <div class="bg order-1 order-md-2" style="background-image: url('images/doggy.jpg'); height:870px;"></div>
     <div class="contents order-2 order-md-1">
       <div class="container">      
           <div class="col-md-7">
@@ -145,8 +145,8 @@ echo "<script type ='text/javascript'> document.location='http://localhost/devel
 							<a style="color:White"> Register </a>
 						</button>
 					</div><br>
+          <p style="text-align:center;"><span class="ml-auto"><a href="http://localhost/developgetpet/login-page/login.php" class="forgot-pass">I am already a member</a></span></p>
 	        </form>
-          <p  style="margin-left : 17vw;"><span class="ml-auto"><a href="http://localhost/developgetpet/login-page/login.php" class="forgot-pass">I am already a member</a></span></p>
           </div>       
       </div>
     </div>
