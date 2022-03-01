@@ -56,7 +56,7 @@ if(isset($_POST['AnimalWelfareAgency']))
           <div class="col-md-7">
               <br>
               <br>
-          <p style="text-align:center;"><img src="images/Logo.png" style="width:450px;height:450px;margin-top:-80px;" alt=" " class="img-responsive"/></p>
+          <p style="text-align:center;"><img src="images/Logo.png" style="width:450px;height:450px;margin-top:-80px;margin-left:-55px;" alt=" " class="img-responsive"/></p>
             <h3>Select <strong>Role:</strong></h3>
             <a href="http://localhost/developgetpet/login-page/PetAdopterRegistration.php" style="color:White;"><button type="button" name="PetAdopter" href="http://localhost/GETPET/login-page/login.php" class="btn btn-block btn-primary" style="background-color:#00cdc1;border:#00cdc1;">Pet Adopter</button></a>
             <br>

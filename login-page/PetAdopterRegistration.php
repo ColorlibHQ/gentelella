@@ -105,7 +105,7 @@ echo "<script type ='text/javascript'> document.location='http://localhost/devel
               <br>
               <br>
               <br>
-					      <p style="text-align:center;"><img src="images/Logo.png" style="width:250px;height:250px;margin-top:-80px;" alt=" " class="img-responsive"/></p>
+					      <p style="text-align:center;"><img src="images/Logo.png" style="width:250px;height:250px;margin-top:-80px;margin-left:-15px;" alt=" " class="img-responsive"/></p>
                   <h3 style="text-align:center;margin-top:-40px;">Pet Adopter <strong>Registration:</strong></h3>
 					<br>
 					<div style="text-align: center" class="wrap-input100 validate-input">
