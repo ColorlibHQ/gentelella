@@ -152,7 +152,7 @@ if($query->rowCount()>0)
             <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
-                <h3>General</h3>
+              <h2>&nbsp&nbsp<?php echo ($result->Role);?></t></h2>
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
@@ -288,7 +288,7 @@ if($query->rowCount()>0)
                       <img src="images/img.jpg" alt=""><?php echo ($result->Firstname);?> <?php echo ($result->Lastname);?>
                     </a>
                     <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item"  href="javascript:;"> Profile</a>
+                      <a class="dropdown-item"  href="javascript:;" onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black"> Profile</a>
                       <!--<a class="dropdown-item"  href="javascript:;">
                           <span class="badge bg-red pull-right">50%</span>
                           <span>Settings</span>
