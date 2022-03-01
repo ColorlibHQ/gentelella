@@ -99,7 +99,7 @@ $Date=$query->fetchColumn();
 				<div class='collapse navbar-collapse'>
 					<ul>
                         <li>
-							<a href="http://localhost/GETPET/web/AdminDashboard.php">Home</a>
+							<a href="http://localhost/developgetpet/web/AdminDashboard.php">Home</a>
 						</li>
 						<!--<li style = "width:160px;">
 							<a href="#activity" class="scroll">Activity Log</a>
@@ -150,7 +150,7 @@ $Date=$query->fetchColumn();
 					<legend style="font-size: 20px">Total Pet Owner</legend>
 					<fieldset>
 						<legend><?php echo $pet_owner; ?></legend>
-						<button type="button" name="PetOwner" style="background-color:#00cdc1;border-radius:2px;color:white;width:100px;height:35px;border:none;"><a href="http://localhost/GETPET/web/PetOwner.php" style="color:white;">View</a></button>
+						<button type="button" name="PetOwner" style="background-color:#00cdc1;border-radius:2px;color:white;width:100px;height:35px;border:none;"><a href="http://localhost/developgetpet/web/PetOwner.php" style="color:white;">View</a></button>
 					</fieldset>
 				</div>
 				<div class="col-md-4 col-sm-4 col-xs-4 w3_agile_services_grid " data-aos="zoom-in">
@@ -164,7 +164,7 @@ $Date=$query->fetchColumn();
 					<legend style="font-size: 20px">Total Pet Adopter</legend>
 					<fieldset>
 						<legend><?php echo $pet_adopter; ?></legend>
-						<button type="button" style="background-color:#00cdc1;border-radius:2px;color:white;width:100px;height:35px;border:none;"><a href="http://localhost/GETPET/web/PetAdopter.php" style="color:white;">View</a></button>
+						<button type="button" style="background-color:#00cdc1;border-radius:2px;color:white;width:100px;height:35px;border:none;"><a href="http://localhost/developgetpet/web/PetAdopter.php" style="color:white;">View</a></button>
 					</fieldset>
 				</div>
 				<div class="col-md-4 col-sm-4 col-xs-4 w3_agile_services_grid" data-aos="zoom-in">
@@ -178,7 +178,7 @@ $Date=$query->fetchColumn();
 					<legend style="font-size: 20px">Total Animal Welfare Organization</legend>
 					<fieldset>
 						<legend><?php echo $animal_welfare_organization;?></legend>
-						<button type="button" style="background-color:#00cdc1;border-radius:2px;color:white;width:100px;height:35px;border:none;"><a href="http://localhost/GETPET/web/AnimalWelfareOrganization.php" style="color:white;">View</a></button>
+						<button type="button" style="background-color:#00cdc1;border-radius:2px;color:white;width:100px;height:35px;border:none;"><a href="http://localhost/developgetpet/web/AnimalWelfareOrganization.php" style="color:white;">View</a></button>
 					</fieldset>
 				</div>
 				<div class="col-md-4 col-sm-4 col-xs-4 w3_agile_services_grid" data-aos="zoom-in">
@@ -193,7 +193,7 @@ $Date=$query->fetchColumn();
 					<legend style="font-size: 20px">Total Registered</legend>
 					<fieldset>
 					     <legend><legend><?php echo $Registered;?></legend></legend>
-						 <button type="button" style="background-color:#00cdc1;border-radius:2px;color:white;width:100px;height:35px;border:none;"><a href="http://localhost/GETPET/web/TotalRegistered.php" style="color:white;">View</a></button>
+						 <button type="button" style="background-color:#00cdc1;border-radius:2px;color:white;width:100px;height:35px;border:none;"><a href="http://localhost/developgetpet/web/TotalRegistered.php" style="color:white;">View</a></button>
 					</fieldset>
 				</div>
 				<div class="col-md-4 col-sm-4 col-xs-4 w3_agile_services_grid" data-aos="zoom-in">
@@ -208,7 +208,7 @@ $Date=$query->fetchColumn();
 					<legend style="font-size: 20px">Total User Log Today</legend>
 					<fieldset>
 					     <legend><legend><?php echo $Date;?></legend></legend>
-						 <button type="button" style="background-color:#00cdc1;border-radius:2px;color:white;width:100px;height:35px;border:none;"><a href="http://localhost/GETPET/web/UserLogToday.php" style="color:white;">View</a></button>
+						 <button type="button" style="background-color:#00cdc1;border-radius:2px;color:white;width:100px;height:35px;border:none;"><a href="http://localhost/developgetpet/web/UserLogToday.php" style="color:white;">View</a></button>
 					</fieldset>
 				</div>
 				<div class="clearfix"> </div>

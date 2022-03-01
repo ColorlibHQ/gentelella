@@ -1,8 +1,8 @@
 <?php 
 session_start();
 include('C:\xampp\htdocs\developgetpet\includes\config.php');
-$ID=$_SESSION['ID'];
-$sql = "SELECT * from pet_adopter where ID=:ID";
+$ID=$_SESSION['adopterID'];
+$sql = "SELECT * from petadopter where adopterID=:ID";
 $query=$dbh->prepare($sql);
 $query->bindParam(':ID',$ID,PDO::PARAM_STR);
 $query->execute();
@@ -82,7 +82,7 @@ $query3->execute();
 {
 echo '<script>alert("Your Account Updated Successfully!")</script>';
 $ID=$_SESSION['ID'];
-$sql = "SELECT * from pet_adopter where ID=:ID";
+$sql = "SELECT * from petadopter where adopterID=:ID";
 $query=$dbh->prepare($sql);
 $query->bindParam(':ID',$ID,PDO::PARAM_STR);
 $query->execute();
@@ -110,7 +110,7 @@ if($query->rowCount()>0)
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>GetPet</title>
+    <title>GETPET</title>
 
     <!-- Bootstrap -->
     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -129,7 +129,7 @@ if($query->rowCount()>0)
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbspGetPet!</span></a>
+              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbspGETPET</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -141,7 +141,7 @@ if($query->rowCount()>0)
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2><?php echo ($result->Firstname);?> <?php echo ($result->Lastname);?></h2>
+                <h2><?php echo ($result->adopterFirstname);?> <?php echo ($result->adopterLastname);?></h2>
               </div>
               <div class="clearfix"></div>
             </div>
@@ -284,7 +284,7 @@ if($query->rowCount()>0)
                 <ul class=" navbar-right">
                   <li class="nav-item dropdown open" style="padding-left: 15px;">
                     <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                      <img src="images/img.jpg" alt=""><?php echo ($result->Firstname);?> <?php echo ($result->Lastname);?>
+                      <img src="images/img.jpg" alt=""><?php echo ($result->adopterFirstname);?> <?php echo ($result->adopterLastname);?>
                     </a>
                     <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item"  href="javascript:;" onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black"> Profile</a>

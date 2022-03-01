@@ -1,8 +1,8 @@
 <?php 
 session_start();
-include('C:\xampp\htdocs\GETPET\includes\config.php');
+include('C:\xampp\htdocs\developgetpet\includes\config.php');
 $ID=$_SESSION['ID'];
-$sql = "SELECT * from pet_adopter where ID=:ID";
+$sql = "SELECT * from petadopter where adopterID=:ID";
 $query=$dbh->prepare($sql);
 $query->bindParam(':ID',$ID,PDO::PARAM_STR);
 $query->execute();

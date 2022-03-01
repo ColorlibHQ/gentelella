@@ -20,13 +20,13 @@ if(isset($_POST['login']))
         session_regenerate_id();
 		    $_SESSION['adID'] = $results['adID'];
        
-        echo '<script>alert("Login Successfully!")</script>';
+        echo '<script>alert("Login Successfully!!!")</script>';
         echo "<script type ='text/javascript'> document.location='http://localhost/developgetpet/web/AdminDashboard.php'</script>";
 
 
     }
 
-    $sql1 = "SELECT * FROM petowner WHERE Username = :Username AND Password =:Password";
+    $sql1 = "SELECT * FROM petowner WHERE ownerUsername = :Username AND ownerPassword =:Password";
     $query1 = $dbh->prepare($sql1);
     $query1->bindParam(':Username', $Username,PDO::PARAM_STR);
     $query1->bindParam(':Password', $Password,PDO::PARAM_STR);
@@ -38,28 +38,28 @@ if(isset($_POST['login']))
     {
 
         session_regenerate_id();
-		    $_SESSION['ID'] = $results1['ID'];
-        $_SESSION['Firstname'] = $results1['Firstname'];
-        $_SESSION['Lastname'] = $results1['Lastname'];
+		    $_SESSION['ownerID'] = $results1['ownerID'];
+        $_SESSION['ownerFirstname'] = $results1['ownerFirstname'];
+        $_SESSION['ownerLastname'] = $results1['ownerLastname'];
 
-        $ID=$_SESSION['ID'];
+        $ID=$_SESSION['ownerID'];
 
         $Date=($_POST['Date']);
 
-        $sql="update login set Date=:Date where ID=$ID";
+        $sql="update login set loginDate=:Date where userID=$ID";
         $query=$dbh->prepare($sql); 
         $query->bindParam(':Date',$Date,PDO::PARAM_STR);
         $query->execute();
 
-        echo '<script>alert("Login Successfully!")</script>';
-        echo "<script type ='text/javascript'> document.location='http://localhost/GETPET/web/PetOwnerDashboard.php'</script>";
-        echo $_SESSION['ID'];
-        echo $_SESSION['Firstname'];
-        echo $_SESSION['Lastname'];
+        echo '<script>alert("Login Successfully!!!")</script>';
+        echo "<script type ='text/javascript'> document.location='http://localhost/developgetpet/dashboard/PetOwnerDashboard.php'</script>";
+        echo $_SESSION['ownerID'];
+        echo $_SESSION['ownerFirstname'];
+        echo $_SESSION['ownerLastname'];
 
     }
 
-    $sql2 = "SELECT * FROM pet_adopter WHERE Username = :Username AND Password =:Password";
+    $sql2 = "SELECT * FROM petadopter WHERE adopterUsername = :Username AND adopterPassword =:Password";
     $query2 = $dbh->prepare($sql2);
     $query2->bindParam(':Username', $Username,PDO::PARAM_STR);
     $query2->bindParam(':Password', $Password,PDO::PARAM_STR);
@@ -71,28 +71,28 @@ if(isset($_POST['login']))
     {
 
         session_regenerate_id();
-		    $_SESSION['ID'] = $results2['ID'];
-        $_SESSION['Firstname'] = $results2['Firstname'];
-        $_SESSION['Lastname'] = $results2['Lastname'];
+		    $_SESSION['adopterID'] = $results2['adopterID'];
+        $_SESSION['adopterFirstname'] = $results2['adopterFirstname'];
+        $_SESSION['adopterLastname'] = $results2['adopterLastname'];
 
-        $ID=$_SESSION['ID'];
+        $ID=$_SESSION['adopterID'];
 
         $Date=($_POST['Date']);
 
-        $sql="update login set Date=:Date where ID=$ID";
+        $sql="update login set loginDate=:Date where userID=$ID";
         $query=$dbh->prepare($sql); 
         $query->bindParam(':Date',$Date,PDO::PARAM_STR);
         $query->execute();
 
-        echo '<script>alert("Login Successfully!")</script>';
+        echo '<script>alert("Login Successfully!!!")</script>';
         echo "<script type ='text/javascript'> document.location='http://localhost/developgetpet/dashboard/PetAdopterDashboard.php'</script>";
-        echo $_SESSION['ID'];
-        echo $_SESSION['Firstname'];
-        echo $_SESSION['Lastname'];
+        echo $_SESSION['adopterID'];
+        echo $_SESSION['adopterFirstname'];
+        echo $_SESSION['adopterLastname'];
 
     }
 
-    $sql3 = "SELECT * FROM animal_welfare_agency WHERE Username = :Username AND Password =:Password";
+    $sql3 = "SELECT * FROM animalwelfareorganization WHERE orgUsername = :Username AND orgPassword =:Password";
     $query3 = $dbh->prepare($sql3);
     $query3->bindParam(':Username', $Username,PDO::PARAM_STR);
     $query3->bindParam(':Password', $Password,PDO::PARAM_STR);
@@ -104,21 +104,21 @@ if(isset($_POST['login']))
     {
 
         session_regenerate_id();
-		    $_SESSION['ID'] = $results3['ID'];
-        $_SESSION['OrganizationName'] = $results3['OrganizationName'];
-        $_SESSION['OrganizationManager'] = $results3['OrganizationManager'];
+		    $_SESSION['orgID'] = $results3['orgID'];
+        $_SESSION['orgName'] = $results3['orgName'];
+        $_SESSION['orgManager'] = $results3['orgManager'];
 
-        $ID=$_SESSION['ID'];
+        $ID=$_SESSION['orgID'];
 
         $Date=($_POST['Date']);
 
-        $sql="update login set Date=:Date where ID=$ID";
+        $sql="update login set loginDate=:Date where userID=$ID";
         $query=$dbh->prepare($sql); 
         $query->bindParam(':Date',$Date,PDO::PARAM_STR);
         $query->execute();
 
-        echo '<script>alert("Login Successfully!")</script>';
-        echo "<script type ='text/javascript'> document.location='http://localhost/GETPET/web/AnimalWelfareAgencyDashboard.php'</script>";
+        echo '<script>alert("Login Successfully!!!")</script>';
+        echo "<script type ='text/javascript'> document.location='http://localhost/developgetpet/dashboard/AnimalWelfareOrganizationDashboard.php'</script>";
         echo $_SESSION['ID'];
         echo $_SESSION['OrganizationName'];
         echo $_SESSION['OrganizationManager'];
@@ -126,7 +126,7 @@ if(isset($_POST['login']))
     }
     
     else 
-    echo '<script>alert("Invalid Account!")</script>';
+    echo '<script>alert("Invalid Account!!!")</script>';
 	
 
 

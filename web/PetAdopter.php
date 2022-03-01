@@ -1,7 +1,7 @@
 <?php 
 session_start();
-include('C:\xampp\htdocs\GETPET\includes\config.php');
-$query=$dbh->prepare("SELECT COUNT(ID) FROM pet_owner");
+include('C:\xampp\htdocs\developgetpet\includes\config.php');
+$query=$dbh->prepare("SELECT COUNT(ownerID) FROM petowner");
 $query->execute();
 
 $pet_owner=$query->fetchColumn();
@@ -9,7 +9,7 @@ $pet_owner=$query->fetchColumn();
 ?>
 
 <?php
-$query=$dbh->prepare("SELECT COUNT(ID) FROM pet_adopter");
+$query=$dbh->prepare("SELECT COUNT(adopterID) FROM petadopter");
 $query->execute();
 
 $pet_adopter=$query->fetchColumn();
@@ -17,7 +17,7 @@ $pet_adopter=$query->fetchColumn();
 ?>
 
 <?php
-$query=$dbh->prepare("SELECT COUNT(ID) FROM animal_welfare_agency");
+$query=$dbh->prepare("SELECT COUNT(orgID) FROM animalwelfareorganization");
 $query->execute();
 
 $animal_welfare_agency=$query->fetchColumn();
@@ -25,7 +25,7 @@ $animal_welfare_agency=$query->fetchColumn();
 ?>
 
 <?php
-$query=$dbh->prepare("SELECT COUNT(*) FROM registered ");
+$query=$dbh->prepare("SELECT COUNT(*) FROM register ");
 $query->execute();
 
 $Registered=$query->fetchColumn();
@@ -33,7 +33,7 @@ $Registered=$query->fetchColumn();
 ?>
 
 <?php
-$query=$dbh->prepare("SELECT COUNT(*) FROM login WHERE (Date) = (CURDATE())");
+$query=$dbh->prepare("SELECT COUNT(*) FROM login WHERE (loginDate) = (CURDATE())");
 $query->execute();
 
 $Date=$query->fetchColumn();
@@ -100,7 +100,7 @@ $Date=$query->fetchColumn();
 					<ul>
 						
 						<li>
-							<a href="http://localhost/GETPET/web/AdminDashboard.php">Home</a>
+							<a href="http://localhost/developgetpet/web/AdminDashboard.php">Home</a>
 						</li>
 						<!--<li style = "width:160px;">
 							<a href="#activity" class="scroll">Activity Log</a>
@@ -124,7 +124,7 @@ $Date=$query->fetchColumn();
 							  <div class="dropdown-divider"></div>
 							  <a class="dropdown-item" href="#"style="color:black;"><t style="margin-left: 10px;">Settings</t></a>
 							  <div class="dropdown-divider"></div>
-							  <a class="dropdown-item" href="http://localhost/GETPET/web/Dashboard.php" style="color:black;"><t style="margin-left: 10px;">Log out</t></a>
+							  <a class="dropdown-item" href="http://localhost/developgetpet/login-page/login.php" style="color:black;"><t style="margin-left: 10px;">Log out</t></a>
 						</div></li>
                     </ul>
 				</div>
@@ -160,7 +160,7 @@ $Date=$query->fetchColumn();
 
 <tbody>
 <?php
-$sql="SELECT * from pet_adopter";
+$sql="SELECT * from petadopter";
 $query=$dbh->prepare($sql);
 $query->execute();
 $results=$query->fetchALL(PDO::FETCH_OBJ);
@@ -172,13 +172,13 @@ if($query->rowCount()>0)
     ?>
 <tr>
 <td style="text-align:center;"><input type="checkbox" class="checkItem" value="<?php echo htmlentities($result->ID)?>" name="ID[]"></td>
-<td><?php echo htmlentities($result->ID);?></td>
-<td><?php echo htmlentities($result->Firstname);?></td>
-<td><?php echo htmlentities($result->Lastname);?></td>
-<td><?php echo htmlentities($result->ContactNo);?></td>
-<td><?php echo htmlentities($result->Address);?></td>
-<td><?php echo '<img src="data:image/jpeg;base64,'.base64_encode($result->Picture).'" width="75"; height="80">';?></td>
-<td><?php echo htmlentities($result->Email);?></td>
+<td><?php echo htmlentities($result->adopterID);?></td>
+<td><?php echo htmlentities($result->adopterFirstname);?></td>
+<td><?php echo htmlentities($result->adopterLastname);?></td>
+<td><?php echo htmlentities($result->adopterContactNo);?></td>
+<td><?php echo htmlentities($result->adopterAddress);?></td>
+<td><?php echo"<img src = '/GETPET/web/images/$result->adopterPicture' style = height:80px; width:80px;/>";?></td>
+<td><?php echo htmlentities($result->adopterEmail);?></td>
 <td><?php echo htmlentities($result->Role);?></td>                                  
 <td><input type="submit" name="delete" value="Delete" name="ID[]" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-danger"></td> 
 </tr>
