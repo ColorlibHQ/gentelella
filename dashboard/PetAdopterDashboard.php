@@ -152,7 +152,6 @@ if($query->rowCount()>0)
             <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
-              <h2>&nbsp&nbsp<?php echo ($result->Role);?></t></h2>
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
@@ -373,7 +372,7 @@ if($query->rowCount()>0)
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Dashboard</h3>
+              <h3>&nbsp&nbsp<?php echo ($result->Role);?>'s Dashboard</h3>
               </div>
 
               <div class="title_right">
