@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Gentelella Alela! | </title>
+    <title>GETPET</title>
 
     <!-- Bootstrap -->
     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -29,21 +29,9 @@
             <div class="text-center text-center">
               <h1 class="error-number">404</h1>
               <h2>Sorry but we couldn't find this page</h2>
-              <p>This page you are looking for does not exist <a href="#">Report this?</a>
+              <p>This page you are looking for does not exist Report this?
               </p>
-              <div class="mid_center">
-                <h3>Search</h3>
-                <form>
-                  <div class="  form-group pull-right top_search">
-                    <div class="input-group">
-                      <input type="text" class="form-control" placeholder="Search for...">
-                      <span class="input-group-btn">
-                              <button class="btn btn-secondary" type="button">Go!</button>
-                          </span>
-                    </div>
-                  </div>
-                </form>
-              </div>
+              
             </div>
           </div>
         </div>
