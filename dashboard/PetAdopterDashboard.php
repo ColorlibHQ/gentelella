@@ -20,64 +20,64 @@ if($query->rowCount()>0)
 <?php
 if(isset($_POST['update']))
 {
-$OrganizationNameOrFirstname=($_POST['Firstname']);
-$OrganizationManagerOrLastname=($_POST['Lastname']);
-$AccountContactNo=($_POST['ContactNo']);
-$AccountAddress=($_POST['Address']);
-$AccountEmail=($_POST['Email']);
-$AccountUsername=($_POST['Username']);
-$AccountPassword=($_POST['Password']);
+$adopterFirstnameOrFirstname=($_POST['Firstname']);
+$adopterLastnameOrLastname=($_POST['Lastname']);
+$accountContactNo=($_POST['ContactNo']);
+$accountAddress=($_POST['Address']);
+$accountEmail=($_POST['Email']);
+$accountUsername=($_POST['Username']);
+$accountPassword=($_POST['Password']);
 
-$sql="update registered set OrganizationNameOrFirstname=:Firstname,OrganizationManagerOrLastname=:Lastname,ContactNo=:ContactNo,Address=:Address,Email=:Email,Username=:Username,Password=:Password where ID=:ID";
+$sql="update registered set adopterFirstnameOrFirstname=:Firstname,adopterLastnameOrLastname=:Lastname,adopterContactNo=:ContactNo,adopterAddress=:Address,adopterEmail=:Email,adopterUsername=:Username,adopterPassword=:Password where adopterID=:ID";
 $query=$dbh->prepare($sql);
-$query->bindParam(':ID',$ID,PDO::PARAM_STR);  
-$query->bindParam(':Firstname',$OrganizationNameOrFirstname,PDO::PARAM_STR);
-$query->bindParam(':Lastname',$OrganizationManagerOrLastname,PDO::PARAM_STR);
-$query->bindParam(':ContactNo',$AccountContactNo,PDO::PARAM_STR);
-$query->bindParam(':Address',$AccountAddress,PDO::PARAM_STR);
-$query->bindParam(':Email',$AccountEmail,PDO::PARAM_STR);
-$query->bindParam(':Username',$AccountUsername,PDO::PARAM_STR);
-$query->bindParam(':Password',$AccountPassword,PDO::PARAM_STR);
+$query->bindParam(':adopterID',$adopterID,PDO::PARAM_STR);  
+$query->bindParam(':adopterFirstname',$adopterFirstnameOrFirstname,PDO::PARAM_STR);
+$query->bindParam(':adopterLastname',$adopterlastnamerOrLastname,PDO::PARAM_STR);
+$query->bindParam(':adopterContactNo',$AccountContactNo,PDO::PARAM_STR);
+$query->bindParam(':adopterAddress',$AccountAddress,PDO::PARAM_STR);
+$query->bindParam(':adopterEmail',$AccountEmail,PDO::PARAM_STR);
+$query->bindParam(':adopterUsername',$AccountUsername,PDO::PARAM_STR);
+$query->bindParam(':adopterPassword',$AccountPassword,PDO::PARAM_STR);
 $query->execute();
 
-$Firstname=($_POST['Firstname']);
-$Lastname=($_POST['Lastname']);
-$ContactNo=($_POST['ContactNo']);
-$Address=($_POST['Address']);
-$Email=($_POST['Email']);
-$Username=($_POST['Username']);
-$Password=($_POST['Password']);
+$Firstname=($_POST['adopterFirstname']);
+$Lastname=($_POST['adopterLastname']);
+$ContactNo=($_POST['adopterContactNo']);
+$Address=($_POST['adopterAddress']);
+$Email=($_POST['adopterEmail']);
+$Username=($_POST['adopterUsername']);
+$Password=($_POST['adopterPassword']);
 
-$sql1="update pet_adopter set Firstname=:Firstname,Lastname=:Lastname,ContactNo=:ContactNo,Address=:Address,Email=:Email,Username=:Username,Password=:Password where ID=:ID";
+$sql1="update petadopter set adopterFirstname=:Firstname,adopterLastname=:Lastname,adopterContactNo=:ContactNo,adopterAddress=:Address,adopterEmail=:Email,adopterUsername=:Username,adopterPassword=:Password where adopterID=:ID";
 $query1=$dbh->prepare($sql1); 
-$query1->bindParam(':ID',$ID,PDO::PARAM_STR); 
-$query1->bindParam(':Firstname',$Firstname,PDO::PARAM_STR);
-$query1->bindParam(':Lastname',$Lastname,PDO::PARAM_STR);
-$query1->bindParam(':ContactNo',$ContactNo,PDO::PARAM_STR);
-$query1->bindParam(':Address',$Address,PDO::PARAM_STR);
-$query1->bindParam(':Email',$Email,PDO::PARAM_STR);
-$query1->bindParam(':Username',$Username,PDO::PARAM_STR);
-$query1->bindParam(':Password',$Password,PDO::PARAM_STR);
+$query1->bindParam(':adopterID',$adopterID,PDO::PARAM_STR); 
+$query1->bindParam(':adopterFirstname',$adopterFirstname,PDO::PARAM_STR);
+$query1->bindParam(':adopterLastname',$adopterLastname,PDO::PARAM_STR);
+$query1->bindParam(':adopterContactNo',$adopterContactNo,PDO::PARAM_STR);
+$query1->bindParam(':adopterAddress',$adopterAddress,PDO::PARAM_STR);
+$query1->bindParam(':adopterEmail',$adopterEmail,PDO::PARAM_STR);
+$query1->bindParam(':adopterUsername',$adopterUsername,PDO::PARAM_STR);
+$query1->bindParam(':adopterPassword',$adopterPassword,PDO::PARAM_STR);
 $query1->execute();
 
-$OrganizationNameOrFirstname=($_POST['Firstname']);
-$OrganizationManagerOrLastname=($_POST['Lastname']);
-$AccountContactNo=($_POST['ContactNo']);
-$AccountAddress=($_POST['Address']);
-$AccountEmail=($_POST['Email']);
-$AccountUsername=($_POST['Username']);
-$AccountPassword=($_POST['Password']);
+$adopterFirstnameOrFirstname=($_POST['adopterFirstname']);
+$adopterLastnamerOrLastname=($_POST['adopterLastname']);
+$AccountContactNo=($_POST['adopterContactNo']);
+$AccountAddress=($_POST['adopterAddress']);
+$AccountEmail=($_POST['adopterEmail']);
+$AccountUsername=($_POST['adopterUsername']);
+$AccountPassword=($_POST['adopterPassword']);
 
-$sql3="update login set OrganizationNameOrFirstname=:Firstname,OrganizationManagerOrLastname=:Lastname,ContactNo=:ContactNo,Address=:Address,Email=:Email,Username=:Username,Password=:Password where ID=:ID";
+$sql3="update login set adopterFirstnameOrFirstname=:Firstname,adopterLastnameOrLastname=:Lastname,adopterContactNo=:ContactNo,adopterAddress=:Address,adopterEmail=:Email,adopterUsername=:Username,adopterPassword=:Password where adopterID=:ID";
 $query3=$dbh->prepare($sql3); 
 $query3->bindParam(':ID',$ID,PDO::PARAM_STR);
-$query3->bindParam(':Firstname',$OrganizationNameOrFirstname,PDO::PARAM_STR);
-$query3->bindParam(':Lastname',$OrganizationManagerOrLastname,PDO::PARAM_STR);
-$query3->bindParam(':ContactNo',$AccountContactNo,PDO::PARAM_STR);
-$query3->bindParam(':Address',$AccountAddress,PDO::PARAM_STR);
-$query3->bindParam(':Email',$AccountEmail,PDO::PARAM_STR);
-$query3->bindParam(':Username',$AccountUsername,PDO::PARAM_STR);
-$query3->bindParam(':Password',$AccountPassword,PDO::PARAM_STR);
+$query3->bindParam(':adopterFirstname',$adopterFirstnameOrFirstname,PDO::PARAM_STR);
+$query3->bindParam(':adopterLastname',$adopterLastnameOrLastname,PDO::PARAM_STR);
+$query3->bindParam(':adopterContactNo',$AccountContactNo,PDO::PARAM_STR);
+$query3->bindParam(':adopterAddress',$AccountAddress,PDO::PARAM_STR);
+$query3->bindParam(':adopterEmail',$AccountEmail,PDO::PARAM_STR);
+$query3->bindParam(':adopterUsername',$AccountUsername,PDO::PARAM_STR);
+$query3->bindParam(':adopterPassword',$AccountPassword,PDO::PARAM_STR);
 $query3->execute();
 {
 echo '<script>alert("Your Account Updated Successfully!")</script>';
@@ -280,7 +280,7 @@ if($query->rowCount()>0)
                       <img src="images/img.jpg" alt=""><?php echo ($result->adopterFirstname);?> <?php echo ($result->adopterLastname);?>
                     </a>
                     <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item"  href="javascript:;" onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black"> Profile</a>
+                      <a class="dropdown-item"  href="javascript:;" onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black" data-toggle="modal" data-target="#Settings"> Profile</a>
                       <!--<a class="dropdown-item"  href="javascript:;">
                           <span class="badge bg-red pull-right">50%</span>
                           <span>Settings</span>
@@ -411,6 +411,72 @@ if($query->rowCount()>0)
           </div>
         </div>
         <!-- /page content -->
+
+        <!-- ModalSettings -->
+	<div class="modal fade" id="Settings" tabindex="-1" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+				<form method="post">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<div class="modal-info">
+						<h1 style="text-align: center">Account Settings</h1>
+						<img src="images/default_profile.png" alt="" class="img-responsive" style="width:150px;height:150px;margin-left:140px;margin-top: 20px;border-radius: 50%;" /><br>
+					</div><br>
+					<div style="text-align: center" class="wrap-input100 validate-input">
+					<a style="text-align: center; color: black;">Upload Profile</a>
+	                </div><br>
+                    <div style="text-align: center" class="wrap-input100 validate-input">
+                        <input type="file" name="Picture" id="Logo" style="width:250px;height:40px;border:none;margin-left:160px;" placeholder="Upload Logo">
+					</div><br>
+					<div style="text-align: center" class="wrap-input100 validate-input">
+					    <input type="hidden" name="adopterID" value="<?php echo ( $result->adopterID);?>" required = "required" class="form-control" id="success">
+					</div><br>
+					<div style="text-align: center" class="wrap-input100 validate-input">
+						<input class="input100" style="background-color:#f1f1f1;width:250px;height:40px;border:none;" type="text" name="Firstname" required="required" value="<?php echo ($result->adopterFirstname);?>" placeholder="Organization Name">
+					</div><br>
+					<div style="text-align: center" class="wrap-input100 validate-input">
+						<input class="input100" style="background-color:#f1f1f1;width:250px;height:40px;border:none;" type="text" name="Lastname" required="required" value="<?php echo ($result->adopterLastname);?>" placeholder="Organization Manager">
+						<span class="focus-input100"></span>
+					</div><br>
+					<div  style="text-align: center" class="wrap-input100 validate-input">
+						<input class="input100" style="background-color:#f1f1f1;width:250px;height:40px;border:none;font-family:Arial;" type="text" name="ContactNo" onkeypress="isInputNumber(event)" maxlength="11" value="<?php echo ($result->adopterContactNo);?>" placeholder="Contact No.">
+						<script>
+            
+                        function isInputNumber(evt){
+                
+                        var ch = String.fromCharCode(evt.which);
+                
+                        if(!(/[0-9]/.test(ch))){
+                        evt.preventDefault();
+                       }
+					}
+                    </script>
+					</div><br>
+					<div style="text-align: center" class="wrap-input100 validate-input">
+						<input class="input100" style="background-color:#f1f1f1;width:250px;height:40px;border:none;" type="text" name="Address" required="required" value="<?php echo ($result->adopterAddress);?>" placeholder="Address">
+					</div><br>
+					<div style="text-align: center" class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+						<input class="input100" style="background-color:#f1f1f1;width:250px;height:40px;border:none;" type="text" name="Email" required="required" value="<?php echo ($result->adopterEmail);?>" placeholder="Email">
+					</div><br>
+					  <div style="text-align: center" class="wrap-input100 validate-input" data-validate = "Valid username is required: ex@abc.xyz">
+						<input class="input100" style="background-color:#f1f1f1;width:250px;height:40px;border:none;" type="text" name="Username" required="required" value="<?php echo ($result->adopterUsername);?>" placeholder="Username">
+					</div><br>
+					<div style="text-align: center" class="wrap-input100 validate-input" data-validate = "Valid username is required: ex@abc.xyz">
+						<input class="input100" style="background-color:#f1f1f1;width:250px;height:40px;border:none;" type="Password" name="Password" required="required" value="<?php echo ($result->adopterPassword);?>" placeholder="Password">
+					</div><br><br>
+					<div style="text-align: center">
+						<button  class="login100-form-btn" style="background-color:#00cdc1;width:250px;height:40px;border:none;" name="update" type="submit" id="insert" value="Insert">
+							<a style="color:White"> Update </a>
+						</button>
+					</div><br>
+				</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- //ModalSettings -->
 
         <!-- footer content -->
         <footer>
