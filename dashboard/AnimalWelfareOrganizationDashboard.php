@@ -1,8 +1,8 @@
 <?php 
 session_start();
 include('C:\xampp\htdocs\developgetpet\includes\config.php');
-$ID=$_SESSION['adopterID'];
-$sql = "SELECT * from petadopter where adopterID=:ID";
+$ID=$_SESSION['orgID'];
+$sql = "SELECT * from animalwelfareorganization where orgID=:ID";
 $query=$dbh->prepare($sql);
 $query->bindParam(':ID',$ID,PDO::PARAM_STR);
 $query->execute();
@@ -48,7 +48,7 @@ $Email=($_POST['Email']);
 $Username=($_POST['Username']);
 $Password=($_POST['Password']);
 
-$sql1="update pet_adopter set Firstname=:Firstname,Lastname=:Lastname,ContactNo=:ContactNo,Address=:Address,Email=:Email,Username=:Username,Password=:Password where ID=:ID";
+$sql1="update animalwelfareorganization set Firstname=:Firstname,Lastname=:Lastname,ContactNo=:ContactNo,Address=:Address,Email=:Email,Username=:Username,Password=:Password where ID=:ID";
 $query1=$dbh->prepare($sql1); 
 $query1->bindParam(':ID',$ID,PDO::PARAM_STR); 
 $query1->bindParam(':Firstname',$Firstname,PDO::PARAM_STR);
@@ -82,7 +82,7 @@ $query3->execute();
 {
 echo '<script>alert("Your Account Updated Successfully!")</script>';
 $ID=$_SESSION['ID'];
-$sql = "SELECT * from petadopter where adopterID=:ID";
+$sql = "SELECT * from animalwelfareorganization where orgID=:ID";
 $query=$dbh->prepare($sql);
 $query->bindParam(':ID',$ID,PDO::PARAM_STR);
 $query->execute();
@@ -141,7 +141,7 @@ if($query->rowCount()>0)
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2><?php echo ($result->adopterFirstname);?> <?php echo ($result->adopterLastname);?></h2>
+                <h2><?php echo ($result->orgManager);?></h2>
               </div>
               <div class="clearfix"></div>
             </div>
@@ -283,7 +283,7 @@ if($query->rowCount()>0)
                 <ul class=" navbar-right">
                   <li class="nav-item dropdown open" style="padding-left: 15px;">
                     <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                      <img src="images/img.jpg" alt=""><?php echo ($result->adopterFirstname);?> <?php echo ($result->adopterLastname);?>
+                      <img src="images/img.jpg" alt=""><?php echo ($result->orgManager);?>
                     </a>
                     <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item"  href="javascript:;" onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black"> Profile</a>
