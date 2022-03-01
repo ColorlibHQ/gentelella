@@ -20,7 +20,7 @@ if(isset($_POST['login']))
         session_regenerate_id();
 		    $_SESSION['adID'] = $results['adID'];
        
-        echo '<script>alert("Login Successfully!!!")</script>';
+        echo '<script>alert("Login Successfully!")</script>';
         echo "<script type ='text/javascript'> document.location='http://localhost/developgetpet/web/AdminDashboard.php'</script>";
 
 
@@ -51,7 +51,7 @@ if(isset($_POST['login']))
         $query->bindParam(':Date',$Date,PDO::PARAM_STR);
         $query->execute();
 
-        echo '<script>alert("Login Successfully!!!")</script>';
+        echo '<script>alert("Login Successfully!")</script>';
         echo "<script type ='text/javascript'> document.location='http://localhost/developgetpet/dashboard/PetOwnerDashboard.php'</script>";
         echo $_SESSION['ownerID'];
         echo $_SESSION['ownerFirstname'];
@@ -117,7 +117,7 @@ if(isset($_POST['login']))
         $query->bindParam(':Date',$Date,PDO::PARAM_STR);
         $query->execute();
 
-        echo '<script>alert("Login Successfully!!!")</script>';
+        echo '<script>alert("Login Successfully!")</script>';
         echo "<script type ='text/javascript'> document.location='http://localhost/developgetpet/dashboard/AnimalWelfareOrganizationDashboard.php'</script>";
         echo $_SESSION['ID'];
         echo $_SESSION['OrganizationName'];
@@ -126,7 +126,7 @@ if(isset($_POST['login']))
     }
     
     else 
-    echo '<script>alert("Invalid Account!!!")</script>';
+    echo '<script>alert("Invalid Account!")</script>';
 	
 
 
