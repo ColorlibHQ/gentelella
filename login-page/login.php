@@ -84,7 +84,7 @@ if(isset($_POST['login']))
         $query->bindParam(':Date',$Date,PDO::PARAM_STR);
         $query->execute();
 
-        echo '<script>alert("Login Successfully!!!")</script>';
+        echo '<script>alert("Login Successfully!")</script>';
         echo "<script type ='text/javascript'> document.location='http://localhost/developgetpet/dashboard/PetAdopterDashboard.php'</script>";
         echo $_SESSION['adopterID'];
         echo $_SESSION['adopterFirstname'];
