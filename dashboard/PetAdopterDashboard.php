@@ -56,6 +56,7 @@ $Firstname=($_POST['Firstname']);
 $Lastname=($_POST['Lastname']);
 $ContactNo=($_POST['ContactNo']);
 $Address=($_POST['Address']);
+$Picture=($_POST['Picture']);
 $Email=($_POST['Email']);
 $Username=($_POST['Username']);
 $Password=($_POST['Password']);
@@ -113,7 +114,7 @@ $query3->bindParam(':Username',$Username,PDO::PARAM_STR);
 $query3->bindParam(':Password',$assword,PDO::PARAM_STR);
 $query3->execute();
 {
-echo '<script>alert("Your Account Updated Successfully!!!")</script>';
+echo '<script>alert("Your Account Updated Successfully!")</script>';
 $ID=$_SESSION['adopterID'];
 $sql = "SELECT * from petadopter where adopterID=:ID";
 $query=$dbh->prepare($sql);
@@ -170,7 +171,7 @@ if($query->rowCount()>0)
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img <?php echo"<img src = '/GETPET/web/images/$result->adopterPicture'";?> alt="..." class="img-circle profile_img">
+                <img <?php echo"<img src = '/developgetpet/web/images/$result->adopterPicture'";?> alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
@@ -310,7 +311,7 @@ if($query->rowCount()>0)
                 <ul class=" navbar-right">
                   <li class="nav-item dropdown open" style="padding-left: 15px;">
                     <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                      <img <?php echo"<img src = '/GETPET/web/images/$result->adopterPicture'";?> alt=""><?php echo ($result->adopterFirstname);?> <?php echo ($result->adopterLastname);?>
+                      <img <?php echo"<img src = '/developgetpet/web/images/$result->adopterPicture'";?> alt=""><?php echo ($result->adopterFirstname);?> <?php echo ($result->adopterLastname);?>
                     </a>
                     <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item"  href="javascript:;" onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black" data-toggle="modal" data-target="#Settings"> Profile</a>
@@ -455,7 +456,7 @@ if($query->rowCount()>0)
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<div class="modal-info">
 						<h1 style="text-align: center">Account Settings</h1>
-						<img <?php echo"<img src = '/GETPET/web/images/$result->adopterPicture'";?> alt="" class="img-responsive" style="width:150px;height:150px;margin-left:140px;margin-top: 20px;border-radius: 50%;" /><br>
+						<img <?php echo"<img src = '/developgetpet/web/images/$result->adopterPicture'";?> alt="" class="img-responsive" style="width:150px;height:150px;margin-left:140px;margin-top: 20px;border-radius: 50%;" /><br>
 					</div><br>
 					<div style="text-align: center" class="wrap-input100 validate-input">
 					<a style="text-align: center; color: black;">Upload Profile</a>
@@ -467,10 +468,10 @@ if($query->rowCount()>0)
 					    <input type="hidden" name="adopterID" value="<?php echo ( $result->adopterID);?>" required = "required" class="form-control" id="success">
 					</div><br>
 					<div style="text-align: center" class="wrap-input100 validate-input">
-						<input class="input100" style="background-color:#f1f1f1;width:250px;height:40px;border:none;" type="text" name="Firstname" required="required" value="<?php echo ($result->adopterFirstname);?>" placeholder="Organization Name">
+						<input class="input100" style="background-color:#f1f1f1;width:250px;height:40px;border:none;" type="text" name="Firstname" required="required" value="<?php echo ($result->adopterFirstname);?>" placeholder="First Name">
 					</div><br>
 					<div style="text-align: center" class="wrap-input100 validate-input">
-						<input class="input100" style="background-color:#f1f1f1;width:250px;height:40px;border:none;" type="text" name="Lastname" required="required" value="<?php echo ($result->adopterLastname);?>" placeholder="Organization Manager">
+						<input class="input100" style="background-color:#f1f1f1;width:250px;height:40px;border:none;" type="text" name="Lastname" required="required" value="<?php echo ($result->adopterLastname);?>" placeholder="Last Name">
 						<span class="focus-input100"></span>
 					</div><br>
 					<div  style="text-align: center" class="wrap-input100 validate-input">
