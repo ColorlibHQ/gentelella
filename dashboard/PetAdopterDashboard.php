@@ -20,68 +20,101 @@ if($query->rowCount()>0)
 <?php
 if(isset($_POST['update']))
 {
-$adopterFirstnameOrFirstname=($_POST['Firstname']);
-$adopterLastnameOrLastname=($_POST['Lastname']);
-$accountContactNo=($_POST['ContactNo']);
-$accountAddress=($_POST['Address']);
-$accountEmail=($_POST['Email']);
-$accountUsername=($_POST['Username']);
-$accountPassword=($_POST['Password']);
+$Firstname=($_POST['Firstname']);
+$Lastname=($_POST['Lastname']);
+$ContactNo=($_POST['ContactNo']);
+$Address=($_POST['Address']);
+$Picture=$_POST['Picture'];
+$Email=($_POST['Email']);
+$Username=($_POST['Username']);
+$Password=($_POST['Password']);
 
-$sql="update registered set adopterFirstnameOrFirstname=:Firstname,adopterLastnameOrLastname=:Lastname,adopterContactNo=:ContactNo,adopterAddress=:Address,adopterEmail=:Email,adopterUsername=:Username,adopterPassword=:Password where adopterID=:ID";
+$sql="update register set 
+userFirstname=:Firstname,
+userLastname=:Lastname,
+contactNo=:ContactNo,
+Address=:Address,
+Image=:Picture,
+Email=:Email,
+Username=:Username,
+Password=:Password 
+where userID=:ID";
+
 $query=$dbh->prepare($sql);
-$query->bindParam(':adopterID',$adopterID,PDO::PARAM_STR);  
-$query->bindParam(':adopterFirstname',$adopterFirstnameOrFirstname,PDO::PARAM_STR);
-$query->bindParam(':adopterLastname',$adopterlastnamerOrLastname,PDO::PARAM_STR);
-$query->bindParam(':adopterContactNo',$AccountContactNo,PDO::PARAM_STR);
-$query->bindParam(':adopterAddress',$AccountAddress,PDO::PARAM_STR);
-$query->bindParam(':adopterEmail',$AccountEmail,PDO::PARAM_STR);
-$query->bindParam(':adopterUsername',$AccountUsername,PDO::PARAM_STR);
-$query->bindParam(':adopterPassword',$AccountPassword,PDO::PARAM_STR);
+$query->bindParam(':ID',$ID,PDO::PARAM_STR);  
+$query->bindParam(':Firstname',$Firstname,PDO::PARAM_STR);
+$query->bindParam(':Lastname',$Lastname,PDO::PARAM_STR);
+$query->bindParam(':ContactNo',$ContactNo,PDO::PARAM_STR);
+$query->bindParam(':Address',$Address,PDO::PARAM_STR);
+$query->bindParam(':Picture',$Picture,PDO::PARAM_STR);
+$query->bindParam(':Email',$Email,PDO::PARAM_STR);
+$query->bindParam(':Username',$Username,PDO::PARAM_STR);
+$query->bindParam(':Password',$Password,PDO::PARAM_STR);
 $query->execute();
 
-$Firstname=($_POST['adopterFirstname']);
-$Lastname=($_POST['adopterLastname']);
-$ContactNo=($_POST['adopterContactNo']);
-$Address=($_POST['adopterAddress']);
-$Email=($_POST['adopterEmail']);
-$Username=($_POST['adopterUsername']);
-$Password=($_POST['adopterPassword']);
+$Firstname=($_POST['Firstname']);
+$Lastname=($_POST['Lastname']);
+$ContactNo=($_POST['ContactNo']);
+$Address=($_POST['Address']);
+$Email=($_POST['Email']);
+$Username=($_POST['Username']);
+$Password=($_POST['Password']);
 
-$sql1="update petadopter set adopterFirstname=:Firstname,adopterLastname=:Lastname,adopterContactNo=:ContactNo,adopterAddress=:Address,adopterEmail=:Email,adopterUsername=:Username,adopterPassword=:Password where adopterID=:ID";
+$sql1="update petadopter set
+adopterFirstname=:Firstname,
+adopterLastname=:Lastname,
+adopterContactNo=:ContactNo,
+adopterAddress=:Address,
+adopterPicture=:Picture,
+adopterEmail=:Email,
+adopterUsername=:Username,
+adopterPassword=:Password 
+where adopterID=:ID";
 $query1=$dbh->prepare($sql1); 
-$query1->bindParam(':adopterID',$adopterID,PDO::PARAM_STR); 
-$query1->bindParam(':adopterFirstname',$adopterFirstname,PDO::PARAM_STR);
-$query1->bindParam(':adopterLastname',$adopterLastname,PDO::PARAM_STR);
-$query1->bindParam(':adopterContactNo',$adopterContactNo,PDO::PARAM_STR);
-$query1->bindParam(':adopterAddress',$adopterAddress,PDO::PARAM_STR);
-$query1->bindParam(':adopterEmail',$adopterEmail,PDO::PARAM_STR);
-$query1->bindParam(':adopterUsername',$adopterUsername,PDO::PARAM_STR);
-$query1->bindParam(':adopterPassword',$adopterPassword,PDO::PARAM_STR);
+$query1->bindParam(':ID',$ID,PDO::PARAM_STR); 
+$query1->bindParam(':Firstname',$Firstname,PDO::PARAM_STR);
+$query1->bindParam(':Lastname',$Lastname,PDO::PARAM_STR);
+$query1->bindParam(':ContactNo',$ContactNo,PDO::PARAM_STR);
+$query1->bindParam(':Address',$Address,PDO::PARAM_STR);
+$query1->bindParam(':Picture',$Picture,PDO::PARAM_STR);
+$query1->bindParam(':Email',$Email,PDO::PARAM_STR);
+$query1->bindParam(':Username',$Username,PDO::PARAM_STR);
+$query1->bindParam(':Password',$Password,PDO::PARAM_STR);
 $query1->execute();
 
-$adopterFirstnameOrFirstname=($_POST['adopterFirstname']);
-$adopterLastnamerOrLastname=($_POST['adopterLastname']);
-$AccountContactNo=($_POST['adopterContactNo']);
-$AccountAddress=($_POST['adopterAddress']);
-$AccountEmail=($_POST['adopterEmail']);
-$AccountUsername=($_POST['adopterUsername']);
-$AccountPassword=($_POST['adopterPassword']);
+$Firstname=($_POST['Firstname']);
+$Lastname=($_POST['Lastname']);
+$ContactNo=($_POST['ContactNo']);
+$Address=($_POST['Address']);
+$Picture=$_POST['Picture'];
+$Email=($_POST['Email']);
+$Username=($_POST['Username']);
+$Password=($_POST['Password']);
 
-$sql3="update login set adopterFirstnameOrFirstname=:Firstname,adopterLastnameOrLastname=:Lastname,adopterContactNo=:ContactNo,adopterAddress=:Address,adopterEmail=:Email,adopterUsername=:Username,adopterPassword=:Password where adopterID=:ID";
+$sql3="update login set 
+userFirstname=:Firstname,
+userLastname=:Lastname,
+contactNo=:ContactNo,
+Address=:Address,
+Image=:Picture,
+Email=:Email,
+Username=:Username,
+Password=:Password where userID=:ID";
+
 $query3=$dbh->prepare($sql3); 
 $query3->bindParam(':ID',$ID,PDO::PARAM_STR);
-$query3->bindParam(':adopterFirstname',$adopterFirstnameOrFirstname,PDO::PARAM_STR);
-$query3->bindParam(':adopterLastname',$adopterLastnameOrLastname,PDO::PARAM_STR);
-$query3->bindParam(':adopterContactNo',$AccountContactNo,PDO::PARAM_STR);
-$query3->bindParam(':adopterAddress',$AccountAddress,PDO::PARAM_STR);
-$query3->bindParam(':adopterEmail',$AccountEmail,PDO::PARAM_STR);
-$query3->bindParam(':adopterUsername',$AccountUsername,PDO::PARAM_STR);
-$query3->bindParam(':adopterPassword',$AccountPassword,PDO::PARAM_STR);
+$query3->bindParam(':Firstname',$Firstname,PDO::PARAM_STR);
+$query3->bindParam(':Lastname',$Lastname,PDO::PARAM_STR);
+$query3->bindParam(':ContactNo',$ContactNo,PDO::PARAM_STR);
+$query3->bindParam(':Address',$Address,PDO::PARAM_STR);
+$query3->bindParam(':Picture',$Picture,PDO::PARAM_STR);
+$query3->bindParam(':Email',$Email,PDO::PARAM_STR);
+$query3->bindParam(':Username',$Username,PDO::PARAM_STR);
+$query3->bindParam(':Password',$assword,PDO::PARAM_STR);
 $query3->execute();
 {
-echo '<script>alert("Your Account Updated Successfully!")</script>';
-$ID=$_SESSION['ID'];
+echo '<script>alert("Your Account Updated Successfully!!!")</script>';
+$ID=$_SESSION['adopterID'];
 $sql = "SELECT * from petadopter where adopterID=:ID";
 $query=$dbh->prepare($sql);
 $query->bindParam(':ID',$ID,PDO::PARAM_STR);
@@ -137,7 +170,7 @@ if($query->rowCount()>0)
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+                <img <?php echo"<img src = '/GETPET/web/images/$result->adopterPicture'";?> alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
@@ -277,7 +310,7 @@ if($query->rowCount()>0)
                 <ul class=" navbar-right">
                   <li class="nav-item dropdown open" style="padding-left: 15px;">
                     <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                      <img src="images/img.jpg" alt=""><?php echo ($result->adopterFirstname);?> <?php echo ($result->adopterLastname);?>
+                      <img <?php echo"<img src = '/GETPET/web/images/$result->adopterPicture'";?> alt=""><?php echo ($result->adopterFirstname);?> <?php echo ($result->adopterLastname);?>
                     </a>
                     <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item"  href="javascript:;" onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black" data-toggle="modal" data-target="#Settings"> Profile</a>
@@ -422,7 +455,7 @@ if($query->rowCount()>0)
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<div class="modal-info">
 						<h1 style="text-align: center">Account Settings</h1>
-						<img src="images/default_profile.png" alt="" class="img-responsive" style="width:150px;height:150px;margin-left:140px;margin-top: 20px;border-radius: 50%;" /><br>
+						<img <?php echo"<img src = '/GETPET/web/images/$result->adopterPicture'";?> alt="" class="img-responsive" style="width:150px;height:150px;margin-left:140px;margin-top: 20px;border-radius: 50%;" /><br>
 					</div><br>
 					<div style="text-align: center" class="wrap-input100 validate-input">
 					<a style="text-align: center; color: black;">Upload Profile</a>
