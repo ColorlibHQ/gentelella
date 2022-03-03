@@ -183,7 +183,7 @@ if($query->rowCount()>0)
 					<!-- menu profile quick info -->
                     <div class="profile clearfix">
                     <div class="profile_pic">
-                    <img <?php echo"<img src = '/developgetpet/web/images/$result->ownerPicture'";?> alt="..." class="img-circle profile_img">
+                    <img <?php echo"<img src = '/developgetpet/web/images/$result->ownerPicture'";?> alt="..." class="img-circle profile_img" style="background-color:#00cdc1;border:#00cdc1;">
                     </div>
                     <div class="profile_info">
                     <span>Welcome,</span>
@@ -563,7 +563,7 @@ if($query->rowCount()>0)
                                             <br>
                                             <div class="form-group">
                                                 <div class="col-md-6 offset-md-3">
-                                                    <button type='submit' class="btn btn-success">Submit</button>
+                                                    <button type='submit' class="btn btn-success" style="background-color:#00cdc1;border:#00cdc1;">Submit</button>
                                                     <button type='reset' class="btn btn-danger">Reset</button>
                                                 </div>
                                             </div>

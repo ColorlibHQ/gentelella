@@ -171,7 +171,7 @@ if($query->rowCount()>0)
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-              <img <?php echo"<img src = '/developgetpet/web/images/$result->ownerPicture'";?> alt="..." class="img-circle profile_img">
+              <img <?php echo"<img src = '/developgetpet/web/images/$result->ownerPicture'";?> alt="..." class="img-circle profile_img" style="background-color:#00cdc1;border:#00cdc1;">
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
