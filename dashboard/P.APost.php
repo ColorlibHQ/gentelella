@@ -296,7 +296,9 @@ if($query->rowCount()>0)
               </nav>
             </div>
           </div>
-			<!-- /top navigation -->
+
+          <!-- Post Button -->
+          <button type="button" class="btn btn-round btn-success">Post Pet Adoption</button>
 
 			<!-- page content -->
 			<div class="right_col" role="main">
