@@ -199,27 +199,27 @@ if($query->rowCount()>0)
 					<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <ul class="nav side-menu">
-                    </li>
+                    <li>
                     <li><a href="http://localhost/developgetpet/dashboard/PetOwnerDashboard.php"><i class="fa fa-home"></i> Home </a>
                     </li>
 
-                    </li>
+                    <li>
                     <li><a href="http://localhost/developgetpet/dashboard/P.OPost.php">Pet Adoption</a>
                     </li>
 
-                    </li>
+                    <li>
                     <li><a href="#">Short-term Care</a>
                     </li>
 
-                    </li>
+                    <li>
                     <li><a href="#">Donation</a>
                     </li>
 
-                    </li>
+                    <li>
                     <li><a href="#">Fundraising activities</a>
                     </li>
 
-                    </li>
+                    <li>
                     <li><a href="#">Tips, Advice & Articles</a>
                     </li>
 

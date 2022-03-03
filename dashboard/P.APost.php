@@ -212,13 +212,29 @@ if($query->rowCount()>0)
 					<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
                     <div class="menu_section">
                     <ul class="nav side-menu">
-                    <li><a><i class="fa fa-home"></i> Dashboard <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="http://localhost/developgetpet/dashboard/P.OPost.php">Pet adoption & Short-term care</a></li>
-                      <li><a href="plain_page.html">Donation & Fund-raising activities</a></li>
-                      <li><a href="plain_page.html">Tips, advice & articles</a></li>
-                    </ul>
-                     </li>
+                    <li>
+                    <li><a href="http://localhost/developgetpet/dashboard/PetAdopterDashboard.php"><i class="fa fa-home"></i> Home </a>
+                    </li>
+
+                    <li>
+                    <li><a href="http://localhost/developgetpet/dashboard/P.APost.php">Pet Adoption</a>
+                    </li>
+
+                    <li>
+                    <li><a href="#">Short-term Care</a>
+                    </li>
+
+                    <li>
+                    <li><a href="#">Donation</a>
+                    </li>
+
+                    <li>
+                    <li><a href="#">Fundraising activities</a>
+                    </li>
+
+                    <li>
+                    <li><a href="#">Tips, Advice & Articles</a>
+                    </li>
 					</div>
 					</div>
 					<!-- /sidebar menu -->
