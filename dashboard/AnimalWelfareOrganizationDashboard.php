@@ -189,7 +189,7 @@ if($query->rowCount()>0)
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-home"></i> Dashboard <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="plain_page.html">Pet adoption & Short-term care</a></li>
+                      <li><a href="http://localhost/developgetpet/dashboard/A.W.OPost.php">Pet adoption & Short-term care</a></li>
                       <li><a href="plain_page.html">Donation & Fund-raising activities</a></li>
                       <li><a href="plain_page.html">Tips, advice & articles</a></li>
                     </ul>

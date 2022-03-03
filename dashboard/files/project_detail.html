@@ -1,140 +1,3 @@
-<?php 
-session_start();
-include('C:\xampp\htdocs\developgetpet\includes\config.php');
-$ID=$_SESSION['adopterID'];
-$sql = "SELECT * from petadopter where adopterID=:ID";
-$query=$dbh->prepare($sql);
-$query->bindParam(':ID',$ID,PDO::PARAM_STR);
-$query->execute();
-$results=$query->fetchAll(PDO::FETCH_OBJ);
-$cnt=1;
-if($query->rowCount()>0)
-{
-  foreach($results as $result)
-  {
-     ?>
-<p></p>
-<?php
-?>
-<?php }} ?>
-<?php
-if(isset($_POST['update']))
-{
-$Firstname=($_POST['Firstname']);
-$Lastname=($_POST['Lastname']);
-$ContactNo=($_POST['ContactNo']);
-$Address=($_POST['Address']);
-$Picture=$_POST['Picture'];
-$Email=($_POST['Email']);
-$Username=($_POST['Username']);
-$Password=($_POST['Password']);
-
-$sql="update register set 
-userFirstname=:Firstname,
-userLastname=:Lastname,
-contactNo=:ContactNo,
-Address=:Address,
-Image=:Picture,
-Email=:Email,
-Username=:Username,
-Password=:Password 
-where userID=:ID";
-
-$query=$dbh->prepare($sql);
-$query->bindParam(':ID',$ID,PDO::PARAM_STR);  
-$query->bindParam(':Firstname',$Firstname,PDO::PARAM_STR);
-$query->bindParam(':Lastname',$Lastname,PDO::PARAM_STR);
-$query->bindParam(':ContactNo',$ContactNo,PDO::PARAM_STR);
-$query->bindParam(':Address',$Address,PDO::PARAM_STR);
-$query->bindParam(':Picture',$Picture,PDO::PARAM_STR);
-$query->bindParam(':Email',$Email,PDO::PARAM_STR);
-$query->bindParam(':Username',$Username,PDO::PARAM_STR);
-$query->bindParam(':Password',$Password,PDO::PARAM_STR);
-$query->execute();
-
-$Firstname=($_POST['Firstname']);
-$Lastname=($_POST['Lastname']);
-$ContactNo=($_POST['ContactNo']);
-$Address=($_POST['Address']);
-$Picture=($_POST['Picture']);
-$Email=($_POST['Email']);
-$Username=($_POST['Username']);
-$Password=($_POST['Password']);
-
-$sql1="update petadopter set
-adopterFirstname=:Firstname,
-adopterLastname=:Lastname,
-adopterContactNo=:ContactNo,
-adopterAddress=:Address,
-adopterPicture=:Picture,
-adopterEmail=:Email,
-adopterUsername=:Username,
-adopterPassword=:Password 
-where adopterID=:ID";
-$query1=$dbh->prepare($sql1); 
-$query1->bindParam(':ID',$ID,PDO::PARAM_STR); 
-$query1->bindParam(':Firstname',$Firstname,PDO::PARAM_STR);
-$query1->bindParam(':Lastname',$Lastname,PDO::PARAM_STR);
-$query1->bindParam(':ContactNo',$ContactNo,PDO::PARAM_STR);
-$query1->bindParam(':Address',$Address,PDO::PARAM_STR);
-$query1->bindParam(':Picture',$Picture,PDO::PARAM_STR);
-$query1->bindParam(':Email',$Email,PDO::PARAM_STR);
-$query1->bindParam(':Username',$Username,PDO::PARAM_STR);
-$query1->bindParam(':Password',$Password,PDO::PARAM_STR);
-$query1->execute();
-
-$Firstname=($_POST['Firstname']);
-$Lastname=($_POST['Lastname']);
-$ContactNo=($_POST['ContactNo']);
-$Address=($_POST['Address']);
-$Picture=$_POST['Picture'];
-$Email=($_POST['Email']);
-$Username=($_POST['Username']);
-$Password=($_POST['Password']);
-
-$sql3="update login set 
-userFirstname=:Firstname,
-userLastname=:Lastname,
-contactNo=:ContactNo,
-Address=:Address,
-Image=:Picture,
-Email=:Email,
-Username=:Username,
-Password=:Password where userID=:ID";
-
-$query3=$dbh->prepare($sql3); 
-$query3->bindParam(':ID',$ID,PDO::PARAM_STR);
-$query3->bindParam(':Firstname',$Firstname,PDO::PARAM_STR);
-$query3->bindParam(':Lastname',$Lastname,PDO::PARAM_STR);
-$query3->bindParam(':ContactNo',$ContactNo,PDO::PARAM_STR);
-$query3->bindParam(':Address',$Address,PDO::PARAM_STR);
-$query3->bindParam(':Picture',$Picture,PDO::PARAM_STR);
-$query3->bindParam(':Email',$Email,PDO::PARAM_STR);
-$query3->bindParam(':Username',$Username,PDO::PARAM_STR);
-$query3->bindParam(':Password',$assword,PDO::PARAM_STR);
-$query3->execute();
-{
-echo '<script>alert("Your Account Updated Successfully!")</script>';
-$ID=$_SESSION['adopterID'];
-$sql = "SELECT * from petadopter where adopterID=:ID";
-$query=$dbh->prepare($sql);
-$query->bindParam(':ID',$ID,PDO::PARAM_STR);
-$query->execute();
-$results=$query->fetchAll(PDO::FETCH_OBJ);
-$cnt=1;
-if($query->rowCount()>0)
-{
-  foreach($results as $result)
-  {
-    ?>
-                              
-<p></p>
-<?php
-?>
-<?php }}
-}
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -144,7 +7,7 @@ if($query->rowCount()>0)
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>GETPET</title>
+    <title>Gentelella Alela! | </title>
 
     <!-- Bootstrap -->
     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -152,6 +15,8 @@ if($query->rowCount()>0)
     <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
     <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
     <link href="../build/css/custom.min.css" rel="stylesheet">
@@ -163,7 +28,7 @@ if($query->rowCount()>0)
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="http://localhost/developgetpet/dashboard/PetAdopterDashboard.php" class="site_title"><i class="fa fa-paw"></i> <span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbspGETPET</span></a>
+              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentelella Alela!</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -171,13 +36,12 @@ if($query->rowCount()>0)
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img <?php echo"<img src = '/developgetpet/web/images/$result->adopterPicture'";?> alt="..." class="img-circle profile_img">
+                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2><?php echo ($result->adopterFirstname);?> <?php echo ($result->adopterLastname);?></h2>
+                <h2>John Doe</h2>
               </div>
-              <div class="clearfix"></div>
             </div>
             <!-- /menu profile quick info -->
 
@@ -186,15 +50,16 @@ if($query->rowCount()>0)
             <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
+                <h3>General</h3>
                 <ul class="nav side-menu">
-                  <li><a><i class="fa fa-home"></i> Dashboard <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="http://localhost/developgetpet/dashboard/P.APost.php">Pet adoption & Short-term care</a></li>
-                      <li><a href="plain_page.html">Donation & Fund-raising activities</a></li>
-                      <li><a href="plain_page.html">Tips, advice & articles</a></li>
+                      <li><a href="index.html">Dashboard</a></li>
+                      <li><a href="index2.html">Dashboard2</a></li>
+                      <li><a href="index3.html">Dashboard3</a></li>
                     </ul>
                   </li>
-                  <!--<li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="form.html">General Form</a></li>
                       <li><a href="form_advanced.html">Advanced Components</a></li>
@@ -265,7 +130,6 @@ if($query->rowCount()>0)
                   <li><a><i class="fa fa-sitemap"></i> Multilevel Menu <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                         <li><a href="#level1_1">Level One</a>
-                        </li>
                         <li><a>Level One<span class="fa fa-chevron-down"></span></a>
                           <ul class="nav child_menu">
                             <li class="sub_menu"><a href="level2.html">Level Two</a>
@@ -282,7 +146,6 @@ if($query->rowCount()>0)
                   </li>                  
                   <li><a href="javascript:void(0)"><i class="fa fa-laptop"></i> Landing Page <span class="label label-success pull-right">Coming Soon</span></a></li>
                 </ul>
-              -->
               </div>
 
             </div>
@@ -293,7 +156,13 @@ if($query->rowCount()>0)
               <a data-toggle="tooltip" data-placement="top" title="Settings">
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
               </a>
-              <a data-toggle="tooltip" data-placement="top" title="Logout" href="http://localhost/developgetpet/login-page/login.php">
+              <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Lock">
+                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
               </a>
             </div>
@@ -311,26 +180,73 @@ if($query->rowCount()>0)
                 <ul class=" navbar-right">
                   <li class="nav-item dropdown open" style="padding-left: 15px;">
                     <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                      <img <?php echo"<img src = '/developgetpet/web/images/$result->adopterPicture'";?> alt=""><?php echo ($result->adopterFirstname);?> <?php echo ($result->adopterLastname);?>
+                      <img src="images/img.jpg" alt="">John Doe
                     </a>
                     <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item"  href="javascript:;" onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black" data-toggle="modal" data-target="#Settings"> Profile</a>
-                      <!--<a class="dropdown-item"  href="javascript:;">
+                      <a class="dropdown-item"  href="javascript:;"> Profile</a>
+                        <a class="dropdown-item"  href="javascript:;">
                           <span class="badge bg-red pull-right">50%</span>
                           <span>Settings</span>
-                        </a>-->
-                    <a class="dropdown-item"  href="http://localhost/developgetpet/dashboard/page_404.php" id="contact">Contact Us</a>
-                      <a class="dropdown-item"  href="http://localhost/developgetpet/login-page/login.php"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                        </a>
+                    <a class="dropdown-item"  href="javascript:;">Help</a>
+                      <a class="dropdown-item"  href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
                     </div>
                   </li>
   
                   <li role="presentation" class="nav-item dropdown open">
                     <a href="javascript:;" class="dropdown-toggle info-number" id="navbarDropdown1" data-toggle="dropdown" aria-expanded="false">
                       <i class="fa fa-envelope-o"></i>
-                      <!--<span class="badge bg-green">6</span>-->
+                      <span class="badge bg-green">6</span>
                     </a>
                     <ul class="dropdown-menu list-unstyled msg_list" role="menu" aria-labelledby="navbarDropdown1">
-                      
+                      <li class="nav-item">
+                        <a class="dropdown-item">
+                          <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                          <span>
+                            <span>John Smith</span>
+                            <span class="time">3 mins ago</span>
+                          </span>
+                          <span class="message">
+                            Film festivals used to be do-or-die moments for movie makers. They were where...
+                          </span>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="dropdown-item">
+                          <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                          <span>
+                            <span>John Smith</span>
+                            <span class="time">3 mins ago</span>
+                          </span>
+                          <span class="message">
+                            Film festivals used to be do-or-die moments for movie makers. They were where...
+                          </span>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="dropdown-item">
+                          <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                          <span>
+                            <span>John Smith</span>
+                            <span class="time">3 mins ago</span>
+                          </span>
+                          <span class="message">
+                            Film festivals used to be do-or-die moments for movie makers. They were where...
+                          </span>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="dropdown-item">
+                          <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                          <span>
+                            <span>John Smith</span>
+                            <span class="time">3 mins ago</span>
+                          </span>
+                          <span class="message">
+                            Film festivals used to be do-or-die moments for movie makers. They were where...
+                          </span>
+                        </a>
+                      </li>
                       <li class="nav-item">
                         <div class="text-center">
                           <a class="dropdown-item">
@@ -352,7 +268,7 @@ if($query->rowCount()>0)
           <div class="">
             <div class="page-title">
               <div class="title_left">
-              <h3><?php echo ($result->Role);?>'s Dashboard</h3>
+                <h3>Project Detail <small> design</small></h3>
               </div>
 
               <div class="title_right">
@@ -360,20 +276,20 @@ if($query->rowCount()>0)
                   <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search for...">
                     <span class="input-group-btn">
-                      <button class="btn btn-default" type="button">Go!</button>
+                      <button class="btn btn-secondary" type="button">Go!</button>
                     </span>
                   </div>
                 </div>
               </div>
             </div>
-
+            
             <div class="clearfix"></div>
 
             <div class="row">
-              <div class="col-md-12 col-sm-12  ">
+              <div class="col-md-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Timeline</h2>
+                    <h2>New Partner Contracts Consultancy</h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -389,8 +305,142 @@ if($query->rowCount()>0)
                     </ul>
                     <div class="clearfix"></div>
                   </div>
+
                   <div class="x_content">
-                      Add content to the page ...
+
+                    <div class="col-md-9 col-sm-9  ">
+
+                      <ul class="stats-overview">
+                        <li>
+                          <span class="name"> Estimated budget </span>
+                          <span class="value text-success"> 2300 </span>
+                        </li>
+                        <li>
+                          <span class="name"> Total amount spent </span>
+                          <span class="value text-success"> 2000 </span>
+                        </li>
+                        <li class="hidden-phone">
+                          <span class="name"> Estimated project duration </span>
+                          <span class="value text-success"> 20 </span>
+                        </li>
+                      </ul>
+                      <br />
+
+                      <div id="mainb" style="height:350px;"></div>
+
+                      <div>
+
+                        <h4>Recent Activity</h4>
+
+                        <!-- end of user messages -->
+                        <ul class="messages">
+                          <li>
+                            <img src="images/img.jpg" class="avatar" alt="Avatar">
+                            <div class="message_date">
+                              <h3 class="date text-info">24</h3>
+                              <p class="month">May</p>
+                            </div>
+                            <div class="message_wrapper">
+                              <h4 class="heading">Desmond Davison</h4>
+                              <blockquote class="message">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth.</blockquote>
+                              <br />
+                              <p class="url">
+                                <span class="fs1 text-info" aria-hidden="true" data-icon=""></span>
+                                <a href="#"><i class="fa fa-paperclip"></i> User Acceptance Test.doc </a>
+                              </p>
+                            </div>
+                          </li>
+                          <li>
+                            <img src="images/img.jpg" class="avatar" alt="Avatar">
+                            <div class="message_date">
+                              <h3 class="date text-error">21</h3>
+                              <p class="month">May</p>
+                            </div>
+                            <div class="message_wrapper">
+                              <h4 class="heading">Brian Michaels</h4>
+                              <blockquote class="message">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth.</blockquote>
+                              <br />
+                              <p class="url">
+                                <span class="fs1" aria-hidden="true" data-icon=""></span>
+                                <a href="#" data-original-title="">Download</a>
+                              </p>
+                            </div>
+                          </li>
+                          <li>
+                            <img src="images/img.jpg" class="avatar" alt="Avatar">
+                            <div class="message_date">
+                              <h3 class="date text-info">24</h3>
+                              <p class="month">May</p>
+                            </div>
+                            <div class="message_wrapper">
+                              <h4 class="heading">Desmond Davison</h4>
+                              <blockquote class="message">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth.</blockquote>
+                              <br />
+                              <p class="url">
+                                <span class="fs1 text-info" aria-hidden="true" data-icon=""></span>
+                                <a href="#"><i class="fa fa-paperclip"></i> User Acceptance Test.doc </a>
+                              </p>
+                            </div>
+                          </li>
+                        </ul>
+                        <!-- end of user messages -->
+
+
+                      </div>
+
+
+                    </div>
+
+                    <!-- start project-detail sidebar -->
+                    <div class="col-md-3 col-sm-3  ">
+
+                      <section class="panel">
+
+                        <div class="x_title">
+                          <h2>Project Description</h2>
+                          <div class="clearfix"></div>
+                        </div>
+                        <div class="panel-body">
+                          <h3 class="green"><i class="fa fa-paint-brush"></i> Gentelella</h3>
+
+                          <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terr.</p>
+                          <br />
+
+                          <div class="project_detail">
+
+                            <p class="title">Client Company</p>
+                            <p>Deveint Inc</p>
+                            <p class="title">Project Leader</p>
+                            <p>Tony Chicken</p>
+                          </div>
+
+                          <br />
+                          <h5>Project files</h5>
+                          <ul class="list-unstyled project_files">
+                            <li><a href=""><i class="fa fa-file-word-o"></i> Functional-requirements.docx</a>
+                            </li>
+                            <li><a href=""><i class="fa fa-file-pdf-o"></i> UAT.pdf</a>
+                            </li>
+                            <li><a href=""><i class="fa fa-mail-forward"></i> Email-from-flatbal.mln</a>
+                            </li>
+                            <li><a href=""><i class="fa fa-picture-o"></i> Logo.png</a>
+                            </li>
+                            <li><a href=""><i class="fa fa-file-word-o"></i> Contract-10_12_2014.docx</a>
+                            </li>
+                          </ul>
+                          <br />
+
+                          <div class="text-center mtop20">
+                            <a href="#" class="btn btn-sm btn-primary">Add files</a>
+                            <a href="#" class="btn btn-sm btn-warning">Report contact</a>
+                          </div>
+                        </div>
+
+                      </section>
+
+                    </div>
+                    <!-- end project-detail sidebar -->
+
                   </div>
                 </div>
               </div>
@@ -399,78 +449,11 @@ if($query->rowCount()>0)
         </div>
         <!-- /page content -->
 
-        <!-- ModalSettings -->
-	<div class="modal fade" id="Settings" tabindex="-1" role="dialog">
-		<div class="modal-dialog">
-			<!-- Modal content-->
-			<div class="modal-content">
-				<div class="modal-header">
-				<form method="post">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<div class="modal-info">
-						<h1 style="text-align: center">Account Settings</h1>
-						<img <?php echo"<img src = '/developgetpet/web/images/$result->adopterPicture'";?> alt="" class="img-responsive" style="width:150px;height:150px;margin-left:140px;margin-top: 20px;border-radius: 50%;" /><br>
-					</div><br>
-					<div style="text-align: center" class="wrap-input100 validate-input">
-					<a style="text-align: center; color: black;">Upload Profile</a>
-	                </div><br>
-                    <div style="text-align: center" class="wrap-input100 validate-input">
-                        <input type="file" name="Picture" id="Logo" style="width:250px;height:40px;border:none;margin-left:160px;" placeholder="Upload Logo">
-					</div><br>
-					<div style="text-align: center" class="wrap-input100 validate-input">
-					    <input type="hidden" name="adopterID" value="<?php echo ( $result->adopterID);?>" required = "required" class="form-control" id="success">
-					</div><br>
-					<div style="text-align: center" class="wrap-input100 validate-input">
-						<input class="input100" style="background-color:#f1f1f1;width:250px;height:40px;border:none;" type="text" name="Firstname" required="required" value="<?php echo ($result->adopterFirstname);?>" placeholder="First Name">
-					</div><br>
-					<div style="text-align: center" class="wrap-input100 validate-input">
-						<input class="input100" style="background-color:#f1f1f1;width:250px;height:40px;border:none;" type="text" name="Lastname" required="required" value="<?php echo ($result->adopterLastname);?>" placeholder="Last Name">
-						<span class="focus-input100"></span>
-					</div><br>
-					<div  style="text-align: center" class="wrap-input100 validate-input">
-						<input class="input100" style="background-color:#f1f1f1;width:250px;height:40px;border:none;font-family:Arial;" type="text" name="ContactNo" onkeypress="isInputNumber(event)" maxlength="11" value="<?php echo ($result->adopterContactNo);?>" placeholder="Contact No.">
-						<script>
-            
-                        function isInputNumber(evt){
-                
-                        var ch = String.fromCharCode(evt.which);
-                
-                        if(!(/[0-9]/.test(ch))){
-                        evt.preventDefault();
-                       }
-					}
-                    </script>
-					</div><br>
-					<div style="text-align: center" class="wrap-input100 validate-input">
-						<input class="input100" style="background-color:#f1f1f1;width:250px;height:40px;border:none;" type="text" name="Address" required="required" value="<?php echo ($result->adopterAddress);?>" placeholder="Address">
-					</div><br>
-					<div style="text-align: center" class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-						<input class="input100" style="background-color:#f1f1f1;width:250px;height:40px;border:none;" type="text" name="Email" required="required" value="<?php echo ($result->adopterEmail);?>" placeholder="Email">
-					</div><br>
-					  <div style="text-align: center" class="wrap-input100 validate-input" data-validate = "Valid username is required: ex@abc.xyz">
-						<input class="input100" style="background-color:#f1f1f1;width:250px;height:40px;border:none;" type="text" name="Username" required="required" value="<?php echo ($result->adopterUsername);?>" placeholder="Username">
-					</div><br>
-					<div style="text-align: center" class="wrap-input100 validate-input" data-validate = "Valid username is required: ex@abc.xyz">
-						<input class="input100" style="background-color:#f1f1f1;width:250px;height:40px;border:none;" type="Password" name="Password" required="required" value="<?php echo ($result->adopterPassword);?>" placeholder="Password">
-					</div><br><br>
-					<div style="text-align: center">
-						<button  class="login100-form-btn" style="background-color:#00cdc1;width:250px;height:40px;border:none;" name="update" type="submit" id="insert" value="Insert">
-							<a style="color:White"> Update </a>
-						</button>
-					</div><br>
-				</form>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- //ModalSettings -->
-
         <!-- footer content -->
         <footer>
-        <p class="tweet-p1">
-		ADOPTING MEANS YOU SAVE A LIFE! <a href="mailto:GetPet@gmail.com">GetPet@gmail.com</a>
-		<!--<a href="#">http://ax.by/zzzz</a>-->
-		</p>
+          <div class="pull-right">
+            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+          </div>
           <div class="clearfix"></div>
         </footer>
         <!-- /footer content -->
@@ -485,8 +468,11 @@ if($query->rowCount()>0)
     <script src="../vendors/fastclick/lib/fastclick.js"></script>
     <!-- NProgress -->
     <script src="../vendors/nprogress/nprogress.js"></script>
-    
+    <!-- ECharts -->
+    <script src="../vendors/echarts/dist/echarts.min.js"></script>
+
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
+
   </body>
 </html>
