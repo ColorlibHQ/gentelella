@@ -196,9 +196,9 @@ if($query->rowCount()>0)
 					<br />
 
 					<!-- sidebar menu -->
-					<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+					<div id="sidebar-menu" class="main_menu_side hidden-print main_menu" >
               <div class="menu_section">
-                <ul class="nav side-menu">
+                    <ul class="nav side-menu">
                     <li>
                     <li><a href="http://localhost/developgetpet/dashboard/PetOwnerDashboard.php"><i class="fa fa-home"></i> Home </a>
                     </li>
@@ -223,6 +223,7 @@ if($query->rowCount()>0)
                     <li><a href="#">Tips, Advice & Articles</a>
                     </li>
 
+                    </ul>
 					</div>
 					</div>
 					<!-- /sidebar menu -->
@@ -308,7 +309,7 @@ if($query->rowCount()>0)
                     </div>
 
                     <!-- Post Button -->
-                    <button type="button" class="btn btn-round btn-success">Post Pet Adoption</button>
+                    <button type="button" class="btn btn-round btn-success" style="background-color:#00cdc1;border:#00cdc1;">Post Pet Adoption</button>
 
                     <div class="clearfix"></div>
 

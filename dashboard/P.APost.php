@@ -319,7 +319,7 @@ if($query->rowCount()>0)
                     </div>
 
                     <!-- Post Button -->
-                    <button type="button" class="btn btn-round btn-success">Post Pet Adoption</button>
+                    <button type="button" class="btn btn-round btn-success" style="background-color:#00cdc1;border:#00cdc1;">Post Pet Adoption</button>
 
                     <div class="clearfix"></div>
 
