@@ -292,7 +292,8 @@ if($query->rowCount()>0)
                 <div class="">
                     <div class="page-title">
                         <div class="title_left">
-                        <h3><?php echo ($result->Role);?>'s Dashboard</h3>
+                            <br>
+                        <h2><?php echo ($result->Role);?>'s Dashboard</h2>
                         </div>
 
                         <div class="title_right">
@@ -306,7 +307,7 @@ if($query->rowCount()>0)
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Post Button -->
                     <button type="button" class="btn btn-round btn-success">Post Pet Adoption</button>
 

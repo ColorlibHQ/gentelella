@@ -291,7 +291,8 @@ if($query->rowCount()>0)
                 <div class="">
                     <div class="page-title">
                         <div class="title_left">
-                        <h3><?php echo ($result->Role);?>'s Dashboard</h3>
+                        <br>
+                        <h2><?php echo ($result->Role);?>'s Dashboard</h2>
                         </div>
 
                         <div class="title_right">
