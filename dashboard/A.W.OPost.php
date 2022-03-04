@@ -204,7 +204,7 @@ if($query->rowCount()>0)
                     </li>
 
                     <li>
-                    <li><a href="http://localhost/developgetpet/dashboard/A.W.OPost.php">Pet Adoption</a>
+                    <li><a href="http://localhost/developgetpet/dashboard/A.W.O-Adoption.php">Pet Adoption</a>
                     </li>
 
                     <li>
@@ -308,8 +308,8 @@ if($query->rowCount()>0)
                         </div>
                     </div>
 
-                    <!-- Post Button -->
-                    <button type="button" class="btn btn-round btn-success" style="background-color:#00cdc1;border:#00cdc1;">Post Pet Adoption</button>
+                   <!-- Post Button -->
+                   <a href="http://localhost/developgetpet/dashboard/A.W.O-Adoption.php"><button type="button" class="btn btn-round btn-success" style="background-color:#00cdc1;border:#00cdc1;">Back</button></a>
 
                     <div class="clearfix"></div>
 
@@ -317,7 +317,7 @@ if($query->rowCount()>0)
                         <div class="col-md-12 col-sm-12">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>Post Pet Adoption Form.</h2>
+                                    <h2>Post Pet Adoption Form</h2>
                                     <ul class="nav navbar-right panel_toolbox">
                                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                         </li>
@@ -328,7 +328,7 @@ if($query->rowCount()>0)
                                 </div>
                                 <div class="x_content">
                                     <form class="" action="" method="post" novalidate>
-                                    <a href="#">Click here to post for short term-care.</a>     
+                                    <a href="#">Click here to post for short term-care!</a>     
                                         <span class="section"></span>
                                         <div class="field item form-group">
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">Organization Name<span class="required"></span></label>
@@ -592,53 +592,6 @@ if($query->rowCount()>0)
     <script src="../vendors/validator/multifield.js"></script>
     <script src="../vendors/validator/validator.js"></script>
 
-	<!-- Javascript functions	-->
-	<script>
-		function hideshow(){
-			var password = document.getElementById("password1");
-			var slash = document.getElementById("slash");
-			var eye = document.getElementById("eye");
-			
-			if(password.type === 'password'){
-				password.type = "text";
-				slash.style.display = "block";
-				eye.style.display = "none";
-			}
-			else{
-				password.type = "password";
-				slash.style.display = "none";
-				eye.style.display = "block";
-			}
-
-		}
-	</script>
-
-    <script>
-        // initialize a validator instance from the "FormValidator" constructor.
-        // A "<form>" element is optionally passed as an argument, but is not a must
-        var validator = new FormValidator({
-            "events": ['blur', 'input', 'change']
-        }, document.forms[0]);
-        // on form "submit" event
-        document.forms[0].onsubmit = function(e) {
-            var submit = true,
-                validatorResult = validator.checkAll(this);
-            console.log(validatorResult);
-            return !!validatorResult.valid;
-        };
-        // on form "reset" event
-        document.forms[0].onreset = function(e) {
-            validator.reset();
-        };
-        // stuff related ONLY for this demo page:
-        $('.toggleValidationTooltips').change(function() {
-            validator.settings.alerts = !this.checked;
-            if (this.checked)
-                $('form .alert').remove();
-        }).prop('checked', false);
-
-    </script>
-
     <!-- jQuery -->
     <script src="../vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
@@ -685,39 +638,6 @@ if($query->rowCount()>0)
     <!-- Bootstrap Colorpicker -->
     <script src="../vendors/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
 
-     <!-- Initialize datetimepicker -->
-    <script  type="text/javascript">
-   $(function () {
-                $('#myDatepicker').datetimepicker();
-            });
-    
-    $('#myDatepicker2').datetimepicker({
-        format: 'DD.MM.YYYY'
-    });
-    
-    $('#myDatepicker3').datetimepicker({
-        format: 'hh:mm A'
-    });
-    
-    $('#myDatepicker4').datetimepicker({
-        ignoreReadonly: true,
-        allowInputToggle: true
-    });
-
-    $('#datetimepicker6').datetimepicker();
-    
-    $('#datetimepicker7').datetimepicker({
-        useCurrent: false
-    });
-    
-    $("#datetimepicker6").on("dp.change", function(e) {
-        $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
-    });
-    
-    $("#datetimepicker7").on("dp.change", function(e) {
-        $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
-    });
-</script>
 
 </body>
 </html>

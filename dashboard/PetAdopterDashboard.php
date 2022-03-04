@@ -192,7 +192,7 @@ if($query->rowCount()>0)
                     </li>
 
                     <li>
-                    <li><a href="http://localhost/developgetpet/dashboard/P.APost.php">Pet Adoption</a>
+                    <li><a href="http://localhost/developgetpet/dashboard/P.A-Adoption.php">Pet Adoption</a>
                     </li>
 
                     <li>

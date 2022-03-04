@@ -319,26 +319,26 @@ if($query->rowCount()>0)
                     </div>
 
                     <!-- Post Button -->
-                    <button type="button" class="btn btn-round btn-success" style="background-color:#00cdc1;border:#00cdc1;">Post Pet Adoption</button>
+                    <a href="http://localhost/developgetpet/dashboard/P.A-Adoption.php"><button type="button" class="btn btn-round btn-success" style="background-color:#00cdc1;border:#00cdc1;">Back</button></a>
 
                     <div class="clearfix"></div>
 
                     <div class="row">
-                        <div class="col-md-12 col-sm-12">
-                            <div class="x_panel">
-                                <div class="x_title">
-                                    <h2>Post Pet Adoption Form.</h2>
-                                    <ul class="nav navbar-right panel_toolbox">
-                                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                        </li>
-                                        <li class="dropdown">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                                    </ul>
-                                    <div class="clearfix"></div>
-                                </div>
+
+                        <div class="col-md-12 col-sm-12  ">
+                        <div class="x_panel">
+                        <div class="x_title">
+                        <h2>Post Pet Adoption</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                        <li><a class="collapse-link" style="margin-left:50px"><i class="fa fa-chevron-up"></i></a>
+                        </li>          
+                        </ul>
+                        <div class="clearfix"></div>
+                        </div>
+
                                 <div class="x_content">
                                     <form class="" action="" method="post" novalidate>
-                                    <a href="#">Click here to post for short term-care.</a>     
+                                    <a href="#">Click here to post for short term-care!</a>     
                                         <span class="section"></span>
                                         <div class="field item form-group">
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">Name<span class="required"></span></label>
