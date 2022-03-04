@@ -171,7 +171,7 @@ if($query->rowCount()>0)
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-              <img <?php echo"<img src = '/developgetpet/web/images/$result->ownerPicture'";?> alt="..." class="img-circle profile_img" style="background-color:#00cdc1;border:#00cdc1;">
+              <img <?php echo"<img src = '/GETPET/web/images/$result->ownerPicture'";?> alt="..." class="img-circle profile_img" style="background-color:#00cdc1;border:#00cdc1;">
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
@@ -215,17 +215,6 @@ if($query->rowCount()>0)
               </div>
             </div>
             <!-- /sidebar menu -->
-
-            <!-- /menu footer buttons -->
-            <div class="sidebar-footer hidden-small">
-              <a data-toggle="tooltip" data-placement="top" title="Settings">
-                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-              </a>
-              <a data-toggle="tooltip" data-placement="top" title="Logout" href="http://localhost/developgetpet/login-page/login.php">
-                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-              </a>
-            </div>
-            <!-- /menu footer buttons -->
           </div>
         </div>
 
@@ -239,10 +228,11 @@ if($query->rowCount()>0)
                 <ul class=" navbar-right">
                   <li class="nav-item dropdown open" style="padding-left: 15px;">
                     <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                    <img <?php echo"<img src = '/developgetpet/web/images/$result->ownerPicture'";?> alt=""><?php echo ($result->ownerFirstname);?> <?php echo ($result->ownerLastname);?>
+                    <img <?php echo"<img src = '/GETPET/web/images/$result->ownerPicture'";?> alt=""><?php echo ($result->ownerFirstname);?> <?php echo ($result->ownerLastname);?>
                     </a>
                     <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item"  href="javascript:;" onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black" data-toggle="modal" data-target="#Settings"> Profile</a>
+                      <a class="dropdown-item"  href="javascript:;" onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black" data-toggle="modal" data-target="#Profile"> Profile</a>
+                      <a class="dropdown-item"  href="javascript:;" onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black" data-toggle="modal" data-target="#Settings"> Settings</a>
                       <!--<a class="dropdown-item"  href="javascript:;">
                           <span class="badge bg-red pull-right">50%</span>
                           <span>Settings</span>
@@ -327,6 +317,28 @@ if($query->rowCount()>0)
           </div>
         </div>
         <!-- /page content -->
+  
+  <!-- ModalProfile -->
+	<div class="modal fade" id="Profile" tabindex="-1" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<div class="modal-info">
+						<h1 style="text-align: center">Profile</h1 >
+						<img <?php echo"<img src = '/GETPET/web/images/$result->ownerPicture'";?> alt="" class="img-responsive" style="width:150px;height:150px;margin-left:190px;margin-top: 20px;border-radius: 50%;" /><br><br>
+						<h3 style="text-align:center;"><?php echo ($result->ownerFirstname);?>&nbsp<?php echo ($result->ownerLastname);?></h3><br>
+						<h3 style="text-align:center;"><?php echo ($result->ownerContactNo);?></h3><br>
+						<h3 style="text-align:center;"><?php echo ($result->ownerAddress);?></h3><br>
+						<h3 style="text-align:center;"><?php echo ($result->ownerEmail);?></h3><br>
+						<h3 style="text-align:center;"><?php echo ($result->Role);?></h3><br><vr>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- //ModalProfile -->
 
         <!-- ModalSettings -->
 	<div class="modal fade" id="Settings" tabindex="-1" role="dialog">
@@ -335,10 +347,10 @@ if($query->rowCount()>0)
 			<div class="modal-content">
 				<div class="modal-header">
 				<form method="post">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<button margin type="button" class="close" data-dismiss="modal">&times;</button>
 					<div class="modal-info">
 						<h1 style="text-align: center">Account Settings</h1>
-						<img <?php echo"<img src = '/developgetpet/web/images/$result->ownerPicture'";?> alt="" class="img-responsive" style="width:150px;height:150px;margin-left:140px;margin-top: 20px;border-radius: 50%;"/><br>
+						<img <?php echo"<img src = '/GETPET/web/images/$result->ownerPicture'";?> alt="" class="img-responsive" style="width:150px;height:150px;margin-left:140px;margin-top: 20px;border-radius: 50%;"/><br>
 					</div><br>
 					<div style="text-align: center" class="wrap-input100 validate-input">
 					<a style="text-align: center; color: black;">Upload Profile</a>
