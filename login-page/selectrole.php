@@ -10,13 +10,13 @@ if(isset($_POST['PetAdopter']))
 if(isset($_POST['PetOwner']))
 {
 	
-   echo "<script type ='text/javascript'> document.location='http://localhost/GETPET/login-page/PetOwnerRegistration.php'</script>";
+   echo "<script type ='text/javascript'> document.location='http://localhost/developgetpet/login-page/PetOwnerRegistration.php'</script>";
 
 }
-if(isset($_POST['AnimalWelfareAgency']))
+if(isset($_POST['AnimalWelfareOrganization']))
 {
 	
-   echo "<script type ='text/javascript'> document.location='http://localhost/GETPET/login-page/AnimalWelfareOrganizationRegistration.php'</script>";
+   echo "<script type ='text/javascript'> document.location='http://localhost/developgetpet/login-page/AnimalWelfareOrganizationRegistration.php'</script>";
 
 }
 ?>
@@ -53,17 +53,25 @@ if(isset($_POST['AnimalWelfareAgency']))
     <div class="contents order-2 order-md-1">
       
         <div class="row align-items-center justify-content-center">
-          <div class="col-md-7">
-              <br>
-              <br>
-          <p style="text-align:center;"><img src="images/Logo.png" style="width:450px;height:450px;margin-top:-80px;margin-left:-55px;" alt=" " class="img-responsive"/></p>
+          <div class="col-md-7"><br><br>
+            <form class="login100-form validate-form" method="post">
+            <p style="text-align:center;"><img src="images/Logo.png" style="width:450px;height:450px;margin-top:-60px;margin-left:-55px;margin-bottom:-50px;" alt=" " class="img-responsive"/></p>
             <h3>Select <strong>Role:</strong></h3>
-            <a href="http://localhost/developgetpet/login-page/PetAdopterRegistration.php" style="color:White;"><button type="button" name="PetAdopter" href="http://localhost/GETPET/login-page/login.php" class="btn btn-block btn-primary" style="background-color:#00cdc1;border:#00cdc1;">Pet Adopter</button></a>
-            <br>
-            <a href="http://localhost/GETPET/login-page/PetAdopterRegistration.php" style="color:White;"><button type="button" name="PetAdopter" href="http://localhost/GETPET/login-page/login.php" class="btn btn-block btn-primary" style="background-color:#00cdc1;border:#00cdc1;">Pet Owner</button></a>
-            <br>
-            <a href="http://localhost/GETPET/login-page/PetAdopterRegistration.php" style="color:White;"><button type="button" name="PetAdopter" href="http://localhost/GETPET/login-page/login.php" class="btn btn-block btn-primary" style="background-color:#00cdc1;border:#00cdc1;">Animal Welfare Organization</button></a>
-            <br>
+            <div style="text-align: center">
+						    <button class="login100-form-btn" style="background-color:#00cdc1;width:350px;height:55px;border:none;border-radius: 4px;" name="PetAdopter">
+							  <a style="color:White">Pet Adopter</a>
+						    </button>
+					  </div><br>
+            <div style="text-align: center">
+						    <button class="login100-form-btn" style="background-color:#00cdc1;width:350px;height:55px;border:none;border-radius: 4px;" name="PetOwner">
+							  <a style="color:White">Pet Owner</a>
+						    </button>
+					  </div><br>
+            <div style="text-align: center">
+						    <button class="login100-form-btn" style="background-color:#00cdc1;width:350px;height:55px;border:none;border-radius: 4px;" name="AnimalWelfareOrganization">
+							  <a style="color:White">Animal Welfare Organization</a>
+						    </button>
+					  </div><br>
               <p  style="text-align:center;"><span class="ml-auto"><a href="http://localhost/developgetpet/login-page/login.php" class="forgot-pass">I am already a member</a></span></p>
             </form>
           </div>

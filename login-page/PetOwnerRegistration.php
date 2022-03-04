@@ -10,7 +10,7 @@ $Address=($_POST['Address']);
 $Email=($_POST['Email']);
 $Username=($_POST['Username']);
 $Password=($_POST['Password']);
-$sql="INSERT INTO register(userFirstname,userLastname,contactNo,Address,Image,Email,Username,Password,Role,registerDate)VALUES(:Firstname,:Lastname,:ContactNo,:Address,'default_profile.png',:Email,:Username,:Password,'Pet Adopter',Now())";
+$sql="INSERT INTO register(userFirstname,userLastname,contactNo,Address,Image,Email,Username,Password,Role,registerDate)VALUES(:Firstname,:Lastname,:ContactNo,:Address,'default_profile.png',:Email,:Username,:Password,'Pet Owner',Now())";
 $query=$dbh->prepare($sql); 
 $query->bindParam(':Firstname',$Firstname,PDO::PARAM_STR);
 $query->bindParam(':Lastname',$Lastname,PDO::PARAM_STR);
@@ -34,7 +34,7 @@ $Address=($_POST['Address']);
 $Email=($_POST['Email']);
 $Username=($_POST['Username']);
 $Password=($_POST['Password']);
-$sql1="INSERT INTO petadopter(adopterID,adopterFirstname,adopterLastname,adopterContactNo,adopterAddress,adopterPicture,adopterEmail,adopterUsername,adopterPassword,Role)VALUES($ID,:Firstname,:Lastname,:ContactNo,:Address,'default_profile.png',:Email,:Username,:Password,'Pet Adopter')";
+$sql1="INSERT INTO petowner(ownerID,ownerFirstname,ownerLastname,ownerContactNo,ownerAddress,ownerPicture,ownerEmail,ownerUsername,ownerPassword,Role)VALUES($ID,:Firstname,:Lastname,:ContactNo,:Address,'default_profile.png',:Email,:Username,:Password,'Pet Owner')";
 $query1=$dbh->prepare($sql1);
 $query1->bindParam(':Firstname',$Firstname,PDO::PARAM_STR);
 $query1->bindParam(':Lastname',$Lastname,PDO::PARAM_STR); 
@@ -52,7 +52,7 @@ $Address=($_POST['Address']);
 $Email=($_POST['Email']);
 $Username=($_POST['Username']);
 $Password=($_POST['Password']);
-$sql3="INSERT INTO login(userID,userFirstname,userLastname,contactNo,Address,Image,Email,Username,Password,Role)VALUES($ID,:Firstname,:Lastname,:ContactNo,:Address,'default_profile.png',:Email,:Username,:Password,'Pet Adopter')";
+$sql3="INSERT INTO login(userID,userFirstname,userLastname,contactNo,Address,Image,Email,Username,Password,Role)VALUES($ID,:Firstname,:Lastname,:ContactNo,:Address,'default_profile.png',:Email,:Username,:Password,'Pet Owner')";
 $query3=$dbh->prepare($sql3); 
 $query3->bindParam(':Firstname',$Firstname,PDO::PARAM_STR);
 $query3->bindParam(':Lastname',$Lastname,PDO::PARAM_STR);
@@ -106,7 +106,7 @@ echo "<script type ='text/javascript'> document.location='http://localhost/devel
               <br>
               <br>
 					      <p style="text-align:center;"><img src="images/Logo.png" style="width:250px;height:250px;margin-top:-80px;margin-left:-15px;" alt=" " class="img-responsive"/></p>
-                  <h3 style="text-align:center;margin-top:-40px;">Pet Adopter <strong>Registration:</strong></h3>
+                  <h3 style="text-align:center;margin-top:-40px;">Pet Owner <strong>Registration:</strong></h3>
 					<br>
 					<div style="text-align: center" class="wrap-input100 validate-input">
 						<input class="input100" style="background-color:#f1f1f1;width:250px;height:40px;border:none;" type="text" name="Firstname" required="required" placeholder="Firstname">
