@@ -46,10 +46,10 @@ include('C:\xampp\htdocs\GETPET\includes\config.php');
 		<div class="container">
 			<!-- header -->
 			<div class="header">
-				<div class="logo" style="width:200px;height:200px;">
+				<div class="logo" style="width:340px;height:210px;">
 					<h1>
 						<a href="http://localhost/developgetpet/web/Dashboard.php">
-							<img class="logo-img center-block" src="images/Logo/Logo.png" alt="" style="width:250px;height:250px;margin-left: -60px;margin-top: -50px;" />
+							<img class="logo-img center-block" src="images/Logo/Logo.png" alt="" style="margin-top:-70px;margin-right:2px;" />
 						</a>
 					</h1>
 				</div>
