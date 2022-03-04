@@ -229,8 +229,8 @@ include('C:\xampp\htdocs\GETPET\includes\config.php');
 						</ul>
 					</div>
 					<div class="button-styles">
-						<a href="#" data-toggle="modal" data-target="#myModal2">More Info</a>
 						<a href="#contact" class="button2-w3l scroll">Contact Us</a>
+						<a href="#" data-toggle="modal" data-target="#myModal2" style="background-color:#2A3F54;border:#2A3F54;">More Info</a>
 					</div>
 				</div>
 				<div class="clearfix"> </div>
@@ -637,7 +637,7 @@ include('C:\xampp\htdocs\GETPET\includes\config.php');
 					<input type="text" name="subject" placeholder="Your subject" required="">
 					<input type="text" name="phone number" placeholder="Phone number" required="">
 					<textarea name="message" placeholder="Your message" required=""></textarea>
-					<input type="submit" value="Send">
+					<input type="submit" value="Send" style="background-color:#00cdc1;border:#00cdc1;">
 				</form>
 			</div>
 			<div class="col-md-3 col-sm-3 contact-left">
@@ -675,8 +675,8 @@ include('C:\xampp\htdocs\GETPET\includes\config.php');
 	<!-- //contact -->
 
 	<!-- footer -->
-	<section class="footer-w3">
-		<div class="container">
+	<section class="footer-w3" style="background-color:#2A3F54;border:#2A3F54;">
+		<div class="container" style="background-color:#2A3F54;border:#2A3F54;">
 			<div class="col-lg-4 col-md-4 col-sm-4 footer-agile1" data-aos="zoom-in">
 				<h3>ADOPTING MEANS YOU SAVE A LIFE!</h3>
 				<p class="footer-p1">Too often, shelters euthanize animals due to room constraints, but if more people adopted pets instead of buying them, the number of pets euthanized would lower dramatically.
@@ -735,10 +735,10 @@ include('C:\xampp\htdocs\GETPET\includes\config.php');
 		</div>
 	</section>
 	<!-- copyright -->
-	<div class="w3layouts_copy_right">
-		<div class="container">
-			<p>© 2021 GetPet. All rights reserved | Design by
-				<a href="">Team K.W .</a>
+	<div class="w3layouts_copy_right" style="background-color:#2A3F54;border:#2A3F54;">
+		<div class="container" style="background-color:#2A3F54;border:#2A3F54;">
+			<p>© 2022 GetPet. All rights reserved | Design by
+				<a href="#" style="color:#00cdc1;border:#00cdc1;">Team K.W .</a>
 			</p>
 		</div>
 	</div>

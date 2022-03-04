@@ -49,14 +49,18 @@ if(isset($_POST['AnimalWelfareOrganization']))
   
 
   <div class="d-lg-flex half">
-    <div class="bg order-1 order-md-2" style="background-image: url('images/doggy.jpg'); height:870px;"></div>
+    <div class="bg order-1 order-md-2" style="background-image: url('images/doggy.jpg');"></div>
     <div class="contents order-2 order-md-1">
       
         <div class="row align-items-center justify-content-center">
-          <div class="col-md-7"><br><br>
+          <div class="col-md-7">
+          <a href="http://localhost/developgetpet/web/Dashboard.php">
+          <p style="text-align:center;"><img src="images/Logo.png" style="width:250px;height:250px;margin-bottom:-90px;margin-top:-50px;margin-right:-15px;" alt=" " class="img-responsive"/></p>
+          </a>
+          <br>
+          <br>
             <form class="login100-form validate-form" method="post">
-            <p style="text-align:center;"><img src="images/Logo.png" style="width:450px;height:450px;margin-top:-60px;margin-left:-55px;margin-bottom:-50px;" alt=" " class="img-responsive"/></p>
-            <h3>Select <strong>Role:</strong></h3>
+            <h5>&nbspSELECT <strong>ROLE</strong></h5>
             <div style="text-align: center">
 						    <button class="login100-form-btn" style="background-color:#00cdc1;width:350px;height:55px;border:none;border-radius: 4px;" name="PetAdopter">
 							  <a style="color:White">Pet Adopter</a>
