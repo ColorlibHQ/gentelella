@@ -3,24 +3,18 @@ session_start();
 include('C:\xampp\htdocs\developgetpet\includes\config.php');
 if(isset($_POST['insert']))
 {
-
 $OrganizationName=($_POST['OrganizationName']);
 $OrganizationManager=($_POST['OrganizationManager']);
-$Logo = $_FILES["Logo"]["name"];
-$tmp_dir = $_FILES["Logo"]["tmp_name"];
-
-move_uploaded_file($tmp_dir, "C:/xampp/htdocs/GETPET/web/images/$Logo");
 $ContactNo=($_POST['ContactNo']);
 $Address=($_POST['Address']);
 $Email=($_POST['Email']);
 $Username=($_POST['Username']);
 $Password=($_POST['Password']);
 
-$sql="INSERT INTO register(orgName,orgManager,Image,contactNo,Address,Email,Username,Password,Role,registerDate)VALUES(:Firstname,:Lastname,:Logo,:ContactNo,:Address,:Email,:Username,:Password,'Animal Welfare Organization',Now())";
+$sql="INSERT INTO register(orgName,orgManager,Image,contactNo,Address,Email,Username,Password,Role,registerDate)VALUES(:Firstname,:Lastname,'default_logo.png',:ContactNo,:Address,:Email,:Username,:Password,'Animal Welfare Organization',Now())";
 $query=$dbh->prepare($sql); 
 $query->bindParam(':Firstname',$OrganizationName,PDO::PARAM_STR);
 $query->bindParam(':Lastname',$OrganizationManager,PDO::PARAM_STR);
-$query->bindParam(':Logo',$Logo,PDO::PARAM_STR);
 $query->bindParam(':ContactNo',$ContactNo,PDO::PARAM_STR);
 $query->bindParam(':Address',$Address,PDO::PARAM_STR);
 $query->bindParam(':Email',$Email,PDO::PARAM_STR);
@@ -37,21 +31,16 @@ $ID=$query2->fetchColumn();
 
 $OrganizationName=($_POST['OrganizationName']);
 $OrganizationManager=($_POST['OrganizationManager']);
-$Logo = $_FILES["Logo"]["name"];
-$tmp_dir = $_FILES["Logo"]["tmp_name"];
-
-move_uploaded_file($tmp_dir, "C:/xampp/htdocs/GETPET/web/images/$Logo");
 $ContactNo=($_POST['ContactNo']);
 $Address=($_POST['Address']);
 $Email=($_POST['Email']);
 $Username=($_POST['Username']);
 $Password=($_POST['Password']);
 
-$sql1="INSERT INTO animalwelfareorganization(orgID,orgName,orgManager,orgLogo,orgContactNo,orgAddress,orgEmail,orgUsername,orgPassword,Role)VALUES($ID,:OrganizationName,:OrganizationManager,:Logo,:ContactNo,:Address,:Email,:Username,:Password,'Animal Welfare Organization')";
+$sql1="INSERT INTO animalwelfareorganization(orgID,orgName,orgManager,orgLogo,orgContactNo,orgAddress,orgEmail,orgUsername,orgPassword,Role)VALUES($ID,:OrganizationName,:OrganizationManager,'default_logo.png',:ContactNo,:Address,:Email,:Username,:Password,'Animal Welfare Organization')";
 $query1=$dbh->prepare($sql1); 
 $query1->bindParam(':OrganizationName',$OrganizationName,PDO::PARAM_STR);
 $query1->bindParam(':OrganizationManager',$OrganizationManager,PDO::PARAM_STR);
-$query1->bindParam(':Logo',$Logo,PDO::PARAM_STR);
 $query1->bindParam(':ContactNo',$ContactNo,PDO::PARAM_STR);
 $query1->bindParam(':Address',$Address,PDO::PARAM_STR);
 $query1->bindParam(':Email',$Email,PDO::PARAM_STR);
@@ -60,22 +49,16 @@ $query1->bindParam(':Password',$Password,PDO::PARAM_STR);
 $query1->execute();
 
 $OrganizationName=($_POST['OrganizationName']);
-$OrganizationManage=($_POST['OrganizationManager']);
-$Logo = $_FILES["Logo"]["name"];
-$tmp_dir = $_FILES["Logo"]["tmp_name"];
-
-move_uploaded_file($tmp_dir, "C:/xampp/htdocs/GETPET/web/images/$Logo");
 $ContactNo=($_POST['ContactNo']);
 $Address=($_POST['Address']);
 $Email=($_POST['Email']);
 $Username=($_POST['Username']);
 $Password=($_POST['Password']);
 
-$sql3="INSERT INTO login(userID,orgName,orgManager,Image,contactNo,Address,Email,Username,Password,Role)VALUES($ID,:OrganizationName,:OrganizationManager,:Logo,:ContactNo,:Address,:Email,:Username,:Password,'Animal Welfare Organization')";
+$sql3="INSERT INTO login(userID,orgName,orgManager,Image,contactNo,Address,Email,Username,Password,Role)VALUES($ID,:OrganizationName,:OrganizationManager,'default_logo.png',:ContactNo,:Address,:Email,:Username,:Password,'Animal Welfare Organization')";
 $query3=$dbh->prepare($sql3); 
 $query3->bindParam(':OrganizationName',$OrganizationName,PDO::PARAM_STR);
 $query3->bindParam('OrganizationManager',$OrganizationManager,PDO::PARAM_STR);
-$query3->bindParam(':Logo',$Logo,PDO::PARAM_STR);
 $query3->bindParam(':ContactNo',$ContactNo,PDO::PARAM_STR);
 $query3->bindParam(':Address',$Address,PDO::PARAM_STR);
 $query3->bindParam(':Email',$Email,PDO::PARAM_STR);
@@ -116,6 +99,7 @@ echo "<script type ='text/javascript'> document.location='http://localhost/devel
   <div class="d-lg-flex half">
     <div class="bg order-1 order-md-2" style="background-image: url('images/doggy.jpg');"></div>
     <div class="contents order-2 order-md-1">
+<<<<<<< HEAD
 
       
       <div class="row align-items-center justify-content-center">  
@@ -123,6 +107,16 @@ echo "<script type ='text/javascript'> document.location='http://localhost/devel
           <br>
             <form class="login100-form validate-form" method="post">
             <h6 style="text-align:center;margin-top:-14px;margin-right:-15px;">ANIMAL WELFARE ORGANIZATION <strong>REGISTRATION</strong></h6>
+=======
+      <div class="container">      
+          <div class="col-md-7">
+            <form class="login100-form validate-form" style=" width: 50vw; margin-left : -3vw;" method="post" enctype="multipart/form-data">
+              <br>
+              <br>
+              <br>
+					      <p style="text-align:center;"><img src="images/Logo.png" style="width:250px;height:250px;margin-top:-80px;margin-left:-15px;" alt=" " class="img-responsive"/></p>
+                  <h3 style="text-align:center;margin-top:-40px;">Animal Welfare Organization <strong>Registration:</strong></h3>
+>>>>>>> 790f2911161e5d8314a5cb8df5dc1053174914ae
 					<br>
 					<div style="text-align: center" class="wrap-input100 validate-input">
 						<input class="input100" style="background-color:#f1f1f1;width:250px;height:40px;border:none;" type="text" name="Firstname" required="required" placeholder="Firstname">
