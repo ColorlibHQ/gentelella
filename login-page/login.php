@@ -162,15 +162,16 @@ if(isset($_POST['login']))
   
 
   <div class="d-lg-flex half">
-    <div class="bg order-1 order-md-2" style="background-image: url('images/doggy.jpg'); height:870px;"></div>
+    <div class="bg order-1 order-md-2" class="responsive" style="background-image: url('images/doggy.jpg');"></div>
     <div class="contents order-2 order-md-1">
       <div class="container">
         <div class="row align-items-center justify-content-center">
           <div class="col-md-7">
           <a href="http://localhost/developgetpet/web/Dashboard.php">
-          <p style="text-align:center;"><img src="images/Logo.png" style="width:450px;height:450px;margin-top:-80px;margin-left:-65px;" alt=" " class="img-responsive"/></p>
+          <p style="text-align:center;"><img src="images/Logo.png" style="width:250px;height:250px;margin-bottom:-90px;margin-top:-50px;margin-left:-40px;" alt=" " class="img-responsive"/></p>
           </a>
-          <h3>Login to <strong>GetPet</strong></h3>
+          <br>
+          <h5>LOGIN TO <strong>GetPet</strong></h5>
             <form action="#" method="post">
               <div class="form-group first">
                 <label for="username">Username:</label>
