@@ -1,6 +1,6 @@
 <?php 
 session_start();
-include('C:\xampp\htdocs\GETPET\includes\config.php');
+include('C:\xampp\htdocs\developgetpet\includes\config.php');
 
 ?>
 <!DOCTYPE html>
@@ -46,10 +46,10 @@ include('C:\xampp\htdocs\GETPET\includes\config.php');
 		<div class="container">
 			<!-- header -->
 			<div class="header">
-				<div class="logo" style="width:200px;height:200px;">
+				<div class="logo" style="width:340px;height:210px;">
 					<h1>
-						<a href="http://localhost/GETPET/Dashboard.php">
-							<img class="logo-img center-block" src="images/Logo/Logo.png" alt="" style="width:250px;height:250px;margin-left: -60px;margin-top: -50px;" />
+						<a href="http://localhost/developgetpet/web/Dashboard.php">
+							<img class="logo-img center-block" src="images/Logo/Logo.png" alt="" style="margin-top:-70px;margin-right:2px;" />
 						</a>
 					</h1>
 				</div>
@@ -71,7 +71,7 @@ include('C:\xampp\htdocs\GETPET\includes\config.php');
 										<h3>we provide
 											<span>care</span> that your
 											<span>pet</span> deserves!</h3>
-										<p>A comprehensive guide to cat care to make your pet feel your love</p>
+										<p>A comprehensive guide to dog & cat care to make your pet feel your love</p>
 									</div>
 								</div>
 							</div>
@@ -85,7 +85,7 @@ include('C:\xampp\htdocs\GETPET\includes\config.php');
 										<h3>you can show your
 											<span>love</span> to your
 											<span>pet</span>!</h3>
-										<p>A comprehensive guide to cat care to make your pet feel your love</p>
+											<p>A comprehensive guide to dog & cat care to make your pet feel your love</p>
 									</div>
 								</div>
 							</div>
@@ -99,7 +99,7 @@ include('C:\xampp\htdocs\GETPET\includes\config.php');
 										<h3>we provide
 											<span>care</span> that your
 											<span>pet</span> deserves!</h3>
-										<p>A comprehensive guide to cat care to make your pet feel your love</p>
+											<p>A comprehensive guide to dog & cat care to make your pet feel your love</p>
 									</div>
 								</div>
 							</div>
@@ -113,7 +113,7 @@ include('C:\xampp\htdocs\GETPET\includes\config.php');
 										<h3>you can show your
 											<span>love</span> to your
 											<span>pet</span>!</h3>
-										<p>A comprehensive guide to cat care to make your pet feel your love</p>
+											<p>A comprehensive guide to dog & cat care to make your pet feel your love</p>
 									</div>
 								</div>
 							</div>
@@ -141,31 +141,37 @@ include('C:\xampp\htdocs\GETPET\includes\config.php');
 				</div>
 				<div class='collapse navbar-collapse'>
 					<ul>
-						<li style="margin-left:-50px;">
-							<a href="http://localhost/GETPET/web/Dashboard.php">Home</a>
+						<li style = "width:140px;">
+							<a href="#home" class="scroll">Home</a>
 						</li>
-						<li>
+						<li style = "width:140px;">
 							<a href="#about" class="scroll">About Us</a>
 						</li>
-						<li>
+						<li style = "width:140px;">
 							<a href="#services" class="scroll">Services</a>
 						</li>
-						<li>
-							<a href="#blog" class="scroll">Our Blog</a>
-						</li>
-						<li>
+						<li style = "width:140px;">
 							<a href="#team" class="scroll">Our Team</a>
 						</li>
 						<!--<li>
 							<a href="#gallery" class="scroll">Gallery</a>
 						</li>-->
-						<li>
+						<li style = "width:150px;margin-right:30px;">
 							<a href="#contact" class="scroll">Contact Us</a>
 						</li>	
-						<li>
-							<div style="border-style:solid;border-color:white;margin-top:10px;margin-bottom:10px;cursor: pointer;">
-							<div  href="http://localhost/GETPET/login-form-09/login.php" style="margin-top:-10px;margin-bottom:-10px"><a href="http://localhost/GETPET/login-form-09/login.php" style ="margin-top:-10px">Login</a></div>
-	                        </div>
+						<li style = "margin-right:10px;">
+						   <form method="post">
+						    <button  class="login100-form-btn" style="border-style:solid;border-color:white;background-color:#00cdc1;width:130px;height:45px;" name="login">
+							  <div style="color:White;margin-top:-10px"><a style="color:White;text-align:center;"> Login </a></div>
+						    </button>
+							</form>
+							<?php 
+
+                           if(isset($_POST['login']))
+                            {
+								echo "<script type ='text/javascript'> document.location='http://localhost/developgetpet/login-page/login.php'</script>";
+							}
+							?>
 						</li>
 						<li>
 						<script language="JavaScript">
@@ -173,9 +179,19 @@ include('C:\xampp\htdocs\GETPET\includes\config.php');
                          document.getElementById(id).style.display = visibility;
                              }
                             </script>
-							<div style="border-style:solid;border-color:white;margin-top:10px;margin-bottom:10px;cursor: pointer;">
-							<div style="margin-top:-10px;margin-bottom:-10px"><a href="http://localhost/GETPET/login-form-09/SelectRole.php" style ="margin-top:-10px">Signup</a></div>
-	                        </div>
+	
+							<form method="post">
+						    <button  class="login100-form-btn" style="border-style:solid;border-color:white;background-color:#00cdc1;width:130px;height:45px;" name="signup">
+							<div style="color:White;margin-top:-10px"><a style="color:White"> Signup </a></div>
+						    </button>
+							</form>
+							<?php 
+
+                           if(isset($_POST['signup']))
+                            {
+								echo "<script type ='text/javascript'> document.location='http://localhost/developgetpet/login-page/selectrole.php'</script>";
+							}
+							?>
 						</li>	
                     </ul>
 				</div>
@@ -187,7 +203,7 @@ include('C:\xampp\htdocs\GETPET\includes\config.php');
 	<!-- welcome -->
 	<div class="about" id="about">
 		<div class="container">
-			<h3 class="agile-title">Welcome</h3>
+			<h3 class="agile-title">Welcome To GetPet</h3>
 			<div class="about-top w3ls-agile">
 				<div class="col-md-6 red">
 					<img class="img-responsive" src="images/dc.jpg" alt="">
@@ -195,24 +211,26 @@ include('C:\xampp\htdocs\GETPET\includes\config.php');
 				<div class="col-md-6 come">
 					<div class="about-wel">
 						<h5>A Few Words About Our
-							<span>Pet Life</span>
+							<span>GetPet</span>
 						</h5>
 						<p>“Such short little lives our pets have to spend with us, and they spend most of it waiting for us to come home each day. 
 							It is amazing how much love and laughter they bring into our lives and even how much closer we become with each other because of them.”</p>
 						<ul>
 							<li>
-								<i class="glyphicon glyphicon-ok"></i>Pet health and Care</li>
+								<i class="glyphicon glyphicon-ok"></i>Pet Information</li>
 							<li>
-								<i class="glyphicon glyphicon-ok"></i>Pet grooming</li>
+								<i class="glyphicon glyphicon-ok"></i>Animal Care Tips</li>
 							<li>
-								<i class="glyphicon glyphicon-ok"></i>Food for Pets</li>
+							    <i class="glyphicon glyphicon-ok"></i>Short-Term Care</li>
 							<li>
-								<i class="glyphicon glyphicon-ok"></i>Pet behavior</li>
+							    <i class="glyphicon glyphicon-ok"></i>Pets for Adoption</li>
+							<li>
+								<i class="glyphicon glyphicon-ok"></i>Donation and fundraising activities</li>
 						</ul>
 					</div>
 					<div class="button-styles">
-						<a href="#" data-toggle="modal" data-target="#myModal2">More Info</a>
 						<a href="#contact" class="button2-w3l scroll">Contact Us</a>
+						<a href="#" data-toggle="modal" data-target="#myModal2" style="background-color:#2A3F54;border:#2A3F54;">More Info</a>
 					</div>
 				</div>
 				<div class="clearfix"> </div>
@@ -260,32 +278,34 @@ include('C:\xampp\htdocs\GETPET\includes\config.php');
 	</div>
 	<!-- //middle slider -->
 
-	<!-- middle section -->
+	<!-- middle section 
 	<div class="middle-w3l">
 		<div class="container">
-			<h2><div style="border:solid #00cdc1; outline:#00cdc1 solid 1px; color: black; background: #ffffff; opacity: .4;">Get to know everything about your pets!</div></h2>
+			<h2><div style="border:solid #00cdc1; outline:#00cdc1 solid 1px; color: black; background: #ffffff; opacity: .6;">Get to know everything about your pets!</div></h2>
 			<div class="button-styles">
 				<a href="#contact" class="button3-w3l scroll">Contact Us</a>
 			</div>
 		</div>
 	</div>
-	<!-- //middle section -->
+	 -->
 
 	<!-- services -->
 	<div class="services" id="services">
 		<div class="container">
-			<h3 class="agile-title">Services Overview</h3>
+			<h3 class="agile-title">Dashboard</h3>
 			<div class="w3_agile_services_grids">
 				<div class="col-md-4 col-sm-4 col-xs-4 w3_agile_services_grid " data-aos="zoom-in">
 					<div class="ih-item circle effect1 agile_services_grid">
 						<div class="spinner"></div>
 						<div class="img">
-							<img src="images/b1.jpg" alt=" " class="img-responsive" />
+							<img src="images/b1.jpg" alt=" " class="img-responsive"/>
 						</div>
 					</div>
 					<fieldset>
-						<legend>Service 1</legend>
-						consectetur adipiscing elit, sed do eiusmod tempor et dolore magna aliqua.
+						<legend>Tips & Advice</legend>
+						<div class="button-styles">
+						<a href="#contact" class="button2-w3l scroll">More info</a>
+						</div>
 					</fieldset>
 				</div>
 				<div class="col-md-4 col-sm-4 col-xs-4 w3_agile_services_grid" data-aos="zoom-in">
@@ -296,8 +316,10 @@ include('C:\xampp\htdocs\GETPET\includes\config.php');
 						</div>
 					</div>
 					<fieldset>
-						<legend>Service 2</legend>
-						consectetur adipiscing elit, sed do eiusmod tempor et dolore magna aliqua.
+						<legend>Articles</legend>
+						<div class="button-styles">
+						<a href="#contact" class="button2-w3l scroll">More info</a>
+						</div>
 					</fieldset>
 				</div>
 				<div class="col-md-4 col-sm-4 col-xs-4 w3_agile_services_grid" data-aos="zoom-in">
@@ -308,8 +330,10 @@ include('C:\xampp\htdocs\GETPET\includes\config.php');
 						</div>
 					</div>
 					<fieldset>
-						<legend>Service 3</legend>
-						consectetur adipiscing elit, sed do eiusmod tempor et dolore magna aliqua.
+						<legend>Short-Term Care</legend>
+						<div class="button-styles">
+						<a href="#contact" class="button2-w3l scroll">More info</a>
+						</div>
 					</fieldset>
 				</div>
 				<div class="clearfix"> </div>
@@ -323,8 +347,10 @@ include('C:\xampp\htdocs\GETPET\includes\config.php');
 						</div>
 					</div>
 					<fieldset>
-						<legend>Service 4</legend>
-						consectetur adipiscing elit, sed do eiusmod tempor et dolore magna aliqua.
+						<legend>Pets for Adoption</legend>
+						<div class="button-styles">
+						<a href="#contact" class="button2-w3l scroll">More info</a>
+						</div>
 					</fieldset>
 				</div>
 				<div class="col-md-4 col-sm-4 col-xs-4 w3_agile_services_grid" data-aos="zoom-in">
@@ -335,138 +361,38 @@ include('C:\xampp\htdocs\GETPET\includes\config.php');
 						</div>
 					</div>
 					<fieldset>
-						<legend>Service 5</legend>
-						consectetur adipiscing elit, sed do eiusmod tempor et dolore magna aliqua.
+						<legend>Donation</legend>
+						<div class="button-styles">
+						<a href="#contact" class="button2-w3l scroll">More info</a>
+						</div>
 					</fieldset>
 				</div>
 				<div class="col-md-4 col-sm-4 col-xs-4 w3_agile_services_grid" data-aos="zoom-in">
 					<div class="ih-item circle effect1 agile_services_grid">
 						<div class="spinner"></div>
 						<div class="img">
-							<img src="images/c6.jpg" alt=" " class="img-responsive" />
+							<img src="images/b5.jpg" alt=" " class="img-responsive"/>
 						</div>
 					</div>
 					<fieldset>
-						<legend>Service 6</legend>
-						consectetur adipiscing elit, sed do eiusmod tempor et dolore magna aliqua.
+						<legend>Fund-raising</legend>
+						<div class="button-styles">
+						<a href="#contact" class="button2-w3l scroll">More info</a>
+						</div>
 					</fieldset>
 				</div>
-				<div class="clearfix"> </div>
-			</div>
+				
 		</div>
-		<div class="w3l-img-side">
+		<!--<div class="w3l-img-side">
 			<img src="images/cat11.png" alt="" />
 		</div>
 		<div class="w3l-img-side w3l-img-side2">
 			<img src="images/dog1.jpg" alt="" />
-		</div>
-	</div>
+		</div>-->
+	</div><br><br>
 	<!-- //services -->
 
 	<!-- blog -->
-	<div class="blog" id="blog">
-		<div class="container">
-			<h3 class="agile-title">Our Blog</h3>
-			<div class="col-md-5 col-xs-6 blog-grids">
-				<div class="blog-full-wthree">
-					<div class="blog-left-agileits">
-						<p>Jan</p>
-						<span>18</span>
-					</div>
-					<div class="blog-right-agileits-w3layouts">
-						<h4>
-							<a href="#" data-toggle="modal" data-target="#myModal2">eoquie int temporant 2018</a>
-						</h4>
-						<p>
-							<a href="#" data-toggle="modal" data-target="#myModal2">Cat Life</a>
-						</p>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-				<div class="blog-full-wthree">
-					<div class="blog-left-agileits">
-						<p>Feb</p>
-						<span>22</span>
-					</div>
-					<div class="blog-right-agileits-w3layouts">
-						<h4>
-							<a href="#" data-toggle="modal" data-target="#myModal2">eoquie int temporant 2018</a>
-						</h4>
-						<p>
-							<a href="#" data-toggle="modal" data-target="#myModal2">Cat Life</a>
-						</p>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-				<div class="blog-full-wthree">
-					<div class="blog-left-agileits">
-						<p>Feb</p>
-						<span>15</span>
-					</div>
-					<div class="blog-right-agileits-w3layouts">
-						<h4>
-							<a href="#" data-toggle="modal" data-target="#myModal2">eoquie int temporant 2018</a>
-						</h4>
-						<p>
-							<a href="#" data-toggle="modal" data-target="#myModal2">Cat Life</a>
-						</p>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-			</div>
-			<div class="col-md-5 col-xs-6 blog-grids">
-				<div class="blog-full-wthree">
-					<div class="blog-left-agileits">
-						<p>Jan</p>
-						<span>26</span>
-					</div>
-					<div class="blog-right-agileits-w3layouts">
-						<h4>
-							<a href="#" data-toggle="modal" data-target="#myModal2">eoquie int temporant 2018</a>
-						</h4>
-						<p>
-							<a href="#" data-toggle="modal" data-target="#myModal2">Cat Life</a>
-						</p>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-				<div class="blog-full-wthree">
-					<div class="blog-left-agileits">
-						<p>Feb</p>
-						<span>06</span>
-					</div>
-					<div class="blog-right-agileits-w3layouts">
-						<h4>
-							<a href="#" data-toggle="modal" data-target="#myModal2">eoquie int temporant 2018</a>
-						</h4>
-						<p>
-							<a href="#" data-toggle="modal" data-target="#myModal2">Cat Life</a>
-						</p>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-				<div class="blog-full-wthree">
-					<div class="blog-left-agileits">
-						<p>Feb</p>
-						<span>12</span>
-					</div>
-					<div class="blog-right-agileits-w3layouts">
-						<h4>
-							<a href="#" data-toggle="modal" data-target="#myModal2">eoquie int temporant 2018</a>
-						</h4>
-						<p>
-							<a href="#" data-toggle="modal" data-target="#myModal2">Cat Life</a>
-						</p>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-			</div>
-			<div class="clearfix"> </div>
-		</div>
-		<div class="blog-grids mid-blog-agile">
-			<img src="images/cat2.png" class="img-responsive" alt="">
-		</div>
-	</div>
 	<!-- Modal5 -->
 	<div class="modal fade" id="myModal2" tabindex="-1" role="dialog">
 		<div class="modal-dialog">
@@ -475,11 +401,15 @@ include('C:\xampp\htdocs\GETPET\includes\config.php');
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<div class="modal-info">
-						<h4>Cat Life</h4>
-						<img src="images/g2.jpg" alt=" " class="img-responsive" />
-						<h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h5>
-						<p class="para-agileits-w3layouts">Duis sit amet nisi quis leo fermentum vestibulum vitae eget augue. Nulla quam nunc, vulputate id urna at, tempor tincidunt
-							metus. Sed feugiat quam nec mauris mattis malesuada.</p>
+						<h4>Dog & Cat Life</h4>
+						<img src="images/dc.jpg" alt=" " class="img-responsive"/>
+						<h5>What are the benefits of pet adoption?</h5>
+						<p class="para-agileits-w3layouts">Adopting a pet comes with numerous advantages including:
+
+							<p>1. You’re saving a life. Millions of healthy, adoptable pets are euthanized every year simply for a lack of a home. When you adopt your pet from a shelter or rescue group, you’re giving a deserving pet a loving home.</p>
+							<p>2. Many adoptable pets are already trained.</p>
+							<p>3. When you adopt an older pet, you will often get a sense of their personality and temperament. You also already know their full grown size!</p>
+						</p>
 					</div>
 				</div>
 			</div>
@@ -496,16 +426,111 @@ include('C:\xampp\htdocs\GETPET\includes\config.php');
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<div class="modal-info">
 						<h4>Project Manager</h4>
-						<img src="images/g2.jpg" alt=" " class="img-responsive" />
-						<h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h5>
-						<p class="para-agileits-w3layouts">Duis sit amet nisi quis leo fermentum vestibulum vitae eget augue. Nulla quam nunc, vulputate id urna at, tempor tincidunt
-							metus. Sed feugiat quam nec mauris mattis malesuada.</p>
+						<img src="images/team/jennevive.jpg" alt=" " class="img-responsive"/>
+						<h5>Jennevive Baring</h5>
+						<p class="para-agileits-w3layouts">A project manager oversees different initiatives or projects of a business, 
+														   monitors their progress and completion, and ensures that they meet the expectations 
+														   of the clients. Although a project manager usually doesn’t need to perform the hands-on 
+														   tasks involved in a project, he or she must possess some degree of knowledge with regards 
+														   to the various aspects of a project.</p>
+
+						<p class="para-agileits-w3layouts">From a construction project manager to an IT project manager or junior project manager to 
+														   a senior project manager and everything in between, we've got a sample job description below 
+														   you can use find the right applicant fast.</p>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	<!-- //ModalPM -->
+
+	<!-- ModalHacker -->
+	<div class="modal fade" id="hacker" tabindex="-1" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<div class="modal-info">
+						<h4>Hacker</h4>
+						<img src="images/team/Genesis.jpg" alt=" " class="img-responsive"/>
+						<h5>Genesis Tagsip</h5>
+						<p class="para-agileits-w3layouts">An ethical hacker conducts advanced penetration tests 
+														   to identify vulnerabilities in computer systems, which 
+														   could be penetrated by malicious intruders. This requires 
+														   familiarity with the infrastructure of the company and its 
+														   business operations. It also requires the ability to analyze 
+														   risk assessment and put in place measures to control vulnerable 
+														   areas.</p>
+
+						<p class="para-agileits-w3layouts">The ethical hacker must simulate breaches to network security 
+														   and develop measures to lock down areas of risk. An ethical hacker 
+														   must strive to ensure that any information that could damage the 
+														   reputation or finances of an organization or its clients does not 
+														   fall into the wrong hands.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- //ModalHacker -->
+
+	<!-- ModalHipster -->
+	<div class="modal fade" id="hipster" tabindex="-1" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<div class="modal-info">
+						<h4>Hipster</h4>
+						<img src="images/team/Niel.jpg" alt=" " class="img-responsive"/>
+						<h5>Niel Tatad</h5>
+						<p class="para-agileits-w3layouts">The UI aspects include helping us refine the user interface for users, 
+														   teams, program managers, and visitors on our platform. The applicant should 
+														   have demonstrated experience working on interface design for SaaS platforms, 
+														   and preferably (not required) with some experience with productivity, collaboration,
+														   or social/community software. The designer should be comfortable working with the 
+														   leadership team to integrate business/organization requirements, along with the UX Lead 
+														   and integrating user research into the design, along with working with the developers to 
+														   communicate design requirements. Applicants who pass the first round selection will be 
+														   sent a video walkthrough of the platform to share more details of the project, and to 
+														   discuss project direction and perspectives in greater detail.</p>
+
+					   <p class="para-agileits-w3layouts">The design aspects include refining the branding and creating compelling content for social media, 
+						   								  presentations and training programs, and other design aspects of our work, and both creating original 
+													      content while creating reusable templates to maximize the impact of our work and outputs.</p>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- //ModalHipster -->
+
+	<!-- ModalHuslter -->
+	<div class="modal fade" id="huslter" tabindex="-1" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<div class="modal-info">
+						<h4>Huslter</h4>
+						<img src="images/team/Novelyn.jpg" alt=" " class="img-responsive"/>
+						<h5>Novelyn Vocales</h5>
+						<p class="para-agileits-w3layouts">A hustler does not give in easily or does not get bogged down by the problems around him. 
+														   On the contrary, a hustler tries to make a way out even though it may be a slow and incremental 
+														   effort process, but keeps doing so and ultimately ends up achieving the goal.</p>
+
+						<p class="para-agileits-w3layouts">Being a hustler is not an easy task it requires you to have a very strong will, be extremely 
+													       positive and have highly committed and disciplined work ethics.</p>							   
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- //ModalHuslter -->
 
 	<!-- //blog -->
 
@@ -518,13 +543,13 @@ include('C:\xampp\htdocs\GETPET\includes\config.php');
 						<img src="images/team/jennevive.jpg" alt=" " class="img-responsive" style="width:350px;height:350px;margin-left: 90px;" />
 						<br>
 						<h4 style="margin-left: 200px;"><a href="#" data-toggle="modal" data-target="#PM">Jennevive Baring</a></h4>
-						<p style="margin-left: 160px;">Project Manager & Hustler</p>
+						<p style="margin-left: 200px;">Project Manager</p>
 					<div class="clearfix"> </div>
 				</div>
 				<div class="col-md-6 team-grid w3-agileits">
 						<img src="images/team/Genesis.jpg" alt=" " class="img-responsive" style="width:350px;height:350px;margin-left: 50px;" />
 						<br>
-						<h4 style="margin-left: 170px;"><a href="#" data-toggle="modal" data-target="#myModal2">Genesis Tagsip</a></h4>
+						<h4 style="margin-left: 170px;"><a href="#" data-toggle="modal" data-target="#hacker">Genesis Tagsip</a></h4>
 						<p style="margin-left: 200px;">Hacker</p>
 					<div class="clearfix"> </div>
 				</div>
@@ -533,15 +558,15 @@ include('C:\xampp\htdocs\GETPET\includes\config.php');
 				<div class="col-md-6 team-grid w3-agileits">
 						<img src="images/team/Niel.jpg" alt=" " class="img-responsive" style="width:350px;height:350px;margin-left: 90px;"/>
 						<br>
-						<h4 style="margin-left: 225px;">Niel Tatad</h4>
-						<p style="margin-left: 240px;">Tester</p>
+						<h4 style="margin-left: 225px;"><a href="#" data-toggle="modal" data-target="#hipster">Niel Tatad</a></h4>
+						<p style="margin-left: 235px;">Hipster</p>
 					<div class="clearfix"> </div>
 				</div>
 				<div class="col-md-6 team-grid w3-agileits">
 						<img src="images/team/Novelyn.jpg" alt=" " class="img-responsive" style="width:350px;height:350px;margin-left: 50px;" />
 						<br>
-						<h4 style="margin-left: 170px;">Novelyn Vocales</h4>
-						<p style="margin-left: 200px;">Hipster</p>
+						<h4 style="margin-left: 170px;"><a href="#" data-toggle="modal" data-target="#huslter">Novelyn Vocales</a></h4>
+						<p style="margin-left: 205px;">Huslter</p>
 					<div class="clearfix"> </div>
 				</div>
 				<div class="clearfix"> </div>
@@ -550,7 +575,7 @@ include('C:\xampp\htdocs\GETPET\includes\config.php');
 	</div>
 	<!-- //team -->
 
-	<!-- 
+	<!-- //gallery 
 	<div id="gallery" class="gallery">
 		<div class="container">
 			<h3 class="agile-title">Gallery</h3>
@@ -599,7 +624,7 @@ include('C:\xampp\htdocs\GETPET\includes\config.php');
 			<div class="clearfix"> </div>
 		</div>
 	</div>
-	 -->
+	-->
 
 	<!-- contact -->
 	<div class="contact" id="contact">
@@ -612,57 +637,57 @@ include('C:\xampp\htdocs\GETPET\includes\config.php');
 					<input type="text" name="subject" placeholder="Your subject" required="">
 					<input type="text" name="phone number" placeholder="Phone number" required="">
 					<textarea name="message" placeholder="Your message" required=""></textarea>
-					<input type="submit" value="Send">
+					<input type="submit" value="Send" style="background-color:#00cdc1;border:#00cdc1;">
 				</form>
 			</div>
 			<div class="col-md-3 col-sm-3 contact-left">
 				<div class="address">
 					<h4>
 						<i class="fa fa-map-marker" aria-hidden="true"></i>Location</h4>
-					<p>345 Setwant natrer,</p>
-					<p>Metropolitan, Italy.</p>
+					<p>A. C. Cortes Ave,</p>
+					<p>Mandaue City, 6014 Cebu</p>
 				</div>
 				<div class="phone">
 					<h4>
 						<i class="fa fa-phone" aria-hidden="true"></i>PHONE</h4>
-					<p>+1(401) 1234 567.</p>
-					<p>+1(804) 4261 150.</p>
+					<p>+63 (963) 380-2349.</p>
+					<p>+63 (906) 091-3468.</p>
 				</div>
 				<div class="email">
 					<h4>
-						<i class="fa fa-envelope-o" aria-hidden="true"></i>E-MAIL</h4>
+						<i class="fa fa-envelope-o" aria-hidden="true"></i>G-MAIL</h4>
 					<p>
-						<a href="mailto:info@example.com">Example1@gmail.com</a>
+						<a href="mailto::king30cinco@gmail.com">GetPet@gmail.com</a>
 					</p>
 					<p>
-						<a href="mailto:info@example.com">Example2@gmail.com</a>
+						<a href="mailto:king30cinco@gmail.com">WeAreGetPet@gmail.com</a>
 					</p>
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- map -->
+	<!-- 
 	<div class="map-w3ls">
 		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22702.22744502486!2d11.113366067229226!3d44.662878362361056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477fc3eca9065c15%3A0x12ec8a03aadae866!2s40019+Sant&#39;Agata+Bolognese+BO%2C+Italy!5e0!3m2!1sen!2sin!4v1451281303075"
 		    allowfullscreen></iframe>
 	</div>
-	<!-- //map -->
+	 -->
 	<!-- //contact -->
 
 	<!-- footer -->
-	<section class="footer-w3">
-		<div class="container">
+	<section class="footer-w3" style="background-color:#2A3F54;border:#2A3F54;">
+		<div class="container" style="background-color:#2A3F54;border:#2A3F54;">
 			<div class="col-lg-4 col-md-4 col-sm-4 footer-agile1" data-aos="zoom-in">
-				<h3>Some More</h3>
-				<p class="footer-p1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sed ligula ac metus finibus hendrerit sed at libero. Praesent
-					blandit dignissim elit, vel feugiat nulla porta a. Praesent tellus eros, consectetur quis tortor at, tempor varius quam.
+				<h3>ADOPTING MEANS YOU SAVE A LIFE!</h3>
+				<p class="footer-p1">Too often, shelters euthanize animals due to room constraints, but if more people adopted pets instead of buying them, the number of pets euthanized would lower dramatically.
+						When you adopt, not only do you save your loving new companion, but you make space for other animals who desperately need it, creating a domino effect of goodness.
 				</p>
 			</div>
 			<div class="col-lg-4 col-md-4 col-sm-4 footer-mid-w3" data-aos="zoom-in">
 				<h3>Instagram Posts</h3>
 				<div class="agileinfo_footer_grid1">
 					<a href="#">
-						<img src="images/f1.jpg" alt=" " class="img-responsive">
+						<img src="images/dogs1.jpg" alt=" " class="img-responsive">
 					</a>
 				</div>
 				<div class="agileinfo_footer_grid1">
@@ -672,7 +697,7 @@ include('C:\xampp\htdocs\GETPET\includes\config.php');
 				</div>
 				<div class="agileinfo_footer_grid1">
 					<a href="#">
-						<img src="images/f3.jpg" alt=" " class="img-responsive">
+						<img src="images/dogs3.jpg" alt=" " class="img-responsive">
 					</a>
 				</div>
 				<div class="agileinfo_footer_grid1">
@@ -682,7 +707,7 @@ include('C:\xampp\htdocs\GETPET\includes\config.php');
 				</div>
 				<div class="agileinfo_footer_grid1">
 					<a href="#">
-						<img src="images/f5.jpg" alt=" " class="img-responsive">
+						<img src="images/dogs5.jpg" alt=" " class="img-responsive">
 					</a>
 				</div>
 				<div class="agileinfo_footer_grid1">
@@ -693,34 +718,27 @@ include('C:\xampp\htdocs\GETPET\includes\config.php');
 				<div class="clearfix"> </div>
 			</div>
 			<div class="col-lg-4 col-md-4 col-sm-4 footer-agile1" data-aos="zoom-in">
-				<h3>Latest Tweets</h3>
+				<h3>Follow us also in Twitter</h3>
 				<ul class="tweet-agile">
 					<li>
 						<i class="fa fa-twitter-square" aria-hidden="true"></i>
 						<p class="tweet-p1">
-							<a href="mailto:support@company.com">@example</a> sit amet consectetur adipiscing.
-							<a href="#">http://ax.by/zzzz</a>
+							<a href="mailto:king30cinco@gmail.com">GetPet@twitter.com</a> ADOPTING IS MORE AFFORDABLE.
+							<!--<a href="#">http://ax.by/zzzz</a>-->
 						</p>
-						<p class="tweet-p2">Posted 3 days ago.</p>
+						<!--<p class="tweet-p2">Posted 3 days ago.</p>-->
 					</li>
-					<li>
-						<i class="fa fa-twitter-square" aria-hidden="true"></i>
-						<p class="tweet-p1">
-							<a href="mailto:support@company.com">@example</a> sit amet consectetur adipiscing.
-							<a href="#">http://cx.dy/zzzz</a>
-						</p>
-						<p class="tweet-p2">Posted 3 days ago.</p>
-					</li>
+					
 				</ul>
 			</div>
 			<div class="clearfix"></div>
 		</div>
 	</section>
 	<!-- copyright -->
-	<div class="w3layouts_copy_right">
-		<div class="container">
-			<p>© 2018 Cat Life. All rights reserved | Design by
-				<a href="http://w3layouts.com">W3layouts.</a>
+	<div class="w3layouts_copy_right" style="background-color:#2A3F54;border:#2A3F54;">
+		<div class="container" style="background-color:#2A3F54;border:#2A3F54;">
+			<p>© 2022 GetPet. All rights reserved | Design by
+				<a href="#" style="color:#00cdc1;border:#00cdc1;">Team K.W .</a>
 			</p>
 		</div>
 	</div>
