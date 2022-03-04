@@ -11,10 +11,10 @@ $Email=($_POST['Email']);
 $Username=($_POST['Username']);
 $Password=($_POST['Password']);
 
-$sql="INSERT INTO register(orgName,orgManager,Image,contactNo,Address,Email,Username,Password,Role,registerDate)VALUES(:Firstname,:Lastname,'default_logo.png',:ContactNo,:Address,:Email,:Username,:Password,'Animal Welfare Organization',Now())";
+$sql="INSERT INTO register(orgName,orgManager,Image,contactNo,Address,Email,Username,Password,Role,registerDate)VALUES(:OrganizationName,:OrganizationManager,'default_logo.png',:ContactNo,:Address,:Email,:Username,:Password,'Animal Welfare Organization',Now())";
 $query=$dbh->prepare($sql); 
-$query->bindParam(':Firstname',$OrganizationName,PDO::PARAM_STR);
-$query->bindParam(':Lastname',$OrganizationManager,PDO::PARAM_STR);
+$query->bindParam(':OrganizationName',$OrganizationName,PDO::PARAM_STR);
+$query->bindParam(':OrganizationManager',$OrganizationManager,PDO::PARAM_STR);
 $query->bindParam(':ContactNo',$ContactNo,PDO::PARAM_STR);
 $query->bindParam(':Address',$Address,PDO::PARAM_STR);
 $query->bindParam(':Email',$Email,PDO::PARAM_STR);
@@ -108,10 +108,10 @@ echo "<script type ='text/javascript'> document.location='http://localhost/devel
             <h6 style="text-align:center;margin-top:-14px;margin-right:-15px;">ANIMAL WELFARE ORGANIZATION <strong>REGISTRATION</strong></h6>
 					<br>
 					<div style="text-align: center" class="wrap-input100 validate-input">
-						<input class="input100" style="background-color:#f1f1f1;width:250px;height:40px;border:none;" type="text" name="Firstname" required="required" placeholder="Firstname">
+						<input class="input100" style="background-color:#f1f1f1;width:250px;height:40px;border:none;" type="text" name="OrganizationName" required="required" placeholder="Organization Name">
 					</div><br>
                     <div style="text-align: center" class="wrap-input100 validate-input">
-						<input class="input100" style="background-color:#f1f1f1;width:250px;height:40px;border:none;" type="text" name="Lastname" required="required" placeholder="Lastname">
+						<input class="input100" style="background-color:#f1f1f1;width:250px;height:40px;border:none;" type="text" name="OrganizationManager" required="required" placeholder="Organization Manager">
 						<span class="focus-input100"></span>
 					</div><br>
 					<div  style="text-align: center" class="wrap-input100 validate-input">
