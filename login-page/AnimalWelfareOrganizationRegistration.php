@@ -99,7 +99,6 @@ echo "<script type ='text/javascript'> document.location='http://localhost/devel
   <div class="d-lg-flex half">
     <div class="bg order-1 order-md-2" style="background-image: url('images/doggy.jpg');"></div>
     <div class="contents order-2 order-md-1">
-<<<<<<< HEAD
 
       
       <div class="row align-items-center justify-content-center">  
@@ -107,16 +106,6 @@ echo "<script type ='text/javascript'> document.location='http://localhost/devel
           <br>
             <form class="login100-form validate-form" method="post">
             <h6 style="text-align:center;margin-top:-14px;margin-right:-15px;">ANIMAL WELFARE ORGANIZATION <strong>REGISTRATION</strong></h6>
-=======
-      <div class="container">      
-          <div class="col-md-7">
-            <form class="login100-form validate-form" style=" width: 50vw; margin-left : -3vw;" method="post" enctype="multipart/form-data">
-              <br>
-              <br>
-              <br>
-					      <p style="text-align:center;"><img src="images/Logo.png" style="width:250px;height:250px;margin-top:-80px;margin-left:-15px;" alt=" " class="img-responsive"/></p>
-                  <h3 style="text-align:center;margin-top:-40px;">Animal Welfare Organization <strong>Registration:</strong></h3>
->>>>>>> 790f2911161e5d8314a5cb8df5dc1053174914ae
 					<br>
 					<div style="text-align: center" class="wrap-input100 validate-input">
 						<input class="input100" style="background-color:#f1f1f1;width:250px;height:40px;border:none;" type="text" name="Firstname" required="required" placeholder="Firstname">
