@@ -1,6 +1,6 @@
 <?php 
 session_start();
-include('C:\xampp\htdocs\GETPET\includes\config.php');
+include('C:\xampp\htdocs\developgetpet\includes\config.php');
 
 ?>
 <!DOCTYPE html>
