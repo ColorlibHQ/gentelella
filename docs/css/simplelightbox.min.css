@@ -1,0 +1,17 @@
+.sl-overlay{position:fixed;left:0;right:0;top:0;bottom:0;background:#fff;opacity:.7;display:none;z-index:6}.sl-wrapper{z-index:10}.sl-wrapper button{border:0;background:0 0;font-size:24px;padding:0;cursor:pointer}.sl-wrapper button:hover{opacity:.7}.sl-wrapper .sl-close{display:none;position:fixed;right:30px;top:30px;z-index:15;outline:none}.sl-wrapper .sl-navigation{width:100%;display:none}.sl-wrapper .sl-navigation button{position:fixed;top:50%;margin-top:-10px;height:30px;width:30px;line-height:30px;text-algin:center;display:block;z-index:15;font-size:5em;}.sl-wrapper .sl-navigation button.sl-next{right:40px;outline:none}.sl-wrapper .sl-navigation button.sl-prev{left:40px;outline:none}.sl-wrapper .sl-image{position:fixed;-ms-touch-action:none;touch-action:none;z-index:10000}.sl-wrapper .sl-image img{margin:0;padding:0;display:block}.sl-wrapper .sl-image .sl-caption{display:none;padding:10px;color:#fff;background:#000;opacity:.8;position:absolute;bottom:0;left:0;right:0}.sl-spinner{display:none;border:5px solid #333;border-radius:40px;height:40px;left:50%;margin:-20px 0 0 -20px;opacity:0;position:fixed;top:50%;width:40px;z-index:10;-webkit-animation:pulsate 1s ease-out infinite;-moz-animation:pulsate 1s ease-out infinite;-ms-animation:pulsate 1s ease-out infinite;-o-animation:pulsate 1s ease-out infinite;animation:pulsate 1s ease-out infinite}@-webkit-keyframes pulsate{0%{transform:scale(.1);opacity:0}50%{opacity:1}100%{transform:scale(1.2);opacity:0}}@keyframes pulsate{0%{transform:scale(.1);opacity:0}50%{opacity:1}100%{transform:scale(1.2);opacity:0}}@-moz-keyframes pulsate{0%{transform:scale(.1);opacity:0}50%{opacity:1}100%{transform:scale(1.2);opacity:0}}@-o-keyframes pulsate{0%{transform:scale(.1);opacity:0}50%{opacity:1}100%{transform:scale(1.2);opacity:0}}@-ms-keyframes pulsate{0%{transform:scale(.1);opacity:0}50%{opacity:1}100%{transform:scale(1.2);opacity:0}}
+@media(max-width:600px){
+.sl-wrapper .sl-navigation button.sl-next {
+    right: 14px;
+}
+.sl-wrapper .sl-navigation button.sl-prev {
+    left: 14px;
+}
+}
+@media(max-width:384px){
+.sl-wrapper .sl-navigation button.sl-prev {
+    left: -2px;
+}
+.sl-wrapper .sl-navigation button.sl-next {
+    right: -2px;
+}
+}

@@ -190,13 +190,14 @@ if(isset($_POST['login']))
 					    </div>
               
               <div class="d-flex mb-5 align-items-center" >
-                <label class="control control--checkbox mb-0" ><span class="caption">Remember me</span>
-                  <input type="checkbox">
+              Show password:<input type="checkbox" onclick="myfunction()" value="Show password">
+              
                   <div class="control__indicator"></div>
                 </label>
                 <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span> 
               </div>
-
+              
+              
               <input type="submit" name="login" value="Log In" class="btn btn-block btn-primary" style="background-color:#00cdc1;border:#00cdc1;">
               <p  style="text-align:center;"><span class="ml-auto"><a href="http://localhost/developgetpet/login-page/selectrole.php" class="forgot-pass">Don't have an account yet?Click here to register!</a></span></p>
             </form>
@@ -205,14 +206,27 @@ if(isset($_POST['login']))
       </div>
     </div> 
   </div>
-
-  
-    
-    
-
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
+
+    <script>
+	
+		function myfunction()
+		{
+			var x=document.getElementById("Password");
+			if(x.type =="password")
+			{
+				x.type="text";
+			}
+			
+			else
+			{
+				x.type="password";
+			}
+		}
+    </script>
+
   </body>
 </html>

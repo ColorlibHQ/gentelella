@@ -1,7 +1,107 @@
 <?php 
 session_start();
-include('C:\xampp\htdocs\GETPET\includes\config.php');
+include('C:\xampp\htdocs\GETPET\includes\config.php');	
+$ID=$_SESSION['ID'];
+$sql = "SELECT * from animal_welfare_agency where ID=:ID";
+$query=$dbh->prepare($sql);
+$query->bindParam(':ID',$ID,PDO::PARAM_STR);
+$query->execute();
+$results=$query->fetchAll(PDO::FETCH_OBJ);
+$cnt=1;
+if($query->rowCount()>0)
+{
+  foreach($results as $result)
+  {
+    ?>
+                              
+<p></p>
+<?php
+?>
+<?php }} ?>
 
+<?php
+if(isset($_POST['update']))
+{
+$OrganizationNameOrFirstname=($_POST['OrganizationName']);
+$OrganizationManagerOrLastname=($_POST['OrganizationManager']);
+$AccountContactNo=($_POST['ContactNo']);
+$AccountAddress=($_POST['Address']);
+$AccountEmail=($_POST['Email']);
+$AccountUsername=($_POST['Username']);
+$AccountPassword=($_POST['Password']);
+
+$sql="update registered set OrganizationNameOrFirstname=:Firstname,OrganizationManagerOrLastname=:Lastname,ContactNo=:ContactNo,Address=:Address,Email=:Email,Username=:Username,Password=:Password where ID=:ID";
+$query=$dbh->prepare($sql);
+$query->bindParam(':ID',$ID,PDO::PARAM_STR);  
+$query->bindParam(':Firstname',$OrganizationNameOrFirstname,PDO::PARAM_STR);
+$query->bindParam(':Lastname',$OrganizationManagerOrLastname,PDO::PARAM_STR);
+$query->bindParam(':ContactNo',$AccountContactNo,PDO::PARAM_STR);
+$query->bindParam(':Address',$AccountAddress,PDO::PARAM_STR);
+$query->bindParam(':Email',$AccountEmail,PDO::PARAM_STR);
+$query->bindParam(':Username',$AccountUsername,PDO::PARAM_STR);
+$query->bindParam(':Password',$AccountPassword,PDO::PARAM_STR);
+$query->execute();
+
+$OrganizationName=($_POST['OrganizationName']);
+$OrganizationManager=($_POST['OrganizationManager']);
+$ContactNo=($_POST['ContactNo']);
+$Address=($_POST['Address']);
+$Email=($_POST['Email']);
+$Username=($_POST['Username']);
+$Password=($_POST['Password']);
+
+$sql1="update animal_welfare_agency set OrganizationName=:OrganizationName,OrganizationManager=:OrganizationManager,ContactNo=:ContactNo,Address=:Address,Email=:Email,Username=:Username,Password=:Password where ID=:ID";
+$query1=$dbh->prepare($sql1); 
+$query1->bindParam(':ID',$ID,PDO::PARAM_STR); 
+$query1->bindParam(':OrganizationName',$OrganizationName,PDO::PARAM_STR);
+$query1->bindParam(':OrganizationManager',$OrganizationManager,PDO::PARAM_STR);
+$query1->bindParam(':ContactNo',$ContactNo,PDO::PARAM_STR);
+$query1->bindParam(':Address',$Address,PDO::PARAM_STR);
+$query1->bindParam(':Email',$Email,PDO::PARAM_STR);
+$query1->bindParam(':Username',$Username,PDO::PARAM_STR);
+$query1->bindParam(':Password',$Password,PDO::PARAM_STR);
+$query1->execute();
+
+$OrganizationNameOrFirstname=($_POST['OrganizationName']);
+$OrganizationManagerOrLastname=($_POST['OrganizationManager']);
+$AccountContactNo=($_POST['ContactNo']);
+$AccountAddress=($_POST['Address']);
+$AccountEmail=($_POST['Email']);
+$AccountUsername=($_POST['Username']);
+$AccountPassword=($_POST['Password']);
+
+$sql3="update login set OrganizationNameOrFirstname=:OrganizationName,OrganizationManagerOrLastname=:Lastname,ContactNo=:ContactNo,Address=:Address,Email=:Email,Username=:Username,Password=:Password where ID=:ID";
+$query3=$dbh->prepare($sql3); 
+$query3->bindParam(':ID',$ID,PDO::PARAM_STR);
+$query3->bindParam(':OrganizationName',$OrganizationNameOrFirstname,PDO::PARAM_STR);
+$query3->bindParam(':Lastname',$OrganizationManagerOrLastname,PDO::PARAM_STR);
+$query3->bindParam(':ContactNo',$AccountContactNo,PDO::PARAM_STR);
+$query3->bindParam(':Address',$AccountAddress,PDO::PARAM_STR);
+$query3->bindParam(':Email',$AccountEmail,PDO::PARAM_STR);
+$query3->bindParam(':Username',$AccountUsername,PDO::PARAM_STR);
+$query3->bindParam(':Password',$AccountPassword,PDO::PARAM_STR);
+$query3->execute();
+{
+echo '<script>alert("Your Account Updated Successfully!!!")</script>';
+$ID=$_SESSION['ID'];
+$sql = "SELECT * from animal_welfare_agency where ID=:ID";
+$query=$dbh->prepare($sql);
+$query->bindParam(':ID',$ID,PDO::PARAM_STR);
+$query->execute();
+$results=$query->fetchAll(PDO::FETCH_OBJ);
+$cnt=1;
+if($query->rowCount()>0)
+{
+  foreach($results as $result)
+  {
+    ?>
+                              
+<p></p>
+<?php
+?>
+<?php }}
+}
+}
 ?>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -48,7 +148,7 @@ include('C:\xampp\htdocs\GETPET\includes\config.php');
 			<div class="header">
 				<div class="logo" style="width:200px;height:200px;">
 					<h1>
-						<a href="http://localhost/GETPET/Dashboard.php">
+						<a href="http://localhost/GETPET/web/AnimalWelfareAgencyDashboard.php">
 							<img class="logo-img center-block" src="images/Logo/Logo.png" alt="" style="width:250px;height:250px;margin-left: -60px;margin-top: -50px;" />
 						</a>
 					</h1>
@@ -71,7 +171,7 @@ include('C:\xampp\htdocs\GETPET\includes\config.php');
 										<h3>we provide
 											<span>care</span> that your
 											<span>pet</span> deserves!</h3>
-										<p>A comprehensive guide to cat care to make your pet feel your love</p>
+										<p>A comprehensive guide to dog & cat care to make your pet feel your love</p>
 									</div>
 								</div>
 							</div>
@@ -85,7 +185,7 @@ include('C:\xampp\htdocs\GETPET\includes\config.php');
 										<h3>you can show your
 											<span>love</span> to your
 											<span>pet</span>!</h3>
-										<p>A comprehensive guide to cat care to make your pet feel your love</p>
+											<p>A comprehensive guide to dog & cat care to make your pet feel your love</p>
 									</div>
 								</div>
 							</div>
@@ -99,7 +199,7 @@ include('C:\xampp\htdocs\GETPET\includes\config.php');
 										<h3>we provide
 											<span>care</span> that your
 											<span>pet</span> deserves!</h3>
-										<p>A comprehensive guide to cat care to make your pet feel your love</p>
+											<p>A comprehensive guide to dog & cat care to make your pet feel your love</p>
 									</div>
 								</div>
 							</div>
@@ -113,7 +213,7 @@ include('C:\xampp\htdocs\GETPET\includes\config.php');
 										<h3>you can show your
 											<span>love</span> to your
 											<span>pet</span>!</h3>
-										<p>A comprehensive guide to cat care to make your pet feel your love</p>
+											<p>A comprehensive guide to dog & cat care to make your pet feel your love</p>
 									</div>
 								</div>
 							</div>
@@ -141,42 +241,34 @@ include('C:\xampp\htdocs\GETPET\includes\config.php');
 				</div>
 				<div class='collapse navbar-collapse'>
 					<ul>
-						<li style="margin-left:-50px;">
-							<a href="http://localhost/GETPET/web/Dashboard.php">Home</a>
+                    <li style = "width:150px;">
+							<a href="http://localhost/GETPET/web/AnimalWelfareAgencyDashboard.php">Home</a>
 						</li>
-						<li>
-							<a href="#about" class="scroll">About Us</a>
-						</li>
-						<li>
-							<a href="#services" class="scroll">Services</a>
-						</li>
-						<li>
-							<a href="#blog" class="scroll">Our Blog</a>
-						</li>
-						<li>
-							<a href="#team" class="scroll">Our Team</a>
-						</li>
-						<!--<li>
-							<a href="#gallery" class="scroll">Gallery</a>
+						<!--<li style = "width:150px;">
+							<a href="#services" class="scroll">Dashboard</a>
 						</li>-->
-						<li>
-							<a href="#contact" class="scroll">Contact Us</a>
-						</li>	
-						<li>
-							<div style="border-style:solid;border-color:white;margin-top:10px;margin-bottom:10px;cursor: pointer;">
-							<div  href="http://localhost/GETPET/login-form-09/login.php" style="margin-top:-10px;margin-bottom:-10px"><a href="http://localhost/GETPET/login-form-09/login.php" style ="margin-top:-10px">Login</a></div>
-	                        </div>
+						<li style = "width:150px;">
+							<a href="http://localhost/GETPET/web/AWOAboutUs.php">About Us</a>
 						</li>
-						<li>
-						<script language="JavaScript">
-                         function setVisibility(id, visibility) {
-                         document.getElementById(id).style.display = visibility;
-                             }
-                            </script>
-							<div style="border-style:solid;border-color:white;margin-top:10px;margin-bottom:10px;cursor: pointer;">
-							<div style="margin-top:-10px;margin-bottom:-10px"><a href="http://localhost/GETPET/login-form-09/SelectRole.php" style ="margin-top:-10px">Signup</a></div>
-	                        </div>
-						</li>	
+						<li style = "width:150px;">
+							<a href="#team" class="scroll">Notification</a>
+						</li>
+						<!--<li style = "width:150px;">
+							<a href="#contact" class="scroll">Contact Us</a>
+						</li>-->
+						<li class="nav-item" style = "width:150px; margin-left:450px"><a class="nav-link" href="#" data-toggle="dropdown">Acount</a>	
+							<div class="dropdown-menu dropdown-menu-right" style="margin-right: 390px;width:200px;">
+							  <img src="images/default_profile.png" alt="" style="width:80px;height:80px;margin-left: 60px;margin-top: 20px;border-radius: 50%;" />
+							  <div class="dropdown-divider"></div>
+							  <a class="dropdown-item" href="" data-toggle="modal" data-target="#Profile" style="color:black;"><div style="text-align: center"><t><?php echo ($result->OrganizationName);?></div></t></a>
+							  <div style="text-align: center; margin-top:-30px;"><t ><?php echo ($result->Role);?></t></div>
+							  <div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="" data-toggle="modal" data-target="#Profile" style="color:black;"><t style="margin-left: 10px;">Profile</t></a>
+							  <div class="dropdown-divider"></div>
+							  <a class="dropdown-item" href="" data-toggle="modal" data-target="#Settings" style="color:black;"><t style="margin-left: 10px;">Settings</t></a>
+							  <div class="dropdown-divider"></div>
+							  <a class="dropdown-item" href="http://localhost/GETPET/web/Dashboard.php" style="color:black;"><t style="margin-left: 10px;">Log out</t></a>
+						</div></li>
                     </ul>
 				</div>
 			</div>
@@ -187,7 +279,7 @@ include('C:\xampp\htdocs\GETPET\includes\config.php');
 	<!-- welcome -->
 	<div class="about" id="about">
 		<div class="container">
-			<h3 class="agile-title">Welcome</h3>
+			<h3 class="agile-title">Welcome To GetPet</h3>
 			<div class="about-top w3ls-agile">
 				<div class="col-md-6 red">
 					<img class="img-responsive" src="images/dc.jpg" alt="">
@@ -195,24 +287,25 @@ include('C:\xampp\htdocs\GETPET\includes\config.php');
 				<div class="col-md-6 come">
 					<div class="about-wel">
 						<h5>A Few Words About Our
-							<span>Pet Life</span>
+							<span>GetPet</span>
 						</h5>
 						<p>“Such short little lives our pets have to spend with us, and they spend most of it waiting for us to come home each day. 
 							It is amazing how much love and laughter they bring into our lives and even how much closer we become with each other because of them.”</p>
 						<ul>
+						<li>
+								<i class="glyphicon glyphicon-ok"></i>Pet Information</li>
 							<li>
-								<i class="glyphicon glyphicon-ok"></i>Pet health and Care</li>
+								<i class="glyphicon glyphicon-ok"></i>Animal Care Tips</li>
 							<li>
-								<i class="glyphicon glyphicon-ok"></i>Pet grooming</li>
+							    <i class="glyphicon glyphicon-ok"></i>Short-Term Care</li>
 							<li>
-								<i class="glyphicon glyphicon-ok"></i>Food for Pets</li>
+							    <i class="glyphicon glyphicon-ok"></i>Pets for Adoption</li>
 							<li>
-								<i class="glyphicon glyphicon-ok"></i>Pet behavior</li>
+								<i class="glyphicon glyphicon-ok"></i>Donation and fundraising activities</li>
 						</ul>
 					</div>
 					<div class="button-styles">
-						<a href="#" data-toggle="modal" data-target="#myModal2">More Info</a>
-						<a href="#contact" class="button2-w3l scroll">Contact Us</a>
+						<a href="#" data-toggle="modal" data-target="#myModal2" class="button2-w3l scroll">More Info</a>						
 					</div>
 				</div>
 				<div class="clearfix"> </div>
@@ -229,11 +322,11 @@ include('C:\xampp\htdocs\GETPET\includes\config.php');
 	
 	<!-- //Signup -->
 
-	<!-- middle slider -->
+	<!-- middle slider 
 	<div class="w3agile-spldishes">
 		<div class="container">
 			<div class="spldishes-grids">
-				<!-- Owl-Carousel -->
+				<!-- Owl-Carousel 
 				<div id="owl-demo" class="owl-carousel text-center agileinfo-gallery-row">
 					<a class="item g1">
 						<img class="lazyOwl" src="images/d1.jpg" title="Cat Life" alt="" />
@@ -258,23 +351,23 @@ include('C:\xampp\htdocs\GETPET\includes\config.php');
 			</div>
 		</div>
 	</div>
-	<!-- //middle slider -->
-
-	<!-- middle section -->
+	 -->
+	 
+	<!-- middle section 
 	<div class="middle-w3l">
 		<div class="container">
-			<h2><div style="border:solid #00cdc1; outline:#00cdc1 solid 1px; color: black; background: #ffffff; opacity: .4;">Get to know everything about your pets!</div></h2>
+		<h2><div style="border:solid #00cdc1; outline:#00cdc1 solid 1px; color: black; background: #ffffff; opacity: .6;">Get to know everything about your pets!</div></h2>
 			<div class="button-styles">
 				<a href="#contact" class="button3-w3l scroll">Contact Us</a>
 			</div>
 		</div>
 	</div>
-	<!-- //middle section -->
+	 -->
 
-	<!-- services -->
+	<!-- services 
 	<div class="services" id="services">
 		<div class="container">
-			<h3 class="agile-title">Services Overview</h3>
+			<h3 class="agile-title">Dashboard</h3>
 			<div class="w3_agile_services_grids">
 				<div class="col-md-4 col-sm-4 col-xs-4 w3_agile_services_grid " data-aos="zoom-in">
 					<div class="ih-item circle effect1 agile_services_grid">
@@ -284,8 +377,10 @@ include('C:\xampp\htdocs\GETPET\includes\config.php');
 						</div>
 					</div>
 					<fieldset>
-						<legend>Service 1</legend>
-						consectetur adipiscing elit, sed do eiusmod tempor et dolore magna aliqua.
+						<legend>Tips & Advice</legend>
+						<div class="button-styles">
+						<a href="#contact" class="button2-w3l scroll">More info</a>
+						</div>
 					</fieldset>
 				</div>
 				<div class="col-md-4 col-sm-4 col-xs-4 w3_agile_services_grid" data-aos="zoom-in">
@@ -296,8 +391,10 @@ include('C:\xampp\htdocs\GETPET\includes\config.php');
 						</div>
 					</div>
 					<fieldset>
-						<legend>Service 2</legend>
-						consectetur adipiscing elit, sed do eiusmod tempor et dolore magna aliqua.
+						<legend>Articles</legend>
+						<div class="button-styles">
+						<a href="#contact" class="button2-w3l scroll">More info</a>
+						</div>
 					</fieldset>
 				</div>
 				<div class="col-md-4 col-sm-4 col-xs-4 w3_agile_services_grid" data-aos="zoom-in">
@@ -308,8 +405,10 @@ include('C:\xampp\htdocs\GETPET\includes\config.php');
 						</div>
 					</div>
 					<fieldset>
-						<legend>Service 3</legend>
-						consectetur adipiscing elit, sed do eiusmod tempor et dolore magna aliqua.
+						<legend>Short-Term Care</legend>
+						<div class="button-styles">
+						<a href="#contact" class="button2-w3l scroll">More info</a>
+						</div>
 					</fieldset>
 				</div>
 				<div class="clearfix"> </div>
@@ -323,8 +422,10 @@ include('C:\xampp\htdocs\GETPET\includes\config.php');
 						</div>
 					</div>
 					<fieldset>
-						<legend>Service 4</legend>
-						consectetur adipiscing elit, sed do eiusmod tempor et dolore magna aliqua.
+						<legend>Pets for Adoption</legend>
+						<div class="button-styles">
+						<a href="#contact" class="button2-w3l scroll">More info</a>
+						</div>
 					</fieldset>
 				</div>
 				<div class="col-md-4 col-sm-4 col-xs-4 w3_agile_services_grid" data-aos="zoom-in">
@@ -335,138 +436,39 @@ include('C:\xampp\htdocs\GETPET\includes\config.php');
 						</div>
 					</div>
 					<fieldset>
-						<legend>Service 5</legend>
-						consectetur adipiscing elit, sed do eiusmod tempor et dolore magna aliqua.
+						<legend>Donation</legend>
+						<div class="button-styles">
+						<a href="#contact" class="button2-w3l scroll">More info</a>
+						</div>
 					</fieldset>
 				</div>
 				<div class="col-md-4 col-sm-4 col-xs-4 w3_agile_services_grid" data-aos="zoom-in">
 					<div class="ih-item circle effect1 agile_services_grid">
 						<div class="spinner"></div>
 						<div class="img">
-							<img src="images/c6.jpg" alt=" " class="img-responsive" />
+							<img src="images/b5.jpg" alt=" " class="img-responsive" />
 						</div>
 					</div>
 					<fieldset>
-						<legend>Service 6</legend>
-						consectetur adipiscing elit, sed do eiusmod tempor et dolore magna aliqua.
+						<legend>Fund-raising</legend>
+						<div class="button-styles">
+						<a href="#contact" class="button2-w3l scroll">More info</a>
+						</div>
 					</fieldset>
 				</div>
-				<div class="clearfix"> </div>
-			</div>
+				
 		</div>
-		<div class="w3l-img-side">
+		<!--<div class="w3l-img-side">
 			<img src="images/cat11.png" alt="" />
 		</div>
 		<div class="w3l-img-side w3l-img-side2">
 			<img src="images/dog1.jpg" alt="" />
-		</div>
-	</div>
-	<!-- //services -->
+		</div>-->
+	</div><br><br>
+	 -->
 
 	<!-- blog -->
-	<div class="blog" id="blog">
-		<div class="container">
-			<h3 class="agile-title">Our Blog</h3>
-			<div class="col-md-5 col-xs-6 blog-grids">
-				<div class="blog-full-wthree">
-					<div class="blog-left-agileits">
-						<p>Jan</p>
-						<span>18</span>
-					</div>
-					<div class="blog-right-agileits-w3layouts">
-						<h4>
-							<a href="#" data-toggle="modal" data-target="#myModal2">eoquie int temporant 2018</a>
-						</h4>
-						<p>
-							<a href="#" data-toggle="modal" data-target="#myModal2">Cat Life</a>
-						</p>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-				<div class="blog-full-wthree">
-					<div class="blog-left-agileits">
-						<p>Feb</p>
-						<span>22</span>
-					</div>
-					<div class="blog-right-agileits-w3layouts">
-						<h4>
-							<a href="#" data-toggle="modal" data-target="#myModal2">eoquie int temporant 2018</a>
-						</h4>
-						<p>
-							<a href="#" data-toggle="modal" data-target="#myModal2">Cat Life</a>
-						</p>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-				<div class="blog-full-wthree">
-					<div class="blog-left-agileits">
-						<p>Feb</p>
-						<span>15</span>
-					</div>
-					<div class="blog-right-agileits-w3layouts">
-						<h4>
-							<a href="#" data-toggle="modal" data-target="#myModal2">eoquie int temporant 2018</a>
-						</h4>
-						<p>
-							<a href="#" data-toggle="modal" data-target="#myModal2">Cat Life</a>
-						</p>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-			</div>
-			<div class="col-md-5 col-xs-6 blog-grids">
-				<div class="blog-full-wthree">
-					<div class="blog-left-agileits">
-						<p>Jan</p>
-						<span>26</span>
-					</div>
-					<div class="blog-right-agileits-w3layouts">
-						<h4>
-							<a href="#" data-toggle="modal" data-target="#myModal2">eoquie int temporant 2018</a>
-						</h4>
-						<p>
-							<a href="#" data-toggle="modal" data-target="#myModal2">Cat Life</a>
-						</p>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-				<div class="blog-full-wthree">
-					<div class="blog-left-agileits">
-						<p>Feb</p>
-						<span>06</span>
-					</div>
-					<div class="blog-right-agileits-w3layouts">
-						<h4>
-							<a href="#" data-toggle="modal" data-target="#myModal2">eoquie int temporant 2018</a>
-						</h4>
-						<p>
-							<a href="#" data-toggle="modal" data-target="#myModal2">Cat Life</a>
-						</p>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-				<div class="blog-full-wthree">
-					<div class="blog-left-agileits">
-						<p>Feb</p>
-						<span>12</span>
-					</div>
-					<div class="blog-right-agileits-w3layouts">
-						<h4>
-							<a href="#" data-toggle="modal" data-target="#myModal2">eoquie int temporant 2018</a>
-						</h4>
-						<p>
-							<a href="#" data-toggle="modal" data-target="#myModal2">Cat Life</a>
-						</p>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-			</div>
-			<div class="clearfix"> </div>
-		</div>
-		<div class="blog-grids mid-blog-agile">
-			<img src="images/cat2.png" class="img-responsive" alt="">
-		</div>
-	</div>
+	
 	<!-- Modal5 -->
 	<div class="modal fade" id="myModal2" tabindex="-1" role="dialog">
 		<div class="modal-dialog">
@@ -475,17 +477,114 @@ include('C:\xampp\htdocs\GETPET\includes\config.php');
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<div class="modal-info">
-						<h4>Cat Life</h4>
-						<img src="images/g2.jpg" alt=" " class="img-responsive" />
-						<h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h5>
-						<p class="para-agileits-w3layouts">Duis sit amet nisi quis leo fermentum vestibulum vitae eget augue. Nulla quam nunc, vulputate id urna at, tempor tincidunt
-							metus. Sed feugiat quam nec mauris mattis malesuada.</p>
+						<h4>Dog & Cat Life</h4>
+						<img src="images/dc.jpg" alt=" " class="img-responsive" />
+						<h5>What are the benefits of pet adoption?</h5>
+						<p class="para-agileits-w3layouts">Adopting a pet comes with numerous advantages including:
+
+							<p>1. You’re saving a life. Millions of healthy, adoptable pets are euthanized every year simply for a lack of a home. When you adopt your pet from a shelter or rescue group, you’re giving a deserving pet a loving home.</p>
+							<p>2. Many adoptable pets are already trained.</p>
+							<p>3. When you adopt an older pet, you will often get a sense of their personality and temperament. You also already know their full grown size!</p>
+						</p>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	<!-- //Modal5 -->
+
+	<!-- ModalProfile -->
+	<div class="modal fade" id="Profile" tabindex="-1" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<div class="modal-info">
+						<h1 style="text-align: center">Profile</h1 >
+						<img src="images/default_profile.png" alt="" class="img-responsive" style="width:150px;height:150px;margin-left:190px;margin-top: 20px;border-radius: 50%;" /><br>
+						<h3 style="margin-left: 10px;">Organization Name:&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp<?php echo ($result->OrganizationName);?></h3><br>
+						<h3 style="margin-left: 10px;">Organization Manager:&nbsp &nbsp &nbsp &nbsp <?php echo ($result->OrganizationManager);?></h3><br>
+						<h3 style="margin-left: 10px;">Contact No:&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp<?php echo ($result->ContactNo);?></h3><br>
+						<h3 style="margin-left: 10px;">Address:&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp&nbsp<?php echo ($result->Address);?></h3><br>
+						<h3 style="margin-left: 10px;">Email:&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp&nbsp<?php echo ($result->Email);?></h3><br>
+						<h3 style="margin-left: 10px;">Username:&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp<?php echo ($result->Username);?></h3><br>
+						<h3 style="margin-left: 10px;">Role:&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp<?php echo ($result->Role);?></h3><br>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- //ModalProfile -->
+
+	<!-- ModalSettings -->
+	<div class="modal fade" id="Settings" tabindex="-1" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+				<form method="post">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<div class="modal-info">
+						<h1 style="text-align: center">Account Settings</h1>
+						<img src="images/default_profile.png" alt="" class="img-responsive" style="width:150px;height:150px;margin-left:190px;margin-top: 20px;border-radius: 50%;" /><br>
+					</div><br>
+					<div style="text-align: center" class="wrap-input100 validate-input">
+					<a style="text-align: center; color: black;">Upload Profile</a>
+	                </div><br>
+                    <div style="text-align: center" class="wrap-input100 validate-input">
+                        <input type="file" name="Picture" id="Logo" style="width:250px;height:40px;border:none;margin-left:160px;" placeholder="Upload Logo">
+					</div><br>
+					<div style="text-align: center" class="wrap-input100 validate-input">
+					    <input type="hidden" name="ID" value="<?php echo ( $result->ID);?>" required = "required" class="form-control" id="success">
+					</div><br>
+					<div style="text-align: center" class="wrap-input100 validate-input">
+						<input class="input100" style="background-color:#f1f1f1;width:250px;height:40px;border:none;" type="text" name="Firstname" required="required" value="<?php echo ($result->OrganizationName);?>" placeholder="Organization Name">
+					</div><br>
+					<div style="text-align: center" class="wrap-input100 validate-input">
+						<input class="input100" style="background-color:#f1f1f1;width:250px;height:40px;border:none;" type="text" name="Lastname" required="required" value="<?php echo ($result->OrganizationManager);?>" placeholder="Organization Manager">
+						<span class="focus-input100"></span>
+					</div><br>
+					<div  style="text-align: center" class="wrap-input100 validate-input">
+						<input class="input100" style="background-color:#f1f1f1;width:250px;height:40px;border:none;font-family:Arial;" type="text" name="ContactNo" onkeypress="isInputNumber(event)" maxlength="11" value="<?php echo ($result->ContactNo);?>" placeholder="Contact No.">
+						<script>
+            
+                        function isInputNumber(evt){
+                
+                        var ch = String.fromCharCode(evt.which);
+                
+                        if(!(/[0-9]/.test(ch))){
+                        evt.preventDefault();
+                       }
+					}
+                    </script>
+					</div><br>
+					<div style="text-align: center" class="wrap-input100 validate-input">
+						<input class="input100" style="background-color:#f1f1f1;width:250px;height:40px;border:none;" type="text" name="Address" required="required" value="<?php echo ($result->Address);?>" placeholder="Address">
+					</div><br>
+					<div style="text-align: center" class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+						<input class="input100" style="background-color:#f1f1f1;width:250px;height:40px;border:none;" type="text" name="Email" required="required" value="<?php echo ($result->Email);?>" placeholder="Email">
+					</div><br>
+					  <div style="text-align: center" class="wrap-input100 validate-input" data-validate = "Valid username is required: ex@abc.xyz">
+						<input class="input100" style="background-color:#f1f1f1;width:250px;height:40px;border:none;" type="text" name="Username" required="required" value="<?php echo ($result->Username);?>" placeholder="Username">
+					</div><br>
+					<div style="text-align: center" class="wrap-input100 validate-input" data-validate = "Valid username is required: ex@abc.xyz">
+						<input class="input100" style="background-color:#f1f1f1;width:250px;height:40px;border:none;" type="Password" name="Password" required="required" value="<?php echo ($result->Password);?>" placeholder="Password">
+					</div><br><br>
+					<div style="text-align: center">
+						<button  class="login100-form-btn" style="background-color:#00cdc1;width:250px;height:40px;border:none;" name="update" type="submit" id="insert" value="Insert">
+							<a style="color:White"> Update </a>
+						</button>
+					</div><br>
+				</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- //ModalSettings -->
+		</div>
+	</div>
+	<!-- //ModalProfile -->
 
 	<!-- ModalPM -->
 	<div class="modal fade" id="PM" tabindex="-1" role="dialog">
@@ -509,7 +608,7 @@ include('C:\xampp\htdocs\GETPET\includes\config.php');
 
 	<!-- //blog -->
 
-	<!-- team -->
+	<!-- team 
 	<div class="team" id="team">
 		<div class="container">
 			<h3 class="agile-title">Our Team</h3>
@@ -548,7 +647,7 @@ include('C:\xampp\htdocs\GETPET\includes\config.php');
 			</div>
 		</div>
 	</div>
-	<!-- //team -->
+	team -->
 
 	<!-- 
 	<div id="gallery" class="gallery">
@@ -601,7 +700,7 @@ include('C:\xampp\htdocs\GETPET\includes\config.php');
 	</div>
 	 -->
 
-	<!-- contact -->
+	<!-- contact 
 	<div class="contact" id="contact">
 		<div class="container">
 			<h3 class="agile-title">Contact Us</h3>
@@ -619,50 +718,51 @@ include('C:\xampp\htdocs\GETPET\includes\config.php');
 				<div class="address">
 					<h4>
 						<i class="fa fa-map-marker" aria-hidden="true"></i>Location</h4>
-					<p>345 Setwant natrer,</p>
-					<p>Metropolitan, Italy.</p>
+					<p>A. C. Cortes Ave,</p>
+					<p>Mandaue City, 6014 Cebu</p>
 				</div>
 				<div class="phone">
 					<h4>
 						<i class="fa fa-phone" aria-hidden="true"></i>PHONE</h4>
-					<p>+1(401) 1234 567.</p>
-					<p>+1(804) 4261 150.</p>
+					<p>+63 (963) 380-2349.</p>
+					<p>+63 (906) 091-3468.</p>
 				</div>
 				<div class="email">
 					<h4>
-						<i class="fa fa-envelope-o" aria-hidden="true"></i>E-MAIL</h4>
+						<i class="fa fa-envelope-o" aria-hidden="true"></i>G-MAIL</h4>
 					<p>
-						<a href="mailto:info@example.com">Example1@gmail.com</a>
+						<a href="mailto:info@example.com">GetPet@gmail.com</a>
 					</p>
 					<p>
-						<a href="mailto:info@example.com">Example2@gmail.com</a>
+						<a href="mailto:info@example.com">WeAreGetPet@gmail.com</a>
 					</p>
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- map -->
+				-->
+	<!-- 
 	<div class="map-w3ls">
 		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22702.22744502486!2d11.113366067229226!3d44.662878362361056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477fc3eca9065c15%3A0x12ec8a03aadae866!2s40019+Sant&#39;Agata+Bolognese+BO%2C+Italy!5e0!3m2!1sen!2sin!4v1451281303075"
 		    allowfullscreen></iframe>
 	</div>
-	<!-- //map -->
+	 -->
 	<!-- //contact -->
 
-	<!-- footer -->
+	<!-- footer 
 	<section class="footer-w3">
 		<div class="container">
 			<div class="col-lg-4 col-md-4 col-sm-4 footer-agile1" data-aos="zoom-in">
-				<h3>Some More</h3>
-				<p class="footer-p1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sed ligula ac metus finibus hendrerit sed at libero. Praesent
-					blandit dignissim elit, vel feugiat nulla porta a. Praesent tellus eros, consectetur quis tortor at, tempor varius quam.
+				<h3>ADOPTING MEANS YOU SAVE A LIFE!</h3>
+				<p class="footer-p1">Too often, shelters euthanize animals due to room constraints, but if more people adopted pets instead of buying them, the number of pets euthanized would lower dramatically.
+						When you adopt, not only do you save your loving new companion, but you make space for other animals who desperately need it, creating a domino effect of goodness.
 				</p>
 			</div>
 			<div class="col-lg-4 col-md-4 col-sm-4 footer-mid-w3" data-aos="zoom-in">
 				<h3>Instagram Posts</h3>
 				<div class="agileinfo_footer_grid1">
 					<a href="#">
-						<img src="images/f1.jpg" alt=" " class="img-responsive">
+						<img src="images/dogs1.jpg" alt=" " class="img-responsive">
 					</a>
 				</div>
 				<div class="agileinfo_footer_grid1">
@@ -672,7 +772,7 @@ include('C:\xampp\htdocs\GETPET\includes\config.php');
 				</div>
 				<div class="agileinfo_footer_grid1">
 					<a href="#">
-						<img src="images/f3.jpg" alt=" " class="img-responsive">
+						<img src="images/dogs3.jpg" alt=" " class="img-responsive">
 					</a>
 				</div>
 				<div class="agileinfo_footer_grid1">
@@ -682,7 +782,7 @@ include('C:\xampp\htdocs\GETPET\includes\config.php');
 				</div>
 				<div class="agileinfo_footer_grid1">
 					<a href="#">
-						<img src="images/f5.jpg" alt=" " class="img-responsive">
+						<img src="images/dogs5.jpg" alt=" " class="img-responsive">
 					</a>
 				</div>
 				<div class="agileinfo_footer_grid1">
@@ -693,39 +793,33 @@ include('C:\xampp\htdocs\GETPET\includes\config.php');
 				<div class="clearfix"> </div>
 			</div>
 			<div class="col-lg-4 col-md-4 col-sm-4 footer-agile1" data-aos="zoom-in">
-				<h3>Latest Tweets</h3>
+				<h3>Follow us also in Twitter</h3>
 				<ul class="tweet-agile">
 					<li>
 						<i class="fa fa-twitter-square" aria-hidden="true"></i>
 						<p class="tweet-p1">
-							<a href="mailto:support@company.com">@example</a> sit amet consectetur adipiscing.
+							<a href="mailto:king30cinco@gmail.com">GetPet@twitter.com</a> ADOPTING IS MORE AFFORDABLE.
 							<a href="#">http://ax.by/zzzz</a>
 						</p>
 						<p class="tweet-p2">Posted 3 days ago.</p>
 					</li>
-					<li>
-						<i class="fa fa-twitter-square" aria-hidden="true"></i>
-						<p class="tweet-p1">
-							<a href="mailto:support@company.com">@example</a> sit amet consectetur adipiscing.
-							<a href="#">http://cx.dy/zzzz</a>
-						</p>
-						<p class="tweet-p2">Posted 3 days ago.</p>
-					</li>
+					
 				</ul>
 			</div>
 			<div class="clearfix"></div>
 		</div>
 	</section>
+	-->
 	<!-- copyright -->
 	<div class="w3layouts_copy_right">
 		<div class="container">
-			<p>© 2018 Cat Life. All rights reserved | Design by
-				<a href="http://w3layouts.com">W3layouts.</a>
+			<p>© 2021 GetPet. All rights reserved | Design by
+				<a href="http://w3layouts.com">Team K.W .</a>
 			</p>
 		</div>
 	</div>
 	<!-- //copyright -->
-	<!-- //footer -->
+	
 
 
 	<!-- js -->
