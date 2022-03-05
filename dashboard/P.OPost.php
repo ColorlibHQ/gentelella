@@ -200,7 +200,7 @@ if($query->rowCount()>0)
               <div class="menu_section">
                     <ul class="nav side-menu">
                     <li>
-                    <li><a href="http://localhost/developgetpet/dashboard/PetOwnerDashboard.php"><i class="fa fa-home"></i> Home </a>
+                    <li><a href="http://localhost/developgetpet/dashboard/PetOwnerDashboard.php"><i></i> Dashboard </a>
                     </li>
 
                     <li>
@@ -328,7 +328,7 @@ if($query->rowCount()>0)
 
                                 <div class="x_content">
                                     <form class="" action="" method="post" novalidate>
-                                    <a href="#">Click here to post for short term-care!</a>     
+                                         
                                         <span class="section"></span>
                                         <div class="field item form-group">
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">Name<span class="required"></span></label>

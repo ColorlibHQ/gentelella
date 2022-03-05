@@ -186,7 +186,7 @@ if($query->rowCount()>0)
               <div class="menu_section">
                 <ul class="nav side-menu">
                     <li>
-                    <li><a href="http://localhost/developgetpet/dashboard/PetAdopterDashboard.php"><i class="fa fa-home"></i> Home </a>
+                    <li><a href="http://localhost/developgetpet/dashboard/PetAdopterDashboard.php"><i></i> Dashboard </a>
                     </li>
 
                     <li>
@@ -328,14 +328,14 @@ if($query->rowCount()>0)
         <!-- /page content -->
 
         <!-- ModalSettings -->
-	<div class="modal fade" id="Settings" tabindex="-1" role="dialog">
+	<div class="modal fade" id="Settings" tabindex="-1" role="dialog" >
 		<div class="modal-dialog">
 			<!-- Modal content-->
 			<div class="modal-content">
 				<div class="modal-header">
 				<form method="post">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<div class="modal-info">
+					<div class="modal-info" >
 						<h1 style="text-align: center">Account Settings</h1>
 						<img <?php echo"<img src = '/developgetpet/web/images/$result->adopterPicture'";?> alt="" class="img-responsive" style="width:150px;height:150px;margin-left:140px;margin-top: 20px;border-radius: 50%;" /><br>
 					</div><br>
@@ -382,7 +382,7 @@ if($query->rowCount()>0)
 						<input class="input100" style="background-color:#f1f1f1;width:250px;height:40px;border:none;" type="Password" name="Password" required="required" value="<?php echo ($result->adopterPassword);?>" placeholder="Password">
 					</div><br><br>
 					<div style="text-align: center">
-						<button  class="login100-form-btn" style="background-color:#00cdc1;width:250px;height:40px;border:none;" name="update" type="submit" id="insert" value="Insert">
+						<button  class="btn btn-round btn-success" style="background-color:#00cdc1;width:250px;height:40px;border:none;" name="update" type="submit" id="insert" value="Insert">
 							<a style="color:White"> Update </a>
 						</button>
 					</div><br>

@@ -182,12 +182,12 @@ if($query->rowCount()>0)
 
             <!-- menu profile quick info -->
             <div class="profile clearfix">
-              <div class="profile_pic">
+              <!--<div class="profile_pic">
               <img <?php echo"<img src = '/developgetpet/web/images/$result->orgLogo'";?> alt="..." class="img-circle profile_img" style="background-color:#00cdc1;border:#00cdc1;">
-              </div>
+              </div>-->
               <div class="profile_info">
-                <span>Welcome,</span>
-                <h2><?php echo ($result->orgManager);?></h2>
+                <!--<span>Welcome,</span>
+                <h2><?php echo ($result->orgManager);?></h2>-->
               </div>
               <div class="clearfix"></div>
             </div>
@@ -200,7 +200,7 @@ if($query->rowCount()>0)
               <div class="menu_section">
                 <ul class="nav side-menu">
                 <li>
-                    <li><a href="http://localhost/developgetpet/dashboard/AnimalWelfareOrganizationDashboard.php"><i class="fa fa-home"></i> Home </a>
+                    <li><a href="http://localhost/developgetpet/dashboard/AnimalWelfareOrganizationDashboard.php"><i></i> Dashboard </a>
                     </li>
 
                     <li>
@@ -328,7 +328,7 @@ if($query->rowCount()>0)
                                 </div>
                                 <div class="x_content">
                                     <form class="" action="" method="post" novalidate>
-                                    <a href="#">Click here to post for short term-care!</a>     
+                                         
                                         <span class="section"></span>
                                         <div class="field item form-group">
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">Organization Name<span class="required"></span></label>

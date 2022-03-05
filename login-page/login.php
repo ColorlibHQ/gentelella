@@ -174,14 +174,15 @@ if(isset($_POST['login']))
          
           <br>
             <form action="#" method="post">
-            <b style="font-size:14px;">Username:</b>
-              <div class="form-group first">
-                <input type="text" name="Username" class="form-control" placeholder="" id="Username" required="required" style="height:14px;">
-              </div>
-              <strong style="font-size:14px;">Password:</strong>
-              <div class="form-group last mb-3">
-                <input type="password" name="Password" class="form-control" placeholder="" id="Password" required="required" style="height:14px;">
-              </div>
+            <strong style="font-size:14px;" >Username:</strong>
+            <div style="text-align: center" class="wrap-input100 validate-input">
+						<input class="input100" style="background-color:#f1f1f1;width:300px;height:40px;border:none;" type="text" name="Username" required="required" id="Username">
+					  </div>
+            <br>
+            <strong style="font-size:14px;">Password:</strong>
+            <div style="text-align: center" class="wrap-input100 validate-input">
+						<input class="input100" style="background-color:#f1f1f1;width:300px;height:40px;border:none;" type="password" name="Password" required="required" id="Password">
+					  </div>
               
               <?php
                 date_default_timezone_set("Asia/Manila");

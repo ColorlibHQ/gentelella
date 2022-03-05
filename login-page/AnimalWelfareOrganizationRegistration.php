@@ -67,7 +67,7 @@ $query3->bindParam(':Password',$Password,PDO::PARAM_STR);
 $query3->execute();
 
 echo '<script>alert("Registered Successfully!")</script>';
-echo "<script type ='text/javascript'> document.location='http://localhost/developgetpet/web/Dashboard.php'</script>";
+echo "<script type ='text/javascript'> document.location='http://localhost/developgetpet/login-page/login.php'</script>";
 }
 ?>
 <!doctype html>
@@ -106,16 +106,16 @@ echo "<script type ='text/javascript'> document.location='http://localhost/devel
           <br>
             <form class="login100-form validate-form" method="post">
             <h6 style="text-align:center;margin-top:-14px;margin-right:-15px;">ANIMAL WELFARE ORGANIZATION <strong>REGISTRATION</strong></h6>
-					<br>
+					
 					<div style="text-align: center" class="wrap-input100 validate-input">
-						<input class="input100" style="background-color:#f1f1f1;width:250px;height:40px;border:none;" type="text" name="OrganizationName" required="required" placeholder="Organization Name">
+						<input class="input100" style="background-color:#f1f1f1;width:300px;height:40px;border:none;" type="text" name="OrganizationName" required="required" placeholder="Organization Name">
 					</div><br>
                     <div style="text-align: center" class="wrap-input100 validate-input">
-						<input class="input100" style="background-color:#f1f1f1;width:250px;height:40px;border:none;" type="text" name="OrganizationManager" required="required" placeholder="Organization Manager">
+						<input class="input100" style="background-color:#f1f1f1;width:300px;height:40px;border:none;" type="text" name="OrganizationManager" required="required" placeholder="Organization Manager">
 						<span class="focus-input100"></span>
 					</div><br>
 					<div  style="text-align: center" class="wrap-input100 validate-input">
-						<input class="input100" style="background-color:#f1f1f1;width:250px;height:40px;border:none;font-family:Arial;" type="text" name="ContactNo" onkeypress="isInputNumber(event)" maxlength="11" placeholder="Contact No.">
+						<input class="input100" style="background-color:#f1f1f1;width:300px;height:40px;border:none;font-family:Arial;" type="text" name="ContactNo" onkeypress="isInputNumber(event)" maxlength="11" placeholder="Contact No.">
 						<script>     
             function isInputNumber(evt){
                 
@@ -128,23 +128,23 @@ echo "<script type ='text/javascript'> document.location='http://localhost/devel
                     </script>
 					</div><br>
 					<div style="text-align: center" class="wrap-input100 validate-input">
-						<input class="input100" style="background-color:#f1f1f1;width:250px;height:40px;border:none;" type="text" name="Address" required="required" placeholder="Address">
+						<input class="input100" style="background-color:#f1f1f1;width:300px;height:40px;border:none;" type="text" name="Address" required="required" placeholder="Address">
 					</div><br>
 					<div style="text-align: center" class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-						<input class="input100" style="background-color:#f1f1f1;width:250px;height:40px;border:none;" type="text" name="Email" required="required" placeholder="Email">
+						<input class="input100" style="background-color:#f1f1f1;width:300px;height:40px;border:none;" type="text" name="Email" required="required" placeholder="Email">
 					</div><br>
                     <div style="text-align: center" class="wrap-input100 validate-input" data-validate = "Valid username is required: ex@abc.xyz">
-						<input class="input100" style="background-color:#f1f1f1;width:250px;height:40px;border:none;" type="text" name="Username" required="required" placeholder="Username">
+						<input class="input100" style="background-color:#f1f1f1;width:300px;height:40px;border:none;" type="text" name="Username" required="required" placeholder="Username">
 					</div><br>
 					<div  style="text-align: center" class="wrap-input100 validate-input" data-validate="Password is required">
-						<input class="input100" style="background-color:#f1f1f1;width:250px;height:40px;border:none;" type="password" name="Password" required="required" placeholder="Password">
+						<input class="input100" style="background-color:#f1f1f1;width:300px;height:40px;border:none;" type="password" name="Password" required="required" placeholder="Password">
 					</div><br>
 					<div style="text-align: center">
-						<button  class="login100-form-btn" style="background-color:#00cdc1;width:250px;height:40px;border:none;" name="insert">
+						<button  class="login100-form-btn" style="background-color:#00cdc1;width:300px;height:40px;border:none;" name="insert">
 							<a style="color:White"> Register </a>
 						</button>
 					</div>
-          <p style="text-align:center;"><span class="ml-auto"><a href="http://localhost/developgetpet/login-page/login.php" class="forgot-pass">I am already a member</a></span></p>
+          <h4><p style="text-align:center;"><span class="ml-auto"><a href="http://localhost/developgetpet/login-page/login.php" class="forgot-pass">I am already a member</a></span></p></h4>
 	        </form>
               
       </div>

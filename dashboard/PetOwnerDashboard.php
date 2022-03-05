@@ -188,7 +188,7 @@ if($query->rowCount()>0)
               <div class="menu_section">
                 <ul class="nav side-menu">
                 <li>
-                    <li><a href="http://localhost/developgetpet/dashboard/PetOwnerDashboard.php"><i class="fa fa-home"></i> Home </a>
+                    <li><a href="http://localhost/developgetpet/dashboard/PetOwnerDashboard.php"><i ></i> Dashboard </a>
                     </li>
 
                     <li>
@@ -215,6 +215,16 @@ if($query->rowCount()>0)
               </div>
             </div>
             <!-- /sidebar menu -->
+            <!-- /menu footer buttons -->
+					<div class="sidebar-footer hidden-small">
+                    <a data-toggle="tooltip" data-placement="top" title="Settings">
+                    <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                    </a>
+                    <a data-toggle="tooltip" data-placement="top" title="Logout" href="http://localhost/developgetpet/login-page/login.php">
+                    <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                    </a>
+                    </div>
+					<!-- /menu footer buttons -->
           </div>
         </div>
 
