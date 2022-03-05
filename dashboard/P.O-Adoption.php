@@ -24,7 +24,6 @@ $Firstname=($_POST['Firstname']);
 $Lastname=($_POST['Lastname']);
 $ContactNo=($_POST['ContactNo']);
 $Address=($_POST['Address']);
-$Picture=$_POST['Picture'];
 $Email=($_POST['Email']);
 $Username=($_POST['Username']);
 $Password=($_POST['Password']);
@@ -34,7 +33,6 @@ userFirstname=:Firstname,
 userLastname=:Lastname,
 contactNo=:ContactNo,
 Address=:Address,
-Image=:Picture,
 Email=:Email,
 Username=:Username,
 Password=:Password 
@@ -46,7 +44,6 @@ $query->bindParam(':Firstname',$Firstname,PDO::PARAM_STR);
 $query->bindParam(':Lastname',$Lastname,PDO::PARAM_STR);
 $query->bindParam(':ContactNo',$ContactNo,PDO::PARAM_STR);
 $query->bindParam(':Address',$Address,PDO::PARAM_STR);
-$query->bindParam(':Picture',$Picture,PDO::PARAM_STR);
 $query->bindParam(':Email',$Email,PDO::PARAM_STR);
 $query->bindParam(':Username',$Username,PDO::PARAM_STR);
 $query->bindParam(':Password',$Password,PDO::PARAM_STR);
@@ -56,7 +53,6 @@ $Firstname=($_POST['Firstname']);
 $Lastname=($_POST['Lastname']);
 $ContactNo=($_POST['ContactNo']);
 $Address=($_POST['Address']);
-$Picture=($_POST['Picture']);
 $Email=($_POST['Email']);
 $Username=($_POST['Username']);
 $Password=($_POST['Password']);
@@ -66,7 +62,6 @@ ownerFirstname=:Firstname,
 ownerLastname=:Lastname,
 ownerContactNo=:ContactNo,
 ownerAddress=:Address,
-ownerPicture=:Picture,
 ownerEmail=:Email,
 ownerUsername=:Username,
 ownerPassword=:Password 
@@ -77,7 +72,6 @@ $query1->bindParam(':Firstname',$Firstname,PDO::PARAM_STR);
 $query1->bindParam(':Lastname',$Lastname,PDO::PARAM_STR);
 $query1->bindParam(':ContactNo',$ContactNo,PDO::PARAM_STR);
 $query1->bindParam(':Address',$Address,PDO::PARAM_STR);
-$query1->bindParam(':Picture',$Picture,PDO::PARAM_STR);
 $query1->bindParam(':Email',$Email,PDO::PARAM_STR);
 $query1->bindParam(':Username',$Username,PDO::PARAM_STR);
 $query1->bindParam(':Password',$Password,PDO::PARAM_STR);
@@ -87,7 +81,6 @@ $Firstname=($_POST['Firstname']);
 $Lastname=($_POST['Lastname']);
 $ContactNo=($_POST['ContactNo']);
 $Address=($_POST['Address']);
-$Picture=$_POST['Picture'];
 $Email=($_POST['Email']);
 $Username=($_POST['Username']);
 $Password=($_POST['Password']);
@@ -97,7 +90,6 @@ userFirstname=:Firstname,
 userLastname=:Lastname,
 contactNo=:ContactNo,
 Address=:Address,
-Image=:Picture,
 Email=:Email,
 Username=:Username,
 Password=:Password where userID=:ID";
@@ -108,13 +100,71 @@ $query3->bindParam(':Firstname',$Firstname,PDO::PARAM_STR);
 $query3->bindParam(':Lastname',$Lastname,PDO::PARAM_STR);
 $query3->bindParam(':ContactNo',$ContactNo,PDO::PARAM_STR);
 $query3->bindParam(':Address',$Address,PDO::PARAM_STR);
-$query3->bindParam(':Picture',$Picture,PDO::PARAM_STR);
 $query3->bindParam(':Email',$Email,PDO::PARAM_STR);
 $query3->bindParam(':Username',$Username,PDO::PARAM_STR);
 $query3->bindParam(':Password',$assword,PDO::PARAM_STR);
 $query3->execute();
 {
 echo '<script>alert("Your Account Updated Successfully!")</script>';
+$ID=$_SESSION['ownerID'];
+$sql = "SELECT * from petowner where ownerID=:ID";
+$query=$dbh->prepare($sql);
+$query->bindParam(':ID',$ID,PDO::PARAM_STR);
+$query->execute();
+$results=$query->fetchAll(PDO::FETCH_OBJ);
+$cnt=1;
+if($query->rowCount()>0)
+{
+  foreach($results as $result)
+  {
+    ?>
+                              
+<p></p>
+<?php
+?>
+<?php }}
+}
+}
+?>
+
+<?php
+if(isset($_POST['profile']))
+{
+$Picture=$_POST['Picture'];
+
+$sql="update register set 
+Image=:Picture
+where userID=:ID";
+
+$query=$dbh->prepare($sql);
+$query->bindParam(':ID',$ID,PDO::PARAM_STR);  
+$query->bindParam(':Picture',$Picture,PDO::PARAM_STR);
+$query->execute();
+
+
+$Picture=($_POST['Picture']);
+
+$sql1="update petowner set
+ownerPicture=:Picture
+where ownerID=:ID";
+$query1=$dbh->prepare($sql1); 
+$query1->bindParam(':ID',$ID,PDO::PARAM_STR); 
+$query1->bindParam(':Picture',$Picture,PDO::PARAM_STR);
+$query1->execute();
+
+
+$Picture=$_POST['Picture'];
+
+$sql3="update login set 
+Image=:Picture
+where userID=:ID";
+
+$query3=$dbh->prepare($sql3);
+$query3->bindParam(':ID',$ID,PDO::PARAM_STR); 
+$query3->bindParam(':Picture',$Picture,PDO::PARAM_STR);
+$query3->execute();
+{
+echo '<script>alert("Your Profile Picture Updated Successfully!")</script>';
 $ID=$_SESSION['ownerID'];
 $sql = "SELECT * from petowner where ownerID=:ID";
 $query=$dbh->prepare($sql);
@@ -251,10 +301,11 @@ if($query->rowCount()>0)
                 <ul class=" navbar-right">
                   <li class="nav-item dropdown open" style="padding-left: 15px;">
                     <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                      <img <?php echo"<img src = '/developgetpet/web/images/$result->ownerPicture'";?> alt=""><?php echo ($result->ownerFirstname);?> <?php echo ($result->ownerLastname);?>
+                    <img <?php echo"<img src = '/GETPET/web/images/$result->ownerPicture'";?> alt=""><?php echo ($result->ownerFirstname);?> <?php echo ($result->ownerLastname);?>
                     </a>
                     <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item"  href="javascript:;" onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black" data-toggle="modal" data-target="#Settings"> Profile</a>
+                      <a class="dropdown-item"  href="javascript:;" onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black" data-toggle="modal" data-target="#Profile"> Profile</a>
+                      <a class="dropdown-item"  href="javascript:;" onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black" data-toggle="modal" data-target="#Settings"> Settings</a>
                       <!--<a class="dropdown-item"  href="javascript:;">
                           <span class="badge bg-red pull-right">50%</span>
                           <span>Settings</span>
@@ -334,9 +385,9 @@ if($query->rowCount()>0)
                             <th>
                               <input type="checkbox" id="check-all" class="flat">
                             </th>
-                            <th class="column-title">Invoice </th>
-                            <th class="column-title">Invoice Date </th>
-                            <th class="column-title">Order </th>
+                            <th class="column-title">Pet ID </th>
+                            <th class="column-title">Pet Type </th>
+                            <th class="column-title">Pet Name </th>
                             <th class="column-title">Bill to Name </th>
                             <th class="column-title">Status </th>
                             <th class="column-title">Amount </th>
@@ -349,139 +400,29 @@ if($query->rowCount()>0)
                         </thead>
 
                         <tbody>
+                        <?php
+                        $sql="SELECT * from postforadoption";
+                        $query=$dbh->prepare($sql);
+                        $query->execute();
+                        $results=$query->fetchALL(PDO::FETCH_OBJ);
+                        $cnt=1;
+                        if($query->rowCount()>0)
+                        {
+                          foreach($results as $result)
+                        {
+                           ?>
                           <tr class="even pointer">
                             <td class="a-center ">
                               <input type="checkbox" class="flat" name="table_records">
                             </td>
-                            <td class=" ">121000040</td>
-                            <td class=" ">May 23, 2014 11:47:56 PM </td>
-                            <td class=" ">121000210 <i class="success fa fa-long-arrow-up"></i></td>
+                            <td class=" "><?php echo htmlentities($result->petID);?></td>
+                            <td class=" "><?php echo htmlentities($result->petType);?></td>
+                            <td class=" "><?php echo htmlentities($result->petName);?></td>
                             <td class=" ">John Blank L</td>
                             <td class=" ">Paid</td>
                             <td class="a-right a-right ">$7.45</td>
-                            <td class=" last"><a href="#">View</a>
-                            </td>
-                          </tr>
-                          <tr class="odd pointer">
-                            <td class="a-center ">
-                              <input type="checkbox" class="flat" name="table_records">
-                            </td>
-                            <td class=" ">121000039</td>
-                            <td class=" ">May 23, 2014 11:30:12 PM</td>
-                            <td class=" ">121000208 <i class="success fa fa-long-arrow-up"></i>
-                            </td>
-                            <td class=" ">John Blank L</td>
-                            <td class=" ">Paid</td>
-                            <td class="a-right a-right ">$741.20</td>
-                            <td class=" last"><a href="#">View</a>
-                            </td>
-                          </tr>
-                          <tr class="even pointer">
-                            <td class="a-center ">
-                              <input type="checkbox" class="flat" name="table_records">
-                            </td>
-                            <td class=" ">121000038</td>
-                            <td class=" ">May 24, 2014 10:55:33 PM</td>
-                            <td class=" ">121000203 <i class="success fa fa-long-arrow-up"></i>
-                            </td>
-                            <td class=" ">Mike Smith</td>
-                            <td class=" ">Paid</td>
-                            <td class="a-right a-right ">$432.26</td>
-                            <td class=" last"><a href="#">View</a>
-                            </td>
-                          </tr>
-                          <tr class="odd pointer">
-                            <td class="a-center ">
-                              <input type="checkbox" class="flat" name="table_records">
-                            </td>
-                            <td class=" ">121000037</td>
-                            <td class=" ">May 24, 2014 10:52:44 PM</td>
-                            <td class=" ">121000204</td>
-                            <td class=" ">Mike Smith</td>
-                            <td class=" ">Paid</td>
-                            <td class="a-right a-right ">$333.21</td>
-                            <td class=" last"><a href="#">View</a>
-                            </td>
-                          </tr>
-                          <tr class="even pointer">
-                            <td class="a-center ">
-                              <input type="checkbox" class="flat" name="table_records">
-                            </td>
-                            <td class=" ">121000040</td>
-                            <td class=" ">May 24, 2014 11:47:56 PM </td>
-                            <td class=" ">121000210</td>
-                            <td class=" ">John Blank L</td>
-                            <td class=" ">Paid</td>
-                            <td class="a-right a-right ">$7.45</td>
-                            <td class=" last"><a href="#">View</a>
-                            </td>
-                          </tr>
-                          <tr class="odd pointer">
-                            <td class="a-center ">
-                              <input type="checkbox" class="flat" name="table_records">
-                            </td>
-                            <td class=" ">121000039</td>
-                            <td class=" ">May 26, 2014 11:30:12 PM</td>
-                            <td class=" ">121000208 <i class="error fa fa-long-arrow-down"></i>
-                            </td>
-                            <td class=" ">John Blank L</td>
-                            <td class=" ">Paid</td>
-                            <td class="a-right a-right ">$741.20</td>
-                            <td class=" last"><a href="#">View</a>
-                            </td>
-                          </tr>
-                          <tr class="even pointer">
-                            <td class="a-center ">
-                              <input type="checkbox" class="flat" name="table_records">
-                            </td>
-                            <td class=" ">121000038</td>
-                            <td class=" ">May 26, 2014 10:55:33 PM</td>
-                            <td class=" ">121000203</td>
-                            <td class=" ">Mike Smith</td>
-                            <td class=" ">Paid</td>
-                            <td class="a-right a-right ">$432.26</td>
-                            <td class=" last"><a href="#">View</a>
-                            </td>
-                          </tr>
-                          <tr class="odd pointer">
-                            <td class="a-center ">
-                              <input type="checkbox" class="flat" name="table_records">
-                            </td>
-                            <td class=" ">121000037</td>
-                            <td class=" ">May 26, 2014 10:52:44 PM</td>
-                            <td class=" ">121000204</td>
-                            <td class=" ">Mike Smith</td>
-                            <td class=" ">Paid</td>
-                            <td class="a-right a-right ">$333.21</td>
-                            <td class=" last"><a href="#">View</a>
-                            </td>
-                          </tr>
-
-                          <tr class="even pointer">
-                            <td class="a-center ">
-                              <input type="checkbox" class="flat" name="table_records">
-                            </td>
-                            <td class=" ">121000040</td>
-                            <td class=" ">May 27, 2014 11:47:56 PM </td>
-                            <td class=" ">121000210</td>
-                            <td class=" ">John Blank L</td>
-                            <td class=" ">Paid</td>
-                            <td class="a-right a-right ">$7.45</td>
-                            <td class=" last"><a href="#">View</a>
-                            </td>
-                          </tr>
-                          <tr class="odd pointer">
-                            <td class="a-center ">
-                              <input type="checkbox" class="flat" name="table_records">
-                            </td>
-                            <td class=" ">121000039</td>
-                            <td class=" ">May 28, 2014 11:30:12 PM</td>
-                            <td class=" ">121000208</td>
-                            <td class=" ">John Blank L</td>
-                            <td class=" ">Paid</td>
-                            <td class="a-right a-right ">$741.20</td>
-                            <td class=" last"><a href="#">View</a>
-                            </td>
+                            <td class=" last"><a href="#">View</a></td>
+                            <?php $cnt=$cnt+1;}} ?>
                           </tr>
                         </tbody>
                       </table>
@@ -495,6 +436,129 @@ if($query->rowCount()>0)
           </div>
         </div>
 			<!-- /page content -->
+
+<?php 
+$ID=$_SESSION['ownerID'];
+$sql = "SELECT * from petowner where ownerID=:ID";
+$query=$dbh->prepare($sql);
+$query->bindParam(':ID',$ID,PDO::PARAM_STR);
+$query->execute();
+$results=$query->fetchAll(PDO::FETCH_OBJ);
+$cnt=1;
+if($query->rowCount()>0)
+{
+  foreach($results as $result)
+  {
+     ?>
+<p></p>
+<?php
+?>
+<?php }} ?>
+
+     <!-- ModalProfile -->
+  <div class="modal fade" id="Profile" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold" style="margin-left:20px;">Profile</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+      <form method="post">
+        <div class="modal-header">
+              <img <?php echo"<img src = '/GETPET/web/images/$result->ownerPicture'";?> alt="avatar" style="width:150px;height:150px;margin-left:125px;margin-top:-20px;" class="rounded-circle img-responsive">
+        </div>
+        <div style="text-align: center" class="wrap-input100 validate-input">
+              <input type="file" name="Picture" id="Picture" style="width:250px;height:40px;border:none;margin-left:160px;margin-top:5px;" placeholder="Upload Photo">
+				</div>
+        <div style="text-align: center" class="wrap-input100 validate-input">
+					    <input type="hidden" name="ownerID" value="<?php echo ( $result->ownerID);?>" required = "required" class="form-control" id="success">
+				</div>
+        <div style="text-align: center">
+						  <button  class="login100-form-btn" style="background-color:#00cdc1;width:150px;height:35px;border:none;" name="profile" type="submit" id="insert" value="Insert">
+							 <a style="color:White"> Update Profile </a>
+						 </button>
+				</div>
+        <div style="text-align: center">
+             <h6 class="mt-1 mb-2"><?php echo ($result->ownerFirstname);?> <?php echo ($result->ownerLastname);?></h6>
+             <h6 class="mt-1 mb-2"><?php echo ($result->ownerContactNo);?></h6>
+             <h6 class="mt-1 mb-2"><?php echo ($result->ownerAddress);?></h6>
+             <h6 class="mt-1 mb-2"><?php echo ($result->ownerEmail);?></h6>
+             <h6 class="mt-1 mb-2"><?php echo ($result->Role);?></h6>
+        </div><br>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+	<!-- //ModalProfile -->
+  
+   <!-- ModalSettings -->
+   <div class="modal fade" id="Settings" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold" style="margin-left:20px;">Account Settings</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+      <form method="post">
+        <div class="modal-header">
+              <img <?php echo"<img src = '/GETPET/web/images/$result->ownerPicture'";?> alt="avatar" style="width:150px;height:150px;margin-left:125px;margin-top:-20px;" class="rounded-circle img-responsive">
+        </div>
+        <div style="text-align: center" class="wrap-input100 validate-input">
+					    <input type="hidden" name="ownerID" value="<?php echo ( $result->ownerID);?>" required = "required" class="form-control" id="success">
+				</div>
+        <div style="text-align: center" class="wrap-input100 validate-input">
+						<input class="input100" style="background-color:#f1f1f1;width:250px;height:40px;border:none;" type="text" name="Firstname" required="required" value="<?php echo ($result->ownerFirstname);?>" placeholder="First Name">
+				</div><br>
+        <div style="text-align: center" class="wrap-input100 validate-input">
+						<input class="input100" style="background-color:#f1f1f1;width:250px;height:40px;border:none;" type="text" name="Lastname" required="required" value="<?php echo ($result->ownerLastname);?>" placeholder="Last Name">
+						<span class="focus-input100"></span>
+				</div><br>
+        <div  style="text-align: center" class="wrap-input100 validate-input">
+						<input class="input100" style="background-color:#f1f1f1;width:250px;height:40px;border:none;font-family:Arial;" type="text" name="ContactNo" onkeypress="isInputNumber(event)" maxlength="11" value="<?php echo ($result->ownerContactNo);?>" placeholder="Contact No.">
+						<script>
+            
+                        function isInputNumber(evt){
+                
+                        var ch = String.fromCharCode(evt.which);
+                
+                        if(!(/[0-9]/.test(ch))){
+                        evt.preventDefault();
+                       }
+					}
+                    </script>
+				</div><br>
+        <div style="text-align: center" class="wrap-input100 validate-input">
+						<input class="input100" style="background-color:#f1f1f1;width:250px;height:40px;border:none;" type="text" name="Address" required="required" value="<?php echo ($result->ownerAddress);?>" placeholder="Address">
+				</div><br>
+        <div style="text-align: center" class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+						<input class="input100" style="background-color:#f1f1f1;width:250px;height:40px;border:none;" type="text" name="Email" required="required" value="<?php echo ($result->ownerEmail);?>" placeholder="Email">
+				</div><br>
+        <div style="text-align: center" class="wrap-input100 validate-input" data-validate = "Valid username is required: ex@abc.xyz">
+						<input class="input100" style="background-color:#f1f1f1;width:250px;height:40px;border:none;" type="text" name="Username" required="required" value="<?php echo ($result->ownerUsername);?>" placeholder="Username">
+				</div><br>
+        <div style="text-align: center" class="wrap-input100 validate-input" data-validate = "Valid username is required: ex@abc.xyz">
+						<input class="input100" style="background-color:#f1f1f1;width:250px;height:40px;border:none;" type="Password" name="Password" required="required" value="<?php echo ($result->ownerPassword);?>" placeholder="Password">
+				</div><br><br>
+        <div style="text-align: center">
+						<button  class="login100-form-btn" style="background-color:#00cdc1;width:250px;height:40px;border:none;" name="update" type="submit" id="insert" value="Insert">
+							<a style="color:White"> Update </a>
+						</button>
+				</div><br>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+  <!-- //ModalSettings -->
 
 			<!-- footer content -->
 			<footer>
