@@ -171,10 +171,10 @@ if($query->rowCount()>0)
             <!-- menu profile quick info -->
             <div class="profile clearfix">
             
-              <div class="profile_info" style="margin-left:60px;">
+              <!--<div class="profile_info" style="margin-left:60px;">
                 
-                <h2><?php echo ($result->adopterFirstname);?> <?php echo ($result->adopterLastname);?></h2>
-              </div>
+                <h2>Welcome, <br><?php echo ($result->adopterFirstname);?> <?php echo ($result->adopterLastname);?></h2>
+              </div>-->
               <div class="clearfix"></div>
             </div>
             <!-- /menu profile quick info -->

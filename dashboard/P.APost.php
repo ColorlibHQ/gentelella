@@ -195,13 +195,13 @@ if($query->rowCount()>0)
 
 					<!-- menu profile quick info -->
                     <div class="profile clearfix">
-                    <div class="profile_pic">
+                    <!--<div class="profile_pic">
                     <img <?php echo"<img src = '/developgetpet/web/images/$result->adopterPicture'";?> alt="..." class="img-circle profile_img" style="background-color:#00cdc1;border:#00cdc1;border:5px;">
                     </div>
                     <div class="profile_info">
                     <span>Welcome,</span>
                     <h2><?php echo ($result->adopterFirstname);?> <?php echo ($result->adopterLastname);?></h2>
-                    </div>
+                    </div>-->
                     <div class="clearfix"></div>
                     </div>
                     <!-- /menu profile quick info -->

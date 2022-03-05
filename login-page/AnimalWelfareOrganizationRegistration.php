@@ -97,7 +97,7 @@ echo "<script type ='text/javascript'> document.location='http://localhost/devel
   </head>
   <body>
   <div class="d-lg-flex half">
-    <div class="bg order-1 order-md-2" style="background-image: url('images/doggy.jpg');"></div>
+    <div class="bg order-1 order-md-2" style="background-image: url('images/doggy1.jpg');"></div>
     <div class="contents order-2 order-md-1">
 
       
