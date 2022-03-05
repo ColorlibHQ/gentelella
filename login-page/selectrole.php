@@ -54,13 +54,21 @@ if(isset($_POST['AnimalWelfareOrganization']))
       
         <div class="row align-items-center justify-content-center">
           <div class="col-md-7">
-          <a href="http://localhost/developgetpet/web/Dashboard.php">
+          <!--<a href="http://localhost/developgetpet/web/Dashboard.php">
           <p style="text-align:center;"><img src="images/Logo.png" style="width:250px;height:250px;margin-bottom:-90px;margin-top:-50px;margin-right:-15px;" alt=" " class="img-responsive"/></p>
-          </a>
+          </a>-->
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
           <br>
           <br>
             <form class="login100-form validate-form" method="post">
-            <h5>&nbspSELECT <strong>ROLE</strong></h5>
+            <b style="font-size:14px;">&nbspSELECT ROLE</b>
+            <br>
+            <br>
             <div style="text-align: center">
 						    <button class="login100-form-btn" style="background-color:#00cdc1;width:350px;height:55px;border:none;border-radius: 4px;" name="PetAdopter">
 							  <a style="color:White">Pet Adopter</a>
@@ -75,8 +83,8 @@ if(isset($_POST['AnimalWelfareOrganization']))
 						    <button class="login100-form-btn" style="background-color:#00cdc1;width:350px;height:55px;border:none;border-radius: 4px;" name="AnimalWelfareOrganization">
 							  <a style="color:White">Animal Welfare Organization</a>
 						    </button>
-					  </div><br>
-              <p  style="text-align:center;"><span class="ml-auto"><a href="http://localhost/developgetpet/login-page/login.php" class="forgot-pass">I am already a member</a></span></p>
+					  </div>
+            <h4><p  style="text-align:center;"><span class="ml-auto"><a href="http://localhost/developgetpet/login-page/login.php" class="forgot-pass">I am already a member</a></span></p></h4>
             </form>
           </div>
         </div>

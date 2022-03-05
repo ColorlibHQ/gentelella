@@ -168,18 +168,19 @@ if(isset($_POST['login']))
         <div class="row align-items-center justify-content-center">
           <div class="col-md-7">
           <a href="http://localhost/developgetpet/web/Dashboard.php">
-          <p style="text-align:center;"><img src="images/Logo.png" style="width:250px;height:250px;margin-bottom:-90px;margin-top:-50px;margin-right:-15px;" alt=" " class="img-responsive"/></p>
+          <p style="text-align:center;"><img src="images/Logo.png" style="width:250px;height:250px;margin-bottom:-90px;margin-top:-50px;margin-right:-15px;" alt=" " class="img-responsive"/><br></p>
           </a>
+          </div>
+         
           <br>
-          <h5>LOGIN TO <strong>GetPet</strong></h5>
             <form action="#" method="post">
+            <b style="font-size:14px;">Username:</b>
               <div class="form-group first">
-                <label for="username">Username:</label>
-                <input type="text" name="Username" class="form-control" placeholder="Username" id="Username" required="required">
+                <input type="text" name="Username" class="form-control" placeholder="" id="Username" required="required" style="height:14px;">
               </div>
+              <strong style="font-size:14px;">Password:</strong>
               <div class="form-group last mb-3">
-                <label for="password">Password:</label>
-                <input type="password" name="Password" class="form-control" placeholder="Password" id="Password" required="required">
+                <input type="password" name="Password" class="form-control" placeholder="" id="Password" required="required" style="height:14px;">
               </div>
               
               <?php
@@ -192,14 +193,13 @@ if(isset($_POST['login']))
               <div class="d-flex mb-5 align-items-center" >
               Show password:<input type="checkbox" onclick="myfunction()" value="Show password">
               
-                  <div class="control__indicator"></div>
-                </label>
-                <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span> 
+              <div class="control__indicator"></div>
+              <!--</label>
+                <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span>--> 
               </div>
-              
-              
-              <input type="submit" name="login" value="Log In" class="btn btn-block btn-primary" style="background-color:#00cdc1;border:#00cdc1;">
-              <p  style="text-align:center;"><span class="ml-auto"><a href="http://localhost/developgetpet/login-page/selectrole.php" class="forgot-pass">Don't have an account yet?Click here to register!</a></span></p>
+  
+              <input type="submit" name="login" value="Sign In" class="btn btn-block btn-primary" style="background-color:#00cdc1;border:#00cdc1;">
+              <h4><p style="text-align:center;"><span class="ml-auto"><a href="http://localhost/developgetpet/login-page/selectrole.php" class="forgot-pass">Don't have an account yet?Click here to register!</a></span></p><h/4>
             </form>
           </div>
         </div>
