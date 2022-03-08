@@ -594,7 +594,7 @@ if($query->rowCount()>0)
 					    <input type="hidden" name="ownerID" value="<?php echo ( $result->ownerID);?>" required = "required" class="form-control" id="success">
 				</div>
         <div style="text-align: center">
-						  <button  class="login100-form-btn" style="background-color:#00cdc1;width:150px;height:35px;border:none;" name="profile" type="submit" id="insert" value="Insert">
+						  <button  class="btn btn-round btn-success" style="background-color:#00cdc1;width:150px;height:35px;border:none;" name="profile" type="submit" id="insert" value="Insert">
 							 <a style="color:White"> Update Profile </a>
 						 </button>
 				</div>
@@ -665,7 +665,7 @@ if($query->rowCount()>0)
 						<input class="input100" style="background-color:#f1f1f1;width:250px;height:40px;border:none;" type="Password" name="Password" required="required" value="<?php echo ($result->ownerPassword);?>" placeholder="Password">
 				</div><br><br>
         <div style="text-align: center">
-						<button  class="login100-form-btn" style="background-color:#00cdc1;width:250px;height:40px;border:none;" name="update" type="submit" id="insert" value="Insert">
+						<button  class="btn btn-round btn-success" style="background-color:#00cdc1;width:250px;height:40px;border:none;" name="update" type="submit" id="insert" value="Insert">
 							<a style="color:White"> Update </a>
 						</button>
 				</div><br>

@@ -477,6 +477,115 @@ if($query->rowCount()>0)
         </div>
 			<!-- /page content -->
 
+<<<<<<< Updated upstream
+=======
+      <!-- ModalProfile -->
+  <div class="modal fade" id="Profile" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold" style="margin-left:20px;">Profile</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+      <form method="post">
+        <div class="modal-header">
+              <img <?php echo"<img src = '/developgetpet/web/images/$result->orgLogo'";?> alt="avatar" style="width:150px;height:150px;margin-left:125px;margin-top:-20px;" class="rounded-circle img-responsive">
+        </div>
+        <div style="text-align: center" class="wrap-input100 validate-input">
+              <input type="file" name="Picture" id="Picture" style="width:250px;height:40px;border:none;margin-left:160px;margin-top:5px;" placeholder="Upload Photo">
+				</div>
+        <div style="text-align: center" class="wrap-input100 validate-input">
+					    <input type="hidden" name="ownerID" value="<?php echo ( $result->orgID);?>" required = "required" class="form-control" id="success">
+				</div>
+        <div style="text-align: center">
+						  <button  class="btn btn-round btn-success" style="background-color:#00cdc1;width:150px;height:35px;border:none;" name="profile" type="submit" id="insert" value="Insert">
+							 <a style="color:White"> Update Profile </a>
+						 </button>
+				</div>
+        <div style="text-align: center">
+             <h6 class="mt-1 mb-2"><?php echo ($result->orgName);?></h6>
+             <h6 class="mt-1 mb-2"><?php echo ($result->orgManager);?></h6>
+             <h6 class="mt-1 mb-2"><?php echo ($result->orgContactNo);?></h6>
+             <h6 class="mt-1 mb-2"><?php echo ($result->orgAddress);?></h6>
+             <h6 class="mt-1 mb-2"><?php echo ($result->orgEmail);?></h6>
+             <h6 class="mt-1 mb-2"><?php echo ($result->Role);?></h6>
+        </div><br>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+	<!-- //ModalProfile -->
+
+  <!-- ModalSettings -->
+  <div class="modal fade" id="Settings" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold" style="margin-left:20px;">Account Settings</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+      <form method="post">
+        <div class="modal-header">
+              <img <?php echo"<img src = '/developgetpet/web/images/$result->orgLogo'";?> alt="avatar" style="width:150px;height:150px;margin-left:125px;margin-top:-20px;" class="rounded-circle img-responsive">
+        </div>
+        <div style="text-align: center" class="wrap-input100 validate-input">
+					    <input type="hidden" name="orgID" value="<?php echo ( $result->orgID);?>" required = "required" class="form-control" id="success">
+				</div>
+        <div style="text-align: center" class="wrap-input100 validate-input">
+						<input class="input100" style="background-color:#f1f1f1;width:250px;height:40px;border:none;" type="text" name="Orgname" required="required" value="<?php echo ($result->orgName);?>" placeholder="Organization Name">
+				</div><br>
+        <div style="text-align: center" class="wrap-input100 validate-input">
+						<input class="input100" style="background-color:#f1f1f1;width:250px;height:40px;border:none;" type="text" name="Orgmanager" required="required" value="<?php echo ($result->orgManager);?>" placeholder="Organization Manager">
+						<span class="focus-input100"></span>
+				</div><br>
+        <div  style="text-align: center" class="wrap-input100 validate-input">
+						<input class="input100" style="background-color:#f1f1f1;width:250px;height:40px;border:none;font-family:Arial;" type="text" name="ContactNo" onkeypress="isInputNumber(event)" maxlength="11" value="<?php echo ($result->orgContactNo);?>" placeholder="Contact No.">
+						<script>
+            
+                        function isInputNumber(evt){
+                
+                        var ch = String.fromCharCode(evt.which);
+                
+                        if(!(/[0-9]/.test(ch))){
+                        evt.preventDefault();
+                       }
+					}
+                    </script>
+				</div><br>
+        <div style="text-align: center" class="wrap-input100 validate-input">
+						<input class="input100" style="background-color:#f1f1f1;width:250px;height:40px;border:none;" type="text" name="Address" required="required" value="<?php echo ($result->orgAddress);?>" placeholder="Address">
+				</div><br>
+        <div style="text-align: center" class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+						<input class="input100" style="background-color:#f1f1f1;width:250px;height:40px;border:none;" type="text" name="Email" required="required" value="<?php echo ($result->orgEmail);?>" placeholder="Email">
+				</div><br>
+        <div style="text-align: center" class="wrap-input100 validate-input" data-validate = "Valid username is required: ex@abc.xyz">
+						<input class="input100" style="background-color:#f1f1f1;width:250px;height:40px;border:none;" type="text" name="Username" required="required" value="<?php echo ($result->orgUsername);?>" placeholder="Username">
+				</div><br>
+        <div style="text-align: center" class="wrap-input100 validate-input" data-validate = "Valid username is required: ex@abc.xyz">
+						<input class="input100" style="background-color:#f1f1f1;width:250px;height:40px;border:none;" type="Password" name="Password" required="required" value="<?php echo ($result->orgPassword);?>" placeholder="Password">
+				</div><br><br>
+        <div style="text-align: center">
+						<button  class="btn btn-round btn-success" style="background-color:#00cdc1;width:250px;height:40px;border:none;" name="update" type="submit" id="insert" value="Insert">
+							<a style="color:White"> Update </a>
+						</button>
+				</div><br>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+  <!-- //ModalSettings -->
+
+>>>>>>> Stashed changes
 			<!-- footer content -->
 			<footer>
 				<div class="pull-right">

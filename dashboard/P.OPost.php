@@ -407,10 +407,15 @@ if($query->rowCount()>0)
                                         </div>
 
                                         <div class="field item form-group">
-											<label class="col-form-label col-md-3 col-sm-3  label-align">Select<span class="required"></span></label>
+											<label class="col-form-label col-md-3 col-sm-3  label-align" style="color:black;">Type of Pet <span class="required"></span></label>
 											<div class="col-md-6 col-sm-6">
+<<<<<<< Updated upstream
 												<select class="form-control">
 													<option>Type of pet...</option>
+=======
+												<select class="form-control" name="Type">
+													<option> Select...</option>
+>>>>>>> Stashed changes
 													<option>Dog</option>
 													<option>Cat</option>
 												</select>
@@ -418,14 +423,14 @@ if($query->rowCount()>0)
 										</div>
 
                                         <div class="field item form-group">
-                                            <label class="col-form-label col-md-3 col-sm-3  label-align">Pet Name<span class="required"></span></label>
+                                            <label class="col-form-label col-md-3 col-sm-3  label-align" style="color:black;" > Pet Name<span class="required"></span></label>
                                             <div class="col-md-6 col-sm-6">
                                                 <input type="text" id="petname" class="form-control" name="petname" placeholder="Pet Name" required="required"/>
                                             </div>
                                         </div>
 
                                         <div class="field item form-group">
-											<label class="col-form-label col-md-3 col-sm-3  label-align">Select Breed</label>
+											<label class="col-form-label col-md-3 col-sm-3  label-align" style="color:black;" >Select Breed</label>
 											<div class="col-md-6 col-sm-6">
 												<select class="select2_group form-control">
 													<optgroup label="Dog Breed">
@@ -548,7 +553,7 @@ if($query->rowCount()>0)
 										</div>
 
                                         <div class="field item form-group">
-                                        <label class="col-form-label col-md-3 col-sm-3  label-align">Gender<span class="required"></span></label>
+                                        <label class="col-form-label col-md-3 col-sm-3  label-align" style="color:black;" >Gender<span class="required"></span></label>
 											<div class="col-md-6 col-sm-6">
 												<select class="form-control">
 													<option>Please Choose...</option>
@@ -559,32 +564,64 @@ if($query->rowCount()>0)
 										</div>
 
                                         <div class="field item form-group">
+<<<<<<< Updated upstream
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">Age<span class="required"></span></label>
+=======
+                                            <label class="col-form-label col-md-3 col-sm-3  label-align" style="color:black;" >Pet Age<span class="required"></span></label>
+>>>>>>> Stashed changes
                                             <div class="col-md-6 col-sm-6">
                                                 <input class="form-control" type="number" class="number" name="number" placeholder="Pet Age" required="required"></div>
                                         </div>
 
                                         <div class="field item form-group">
-                                            <label class="col-form-label col-md-3 col-sm-3  label-align">Pet Color<span class="required"></span></label>
+                                            <label class="col-form-label col-md-3 col-sm-3  label-align" style="color:black;" >Pet Color<span class="required"></span></label>
                                             <div class="col-md-6 col-sm-6">
                                                 <input type="text" id="petcolor" class="form-control" name="petcolor" placeholder="Pet Color" required="required"/>
                                             </div>
                                         </div>
 
                                         <div class="field item form-group">
-                                            <label class="col-form-label col-md-3 col-sm-3  label-align">Pet Weight<span class="required"></span></label>
+                                            <label class="col-form-label col-md-3 col-sm-3  label-align" style="color:black;" >Pet Weight<span class="required"></span></label>
                                             <div class="col-md-6 col-sm-6">
                                                 <input type="text" id="petweight" class="form-control" name="petweight" placeholder="Pet Weight" required="required"/>
                                             </div>
                                         </div>
 
+<<<<<<< Updated upstream
                                         <div class="field item form-group">
 											<label class="col-form-label col-md-3 col-sm-3  label-align">Description</label>
+=======
+                    <div class="field item form-group">
+											<label class="col-form-label col-md-3 col-sm-3  label-align" style="color:black;" >Vaccination Status<span class="required"></span></label>
+											<div class="col-md-6 col-sm-6">
+												<select class="form-control" name="Vaccination">
+													<option>Vaccination Status...</option>
+													<option>Vaccinated</option>
+													<option>Not Vaccinated</option>
+												</select>
+											</div>
+										</div>
+
+                    <div class="field item form-group">
+											<label class="col-form-label col-md-3 col-sm-3  label-align" style="color:black;" > Deworming Status <span class="required"></span></label>
+											<div class="col-md-6 col-sm-6">
+												<select class="form-control" name="Deworming">
+													<option>Deworming Status...</option>
+													<option>Deworm</option>
+													<option>Not Deworm</option>
+												</select>
+											</div>
+										</div>
+
+                    <div class="field item form-group">
+											<label class="col-form-label col-md-3 col-sm-3  label-align" style="color:black;" >Description</label>
+>>>>>>> Stashed changes
 											<div class="col-md-6 col-sm-6">
 												<textarea id="description" required="required" class="form-control" name="description" placeholder="Pet Description" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.." data-parsley-validation-threshold="10"></textarea>
                                             </div>
 										</div>
 
+<<<<<<< Updated upstream
                                         <div class="field item form-group">
                                         <label class='col-form-label col-md-3 col-sm-3  label-align'>
                                         Date</label>
@@ -596,6 +633,21 @@ if($query->rowCount()>0)
                                         </span>
                                         </div>
                                         </div>
+=======
+                    <label class="col-form-label col-md-3 col-sm-3  label-align" style="color:black;" >Upload Pet Photo</label>
+                    <br>
+                    <div style="text-align: center" class="wrap-input100 validate-input">
+                     <input type="file" name="Picture" id="Picture" style="width:250px;height:40px;border:none;margin-right:420px" placeholder="Upload Picture">
+			              </div>
+                    <?php
+                    date_default_timezone_set("Asia/Manila");
+                    ?>
+                     <div class="field item form-group">
+                                            <label class="col-form-label col-md-3 col-sm-3  label-align" style="color:black;" >Date<span class="required"></span></label>
+                                            <div class="col-md-6 col-sm-6">
+                                                <input type="text" id="petweight" class="form-control" name="Date" value="<?php echo date("m/d/Y h:i:s A", time());?>" placeholder="Current Date and Time" required="required"/>
+                                            </div>
+>>>>>>> Stashed changes
                                         </div>
 
                                         <div class="field item form-group">
