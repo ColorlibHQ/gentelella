@@ -359,7 +359,88 @@ if($query->rowCount()>0)
                         </div>
                     </div>
 
+<<<<<<< Updated upstream
                     <!-- Post Button -->
+=======
+	<!-- Post Pet Code -->
+<?php 
+$ID=$_SESSION['ownerID'];
+
+$sql = "SELECT * from petowner where ownerID=:ID";
+$query=$dbh->prepare($sql);
+$query->bindParam(':ID',$ID,PDO::PARAM_STR);
+$query->execute();
+$results=$query->fetchAll(PDO::FETCH_OBJ);
+$cnt=1;
+if($query->rowCount()>0)
+{
+  foreach($results as $result)
+  {
+     ?>
+<p></p>
+<?php
+?>
+<?php }} ?>
+
+<?php
+date_default_timezone_set("Asia/Manila");
+$date = date('m/d/Y h:i:s A', time());
+?>
+
+<?php
+if(isset($_POST['Post']))
+{
+
+$ID=($_POST['ID']);
+$Name=($_POST['Name']);
+$Email=($_POST['Email']);
+$Address=($_POST['Address']);
+$ContactNo=($_POST['ContactNo']);
+$Type=($_POST['Type']);
+$Petname=($_POST['Petname']);
+$Breed=($_POST['Breed']);
+$Gender=($_POST['Gender']);
+$Age=($_POST['Age']);
+$Color=($_POST['Color']);
+$Weight=($_POST['Weight']);
+$Vaccination=($_POST['Vaccination']);
+$Deworming=($_POST['Deworming']);
+$Description=($_POST['Description']);
+$Picture = $_FILES["Picture"]["name"];
+$tmp_dir = $_FILES["Picture"]["tmp_name"];
+
+move_uploaded_file($tmp_dir, "C:/xampp/htdocs/developgetpet/web/images/$Picture");
+
+$sql="INSERT INTO postforadoption(userID,Name,userEmail,userAddress,userContactNo,petType,petName,petBreed,petSex,petAge,petColor,petWeight,vaccinationStatus,dewormingStatus,petDescription,petPicture,postDate,availabilityStatus)VALUES(:ID,:Name,:Email,:Address,:ContactNo,:Type,:Petname,:Breed,:Gender,:Age,:Color,:Weight,:Vaccination,:Deworming,:Description,:Picture,'$date','Available')";
+$query=$dbh->prepare($sql); 
+$query->bindParam(':ID',$ID,PDO::PARAM_STR);
+$query->bindParam(':Name',$Name,PDO::PARAM_STR);
+$query->bindParam(':Email',$Email,PDO::PARAM_STR);
+$query->bindParam(':Address',$Address,PDO::PARAM_STR);
+$query->bindParam(':ContactNo',$ContactNo,PDO::PARAM_STR);
+$query->bindParam(':Type',$Type,PDO::PARAM_STR);
+$query->bindParam(':Petname',$Petname,PDO::PARAM_STR);
+$query->bindParam(':Breed',$Breed,PDO::PARAM_STR);
+$query->bindParam(':Gender',$Gender,PDO::PARAM_STR);
+$query->bindParam(':Age',$Age,PDO::PARAM_STR);
+$query->bindParam(':Color',$Color,PDO::PARAM_STR);
+$query->bindParam(':Weight',$Weight,PDO::PARAM_STR);
+$query->bindParam(':Vaccination',$Vaccination,PDO::PARAM_STR);
+$query->bindParam(':Deworming',$Deworming,PDO::PARAM_STR);
+$query->bindParam(':Description',$Description,PDO::PARAM_STR);
+$query->bindParam(':Picture',$Picture,PDO::PARAM_STR);
+$query->execute();
+
+echo '<script>alert("Posted Successfully!")</script>';
+echo "<script type ='text/javascript'> document.location='http://localhost/developgetpet/dashboard/P.O-Adoption.php'</script>";
+
+}
+?>
+<!-- //Post Pet Code -->
+
+
+                    <!-- Back Button -->
+>>>>>>> Stashed changes
                     <a href="http://localhost/developgetpet/dashboard/P.O-Adoption.php"><button type="button" class="btn btn-round btn-success" style="background-color:#00cdc1;border:#00cdc1;">Back</button></a>
 
                     <div class="clearfix"></div>
@@ -369,7 +450,7 @@ if($query->rowCount()>0)
                         <div class="col-md-12 col-sm-12  ">
                         <div class="x_panel">
                         <div class="x_title">
-                        <h2>Post Pet Adoption</h2>
+                        <h2>Post Pet For Adoption</h2>
                         <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link" style="margin-left:50px"><i class="fa fa-chevron-up"></i></a>
                         </li>          

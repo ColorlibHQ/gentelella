@@ -402,7 +402,11 @@ if($query->rowCount()>0)
 					    <input type="hidden" name="ownerID" value="<?php echo ( $result->adopterID);?>" required = "required" class="form-control" id="success">
 				</div>
         <div style="text-align: center">
+<<<<<<< Updated upstream
 						  <button  class=" btn btn-round btn-success" style="background-color:#00cdc1;width:150px;height:35px;border:none;" name="profile" type="submit" id="insert" value="Insert">
+=======
+						  <button class="btn btn-round btn-success" style="background-color:#00cdc1;width:150px;height:35px;border:none;" name="profile" type="submit" id="insert" value="Insert">
+>>>>>>> Stashed changes
 							 <a style="color:White"> Update Profile </a>
 						 </button>
 				</div>

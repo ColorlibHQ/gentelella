@@ -370,8 +370,14 @@ if($query->rowCount()>0)
                         </div>
                     </div>
 
+<<<<<<< Updated upstream
 <?php 
 $ID=$_SESSION['ownerID'];
+=======
+  <!-- Post Pet Code -->
+<?php 
+$ID=$_SESSION['adopterID'];
+>>>>>>> Stashed changes
 
 $sql = "SELECT * from petowner where ownerID=:ID";
 $query=$dbh->prepare($sql);
@@ -391,7 +397,7 @@ if($query->rowCount()>0)
 
 <?php
 date_default_timezone_set("Asia/Manila");
-$date = date('m/d/Y h:i:sA', time());
+$date = date('m/d/Y h:i:s A', time());
 ?>
 
 <?php
@@ -443,6 +449,7 @@ echo "<script type ='text/javascript'> document.location='http://localhost/devel
 
 }
 ?>
+<!-- //Post Pet Code -->
 
 
                     <!-- Back Button -->
@@ -455,7 +462,7 @@ echo "<script type ='text/javascript'> document.location='http://localhost/devel
                         <div class="col-md-12 col-sm-12  ">
                         <div class="x_panel">
                         <div class="x_title">
-                        <h2>Post Pet Adoption</h2>
+                        <h2>Post Pet For Adoption</h2>
                         <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link" style="margin-left:50px"><i class="fa fa-chevron-up"></i></a>
                         </li>          
@@ -701,6 +708,7 @@ echo "<script type ='text/javascript'> document.location='http://localhost/devel
                     <div style="text-align: center" class="wrap-input100 validate-input">
                      <input type="file" name="Picture" id="Picture" style="width:250px;height:40px;border:none;margin-right:420px" placeholder="Upload Picture">
 			              </div>
+<<<<<<< Updated upstream
                     <?php
                     date_default_timezone_set("Asia/Manila");
                     ?>
@@ -709,6 +717,19 @@ echo "<script type ='text/javascript'> document.location='http://localhost/devel
                                             <div class="col-md-6 col-sm-6">
                                                 <input type="text" id="petweight" class="form-control" name="Date" value="<?php echo date("m/d/Y h:i:s A", time());?>" placeholder="Current Date and Time" required="required"/>
                                             </div>
+=======
+                    <div class="field item form-group">
+                                        <label class='col-form-label col-md-3 col-sm-3  label-align'>
+                                        Date</label>
+                                        <div class="col-md-6 col-sm-6">
+                                        <div class='input-group date' id='myDatepicker4'>
+                                        <input type='text' class="form-control" readonly="readonly" />
+                                        <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                        </div>
+                                        </div>
+>>>>>>> Stashed changes
                                         </div>
 
 

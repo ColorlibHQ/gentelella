@@ -368,6 +368,7 @@ if($query->rowCount()>0)
                     </ul>
                     <div class="clearfix"></div>
                   </div>
+<<<<<<< Updated upstream
                   <div class="x_content">
 <<<<<<< Updated upstream
                       Add content to the page ...
@@ -465,6 +466,15 @@ if($query->rowCount()>0)
                         </div>
                       </div>
 
+=======
+                  <div class="x_content" style="text-align:center;">
+
+                  
+                  
+                  
+                    
+                  
+>>>>>>> Stashed changes
 
                       <div class="col-md-55">
                         <div class="thumbnail">
@@ -570,6 +580,27 @@ if($query->rowCount()>0)
           </div>
         </div>
         <!-- /page content -->
+<<<<<<< Updated upstream
+=======
+      
+<?php
+$ID=$_SESSION['ownerID'];           
+$sql = "SELECT * from petowner where ownerID=:ID";
+$query=$dbh->prepare($sql);
+$query->bindParam(':ID',$ID,PDO::PARAM_STR);
+$query->execute();
+$results=$query->fetchAll(PDO::FETCH_OBJ);
+$cnt=1;
+if($query->rowCount()>0)
+{
+  foreach($results as $result)
+  {
+     ?>
+<p></p>
+<?php
+?>
+<?php }} ?>
+>>>>>>> Stashed changes
   
   <!-- ModalProfile -->
   <div class="modal fade" id="Profile" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -675,6 +706,36 @@ if($query->rowCount()>0)
   </div>
 </div>
   <!-- //ModalSettings -->
+
+  <!-- ModalView -->
+  <div class="modal fade" id="View" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold" style="margin-left:20px;">Information</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+      <form action="" method="post">
+        <div style="text-align: center" class="wrap-input100 validate-input">
+					    <input type="text" id="pet_id" name="pet_id" required = "required" class="form-control">
+				</div>
+        <div style="text-align: center" class="wrap-input100 validate-input">
+					    <input type="text" id="Name" name="Name" required = "required" class="form-control">
+				</div>
+    
+        <div style="text-align: center" class="wrap-input100 validate-input">
+					    <input type="text" id="Path" name="Path" required = "required" class="form-control">
+				</div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+	<!-- //ModalView -->
 
         <!-- footer content -->
         <footer>
