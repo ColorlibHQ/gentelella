@@ -462,6 +462,17 @@
   width: 100%;
   position: relative;
 }
+.user-profile,
+.info-number {
+  height: 29px;
+}
+.info-number {
+  display: flex;
+  align-items: center;
+}
+.user-profile {
+  display: block;
+}
 .info-number .badge {
   font-size: 10px;
   font-weight: normal;
@@ -469,7 +480,7 @@
   padding: 2px 6px;
   position: absolute;
   right: -2px;
-  top: -8px;
+  top: -2px;
 }
 
 
@@ -1705,7 +1716,6 @@ ul.msg_list li a .message {
   border: 1px solid #D9DEE4;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
-
 }
 .dropdown-menu>li>a {
   color: #5A738E;
@@ -1713,7 +1723,7 @@ ul.msg_list li a .message {
 .navbar-nav .open .dropdown-menu {
   position: absolute;
   background: #fff;
-  margin-top: 21px;
+  margin-top: 13px;
   border: 1px solid #D9DEE4;
   -webkit-box-shadow: none;
   right: 0;
