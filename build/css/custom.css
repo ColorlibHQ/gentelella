@@ -1,9 +1,100 @@
+.daterangepicker .ranges li {
+  color: #73879C; }
+  .daterangepicker .ranges li.active, .daterangepicker .ranges li:hover {
+    background: #536A7F;
+    border: 1px solid #536A7F;
+    color: #fff; }
+.daterangepicker .input-mini {
+  background-color: #eee;
+  border: 1px solid #ccc;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important; }
+  .daterangepicker .input-mini.active {
+    border: 1px solid #ccc; }
+.daterangepicker select.monthselect, .daterangepicker select.yearselect, .daterangepicker select.hourselect, .daterangepicker select.minuteselect, .daterangepicker select.secondselect, .daterangepicker select.ampmselect {
+  font-size: 12px;
+  padding: 1px;
+  height: auto;
+  margin: 0;
+  cursor: default;
+  height: 30px;
+  border: 1px solid #ADB2B5;
+  line-height: 30px;
+  border-radius: 0px !important; }
+.daterangepicker select.monthselect {
+  margin-right: 2%; }
+.daterangepicker td.in-range {
+  background: #E4E7EA;
+  color: #73879C; }
+.daterangepicker td.active, .daterangepicker td.active:hover {
+  background-color: #536A7F;
+  color: #fff; }
+.daterangepicker th.available:hover {
+  background: #eee;
+  color: #34495E; }
+.daterangepicker:before, .daterangepicker:after {
+  content: none; }
+.daterangepicker .calendar.single {
+  margin: 0 0 4px 0; }
+  .daterangepicker .calendar.single .calendar-table {
+    width: 224px;
+    padding: 0 0 4px 0 !important; }
+    .daterangepicker .calendar.single .calendar-table thead tr:first-child th {
+      padding: 8px 5px; }
+    .daterangepicker .calendar.single .calendar-table thead th {
+      border-radius: 0; }
+.daterangepicker.picker_1 {
+  color: #fff;
+  background: #34495E; }
+  .daterangepicker.picker_1 .calendar-table {
+    background: #34495E; }
+    .daterangepicker.picker_1 .calendar-table thead tr {
+      background: #213345; }
+    .daterangepicker.picker_1 .calendar-table thead tr:first-child {
+      background: #1ABB9C; }
+    .daterangepicker.picker_1 .calendar-table td.off {
+      background: #34495E;
+      color: #999; }
+    .daterangepicker.picker_1 .calendar-table td.available:hover {
+      color: #34495E; }
+.daterangepicker.picker_2 .calendar-table thead tr {
+  color: #1ABB9C; }
+.daterangepicker.picker_2 .calendar-table thead tr:first-child {
+  color: #73879C; }
+.daterangepicker.picker_3 .calendar-table thead tr:first-child {
+  color: #fff;
+  background: #1ABB9C; }
+.daterangepicker.picker_4 .calendar-table thead tr:first-child {
+  color: #fff;
+  background: #34495E; }
+.daterangepicker.picker_4 .calendar-table td, .daterangepicker.picker_4 .calendar-table td.off {
+  background: #ECF0F1;
+  border: 1px solid #fff;
+  border-radius: 0; }
+.daterangepicker.picker_4 .calendar-table td.active {
+  background: #34495E; }
+
+.calendar-exibit .show-calendar {
+  float: none;
+  display: block;
+  position: relative;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  overflow: hidden; }
+  .calendar-exibit .show-calendar .calendar {
+    margin: 0 0 4px 0; }
+  .calendar-exibit .show-calendar.picker_1 {
+    background: #34495E; }
+.calendar-exibit .calendar-table {
+  padding: 0 0 4px 0; }
+
 @charset "UTF-8";
 @font-face {
   font-family: 'Glyphicons Halflings';
   src: url("https://netdna.bootstrapcdn.com/bootstrap/3.0.0/fonts/glyphicons-halflings-regular.eot");
   src: url("https://netdna.bootstrapcdn.com/bootstrap/3.0.0/fonts/glyphicons-halflings-regular.eot?#iefix") format("embedded-opentype"), url("https://netdna.bootstrapcdn.com/bootstrap/3.0.0/fonts/glyphicons-halflings-regular.woff") format("woff"), url("https://netdna.bootstrapcdn.com/bootstrap/3.0.0/fonts/glyphicons-halflings-regular.ttf") format("truetype"), url("https://netdna.bootstrapcdn.com/bootstrap/3.0.0/fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular") format("svg"); }
-
 .glyphicon {
   position: relative;
   top: 1px;
@@ -1004,9 +1095,9 @@
 @media (min-width: 480px) {
   .nav_menu {
     position: static; }
+
   .item {
     display: block; } }
-
 .nav-md .container.body .col-md-3.left_col {
   min-height: 100%;
   width: 230px;
@@ -1040,30 +1131,33 @@ body .container.body .right_col {
   .nav-md .container.body .right_col, .nav-md .container.body .top_nav {
     width: 100%;
     margin: 0; }
+
   .nav-md .container.body .col-md-3.left_col {
     display: none; }
+
   .nav-md .container.body .right_col {
     width: 100%;
     padding-right: 0; }
+
   .right_col {
     padding: 10px !important; }
+
   .item {
     display: block; } }
-
 @media (max-width: 1200px) {
   .x_title h2 {
     width: 62%;
     font-size: 17px; }
+
   .tile, .graph {
     zoom: 76%;
     height: inherit; }
+
   .item {
     display: block; } }
-
 @media (max-width: 1270px) and (min-width: 192px) {
   .x_title h2 small {
     display: none; } }
-
 .left_col .mCSB_scrollTools {
   width: 6px; }
 
@@ -1218,20 +1312,16 @@ table.no-margin .progress {
 @media (min-width: 768px) {
   .col-md-55 {
     width: 20%; } }
-
 @media (min-width: 992px) {
   .col-md-55 {
     width: 20%; } }
-
 @media (min-width: 1200px) {
   .col-md-55 {
     width: 20%; } }
-
 @media (min-width: 192px) and (max-width: 1270px) {
   table.tile_info span.right {
     margin-right: 7px;
     float: left; } }
-
 .center-margin {
   margin: 0 auto;
   float: none !important; }
@@ -1286,9 +1376,9 @@ a:hover, a:focus {
 @media (min-width: 480px) {
   .top_nav .navbar-right li {
     position: relative; }
+
   .item {
     display: block; } }
-
 .top_nav .dropdown-menu li {
   width: 100%; }
 
@@ -1520,11 +1610,9 @@ footer {
 @media (min-width: 768px) {
   .footer_fixed footer {
     margin-left: 0; } }
-
 @media (min-width: 768px) {
   .footer_fixed .nav-sm footer {
     margin-left: 0; } }
-
 .tile-stats.sparkline {
   padding: 10px;
   text-align: center; }
@@ -2112,7 +2200,7 @@ ul.msg_list li a .message {
 .navbar-nav .open .dropdown-menu {
   position: absolute;
   background: #fff;
-  margin-top: 0;
+  margin-top: 21px;
   border: 1px solid #D9DEE4;
   -webkit-box-shadow: none;
   right: 0;
@@ -2275,13 +2363,11 @@ span.right {
 @media (min-width: 992px) {
   footer {
     margin-left: 230px; } }
-
 @media (min-width: 992px) {
   .tile_count .tile_stats_count {
     margin-bottom: 10px;
     border-bottom: 0;
     padding-bottom: 10px; } }
-
 .tile_count .tile_stats_count:before {
   content: "";
   position: absolute;
@@ -2293,7 +2379,6 @@ span.right {
 @media (min-width: 992px) {
   .tile_count .tile_stats_count:first-child:before {
     border-left: 0; } }
-
 .tile_count .tile_stats_count .count {
   font-size: 30px;
   line-height: 47px;
@@ -2302,18 +2387,15 @@ span.right {
 @media (min-width: 768px) {
   .tile_count .tile_stats_count .count {
     font-size: 40px; } }
-
 @media (min-width: 992px) and (max-width: 1100px) {
   .tile_count .tile_stats_count .count {
     font-size: 30px; } }
-
 .tile_count .tile_stats_count span {
   font-size: 12px; }
 
 @media (min-width: 768px) {
   .tile_count .tile_stats_count span {
     font-size: 13px; } }
-
 .tile_count .tile_stats_count .count_bottom i {
   width: 12px; }
 
@@ -2632,7 +2714,6 @@ button,
   .mail_list {
     margin-bottom: 5px;
     display: inline-block; } }
-
 .mail_heading h4 {
   font-size: 18px;
   border-bottom: 1px solid #ddd;
@@ -3065,10 +3146,10 @@ textarea:focus {
   .bs-glyphicons {
     margin-right: 0;
     margin-left: 0; }
+
   .bs-glyphicons li {
     width: 12.5%;
     font-size: 12px; } }
-
 /* *********  /glyphicons  **************************** */
 /* *********  form tags input  **************************** */
 .tagsinput {
@@ -4335,7 +4416,6 @@ fieldset {
 @media (min-width: 768px) {
   .cropper .img-container {
     min-height: 516px; } }
-
 .cropper .img-container > img {
   max-width: 100%; }
 
@@ -4417,25 +4497,28 @@ fieldset {
 @media (max-width: 414px) {
   .item {
     display: block; }
+
   .label-align {
     text-align: left; } }
-
 @media (max-width: 400px) {
   .cropper .btn-group-crop {
     margin-right: -15px !important; }
+
   .item {
     display: block; }
+
   .label-align {
     text-align: left; }
+
   .cropper .btn-group-crop > .btn {
     padding-left: 5px;
     padding-right: 5px; }
+
   .cropper .btn-group-crop .docs-tooltip {
     margin-left: -5px;
     margin-right: -5px;
     padding-left: 5px;
     padding-right: 5px; } }
-
 .cropper .docs-options .dropdown-menu {
   width: 100%; }
 
@@ -4828,10 +4911,10 @@ ul.notifications {
     position: absolute;
     right: 135px;
     top: 7px; }
+
   .tile, .graph {
     zoom: 71%;
     height: inherit; } }
-
 @media (min-width: 768px) and (max-width: 1024px) {
   .info-number .badge {
     font-size: 10px;
@@ -4841,7 +4924,6 @@ ul.notifications {
     position: absolute;
     right: -2px;
     top: -6px; } }
-
 /** /PNotify **/
 /** FullCalendar **/
 .fc-state-default {
@@ -4860,111 +4942,3 @@ ul.notifications {
   border: 1px solid #e5e5e5; }
 
 /** /Dropzone.js **/
-
-.daterangepicker .ranges li {
-  color: #73879C; }
-  .daterangepicker .ranges li.active, .daterangepicker .ranges li:hover {
-    background: #536A7F;
-    border: 1px solid #536A7F;
-    color: #fff; }
-
-.daterangepicker .input-mini {
-  background-color: #eee;
-  border: 1px solid #ccc;
-  -webkit-box-shadow: none !important;
-          box-shadow: none !important; }
-  .daterangepicker .input-mini.active {
-    border: 1px solid #ccc; }
-
-.daterangepicker select.monthselect, .daterangepicker select.yearselect, .daterangepicker select.hourselect, .daterangepicker select.minuteselect, .daterangepicker select.secondselect, .daterangepicker select.ampmselect {
-  font-size: 12px;
-  padding: 1px;
-  height: auto;
-  margin: 0;
-  cursor: default;
-  height: 30px;
-  border: 1px solid #ADB2B5;
-  line-height: 30px;
-  border-radius: 0px !important; }
-
-.daterangepicker select.monthselect {
-  margin-right: 2%; }
-
-.daterangepicker td.in-range {
-  background: #E4E7EA;
-  color: #73879C; }
-
-.daterangepicker td.active, .daterangepicker td.active:hover {
-  background-color: #536A7F;
-  color: #fff; }
-
-.daterangepicker th.available:hover {
-  background: #eee;
-  color: #34495E; }
-
-.daterangepicker:before, .daterangepicker:after {
-  content: none; }
-
-.daterangepicker .calendar.single {
-  margin: 0 0 4px 0; }
-  .daterangepicker .calendar.single .calendar-table {
-    width: 224px;
-    padding: 0 0 4px 0 !important; }
-    .daterangepicker .calendar.single .calendar-table thead tr:first-child th {
-      padding: 8px 5px; }
-    .daterangepicker .calendar.single .calendar-table thead th {
-      border-radius: 0; }
-
-.daterangepicker.picker_1 {
-  color: #fff;
-  background: #34495E; }
-  .daterangepicker.picker_1 .calendar-table {
-    background: #34495E; }
-    .daterangepicker.picker_1 .calendar-table thead tr {
-      background: #213345; }
-    .daterangepicker.picker_1 .calendar-table thead tr:first-child {
-      background: #1ABB9C; }
-    .daterangepicker.picker_1 .calendar-table td.off {
-      background: #34495E;
-      color: #999; }
-    .daterangepicker.picker_1 .calendar-table td.available:hover {
-      color: #34495E; }
-
-.daterangepicker.picker_2 .calendar-table thead tr {
-  color: #1ABB9C; }
-
-.daterangepicker.picker_2 .calendar-table thead tr:first-child {
-  color: #73879C; }
-
-.daterangepicker.picker_3 .calendar-table thead tr:first-child {
-  color: #fff;
-  background: #1ABB9C; }
-
-.daterangepicker.picker_4 .calendar-table thead tr:first-child {
-  color: #fff;
-  background: #34495E; }
-
-.daterangepicker.picker_4 .calendar-table td, .daterangepicker.picker_4 .calendar-table td.off {
-  background: #ECF0F1;
-  border: 1px solid #fff;
-  border-radius: 0; }
-
-.daterangepicker.picker_4 .calendar-table td.active {
-  background: #34495E; }
-
-.calendar-exibit .show-calendar {
-  float: none;
-  display: block;
-  position: relative;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  margin-bottom: 20px;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  overflow: hidden; }
-  .calendar-exibit .show-calendar .calendar {
-    margin: 0 0 4px 0; }
-  .calendar-exibit .show-calendar.picker_1 {
-    background: #34495E; }
-
-.calendar-exibit .calendar-table {
-  padding: 0 0 4px 0; }
