@@ -1422,7 +1422,10 @@ a:hover, a:focus {
 
 .site_title:hover, .site_title:focus {
   text-decoration: none; }
-
+  
+.site_title span:hover{
+  background: #fff;
+}
 .nav.navbar-nav > li > a {
   color: #515356 !important; }
 
