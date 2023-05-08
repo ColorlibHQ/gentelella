@@ -89,6 +89,7 @@
                                 </li>
                                 <li><a><i class="fa fa-bar-chart-o"></i> Data Presentation <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
+                                        <li><a href="apexcharts.html">ApexCharts</a></li>
                                         <li><a href="chartjs.html">Chart JS</a></li>
                                         <li><a href="chartjs2.html">Chart JS2</a></li>
                                         <li><a href="morisjs.html">Moris JS</a></li>
@@ -307,7 +308,31 @@
                                 </div>
                                 <div class="x_content">
                                     <div id="lineChart">
-
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6  ">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>Area chart</h2>
+                                    <ul class="nav navbar-right panel_toolbox">
+                                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                <a class="dropdown-item" href="#">Settings 1</a>
+                                                <a class="dropdown-item" href="#">Settings 2</a>
+                                            </div>
+                                        </li>
+                                        <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                        </li>
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+                                    <div id="areaChart">
                                     </div>
                                 </div>
                             </div>
@@ -425,9 +450,79 @@
             }
         };
 
+        // var areachartoptions = {
+        //     series: [{
+        //         name: "STOCK ABC",
+        //         data: series.monthDataSeries1.prices
+        //     }],
+        //     chart: {
+        //         type: 'area',
+        //         height: 350,
+        //         zoom: {
+        //             enabled: false
+        //         }
+        //     },
+        //     dataLabels: {
+        //         enabled: false
+        //     },
+        //     stroke: {
+        //         curve: 'straight'
+        //     },
+
+        //     title: {
+        //         text: 'Fundamental Analysis of Stocks',
+        //         align: 'left'
+        //     },
+        //     subtitle: {
+        //         text: 'Price Movements',
+        //         align: 'left'
+        //     },
+        //     labels: series.monthDataSeries1.dates,
+        //     xaxis: {
+        //         type: 'datetime',
+        //     },
+        //     yaxis: {
+        //         opposite: true
+        //     },
+        //     legend: {
+        //         horizontalAlign: 'left'
+        //     }
+        // };
+
+        var areachartoptions = {
+            series: [{
+                name: 'series1',
+                data: [31, 40, 28, 51, 42, 109, 100]
+            }, {
+                name: 'series2',
+                data: [11, 32, 45, 32, 34, 52, 41]
+            }],
+            chart: {
+                height: 350,
+                type: 'area'
+            },
+            dataLabels: {
+                enabled: false
+            },
+            stroke: {
+                curve: 'smooth'
+            },
+            xaxis: {
+                type: 'datetime',
+                categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
+            },
+            tooltip: {
+                x: {
+                    format: 'dd/MM/yy HH:mm'
+                },
+            },
+        };
+
         var linechart = new ApexCharts(document.querySelector("#lineChart"), linechartoptions);
+        var areachart = new ApexCharts(document.querySelector("#areaChart"), areachartoptions);
 
         linechart.render();
+        areachart.render();
     </script>
 
 
