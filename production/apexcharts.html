@@ -393,6 +393,36 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="clearfix"></div>
+
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6  ">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>Pie chart</h2>
+                                    <ul class="nav navbar-right panel_toolbox">
+                                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                <a class="dropdown-item" href="#">Settings 1</a>
+                                                <a class="dropdown-item" href="#">Settings 2</a>
+                                            </div>
+                                        </li>
+                                        <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                        </li>
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+                                    <div id="pieChart">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <!-- page content -->
@@ -546,7 +576,7 @@
                 name: 'Free Cash Flow',
                 data: [35, 41, 36, 26, 45, 48, 52, 53, 41]
             }],
-            colors: ["#00586c", "#00c49d"],
+            colors: ["#00586c", "#00c49d", "#acadac"],
             chart: {
                 type: 'bar',
                 height: 350
@@ -612,17 +642,42 @@
         };
 
 
+        var piechartoptions = {
+            series: [44, 25, 31],
+            chart: {
+                width: 380,
+                type: 'pie',
+            },
+            colors: ["#00586c", "#00c49d", "#acadac"],
+            labels: ['Team A', 'Team B', 'Team C'],
+            responsive: [{
+                breakpoint: 480,
+                options: {
+                    chart: {
+                        width: 200
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }]
+        };
+
+
+
 
 
         var linechart = new ApexCharts(document.querySelector("#lineChart"), linechartoptions);
         var areachart = new ApexCharts(document.querySelector("#areaChart"), areachartoptions);
         var columnchart = new ApexCharts(document.querySelector("#columnChart"), columnchartoptions);
         var barchart = new ApexCharts(document.querySelector("#barChart"), barchartoptions);
+        var piechart = new ApexCharts(document.querySelector("#pieChart"), piechartoptions);
 
         linechart.render();
         areachart.render();
         columnchart.render();
         barchart.render();
+        piechart.render();
     </script>
 
 
