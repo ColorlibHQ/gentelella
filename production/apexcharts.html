@@ -339,6 +339,35 @@
                         </div>
                     </div>
 
+                    <div class="clearfix"></div>
+
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6  ">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>Column chart</h2>
+                                    <ul class="nav navbar-right panel_toolbox">
+                                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                <a class="dropdown-item" href="#">Settings 1</a>
+                                                <a class="dropdown-item" href="#">Settings 2</a>
+                                            </div>
+                                        </li>
+                                        <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                        </li>
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+                                    <div id="columnChart">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <!-- page content -->
@@ -450,45 +479,6 @@
             }
         };
 
-        // var areachartoptions = {
-        //     series: [{
-        //         name: "STOCK ABC",
-        //         data: series.monthDataSeries1.prices
-        //     }],
-        //     chart: {
-        //         type: 'area',
-        //         height: 350,
-        //         zoom: {
-        //             enabled: false
-        //         }
-        //     },
-        //     dataLabels: {
-        //         enabled: false
-        //     },
-        //     stroke: {
-        //         curve: 'straight'
-        //     },
-
-        //     title: {
-        //         text: 'Fundamental Analysis of Stocks',
-        //         align: 'left'
-        //     },
-        //     subtitle: {
-        //         text: 'Price Movements',
-        //         align: 'left'
-        //     },
-        //     labels: series.monthDataSeries1.dates,
-        //     xaxis: {
-        //         type: 'datetime',
-        //     },
-        //     yaxis: {
-        //         opposite: true
-        //     },
-        //     legend: {
-        //         horizontalAlign: 'left'
-        //     }
-        // };
-
         var areachartoptions = {
             series: [{
                 name: 'series1',
@@ -497,6 +487,7 @@
                 name: 'series2',
                 data: [11, 32, 45, 32, 34, 52, 41]
             }],
+            colors: ["#00586c", "#00c49d"],
             chart: {
                 height: 350,
                 type: 'area'
@@ -518,11 +509,65 @@
             },
         };
 
+
+        var columnchartoptions = {
+            series: [{
+                name: 'Net Profit',
+                data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
+            }, {
+                name: 'Revenue',
+                data: [76, 85, 101, 98, 87, 105, 91, 114, 94]
+            }, {
+                name: 'Free Cash Flow',
+                data: [35, 41, 36, 26, 45, 48, 52, 53, 41]
+            }],
+            colors: ["#00586c", "#00c49d"],
+            chart: {
+                type: 'bar',
+                height: 350
+            },
+            plotOptions: {
+                bar: {
+                    horizontal: false,
+                    columnWidth: '55%',
+                    endingShape: 'rounded'
+                },
+            },
+            dataLabels: {
+                enabled: false
+            },
+            stroke: {
+                show: true,
+                width: 2,
+                colors: ['transparent']
+            },
+            xaxis: {
+                categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+            },
+            yaxis: {
+                title: {
+                    text: '$ (thousands)'
+                }
+            },
+            fill: {
+                opacity: 1
+            },
+            tooltip: {
+                y: {
+                    formatter: function(val) {
+                        return "$ " + val + " thousands"
+                    }
+                }
+            }
+        };
+
         var linechart = new ApexCharts(document.querySelector("#lineChart"), linechartoptions);
         var areachart = new ApexCharts(document.querySelector("#areaChart"), areachartoptions);
+        var columnchart = new ApexCharts(document.querySelector("#columnChart"), columnchartoptions);
 
         linechart.render();
         areachart.render();
+        columnchart.render();
     </script>
 
 
