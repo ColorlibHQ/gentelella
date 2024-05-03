@@ -18,7 +18,7 @@ Earlier there were no changelog at all and we have introduced one now and we wil
 
 * Fix menu not become active if url contains parameters
 * Fix form upload form not adjust on large number of files
-* Remove invalid css
+* Remove invalid 'CSS'
 * Add compose message functionalities
 * Add fixed sidebar functionalities
 
@@ -26,7 +26,7 @@ Earlier there were no changelog at all and we have introduced one now and we wil
 
 * Fix menu not become active if url contains parameters
 * Fix form upload form not adjust on large number of files
-* Remove invalid css
+* Remove invalid 'CSS'
 * Add compose message functionalities
 * Add fixed footer functionalities
 
