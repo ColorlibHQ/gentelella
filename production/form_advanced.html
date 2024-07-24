@@ -1,3 +1,4 @@
+Updates to keyboard shortcuts … On Thursday, August 1, 2024, Drive keyboard shortcuts will be updated to give you first-letters navigation.Learn more
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -819,6 +820,44 @@
                 <br />
                 <br />
                 <!-- /form grid slider -->
+				
+				<!-- Image Hover Effect -->
+                <div class="x_panel" style="">
+                  <div class="x_title">
+                    <h2>Image Hover</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                          <li><a href="#">Settings 1</a>
+                          </li>
+                          <li><a href="#">Settings 2</a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li><a class="close-link"><i class="fa fa-close"></i></a>
+                      </li>
+                    </ul> 
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+					<div class="row">
+						<div class="col-md-6 col-sm-6">
+							<h4 class="text-center">Main Image</h4>
+							<img id="main_image" style="width: 100%; display: block;" src="images/media.jpg" alt="image">
+						</div>
+						<div class="col-md-6 col-sm-6">
+							<h4 class="text-center">Hover Image</h4>
+					</div>
+					</div>
+                  </div>
+                </div>
+                <br />
+                <br />
+                <!-- /Image Hover Effect -->
+				
 
                 <!-- image cropping -->
                 <div class="container cropper">
@@ -1322,6 +1361,8 @@
     <script src="../vendors/jquery-knob/dist/jquery.knob.min.js"></script>
     <!-- Cropper -->
     <script src="../vendors/cropper/dist/cropper.min.js"></script>
+	<!-- Image Hover Effect -->
+	<script src="../vendors/zoom/zoomsl.js" type="text/javascript"></script>
 
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
@@ -1358,6 +1399,12 @@
     $("#datetimepicker7").on("dp.change", function(e) {
         $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
     });
+	
+	$(document).ready(function () {
+		$("#main_image").imagezoomsl({
+			zoomrange: [3, 3]
+		});
+	});
 </script>
   </body>
 </html>
