@@ -8,8 +8,8 @@ Theme uses several libraries for charts, calendar, form validation, wizard style
 We would love to see how you use this awesome admin template. You can notify us about your site, app or service by tweeting to [@colorlib](https://twitter.com/colorlib). Once the list will grown long enough we will write a post similar to [this](https://colorlib.com/wp/avada-theme-examples/) to showcase the best examples.
 
 
-## Theme Demo
-![Gentelella Bootstrap Admin Template](https://colorlib.com/wp/wp-content/uploads/sites/2/gentelella-admin-template-preview.jpg 
+### Theme Demo
+![Gentelella Bootstrap Admin Template](https://colorlib.com/wp/wp-content/uploads/sites/2/gentelella-admin-template-preview.jpg
 "Gentelella Theme Browser Preview")
 
 **[Template Demo](https://colorlib.com/polygon/gentelella/index.html)**
@@ -20,7 +20,7 @@ We would love to see how you use this awesome admin template. You can notify us 
 
 ## Installation via Package Manager
 
-Our goal is to make it installable on different Package Manager! Do you want to use it on your favorite Package Manager and you know how? Pull request all the way! 
+Our goal is to make it installable on different Package Manager! Do you want to use it on your favorite Package Manager and you know how? Pull request all the way!
 
 As of now, this is some installation available:
 
