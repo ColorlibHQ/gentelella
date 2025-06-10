@@ -2,3 +2,23 @@ nbproject
 npm-debug.log
 node_modules
 .sass-cache
+
+# Build output
+build/
+
+# Vendor dependencies (if using bower)
+vendors/
+bower_components/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

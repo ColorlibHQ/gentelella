@@ -37,6 +37,8 @@
     "gulp-concat": "^2.6.1",
     "gulp-rename": "^2.0.0",
     "gulp-ruby-sass": "^4.0.0",
-    "gulp-uglify": "^3.0.2"
+    "gulp-sass": "^6.0.1",
+    "gulp-uglify": "^3.0.2",
+    "sass": "^1.89.2"
   }
 }
