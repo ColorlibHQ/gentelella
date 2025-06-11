@@ -6,7 +6,7 @@ node_modules
 # Build output
 build/
 
-# Vendor dependencies (if using bower)
+# Vendor dependencies (generated from node_modules)
 vendors/
 bower_components/
 

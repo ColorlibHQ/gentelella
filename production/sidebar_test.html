@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sidebar Debug Test</title>
+    <link href="../build/css/custom.min.css" rel="stylesheet">
+</head>
+<body class="nav-md">
+    <div style="position: fixed; top: 10px; right: 10px; background: yellow; padding: 10px; z-index: 9999;">
+        <h4>Debug Info</h4>
+        <div id="debug-info">Loading...</div>
+        <button onclick="testSidebar()">Test Sidebar</button>
+        <button onclick="showConsoleErrors()">Show Errors</button>
+    </div>
+
+    <div class="container body">
+        <div class="main_container">
+            <div class="col-md-3 left_col">
+                <div class="left_col scroll-view">
+                    <!-- sidebar menu -->
+                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                        <div class="menu_section">
+                            <h3>Test Menu</h3>
+                            <ul class="nav side-menu">
+                                <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="#" onclick="alert('Dashboard clicked!')">Dashboard</a></li>
+                                        <li><a href="#" onclick="alert('Dashboard2 clicked!')">Dashboard2</a></li>
+                                    </ul>
+                                </li>
+                                <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="#" onclick="alert('Form clicked!')">General Form</a></li>
+                                        <li><a href="#" onclick="alert('Advanced clicked!')">Advanced Components</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /sidebar menu -->
+                </div>
+            </div>
+
+            <div class="right_col" role="main">
+                <div style="padding: 20px;">
+                    <h1>Sidebar Test Page</h1>
+                    <p>This page tests the sidebar functionality. Click on "Home" or "Forms" in the sidebar to see if sub-menus expand.</p>
+                    <p>Check the debug info box in the top-right corner for diagnostic information.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript (same as production) -->
+    <script src="../build/js/custom.min.js"></script>
+    
+    <script>
+        var errors = [];
+        var originalConsoleError = console.error;
+        console.error = function() {
+            errors.push(Array.prototype.slice.call(arguments));
+            originalConsoleError.apply(console, arguments);
+        };
+
+        function showConsoleErrors() {
+            if (errors.length === 0) {
+                alert('No console errors detected');
+            } else {
+                alert('Console errors:\n' + errors.map(function(e) { return e.join(' '); }).join('\n'));
+            }
+        }
+
+        function testSidebar() {
+            var info = [];
+            info.push('jQuery: ' + (typeof $ !== 'undefined' ? $.fn.jquery : 'NOT LOADED'));
+            info.push('init_sidebar function: ' + (typeof init_sidebar !== 'undefined' ? 'FOUND' : 'NOT FOUND'));
+            info.push('Sidebar element: ' + ($('#sidebar-menu').length ? 'FOUND' : 'NOT FOUND'));
+            info.push('Menu items: ' + $('#sidebar-menu .side-menu > li').length);
+            
+            // Test if click events are attached
+            var menuItems = $('#sidebar-menu .side-menu > li > a');
+            var hasEvents = false;
+            menuItems.each(function() {
+                var events = $._data(this, 'events');
+                if (events && events.click) {
+                    hasEvents = true;
+                }
+            });
+            info.push('Click events attached: ' + (hasEvents ? 'YES' : 'NO'));
+            
+            // Try manual initialization
+            if (typeof init_sidebar !== 'undefined') {
+                try {
+                    init_sidebar();
+                    info.push('Manual init_sidebar(): SUCCESS');
+                } catch (e) {
+                    info.push('Manual init_sidebar(): ERROR - ' + e.message);
+                }
+            }
+            
+            document.getElementById('debug-info').innerHTML = info.join('<br>');
+        }
+
+        $(document).ready(function() {
+            testSidebar();
+            
+            // Try to manually trigger a click after 1 second
+            setTimeout(function() {
+                console.log('Attempting manual click test...');
+                $('#sidebar-menu .side-menu > li:first > a').trigger('click');
+            }, 1000);
+        });
+    </script>
+</body>
+</html> 
