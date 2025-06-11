@@ -45,7 +45,6 @@
     "@popperjs/core": "^2.11.8",
     "autosize": "^6.0.1",
     "bootstrap": "^5.3.6",
-    "bootstrap-progressbar": "^0.9.0",
     "bootstrap-wysiwyg": "^2.0.1",
     "chart.js": "^4.4.2",
     "cropper": "^4.1.0",

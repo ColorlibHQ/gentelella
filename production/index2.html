@@ -297,11 +297,21 @@
                 <div class="x_panel">
                   <div class="x_title">
                     <h2>Transaction Summary <small>Weekly progress</small></h2>
-                    <div class="filter">
-                      <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
-                        <i class="fas fa-calendar"></i>
-                        <span>December 30, 2014 - January 28, 2015</span> <b class="caret"></b>
+                    <div class="filter d-flex align-items-center gap-2">
+                      <div class="input-group" id="startDatePicker" data-td-target-input="nearest" data-td-target-toggle="nearest" style="max-width: 160px;">
+                        <input type="text" class="form-control" id="startDateInput" data-td-target="#startDatePicker" placeholder="Start date" readonly />
+                        <span class="input-group-text" data-td-target="#startDatePicker" data-td-toggle="datetimepicker">
+                          <i class="fas fa-calendar"></i>
+                        </span>
                       </div>
+                      <span class="mx-1">to</span>
+                      <div class="input-group" id="endDatePicker" data-td-target-input="nearest" data-td-target-toggle="nearest" style="max-width: 160px;">
+                        <input type="text" class="form-control" id="endDateInput" data-td-target="#endDatePicker" placeholder="End date" readonly />
+                        <span class="input-group-text" data-td-target="#endDatePicker" data-td-toggle="datetimepicker">
+                          <i class="fas fa-calendar"></i>
+                        </span>
+                      </div>
+                      <span class="ms-3" id="dateRangeSummary" style="font-weight:500;color:#555;"></span>
                     </div>
                     <div class="clearfix"></div>
                   </div>
@@ -714,5 +724,36 @@
       </div>
     </div>    <!-- Compiled JavaScript (includes jQuery, Bootstrap, and all vendor scripts) -->
     
+    <!-- Initialize linked Tempus Dominus pickers for date range -->
+    <script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+        if (typeof TempusDominus !== 'undefined') {
+            const startPicker = new TempusDominus(document.getElementById('startDatePicker'), {
+                display: { components: { clock: false } },
+                localization: { format: 'MM/dd/yyyy' }
+            });
+            const endPicker = new TempusDominus(document.getElementById('endDatePicker'), {
+                display: { components: { clock: false } },
+                localization: { format: 'MM/dd/yyyy' }
+            });
+            // Link pickers
+            document.getElementById('startDatePicker').addEventListener('change.td', function(e) {
+                endPicker.updateOptions({ restrictions: { minDate: e.detail.date } });
+                document.getElementById('startDateInput').value = e.detail.date ? e.detail.date.format('MM/dd/yyyy') : '';
+                updateSummary();
+            });
+            document.getElementById('endDatePicker').addEventListener('change.td', function(e) {
+                startPicker.updateOptions({ restrictions: { maxDate: e.detail.date } });
+                document.getElementById('endDateInput').value = e.detail.date ? e.detail.date.format('MM/dd/yyyy') : '';
+                updateSummary();
+            });
+            function updateSummary() {
+                const start = document.getElementById('startDateInput').value;
+                const end = document.getElementById('endDateInput').value;
+                document.getElementById('dateRangeSummary').textContent = (start && end) ? `${start} to ${end}` : '';
+            }
+        }
+    });
+    </script>
   </body>
 </html>

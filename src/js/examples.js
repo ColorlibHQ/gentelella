@@ -1306,8 +1306,8 @@ function init_daterangepicker() {
         applyButtonClasses: 'btn-primary',
         cancelButtonClasses: 'btn-secondary',
         locale: {
-            format: 'MM/DD/YYYY',
-            separator: ' to ',
+        format: 'MM/DD/YYYY',
+        separator: ' to ',
             applyLabel: 'Submit',
             cancelLabel: 'Clear',
             fromLabel: 'From',
@@ -1381,8 +1381,8 @@ function init_daterangepicker_right() {
         applyButtonClasses: 'btn-primary',
         cancelButtonClasses: 'btn-secondary',
         locale: {
-            format: 'MM/DD/YYYY',
-            separator: ' to ',
+        format: 'MM/DD/YYYY',
+        separator: ' to ',
             applyLabel: 'Submit',
             cancelLabel: 'Clear',
             fromLabel: 'From',

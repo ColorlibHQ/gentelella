@@ -22,9 +22,7 @@ window.Chart = Chart;
 import { TempusDominus } from '@eonasdan/tempus-dominus';
 window.TempusDominus = TempusDominus;
 
-// DateRangePicker (Bootstrap 5 compatible)
-import 'daterangepicker/daterangepicker.css';
-import 'daterangepicker';
+
 
 // Additional vendor libraries for dashboard widgets
 import '../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js';

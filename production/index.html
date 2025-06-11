@@ -10,19 +10,7 @@
 
     <title>Gentelella Alela!</title>
 
-    <!-- Font Awesome -->
-    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <!-- NProgress -->
-    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
-    <!-- iCheck -->
-    <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-	
-    <!-- bootstrap-progressbar -->
-    <link href="../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
-    <!-- JQVMap -->
-    <link href="../vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
-    <!-- bootstrap-daterangepicker -->
-    <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
 
     <!-- Vite Entry Point - will bundle all styles -->
     <script type="module" src="../src/main.js"></script>
@@ -317,11 +305,21 @@
                     <h3>Network Activities <small>Graph title sub-title</small></h3>
                   </div>
                   <div class="col-md-6">
-                    <div class="input-group" id="reportrange" data-td-target-input="nearest" data-td-target-toggle="nearest">
-                      <input type="text" class="form-control" data-td-target="#reportrange" readonly />
-                      <span class="input-group-text" data-td-target="#reportrange" data-td-toggle="datetimepicker">
-                        <i class="fas fa-calendar"></i>
-                      </span>
+                    <div class="filter d-flex align-items-center gap-2">
+                      <div class="input-group" id="startDatePicker" data-td-target-input="nearest" data-td-target-toggle="nearest" style="max-width: 160px;">
+                        <input type="text" class="form-control" id="startDateInput" data-td-target="#startDatePicker" placeholder="Start date" readonly />
+                        <span class="input-group-text" data-td-target="#startDatePicker" data-td-toggle="datetimepicker">
+                          <i class="fas fa-calendar"></i>
+                        </span>
+                      </div>
+                      <span class="mx-1">to</span>
+                      <div class="input-group" id="endDatePicker" data-td-target-input="nearest" data-td-target-toggle="nearest" style="max-width: 160px;">
+                        <input type="text" class="form-control" id="endDateInput" data-td-target="#endDatePicker" placeholder="End date" readonly />
+                        <span class="input-group-text" data-td-target="#endDatePicker" data-td-toggle="datetimepicker">
+                          <i class="fas fa-calendar"></i>
+                        </span>
+                      </div>
+                      <span class="ms-3" id="dateRangeSummary" style="font-weight:500;color:#555;"></span>
                     </div>
                   </div>
                 </div>
@@ -964,24 +962,75 @@
       </div>
     </div>
 
-    <!-- Initialize Tempus Dominus datetimepicker -->
+    <!-- Date Range Picker Logic -->
     <script type="text/javascript">
     document.addEventListener('DOMContentLoaded', function() {
-        if (typeof TempusDominus !== 'undefined') {
-            // Initialize date range picker
-            const reportRangePicker = new TempusDominus(document.getElementById('reportrange'), {
-                display: {
-                    components: {
-                        clock: false,
-                        date: true
-                    }
-                },
-                localization: {
-                    format: 'MMMM D, YYYY'
-                },
-                range: true
-            });
-        }
+      if (typeof TempusDominus !== 'undefined') {
+        // Initialize the date pickers
+        const startPicker = new TempusDominus(document.getElementById('startDatePicker'), {
+          display: { 
+            components: { 
+              clock: false,
+              seconds: false,
+              useTwentyfourHour: false
+            }
+          },
+          localization: { 
+            format: 'MM/dd/yyyy'
+          }
+        });
+        
+        const endPicker = new TempusDominus(document.getElementById('endDatePicker'), {
+          display: { 
+            components: { 
+              clock: false,
+              seconds: false,
+              useTwentyfourHour: false
+            }
+          },
+          localization: { 
+            format: 'MM/dd/yyyy'
+          }
+        });
+        
+        // Set default dates (last 30 days)
+        const today = new Date();
+        const thirtyDaysAgo = new Date(today.getTime() - (30 * 24 * 60 * 60 * 1000));
+        
+        startPicker.dates.setValue(thirtyDaysAgo);
+        endPicker.dates.setValue(today);
+        
+        // Update summary display
+        const updateSummary = () => {
+          const start = startPicker.dates.lastPicked;
+          const end = endPicker.dates.lastPicked;
+          const summaryEl = document.getElementById('dateRangeSummary');
+          
+          if (start && end) {
+            const diffTime = Math.abs(end - start);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            summaryEl.textContent = `(${diffDays} days)`;
+          } else {
+            summaryEl.textContent = '';
+          }
+        };
+        
+        // Link pickers and update summary
+        document.getElementById('startDatePicker').addEventListener('change.td', function(e) {
+          endPicker.updateOptions({ restrictions: { minDate: e.detail.date } });
+          updateSummary();
+        });
+        
+        document.getElementById('endDatePicker').addEventListener('change.td', function(e) {
+          startPicker.updateOptions({ restrictions: { maxDate: e.detail.date } });
+          updateSummary();
+        });
+        
+        // Initial summary update
+        updateSummary();
+      } else {
+        console.warn('TempusDominus is not available');
+      }
     });
     </script>
   </body>

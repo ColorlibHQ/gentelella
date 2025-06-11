@@ -1,5 +1,5 @@
 (function($) {
-  /**
+/**
    * This file contains the logic for the sidebar menu only.
    * It has been cleaned of all other component initializations.
    */
@@ -8,10 +8,10 @@
     var setContentHeight = function () {
         var $BODY = $('body'),
             $RIGHT_COL = $('.right_col'),
-            $SIDEBAR_FOOTER = $('.sidebar-footer'),
-            $LEFT_COL = $('.left_col'),
-            $NAV_MENU = $('.nav_menu'),
-            $FOOTER = $('footer');
+    $SIDEBAR_FOOTER = $('.sidebar-footer'),
+    $LEFT_COL = $('.left_col'),
+    $NAV_MENU = $('.nav_menu'),
+    $FOOTER = $('footer');
 
         // reset height
         $RIGHT_COL.css('min-height', $(window).height());
@@ -58,10 +58,10 @@
                     });
                 });
             } else {
-                $li.addClass('active');
+            $li.addClass('active');
                 $li.children('ul').slideDown(function() {
-                    setContentHeight();
-                });
+                setContentHeight();
+            });
             }
         }
     });
@@ -98,6 +98,6 @@
 
   // Initialize the sidebar when the document is ready
   $(document).ready(function() {
-      init_sidebar();
-  });
+    init_sidebar();
+});
 })(jQuery);
