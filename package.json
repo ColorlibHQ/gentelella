@@ -3,7 +3,9 @@
   "version": "2.0-beta2",
   "description": "Gentelella Admin is a free to use Bootstrap admin template",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "repository": {
     "type": "git",
@@ -31,15 +33,8 @@
   },
   "homepage": "https://github.com/puikinsh/gentelella#readme",
   "devDependencies": {
-    "browser-sync": "^2.26.7",
-    "gulp": "^4.0.2",
-    "gulp-autoprefixer": "^7.0.1",
-    "gulp-concat": "^2.6.1",
-    "gulp-rename": "^2.0.0",
-    "gulp-ruby-sass": "^4.0.0",
-    "gulp-sass": "^6.0.1",
-    "gulp-uglify": "^3.0.2",
-    "sass": "^1.89.2"
+    "sass": "^1.89.2",
+    "vite": "^6.3.5"
   },
   "dependencies": {
     "autosize": "^6.0.1",
@@ -59,6 +54,7 @@
     "ion-rangeslider": "^2.3.1",
     "jquery": "^3.6.1",
     "jquery-sparkline": "^2.4.0",
+    "jquery-ui": "^1.14.1",
     "jqvmap": "^1.5.1",
     "malihu-custom-scrollbar-plugin": "^3.1.5",
     "moment": "^2.30.1",

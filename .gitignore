@@ -3,8 +3,8 @@ npm-debug.log
 node_modules
 .sass-cache
 
-# Build output
-build/
+# Build outputs
+dist/
 
 # Vendor dependencies (generated from node_modules)
 vendors/
