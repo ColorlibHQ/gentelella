@@ -78,22 +78,11 @@
       });
     }
 
-    // Gauge Chart (for Quick Settings Profile Completion)
-    // Temporarily disabled due to library loading issues
-    // TODO: Fix gauge.js loading
-    if ($('#chart_gauge_01').length && typeof Gauge !== 'undefined') {
-      var gauge = new Gauge(document.getElementById("chart_gauge_01")).setOptions({
-        colorStart: '#55BF3B',
-        colorStop: '#55BF3B',
-        strokeColor: '#E0E0E0',
-        generateGradient: true,
-        percentColors: [[0.0, "#a9d70b"], [0.50, "#f9c802"], [1.0, "#ff0000"]]
-      });
-      gauge.maxValue = 100;
-      gauge.animationSpeed = 32;
-      gauge.set(75); // Set to 75%
-      document.getElementById("gauge-text").innerHTML = "75";
-    }
+    // Initialize all chart components
+    initializeGauges();
+    initializeCharts();
+    initializeNetworkCharts();
+    initializeSkycons();
 
     // World Map (for Visitors Location)
     if ($('#world-map-gdp').length) {
@@ -663,53 +652,9 @@
       NProgress.start();
     }
 
-    // ---------------------------------
-    // Gauge (Quick Settings)
-    // ---------------------------------
-    if (typeof Gauge !== 'undefined' && document.getElementById('chart_gauge_01')) {
-      var chartGaugeSettings = {
-        lines: 12,
-        angle: 0,
-        lineWidth: 0.4,
-        pointer: {
-          length: 0.75,
-          strokeWidth: 0.042,
-          color: '#1D212A'
-        },
-        limitMax: false,
-        colorStart: '#1ABC9C',
-        colorStop: '#1ABC9C',
-        strokeColor: '#F0F3F3',
-        generateGradient: true
-      };
+    // Gauge initialization is handled by initializeGauges() function
 
-      var gaugeElem = document.getElementById('chart_gauge_01');
-      var gaugeChart = new Gauge(gaugeElem).setOptions(chartGaugeSettings);
-
-      gaugeChart.maxValue = 6000;
-      gaugeChart.animationSpeed = 32;
-      gaugeChart.set(3200);
-      var gaugeText = document.getElementById('gauge-text');
-      if (gaugeText) {
-        gaugeChart.setTextField(gaugeText);
-      }
-    }
-
-    // ---------------------------------
-    // Skycons (Daily Active Users)
-    // ---------------------------------
-    if (typeof Skycons !== 'undefined') {
-      var skycons = new Skycons({ color: '#73879C' });
-      var skyconTypes = [
-        'clear-day', 'clear-night', 'partly-cloudy-day',
-        'partly-cloudy-night', 'cloudy', 'rain', 'sleet', 'snow', 'wind',
-        'fog'
-      ];
-      skyconTypes.forEach(function (type) {
-        skycons.add(type, Skycons[type.replace(/-([a-z])/g, function(_, c){ return c.toUpperCase(); })] || type);
-      });
-      skycons.play();
-    }
+    // Skycons initialization moved to initializeSkycons() function
 
     // Top Campaign Performance Progress Bars with data-transitiongoal
     if ($(".progress .progress-bar[data-transitiongoal]").length) {
@@ -723,28 +668,96 @@
       });
     }
 
-    // Chart.js v4 - Charts initialization
-    initializeCharts();
+    // Chart initialization moved to main window.on('load') event
   });
 
-  // Listen for gauge loaded event
-  document.addEventListener('gaugeLoaded', function() {
-    // Gauge Chart (for Quick Settings Profile Completion)
-    if ($('#chart_gauge_01').length && typeof Gauge !== 'undefined') {
-      var gauge = new Gauge(document.getElementById("chart_gauge_01")).setOptions({
-        colorStart: '#55BF3B',
-        colorStop: '#55BF3B', 
-        strokeColor: '#E0E0E0',
-        generateGradient: true,
-        percentColors: [[0.0, "#a9d70b"], [0.50, "#f9c802"], [1.0, "#ff0000"]]
-      });
-      gauge.maxValue = 100;
-      gauge.animationSpeed = 32;
-      gauge.set(75); // Set to 75%
-      document.getElementById("gauge-text").innerHTML = "75";
-      console.log('✅ Gauge chart initialized');
+  // Modern gauge initialization function
+  function initializeGauges() {
+    if (typeof Gauge === 'undefined') {
+      console.warn('⚠️ Gauge library not available');
+      return;
     }
-  });
+
+    try {
+      // Initialize chart_gauge_01 (Profile Completion in index.html)
+      const gauge01Element = document.getElementById('chart_gauge_01');
+      if (gauge01Element) {
+        // Check if Gauge needs to be accessed from a different property
+        const GaugeConstructor = Gauge.default || Gauge;
+        const gauge01 = new GaugeConstructor(gauge01Element);
+        
+        gauge01.setOptions({
+          angle: 0.15,
+          lineWidth: 0.44,
+          radiusScale: 1,
+          pointer: {
+            length: 0.6,
+            strokeWidth: 0.035,
+            color: '#26B99A'
+          },
+          limitMax: false,
+          limitMin: false,
+          colorStart: '#6FADCF',
+          colorStop: '#8FC0DA',
+          strokeColor: '#E0E0E0',
+          generateGradient: true,
+          highDpiSupport: true,
+          percentColors: [[0.0, "#a9d70b"], [0.50, "#f9c802"], [1.0, "#ff0000"]]
+        });
+        
+        gauge01.maxValue = 100;
+        gauge01.setMinValue(0);
+        gauge01.animationSpeed = 32;
+        gauge01.set(75); // Set to 75%
+        
+        const gaugeText = document.getElementById('gauge-text');
+        if (gaugeText) {
+          gauge01.setTextField(gaugeText);
+        }
+        
+        console.log('✅ Gauge 01 initialized');
+      }
+
+      // Initialize chart_gauge_02 (Goal gauge in index3.html)
+      const gauge02Element = document.getElementById('chart_gauge_02');
+      if (gauge02Element) {
+        const GaugeConstructor = Gauge.default || Gauge;
+        const gauge02 = new GaugeConstructor(gauge02Element);
+        
+        gauge02.setOptions({
+          angle: 0.15,
+          lineWidth: 0.44,
+          radiusScale: 1,
+          pointer: {
+            length: 0.6,
+            strokeWidth: 0.035,
+            color: '#26B99A'
+          },
+          limitMax: false,
+          limitMin: false,
+          colorStart: '#6FADCF',
+          colorStop: '#8FC0DA',
+          strokeColor: '#E0E0E0',
+          generateGradient: true,
+          highDpiSupport: true
+        });
+        
+        gauge02.maxValue = 5000;
+        gauge02.setMinValue(0);
+        gauge02.animationSpeed = 32;
+        gauge02.set(3200);
+        
+        const gaugeText2 = document.getElementById('gauge-text2');
+        if (gaugeText2) {
+          gauge02.setTextField(gaugeText2);
+        }
+        
+        console.log('✅ Gauge 02 initialized');
+      }
+    } catch (error) {
+      console.error('❌ Gauge initialization error:', error);
+    }
+  }
 
   // Chart.js v4 initialization
   function initializeCharts() {
@@ -898,6 +911,206 @@
           }
         }
       });
+    }
+  }
+
+  // Network Activity Charts (Chart.js replacement for Flot)
+  function initializeNetworkCharts() {
+    // Network Activity Chart 1 (index.html)
+    if (document.getElementById('chart_plot_01')) {
+      const netCtx1 = document.getElementById('chart_plot_01');
+      const canvas1 = document.createElement('canvas');
+      canvas1.id = 'networkChart1';
+      canvas1.width = netCtx1.offsetWidth;
+      canvas1.height = 250;
+      netCtx1.appendChild(canvas1);
+      
+      new Chart(canvas1, {
+        type: 'line',
+        data: {
+          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+          datasets: [{
+            label: 'Network Requests',
+            data: [28, 48, 40, 19, 86, 27, 90, 60, 30, 80, 50, 70],
+            backgroundColor: 'rgba(38, 185, 154, 0.3)',
+            borderColor: 'rgba(38, 185, 154, 0.7)',
+            borderWidth: 2,
+            fill: true,
+            tension: 0.4
+          }, {
+            label: 'Data Transfer',
+            data: [65, 59, 80, 81, 56, 55, 40, 45, 60, 70, 55, 50],
+            backgroundColor: 'rgba(3, 88, 106, 0.3)',
+            borderColor: 'rgba(3, 88, 106, 0.7)',
+            borderWidth: 2,
+            fill: true,
+            tension: 0.4
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: true,
+              position: 'top'
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              grid: {
+                color: '#E4E7ED'
+              }
+            },
+            x: {
+              grid: {
+                color: '#E4E7ED'
+              }
+            }
+          }
+        }
+      });
+      console.log('✅ Network Chart 1 initialized');
+    }
+
+    // Network Activity Chart 2 (index2.html)  
+    if (document.getElementById('chart_plot_02')) {
+      const netCtx2 = document.getElementById('chart_plot_02');
+      const canvas2 = document.createElement('canvas');
+      canvas2.id = 'networkChart2';
+      canvas2.width = netCtx2.offsetWidth;
+      canvas2.height = 250;
+      netCtx2.appendChild(canvas2);
+      
+      new Chart(canvas2, {
+        type: 'line',
+        data: {
+          labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+          datasets: [{
+            label: 'Email Sent',
+            data: [120, 190, 300, 500],
+            backgroundColor: 'rgba(150, 202, 89, 0.3)',
+            borderColor: 'rgba(150, 202, 89, 0.7)',
+            borderWidth: 2,
+            fill: true,
+            tension: 0.4
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: true,
+              position: 'top'
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              grid: {
+                color: '#E4E7ED'
+              }
+            },
+            x: {
+              grid: {
+                color: '#E4E7ED'
+              }
+            }
+          }
+        }
+      });
+      console.log('✅ Network Chart 2 initialized');
+    }
+
+    // Network Activity Chart 3 (index3.html)
+    if (document.getElementById('chart_plot_03')) {
+      const netCtx3 = document.getElementById('chart_plot_03');
+      const canvas3 = document.createElement('canvas');
+      canvas3.id = 'networkChart3';
+      canvas3.width = netCtx3.offsetWidth;
+      canvas3.height = 250;
+      netCtx3.appendChild(canvas3);
+      
+      new Chart(canvas3, {
+        type: 'line',
+        data: {
+          labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+          datasets: [{
+            label: 'Registrations',
+            data: [450, 650, 800, 1200],
+            backgroundColor: 'rgba(150, 202, 89, 0.3)',
+            borderColor: 'rgba(150, 202, 89, 0.7)',
+            borderWidth: 2,
+            fill: true,
+            tension: 0.4
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: true,
+              position: 'top'
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              grid: {
+                color: '#E4E7ED'
+              }
+            },
+            x: {
+              grid: {
+                color: '#E4E7ED'
+              }
+            }
+          }
+        }
+      });
+      console.log('✅ Network Chart 3 initialized');
+    }
+  }
+
+  // Skycons (Weather Icons) - Fixed initialization
+  function initializeSkycons() {
+    if (typeof Skycons === 'undefined') {
+      console.warn('⚠️ Skycons library not available');
+      return;
+    }
+
+    try {
+      var skycons = new Skycons({ color: '#73879C' });
+      
+      // Weather icons mapping
+      var weatherElements = [
+        { id: 'clear-day', type: Skycons.CLEAR_DAY },
+        { id: 'clear-night', type: Skycons.CLEAR_NIGHT },
+        { id: 'partly-cloudy-day', type: Skycons.PARTLY_CLOUDY_DAY },
+        { id: 'partly-cloudy-night', type: Skycons.PARTLY_CLOUDY_NIGHT },
+        { id: 'cloudy', type: Skycons.CLOUDY },
+        { id: 'rain', type: Skycons.RAIN },
+        { id: 'sleet', type: Skycons.SLEET },
+        { id: 'snow', type: Skycons.SNOW },
+        { id: 'wind', type: Skycons.WIND },
+        { id: 'fog', type: Skycons.FOG }
+      ];
+
+      weatherElements.forEach(function(weather) {
+        var element = document.getElementById(weather.id);
+        if (element) {
+          skycons.add(element, weather.type);
+          console.log('✅ Skycons added:', weather.id);
+        }
+      });
+
+      skycons.play();
+      console.log('✅ Skycons initialized and playing');
+    } catch (error) {
+      console.error('❌ Skycons initialization error:', error);
     }
   }
 

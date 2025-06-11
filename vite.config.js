@@ -27,6 +27,8 @@ export default defineConfig({
     }
   },
   define: {
-    global: 'globalThis'
+    global: 'globalThis',
+    'process.env': {},
+    'process.env.NODE_ENV': '"production"'
   }
 }); 
