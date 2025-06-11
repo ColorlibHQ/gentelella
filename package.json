@@ -18,37 +18,42 @@
     "template",
     "admin",
     "bootstrap",
+    "bootstrap5",
     "theme",
     "backend",
-    "responsive"
+    "responsive",
+    "modern"
   ],
   "author": "Aigars Silkalns",
   "contributors": [
     "Christian Esperar"
   ],
   "license": "MIT",
-  "main": "build/js/custom.min.js",
+  "main": "src/main.js",
   "bugs": {
     "url": "https://github.com/puikinsh/gentelella/issues"
   },
   "homepage": "https://github.com/puikinsh/gentelella#readme",
   "devDependencies": {
+    "glob": "^11.0.2",
     "sass": "^1.89.2",
     "vite": "^6.3.5"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.6.0",
+    "@popperjs/core": "^2.11.8",
     "autosize": "^6.0.1",
-    "bootstrap": "^4.6.2",
+    "bootstrap": "^5.3.6",
     "bootstrap-progressbar": "^0.9.0",
     "bootstrap-wysiwyg": "^2.0.1",
-    "chart.js": "^2.9.4",
+    "chart.js": "^4.4.2",
     "cropper": "^4.1.0",
     "datatables.net": "^2.3.2",
-    "datatables.net-bs": "^2.3.2",
+    "datatables.net-bs5": "^2.3.2",
     "daterangepicker": "^3.1.0",
+    "dayjs": "^1.11.13",
     "fastclick": "^1.0.6",
     "flot": "^4.2.6",
-    "font-awesome": "^4.7.0",
     "gauge.js": "^0.2.1",
     "icheck": "^1.0.2",
     "ion-rangeslider": "^2.3.1",
@@ -57,7 +62,6 @@
     "jquery-ui": "^1.14.1",
     "jqvmap": "^1.5.1",
     "malihu-custom-scrollbar-plugin": "^3.1.5",
-    "moment": "^2.30.1",
     "nprogress": "^0.2.0",
     "parsleyjs": "^2.9.2",
     "pnotify": "^5.2.0",

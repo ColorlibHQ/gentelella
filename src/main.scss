@@ -1,11 +1,16 @@
-@import "bootstrap/dist/css/bootstrap.min.css";
-@import "font-awesome/css/font-awesome.min.css";
+// Bootstrap 5 core CSS
+@import "bootstrap/scss/bootstrap";
+
+// Font Awesome 6 
+@import "@fortawesome/fontawesome-free/css/all.min.css";
+
+// Other vendor CSS
 @import "nprogress/nprogress.css";
 @import "malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css";
 @import "jquery-ui/dist/themes/ui-lightness/jquery-ui.css";
 @import "./css/switchery.min.css";
 
-// Vendor CSS for dashboard widgets
+// Vendor CSS for dashboard widgets  
 @import "../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css";
 @import "../vendors/jqvmap/dist/jqvmap.min.css";
 

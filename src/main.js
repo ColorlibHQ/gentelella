@@ -1,49 +1,42 @@
-// Import jQuery setup first - this ensures global availability
+// Import jQuery setup first - still needed for some widgets
 import $ from './jquery-setup.js';
 
-// Import jQuery UI core and widget factory first
+// Import jQuery UI core and widget factory for specific widgets
 import 'jquery-ui/ui/widget.js';
 import 'jquery-ui/ui/widgets/progressbar.js';
 
-// Import Chart.js and make it globally available
-import Chart from 'chart.js/dist/Chart.bundle.js';
+// Bootstrap 5 - No jQuery dependency needed
+import * as bootstrap from 'bootstrap';
+window.bootstrap = bootstrap;
+
+// Chart.js v4 - No jQuery dependency 
+import { Chart, registerables } from 'chart.js';
+Chart.register(...registerables);
 window.Chart = Chart;
 
-// Import additional vendor libraries for dashboard widgets
+// Additional vendor libraries for dashboard widgets
 import '../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js';
 import '../vendors/jqvmap/dist/jquery.vmap.js';
 import '../vendors/jqvmap/dist/maps/jquery.vmap.world.js';
 
-// Global styles 
+// Global styles (Bootstrap 5 + custom)
 import './main.scss';
-
-// Bootstrap (after jQuery is ready)
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 // Legacy scripts that depend on global jQuery
 import './js/helpers/smartresize.js';
 import './js/sidebar.js';
 import './js/init.js';
 
-// Load gauge.js after everything else
-setTimeout(() => {
-  const script = document.createElement('script');
-  script.src = '/vendors/gauge.js/dist/gauge.min.js';
-  script.onload = () => {
-    // Re-enable gauge functionality after library loads
-    if (typeof Gauge !== 'undefined' && $('#chart_gauge_01').length) {
-      var gauge = new Gauge(document.getElementById("chart_gauge_01")).setOptions({
-        colorStart: '#55BF3B',
-        colorStop: '#55BF3B',
-        strokeColor: '#E0E0E0',
-        generateGradient: true,
-        percentColors: [[0.0, "#a9d70b"], [0.50, "#f9c802"], [1.0, "#ff0000"]]
-      });
-      gauge.maxValue = 100;
-      gauge.animationSpeed = 32;
-      gauge.set(75);
-      document.getElementById("gauge-text").innerHTML = "75";
-    }
-  };
-  document.head.appendChild(script);
-}, 1000); 
+// Load gauge.js with proper timing
+document.addEventListener('DOMContentLoaded', function() {
+    // Load gauge.js after DOM is ready
+    setTimeout(() => {
+        import('../vendors/gauge.js/dist/gauge.min.js').then(() => {
+            console.log('✅ Gauge.js loaded successfully');
+            // Trigger custom event for gauge initialization
+            document.dispatchEvent(new Event('gaugeLoaded'));
+        }).catch(err => {
+            console.warn('⚠️ Gauge.js failed to load:', err);
+        });
+    }, 1000);
+}); 
