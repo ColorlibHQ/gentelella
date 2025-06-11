@@ -8,12 +8,6 @@ if (typeof window !== 'undefined') {
   // Verify the assignment worked
   if (!window.jQuery || !window.$) {
     console.error('CRITICAL: jQuery global assignment failed!');
-  } else {
-    console.log('✓ jQuery globally available:', {
-      version: $.fn.jquery,
-      jQuery: !!window.jQuery,
-      $: !!window.$
-    });
   }
 }
 

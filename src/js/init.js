@@ -66,6 +66,58 @@
       $('.progress .progress-bar').progressbar();
     }
 
+    // Bootstrap Progressbar with data-transitiongoal (for Top Campaign Performance)
+    if ($(".progress .progress-bar[data-transitiongoal]").length) {
+      $(".progress .progress-bar[data-transitiongoal]").each(function() {
+        var $this = $(this);
+        var goal = $this.data('transitiongoal');
+        $this.progressbar({
+          transition_delay: 1000,
+          refresh_speed: 50,
+          display_text: 'none'
+        });
+      });
+    }
+
+    // Gauge Chart (for Quick Settings Profile Completion)
+    // Temporarily disabled due to library loading issues
+    // TODO: Fix gauge.js loading
+    if ($('#chart_gauge_01').length && typeof Gauge !== 'undefined') {
+      var gauge = new Gauge(document.getElementById("chart_gauge_01")).setOptions({
+        colorStart: '#55BF3B',
+        colorStop: '#55BF3B',
+        strokeColor: '#E0E0E0',
+        generateGradient: true,
+        percentColors: [[0.0, "#a9d70b"], [0.50, "#f9c802"], [1.0, "#ff0000"]]
+      });
+      gauge.maxValue = 100;
+      gauge.animationSpeed = 32;
+      gauge.set(75); // Set to 75%
+      document.getElementById("gauge-text").innerHTML = "75";
+    }
+
+    // World Map (for Visitors Location)
+    if ($('#world-map-gdp').length) {
+      $('#world-map-gdp').vectorMap({
+        map: 'world_en',
+        backgroundColor: null,
+        color: '#ffffff',
+        hoverOpacity: 0.7,
+        selectedColor: '#1de9b6',
+        enableZoom: true,
+        showTooltip: true,
+        values: {
+          'us': 33,
+          'fr': 27,
+          'de': 16,
+          'es': 11,
+          'gb': 10
+        },
+        scaleColors: ['#E2E2E2', '#1de9b6'],
+        normalizeFunction: 'polynomial'
+      });
+    }
+
     // Chart.js initialization - Main Dashboard Chart
     console.log("Chart.js init script started");
     if (typeof Chart !== 'undefined') {
