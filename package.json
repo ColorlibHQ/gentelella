@@ -40,6 +40,7 @@
     "vite": "^6.3.5"
   },
   "dependencies": {
+    "@eonasdan/tempus-dominus": "^6.10.4",
     "@fortawesome/fontawesome-free": "^6.6.0",
     "@popperjs/core": "^2.11.8",
     "autosize": "^6.0.1",

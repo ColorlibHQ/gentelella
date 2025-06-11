@@ -10,6 +10,9 @@
 @import "jquery-ui/dist/themes/ui-lightness/jquery-ui.css";
 @import "./css/switchery.min.css";
 
+// Date/Time Picker CSS
+@import "@eonasdan/tempus-dominus/dist/css/tempus-dominus.min.css";
+
 // Vendor CSS for dashboard widgets  
 @import "../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css";
 @import "../vendors/jqvmap/dist/jqvmap.min.css";

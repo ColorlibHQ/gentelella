@@ -9,10 +9,22 @@ import 'jquery-ui/ui/widgets/progressbar.js';
 import * as bootstrap from 'bootstrap';
 window.bootstrap = bootstrap;
 
+// Day.js for date manipulation (modern replacement for moment.js)
+import dayjs from 'dayjs';
+window.dayjs = dayjs;
+
 // Chart.js v4 - No jQuery dependency 
 import { Chart, registerables } from 'chart.js';
 Chart.register(...registerables);
 window.Chart = Chart;
+
+// Tempus Dominus DateTimePicker (Bootstrap 5 compatible)
+import { TempusDominus } from '@eonasdan/tempus-dominus';
+window.TempusDominus = TempusDominus;
+
+// DateRangePicker (Bootstrap 5 compatible)
+import 'daterangepicker/daterangepicker.css';
+import 'daterangepicker';
 
 // Additional vendor libraries for dashboard widgets
 import '../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js';
