@@ -42,7 +42,8 @@ window.echarts = echarts;
 console.log('✅ ECharts loaded');
 
 // Skycons (Animated weather icons)
-import Skycons from 'skycons';
+import skycons from 'skycons';
+const Skycons = skycons(typeof window !== 'undefined' ? window : global);
 window.Skycons = Skycons;
 console.log('✅ Skycons loaded');
 

@@ -321,7 +321,7 @@
                           <!-- Three Column Layout -->
                           <div class="row">
                             <!-- Column 1 -->
-                            <div class="col-xs-4 text-center">
+                            <div class="col-md-4 col-sm-4 col-4 text-center" style="float: left;">
                               <div style="margin-bottom: 25px;">
                                 <span class="chart-medium" data-percent="86" data-label="CPU Usage">
                                   <span class="percent"></span>
@@ -343,7 +343,7 @@
                             </div>
 
                             <!-- Column 2 -->
-                            <div class="col-xs-4 text-center">
+                            <div class="col-md-4 col-sm-4 col-4 text-center" style="float: left;">
                               <div style="margin-bottom: 25px;">
                                 <span class="chart-medium" data-percent="73" data-label="Memory">
                                   <span class="percent"></span>
@@ -365,7 +365,7 @@
                             </div>
 
                             <!-- Column 3 -->
-                            <div class="col-xs-4 text-center">
+                            <div class="col-md-4 col-sm-4 col-4 text-center" style="float: left;">
                               <div style="margin-bottom: 25px;">
                                 <span class="chart-medium" data-percent="92" data-label="Storage">
                                   <span class="percent"></span>
@@ -385,6 +385,7 @@
                                 <div style="margin-top: 8px; font-weight: bold; color: #333;">API</div>
                               </div>
                             </div>
+                            <div class="clearfix"></div>
                           </div>
 
                         </div>
@@ -393,60 +394,58 @@
                       <div class="col-md-6">
                         <div class="panel panel-body">
                           <div class="x_title">
-                            <h4>Sparkline Inline Graphs</h4>
+                            <h4>Sparkline Analytics Dashboard</h4>
                           </div>
 
-                          <p>Yet another great library for inline data visualizations</p>
-                          <table class="table table-striped">
-                            <thead>
-                              <tr>
-                                <th style="width:20%"></th>
-                                <th style="width:50%"></th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <th>
-                                  <span class="sparkline_line" style="height: 160px;">
-                                                      <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
-                                                  </span>
-                                </th>
-                                <td>Line Graph</td>
-                              </tr>
-                              <tr>
-                                <th>
-                                  <span class="sparkline_area" style="height: 160px;">
-                                                      <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
-                                                  </span>
-                                </th>
-                                <td>Line Area Graph</td>
-                              </tr>
-                              <tr>
-                                <th>
-                                  <span class="sparkline_bar" style="height: 160px;">
-                                                      <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
-                                                  </span>
-                                </th>
-                                <td>Bar Graph</td>
-                              </tr>
-                              <tr>
-                                <th>
-                                  <span class="sparkline_pie" style="height: 160px;">
-                                                      <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
-                                                  </span>
-                                </th>
-                                <td>Pie Chart</td>
-                              </tr>
-                              <tr>
-                                <th>
-                                  <span class="sparkline_discreet" style="height: 160px;">
-                                                      <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
-                                                  </span>
-                                </th>
-                                <td>Discrete chart</td>
-                              </tr>
-                            </tbody>
-                          </table>
+                          <p>Interactive mini charts showing key performance trends and metrics</p>
+                          
+                          <!-- Sparkline Grid Layout -->
+                          <div class="row">
+                            <div class="col-md-6 text-center" style="margin-bottom: 30px;">
+                              <div style="margin-bottom: 10px;">
+                                <span class="sparkline_line"></span>
+                              </div>
+                              <div style="font-weight: bold; color: #333; font-size: 14px;">Revenue Trend</div>
+                              <div style="color: #666; font-size: 12px;">Monthly Growth</div>
+                            </div>
+                            
+                            <div class="col-md-6 text-center" style="margin-bottom: 30px;">
+                              <div style="margin-bottom: 10px;">
+                                <span class="sparkline_area"></span>
+                              </div>
+                              <div style="font-weight: bold; color: #333; font-size: 14px;">User Activity</div>
+                              <div style="color: #666; font-size: 12px;">Daily Sessions</div>
+                            </div>
+                          </div>
+                          
+                          <div class="row">
+                            <div class="col-md-6 text-center" style="margin-bottom: 30px;">
+                              <div style="margin-bottom: 10px;">
+                                <span class="sparkline_bar"></span>
+                              </div>
+                              <div style="font-weight: bold; color: #333; font-size: 14px;">Sales Volume</div>
+                              <div style="color: #666; font-size: 12px;">Weekly Performance</div>
+                            </div>
+                            
+                            <div class="col-md-6 text-center" style="margin-bottom: 30px;">
+                              <div style="margin-bottom: 10px;">
+                                <span class="sparkline_pie"></span>
+                              </div>
+                              <div style="font-weight: bold; color: #333; font-size: 14px;">Market Share</div>
+                              <div style="color: #666; font-size: 12px;">Distribution</div>
+                            </div>
+                          </div>
+                          
+                          <div class="row">
+                            <div class="col-md-12 text-center">
+                              <div style="margin-bottom: 10px;">
+                                <span class="sparkline_discreet"></span>
+                              </div>
+                              <div style="font-weight: bold; color: #333; font-size: 14px;">System Events</div>
+                              <div style="color: #666; font-size: 12px;">Event Distribution Pattern</div>
+                            </div>
+                          </div>
+
                         </div>
                       </div>
                     </div>

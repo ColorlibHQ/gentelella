@@ -84,6 +84,7 @@
     initializeNetworkCharts();
     initializeECharts();
     initializeOtherCharts();
+    initializeIndex2();
     initializeSkycons();
     initializeGeneralElements();
     initializeMaps();
@@ -1944,13 +1945,48 @@
       
       console.log('✅ Easy Pie Charts initialized');
 
-      // 3. Sparkline Charts using ECharts mini charts
+      // 3. Sparkline Charts using ECharts - Larger size to match pie charts
       const sparklineElements = [
-        { selector: '.sparkline_line', type: 'line', data: [5, 6, 7, 2, 0, 4, 2, 4, 5, 7, 2, 4, 12, 14] },
-        { selector: '.sparkline_area', type: 'area', data: [5, 6, 2, 9, 4, 5, 3, 8, 5, 7, 9, 4, 2, 14] },
-        { selector: '.sparkline_bar', type: 'bar', data: [5, 6, 7, 2, 0, 4, 2, 4, 5, 7, 2, 4, 12, 14] },
-        { selector: '.sparkline_pie', type: 'pie', data: [20, 30, 25, 25] },
-        { selector: '.sparkline_discreet', type: 'scatter', data: [4, 6, 7, 7, 4, 3, 2, 1, 4, 4, 5, 6, 3, 4] }
+        { 
+          selector: '.sparkline_line', 
+          type: 'line', 
+          data: [45, 52, 38, 64, 51, 47, 59, 68, 42, 58, 73, 65, 78, 82], 
+          width: 180, 
+          height: 80,
+          color: '#26B99A'
+        },
+        { 
+          selector: '.sparkline_area', 
+          type: 'area', 
+          data: [32, 48, 54, 41, 67, 59, 45, 73, 68, 52, 84, 76, 59, 91], 
+          width: 180, 
+          height: 80,
+          color: '#3498DB'
+        },
+        { 
+          selector: '.sparkline_bar', 
+          type: 'bar', 
+          data: [25, 42, 58, 31, 49, 63, 37, 54, 48, 66, 52, 71, 45, 68], 
+          width: 180, 
+          height: 80,
+          color: '#E74C3C'
+        },
+        { 
+          selector: '.sparkline_pie', 
+          type: 'pie', 
+          data: [35, 28, 22, 15], 
+          width: 120, 
+          height: 120,
+          color: '#F39C12'
+        },
+        { 
+          selector: '.sparkline_discreet', 
+          type: 'scatter', 
+          data: [12, 24, 18, 32, 28, 15, 41, 38, 22, 29, 45, 33, 19, 36, 42, 27, 51, 38], 
+          width: 380, 
+          height: 80,
+          color: '#9B59B6'
+        }
       ];
 
       sparklineElements.forEach(function(config, index) {
@@ -1960,13 +1996,15 @@
           
           // Clear existing content
           element.innerHTML = '';
-          element.style.width = '100px';
-          element.style.height = '40px';
+          element.style.width = config.width + 'px';
+          element.style.height = config.height + 'px';
+          element.style.margin = '0 auto';
+          element.style.display = 'block';
           
           const chartDiv = document.createElement('div');
           chartDiv.id = chartId;
-          chartDiv.style.width = '100px';
-          chartDiv.style.height = '40px';
+          chartDiv.style.width = config.width + 'px';
+          chartDiv.style.height = config.height + 'px';
           element.appendChild(chartDiv);
           
           const sparkChart = echarts.init(chartDiv);
@@ -1977,25 +2015,31 @@
               series: [
                 {
                   type: 'pie',
-                  radius: ['40%', '70%'],
+                  radius: ['35%', '65%'],
+                  center: ['50%', '50%'],
                   data: [
-                    { value: config.data[0], itemStyle: { color: '#26B99A' } },
-                    { value: config.data[1], itemStyle: { color: '#3498DB' } },
-                    { value: config.data[2], itemStyle: { color: '#E74C3C' } },
-                    { value: config.data[3], itemStyle: { color: '#F39C12' } }
+                    { value: config.data[0], name: 'Product A', itemStyle: { color: '#26B99A' } },
+                    { value: config.data[1], name: 'Product B', itemStyle: { color: '#3498DB' } },
+                    { value: config.data[2], name: 'Product C', itemStyle: { color: '#E74C3C' } },
+                    { value: config.data[3], name: 'Others', itemStyle: { color: '#F39C12' } }
                   ],
                   label: { show: false },
-                  emphasis: { disabled: true }
+                  emphasis: { 
+                    scale: true,
+                    scaleSize: 5
+                  },
+                  animationType: 'expansion',
+                  animationDuration: 800
                 }
               ]
             };
           } else {
             option = {
               grid: {
-                left: 0,
-                right: 0,
-                top: 0,
-                bottom: 0
+                left: 5,
+                right: 5,
+                top: 5,
+                bottom: 5
               },
               xAxis: {
                 type: 'category',
@@ -2011,25 +2055,63 @@
                   type: config.type === 'area' ? 'line' : config.type,
                   data: config.data,
                   lineStyle: {
-                    color: '#26B99A',
-                    width: 2
+                    color: config.color,
+                    width: 3
                   },
                   itemStyle: {
-                    color: '#26B99A'
+                    color: config.color
                   },
                   areaStyle: config.type === 'area' ? {
-                    color: 'rgba(38, 185, 154, 0.3)'
+                    color: {
+                      type: 'linear',
+                      x: 0,
+                      y: 0,
+                      x2: 0,
+                      y2: 1,
+                      colorStops: [
+                        { offset: 0, color: config.color + '80' },
+                        { offset: 1, color: config.color + '20' }
+                      ]
+                    }
                   } : undefined,
                   symbol: config.type === 'scatter' ? 'circle' : 'none',
-                  symbolSize: config.type === 'scatter' ? 4 : 0,
-                  animation: false,
-                  barWidth: config.type === 'bar' ? '60%' : undefined
+                  symbolSize: config.type === 'scatter' ? 6 : 0,
+                  animation: true,
+                  animationDuration: 1000,
+                  barWidth: config.type === 'bar' ? '70%' : undefined,
+                  smooth: config.type === 'line' || config.type === 'area'
                 }
               ]
             };
           }
           
           sparkChart.setOption(option);
+          
+          // Add hover effects for interactivity
+          if (config.type !== 'pie') {
+            chartDiv.addEventListener('mouseenter', function() {
+              sparkChart.setOption({
+                series: [{
+                  lineStyle: {
+                    width: config.type === 'line' || config.type === 'area' ? 4 : 3,
+                    shadowBlur: 10,
+                    shadowColor: config.color
+                  }
+                }]
+              });
+            });
+            
+            chartDiv.addEventListener('mouseleave', function() {
+              sparkChart.setOption({
+                series: [{
+                  lineStyle: {
+                    width: 3,
+                    shadowBlur: 0
+                  }
+                }]
+              });
+            });
+          }
         }
       });
       
@@ -2057,17 +2139,298 @@
     }
   }
 
-  // Skycons (Weather Icons) - Fixed initialization
+  // Index2 page specific initialization (Transaction Summary, Top Profiles, Charts)
+  function initializeIndex2() {
+    if (!document.body.classList.contains('page-index2')) {
+      return;
+    }
+
+    console.log('Initializing Index2 dashboard...');
+
+    try {
+      // 1. Initialize main transaction chart (chart_plot_02)
+      if (document.getElementById('chart_plot_02')) {
+        const chartContainer = document.getElementById('chart_plot_02');
+        chartContainer.style.height = '280px';
+        
+        // Clear and create canvas
+        chartContainer.innerHTML = '';
+        const canvas = document.createElement('canvas');
+        canvas.id = 'transactionChart';
+        canvas.style.width = '100%';
+        canvas.style.height = '280px';
+        chartContainer.appendChild(canvas);
+        
+        if (typeof Chart !== 'undefined') {
+          const ctx = canvas.getContext('2d');
+          new Chart(ctx, {
+            type: 'line',
+            data: {
+              labels: ['Dec 30', 'Jan 5', 'Jan 10', 'Jan 15', 'Jan 20', 'Jan 25', 'Jan 28'],
+              datasets: [{
+                label: 'Revenue',
+                data: [180000, 195000, 220000, 210000, 231809, 225000, 240000],
+                borderColor: '#1ABB9C',
+                backgroundColor: 'rgba(26, 187, 156, 0.1)',
+                fill: true,
+                tension: 0.4,
+                pointRadius: 6,
+                pointBackgroundColor: '#1ABB9C',
+                pointBorderColor: '#fff',
+                pointBorderWidth: 2
+              }]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: {
+                legend: {
+                  display: false
+                }
+              },
+              scales: {
+                y: {
+                  beginAtZero: false,
+                  ticks: {
+                    callback: function(value) {
+                      return '$' + (value / 1000) + 'K';
+                    }
+                  }
+                }
+              }
+            }
+          });
+        }
+        
+        console.log('✅ Transaction Summary chart initialized');
+      }
+
+      // 2. Initialize sparkline charts in tiles
+      const sparklineConfigs = [
+        { selector: '.sparkline11', data: [5, 6, 7, 2, 0, 4, 2, 4, 5, 7, 2, 4, 12, 14], color: '#1ABB9C' },
+        { selector: '.sparkline22', data: [3, 8, 2, 9, 4, 5, 3, 8, 5, 7, 9, 4, 2, 14], color: '#3498DB' }
+      ];
+
+      sparklineConfigs.forEach(function(config, index) {
+        const elements = document.querySelectorAll(config.selector);
+        elements.forEach(function(element, elemIndex) {
+          if (typeof echarts !== 'undefined') {
+            element.innerHTML = '';
+            element.style.width = '120px';
+            element.style.height = '40px';
+            
+            const chartDiv = document.createElement('div');
+            chartDiv.id = `sparkline-tile-${index}-${elemIndex}`;
+            chartDiv.style.width = '120px';
+            chartDiv.style.height = '40px';
+            element.appendChild(chartDiv);
+            
+            const sparkChart = echarts.init(chartDiv);
+            const option = {
+              grid: { left: 0, right: 0, top: 0, bottom: 0 },
+              xAxis: { type: 'category', show: false, data: config.data.map((_, i) => i) },
+              yAxis: { type: 'value', show: false },
+              series: [{
+                type: 'line',
+                data: config.data,
+                lineStyle: { color: config.color, width: 2 },
+                itemStyle: { color: config.color },
+                symbol: 'none',
+                smooth: true,
+                animation: true
+              }]
+            };
+            sparkChart.setOption(option);
+          }
+        });
+      });
+
+      // 3. Initialize Weekly Summary sparkline - Enhanced with realistic sales data
+      if (document.querySelector('.sparkline_one')) {
+        const element = document.querySelector('.sparkline_one');
+        if (typeof echarts !== 'undefined') {
+          element.innerHTML = '';
+          element.style.width = '250px';
+          element.style.height = '120px';
+          
+          const chartDiv = document.createElement('div');
+          chartDiv.id = 'weekly-sparkline';
+          chartDiv.style.width = '250px';
+          chartDiv.style.height = '120px';
+          element.appendChild(chartDiv);
+          
+          const weeklyChart = echarts.init(chartDiv);
+          // More realistic weekly sales progression data
+          const weeklyData = [28000, 31500, 29800, 35400, 33200, 36800, 39500, 42300, 38900, 41600, 45200, 43800, 47100, 49800];
+          const weekDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+          
+          const option = {
+            grid: { left: 20, right: 20, top: 20, bottom: 20 },
+            xAxis: { 
+              type: 'category', 
+              show: true,
+              data: weekDays,
+              axisLabel: { fontSize: 10, color: '#999' },
+              axisLine: { show: false },
+              axisTick: { show: false }
+            },
+            yAxis: { 
+              type: 'value', 
+              show: true,
+              axisLabel: { 
+                fontSize: 10, 
+                color: '#999',
+                formatter: function(value) {
+                  return '$' + (value / 1000) + 'K';
+                }
+              },
+              splitLine: { 
+                show: true,
+                lineStyle: { color: '#f0f0f0', width: 1 }
+              }
+            },
+            tooltip: {
+              trigger: 'axis',
+              formatter: function(params) {
+                const point = params[0];
+                return `${point.name}: $${point.value.toLocaleString()}`;
+              }
+            },
+            series: [{
+              type: 'line',
+              data: weeklyData,
+              lineStyle: { color: '#1ABB9C', width: 3 },
+              itemStyle: { color: '#1ABB9C' },
+              areaStyle: {
+                color: {
+                  type: 'linear',
+                  x: 0, y: 0, x2: 0, y2: 1,
+                  colorStops: [
+                    { offset: 0, color: 'rgba(26, 187, 156, 0.3)' },
+                    { offset: 1, color: 'rgba(26, 187, 156, 0.05)' }
+                  ]
+                }
+              },
+              symbol: 'circle',
+              symbolSize: 6,
+              smooth: true,
+              animation: true,
+              animationDuration: 2000
+            }]
+          };
+          weeklyChart.setOption(option);
+        }
+      }
+
+      // 4. Initialize enhanced doughnut charts in Weekly Summary with realistic metrics
+      const doughnutElements = document.querySelectorAll('.canvasDoughnut');
+      const doughnutData = [
+        { 
+          label: 'Bounce Rate', 
+          value: 32,
+          data: [32, 68], 
+          colors: ['#E74C3C', '#ECF0F1'],
+          description: '32% Bounce'
+        },
+        { 
+          label: 'Conversion Rate', 
+          value: 8.5,
+          data: [8.5, 91.5], 
+          colors: ['#3498DB', '#ECF0F1'],
+          description: '8.5% Convert'
+        },
+        { 
+          label: 'Mobile Traffic', 
+          value: 67,
+          data: [67, 33], 
+          colors: ['#26B99A', '#ECF0F1'],
+          description: '67% Mobile'
+        }
+      ];
+
+      doughnutElements.forEach(function(canvas, index) {
+        if (typeof Chart !== 'undefined' && index < doughnutData.length) {
+          const ctx = canvas.getContext('2d');
+          const config = doughnutData[index];
+          
+          new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+              datasets: [{
+                data: config.data,
+                backgroundColor: config.colors,
+                borderWidth: 0,
+                cutout: '65%'
+              }]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: {
+                legend: { display: false },
+                tooltip: {
+                  enabled: true,
+                  callbacks: {
+                    label: function(context) {
+                      return config.description;
+                    }
+                  }
+                }
+              }
+            }
+          });
+
+          // Add center text showing percentage
+          const centerText = document.createElement('div');
+          centerText.style.position = 'absolute';
+          centerText.style.top = '50%';
+          centerText.style.left = '50%';
+          centerText.style.transform = 'translate(-50%, -50%)';
+          centerText.style.fontSize = '16px';
+          centerText.style.fontWeight = 'bold';
+          centerText.style.color = config.colors[0];
+          centerText.style.textAlign = 'center';
+          centerText.style.pointerEvents = 'none';
+          centerText.innerHTML = `${config.value}${config.label.includes('Rate') ? '%' : config.label.includes('Traffic') ? '%' : ''}`;
+          
+          // Position relative container
+          canvas.parentElement.style.position = 'relative';
+          canvas.parentElement.appendChild(centerText);
+        }
+      });
+
+      console.log('✅ Index2 dashboard initialized successfully');
+
+    } catch (error) {
+      console.error('❌ Index2 initialization error:', error);
+    }
+  }
+
+  // Skycons (Weather Icons) - Fixed initialization for weather widgets
   function initializeSkycons() {
+    // Check if we're on a page that has weather widgets
+    const hasWeatherWidget = document.body.classList.contains('page-index') || 
+                             document.body.classList.contains('page-index3') ||
+                             document.querySelector('.weather-icon') !== null;
+    
+    if (!hasWeatherWidget) {
+      return;
+    }
+
     if (typeof Skycons === 'undefined') {
       console.warn('⚠️ Skycons library not available');
       return;
     }
 
+    console.log('Initializing Skycons weather icons...');
+
     try {
-      var skycons = new Skycons({ color: '#73879C' });
+      var skycons = new Skycons({ 
+        color: '#73879C',
+        resizeClear: true
+      });
       
-      // Weather icons mapping
+      // Weather icons mapping with more comprehensive coverage
       var weatherElements = [
         { id: 'clear-day', type: Skycons.CLEAR_DAY },
         { id: 'clear-night', type: Skycons.CLEAR_NIGHT },
@@ -2078,18 +2441,35 @@
         { id: 'sleet', type: Skycons.SLEET },
         { id: 'snow', type: Skycons.SNOW },
         { id: 'wind', type: Skycons.WIND },
-        { id: 'fog', type: Skycons.FOG }
+        { id: 'fog', type: Skycons.FOG },
+        { id: 'hail', type: Skycons.SLEET }, // Use sleet for hail
+        { id: 'thunderstorm', type: Skycons.RAIN } // Use rain for thunderstorm
       ];
+
+      let iconsAdded = 0;
 
       weatherElements.forEach(function(weather) {
         var element = document.getElementById(weather.id);
         if (element) {
+          // Ensure canvas has proper dimensions
+          element.width = element.width || 84;
+          element.height = element.height || 84;
+          
           skycons.add(element, weather.type);
-  
+          iconsAdded++;
+          console.log(`✅ Added Skycon: ${weather.id}`);
         }
       });
 
-      skycons.play();
+      if (iconsAdded > 0) {
+        skycons.play();
+        console.log(`✅ Skycons initialized successfully (${iconsAdded} icons)`);
+        
+        // Store skycons instance globally for potential cleanup
+        window.skycons = skycons;
+      } else {
+        console.warn('⚠️ No weather canvas elements found for Skycons');
+      }
       
     } catch (error) {
       console.error('❌ Skycons initialization error:', error);

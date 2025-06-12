@@ -1,0 +1,208 @@
+/* index2.html specific styles */
+
+/* Top Profiles Styling */
+.top_profiles {
+  .media.event {
+    position: relative;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+    
+    &:last-child {
+      border-bottom: none;
+    }
+    
+    .pull-left {
+      margin-right: 15px;
+    }
+    
+    .profile_thumb {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      
+      i {
+        font-size: 20px;
+        color: white;
+      }
+      
+      &.border-aero {
+        background-color: #1ABB9C;
+        border: 2px solid #1ABB9C;
+      }
+      
+      &.border-green {
+        background-color: #26B99A;
+        border: 2px solid #26B99A;
+      }
+      
+      &.border-blue {
+        background-color: #3498DB;
+        border: 2px solid #3498DB;
+      }
+      
+      &.border-red {
+        background-color: #E74C3C;
+        border: 2px solid #E74C3C;
+      }
+      
+      &.border-purple {
+        background-color: #9B59B6;
+        border: 2px solid #9B59B6;
+      }
+    }
+    
+    .d-flex-body {
+      flex: 1;
+      
+      .title {
+        font-weight: 600;
+        font-size: 16px;
+        color: #333;
+        text-decoration: none;
+        display: block;
+        margin-bottom: 5px;
+        
+        &:hover {
+          color: #1ABB9C;
+        }
+      }
+      
+      p {
+        margin: 0;
+        font-size: 14px;
+        color: #666;
+        
+        strong {
+          color: #1ABB9C;
+          font-weight: 600;
+        }
+        
+        small {
+          color: #999;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}
+
+/* Event Date Styling for Timeline */
+.media.event {
+  .pull-left.date {
+    width: 60px;
+    height: 60px;
+    background: #1ABB9C;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 15px;
+    
+    .month {
+      font-size: 12px;
+      margin: 0;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+    
+    .day {
+      font-size: 20px;
+      font-weight: bold;
+      margin: 0;
+      line-height: 1;
+    }
+  }
+}
+
+/* Tiles Styling for Statistics */
+.tiles {
+  .tile {
+    background: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-left: 3px solid #1ABB9C;
+    
+    span:first-child {
+      font-size: 14px;
+      color: #999;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+    
+    h2 {
+      font-size: 32px;
+      font-weight: bold;
+      color: #333;
+      margin: 10px 0;
+    }
+    
+    .graph {
+      margin-top: 10px;
+    }
+  }
+}
+
+/* Scroll View for Lists - Only apply to Top Profiles */
+.top_profiles.scroll-view {
+  max-height: 300px;
+  overflow-y: auto;
+  
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+    
+    &:hover {
+      background: #555;
+    }
+  }
+}
+
+/* Media Object Flexbox Support */
+.media {
+  display: flex;
+  align-items: flex-start;
+}
+
+.d-flex-body {
+  flex: 1;
+}
+
+/* Color Classes for Icons */
+.aero { color: #1ABB9C !important; }
+.green { color: #26B99A !important; }
+.blue { color: #3498DB !important; }
+.red { color: #E74C3C !important; }
+.purple { color: #9B59B6 !important; }
+
+/* Panel Improvements */
+.x_panel {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  border-radius: 5px;
+}
+
+/* Chart Container Improvements */
+.demo-container {
+  background: white;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+/* Weekly Summary Styling */
+.canvasDoughnut {
+  border-radius: 50%;
+} 

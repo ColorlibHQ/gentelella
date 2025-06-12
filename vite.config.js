@@ -8,6 +8,7 @@ export default defineConfig({
     emptyOutDir: true,
     chunkSizeWarningLimit: 1000,
     sourcemap: false,
+    target: 'es2022',
     rollupOptions: {
       output: {
         manualChunks: {
@@ -91,6 +92,9 @@ export default defineConfig({
         drop_debugger: true
       }
     }
+  },
+  esbuild: {
+    target: 'es2022'
   },
   server: {
     open: '/production/index.html',
