@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+<loc>http://localhost:4000/gentelella/api-integration/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/gentelella/components/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/gentelella/configuration/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/gentelella/customization/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/gentelella/deployment/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/gentelella/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/gentelella/installation/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/gentelella/performance/</loc>
+</url>
+</urlset>

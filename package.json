@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build:analyze": "npm run build && node scripts/optimize.js",
+    "optimize": "node scripts/optimize.js"
   },
   "repository": {
     "type": "git",
@@ -37,7 +39,8 @@
   "devDependencies": {
     "glob": "^11.0.2",
     "sass": "^1.89.2",
-    "vite": "^6.3.5"
+    "vite": "^6.3.5",
+    "vite-plugin-imagemin": "^0.6.1"
   },
   "dependencies": {
     "@eonasdan/tempus-dominus": "^6.10.4",
