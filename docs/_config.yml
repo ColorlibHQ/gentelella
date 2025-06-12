@@ -1,0 +1,88 @@
+title: Gentelella Admin Template
+description: Modern Bootstrap 5 Admin Dashboard Template with Performance Optimizations
+url: "https://puikinsh.github.io"
+baseurl: "/gentelella"
+
+# Theme
+theme: just-the-docs
+
+# Just the Docs configuration
+color_scheme: light
+search_enabled: true
+search:
+  heading_level: 2
+  previews: 3
+  preview_words_before: 5
+  preview_words_after: 10
+  tokenizer_separator: /[\s/]+/
+  rel_url: true
+  button: false
+
+# Navigation structure
+nav_sort: case_insensitive
+
+# Footer content
+footer_content: "Copyright &copy; {{ 'now' | date: '%Y' }} Colorlib. Distributed under the <a href=\"https://github.com/puikinsh/gentelella/blob/master/LICENSE.txt\">MIT license</a>."
+
+# Google Analytics (optional)
+# ga_tracking: UA-XXXXXXXX-X
+
+# Social links in footer
+aux_links:
+  "Gentelella on GitHub":
+    - "//github.com/puikinsh/gentelella"
+  "Colorlib":
+    - "//colorlib.com"
+
+# Back to top link
+back_to_top: true
+back_to_top_text: "Back to top"
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+
+# Exclude from processing
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .bundle
+  - .sass-cache
+  - .jekyll-cache
+  - .jekyll-metadata
+
+# Collections for organizing documentation
+collections:
+  docs:
+    permalink: "/:collection/:name/"
+    output: true
+
+# Default values
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
+  - scope:
+      path: ""
+      type: "docs"
+    values:
+      layout: "default"
+  - scope:
+      path: ""
+    values:
+      image: "/assets/images/gentelella-preview.jpg"
+
+# Add site icon/favicon
+favicon_ico: "/favicon.ico" 

@@ -1,125 +1,312 @@
-# gentelella
+# Gentelella Admin Template
 
-Gentelella Admin is a free to use Bootstrap admin template.
-This template uses the default Bootstrap 4 styles along with a variety of powerful jQuery plugins and tools to create a powerful framework for creating admin panels or back-end dashboards.
+**Modern Bootstrap 5 Admin Dashboard Template with Vite Build System**
 
-Theme uses several libraries for charts, calendar, form validation, wizard style interface, off-canvas navigation menu, text forms, date range, upload area, form autocomplete, range slider, progress bars, notifications and much more.
+Gentelella is a powerful, free-to-use Bootstrap 5 admin template that has been completely modernized with Vite, performance optimizations, and the latest web technologies. This template provides a comprehensive foundation for building admin panels, dashboards, and back-end applications.
 
-We would love to see how you use this awesome admin template. You can notify us about your site, app or service by tweeting to [@colorlib](https://twitter.com/colorlib). Once the list will grown long enough we will write a post similar to [this](https://colorlib.com/wp/avada-theme-examples/) to showcase the best examples.
+![Gentelella Bootstrap Admin Template](https://colorlib.com/wp/wp-content/uploads/sites/2/gentelella-admin-template-preview.jpg "Gentelella Theme Browser Preview")
 
+## ✨ What's New in v2.0
 
-## Theme Demo
-![Gentelella Bootstrap Admin Template](https://colorlib.com/wp/wp-content/uploads/sites/2/gentelella-admin-template-preview.jpg 
-"Gentelella Theme Browser Preview")
+- **🚀 Vite Build System** - Lightning-fast development and optimized production builds
+- **📦 Bootstrap 5** - Latest Bootstrap with modern design system
+- **⚡ Performance Optimized** - 90% smaller initial bundle size with smart code splitting
+- **🔧 Modern JavaScript** - ES6+ modules with dynamic imports
+- **🎯 TypeScript Ready** - Full TypeScript support available
+- **📱 Mobile First** - Responsive design optimized for all devices
 
-**[Template Demo](https://colorlib.com/polygon/gentelella/index.html)**
+## 📊 Performance Improvements
 
-## Documentation
+- **Before**: 779 KB monolithic JavaScript bundle
+- **After**: 79 KB initial load + smart chunk loading
+- **Result**: **90% smaller initial bundle** with **40-70% faster page loads**
 
-**[Documentation](https://colorlibhq.github.io/gentelella/)**
+## 🚀 Quick Start
 
-## Installation via Package Manager
+### Prerequisites
 
-Our goal is to make it installable on different Package Manager! Do you want to use it on your favorite Package Manager and you know how? Pull request all the way! 
+- [Node.js](https://nodejs.org/) (v16 or higher)
+- [npm](https://npmjs.com/) or [yarn](https://yarnpkg.com/)
 
-As of now, this is some installation available:
+### Installation
 
-**Bower**
+```bash
+# Clone the repository
+git clone https://github.com/puikinsh/gentelella.git
+cd gentelella
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+```
+
+### Development Commands
+
+```bash
+# Development with hot reload
+npm run dev
+
+# Production build with optimizations
+npm run build
+
+# Build with performance analysis
+npm run build:analyze
+
+# Performance optimization analysis
+npm run optimize
+
+# Preview production build locally
+npm run preview
+```
+
+## 🏗️ Project Structure
 
 ```
+gentelella/
+├── production/           # HTML templates and static assets
+│   ├── *.html           # 42 pre-built admin pages
+│   └── images/          # Image assets
+├── src/                 # Source files
+│   ├── main-core.js     # Core essentials (79 KB)
+│   ├── main.scss        # Styles entry point
+│   ├── js/              # Custom JavaScript
+│   ├── scss/            # Custom SASS files
+│   └── modules/         # Feature-specific modules
+│       ├── charts.js    # Chart functionality (219 KB)
+│       ├── forms.js     # Form enhancements (200 KB)
+│       ├── tables.js    # DataTables functionality
+│       └── dashboard.js # Dashboard widgets
+├── dist/                # Production build output
+├── vite.config.js       # Vite configuration
+└── package.json         # Dependencies and scripts
+```
+
+## 🎯 Smart Loading System
+
+The template now uses intelligent code splitting:
+
+- **Core Bundle** (79 KB): Essential libraries loaded on every page
+- **Chart Module** (219 KB): Only loads on pages with charts
+- **Form Module** (200 KB): Only loads on pages with advanced forms
+- **Table Module**: Only loads on pages with DataTables
+- **Dashboard Module**: Only loads dashboard-specific widgets
+
+## 📱 Responsive Design
+
+Built with mobile-first approach:
+- **Phones**: Optimized touch interfaces
+- **Tablets**: Adaptive layouts
+- **Desktops**: Full-featured experience
+- **Large Screens**: Enhanced productivity layouts
+
+## 🛠️ Customization
+
+### Adding New Pages
+
+1. Create HTML file in `production/` directory
+2. Add entry to `vite.config.js` input configuration
+3. Reference appropriate modules for functionality needed
+
+### Custom Styling
+
+```scss
+// src/scss/custom.scss
+.my-custom-component {
+  // Your custom styles
+}
+```
+
+### Adding Features
+
+```javascript
+// Load modules conditionally
+if (document.querySelector('.chart-container')) {
+  const charts = await loadModule('charts');
+}
+```
+
+## 📦 Available Components
+
+### Dashboard Features
+- **Multiple Dashboard Layouts** - 3 different dashboard designs
+- **Widgets** - Various dashboard widgets and cards
+- **Charts** - Chart.js, Morris.js, Sparklines integration
+- **Maps** - Interactive world maps with jVectorMap
+
+### Form Components
+- **Advanced Forms** - Multi-step wizards, validation
+- **Form Elements** - Rich text editors, date pickers
+- **File Upload** - Drag & drop file upload with progress
+- **Input Enhancements** - Autocomplete, tags, switches
+
+### UI Elements
+- **Tables** - DataTables with sorting, filtering, pagination
+- **Typography** - Comprehensive typography system
+- **Icons** - Font Awesome 6 + Glyphicons
+- **Media Gallery** - Image gallery with lightbox
+- **Calendar** - Full-featured calendar component
+
+### Additional Pages
+- **E-commerce** - Product listings, shopping cart
+- **User Management** - Profiles, contacts, projects
+- **Authentication** - Login, registration pages
+- **Error Pages** - 403, 404, 500 error pages
+
+## 🎨 Built With
+
+### Core Technologies
+- **Bootstrap 5.3.6** - Modern CSS framework
+- **Vite 6.3.5** - Next generation build tool
+- **SASS** - CSS preprocessor
+- **jQuery 3.6.1** - DOM manipulation (being phased out)
+
+### Charts & Visualization
+- **Chart.js 4.4.2** - Modern charting library
+- **Morris.js** - Time-series line graphs  
+- **Sparklines** - Mini charts and graphs
+- **jVectorMap** - Interactive world maps
+- **Gauge.js** - Beautiful gauge charts
+
+### Form & UI Libraries
+- **Select2** - Enhanced select dropdowns
+- **Tempus Dominus** - Bootstrap 5 date/time picker
+- **Ion Range Slider** - Range slider component
+- **Switchery** - iOS-style toggle switches
+- **DataTables** - Advanced table functionality
+
+### Utilities
+- **Day.js** - Lightweight date library
+- **NProgress** - Progress bars for page loading
+- **Autosize** - Auto-resizing textareas
+- **Font Awesome 6** - Icon library
+
+## 🔧 Configuration
+
+### Vite Configuration
+
+The template includes optimized Vite configuration with:
+- Smart code splitting for optimal loading
+- Asset optimization with cache-busting
+- Development server with hot reload
+- Production builds with compression
+
+### Performance Features
+
+- **Tree Shaking** - Removes unused code
+- **Asset Optimization** - Images, fonts, and static assets
+- **Code Splitting** - Loads only what's needed
+- **Caching Strategy** - Optimized for browser caching
+
+## 🚀 Deployment
+
+### Build for Production
+
+```bash
+npm run build
+```
+
+### Deploy to Various Platforms
+
+- **Netlify**: Drag and drop the `dist` folder
+- **Vercel**: Connect your GitHub repository
+- **GitHub Pages**: Use the built-in GitHub Actions
+- **Traditional Hosting**: Upload `dist` folder contents
+
+## 🤝 Contributing
+
+We welcome contributions! To contribute:
+
+1. **Fork** the repository
+2. **Create** a feature branch (`git checkout -b feature/amazing-feature`)
+3. **Commit** your changes (`git commit -m 'Add amazing feature'`)
+4. **Push** to the branch (`git push origin feature/amazing-feature`)
+5. **Open** a Pull Request
+
+### Development Setup
+
+```bash
+git clone https://github.com/your-username/gentelella.git
+cd gentelella
+npm install
+npm run dev
+```
+
+## 📚 Documentation & Demo
+
+- **[Live Demo](https://colorlib.com/polygon/gentelella/index.html)** - See the template in action
+- **[Component Documentation](https://colorlibhq.github.io/gentelella/)** - Detailed component guide
+- **[Performance Guide](PERFORMANCE_OPTIMIZATIONS.md)** - Optimization details
+- **[Componentization Plan](COMPONENTIZATION_GAMEPLAN.md)** - Future modularization
+
+## 💼 Showcase Your Work
+
+We would love to see how you use this awesome admin template. You can notify us about your site, app or service by tweeting to [@colorlib](https://twitter.com/colorlib). Once the list grows long enough we will write a post similar to [this showcase](https://colorlib.com/wp/avada-theme-examples/) to feature the best examples.
+
+## 📦 Installation via Package Managers
+
+```bash
+# npm
+npm install gentelella --save
+
+# yarn  
+yarn add gentelella
+
+# bower (legacy)
 bower install gentelella --save
 ```
 
-**npm**
+## 🌍 Community Integrations
 
-```
-npm install gentelella --save
-```
+Gentelella has been integrated into various frameworks:
 
-**yarn**
-
-```
-yarn add gentelella
-```
-## How to contribute
-To contribute, please ensure that you have stable [Node.js](https://nodejs.org/) and [npm](https://npmjs.com) installed.
-
-Test if Gulp CLI is installed by running `gulp --version`.  If the command isn't found, run `npm install -g gulp`.  For more information about installing Gulp, see the Gulp's [Getting Started](https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md).
-
-To have all gulp dependencies run ```npm install```
-
-If `gulp` is installed, follow the steps below.
-
-1. Fork and clone the repo.
-2. Run `gulp`, this will open gentelella on your default browser
-3. Now you can code, code and code!
-4. Submit a pull request
-
-## Gentelella for other platforms and frameworks
-
-* [Gentelella on Ruby on Rails](https://github.com/iogbole/gentelella_on_rails) thanks to Israel Ogbole.
-* [Gentelella on Rails](https://github.com/mwlang/gentelella-rails) thanks to Michael Lang
-* [Gentelella on Smarty](https://github.com/microvb/otp-thing) with one time password generator, validator, and QR code generator that has no web dependencies (self-contained) in PHP thanks to MicroVB INC
-* [Gentelella integrated into Symfony 5](https://github.com/mamless/Gentella-admin-Symfony-5) full stack PHP framework thanks to  Mamour Wane.
-* [Gentelella on Yii framework](https://github.com/yiister/yii2-gentelella) with an asset bundle, a layout template and some widgets.
-* [Gentelella on Angular](https://github.com/kmkatsma/angular2-webpack-starter-gentelella) Angular Webpack Starter modified to utilize the Gentelella.
-* [Gentelella on Aurelia](https://github.com/kmkatsma/aurelia-gentelella) Typescript webpack skeleton modified to utilize the Gentelella.
-* [Gentelella on Laravel](https://github.com/Labs64/laravel-boilerplate) PHP / Laravel 5 boilerplate project with Gentelella Admin theme support.
-* [Gentelella on Django](https://github.com/GiriB/django-gentelella) Gentelella modified to fit as a Django app
-* [Gentelella on Flask](https://github.com/afourmy/flask-gentelella) Gentelella modified to fit as a Flask app
-* [Gentelella on CakePHP](https://github.com/backstageel/cakephp-gentelella-theme) Gentelella modified to work on CakePHP
-* [Gentelella right to left](https://github.com/mortezakarimi/gentelella-rtl) Gentelella modified to work with right to left languages like Persian
-* [Gentelella-rtl on Yii framework](https://github.com/mortezakarimi/yii2-gentelella-rtl) with an asset bundle, a layout template and some widgets. inspired from [Gentelella on Yii framework](https://github.com/yiister/yii2-gentelella)
-* [Gentelella by React](https://github.com/thomaslwq/react-admin) Gentelella realized by React
+- **[Rails](https://github.com/mwlang/gentelella-rails)** - Ruby on Rails integration
+- **[Laravel](https://github.com/Labs64/laravel-boilerplate)** - PHP Laravel boilerplate  
+- **[Django](https://github.com/GiriB/django-gentelella)** - Python Django app
+- **[Angular](https://github.com/kmkatsma/angular2-webpack-starter-gentelella)** - Angular integration
+- **[React](https://github.com/thomaslwq/react-admin)** - React implementation
+- **[Symfony](https://github.com/mamless/Gentella-admin-Symfony-5)** - Symfony 5 integration
+- **[Yii](https://github.com/yiister/yii2-gentelella)** - Yii framework integration
+- **[Flask](https://github.com/afourmy/flask-gentelella)** - Python Flask app
+- **[CakePHP](https://github.com/backstageel/cakephp-gentelella-theme)** - CakePHP integration
+- **[Aurelia](https://github.com/kmkatsma/aurelia-gentelella)** - Aurelia TypeScript integration
+- **[Gentelella RTL](https://github.com/mortezakarimi/gentelella-rtl)** - Right-to-left language support
 
 Let us know if you have done integration for this admin template on other platforms and frameworks and we'll be happy to share your work.
 
-## Scripts included:
-* Bootstrap
-* Font Awesome
-* jQuery-Autocomplete
-* FullCalendar
-* Charts.js
-* Bootstrap Colorpicker
-* Cropper
-* dataTables
-* Date Range Picker for Bootstrap
-* Dropzone
-* easyPieChart
-* ECharts
-* bootstrap-wysiwyg
-* Flot - Javascript plotting library for jQuery.
-* gauge.js
-* iCheck
-* jquery.inputmask plugin
-* Ion.RangeSlider
-* jQuery
-* jVectorMap
-* moment.js
-* Morris.js - pretty time-series line graphs
-* PNotify - Awesome JavaScript notifications
-* NProgress
-* Pace
-* Parsley
-* bootstrap-progressbar
-* select2
-* Sidebar Transitions - simple off-canvas navigations
-* Skycons - canvas based wather icons
-* jQuery Sparklines plugin
-* switchery - Turns HTML checkbox inputs into beautiful iOS style switches
-* jQuery Tags Input Plugin
-* Autosize - resizes text area to fit text
-* validator - HTML from validator using jQuery
-* jQuery Smart Wizard
+## 🎨 Other Templates and Resources by Colorlib
 
-## Other templates and useful resources
-* [Free Bootstrap Admin Templates](https://colorlib.com/wp/free-bootstrap-admin-dashboard-templates/ "Bootstrap Admin Templates on Colorlib") - List of the best Free Bootstrap admin dashboard templates that are available for free for personal and commercial use.
-* [Free Admin Templates](https://colorlib.com/wp/free-html5-admin-dashboard-templates/ "List of free HTML based admin templates by Colorlib") - Long list of the best free HTML5 powered admin dashboard templates. Available for personal and commercial use.
-* [Angular Templates](https://colorlib.com/wp/angularjs-admin-templates/ "Angular Admin Templates on Colorlib") - List of the most popular admin templates based on AngularJS.
-* [WordPress Admin Templates](https://colorlib.com/wp/wordpress-admin-dashboard-themes-plugins/ "List of WordPress Admin Dashboard Templates and Plugins by Colorlib") - List of the best WordPress admin dashboard templates and plugins that will add a personal touch to your WordPress dashboard.
-* [WordPress Themes](https://colorlib.com/wp/free-wordpress-themes/ "List of Free WordPress themes by Colorlib") - A huge selection of the best free WordPress themes that are all licensed under GPL and are available for personal and commercial use without restrictions.
+- **[Free Bootstrap Admin Templates](https://colorlib.com/wp/free-bootstrap-admin-dashboard-templates/)** - Collection of the best free Bootstrap admin dashboard templates
+- **[Free Admin Templates](https://colorlib.com/wp/free-html5-admin-dashboard-templates/)** - Comprehensive list of free HTML5 admin dashboard templates  
+- **[Angular Templates](https://colorlib.com/wp/angularjs-admin-templates/)** - Popular admin templates based on Angular
+- **[WordPress Admin Templates](https://colorlib.com/wp/wordpress-admin-dashboard-themes-plugins/)** - WordPress admin dashboard templates and plugins
+- **[WordPress Themes](https://colorlib.com/wp/free-wordpress-themes/)** - Large selection of free WordPress themes
+- **[Colorlib Blog](https://colorlib.com/)** - Web design and development resources
 
-## License information
-Gentelella is licensed under The MIT License (MIT). Which means that you can use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software. But you always need to state that Colorlib is the original author of this template.
+## 📄 License
 
-Project is developed and maintained by [Colorlib](https://colorlib.com/ "Colorlib - Make Your First Blog") and Aigars Silkalns
+Gentelella is licensed under **The MIT License (MIT)**. You can use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software. 
+
+**Attribution Required**: [Colorlib](https://colorlib.com/) must be credited as the original author.
+
+## 👥 Maintainers
+
+- **[Colorlib](https://colorlib.com/)** - Original design and development
+- **[Aigars Silkalns](https://github.com/silkalns)** - Lead developer and maintainer
+
+## 🙏 Acknowledgments
+
+- Bootstrap team for the amazing CSS framework
+- All contributors who have helped improve this template
+- The open-source community for the excellent libraries
+
+---
+
+**Made with ❤️ by [Colorlib](https://colorlib.com/)**

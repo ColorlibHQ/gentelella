@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gentelella Functionality Test</title>
+    <script src="http://localhost:3000/vendors/jquery/dist/jquery.min.js"></script>
+    <script src="http://localhost:3000/build/js/custom.min.js"></script>
+</head>
+<body>
+    <h1>Gentelella Functionality Test</h1>
+    <p>Check browser console for initialization messages.</p>
+    
+    <div id="test-results">
+        <h2>Test Results:</h2>
+        <div id="results"></div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            var results = [];
+            
+            // Test if jQuery is loaded
+            results.push("jQuery loaded: " + (typeof $ !== 'undefined' ? "✅ YES" : "❌ NO"));
+            
+            // Test if our custom functions are available
+            results.push("init_sidebar function: " + (typeof init_sidebar === 'function' ? "✅ YES" : "❌ NO"));
+            
+            // Test menu toggle element
+            results.push("Menu toggle element: " + ($('#menu_toggle').length > 0 ? "✅ YES" : "❌ NO (element not found)"));
+            
+            // Test sidebar menu element  
+            results.push("Sidebar menu element: " + ($('#sidebar-menu').length > 0 ? "✅ YES" : "❌ NO (element not found)"));
+            
+            // Display results
+            $('#results').html('<ul><li>' + results.join('</li><li>') + '</li></ul>');
+            
+            console.log('=== FUNCTIONALITY TEST RESULTS ===');
+            results.forEach(function(result) {
+                console.log(result);
+            });
+        });
+    </script>
+</body>
+</html> 
