@@ -1,23 +1,15 @@
-// Bootstrap 5 core CSS
-@import "bootstrap/scss/bootstrap";
+// SCSS files using @use (must come first)
+@use "bootstrap/scss/bootstrap";
+@use "./scss/custom.scss";
 
-// Font Awesome 6 
+// CSS files using @import (legacy approach for .css files)
 @import "@fortawesome/fontawesome-free/css/all.min.css";
-
-// Other vendor CSS
 @import "nprogress/nprogress.css";
 @import "malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css";
 @import "jquery-ui/dist/themes/ui-lightness/jquery-ui.css";
 @import "select2/dist/css/select2.min.css";
 @import "ion-rangeslider/css/ion.rangeSlider.css";
 @import "./css/switchery.min.css";
-
-// Date/Time Picker CSS
 @import "@eonasdan/tempus-dominus/dist/css/tempus-dominus.min.css";
-
-// Vendor CSS for dashboard widgets  
 @import "../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css";
-@import "../vendors/jqvmap/dist/jqvmap.min.css";
-
-// Your existing custom SCSS
-@import "./scss/custom.scss"; 
+@import "jqvmap/dist/jqvmap.min.css"; 

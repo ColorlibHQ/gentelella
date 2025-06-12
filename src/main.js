@@ -9,6 +9,21 @@ import 'jquery-ui/ui/widgets/progressbar.js';
 import * as bootstrap from 'bootstrap';
 window.bootstrap = bootstrap;
 
+// Initialize Bootstrap tooltips
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialize all tooltips
+  const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+  const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl);
+  });
+
+  // Initialize all popovers
+  const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+  const popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+    return new bootstrap.Popover(popoverTriggerEl);
+  });
+});
+
 // Day.js for date manipulation (modern replacement for moment.js)
 import dayjs from 'dayjs';
 window.dayjs = dayjs;
@@ -19,8 +34,9 @@ Chart.register(...registerables);
 window.Chart = Chart;
 
 // Tempus Dominus DateTimePicker (Bootstrap 5 compatible)
-import { TempusDominus } from '@eonasdan/tempus-dominus';
+import { TempusDominus, DateTime } from '@eonasdan/tempus-dominus';
 window.TempusDominus = TempusDominus;
+window.DateTime = DateTime;
 
 
 
@@ -56,8 +72,8 @@ window.Switchery = Switchery;
 
 // Remaining vendor libraries for dashboard widgets (not available on npm)
 import '../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js';
-import '../vendors/jqvmap/dist/jquery.vmap.js';
-import '../vendors/jqvmap/dist/maps/jquery.vmap.world.js';
+import 'jqvmap';
+import 'jqvmap/dist/maps/jquery.vmap.world.js';
 
 // Global styles (Bootstrap 5 + custom)
 import './main.scss';

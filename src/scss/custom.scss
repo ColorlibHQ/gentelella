@@ -44,6 +44,8 @@
   border: 1px solid #EAEAEA;
   padding: 5px 6px;
   border-radius: 50%;
+  color: #1ABB9C;
+  margin-right: 8px;
 }
 .nav-sm .main_container .top_nav {
   display: block;
@@ -55,6 +57,33 @@
   font-weight: 400;
   font-size: 10px;
   padding: 10px 5px;
+  display: block !important;
+  flex-direction: column !important;
+}
+
+// Hide text and arrows in collapsed menu, only show main icons
+.nav-sm .nav.side-menu li a span {
+  display: none !important;
+}
+
+.nav-sm .nav.side-menu li a i:first-child {
+  display: block !important;
+  font-size: 25px !important;
+  text-align: center;
+  width: 100% !important;
+  margin: 0 !important;
+  color: #C4CFDA;
+}
+
+// Ensure dropdown arrows are hidden
+.nav-sm .nav.side-menu li a span.fas,
+.nav-sm .nav.side-menu li a span.fa {
+  display: none !important;
+}
+
+// Collapsed menu hover state
+.nav-sm .nav.side-menu li a:hover i:first-child {
+  color: #1ABB9C !important;
 }
 .nav-sm .nav.child_menu li.active,
 .nav-sm .nav.side-menu li.active-sm {
@@ -72,12 +101,7 @@
 .nav-sm .nav.side-menu li a i.toggle-up {
   display: none !important;
 }
-.nav-sm .nav.side-menu li a i {
-  font-size: 25px !important;
-  text-align: center;
-  width: 100% !important;
-  margin-bottom: 5px;
-}
+
 .nav-sm ul.nav.child_menu {
   left: 100%;
   position: absolute;
@@ -548,16 +572,58 @@ a:hover, a:focus {
   position: relative;
   display: block;
   cursor: pointer;
+  margin-bottom: 2px;
 }
-.nav.side-menu> li > a {
-  margin-bottom: 6px;
+.nav.side-menu > li > a {
+  margin-bottom: 2px;
+  padding: 13px 15px 12px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  color: #E7E7E7;
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.3s ease;
 }
-.nav.side-menu> li > a:hover {
+
+// Icon styling for sidebar menu
+.nav.side-menu > li > a i:first-child {
+  font-size: 16px;
+  width: 18px;
+  margin-right: 10px;
+  display: inline-block;
+  text-align: left;
+  color: #C4CFDA;
+}
+
+// Dropdown arrow styling 
+.nav.side-menu > li > a > span.fas,
+.nav.side-menu > li > a > span.fa {
+  font-size: 12px;
+  margin-left: auto;
+  color: #C4CFDA;
+  transition: transform 0.3s ease;
+  min-width: 16px;
+  text-align: right;
+}
+.nav.side-menu > li > a:hover {
   color: #F2F5F7 !important;
 }
 .nav.side-menu>li>a:hover, .nav>li>a:focus {
   text-decoration: none;
   background: transparent;
+}
+.nav.side-menu > li.active > a,
+.nav.side-menu > li.current-page > a {
+  text-shadow: rgba(0, 0, 0, 0.25) 0 -1px 0;
+  background: linear-gradient(#334556, #2C4257), #2A3F54;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 1px 0, inset rgba(255, 255, 255, 0.16) 0 1px 0;
+}
+.nav.side-menu > li > a > span:not(.fas):not(.fa) {
+  flex: 1;
+}
+.nav.side-menu > li:has(+ .nav.side-menu) {
+  margin-bottom: 20px;
 }
 .nav.child_menu {
   display: none;
@@ -890,28 +956,37 @@ h2 {
 .x_panel {
   position: relative;
   width: 100%;
-  margin-bottom: 10px;
-  padding: 10px 17px;
+  margin-bottom: 20px;
+  padding: 15px 20px;
   display: inline-block;
   background: #fff;
   border: 1px solid #E6E9ED;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   -webkit-column-break-inside: avoid;
   -moz-column-break-inside: avoid;
   column-break-inside: avoid;
   opacity: 1;
-  -moz-transition: all .2s ease;
-  -o-transition: all .2s ease;
-  -webkit-transition: all .2s ease;
-  -ms-transition: all .2s ease;
-  transition: all .2s ease;
+  -moz-transition: all .3s ease;
+  -o-transition: all .3s ease;
+  -webkit-transition: all .3s ease;
+  -ms-transition: all .3s ease;
+  transition: all .3s ease;
 }
+
+.x_panel:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  transform: translateY(-2px);
+  border-color: #ddd;
+}
+
 .x_title {
   border-bottom: 2px solid #E6E9ED;
   padding: 1px 5px 6px;
   margin-bottom: 10px;
 }
 .x_title .filter {
-  width: 40%;
+  width: auto;
   float: right;
 }
 .x_title h2 {
@@ -1660,7 +1735,18 @@ span.right {
 
 .dashboard_graph {
   background: #fff;
-  padding: 7px 10px;
+  padding: 15px 20px;
+  border: 1px solid #E6E9ED;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+  transition: all .3s ease;
+}
+
+.dashboard_graph:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  transform: translateY(-2px);
+  border-color: #ddd;
 }
 .dashboard_graph .col-md-9, .dashboard_graph .col-md-3 {
   padding: 0;
@@ -1773,21 +1859,23 @@ h4.graph_title {
 .tile-stats {
   position: relative;
   display: block;
-  margin-bottom: 12px;
+  margin-bottom: 20px;
   border: 1px solid #E4E4E4;
-  -webkit-border-radius: 5px;
+  -webkit-border-radius: 8px;
   overflow: hidden;
-  padding-bottom: 5px;
+  padding: 25px 20px 20px 20px;
   -webkit-background-clip: padding-box;
-  -moz-border-radius: 5px;
+  -moz-border-radius: 8px;
   -moz-background-clip: padding;
-  border-radius: 5px;
+  border-radius: 8px;
   background-clip: padding-box;
   background: #FFF;
   -moz-transition: all 300ms ease-in-out;
   -o-transition: all 300ms ease-in-out;
   -webkit-transition: all 300ms ease-in-out;
   transition: all 300ms ease-in-out;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  min-height: 160px;
 }
 
 .tile-stats:hover .icon i {
@@ -1814,40 +1902,49 @@ h4.graph_title {
   height: 20px;
   color: #BAB8B8;
   position: absolute;
-  right: 53px;
-  top: 22px;
+  right: 25px;
+  top: 50%;
+  transform: translateY(-50%);
   z-index: 1;
 }
 
 .tile-stats .icon i {
   margin: 0;
-  font-size: 60px;
-  line-height: 0;
-  vertical-align: bottom;
+  font-size: 42px;
+  line-height: 1;
+  vertical-align: middle;
   padding: 0;
+  opacity: 0.6;
 }
 
 .tile-stats .count {
-  font-size: 38px;
+  font-size: 36px;
   font-weight: bold;
-  line-height: 1.65857143
+  line-height: 1.2;
+  margin-bottom: 10px;
 }
 
 .tile-stats .count, .tile-stats h3, .tile-stats p {
   position: relative;
   margin: 0;
-  margin-left: 10px;
+  margin-left: 0;
+  margin-right: 75px;
   z-index: 5;
   padding: 0;
 }
 
 .tile-stats h3 {
-  color: #BAB8B8;
+  color: #5A5A5A;
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 12px;
 }
 
 .tile-stats p {
-  margin-top: 5px;
-  font-size: 12px;
+  margin-top: 10px;
+  font-size: 14px;
+  color: #777;
+  line-height: 1.5;
 }
 
 .tile-stats > .dash-box-footer {
@@ -1907,6 +2004,46 @@ table.tile_info span.right {
   text-align: left;
 }
 
+
+/* Hover effects for tile stats */
+.tile-stats:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  border-color: #ddd;
+}
+
+/* Top tiles container */
+.top_tiles {
+  margin-bottom: 30px;
+}
+
+.top_tiles .col-lg-3, 
+.top_tiles .col-md-3, 
+.top_tiles .col-sm-6 {
+  margin-bottom: 25px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/* Animation enhancements */
+.animated.flipInY {
+  animation-duration: 0.8s;
+}
+
+/* Color enhancements for count indicators */
+.tile-stats .green {
+  color: #26B99A;
+  font-weight: 600;
+}
+
+.tile-stats .red {
+  color: #E74C3C;
+  font-weight: 600;
+}
+
+.tile-stats .count.green {
+  color: #26B99A;
+}
 
 /** /tile stats **/
 
@@ -2792,6 +2929,19 @@ ul.social li {
 .widget {
   min-width: 250px;
   max-width: 310px;
+  background: #fff;
+  border: 1px solid #E6E9ED;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 15px;
+  margin-bottom: 20px;
+  transition: all .3s ease;
+}
+
+.widget:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  transform: translateY(-2px);
+  border-color: #ddd;
 }
 .widget_tally_box .btn-group button {
   text-align: center
