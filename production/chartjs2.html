@@ -8,10 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Chart JS Graph Examples Part 2 | Gentelella Alela! by Colorlib</title>    <!-- Compiled CSS (includes Bootstrap, Font Awesome, and all vendor styles) -->
-    <script type="module" src="../src/main.js"></script>
   </head>
 
-  <body class="nav-md">
+  <body class="nav-md page-chartjs2">
     <div class="container body">
       <div class="main_container">
         <div class="col-md-3 left_col">
@@ -275,7 +274,7 @@
             <div class="clearfix"></div>
 
             <div class="row">
-              <div class="col-md-4 col-sm-6">
+              <div class="col-md-6 col-sm-6">
                 <div class="x_panel">
                   <div class="x_title">
                     <h2>Line Graph <small>Sessions</small></h2>
@@ -295,15 +294,15 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    <canvas id="lineChart"></canvas>
+                    <canvas id="lineChart" data-chart="line"></canvas>
                   </div>
                 </div>
               </div>
 
-              <div class="col-md-4 col-sm-6">
+              <div class="col-md-6 col-sm-6">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Bar Graph <small>Sessions</small></h2>
+                    <h2>Bar graph <small>Sessions</small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
                       </li>
@@ -320,15 +319,17 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    <canvas id="mybarChart"></canvas>
+                    <canvas id="mybarChart" data-chart="bar"></canvas>
                   </div>
                 </div>
               </div>
-
-              <div class="col-md-4 col-sm-6">
+            </div>
+            <div class="clearfix"></div>
+            <div class="row">
+              <div class="col-md-6 col-sm-6">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Donut Chart Graph <small>Sessions</small></h2>
+                    <h2>Radar <small>Sessions</small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
                       </li>
@@ -345,15 +346,15 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    <canvas id="canvasDoughnut"></canvas>
+                    <canvas id="canvasRadar" data-chart="radar"></canvas>
                   </div>
                 </div>
               </div>
 
-              <div class="col-md-4 col-sm-6">
+              <div class="col-md-6 col-sm-6">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Radar Chart <small>Sessions</small></h2>
+                    <h2>Donut Graph <small>Sessions</small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
                       </li>
@@ -370,15 +371,17 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    <canvas id="canvasRadar"></canvas>
+                    <canvas id="canvasDoughnut" data-chart="doughnut"></canvas>
                   </div>
                 </div>
               </div>
-
-              <div class="col-md-4 col-sm-6">
+            </div>
+            <div class="clearfix"></div>
+            <div class="row">
+              <div class="col-md-6 col-sm-6">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Pie Area Chart <small>Sessions</small></h2>
+                    <h2>Pie Graph Chart <small>Sessions</small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
                       </li>
@@ -395,15 +398,15 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    <canvas id="polarArea"></canvas>
+                    <canvas id="pieChart" data-chart="pie"></canvas>
                   </div>
                 </div>
               </div>
 
-              <div class="col-md-4 col-sm-6">
+              <div class="col-md-6 col-sm-6">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Pie Chart Graph <small>Sessions</small></h2>
+                    <h2>Pie Area Graph <small>Sessions</small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
                       </li>
@@ -420,7 +423,7 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    <canvas id="pieChart"></canvas>
+                    <canvas id="polarArea" data-chart="polarArea"></canvas>
                   </div>
                 </div>
               </div>
@@ -440,8 +443,9 @@
         </footer>
         <!-- /footer content -->
       </div>
-    </div>    <!-- Compiled JavaScript (includes jQuery, Bootstrap, and all vendor scripts) -->
-    
+    </div>
 
+    <!-- Vite Entry Point - will bundle all styles -->
+    <script type="module" src="/src/main-minimal.js"></script>
   </body>
 </html>

@@ -12,7 +12,7 @@ export default defineConfig({
       output: {
         manualChunks: {
           'vendor-core': ['jquery', 'bootstrap', '@popperjs/core'],
-          'vendor-charts': ['chart.js', 'jqvmap'],
+          'vendor-charts': ['chart.js', 'echarts', 'leaflet'],
           'vendor-forms': ['select2', 'ion-rangeslider', 'autosize', 'switchery', '@eonasdan/tempus-dominus'],
           'vendor-ui': ['jquery-ui', 'nprogress', 'datatables.net', 'datatables.net-bs5'],
           'vendor-utils': ['dayjs', 'jquery-sparkline', 'skycons', 'gaugejs']

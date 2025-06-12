@@ -8,10 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Gentelella Alela! | </title>    <!-- Compiled CSS (includes Bootstrap, Font Awesome, and all vendor styles) -->
-    <script type="module" src="../src/main.js"></script>
+    <script type="module" src="/src/main-minimal.js"></script>
   </head>
 
-  <body class="nav-md">
+  <body class="nav-md page-other-charts">
     <div class="container body">
       <div class="main_container">
         <div class="col-md-3 left_col">
@@ -313,27 +313,78 @@
                       <div class="col-md-6">
                         <div class="panel panel-body">
                           <div class="x_title">
-                            <h4>Easy Pie Chart</h4>
+                            <h4>Easy Pie Charts - Performance Metrics</h4>
                           </div>
 
-                          <p>Easy pie chart is a jQuery plugin that uses the canvas element to render highly customizable, very easy to implement, simple pie charts for single values.</p>
+                          <p>Interactive gauge charts showing various performance metrics and KPIs with color-coded indicators.</p>
+                          
+                          <!-- Three Column Layout -->
                           <div class="row">
-                            <div class="col-xs-4">
-                              <span class="chart" data-percent="86">
-                                              <span class="percent"></span>
-                              </span>
+                            <!-- Column 1 -->
+                            <div class="col-xs-4 text-center">
+                              <div style="margin-bottom: 25px;">
+                                <span class="chart-medium" data-percent="86" data-label="CPU Usage">
+                                  <span class="percent"></span>
+                                </span>
+                                <div style="margin-top: 8px; font-weight: bold; color: #333;">CPU Usage</div>
+                              </div>
+                              <div style="margin-bottom: 25px;">
+                                <span class="chart-medium" data-percent="65" data-label="Network">
+                                  <span class="percent"></span>
+                                </span>
+                                <div style="margin-top: 8px; font-weight: bold; color: #333;">Network</div>
+                              </div>
+                              <div>
+                                <span class="chart-medium" data-percent="88" data-label="Cache">
+                                  <span class="percent"></span>
+                                </span>
+                                <div style="margin-top: 8px; font-weight: bold; color: #333;">Cache</div>
+                              </div>
                             </div>
-                            <div class="col-xs-4">
-                              <span class="chart" data-percent="73">
-                                              <span class="percent"></span>
-                              </span>
+
+                            <!-- Column 2 -->
+                            <div class="col-xs-4 text-center">
+                              <div style="margin-bottom: 25px;">
+                                <span class="chart-medium" data-percent="73" data-label="Memory">
+                                  <span class="percent"></span>
+                                </span>
+                                <div style="margin-top: 8px; font-weight: bold; color: #333;">Memory</div>
+                              </div>
+                              <div style="margin-bottom: 25px;">
+                                <span class="chart-medium" data-percent="78" data-label="Database">
+                                  <span class="percent"></span>
+                                </span>
+                                <div style="margin-top: 8px; font-weight: bold; color: #333;">Database</div>
+                              </div>
+                              <div>
+                                <span class="chart-medium" data-percent="56" data-label="Queue">
+                                  <span class="percent"></span>
+                                </span>
+                                <div style="margin-top: 8px; font-weight: bold; color: #333;">Queue</div>
+                              </div>
                             </div>
-                            <div class="col-xs-4">
-                              <span class="chart" data-percent="60">
-                                              <span class="percent"></span>
-                              </span>
+
+                            <!-- Column 3 -->
+                            <div class="col-xs-4 text-center">
+                              <div style="margin-bottom: 25px;">
+                                <span class="chart-medium" data-percent="92" data-label="Storage">
+                                  <span class="percent"></span>
+                                </span>
+                                <div style="margin-top: 8px; font-weight: bold; color: #333;">Storage</div>
+                              </div>
+                              <div style="margin-bottom: 25px;">
+                                <span class="chart-medium" data-percent="45" data-label="Load">
+                                  <span class="percent"></span>
+                                </span>
+                                <div style="margin-top: 8px; font-weight: bold; color: #333;">Load</div>
+                              </div>
+                              <div>
+                                <span class="chart-medium" data-percent="94" data-label="API">
+                                  <span class="percent"></span>
+                                </span>
+                                <div style="margin-top: 8px; font-weight: bold; color: #333;">API</div>
+                              </div>
                             </div>
-                            <div class="clearfix"></div>
                           </div>
 
                         </div>

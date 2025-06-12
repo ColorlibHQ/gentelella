@@ -8,10 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Chart JS Graph Examples | Gentelella Alela! by Colorlib</title>    <!-- Compiled CSS (includes Bootstrap, Font Awesome, and all vendor styles) -->
-    <script type="module" src="../src/main.js"></script>
   </head>
 
-  <body class="nav-md">
+  <body class="nav-md page-chartjs1">
     <div class="container body">
       <div class="main_container">
         <div class="col-md-3 left_col">
@@ -295,7 +294,7 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    <canvas id="lineChart"></canvas>
+                    <canvas id="lineChart" data-chart="line"></canvas>
                   </div>
                 </div>
               </div>
@@ -320,7 +319,7 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    <canvas id="mybarChart"></canvas>
+                    <canvas id="mybarChart" data-chart="bar"></canvas>
                   </div>
                 </div>
               </div>
@@ -347,7 +346,7 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    <canvas id="canvasRadar"></canvas>
+                    <canvas id="canvasRadar" data-chart="radar"></canvas>
                   </div>
                 </div>
               </div>
@@ -372,7 +371,7 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    <canvas id="canvasDoughnut"></canvas>
+                    <canvas id="canvasDoughnut" data-chart="doughnut"></canvas>
                   </div>
                 </div>
               </div>
@@ -399,7 +398,7 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    <canvas id="pieChart"></canvas>
+                    <canvas id="pieChart" data-chart="pie"></canvas>
                   </div>
                 </div>
               </div>
@@ -424,7 +423,7 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    <canvas id="polarArea"></canvas>
+                    <canvas id="polarArea" data-chart="polarArea"></canvas>
                   </div>
                 </div>
               </div>
@@ -442,8 +441,9 @@
         </footer>
         <!-- footer content -->
       </div>
-    </div>    <!-- Compiled JavaScript (includes jQuery, Bootstrap, and all vendor scripts) -->
-    
-	
+    </div>
+
+    <!-- Vite Entry Point - will bundle all styles -->
+    <script type="module" src="/src/main-minimal.js"></script>
   </body>
 </html>

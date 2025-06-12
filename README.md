@@ -57,12 +57,6 @@ npm run dev
 # Production build with optimizations
 npm run build
 
-# Build with performance analysis
-npm run build:analyze
-
-# Performance optimization analysis
-npm run optimize
-
 # Preview production build locally
 npm run preview
 ```
@@ -170,7 +164,6 @@ if (document.querySelector('.chart-container')) {
 
 ### Charts & Visualization
 - **Chart.js 4.4.2** - Modern charting library
-- **Morris.js** - Time-series line graphs  
 - **Sparklines** - Mini charts and graphs
 - **jVectorMap** - Interactive world maps
 - **Gauge.js** - Beautiful gauge charts
@@ -201,7 +194,6 @@ The template includes optimized Vite configuration with:
 ### Performance Features
 
 - **Tree Shaking** - Removes unused code
-- **Asset Optimization** - Images, fonts, and static assets
 - **Code Splitting** - Loads only what's needed
 - **Caching Strategy** - Optimized for browser caching
 

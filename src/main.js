@@ -1,13 +1,22 @@
 // Import jQuery setup first - still needed for some widgets
 import $ from './jquery-setup.js';
 
-// Import jQuery UI core and widget factory for specific widgets
-import 'jquery-ui/ui/widget.js';
-import 'jquery-ui/ui/widgets/progressbar.js';
+// Ensure jQuery is available globally IMMEDIATELY
+window.jQuery = window.$ = $;
+
+// Debug log to confirm script is loading
+console.log('🚀 Gentelella main.js loading...');
+
+// Import jQuery-dependent vendor libraries AFTER jQuery is global
+import '../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js';
 
 // Bootstrap 5 - No jQuery dependency needed
 import * as bootstrap from 'bootstrap';
 window.bootstrap = bootstrap;
+
+// Switchery (iOS-style toggle switches)
+import Switchery from 'switchery';
+window.Switchery = Switchery;
 
 // Initialize Bootstrap tooltips
 document.addEventListener('DOMContentLoaded', function() {
@@ -24,29 +33,45 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-// Day.js for date manipulation (modern replacement for moment.js)
-import dayjs from 'dayjs';
-window.dayjs = dayjs;
+// NProgress (Loading bar)
+import NProgress from 'nprogress';
+window.NProgress = NProgress;
 
 // Chart.js v4 - No jQuery dependency 
 import { Chart, registerables } from 'chart.js';
 Chart.register(...registerables);
 window.Chart = Chart;
 
+// Leaflet (for maps)
+import * as L from 'leaflet';
+window.L = L;
+
+// Global styles (Bootstrap 5 + custom)
+import './main.scss';
+
+// Leaflet CSS
+import 'leaflet/dist/leaflet.css';
+
+// Legacy scripts that depend on global jQuery - LOAD IN CORRECT ORDER
+import './js/helpers/smartresize.js';
+import './js/sidebar.js';
+import './js/init.js';
+
+// Confirm all components loaded
+console.log('✅ Gentelella main.js fully loaded!');
+
+// Day.js for date manipulation (modern replacement for moment.js)
+import dayjs from 'dayjs';
+window.dayjs = dayjs;
+
 // Tempus Dominus DateTimePicker (Bootstrap 5 compatible)
 import { TempusDominus, DateTime } from '@eonasdan/tempus-dominus';
 window.TempusDominus = TempusDominus;
 window.DateTime = DateTime;
 
-
-
 // GaugeJS - Modern gauge library (Bootstrap 5 compatible)
 import { Gauge } from 'gaugejs';
 window.Gauge = Gauge;
-
-// NProgress (Loading bar)
-import NProgress from 'nprogress';
-window.NProgress = NProgress;
 
 // jQuery Sparkline (Small charts)
 import 'jquery-sparkline';
@@ -66,17 +91,15 @@ window.Skycons = Skycons;
 import autosize from 'autosize';
 window.autosize = autosize;
 
-// Switchery (iOS-style toggle switches)
-import Switchery from 'switchery';
-window.Switchery = Switchery;
+// Flot charts
+import 'flot/dist/es5/jquery.flot.js';
+import 'flot/source/jquery.flot.pie.js';
+import 'flot/source/jquery.flot.time.js';
+import 'flot/source/jquery.flot.stack.js';
+import 'flot/source/jquery.flot.resize.js';
 
-// Remaining vendor libraries for dashboard widgets (not available on npm)
-import '../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js';
-import 'jqvmap';
-import 'jqvmap/dist/maps/jquery.vmap.world.js';
-
-// Global styles (Bootstrap 5 + custom)
-import './main.scss';
+// ECharts
+import * as echarts from 'echarts';
 
 // Legacy scripts that depend on global jQuery
 import './js/helpers/smartresize.js';

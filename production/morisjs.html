@@ -7,11 +7,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Moris JS Chart Examples | Gentelella Alela! by Colorlib</title>    <!-- Compiled CSS (includes Bootstrap, Font Awesome, and all vendor styles) -->
-    <script type="module" src="../src/main.js"></script>
+    <title>Chart.js Examples | Gentelella Alela! by Colorlib</title>    <!-- Compiled CSS (includes Bootstrap, Font Awesome, and all vendor styles) -->
+    <style>
+      /* Make chart panels taller and charts fill more space */
+      .page-morisjs .x_panel .x_content {
+        min-height: 450px;
+        padding: 10px 20px 20px 20px; /* Reduced top padding */
+      }
+      .page-morisjs .x_panel {
+        margin-bottom: 30px;
+      }
+      .page-morisjs .x_panel .x_title {
+        margin-bottom: 10px; /* Reduced margin below title */
+        padding-bottom: 5px; /* Reduced padding below title */
+      }
+      /* Make canvas charts fill more vertical space */
+      .page-morisjs canvas {
+        max-height: 380px !important;
+        min-height: 350px !important;
+      }
+    </style>
+    <script type="module" src="/src/main-minimal.js"></script>
   </head>
 
-  <body class="nav-md">
+  <body class="nav-md page-morisjs">
     <div class="container body">
       <div class="main_container">
         <div class="col-md-3 left_col">
@@ -257,7 +276,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Morris Js</h3>
+                <h3>Chart.js Examples</h3>
               </div>
 
               <div class="title_right">
@@ -275,168 +294,81 @@
             <div class="clearfix"></div>
 
             <div class="row">
-              <!-- bar chart -->
-              <div class="col-md-6 col-sm-6">
+              <div class="col-md-6 col-sm-6 ">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Bar Charts <small>Sessions</small></h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-                      </li>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Settings 1</a>
-                            <a class="dropdown-item" href="#">Settings 2</a>
-                          </div>
-                      </li>
-                      <li><a class="btn-close-link"><i class="fas fa-times"></i></a>
-                      </li>
-                    </ul>
+                    <h2>Bar Graph</h2>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    <div id="graph_bar" style="width:100%; height:280px;"></div>
+                    <canvas data-chart="bar"></canvas>
                   </div>
                 </div>
               </div>
-              <!-- /bar charts -->
 
-              <!-- bar charts group -->
-              <div class="col-md-6 col-sm-6">
+              <div class="col-md-6 col-sm-6 ">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Bar Chart Group <small>Sessions</small></h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-                      </li>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Settings 1</a>
-                            <a class="dropdown-item" href="#">Settings 2</a>
-                          </div>
-                      </li>
-                      <li><a class="btn-close-link"><i class="fas fa-times"></i></a>
-                      </li>
-                    </ul>
+                    <h2>Bar Graph Grouped</h2>
                     <div class="clearfix"></div>
                   </div>
-                  <div class="x_content1">
-                    <div id="graph_bar_group" style="width:100%; height:280px;"></div>
+                  <div class="x_content">
+                    <canvas data-chart="bar"></canvas>
                   </div>
                 </div>
               </div>
-              <div class="clearfix"></div>
-              <!-- /bar charts group -->
-
-              <!-- bar charts group -->
-              <div class="col-md-6 col-sm-6">
+            </div>
+            <div class="clearfix"></div>
+            <div class="row">
+              <div class="col-md-6 col-sm-6 ">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Bar Chart Group <small>Sessions</small></h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-                      </li>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Settings 1</a>
-                            <a class="dropdown-item" href="#">Settings 2</a>
-                          </div>
-                      </li>
-                      <li><a class="btn-close-link"><i class="fas fa-times"></i></a>
-                      </li>
-                    </ul>
+                    <h2>Line Graph</h2>
                     <div class="clearfix"></div>
                   </div>
-                  <div class="x_content2">
-                    <div id="graphx" style="width:100%; height:300px;" ></div>
+                  <div class="x_content">
+                    <canvas data-chart="line"></canvas>
                   </div>
                 </div>
               </div>
-              <!-- /bar charts group -->
 
-              <!-- pie chart -->
-              <div class="col-md-6 col-sm-6">
+              <div class="col-md-6 col-sm-6 ">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Pie Chart <small>Sessions</small></h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-                      </li>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Settings 1</a>
-                            <a class="dropdown-item" href="#">Settings 2</a>
-                          </div>
-                      </li>
-                      <li><a class="btn-close-link"><i class="fas fa-times"></i></a>
-                      </li>
-                    </ul>
+                    <h2>Area Graph</h2>
                     <div class="clearfix"></div>
                   </div>
-                  <div class="x_content2">
-                    <div id="graph_donut" style="width:100%; height:300px;"></div>
+                  <div class="x_content">
+                     <canvas data-chart="line"></canvas>
                   </div>
                 </div>
               </div>
-              <!-- /Pie chart -->
+            </div>
 
-              <!-- graph area -->
-              <div class="col-md-6 col-sm-6">
+            <div class="clearfix"></div>
+            <div class="row">
+              <div class="col-md-6 col-sm-6 ">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Graph area <small>Sessions</small></h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-                      </li>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Settings 1</a>
-                            <a class="dropdown-item" href="#">Settings 2</a>
-                          </div>
-                      </li>
-                      <li><a class="btn-close-link"><i class="fas fa-times"></i></a>
-                      </li>
-                    </ul>
+                    <h2>Donut Graph</h2>
                     <div class="clearfix"></div>
                   </div>
-                  <div class="x_content2">
-                    <div id="graph_area" style="width:100%; height:300px;"></div>
+                  <div class="x_content">
+                    <canvas data-chart="doughnut"></canvas>
                   </div>
                 </div>
               </div>
-              <!-- /graph area -->
-
-              <!-- line graph -->
-              <div class="col-md-6 col-sm-6">
+              <div class="col-md-6 col-sm-6 ">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Line Graph <small>Sessions</small></h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-                      </li>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Settings 1</a>
-                            <a class="dropdown-item" href="#">Settings 2</a>
-                          </div>
-                      </li>
-                      <li><a class="btn-close-link"><i class="fas fa-times"></i></a>
-                      </li>
-                    </ul>
+                    <h2>Line Graph</h2>
                     <div class="clearfix"></div>
                   </div>
-                  <div class="x_content2">
-                    <div id="graph_line" style="width:100%; height:300px;"></div>
+                  <div class="x_content">
+                    <canvas data-chart="line"></canvas>
                   </div>
                 </div>
               </div>
-              <!-- /line graph -->
             </div>
           </div>
         </div>
@@ -455,4 +387,5 @@
     
 
   </body>
+</html>
 </html>

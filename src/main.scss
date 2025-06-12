@@ -12,4 +12,12 @@
 @import "./css/switchery.min.css";
 @import "@eonasdan/tempus-dominus/dist/css/tempus-dominus.min.css";
 @import "../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css";
-@import "jqvmap/dist/jqvmap.min.css"; 
+
+// Import Leaflet's CSS
+@import "leaflet/dist/leaflet.css";
+
+// jqvmap
+// @import "jqvmap/dist/jqvmap.min.css";
+
+// Custom Theme Style
+@import "scss/custom.scss"; 
