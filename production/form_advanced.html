@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Gentelella Alela! | </title>    <!-- Compiled CSS (includes Bootstrap, Font Awesome, and all vendor styles) -->
-    <script type="module" src="/src/main-minimal.js"></script>
+    <script type="module" src="/src/main-form-basic.js"></script>
   </head>
 
   <body class="nav-md">
@@ -304,42 +304,42 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-3">Date Mask</label>
                         <div class="col-md-9 col-sm-9 col-xs-9">
                           <input type="text" class="form-control" data-inputmask="'mask': '99/99/9999'">
-                          <span class="fas fa-user form-control-feedback right" aria-hidden="true"></span>
+                          <span class="fas fa-calendar form-control-feedback right" aria-hidden="true"></span>
                         </div>
                       </div>
                       <div class="form-group row">
                         <label class="control-label col-md-3 col-sm-3 col-xs-3">Phone mask</label>
                         <div class="col-md-9 col-sm-9 col-xs-9">
                           <input type="text" class="form-control" data-inputmask="'mask' : '(999) 999-9999'">
-                          <span class="fas fa-user form-control-feedback right" aria-hidden="true"></span>
+                          <span class="fas fa-phone form-control-feedback right" aria-hidden="true"></span>
                         </div>
                       </div>
                       <div class="form-group row">
                         <label class="control-label col-md-3 col-sm-3 col-xs-3">Custom Mask</label>
                         <div class="col-md-9 col-sm-9 col-xs-9">
                           <input type="text" class="form-control" data-inputmask="'mask': '99-999999'">
-                          <span class="fas fa-user form-control-feedback right" aria-hidden="true"></span>
+                          <span class="fas fa-tag form-control-feedback right" aria-hidden="true"></span>
                         </div>
                       </div>
                       <div class="form-group row">
                         <label class="control-label col-md-3 col-sm-3 col-xs-3">Serial Number</label>
                         <div class="col-md-9 col-sm-9 col-xs-9">
                           <input type="text" class="form-control" data-inputmask="'mask' : '****-****-****-****-****-***'">
-                          <span class="fas fa-user form-control-feedback right" aria-hidden="true"></span>
+                          <span class="fas fa-barcode form-control-feedback right" aria-hidden="true"></span>
                         </div>
                       </div>
                       <div class="form-group row">
                         <label class="control-label col-md-3 col-sm-3 col-xs-3">TaxID Mask</label>
                         <div class="col-md-9 col-sm-9 col-xs-9">
                           <input type="text" class="form-control" data-inputmask="'mask' : '99-99999999'">
-                          <span class="fas fa-user form-control-feedback right" aria-hidden="true"></span>
+                          <span class="fas fa-receipt form-control-feedback right" aria-hidden="true"></span>
                         </div>
                       </div>
                       <div class="form-group row">
                         <label class="control-label col-md-3 col-sm-3 col-xs-3">Credit Card Mask</label>
                         <div class="col-md-9 col-sm-9 col-xs-9">
                           <input type="text" class="form-control" data-inputmask="'mask' : '9999-9999-9999-9999'">
-                          <span class="fas fa-user form-control-feedback right" aria-hidden="true"></span>
+                          <span class="fas fa-credit-card form-control-feedback right" aria-hidden="true"></span>
                         </div>
                       </div>
                       <div class="ln_solid"></div>
@@ -357,11 +357,11 @@
               </div>
               <!-- /form input mask -->
 
-              <!-- form color picker -->
+              <!-- modern color picker -->
               <div class="col-md-6 col-sm-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Color Picker</h2>
+                    <h2>Modern Color Picker <small>Powered by Pickr</small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
                       </li>
@@ -384,47 +384,96 @@
                     <form class="form-horizontal form-label-left">
 
                       <div class="form-group row">
-                        <label class="control-label col-md-3 col-sm-3">Default Input</label>
+                        <label class="control-label col-md-3 col-sm-3">Classic Theme</label>
                         <div class="col-md-9 col-sm-9">
-                          <input type="text" class="demo1 form-control" value="#5367ce" />
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <label class="control-label col-md-3 col-sm-3">Styled</label>
-                        <div class="col-md-9 col-sm-9">
-                          <div class="input-group demo2">
-                            <input type="text" value="#e01ab5" class="form-control" />
-                            <span class="input-group-addon"><i></i></span>
+                          <div class="input-group">
+                            <span class="input-group-text d-flex align-items-center justify-content-center p-0" style="width: 50px; height: calc(100% - 2px); margin-top: 1px; margin-bottom: 1px;">
+                              <div class="color-picker-classic" style="width: 32px; height: 32px; border: 2px solid #fff; border-radius: 4px; cursor: pointer; box-shadow: 0 0 0 1px rgba(0,0,0,0.1);"></div>
+                            </span>
+                            <input type="text" class="form-control" id="classic-result" readonly value="#5367ce" />
+                            <span class="input-group-text"><i class="fas fa-palette"></i></span>
                           </div>
+                          <small class="text-muted">Full-featured picker with all components</small>
                         </div>
                       </div>
+
                       <div class="form-group row">
-                        <label class="control-label col-md-3 col-sm-3">Horizontal bar</label>
+                        <label class="control-label col-md-3 col-sm-3">Monolith Theme</label>
                         <div class="col-md-9 col-sm-9">
-                          <input type="text" class="form-control demo colorpicker-element" data-horizontal="true" id="demo_forceformat" value="#8fff00">
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <label class="control-label col-md-3 col-sm-3">Vertical bar</label>
-                        <div class="col-md-9 col-sm-9">
-                          <input type="text" class="form-control demo colorpicker-element" id="demo_forceformat3" value="#8fff00">
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <label class="control-label col-md-3 col-sm-3">Inline picker</label>
-                        <div class="col-md-9 col-sm-9">
-                          <div class="well">
-                            <div id="demo_cont" class="demo demo-auto inl-bl colorpicker-element" data-container="#demo_cont" data-color="rgba(150,216,62,0.55)" data-inline="true"></div>
-                            <div class="demo demo-auto inl-bl colorpicker-element" data-container="true" data-color="rgb(50,216,62)" data-inline="true" style="margin-left:20px;"></div>
+                          <div class="input-group">
+                            <span class="input-group-text d-flex align-items-center justify-content-center p-0" style="width: 50px; height: calc(100% - 2px); margin-top: 1px; margin-bottom: 1px;">
+                              <div class="color-picker-monolith" style="width: 32px; height: 32px; border: 2px solid #fff; border-radius: 4px; cursor: pointer; box-shadow: 0 0 0 1px rgba(0,0,0,0.1);"></div>
+                            </span>
+                            <input type="text" class="form-control" id="monolith-result" readonly value="#e91e63" />
+                            <span class="input-group-text"><i class="fas fa-droplet"></i></span>
                           </div>
+                          <small class="text-muted">Compact design with modern styling</small>
                         </div>
                       </div>
+
+                      <div class="form-group row">
+                        <label class="control-label col-md-3 col-sm-3">Nano Theme</label>
+                        <div class="col-md-9 col-sm-9">
+                          <div class="input-group">
+                            <span class="input-group-text d-flex align-items-center justify-content-center p-0" style="width: 50px; height: calc(100% - 2px); margin-top: 1px; margin-bottom: 1px;">
+                              <div class="color-picker-nano" style="width: 32px; height: 32px; border: 2px solid #fff; border-radius: 4px; cursor: pointer; box-shadow: 0 0 0 1px rgba(0,0,0,0.1);"></div>
+                            </span>
+                            <input type="text" class="form-control" id="nano-result" readonly value="#ff9800" />
+                            <span class="input-group-text"><i class="fas fa-circle"></i></span>
+                          </div>
+                          <small class="text-muted">Minimal picker for simple color selection</small>
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label class="control-label col-md-3 col-sm-3">With Opacity</label>
+                        <div class="col-md-9 col-sm-9">
+                          <div class="input-group">
+                            <span class="input-group-text d-flex align-items-center justify-content-center p-0" style="width: 50px; height: 38px;">
+                              <div class="color-picker-opacity" style="width: 32px; height: 32px; border: 2px solid #fff; border-radius: 4px; cursor: pointer; box-shadow: 0 0 0 1px rgba(0,0,0,0.1); margin-top: 1px;"></div>
+                            </span>
+                            <input type="text" class="form-control" id="opacity-result" readonly value="rgba(156, 39, 176, 0.7)" />
+                            <span class="input-group-text"><i class="fas fa-adjust"></i></span>
+                          </div>
+                          <small class="text-muted">Includes alpha/transparency control</small>
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label class="control-label col-md-3 col-sm-3">Swatches & Presets</label>
+                        <div class="col-md-9 col-sm-9">
+                          <div class="input-group">
+                            <span class="input-group-text d-flex align-items-center justify-content-center p-0" style="width: 50px; height: 38px;">
+                              <div class="color-picker-swatches" style="width: 32px; height: 32px; border: 2px solid #fff; border-radius: 4px; cursor: pointer; box-shadow: 0 0 0 1px rgba(0,0,0,0.1); margin-top: 1px;"></div>
+                            </span>
+                            <input type="text" class="form-control" id="swatches-result" readonly value="#4caf50" />
+                            <span class="input-group-text"><i class="fas fa-swatchbook"></i></span>
+                          </div>
+                          <small class="text-muted">Pre-defined color palette with custom swatches</small>
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label class="control-label col-md-3 col-sm-3">Output Formats</label>
+                        <div class="col-md-9 col-sm-9">
+                          <div class="input-group">
+                            <span class="input-group-text d-flex align-items-center justify-content-center p-0" style="width: 50px; height: 38px;">
+                              <div class="color-picker-formats" style="width: 32px; height: 32px; border: 2px solid #fff; border-radius: 4px; cursor: pointer; box-shadow: 0 0 0 1px rgba(0,0,0,0.1); margin-top: 1px;"></div>
+                            </span>
+                            <input type="text" class="form-control" id="formats-result" readonly value="#2196f3" />
+                            <span class="input-group-text"><i class="fas fa-code"></i></span>
+                          </div>
+                          <small class="text-muted">Supports HEX, RGB, HSL, HSV formats</small>
+                        </div>
+                      </div>
+
+
 
                     </form>
                   </div>
                 </div>
               </div>
-              <!-- /form color picker -->
+              <!-- /modern color picker -->
 
               <!-- form input knob -->
               <div class="col-md-12">
@@ -1280,10 +1329,329 @@
     </div>    <!-- Compiled JavaScript (includes jQuery, Bootstrap, and all vendor scripts) -->
     
     
-    <!-- Initialize Tempus Dominus datetimepicker -->
+    <!-- Initialize Form Advanced Components -->
 <script type="text/javascript">
 document.addEventListener('DOMContentLoaded', function() {
-    if (typeof TempusDominus !== 'undefined') {
+    console.log('🚀 DOM loaded, initializing form components...');
+    
+    // Wait for all modules to load, then initialize
+    function waitForLibraries() {
+        // Check if all required libraries are available
+        const hasJQuery = typeof window.$ !== 'undefined' && typeof window.jQuery !== 'undefined';
+        const hasInputmask = typeof window.Inputmask !== 'undefined';
+        const hasPickr = typeof window.Pickr !== 'undefined';
+        const hasCropper = typeof window.Cropper !== 'undefined';
+        const hasTempusDominus = typeof window.TempusDominus !== 'undefined';
+        
+        console.log('🔍 Checking available libraries...');
+        console.log('jQuery available:', hasJQuery);
+        console.log('Inputmask available:', hasInputmask);
+        console.log('Pickr available:', hasPickr);
+        console.log('Cropper available:', hasCropper);
+        console.log('TempusDominus available:', hasTempusDominus);
+        
+        if (hasJQuery) {
+            // Use jQuery from window object
+            const $ = window.$;
+            console.log('ionRangeSlider available:', $.fn.ionRangeSlider ? 'yes' : 'no');
+            console.log('knob available:', $.fn.knob ? 'yes' : 'no');
+        }
+        
+                 if (!hasJQuery) {
+             console.warn('⚠️ jQuery not ready yet, waiting...');
+             setTimeout(waitForLibraries, 100);
+             return;
+         }
+         
+         // All libraries are ready, start initialization
+         initializeComponents();
+     }
+     
+     function initializeComponents() {
+         // Use jQuery from window object
+         const $ = window.$;
+         
+         console.log('🚀 Starting component initialization...');
+     
+                  // Initialize Input Masks
+         if (typeof window.Inputmask !== 'undefined') {
+             const Inputmask = window.Inputmask;
+             // Date mask
+             Inputmask('99/99/9999').mask(document.querySelectorAll('[data-inputmask*="99/99/9999"]'));
+             
+             // Phone mask
+             Inputmask('(999) 999-9999').mask(document.querySelectorAll('[data-inputmask*="(999) 999-9999"]'));
+             
+             // Custom mask
+             Inputmask('99-999999').mask(document.querySelectorAll('[data-inputmask*="99-999999"]'));
+             
+             // Serial number mask
+             Inputmask('****-****-****-****-****-***').mask(document.querySelectorAll('[data-inputmask*="****-****-****-****-****-***"]'));
+             
+             // Tax ID mask
+             Inputmask('99-99999999').mask(document.querySelectorAll('[data-inputmask*="99-99999999"]'));
+             
+             // Credit card mask
+             Inputmask('9999-9999-9999-9999').mask(document.querySelectorAll('[data-inputmask*="9999-9999-9999-9999"]'));
+         }
+    
+                      // Initialize Modern Color Pickers
+         if (typeof window.Pickr !== 'undefined') {
+             const Pickr = window.Pickr;
+             
+             // Classic Theme Picker
+             const classicPicker = Pickr.create({
+                 el: '.color-picker-classic',
+                 theme: 'classic',
+                 default: '#5367ce',
+                 components: {
+                     preview: true,
+                     opacity: true,
+                     hue: true,
+                     interaction: {
+                         hex: true,
+                         rgba: true,
+                         hsla: true,
+                         hsva: true,
+                         input: true,
+                         clear: true,
+                         save: true
+                     }
+                 }
+             }).on('change', (color) => {
+                 document.getElementById('classic-result').value = color.toHEXA().toString();
+             }).on('save', (color) => {
+                 classicPicker.hide();
+             });
+             
+             // Monolith Theme Picker
+             const monolithPicker = Pickr.create({
+                 el: '.color-picker-monolith',
+                 theme: 'monolith',
+                 default: '#e91e63',
+                 components: {
+                     preview: true,
+                     opacity: true,
+                     hue: true,
+                     interaction: {
+                         hex: true,
+                         rgba: true,
+                         input: true,
+                         save: true
+                     }
+                 }
+             }).on('change', (color) => {
+                 document.getElementById('monolith-result').value = color.toHEXA().toString();
+             }).on('save', (color) => {
+                 monolithPicker.hide();
+             });
+             
+             // Nano Theme Picker
+             const nanoPicker = Pickr.create({
+                 el: '.color-picker-nano',
+                 theme: 'nano',
+                 default: '#ff9800',
+                 components: {
+                     preview: true,
+                     hue: true,
+                     interaction: {
+                         hex: true,
+                         input: true,
+                         save: true
+                     }
+                 }
+             }).on('change', (color) => {
+                 document.getElementById('nano-result').value = color.toHEXA().toString();
+             }).on('save', (color) => {
+                 nanoPicker.hide();
+             });
+             
+             // Opacity/Alpha Picker
+             const opacityPicker = Pickr.create({
+                 el: '.color-picker-opacity',
+                 theme: 'classic',
+                 default: 'rgba(156, 39, 176, 0.7)',
+                 components: {
+                     preview: true,
+                     opacity: true,
+                     hue: true,
+                     interaction: {
+                         hex: true,
+                         rgba: true,
+                         input: true,
+                         save: true
+                     }
+                 }
+             }).on('change', (color) => {
+                 document.getElementById('opacity-result').value = color.toRGBA().toString();
+             }).on('save', (color) => {
+                 opacityPicker.hide();
+             });
+             
+             // Swatches Picker with Presets
+             const swatchesPicker = Pickr.create({
+                 el: '.color-picker-swatches',
+                 theme: 'classic',
+                 default: '#4caf50',
+                 swatches: [
+                     '#f44336', '#e91e63', '#9c27b0', '#673ab7',
+                     '#3f51b5', '#2196f3', '#03a9f4', '#00bcd4',
+                     '#009688', '#4caf50', '#8bc34a', '#cddc39',
+                     '#ffeb3b', '#ffc107', '#ff9800', '#ff5722'
+                 ],
+                 components: {
+                     preview: true,
+                     opacity: true,
+                     hue: true,
+                     interaction: {
+                         hex: true,
+                         rgba: true,
+                         input: true,
+                         clear: true,
+                         save: true
+                     }
+                 }
+             }).on('change', (color) => {
+                 document.getElementById('swatches-result').value = color.toHEXA().toString();
+             }).on('save', (color) => {
+                 swatchesPicker.hide();
+             });
+             
+             // Format Demonstration Picker
+             const formatsPicker = Pickr.create({
+                 el: '.color-picker-formats',
+                 theme: 'monolith',
+                 default: '#2196f3',
+                 components: {
+                     preview: true,
+                     opacity: true,
+                     hue: true,
+                     interaction: {
+                         hex: true,
+                         rgba: true,
+                         hsla: true,
+                         hsva: true,
+                         input: true,
+                         save: true
+                     }
+                 }
+             }).on('change', (color) => {
+                 // Demonstrate different format outputs
+                 const formats = [
+                     color.toHEXA().toString(),
+                     color.toRGBA().toString(),
+                     color.toHSLA().toString(),
+                     color.toHSVA().toString()
+                 ];
+                 document.getElementById('formats-result').value = formats[Math.floor(Date.now() / 2000) % 4];
+             }).on('save', (color) => {
+                 formatsPicker.hide();
+             });
+             
+             console.log('✅ Modern Pickr color pickers initialized');
+         }
+    
+    // Initialize jQuery Knob controls
+    if ($ && $.fn.knob) {
+        $('.knob').knob({
+            draw: function() {
+                if (this.$.data('skin') == 'tron') {
+                    var a = this.angle(this.cv),
+                        sa = this.startAngle,
+                        sat = this.startAngle,
+                        ea,
+                        eat = sat + a,
+                        r = true;
+                    
+                    this.g.lineWidth = this.lineWidth;
+                    
+                    this.o.cursor && (sat = eat - 0.3) && (eat = eat + 0.3);
+                    
+                    if (this.o.displayPrevious) {
+                        ea = this.startAngle + this.angle(this.value);
+                        this.o.cursor && (sa = ea - 0.3) && (ea = ea + 0.3);
+                        this.g.beginPath();
+                        this.g.strokeStyle = this.previousColor;
+                        this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sa, ea, false);
+                        this.g.stroke();
+                    }
+                    
+                    this.g.beginPath();
+                    this.g.strokeStyle = r ? this.o.fgColor : this.fgColor;
+                    this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sat, eat, false);
+                    this.g.stroke();
+                    
+                    this.g.lineWidth = 2;
+                    this.g.beginPath();
+                    this.g.strokeStyle = this.o.fgColor;
+                    this.g.arc(this.xy, this.xy, this.radius - this.lineWidth + 1 + this.lineWidth * 2 / 3, 0, 2 * Math.PI, false);
+                    this.g.stroke();
+                    
+                    return false;
+                }
+            }
+        });
+    }
+    
+             // Initialize Cropper.js for image cropping
+         if (typeof window.Cropper !== 'undefined') {
+             const Cropper = window.Cropper;
+        const image = document.getElementById('image');
+        if (image) {
+            const cropper = new Cropper(image, {
+                aspectRatio: 16 / 9,
+                crop(event) {
+                    console.log(event.detail.x);
+                    console.log(event.detail.y);
+                    console.log(event.detail.width);
+                    console.log(event.detail.height);
+                    console.log(event.detail.rotate);
+                    console.log(event.detail.scaleX);
+                    console.log(event.detail.scaleY);
+                }
+            });
+            
+            // Store cropper instance globally for demo buttons
+            window.cropper = cropper;
+        }
+    }
+    
+             // Initialize Switchery for iOS-style toggle switches
+         if (typeof window.Switchery !== 'undefined') {
+             const Switchery = window.Switchery;
+        const elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
+        elems.forEach(function(html) {
+            const switchery = new Switchery(html, { color: '#26B99A' });
+        });
+    }
+    
+    // Note: Using TempusDominus for all date functionality instead of DateRangePicker
+    // Date ranges can be implemented using two linked TempusDominus pickers (see below)
+    
+    // Initialize Ion Range Slider
+    if ($ && $.fn.ionRangeSlider) {
+        $('.range_01').ionRangeSlider({
+            type: 'double',
+            min: 0,
+            max: 1000,
+            from: 200,
+            to: 800,
+            grid: true
+        });
+        
+        $('.range_02').ionRangeSlider({
+            type: 'single',
+            min: 0,
+            max: 100,
+            from: 50,
+            postfix: '%',
+            grid: true
+        });
+    }
+    
+             // Initialize TempusDominus DateTimePickers
+         if (typeof window.TempusDominus !== 'undefined') {
+             const TempusDominus = window.TempusDominus;
         // Basic DateTime Picker
         const picker1 = new TempusDominus(document.getElementById('myDatepicker'), {
             display: {
@@ -1387,6 +1755,11 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+    
+    } // Close initializeComponents function
+    
+    // Start the initialization process
+    waitForLibraries();
 });
 </script>
   </body>

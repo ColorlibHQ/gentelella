@@ -59,6 +59,41 @@ console.log('✅ Leaflet CSS loaded');
 import '@eonasdan/tempus-dominus/dist/css/tempus-dominus.min.css';
 console.log('✅ TempusDominus CSS loaded');
 
+// Ion Range Slider
+import 'ion-rangeslider';
+window.ionRangeSlider = true;
+console.log('✅ Ion Range Slider loaded');
+
+// Ion Range Slider CSS
+import 'ion-rangeslider/css/ion.rangeSlider.min.css';
+console.log('✅ Ion Range Slider CSS loaded');
+
+// Input Mask
+import Inputmask from 'inputmask';
+window.Inputmask = Inputmask;
+console.log('✅ Inputmask loaded');
+
+// Modern Color Picker
+import Pickr from '@simonwep/pickr';
+window.Pickr = Pickr;
+console.log('✅ Pickr loaded');
+
+// Pickr CSS
+import '@simonwep/pickr/dist/themes/classic.min.css';
+console.log('✅ Pickr CSS loaded');
+
+// jQuery Knob (needs jQuery to be global first)
+import 'jquery-knob';
+console.log('✅ jQuery Knob loaded');
+
+// Cropper.js for image cropping
+import 'cropper';
+console.log('✅ Cropper loaded');
+
+// Cropper CSS
+import 'cropper/dist/cropper.min.css';
+console.log('✅ Cropper CSS loaded');
+
 // Add the essential JavaScript functionality
 try {
   // Import helpers and sidebar

@@ -52,6 +52,20 @@ import './main.scss';
 // Leaflet CSS
 import 'leaflet/dist/leaflet.css';
 
+// TempusDominus CSS
+import '@eonasdan/tempus-dominus/dist/css/tempus-dominus.min.css';
+
+// Pickr CSS
+import '@simonwep/pickr/dist/themes/classic.min.css';
+
+
+
+// Ion Range Slider CSS
+import 'ion-rangeslider/css/ion.rangeSlider.min.css';
+
+// Cropper CSS
+import 'cropper/dist/cropper.min.css';
+
 // Legacy scripts that depend on global jQuery - LOAD IN CORRECT ORDER
 import './js/helpers/smartresize.js';
 import './js/sidebar.js';
@@ -96,8 +110,21 @@ import 'flot/source/jquery.flot.resize.js';
 
 // ECharts
 import * as echarts from 'echarts';
+window.echarts = echarts;
 
-// Legacy scripts that depend on global jQuery
-import './js/helpers/smartresize.js';
-import './js/sidebar.js';
-import './js/init.js'; 
+// Input Mask
+import Inputmask from 'inputmask';
+window.Inputmask = Inputmask;
+
+// Modern Color Picker
+import Pickr from '@simonwep/pickr';
+window.Pickr = Pickr;
+
+// jQuery Knob
+import 'jquery-knob';
+
+// Cropper.js for image cropping
+import 'cropper';
+
+
+
