@@ -264,7 +264,7 @@ Gentelella has been integrated into various frameworks:
 - **[Django](https://github.com/GiriB/django-gentelella)** - Python Django app
 - **[Angular](https://github.com/kmkatsma/angular2-webpack-starter-gentelella)** - Angular integration
 - **[React](https://github.com/thomaslwq/react-admin)** - React implementation
-- **[Symfony](https://github.com/mamless/Gentella-admin-Symfony-5)** - Symfony 5 integration
+- **[Symfony](https://github.com/mamless/Gentella-admin-Symfony-6)** - Symfony 6 integration
 - **[Yii](https://github.com/yiister/yii2-gentelella)** - Yii framework integration
 - **[Flask](https://github.com/afourmy/flask-gentelella)** - Python Flask app
 - **[CakePHP](https://github.com/backstageel/cakephp-gentelella-theme)** - CakePHP integration

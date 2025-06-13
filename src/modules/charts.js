@@ -15,10 +15,6 @@ import SkyconsFactory from 'skycons';
 const Skycons = SkyconsFactory(window);
 window.Skycons = Skycons;
 
-// GaugeJS for gauge charts
-import { Gauge } from 'gaugejs';
-window.Gauge = Gauge;
-
 // jQuery Sparkline for mini charts
 import 'jquery-sparkline';
 
@@ -28,6 +24,5 @@ import 'jquery-sparkline';
 export default {
   Chart,
   Skycons,
-  Gauge,
   initialized: true
 }; 

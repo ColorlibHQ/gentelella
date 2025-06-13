@@ -25,11 +25,6 @@ import { TempusDominus } from '@eonasdan/tempus-dominus';
 window.TempusDominus = TempusDominus;
 console.log('✅ TempusDominus loaded');
 
-// GaugeJS - Modern gauge library (Bootstrap 5 compatible)
-import Gauge from 'gauge.js';
-window.Gauge = Gauge;
-console.log('✅ GaugeJS loaded');
-
 // Chart.js v4 - No jQuery dependency 
 import { Chart, registerables } from 'chart.js';
 Chart.register(...registerables);

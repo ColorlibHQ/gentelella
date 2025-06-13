@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" href="images/favicon.ico" type="image/ico" />
 
-    <title>Gentelella Alela!</title>
+    <title>Dashboard 1 - Gentelella</title>
 
 
 
@@ -48,9 +48,10 @@
                 <ul class="nav side-menu">
                   <li><a><i class="fas fa-home"></i> Home <span class="fas fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="index.html">Dashboard</a></li>
-                      <li><a href="index2.html">Dashboard2</a></li>
-                      <li><a href="index3.html">Dashboard3</a></li>
+                                              <li><a href="index.html">Dashboard 1</a></li>
+                        <li><a href="index2.html">Dashboard 2</a></li>
+                        <li><a href="index3.html">Dashboard 3</a></li>
+                        <li><a href="index4.html">Dashboard 4</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fas fa-edit"></i> Forms <span class="fas fa-chevron-down"></span></a>
@@ -261,39 +262,63 @@
         <div class="right_col" role="main">
           <!-- top tiles -->
           <div class="row">
-          <div class="tile_count">
-            <div class="col-md-2 col-sm-4  tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total Users</span>
-              <div class="count">2500</div>
-              <span class="count_bottom"><i class="green">4% </i> From last Week</span>
-            </div>
-            <div class="col-md-2 col-sm-4  tile_stats_count">
-              <span class="count_top"><i class="fa fa-clock-o"></i> Average Time</span>
-              <div class="count">123.50</div>
-              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>3% </i> From last Week</span>
-            </div>
-            <div class="col-md-2 col-sm-4  tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total Males</span>
-              <div class="count green">2,500</div>
-              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
-            </div>
-            <div class="col-md-2 col-sm-4  tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total Females</span>
-              <div class="count">4,567</div>
-              <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>12% </i> From last Week</span>
-            </div>
-            <div class="col-md-2 col-sm-4  tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total Collections</span>
-              <div class="count">2,315</div>
-              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
-            </div>
-            <div class="col-md-2 col-sm-4  tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total Connections</span>
-              <div class="count">7,325</div>
-              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
+            <div class="tile_count" style="display: flex; flex-wrap: wrap; gap: 20px; margin-bottom: 30px; width: 100%;">
+              <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count" style="flex: 1; min-width: 180px; height: 120px; display: flex; flex-direction: column; justify-content: center; background: #fff; border: 1px solid #e6e9ed; border-radius: 5px; padding: 15px; box-shadow: 0 1px 3px rgba(0,0,0,0.12);">
+                <span class="count_top" style="display: flex; align-items: center; margin-bottom: 8px;">
+                  <i class="fas fa-users" style="color: #3498db; font-size: 32px; margin-right: 12px;"></i>
+                  <div>
+                    <div class="count" style="font-size: 24px; font-weight: bold; color: #34495e; line-height: 1;">2,500</div>
+                    <span class="count_bottom" style="font-size: 12px; color: #7f8c8d; text-transform: uppercase;">Total Users</span>
+                  </div>
+                </span>
+              </div>
+              <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count" style="flex: 1; min-width: 180px; height: 120px; display: flex; flex-direction: column; justify-content: center; background: #fff; border: 1px solid #e6e9ed; border-radius: 5px; padding: 15px; box-shadow: 0 1px 3px rgba(0,0,0,0.12);">
+                <span class="count_top" style="display: flex; align-items: center; margin-bottom: 8px;">
+                  <i class="fas fa-clock" style="color: #e74c3c; font-size: 32px; margin-right: 12px;"></i>
+                  <div>
+                    <div class="count" style="font-size: 24px; font-weight: bold; color: #34495e; line-height: 1;">123.5<small>min</small></div>
+                    <span class="count_bottom" style="font-size: 12px; color: #7f8c8d; text-transform: uppercase;">Average Time</span>
+                  </div>
+                </span>
+              </div>
+              <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count" style="flex: 1; min-width: 180px; height: 120px; display: flex; flex-direction: column; justify-content: center; background: #fff; border: 1px solid #e6e9ed; border-radius: 5px; padding: 15px; box-shadow: 0 1px 3px rgba(0,0,0,0.12);">
+                <span class="count_top" style="display: flex; align-items: center; margin-bottom: 8px;">
+                  <i class="fas fa-shopping-cart" style="color: #f39c12; font-size: 32px; margin-right: 12px;"></i>
+                  <div>
+                    <div class="count" style="font-size: 24px; font-weight: bold; color: #34495e; line-height: 1;">1,240</div>
+                    <span class="count_bottom" style="font-size: 12px; color: #7f8c8d; text-transform: uppercase;">Total Orders</span>
+                  </div>
+                </span>
+              </div>
+              <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count" style="flex: 1; min-width: 180px; height: 120px; display: flex; flex-direction: column; justify-content: center; background: #fff; border: 1px solid #e6e9ed; border-radius: 5px; padding: 15px; box-shadow: 0 1px 3px rgba(0,0,0,0.12);">
+                <span class="count_top" style="display: flex; align-items: center; margin-bottom: 8px;">
+                  <i class="fas fa-dollar-sign" style="color: #2ecc71; font-size: 32px; margin-right: 12px;"></i>
+                  <div>
+                    <div class="count" style="font-size: 24px; font-weight: bold; color: #34495e; line-height: 1;">$24,567</div>
+                    <span class="count_bottom" style="font-size: 12px; color: #7f8c8d; text-transform: uppercase;">Total Revenue</span>
+                  </div>
+                </span>
+              </div>
+              <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count" style="flex: 1; min-width: 180px; height: 120px; display: flex; flex-direction: column; justify-content: center; background: #fff; border: 1px solid #e6e9ed; border-radius: 5px; padding: 15px; box-shadow: 0 1px 3px rgba(0,0,0,0.12);">
+                <span class="count_top" style="display: flex; align-items: center; margin-bottom: 8px;">
+                  <i class="fas fa-chart-line" style="color: #9b59b6; font-size: 32px; margin-right: 12px;"></i>
+                  <div>
+                    <div class="count" style="font-size: 24px; font-weight: bold; color: #34495e; line-height: 1;">2,315</div>
+                    <span class="count_bottom" style="font-size: 12px; color: #7f8c8d; text-transform: uppercase;">Conversions</span>
+                  </div>
+                </span>
+              </div>
+              <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count" style="flex: 1; min-width: 180px; height: 120px; display: flex; flex-direction: column; justify-content: center; background: #fff; border: 1px solid #e6e9ed; border-radius: 5px; padding: 15px; box-shadow: 0 1px 3px rgba(0,0,0,0.12);">
+                <span class="count_top" style="display: flex; align-items: center; margin-bottom: 8px;">
+                  <i class="fas fa-eye" style="color: #1abc9c; font-size: 32px; margin-right: 12px;"></i>
+                  <div>
+                    <div class="count" style="font-size: 24px; font-weight: bold; color: #34495e; line-height: 1;">47,325</div>
+                    <span class="count_bottom" style="font-size: 12px; color: #7f8c8d; text-transform: uppercase;">Page Views</span>
+                  </div>
+                </span>
+              </div>
             </div>
           </div>
-        </div>
           <!-- /top tiles -->
 
           <div class="row">
@@ -606,10 +631,9 @@
 
                     <div class="sidebar-widget">
                         <h4>Profile Completion</h4>
-                        <canvas width="150" height="80" id="chart_gauge_01" class="" style="width: 160px; height: 100px;"></canvas>
+                        <div id="profile_completion_gauge" style="width:160px;height:120px;margin:0 auto;"></div>
                         <div class="goal-wrapper">
-                          <span id="gauge-text" class="gauge-value pull-left">0</span>
-                          <span class="gauge-value pull-left">%</span>
+                          <span class="goal-value pull-left">67%</span>
                           <span id="goal-text" class="goal-value pull-right">100%</span>
                         </div>
                     </div>
@@ -643,18 +667,18 @@
                 </div>
                 <div class="x_content">
                   <div class="dashboard-widget-content">
-
-                    <ul class="list-unstyled timeline widget">
+                    <div class="activities-scroll">
+                      <ul class="list-unstyled timeline widget">
                       <li>
                         <div class="block">
                           <div class="block_content">
                             <h2 class="title">
-                                              <a>Who Needs Sundance When You've Got&nbsp;Crowdfunding?</a>
-                                          </h2>
+                              <a><i class="fas fa-shopping-cart" style="color: #26B99A; margin-right: 8px;"></i>New Order Received</a>
+                            </h2>
                             <div class="byline">
-                              <span>13 hours ago</span> by <a>Jane Smith</a>
+                              <span>2 minutes ago</span> by <a>Customer #12455</a>
                             </div>
-                            <p class="excerpt">Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they'd pay to Fast-forward and… <a>Read&nbsp;More</a>
+                            <p class="excerpt">Order #ORD-12455 for $2,350.00 has been placed. Customer ordered premium package with expedited shipping. <a>View Details</a>
                             </p>
                           </div>
                         </div>
@@ -663,12 +687,12 @@
                         <div class="block">
                           <div class="block_content">
                             <h2 class="title">
-                                              <a>Who Needs Sundance When You've Got&nbsp;Crowdfunding?</a>
-                                          </h2>
+                              <a><i class="fas fa-user-plus" style="color: #3498DB; margin-right: 8px;"></i>New User Registration</a>
+                            </h2>
                             <div class="byline">
-                              <span>13 hours ago</span> by <a>Jane Smith</a>
+                              <span>15 minutes ago</span> by <a>john.doe@example.com</a>
                             </div>
-                            <p class="excerpt">Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they'd pay to Fast-forward and… <a>Read&nbsp;More</a>
+                            <p class="excerpt">New user registered with premium membership. Account verified and welcome email sent successfully. <a>View Profile</a>
                             </p>
                           </div>
                         </div>
@@ -677,12 +701,12 @@
                         <div class="block">
                           <div class="block_content">
                             <h2 class="title">
-                                              <a>Who Needs Sundance When You've Got&nbsp;Crowdfunding?</a>
-                                          </h2>
+                              <a><i class="fas fa-credit-card" style="color: #F39C12; margin-right: 8px;"></i>Payment Processed</a>
+                            </h2>
                             <div class="byline">
-                              <span>13 hours ago</span> by <a>Jane Smith</a>
+                              <span>32 minutes ago</span> by <a>Payment Gateway</a>
                             </div>
-                            <p class="excerpt">Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they'd pay to Fast-forward and… <a>Read&nbsp;More</a>
+                            <p class="excerpt">Payment of $1,250.00 successfully processed for Order #ORD-12453. Funds have been deposited to merchant account. <a>View Transaction</a>
                             </p>
                           </div>
                         </div>
@@ -691,26 +715,298 @@
                         <div class="block">
                           <div class="block_content">
                             <h2 class="title">
-                                              <a>Who Needs Sundance When You've Got&nbsp;Crowdfunding?</a>
-                                          </h2>
+                              <a><i class="fas fa-star" style="color: #E74C3C; margin-right: 8px;"></i>Product Review Submitted</a>
+                            </h2>
                             <div class="byline">
-                              <span>13 hours ago</span> by <a>Jane Smith</a>
+                              <span>1 hour ago</span> by <a>Sarah Johnson</a>
                             </div>
-                            <p class="excerpt">Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they'd pay to Fast-forward and… <a>Read&nbsp;More</a>
+                            <p class="excerpt">5-star review submitted for "Premium Wireless Headphones". Customer praised excellent sound quality and fast delivery. <a>Read Review</a>
                             </p>
                           </div>
                         </div>
                       </li>
-                    </ul>
+                      <li>
+                        <div class="block">
+                          <div class="block_content">
+                            <h2 class="title">
+                              <a><i class="fas fa-truck" style="color: #9B59B6; margin-right: 8px;"></i>Shipment Dispatched</a>
+                            </h2>
+                            <div class="byline">
+                              <span>2 hours ago</span> by <a>Logistics Team</a>
+                            </div>
+                            <p class="excerpt">Order #ORD-12448 has been shipped via Express Delivery. Tracking number: EX123456789. Expected delivery: Tomorrow. <a>Track Package</a>
+                            </p>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="block">
+                          <div class="block_content">
+                            <h2 class="title">
+                              <a><i class="fas fa-chart-line" style="color: #2ECC71; margin-right: 8px;"></i>Sales Milestone Achieved</a>
+                            </h2>
+                            <div class="byline">
+                              <span>3 hours ago</span> by <a>System</a>
+                            </div>
+                            <p class="excerpt">Congratulations! Monthly sales target of $50,000 achieved with 5 days remaining. Current total: $52,450. <a>View Report</a>
+                            </p>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="block">
+                          <div class="block_content">
+                            <h2 class="title">
+                              <a><i class="fas fa-exclamation-triangle" style="color: #E67E22; margin-right: 8px;"></i>Inventory Alert</a>
+                            </h2>
+                            <div class="byline">
+                              <span>4 hours ago</span> by <a>Inventory System</a>
+                            </div>
+                            <p class="excerpt">Low stock alert: "Wireless Mouse Model X" has only 5 units remaining. Consider reordering to avoid stockouts. <a>Reorder Now</a>
+                            </p>
+                          </div>
+                        </div>
+                      </li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
+
+              <!-- Sales Statistics Widget -->
+              <div class="x_panel" style="min-height: 450px;">
+                <div class="x_title">
+                  <h2>Sales Statistics <small>Monthly overview</small></h2>
+                  <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" href="#">Settings 1</a>
+                          <a class="dropdown-item" href="#">Settings 2</a>
+                        </div>
+                    </li>
+                    <li><a class="btn-close-link"><i class="fas fa-times"></i></a>
+                    </li>
+                  </ul>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                  
+                  <!-- Chart Area -->
+                  <div style="position: relative; height: 120px; margin-bottom: 20px;">
+                    <svg viewBox="0 0 280 80" style="width: 100%; height: 100%;">
+                      <defs>
+                        <linearGradient id="salesGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                          <stop offset="0%" style="stop-color:#26B99A;stop-opacity:0.3" />
+                          <stop offset="100%" style="stop-color:#26B99A;stop-opacity:0.05" />
+                        </linearGradient>
+                      </defs>
+                      <!-- Area under curve -->
+                      <path d="M 20 60 Q 70 40 120 30 T 260 20 L 260 70 L 20 70 Z" fill="url(#salesGradient)"/>
+                      <!-- Main line -->
+                      <path d="M 20 60 Q 70 40 120 30 T 260 20" stroke="#26B99A" stroke-width="2.5" fill="none"/>
+                      <!-- Data points -->
+                      <circle cx="20" cy="60" r="3" fill="#26B99A"/>
+                      <circle cx="70" cy="40" r="3" fill="#26B99A"/>
+                      <circle cx="120" cy="30" r="4" fill="#26B99A"/>
+                      <circle cx="180" cy="25" r="3" fill="#26B99A"/>
+                      <circle cx="260" cy="20" r="3" fill="#26B99A"/>
+                    </svg>
+                    
+                    <!-- Floating info card -->
+                    <div style="position: absolute; top: 5px; right: 10px; background: white; border: 1px solid #E6E9ED; border-radius: 5px; padding: 6px 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                      <div style="color: #73879C; font-size: 9px; margin-bottom: 2px;">March</div>
+                      <div style="color: #2A3F54; font-size: 11px; font-weight: 600;">$45k profit</div>
+                    </div>
+                  </div>
+
+                  <!-- Metrics Grid -->
+                  <div class="row">
+                    
+                    <!-- Weekly Sales -->
+                    <div class="col-md-6 col-sm-6" style="margin-bottom: 10px;">
+                      <div style="background: #f7f7f7; border: 1px solid #E6E9ED; border-radius: 3px; padding: 12px;">
+                        <div style="display: flex; align-items: center; margin-bottom: 6px;">
+                          <div style="display: flex; gap: 3px;">
+                            <div style="width: 5px; height: 5px; background: #26B99A; border-radius: 1px;"></div>
+                            <div style="width: 5px; height: 5px; background: #3498DB; border-radius: 1px;"></div>
+                            <div style="width: 5px; height: 5px; background: #E74C3C; border-radius: 1px;"></div>
+                          </div>
+                        </div>
+                        <h5 style="color: #2A3F54; font-size: 12px; font-weight: 600; margin: 0;">Weekly Sales</h5>
+                        <p style="color: #73879C; font-size: 10px; margin: 3px 0 0;">$12.4k this week</p>
+                      </div>
+                    </div>
+                    
+                    <!-- New Users -->
+                    <div class="col-md-6 col-sm-6" style="margin-bottom: 10px;">
+                      <div style="background: #f7f7f7; border: 1px solid #E6E9ED; border-radius: 3px; padding: 12px;">
+                        <div style="display: flex; align-items: center; margin-bottom: 6px;">
+                          <div style="width: 18px; height: 18px; background: rgba(52, 152, 219, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-user-plus" style="color: #3498DB; font-size: 8px;"></i>
+                          </div>
+                        </div>
+                        <h5 style="color: #2A3F54; font-size: 12px; font-weight: 600; margin: 0;">New Users</h5>
+                        <p style="color: #73879C; font-size: 10px; margin: 3px 0 0;">+245 this month</p>
+                      </div>
+                    </div>
+                    
+                    <!-- Item Orders -->
+                    <div class="col-md-6 col-sm-6" style="margin-bottom: 10px;">
+                      <div style="background: #f7f7f7; border: 1px solid #E6E9ED; border-radius: 3px; padding: 12px;">
+                        <div style="display: flex; align-items: center; margin-bottom: 6px;">
+                          <div style="width: 18px; height: 18px; background: rgba(243, 156, 18, 0.1); border-radius: 3px; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-shopping-bag" style="color: #F39C12; font-size: 8px;"></i>
+                          </div>
+                        </div>
+                        <h5 style="color: #2A3F54; font-size: 12px; font-weight: 600; margin: 0;">Item Orders</h5>
+                        <p style="color: #73879C; font-size: 10px; margin: 3px 0 0;">1,240 orders</p>
+                      </div>
+                    </div>
+                    
+                    <!-- Growth Rate -->
+                    <div class="col-md-6 col-sm-6" style="margin-bottom: 10px;">
+                      <div style="background: #f7f7f7; border: 1px solid #E6E9ED; border-radius: 3px; padding: 12px;">
+                        <div style="display: flex; align-items: center; margin-bottom: 6px;">
+                          <div style="width: 18px; height: 18px; background: rgba(38, 185, 154, 0.1); border-radius: 3px; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-chart-line" style="color: #26B99A; font-size: 8px;"></i>
+                          </div>
+                        </div>
+                        <h5 style="color: #2A3F54; font-size: 12px; font-weight: 600; margin: 0;">Growth Rate</h5>
+                        <p style="color: #73879C; font-size: 10px; margin: 3px 0 0;">+18.2% growth</p>
+                      </div>
+                    </div>
+                    
+                  </div>
+
+                </div>
+              </div>
+              <!-- End Sales Statistics Widget -->
             </div>
 
 
             <div class="col-md-8 col-sm-8">
 
-
+              <!-- Recent Orders Section -->
+              <div class="row">
+                <div class="col-md-12 col-sm-12">
+                  <div class="x_panel">
+                    <div class="x_title">
+                      <h2>Recent Orders <small>Latest transactions</small></h2>
+                      <ul class="nav navbar-right panel_toolbox">
+                        <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
+                        </li>
+                        <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
+                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" href="#">Settings 1</a>
+                              <a class="dropdown-item" href="#">Settings 2</a>
+                            </div>
+                        </li>
+                        <li><a class="btn-close-link"><i class="fas fa-times"></i></a>
+                        </li>
+                      </ul>
+                      <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                      <div class="recent-orders-scroll">
+                        <div class="table-responsive">
+                          <table class="table table-striped jambo_table bulk_action">
+                          <thead>
+                            <tr class="headings">
+                              <th class="column-title">Order ID</th>
+                              <th class="column-title">Customer</th>
+                              <th class="column-title">Product</th>
+                              <th class="column-title">Amount</th>
+                              <th class="column-title">Status</th>
+                              <th class="column-title">Date</th>
+                              <th class="column-title no-link last"><span class="nobr">Action</span></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr class="even pointer">
+                              <td class=" "><strong>#ORD-12455</strong></td>
+                              <td class=" ">John Smith</td>
+                              <td class=" ">Premium Wireless Headphones</td>
+                              <td class=" "><strong>$299.99</strong></td>
+                              <td class=" "><span class="badge bg-success">Completed</span></td>
+                              <td class=" ">Jan 15, 2024</td>
+                              <td class=" last"><a href="#" class="btn btn-sm btn-primary">View</a></td>
+                            </tr>
+                            <tr class="odd pointer">
+                              <td class=" "><strong>#ORD-12454</strong></td>
+                              <td class=" ">Emily Johnson</td>
+                              <td class=" ">Smart Watch Pro</td>
+                              <td class=" "><strong>$899.99</strong></td>
+                              <td class=" "><span class="badge bg-warning text-dark">Processing</span></td>
+                              <td class=" ">Jan 15, 2024</td>
+                              <td class=" last"><a href="#" class="btn btn-sm btn-primary">View</a></td>
+                            </tr>
+                            <tr class="even pointer">
+                              <td class=" "><strong>#ORD-12453</strong></td>
+                              <td class=" ">Michael Chen</td>
+                              <td class=" ">Gaming Laptop Elite</td>
+                              <td class=" "><strong>$1,899.99</strong></td>
+                              <td class=" "><span class="badge bg-info">Shipped</span></td>
+                              <td class=" ">Jan 14, 2024</td>
+                              <td class=" last"><a href="#" class="btn btn-sm btn-primary">View</a></td>
+                            </tr>
+                            <tr class="odd pointer">
+                              <td class=" "><strong>#ORD-12452</strong></td>
+                              <td class=" ">Sarah Davis</td>
+                              <td class=" ">Wireless Mouse Deluxe</td>
+                              <td class=" "><strong>$79.99</strong></td>
+                              <td class=" "><span class="badge bg-success">Completed</span></td>
+                              <td class=" ">Jan 14, 2024</td>
+                              <td class=" last"><a href="#" class="btn btn-sm btn-primary">View</a></td>
+                            </tr>
+                            <tr class="even pointer">
+                              <td class=" "><strong>#ORD-12451</strong></td>
+                              <td class=" ">Robert Wilson</td>
+                              <td class=" ">4K Monitor Pro</td>
+                              <td class=" "><strong>$649.99</strong></td>
+                              <td class=" "><span class="badge bg-danger">Cancelled</span></td>
+                              <td class=" ">Jan 13, 2024</td>
+                              <td class=" last"><a href="#" class="btn btn-sm btn-primary">View</a></td>
+                            </tr>
+                            <tr class="odd pointer">
+                              <td class=" "><strong>#ORD-12450</strong></td>
+                              <td class=" ">Lisa Brown</td>
+                              <td class=" ">Bluetooth Speaker Premium</td>
+                              <td class=" "><strong>$199.99</strong></td>
+                              <td class=" "><span class="badge bg-success">Completed</span></td>
+                              <td class=" ">Jan 13, 2024</td>
+                              <td class=" last"><a href="#" class="btn btn-sm btn-primary">View</a></td>
+                            </tr>
+                            <tr class="even pointer">
+                              <td class=" "><strong>#ORD-12449</strong></td>
+                              <td class=" ">David Garcia</td>
+                              <td class=" ">Mechanical Keyboard RGB</td>
+                              <td class=" "><strong>$159.99</strong></td>
+                              <td class=" "><span class="badge bg-warning text-dark">Processing</span></td>
+                              <td class=" ">Jan 12, 2024</td>
+                              <td class=" last"><a href="#" class="btn btn-sm btn-primary">View</a></td>
+                            </tr>
+                            <tr class="odd pointer">
+                              <td class=" "><strong>#ORD-12448</strong></td>
+                              <td class=" ">Anna Martinez</td>
+                              <td class=" ">Tablet Pro 12-inch</td>
+                              <td class=" "><strong>$799.99</strong></td>
+                              <td class=" "><span class="badge bg-info">Shipped</span></td>
+                              <td class=" ">Jan 12, 2024</td>
+                              <td class=" last"><a href="#" class="btn btn-sm btn-primary">View</a></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /Recent Orders Section -->
 
               <div class="row">
 

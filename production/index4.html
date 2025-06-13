@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
@@ -7,11 +8,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Gentelella Alela! | </title>    <!-- Compiled CSS (includes Bootstrap, Font Awesome, and all vendor styles) -->
+    <title>Gentelella Alela! | Store Analytics</title>    <!-- Compiled CSS (includes Bootstrap, Font Awesome, and all vendor styles) -->
     <script type="module" src="/src/main-minimal.js"></script>
   </head>
 
-  <body class="nav-md footer_fixed">
+  <body class="nav-md page-index4">
     <div class="container body">
       <div class="main_container">
         <div class="col-md-3 left_col">
@@ -45,8 +46,8 @@
                     <ul class="nav child_menu">
                       <li><a href="index.html">Dashboard 1</a></li>
                       <li><a href="index2.html">Dashboard 2</a></li>
-                      <li><a href="index3.html">Dashboard 3</a></li><li><a href="index4.html">Dashboard 4</a></li>
                       <li><a href="index3.html">Dashboard 3</a></li>
+                      <li><a href="index4.html">Dashboard 4</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fas fa-edit"></i> Forms <span class="fas fa-chevron-down"></span></a>
@@ -255,10 +256,179 @@
 
         <!-- page content -->
         <div class="right_col" role="main">
-          <div class="">
-            <div class="page-title">
-              <div class="title_left">
-                <h3>Fixed Footer <small> Just add class <strong>footer_fixed</strong></small></h3>
+          <!-- top tiles -->
+          <div class="row" style="display: inline-block;" >
+            <div class="tile_count">
+              <div class="col-md-3 col-sm-4 tile_stats_count">
+                <span class="count_top"><i class="fas fa-dollar-sign"></i> Top Sale</span>
+                <div class="count">$8,450.00</div>
+                <span class="count_bottom"><i class="green"><i class="fas fa-sort-up"></i>4% </i> From last Week</span>
+              </div>
+              <div class="col-md-3 col-sm-4 tile_stats_count">
+                <span class="count_top"><i class="fas fa-chart-line"></i> Total Profit</span>
+                <div class="count">$24,380.00</div>
+                <span class="count_bottom"><i class="green"><i class="fas fa-sort-up"></i>12% </i> From last Week</span>
+              </div>
+              <div class="col-md-3 col-sm-4 tile_stats_count">
+                <span class="count_top"><i class="fas fa-shopping-cart"></i> New Orders</span>
+                <div class="count">1,204</div>
+                <span class="count_bottom"><i class="green"><i class="fas fa-sort-up"></i>25% </i> From last Week</span>
+              </div>
+              <div class="col-md-3 col-sm-4 tile_stats_count">
+                <span class="count_top"><i class="fas fa-users"></i> New Customers</span>
+                <div class="count">43</div>
+                <span class="count_bottom"><i class="red"><i class="fas fa-sort-down"></i>-5% </i> From last Week</span>
+              </div>
+            </div>
+          </div>
+          <!-- /top tiles -->
+
+          <div class="row">
+            <div class="col-md-8 col-sm-8">
+              <div class="x_panel">
+                <div class="x_title">
+                  <h2>Sales Statistics <small>Sales vs Orders</small></h2>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                  <canvas id="salesStatisticsChart" height="200"></canvas>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 col-sm-4">
+              <div class="x_panel">
+                <div class="x_title">
+                  <h2>Weekly Sales <small>Last 7 days</small></h2>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                  <canvas id="weeklySalesChart" height="200"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-4 col-sm-4">
+              <div class="x_panel">
+                <div class="x_title">
+                  <h2>Top Selling Products</h2>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                  <ul class="list-unstyled top_products_scroll">
+                    <!-- Product items will be dynamically inserted or hardcoded here -->
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-8 col-sm-8">
+              <div class="x_panel">
+                <div class="x_title">
+                  <h2>Revenue by Location</h2>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                  <div id="revenueMap" style="height: 350px;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="x_panel">
+                <div class="x_title">
+                  <h2>Latest Orders</h2>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                  <table id="latestOrdersTable" class="table table-striped table-bordered" style="width:100%">
+                    <thead>
+                      <tr>
+                        <th>Order ID</th>
+                        <th>Customer</th>
+                        <th>Date</th>
+                        <th>Total</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><strong>#ORD-12345</strong></td>
+                        <td>John Smith</td>
+                        <td>2024-01-15</td>
+                        <td><strong>$1,250.00</strong></td>
+                        <td><span class="badge bg-success">Completed</span></td>
+                      </tr>
+                      <tr>
+                        <td><strong>#ORD-12346</strong></td>
+                        <td>Emily Johnson</td>
+                        <td>2024-01-15</td>
+                        <td><strong>$875.50</strong></td>
+                        <td><span class="badge bg-warning text-dark">Processing</span></td>
+                      </tr>
+                      <tr>
+                        <td><strong>#ORD-12347</strong></td>
+                        <td>Michael Chen</td>
+                        <td>2024-01-14</td>
+                        <td><strong>$2,150.75</strong></td>
+                        <td><span class="badge bg-success">Completed</span></td>
+                      </tr>
+                      <tr>
+                        <td><strong>#ORD-12348</strong></td>
+                        <td>Sarah Davis</td>
+                        <td>2024-01-14</td>
+                        <td><strong>$650.00</strong></td>
+                        <td><span class="badge bg-info">Shipped</span></td>
+                      </tr>
+                      <tr>
+                        <td><strong>#ORD-12349</strong></td>
+                        <td>Robert Wilson</td>
+                        <td>2024-01-13</td>
+                        <td><strong>$1,480.25</strong></td>
+                        <td><span class="badge bg-danger">Cancelled</span></td>
+                      </tr>
+                      <tr>
+                        <td><strong>#ORD-12350</strong></td>
+                        <td>Lisa Brown</td>
+                        <td>2024-01-13</td>
+                        <td><strong>$920.00</strong></td>
+                        <td><span class="badge bg-success">Completed</span></td>
+                      </tr>
+                      <tr>
+                        <td><strong>#ORD-12351</strong></td>
+                        <td>David Garcia</td>
+                        <td>2024-01-12</td>
+                        <td><strong>$1,125.50</strong></td>
+                        <td><span class="badge bg-warning text-dark">Processing</span></td>
+                      </tr>
+                      <tr>
+                        <td><strong>#ORD-12352</strong></td>
+                        <td>Anna Martinez</td>
+                        <td>2024-01-12</td>
+                        <td><strong>$775.00</strong></td>
+                        <td><span class="badge bg-info">Shipped</span></td>
+                      </tr>
+                      <tr>
+                        <td><strong>#ORD-12353</strong></td>
+                        <td>James Taylor</td>
+                        <td>2024-01-11</td>
+                        <td><strong>$2,340.00</strong></td>
+                        <td><span class="badge bg-success">Completed</span></td>
+                      </tr>
+                      <tr>
+                        <td><strong>#ORD-12354</strong></td>
+                        <td>Maria Rodriguez</td>
+                        <td>2024-01-11</td>
+                        <td><strong>$560.75</strong></td>
+                        <td><span class="badge bg-warning text-dark">Processing</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
@@ -276,5 +446,28 @@
       </div>
     </div>    <!-- Compiled JavaScript (includes jQuery, Bootstrap, and all vendor scripts) -->
     
+    <!-- Initialize linked Tempus Dominus pickers for date range -->
+    <script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+        if (typeof TempusDominus !== 'undefined') {
+            const startPicker = new TempusDominus(document.getElementById('startDatePicker'), {
+                display: { components: { clock: false } },
+                localization: { format: 'MM/dd/yyyy' }
+            });
+            const endPicker = new TempusDominus(document.getElementById('endDatePicker'), {
+                display: { components: { clock: false } },
+                localization: { format: 'MM/dd/yyyy' }
+            });
+            // Link pickers
+            document.getElementById('startDatePicker').addEventListener('change.td', function(e) {
+                endPicker.updateOptions({ restrictions: { minDate: e.detail.date } });
+            });
+            document.getElementById('endDatePicker').addEventListener('change.td', function(e) {
+                startPicker.updateOptions({ restrictions: { maxDate: e.detail.date } });
+            });
+
+        }
+    });
+    </script>
   </body>
 </html>

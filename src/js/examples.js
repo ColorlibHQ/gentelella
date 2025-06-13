@@ -436,10 +436,7 @@ function init_chart_doughnut() {
 
 }
 
-// Gauge initialization is now handled in src/js/init.js initializeGauges() function
-function init_gauge() {
-    console.log('init_gauge: Gauge initialization is now handled centrally in init.js');
-}
+
 
 /* SPARKLINES */
 
@@ -2624,49 +2621,7 @@ function init_echarts() {
                 }
             }
         },
-        gauge: {
-            startAngle: 225,
-            endAngle: -45,
-            axisLine: {
-                show: true,
-                lineStyle: {
-                    color: [[0.2, '#86b379'], [0.8, '#68a54a'], [1, '#408829']],
-                    width: 8
-                }
-            },
-            axisTick: {
-                splitNumber: 10,
-                length: 12,
-                lineStyle: {
-                    color: 'auto'
-                }
-            },
-            axisLabel: {
-                textStyle: {
-                    color: 'auto'
-                }
-            },
-            splitLine: {
-                length: 18,
-                lineStyle: {
-                    color: 'auto'
-                }
-            },
-            pointer: {
-                length: '90%',
-                color: 'auto'
-            },
-            title: {
-                textStyle: {
-                    color: '#333'
-                }
-            },
-            detail: {
-                textStyle: {
-                    color: 'auto'
-                }
-            }
-        },
+
         textStyle: {
             fontFamily: 'Arial, Verdana, sans-serif'
         }
@@ -2875,126 +2830,6 @@ function init_echarts() {
                 }, {
                     value: 100,
                     name: 'Something #5'
-                }]
-            }]
-        });
-
-    }
-
-    //echart Gauge
-
-    if ($('#echart_gauge').length) {
-
-        var echartGauge = echarts.init(document.getElementById('echart_gauge'), theme);
-
-        echartGauge.setOption({
-            tooltip: {
-                formatter: "{a} <br/>{b} : {c}%"
-            },
-            toolbox: {
-                show: true,
-                feature: {
-                    restore: {
-                        show: true,
-                        title: "Restore"
-                    },
-                    saveAsImage: {
-                        show: true,
-                        title: "Save Image"
-                    }
-                }
-            },
-            series: [{
-                name: 'Performance',
-                type: 'gauge',
-                center: ['50%', '50%'],
-                startAngle: 140,
-                endAngle: -140,
-                min: 0,
-                max: 100,
-                precision: 0,
-                splitNumber: 10,
-                axisLine: {
-                    show: true,
-                    lineStyle: {
-                        color: [
-                            [0.2, 'lightgreen'],
-                            [0.4, 'orange'],
-                            [0.8, 'skyblue'],
-                            [1, '#ff4500']
-                        ],
-                        width: 30
-                    }
-                },
-                axisTick: {
-                    show: true,
-                    splitNumber: 5,
-                    length: 8,
-                    lineStyle: {
-                        color: '#eee',
-                        width: 1,
-                        type: 'solid'
-                    }
-                },
-                axisLabel: {
-                    show: true,
-                    formatter: function (v) {
-                        switch (v + '') {
-                            case '10':
-                                return 'a';
-                            case '30':
-                                return 'b';
-                            case '60':
-                                return 'c';
-                            case '90':
-                                return 'd';
-                            default:
-                                return '';
-                        }
-                    },
-                    textStyle: {
-                        color: '#333'
-                    }
-                },
-                splitLine: {
-                    show: true,
-                    length: 30,
-                    lineStyle: {
-                        color: '#eee',
-                        width: 2,
-                        type: 'solid'
-                    }
-                },
-                pointer: {
-                    length: '80%',
-                    width: 8,
-                    color: 'auto'
-                },
-                title: {
-                    show: true,
-                    offsetCenter: ['-65%', -10],
-                    textStyle: {
-                        color: '#333',
-                        fontSize: 15
-                    }
-                },
-                detail: {
-                    show: true,
-                    backgroundColor: 'rgba(0,0,0,0)',
-                    borderWidth: 0,
-                    borderColor: '#ccc',
-                    width: 100,
-                    height: 40,
-                    offsetCenter: ['-60%', 10],
-                    formatter: '{value}%',
-                    textStyle: {
-                        color: 'auto',
-                        fontSize: 30
-                    }
-                },
-                data: [{
-                    value: 50,
-                    name: 'Performance'
                 }]
             }]
         });
@@ -4758,7 +4593,6 @@ $(document).ready(function () {
     init_validator();
     init_DataTables();
     init_chart_doughnut();
-    init_gauge();
     init_PNotify();
     init_starrr();
     init_calendar();

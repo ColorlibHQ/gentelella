@@ -69,10 +69,6 @@ import { TempusDominus, DateTime } from '@eonasdan/tempus-dominus';
 window.TempusDominus = TempusDominus;
 window.DateTime = DateTime;
 
-// GaugeJS - Modern gauge library (Bootstrap 5 compatible)
-import { Gauge } from 'gaugejs';
-window.Gauge = Gauge;
-
 // jQuery Sparkline (Small charts)
 import 'jquery-sparkline';
 

@@ -79,12 +79,14 @@
     }
 
     // Initialize all chart components
-    initializeGauges();
     initializeCharts();
     initializeNetworkCharts();
     initializeECharts();
     initializeOtherCharts();
     initializeIndex2();
+    initializeIndex4();
+    initializeIndex5();
+    initializeSidebarGauges();
     initializeSkycons();
     initializeGeneralElements();
     initializeMaps();
@@ -494,7 +496,7 @@
       NProgress.start();
     }
 
-    // Gauge initialization is handled by initializeGauges() function
+  
 
     // Skycons initialization moved to initializeSkycons() function
 
@@ -513,107 +515,7 @@
     // Chart initialization moved to main window.on('load') event
   });
 
-  // Modern gauge initialization function with Canvas fallback
-  function initializeGauges() {
-    try {
-      // Simple Canvas Gauge implementation as fallback
-      function createCanvasGauge(canvas, value, maxValue, options = {}) {
-        const ctx = canvas.getContext('2d');
-        const centerX = canvas.width / 2;
-        const centerY = canvas.height / 2;
-        const radius = Math.min(centerX, centerY) - 10;
-        
-        // Clear canvas
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
-        // Colors from theme
-        const trackColor = options.strokeColor || '#E0E0E0';
-        const progressColor = options.colorStart || '#26B99A';
-        const pointerColor = options.pointerColor || '#73879C';
-        
-        // Draw gauge track (background arc)
-        ctx.beginPath();
-        ctx.arc(centerX, centerY, radius, 0.75 * Math.PI, 0.25 * Math.PI);
-        ctx.strokeStyle = trackColor;
-        ctx.lineWidth = 8;
-        ctx.stroke();
-        
-        // Calculate progress angle
-        const progress = value / maxValue;
-        const startAngle = 0.75 * Math.PI;
-        const endAngle = startAngle + progress * 1.5 * Math.PI;
-        
-        // Draw progress arc
-        ctx.beginPath();
-        ctx.arc(centerX, centerY, radius, startAngle, endAngle);
-        ctx.strokeStyle = progressColor;
-        ctx.lineWidth = 8;
-        ctx.stroke();
-        
-        // Draw center circle
-        ctx.beginPath();
-        ctx.arc(centerX, centerY, 6, 0, 2 * Math.PI);
-        ctx.fillStyle = pointerColor;
-        ctx.fill();
-        
-        // Draw pointer
-        const pointerAngle = startAngle + progress * 1.5 * Math.PI;
-        const pointerLength = radius - 15;
-        const pointerX = centerX + Math.cos(pointerAngle) * pointerLength;
-        const pointerY = centerY + Math.sin(pointerAngle) * pointerLength;
-        
-        ctx.beginPath();
-        ctx.moveTo(centerX, centerY);
-        ctx.lineTo(pointerX, pointerY);
-        ctx.strokeStyle = pointerColor;
-        ctx.lineWidth = 3;
-        ctx.stroke();
-        
-        // Draw value text
-        ctx.fillStyle = pointerColor;
-        ctx.font = '16px Arial';
-        ctx.textAlign = 'center';
-        ctx.fillText(Math.round(value) + (options.suffix || ''), centerX, centerY + 35);
-      }
 
-      // Initialize chart_gauge_01 (Profile Completion in index.html)
-      const gauge01Element = document.getElementById('chart_gauge_01');
-      if (gauge01Element) {
-        // Set canvas size
-        gauge01Element.width = 160;
-        gauge01Element.height = 100;
-        
-        createCanvasGauge(gauge01Element, 75, 100, {
-          colorStart: '#26B99A',
-          strokeColor: '#E0E0E0',
-          pointerColor: '#73879C',
-          suffix: '%'
-        });
-        
-        console.log('✅ Canvas Gauge 01 initialized (75%)');
-      }
-
-      // Initialize chart_gauge_02 (Goal gauge in index3.html) 
-      const gauge02Element = document.getElementById('chart_gauge_02');
-      if (gauge02Element) {
-        // Set canvas size
-        gauge02Element.width = 160;
-        gauge02Element.height = 100;
-        
-        createCanvasGauge(gauge02Element, 3200, 5000, {
-          colorStart: '#6FADCF',
-          strokeColor: '#E0E0E0',
-          pointerColor: '#26B99A',
-          suffix: ''
-        });
-        
-        console.log('✅ Canvas Gauge 02 initialized (3200/5000)');
-      }
-
-    } catch (error) {
-      console.error('❌ Gauge initialization error:', error);
-    }
-  }
 
   /**
    * Initializes all Chart.js instances on a page.
@@ -1639,92 +1541,13 @@
          console.log('✅ ECharts Sonar/Radar Chart initialized');
        }
 
-             // 12. Gauge Chart (echart_gauge) - Simplified gauge
-       if (document.getElementById('echart_gauge')) {
-         const gaugeChart = echarts.init(document.getElementById('echart_gauge'));
-         const gaugeOption = {
-           title: {
-             text: 'System Performance',
-             left: 'center',
-             top: 10,
-             textStyle: { fontSize: 14 }
-           },
-           tooltip: {
-             formatter: '{a} <br/>{b} : {c}%'
-           },
-           series: [
-             {
-               name: 'Performance',
-               type: 'gauge',
-               center: ['50%', '60%'],
-               radius: '80%',
-               min: 0,
-               max: 100,
-               splitNumber: 10,
-               data: [
-                 {
-                   value: 87,
-                   name: 'CPU Usage'
-                 }
-               ],
-               axisLine: {
-                 lineStyle: {
-                   width: 30,
-                   color: [
-                     [0.3, '#E74C3C'],
-                     [0.7, '#F39C12'],
-                     [1, '#26B99A']
-                   ]
-                 }
-               },
-               pointer: {
-                 itemStyle: {
-                   color: '#26B99A'
-                 }
-               },
-               axisTick: {
-                 distance: -35,
-                 length: 8,
-                 lineStyle: {
-                   color: '#fff',
-                   width: 2
-                 }
-               },
-               splitLine: {
-                 distance: -35,
-                 length: 30,
-                 lineStyle: {
-                   color: '#fff',
-                   width: 4
-                 }
-               },
-               axisLabel: {
-                 color: 'auto',
-                 distance: 45,
-                 fontSize: 12
-               },
-               detail: {
-                 valueAnimation: true,
-                 formatter: '{value}%',
-                 fontSize: 20,
-                 offsetCenter: [0, '70%']
-               },
-               title: {
-                 offsetCenter: [0, '85%'],
-                 fontSize: 14
-               }
-             }
-           ]
-         };
-         gaugeChart.setOption(gaugeOption);
-         console.log('✅ ECharts Gauge Chart initialized');
-       }
+
 
       // Make all charts responsive
       window.addEventListener('resize', function() {
         const chartIds = ['mainb', 'echart_mini_pie', 'echart_pie', 'echart_pie2', 'echart_donut', 
                          'echart_scatter', 'echart_line', 'echart_bar_horizontal', 'echart_world_map', 
-                         'echart_pyramid', 'echart_sonar', 'echart_gauge'];
+                         'echart_pyramid', 'echart_sonar'];
         
         chartIds.forEach(id => {
           const element = document.getElementById(id);
@@ -1790,7 +1613,7 @@
         console.log('✅ USA Leaflet Map initialized');
       }
 
-      // 2. Easy Pie Charts using ECharts mini gauges (with different sizes)
+      // 2. Easy Pie Charts using ECharts mini pie charts (with different sizes)
       const chartSizes = {
         'chart-large': { width: 150, height: 150, fontSize: 20, lineWidth: 25 },
         'chart-medium': { width: 100, height: 100, fontSize: 16, lineWidth: 18 },
@@ -1822,7 +1645,7 @@
           chartDiv.style.height = config.height + 'px';
           element.appendChild(chartDiv);
           
-          // Create ECharts gauge
+          // Create ECharts pie chart
           if (typeof echarts !== 'undefined') {
             const pieChart = echarts.init(chartDiv);
             
@@ -1845,7 +1668,7 @@
             const option = {
               series: [
                 {
-                  type: 'gauge',
+                  type: 'pie',
                   center: ['50%', '50%'],
                   radius: '85%',
                   min: 0,
@@ -2139,270 +1962,379 @@
     }
   }
 
-  // Index2 page specific initialization (Transaction Summary, Top Profiles, Charts)
+  // Index2 page specific initialization
   function initializeIndex2() {
     if (!document.body.classList.contains('page-index2')) {
       return;
     }
+    console.log('Initializing Index2...');
 
-    console.log('Initializing Index2 dashboard...');
+    // Initialize Weekly Summary Charts
+    initializeWeeklySummaryCharts();
+  }
 
-    try {
-      // 1. Initialize main transaction chart (chart_plot_02)
-      if (document.getElementById('chart_plot_02')) {
-        const chartContainer = document.getElementById('chart_plot_02');
-        chartContainer.style.height = '280px';
-        
-        // Clear and create canvas
-        chartContainer.innerHTML = '';
-        const canvas = document.createElement('canvas');
-        canvas.id = 'transactionChart';
-        canvas.style.width = '100%';
-        canvas.style.height = '280px';
-        chartContainer.appendChild(canvas);
-        
-        if (typeof Chart !== 'undefined') {
-          const ctx = canvas.getContext('2d');
-          new Chart(ctx, {
-            type: 'line',
-            data: {
-              labels: ['Dec 30', 'Jan 5', 'Jan 10', 'Jan 15', 'Jan 20', 'Jan 25', 'Jan 28'],
-              datasets: [{
-                label: 'Revenue',
-                data: [180000, 195000, 220000, 210000, 231809, 225000, 240000],
-                borderColor: '#1ABB9C',
-                backgroundColor: 'rgba(26, 187, 156, 0.1)',
-                fill: true,
-                tension: 0.4,
-                pointRadius: 6,
-                pointBackgroundColor: '#1ABB9C',
-                pointBorderColor: '#fff',
-                pointBorderWidth: 2
-              }]
-            },
-            options: {
-              responsive: true,
-              maintainAspectRatio: false,
-              plugins: {
-                legend: {
-                  display: false
-                }
-              },
-              scales: {
-                y: {
-                  beginAtZero: false,
-                  ticks: {
-                    callback: function(value) {
-                      return '$' + (value / 1000) + 'K';
-                    }
-                  }
-                }
-              }
-            }
-          });
+  // Initialize Weekly Summary Charts
+  function initializeWeeklySummaryCharts() {
+    // Weekly Sales Trend Chart
+    const weeklySalesChart = echarts.init(document.getElementById('weeklySalesChart'));
+    weeklySalesChart.setOption({
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+          type: 'shadow'
         }
-        
-        console.log('✅ Transaction Summary chart initialized');
-      }
-
-      // 2. Initialize sparkline charts in tiles
-      const sparklineConfigs = [
-        { selector: '.sparkline11', data: [5, 6, 7, 2, 0, 4, 2, 4, 5, 7, 2, 4, 12, 14], color: '#1ABB9C' },
-        { selector: '.sparkline22', data: [3, 8, 2, 9, 4, 5, 3, 8, 5, 7, 9, 4, 2, 14], color: '#3498DB' }
-      ];
-
-      sparklineConfigs.forEach(function(config, index) {
-        const elements = document.querySelectorAll(config.selector);
-        elements.forEach(function(element, elemIndex) {
-          if (typeof echarts !== 'undefined') {
-            element.innerHTML = '';
-            element.style.width = '120px';
-            element.style.height = '40px';
-            
-            const chartDiv = document.createElement('div');
-            chartDiv.id = `sparkline-tile-${index}-${elemIndex}`;
-            chartDiv.style.width = '120px';
-            chartDiv.style.height = '40px';
-            element.appendChild(chartDiv);
-            
-            const sparkChart = echarts.init(chartDiv);
-            const option = {
-              grid: { left: 0, right: 0, top: 0, bottom: 0 },
-              xAxis: { type: 'category', show: false, data: config.data.map((_, i) => i) },
-              yAxis: { type: 'value', show: false },
-              series: [{
-                type: 'line',
-                data: config.data,
-                lineStyle: { color: config.color, width: 2 },
-                itemStyle: { color: config.color },
-                symbol: 'none',
-                smooth: true,
-                animation: true
-              }]
-            };
-            sparkChart.setOption(option);
+      },
+      legend: {
+        data: ['Sales', 'Revenue', 'Orders']
+      },
+      grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+      },
+      xAxis: {
+        type: 'category',
+        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+      },
+      yAxis: {
+        type: 'value'
+      },
+      series: [
+        {
+          name: 'Sales',
+          type: 'bar',
+          data: [120, 132, 101, 134, 90, 230, 210],
+          itemStyle: {
+            color: '#26B99A'
           }
-        });
+        },
+        {
+          name: 'Revenue',
+          type: 'line',
+          data: [220, 182, 191, 234, 290, 330, 310],
+          itemStyle: {
+            color: '#3498DB'
+          }
+        },
+        {
+          name: 'Orders',
+          type: 'line',
+          data: [150, 232, 201, 154, 190, 330, 410],
+          itemStyle: {
+            color: '#9B59B6'
+          }
+        }
+      ]
+    });
+
+    // Sales Distribution Chart
+    const salesDistributionChart = echarts.init(document.getElementById('salesDistributionChart'));
+    salesDistributionChart.setOption({
+      tooltip: {
+        trigger: 'item'
+      },
+      legend: {
+        orient: 'vertical',
+        left: 'left'
+      },
+      series: [
+        {
+          name: 'Sales Distribution',
+          type: 'pie',
+          radius: '50%',
+          data: [
+            { value: 1048, name: 'Online' },
+            { value: 735, name: 'In-Store' },
+            { value: 580, name: 'Mobile' },
+            { value: 484, name: 'Phone' }
+          ],
+          emphasis: {
+            itemStyle: {
+              shadowBlur: 10,
+              shadowOffsetX: 0,
+              shadowColor: 'rgba(0, 0, 0, 0.5)'
+            }
+          }
+        }
+      ]
+    });
+
+    // Daily Activity Chart
+    const dailyActivityChart = echarts.init(document.getElementById('dailyActivityChart'));
+    dailyActivityChart.setOption({
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+          type: 'cross',
+          label: {
+            backgroundColor: '#6a7985'
+          }
+        }
+      },
+      legend: {
+        data: ['Visits', 'Page Views', 'Bounce Rate']
+      },
+      grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+      },
+      xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: ['00:00', '03:00', '06:00', '09:00', '12:00', '15:00', '18:00', '21:00']
+      },
+      yAxis: [
+        {
+          type: 'value',
+          name: 'Count',
+          position: 'left'
+        },
+        {
+          type: 'value',
+          name: 'Rate',
+          position: 'right',
+          axisLabel: {
+            formatter: '{value}%'
+          }
+        }
+      ],
+      series: [
+        {
+          name: 'Visits',
+          type: 'line',
+          stack: 'Total',
+          areaStyle: {},
+          emphasis: {
+            focus: 'series'
+          },
+          data: [120, 132, 101, 134, 90, 230, 210, 182]
+        },
+        {
+          name: 'Page Views',
+          type: 'line',
+          stack: 'Total',
+          areaStyle: {},
+          emphasis: {
+            focus: 'series'
+          },
+          data: [220, 182, 191, 234, 290, 330, 310, 123]
+        },
+        {
+          name: 'Bounce Rate',
+          type: 'line',
+          yAxisIndex: 1,
+          emphasis: {
+            focus: 'series'
+          },
+          data: [45, 42, 38, 35, 32, 30, 28, 25]
+        }
+      ]
+    });
+
+    // Performance Metrics Chart
+    const performanceMetricsChart = echarts.init(document.getElementById('performanceMetricsChart'));
+    performanceMetricsChart.setOption({
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+          type: 'shadow'
+        }
+      },
+      legend: {
+        data: ['Target', 'Actual']
+      },
+      grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+      },
+      xAxis: {
+        type: 'value'
+      },
+      yAxis: {
+        type: 'category',
+        data: ['Conversion Rate', 'Avg. Order Value', 'Customer Retention', 'ROI']
+      },
+      series: [
+        {
+          name: 'Target',
+          type: 'bar',
+          data: [320, 302, 301, 334],
+          itemStyle: {
+            color: '#26B99A'
+          }
+        },
+        {
+          name: 'Actual',
+          type: 'bar',
+          data: [280, 290, 280, 310],
+          itemStyle: {
+            color: '#3498DB'
+          }
+        }
+      ]
+    });
+
+    // Handle window resize
+    window.addEventListener('resize', function() {
+      weeklySalesChart.resize();
+      salesDistributionChart.resize();
+      dailyActivityChart.resize();
+      performanceMetricsChart.resize();
+    });
+  }
+
+  // Index4 page specific initialization (Store Analytics)
+  function initializeIndex4() {
+    if (!document.body.classList.contains('page-index4')) {
+      return;
+    }
+    console.log('Initializing Index4: Store Analytics...');
+
+    // 1. Sales Statistics Chart
+    const salesChartCanvas = document.getElementById('salesStatisticsChart');
+    if (salesChartCanvas) {
+      new Chart(salesChartCanvas, {
+        type: 'bar',
+        data: {
+          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+          datasets: [{
+            label: 'Sales ($)',
+            data: [120, 150, 180, 220, 190, 210, 240],
+            backgroundColor: '#26B99A',
+            borderRadius: 4,
+          }, {
+            label: 'Orders',
+            data: [80, 95, 110, 130, 120, 140, 155],
+            backgroundColor: '#3498DB',
+            borderRadius: 4,
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { position: 'top' } },
+          scales: {
+            y: { beginAtZero: true }
+          }
+        }
       });
+      console.log('✅ Sales Statistics Chart initialized');
+    }
 
-      // 3. Initialize Weekly Summary sparkline - Enhanced with realistic sales data
-      if (document.querySelector('.sparkline_one')) {
-        const element = document.querySelector('.sparkline_one');
-        if (typeof echarts !== 'undefined') {
-          element.innerHTML = '';
-          element.style.width = '250px';
-          element.style.height = '120px';
-          
-          const chartDiv = document.createElement('div');
-          chartDiv.id = 'weekly-sparkline';
-          chartDiv.style.width = '250px';
-          chartDiv.style.height = '120px';
-          element.appendChild(chartDiv);
-          
-          const weeklyChart = echarts.init(chartDiv);
-          // More realistic weekly sales progression data
-          const weeklyData = [28000, 31500, 29800, 35400, 33200, 36800, 39500, 42300, 38900, 41600, 45200, 43800, 47100, 49800];
-          const weekDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-          
-          const option = {
-            grid: { left: 20, right: 20, top: 20, bottom: 20 },
-            xAxis: { 
-              type: 'category', 
-              show: true,
-              data: weekDays,
-              axisLabel: { fontSize: 10, color: '#999' },
-              axisLine: { show: false },
-              axisTick: { show: false }
-            },
-            yAxis: { 
-              type: 'value', 
-              show: true,
-              axisLabel: { 
-                fontSize: 10, 
-                color: '#999',
-                formatter: function(value) {
-                  return '$' + (value / 1000) + 'K';
-                }
-              },
-              splitLine: { 
-                show: true,
-                lineStyle: { color: '#f0f0f0', width: 1 }
-              }
-            },
-            tooltip: {
-              trigger: 'axis',
-              formatter: function(params) {
-                const point = params[0];
-                return `${point.name}: $${point.value.toLocaleString()}`;
-              }
-            },
-            series: [{
-              type: 'line',
-              data: weeklyData,
-              lineStyle: { color: '#1ABB9C', width: 3 },
-              itemStyle: { color: '#1ABB9C' },
-              areaStyle: {
-                color: {
-                  type: 'linear',
-                  x: 0, y: 0, x2: 0, y2: 1,
-                  colorStops: [
-                    { offset: 0, color: 'rgba(26, 187, 156, 0.3)' },
-                    { offset: 1, color: 'rgba(26, 187, 156, 0.05)' }
-                  ]
-                }
-              },
-              symbol: 'circle',
-              symbolSize: 6,
-              smooth: true,
-              animation: true,
-              animationDuration: 2000
-            }]
-          };
-          weeklyChart.setOption(option);
+    // 2. Weekly Sales Chart
+    const weeklySalesCanvas = document.getElementById('weeklySalesChart');
+    if (weeklySalesCanvas) {
+      new Chart(weeklySalesCanvas, {
+        type: 'line',
+        data: {
+          labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+          datasets: [{
+            label: 'Sales',
+            data: [32, 45, 38, 51, 62, 58, 70],
+            borderColor: '#1ABB9C',
+            backgroundColor: 'rgba(26, 187, 156, 0.1)',
+            fill: true,
+            tension: 0.4
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { display: false } },
+          scales: {
+            y: { beginAtZero: true }
+          }
         }
-      }
+      });
+      console.log('✅ Weekly Sales Chart initialized');
+    }
 
-      // 4. Initialize enhanced doughnut charts in Weekly Summary with realistic metrics
-      const doughnutElements = document.querySelectorAll('.canvasDoughnut');
-      const doughnutData = [
-        { 
-          label: 'Bounce Rate', 
-          value: 32,
-          data: [32, 68], 
-          colors: ['#E74C3C', '#ECF0F1'],
-          description: '32% Bounce'
-        },
-        { 
-          label: 'Conversion Rate', 
-          value: 8.5,
-          data: [8.5, 91.5], 
-          colors: ['#3498DB', '#ECF0F1'],
-          description: '8.5% Convert'
-        },
-        { 
-          label: 'Mobile Traffic', 
-          value: 67,
-          data: [67, 33], 
-          colors: ['#26B99A', '#ECF0F1'],
-          description: '67% Mobile'
-        }
+    // 3. Revenue by Location Map
+    const revenueMapDiv = document.getElementById('revenueMap');
+    if (revenueMapDiv && typeof L !== 'undefined') {
+      const map = L.map(revenueMapDiv).setView([20, 0], 2);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map);
+      
+      const locations = [
+        { lat: 51.5, lng: -0.09, profit: 12000, name: 'London' },
+        { lat: 40.71, lng: -74.00, profit: 18000, name: 'New York' },
+        { lat: 34.05, lng: -118.24, profit: 15000, name: 'Los Angeles' },
+        { lat: -33.86, lng: 151.20, profit: 11000, name: 'Sydney' },
+        { lat: 35.68, lng: 139.69, profit: 9000, name: 'Tokyo' }
       ];
 
-      doughnutElements.forEach(function(canvas, index) {
-        if (typeof Chart !== 'undefined' && index < doughnutData.length) {
-          const ctx = canvas.getContext('2d');
-          const config = doughnutData[index];
-          
-          new Chart(ctx, {
-            type: 'doughnut',
-            data: {
-              datasets: [{
-                data: config.data,
-                backgroundColor: config.colors,
-                borderWidth: 0,
-                cutout: '65%'
-              }]
-            },
-            options: {
-              responsive: true,
-              maintainAspectRatio: false,
-              plugins: {
-                legend: { display: false },
-                tooltip: {
-                  enabled: true,
-                  callbacks: {
-                    label: function(context) {
-                      return config.description;
-                    }
-                  }
-                }
-              }
-            }
-          });
-
-          // Add center text showing percentage
-          const centerText = document.createElement('div');
-          centerText.style.position = 'absolute';
-          centerText.style.top = '50%';
-          centerText.style.left = '50%';
-          centerText.style.transform = 'translate(-50%, -50%)';
-          centerText.style.fontSize = '16px';
-          centerText.style.fontWeight = 'bold';
-          centerText.style.color = config.colors[0];
-          centerText.style.textAlign = 'center';
-          centerText.style.pointerEvents = 'none';
-          centerText.innerHTML = `${config.value}${config.label.includes('Rate') ? '%' : config.label.includes('Traffic') ? '%' : ''}`;
-          
-          // Position relative container
-          canvas.parentElement.style.position = 'relative';
-          canvas.parentElement.appendChild(centerText);
-        }
+      locations.forEach(loc => {
+        L.circle([loc.lat, loc.lng], {
+          color: '#E74C3C',
+          fillColor: '#f03',
+          fillOpacity: 0.5,
+          radius: loc.profit * 20 // Adjust multiplier for radius
+        }).addTo(map).bindPopup(`<b>${loc.name}</b><br>Profit: $${loc.profit.toLocaleString()}`);
       });
-
-      console.log('✅ Index2 dashboard initialized successfully');
-
-    } catch (error) {
-      console.error('❌ Index2 initialization error:', error);
+      console.log('✅ Revenue Map initialized');
+    }
+    
+    // 4. Top Selling Products (Static for now)
+    const topProductsList = document.querySelector('.top_products_scroll');
+    if(topProductsList) {
+      const products = [
+        { name: 'Ergonomic Office Chair', price: 249.99, sold: 124, img: 'images/prod-1.jpg' },
+        { name: 'Wireless Bluetooth Headphones', price: 89.99, sold: 98, img: 'images/prod-2.jpg' },
+        { name: 'Smart Home Hub', price: 129.00, sold: 76, img: 'images/prod-3.jpg' },
+        { name: '4K Action Camera', price: 199.50, sold: 65, img: 'images/prod-4.jpg' },
+        { name: 'Mechanical Keyboard', price: 110.00, sold: 52, img: 'images/prod-5.jpg' }
+      ];
+      let productHTML = '';
+      products.forEach(p => {
+        productHTML += `
+          <li class="media event">
+            <a class="pull-left"><img src="${p.img}" class="product_img" alt="product"/></a>
+            <div class="media-body">
+              <a class="title" href="#">${p.name}</a>
+              <p><strong>$${p.price}</strong> | <span class="text-success">${p.sold} Sold</span></p>
+            </div>
+          </li>
+        `;
+      });
+      topProductsList.innerHTML = productHTML;
+      console.log('✅ Top Selling Products list populated');
+    }
+    
+    // 5. Latest Orders DataTable
+    const latestOrdersTable = document.getElementById('latestOrdersTable');
+    if (latestOrdersTable && typeof $ !== 'undefined' && $.fn.DataTable) {
+      const ordersData = [
+        ['#ORD-1245', 'John Smith', '2024-07-28', '$145.50', '<span class="badge bg-green">Shipped</span>'],
+        ['#ORD-1244', 'Emily Jones', '2024-07-28', '$89.00', '<span class="badge bg-green">Shipped</span>'],
+        ['#ORD-1243', 'Michael Brown', '2024-07-27', '$210.00', '<span class="badge bg-orange">Pending</span>'],
+        ['#ORD-1242', 'Sarah Davis', '2024-07-26', '$34.99', '<span class="badge bg-red">Cancelled</span>'],
+        ['#ORD-1241', 'David Wilson', '2024-07-25', '$499.99', '<span class="badge bg-green">Shipped</span>']
+      ];
+      
+      $(latestOrdersTable).DataTable({
+        data: ordersData,
+        columns: [
+          { title: 'Order ID' },
+          { title: 'Customer' },
+          { title: 'Date' },
+          { title: 'Total' },
+          { title: 'Status' }
+        ],
+        responsive: true,
+        paging: true,
+        lengthChange: false,
+        searching: false,
+        ordering: true,
+        info: false
+      });
+      console.log('✅ Latest Orders DataTable initialized');
     }
   }
 
@@ -2556,5 +2488,270 @@
       console.error('❌ Leaflet map initialization error:', error);
     }
   }
+
+  // Sidebar Profile Completion Gauges - ECharts implementation
+  function initializeSidebarGauges() {
+    console.log('Initializing sidebar gauges...');
+
+    // Profile Completion Gauge (index.html)
+    const profileGauge = document.getElementById('profile_completion_gauge');
+    if (profileGauge && typeof echarts !== 'undefined') {
+      const gaugeChart = echarts.init(profileGauge);
+      gaugeChart.setOption({
+        series: [{
+          type: 'gauge',
+          startAngle: 210,
+          endAngle: -30,
+          min: 0,
+          max: 100,
+          progress: { show: true, width: 8 },
+          axisLine: { lineStyle: { width: 8, color: [[1, '#E0E0E0']] } },
+          pointer: { show: true, length: '70%', width: 4 },
+          axisTick: { show: false },
+          splitLine: { show: false },
+          axisLabel: { show: false },
+          detail: { valueAnimation: true, fontSize: 16, offsetCenter: [0, '60%'], color: '#26B99A', formatter: '{value}%' },
+          data: [{ value: 67, name: 'Complete' }],
+          itemStyle: { color: '#26B99A' }
+        }]
+      });
+      window.addEventListener('resize', () => gaugeChart.resize());
+      console.log('✅ Profile completion gauge (index.html) initialized');
+    }
+
+    // Profile Completion Gauge (index3.html)
+    const profileGauge3 = document.getElementById('profile_completion_gauge_3');
+    if (profileGauge3 && typeof echarts !== 'undefined') {
+      const gaugeChart3 = echarts.init(profileGauge3);
+      gaugeChart3.setOption({
+        series: [{
+          type: 'gauge',
+          startAngle: 210,
+          endAngle: -30,
+          min: 0,
+          max: 100,
+          progress: { show: true, width: 8 },
+          axisLine: { lineStyle: { width: 8, color: [[1, '#E0E0E0']] } },
+          pointer: { show: true, length: '70%', width: 4 },
+          axisTick: { show: false },
+          splitLine: { show: false },
+          axisLabel: { show: false },
+          detail: { valueAnimation: true, fontSize: 16, offsetCenter: [0, '60%'], color: '#26B99A', formatter: '{value}%' },
+          data: [{ value: 75, name: 'Complete' }],
+          itemStyle: { color: '#26B99A' }
+        }]
+      });
+      window.addEventListener('resize', () => gaugeChart3.resize());
+      console.log('✅ Profile completion gauge (index3.html) initialized');
+    }
+
+    // Goal Progress Gauge (index3.html)
+    const goalGauge = document.getElementById('goal_progress_gauge');
+    if (goalGauge && typeof echarts !== 'undefined') {
+      const goalChart = echarts.init(goalGauge);
+      goalChart.setOption({
+        series: [{
+          type: 'gauge',
+          startAngle: 210,
+          endAngle: -30,
+          min: 0,
+          max: 100,
+          progress: { show: true, width: 8 },
+          axisLine: { lineStyle: { width: 8, color: [[1, '#E0E0E0']] } },
+          pointer: { show: true, length: '70%', width: 4 },
+          axisTick: { show: false },
+          splitLine: { show: false },
+          axisLabel: { show: false },
+          detail: { valueAnimation: true, fontSize: 16, offsetCenter: [0, '60%'], color: '#3498DB', formatter: '{value}%' },
+          data: [{ value: 64, name: 'Goal' }],
+          itemStyle: { color: '#3498DB' }
+        }]
+      });
+      window.addEventListener('resize', () => goalChart.resize());
+      console.log('✅ Goal progress gauge (index3.html) initialized');
+    }
+
+    // Profile Completion Gauge (test_page.html)
+    const profileGaugeTest = document.getElementById('profile_completion_gauge_test');
+    if (profileGaugeTest && typeof echarts !== 'undefined') {
+      const gaugeChartTest = echarts.init(profileGaugeTest);
+      gaugeChartTest.setOption({
+        series: [{
+          type: 'gauge',
+          startAngle: 210,
+          endAngle: -30,
+          min: 0,
+          max: 100,
+          progress: { show: true, width: 8 },
+          axisLine: { lineStyle: { width: 8, color: [[1, '#E0E0E0']] } },
+          pointer: { show: true, length: '70%', width: 4 },
+          axisTick: { show: false },
+          splitLine: { show: false },
+          axisLabel: { show: false },
+          detail: { valueAnimation: true, fontSize: 16, offsetCenter: [0, '60%'], color: '#26B99A', formatter: '{value}%' },
+          data: [{ value: 75, name: 'Complete' }],
+          itemStyle: { color: '#26B99A' }
+        }]
+      });
+      window.addEventListener('resize', () => gaugeChartTest.resize());
+      console.log('✅ Profile completion gauge (test_page.html) initialized');
+    }
+  }
+
+  // Index5 page specific initialization
+  function initializeIndex5() {
+    if (!document.body.classList.contains('page-index5')) {
+      return;
+    }
+
+    console.log('Initializing Index5 charts...');
+
+    try {
+      // Sales Overview (Line)
+      const salesOverviewContainer = document.getElementById('salesOverviewChart');
+      if (!salesOverviewContainer) {
+        console.warn('salesOverviewChart container not found');
+        return;
+      }
+      const salesOverviewChart = echarts.init(salesOverviewContainer);
+    salesOverviewChart.setOption({
+      tooltip: { trigger: 'axis' },
+      legend: { data: ['Sales', 'Orders'] },
+      xAxis: { type: 'category', data: Array.from({length: 30}, (_, i) => `Day ${i+1}`) },
+      yAxis: { type: 'value' },
+      series: [
+        { name: 'Sales', type: 'line', data: [120, 132, 101, 134, 90, 230, 210, 180, 160, 170, 190, 200, 210, 220, 230, 240, 250, 260, 270, 280, 290, 300, 310, 320, 330, 340, 350, 360, 370, 380], smooth: true, lineStyle: { color: '#26B99A' } },
+        { name: 'Orders', type: 'line', data: [80, 95, 110, 130, 120, 140, 155, 160, 150, 145, 140, 135, 130, 125, 120, 115, 110, 105, 100, 95, 90, 85, 80, 75, 70, 65, 60, 55, 50, 45], smooth: true, lineStyle: { color: '#3498DB' } }
+      ]
+    });
+    console.log('✅ Sales Overview chart initialized');
+
+    // Revenue Breakdown (Pie)
+    const revenueBreakdownContainer = document.getElementById('revenueBreakdownChart');
+    if (!revenueBreakdownContainer) {
+      console.warn('revenueBreakdownChart container not found');
+      return;
+    }
+    const revenueBreakdownChart = echarts.init(revenueBreakdownContainer);
+    revenueBreakdownChart.setOption({
+      tooltip: { trigger: 'item' },
+      legend: { orient: 'vertical', left: 'left' },
+      series: [{
+        name: 'Revenue', type: 'pie', radius: '60%',
+        data: [
+          { value: 10480, name: 'Online' },
+          { value: 7350, name: 'In-Store' },
+          { value: 5800, name: 'Mobile' },
+          { value: 4840, name: 'Phone' }
+        ],
+        emphasis: { itemStyle: { shadowBlur: 10, shadowOffsetX: 0, shadowColor: 'rgba(0,0,0,0.5)' } }
+      }]
+    });
+    console.log('✅ Revenue Breakdown chart initialized');
+
+    // Top Products (Bar)
+    const topProductsContainer = document.getElementById('topProductsChart');
+    if (!topProductsContainer) {
+      console.warn('topProductsChart container not found');
+      return;
+    }
+    const topProductsChart = echarts.init(topProductsContainer);
+    topProductsChart.setOption({
+      tooltip: { trigger: 'axis' },
+      xAxis: { type: 'category', data: ['Chair', 'Headphones', 'Hub', 'Camera', 'Keyboard'] },
+      yAxis: { type: 'value' },
+      series: [{
+        data: [124, 98, 76, 65, 52],
+        type: 'bar',
+        itemStyle: { color: '#1ABB9C' }
+      }]
+    });
+    console.log('✅ Top Products chart initialized');
+
+    // Conversion Funnel (Funnel)
+    const conversionFunnelContainer = document.getElementById('conversionFunnelChart');
+    if (!conversionFunnelContainer) {
+      console.warn('conversionFunnelChart container not found');
+      return;
+    }
+    const conversionFunnelChart = echarts.init(conversionFunnelContainer);
+    conversionFunnelChart.setOption({
+      tooltip: { trigger: 'item', formatter: '{b} : {c}%' },
+      series: [{
+        name: 'Funnel',
+        type: 'funnel',
+        left: '10%',
+        top: 20,
+        bottom: 20,
+        width: '80%',
+        min: 0,
+        max: 100,
+        minSize: '0%',
+        maxSize: '100%',
+        sort: 'descending',
+        gap: 2,
+        label: { show: true, position: 'inside' },
+        labelLine: { length: 10, lineStyle: { width: 1, type: 'solid' } },
+        itemStyle: { borderColor: '#fff', borderWidth: 1 },
+        emphasis: { label: { fontSize: 16 } },
+        data: [
+          { value: 100, name: 'Visits' },
+          { value: 80, name: 'Signups' },
+          { value: 60, name: 'Add to Cart' },
+          { value: 40, name: 'Checkout' },
+          { value: 20, name: 'Purchase' }
+        ]
+      }]
+    });
+    console.log('✅ Conversion Funnel chart initialized');
+
+    // Traffic Sources (Radar)
+    const trafficSourcesContainer = document.getElementById('trafficSourcesChart');
+    if (!trafficSourcesContainer) {
+      console.warn('trafficSourcesChart container not found');
+      return;
+    }
+    const trafficSourcesChart = echarts.init(trafficSourcesContainer);
+    trafficSourcesChart.setOption({
+      tooltip: {},
+      legend: { data: ['Traffic'] },
+      radar: {
+        indicator: [
+          { name: 'Organic', max: 100 },
+          { name: 'Direct', max: 100 },
+          { name: 'Referral', max: 100 },
+          { name: 'Social', max: 100 },
+          { name: 'Email', max: 100 }
+        ]
+      },
+      series: [{
+        name: 'Traffic Sources',
+        type: 'radar',
+        data: [
+          { value: [85, 65, 50, 40, 30], name: 'Traffic' }
+        ],
+        areaStyle: { opacity: 0.2 },
+        lineStyle: { color: '#3498DB' },
+        itemStyle: { color: '#3498DB' }
+      }]
+    });
+    console.log('✅ Traffic Sources chart initialized');
+
+    // Responsive
+    window.addEventListener('resize', function() {
+      salesOverviewChart.resize();
+      revenueBreakdownChart.resize();
+      topProductsChart.resize();
+      conversionFunnelChart.resize();
+      trafficSourcesChart.resize();
+    });
+
+    console.log('✅ All Index5 charts initialized successfully');
+    } catch (error) {
+      console.error('❌ Error initializing Index5 charts:', error);
+    }
+  }
+
+
 
 })(jQuery); 

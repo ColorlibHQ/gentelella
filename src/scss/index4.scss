@@ -1,0 +1,78 @@
+/*
+* index4.scss
+* ------------------
+* Styles for the Store Analytics dashboard page (index4.html).
+*/
+
+// Custom styles for the new widgets will go here. 
+
+.top_products_scroll {
+  max-height: 340px;
+  overflow-y: auto;
+  
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+    
+    &:hover {
+      background: #555;
+    }
+  }
+
+  .media.event {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f0f0f0;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    .product_img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin-right: 15px;
+    }
+    
+    .media-body {
+      .title {
+        font-weight: 600;
+        font-size: 14px;
+        color: #333;
+        text-decoration: none;
+        display: block;
+        margin-bottom: 5px;
+        
+        &:hover {
+          color: #1ABB9C;
+        }
+      }
+      
+      p {
+        margin: 0;
+        font-size: 13px;
+        color: #666;
+        
+        strong {
+          color: #1ABB9C;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}
+
+// Custom badge color for 'Pending' status
+.badge.bg-orange {
+  background-color: #f39c12 !important;
+  color: white;
+} 

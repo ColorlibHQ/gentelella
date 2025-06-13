@@ -23,39 +23,37 @@
       align-items: center;
       justify-content: center;
       text-decoration: none;
-      
-      i {
-        font-size: 20px;
-        color: white;
+      padding: 3px;
+
+      .profile_img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
       }
       
       &.border-aero {
         background-color: #1ABB9C;
-        border: 2px solid #1ABB9C;
       }
       
       &.border-green {
         background-color: #26B99A;
-        border: 2px solid #26B99A;
       }
       
       &.border-blue {
         background-color: #3498DB;
-        border: 2px solid #3498DB;
       }
       
       &.border-red {
         background-color: #E74C3C;
-        border: 2px solid #E74C3C;
       }
       
       &.border-purple {
         background-color: #9B59B6;
-        border: 2px solid #9B59B6;
       }
     }
     
-    .d-flex-body {
+    .media-body {
       flex: 1;
       
       .title {
@@ -121,6 +119,30 @@
   }
 }
 
+/* Engagement Metrics Styling */
+.metric {
+  margin-bottom: 15px;
+  
+  p {
+    margin: 0 0 5px 0;
+    font-size: 14px;
+    
+    .metric-label {
+      color: #73879C;
+    }
+    
+    .metric-value {
+      font-weight: 600;
+      color: #333;
+    }
+  }
+  
+  .progress.progress_sm {
+    height: 8px;
+    border-radius: 4px;
+  }
+}
+
 /* Tiles Styling for Statistics */
 .tiles {
   .tile {
@@ -150,8 +172,8 @@
 }
 
 /* Scroll View for Lists - Only apply to Top Profiles */
-.top_profiles.scroll-view {
-  max-height: 300px;
+.top_profiles.scroll-view.page-index2-profiles {
+  max-height: 385px;
   overflow-y: auto;
   
   &::-webkit-scrollbar {
@@ -175,10 +197,10 @@
 /* Media Object Flexbox Support */
 .media {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
 }
 
-.d-flex-body {
+.media-body {
   flex: 1;
 }
 

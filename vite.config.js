@@ -16,7 +16,7 @@ export default defineConfig({
           'vendor-charts': ['chart.js', 'echarts', 'leaflet'],
           'vendor-forms': ['select2', 'ion-rangeslider', 'autosize', 'switchery', '@eonasdan/tempus-dominus'],
           'vendor-ui': ['jquery-ui', 'nprogress', 'datatables.net', 'datatables.net-bs5'],
-          'vendor-utils': ['dayjs', 'jquery-sparkline', 'skycons', 'gaugejs']
+          'vendor-utils': ['dayjs', 'jquery-sparkline', 'skycons']
         },
         assetFileNames: (assetInfo) => {
           const info = assetInfo.name.split('.');
@@ -36,6 +36,7 @@ export default defineConfig({
         main: 'production/index.html',
         index2: 'production/index2.html',
         index3: 'production/index3.html',
+        index4: 'production/index4.html',
         
         form: 'production/form.html',
         form_advanced: 'production/form_advanced.html',

@@ -1,6 +1,8 @@
 // SCSS files using @use (must come first)
 @use "bootstrap/scss/bootstrap";
 @use "./scss/custom.scss";
+@use "./scss/index2.scss";
+@use "./scss/index4.scss";
 
 // CSS files using @import (legacy approach for .css files)
 @import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -19,8 +21,7 @@
 // jqvmap
 // @import "jqvmap/dist/jqvmap.min.css";
 
-// Custom Theme Style
-@import "scss/custom.scss"; 
+// Custom Theme Style is now handled with @use at the top
 
 // Page-specific styles
 @import "scss/index2.scss"; 
