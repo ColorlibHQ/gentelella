@@ -1,5 +1,5 @@
 // Tables Module - Only loaded on table pages
-console.log('Loading tables module...');
+
 
 // DataTables - Advanced table functionality
 import 'datatables.net';

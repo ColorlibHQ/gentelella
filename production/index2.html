@@ -255,43 +255,77 @@
 
         <!-- page content -->
         <div class="right_col" role="main">
-          <div class="">
-            <div class="row" style="display: inline-block;">
-            <div class="top_tiles">
-              <div class="animated flipInY col-lg-3 col-md-3 col-sm-6">
-                <div class="tile-stats">
-                  <div class="icon"><i class="fas fa-square-caret-right"></i></div>
-                  <div class="count">179</div>
-                  <h3>New Sign ups</h3>
-                  <p>Lorem ipsum psdea itgum rixt.</p>
+          <!-- top tiles -->
+          <div class="row g-3 mb-4">
+            <div class="col-xl-3 col-md-6">
+              <div class="card border-0 shadow-sm h-100">
+                <div class="card-body d-flex align-items-center">
+                  <div class="flex-shrink-0 me-3">
+                    <div class="rounded-circle bg-primary bg-opacity-10 d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
+                      <i class="fas fa-user-plus text-primary fs-5"></i>
+                    </div>
+                  </div>
+                  <div class="flex-grow-1">
+                    <div class="small text-muted mb-1">New Sign ups</div>
+                    <div class="h4 mb-1 fw-bold">179</div>
+                    <div class="small text-muted">Active registrations</div>
+                  </div>
                 </div>
               </div>
-              <div class="animated flipInY col-lg-3 col-md-3 col-sm-6">
-                <div class="tile-stats">
-                  <div class="icon"><i class="far fa-comments"></i></div>
-                  <div class="count">179</div>
-                  <h3>New Sign ups</h3>
-                  <p>Lorem ipsum psdea itgum rixt.</p>
+            </div>
+
+            <div class="col-xl-3 col-md-6">
+              <div class="card border-0 shadow-sm h-100">
+                <div class="card-body d-flex align-items-center">
+                  <div class="flex-shrink-0 me-3">
+                    <div class="rounded-circle bg-success bg-opacity-10 d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
+                      <i class="far fa-comments text-success fs-5"></i>
+                    </div>
+                  </div>
+                  <div class="flex-grow-1">
+                    <div class="small text-muted mb-1">Messages</div>
+                    <div class="h4 mb-1 fw-bold">1,254</div>
+                    <div class="small text-muted">Customer inquiries</div>
+                  </div>
                 </div>
               </div>
-              <div class="animated flipInY col-lg-3 col-md-3 col-sm-6">
-                <div class="tile-stats">
-                  <div class="icon"><i class="fas fa-sort-amount-desc"></i></div>
-                  <div class="count">179</div>
-                  <h3>New Sign ups</h3>
-                  <p>Lorem ipsum psdea itgum rixt.</p>
+            </div>
+
+            <div class="col-xl-3 col-md-6">
+              <div class="card border-0 shadow-sm h-100">
+                <div class="card-body d-flex align-items-center">
+                  <div class="flex-shrink-0 me-3">
+                    <div class="rounded-circle bg-info bg-opacity-10 d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
+                      <i class="fas fa-chart-column text-info fs-5"></i>
+                    </div>
+                  </div>
+                  <div class="flex-grow-1">
+                    <div class="small text-muted mb-1">Analytics</div>
+                    <div class="h4 mb-1 fw-bold">892</div>
+                    <div class="small text-muted">Reports generated</div>
+                  </div>
                 </div>
               </div>
-              <div class="animated flipInY col-lg-3 col-md-3 col-sm-6">
-                <div class="tile-stats">
-                  <div class="icon"><i class="far fa-square-check"></i></div>
-                  <div class="count">179</div>
-                  <h3>New Sign ups</h3>
-                  <p>Lorem ipsum psdea itgum rixt.</p>
+            </div>
+
+            <div class="col-xl-3 col-md-6">
+              <div class="card border-0 shadow-sm h-100">
+                <div class="card-body d-flex align-items-center">
+                  <div class="flex-shrink-0 me-3">
+                    <div class="rounded-circle bg-warning bg-opacity-10 d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
+                      <i class="far fa-square-check text-warning fs-5"></i>
+                    </div>
+                  </div>
+                  <div class="flex-grow-1">
+                    <div class="small text-muted mb-1">Tasks Complete</div>
+                    <div class="h4 mb-1 fw-bold">423</div>
+                    <div class="small text-muted">Finished today</div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+          <!-- /top tiles -->
 
             <div class="row">
               <div class="col-md-12">
@@ -341,115 +375,99 @@
 
                     </div>
 
+                    <!-- Top Performance Stats -->
                     <div class="col-md-3 col-sm-12">
-                      <div>
-                        <div class="x_title">
-                          <h2>Top Profiles</h2>
-                          <ul class="nav navbar-right panel_toolbox">
-                            <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-                            </li>
-                            <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-                              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                  <a class="dropdown-item" href="#">Settings 1</a>
-                                  <a class="dropdown-item" href="#">Settings 2</a>
+                      <div class="row g-3">
+                        <!-- Top Agent Card -->
+                        <div class="col-12">
+                          <div class="card border-0 shadow-sm">
+                            <div class="card-header bg-transparent border-0 pb-0">
+                              <h6 class="mb-0 fw-bold">🏆 Top Agent</h6>
+                            </div>
+                            <div class="card-body pt-2">
+                              <div class="d-flex align-items-center">
+                                <div class="flex-shrink-0 me-3">
+                                  <img src="images/img.jpg" alt="Top Agent" class="rounded-circle" style="width: 40px; height: 40px; object-fit: cover;">
                                 </div>
-                            </li>
-                            <li><a class="close-link"><i class="fas fa-times"></i></a>
-                            </li>
-                          </ul>
-                          <div class="clearfix"></div>
+                                <div class="flex-grow-1">
+                                  <div class="fw-semibold mb-1">Sarah Johnson</div>
+                                  <div class="text-success fw-bold">$4,850</div>
+                                  <div class="small text-muted">18 sales today</div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                         </div>
-                        <ul class="list-unstyled top_profiles scroll-view page-index2-profiles">
-                          <li class="media event">
-                            <a class="pull-left border-aero profile_thumb">
-                              <img src="images/img.jpg" alt="User" class="profile_img">
-                            </a>
-                            <div class="media-body">
-                              <a class="title" href="#">Sarah Johnson</a>
-                              <p><strong>$4,850.</strong> Top Agent Sales</p>
-                              <p> <small>18 Sales Today</small>
-                              </p>
+
+                        <!-- Team Progress Card -->
+                        <div class="col-12">
+                          <div class="card border-0 shadow-sm">
+                            <div class="card-header bg-transparent border-0 pb-0">
+                              <h6 class="mb-0 fw-bold">👥 Team Progress</h6>
                             </div>
-                          </li>
-                          <li class="media event">
-                            <a class="pull-left border-green profile_thumb">
-                              <img src="images/user.png" alt="User" class="profile_img">
-                            </a>
-                            <div class="media-body">
-                              <a class="title" href="#">Michael Chen</a>
-                              <p><strong>$3,920.</strong> Senior Agent Sales</p>
-                              <p> <small>15 Sales Today</small>
-                              </p>
+                            <div class="card-body pt-2">
+                              <div class="mb-3">
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                  <span class="small fw-medium">Daily Goal</span>
+                                  <span class="small text-muted">87%</span>
+                                </div>
+                                <div class="progress" style="height: 6px;">
+                                  <div class="progress-bar bg-success" style="width: 87%"></div>
+                                </div>
+                              </div>
+                              <div class="mb-3">
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                  <span class="small fw-medium">Weekly Target</span>
+                                  <span class="small text-muted">65%</span>
+                                </div>
+                                <div class="progress" style="height: 6px;">
+                                  <div class="progress-bar bg-info" style="width: 65%"></div>
+                                </div>
+                              </div>
+                              <div class="mb-0">
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                  <span class="small fw-medium">Monthly KPI</span>
+                                  <span class="small text-muted">72%</span>
+                                </div>
+                                <div class="progress" style="height: 6px;">
+                                  <div class="progress-bar bg-warning" style="width: 72%"></div>
+                                </div>
+                              </div>
                             </div>
-                          </li>
-                          <li class="media event">
-                            <a class="pull-left border-blue profile_thumb">
-                              <img src="images/picture.jpg" alt="User" class="profile_img">
-                            </a>
-                            <div class="media-body">
-                              <a class="title" href="#">Emily Rodriguez</a>
-                              <p><strong>$3,450.</strong> Agent Average Sales</p>
-                              <p> <small>12 Sales Today</small>
-                              </p>
+                          </div>
+                        </div>
+
+                        <!-- Quick Stats Card -->
+                        <div class="col-12">
+                          <div class="card border-0 shadow-sm">
+                            <div class="card-header bg-transparent border-0 pb-0">
+                              <h6 class="mb-0 fw-bold">📊 Quick Stats</h6>
                             </div>
-                          </li>
-                          <li class="media event">
-                            <a class="pull-left border-red profile_thumb">
-                              <img src="images/img.jpg" alt="User" class="profile_img">
-                            </a>
-                            <div class="media-body">
-                              <a class="title" href="#">David Wilson</a>
-                              <p><strong>$3,180.</strong> Agent Sales</p>
-                              <p> <small>10 Sales Today</small>
-                              </p>
+                            <div class="card-body pt-2">
+                              <div class="row text-center">
+                                <div class="col-6 border-end">
+                                  <div class="text-primary fw-bold">8</div>
+                                  <div class="small text-muted">Active Agents</div>
+                                </div>
+                                <div class="col-6">
+                                  <div class="text-success fw-bold">24</div>
+                                  <div class="small text-muted">Deals Today</div>
+                                </div>
+                              </div>
+                              <hr class="my-3">
+                              <div class="row text-center">
+                                <div class="col-6 border-end">
+                                  <div class="text-info fw-bold">94%</div>
+                                  <div class="small text-muted">Satisfaction</div>
+                                </div>
+                                <div class="col-6">
+                                  <div class="text-warning fw-bold">2.3h</div>
+                                  <div class="small text-muted">Avg. Response</div>
+                                </div>
+                              </div>
                             </div>
-                          </li>
-                          <li class="media event">
-                            <a class="pull-left border-purple profile_thumb">
-                              <img src="images/user.png" alt="User" class="profile_img">
-                            </a>
-                            <div class="media-body">
-                              <a class="title" href="#">Amanda Foster</a>
-                              <p><strong>$2,890.</strong> Agent Sales</p>
-                              <p> <small>9 Sales Today</small>
-                              </p>
-                            </div>
-                          </li>
-                          <li class="media event">
-                            <a class="pull-left border-aero profile_thumb">
-                              <img src="images/picture.jpg" alt="User" class="profile_img">
-                            </a>
-                            <div class="media-body">
-                              <a class="title" href="#">Jessica Martinez</a>
-                              <p><strong>$2,750.</strong> Agent Sales</p>
-                              <p> <small>9 Sales Today</small>
-                              </p>
-                            </div>
-                          </li>
-                          <li class="media event">
-                            <a class="pull-left border-green profile_thumb">
-                              <img src="images/img.jpg" alt="User" class="profile_img">
-                            </a>
-                            <div class="media-body">
-                              <a class="title" href="#">Daniel Lee</a>
-                              <p><strong>$2,610.</strong> Agent Sales</p>
-                              <p> <small>8 Sales Today</small>
-                              </p>
-                            </div>
-                          </li>
-                           <li class="media event">
-                            <a class="pull-left border-blue profile_thumb">
-                              <img src="images/user.png" alt="User" class="profile_img">
-                            </a>
-                            <div class="media-body">
-                              <a class="title" href="#">Laura Taylor</a>
-                              <p><strong>$2,440.</strong> Agent Sales</p>
-                              <p> <small>7 Sales Today</small>
-                              </p>
-                            </div>
-                          </li>
-                        </ul>
+                          </div>
+                        </div>
                       </div>
                     </div>
 

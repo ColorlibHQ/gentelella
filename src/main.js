@@ -3,20 +3,22 @@ import $ from './jquery-setup.js';
 
 // Ensure jQuery is available globally IMMEDIATELY
 window.jQuery = window.$ = $;
+globalThis.jQuery = globalThis.$ = $;
 
 // Debug log to confirm script is loading
-console.log('🚀 Gentelella main.js loading...');
+
 
 // Import jQuery-dependent vendor libraries AFTER jQuery is global
-import '../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js';
 
 // Bootstrap 5 - No jQuery dependency needed
 import * as bootstrap from 'bootstrap';
 window.bootstrap = bootstrap;
+globalThis.bootstrap = bootstrap;
 
 // Switchery (iOS-style toggle switches)
 import Switchery from 'switchery';
 window.Switchery = Switchery;
+globalThis.Switchery = Switchery;
 
 // Initialize Bootstrap tooltips
 document.addEventListener('DOMContentLoaded', function() {
@@ -36,15 +38,18 @@ document.addEventListener('DOMContentLoaded', function() {
 // NProgress (Loading bar)
 import NProgress from 'nprogress';
 window.NProgress = NProgress;
+globalThis.NProgress = NProgress;
 
 // Chart.js v4 - No jQuery dependency 
 import { Chart, registerables } from 'chart.js';
 Chart.register(...registerables);
 window.Chart = Chart;
+globalThis.Chart = Chart;
 
 // Leaflet (for maps)
 import * as L from 'leaflet';
 window.L = L;
+globalThis.L = L;
 
 // Global styles (Bootstrap 5 + custom)
 import './main.scss';
@@ -72,16 +77,19 @@ import './js/sidebar.js';
 import './js/init.js';
 
 // Confirm all components loaded
-console.log('✅ Gentelella main.js fully loaded!');
+
 
 // Day.js for date manipulation (modern replacement for moment.js)
 import dayjs from 'dayjs';
 window.dayjs = dayjs;
+globalThis.dayjs = dayjs;
 
 // Tempus Dominus DateTimePicker (Bootstrap 5 compatible)
 import { TempusDominus, DateTime } from '@eonasdan/tempus-dominus';
 window.TempusDominus = TempusDominus;
 window.DateTime = DateTime;
+globalThis.TempusDominus = TempusDominus;
+globalThis.DateTime = DateTime;
 
 // jQuery Sparkline (Small charts)
 import 'jquery-sparkline';
@@ -96,10 +104,12 @@ import 'ion-rangeslider';
 import SkyconsFactory from 'skycons';
 const Skycons = SkyconsFactory(window);
 window.Skycons = Skycons;
+globalThis.Skycons = Skycons;
 
 // Autosize (Auto-resizing textareas)
 import autosize from 'autosize';
 window.autosize = autosize;
+globalThis.autosize = autosize;
 
 // Flot charts
 import 'flot/dist/es5/jquery.flot.js';
@@ -111,20 +121,47 @@ import 'flot/source/jquery.flot.resize.js';
 // ECharts
 import * as echarts from 'echarts';
 window.echarts = echarts;
+globalThis.echarts = echarts;
 
 // Input Mask
 import Inputmask from 'inputmask';
 window.Inputmask = Inputmask;
+globalThis.Inputmask = Inputmask;
 
 // Modern Color Picker
 import Pickr from '@simonwep/pickr';
 window.Pickr = Pickr;
+globalThis.Pickr = Pickr;
 
 // jQuery Knob
 import 'jquery-knob';
 
 // Cropper.js for image cropping
 import 'cropper';
+
+// Create a library availability checker for inline scripts
+window.waitForLibraries = function(libraries, callback, timeout = 5000) {
+  const startTime = Date.now();
+  
+  function check() {
+    const allAvailable = libraries.every(lib => {
+      return (typeof window[lib] !== 'undefined') || (typeof globalThis[lib] !== 'undefined');
+    });
+    
+    if (allAvailable) {
+      callback();
+    } else if (Date.now() - startTime < timeout) {
+      setTimeout(check, 50);
+    } else {
+      console.warn('Timeout waiting for libraries:', libraries.filter(lib => 
+        typeof window[lib] === 'undefined' && typeof globalThis[lib] === 'undefined'
+      ));
+      callback(); // Call anyway to prevent hanging
+    }
+  }
+  
+  check();
+};
 
 
 

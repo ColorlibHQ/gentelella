@@ -4363,7 +4363,6 @@ fieldset {
 }
 /** jQuery Smart Wizard  **/
 
-/** bootstrap-progressbar  **/
 .progress {
   border-radius: 0;
 }
@@ -4843,4 +4842,62 @@ ul.notifications {
   .tile_stats_count .tile-content .count {
     font-size: 24px;
   }
+}
+
+/* ==========================================================================
+   Pickr Color Picker Customizations
+   ========================================================================== */
+
+/* Custom styling for Pickr color picker buttons */
+.pickr .pcr-button {
+  width: 32px !important;
+  height: 32px !important;
+  border: 2px solid #fff !important;
+  border-radius: 4px !important;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+/* Hover effect for Pickr buttons */
+.pickr .pcr-button:hover {
+  border-color: #007bff !important;
+  box-shadow: 0 0 0 1px rgba(0, 123, 255, 0.25), 0 0 0 3px rgba(0, 123, 255, 0.1) !important;
+  transform: scale(1.05) !important;
+}
+
+/* Focus state for accessibility */
+.pickr .pcr-button:focus {
+  outline: none !important;
+  border-color: #007bff !important;
+  box-shadow: 0 0 0 1px rgba(0, 123, 255, 0.25), 0 0 0 3px rgba(0, 123, 255, 0.15) !important;
+}
+
+/* Active state */
+.pickr .pcr-button:active {
+  transform: scale(0.98) !important;
+}
+
+/* Ensure Pickr containers don't overflow */
+.pickr {
+  display: inline-block !important;
+  width: 32px !important;
+  height: 32px !important;
+  overflow: visible !important;
+}
+
+/* Fix for input group integration */
+.input-group .pickr {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Ensure proper positioning within input group spans */
+.input-group-text .pickr {
+  margin: 0 !important;
+  border: none !important;
+  background: transparent !important;
 }

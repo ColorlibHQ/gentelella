@@ -1,55 +1,69 @@
 // Minimal main.js for form_advanced.html
-console.log('🚀 Form Advanced main.js starting...');
 
 // Import jQuery setup first
 import $ from './jquery-setup.js';
 window.jQuery = window.$ = $;
-console.log('✅ jQuery loaded');
+globalThis.jQuery = globalThis.$ = $;
 
 // Bootstrap 5 - No jQuery dependency needed
 import * as bootstrap from 'bootstrap';
 window.bootstrap = bootstrap;
-console.log('✅ Bootstrap loaded');
+globalThis.bootstrap = bootstrap;
 
 // Switchery (iOS-style toggle switches)
 import Switchery from 'switchery';
 window.Switchery = Switchery;
-console.log('✅ Switchery loaded');
+globalThis.Switchery = Switchery;
 
 // TempusDominus DateTimePicker (Bootstrap 5 compatible)
 import { TempusDominus } from '@eonasdan/tempus-dominus';
 window.TempusDominus = TempusDominus;
-console.log('✅ TempusDominus loaded');
+globalThis.TempusDominus = TempusDominus;
 
 // Global styles (Bootstrap 5 + custom)
 import './main.scss';
-console.log('✅ Styles loaded');
 
 // TempusDominus CSS
 import '@eonasdan/tempus-dominus/dist/css/tempus-dominus.min.css';
-console.log('✅ TempusDominus CSS loaded');
 
 // Additional CSS for form components
 import '@simonwep/pickr/dist/themes/classic.min.css';
 import 'ion-rangeslider/css/ion.rangeSlider.min.css';
 import 'cropper/dist/cropper.min.css';
-console.log('✅ Form component CSS loaded');
 
 // Add the essential JavaScript functionality
 try {
   // Import helpers and sidebar
   await import('./js/helpers/smartresize.js');
-  console.log('✅ Smartresize helper loaded');
-  
   await import('./js/sidebar.js');
-  console.log('✅ Sidebar functionality loaded');
-  
   await import('./js/init.js');
-  console.log('✅ Initialization scripts loaded');
-  
 } catch (error) {
   console.error('❌ Error loading JavaScript modules:', error);
 }
+
+// Create a library availability checker for inline scripts
+window.waitForLibraries = function(libraries, callback, timeout = 5000) {
+  const startTime = Date.now();
+  
+  function check() {
+    const allAvailable = libraries.every(lib => {
+      return (typeof window[lib] !== 'undefined') || (typeof globalThis[lib] !== 'undefined');
+    });
+    
+    if (allAvailable) {
+      callback();
+    } else if (Date.now() - startTime < timeout) {
+      setTimeout(check, 50);
+    } else {
+      console.warn('Timeout waiting for libraries:', libraries.filter(lib => 
+        typeof window[lib] === 'undefined' && typeof globalThis[lib] === 'undefined'
+      ));
+      callback(); // Call anyway to prevent hanging
+    }
+  }
+  
+  check();
+};
 
 // Only add form-specific libraries after core is loaded
 document.addEventListener('DOMContentLoaded', async function() {
@@ -57,29 +71,23 @@ document.addEventListener('DOMContentLoaded', async function() {
     // Input Mask
     const { default: Inputmask } = await import('inputmask');
     window.Inputmask = Inputmask;
-    console.log('✅ Inputmask loaded');
+    globalThis.Inputmask = Inputmask;
 
     // Modern Color Picker 
     const { default: Pickr } = await import('@simonwep/pickr');
     window.Pickr = Pickr;
-    console.log('✅ Pickr loaded');
+    globalThis.Pickr = Pickr;
 
     // Ion Range Slider
     await import('ion-rangeslider');
-    console.log('✅ Ion Range Slider loaded');
 
     // jQuery Knob
     await import('jquery-knob');
-    console.log('✅ jQuery Knob loaded');
 
     // Cropper.js
     await import('cropper');
-    console.log('✅ Cropper loaded');
 
-    console.log('✅ All form advanced components loaded successfully!');
   } catch (error) {
     console.error('❌ Error loading form components:', error);
   }
-});
-
-console.log('✅ Form Advanced main.js fully loaded!'); 
+}); 

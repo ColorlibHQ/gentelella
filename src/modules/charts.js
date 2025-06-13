@@ -1,5 +1,5 @@
 // Charts Module - Only loaded when needed
-console.log('Loading charts module...');
+
 
 // Chart.js v4 - Modern charting library
 import { Chart, registerables } from 'chart.js';

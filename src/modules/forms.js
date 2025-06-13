@@ -1,5 +1,5 @@
 // Forms Module - Only loaded on form pages
-console.log('Loading forms module...');
+
 
 // Tempus Dominus DateTimePicker (Bootstrap 5 compatible)
 import { TempusDominus, DateTime } from '@eonasdan/tempus-dominus';

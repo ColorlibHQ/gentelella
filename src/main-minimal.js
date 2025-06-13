@@ -1,113 +1,137 @@
 // Minimal test - adding back essential functionality step by step
-console.log('🚀 Minimal main.js starting...');
 
 // Import jQuery setup first
 import $ from './jquery-setup.js';
 window.jQuery = window.$ = $;
-console.log('✅ jQuery loaded');
+globalThis.jQuery = globalThis.$ = $;
 
 // Import jQuery-dependent vendor libraries AFTER jQuery is global
-import '../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js';
-console.log('✅ Bootstrap-progressbar loaded');
 
 // Switchery (iOS-style toggle switches)
 import Switchery from 'switchery';
 window.Switchery = Switchery;
-console.log('✅ Switchery loaded');
+globalThis.Switchery = Switchery;
 
 // Bootstrap 5 - No jQuery dependency needed
 import * as bootstrap from 'bootstrap';
 window.bootstrap = bootstrap;
-console.log('✅ Bootstrap loaded');
+globalThis.bootstrap = bootstrap;
 
 // TempusDominus DateTimePicker (Bootstrap 5 compatible)
 import { TempusDominus } from '@eonasdan/tempus-dominus';
 window.TempusDominus = TempusDominus;
-console.log('✅ TempusDominus loaded');
+globalThis.TempusDominus = TempusDominus;
 
 // Chart.js v4 - No jQuery dependency 
 import { Chart, registerables } from 'chart.js';
-Chart.register(...registerables);
-window.Chart = Chart;
-console.log('✅ Chart.js loaded');
+try {
+  Chart.register(...registerables);
+  window.Chart = Chart;
+  globalThis.Chart = Chart;
+  console.log('✅ Chart.js loaded successfully');
+} catch (error) {
+  console.error('❌ Chart.js registration error:', error);
+  window.Chart = Chart; // Still assign even if registration fails
+  globalThis.Chart = Chart;
+}
 
 // ECharts - Apache ECharts library
 import * as echarts from 'echarts';
 window.echarts = echarts;
-console.log('✅ ECharts loaded');
+globalThis.echarts = echarts;
+console.log('✅ ECharts loaded successfully');
 
 // Skycons (Animated weather icons)
-import skycons from 'skycons';
-const Skycons = skycons(typeof window !== 'undefined' ? window : global);
-window.Skycons = Skycons;
-console.log('✅ Skycons loaded');
+import SkyconsFactory from 'skycons';
+try {
+  const Skycons = SkyconsFactory(typeof window !== 'undefined' ? window : globalThis);
+  window.Skycons = Skycons;
+  globalThis.Skycons = Skycons;
+  console.log('✅ Skycons loaded successfully');
+} catch (error) {
+  console.error('❌ Skycons loading error:', error);
+}
 
 // Leaflet (for maps)
 import * as L from 'leaflet';
 window.L = L;
-console.log('✅ Leaflet loaded');
+globalThis.L = L;
+console.log('✅ Leaflet loaded successfully');
 
 // Global styles (Bootstrap 5 + custom)
 import './main.scss';
-console.log('✅ Styles loaded');
 
 // Leaflet CSS
 import 'leaflet/dist/leaflet.css';
-console.log('✅ Leaflet CSS loaded');
 
 // TempusDominus CSS
 import '@eonasdan/tempus-dominus/dist/css/tempus-dominus.min.css';
-console.log('✅ TempusDominus CSS loaded');
 
 // Ion Range Slider
 import 'ion-rangeslider';
 window.ionRangeSlider = true;
-console.log('✅ Ion Range Slider loaded');
 
 // Ion Range Slider CSS
 import 'ion-rangeslider/css/ion.rangeSlider.min.css';
-console.log('✅ Ion Range Slider CSS loaded');
 
 // Input Mask
 import Inputmask from 'inputmask';
 window.Inputmask = Inputmask;
-console.log('✅ Inputmask loaded');
+globalThis.Inputmask = Inputmask;
 
 // Modern Color Picker
 import Pickr from '@simonwep/pickr';
 window.Pickr = Pickr;
-console.log('✅ Pickr loaded');
+globalThis.Pickr = Pickr;
 
 // Pickr CSS
 import '@simonwep/pickr/dist/themes/classic.min.css';
-console.log('✅ Pickr CSS loaded');
 
 // jQuery Knob (needs jQuery to be global first)
 import 'jquery-knob';
-console.log('✅ jQuery Knob loaded');
 
 // Cropper.js for image cropping
 import 'cropper';
-console.log('✅ Cropper loaded');
 
 // Cropper CSS
 import 'cropper/dist/cropper.min.css';
-console.log('✅ Cropper CSS loaded');
 
-// Add the essential JavaScript functionality
-try {
-  // Import helpers and sidebar
-  await import('./js/helpers/smartresize.js');
-  console.log('✅ Smartresize helper loaded');
+// Create a library availability checker for inline scripts BEFORE importing init.js
+window.waitForLibraries = function(libraries, callback, timeout = 5000) {
+  const startTime = Date.now();
   
-  await import('./js/sidebar.js');
-  console.log('✅ Sidebar functionality loaded');
+  function check() {
+    const allAvailable = libraries.every(lib => {
+      return (typeof window[lib] !== 'undefined') || (typeof globalThis[lib] !== 'undefined');
+    });
+    
+    if (allAvailable) {
+      callback();
+    } else if (Date.now() - startTime < timeout) {
+      setTimeout(check, 50);
+    } else {
+      console.warn('Timeout waiting for libraries:', libraries.filter(lib => 
+        typeof window[lib] === 'undefined' && typeof globalThis[lib] === 'undefined'
+      ));
+      callback(); // Call anyway to prevent hanging
+    }
+  }
   
-  await import('./js/init.js');
-  console.log('✅ Initialization scripts loaded');
-  
-} catch (error) {
-  console.error('❌ Error loading JavaScript modules:', error);
-}
+  check();
+};
 
-console.log('✅ All core components loaded successfully!'); 
+// Add the essential JavaScript functionality - SYNCHRONOUS imports to ensure proper order
+import './js/helpers/smartresize.js';
+import './js/sidebar.js';
+import './js/init.js';
+
+// Final verification
+console.log('✅ Main minimal initialization complete');
+console.log('Available libraries:', {
+  jQuery: !!(window.jQuery || globalThis.jQuery),
+  Chart: !!(window.Chart || globalThis.Chart),
+  echarts: !!(window.echarts || globalThis.echarts),
+  Skycons: !!(window.Skycons || globalThis.Skycons),
+  L: !!(window.L || globalThis.L),
+  TempusDominus: !!(window.TempusDominus || globalThis.TempusDominus)
+}); 

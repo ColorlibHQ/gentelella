@@ -61,22 +61,8 @@
       });
     }
 
-    // Bootstrap Progressbar
-    if ($(".progress .progress-bar")[0]) {
-      $('.progress .progress-bar').progressbar();
-    }
-
-    // Bootstrap Progressbar with data-transitiongoal (for Top Campaign Performance)
-    if ($(".progress .progress-bar[data-transitiongoal]").length) {
-      $(".progress .progress-bar[data-transitiongoal]").progressbar({
-        transition_delay: 1000,
-        refresh_speed: 50,
-        display_text: 'fill',
-        use_percentage: true,
-        percent_format: function(percent) { return percent + '%'; },
-        amount_format: function(amount_part, amount_max) { return amount_part + ' / ' + amount_max; }
-      });
-    }
+    // Bootstrap 5 Native Progress Bars
+    initializeProgressBars();
 
     // Initialize all chart components
     initializeCharts();
@@ -85,7 +71,7 @@
     initializeOtherCharts();
     initializeIndex2();
     initializeIndex4();
-    initializeIndex5();
+    initializeIndex3();
     initializeSidebarGauges();
     initializeSkycons();
     initializeGeneralElements();
@@ -128,7 +114,8 @@
     }
 
     // Chart.js initialization - Main Dashboard Chart
-    console.log("Chart.js init script started");
+    
+    const Chart = window.Chart || globalThis.Chart;
     if (typeof Chart !== 'undefined') {
       console.log("Chart.js is loaded");
       
@@ -490,7 +477,7 @@
 
   // We still want NProgress to start early, so we'll keep this separate.
   $(document).ready(function() {
-    console.log("✅ Init.js loaded, DOM ready");
+    
 
     if (typeof NProgress != 'undefined') {
       NProgress.start();
@@ -500,22 +487,48 @@
 
     // Skycons initialization moved to initializeSkycons() function
 
-    // Top Campaign Performance Progress Bars with data-transitiongoal
-    if ($(".progress .progress-bar[data-transitiongoal]").length) {
-      $(".progress .progress-bar[data-transitiongoal]").progressbar({
-        transition_delay: 1000,
-        refresh_speed: 50,
-        display_text: 'fill',
-        use_percentage: true,
-        percent_format: function(percent) { return percent + '%'; },
-        amount_format: function(amount_part, amount_max) { return amount_part + ' / ' + amount_max; }
-      });
-    }
+    // Top Campaign Performance Progress Bars (handled by initializeProgressBars)
 
     // Chart initialization moved to main window.on('load') event
   });
 
 
+
+  /**
+   * Initializes Bootstrap 5 native progress bars with animations
+   * Replaces the old bootstrap-progressbar library
+   */
+  function initializeProgressBars() {
+    // Animate all progress bars with data-transitiongoal
+    const progressBars = document.querySelectorAll('.progress-bar[data-transitiongoal]');
+    
+    progressBars.forEach(bar => {
+      const targetPercent = parseInt(bar.getAttribute('data-transitiongoal'), 10);
+      const displayText = bar.getAttribute('data-display-text') !== 'false';
+      
+      // Set initial state
+      bar.style.width = '0%';
+      bar.setAttribute('aria-valuenow', '0');
+      
+      // Animate to target value
+      setTimeout(() => {
+        bar.style.transition = 'width 1s ease-in-out';
+        bar.style.width = targetPercent + '%';
+        bar.setAttribute('aria-valuenow', targetPercent);
+        
+        if (displayText) {
+          bar.textContent = targetPercent + '%';
+        }
+      }, 100);
+    });
+
+    // For progress bars without data-transitiongoal, just show them immediately
+    const staticProgressBars = document.querySelectorAll('.progress-bar:not([data-transitiongoal])');
+    staticProgressBars.forEach(bar => {
+      const currentPercent = bar.style.width || bar.getAttribute('aria-valuenow') + '%' || '0%';
+      bar.style.width = currentPercent;
+    });
+  }
 
   /**
    * Initializes all Chart.js instances on a page.
@@ -991,6 +1004,7 @@
       return;
     }
 
+    const echarts = window.echarts || globalThis.echarts;
     if (typeof echarts === 'undefined') {
       console.warn('⚠️ ECharts library not available');
       return;
@@ -1975,6 +1989,12 @@
 
   // Initialize Weekly Summary Charts
   function initializeWeeklySummaryCharts() {
+    const echarts = window.echarts || globalThis.echarts;
+    if (typeof echarts === 'undefined') {
+      console.warn('⚠️ ECharts library not available for Weekly Summary Charts');
+      return;
+    }
+
     // Weekly Sales Trend Chart
     const weeklySalesChart = echarts.init(document.getElementById('weeklySalesChart'));
     weeklySalesChart.setOption({
@@ -2349,6 +2369,7 @@
       return;
     }
 
+    const Skycons = window.Skycons || globalThis.Skycons;
     if (typeof Skycons === 'undefined') {
       console.warn('⚠️ Skycons library not available');
       return;
@@ -2471,6 +2492,12 @@
       return;
     }
 
+    const L = window.L || globalThis.L;
+    if (typeof L === 'undefined') {
+      console.warn('⚠️ Leaflet library not available');
+      return;
+    }
+
     console.log('Initializing Leaflet map...');
 
     try {
@@ -2492,6 +2519,8 @@
   // Sidebar Profile Completion Gauges - ECharts implementation
   function initializeSidebarGauges() {
     console.log('Initializing sidebar gauges...');
+
+    const echarts = window.echarts || globalThis.echarts;
 
     // Profile Completion Gauge (index.html)
     const profileGauge = document.getElementById('profile_completion_gauge');
@@ -2598,13 +2627,19 @@
     }
   }
 
-  // Index5 page specific initialization
-  function initializeIndex5() {
-    if (!document.body.classList.contains('page-index5')) {
+  // Index3 page specific initialization (formerly Index5)
+  function initializeIndex3() {
+    if (!document.body.classList.contains('page-index3')) {
       return;
     }
 
-    console.log('Initializing Index5 charts...');
+    const echarts = window.echarts || globalThis.echarts;
+    if (typeof echarts === 'undefined') {
+      console.warn('⚠️ ECharts library not available for Index3');
+      return;
+    }
+
+    console.log('Initializing Index3 charts...');
 
     try {
       // Sales Overview (Line)
@@ -2737,6 +2772,236 @@
     });
     console.log('✅ Traffic Sources chart initialized');
 
+    // Orders Analytics Dashboard
+    try {
+      console.log('Initializing Orders Analytics...');
+      
+      // Orders Analytics Chart (Line Chart)
+      const ordersAnalyticsContainer = document.getElementById('ordersAnalyticsChart');
+      if (ordersAnalyticsContainer) {
+        const ordersChart = echarts.init(ordersAnalyticsContainer);
+        
+        // Generate data for the last 30 days
+        const dates = [];
+        const orderCounts = [];
+        const revenues = [];
+        
+        for (let i = 29; i >= 0; i--) {
+          const date = new Date();
+          date.setDate(date.getDate() - i);
+          dates.push(date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }));
+          
+          // Simulate realistic order data with some variation
+          const baseOrders = 15 + Math.floor(Math.random() * 10);
+          const weekendReduction = date.getDay() === 0 || date.getDay() === 6 ? 0.7 : 1;
+          orderCounts.push(Math.floor(baseOrders * weekendReduction));
+          
+          // Revenue correlates with orders but has some randomness
+          const avgOrderValue = 800 + Math.random() * 400;
+          revenues.push(Math.floor(orderCounts[orderCounts.length - 1] * avgOrderValue));
+        }
+
+        const ordersOption = {
+          tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+              type: 'cross',
+              label: {
+                backgroundColor: '#6a7985'
+              }
+            },
+            formatter: function(params) {
+              let result = `<strong>${params[0].axisValue}</strong><br/>`;
+              params.forEach(param => {
+                const value = param.seriesName === 'Revenue' ? 
+                  `$${(param.value / 1000).toFixed(1)}K` : 
+                  param.value;
+                result += `${param.marker} ${param.seriesName}: ${value}<br/>`;
+              });
+              return result;
+            }
+          },
+          legend: {
+            data: ['Orders', 'Revenue'],
+            top: 0
+          },
+          grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+          },
+          xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            data: dates,
+            axisLabel: {
+              rotate: 45,
+              fontSize: 10
+            }
+          },
+          yAxis: [
+            {
+              type: 'value',
+              name: 'Orders',
+              position: 'left',
+              splitLine: {
+                show: true,
+                lineStyle: {
+                  color: '#f0f0f0'
+                }
+              }
+            },
+            {
+              type: 'value',
+              name: 'Revenue ($)',
+              position: 'right',
+              splitLine: {
+                show: false
+              },
+              axisLabel: {
+                formatter: function(value) {
+                  return '$' + (value / 1000).toFixed(0) + 'K';
+                }
+              }
+            }
+          ],
+          series: [
+            {
+              name: 'Orders',
+              type: 'line',
+              yAxisIndex: 0,
+              data: orderCounts,
+              smooth: true,
+              symbol: 'circle',
+              symbolSize: 6,
+              lineStyle: {
+                width: 3,
+                color: '#5470c6'
+              },
+              areaStyle: {
+                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                  { offset: 0, color: 'rgba(84, 112, 198, 0.3)' },
+                  { offset: 1, color: 'rgba(84, 112, 198, 0.05)' }
+                ])
+              }
+            },
+            {
+              name: 'Revenue',
+              type: 'line',
+              yAxisIndex: 1,
+              data: revenues,
+              smooth: true,
+              symbol: 'circle',
+              symbolSize: 6,
+              lineStyle: {
+                width: 3,
+                color: '#91cc75'
+              },
+              areaStyle: {
+                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                  { offset: 0, color: 'rgba(145, 204, 117, 0.3)' },
+                  { offset: 1, color: 'rgba(145, 204, 117, 0.05)' }
+                ])
+              }
+            }
+          ]
+        };
+
+        ordersChart.setOption(ordersOption);
+        console.log('✅ Orders Analytics chart initialized');
+
+        // Add to resize handler
+        window.addEventListener('resize', () => ordersChart.resize());
+      }
+
+      // Order Status Distribution Chart (Donut Chart)
+      const orderStatusContainer = document.getElementById('orderStatusChart');
+      if (orderStatusContainer) {
+        const statusChart = echarts.init(orderStatusContainer);
+        
+        const statusOption = {
+          tooltip: {
+            trigger: 'item',
+            formatter: '{a} <br/>{b}: {c} ({d}%)'
+          },
+          legend: {
+            orient: 'vertical',
+            left: 'left',
+            bottom: 20,
+            textStyle: {
+              fontSize: 11
+            }
+          },
+          series: [
+            {
+              name: 'Order Status',
+              type: 'pie',
+              radius: ['40%', '70%'],
+              center: ['60%', '45%'],
+              avoidLabelOverlap: false,
+              itemStyle: {
+                borderRadius: 8,
+                borderColor: '#fff',
+                borderWidth: 2
+              },
+              label: {
+                show: false,
+                position: 'center'
+              },
+              emphasis: {
+                label: {
+                  show: true,
+                  fontSize: 16,
+                  fontWeight: 'bold'
+                }
+              },
+              labelLine: {
+                show: false
+              },
+              data: [
+                { 
+                  value: 45, 
+                  name: 'Delivered',
+                  itemStyle: { color: '#28a745' }
+                },
+                { 
+                  value: 25, 
+                  name: 'Shipped',
+                  itemStyle: { color: '#17a2b8' }
+                },
+                { 
+                  value: 20, 
+                  name: 'Pending',
+                  itemStyle: { color: '#ffc107' }
+                },
+                { 
+                  value: 7, 
+                  name: 'Cancelled',
+                  itemStyle: { color: '#dc3545' }
+                },
+                { 
+                  value: 3, 
+                  name: 'Returned',
+                  itemStyle: { color: '#6c757d' }
+                }
+              ]
+            }
+          ]
+        };
+
+        statusChart.setOption(statusOption);
+        console.log('✅ Order Status chart initialized');
+
+        // Add to resize handler
+        window.addEventListener('resize', () => statusChart.resize());
+      }
+
+      console.log('✅ Orders Analytics initialized successfully');
+    } catch (error) {
+      console.error('❌ Error initializing Orders Analytics:', error);
+    }
+
     // Responsive
     window.addEventListener('resize', function() {
       salesOverviewChart.resize();
@@ -2744,11 +3009,12 @@
       topProductsChart.resize();
       conversionFunnelChart.resize();
       trafficSourcesChart.resize();
+      // Orders Analytics charts will handle their own resize in their function
     });
 
-    console.log('✅ All Index5 charts initialized successfully');
+    console.log('✅ All Index3 charts initialized successfully');
     } catch (error) {
-      console.error('❌ Error initializing Index5 charts:', error);
+      console.error('❌ Error initializing Index3 charts:', error);
     }
   }
 

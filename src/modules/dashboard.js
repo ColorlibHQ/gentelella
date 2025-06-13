@@ -1,8 +1,7 @@
 // Dashboard Module - Only loaded on dashboard pages
-console.log('Loading dashboard module...');
+
 
 // Dashboard-specific widgets
-import '../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js';
 
 // Map functionality for dashboard
 // import 'jqvmap';

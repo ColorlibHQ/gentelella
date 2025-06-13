@@ -1261,7 +1261,11 @@
     <!-- Date Range Picker Logic -->
     <script type="text/javascript">
     document.addEventListener('DOMContentLoaded', function() {
-      if (typeof TempusDominus !== 'undefined') {
+      // Wait for libraries to be available before initializing
+      if (typeof window.waitForLibraries === 'function') {
+        window.waitForLibraries(['TempusDominus'], function() {
+          const TempusDominus = window.TempusDominus || globalThis.TempusDominus;
+          if (TempusDominus) {
         // Initialize the date pickers
         const startPicker = new TempusDominus(document.getElementById('startDatePicker'), {
           display: { 
@@ -1324,8 +1328,19 @@
         document.getElementById('endDatePicker').addEventListener('change.td', function(e) {
           startPicker.updateOptions({ restrictions: { maxDate: e.detail.date } });
         });
+          } else {
+            console.warn('TempusDominus is not available');
+          }
+        });
       } else {
-        console.warn('TempusDominus is not available');
+        // Fallback: directly check for TempusDominus
+        const TempusDominus = window.TempusDominus || globalThis.TempusDominus;
+        if (TempusDominus) {
+          // Use the same initialization code here if needed
+          console.log('TempusDominus available via fallback');
+        } else {
+          console.warn('TempusDominus is not available');
+        }
       }
     });
     </script>

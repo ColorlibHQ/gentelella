@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gentelella | Debug Test</title>
+    <script type="module" src="/src/main-minimal.js"></script>
+  </head>
+  <body class="nav-md page-index">
+    <div class="container body">
+      <div class="main_container">
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <div class="page-title">
+            <div class="title_left">
+              <h3>Debug Test Page</h3>
+            </div>
+          </div>
+          
+          <div class="clearfix"></div>
+          
+          <div class="row">
+            <div class="col-md-12">
+              <div class="x_panel">
+                <div class="x_title">
+                  <h2>Library Availability Test</h2>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                  <div id="debug-results">
+                    <p>Testing library availability...</p>
+                  </div>
+                  
+                  <!-- Simple chart test -->
+                  <canvas id="test-chart" width="400" height="200"></canvas>
+                  
+                  <!-- Weather icon test -->
+                  <canvas id="test-weather" width="64" height="64"></canvas>
+                  
+                  <!-- ECharts test -->
+                  <div id="test-echarts" style="width: 400px; height: 200px;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+    console.log('=== DEBUG TEST PAGE LOADED ===');
+    
+    window.debugTestHasRun = false;
+    function runDebugTest() {
+      if (window.debugTestHasRun) {
+        console.log('Debug test already ran. Skipping subsequent calls.');
+        return;
+      }
+      window.debugTestHasRun = true;
+      console.log('Running debug test...');
+
+      const results = [];
+      const debugDiv = document.getElementById('debug-results');
+      
+      // Test library availability
+      const libraries = ['jQuery', '$', 'Chart', 'echarts', 'Skycons', 'L', 'TempusDominus'];
+      
+      results.push('<h4>Library Availability:</h4>');
+      libraries.forEach(lib => {
+        const windowAvailable = typeof window[lib] !== 'undefined';
+        const globalThisAvailable = typeof globalThis[lib] !== 'undefined';
+        const available = windowAvailable || globalThisAvailable;
+        
+        results.push(`<p><strong>${lib}:</strong> 
+          Window: ${windowAvailable ? '✅' : '❌'} | 
+          GlobalThis: ${globalThisAvailable ? '✅' : '❌'} | 
+          Overall: ${available ? '✅' : '❌'}</p>`);
+      });
+      
+      results.push('<h4>Browser Information:</h4>');
+      results.push(`<p><strong>User Agent:</strong> ${navigator.userAgent}</p>`);
+      results.push(`<p><strong>Platform:</strong> ${navigator.platform}</p>`);
+      results.push(`<p><strong>Language:</strong> ${navigator.language}</p>`);
+      results.push(`<p><strong>Cookie Enabled:</strong> ${navigator.cookieEnabled}</p>`);
+      results.push(`<p><strong>Online:</strong> ${navigator.onLine}</p>`);
+      
+      // Test Chart.js
+      results.push('<h4>Chart.js Test:</h4>');
+      try {
+        const Chart = window.Chart || globalThis.Chart;
+        if (Chart) {
+          const canvas = document.getElementById('test-chart');
+          const ctx = canvas.getContext('2d');
+          new Chart(ctx, {
+            type: 'line',
+            data: {
+              labels: ['A', 'B', 'C'],
+              datasets: [{
+                label: 'Test',
+                data: [1, 2, 3],
+                borderColor: '#26B99A'
+              }]
+            },
+            options: { responsive: false }
+          });
+          results.push('<p>✅ Chart.js working</p>');
+        } else {
+          results.push('<p>❌ Chart.js not available</p>');
+        }
+      } catch (error) {
+        results.push(`<p>❌ Chart.js error: ${error.message}</p>`);
+      }
+      
+      // Test Skycons
+      results.push('<h4>Skycons Test:</h4>');
+      try {
+        const Skycons = window.Skycons || globalThis.Skycons;
+        if (Skycons) {
+          const skycons = new Skycons({ color: '#73879C' });
+          const canvas = document.getElementById('test-weather');
+          skycons.add(canvas, Skycons.PARTLY_CLOUDY_DAY);
+          skycons.play();
+          results.push('<p>✅ Skycons working</p>');
+        } else {
+          results.push('<p>❌ Skycons not available</p>');
+        }
+      } catch (error) {
+        results.push(`<p>❌ Skycons error: ${error.message}</p>`);
+      }
+      
+      // Test ECharts
+      results.push('<h4>ECharts Test:</h4>');
+      try {
+        const echarts = window.echarts || globalThis.echarts;
+        if (echarts) {
+          const chart = echarts.init(document.getElementById('test-echarts'));
+          chart.setOption({
+            title: { text: 'Test' },
+            series: [{
+              type: 'pie',
+              data: [{ value: 1, name: 'A' }, { value: 2, name: 'B' }]
+            }]
+          });
+          results.push('<p>✅ ECharts working</p>');
+        } else {
+          results.push('<p>❌ ECharts not available</p>');
+        }
+      } catch (error) {
+        results.push(`<p>❌ ECharts error: ${error.message}</p>`);
+      }
+      
+      debugDiv.innerHTML = results.join('');
+      console.log('=== DEBUG TEST COMPLETED ===');
+    }
+    
+    // Try multiple initialization methods to catch any timing issues
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(runDebugTest, 1000); // Wait 1 second for modules to load
+    });
+    
+    // Also try with waitForLibraries if available
+    if (typeof window.waitForLibraries === 'function') {
+      console.log('Using waitForLibraries for debug test');
+      window.waitForLibraries(['Chart', 'echarts', 'Skycons'], function() {
+        console.log('waitForLibraries callback fired');
+        runDebugTest();
+      });
+    } else {
+      // Fallback if waitForLibraries isn't ready immediately
+      setTimeout(function() {
+        if (typeof window.waitForLibraries === 'function') {
+          console.log('Using delayed waitForLibraries for debug test');
+          window.waitForLibraries(['Chart', 'echarts', 'Skycons'], runDebugTest);
+        } else {
+          console.warn("waitForLibraries not found, running test directly.");
+          runDebugTest();
+        }
+      }, 500);
+    }
+    </script>
+  </body>
+</html> 
