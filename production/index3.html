@@ -685,46 +685,8 @@
                               <small class="text-muted">Revenue</small>
                             </div>
                           </div>
-
-                          <div class="mb-3">
-                            <div class="d-flex justify-content-between align-items-center mb-1">
-                              <span class="small">Agent A</span>
-                              <span class="small text-muted">8 orders</span>
-                            </div>
-                            <div class="progress" style="height: 8px;">
-                              <div class="progress-bar bg-primary" style="width: 70%"></div>
-                            </div>
-                          </div>
-
-                          <div class="mb-3">
-                            <div class="d-flex justify-content-between align-items-center mb-1">
-                              <span class="small">Agent B</span>
-                              <span class="small text-muted">6 orders</span>
-                            </div>
-                            <div class="progress" style="height: 8px;">
-                              <div class="progress-bar bg-success" style="width: 55%"></div>
-                            </div>
-                          </div>
-
-                          <div class="mb-3">
-                            <div class="d-flex justify-content-between align-items-center mb-1">
-                              <span class="small">Agent C</span>
-                              <span class="small text-muted">5 orders</span>
-                            </div>
-                            <div class="progress" style="height: 8px;">
-                              <div class="progress-bar bg-info" style="width: 45%"></div>
-                            </div>
-                          </div>
-
-                          <div class="mb-3">
-                            <div class="d-flex justify-content-between align-items-center mb-1">
-                              <span class="small">Agent D</span>
-                              <span class="small text-muted">5 orders</span>
-                            </div>
-                            <div class="progress" style="height: 8px;">
-                              <div class="progress-bar bg-warning" style="width: 45%"></div>
-                            </div>
-                          </div>
+                          
+                          <canvas id="agentPerformanceChart" style="width:100%; height:220px;"></canvas>
 
                           <div class="text-center mt-3">
                             <button class="btn btn-outline-primary btn-sm">View Full Report</button>
@@ -751,76 +713,65 @@
       </div>
     </div>
 
-    <!-- Date Range Picker Logic -->
-    <script type="text/javascript">
-    document.addEventListener('DOMContentLoaded', function() {
-      if (typeof TempusDominus !== 'undefined') {
-        // Initialize the date pickers
-        const startPicker = new TempusDominus(document.getElementById('startDatePicker'), {
-          display: { 
-            components: { 
-              clock: false,
-              seconds: false,
-              useTwentyfourHour: false
-            }
-          },
-          localization: { 
-            format: 'MM/dd/yyyy'
-          }
-        });
-        
-        const endPicker = new TempusDominus(document.getElementById('endDatePicker'), {
-          display: { 
-            components: { 
-              clock: false,
-              seconds: false,
-              useTwentyfourHour: false
-            }
-          },
-          localization: { 
-            format: 'MM/dd/yyyy'
-          }
-        });
-        
-        // Set default dates (last 30 days)
-        const today = new Date();
-        const thirtyDaysAgo = new Date(today.getTime() - (30 * 24 * 60 * 60 * 1000));
-        
-        // Format dates properly for Tempus Dominus using DateTime
-        try {
-          if (typeof DateTime !== 'undefined') {
-            startPicker.dates.setValue(new DateTime(thirtyDaysAgo));
-            endPicker.dates.setValue(new DateTime(today));
-          } else {
-            // Fallback without DateTime wrapper
+    <script type="module">
+      import Chart from 'chart.js/auto';
+
+      document.addEventListener('DOMContentLoaded', function() {
+        // Tempus Dominus Date Picker
+        if (typeof TempusDominus !== 'undefined') {
+          const startPicker = new TempusDominus(document.getElementById('startDatePicker'), {
+            display: { components: { clock: false, seconds: false }, },
+            localization: { format: 'MM/dd/yyyy', hourCycle: 'h12' }
+          });
+          const endPicker = new TempusDominus(document.getElementById('endDatePicker'), {
+            display: { components: { clock: false, seconds: false }, },
+            localization: { format: 'MM/dd/yyyy', hourCycle: 'h12' }
+          });
+          try {
+            const today = new Date();
+            const thirtyDaysAgo = new Date(new Date().setDate(today.getDate() - 30));
             startPicker.dates.setValue(thirtyDaysAgo);
             endPicker.dates.setValue(today);
+          } catch (error) {
+            console.error('Error setting default dates:', error);
           }
-        } catch (error) {
-          console.warn('Error setting default dates:', error);
-          // Final fallback: set dates using string format
-          const todayStr = today.toLocaleDateString('en-US');
-          const thirtyDaysAgoStr = thirtyDaysAgo.toLocaleDateString('en-US');
-          
-          const startInput = document.querySelector('#startDatePicker input[data-td-target="#startDatePicker"]');
-          const endInput = document.querySelector('#endDatePicker input[data-td-target="#endDatePicker"]');
-          
-          if (startInput) startInput.value = thirtyDaysAgoStr;
-          if (endInput) endInput.value = todayStr;
+          document.getElementById('startDatePicker').addEventListener('change.td', (e) => {
+            endPicker.updateOptions({ restrictions: { minDate: e.detail.date } });
+          });
+          document.getElementById('endDatePicker').addEventListener('change.td', (e) => {
+            startPicker.updateOptions({ restrictions: { maxDate: e.detail.date } });
+          });
         }
-        
-        // Link pickers without summary display
-        document.getElementById('startDatePicker').addEventListener('change.td', function(e) {
-          endPicker.updateOptions({ restrictions: { minDate: e.detail.date } });
-        });
-        
-        document.getElementById('endDatePicker').addEventListener('change.td', function(e) {
-          startPicker.updateOptions({ restrictions: { maxDate: e.detail.date } });
-        });
-      } else {
-        console.warn('TempusDominus is not available');
-      }
-    });
+
+        // Agent Performance Chart
+        const ctx = document.getElementById('agentPerformanceChart');
+        if (ctx) {
+          new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: ['Agent A', 'Agent B', 'Agent C', 'Agent D'],
+              datasets: [{
+                label: 'Orders',
+                data: [8, 6, 5, 5],
+                backgroundColor: [
+                  'rgba(52, 152, 219, 0.8)',
+                  'rgba(26, 188, 156, 0.8)',
+                  'rgba(54, 162, 235, 0.8)',
+                  'rgba(243, 156, 18, 0.8)'
+                ],
+                borderWidth: 1
+              }]
+            },
+            options: {
+              indexAxis: 'y',
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: { legend: { display: false } },
+              scales: { x: { beginAtZero: true } }
+            }
+          });
+        }
+      });
     </script>
   </body>
 </html>
