@@ -43,7 +43,6 @@
   border: 1px solid #EAEAEA;
   padding: 5px 6px;
   border-radius: 50%;
-  color: #1ABB9C;
   margin-right: 8px;
 }
 .nav-sm .main_container .top_nav {
@@ -4591,8 +4590,8 @@ ul.notifications {
     line-height: 13px;
     padding: 2px 6px;
     position: absolute;
-    right: 135px;
-    top: 7px;
+    right: -2px;
+    top: -8px;
 }
 .tile, .graph {
   zoom: 71%;

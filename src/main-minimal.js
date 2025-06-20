@@ -603,6 +603,12 @@ $(document).ready(function() {
   function initProgressBars() {
     $('.progress .progress-bar').each(function() {
       const $this = $(this);
+      
+      // Skip bars with data-transitiongoal as they're handled by initUniversalProgressBars
+      if ($this.attr('data-transitiongoal')) {
+        return;
+      }
+      
       const goal = $this.data('transitiongoal') || 0;
       
       // Animate progress bar
@@ -631,16 +637,34 @@ function initUniversalProgressBars() {
   
   if (allProgressBars.length > 0) {
     allProgressBars.forEach((bar, index) => {
-      // Read the existing inline width style
-      const inlineWidth = bar.style.width;
-      const computedStyle = window.getComputedStyle(bar);
-      const currentWidth = inlineWidth || computedStyle.width;
+      // Skip if already animated
+      if (bar.classList.contains('animation-complete')) {
+        return;
+      }
       
-      // Only animate bars that have a meaningful width set
-      if (currentWidth && currentWidth !== '0px' && currentWidth !== '0%' && currentWidth !== 'auto') {
+      let targetWidth = null;
+      
+      // Check for data-transitiongoal attribute first (Top Campaign Performance)
+      const transitionGoal = bar.getAttribute('data-transitiongoal');
+      if (transitionGoal) {
+        targetWidth = transitionGoal + '%';
+      } else {
+        // Read the existing inline width style
+        const inlineWidth = bar.style.width;
+        const computedStyle = window.getComputedStyle(bar);
+        const currentWidth = inlineWidth || computedStyle.width;
+        
+        // Only use meaningful width values
+        if (currentWidth && currentWidth !== '0px' && currentWidth !== '0%' && currentWidth !== 'auto') {
+          targetWidth = currentWidth;
+        }
+      }
+      
+      // Animate if we have a target width
+      if (targetWidth) {
         // Store the target width
-        bar.setAttribute('data-target-width', currentWidth);
-        bar.style.setProperty('--bar-width', currentWidth);
+        bar.setAttribute('data-target-width', targetWidth);
+        bar.style.setProperty('--bar-width', targetWidth);
         
         // Start animation from 0%
         bar.style.width = '0%';
@@ -648,12 +672,12 @@ function initUniversalProgressBars() {
         
         // Animate to target width with staggered delay
         setTimeout(() => {
-          bar.style.width = currentWidth;
+          bar.style.width = targetWidth;
           
           // Lock the width permanently after animation
           setTimeout(() => {
             bar.style.transition = 'none';
-            bar.style.width = currentWidth;
+            bar.style.width = targetWidth;
             bar.classList.add('animation-complete');
           }, 1000);
         }, index * 100 + 300); // Staggered animation
