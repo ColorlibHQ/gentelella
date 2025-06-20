@@ -1093,40 +1093,52 @@
                       <div class="">
                         <ul class="to_do">
                           <li>
-                            <p>
-                              <input type="checkbox" class="flat"> Schedule meeting with new client </p>
+                            <div class="form-check">
+                              <input type="checkbox" id="todo-item-1" class="form-check-input flat">
+                              <label for="todo-item-1" class="form-check-label">Schedule meeting with new client</label>
+                            </div>
                           </li>
                           <li>
-                            <p>
-                              <input type="checkbox" class="flat"> Create email address for new intern</p>
+                            <div class="form-check">
+                              <input type="checkbox" id="todo-item-2" class="form-check-input flat">
+                              <label for="todo-item-2" class="form-check-label">Create email address for new intern</label>
+                            </div>
                           </li>
                           <li>
-                            <p>
-                              <input type="checkbox" class="flat"> Have IT fix the network printer</p>
+                            <div class="form-check">
+                              <input type="checkbox" id="todo-item-3" class="form-check-input flat">
+                              <label for="todo-item-3" class="form-check-label">Have IT fix the network printer</label>
+                            </div>
                           </li>
                           <li>
-                            <p>
-                              <input type="checkbox" class="flat"> Copy backups to offsite location</p>
+                            <div class="form-check">
+                              <input type="checkbox" id="todo-item-4" class="form-check-input flat">
+                              <label for="todo-item-4" class="form-check-label">Copy backups to offsite location</label>
+                            </div>
                           </li>
                           <li>
-                            <p>
-                              <input type="checkbox" class="flat"> Food truck fixie locavors mcsweeney</p>
+                            <div class="form-check">
+                              <input type="checkbox" id="todo-item-5" class="form-check-input flat">
+                              <label for="todo-item-5" class="form-check-label">Food truck fixie locavors mcsweeney</label>
+                            </div>
                           </li>
                           <li>
-                            <p>
-                              <input type="checkbox" class="flat"> Food truck fixie locavors mcsweeney</p>
+                            <div class="form-check">
+                              <input type="checkbox" id="todo-item-6" class="form-check-input flat">
+                              <label for="todo-item-6" class="form-check-label">Create email address for new intern</label>
+                            </div>
                           </li>
                           <li>
-                            <p>
-                              <input type="checkbox" class="flat"> Create email address for new intern</p>
+                            <div class="form-check">
+                              <input type="checkbox" id="todo-item-7" class="form-check-input flat">
+                              <label for="todo-item-7" class="form-check-label">Have IT fix the network printer</label>
+                            </div>
                           </li>
                           <li>
-                            <p>
-                              <input type="checkbox" class="flat"> Have IT fix the network printer</p>
-                          </li>
-                          <li>
-                            <p>
-                              <input type="checkbox" class="flat"> Copy backups to offsite location</p>
+                            <div class="form-check">
+                              <input type="checkbox" id="todo-item-8" class="form-check-input flat">
+                              <label for="todo-item-8" class="form-check-label">Copy backups to offsite location</label>
+                            </div>
                           </li>
                         </ul>
                       </div>
@@ -1267,56 +1279,40 @@
           if (TempusDominus) {
         // Initialize the date pickers
         const startPicker = new TempusDominus(document.getElementById('startDatePicker'), {
-          display: { 
-            components: { 
+          display: {
+            components: {
               clock: false,
-              seconds: false,
-              useTwentyfourHour: false
+              seconds: false
             }
           },
-          localization: { 
-            format: 'MM/dd/yyyy'
+          localization: {
+            format: 'MM/dd/yyyy',
+            hourCycle: 'h12'
           }
         });
         
         const endPicker = new TempusDominus(document.getElementById('endDatePicker'), {
-          display: { 
-            components: { 
+          display: {
+            components: {
               clock: false,
-              seconds: false,
-              useTwentyfourHour: false
+              seconds: false
             }
           },
-          localization: { 
-            format: 'MM/dd/yyyy'
+          localization: {
+            format: 'MM/dd/yyyy',
+            hourCycle: 'h12'
           }
         });
         
         // Set default dates (last 30 days)
-        const today = new Date();
-        const thirtyDaysAgo = new Date(today.getTime() - (30 * 24 * 60 * 60 * 1000));
-        
-        // Format dates properly for Tempus Dominus using DateTime
         try {
-          if (typeof DateTime !== 'undefined') {
-            startPicker.dates.setValue(new DateTime(thirtyDaysAgo));
-            endPicker.dates.setValue(new DateTime(today));
-          } else {
-            // Fallback without DateTime wrapper
-            startPicker.dates.setValue(thirtyDaysAgo);
-            endPicker.dates.setValue(today);
-          }
+          const today = new Date();
+          const thirtyDaysAgo = new Date(new Date().setDate(today.getDate() - 30));
+          
+          startPicker.dates.setValue(thirtyDaysAgo);
+          endPicker.dates.setValue(today);
         } catch (error) {
-          console.warn('Error setting default dates:', error);
-          // Final fallback: set dates using string format
-          const todayStr = today.toLocaleDateString('en-US');
-          const thirtyDaysAgoStr = thirtyDaysAgo.toLocaleDateString('en-US');
-          
-          const startInput = document.querySelector('#startDatePicker input[data-td-target="#startDatePicker"]');
-          const endInput = document.querySelector('#endDatePicker input[data-td-target="#endDatePicker"]');
-          
-          if (startInput) startInput.value = thirtyDaysAgoStr;
-          if (endInput) endInput.value = todayStr;
+          console.error('Error setting default dates for date range picker:', error);
         }
         
         // Link pickers without summary display
