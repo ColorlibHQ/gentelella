@@ -6,37 +6,95 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Gentelella - Free Bootstrap Admin Template">
+    <meta name="description" content="Gentelella - Free Bootstrap Admin Template by Colorlib. Beautiful, responsive admin dashboard template for building modern web applications.">
     <meta name="author" content="Colorlib">
     <link rel="icon" href="images/favicon.ico" type="image/ico" />
 
-    <title>Gentelella - Premium Bootstrap Admin Template</title>
+    <title>Gentelella - Free Bootstrap Admin Dashboard Template by Colorlib</title>
 
     <!-- Vite Entry Point - will bundle all styles -->
     <script type="module" src="/src/main-minimal.js"></script>
     
-    <!-- Custom Theme Style -->
+    <!-- Custom Landing Page Styles -->
     <style>
+      :root {
+        --primary-color: #1ABB9C;
+        --primary-gradient: linear-gradient(135deg, #1ABB9C 0%, #26B99A 100%);
+        --secondary-gradient: linear-gradient(135deg, #2A3F54 0%, #34495e 100%);
+        --accent-color: #1ABB9C;
+        --text-dark: #2A3F54;
+        --text-muted: #6c757d;
+        --bg-light: #f8f9fa;
+        --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+        --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+        --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+        --border-radius: 12px;
+      }
+      
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
       }
       
-      body {
-        font-family: 'Roboto', Arial, sans-serif;
-        line-height: 1.6;
-        color: #333;
+      html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
         overflow-x: hidden;
+      }
+      
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: var(--text-dark);
+        background: white;
+      }
+      
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      
+      .container-wide {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      
+      /* Override Bootstrap container for custom widths */
+      .container-custom {
+        max-width: 1000px !important;
+        margin: 0 auto;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+      
+      .container-wide-custom {
+        max-width: 1180px !important;
+        margin: 0 auto;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+      
+      .container-features {
+        max-width: 1200px !important;
+        margin: 0 auto;
+        padding-left: 20px;
+        padding-right: 20px;
       }
       
       /* Hero Section */
       .hero {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: var(--primary-gradient);
         color: white;
-        padding: 120px 0;
+        padding: 120px 0 140px;
         position: relative;
         overflow: hidden;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
       }
       
       .hero::before {
@@ -46,9 +104,10 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
-        background-size: 50px 50px;
-        animation: float 20s infinite linear;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="80" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="60" r="1.5" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+        background-size: 100px 100px;
+        animation: float 30s infinite linear;
+        opacity: 0.3;
       }
       
       @keyframes float {
@@ -60,144 +119,189 @@
         position: relative;
         z-index: 2;
         text-align: center;
+        max-width: 800px;
+        margin: 0 auto;
       }
       
       .hero h1 {
-        font-size: 3.5rem;
+        font-size: 4rem;
         font-weight: 700;
-        margin-bottom: 1rem;
+        margin-bottom: 1.5rem;
         text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        letter-spacing: -1px;
       }
       
       .hero .subtitle {
-        font-size: 1.4rem;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        opacity: 0.95;
+        font-weight: 400;
+      }
+      
+      .hero .credit {
+        font-size: 1.1rem;
         margin-bottom: 2rem;
-        opacity: 0.9;
+        opacity: 0.8;
         font-weight: 300;
       }
       
+      .hero .description {
+        font-size: 1.1rem;
+        margin-bottom: 3rem;
+        opacity: 0.9;
+        font-weight: 300;
+        line-height: 1.7;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      
       .cta-buttons {
-        margin-top: 2rem;
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        flex-wrap: wrap;
       }
       
       .btn-primary-custom {
-        background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+        background: var(--secondary-gradient);
         border: none;
-        padding: 15px 30px;
+        padding: 16px 32px;
         font-size: 1.1rem;
         border-radius: 50px;
-        margin: 0 10px;
         transition: all 0.3s ease;
         text-decoration: none;
-        display: inline-block;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
         color: white;
         font-weight: 600;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        box-shadow: var(--shadow-lg);
+        min-width: 180px;
+        justify-content: center;
       }
       
       .btn-primary-custom:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        transform: translateY(-3px);
+        box-shadow: 0 15px 25px rgba(0,0,0,0.2);
         color: white;
         text-decoration: none;
       }
       
       .btn-outline-custom {
-        background: transparent;
-        border: 2px solid white;
-        padding: 13px 28px;
+        background: rgba(255,255,255,0.1);
+        border: 2px solid rgba(255,255,255,0.3);
+        padding: 14px 30px;
         font-size: 1.1rem;
         border-radius: 50px;
-        margin: 0 10px;
         transition: all 0.3s ease;
         text-decoration: none;
-        display: inline-block;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
         color: white;
         font-weight: 600;
+        backdrop-filter: blur(10px);
+        min-width: 180px;
+        justify-content: center;
       }
       
       .btn-outline-custom:hover {
         background: white;
-        color: #667eea;
+        color: var(--primary-color);
         text-decoration: none;
+        transform: translateY(-3px);
       }
       
       /* Features Section */
       .features {
-        padding: 100px 0;
-        background: #f8f9fa;
+        padding: 120px 0;
+        background: white;
       }
       
       .section-title {
         text-align: center;
-        margin-bottom: 3rem;
+        margin-bottom: 4rem;
       }
       
       .section-title h2 {
-        font-size: 2.5rem;
-        color: #2c3e50;
-        margin-bottom: 1rem;
+        font-size: 2.8rem;
+        color: var(--text-dark);
+        margin-bottom: 1.5rem;
+        font-weight: 700;
       }
       
       .section-title p {
         font-size: 1.2rem;
-        color: #7f8c8d;
+        color: var(--text-muted);
         max-width: 600px;
         margin: 0 auto;
+        line-height: 1.6;
+      }
+      
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2.5rem;
+        margin-top: 2rem;
       }
       
       .feature-card {
         background: white;
-        padding: 2rem;
-        border-radius: 15px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        padding: 2.5rem 2rem;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow-md);
         text-align: center;
-        margin-bottom: 2rem;
         transition: all 0.3s ease;
-        height: 100%;
+        border: 1px solid #f1f3f4;
       }
       
       .feature-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        border-color: var(--primary-color);
       }
       
       .feature-icon {
-        width: 80px;
-        height: 80px;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        width: 90px;
+        height: 90px;
+        background: var(--primary-gradient);
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
         margin: 0 auto 1.5rem;
-        font-size: 2rem;
+        font-size: 2.2rem;
         color: white;
+        box-shadow: var(--shadow-md);
       }
       
       .feature-card h4 {
-        color: #2c3e50;
+        color: var(--text-dark);
         margin-bottom: 1rem;
-        font-size: 1.3rem;
+        font-size: 1.4rem;
+        font-weight: 600;
       }
       
       .feature-card p {
-        color: #7f8c8d;
-        line-height: 1.6;
+        color: var(--text-muted);
+        line-height: 1.7;
+        font-size: 1rem;
       }
       
-      /* Screenshot Section */
-      .screenshots {
-        padding: 100px 0;
-        background: white;
+      /* Dashboard Preview Section */
+      .dashboard-preview-section {
+        padding: 120px 0;
+        background: var(--bg-light);
       }
       
       .dashboard-preview {
-        background: #f8f9fa;
-        border-radius: 15px;
-        padding: 2rem;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        margin: 2rem 0;
+        background: white;
+        border-radius: 20px;
+        padding: 3rem 2rem;
+        box-shadow: 0 25px 50px rgba(0,0,0,0.1);
+        margin: 3rem auto;
+        max-width: 1000px;
         position: relative;
         overflow: hidden;
       }
@@ -208,143 +312,357 @@
         top: 0;
         left: 0;
         right: 0;
-        height: 40px;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        border-radius: 15px 15px 0 0;
+        height: 50px;
+        background: var(--primary-gradient);
+        border-radius: 20px 20px 0 0;
       }
       
       .dashboard-preview::after {
         content: '';
         position: absolute;
-        top: 15px;
-        left: 20px;
-        width: 12px;
-        height: 12px;
+        top: 18px;
+        left: 25px;
+        width: 14px;
+        height: 14px;
         background: #ff5f56;
         border-radius: 50%;
-        box-shadow: 20px 0 0 #ffbd2e, 40px 0 0 #27ca3f;
+        box-shadow: 25px 0 0 #ffbd2e, 50px 0 0 #27ca3f;
       }
       
-      .dashboard-mockup {
-        margin-top: 40px;
-        padding: 2rem;
-        background: white;
-        border-radius: 10px;
-        min-height: 300px;
+      .dashboard-content {
+        margin-top: 50px;
+        background: #f8f9fb;
+        border-radius: 15px;
+        padding: 2.5rem;
+        min-height: 400px;
       }
       
-      .mockup-header {
+      .dashboard-header {
         display: flex;
-        justify-content: between;
+        justify-content: space-between;
         align-items: center;
-        margin-bottom: 2rem;
-        padding-bottom: 1rem;
-        border-bottom: 1px solid #e9ecef;
+        margin-bottom: 2.5rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 2px solid #e9ecef;
       }
       
-      .mockup-stats {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 1rem;
-        margin-bottom: 2rem;
+      .dashboard-title {
+        color: var(--text-dark);
+        font-size: 1.6rem;
+        font-weight: 700;
+        margin: 0;
       }
       
-      .stat-card {
-        background: #f8f9fa;
-        padding: 1.5rem;
-        border-radius: 8px;
-        text-align: center;
+      .dashboard-subtitle {
+        color: var(--text-muted);
+        font-size: 0.95rem;
+        margin-top: 4px;
       }
       
-      .stat-number {
-        font-size: 2rem;
-        font-weight: bold;
-        color: #667eea;
-        margin-bottom: 0.5rem;
-      }
-      
-      .stat-label {
-        color: #7f8c8d;
+      .dashboard-user {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: var(--text-muted);
         font-size: 0.9rem;
       }
       
+      .user-avatar {
+        width: 35px;
+        height: 35px;
+        background: var(--primary-gradient);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 600;
+      }
+      
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        margin-bottom: 2.5rem;
+      }
+      
+      .stat-card {
+        background: white;
+        padding: 1.8rem 1.5rem;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow-sm);
+        text-align: center;
+        border: 1px solid #f1f3f4;
+        transition: all 0.2s ease;
+      }
+      
+      .stat-card:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+      }
+      
+      .stat-number {
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 0.5rem;
+        display: block;
+      }
+      
+      .stat-label {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      
+      .chart-area {
+        background: white;
+        border-radius: var(--border-radius);
+        padding: 2rem;
+        box-shadow: var(--shadow-sm);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 250px;
+        border: 2px dashed #e9ecef;
+        position: relative;
+      }
+      
+      .chart-placeholder {
+        text-align: center;
+        color: var(--text-muted);
+      }
+      
+      .chart-placeholder i {
+        font-size: 4rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        opacity: 0.7;
+      }
+      
+      .chart-placeholder p {
+        font-size: 1.1rem;
+        font-weight: 500;
+      }
+      
+      .chart-placeholder small {
+        font-size: 0.9rem;
+        opacity: 0.8;
+      }
+      
       /* Stats Section */
-      .stats {
+      .stats-section {
         padding: 100px 0;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: var(--primary-gradient);
         color: white;
       }
       
-      .stat-item {
+      .stats-grid-main {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 3rem 4rem;
         text-align: center;
-        margin-bottom: 2rem;
+        max-width: none;
+        margin: 0 auto;
       }
       
-      .stat-item h3 {
-        font-size: 3rem;
-        font-weight: bold;
-        margin-bottom: 0.5rem;
+      .stat-item-main {
+        padding: 1rem;
       }
       
-      .stat-item p {
-        font-size: 1.1rem;
+      .stat-item-main h3 {
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 0.8rem;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+      }
+      
+      .stat-item-main p {
+        font-size: 1.2rem;
         opacity: 0.9;
+        font-weight: 400;
       }
       
       /* CTA Section */
       .cta-section {
-        padding: 100px 0;
-        background: #2c3e50;
+        padding: 120px 0;
+        background: var(--text-dark);
         color: white;
         text-align: center;
       }
       
       .cta-section h2 {
         font-size: 2.5rem;
-        margin-bottom: 1rem;
+        margin-bottom: 1.5rem;
+        font-weight: 700;
       }
       
       .cta-section p {
         font-size: 1.2rem;
-        margin-bottom: 2rem;
+        margin-bottom: 3rem;
         opacity: 0.9;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.6;
       }
       
       /* Footer */
       .footer {
-        background: #34495e;
+        background: #1a252f;
         color: white;
-        padding: 3rem 0 2rem;
+        padding: 3rem 0;
         text-align: center;
+        width: 100%;
+        margin: 0;
+        position: relative;
       }
       
       .footer p {
         margin: 0;
         opacity: 0.8;
+        font-size: 1rem;
       }
       
-      /* Responsive */
+      .footer a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 600;
+      }
+      
+      .footer a:hover {
+        color: #26B99A;
+        text-decoration: underline;
+      }
+      
+      /* Responsive Design */
+      @media (max-width: 1024px) {
+        .features-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 2rem;
+        }
+        
+        .stats-grid-main {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 2rem 3rem;
+        }
+      }
+      
       @media (max-width: 768px) {
+        .hero {
+          padding: 80px 0 100px;
+          min-height: auto;
+        }
+        
         .hero h1 {
-          font-size: 2.5rem;
+          font-size: 2.8rem;
         }
         
         .hero .subtitle {
-          font-size: 1.1rem;
+          font-size: 1.2rem;
+        }
+        
+        .hero .description {
+          font-size: 1rem;
+          margin-bottom: 2rem;
+        }
+        
+        .cta-buttons {
+          flex-direction: column;
+          align-items: center;
         }
         
         .btn-primary-custom,
         .btn-outline-custom {
-          display: block;
-          margin: 10px auto;
-          width: 200px;
+          width: 100%;
+          max-width: 280px;
+        }
+        
+        .features {
+          padding: 80px 0;
+        }
+        
+        .features-grid {
+          grid-template-columns: 1fr;
+          gap: 2rem;
         }
         
         .section-title h2 {
-          font-size: 2rem;
+          font-size: 2.2rem;
         }
         
-        .mockup-stats {
+        .dashboard-preview {
+          margin: 2rem 1rem;
+          padding: 2rem 1rem;
+        }
+        
+        .dashboard-content {
+          padding: 1.5rem;
+        }
+        
+        .dashboard-header {
+          flex-direction: column;
+          gap: 1rem;
+          text-align: center;
+        }
+        
+        .stats-grid {
+          grid-template-columns: 1fr;
+        }
+        
+        .stats-grid-main {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 2rem;
+        }
+        
+        .stat-item-main h3 {
+          font-size: 2.5rem;
+        }
+      }
+      
+      @media (max-width: 480px) {
+        .container {
+          padding: 0 15px;
+        }
+        
+        .container-wide {
+          padding: 0 15px;
+        }
+        
+        .container-custom {
+          padding-left: 15px !important;
+          padding-right: 15px !important;
+        }
+        
+        .container-wide-custom {
+          padding-left: 15px !important;
+          padding-right: 15px !important;
+        }
+        
+        .container-features {
+          padding-left: 15px !important;
+          padding-right: 15px !important;
+        }
+        
+        .hero h1 {
+          font-size: 2.2rem;
+        }
+        
+        .features-grid {
+          grid-template-columns: 1fr;
+        }
+        
+        .feature-card {
+          padding: 2rem 1.5rem;
+        }
+        
+        .stats-grid-main {
+          grid-template-columns: 1fr;
+        }
+        
+        .stats-grid {
           grid-template-columns: 1fr;
         }
       }
@@ -354,20 +672,21 @@
   <body>
     <!-- Hero Section -->
     <section class="hero">
-      <div class="container">
+      <div class="container container-custom">
         <div class="hero-content">
           <h1>Gentelella</h1>
           <p class="subtitle">Free Bootstrap Admin Dashboard Template</p>
-          <p style="font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.8;">
-            A beautiful, responsive admin template built with Bootstrap. Perfect for dashboards, 
-            admin panels, and backend applications.
+          <p class="credit">by <a href="https://colorlib.com" style="color: white; text-decoration: underline;">Colorlib</a></p>
+          <p class="description">
+            A beautiful, responsive admin template built with Bootstrap 5. Perfect for building 
+            modern dashboards, admin panels, and web applications with elegant design and rich functionality.
           </p>
           <div class="cta-buttons">
             <a href="index.html" class="btn-primary-custom">
-              <i class="fas fa-chart-line"></i> View Dashboard
+              <i class="fas fa-chart-line"></i> Explore Dashboard
             </a>
             <a href="login.html" class="btn-outline-custom">
-              <i class="fas fa-sign-in-alt"></i> Login Demo
+              <i class="fas fa-sign-in-alt"></i> Try Demo
             </a>
           </div>
         </div>
@@ -376,114 +695,108 @@
 
     <!-- Features Section -->
     <section class="features">
-      <div class="container">
+      <div class="container container-features">
         <div class="section-title">
           <h2>Powerful Features</h2>
-          <p>Everything you need to build modern admin dashboards and web applications</p>
+          <p>Everything you need to build modern admin dashboards and web applications with confidence</p>
         </div>
         
-        <div class="row">
-          <div class="col-md-4">
-            <div class="feature-card">
-              <div class="feature-icon">
-                <i class="fas fa-mobile-alt"></i>
-              </div>
-              <h4>Fully Responsive</h4>
-              <p>Works perfectly on all devices - desktop, tablet, and mobile. Built with mobile-first approach for optimal user experience.</p>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-mobile-alt"></i>
             </div>
+            <h4>Fully Responsive</h4>
+            <p>Works flawlessly on all devices - desktop, tablet, and mobile. Built with a mobile-first approach for optimal user experience across all screen sizes.</p>
           </div>
           
-          <div class="col-md-4">
-            <div class="feature-card">
-              <div class="feature-icon">
-                <i class="fas fa-chart-bar"></i>
-              </div>
-              <h4>Rich Components</h4>
-              <p>Includes charts, tables, forms, widgets, and dozens of UI components to build comprehensive admin panels.</p>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-chart-bar"></i>
             </div>
+            <h4>Rich Components</h4>
+            <p>Includes interactive charts, data tables, forms, widgets, and dozens of UI components to build comprehensive admin panels and dashboards.</p>
           </div>
           
-          <div class="col-md-4">
-            <div class="feature-card">
-              <div class="feature-icon">
-                <i class="fas fa-code"></i>
-              </div>
-              <h4>Clean Code</h4>
-              <p>Well-structured, semantic HTML with clean CSS and organized JavaScript. Easy to customize and extend.</p>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-code"></i>
             </div>
+            <h4>Clean Code</h4>
+            <p>Well-structured, semantic HTML with clean CSS and organized JavaScript. Easy to customize, extend, and maintain for long-term projects.</p>
           </div>
           
-          <div class="col-md-4">
-            <div class="feature-card">
-              <div class="feature-icon">
-                <i class="fas fa-palette"></i>
-              </div>
-              <h4>Modern Design</h4>
-              <p>Contemporary flat design with beautiful color schemes and smooth animations for an engaging user experience.</p>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-palette"></i>
             </div>
+            <h4>Modern Design</h4>
+            <p>Contemporary flat design with beautiful color schemes, smooth animations, and intuitive user interface for engaging user experiences.</p>
           </div>
           
-          <div class="col-md-4">
-            <div class="feature-card">
-              <div class="feature-icon">
-                <i class="fas fa-rocket"></i>
-              </div>
-              <h4>Fast Performance</h4>
-              <p>Optimized for speed with minimal CSS/JS footprint. Loads quickly and runs smoothly on all browsers.</p>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-rocket"></i>
             </div>
+            <h4>Fast Performance</h4>
+            <p>Optimized for speed with minimal CSS/JS footprint and modern build tools. Loads quickly and runs smoothly on all modern browsers.</p>
           </div>
           
-          <div class="col-md-4">
-            <div class="feature-card">
-              <div class="feature-icon">
-                <i class="fas fa-tools"></i>
-              </div>
-              <h4>Easy to Customize</h4>
-              <p>Modular SCSS files and well-documented code make it simple to customize colors, layouts, and components.</p>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-tools"></i>
             </div>
+            <h4>Easy Customization</h4>
+            <p>Modular SCSS files and well-documented code make it simple to customize colors, layouts, and components to match your brand.</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Dashboard Preview Section -->
-    <section class="screenshots">
-      <div class="container">
+    <section class="dashboard-preview-section">
+      <div class="container container-wide-custom">
         <div class="section-title">
           <h2>Dashboard Preview</h2>
-          <p>Get a glimpse of what your admin dashboard will look like</p>
+          <p>See how your admin dashboard will look with real data and modern interface design</p>
         </div>
         
         <div class="dashboard-preview">
-          <div class="dashboard-mockup">
-            <div class="mockup-header">
-              <h4 style="color: #2c3e50; margin: 0;">Analytics Dashboard</h4>
-              <small style="color: #7f8c8d;">Real-time data overview</small>
+          <div class="dashboard-content">
+            <div class="dashboard-header">
+              <div>
+                <h3 class="dashboard-title">Analytics Dashboard</h3>
+                <p class="dashboard-subtitle">Real-time insights and performance metrics</p>
+              </div>
+              <div class="dashboard-user">
+                <div class="user-avatar">JD</div>
+                <div>
+                  <div style="font-weight: 600; color: var(--text-dark);">John Doe</div>
+                  <div>Administrator</div>
+                </div>
+              </div>
             </div>
             
-            <div class="mockup-stats">
+            <div class="stats-grid">
               <div class="stat-card">
-                <div class="stat-number">2,540</div>
+                <span class="stat-number">2,847</span>
                 <div class="stat-label">Total Users</div>
               </div>
               <div class="stat-card">
-                <div class="stat-number">$24,567</div>
+                <span class="stat-number">$28,567</span>
                 <div class="stat-label">Revenue</div>
               </div>
               <div class="stat-card">
-                <div class="stat-number">1,240</div>
+                <span class="stat-number">1,428</span>
                 <div class="stat-label">Orders</div>
-              </div>
-              <div class="stat-card">
-                <div class="stat-number">98.5%</div>
-                <div class="stat-label">Uptime</div>
               </div>
             </div>
             
-            <div style="background: #f8f9fa; height: 200px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #7f8c8d;">
-              <div style="text-align: center;">
-                <i class="fas fa-chart-area" style="font-size: 3rem; margin-bottom: 1rem; color: #667eea;"></i>
-                <p>Interactive Charts & Graphs</p>
+            <div class="chart-area">
+              <div class="chart-placeholder">
+                <i class="fas fa-chart-area"></i>
+                <p>Interactive Charts & Analytics</p>
+                <small>Real-time data visualization with Chart.js, ECharts & more</small>
               </div>
             </div>
           </div>
@@ -492,32 +805,24 @@
     </section>
 
     <!-- Stats Section -->
-    <section class="stats">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-3">
-            <div class="stat-item">
-              <h3>50+</h3>
-              <p>UI Components</p>
-            </div>
+    <section class="stats-section">
+      <div class="container container-features">
+        <div class="stats-grid-main">
+          <div class="stat-item-main">
+            <h3>50+</h3>
+            <p>UI Components</p>
           </div>
-          <div class="col-md-3">
-            <div class="stat-item">
-              <h3>15+</h3>
-              <p>Sample Pages</p>
-            </div>
+          <div class="stat-item-main">
+            <h3>15+</h3>
+            <p>Sample Pages</p>
           </div>
-          <div class="col-md-3">
-            <div class="stat-item">
-              <h3>100%</h3>
-              <p>Responsive</p>
-            </div>
+          <div class="stat-item-main">
+            <h3>100%</h3>
+            <p>Responsive</p>
           </div>
-          <div class="col-md-3">
-            <div class="stat-item">
-              <h3>Free</h3>
-              <p>Open Source</p>
-            </div>
+          <div class="stat-item-main">
+            <h3>Free</h3>
+            <p>Open Source</p>
           </div>
         </div>
       </div>
@@ -525,15 +830,15 @@
 
     <!-- CTA Section -->
     <section class="cta-section">
-      <div class="container">
-        <h2>Ready to Get Started?</h2>
-        <p>Join thousands of developers who trust Gentelella for their admin dashboards</p>
+      <div class="container container-custom">
+        <h2>Ready to Build Something Amazing?</h2>
+        <p>Join thousands of developers who trust Gentelella for building beautiful admin dashboards and web applications</p>
         <div class="cta-buttons">
-          <a href="index.html" class="btn-primary-custom" style="margin-right: 20px;">
-            <i class="fas fa-play"></i> Explore Dashboard
+          <a href="index.html" class="btn-primary-custom">
+            <i class="fas fa-play"></i> Start Exploring
           </a>
           <a href="login.html" class="btn-outline-custom">
-            <i class="fas fa-user"></i> Try Login
+            <i class="fas fa-user"></i> View Demo
           </a>
         </div>
       </div>
@@ -541,8 +846,8 @@
 
     <!-- Footer -->
     <footer class="footer">
-      <div class="container">
-        <p>&copy; 2025 Gentelella. Free Bootstrap Admin Template. Built with ❤️ for developers.</p>
+      <div class="container container-custom">
+        <p>&copy; 2025 Gentelella. Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>. Built with ❤️ for developers worldwide.</p>
       </div>
     </footer>
   </body>
