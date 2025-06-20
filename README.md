@@ -9,7 +9,7 @@ Gentelella is a powerful, free-to-use Bootstrap 5 admin template that has been c
 ## ✨ What's New in v2.0.0 (Stable Release)
 
 - **🚀 Vite Build System** - Lightning-fast development and optimized production builds
-- **📦 Bootstrap 5.3.6** - Latest Bootstrap with modern design system
+- **📦 Bootstrap 5.3.7** - Latest Bootstrap with modern design system
 - **⚡ Performance Optimized** - 90% smaller initial bundle size with smart code splitting
 - **🔧 Modern JavaScript** - ES6+ modules with dynamic imports
 - **🎯 TypeScript Ready** - Full TypeScript support available
@@ -159,13 +159,13 @@ if (document.querySelector('.chart-container')) {
 ## 🎨 Built With
 
 ### Core Technologies
-- **Bootstrap 5.3.6** - Modern CSS framework
-- **Vite 6.3.5** - Next generation build tool
-- **SASS** - CSS preprocessor
+- **🚀 Vite 6.3.5** - Ultra-fast ES module build system with 90% smaller bundle size
+- **📦 Bootstrap 5.3.7** - Latest Bootstrap with modern design system
+- **🎨 SASS Modules** - Modern CSS architecture with custom theme variables
 - **jQuery 3.6.1** - DOM manipulation (being phased out)
 
 ### Charts & Visualization
-- **Chart.js 4.4.2** - Modern charting library (Morris.js completely removed)
+- **Chart.js 4.5.0** - Modern charting library (Morris.js completely removed)
 - **ECharts 5.6.0** - Professional data visualization
 - **Sparklines** - Mini charts and graphs
 - **jVectorMap** - Interactive world maps
