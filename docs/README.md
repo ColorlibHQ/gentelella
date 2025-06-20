@@ -213,7 +213,7 @@ search_enabled: true
 nav_sort: case_insensitive
 
 # Footer
-footer_content: "Copyright &copy; 2024 Colorlib"
+footer_content: "Copyright &copy; 2025 Colorlib"
 
 # External links
 aux_links:

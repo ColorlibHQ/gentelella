@@ -262,7 +262,7 @@
               </div>
 
               <div class="title_right">
-                <div class="col-md-5 col-sm-5 form-group float-end top_search">
+                <div class="col-md-5 col-sm-5 mb-3 float-end top_search">
                   <div class="input-group search-bar-fix">
                     <input type="text" class="form-control" placeholder="Search project...">
                     <button class="btn btn-outline-secondary" type="button">
@@ -690,7 +690,7 @@
             <h5 class="modal-title" id="editProjectModalLabel">
               <i class="fas fa-edit me-2"></i>Edit Project
             </h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" class="btn-btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
             <form id="editProjectForm">
@@ -923,7 +923,7 @@
            return;
          }
 
-         // Show success message and close modal
+         // Show success message and btn-close modal
          alert('Project updated successfully!\n\nChanges saved:\n- ' + Object.entries(formData).map(([key, value]) => `${key.charAt(0).toUpperCase() + key.slice(1)}: ${value}`).join('\n- '));
          
          // Close the modal
@@ -1217,7 +1217,7 @@
          border-radius: 0.5rem 0.5rem 0 0;
        }
 
-       .modal-header .btn-close {
+       .modal-header .btn-btn-close {
          filter: invert(1);
        }
 

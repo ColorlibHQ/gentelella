@@ -5554,3 +5554,240 @@ input[type="radio"].flat:disabled + label {
   border: solid white;
   border-width: 0 2px 2px 0;
 }
+
+/* ===== MODERN FORM ENHANCEMENTS ===== */
+
+/* Enhanced form focus states */
+.form-control:focus,
+.form-select:focus {
+  border-color: #26B99A;
+  box-shadow: 0 0 0 0.2rem rgba(38, 185, 154, 0.25);
+}
+
+/* Form input group enhancements */
+.input-group .form-control:focus {
+  z-index: 5;
+}
+
+.input-group .btn {
+  border-color: #dee2e6;
+}
+
+.input-group .btn:hover {
+  border-color: #26B99A;
+  color: #26B99A;
+}
+
+/* Form validation styling */
+.was-validated .form-control:valid,
+.form-control.is-valid {
+  border-color: #26B99A;
+}
+
+.was-validated .form-control:invalid,
+.form-control.is-invalid {
+  border-color: #dc3545;
+}
+
+/* Enhanced checkbox and radio styling */
+.form-check-input:checked {
+  background-color: #26B99A;
+  border-color: #26B99A;
+}
+
+.form-check-input:focus {
+  border-color: #26B99A;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(38, 185, 154, 0.25);
+}
+
+/* Form feedback styling */
+.invalid-feedback {
+  display: block;
+  font-size: 0.875em;
+  color: #dc3545;
+}
+
+.valid-feedback {
+  display: block;
+  font-size: 0.875em;
+  color: #26B99A;
+}
+
+/* Form label enhancements */
+.form-label {
+  font-weight: 500;
+  color: #73879C;
+  margin-bottom: 0.5rem;
+}
+
+/* Input group icon styling */
+.input-group-text {
+  background-color: #f8f9fa;
+  border-color: #dee2e6;
+  color: #73879C;
+}
+
+.input-group:focus-within .input-group-text {
+  border-color: #26B99A;
+  color: #26B99A;
+}
+
+/* Enhanced button spacing */
+.d-grid.gap-2.d-md-flex .btn {
+  margin-right: 0.5rem;
+}
+
+.d-grid.gap-2.d-md-flex .btn:last-child {
+  margin-right: 0;
+}
+
+/* Form text help styling */
+.form-text {
+  font-size: 0.875em;
+  color: #6c757d;
+  margin-top: 0.25rem;
+}
+
+/* Enhanced select styling */
+.form-select:focus {
+  border-color: #26B99A;
+  box-shadow: 0 0 0 0.2rem rgba(38, 185, 154, 0.25);
+}
+
+/* Responsive form improvements */
+@media (max-width: 767.98px) {
+  .form-horizontal .col-form-label {
+    margin-bottom: 0.5rem;
+    text-align: left;
+  }
+  
+  .form-horizontal .offset-md-3 {
+    margin-left: 0 !important;
+  }
+  
+  .d-grid.gap-2.d-md-flex {
+    grid-gap: 0.5rem !important;
+  }
+}
+
+/* Enhanced input group alignment and sizing */
+.input-group .form-control {
+  height: calc(2.25rem + 2px); /* Consistent height */
+  line-height: 1.5;
+  font-size: 0.9rem;
+}
+
+.input-group .btn {
+  height: calc(2.25rem + 2px); /* Match form control height exactly */
+  padding: 0.375rem 0.75rem;
+  line-height: 1.5;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-color: #dee2e6;
+}
+
+.input-group .btn:hover {
+  border-color: #26B99A;
+  color: #26B99A;
+}
+
+.input-group .btn i {
+  line-height: 1;
+  font-size: 0.875rem;
+}
+
+/* Specific fixes for date picker buttons */
+.input-group .btn[data-td-toggle="datetimepicker"] {
+  border-left: 0;
+  background-color: #f8f9fa;
+  color: #73879C;
+  min-width: 2.5rem;
+}
+
+.input-group .btn[data-td-toggle="datetimepicker"]:hover {
+  background-color: #e9ecef;
+  border-color: #26B99A;
+  color: #26B99A;
+}
+
+/* Input group text alignment */
+.input-group-text {
+  height: calc(2.25rem + 2px); /* Match height */
+  background-color: #f8f9fa;
+  border-color: #dee2e6;
+  color: #73879C;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.375rem 0.75rem;
+  font-size: 0.9rem;
+}
+
+.input-group:focus-within .input-group-text {
+  border-color: #26B99A;
+  color: #26B99A;
+}
+
+/* Fix for search bar input groups */
+.search-bar-fix .form-control {
+  height: calc(2.25rem + 2px);
+}
+
+.search-bar-fix .btn {
+  height: calc(2.25rem + 2px);
+  padding: 0.375rem 0.75rem;
+}
+
+/* Consistent sizing for all input variations */
+.form-control {
+  height: calc(2.25rem + 2px);
+  padding: 0.375rem 0.75rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.form-select {
+  height: calc(2.25rem + 2px);
+  padding: 0.375rem 2.25rem 0.375rem 0.75rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* Input group border fixes */
+.input-group > .form-control:not(:last-child) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.input-group > .form-control:not(:first-child) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left: 0;
+}
+
+.input-group > .btn:not(:last-child) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.input-group > .btn:not(:first-child) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.input-group > .input-group-text:not(:last-child) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.input-group > .input-group-text:not(:first-child) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left: 0;
+}
+
+/* ===== MODERN FORM ENHANCEMENTS ===== */
+

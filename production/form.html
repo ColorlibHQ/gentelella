@@ -172,14 +172,14 @@
 								<a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
 									<img src="images/img.jpg" alt="">John Doe
 								</a>
-								<div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
+								<div class="dropdown-menu dropdown-usermenu float-end" aria-labelledby="navbarDropdown">
 									<a class="dropdown-item" href="javascript:;"> Profile</a>
 									<a class="dropdown-item" href="javascript:;">
-										<span class="badge bg-red pull-right">50%</span>
+										<span class="badge bg-red float-end">50%</span>
 										<span>Settings</span>
 									</a>
 									<a class="dropdown-item" href="javascript:;">Help</a>
-									<a class="dropdown-item" href="login.html"><i class="fas fa-sign-out-alt pull-right"></i> Log Out</a>
+									<a class="dropdown-item" href="login.html"><i class="fas fa-sign-out-alt float-end"></i> Log Out</a>
 								</div>
 							</li>
 
@@ -262,7 +262,7 @@
 						</div>
 
 						<div class="title_right">
-							          <div class="col-md-5 col-sm-5 form-group float-end top_search">
+							          <div class="col-md-5 col-sm-5 mb-3 float-end top_search">
             <div class="input-group search-bar-fix">
               <input type="text" class="form-control" placeholder="Search for...">
               <button class="btn btn-outline-secondary" type="button">
@@ -290,68 +290,74 @@
 												</li>
 											</ul>
 										</li>
-										<li><a class="btn-close-link"><i class="fas fa-times"></i></a>
+										<li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a>
 										</li>
 									</ul>
 									<div class="clearfix"></div>
 								</div>
 								<div class="x_content">
 									<br />
-									<form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+														<form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
 
-										<div class="item form-group">
-											<label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">First Name <span class="required">*</span>
-											</label>
-											<div class="col-md-6 col-sm-6">
-												<input type="text" id="first-name" required="required" class="form-control">
-											</div>
-										</div>
-										<div class="item form-group">
-											<label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Last Name <span class="required">*</span>
-											</label>
-											<div class="col-md-6 col-sm-6">
-												<input type="text" id="last-name" name="last-name" required="required" class="form-control">
-											</div>
-										</div>
-										<div class="item form-group">
-											<label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Middle Name / Initial</label>
-											<div class="col-md-6 col-sm-6">
-												<input id="middle-name" class="form-control" type="text" name="middle-name">
-											</div>
-										</div>
-										<div class="item form-group">
-											<label class="col-form-label col-md-3 col-sm-3 label-align">Gender</label>
-											<div class="col-md-6 col-sm-6">
-												<div id="gender" class="btn-group" data-bs-toggle="buttons">
-													<label class="btn btn-secondary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-														<input type="radio" name="gender" value="male" class="join-btn"> &nbsp; Male &nbsp;
-													</label>
-													<label class="btn btn-primary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-														<input type="radio" name="gender" value="female" class="join-btn"> Female
-													</label>
-												</div>
-											</div>
-										</div>
-										<div class="item form-group">
-											<label class="col-form-label col-md-3 col-sm-3 label-align">Date Of Birth <span class="required">*</span>
-											</label>
-											<div class="col-md-6 col-sm-6">
-												<div class="input-group" id="birthday" data-td-target-input="nearest" data-td-target-toggle="nearest">
-													<input type="text" class="form-control" data-td-target="#birthday" placeholder="dd-mm-yyyy" required="required" />
-													<span class="input-group-text" data-td-target="#birthday" data-td-toggle="datetimepicker">
-														<span class="fas fa-calendar"></span>
-													</span>
-												</div>
-											</div>
-										</div>
-										<div class="ln_solid"></div>
-										<div class="item form-group">
-											<div class="col-md-6 col-sm-6 offset-md-3">
-												<button class="btn btn-primary" type="button">Cancel</button>
-												<button class="btn btn-primary" type="reset">Reset</button>
-												<button type="submit" class="btn btn-success">Submit</button>
-											</div>
-										</div>
+						<div class="row mb-3">
+							<label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">First Name <span class="required text-danger">*</span>
+							</label>
+							<div class="col-md-6 col-sm-6">
+								<input type="text" id="first-name" name="first-name" required="required" class="form-control" aria-describedby="first-name-help">
+								<div id="first-name-help" class="form-text">Enter your first name</div>
+							</div>
+						</div>
+						<div class="row mb-3">
+							<label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Last Name <span class="required text-danger">*</span>
+							</label>
+							<div class="col-md-6 col-sm-6">
+								<input type="text" id="last-name" name="last-name" required="required" class="form-control" aria-describedby="last-name-help">
+								<div id="last-name-help" class="form-text">Enter your last name</div>
+							</div>
+						</div>
+						<div class="row mb-3">
+							<label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Middle Name / Initial</label>
+							<div class="col-md-6 col-sm-6">
+								<input id="middle-name" class="form-control" type="text" name="middle-name" aria-describedby="middle-name-help">
+								<div id="middle-name-help" class="form-text">Optional middle name or initial</div>
+							</div>
+						</div>
+						<div class="row mb-3">
+							<label class="col-form-label col-md-3 col-sm-3 label-align">Gender</label>
+							<div class="col-md-6 col-sm-6">
+								<div class="form-check form-check-inline">
+									<input class="form-check-input" type="radio" name="gender" id="genderM" value="M" checked required>
+									<label class="form-check-label" for="genderM">Male</label>
+								</div>
+								<div class="form-check form-check-inline">
+									<input class="form-check-input" type="radio" name="gender" id="genderF" value="F" required>
+									<label class="form-check-label" for="genderF">Female</label>
+								</div>
+							</div>
+						</div>
+						<div class="row mb-3">
+							<label class="col-form-label col-md-3 col-sm-3 label-align" for="birthday-input">Date Of Birth <span class="required text-danger">*</span>
+							</label>
+							<div class="col-md-6 col-sm-6">
+								<div class="input-group" id="birthday" data-td-target-input="nearest" data-td-target-toggle="nearest">
+									<input type="text" id="birthday-input" class="form-control" data-td-target="#birthday" placeholder="dd-mm-yyyy" required="required" aria-describedby="birthday-help" />
+									<button class="btn btn-outline-secondary" type="button" data-td-target="#birthday" data-td-toggle="datetimepicker" aria-label="Open calendar">
+										<i class="fas fa-calendar" aria-hidden="true"></i>
+									</button>
+								</div>
+								<div id="birthday-help" class="form-text">Select your date of birth</div>
+							</div>
+						</div>
+																<div class="ln_solid"></div>
+						<div class="row mb-3">
+							<div class="col-md-6 col-sm-6 offset-md-3">
+								<div class="d-grid gap-2 d-md-flex justify-content-md-start">
+									<button class="btn btn-outline-secondary" type="button">Cancel</button>
+									<button class="btn btn-outline-primary" type="reset">Reset</button>
+									<button type="submit" class="btn btn-success">Submit</button>
+								</div>
+							</div>
+						</div>
 
 									</form>
 								</div>
@@ -374,7 +380,7 @@
 												<a class="dropdown-item" href="#">Settings 2</a>
 											</div>
 										</li>
-										<li><a class="btn-close-link"><i class="fas fa-times"></i></a>
+										<li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a>
 										</li>
 									</ul>
 									<div class="clearfix"></div>
@@ -383,62 +389,72 @@
 									<br />
 									<form class="form-label-left input_mask">
 
-										<div class="col-md-6 col-sm-6 form-group has-feedback">
-											<input type="text" class="form-control has-feedback-left" id="inputSuccess2" placeholder="First Name">
-											<span class="fas fa-user form-control-feedback left" aria-hidden="true"></span>
-										</div>
+																		<div class="col-md-6 col-sm-6 mb-3">
+									<div class="input-group">
+										<span class="input-group-text"><i class="fas fa-user" aria-hidden="true"></i></span>
+										<input type="text" class="form-control" id="inputSuccess2" placeholder="First Name" aria-label="First Name">
+									</div>
+								</div>
 
-										<div class="col-md-6 col-sm-6 form-group has-feedback">
-											<input type="text" class="form-control" id="inputSuccess3" placeholder="Last Name">
-											<span class="fas fa-user form-control-feedback right" aria-hidden="true"></span>
-										</div>
+								<div class="col-md-6 col-sm-6 mb-3">
+									<div class="input-group">
+										<input type="text" class="form-control" id="inputSuccess3" placeholder="Last Name" aria-label="Last Name">
+										<span class="input-group-text"><i class="fas fa-user" aria-hidden="true"></i></span>
+									</div>
+								</div>
 
-										<div class="col-md-6 col-sm-6 form-group has-feedback">
-											<input type="email" class="form-control has-feedback-left" id="inputSuccess4" placeholder="Email">
-											<span class="fas fa-envelope form-control-feedback left" aria-hidden="true"></span>
-										</div>
+								<div class="col-md-6 col-sm-6 mb-3">
+									<div class="input-group">
+										<span class="input-group-text"><i class="fas fa-envelope" aria-hidden="true"></i></span>
+										<input type="email" class="form-control" id="inputSuccess4" placeholder="Email" aria-label="Email address">
+									</div>
+								</div>
 
-										<div class="col-md-6 col-sm-6 form-group has-feedback">
-											<input type="tel" class="form-control" id="inputSuccess5" placeholder="Phone">
-											<span class="fas fa-phone form-control-feedback right" aria-hidden="true"></span>
-										</div>
+								<div class="col-md-6 col-sm-6 mb-3">
+									<div class="input-group">
+										<input type="tel" class="form-control" id="inputSuccess5" placeholder="Phone" aria-label="Phone number">
+										<span class="input-group-text"><i class="fas fa-phone" aria-hidden="true"></i></span>
+									</div>
+								</div>
 
-										<div class="form-group row">
+										<div class="mb-3 row">
 											<label class="col-form-label col-md-3 col-sm-3">Default Input</label>
 											<div class="col-md-9 col-sm-9">
 												<input type="text" class="form-control" placeholder="Default Input">
 											</div>
 										</div>
-										<div class="form-group row">
+										<div class="mb-3 row">
 											<label class="col-form-label col-md-3 col-sm-3">Disabled Input </label>
 											<div class="col-md-9 col-sm-9">
 												<input type="text" class="form-control" disabled="disabled" placeholder="Disabled Input">
 											</div>
 										</div>
-										<div class="form-group row">
+										<div class="mb-3 row">
 											<label class="col-form-label col-md-3 col-sm-3">Read-Only Input</label>
 											<div class="col-md-9 col-sm-9">
 												<input type="text" class="form-control" readonly="readonly" placeholder="Read-Only Input">
 											</div>
 										</div>
-										<div class="form-group row">
-											<label class="col-form-label col-md-3 col-sm-3">Date Of Birth <span class="required">*</span>
+										<div class="mb-3 row">
+											<label class="col-form-label col-md-3 col-sm-3">Date Of Birth <span class="required text-danger">*</span>
 											</label>
 											<div class="col-md-9 col-sm-9">
 												<div class="input-group" id="birthday2" data-td-target-input="nearest" data-td-target-toggle="nearest">
-													<input type="text" class="form-control" data-td-target="#birthday2" placeholder="dd-mm-yyyy" required="required" />
-													<span class="input-group-text" data-td-target="#birthday2" data-td-toggle="datetimepicker">
-														<span class="fas fa-calendar"></span>
-													</span>
+													<input type="text" class="form-control" data-td-target="#birthday2" placeholder="dd-mm-yyyy" required="required" aria-label="Date of Birth" />
+													<button class="btn btn-outline-secondary" type="button" data-td-target="#birthday2" data-td-toggle="datetimepicker" aria-label="Open calendar">
+														<i class="fas fa-calendar" aria-hidden="true"></i>
+													</button>
 												</div>
 											</div>
 										</div>
 										<div class="ln_solid"></div>
-										<div class="form-group row">
+										<div class="mb-3 row">
 											<div class="col-md-9 col-sm-9 offset-md-3">
-												<button type="button" class="btn btn-primary">Cancel</button>
-												<button class="btn btn-primary" type="reset">Reset</button>
-												<button type="submit" class="btn btn-success">Submit</button>
+												<div class="d-grid gap-2 d-md-flex justify-content-md-start">
+													<button type="button" class="btn btn-outline-secondary">Cancel</button>
+													<button class="btn btn-outline-primary" type="reset">Reset</button>
+													<button type="submit" class="btn btn-success">Submit</button>
+												</div>
 											</div>
 										</div>
 
@@ -459,7 +475,7 @@
 												<a class="dropdown-item" href="#">Settings 2</a>
 											</div>
 										</li>
-										<li><a class="btn-close-link"><i class="fas fa-times"></i></a>
+										<li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a>
 										</li>
 									</ul>
 									<div class="clearfix"></div>
@@ -490,7 +506,7 @@
 												<a class="dropdown-item" href="#">Settings 2</a>
 											</div>
 										</li>
-										<li><a class="btn-close-link"><i class="fas fa-times"></i></a>
+										<li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a>
 										</li>
 									</ul>
 									<div class="clearfix"></div>
@@ -498,49 +514,74 @@
 								<div class="x_content">
 
 									<!-- start form for validation -->
-									<form id="demo-form" data-parsley-validate>
-										<label for="fullname">Full Name * :</label>
-										<input type="text" id="fullname" class="form-control" name="fullname" required />
+									<form id="demo-form" data-parsley-validate class="needs-validation" novalidate>
+										<div class="mb-3">
+											<label for="fullname" class="form-label">Full Name <span class="text-danger">*</span></label>
+											<input type="text" id="fullname" class="form-control" name="fullname" required>
+											<div class="invalid-feedback">
+												Please provide a valid full name.
+											</div>
+										</div>
 
-										<label for="email">Email * :</label>
-										<input type="email" id="email" class="form-control" name="email" data-parsley-trigger="change" required />
+										<div class="mb-3">
+											<label for="email" class="form-label">Email <span class="text-danger">*</span></label>
+											<input type="email" id="email" class="form-control" name="email" data-parsley-trigger="change" required>
+											<div class="invalid-feedback">
+												Please provide a valid email address.
+											</div>
+										</div>
 
-										<label>Gender *:</label>
-										<p>
-											M:
-											<input type="radio" class="flat" name="gender" id="genderM" value="M" checked="" required /> F:
-											<input type="radio" class="flat" name="gender" id="genderF" value="F" />
-										</p>
+										<div class="row mb-3">
+											<label class="col-form-label col-md-3 col-sm-3 label-align">Gender</label>
+											<div class="col-md-6 col-sm-6">
+												<div class="form-check form-check-inline">
+													<input class="form-check-input" type="radio" name="gender" id="genderM" value="M" checked required>
+													<label class="form-check-label" for="genderM">Male</label>
+												</div>
+												<div class="form-check form-check-inline">
+													<input class="form-check-input" type="radio" name="gender" id="genderF" value="F" required>
+													<label class="form-check-label" for="genderF">Female</label>
+												</div>
+											</div>
+										</div>
+										<div class="row mb-3">
+											<label class="col-form-label col-md-3 col-sm-3 label-align" for="birthday-input">Date Of Birth <span class="required text-danger">*</span>
+											</label>
+											<div class="col-md-6 col-sm-6">
+												<div class="input-group" id="birthday" data-td-target-input="nearest" data-td-target-toggle="nearest">
+													<input type="text" id="birthday-input" class="form-control" data-td-target="#birthday" placeholder="dd-mm-yyyy" required="required" aria-describedby="birthday-help" />
+													<button class="btn btn-outline-secondary" type="button" data-td-target="#birthday" data-td-toggle="datetimepicker" aria-label="Open calendar">
+														<i class="fas fa-calendar" aria-hidden="true"></i>
+													</button>
+												</div>
+												<div id="birthday-help" class="form-text">Select your date of birth</div>
+											</div>
+										</div>
 
-										<label>Hobbies (2 minimum):</label>
-										<p style="padding: 5px;">
-											<input type="checkbox" name="hobbies[]" id="hobby1" value="ski" data-parsley-mincheck="2" required class="flat" /> Skiing
-											<br />
+										<div class="mb-3">
+											<label for="heard" class="form-label">Heard us by <span class="text-danger">*</span></label>
+											<select id="heard" class="form-select" required>
+												<option value="">Choose..</option>
+												<option value="press">Press</option>
+												<option value="net">Internet</option>
+												<option value="mouth">Word of mouth</option>
+											</select>
+											<div class="invalid-feedback">
+												Please select how you heard about us.
+											</div>
+										</div>
 
-											<input type="checkbox" name="hobbies[]" id="hobby2" value="run" class="flat" /> Running
-											<br />
+										<div class="mb-3">
+											<label for="message" class="form-label">Message (20 chars min, 100 max)</label>
+											<textarea id="message" required="required" class="form-control" name="message" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.." data-parsley-validation-threshold="10" rows="4"></textarea>
+											<div class="invalid-feedback">
+												Please enter a message between 20 and 100 characters.
+											</div>
+										</div>
 
-											<input type="checkbox" name="hobbies[]" id="hobby3" value="eat" class="flat" /> Eating
-											<br />
-
-											<input type="checkbox" name="hobbies[]" id="hobby4" value="sleep" class="flat" /> Sleeping
-											<br />
-											<p>
-
-												<label for="heard">Heard us by *:</label>
-												<select id="heard" class="form-control" required>
-													<option value="">Choose..</option>
-													<option value="press">Press</option>
-													<option value="net">Internet</option>
-													<option value="mouth">Word of mouth</option>
-												</select>
-
-												<label for="message">Message (20 chars min, 100 max) :</label>
-												<textarea id="message" required="required" class="form-control" name="message" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.." data-parsley-validation-threshold="10"></textarea>
-
-												<br />
-												<span class="btn btn-primary">Validate form</span>
-
+										<div class="mb-3">
+											<button type="submit" class="btn btn-primary">Validate form</button>
+										</div>
 									</form>
 									<!-- end form for validations -->
 
@@ -564,7 +605,7 @@
 												<a class="dropdown-item" href="#">Settings 2</a>
 											</div>
 										</li>
-										<li><a class="btn-close-link"><i class="fas fa-times"></i></a>
+										<li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a>
 										</li>
 									</ul>
 									<div class="clearfix"></div>
@@ -573,47 +614,47 @@
 									<br />
 									<form class="form-horizontal form-label-left">
 
-										<div class="form-group row">
-											<label class="control-label col-md-3 col-sm-3">Default Input</label>
+										<div class="mb-3 row">
+											<label class="col-form-label col-md-3 col-sm-3">Default Input</label>
 											<div class="col-md-9 col-sm-9">
 												<input type="text" class="form-control" placeholder="Default Input">
 											</div>
 										</div>
-										<div class="form-group row">
-											<label class="control-label col-md-3 col-sm-3">Disabled Input </label>
+										<div class="mb-3 row">
+											<label class="col-form-label col-md-3 col-sm-3">Disabled Input </label>
 											<div class="col-md-9 col-sm-9">
 												<input type="text" class="form-control" disabled="disabled" placeholder="Disabled Input">
 											</div>
 										</div>
-										<div class="form-group row">
-											<label class="control-label col-md-3 col-sm-3">Read-Only Input</label>
+										<div class="mb-3 row">
+											<label class="col-form-label col-md-3 col-sm-3">Read-Only Input</label>
 											<div class="col-md-9 col-sm-9">
 												<input type="text" class="form-control" readonly="readonly" placeholder="Read-Only Input">
 											</div>
 										</div>
-										<div class="form-group row">
-											<label class="control-label col-md-3 col-sm-3">Date Of Birth <span class="required">*</span>
+										<div class="mb-3 row">
+											<label class="col-form-label col-md-3 col-sm-3">Date Of Birth <span class="required text-danger">*</span>
 											</label>
 											<div class="col-md-9 col-sm-9">
 												<textarea class="form-control" rows="3" placeholder="Date Of Birth"></textarea>
 											</div>
 										</div>
-										<div class="form-group row">
-											<label class="control-label col-md-3 col-sm-3">Password</label>
+										<div class="mb-3 row">
+											<label class="col-form-label col-md-3 col-sm-3">Password</label>
 											<div class="col-md-9 col-sm-9">
 												<input type="password" class="form-control" value="passwordonetwo">
 											</div>
 										</div>
-										<div class="form-group row">
-											<label class="control-label col-md-3 col-sm-3">AutoComplete</label>
+										<div class="mb-3 row">
+											<label class="col-form-label col-md-3 col-sm-3">AutoComplete</label>
 											<div class="col-md-9 col-sm-9">
-												<input type="text" name="country" id="autocomplete-custom-append" class="form-control col-md-10" />
+												<input type="text" name="country" id="autocomplete-custom-append" class="form-control" />
 											</div>
 										</div>
-										<div class="form-group row">
-											<label class="control-label col-md-3 col-sm-3">Select</label>
+										<div class="mb-3 row">
+											<label class="col-form-label col-md-3 col-sm-3">Select</label>
 											<div class="col-md-9 col-sm-9">
-												<select class="form-control">
+												<select class="form-select">
 													<option>Choose option</option>
 													<option>Option one</option>
 													<option>Option two</option>
@@ -622,8 +663,8 @@
 												</select>
 											</div>
 										</div>
-										<div class="form-group row">
-											<label class="control-label col-md-3 col-sm-3">Select Custom</label>
+										<div class="mb-3 row">
+											<label class="col-form-label col-md-3 col-sm-3">Select Custom</label>
 											<div class="col-md-9 col-sm-9">
 												<select class="select2_single form-control" tabindex="-1">
 													<option></option>
@@ -657,8 +698,8 @@
 												</select>
 											</div>
 										</div>
-										<div class="form-group row">
-											<label class="control-label col-md-3 col-sm-3">Select Grouped</label>
+										<div class="mb-3 row">
+											<label class="col-form-label col-md-3 col-sm-3">Select Grouped</label>
 											<div class="col-md-9 col-sm-9">
 												<select class="select2_group form-control">
 													<optgroup label="Alaskan/Hawaiian Time Zone">
@@ -724,8 +765,8 @@
 												</select>
 											</div>
 										</div>
-										<div class="form-group row">
-											<label class="control-label col-md-3 col-sm-3">Select Multiple</label>
+										<div class="mb-3 row">
+											<label class="col-form-label col-md-3 col-sm-3">Select Multiple</label>
 											<div class="col-md-9 col-sm-9">
 												<select class="select2_multiple form-control" multiple="multiple">
 													<option>Choose option</option>
@@ -746,86 +787,49 @@
 												<div id="suggestions-container" style="position: relative; float: left; width: 250px; margin: 10px;"></div>
 											</div>
 										</div>
-										<div class="form-group row">
-											<label class="col-md-3 col-sm-3 control-label">Checkboxes and radios
+										<div class="mb-3 row">
+											<label class="col-form-label col-md-3 col-sm-3 col-form-label">Checkboxes and radios
 												<br>
-												<small class="text-navy">Normal Bootstrap elements</small>
+												<small class="text-muted">Custom styled elements</small>
 											</label>
 
 											<div class="col-md-9 col-sm-9">
-												<div class="checkbox">
-													<label>
-														<input type="checkbox" value=""> Option one. select more than one options
-													</label>
+												<div class="form-check mb-2">
+													<input class="form-check-input" type="checkbox" id="customCheck1" checked>
+													<label class="form-check-label" for="customCheck1">Checked</label>
 												</div>
-												<div class="checkbox">
-													<label>
-														<input type="checkbox" value=""> Option two. select more than one options
-													</label>
+												<div class="form-check mb-2">
+													<input class="form-check-input" type="checkbox" id="customCheck2">
+													<label class="form-check-label" for="customCheck2">Unchecked</label>
 												</div>
-												<div class="radio">
-													<label>
-														<input type="radio" checked="" value="option1" id="optionsRadios1" name="optionsRadios"> Option one. only select one option
-													</label>
+												<div class="form-check mb-2">
+													<input class="form-check-input" type="checkbox" id="customCheck3" disabled>
+													<label class="form-check-label" for="customCheck3">Disabled</label>
 												</div>
-												<div class="radio">
-													<label>
-														<input type="radio" value="option2" id="optionsRadios2" name="optionsRadios"> Option two. only select one option
-													</label>
+												<div class="form-check mb-3">
+													<input class="form-check-input" type="checkbox" id="customCheck4" disabled checked>
+													<label class="form-check-label" for="customCheck4">Disabled & checked</label>
+												</div>
+												<div class="form-check mb-2">
+													<input class="form-check-input" type="radio" name="customRadio" id="customRadio1" checked>
+													<label class="form-check-label" for="customRadio1">Checked</label>
+												</div>
+												<div class="form-check mb-2">
+													<input class="form-check-input" type="radio" name="customRadio" id="customRadio2">
+													<label class="form-check-label" for="customRadio2">Unchecked</label>
+												</div>
+												<div class="form-check mb-2">
+													<input class="form-check-input" type="radio" name="customRadio3" id="customRadio3" disabled>
+													<label class="form-check-label" for="customRadio3">Disabled</label>
+												</div>
+												<div class="form-check">
+													<input class="form-check-input" type="radio" name="customRadio4" id="customRadio4" disabled checked>
+													<label class="form-check-label" for="customRadio4">Disabled & Checked</label>
 												</div>
 											</div>
 										</div>
 
-										<div class="form-group row">
-											<label class="col-md-3 col-sm-3 control-label">Checkboxes and radios
-												<br>
-												<small class="text-navy">Normal Bootstrap elements</small>
-											</label>
-
-											<div class="col-md-9 col-sm-9">
-												<div class="checkbox">
-													<label>
-														<input type="checkbox" class="flat" checked="checked"> Checked
-													</label>
-												</div>
-												<div class="checkbox">
-													<label>
-														<input type="checkbox" class="flat"> Unchecked
-													</label>
-												</div>
-												<div class="checkbox">
-													<label>
-														<input type="checkbox" class="flat" disabled="disabled"> Disabled
-													</label>
-												</div>
-												<div class="checkbox">
-													<label>
-														<input type="checkbox" class="flat" disabled="disabled" checked="checked"> Disabled & checked
-													</label>
-												</div>
-												<div class="radio">
-													<label>
-														<input type="radio" class="flat" checked name="iCheck"> Checked
-													</label>
-												</div>
-												<div class="radio">
-													<label>
-														<input type="radio" class="flat" name="iCheck"> Unchecked
-													</label>
-												</div>
-												<div class="radio">
-													<label>
-														<input type="radio" class="flat" name="iCheck" disabled="disabled"> Disabled
-													</label>
-												</div>
-												<div class="radio">
-													<label>
-														<input type="radio" class="flat" name="iCheck3" disabled="disabled" checked> Disabled & Checked
-													</label>
-												</div>
-											</div>
-										</div>
-										<div class="form-group row">
+										<div class="mb-3 row">
 											<label class="control-label col-md-3 col-sm-3">Switch</label>
 											<div class="col-md-9 col-sm-9">
 												<div class="">
@@ -855,9 +859,11 @@
 										<div class="ln_solid"></div>
 										<div class="mb-3">
 											<div class="col-md-9 col-sm-9 offset-md-3">
-												<button type="button" class="btn btn-primary">Cancel</button>
-												<button type="reset" class="btn btn-primary">Reset</button>
-												<button type="submit" class="btn btn-success">Submit</button>
+												<div class="d-grid gap-2 d-md-flex justify-content-md-start">
+													<button type="button" class="btn btn-outline-secondary">Cancel</button>
+													<button type="reset" class="btn btn-outline-primary">Reset</button>
+													<button type="submit" class="btn btn-success">Submit</button>
+												</div>
 											</div>
 										</div>
 
@@ -881,7 +887,7 @@
 												<a class="dropdown-item" href="#">Settings 2</a>
 											</div>
 										</li>
-										<li><a class="btn-close-link"><i class="fas fa-times"></i></a>
+										<li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a>
 										</li>
 									</ul>
 									<div class="clearfix"></div>
@@ -890,54 +896,40 @@
 
 									<form class="form-horizontal form-label-left">
 
-										<div class="form-group row">
+										<div class="mb-3 row">
 											<label class="col-sm-3 col-form-label">Button addons</label>
 
 											<div class="col-sm-9">
-												<div class="input-group">
-													<span class="input-group-btn">
-														<button type="button" class="btn btn-primary go-class">Go!</button>
-													</span>
-													<input type="text" class="form-control">
+												<div class="input-group mb-3">
+													<button type="button" class="btn btn-primary">Go!</button>
+													<input type="text" class="form-control" placeholder="Search..." aria-label="Search input with button">
 												</div>
 												<div class="input-group">
-													<input type="text" class="form-control">
-													<span class="input-group-btn">
-														<button type="button" class="btn btn-primary">Go!</button>
-													</span>
+													<input type="text" class="form-control" placeholder="Search..." aria-label="Search input with button">
+													<button type="button" class="btn btn-primary">Go!</button>
 												</div>
 											</div>
 										</div>
 										<div class="divider-dashed"></div>
 
-										<div class="form-group row">
-											<label class="col-sm-3 col-form-label">Button addons</label>
+										<div class="mb-3 row">
+											<label class="col-sm-3 col-form-label">Dropdown addons</label>
 
 											<div class="col-sm-9">
-												<div class="dropdown input-group row">
+												<div class="input-group mb-3">
 													<input type="text" class="form-control" aria-label="Text input with dropdown button">
-													<div class="input-group-btn">
-														<button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Action <span class="caret"></span>
-														</button>
-														<ul class="dropdown-menu dropdown-menu-right" role="menu">
-															<li><a class="dropdown-item" href="#">Action</a>
-															</li>
-															<li><a class="dropdown-item" href="#">Another action</a>
-															</li>
-															<li><a class="dropdown-item" href="#">Something else here</a>
-															</li>
-															<li class="divider"></li>
-															<li><a class="dropdown-item" href="#">Separated link</a>
-															</li>
-														</ul>
-													</div>
-													<!-- /btn-group -->
+													<button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Action</button>
+													<ul class="dropdown-menu dropdown-menu-end">
+														<li><a class="dropdown-item" href="#">Action</a></li>
+														<li><a class="dropdown-item" href="#">Another action</a></li>
+														<li><a class="dropdown-item" href="#">Something else here</a></li>
+														<li><hr class="dropdown-divider"></li>
+														<li><a class="dropdown-item" href="#">Separated link</a></li>
+													</ul>
 												</div>
 												<div class="input-group">
-													<input type="text" class="form-control">
-													<span class="input-group-btn">
-														<button type="button" class="btn btn-primary">Go!</button>
-													</span>
+													<input type="text" class="form-control" placeholder="Search..." aria-label="Search input">
+													<button type="button" class="btn btn-primary">Go!</button>
 												</div>
 											</div>
 										</div>
@@ -961,7 +953,7 @@
 											<a class="dropdown-item" href="#">Settings 2</a>
 										</div>
 									</li>
-									<li><a class="btn-close-link"><i class="fas fa-times"></i></a>
+									<li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a>
 									</li>
 								</ul>
 								<div class="clearfix"></div>
@@ -1068,7 +1060,7 @@
 										<a class="dropdown-item" href="#">Settings 2</a>
 									</div>
 								</li>
-								<li><a class="btn-close-link"><i class="fas fa-times"></i></a>
+								<li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a>
 								</li>
 							</ul>
 							<div class="clearfix"></div>
@@ -1077,115 +1069,115 @@
 
 							<div class="row">
 
-								<div class="col-md-12 col-sm-12 form-group">
+								<div class="col-md-12 col-sm-12 mb-3">
 									<input type="text" placeholder=".col-md-12" class="form-control">
 								</div>
 
-								<div class="col-md-6 col-sm-12 form-group">
+								<div class="col-md-6 col-sm-12 mb-3">
 									<input type="text" placeholder=".col-md-6" class="form-control">
 								</div>
 
-								<div class="col-md-6 col-sm-12 form-group">
+								<div class="col-md-6 col-sm-12 mb-3">
 									<input type="text" placeholder=".col-md-6" class="form-control">
 								</div>
 
 
-								<div class="col-md-4 col-sm-12 form-group">
+								<div class="col-md-4 col-sm-12 mb-3">
 									<input type="text" placeholder=".col-md-4" class="form-control">
 								</div>
 
-								<div class="col-md-4 col-sm-12 form-group">
+								<div class="col-md-4 col-sm-12 mb-3">
 									<input type="text" placeholder=".col-md-4" class="form-control">
 								</div>
 
-								<div class="col-md-4 col-sm-12 form-group">
+								<div class="col-md-4 col-sm-12 mb-3">
 									<input type="text" placeholder=".col-md-4" class="form-control">
 								</div>
 
 
-								<div class="col-md-3 col-sm-12 form-group">
+								<div class="col-md-3 col-sm-12 mb-3">
 									<input type="text" placeholder=".col-md-3" class="form-control">
 								</div>
 
-								<div class="col-md-3 col-sm-12 form-group">
+								<div class="col-md-3 col-sm-12 mb-3">
 									<input type="text" placeholder=".col-md-3" class="form-control">
 								</div>
 
-								<div class="col-md-3 col-sm-12 form-group">
+								<div class="col-md-3 col-sm-12 mb-3">
 									<input type="text" placeholder=".col-md-3" class="form-control">
 								</div>
 
-								<div class="col-md-3 col-sm-12 form-group">
+								<div class="col-md-3 col-sm-12 mb-3">
 									<input type="text" placeholder=".col-md-3" class="form-control">
 								</div>
 
 
-								<div class="col-md-2 col-sm-12 form-group">
+								<div class="col-md-2 col-sm-12 mb-3">
 									<input type="text" placeholder=".col-md-2" class="form-control">
 								</div>
 
-								<div class="col-md-2 col-sm-12 form-group">
+								<div class="col-md-2 col-sm-12 mb-3">
 									<input type="text" placeholder=".col-md-2" class="form-control">
 								</div>
 
-								<div class="col-md-2 col-sm-12 form-group">
+								<div class="col-md-2 col-sm-12 mb-3">
 									<input type="text" placeholder=".col-md-2" class="form-control">
 								</div>
 
-								<div class="col-md-2 col-sm-12 form-group">
+								<div class="col-md-2 col-sm-12 mb-3">
 									<input type="text" placeholder=".col-md-2" class="form-control">
 								</div>
 
-								<div class="col-md-2 col-sm-12 form-group">
+								<div class="col-md-2 col-sm-12 mb-3">
 									<input type="text" placeholder=".col-md-2" class="form-control">
 								</div>
 
-								<div class="col-md-2 col-sm-12 form-group">
+								<div class="col-md-2 col-sm-12 mb-3">
 									<input type="text" placeholder=".col-md-2" class="form-control">
 								</div>
 
 
-								<div class="col-md-1 col-sm-12 form-group">
+								<div class="col-md-1 col-sm-12 mb-3">
 									<input type="text" placeholder=".col-md-1" class="form-control">
 								</div>
 
-								<div class="col-md-1 col-sm-12 form-group">
+								<div class="col-md-1 col-sm-12 mb-3">
 									<input type="text" placeholder=".col-md-1" class="form-control">
 								</div>
 
-								<div class="col-md-1 col-sm-12 form-group">
+								<div class="col-md-1 col-sm-12 mb-3">
 									<input type="text" placeholder=".col-md-1" class="form-control">
 								</div>
 
-								<div class="col-md-1 col-sm-12 form-group">
+								<div class="col-md-1 col-sm-12 mb-3">
 									<input type="text" placeholder=".col-md-1" class="form-control">
 								</div>
 
-								<div class="col-md-1 col-sm-12 form-group">
+								<div class="col-md-1 col-sm-12 mb-3">
 									<input type="text" placeholder=".col-md-1" class="form-control">
 								</div>
 
-								<div class="col-md-1 col-sm-12 form-group">
+								<div class="col-md-1 col-sm-12 mb-3">
 									<input type="text" placeholder=".col-md-1" class="form-control">
 								</div>
 
-								<div class="col-md-1 col-sm-12 form-group">
+								<div class="col-md-1 col-sm-12 mb-3">
 									<input type="text" placeholder=".col-md-1" class="form-control">
 								</div>
 
-								<div class="col-md-1 col-sm-12 form-group">
+								<div class="col-md-1 col-sm-12 mb-3">
 									<input type="text" placeholder=".col-md-1" class="form-control">
 								</div>
 
-								<div class="col-md-1 col-sm-12 form-group">
+								<div class="col-md-1 col-sm-12 mb-3">
 									<input type="text" placeholder=".col-md-1" class="form-control">
 								</div>
 
-								<div class="col-md-1 col-sm-12 form-group">
+								<div class="col-md-1 col-sm-12 mb-3">
 									<input type="text" placeholder=".col-md-1" class="form-control">
 								</div>
 
-								<div class="col-md-1 col-sm-12 form-group">
+								<div class="col-md-1 col-sm-12 mb-3">
 									<input type="text" placeholder=".col-md-1" class="form-control">
 								</div>
 							</div>
@@ -1207,7 +1199,7 @@
 										<a class="dropdown-item" href="#">Settings 2</a>
 									</div>
 								</li>
-								<li><a class="btn-close-link"><i class="fas fa-times"></i></a>
+								<li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a>
 								</li>
 							</ul>
 							<div class="clearfix"></div>
@@ -1220,18 +1212,18 @@
 								Using the grid system you can control the position of the labels. The form example below has the <b>col-md-10</b> which sets the width to 10/12 and <b>center-margin</b> which centers it.
 							</p>
 							<form class="form-horizontal form-label-left">
-								<div class="form-group row">
-									<label class="control-label col-md-3" for="first-name">First Name <span class="required">*</span>
+								<div class="mb-3 row">
+									<label class="control-label col-md-3" for="first-name">First Name <span class="required text-danger">*</span>
 									</label>
 									<div class="col-md-7">
-										<input type="text" id="first-name2" required="required" class="form-control col-md-7">
+										<input type="text" id="first-name2" required="required" class="form-control">
 									</div>
 								</div>
-								<div class="form-group row">
-									<label class="control-label col-md-3" for="last-name">Last Name <span class="required">*</span>
+								<div class="mb-3 row">
+									<label class="control-label col-md-3" for="last-name">Last Name <span class="required text-danger">*</span>
 									</label>
 									<div class="col-md-7">
-										<input type="text" id="last-name2" name="last-name" required="required" class="form-control col-md-7">
+										<input type="text" id="last-name2" name="last-name" required="required" class="form-control">
 									</div>
 								</div>
 							</form>
@@ -1243,15 +1235,14 @@
 							</p>
 							<div class="col-md-8 center-margin">
 								<form class="form-horizontal form-label-left">
-									<div class="form-group row">
-										<label>Email address</label>
+									<div class="mb-3">
+										<label class="form-label">Email address</label>
 										<input type="email" class="form-control" placeholder="Enter email">
 									</div>
-									<div class="form-group row">
-										<label>Password</label>
+									<div class="mb-3">
+										<label class="form-label">Password</label>
 										<input type="password" class="form-control" placeholder="Password">
 									</div>
-
 								</form>
 							</div>
 
@@ -1259,21 +1250,28 @@
 							<p class="font-gray-dark">
 								Add .form-inline to your form (which doesn't have to be a &lt;form&gt;) for left-aligned and inline-block controls.
 							</p>
-							<form class="form-inline">
-								<div class="mb-3">
-									<label for="ex3" class="col-form-label">Email address</label>
-									<input type="text" id="ex3" class="form-control" placeholder=" ">
+							<form class="row g-3 align-items-center">
+								<div class="col-auto">
+									<label for="ex3" class="form-label">Email address</label>
 								</div>
-								<div class="mb-3">
-									<label for="ex4" class="col-form-label">Email address</label>
-									<input type="email" id="ex4" class="form-control" placeholder=" ">
+								<div class="col-auto">
+									<input type="text" id="ex3" class="form-control" placeholder="Enter name">
 								</div>
-								<div class="form-check">
-									<label>
-										<input type="checkbox"> Remember me
-									</label>
+								<div class="col-auto">
+									<label for="ex4" class="form-label">Email address</label>
 								</div>
-								<button type="submit" class="btn btn-secondary">Send invitation</button>
+								<div class="col-auto">
+									<input type="email" id="ex4" class="form-control" placeholder="Enter email">
+								</div>
+								<div class="col-auto">
+									<div class="form-check">
+										<input class="form-check-input" type="checkbox" id="inlineFormCheck">
+										<label class="form-check-label" for="inlineFormCheck">Remember me</label>
+									</div>
+								</div>
+								<div class="col-auto">
+									<button type="submit" class="btn btn-primary">Send invitation</button>
+								</div>
 							</form>
 						</div>
 					</div>
@@ -1283,7 +1281,7 @@
 
 			<!-- footer content -->
 			<footer>
-				<div class="pull-right">
+				<div class="float-end">
 					Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
 				</div>
 				<div class="clearfix"></div>
@@ -1296,6 +1294,7 @@
 <!-- Initialize Tempus Dominus datetimepicker -->
 <script type="text/javascript">
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize Tempus Dominus date pickers
     if (typeof TempusDominus !== 'undefined') {
         // Initialize birthday pickers
         const birthdayPicker = new TempusDominus(document.getElementById('birthday'), {
@@ -1322,6 +1321,48 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    // Bootstrap 5 form validation
+    const forms = document.querySelectorAll('.needs-validation');
+    Array.from(forms).forEach(function(form) {
+        form.addEventListener('submit', function(event) {
+            if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+        }, false);
+    });
+
+    // Initialize Switchery for all .js-switch elements
+    if (typeof Switchery !== 'undefined') {
+        const switchElements = document.querySelectorAll('.js-switch');
+        switchElements.forEach(function(element) {
+            new Switchery(element, { 
+                color: '#26B99A',
+                size: 'small' 
+            });
+        });
+    }
+
+    // Enhanced form interactions
+    const formInputs = document.querySelectorAll('.form-control, .form-select');
+    formInputs.forEach(function(input) {
+        input.addEventListener('focus', function() {
+            this.parentElement.classList.add('focused');
+        });
+        
+        input.addEventListener('blur', function() {
+            this.parentElement.classList.remove('focused');
+            if (this.value) {
+                this.classList.add('has-value');
+            } else {
+                this.classList.remove('has-value');
+            }
+        });
+    });
+
+    console.log('✅ Form.html modernization complete - Bootstrap 5 ready');
 });
 </script>
 </body>
