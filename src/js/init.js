@@ -544,9 +544,9 @@
 
     const isChartJs1 = document.body.classList.contains('page-chartjs1');
     const isChartJs2 = document.body.classList.contains('page-chartjs2');
-    const isMorrisJs = document.body.classList.contains('page-morisjs');
-
-    if (!isChartJs1 && !isChartJs2 && !isMorrisJs) {
+      const isChart3 = document.body.classList.contains('page-chart3');
+  
+  if (!isChartJs1 && !isChartJs2 && !isChart3) {
       return;
     }
 
@@ -638,8 +638,8 @@
             }]
           };
         }
-      } else if (isMorrisJs) {
-        // Data and options for morisjs.html (Chart.js implementation)
+          } else if (isChart3) {
+      // Data and options for chart3.html (Chart.js implementation)
         options.plugins.title.text = `${type.charAt(0).toUpperCase() + type.slice(1)} Chart`;
         
         // Make charts fill more space and be visually appealing
@@ -833,7 +833,7 @@
       }
 
       new Chart(ctx, { type: chartType, data, options });
-      console.log(`Chart "${type}" on ${isChartJs1 ? 'Page 1' : isChartJs2 ? 'Page 2' : 'Morris Page'} initialized.`);
+      console.log(`Chart "${type}" on ${isChartJs1 ? 'Page 1' : isChartJs2 ? 'Page 2' : 'Chart3 Page'} initialized.`);
     });
   }
 
@@ -2860,7 +2860,7 @@
     }
   }
 
-  // Index3 page specific initialization (formerly Index5)
+  // Index3 page specific initialization
   function initializeIndex3() {
     if (!document.body.classList.contains('page-index3')) {
       return;

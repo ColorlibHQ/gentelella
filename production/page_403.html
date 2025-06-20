@@ -6,21 +6,46 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="images/favicon.ico" type="image/ico" />
 
     <title>403 - Access Forbidden | Gentelella</title>    
-    <!-- Compiled CSS (includes Bootstrap, Font Awesome, and all vendor styles) -->
+    
+    <!-- Vite Entry Point - will bundle all styles -->
     <script type="module" src="/src/main-minimal.js"></script>
+    
+    <style>
+      .error-bg {
+        background: linear-gradient(135deg, #2A3F54 0%, #34495e 100%);
+        min-height: 100vh;
+      }
+      .brand-logo {
+        color: #1ABB9C;
+        border: 2px solid #1ABB9C;
+        padding: 8px 10px;
+        border-radius: 50%;
+        font-size: 1.2rem;
+        margin-right: 10px;
+      }
+    </style>
   </head>
 
-  <body class="bg-light">
-    <div class="container-fluid vh-100 d-flex align-items-center justify-content-center">
+  <body class="error-bg">
+    <div class="container-fluid d-flex align-items-center justify-content-center min-vh-100">
       <div class="row justify-content-center w-100">
         <div class="col-lg-6 col-md-8 col-sm-10">
-          <div class="card border-0 shadow-sm">
+          <div class="card shadow-lg border-0">
             <div class="card-body text-center p-5">
+              <!-- Brand Header -->
+              <div class="text-center mb-4">
+                <div class="d-flex align-items-center justify-content-center mb-3">
+                  <i class="fas fa-paw brand-logo"></i>
+                  <h3 class="mb-0 fw-bold text-dark">Gentelella</h3>
+                </div>
+              </div>
+
               <!-- Error Icon and Number -->
               <div class="mb-4">
-                <i class="fas fa-lock text-danger display-1 mb-3"></i>
+                <i class="fas fa-lock text-danger mb-3" style="font-size: 6rem;"></i>
                 <h1 class="display-1 fw-bold text-danger mb-0">403</h1>
               </div>
               
@@ -71,10 +96,21 @@
               </div>
             </div>
           </div>
+
+          <!-- Footer -->
+          <div class="text-center mt-4">
+            <p class="text-light opacity-75 mb-2">
+              &copy; 2025 All Rights Reserved. Gentelella is a Bootstrap 5 template.
+            </p>
+            <div>
+              <a href="#" class="text-light text-decoration-none opacity-75 me-3">Privacy</a>
+              <a href="#" class="text-light text-decoration-none opacity-75 me-3">Terms</a>
+              <a href="#" class="text-light text-decoration-none opacity-75">Support</a>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
-
-    <!-- Compiled JavaScript (includes jQuery, Bootstrap, and all vendor scripts) -->
   </body>
 </html>

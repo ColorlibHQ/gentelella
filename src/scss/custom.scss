@@ -3541,31 +3541,7 @@ ul.project_files li a i {
 /* *********  /verticle tabs  **************************** */
 
 
-/* *********  moris  **************************** */
-
-.morris-hover {
-  position: absolute;
-  z-index: 1000;
-}
-.morris-hover.morris-default-style {
-  padding: 6px;
-  color: #666;
-  background: rgba(243, 242, 243, 0.8);
-  border: solid 2px rgba(195, 194, 196, 0.8);
-  font-family: sans-serif;
-  font-size: 12px;
-  text-align: center;
-}
-.morris-hover.morris-default-style .morris-hover-row-label {
-  font-weight: bold;
-  margin: 0.25em 0;
-}
-.morris-hover.morris-default-style .morris-hover-point {
-  white-space: nowrap;
-  margin: 0.1em 0;
-}
-
-/* *********  /moris  **************************** */
+/* Morris.js CSS removed - using Chart.js instead */
 
 
 /* *********  ecommerce  **************************** */
@@ -5391,12 +5367,28 @@ ul.widget_tally {
 }
 
 /* --------------------------------------------------
-   Override legacy fixed footer on modernised pages
+   Fixed Footer Implementation for layout pages
    --------------------------------------------------*/
 .footer_fixed footer {
-  position: relative !important;
-  left: auto !important;
-  bottom: auto !important;
+  position: fixed !important;
+  left: 0 !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  margin-left: 0 !important;
+  z-index: 1000;
+  background: #fff;
+  border-top: 1px solid #e5e5e5;
+  box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+}
+
+/* Ensure main content has bottom padding to prevent footer overlap */
+.footer_fixed .right_col {
+  padding-bottom: 60px;
+}
+
+/* Adjust sidebar footer positioning when main footer is fixed */
+.footer_fixed .sidebar-footer {
+  bottom: 60px;
 }
 
 /* --------------------------------------------------
@@ -5426,4 +5418,139 @@ ul.widget_tally {
   border-color: #86b7fe !important;
   outline: 0 !important;
   box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25) !important;
+}
+
+/* Modern CSS-only checkbox and radio styling (replaces iCheck) */
+/* Flat Green Theme - matching the original iCheck flat green theme */
+
+/* Hide default checkbox/radio */
+input[type="checkbox"].flat,
+input[type="radio"].flat {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Custom checkbox styling */
+input[type="checkbox"].flat + label,
+input[type="radio"].flat + label {
+  position: relative;
+  display: inline-block;
+  padding-left: 28px;
+  cursor: pointer;
+  user-select: none;
+  line-height: 20px;
+}
+
+input[type="checkbox"].flat + label:before,
+input[type="radio"].flat + label:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #adc5cf;
+  background: #fff;
+  transition: all 0.2s ease;
+}
+
+/* Radio button specific styling */
+input[type="radio"].flat + label:before {
+  border-radius: 50%;
+}
+
+/* Checkbox checked state */
+input[type="checkbox"].flat:checked + label:before {
+  background: #1ABB9C;
+  border-color: #1ABB9C;
+}
+
+input[type="checkbox"].flat:checked + label:after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 2px;
+  width: 6px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* Radio checked state */
+input[type="radio"].flat:checked + label:before {
+  border-color: #1ABB9C;
+}
+
+input[type="radio"].flat:checked + label:after {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 6px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #1ABB9C;
+}
+
+/* Hover states */
+input[type="checkbox"].flat:not(:disabled) + label:hover:before,
+input[type="radio"].flat:not(:disabled) + label:hover:before {
+  border-color: #1ABB9C;
+}
+
+/* Disabled states */
+input[type="checkbox"].flat:disabled + label,
+input[type="radio"].flat:disabled + label {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Legacy support for elements without explicit labels */
+.flat {
+  position: relative;
+}
+
+.flat input[type="checkbox"],
+.flat input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.flat:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  border: 2px solid #adc5cf;
+  background: #fff;
+  transition: all 0.2s ease;
+}
+
+.flat input[type="radio"] + .flat:before {
+  border-radius: 50%;
+}
+
+.flat input[type="checkbox"]:checked + .flat:before,
+.flat.checked:before {
+  background: #1ABB9C;
+  border-color: #1ABB9C;
+}
+
+.flat input[type="checkbox"]:checked + .flat:after,
+.flat.checked:after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+  width: 6px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
 }

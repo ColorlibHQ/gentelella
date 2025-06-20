@@ -1,9 +1,30 @@
 // Minimal test - adding back essential functionality step by step
 
-// Import jQuery setup first
+// Import jQuery setup first - needed for all jQuery-dependent features
 import $ from './jquery-setup.js';
+
+// Ensure jQuery is available globally FIRST - this is critical for Vite builds
 window.jQuery = window.$ = $;
 globalThis.jQuery = globalThis.$ = $;
+
+// jQuery UI effect.js (provides easing functions)
+import 'jquery-ui/ui/effect.js';
+
+// Ensure basic easing functions are available as fallbacks
+if (!$.easing) {
+  $.easing = {};
+}
+
+// Add missing easing functions as fallbacks
+$.extend($.easing, {
+  easeOutElastic: function(x, t, b, c, d) {
+    return c * ((t = t / d - 1) * t * t + 1) + b;
+  },
+  easeInOutQuart: function(x, t, b, c, d) {
+    if ((t /= d / 2) < 1) return c / 2 * t * t * t * t + b;
+    return -c / 2 * ((t -= 2) * t * t * t - 2) + b;
+  }
+});
 
 // Import jQuery-dependent vendor libraries AFTER jQuery is global
 
@@ -565,4 +586,6 @@ $(document).ready(function() {
     initCircularProgress();
     initProgressBars();
   }, 200); // Small delay to ensure init.js has run first
+
+
 }); 

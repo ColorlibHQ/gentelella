@@ -60,7 +60,7 @@ export default defineConfig({
         
         chartjs: 'production/chartjs.html',
         chartjs2: 'production/chartjs2.html',
-        morisjs: 'production/morisjs.html',
+        chart3: 'production/chart3.html',
         echarts: 'production/echarts.html',
         other_charts: 'production/other_charts.html',
         

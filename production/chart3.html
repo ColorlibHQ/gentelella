@@ -6,23 +6,25 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="images/favicon.ico" type="image/ico" />
 
-    <title>Chart.js Examples | Gentelella Alela! by Colorlib</title>    <!-- Compiled CSS (includes Bootstrap, Font Awesome, and all vendor styles) -->
+    <title>Chart.js 3 - Advanced Charts | Gentelella</title>
+    <!-- Vite Entry Point - will bundle all styles -->
     <style>
       /* Make chart panels taller and charts fill more space */
-      .page-morisjs .x_panel .x_content {
+      .page-chart3 .x_panel .x_content {
         min-height: 450px;
         padding: 10px 20px 20px 20px; /* Reduced top padding */
       }
-      .page-morisjs .x_panel {
+      .page-chart3 .x_panel {
         margin-bottom: 30px;
       }
-      .page-morisjs .x_panel .x_title {
+      .page-chart3 .x_panel .x_title {
         margin-bottom: 10px; /* Reduced margin below title */
         padding-bottom: 5px; /* Reduced padding below title */
       }
       /* Make canvas charts fill more vertical space */
-      .page-morisjs canvas {
+      .page-chart3 canvas {
         max-height: 380px !important;
         min-height: 350px !important;
       }
@@ -30,7 +32,7 @@
     <script type="module" src="/src/main-minimal.js"></script>
   </head>
 
-  <body class="nav-md page-morisjs">
+  <body class="nav-md page-chart3">
     <div class="container body">
       <div class="main_container">
         <div class="col-md-3 left_col">
@@ -64,8 +66,8 @@
                     <ul class="nav child_menu">
                       <li><a href="index.html">Dashboard 1</a></li>
                       <li><a href="index2.html">Dashboard 2</a></li>
-                      <li><a href="index3.html">Dashboard 3</a></li><li><a href="index4.html">Dashboard 4</a></li>
                       <li><a href="index3.html">Dashboard 3</a></li>
+                      <li><a href="index4.html">Dashboard 4</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fas fa-edit"></i> Forms <span class="fas fa-chevron-down"></span></a>
@@ -84,7 +86,6 @@
                       <li><a href="media_gallery.html">Media Gallery</a></li>
                       <li><a href="typography.html">Typography</a></li>
                       <li><a href="icons.html">Icons</a></li>
-
                       <li><a href="widgets.html">Widgets</a></li>
                       <li><a href="invoice.html">Invoice</a></li>
                       <li><a href="inbox.html">Inbox</a></li>
@@ -101,7 +102,7 @@
                     <ul class="nav child_menu">
                       <li><a href="chartjs.html">Chart JS</a></li>
                       <li><a href="chartjs2.html">Chart JS2</a></li>
-                      <li><a href="morisjs.html">Moris JS</a></li>
+                      <li><a href="chart3.html">Chart JS3</a></li>
                       <li><a href="echarts.html">ECharts</a></li>
                       <li><a href="other_charts.html">Other Charts</a></li>
                     </ul>
@@ -191,14 +192,14 @@
                     <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                       <img src="images/img.jpg" alt="">John Doe
                     </a>
-                    <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
+                    <div class="dropdown-menu dropdown-usermenu float-end" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item"  href="javascript:;"> Profile</a>
                         <a class="dropdown-item"  href="javascript:;">
-                          <span class="badge bg-red pull-right">50%</span>
+                          <span class="badge bg-red float-end">50%</span>
                           <span>Settings</span>
                         </a>
                     <a class="dropdown-item"  href="javascript:;">Help</a>
-                      <a class="dropdown-item"  href="login.html"><i class="fas fa-sign-out-alt pull-right"></i> Log Out</a>
+                      <a class="dropdown-item"  href="login.html"><i class="fas fa-sign-out-alt float-end"></i> Log Out</a>
                     </div>
                   </li>
   
@@ -277,7 +278,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Chart.js Examples</h3>
+                <h3>Chart.js 3 - Advanced Examples</h3>
               </div>
 
               <div class="title_right">
@@ -298,7 +299,7 @@
               <div class="col-md-6 col-sm-6 ">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Bar Graph</h2>
+                    <h2>Bar Chart - Vertical</h2>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
@@ -310,7 +311,7 @@
               <div class="col-md-6 col-sm-6 ">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Bar Graph Grouped</h2>
+                    <h2>Bar Chart - Grouped</h2>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
@@ -324,7 +325,7 @@
               <div class="col-md-6 col-sm-6 ">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Line Graph</h2>
+                    <h2>Line Chart - Smooth</h2>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
@@ -336,7 +337,7 @@
               <div class="col-md-6 col-sm-6 ">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Area Graph</h2>
+                    <h2>Area Chart - Filled</h2>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
@@ -351,7 +352,7 @@
               <div class="col-md-6 col-sm-6 ">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Donut Graph</h2>
+                    <h2>Doughnut Chart</h2>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
@@ -362,7 +363,7 @@
               <div class="col-md-6 col-sm-6 ">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Line Graph</h2>
+                    <h2>Line Chart - Multi-series</h2>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
@@ -377,16 +378,13 @@
 
         <!-- footer content -->
         <footer>
-          <div class="pull-right">
+          <div class="float-end">
             Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
           </div>
           <div class="clearfix"></div>
         </footer>
         <!-- /footer content -->
       </div>
-    </div>    <!-- Compiled JavaScript (includes jQuery, Bootstrap, and all vendor scripts) -->
-    
-
+    </div>
   </body>
-</html>
 </html>

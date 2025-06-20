@@ -84,13 +84,12 @@ yarn add gentelella
 * bootstrap-wysiwyg
 * Flot - Javascript plotting library for jQuery.
 * gauge.js
-* iCheck
 * jquery.inputmask plugin
 * Ion.RangeSlider
 * jQuery
 * jVectorMap
 * moment.js
-* Morris.js - pretty time-series line graphs
+* Chart.js - 现代响应式图表
 * PNotify - Awesome JavaScript notifications
 * NProgress
 * Pace

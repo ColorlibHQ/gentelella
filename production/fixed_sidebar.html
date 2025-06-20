@@ -6,8 +6,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="images/favicon.ico" type="image/ico" />
 
-    <title>Gentelella Alela! | </title>    <!-- Compiled CSS (includes Bootstrap, Font Awesome, and all vendor styles) -->
+    <title>Fixed Sidebar - Gentelella</title>
+    <!-- Vite Entry Point - will bundle all styles -->
     <script type="module" src="/src/main-minimal.js"></script>
   </head>
 
@@ -45,8 +47,8 @@
                     <ul class="nav child_menu">
                       <li><a href="index.html">Dashboard 1</a></li>
                       <li><a href="index2.html">Dashboard 2</a></li>
-                      <li><a href="index3.html">Dashboard 3</a></li><li><a href="index4.html">Dashboard 4</a></li>
                       <li><a href="index3.html">Dashboard 3</a></li>
+                      <li><a href="index4.html">Dashboard 4</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fas fa-edit"></i> Forms <span class="fas fa-chevron-down"></span></a>
@@ -65,7 +67,6 @@
                       <li><a href="media_gallery.html">Media Gallery</a></li>
                       <li><a href="typography.html">Typography</a></li>
                       <li><a href="icons.html">Icons</a></li>
-
                       <li><a href="widgets.html">Widgets</a></li>
                       <li><a href="invoice.html">Invoice</a></li>
                       <li><a href="inbox.html">Inbox</a></li>
@@ -82,7 +83,7 @@
                     <ul class="nav child_menu">
                       <li><a href="chartjs.html">Chart JS</a></li>
                       <li><a href="chartjs2.html">Chart JS2</a></li>
-                      <li><a href="morisjs.html">Moris JS</a></li>
+                      <li><a href="chart3.html">Chart JS3</a></li>
                       <li><a href="echarts.html">ECharts</a></li>
                       <li><a href="other_charts.html">Other Charts</a></li>
                     </ul>
@@ -172,14 +173,14 @@
                     <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                       <img src="images/img.jpg" alt="">John Doe
                     </a>
-                    <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
+                    <div class="dropdown-menu dropdown-usermenu float-end" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item"  href="javascript:;"> Profile</a>
                         <a class="dropdown-item"  href="javascript:;">
-                          <span class="badge bg-red pull-right">50%</span>
+                          <span class="badge bg-red float-end">50%</span>
                           <span>Settings</span>
                         </a>
                     <a class="dropdown-item"  href="javascript:;">Help</a>
-                      <a class="dropdown-item"  href="login.html"><i class="fas fa-sign-out-alt pull-right"></i> Log Out</a>
+                      <a class="dropdown-item"  href="login.html"><i class="fas fa-sign-out-alt float-end"></i> Log Out</a>
                     </div>
                   </li>
   
@@ -260,6 +261,44 @@
               <div class="title_left">
                 <h3>Fixed Sidebar <small> Just add class <strong>menu_fixed</strong></small></h3>
               </div>
+
+              <div class="title_right">
+                <div class="col-md-5 col-sm-5 form-group float-end top_search">
+                  <div class="input-group search-bar-fix">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <button class="btn btn-outline-secondary" type="button">
+                      <i class="fas fa-search"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="row">
+              <div class="col-md-12 col-sm-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Fixed Sidebar Layout</h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <p>This layout demonstrates a fixed sidebar navigation. The sidebar remains in place while the main content scrolls. This is useful for applications where you want the navigation to always be accessible.</p>
+                    <p>To enable this layout, simply add the <code>menu_fixed</code> class to the left column container as shown in this example.</p>
+                    
+                    <div class="alert alert-info" role="alert">
+                      <h4 class="alert-heading">Fixed Sidebar Features:</h4>
+                      <ul class="mb-0">
+                        <li>Sidebar navigation remains fixed in position</li>
+                        <li>Main content area scrolls independently</li>
+                        <li>Responsive design maintains functionality on mobile</li>
+                        <li>Consistent with Bootstrap 5 standards</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -267,14 +306,13 @@
 
         <!-- footer content -->
         <footer>
-          <div class="pull-right">
+          <div class="float-end">
             Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
           </div>
           <div class="clearfix"></div>
         </footer>
         <!-- /footer content -->
       </div>
-    </div>    <!-- Compiled JavaScript (includes jQuery, Bootstrap, and all vendor scripts) -->
-    
+    </div>
   </body>
 </html>

@@ -6,8 +6,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="images/favicon.ico" type="image/ico" />
 
-    <title>Gentelella Alela! | </title>    <!-- Compiled CSS (includes Bootstrap, Font Awesome, and all vendor styles) -->
+    <title>Fixed Footer - Gentelella</title>
+    <!-- Vite Entry Point - will bundle all styles -->
     <script type="module" src="/src/main-minimal.js"></script>
   </head>
 
@@ -45,8 +47,8 @@
                     <ul class="nav child_menu">
                       <li><a href="index.html">Dashboard 1</a></li>
                       <li><a href="index2.html">Dashboard 2</a></li>
-                      <li><a href="index3.html">Dashboard 3</a></li><li><a href="index4.html">Dashboard 4</a></li>
                       <li><a href="index3.html">Dashboard 3</a></li>
+                      <li><a href="index4.html">Dashboard 4</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fas fa-edit"></i> Forms <span class="fas fa-chevron-down"></span></a>
@@ -65,7 +67,6 @@
                       <li><a href="media_gallery.html">Media Gallery</a></li>
                       <li><a href="typography.html">Typography</a></li>
                       <li><a href="icons.html">Icons</a></li>
-
                       <li><a href="widgets.html">Widgets</a></li>
                       <li><a href="invoice.html">Invoice</a></li>
                       <li><a href="inbox.html">Inbox</a></li>
@@ -82,7 +83,7 @@
                     <ul class="nav child_menu">
                       <li><a href="chartjs.html">Chart JS</a></li>
                       <li><a href="chartjs2.html">Chart JS2</a></li>
-                      <li><a href="morisjs.html">Moris JS</a></li>
+                      <li><a href="chart3.html">Chart JS3</a></li>
                       <li><a href="echarts.html">ECharts</a></li>
                       <li><a href="other_charts.html">Other Charts</a></li>
                     </ul>
@@ -172,14 +173,14 @@
                     <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                       <img src="images/img.jpg" alt="">John Doe
                     </a>
-                    <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
+                    <div class="dropdown-menu dropdown-usermenu float-end" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item"  href="javascript:;"> Profile</a>
                         <a class="dropdown-item"  href="javascript:;">
-                          <span class="badge bg-red pull-right">50%</span>
+                          <span class="badge bg-red float-end">50%</span>
                           <span>Settings</span>
                         </a>
                     <a class="dropdown-item"  href="javascript:;">Help</a>
-                      <a class="dropdown-item"  href="login.html"><i class="fas fa-sign-out-alt pull-right"></i> Log Out</a>
+                      <a class="dropdown-item"  href="login.html"><i class="fas fa-sign-out-alt float-end"></i> Log Out</a>
                     </div>
                   </li>
   
@@ -260,6 +261,111 @@
               <div class="title_left">
                 <h3>Fixed Footer <small> Just add class <strong>footer_fixed</strong></small></h3>
               </div>
+
+              <div class="title_right">
+                <div class="col-md-5 col-sm-5 form-group float-end top_search">
+                  <div class="input-group search-bar-fix">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <button class="btn btn-outline-secondary" type="button">
+                      <i class="fas fa-search"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="row">
+              <div class="col-md-12 col-sm-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Fixed Footer Layout</h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <p>This layout demonstrates a fixed footer that remains at the bottom of the viewport. The footer stays visible even when the content doesn't fill the entire screen height.</p>
+                    <p>To enable this layout, add the <code>footer_fixed</code> class to the body element as shown in this example.</p>
+                    
+                    <div class="alert alert-info" role="alert">
+                      <h4 class="alert-heading">Fixed Footer Features:</h4>
+                      <ul class="mb-0">
+                        <li>Footer remains fixed at the bottom of the viewport</li>
+                        <li>Content scrolls normally above the footer</li>
+                        <li>Ensures footer is always visible regardless of content length</li>
+                        <li>Maintains responsive behavior on all screen sizes</li>
+                      </ul>
+                    </div>
+
+                    <!-- Demo Content -->
+                    <div class="row mt-4">
+                      <div class="col-md-6">
+                        <div class="card">
+                          <div class="card-header">
+                            <h5 class="card-title mb-0">Layout Benefits</h5>
+                          </div>
+                          <div class="card-body">
+                            <ul class="list-group list-group-flush">
+                              <li class="list-group-item border-0 px-0">
+                                <i class="fas fa-check text-success me-2"></i>
+                                Consistent footer positioning
+                              </li>
+                              <li class="list-group-item border-0 px-0">
+                                <i class="fas fa-check text-success me-2"></i>
+                                Professional appearance
+                              </li>
+                              <li class="list-group-item border-0 px-0">
+                                <i class="fas fa-check text-success me-2"></i>
+                                Easy implementation
+                              </li>
+                              <li class="list-group-item border-0 px-0">
+                                <i class="fas fa-check text-success me-2"></i>
+                                Bootstrap 5 compatible
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="card">
+                          <div class="card-header">
+                            <h5 class="card-title mb-0">Use Cases</h5>
+                          </div>
+                          <div class="card-body">
+                            <ul class="list-group list-group-flush">
+                              <li class="list-group-item border-0 px-0">
+                                <i class="fas fa-laptop text-primary me-2"></i>
+                                Dashboard applications
+                              </li>
+                              <li class="list-group-item border-0 px-0">
+                                <i class="fas fa-mobile-alt text-primary me-2"></i>
+                                Mobile-first designs
+                              </li>
+                              <li class="list-group-item border-0 px-0">
+                                <i class="fas fa-chart-bar text-primary me-2"></i>
+                                Analytics platforms
+                              </li>
+                              <li class="list-group-item border-0 px-0">
+                                <i class="fas fa-cog text-primary me-2"></i>
+                                Admin interfaces
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Code Example -->
+                    <div class="mt-4">
+                      <h4>Implementation</h4>
+                      <p>Simply add the CSS class to your body element:</p>
+                      <div class="bg-light p-3 rounded">
+                        <code>&lt;body class="nav-md footer_fixed"&gt;</code>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -267,14 +373,13 @@
 
         <!-- footer content -->
         <footer>
-          <div class="pull-right">
+          <div class="float-end">
             Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
           </div>
           <div class="clearfix"></div>
         </footer>
         <!-- /footer content -->
       </div>
-    </div>    <!-- Compiled JavaScript (includes jQuery, Bootstrap, and all vendor scripts) -->
-    
+    </div>
   </body>
 </html>

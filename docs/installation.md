@@ -243,7 +243,7 @@ Navigate through different pages to ensure all modules load correctly:
 - Dashboard pages (index.html, index2.html, index3.html)
 - Form pages (form.html, form_advanced.html, form_validation.html)
 - Table pages (tables.html, tables_dynamic.html)
-- Chart pages (chartjs.html, chartjs2.html, morisjs.html)
+- Chart pages (chartjs.html, chartjs2.html, chart3.html)
 
 ### Performance Check
 

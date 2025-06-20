@@ -94,6 +94,25 @@ globalThis.DateTime = DateTime;
 // jQuery Sparkline (Small charts)
 import 'jquery-sparkline';
 
+// jQuery UI effect.js (provides easing functions)
+import 'jquery-ui/ui/effect.js';
+
+// Ensure basic easing functions are available as fallbacks
+if (!$.easing) {
+  $.easing = {};
+}
+
+// Add missing easing functions as fallbacks
+$.extend($.easing, {
+  easeOutElastic: function(x, t, b, c, d) {
+    return c * ((t = t / d - 1) * t * t + 1) + b;
+  },
+  easeInOutQuart: function(x, t, b, c, d) {
+    if ((t /= d / 2) < 1) return c / 2 * t * t * t * t + b;
+    return -c / 2 * ((t -= 2) * t * t * t - 2) + b;
+  }
+});
+
 // Select2 (Enhanced select boxes)
 import 'select2';
 

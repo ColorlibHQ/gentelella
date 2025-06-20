@@ -18,8 +18,7 @@ window.Skycons = Skycons;
 // jQuery Sparkline for mini charts
 import 'jquery-sparkline';
 
-// Morris.js dependencies (if needed)
-// Note: Morris.js is not included in package.json, might be loaded externally
+// Morris.js removed - using Chart.js instead
 
 export default {
   Chart,
