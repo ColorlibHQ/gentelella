@@ -49,7 +49,6 @@ try {
   Chart.register(...registerables);
   window.Chart = Chart;
   globalThis.Chart = Chart;
-  console.log('✅ Chart.js loaded and registered successfully');
 } catch (error) {
   console.error('❌ Chart.js registration error:', error);
   window.Chart = Chart; // Still assign even if registration fails
@@ -171,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         }
       });
-      console.log('✅ Advanced DataTable initialized successfully');
+      
     } catch (error) {
       console.error('❌ DataTable initialization failed:', error);
     }
@@ -182,7 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {
   // Check if we're on the tables_dynamic page
   if (window.location.pathname.includes('tables_dynamic.html')) {
-    console.log('🔧 Initializing DataTables for tables_dynamic.html...');
+    
     
     // Wait a short moment to ensure all assets are loaded
     setTimeout(() => {
@@ -201,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
           info: "Showing _START_ to _END_ of _TOTAL_ employees"
         }
       });
-      console.log('✅ Basic DataTable (#datatable) initialized');
+      
     }
 
     // DataTable with checkboxes
@@ -219,7 +218,7 @@ document.addEventListener('DOMContentLoaded', () => {
           info: "Showing _START_ to _END_ of _TOTAL_ employees"
         }
       });
-      console.log('✅ Checkbox DataTable (#datatable-checkbox) initialized');
+      
     }
 
     // DataTable with buttons
@@ -261,7 +260,7 @@ document.addEventListener('DOMContentLoaded', () => {
           info: "Showing _START_ to _END_ of _TOTAL_ employees"
         }
       });
-      console.log('✅ Buttons DataTable (#datatable-buttons) initialized');
+      
     }
 
     // DataTable with fixed header
@@ -276,7 +275,7 @@ document.addEventListener('DOMContentLoaded', () => {
           info: "Showing _START_ to _END_ of _TOTAL_ employees"
         }
       });
-      console.log('✅ Fixed Header DataTable (#datatable-fixed-header) initialized');
+      
     }
 
     // DataTable with KeyTable extension
@@ -291,7 +290,7 @@ document.addEventListener('DOMContentLoaded', () => {
           info: "Showing _START_ to _END_ of _TOTAL_ employees"
         }
       });
-      console.log('✅ KeyTable DataTable (#datatable-keytable) initialized');
+      
     }
 
     // Responsive DataTable
@@ -305,7 +304,7 @@ document.addEventListener('DOMContentLoaded', () => {
           info: "Showing _START_ to _END_ of _TOTAL_ employees"
         }
       });
-      console.log('✅ Responsive DataTable (#datatable-responsive) initialized');
+      
     }
 
     // Add custom styles for DataTables buttons
@@ -331,13 +330,13 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
     document.head.appendChild(style);
 
-    console.log('✅ All DataTables initialized for tables_dynamic.html');
+    
     }, 100); // Close the setTimeout
   }
 
   // Initialize DataTables for tables.html page
   if (window.location.pathname.includes('tables.html')) {
-    console.log('🔧 Initializing DataTables for tables.html...');
+    
     
     // Advanced DataTable for Employee Management
     if (document.getElementById('advancedDataTable') && !$.fn.DataTable.isDataTable('#advancedDataTable')) {
@@ -365,13 +364,13 @@ document.addEventListener('DOMContentLoaded', () => {
             }
           ]
         });
-        console.log('✅ Advanced DataTable (#advancedDataTable) initialized for tables.html');
+        
       } catch (error) {
         console.error('❌ Failed to initialize Advanced DataTable:', error);
       }
     }
 
-    console.log('✅ DataTables initialization completed for tables.html');
+    
   }
 });
 
@@ -408,13 +407,10 @@ import './js/helpers/smartresize.js';
 import './js/sidebar.js';
 
 // IMPORTANT: Load init.js synchronously but ensure all globals are ready first
-console.log('🔧 Verifying dependencies before loading init.js...');
-console.log('Chart.js available:', typeof window.Chart !== 'undefined');
-console.log('jQuery available:', typeof window.$ !== 'undefined');
-console.log('ECharts available:', typeof window.echarts !== 'undefined');
-
 // Import init.js synchronously - all dependencies should be loaded by now
 import './js/init.js';
+
+// Import page-specific chart initializations
 
 // Widget-specific initialization
 $(document).ready(function() {
@@ -452,7 +448,7 @@ $(document).ready(function() {
   function initWidgetCharts() {
     // Only run if Chart.js is available
     if (typeof Chart === 'undefined') {
-      console.log('Chart.js not available for widget charts');
+      
       return;
     }
     
@@ -530,6 +526,44 @@ $(document).ready(function() {
         });
       }
     });
+    
+    // Initialize Agent Performance chart for index3.html
+    const agentPerformanceChart = document.getElementById('agentPerformanceChart');
+    if (agentPerformanceChart) {
+      const ctx = agentPerformanceChart.getContext('2d');
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['Agent A', 'Agent B', 'Agent C', 'Agent D'],
+          datasets: [{
+            label: 'Orders',
+            data: [8, 6, 5, 5],
+            backgroundColor: [
+              'rgba(52, 152, 219, 0.8)',
+              'rgba(26, 188, 156, 0.8)',
+              'rgba(54, 162, 235, 0.8)',
+              'rgba(243, 156, 18, 0.8)'
+            ],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { 
+            legend: { 
+              display: false 
+            } 
+          },
+          scales: { 
+            x: { 
+              beginAtZero: true 
+            } 
+          }
+        }
+      });
+    }
   }
   
   // Initialize circular progress (jQuery Knob)
@@ -580,7 +614,7 @@ $(document).ready(function() {
   
   // Run all initializations with a delay to ensure dependencies are loaded
   setTimeout(() => {
-    console.log('🔧 Running widget initializations...');
+    
     initSparklines();
     initWidgetCharts();
     initCircularProgress();
@@ -588,4 +622,35 @@ $(document).ready(function() {
   }, 200); // Small delay to ensure init.js has run first
 
 
+});
+
+// Sales Analytics Widget Initialization
+function initSalesAnalytics() {
+  const progressBars = document.querySelectorAll('.sales-progress .progress-bar');
+  
+  if (progressBars.length > 0) {
+    // Reset all progress bars to 0 width initially
+    progressBars.forEach(bar => {
+      const currentWidth = bar.style.width;
+      bar.setAttribute('data-target-width', currentWidth);
+      bar.style.width = '0%';
+    });
+    
+    // Animate them to their target width with a staggered delay
+    setTimeout(() => {
+      progressBars.forEach((bar, index) => {
+        setTimeout(() => {
+          const targetWidth = bar.getAttribute('data-target-width');
+          if (targetWidth) {
+            bar.style.width = targetWidth;
+          }
+        }, index * 150);
+      });
+    }, 500);
+  }
+}
+
+// Initialize sales analytics on DOM ready
+document.addEventListener('DOMContentLoaded', function() {
+  setTimeout(initSalesAnalytics, 200);
 }); 

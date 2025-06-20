@@ -1,5 +1,5 @@
 // Form Upload.html specific JavaScript with Dropzone integration
-console.log('📁 Starting main-upload.js...');
+
 
 // Import jQuery setup first
 import $ from './jquery-setup.js';
@@ -27,14 +27,14 @@ import 'dropzone/dist/dropzone.css';
 window.Dropzone = Dropzone;
 globalThis.Dropzone = Dropzone;
 
-console.log('✅ Dropzone loaded successfully');
+
 
 // Configure Dropzone defaults
 Dropzone.autoDiscover = false;
 
 // Initialize Dropzone when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('📁 Initializing Dropzone...');
+    
     
     const dropzoneElement = document.querySelector('.dropzone');
     
@@ -96,19 +96,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 init: function() {
                     this.on("addedfile", function(file) {
-                        console.log('📎 File added:', file.name);
+                        
                     });
                     
                     this.on("removedfile", function(file) {
-                        console.log('🗑️ File removed:', file.name);
+                        
                     });
                     
                     this.on("success", function(file, response) {
-                        console.log('✅ File uploaded successfully:', file.name);
+                        
                     });
                     
                     this.on("error", function(file, errorMessage) {
-                        console.log('❌ Upload error:', errorMessage);
+                        
                     });
                     
                     // Since this is a demo, simulate successful uploads
@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', function() {
             window.myDropzone = myDropzone;
             globalThis.myDropzone = myDropzone;
             
-            console.log('✅ Dropzone initialized successfully');
+            
             
         } catch (error) {
             console.error('❌ Error initializing Dropzone:', error);
@@ -139,4 +139,4 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-console.log('✅ main-upload.js loaded completely'); 
+ 

@@ -665,31 +665,72 @@
                       </div>
                     </div>
 
-                    <!-- Agent Performance -->
+                    <!-- Sales Analytics -->
                     <div class="col-md-4">
                       <div class="card border-0">
                         <div class="card-header bg-transparent">
-                          <h5 class="mb-0">Agent Performance</h5>
-                          <small class="text-muted">Today's metrics</small>
+                          <h5 class="mb-0">Sales Analytics</h5>
+                          <small class="text-muted">This month's performance</small>
                         </div>
                         <div class="card-body">
                           <div class="row text-center mb-3">
                             <div class="col-6">
                               <div class="border-end">
-                                <h4 class="text-primary mb-0">24</h4>
-                                <small class="text-muted">Total Orders</small>
+                                <h4 class="text-info mb-0">156</h4>
+                                <small class="text-muted">Total Sales</small>
                               </div>
                             </div>
                             <div class="col-6">
-                              <h4 class="text-success mb-0">$28K</h4>
-                              <small class="text-muted">Revenue</small>
+                              <h4 class="text-success mb-0">92%</h4>
+                              <small class="text-muted">Growth Rate</small>
                             </div>
                           </div>
                           
-                          <canvas id="agentPerformanceChart" style="width:100%; height:220px;"></canvas>
+                          <!-- Sales Progress Bars -->
+                          <div class="sales-progress">
+                            <div class="mb-3">
+                              <div class="d-flex justify-content-between mb-1">
+                                <span class="small fw-bold">Online Sales</span>
+                                <span class="small text-muted">75%</span>
+                              </div>
+                              <div class="progress" style="height: 8px;">
+                                <div class="progress-bar bg-primary" style="width: 75%"></div>
+                              </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                              <div class="d-flex justify-content-between mb-1">
+                                <span class="small fw-bold">Retail Sales</span>
+                                <span class="small text-muted">60%</span>
+                              </div>
+                              <div class="progress" style="height: 8px;">
+                                <div class="progress-bar bg-success" style="width: 60%"></div>
+                              </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                              <div class="d-flex justify-content-between mb-1">
+                                <span class="small fw-bold">Mobile Sales</span>
+                                <span class="small text-muted">85%</span>
+                              </div>
+                              <div class="progress" style="height: 8px;">
+                                <div class="progress-bar bg-warning" style="width: 85%"></div>
+                              </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                              <div class="d-flex justify-content-between mb-1">
+                                <span class="small fw-bold">B2B Sales</span>
+                                <span class="small text-muted">45%</span>
+                              </div>
+                              <div class="progress" style="height: 8px;">
+                                <div class="progress-bar bg-info" style="width: 45%"></div>
+                              </div>
+                            </div>
+                          </div>
 
                           <div class="text-center mt-3">
-                            <button class="btn btn-outline-primary btn-sm">View Full Report</button>
+                            <button class="btn btn-outline-success btn-sm">View Details</button>
                           </div>
                         </div>
                       </div>
@@ -713,65 +754,5 @@
       </div>
     </div>
 
-    <script type="module">
-      import Chart from 'chart.js/auto';
-
-      document.addEventListener('DOMContentLoaded', function() {
-        // Tempus Dominus Date Picker
-        if (typeof TempusDominus !== 'undefined') {
-          const startPicker = new TempusDominus(document.getElementById('startDatePicker'), {
-            display: { components: { clock: false, seconds: false }, },
-            localization: { format: 'MM/dd/yyyy', hourCycle: 'h12' }
-          });
-          const endPicker = new TempusDominus(document.getElementById('endDatePicker'), {
-            display: { components: { clock: false, seconds: false }, },
-            localization: { format: 'MM/dd/yyyy', hourCycle: 'h12' }
-          });
-          try {
-            const today = new Date();
-            const thirtyDaysAgo = new Date(new Date().setDate(today.getDate() - 30));
-            startPicker.dates.setValue(thirtyDaysAgo);
-            endPicker.dates.setValue(today);
-          } catch (error) {
-            console.error('Error setting default dates:', error);
-          }
-          document.getElementById('startDatePicker').addEventListener('change.td', (e) => {
-            endPicker.updateOptions({ restrictions: { minDate: e.detail.date } });
-          });
-          document.getElementById('endDatePicker').addEventListener('change.td', (e) => {
-            startPicker.updateOptions({ restrictions: { maxDate: e.detail.date } });
-          });
-        }
-
-        // Agent Performance Chart
-        const ctx = document.getElementById('agentPerformanceChart');
-        if (ctx) {
-          new Chart(ctx, {
-            type: 'bar',
-            data: {
-              labels: ['Agent A', 'Agent B', 'Agent C', 'Agent D'],
-              datasets: [{
-                label: 'Orders',
-                data: [8, 6, 5, 5],
-                backgroundColor: [
-                  'rgba(52, 152, 219, 0.8)',
-                  'rgba(26, 188, 156, 0.8)',
-                  'rgba(54, 162, 235, 0.8)',
-                  'rgba(243, 156, 18, 0.8)'
-                ],
-                borderWidth: 1
-              }]
-            },
-            options: {
-              indexAxis: 'y',
-              responsive: true,
-              maintainAspectRatio: false,
-              plugins: { legend: { display: false } },
-              scales: { x: { beginAtZero: true } }
-            }
-          });
-        }
-      });
-    </script>
   </body>
 </html>

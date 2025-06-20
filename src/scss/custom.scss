@@ -5791,3 +5791,50 @@ input[type="radio"].flat:disabled + label {
 
 /* ===== MODERN FORM ENHANCEMENTS ===== */
 
+// Sales Analytics Widget Styles
+.sales-progress {
+  .progress {
+    border-radius: 4px;
+    overflow: hidden;
+    
+    .progress-bar {
+      transition: width 0.6s ease;
+      border-radius: 4px;
+      animation: slideIn 0.8s ease-out;
+    }
+  }
+  
+  .small.fw-bold {
+    font-size: 0.875rem;
+    color: #495057;
+  }
+  
+  .small.text-muted {
+    font-size: 0.75rem;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    width: 0;
+  }
+  to {
+    width: var(--final-width);
+  }
+}
+
+// Enhanced card styling for analytics
+.card {
+  transition: box-shadow 0.15s ease-in-out;
+  
+  &:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+  }
+}
+
+// Progress bar color variations
+.bg-primary { --final-width: 75%; }
+.bg-success { --final-width: 60%; }
+.bg-warning { --final-width: 85%; }
+.bg-info { --final-width: 45%; }
+

@@ -1,13 +1,7 @@
 // Very basic main.js for form_advanced.html - just core functionality
-console.log('🚀 Starting main-form-basic.js...');
 
 // Import jQuery setup first
 import $ from './jquery-setup.js';
-console.log('✅ jQuery imported:', typeof $);
-window.jQuery = window.$ = $;
-// Also ensure global access
-globalThis.jQuery = globalThis.$ = $;
-console.log('✅ jQuery available globally:', typeof window.$, typeof window.jQuery);
 
 // Bootstrap 5 - No jQuery dependency needed
 import * as bootstrap from 'bootstrap';
@@ -24,37 +18,24 @@ import './js/init.js';
 
 // TempusDominus for date/time pickers (synchronous import)
 import { TempusDominus } from '@eonasdan/tempus-dominus';
-console.log('✅ TempusDominus imported:', typeof TempusDominus);
-window.TempusDominus = TempusDominus;
-globalThis.TempusDominus = TempusDominus;
 
 // TempusDominus CSS
 import '@eonasdan/tempus-dominus/dist/css/tempus-dominus.min.css';
 
 // Switchery for iOS-style toggles (synchronous import)
 import * as SwitcheryModule from 'switchery';
-console.log('✅ Switchery imported:', typeof SwitcheryModule);
-window.Switchery = SwitcheryModule.default || SwitcheryModule;
-globalThis.Switchery = SwitcheryModule.default || SwitcheryModule;
 
 // Input Mask for input formatting (synchronous import)
 import * as InputmaskModule from 'inputmask';
-console.log('✅ Inputmask imported:', typeof InputmaskModule);
-window.Inputmask = InputmaskModule.default || InputmaskModule;
-globalThis.Inputmask = InputmaskModule.default || InputmaskModule;
 
 // Ion Range Slider (synchronous import)
 import 'ion-rangeslider';
-console.log('✅ Ion Range Slider imported');
 
 // Ion Range Slider CSS
 import 'ion-rangeslider/css/ion.rangeSlider.min.css';
 
 // Modern Color Picker (Pickr) (synchronous import)
 import * as PickrModule from '@simonwep/pickr';
-console.log('✅ Pickr imported:', typeof PickrModule);
-window.Pickr = PickrModule.default || PickrModule;
-globalThis.Pickr = PickrModule.default || PickrModule;
 
 // Pickr CSS - Multiple themes
 import '@simonwep/pickr/dist/themes/classic.min.css';
@@ -63,15 +44,9 @@ import '@simonwep/pickr/dist/themes/nano.min.css';
 
 // jQuery Knob for circular inputs (synchronous import)
 import 'jquery-knob';
-console.log('✅ jQuery Knob imported');
 
 // Cropper.js 2.0 for image cropping (using cropperjs package)
 import * as CropperModule from 'cropperjs';
-console.log('✅ Cropper imported:', typeof CropperModule);
-window.Cropper = CropperModule.default || CropperModule;
-globalThis.Cropper = CropperModule.default || CropperModule;
-
-// Note: cropperjs v2.0+ doesn't include CSS, using inline styles
 
 // Create a library availability checker for inline scripts
 window.waitForLibraries = function(libraries, callback, timeout = 5000) {
@@ -83,25 +58,16 @@ window.waitForLibraries = function(libraries, callback, timeout = 5000) {
     });
     
     if (allAvailable) {
-      console.log('✅ All libraries available, calling callback');
       callback();
     } else if (Date.now() - startTime < timeout) {
-      console.log('⏳ Waiting for libraries...', libraries.filter(lib => 
-        typeof window[lib] === 'undefined' && typeof globalThis[lib] === 'undefined'
-      ));
       setTimeout(check, 50);
     } else {
-      console.warn('⚠️ Timeout waiting for libraries:', libraries.filter(lib => 
-        typeof window[lib] === 'undefined' && typeof globalThis[lib] === 'undefined'
-      ));
       callback(); // Call anyway to prevent hanging
     }
   }
   
   check();
 };
-
-console.log('✅ main-form-basic.js loaded completely');
 
 // Dispatch a custom event when all modules are loaded
 window.dispatchEvent(new CustomEvent('form-libraries-loaded', { 
@@ -120,17 +86,8 @@ window.dispatchEvent(new CustomEvent('form-libraries-loaded', {
 
 // Also immediately trigger initialization when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('🎯 DOMContentLoaded fired, libraries status:');
-  console.log('jQuery:', typeof window.$);
-  console.log('TempusDominus:', typeof window.TempusDominus);
-  console.log('Cropper:', typeof window.Cropper);
-  console.log('Pickr:', typeof window.Pickr);
-  console.log('Inputmask:', typeof window.Inputmask);
-  console.log('Switchery:', typeof window.Switchery);
-  
   // Try to initialize directly
   if (typeof window.initializeFormComponents === 'function') {
-    console.log('🚀 Calling initializeFormComponents directly...');
     window.initializeFormComponents();
   }
 
@@ -139,7 +96,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // -----------------------------
   const sourceImg = document.getElementById('cropper-source');
   if (sourceImg && window.Cropper) {
-    console.log('🖼️ Initializing Cropper.js v2 instance');
     const cropperInstance = new window.Cropper(sourceImg, {
       container: sourceImg.parentElement
     });

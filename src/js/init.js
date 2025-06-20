@@ -107,7 +107,7 @@
             .openPopup();
         });
         
-        console.log('✅ Visitors location map initialized successfully');
+        
       } catch (error) {
         console.error('❌ Map initialization failed:', error);
       }
@@ -117,11 +117,11 @@
     
     const Chart = window.Chart || globalThis.Chart;
     if (typeof Chart !== 'undefined') {
-      console.log("Chart.js is loaded");
+      
       
       // Main chart in dashboard (chart_plot_01 is a div, so we create canvas inside)
       if ($('#chart_plot_01').length) {
-        console.log("#chart_plot_01 found, creating main chart");
+        
         var chartDiv = document.getElementById("chart_plot_01");
         
         // Clear any existing content and create canvas
@@ -174,12 +174,12 @@
           }
         });
       } else {
-        console.log("#chart_plot_01 not found");
+        
       }
 
       // Doughnut Chart (using class selector since DOM shows class="canvasDoughnut")
       if ($('.canvasDoughnut').length) {
-        console.log(".canvasDoughnut found, re-rendering inside a clean container.");
+        
 
         var originalCanvas = document.querySelector('.canvasDoughnut');
         var xContent = originalCanvas.closest('.x_content');
@@ -238,12 +238,12 @@
           console.error("Doughnut chart's .x_content container not found.");
         }
       } else {
-        console.log(".canvasDoughnut not found");
+        
       }
 
       // Chart.js pages - Line Chart
       if ($('#lineChart').length) {
-        console.log("#lineChart found, creating line chart");
+        
         var canvas = document.getElementById("lineChart");
         canvas.style.height = '400px'; // Set explicit height
         var ctx = canvas.getContext('2d');
@@ -284,7 +284,7 @@
 
       // Chart.js pages - Bar Chart
       if ($('#mybarChart').length) {
-        console.log("#mybarChart found, creating bar chart");
+        
         var canvas = document.getElementById("mybarChart");
         canvas.style.height = '400px'; // Set explicit height
         var ctx = canvas.getContext('2d');
@@ -330,7 +330,7 @@
 
       // Chart.js pages - Radar Chart
       if ($('#canvasRadar').length) {
-        console.log("#canvasRadar found, creating radar chart");
+        
         var canvas = document.getElementById("canvasRadar");
         canvas.style.height = '400px'; // Set explicit height
         var ctx = canvas.getContext('2d');
@@ -367,7 +367,7 @@
 
       // Chart.js pages - Doughnut Chart (ID version)
       if ($('#canvasDoughnut').length) {
-        console.log("#canvasDoughnut found, creating doughnut chart");
+        
         var canvas = document.getElementById("canvasDoughnut");
         canvas.style.height = '400px'; // Set explicit height
         var ctx = canvas.getContext('2d');
@@ -402,7 +402,7 @@
 
       // Chart.js pages - Pie Chart
       if ($('#pieChart').length) {
-        console.log("#pieChart found, creating pie chart");
+        
         var canvas = document.getElementById("pieChart");
         canvas.style.height = '400px'; // Set explicit height
         var ctx = canvas.getContext('2d');
@@ -437,7 +437,7 @@
 
       // Chart.js pages - Polar Area Chart
       if ($('#polarArea').length) {
-        console.log("#polarArea found, creating polar area chart");
+        
         var canvas = document.getElementById("polarArea");
         canvas.style.height = '400px'; // Set explicit height
         var ctx = canvas.getContext('2d');
@@ -471,7 +471,7 @@
       }
 
     } else {
-      console.log("Chart.js is not loaded");
+      
     }
   });
 
@@ -550,7 +550,7 @@
       return;
     }
 
-    console.log('Initializing charts...');
+    
     const chartCanvases = document.querySelectorAll('[data-chart]');
 
     chartCanvases.forEach((canvas, index) => {
@@ -833,7 +833,7 @@
       }
 
       new Chart(ctx, { type: chartType, data, options });
-      console.log(`Chart "${type}" on ${isChartJs1 ? 'Page 1' : isChartJs2 ? 'Page 2' : 'Chart3 Page'} initialized.`);
+      
     });
   }
 
@@ -894,7 +894,7 @@
           }
         }
       });
-      console.log('✅ Network Chart 1 initialized');
+      
     }
 
     // Network Activity Chart 2 (index2.html)  
@@ -944,7 +944,7 @@
           }
         }
       });
-      console.log('✅ Network Chart 2 initialized');
+      
     }
 
     // Network Activity Chart 3 (index3.html)
@@ -994,7 +994,7 @@
           }
         }
       });
-      console.log('✅ Network Chart 3 initialized');
+      
     }
   }
 
@@ -1010,7 +1010,7 @@
       return;
     }
 
-    console.log('Initializing ECharts...');
+    
 
     try {
       // 1. Bar Chart (mainb)
@@ -1060,7 +1060,7 @@
           ]
         };
         mainbChart.setOption(mainbOption);
-        console.log('✅ ECharts Bar Chart initialized');
+        
       }
 
       // 2. Mini Pie Chart (echart_mini_pie)
@@ -1097,7 +1097,7 @@
           ]
         };
         miniPieChart.setOption(miniPieOption);
-        console.log('✅ ECharts Mini Pie Chart initialized');
+        
       }
 
       // 3. Regular Pie Chart (echart_pie)
@@ -1134,7 +1134,7 @@
           ]
         };
         pieChart.setOption(pieOption);
-        console.log('✅ ECharts Pie Chart initialized');
+        
       }
 
       // 4. Pie Area Chart (echart_pie2)
@@ -1180,7 +1180,7 @@
           ]
         };
         pie2Chart.setOption(pie2Option);
-        console.log('✅ ECharts Pie Area Chart initialized');
+        
       }
 
       // 5. Donut Chart (echart_donut)
@@ -1217,7 +1217,7 @@
           ]
         };
         donutChart.setOption(donutOption);
-        console.log('✅ ECharts Donut Chart initialized');
+        
       }
 
       // 6. Scatter Chart (echart_scatter)
@@ -1265,7 +1265,7 @@
           ]
         };
         scatterChart.setOption(scatterOption);
-        console.log('✅ ECharts Scatter Chart initialized');
+        
       }
 
       // 7. Line Chart (echart_line)
@@ -1316,7 +1316,7 @@
           ]
         };
         lineChart.setOption(lineOption);
-        console.log('✅ ECharts Line Chart initialized');
+        
       }
 
       // 8. Horizontal Bar Chart (echart_bar_horizontal)
@@ -1355,7 +1355,7 @@
           ]
         };
         hBarChart.setOption(hBarOption);
-        console.log('✅ ECharts Horizontal Bar Chart initialized');
+        
       }
 
              // 9. World Map (echart_world_map) - Interactive scatter plot with geographic visualization
@@ -1509,7 +1509,7 @@
            .then(geoData => {
              echarts.registerMap('world', geoData);
              worldMapChart.setOption(worldMapOption);
-             console.log('✅ ECharts World Map initialized with geographic visualization');
+             
            })
            .catch(error => {
              console.warn('⚠️ Failed to load world map data from CDN, using fallback visualization');
@@ -1678,7 +1678,7 @@
            }
          };
          pyramidChart.setOption(pyramidOption);
-         console.log('✅ ECharts Pyramid Chart initialized');
+         
        }
 
              // 11. Sonar/Radar Chart (echart_sonar)
@@ -1758,7 +1758,7 @@
            ]
          };
          sonarChart.setOption(sonarOption);
-         console.log('✅ ECharts Sonar/Radar Chart initialized');
+         
        }
 
 
@@ -1791,7 +1791,7 @@
       return;
     }
 
-    console.log('Initializing Other Charts...');
+    
 
     try {
       // 1. USA Map using Leaflet (replacing vector map)
@@ -1830,7 +1830,7 @@
           marker.bindPopup(`<b>${location.city}</b><br/>Revenue: ${location.value}`);
         });
         
-        console.log('✅ USA Leaflet Map initialized');
+        
       }
 
       // 2. Easy Pie Charts using ECharts gauge charts (circular progress indicators)
@@ -1995,7 +1995,7 @@
         });
       });
       
-      console.log('✅ Easy Pie Charts (Gauge) initialized');
+      
 
       // 3. Sparkline Charts using ECharts - Larger size to match pie charts
       const sparklineElements = [
@@ -2167,7 +2167,7 @@
         }
       });
       
-      console.log('✅ Sparkline Charts initialized');
+      
 
       // Make charts responsive
       window.addEventListener('resize', function() {
@@ -2196,7 +2196,7 @@
     if (!document.body.classList.contains('page-index2')) {
       return;
     }
-    console.log('Initializing Index2...');
+    
 
     // Initialize Weekly Summary Charts
     initializeWeeklySummaryCharts();
@@ -2428,7 +2428,7 @@
     if (!document.body.classList.contains('page-index4')) {
       return;
     }
-    console.log('Initializing Index4: Store Analytics...');
+    
 
     // 1. Sales Statistics Chart
     const salesChartCanvas = document.getElementById('salesStatisticsChart');
@@ -2458,7 +2458,7 @@
           }
         }
       });
-      console.log('✅ Sales Statistics Chart initialized');
+      
     }
 
     // 2. Weekly Sales Chart
@@ -2486,7 +2486,7 @@
           }
         }
       });
-      console.log('✅ Weekly Sales Chart initialized');
+      
     }
 
     // 3. Revenue by Location Map
@@ -2513,7 +2513,7 @@
           radius: loc.profit * 20 // Adjust multiplier for radius
         }).addTo(map).bindPopup(`<b>${loc.name}</b><br>Profit: $${loc.profit.toLocaleString()}`);
       });
-      console.log('✅ Revenue Map initialized');
+      
     }
     
     // 4. Top Selling Products (Static for now)
@@ -2539,7 +2539,7 @@
         `;
       });
       topProductsList.innerHTML = productHTML;
-      console.log('✅ Top Selling Products list populated');
+      
     }
     
     // 5. Latest Orders DataTable
@@ -2569,7 +2569,7 @@
         ordering: true,
         info: false
       });
-      console.log('✅ Latest Orders DataTable initialized');
+      
     }
   }
 
@@ -2590,7 +2590,7 @@
       return;
     }
 
-    console.log('Initializing Skycons weather icons...');
+    
 
     try {
       var skycons = new Skycons({ 
@@ -2625,13 +2625,13 @@
           
           skycons.add(element, weather.type);
           iconsAdded++;
-          console.log(`✅ Added Skycon: ${weather.id}`);
+          
         }
       });
 
       if (iconsAdded > 0) {
         skycons.play();
-        console.log(`✅ Skycons initialized successfully (${iconsAdded} icons)`);
+        
         
         // Store skycons instance globally for potential cleanup
         window.skycons = skycons;
@@ -2649,12 +2649,12 @@
       return;
     }
   
-    console.log('Initializing General Elements...');
+    
   
     // Check if toast container exists before proceeding
     const toastContainer = document.querySelector('.toast-container');
     if (!toastContainer) {
-      console.log('Toast container not found, skipping toast initialization');
+      
       return;
     }
   
@@ -2731,7 +2731,7 @@
       return;
     }
 
-    console.log('Initializing Leaflet map...');
+    
 
     try {
       const map = L.map('leaflet-map').setView([51.505, -0.09], 2);
@@ -2751,7 +2751,7 @@
 
   // Sidebar Profile Completion Gauges - ECharts implementation
   function initializeSidebarGauges() {
-    console.log('Initializing sidebar gauges...');
+    
 
     const echarts = window.echarts || globalThis.echarts;
 
@@ -2778,7 +2778,7 @@
         }]
       });
       window.addEventListener('resize', () => gaugeChart.resize());
-      console.log('✅ Profile completion gauge (index.html) initialized');
+      
     }
 
     // Profile Completion Gauge (index3.html)
@@ -2804,7 +2804,7 @@
         }]
       });
       window.addEventListener('resize', () => gaugeChart3.resize());
-      console.log('✅ Profile completion gauge (index3.html) initialized');
+      
     }
 
     // Goal Progress Gauge (index3.html)
@@ -2830,7 +2830,7 @@
         }]
       });
       window.addEventListener('resize', () => goalChart.resize());
-      console.log('✅ Goal progress gauge (index3.html) initialized');
+      
     }
 
     // Profile Completion Gauge (test_page.html)
@@ -2856,7 +2856,7 @@
         }]
       });
       window.addEventListener('resize', () => gaugeChartTest.resize());
-      console.log('✅ Profile completion gauge (test_page.html) initialized');
+      
     }
   }
 
@@ -2872,7 +2872,7 @@
       return;
     }
 
-    console.log('Initializing Index3 charts...');
+    
 
     try {
       // Sales Overview (Line)
@@ -2892,7 +2892,7 @@
         { name: 'Orders', type: 'line', data: [80, 95, 110, 130, 120, 140, 155, 160, 150, 145, 140, 135, 130, 125, 120, 115, 110, 105, 100, 95, 90, 85, 80, 75, 70, 65, 60, 55, 50, 45], smooth: true, lineStyle: { color: '#3498DB' } }
       ]
     });
-    console.log('✅ Sales Overview chart initialized');
+    
 
     // Revenue Breakdown (Pie)
     const revenueBreakdownContainer = document.getElementById('revenueBreakdownChart');
@@ -2915,7 +2915,7 @@
         emphasis: { itemStyle: { shadowBlur: 10, shadowOffsetX: 0, shadowColor: 'rgba(0,0,0,0.5)' } }
       }]
     });
-    console.log('✅ Revenue Breakdown chart initialized');
+    
 
     // Top Products (Bar)
     const topProductsContainer = document.getElementById('topProductsChart');
@@ -2934,7 +2934,7 @@
         itemStyle: { color: '#1ABB9C' }
       }]
     });
-    console.log('✅ Top Products chart initialized');
+    
 
     // Conversion Funnel (Funnel)
     const conversionFunnelContainer = document.getElementById('conversionFunnelChart');
@@ -2971,7 +2971,7 @@
         ]
       }]
     });
-    console.log('✅ Conversion Funnel chart initialized');
+    
 
     // Traffic Sources (Radar)
     const trafficSourcesContainer = document.getElementById('trafficSourcesChart');
@@ -3003,11 +3003,11 @@
         itemStyle: { color: '#3498DB' }
       }]
     });
-    console.log('✅ Traffic Sources chart initialized');
+    
 
     // Orders Analytics Dashboard
     try {
-      console.log('Initializing Orders Analytics...');
+      
       
       // Orders Analytics Chart (Line Chart)
       const ordersAnalyticsContainer = document.getElementById('ordersAnalyticsChart');
@@ -3142,7 +3142,7 @@
         };
 
         ordersChart.setOption(ordersOption);
-        console.log('✅ Orders Analytics chart initialized');
+        
 
         // Add to resize handler
         window.addEventListener('resize', () => ordersChart.resize());
@@ -3224,13 +3224,13 @@
         };
 
         statusChart.setOption(statusOption);
-        console.log('✅ Order Status chart initialized');
+        
 
         // Add to resize handler
         window.addEventListener('resize', () => statusChart.resize());
       }
 
-      console.log('✅ Orders Analytics initialized successfully');
+      
     } catch (error) {
       console.error('❌ Error initializing Orders Analytics:', error);
     }
@@ -3245,7 +3245,7 @@
       // Orders Analytics charts will handle their own resize in their function
     });
 
-    console.log('✅ All Index3 charts initialized successfully');
+    
     } catch (error) {
       console.error('❌ Error initializing Index3 charts:', error);
     }

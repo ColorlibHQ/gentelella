@@ -1,5 +1,5 @@
 // Calendar.html specific JavaScript with FullCalendar integration
-console.log('🗓️ Starting main-calendar.js...');
+
 
 // Import jQuery setup first
 import $ from './jquery-setup.js';
@@ -29,7 +29,7 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 window.FullCalendar = { Calendar, dayGridPlugin, interactionPlugin, timeGridPlugin };
 globalThis.FullCalendar = { Calendar, dayGridPlugin, interactionPlugin, timeGridPlugin };
 
-console.log('✅ FullCalendar loaded successfully');
+
 
 // Global variables
 let currentCalendar = null;
@@ -111,7 +111,7 @@ function generateEventId() {
 
 // Initialize calendar when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('🗓️ Initializing calendar...');
+    
     
     const calendarEl = document.getElementById('calendar');
     
@@ -136,12 +136,12 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Event handlers
             select: function(selectInfo) {
-                console.log('📅 Date range selected:', selectInfo);
+                
                 openNewEventModal(selectInfo);
             },
             
             eventClick: function(eventClickInfo) {
-                console.log('📅 Event clicked:', eventClickInfo.event);
+                
                 selectedEvent = eventClickInfo.event;
                 showEventDetails(eventClickInfo.event);
             },
@@ -157,7 +157,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         currentCalendar.render();
-        console.log('✅ Calendar initialized successfully');
+        
         
         // Make calendar available globally
         window.calendar = currentCalendar;
@@ -393,4 +393,4 @@ function createToastContainer() {
     return container;
 }
 
-console.log('✅ main-calendar.js loaded completely'); 
+ 

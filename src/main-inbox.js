@@ -1,5 +1,5 @@
 // Inbox.html specific JavaScript with Bootstrap WYSIWYG editor
-console.log('📧 Starting main-inbox.js...');
+
 
 // Import jQuery setup first
 import $ from './jquery-setup.js';
@@ -22,11 +22,11 @@ import './js/init.js';
 // Bootstrap WYSIWYG Editor
 import 'bootstrap-wysiwyg';
 
-console.log('✅ Bootstrap WYSIWYG loaded successfully');
+
 
 // Initialize WYSIWYG editor when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('📧 Initializing WYSIWYG editor...');
+    
     
     // Check if we have the required elements
     const editorEl = document.getElementById('editor');
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Add some default content
             $(editorEl).html('<p>Start typing your message here...</p>');
             
-            console.log('✅ WYSIWYG editor initialized successfully');
+            
             
             // Handle toolbar button states
             $(editorEl).on('keyup mouseup', function() {
@@ -100,7 +100,7 @@ document.addEventListener('click', function(e) {
     if (e.target.matches('[data-action="send"]')) {
         e.preventDefault();
         const content = document.getElementById('editor').innerHTML;
-        console.log('📤 Sending message:', content);
+        
         
         // Show success message
         if (window.bootstrap && window.bootstrap.Toast) {
@@ -127,4 +127,4 @@ document.addEventListener('click', function(e) {
     }
 });
 
-console.log('✅ main-inbox.js loaded completely'); 
+ 
