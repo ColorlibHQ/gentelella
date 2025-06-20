@@ -6,14 +6,16 @@ Gentelella is a powerful, free-to-use Bootstrap 5 admin template that has been c
 
 ![Gentelella Bootstrap Admin Template](https://colorlib.com/wp/wp-content/uploads/sites/2/gentelella-admin-template-preview.jpg "Gentelella Theme Browser Preview")
 
-## ✨ What's New in v2.0
+## ✨ What's New in v2.0.0 (Stable Release)
 
 - **🚀 Vite Build System** - Lightning-fast development and optimized production builds
-- **📦 Bootstrap 5** - Latest Bootstrap with modern design system
+- **📦 Bootstrap 5.3.6** - Latest Bootstrap with modern design system
 - **⚡ Performance Optimized** - 90% smaller initial bundle size with smart code splitting
 - **🔧 Modern JavaScript** - ES6+ modules with dynamic imports
 - **🎯 TypeScript Ready** - Full TypeScript support available
 - **📱 Mobile First** - Responsive design optimized for all devices
+- **🎨 Morris.js Eliminated** - Complete replacement with modern Chart.js
+- **🔧 jQuery Easing Fixed** - All animation errors resolved
 
 ## 📊 Performance Improvements
 
@@ -132,7 +134,7 @@ if (document.querySelector('.chart-container')) {
 ### Dashboard Features
 - **Multiple Dashboard Layouts** - 3 different dashboard designs
 - **Widgets** - Various dashboard widgets and cards
-- **Charts** - Chart.js, Morris.js, Sparklines integration
+- **Charts** - Chart.js, ECharts, Sparklines integration
 - **Maps** - Interactive world maps with jVectorMap
 
 ### Form Components
@@ -163,10 +165,10 @@ if (document.querySelector('.chart-container')) {
 - **jQuery 3.6.1** - DOM manipulation (being phased out)
 
 ### Charts & Visualization
-- **Chart.js 4.4.2** - Modern charting library
+- **Chart.js 4.4.2** - Modern charting library (Morris.js completely removed)
+- **ECharts 5.6.0** - Professional data visualization
 - **Sparklines** - Mini charts and graphs
 - **jVectorMap** - Interactive world maps
-- **Gauge.js** - Beautiful gauge charts
 
 ### Form & UI Libraries
 - **Select2** - Enhanced select dropdowns

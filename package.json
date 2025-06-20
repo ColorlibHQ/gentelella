@@ -1,6 +1,6 @@
 {
   "name": "gentelella",
-  "version": "2.0-beta2",
+  "version": "2.0.0",
   "description": "Gentelella Admin is a free to use Bootstrap admin template",
   "scripts": {
     "dev": "vite",
