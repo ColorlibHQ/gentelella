@@ -5846,3 +5846,40 @@ input[type="radio"].flat:disabled + label {
   width: var(--bar-width) !important;
 }
 
+// Index2 Progress Bar Styles
+.progress-bar {
+  transition: width 0.8s ease-out;
+  position: relative;
+  overflow: hidden;
+  
+  // Ensure colors are maintained
+  &.bg-green { 
+    background-color: #1ABB9C !important;
+  }
+  &.bg-yellow { 
+    background-color: #F39C12 !important;
+  }
+  &.bg-blue { 
+    background-color: #3498DB !important;
+  }
+  &.bg-success { 
+    background-color: #28a745 !important;
+  }
+  &.bg-info { 
+    background-color: #17a2b8 !important;
+  }
+  &.bg-warning { 
+    background-color: #ffc107 !important;
+  }
+  
+  // Force width maintenance for all progress bars
+  &[style*="width"] {
+    width: var(--bar-width) !important;
+  }
+  
+  // Animation complete state
+  &.animation-complete {
+    transition: none !important;
+  }
+}
+

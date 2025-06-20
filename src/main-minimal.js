@@ -667,4 +667,52 @@ function initSalesAnalytics() {
 // Initialize sales analytics on DOM ready
 document.addEventListener('DOMContentLoaded', function() {
   setTimeout(initSalesAnalytics, 200);
+});
+
+// Index2 Progress Bars Initialization
+function initIndex2ProgressBars() {
+  // Only run on index2.html
+  if (!window.location.pathname.includes('index2.html')) {
+    return;
+  }
+  
+  // Find all progress bars on index2 using multiple selector strategies
+  const allIndex2Bars = document.querySelectorAll('.progress-bar');
+  
+  if (allIndex2Bars.length > 0) {
+    allIndex2Bars.forEach((bar, index) => {
+      // Read the existing inline width style
+      const inlineWidth = bar.style.width;
+      const computedStyle = window.getComputedStyle(bar);
+      const currentWidth = inlineWidth || computedStyle.width;
+      
+      // Only animate bars that have a meaningful width set
+      if (currentWidth && currentWidth !== '0px' && currentWidth !== '0%' && currentWidth !== 'auto') {
+        // Store the target width
+        bar.setAttribute('data-target-width', currentWidth);
+        bar.style.setProperty('--bar-width', currentWidth);
+        
+        // Start animation from 0%
+        bar.style.width = '0%';
+        bar.style.transition = 'width 0.8s ease-out';
+        
+        // Animate to target width with staggered delay
+        setTimeout(() => {
+          bar.style.width = currentWidth;
+          
+          // Lock the width permanently after animation
+          setTimeout(() => {
+            bar.style.transition = 'none';
+            bar.style.width = currentWidth;
+            bar.classList.add('animation-complete');
+          }, 1000);
+        }, index * 100 + 300); // Staggered animation
+      }
+    });
+  }
+}
+
+// Initialize index2 progress bars on DOM ready
+document.addEventListener('DOMContentLoaded', function() {
+  setTimeout(initIndex2ProgressBars, 200);
 }); 
