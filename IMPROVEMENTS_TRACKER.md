@@ -47,6 +47,18 @@ This document tracks remaining improvements and fixes needed for the Gentelella 
 - **Build Config**: Updated `vite.config.js` entry points
 - **Result**: Morris.js completely eliminated, page now uses modern Chart.js implementation with improved titles and descriptions
 
+### **Vendor Dependencies Modernization (June 2025)**
+- **Issue**: iCheck vendor files in `vendors/iCheck/` instead of npm dependency
+- **Root Cause**: Legacy approach using local vendor files rather than package management
+- **Solution**: Complete iCheck removal and replacement with CSS-only styling
+  - Removed `vendors/iCheck/` directory (4.8KB JS + 1.3KB CSS)
+  - Eliminated iCheck JavaScript initialization from `src/js/examples.js`
+  - Replaced with modern CSS-only flat green checkbox/radio styling in `src/scss/custom.scss`
+  - Removed broken iCheck references from `production/map.html`
+  - Updated documentation to remove iCheck from scripts list
+- **Benefits**: Smaller bundle size, better performance, no JavaScript dependencies
+- **Result**: Vendors directory completely eliminated, all dependencies now managed via npm
+
 ---
 
 ## 🔧 **Remaining Improvements Needed**
