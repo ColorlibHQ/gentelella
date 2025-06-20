@@ -7,40 +7,66 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Gentelella Alela! | </title>    <!-- Compiled CSS (includes Bootstrap, Font Awesome, and all vendor styles) -->
+    <title>404 - Page Not Found | Gentelella</title>    
+    <!-- Compiled CSS (includes Bootstrap, Font Awesome, and all vendor styles) -->
     <script type="module" src="/src/main-minimal.js"></script>
   </head>
 
-  <body class="nav-md">
-    <div class="container body">
-      <div class="main_container">
-        <!-- page content -->
-        <div class="col-md-12">
-          <div class="col-middle">
-            <div class="text-center text-center">
-              <h1 class="error-number">404</h1>
-              <h2>Sorry but we couldn't find this page</h2>
-              <p>This page you are looking for does not exist <a href="#">Report this?</a>
-              </p>
-              <div class="mid_center">
-                <h3>Search</h3>
-                <form>
-                  <div class="form-group pull-right top_search">
-                    <div class="input-group">
-                      <input type="text" class="form-control" placeholder="Search for...">
-                      <span class="input-group-btn">
-                              <button class="btn btn-secondary" type="button">Go!</button>
-                          </span>
-                    </div>
+  <body class="bg-light">
+    <div class="container-fluid vh-100 d-flex align-items-center justify-content-center">
+      <div class="row justify-content-center w-100">
+        <div class="col-lg-6 col-md-8 col-sm-10">
+          <div class="card border-0 shadow-sm">
+            <div class="card-body text-center p-5">
+              <!-- Error Icon and Number -->
+              <div class="mb-4">
+                <i class="fas fa-exclamation-triangle text-warning display-1 mb-3"></i>
+                <h1 class="display-1 fw-bold text-primary mb-0">404</h1>
+              </div>
+              
+              <!-- Error Message -->
+              <div class="mb-4">
+                <h2 class="h3 text-dark mb-3">Page Not Found</h2>
+                <p class="text-muted lead">Sorry, the page you are looking for doesn't exist or has been moved.</p>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="d-grid gap-2 d-md-block mb-4">
+                <a href="index.html" class="btn btn-primary btn-lg me-md-2">
+                  <i class="fas fa-home me-2"></i>Go Home
+                </a>
+                <button type="button" class="btn btn-outline-secondary btn-lg" onclick="history.back()">
+                  <i class="fas fa-arrow-left me-2"></i>Go Back
+                </button>
+              </div>
+
+              <!-- Search Section -->
+              <div class="border-top pt-4">
+                <h5 class="text-muted mb-3">Or search for what you need:</h5>
+                <form class="d-flex justify-content-center">
+                  <div class="input-group search-bar-fix" style="max-width: 400px;">
+                    <input type="text" class="form-control" placeholder="Search pages, content..." aria-label="Search">
+                    <button class="btn btn-outline-primary" type="submit">
+                      <i class="fas fa-search"></i>
+                    </button>
                   </div>
                 </form>
+              </div>
+
+              <!-- Help Links -->
+              <div class="mt-4">
+                <small class="text-muted">
+                  Need help? 
+                  <a href="#" class="text-decoration-none">Contact Support</a> | 
+                  <a href="#" class="text-decoration-none">Report Issue</a>
+                </small>
               </div>
             </div>
           </div>
         </div>
-        <!-- /page content -->
       </div>
-    </div>    <!-- Compiled JavaScript (includes jQuery, Bootstrap, and all vendor scripts) -->
-    
+    </div>
+
+    <!-- Compiled JavaScript (includes jQuery, Bootstrap, and all vendor scripts) -->
   </body>
 </html>

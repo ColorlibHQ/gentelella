@@ -7,40 +7,74 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Gentelella Alela! | </title>    <!-- Compiled CSS (includes Bootstrap, Font Awesome, and all vendor styles) -->
+    <title>403 - Access Forbidden | Gentelella</title>    
+    <!-- Compiled CSS (includes Bootstrap, Font Awesome, and all vendor styles) -->
     <script type="module" src="/src/main-minimal.js"></script>
   </head>
 
-  <body class="nav-md">
-    <div class="container body">
-      <div class="main_container">
-        <!-- page content -->
-        <div class="col-md-12">
-          <div class="col-middle">
-            <div class="text-center text-center">
-              <h1 class="error-number">403</h1>
-              <h2>Access denied</h2>
-              <p>Full authentication is required to access this resource. <a href="#">Report this?</a>
-              </p>
-              <div class="mid_center">
-                <h3>Search</h3>
-                <form>
-                  <div class="form-group pull-right top_search">
-                    <div class="input-group">
-                      <input type="text" class="form-control" placeholder="Search for...">
-                      <span class="input-group-btn">
-                              <button class="btn btn-secondary" type="button">Go!</button>
-                          </span>
+  <body class="bg-light">
+    <div class="container-fluid vh-100 d-flex align-items-center justify-content-center">
+      <div class="row justify-content-center w-100">
+        <div class="col-lg-6 col-md-8 col-sm-10">
+          <div class="card border-0 shadow-sm">
+            <div class="card-body text-center p-5">
+              <!-- Error Icon and Number -->
+              <div class="mb-4">
+                <i class="fas fa-lock text-danger display-1 mb-3"></i>
+                <h1 class="display-1 fw-bold text-danger mb-0">403</h1>
+              </div>
+              
+              <!-- Error Message -->
+              <div class="mb-4">
+                <h2 class="h3 text-dark mb-3">Access Forbidden</h2>
+                <p class="text-muted lead">You don't have permission to access this resource. Please contact your administrator if you believe this is an error.</p>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="d-grid gap-2 d-md-block mb-4">
+                <a href="index.html" class="btn btn-primary btn-lg me-md-2">
+                  <i class="fas fa-home me-2"></i>Go Home
+                </a>
+                <button type="button" class="btn btn-outline-secondary btn-lg" onclick="history.back()">
+                  <i class="fas fa-arrow-left me-2"></i>Go Back
+                </button>
+              </div>
+
+              <!-- Additional Info -->
+              <div class="border-top pt-4">
+                <div class="row text-center">
+                  <div class="col-md-6 mb-3">
+                    <div class="d-flex flex-column align-items-center">
+                      <i class="fas fa-user-shield text-primary fs-1 mb-2"></i>
+                      <h6 class="text-dark">Authentication Required</h6>
+                      <small class="text-muted">Please log in to access this content</small>
                     </div>
                   </div>
-                </form>
+                  <div class="col-md-6 mb-3">
+                    <div class="d-flex flex-column align-items-center">
+                      <i class="fas fa-key text-warning fs-1 mb-2"></i>
+                      <h6 class="text-dark">Insufficient Privileges</h6>
+                      <small class="text-muted">Contact admin for access rights</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Help Links -->
+              <div class="mt-4">
+                <small class="text-muted">
+                  Need help? 
+                  <a href="#" class="text-decoration-none">Contact Administrator</a> | 
+                  <a href="login.html" class="text-decoration-none">Login</a> | 
+                  <a href="#" class="text-decoration-none">Request Access</a>
+                </small>
               </div>
             </div>
           </div>
         </div>
-        <!-- /page content -->
       </div>
-    </div>    <!-- Compiled JavaScript (includes jQuery, Bootstrap, and all vendor scripts) -->
-    
+    </div>
+
+    <!-- Compiled JavaScript (includes jQuery, Bootstrap, and all vendor scripts) -->
   </body>
 </html>

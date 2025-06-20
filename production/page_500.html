@@ -7,40 +7,99 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Gentelella Alela! | </title>    <!-- Compiled CSS (includes Bootstrap, Font Awesome, and all vendor styles) -->
+    <title>500 - Internal Server Error | Gentelella</title>    
+    <!-- Compiled CSS (includes Bootstrap, Font Awesome, and all vendor styles) -->
     <script type="module" src="/src/main-minimal.js"></script>
   </head>
 
-  <body class="nav-md">
-    <div class="container body">
-      <div class="main_container">
-        <!-- page content -->
-        <div class="col-md-12">
-          <div class="col-middle">
-            <div class="text-center">
-              <h1 class="error-number">500</h1>
-              <h2>Internal Server Error</h2>
-              <p>We track these errors automatically, but if the problem persists feel free to contact us. In the meantime, try refreshing. <a href="#">Report this?</a>
-              </p>
-              <div class="mid_center">
-                <h3>Search</h3>
-                <form>
-                  <div class="form-group pull-right top_search">
-                    <div class="input-group">
-                      <input type="text" class="form-control" placeholder="Search for...">
-                      <span class="input-group-btn">
-                              <button class="btn btn-secondary" type="button">Go!</button>
-                          </span>
+  <body class="bg-light">
+    <div class="container-fluid vh-100 d-flex align-items-center justify-content-center">
+      <div class="row justify-content-center w-100">
+        <div class="col-lg-6 col-md-8 col-sm-10">
+          <div class="card border-0 shadow-sm">
+            <div class="card-body text-center p-5">
+              <!-- Error Icon and Number -->
+              <div class="mb-4">
+                <i class="fas fa-exclamation-circle text-danger display-1 mb-3"></i>
+                <h1 class="display-1 fw-bold text-danger mb-0">500</h1>
+              </div>
+              
+              <!-- Error Message -->
+              <div class="mb-4">
+                <h2 class="h3 text-dark mb-3">Internal Server Error</h2>
+                <p class="text-muted lead">Something went wrong on our end. We're working to fix this issue. Please try again later.</p>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="d-grid gap-2 d-md-block mb-4">
+                <button type="button" class="btn btn-primary btn-lg me-md-2" onclick="location.reload()">
+                  <i class="fas fa-redo me-2"></i>Retry
+                </button>
+                <a href="index.html" class="btn btn-outline-secondary btn-lg">
+                  <i class="fas fa-home me-2"></i>Go Home
+                </a>
+              </div>
+
+              <!-- Status Information -->
+              <div class="border-top pt-4">
+                <div class="row text-center">
+                  <div class="col-md-4 mb-3">
+                    <div class="d-flex flex-column align-items-center">
+                      <i class="fas fa-tools text-warning fs-1 mb-2"></i>
+                      <h6 class="text-dark">We're Fixing It</h6>
+                      <small class="text-muted">Our team has been notified</small>
                     </div>
                   </div>
-                </form>
+                  <div class="col-md-4 mb-3">
+                    <div class="d-flex flex-column align-items-center">
+                      <i class="fas fa-clock text-info fs-1 mb-2"></i>
+                      <h6 class="text-dark">Try Again Later</h6>
+                      <small class="text-muted">Issue should be resolved soon</small>
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <div class="d-flex flex-column align-items-center">
+                      <i class="fas fa-headset text-primary fs-1 mb-2"></i>
+                      <h6 class="text-dark">Contact Support</h6>
+                      <small class="text-muted">If problem persists</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Error Details -->
+              <div class="alert alert-light border-0 mt-4" role="alert">
+                <div class="d-flex align-items-center">
+                  <i class="fas fa-info-circle text-info me-2"></i>
+                  <small class="text-muted mb-0">
+                    <strong>Error ID:</strong> #ERR-<span id="errorId"></span> | 
+                    <strong>Time:</strong> <span id="errorTime"></span>
+                  </small>
+                </div>
+              </div>
+
+              <!-- Help Links -->
+              <div class="mt-3">
+                <small class="text-muted">
+                  Need immediate help? 
+                  <a href="#" class="text-decoration-none">Contact Support</a> | 
+                  <a href="#" class="text-decoration-none">System Status</a> | 
+                  <a href="#" class="text-decoration-none">Report Issue</a>
+                </small>
               </div>
             </div>
           </div>
         </div>
-        <!-- /page content -->
       </div>
-    </div>    <!-- Compiled JavaScript (includes jQuery, Bootstrap, and all vendor scripts) -->
-    
+    </div>
+
+    <!-- Generate Error Details -->
+    <script>
+      // Generate random error ID and current timestamp
+      document.getElementById('errorId').textContent = Math.random().toString(36).substr(2, 9).toUpperCase();
+      document.getElementById('errorTime').textContent = new Date().toLocaleString();
+    </script>
+
+    <!-- Compiled JavaScript (includes jQuery, Bootstrap, and all vendor scripts) -->
   </body>
 </html>
