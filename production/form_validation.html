@@ -66,7 +66,7 @@
                                         <li><a href="media_gallery.html">Media Gallery</a></li>
                                         <li><a href="typography.html">Typography</a></li>
                                         <li><a href="icons.html">Icons</a></li>
-                                        <li><a href="glyphicons.html">Glyphicons</a></li>
+                  
                                         <li><a href="widgets.html">Widgets</a></li>
                                         <li><a href="invoice.html">Invoice</a></li>
                                         <li><a href="inbox.html">Inbox</a></li>
@@ -135,7 +135,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a href="javascript:void(0)"><i class="fas fa-laptop"></i> Landing Page <span class="label label-success pull-right">Coming Soon</span></a></li>
+                                <li><a href="javascript:void(0)"><i class="fas fa-laptop"></i> Landing Page <span class="badge bg-success float-end">Coming Soon</span></a></li>
                             </ul>
                         </div>
 
@@ -144,16 +144,16 @@
 
                     <!-- /menu footer buttons -->
                     <div class="sidebar-footer hidden-small">
-                        <a data-bs-toggle="tooltip" data-placement="top" title="Settings">
+                        <a data-bs-toggle="tooltip" data-bs-placement="top" title="Settings">
                             <span class="fas fa-cog" aria-hidden="true"></span>
                         </a>
-                        <a data-bs-toggle="tooltip" data-placement="top" title="FullScreen">
+                        <a data-bs-toggle="tooltip" data-bs-placement="top" title="FullScreen">
                             <span class="fas fa-expand" aria-hidden="true"></span>
                         </a>
-                        <a data-bs-toggle="tooltip" data-placement="top" title="Lock">
+                        <a data-bs-toggle="tooltip" data-bs-placement="top" title="Lock">
                             <span class="fas fa-eye-slash" aria-hidden="true"></span>
                         </a>
-                        <a data-bs-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+                        <a data-bs-toggle="tooltip" data-bs-placement="top" title="Logout" href="login.html">
                             <span class="fas fa-power-off" aria-hidden="true"></span>
                         </a>
                     </div>
@@ -267,7 +267,7 @@
                                 <div class="input-group">
                                     <input type="text" class="form-control" placeholder="Search for...">
                                     <span class="input-group-btn">
-                                        <button class="btn btn-default" type="button">Go!</button>
+                                        <button class="btn btn-outline-secondary" type="button">Go!</button>
                                     </span>
                                 </div>
                             </div>
@@ -296,81 +296,205 @@
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
-                                    <form class="" action="" method="post" novalidate>
-                                        <p>For alternative validation library <code>parsleyJS</code> check out in the <a href="form.html">form page</a>
-                                        </p>
-                                        <span class="section">Personal Info</span>
-                                        <div class="field item form-group">
-                                            <label class="col-form-label col-md-3 col-sm-3 label-align">Name<span class="required">*</span></label>
-                                            <div class="col-md-6 col-sm-6">
-                                                <input class="form-control" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="ex. John f. Kennedy" required="required" />
+                                    <div class="alert alert-info">
+                                        <strong>Bootstrap 5 Form Validation</strong> - This form uses modern Bootstrap 5 validation with custom feedback messages and styles.
+                                    </div>
+                                    
+                                    <form class="row g-3 needs-validation" novalidate>
+                                        <div class="col-md-12">
+                                            <h5 class="text-primary mb-3">Personal Information</h5>
+                                        </div>
+                                        
+                                        <!-- First Name -->
+                                        <div class="col-md-6">
+                                            <label for="firstName" class="form-label">First Name <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="firstName" name="firstName" required minlength="2">
+                                            <div class="valid-feedback">
+                                                Looks good!
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                Please provide a valid first name (minimum 2 characters).
                                             </div>
                                         </div>
-                                        <div class="field item form-group">
-                                            <label class="col-form-label col-md-3 col-sm-3 label-align">Occupation<span class="required">*</span></label>
-                                            <div class="col-md-6 col-sm-6">
-                                                <input class="form-control" class='optional' name="occupation" data-validate-length-range="5,15" type="text" /></div>
-                                        </div>
-                                        <div class="field item form-group">
-                                            <label class="col-form-label col-md-3 col-sm-3 label-align">email<span class="required">*</span></label>
-                                            <div class="col-md-6 col-sm-6">
-                                                <input class="form-control" name="email" class='email' required="required" type="email" /></div>
-                                        </div>
-                                        <div class="field item form-group">
-                                            <label class="col-form-label col-md-3 col-sm-3 label-align">Confirm email address<span class="required">*</span></label>
-                                            <div class="col-md-6 col-sm-6">
-                                                <input class="form-control" type="email" class='email' name="confirm_email" data-validate-linked='email' required='required' /></div>
-                                        </div>
-                                        <div class="field item form-group">
-                                            <label class="col-form-label col-md-3 col-sm-3 label-align">Number <span class="required">*</span></label>
-                                            <div class="col-md-6 col-sm-6">
-                                                <input class="form-control" type="number" class='number' name="number" data-validate-minmax="10,100" required='required'></div>
-                                        </div>
-                                        <div class="field item form-group">
-                                            <label class="col-form-label col-md-3 col-sm-3 label-align">Date<span class="required">*</span></label>
-                                            <div class="col-md-6 col-sm-6">
-                                                <input class="form-control" class='date' type="date" name="date" required='required'></div>
-                                        </div>
-                                        <div class="field item form-group">
-                                            <label class="col-form-label col-md-3 col-sm-3 label-align">Time<span class="required">*</span></label>
-                                            <div class="col-md-6 col-sm-6">
-                                                <input class="form-control" class='time' type="time" name="time" required='required'></div>
+                                        
+                                        <!-- Last Name -->
+                                        <div class="col-md-6">
+                                            <label for="lastName" class="form-label">Last Name <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="lastName" name="lastName" required minlength="2">
+                                            <div class="valid-feedback">
+                                                Looks good!
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                Please provide a valid last name (minimum 2 characters).
+                                            </div>
                                         </div>
                                         
-                                        <div class="field item form-group">
-											<label class="col-form-label col-md-3 col-sm-3 label-align">Password<span class="required">*</span></label>
-											<div class="col-md-6 col-sm-6">
-												<input class="form-control" type="password" id="password1" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}" title="Minimum 8 Characters Including An Upper And Lower Case Letter, A Number And A Unique Character" required />
-												
-												<span style="position: absolute;right:15px;top:7px;" onclick="hideshow()" >
-													<i id="slash" class="fas fa-eye-slash"></i>
-													<i id="eye" class="fas fa-eye"></i>
-												</span>
-											</div>
-										</div>
+                                        <!-- Email -->
+                                        <div class="col-md-6">
+                                            <label for="email" class="form-label">Email Address <span class="text-danger">*</span></label>
+                                            <input type="email" class="form-control" id="email" name="email" required>
+                                            <div class="valid-feedback">
+                                                Email looks good!
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                Please provide a valid email address.
+                                            </div>
+                                        </div>
                                         
-                                        <div class="field item form-group">
-                                            <label class="col-form-label col-md-3 col-sm-3 label-align">Repeat password<span class="required">*</span></label>
-                                            <div class="col-md-6 col-sm-6">
-                                                <input class="form-control" type="password" name="password2" data-validate-linked='password' required='required' /></div>
+                                        <!-- Phone -->
+                                        <div class="col-md-6">
+                                            <label for="phone" class="form-label">Phone Number <span class="text-danger">*</span></label>
+                                            <input type="tel" class="form-control" id="phone" name="phone" required pattern="[0-9\-\+\s\(\)]{8,20}">
+                                            <div class="valid-feedback">
+                                                Phone number is valid!
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                Please provide a valid phone number (8-20 characters).
+                                            </div>
                                         </div>
-                                        <div class="field item form-group">
-                                            <label class="col-form-label col-md-3 col-sm-3 label-align">Telephone<span class="required">*</span></label>
-                                            <div class="col-md-6 col-sm-6">
-                                                <input class="form-control" type="tel" class='tel' name="phone" required='required' data-validate-length-range="8,20" /></div>
+                                        
+                                        <!-- Occupation -->
+                                        <div class="col-md-6">
+                                            <label for="occupation" class="form-label">Occupation</label>
+                                            <input type="text" class="form-control" id="occupation" name="occupation" minlength="3">
+                                            <div class="valid-feedback">
+                                                Great!
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                Occupation must be at least 3 characters long.
+                                            </div>
                                         </div>
-                                        <div class="field item form-group">
-                                            <label class="col-form-label col-md-3 col-sm-3 label-align">message<span class="required">*</span></label>
-                                            <div class="col-md-6 col-sm-6">
-                                                <textarea required="required" name='message'></textarea></div>
+                                        
+                                        <!-- Age -->
+                                        <div class="col-md-6">
+                                            <label for="age" class="form-label">Age <span class="text-danger">*</span></label>
+                                            <input type="number" class="form-control" id="age" name="age" required min="18" max="100">
+                                            <div class="valid-feedback">
+                                                Age is valid!
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                Please provide a valid age (18-100).
+                                            </div>
                                         </div>
-                                        <div class="ln_solid">
-                                            <div class="mb-3">
-                                                <div class="col-md-6 offset-md-3">
-                                                    <button type='submit' class="btn btn-primary">Submit</button>
-                                                    <button type='reset' class="btn btn-success">Reset</button>
+                                        
+                                        <!-- Date of Birth -->
+                                        <div class="col-md-6">
+                                            <label for="birthDate" class="form-label">Date of Birth <span class="text-danger">*</span></label>
+                                            <input type="date" class="form-control" id="birthDate" name="birthDate" required>
+                                            <div class="valid-feedback">
+                                                Date looks good!
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                Please provide your date of birth.
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Gender -->
+                                        <div class="col-md-6">
+                                            <label for="gender" class="form-label">Gender <span class="text-danger">*</span></label>
+                                            <select class="form-select" id="gender" name="gender" required>
+                                                <option selected disabled value="">Choose...</option>
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                                <option value="other">Other</option>
+                                                <option value="prefer-not-to-say">Prefer not to say</option>
+                                            </select>
+                                            <div class="valid-feedback">
+                                                Selection looks good!
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                Please select a gender.
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-12">
+                                            <h5 class="text-primary mb-3 mt-4">Security Information</h5>
+                                        </div>
+                                        
+                                        <!-- Password -->
+                                        <div class="col-md-6">
+                                            <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
+                                            <div class="position-relative">
+                                                <input type="password" class="form-control pe-5" id="password" name="password" required 
+                                                       pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}" 
+                                                       title="Must contain at least 8 characters including uppercase, lowercase, number, and special character">
+                                                <button type="button" class="btn btn-link position-absolute end-0 top-50 translate-middle-y pe-3" id="togglePassword" style="border: none; background: none; z-index: 10;">
+                                                    <i class="fas fa-eye text-muted" id="passwordIcon"></i>
+                                                </button>
+                                            </div>
+                                            <div class="valid-feedback">
+                                                Strong password!
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                Password must be at least 8 characters with uppercase, lowercase, number, and special character.
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Confirm Password -->
+                                        <div class="col-md-6">
+                                            <label for="confirmPassword" class="form-label">Confirm Password <span class="text-danger">*</span></label>
+                                            <div class="position-relative">
+                                                <input type="password" class="form-control pe-5" id="confirmPassword" name="confirmPassword" required>
+                                                <button type="button" class="btn btn-link position-absolute end-0 top-50 translate-middle-y pe-3" id="toggleConfirmPassword" style="border: none; background: none; z-index: 10;">
+                                                    <i class="fas fa-eye text-muted" id="confirmPasswordIcon"></i>
+                                                </button>
+                                            </div>
+                                            <div class="valid-feedback">
+                                                Passwords match!
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                Passwords do not match.
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-12">
+                                            <h5 class="text-primary mb-3 mt-4">Additional Information</h5>
+                                        </div>
+                                        
+                                        <!-- Message -->
+                                        <div class="col-md-12">
+                                            <label for="message" class="form-label">Message <span class="text-danger">*</span></label>
+                                            <textarea class="form-control" id="message" name="message" rows="4" required minlength="10"></textarea>
+                                            <div class="valid-feedback">
+                                                Message looks good!
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                Please provide a message (minimum 10 characters).
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Terms and Conditions -->
+                                        <div class="col-12">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="agreeTerms" required>
+                                                <label class="form-check-label" for="agreeTerms">
+                                                    I agree to the <a href="#" class="text-decoration-none">Terms and Conditions</a> <span class="text-danger">*</span>
+                                                </label>
+                                                <div class="invalid-feedback">
+                                                    You must agree to the terms and conditions before submitting.
                                                 </div>
                                             </div>
+                                        </div>
+                                        
+                                        <!-- Newsletter Subscription -->
+                                        <div class="col-12">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="newsletter">
+                                                <label class="form-check-label" for="newsletter">
+                                                    Subscribe to our newsletter for updates
+                                                </label>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Submit Buttons -->
+                                        <div class="col-12">
+                                            <hr class="my-4">
+                                            <button class="btn btn-primary me-2" type="submit">
+                                                <i class="fas fa-check me-2"></i>Submit Form
+                                            </button>
+                                            <button class="btn btn-secondary" type="reset">
+                                                <i class="fas fa-undo me-2"></i>Reset Form
+                                            </button>
                                         </div>
                                     </form>
                                 </div>
@@ -393,52 +517,106 @@
     </div>
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <!-- Javascript functions	-->
-	<script>
-		function hideshow(){
-			var password = document.getElementById("password1");
-			var slash = document.getElementById("slash");
-			var eye = document.getElementById("eye");
-			
-			if(password.type === 'password'){
-				password.type = "text";
-				slash.style.display = "block";
-				eye.style.display = "none";
-			}
-			else{
-				password.type = "password";
-				slash.style.display = "none";
-				eye.style.display = "block";
-			}
-
-		}
-	</script>
-
+    <!-- Bootstrap 5 Form Validation JavaScript -->
     <script>
-        // initialize a validator instance from the "FormValidator" constructor.
-        // A "<form>" element is optionally passed as an argument, but is not a must
-        var validator = new FormValidator({
-            "events": ['blur', 'input', 'change']
-        }, document.forms[0]);
-        // on form "submit" event
-        document.forms[0].onsubmit = function(e) {
-            var submit = true,
-                validatorResult = validator.checkAll(this);
-            console.log(validatorResult);
-            return !!validatorResult.valid;
-        };
-        // on form "reset" event
-        document.forms[0].onreset = function(e) {
-            validator.reset();
-        };
-        // stuff related ONLY for this demo page:
-        $('.toggleValidationTooltips').change(function() {
-            validator.settings.alerts = !this.checked;
-            if (this.checked)
-                $('form .alert').remove();
-        }).prop('checked', false);
-
+        // Bootstrap 5 Form Validation
+        (function() {
+            'use strict';
+            
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.querySelectorAll('.needs-validation');
+            
+            // Loop over them and prevent submission
+            Array.prototype.slice.call(forms).forEach(function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    } else {
+                        // Form is valid, you can submit it or perform other actions
+                        event.preventDefault(); // Remove this line if you want to actually submit the form
+                        alert('Form submitted successfully! (This is just a demo)');
+                    }
+                    
+                    form.classList.add('was-validated');
+                }, false);
+                
+                // Reset form validation when reset button is clicked
+                form.addEventListener('reset', function(event) {
+                    form.classList.remove('was-validated');
+                }, false);
+            });
+            
+            // Password visibility toggles
+            const togglePassword = document.getElementById('togglePassword');
+            const password = document.getElementById('password');
+            const passwordIcon = document.getElementById('passwordIcon');
+            
+            const toggleConfirmPassword = document.getElementById('toggleConfirmPassword');
+            const confirmPasswordField = document.getElementById('confirmPassword');
+            const confirmPasswordIcon = document.getElementById('confirmPasswordIcon');
+            
+            // Main password toggle
+            if (togglePassword && password && passwordIcon) {
+                togglePassword.addEventListener('click', function() {
+                    // Toggle password visibility
+                    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+                    password.setAttribute('type', type);
+                    
+                    // Toggle icon
+                    passwordIcon.classList.toggle('fa-eye');
+                    passwordIcon.classList.toggle('fa-eye-slash');
+                });
+            }
+            
+            // Confirm password toggle
+            if (toggleConfirmPassword && confirmPasswordField && confirmPasswordIcon) {
+                toggleConfirmPassword.addEventListener('click', function() {
+                    // Toggle password visibility
+                    const type = confirmPasswordField.getAttribute('type') === 'password' ? 'text' : 'password';
+                    confirmPasswordField.setAttribute('type', type);
+                    
+                    // Toggle icon
+                    confirmPasswordIcon.classList.toggle('fa-eye');
+                    confirmPasswordIcon.classList.toggle('fa-eye-slash');
+                });
+            }
+            
+            // Custom validation for password confirmation
+            if (confirmPasswordField && password) {
+                confirmPasswordField.addEventListener('input', function() {
+                    if (this.value !== password.value) {
+                        this.setCustomValidity('Passwords do not match');
+                    } else {
+                        this.setCustomValidity('');
+                    }
+                });
+                
+                password.addEventListener('input', function() {
+                    if (confirmPasswordField.value && confirmPasswordField.value !== this.value) {
+                        confirmPasswordField.setCustomValidity('Passwords do not match');
+                    } else {
+                        confirmPasswordField.setCustomValidity('');
+                    }
+                });
+            }
+            
+            // Real-time validation feedback
+            const inputs = document.querySelectorAll('input, select, textarea');
+            inputs.forEach(function(input) {
+                input.addEventListener('blur', function() {
+                    if (this.closest('form').classList.contains('was-validated')) {
+                        this.checkValidity();
+                    }
+                });
+                
+                input.addEventListener('input', function() {
+                    if (this.closest('form').classList.contains('was-validated')) {
+                        this.checkValidity();
+                    }
+                });
+            });
+        })();
     </script>    <!-- Compiled JavaScript (includes jQuery, Bootstrap, and all vendor scripts) -->
     
 

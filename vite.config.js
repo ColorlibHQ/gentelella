@@ -49,7 +49,7 @@ export default defineConfig({
         media_gallery: 'production/media_gallery.html',
         typography: 'production/typography.html',
         icons: 'production/icons.html',
-        glyphicons: 'production/glyphicons.html',
+
         widgets: 'production/widgets.html',
         invoice: 'production/invoice.html',
         inbox: 'production/inbox.html',

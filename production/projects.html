@@ -65,7 +65,7 @@
                       <li><a href="media_gallery.html">Media Gallery</a></li>
                       <li><a href="typography.html">Typography</a></li>
                       <li><a href="icons.html">Icons</a></li>
-                      <li><a href="glyphicons.html">Glyphicons</a></li>
+
                       <li><a href="widgets.html">Widgets</a></li>
                       <li><a href="invoice.html">Invoice</a></li>
                       <li><a href="inbox.html">Inbox</a></li>
@@ -134,7 +134,7 @@
                         </li>
                     </ul>
                   </li>                  
-                  <li><a href="javascript:void(0)"><i class="fas fa-laptop"></i> Landing Page <span class="label label-success pull-right">Coming Soon</span></a></li>
+                  <li><a href="javascript:void(0)"><i class="fas fa-laptop"></i> Landing Page <span class="badge bg-success float-end">Coming Soon</span></a></li>
                 </ul>
               </div>
 
@@ -143,16 +143,16 @@
 
             <!-- /menu footer buttons -->
             <div class="sidebar-footer hidden-small">
-              <a data-bs-toggle="tooltip" data-placement="top" title="Settings">
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Settings">
                 <span class="fas fa-cog" aria-hidden="true"></span>
               </a>
-              <a data-bs-toggle="tooltip" data-placement="top" title="FullScreen">
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="FullScreen">
                 <span class="fas fa-expand" aria-hidden="true"></span>
               </a>
-              <a data-bs-toggle="tooltip" data-placement="top" title="Lock">
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Lock">
                 <span class="fas fa-eye-slash" aria-hidden="true"></span>
               </a>
-              <a data-bs-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Logout" href="login.html">
                 <span class="fas fa-power-off" aria-hidden="true"></span>
               </a>
             </div>
@@ -172,14 +172,14 @@
                     <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                       <img src="images/img.jpg" alt="">John Doe
                     </a>
-                    <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
+                    <div class="dropdown-menu dropdown-usermenu" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item"  href="javascript:;"> Profile</a>
                         <a class="dropdown-item"  href="javascript:;">
-                          <span class="badge bg-red pull-right">50%</span>
+                          <span class="badge bg-danger float-end">50%</span>
                           <span>Settings</span>
                         </a>
                     <a class="dropdown-item"  href="javascript:;">Help</a>
-                      <a class="dropdown-item"  href="login.html"><i class="fas fa-sign-out-alt pull-right"></i> Log Out</a>
+                      <a class="dropdown-item"  href="login.html"><i class="fas fa-sign-out-alt float-end"></i> Log Out</a>
                     </div>
                   </li>
   
@@ -258,16 +258,16 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Projects <small>Listing design</small></h3>
+                <h3>Project Management <small>Track and manage your projects</small></h3>
               </div>
 
               <div class="title_right">
-                <div class="col-md-5 col-sm-5 form-group pull-right top_search">
+                <div class="col-md-5 col-sm-5 form-group float-end top_search">
                   <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for...">
-                    <span class="input-group-btn">
-                      <button class="btn btn-secondary" type="button">Go!</button>
-                    </span>
+                    <input type="text" class="form-control" placeholder="Search projects..." id="projectSearch">
+                    <button class="btn btn-outline-secondary" type="button">
+                      <i class="fas fa-search"></i>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -275,19 +275,95 @@
             
             <div class="clearfix"></div>
 
+            <!-- Project Statistics -->
+            <div class="row mb-4">
+              <div class="col-md-3 col-sm-6">
+                <div class="x_panel tile fixed_height_320">
+                  <div class="x_title">
+                    <h2>Total Projects</h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content text-center">
+                    <div class="count_top">
+                      <h1 class="count text-primary">24</h1>
+                      <div class="count_bottom">
+                        <i class="green">4% </i>
+                        <span class="green">From last Week</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-3 col-sm-6">
+                <div class="x_panel tile fixed_height_320">
+                  <div class="x_title">
+                    <h2>Active Projects</h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content text-center">
+                    <div class="count_top">
+                      <h1 class="count text-warning">18</h1>
+                      <div class="count_bottom">
+                        <i class="red">-3% </i>
+                        <span class="red">From last Week</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-3 col-sm-6">
+                <div class="x_panel tile fixed_height_320">
+                  <div class="x_title">
+                    <h2>Completed</h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content text-center">
+                    <div class="count_top">
+                      <h1 class="count text-success">6</h1>
+                      <div class="count_bottom">
+                        <i class="green">12% </i>
+                        <span class="green">From last Week</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-3 col-sm-6">
+                <div class="x_panel tile fixed_height_320">
+                  <div class="x_title">
+                    <h2>On Hold</h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content text-center">
+                    <div class="count_top">
+                      <h1 class="count text-danger">3</h1>
+                      <div class="count_bottom">
+                        <i class="green">-2% </i>
+                        <span class="green">From last Week</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <div class="row">
               <div class="col-md-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Projects</h2>
+                    <h2>Projects <span class="badge bg-primary">24 Total</span></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
                       </li>
                       <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Settings 1</a>
-                            <a class="dropdown-item" href="#">Settings 2</a>
+                            <a class="dropdown-item" href="#">Export to CSV</a>
+                            <a class="dropdown-item" href="#">Export to PDF</a>
+                            <a class="dropdown-item" href="#">Print</a>
                           </div>
                       </li>
                       <li><a class="btn-close-link"><i class="fas fa-times"></i></a>
@@ -297,345 +373,572 @@
                   </div>
                   <div class="x_content">
 
-                    <p>Simple table with project listing with progress and editing options</p>
+                    <!-- Filter Controls -->
+                    <div class="row mb-3">
+                      <div class="col-md-3">
+                        <select class="form-select" id="statusFilter">
+                          <option value="">All Status</option>
+                          <option value="active">Active</option>
+                          <option value="completed">Completed</option>
+                          <option value="on-hold">On Hold</option>
+                          <option value="planning">Planning</option>
+                        </select>
+                      </div>
+                      <div class="col-md-3">
+                        <select class="form-select" id="priorityFilter">
+                          <option value="">All Priorities</option>
+                          <option value="high">High Priority</option>
+                          <option value="medium">Medium Priority</option>
+                          <option value="low">Low Priority</option>
+                        </select>
+                      </div>
+                      <div class="col-md-3">
+                        <select class="form-select" id="categoryFilter">
+                          <option value="">All Categories</option>
+                          <option value="web">Web Development</option>
+                          <option value="mobile">Mobile App</option>
+                          <option value="design">Design</option>
+                          <option value="marketing">Marketing</option>
+                        </select>
+                      </div>
+                      <div class="col-md-3">
+                        <button class="btn btn-primary" onclick="addNewProject()">
+                          <i class="fas fa-plus me-2"></i>Add New Project
+                        </button>
+                      </div>
+                    </div>
+
+                    <p class="text-muted">Comprehensive project management with real-time progress tracking and team collaboration features</p>
 
                     <!-- start project list -->
-                    <table class="table table-striped projects">
-                      <thead>
-                        <tr>
-                          <th style="width: 1%">#</th>
-                          <th style="width: 20%">Project Name</th>
-                          <th>Team Members</th>
-                          <th>Project Progress</th>
-                          <th>Status</th>
-                          <th style="width: 20%">#Edit</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>#</td>
-                          <td>
-                            <a>Pesamakini Backend UI</a>
-                            <br />
-                            <small>Created 01.01.2015</small>
-                          </td>
-                          <td>
-                            <ul class="list-inline">
-                              <li>
-                                <img src="images/user.png" class="avatar" alt="Avatar">
-                              </li>
-                              <li>
-                                <img src="images/user.png" class="avatar" alt="Avatar">
-                              </li>
-                              <li>
-                                <img src="images/user.png" class="avatar" alt="Avatar">
-                              </li>
-                              <li>
-                                <img src="images/user.png" class="avatar" alt="Avatar">
-                              </li>
-                            </ul>
-                          </td>
-                          <td class="project_progress">
-                            <div class="progress progress_sm">
-                              <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="57"></div>
-                            </div>
-                            <small>57% Complete</small>
-                          </td>
-                          <td>
-                            <button type="button" class="btn btn-success btn-xs">Success</button>
-                          </td>
-                          <td>
-                            <a href="#" class="btn btn-primary btn-xs"><i class="fas fa-folder"></i> View </a>
-                            <a href="#" class="btn btn-info btn-xs"><i class="fas fa-pencil"></i> Edit </a>
-                            <a href="#" class="btn btn-danger btn-xs"><i class="fas fa-trash"></i> Delete </a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>#</td>
-                          <td>
-                            <a>Pesamakini Backend UI</a>
-                            <br />
-                            <small>Created 01.01.2015</small>
-                          </td>
-                          <td>
-                            <ul class="list-inline">
-                              <li>
-                                <img src="images/user.png" class="avatar" alt="Avatar">
-                              </li>
-                              <li>
-                                <img src="images/user.png" class="avatar" alt="Avatar">
-                              </li>
-                            </ul>
-                          </td>
-                          <td class="project_progress">
-                            <div class="progress progress_sm">
-                              <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="47"></div>
-                            </div>
-                            <small>47% Complete</small>
-                          </td>
-                          <td>
-                            <button type="button" class="btn btn-success btn-xs">Success</button>
-                          </td>
-                          <td>
-                            <a href="#" class="btn btn-primary btn-xs"><i class="fas fa-folder"></i> View </a>
-                            <a href="#" class="btn btn-info btn-xs"><i class="fas fa-pencil"></i> Edit </a>
-                            <a href="#" class="btn btn-danger btn-xs"><i class="fas fa-trash"></i> Delete </a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>#</td>
-                          <td>
-                            <a>Pesamakini Backend UI</a>
-                            <br />
-                            <small>Created 01.01.2015</small>
-                          </td>
-                          <td>
-                            <ul class="list-inline">
-                              <li>
-                                <img src="images/user.png" class="avatar" alt="Avatar">
-                              </li>
-                              <li>
-                                <img src="images/user.png" class="avatar" alt="Avatar">
-                              </li>
-                              <li>
-                                <img src="images/user.png" class="avatar" alt="Avatar">
-                              </li>
-                            </ul>
-                          </td>
-                          <td class="project_progress">
-                            <div class="progress progress_sm">
-                              <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="77"></div>
-                            </div>
-                            <small>77% Complete</small>
-                          </td>
-                          <td>
-                            <button type="button" class="btn btn-success btn-xs">Success</button>
-                          </td>
-                          <td>
-                            <a href="#" class="btn btn-primary btn-xs"><i class="fas fa-folder"></i> View </a>
-                            <a href="#" class="btn btn-info btn-xs"><i class="fas fa-pencil"></i> Edit </a>
-                            <a href="#" class="btn btn-danger btn-xs"><i class="fas fa-trash"></i> Delete </a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>#</td>
-                          <td>
-                            <a>Pesamakini Backend UI</a>
-                            <br />
-                            <small>Created 01.01.2015</small>
-                          </td>
-                          <td>
-                            <ul class="list-inline">
-                              <li>
-                                <img src="images/user.png" class="avatar" alt="Avatar">
-                              </li>
-                              <li>
-                                <img src="images/user.png" class="avatar" alt="Avatar">
-                              </li>
-                              <li>
-                                <img src="images/user.png" class="avatar" alt="Avatar">
-                              </li>
-                              <li>
-                                <img src="images/user.png" class="avatar" alt="Avatar">
-                              </li>
-                            </ul>
-                          </td>
-                          <td class="project_progress">
-                            <div class="progress progress_sm">
-                              <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="60"></div>
-                            </div>
-                            <small>60% Complete</small>
-                          </td>
-                          <td>
-                            <button type="button" class="btn btn-success btn-xs">Success</button>
-                          </td>
-                          <td>
-                            <a href="#" class="btn btn-primary btn-xs"><i class="fas fa-folder"></i> View </a>
-                            <a href="#" class="btn btn-info btn-xs"><i class="fas fa-pencil"></i> Edit </a>
-                            <a href="#" class="btn btn-danger btn-xs"><i class="fas fa-trash"></i> Delete </a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>#</td>
-                          <td>
-                            <a>Pesamakini Backend UI</a>
-                            <br />
-                            <small>Created 01.01.2015</small>
-                          </td>
-                          <td>
-                            <ul class="list-inline">
-                              <li>
-                                <img src="images/user.png" class="avatar" alt="Avatar">
-                              </li>
-                              <li>
-                                <img src="images/user.png" class="avatar" alt="Avatar">
-                              </li>
-                              <li>
-                                <img src="images/user.png" class="avatar" alt="Avatar">
-                              </li>
-                            </ul>
-                          </td>
-                          <td class="project_progress">
-                            <div class="progress progress_sm">
-                              <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="12"></div>
-                            </div>
-                            <small>12% Complete</small>
-                          </td>
-                          <td>
-                            <button type="button" class="btn btn-success btn-xs">Success</button>
-                          </td>
-                          <td>
-                            <a href="#" class="btn btn-primary btn-xs"><i class="fas fa-folder"></i> View </a>
-                            <a href="#" class="btn btn-info btn-xs"><i class="fas fa-pencil"></i> Edit </a>
-                            <a href="#" class="btn btn-danger btn-xs"><i class="fas fa-trash"></i> Delete </a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>#</td>
-                          <td>
-                            <a>Pesamakini Backend UI</a>
-                            <br />
-                            <small>Created 01.01.2015</small>
-                          </td>
-                          <td>
-                            <ul class="list-inline">
-                              <li>
-                                <img src="images/user.png" class="avatar" alt="Avatar">
-                              </li>
-                              <li>
-                                <img src="images/user.png" class="avatar" alt="Avatar">
-                              </li>
-                              <li>
-                                <img src="images/user.png" class="avatar" alt="Avatar">
-                              </li>
-                              <li>
-                                <img src="images/user.png" class="avatar" alt="Avatar">
-                              </li>
-                            </ul>
-                          </td>
-                          <td class="project_progress">
-                            <div class="progress progress_sm">
-                              <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="35"></div>
-                            </div>
-                            <small>35% Complete</small>
-                          </td>
-                          <td>
-                            <button type="button" class="btn btn-success btn-xs">Success</button>
-                          </td>
-                          <td>
-                            <a href="#" class="btn btn-primary btn-xs"><i class="fas fa-folder"></i> View </a>
-                            <a href="#" class="btn btn-info btn-xs"><i class="fas fa-pencil"></i> Edit </a>
-                            <a href="#" class="btn btn-danger btn-xs"><i class="fas fa-trash"></i> Delete </a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>#</td>
-                          <td>
-                            <a>Pesamakini Backend UI</a>
-                            <br />
-                            <small>Created 01.01.2015</small>
-                          </td>
-                          <td>
-                            <ul class="list-inline">
-                              <li>
-                                <img src="images/user.png" class="avatar" alt="Avatar">
-                              </li>
-                              <li>
-                                <img src="images/user.png" class="avatar" alt="Avatar">
-                              </li>
-                            </ul>
-                          </td>
-                          <td class="project_progress">
-                            <div class="progress progress_sm">
-                              <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="87"></div>
-                            </div>
-                            <small>87% Complete</small>
-                          </td>
-                          <td>
-                            <button type="button" class="btn btn-success btn-xs">Success</button>
-                          </td>
-                          <td>
-                            <a href="#" class="btn btn-primary btn-xs"><i class="fas fa-folder"></i> View </a>
-                            <a href="#" class="btn btn-info btn-xs"><i class="fas fa-pencil"></i> Edit </a>
-                            <a href="#" class="btn btn-danger btn-xs"><i class="fas fa-trash"></i> Delete </a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>#</td>
-                          <td>
-                            <a>Pesamakini Backend UI</a>
-                            <br />
-                            <small>Created 01.01.2015</small>
-                          </td>
-                          <td>
-                            <ul class="list-inline">
-                              <li>
-                                <img src="images/user.png" class="avatar" alt="Avatar">
-                              </li>
-                              <li>
-                                <img src="images/user.png" class="avatar" alt="Avatar">
-                              </li>
-                              <li>
-                                <img src="images/user.png" class="avatar" alt="Avatar">
-                              </li>
-                            </ul>
-                          </td>
-                          <td class="project_progress">
-                            <div class="progress progress_sm">
-                              <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="77"></div>
-                            </div>
-                            <small>77% Complete</small>
-                          </td>
-                          <td>
-                            <button type="button" class="btn btn-success btn-xs">Success</button>
-                          </td>
-                          <td>
-                            <a href="#" class="btn btn-primary btn-xs"><i class="fas fa-folder"></i> View </a>
-                            <a href="#" class="btn btn-info btn-xs"><i class="fas fa-pencil"></i> Edit </a>
-                            <a href="#" class="btn btn-danger btn-xs"><i class="fas fa-trash"></i> Delete </a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>#</td>
-                          <td>
-                            <a>Pesamakini Backend UI</a>
-                            <br />
-                            <small>Created 01.01.2015</small>
-                          </td>
-                          <td>
-                            <ul class="list-inline">
-                              <li>
-                                <img src="images/user.png" class="avatar" alt="Avatar">
-                              </li>
-                              <li>
-                                <img src="images/user.png" class="avatar" alt="Avatar">
-                              </li>
-                              <li>
-                                <img src="images/user.png" class="avatar" alt="Avatar">
-                              </li>
-                              <li>
-                                <img src="images/user.png" class="avatar" alt="Avatar">
-                              </li>
-                            </ul>
-                          </td>
-                          <td class="project_progress">
-                            <div class="progress progress_sm">
-                              <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="77"></div>
-                            </div>
-                            <small>77% Complete</small>
-                          </td>
-                          <td>
-                            <button type="button" class="btn btn-success btn-xs">Success</button>
-                          </td>
-                          <td>
-                            <a href="#" class="btn btn-primary btn-xs"><i class="fas fa-folder"></i> View </a>
-                            <a href="#" class="btn btn-info btn-xs"><i class="fas fa-pencil"></i> Edit </a>
-                            <a href="#" class="btn btn-danger btn-xs"><i class="fas fa-trash"></i> Delete </a>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
+                    <div class="table-responsive">
+                      <table class="table table-striped projects" id="projectsTable">
+                        <thead>
+                          <tr>
+                            <th style="width: 1%">#</th>
+                            <th style="width: 20%">Project Details</th>
+                            <th>Team Members</th>
+                            <th>Progress</th>
+                            <th>Priority</th>
+                            <th>Status</th>
+                            <th style="width: 20%">Actions</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr data-status="active" data-priority="high" data-category="web">
+                            <td>1</td>
+                            <td>
+                              <div class="project-info">
+                                <a href="project_detail.html" class="project-title">E-Commerce Platform Redesign</a>
+                                <br />
+                                <small class="text-muted">
+                                  <i class="fas fa-calendar me-1"></i>Created Jan 15, 2025
+                                  <span class="mx-2">•</span>
+                                  <i class="fas fa-clock me-1"></i>Due Mar 30, 2025
+                                </small>
+                                <br />
+                                <span class="badge bg-info">Web Development</span>
+                              </div>
+                            </td>
+                            <td>
+                              <div class="team-avatars">
+                                <img src="images/user.png" class="avatar" alt="John Doe" title="John Doe - Frontend Lead">
+                                <img src="images/user.png" class="avatar" alt="Jane Smith" title="Jane Smith - Backend Dev">
+                                <img src="images/user.png" class="avatar" alt="Mike Johnson" title="Mike Johnson - Designer">
+                                <span class="avatar-count">+2</span>
+                              </div>
+                            </td>
+                            <td class="project_progress">
+                              <div class="progress progress_sm">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                              <small>75% Complete</small>
+                            </td>
+                            <td>
+                              <span class="badge bg-danger">High</span>
+                            </td>
+                            <td>
+                              <span class="badge bg-success">Active</span>
+                            </td>
+                            <td>
+                              <div class="btn-group" role="group">
+                                <a href="project_detail.html" class="btn btn-primary btn-sm" title="View Details">
+                                  <i class="fas fa-eye"></i>
+                                </a>
+                                <a href="#" class="btn btn-info btn-sm" title="Edit Project">
+                                  <i class="fas fa-edit"></i>
+                                </a>
+                                <a href="#" class="btn btn-danger btn-sm" title="Delete Project" onclick="confirmDelete('E-Commerce Platform Redesign')">
+                                  <i class="fas fa-trash"></i>
+                                </a>
+                              </div>
+                            </td>
+                          </tr>
+                          
+                          <tr data-status="active" data-priority="medium" data-category="mobile">
+                            <td>2</td>
+                            <td>
+                              <div class="project-info">
+                                <a href="project_detail.html" class="project-title">Mobile Banking App</a>
+                                <br />
+                                <small class="text-muted">
+                                  <i class="fas fa-calendar me-1"></i>Created Jan 10, 2025
+                                  <span class="mx-2">•</span>
+                                  <i class="fas fa-clock me-1"></i>Due Apr 15, 2025
+                                </small>
+                                <br />
+                                <span class="badge bg-primary">Mobile App</span>
+                              </div>
+                            </td>
+                            <td>
+                              <div class="team-avatars">
+                                <img src="images/user.png" class="avatar" alt="Sarah Connor" title="Sarah Connor - iOS Dev">
+                                <img src="images/user.png" class="avatar" alt="Tom Wilson" title="Tom Wilson - Android Dev">
+                                <img src="images/user.png" class="avatar" alt="Lisa Brown" title="Lisa Brown - UX Designer">
+                              </div>
+                            </td>
+                            <td class="project_progress">
+                              <div class="progress progress_sm">
+                                <div class="progress-bar bg-warning" role="progressbar" style="width: 45%" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                              <small>45% Complete</small>
+                            </td>
+                            <td>
+                              <span class="badge bg-warning">Medium</span>
+                            </td>
+                            <td>
+                              <span class="badge bg-success">Active</span>
+                            </td>
+                            <td>
+                              <div class="btn-group" role="group">
+                                <a href="project_detail.html" class="btn btn-primary btn-sm" title="View Details">
+                                  <i class="fas fa-eye"></i>
+                                </a>
+                                <a href="#" class="btn btn-info btn-sm" title="Edit Project">
+                                  <i class="fas fa-edit"></i>
+                                </a>
+                                <a href="#" class="btn btn-danger btn-sm" title="Delete Project" onclick="confirmDelete('Mobile Banking App')">
+                                  <i class="fas fa-trash"></i>
+                                </a>
+                              </div>
+                            </td>
+                          </tr>
+
+                          <tr data-status="completed" data-priority="high" data-category="design">
+                            <td>3</td>
+                            <td>
+                              <div class="project-info">
+                                <a href="project_detail.html" class="project-title">Brand Identity Redesign</a>
+                                <br />
+                                <small class="text-muted">
+                                  <i class="fas fa-calendar me-1"></i>Created Nov 10, 2024
+                                  <span class="mx-2">•</span>
+                                  <i class="fas fa-check-circle me-1 text-success"></i>Completed Jan 20, 2025
+                                </small>
+                                <br />
+                                <span class="badge bg-secondary">Design</span>
+                              </div>
+                            </td>
+                            <td>
+                              <div class="team-avatars">
+                                <img src="images/user.png" class="avatar" alt="Alex Chen" title="Alex Chen - Creative Director">
+                                <img src="images/user.png" class="avatar" alt="Emma Davis" title="Emma Davis - Graphic Designer">
+                              </div>
+                            </td>
+                            <td class="project_progress">
+                              <div class="progress progress_sm">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                              <small>100% Complete</small>
+                            </td>
+                            <td>
+                              <span class="badge bg-danger">High</span>
+                            </td>
+                            <td>
+                              <span class="badge bg-success">Completed</span>
+                            </td>
+                            <td>
+                              <div class="btn-group" role="group">
+                                <a href="project_detail.html" class="btn btn-primary btn-sm" title="View Details">
+                                  <i class="fas fa-eye"></i>
+                                </a>
+                                <a href="#" class="btn btn-info btn-sm" title="Edit Project">
+                                  <i class="fas fa-edit"></i>
+                                </a>
+                                <a href="#" class="btn btn-danger btn-sm" title="Delete Project" onclick="confirmDelete('Brand Identity Redesign')">
+                                  <i class="fas fa-trash"></i>
+                                </a>
+                              </div>
+                            </td>
+                          </tr>
+
+                          <tr data-status="on-hold" data-priority="low" data-category="marketing">
+                            <td>4</td>
+                            <td>
+                              <div class="project-info">
+                                <a href="project_detail.html" class="project-title">Social Media Campaign</a>
+                                <br />
+                                <small class="text-muted">
+                                  <i class="fas fa-calendar me-1"></i>Created Dec 01, 2024
+                                  <span class="mx-2">•</span>
+                                  <i class="fas fa-pause-circle me-1 text-warning"></i>On hold since Jan 10, 2025
+                                </small>
+                                <br />
+                                <span class="badge bg-warning">Marketing</span>
+                              </div>
+                            </td>
+                            <td>
+                              <div class="team-avatars">
+                                <img src="images/user.png" class="avatar" alt="David Kim" title="David Kim - Marketing Manager">
+                                <img src="images/user.png" class="avatar" alt="Sophie Turner" title="Sophie Turner - Content Creator">
+                                <img src="images/user.png" class="avatar" alt="Ryan Lee" title="Ryan Lee - Social Media Specialist">
+                              </div>
+                            </td>
+                            <td class="project_progress">
+                              <div class="progress progress_sm">
+                                <div class="progress-bar bg-danger" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                              <small>25% Complete</small>
+                            </td>
+                            <td>
+                              <span class="badge bg-secondary">Low</span>
+                            </td>
+                            <td>
+                              <span class="badge bg-warning">On Hold</span>
+                            </td>
+                            <td>
+                              <div class="btn-group" role="group">
+                                <a href="project_detail.html" class="btn btn-primary btn-sm" title="View Details">
+                                  <i class="fas fa-eye"></i>
+                                </a>
+                                <a href="#" class="btn btn-info btn-sm" title="Edit Project">
+                                  <i class="fas fa-edit"></i>
+                                </a>
+                                <a href="#" class="btn btn-danger btn-sm" title="Delete Project" onclick="confirmDelete('Social Media Campaign')">
+                                  <i class="fas fa-trash"></i>
+                                </a>
+                              </div>
+                            </td>
+                          </tr>
+
+                          <tr data-status="planning" data-priority="medium" data-category="web">
+                            <td>5</td>
+                            <td>
+                              <div class="project-info">
+                                <a href="project_detail.html" class="project-title">Customer Portal System</a>
+                                <br />
+                                <small class="text-muted">
+                                  <i class="fas fa-calendar me-1"></i>Created Jan 20, 2025
+                                  <span class="mx-2">•</span>
+                                  <i class="fas fa-hourglass-start me-1"></i>Planning phase
+                                </small>
+                                <br />
+                                <span class="badge bg-info">Web Development</span>
+                              </div>
+                            </td>
+                            <td>
+                              <div class="team-avatars">
+                                <img src="images/user.png" class="avatar" alt="Maria Garcia" title="Maria Garcia - Project Manager">
+                                <img src="images/user.png" class="avatar" alt="Kevin Zhang" title="Kevin Zhang - Full Stack Dev">
+                                <span class="avatar-count">+3</span>
+                              </div>
+                            </td>
+                            <td class="project_progress">
+                              <div class="progress progress_sm">
+                                <div class="progress-bar bg-info" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                              <small>10% Complete</small>
+                            </td>
+                            <td>
+                              <span class="badge bg-warning">Medium</span>
+                            </td>
+                            <td>
+                              <span class="badge bg-info">Planning</span>
+                            </td>
+                            <td>
+                              <div class="btn-group" role="group">
+                                <a href="project_detail.html" class="btn btn-primary btn-sm" title="View Details">
+                                  <i class="fas fa-eye"></i>
+                                </a>
+                                <a href="#" class="btn btn-info btn-sm" title="Edit Project">
+                                  <i class="fas fa-edit"></i>
+                                </a>
+                                <a href="#" class="btn btn-danger btn-sm" title="Delete Project" onclick="confirmDelete('Customer Portal System')">
+                                  <i class="fas fa-trash"></i>
+                                </a>
+                              </div>
+                            </td>
+                          </tr>
+
+                          <tr data-status="active" data-priority="high" data-category="mobile">
+                            <td>6</td>
+                            <td>
+                              <div class="project-info">
+                                <a href="project_detail.html" class="project-title">Fitness Tracking App</a>
+                                <br />
+                                <small class="text-muted">
+                                  <i class="fas fa-calendar me-1"></i>Created Dec 15, 2024
+                                  <span class="mx-2">•</span>
+                                  <i class="fas fa-clock me-1"></i>Due Mar 15, 2025
+                                </small>
+                                <br />
+                                <span class="badge bg-primary">Mobile App</span>
+                              </div>
+                            </td>
+                            <td>
+                              <div class="team-avatars">
+                                <img src="images/user.png" class="avatar" alt="Chris Anderson" title="Chris Anderson - Mobile Dev">
+                                <img src="images/user.png" class="avatar" alt="Anna Roberts" title="Anna Roberts - UI/UX Designer">
+                                <img src="images/user.png" class="avatar" alt="Jake Miller" title="Jake Miller - Backend Dev">
+                                <img src="images/user.png" class="avatar" alt="Nina Patel" title="Nina Patel - QA Tester">
+                              </div>
+                            </td>
+                            <td class="project_progress">
+                              <div class="progress progress_sm">
+                                <div class="progress-bar bg-warning" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                              <small>60% Complete</small>
+                            </td>
+                            <td>
+                              <span class="badge bg-danger">High</span>
+                            </td>
+                            <td>
+                              <span class="badge bg-success">Active</span>
+                            </td>
+                            <td>
+                              <div class="btn-group" role="group">
+                                <a href="project_detail.html" class="btn btn-primary btn-sm" title="View Details">
+                                  <i class="fas fa-eye"></i>
+                                </a>
+                                <a href="#" class="btn btn-info btn-sm" title="Edit Project">
+                                  <i class="fas fa-edit"></i>
+                                </a>
+                                <a href="#" class="btn btn-danger btn-sm" title="Delete Project" onclick="confirmDelete('Fitness Tracking App')">
+                                  <i class="fas fa-trash"></i>
+                                </a>
+                              </div>
+                            </td>
+                          </tr>
+
+                          <tr data-status="active" data-priority="medium" data-category="web">
+                            <td>7</td>
+                            <td>
+                              <div class="project-info">
+                                <a href="project_detail.html" class="project-title">CRM Dashboard</a>
+                                <br />
+                                <small class="text-muted">
+                                  <i class="fas fa-calendar me-1"></i>Created Jan 05, 2025
+                                  <span class="mx-2">•</span>
+                                  <i class="fas fa-clock me-1"></i>Due May 20, 2025
+                                </small>
+                                <br />
+                                <span class="badge bg-info">Web Development</span>
+                              </div>
+                            </td>
+                            <td>
+                              <div class="team-avatars">
+                                <img src="images/user.png" class="avatar" alt="Robert Johnson" title="Robert Johnson - Full Stack Developer">
+                                <img src="images/user.png" class="avatar" alt="Patricia Lee" title="Patricia Lee - UI Designer">
+                                <img src="images/user.png" class="avatar" alt="Michael Brown" title="Michael Brown - Backend Dev">
+                              </div>
+                            </td>
+                            <td class="project_progress">
+                              <div class="progress progress_sm">
+                                <div class="progress-bar bg-info" role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                              <small>35% Complete</small>
+                            </td>
+                            <td>
+                              <span class="badge bg-warning">Medium</span>
+                            </td>
+                            <td>
+                              <span class="badge bg-success">Active</span>
+                            </td>
+                            <td>
+                              <div class="btn-group" role="group">
+                                <a href="project_detail.html" class="btn btn-primary btn-sm" title="View Details">
+                                  <i class="fas fa-eye"></i>
+                                </a>
+                                <a href="#" class="btn btn-info btn-sm" title="Edit Project">
+                                  <i class="fas fa-edit"></i>
+                                </a>
+                                <a href="#" class="btn btn-danger btn-sm" title="Delete Project" onclick="confirmDelete('CRM Dashboard')">
+                                  <i class="fas fa-trash"></i>
+                                </a>
+                              </div>
+                            </td>
+                          </tr>
+
+                          <tr data-status="completed" data-priority="medium" data-category="design">
+                            <td>8</td>
+                            <td>
+                              <div class="project-info">
+                                <a href="project_detail.html" class="project-title">Corporate Website Redesign</a>
+                                <br />
+                                <small class="text-muted">
+                                  <i class="fas fa-calendar me-1"></i>Created Sep 20, 2024
+                                  <span class="mx-2">•</span>
+                                  <i class="fas fa-check-circle me-1 text-success"></i>Completed Dec 30, 2024
+                                </small>
+                                <br />
+                                <span class="badge bg-secondary">Design</span>
+                              </div>
+                            </td>
+                            <td>
+                              <div class="team-avatars">
+                                <img src="images/user.png" class="avatar" alt="Amanda Wilson" title="Amanda Wilson - Web Designer">
+                                <img src="images/user.png" class="avatar" alt="Daniel Garcia" title="Daniel Garcia - Frontend Dev">
+                              </div>
+                            </td>
+                            <td class="project_progress">
+                              <div class="progress progress_sm">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                              <small>100% Complete</small>
+                            </td>
+                            <td>
+                              <span class="badge bg-warning">Medium</span>
+                            </td>
+                            <td>
+                              <span class="badge bg-success">Completed</span>
+                            </td>
+                            <td>
+                              <div class="btn-group" role="group">
+                                <a href="project_detail.html" class="btn btn-primary btn-sm" title="View Details">
+                                  <i class="fas fa-eye"></i>
+                                </a>
+                                <a href="#" class="btn btn-info btn-sm" title="Edit Project">
+                                  <i class="fas fa-edit"></i>
+                                </a>
+                                <a href="#" class="btn btn-danger btn-sm" title="Delete Project" onclick="confirmDelete('Corporate Website Redesign')">
+                                  <i class="fas fa-trash"></i>
+                                </a>
+                              </div>
+                            </td>
+                          </tr>
+
+                          <tr data-status="active" data-priority="high" data-category="mobile">
+                            <td>9</td>
+                            <td>
+                              <div class="project-info">
+                                <a href="project_detail.html" class="project-title">Food Delivery App</a>
+                                <br />
+                                <small class="text-muted">
+                                  <i class="fas fa-calendar me-1"></i>Created Jan 12, 2025
+                                  <span class="mx-2">•</span>
+                                  <i class="fas fa-clock me-1"></i>Due Jun 30, 2025
+                                </small>
+                                <br />
+                                <span class="badge bg-primary">Mobile App</span>
+                              </div>
+                            </td>
+                            <td>
+                              <div class="team-avatars">
+                                <img src="images/user.png" class="avatar" alt="Jennifer Davis" title="Jennifer Davis - Product Manager">
+                                <img src="images/user.png" class="avatar" alt="Mark Thompson" title="Mark Thompson - iOS Developer">
+                                <img src="images/user.png" class="avatar" alt="Laura Martinez" title="Laura Martinez - Android Developer">
+                                <span class="avatar-count">+4</span>
+                              </div>
+                            </td>
+                            <td class="project_progress">
+                              <div class="progress progress_sm">
+                                <div class="progress-bar bg-warning" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                              <small>20% Complete</small>
+                            </td>
+                            <td>
+                              <span class="badge bg-danger">High</span>
+                            </td>
+                            <td>
+                              <span class="badge bg-success">Active</span>
+                            </td>
+                            <td>
+                              <div class="btn-group" role="group">
+                                <a href="project_detail.html" class="btn btn-primary btn-sm" title="View Details">
+                                  <i class="fas fa-eye"></i>
+                                </a>
+                                <a href="#" class="btn btn-info btn-sm" title="Edit Project">
+                                  <i class="fas fa-edit"></i>
+                                </a>
+                                <a href="#" class="btn btn-danger btn-sm" title="Delete Project" onclick="confirmDelete('Food Delivery App')">
+                                  <i class="fas fa-trash"></i>
+                                </a>
+                              </div>
+                            </td>
+                          </tr>
+
+                          <tr data-status="planning" data-priority="low" data-category="marketing">
+                            <td>10</td>
+                            <td>
+                              <div class="project-info">
+                                <a href="project_detail.html" class="project-title">Email Marketing Automation</a>
+                                <br />
+                                <small class="text-muted">
+                                  <i class="fas fa-calendar me-1"></i>Created Jan 25, 2025
+                                  <span class="mx-2">•</span>
+                                  <i class="fas fa-hourglass-start me-1"></i>Planning phase
+                                </small>
+                                <br />
+                                <span class="badge bg-warning">Marketing</span>
+                              </div>
+                            </td>
+                            <td>
+                              <div class="team-avatars">
+                                <img src="images/user.png" class="avatar" alt="Steven Clark" title="Steven Clark - Marketing Specialist">
+                                <img src="images/user.png" class="avatar" alt="Rachel Green" title="Rachel Green - Content Writer">
+                              </div>
+                            </td>
+                            <td class="project_progress">
+                              <div class="progress progress_sm">
+                                <div class="progress-bar bg-info" role="progressbar" style="width: 5%" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                              <small>5% Complete</small>
+                            </td>
+                            <td>
+                              <span class="badge bg-secondary">Low</span>
+                            </td>
+                            <td>
+                              <span class="badge bg-info">Planning</span>
+                            </td>
+                            <td>
+                              <div class="btn-group" role="group">
+                                <a href="project_detail.html" class="btn btn-primary btn-sm" title="View Details">
+                                  <i class="fas fa-eye"></i>
+                                </a>
+                                <a href="#" class="btn btn-info btn-sm" title="Edit Project">
+                                  <i class="fas fa-edit"></i>
+                                </a>
+                                <a href="#" class="btn btn-danger btn-sm" title="Delete Project" onclick="confirmDelete('Email Marketing Automation')">
+                                  <i class="fas fa-trash"></i>
+                                </a>
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
                     <!-- end project list -->
+
+                    <!-- Pagination -->
+                    <nav aria-label="Project pagination">
+                      <ul class="pagination justify-content-center" id="projectPagination">
+                        <li class="page-item" id="prevPage">
+                          <a class="page-link" href="#" onclick="changePage(-1)">Previous</a>
+                        </li>
+                        <li class="page-item active" data-page="1">
+                          <a class="page-link" href="#" onclick="goToPage(1)">1</a>
+                        </li>
+                        <li class="page-item" data-page="2">
+                          <a class="page-link" href="#" onclick="goToPage(2)">2</a>
+                        </li>
+                        <li class="page-item" data-page="3">
+                          <a class="page-link" href="#" onclick="goToPage(3)">3</a>
+                        </li>
+                        <li class="page-item" id="nextPage">
+                          <a class="page-link" href="#" onclick="changePage(1)">Next</a>
+                        </li>
+                      </ul>
+                    </nav>
 
                   </div>
                 </div>
@@ -645,16 +948,464 @@
         </div>
         <!-- /page content -->
 
+        <!-- Add New Project Modal -->
+        <div class="modal fade" id="addProjectModal" tabindex="-1" aria-labelledby="addProjectModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="addProjectModalLabel">
+                  <i class="fas fa-plus-circle me-2"></i>Add New Project
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form id="addProjectForm">
+                  <div class="row">
+                    <div class="col-md-8">
+                      <div class="mb-3">
+                        <label for="projectName" class="form-label">Project Name *</label>
+                        <input type="text" class="form-control" id="projectName" required placeholder="Enter project name">
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="mb-3">
+                        <label for="projectCategory" class="form-label">Category *</label>
+                        <select class="form-select" id="projectCategory" required>
+                          <option value="">Select Category</option>
+                          <option value="web">Web Development</option>
+                          <option value="mobile">Mobile App</option>
+                          <option value="design">Design</option>
+                          <option value="marketing">Marketing</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="mb-3">
+                        <label for="projectPriority" class="form-label">Priority *</label>
+                        <select class="form-select" id="projectPriority" required>
+                          <option value="">Select Priority</option>
+                          <option value="high">High Priority</option>
+                          <option value="medium">Medium Priority</option>
+                          <option value="low">Low Priority</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="mb-3">
+                        <label for="projectStatus" class="form-label">Status *</label>
+                        <select class="form-select" id="projectStatus" required>
+                          <option value="">Select Status</option>
+                          <option value="planning">Planning</option>
+                          <option value="active">Active</option>
+                          <option value="on-hold">On Hold</option>
+                          <option value="completed">Completed</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="mb-3">
+                        <label for="projectProgress" class="form-label">Progress (%)</label>
+                        <input type="number" class="form-control" id="projectProgress" min="0" max="100" value="0" placeholder="0">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="mb-3">
+                        <label for="projectStartDate" class="form-label">Start Date</label>
+                        <input type="date" class="form-control" id="projectStartDate">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="mb-3">
+                        <label for="projectDueDate" class="form-label">Due Date</label>
+                        <input type="date" class="form-control" id="projectDueDate">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="projectDescription" class="form-label">Description</label>
+                    <textarea class="form-control" id="projectDescription" rows="3" placeholder="Enter project description..."></textarea>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="projectTeam" class="form-label">Team Members</label>
+                    <input type="text" class="form-control" id="projectTeam" placeholder="Enter team member names (comma separated)">
+                    <div class="form-text">Enter names separated by commas, e.g., "John Doe, Jane Smith"</div>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" onclick="saveProject()">
+                  <i class="fas fa-save me-2"></i>Create Project
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- footer content -->
         <footer>
-          <div class="pull-right">
+          <div class="float-end">
             Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
           </div>
           <div class="clearfix"></div>
         </footer>
         <!-- /footer content -->
       </div>
-    </div>    <!-- Compiled JavaScript (includes jQuery, Bootstrap, and all vendor scripts) -->
-    
+    </div>
+
+    <!-- Project Management JavaScript -->
+    <script>
+      // Pagination variables
+      let currentPage = 1;
+      const itemsPerPage = 5;
+      let totalProjects = 0;
+      let filteredProjects = [];
+
+      document.addEventListener('DOMContentLoaded', function() {
+        // Search functionality
+        const searchInput = document.getElementById('projectSearch');
+        const statusFilter = document.getElementById('statusFilter');
+        const priorityFilter = document.getElementById('priorityFilter');
+        const categoryFilter = document.getElementById('categoryFilter');
+        const table = document.getElementById('projectsTable');
+        const rows = Array.from(table.querySelectorAll('tbody tr'));
+        
+        totalProjects = rows.length;
+        filteredProjects = rows;
+
+        function filterTable() {
+          const searchTerm = searchInput.value.toLowerCase();
+          const statusValue = statusFilter.value;
+          const priorityValue = priorityFilter.value;
+          const categoryValue = categoryFilter.value;
+
+          filteredProjects = rows.filter(row => {
+            const projectTitle = row.querySelector('.project-title').textContent.toLowerCase();
+            const status = row.getAttribute('data-status');
+            const priority = row.getAttribute('data-priority');
+            const category = row.getAttribute('data-category');
+
+            const matchesSearch = projectTitle.includes(searchTerm);
+            const matchesStatus = !statusValue || status === statusValue;
+            const matchesPriority = !priorityValue || priority === priorityValue;
+            const matchesCategory = !categoryValue || category === categoryValue;
+
+            return matchesSearch && matchesStatus && matchesPriority && matchesCategory;
+          });
+
+          currentPage = 1;
+          updatePagination();
+          showPage(currentPage);
+        }
+
+        function showPage(page) {
+          const startIndex = (page - 1) * itemsPerPage;
+          const endIndex = startIndex + itemsPerPage;
+
+          // Hide all rows first
+          rows.forEach(row => row.style.display = 'none');
+
+          // Show only the rows for current page from filtered results
+          filteredProjects.slice(startIndex, endIndex).forEach(row => {
+            row.style.display = '';
+          });
+        }
+
+        function updatePagination() {
+          const totalPages = Math.ceil(filteredProjects.length / itemsPerPage);
+          const pagination = document.getElementById('projectPagination');
+          
+          // Clear existing pagination
+          pagination.innerHTML = '';
+          
+          // Previous button
+          const prevLi = document.createElement('li');
+          prevLi.className = currentPage === 1 ? 'page-item disabled' : 'page-item';
+          prevLi.innerHTML = `<a class="page-link" href="#" onclick="changePage(-1)">Previous</a>`;
+          pagination.appendChild(prevLi);
+          
+          // Page numbers
+          for (let i = 1; i <= totalPages; i++) {
+            const pageLi = document.createElement('li');
+            pageLi.className = i === currentPage ? 'page-item active' : 'page-item';
+            pageLi.innerHTML = `<a class="page-link" href="#" onclick="goToPage(${i})">${i}</a>`;
+            pagination.appendChild(pageLi);
+          }
+          
+          // Next button
+          const nextLi = document.createElement('li');
+          nextLi.className = currentPage === totalPages ? 'page-item disabled' : 'page-item';
+          nextLi.innerHTML = `<a class="page-link" href="#" onclick="changePage(1)">Next</a>`;
+          pagination.appendChild(nextLi);
+        }
+
+        // Make functions globally available
+        window.goToPage = function(page) {
+          const totalPages = Math.ceil(filteredProjects.length / itemsPerPage);
+          if (page >= 1 && page <= totalPages) {
+            currentPage = page;
+            showPage(currentPage);
+            updatePagination();
+          }
+        };
+
+        window.changePage = function(direction) {
+          const totalPages = Math.ceil(filteredProjects.length / itemsPerPage);
+          const newPage = currentPage + direction;
+          if (newPage >= 1 && newPage <= totalPages) {
+            goToPage(newPage);
+          }
+        };
+
+        // Event listeners for filters
+        searchInput.addEventListener('input', filterTable);
+        statusFilter.addEventListener('change', filterTable);
+        priorityFilter.addEventListener('change', filterTable);
+        categoryFilter.addEventListener('change', filterTable);
+
+        // Initial setup
+        updatePagination();
+        showPage(currentPage);
+
+        // Progress bar animation
+        const progressBars = document.querySelectorAll('.progress-bar');
+        progressBars.forEach(bar => {
+          const targetWidth = bar.style.width;
+          bar.style.width = '0%';
+          setTimeout(() => {
+            bar.style.transition = 'width 1.5s ease-in-out';
+            bar.style.width = targetWidth;
+          }, 500);
+        });
+
+        // Initialize tooltips
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+          return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+      });
+
+      // Project management functions
+      function addNewProject() {
+        const modal = new bootstrap.Modal(document.getElementById('addProjectModal'));
+        modal.show();
+      }
+
+      function saveProject() {
+        const form = document.getElementById('addProjectForm');
+        const formData = new FormData(form);
+        
+        // Get form values
+        const projectName = document.getElementById('projectName').value;
+        const category = document.getElementById('projectCategory').value;
+        const priority = document.getElementById('projectPriority').value;
+        const status = document.getElementById('projectStatus').value;
+        const progress = document.getElementById('projectProgress').value;
+        const startDate = document.getElementById('projectStartDate').value;
+        const dueDate = document.getElementById('projectDueDate').value;
+        const description = document.getElementById('projectDescription').value;
+        const team = document.getElementById('projectTeam').value;
+
+        // Validate required fields
+        if (!projectName || !category || !priority || !status) {
+          alert('Please fill in all required fields.');
+          return;
+        }
+
+        // In a real application, you would send this data to your backend
+        console.log('New Project Data:', {
+          name: projectName,
+          category: category,
+          priority: priority,
+          status: status,
+          progress: progress,
+          startDate: startDate,
+          dueDate: dueDate,
+          description: description,
+          team: team
+        });
+
+        alert(`Project "${projectName}" has been created successfully!`);
+        
+        // Close modal and reset form
+        const modal = bootstrap.Modal.getInstance(document.getElementById('addProjectModal'));
+        modal.hide();
+        form.reset();
+        
+        // In a real app, you would refresh the project list here
+      }
+
+      function confirmDelete(projectName) {
+        if (confirm(`Are you sure you want to delete the project "${projectName}"?`)) {
+          alert(`Project "${projectName}" would be deleted.`);
+        }
+      }
+
+      // Simulate counting animation for statistics
+      function animateNumbers() {
+        const counters = document.querySelectorAll('.count');
+        counters.forEach(counter => {
+          const target = parseInt(counter.textContent);
+          const duration = 2000;
+          const step = target / (duration / 16);
+          let current = 0;
+          
+          const timer = setInterval(() => {
+            current += step;
+            if (current >= target) {
+              counter.textContent = target;
+              clearInterval(timer);
+            } else {
+              counter.textContent = Math.floor(current);
+            }
+          }, 16);
+        });
+      }
+
+      // Start animations when page loads
+      window.addEventListener('load', animateNumbers);
+    </script>
+
+    <style>
+      .project-info .project-title {
+        font-weight: 600;
+        color: #2c3e50;
+        text-decoration: none;
+        font-size: 0.95rem;
+      }
+
+      .project-info .project-title:hover {
+        color: #3498db;
+        text-decoration: underline;
+      }
+
+      .team-avatars {
+        display: flex;
+        align-items: center;
+        gap: -8px;
+      }
+
+      .team-avatars .avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 2px solid #fff;
+        margin-left: -8px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .team-avatars .avatar:first-child {
+        margin-left: 0;
+      }
+
+      .team-avatars .avatar:hover {
+        z-index: 10;
+        transform: scale(1.1);
+        transition: transform 0.2s ease;
+      }
+
+      .avatar-count {
+        background: #6c757d;
+        color: white;
+        border-radius: 50%;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.8rem;
+        margin-left: -8px;
+        border: 2px solid #fff;
+      }
+
+      .progress_sm {
+        height: 8px;
+        border-radius: 4px;
+      }
+
+      .project_progress small {
+        font-size: 0.8rem;
+        color: #6c757d;
+        margin-top: 4px;
+        display: block;
+      }
+
+      .btn-group .btn {
+        margin-right: 2px;
+      }
+
+      .fixed_height_320 {
+        min-height: 140px;
+      }
+
+      .count_top {
+        padding: 20px 0;
+      }
+
+      .count {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      .count_bottom {
+        font-size: 0.9rem;
+      }
+
+      .green {
+        color: #28a745;
+      }
+
+      .red {
+        color: #dc3545;
+      }
+
+      .table-responsive {
+        border-radius: 0.5rem;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      }
+
+      .projects thead th {
+        background-color: #f8f9fa;
+        border-bottom: 2px solid #dee2e6;
+        font-weight: 600;
+        color: #495057;
+      }
+
+      .projects tbody tr:hover {
+        background-color: #f8f9fa;
+        transition: background-color 0.2s ease;
+      }
+
+      .badge {
+        font-size: 0.75rem;
+        padding: 0.375rem 0.75rem;
+      }
+
+      .x_panel {
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        border-radius: 0.5rem;
+        border: none;
+      }
+
+      .form-select {
+        border-radius: 0.375rem;
+        border: 1px solid #ced4da;
+      }
+
+      .form-select:focus {
+        border-color: #86b7fe;
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+      }
+    </style>
   </body>
 </html>

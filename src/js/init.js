@@ -1358,67 +1358,273 @@
         console.log('✅ ECharts Horizontal Bar Chart initialized');
       }
 
-             // 9. World Map (echart_world_map) - Using scatter plot to simulate world distribution
+             // 9. World Map (echart_world_map) - Interactive scatter plot with geographic visualization
        if (document.getElementById('echart_world_map')) {
          const worldMapChart = echarts.init(document.getElementById('echart_world_map'));
+         
+         // Global user distribution data with coordinates
+         const globalData = [
+           {name: 'United States', value: [2300, -95.7129, 37.0902], users: 2300},
+           {name: 'China', value: [1800, 104.1954, 35.8617], users: 1800},
+           {name: 'Japan', value: [1200, 138.2529, 36.2048], users: 1200},
+           {name: 'Germany', value: [1000, 10.4515, 51.1657], users: 1000},
+           {name: 'United Kingdom', value: [800, -3.4360, 55.3781], users: 800},
+           {name: 'France', value: [750, 2.2137, 46.2276], users: 750},
+           {name: 'India', value: [700, 78.9629, 20.5937], users: 700},
+           {name: 'Canada', value: [650, -106.3468, 56.1304], users: 650},
+           {name: 'Brazil', value: [600, -51.9253, -14.2350], users: 600},
+           {name: 'Australia', value: [550, 133.7751, -25.2744], users: 550},
+           {name: 'South Korea', value: [500, 127.7669, 35.9078], users: 500},
+           {name: 'Italy', value: [450, 12.5674, 41.8719], users: 450},
+           {name: 'Spain', value: [400, -3.7492, 40.4637], users: 400},
+           {name: 'Netherlands', value: [350, 5.2913, 52.1326], users: 350},
+           {name: 'Sweden', value: [300, 18.6435, 60.1282], users: 300},
+           {name: 'Russia', value: [275, 105.3188, 61.5240], users: 275},
+           {name: 'Mexico', value: [250, -102.5528, 23.6345], users: 250},
+           {name: 'Switzerland', value: [225, 8.2275, 46.8182], users: 225},
+           {name: 'Singapore', value: [200, 103.8198, 1.3521], users: 200},
+           {name: 'Norway', value: [175, 8.4689, 60.4720], users: 175}
+         ];
+         
          const worldMapOption = {
+           backgroundColor: '#f5f5f5',
            title: {
              text: 'Global User Distribution',
              left: 'center',
-             textStyle: { fontSize: 16 }
+             top: 20,
+             textStyle: { 
+               fontSize: 18,
+               color: '#333',
+               fontWeight: 'bold'
+             }
            },
            tooltip: {
              trigger: 'item',
              formatter: function(params) {
-               return `${params.data[3]}<br/>Users: ${params.data[2]}k<br/>Lat: ${params.data[1]}, Lng: ${params.data[0]}`;
+               if (params.data) {
+                 return `<div style="padding: 8px;">
+                   <div style="font-weight: bold; color: #333; margin-bottom: 4px;">${params.data.name}</div>
+                   <div style="color: #666;">Active Users: <span style="color: #26B99A; font-weight: bold;">${params.data.users}k</span></div>
+                   <div style="color: #999; font-size: 11px;">Coordinates: ${params.data.value[1].toFixed(2)}°, ${params.data.value[2].toFixed(2)}°</div>
+                 </div>`;
+               }
+               return params.name;
+             },
+             backgroundColor: 'rgba(255, 255, 255, 0.95)',
+             borderColor: '#ccc',
+             borderWidth: 1,
+             textStyle: {
+               color: '#333'
              }
            },
-           xAxis: {
-             type: 'value',
-             name: 'Longitude',
-             min: -180,
-             max: 180,
-             show: false
+           legend: {
+             data: ['Global Users'],
+             left: 'left',
+             top: 60,
+             textStyle: {
+               color: '#333'
+             }
            },
-           yAxis: {
-             type: 'value',
-             name: 'Latitude', 
-             min: -90,
-             max: 90,
-             show: false
+           geo: {
+             type: 'map',
+             map: 'world',
+             roam: true,
+             zoom: 1.2,
+             center: [0, 20],
+             itemStyle: {
+               areaColor: '#e6f4ff',
+               borderColor: '#99d6ff',
+               borderWidth: 1
+             },
+             emphasis: {
+               itemStyle: {
+                 areaColor: '#cce7ff'
+               }
+             },
+             regions: [
+               {
+                 name: 'Antarctica',
+                 itemStyle: {
+                   areaColor: '#f0f0f0',
+                   borderColor: '#ccc'
+                 }
+               }
+             ]
+           },
+           visualMap: {
+             min: 0,
+             max: 2500,
+             left: 'right',
+             top: 'bottom',
+             text: ['High Activity', 'Low Activity'],
+             textStyle: {
+               color: '#333'
+             },
+             inRange: {
+               symbolSize: [6, 60],
+               color: ['#26B99A', '#2ECC71', '#F39C12', '#E74C3C']
+             },
+             calculable: true,
+             realtime: false
            },
            series: [
              {
                name: 'Global Users',
                type: 'scatter',
-               data: [
-                 [-74, 40.7, 1200, 'New York'],
-                 [2.3, 48.9, 950, 'Paris'],
-                 [-0.1, 51.5, 800, 'London'],
-                 [139.7, 35.7, 1100, 'Tokyo'],
-                 [-122.4, 37.8, 750, 'San Francisco'],
-                 [13.4, 52.5, 600, 'Berlin'],
-                 [151.2, -33.9, 500, 'Sydney'],
-                 [77.2, 28.6, 650, 'Delhi'],
-                 [-43.2, -22.9, 400, 'Rio de Janeiro'],
-                 [121.5, 31.2, 900, 'Shanghai']
-               ],
-               symbolSize: function(data) {
-                 return Math.sqrt(data[2]) / 2;
+               coordinateSystem: 'geo',
+               data: globalData,
+               symbol: 'circle',
+               symbolSize: function (val) {
+                 return Math.max(8, val[0] / 50);
                },
                itemStyle: {
                  color: function(params) {
-                   const colors = ['#26B99A', '#3498DB', '#E74C3C', '#F39C12', '#9B59B6'];
-                   return colors[params.dataIndex % colors.length];
+                   const users = params.data.users;
+                   if (users > 1500) return '#E74C3C';
+                   if (users > 1000) return '#F39C12';
+                   if (users > 500) return '#2ECC71';
+                   return '#26B99A';
                  },
-                 opacity: 0.8
+                 shadowBlur: 10,
+                 shadowColor: 'rgba(0, 0, 0, 0.3)'
+               },
+               emphasis: {
+                 itemStyle: {
+                   borderColor: '#333',
+                   borderWidth: 2
+                 }
+               },
+               label: {
+                 show: false,
+                 formatter: '{b}',
+                 position: 'right'
                }
              }
-           ],
-           backgroundColor: '#f8f9fa'
+           ]
          };
-         worldMapChart.setOption(worldMapOption);
-         console.log('✅ ECharts World Map initialized');
+         
+         // Load world map from CDN
+         fetch('https://geo.datav.aliyun.com/areas_v3/bound/world.json')
+           .then(response => response.json())
+           .then(geoData => {
+             echarts.registerMap('world', geoData);
+             worldMapChart.setOption(worldMapOption);
+             console.log('✅ ECharts World Map initialized with geographic visualization');
+           })
+           .catch(error => {
+             console.warn('⚠️ Failed to load world map data from CDN, using fallback visualization');
+             // Fallback to scatter plot only
+             const fallbackOption = {
+               backgroundColor: '#f5f5f5',
+               title: {
+                 text: 'Global User Distribution',
+                 subtext: 'Interactive Scatter Plot View',
+                 left: 'center',
+                 top: 20,
+                 textStyle: { 
+                   fontSize: 18,
+                   color: '#333',
+                   fontWeight: 'bold'
+                 },
+                 subtextStyle: {
+                   color: '#666',
+                   fontSize: 12
+                 }
+               },
+               tooltip: {
+                 trigger: 'item',
+                 formatter: function(params) {
+                   return `<div style="padding: 8px;">
+                     <div style="font-weight: bold; color: #333; margin-bottom: 4px;">${params.data.name}</div>
+                     <div style="color: #666;">Active Users: <span style="color: #26B99A; font-weight: bold;">${params.data.users}k</span></div>
+                   </div>`;
+                 },
+                 backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                 borderColor: '#ccc',
+                 borderWidth: 1
+               },
+               grid: {
+                 left: '10%',
+                 right: '15%',
+                 top: '20%',
+                 bottom: '15%'
+               },
+               xAxis: {
+                 type: 'value',
+                 name: 'Longitude',
+                 nameLocation: 'middle',
+                 nameGap: 25,
+                 min: -180,
+                 max: 180,
+                 axisLine: {
+                   lineStyle: { color: '#ccc' }
+                 },
+                 splitLine: {
+                   lineStyle: { color: '#eee' }
+                 }
+               },
+               yAxis: {
+                 type: 'value',
+                 name: 'Latitude',
+                 nameLocation: 'middle',
+                 nameGap: 35,
+                 min: -90,
+                 max: 90,
+                 axisLine: {
+                   lineStyle: { color: '#ccc' }
+                 },
+                 splitLine: {
+                   lineStyle: { color: '#eee' }
+                 }
+               },
+               visualMap: {
+                 min: 0,
+                 max: 2500,
+                 right: 10,
+                 top: 'center',
+                 text: ['High', 'Low'],
+                 inRange: {
+                   symbolSize: [8, 40],
+                   color: ['#26B99A', '#2ECC71', '#F39C12', '#E74C3C']
+                 },
+                 textStyle: {
+                   color: '#333'
+                 }
+               },
+               series: [
+                 {
+                   name: 'Global Users',
+                   type: 'scatter',
+                   data: globalData.map(item => ({
+                     name: item.name,
+                     value: [item.value[1], item.value[2], item.users],
+                     users: item.users
+                   })),
+                   symbolSize: function (data) {
+                     return Math.max(8, data[2] / 50);
+                   },
+                   itemStyle: {
+                     color: function(params) {
+                       const users = params.data.users;
+                       if (users > 1500) return '#E74C3C';
+                       if (users > 1000) return '#F39C12';
+                       if (users > 500) return '#2ECC71';
+                       return '#26B99A';
+                     },
+                     shadowBlur: 10,
+                     shadowColor: 'rgba(0, 0, 0, 0.3)'
+                   },
+                   emphasis: {
+                     itemStyle: {
+                       borderColor: '#333',
+                       borderWidth: 2
+                     }
+                   }
+                 }
+               ]
+             };
+             worldMapChart.setOption(fallbackOption);
+           });
        }
 
              // 10. Pyramid Chart (echart_pyramid) - Using bar chart to create pyramid effect
@@ -1627,12 +1833,12 @@
         console.log('✅ USA Leaflet Map initialized');
       }
 
-      // 2. Easy Pie Charts using ECharts mini pie charts (with different sizes)
+      // 2. Easy Pie Charts using ECharts gauge charts (circular progress indicators)
       const chartSizes = {
-        'chart-large': { width: 150, height: 150, fontSize: 20, lineWidth: 25 },
-        'chart-medium': { width: 100, height: 100, fontSize: 16, lineWidth: 18 },
-        'chart-small': { width: 70, height: 70, fontSize: 12, lineWidth: 12 },
-        'chart': { width: 120, height: 120, fontSize: 18, lineWidth: 20 } // fallback for old charts
+        'chart-large': { width: 150, height: 150, fontSize: 20, lineWidth: 12 },
+        'chart-medium': { width: 100, height: 100, fontSize: 16, lineWidth: 8 },
+        'chart-small': { width: 70, height: 70, fontSize: 12, lineWidth: 6 },
+        'chart': { width: 120, height: 120, fontSize: 18, lineWidth: 10 } // fallback for old charts
       };
 
       // Handle all chart types with different sizes
@@ -1659,9 +1865,9 @@
           chartDiv.style.height = config.height + 'px';
           element.appendChild(chartDiv);
           
-          // Create ECharts pie chart
+          // Create ECharts gauge chart for circular progress
           if (typeof echarts !== 'undefined') {
-            const pieChart = echarts.init(chartDiv);
+            const gaugeChart = echarts.init(chartDiv);
             
             // Dynamic color based on percentage and critical thresholds
             let color;
@@ -1682,13 +1888,14 @@
             const option = {
               series: [
                 {
-                  type: 'pie',
+                  type: 'gauge',
                   center: ['50%', '50%'],
-                  radius: '85%',
+                  radius: '90%',
                   min: 0,
                   max: 100,
                   startAngle: 90,
                   endAngle: -270,
+                  clockwise: true,
                   pointer: {
                     show: false
                   },
@@ -1749,11 +1956,12 @@
                 }
               ]
             };
-            pieChart.setOption(option);
+            
+            gaugeChart.setOption(option);
             
             // Add animation on hover for interactivity
             chartDiv.addEventListener('mouseenter', function() {
-              pieChart.setOption({
+              gaugeChart.setOption({
                 series: [{
                   progress: {
                     itemStyle: {
@@ -1766,7 +1974,7 @@
             });
             
             chartDiv.addEventListener('mouseleave', function() {
-              pieChart.setOption({
+              gaugeChart.setOption({
                 series: [{
                   progress: {
                     itemStyle: {
@@ -1776,11 +1984,18 @@
                 }]
               });
             });
+            
+            // Store chart reference for resize handling
+            window.addEventListener('resize', function() {
+              setTimeout(() => {
+                gaugeChart.resize();
+              }, 100);
+            });
           }
         });
       });
       
-      console.log('✅ Easy Pie Charts initialized');
+      console.log('✅ Easy Pie Charts (Gauge) initialized');
 
       // 3. Sparkline Charts using ECharts - Larger size to match pie charts
       const sparklineElements = [
@@ -2436,7 +2651,12 @@
   
     console.log('Initializing General Elements...');
   
+    // Check if toast container exists before proceeding
     const toastContainer = document.querySelector('.toast-container');
+    if (!toastContainer) {
+      console.log('Toast container not found, skipping toast initialization');
+      return;
+    }
   
     const createToast = (title, body, type = 'success') => {
       const toastId = `toast-${Date.now()}`;
@@ -2470,21 +2690,34 @@
       });
     };
   
-    document.getElementById('toast-success-btn').addEventListener('click', () => {
-      createToast('Success!', 'This is a success notification.', 'success');
-    });
+    // Only add event listeners if the buttons exist
+    const toastSuccessBtn = document.getElementById('toast-success-btn');
+    if (toastSuccessBtn) {
+      toastSuccessBtn.addEventListener('click', () => {
+        createToast('Success!', 'This is a success notification.', 'success');
+      });
+    }
   
-    document.getElementById('toast-error-btn').addEventListener('click', () => {
-      createToast('Error!', 'This is an error notification.', 'error');
-    });
+    const toastErrorBtn = document.getElementById('toast-error-btn');
+    if (toastErrorBtn) {
+      toastErrorBtn.addEventListener('click', () => {
+        createToast('Error!', 'This is an error notification.', 'error');
+      });
+    }
   
-    document.getElementById('toast-info-btn').addEventListener('click', () => {
-      createToast('Info', 'This is an informational notification.', 'info');
-    });
+    const toastInfoBtn = document.getElementById('toast-info-btn');
+    if (toastInfoBtn) {
+      toastInfoBtn.addEventListener('click', () => {
+        createToast('Info', 'This is an informational notification.', 'info');
+      });
+    }
   
-    document.getElementById('toast-warning-btn').addEventListener('click', () => {
-      createToast('Warning', 'This is a warning notification.', 'warning');
-    });
+    const toastWarningBtn = document.getElementById('toast-warning-btn');
+    if (toastWarningBtn) {
+      toastWarningBtn.addEventListener('click', () => {
+        createToast('Warning', 'This is a warning notification.', 'warning');
+      });
+    }
   }
 
   function initializeMaps() {

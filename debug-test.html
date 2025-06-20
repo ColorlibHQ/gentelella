@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Debug Test</title>
+    <script type="module" src="/src/main-form-basic.js"></script>
+</head>
+<body>
+    <h1>Debug Test Page</h1>
+    <div id="debug-output"></div>
+    
+    <script>
+        // Simple debug output
+        setTimeout(() => {
+            const output = document.getElementById('debug-output');
+            output.innerHTML = `
+                <h3>Library Status:</h3>
+                <ul>
+                    <li>jQuery: ${typeof window.$ !== 'undefined' ? '✅ Available' : '❌ Missing'}</li>
+                    <li>TempusDominus: ${typeof window.TempusDominus !== 'undefined' ? '✅ Available' : '❌ Missing'}</li>
+                    <li>Cropper: ${typeof window.Cropper !== 'undefined' ? '✅ Available' : '❌ Missing'}</li>
+                    <li>Pickr: ${typeof window.Pickr !== 'undefined' ? '✅ Available' : '❌ Missing'}</li>
+                    <li>Inputmask: ${typeof window.Inputmask !== 'undefined' ? '✅ Available' : '❌ Missing'}</li>
+                    <li>Switchery: ${typeof window.Switchery !== 'undefined' ? '✅ Available' : '❌ Missing'}</li>
+                </ul>
+            `;
+        }, 2000);
+    </script>
+</body>
+</html> 

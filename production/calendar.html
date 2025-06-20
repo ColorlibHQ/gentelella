@@ -6,15 +6,17 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="images/favicon.ico" type="image/ico" />
 
-    <title>Gentelella Alela! | </title>
+    <title>Calendar | Gentelella Admin Template</title>
 
     <!-- Bootstrap -->
     <!-- Font Awesome -->
     <!-- NProgress -->
     <!-- FullCalendar -->
     <!-- Custom styling plus plugins -->
-    <script type="module" src="/src/main-minimal.js"></script>
+    <!-- Calendar-specific JavaScript with FullCalendar -->
+    <script type="module" src="/src/main-calendar.js"></script>
   </head>
 
   <body class="nav-md">
@@ -51,8 +53,8 @@
                     <ul class="nav child_menu">
                       <li><a href="index.html">Dashboard 1</a></li>
                       <li><a href="index2.html">Dashboard 2</a></li>
-                      <li><a href="index3.html">Dashboard 3</a></li><li><a href="index4.html">Dashboard 4</a></li>
                       <li><a href="index3.html">Dashboard 3</a></li>
+                      <li><a href="index4.html">Dashboard 4</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fas fa-edit"></i> Forms <span class="fas fa-chevron-down"></span></a>
@@ -71,7 +73,6 @@
                       <li><a href="media_gallery.html">Media Gallery</a></li>
                       <li><a href="typography.html">Typography</a></li>
                       <li><a href="icons.html">Icons</a></li>
-                      <li><a href="glyphicons.html">Glyphicons</a></li>
                       <li><a href="widgets.html">Widgets</a></li>
                       <li><a href="invoice.html">Invoice</a></li>
                       <li><a href="inbox.html">Inbox</a></li>
@@ -140,7 +141,7 @@
                         </li>
                     </ul>
                   </li>                  
-                  <li><a href="javascript:void(0)"><i class="fas fa-laptop"></i> Landing Page <span class="label label-success pull-right">Coming Soon</span></a></li>
+                  <li><a href="javascript:void(0)"><i class="fas fa-laptop"></i> Landing Page <span class="badge bg-success float-end">Coming Soon</span></a></li>
                 </ul>
               </div>
 
@@ -149,16 +150,16 @@
 
             <!-- /menu footer buttons -->
             <div class="sidebar-footer hidden-small">
-              <a data-bs-toggle="tooltip" data-placement="top" title="Settings">
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Settings">
                 <span class="fas fa-cog" aria-hidden="true"></span>
               </a>
-              <a data-bs-toggle="tooltip" data-placement="top" title="FullScreen">
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="FullScreen">
                 <span class="fas fa-expand" aria-hidden="true"></span>
               </a>
-              <a data-bs-toggle="tooltip" data-placement="top" title="Lock">
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Lock">
                 <span class="fas fa-eye-slash" aria-hidden="true"></span>
               </a>
-              <a data-bs-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Logout" href="login.html">
                 <span class="fas fa-power-off" aria-hidden="true"></span>
               </a>
             </div>
@@ -178,21 +179,21 @@
                     <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                       <img src="images/img.jpg" alt="">John Doe
                     </a>
-                    <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
+                    <div class="dropdown-menu dropdown-usermenu float-end" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item"  href="javascript:;"> Profile</a>
                         <a class="dropdown-item"  href="javascript:;">
-                          <span class="badge bg-red pull-right">50%</span>
+                          <span class="badge bg-danger float-end">50%</span>
                           <span>Settings</span>
                         </a>
                     <a class="dropdown-item"  href="javascript:;">Help</a>
-                      <a class="dropdown-item"  href="login.html"><i class="fas fa-sign-out-alt pull-right"></i> Log Out</a>
+                      <a class="dropdown-item"  href="login.html"><i class="fas fa-sign-out-alt float-end"></i> Log Out</a>
                     </div>
                   </li>
   
                   <li role="presentation" class="nav-item dropdown open">
                     <a href="javascript:;" class="dropdown-toggle info-number" id="navbarDropdown1" data-bs-toggle="dropdown" aria-expanded="false">
                       <i class="fas fa-envelope"></i>
-                      <span class="badge bg-green">6</span>
+                      <span class="badge bg-success">6</span>
                     </a>
                     <ul class="dropdown-menu list-unstyled msg_list" role="menu" aria-labelledby="navbarDropdown1">
                       <li class="nav-item">
@@ -203,7 +204,7 @@
                             <span class="time">3 mins ago</span>
                           </span>
                           <span class="message">
-                            Film festivals used to be do-or-die moments for movie makers. They were where...
+                            Team standup meeting scheduled for 2:00 PM today. Please prepare your updates...
                           </span>
                         </a>
                       </li>
@@ -211,11 +212,11 @@
                         <a class="dropdown-item">
                           <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
                           <span>
-                            <span>John Smith</span>
-                            <span class="time">3 mins ago</span>
+                            <span>Sarah Wilson</span>
+                            <span class="time">15 mins ago</span>
                           </span>
                           <span class="message">
-                            Film festivals used to be do-or-die moments for movie makers. They were where...
+                            Project deadline moved to next Friday. Updated timeline has been shared...
                           </span>
                         </a>
                       </li>
@@ -223,11 +224,11 @@
                         <a class="dropdown-item">
                           <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
                           <span>
-                            <span>John Smith</span>
-                            <span class="time">3 mins ago</span>
+                            <span>Mike Chen</span>
+                            <span class="time">1 hour ago</span>
                           </span>
                           <span class="message">
-                            Film festivals used to be do-or-die moments for movie makers. They were where...
+                            New feature requests from client meeting. Review attached specifications...
                           </span>
                         </a>
                       </li>
@@ -235,18 +236,18 @@
                         <a class="dropdown-item">
                           <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
                           <span>
-                            <span>John Smith</span>
-                            <span class="time">3 mins ago</span>
+                            <span>Alex Johnson</span>
+                            <span class="time">2 hours ago</span>
                           </span>
                           <span class="message">
-                            Film festivals used to be do-or-die moments for movie makers. They were where...
+                            Server maintenance scheduled for weekend. Please backup your work...
                           </span>
                         </a>
                       </li>
                       <li class="nav-item">
                         <div class="text-center">
                           <a class="dropdown-item">
-                            <strong>See All Alerts</strong>
+                            <strong>See All Messages</strong>
                             <i class="fas fa-angle-right"></i>
                           </a>
                         </div>
@@ -264,16 +265,14 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Calendar <small>Click to add/edit events</small></h3>
+                <h3>Calendar <small>Professional scheduling interface</small></h3>
               </div>
 
               <div class="title_right">
-                <div class="col-md-5 col-sm-5 form-group pull-right top_search">
+                <div class="col-md-5 col-sm-5 form-group float-end top_search">
                   <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for...">
-                    <span class="input-group-btn">
-                      <button class="btn btn-default" type="button">Go!</button>
-                    </span>
+                    <input type="text" class="form-control" placeholder="Search events...">
+                    <button class="btn btn-outline-secondary" type="button">Go!</button>
                   </div>
                 </div>
               </div>
@@ -282,18 +281,21 @@
             <div class="clearfix"></div>
 
             <div class="row">
+              <!-- Calendar Panel -->
               <div class="col-md-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Calendar Events <small>Sessions</small></h2>
+                    <h2>Event Calendar <small>Click dates to add events, click events to edit</small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
                       </li>
                       <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Settings 1</a>
-                            <a class="dropdown-item" href="#">Settings 2</a>
+                            <a class="dropdown-item" href="#"><i class="fas fa-download me-2"></i>Export Calendar</a>
+                            <a class="dropdown-item" href="#"><i class="fas fa-upload me-2"></i>Import Events</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Settings</a>
                           </div>
                       </li>
                       <li><a class="btn-close-link"><i class="fas fa-times"></i></a>
@@ -302,9 +304,33 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-
-                    <div id='calendar'></div>
-
+                    <div class="row">
+                      <!-- Quick Actions -->
+                      <div class="col-md-12 mb-3">
+                        <div class="d-flex flex-wrap gap-2">
+                          <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#CalenderModalNew">
+                            <i class="fas fa-plus me-1"></i> New Event
+                          </button>
+                          <button type="button" class="btn btn-primary btn-sm" onclick="window.calendar && window.calendar.changeView('dayGridMonth')">
+                            <i class="fas fa-calendar me-1"></i> Month View
+                          </button>
+                          <button type="button" class="btn btn-primary btn-sm" onclick="window.calendar && window.calendar.changeView('timeGridWeek')">
+                            <i class="fas fa-calendar-week me-1"></i> Week View
+                          </button>
+                          <button type="button" class="btn btn-primary btn-sm" onclick="window.calendar && window.calendar.changeView('timeGridDay')">
+                            <i class="fas fa-calendar-day me-1"></i> Day View
+                          </button>
+                          <button type="button" class="btn btn-outline-secondary btn-sm" onclick="window.calendar && window.calendar.today()">
+                            <i class="fas fa-calendar-check me-1"></i> Today
+                          </button>
+                        </div>
+                      </div>
+                      
+                      <!-- Calendar -->
+                      <div class="col-md-12">
+                        <div id='calendar' class="calendar-container"></div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -315,7 +341,7 @@
 
         <!-- footer content -->
         <footer>
-          <div class="pull-right">
+          <div class="float-end">
             Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
           </div>
           <div class="clearfix"></div>
@@ -324,80 +350,327 @@
       </div>
     </div>
 
-    <!-- calendar modal -->
-    <div id="CalenderModalNew" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
+    <!-- New Event Modal -->
+    <div id="CalenderModalNew" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="newEventModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
         <div class="modal-content">
-
           <div class="modal-header">
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">×</button>
-            <h4 class="modal-title" id="myModalLabel">New Calendar Entry</h4>
+            <h4 class="modal-title" id="newEventModalLabel">
+              <i class="fas fa-plus-circle me-2"></i>Create New Event
+            </h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <div id="testmodal" style="padding: 5px 20px;">
-              <form id="antoform" class="form-horizontal calender" role="form">
-                <div class="mb-3">
-                  <label class="col-sm-3 control-label">Title</label>
-                  <div class="col-sm-9">
-                    <input type="text" class="form-control" id="title" name="title">
+            <form id="newEventForm" class="needs-validation" novalidate>
+              <div class="row">
+                <div class="col-md-8 mb-3">
+                  <label for="eventTitle" class="form-label">Event Title <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="eventTitle" name="title" required>
+                  <div class="invalid-feedback">
+                    Please provide a valid event title.
                   </div>
                 </div>
-                <div class="mb-3">
-                  <label class="col-sm-3 control-label">Description</label>
-                  <div class="col-sm-9">
-                    <textarea class="form-control" style="height:55px;" id="descr" name="descr"></textarea>
+                <div class="col-md-4 mb-3">
+                  <label for="eventColor" class="form-label">Event Color</label>
+                  <select class="form-select" id="eventColor" name="color">
+                    <option value="#26B99A" data-color="#26B99A">Green</option>
+                    <option value="#5A738E" data-color="#5A738E">Blue</option>
+                    <option value="#E74C3C" data-color="#E74C3C">Red</option>
+                    <option value="#F39C12" data-color="#F39C12">Orange</option>
+                    <option value="#9B59B6" data-color="#9B59B6">Purple</option>
+                    <option value="#34495E" data-color="#34495E">Dark Gray</option>
+                  </select>
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="eventStartDate" class="form-label">Start Date & Time</label>
+                  <input type="datetime-local" class="form-control" id="eventStartDate" name="start">
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="eventEndDate" class="form-label">End Date & Time</label>
+                  <input type="datetime-local" class="form-control" id="eventEndDate" name="end">
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-md-12 mb-3">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="allDayEvent" name="allDay">
+                    <label class="form-check-label" for="allDayEvent">
+                      All Day Event
+                    </label>
                   </div>
                 </div>
-              </form>
-            </div>
+              </div>
+              
+              <div class="mb-3">
+                <label for="eventDescription" class="form-label">Description</label>
+                <textarea class="form-control" id="eventDescription" name="description" rows="3" placeholder="Add event details..."></textarea>
+              </div>
+              
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="eventLocation" class="form-label">Location</label>
+                  <input type="text" class="form-control" id="eventLocation" name="location" placeholder="Meeting room, address, etc.">
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="eventCategory" class="form-label">Category</label>
+                  <select class="form-select" id="eventCategory" name="category">
+                    <option value="">Select category...</option>
+                    <option value="meeting">Meeting</option>
+                    <option value="conference">Conference</option>
+                    <option value="workshop">Workshop</option>
+                    <option value="personal">Personal</option>
+                    <option value="deadline">Deadline</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+              </div>
+            </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default antoclose" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary antosubmit">Save changes</button>
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+              <i class="fas fa-times me-1"></i> Cancel
+            </button>
+            <button type="button" class="btn btn-success" id="saveNewEvent">
+              <i class="fas fa-save me-1"></i> Save Event
+            </button>
           </div>
         </div>
       </div>
     </div>
-    <div id="CalenderModalEdit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
 
+    <!-- Edit Event Modal -->
+    <div id="CalenderModalEdit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="editEventModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
           <div class="modal-header">
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">×</button>
-            <h4 class="modal-title" id="myModalLabel2">Edit Calendar Entry</h4>
+            <h4 class="modal-title" id="editEventModalLabel">
+              <i class="fas fa-edit me-2"></i>Edit Event
+            </h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-
-            <div id="testmodal2" style="padding: 5px 20px;">
-              <form id="antoform2" class="form-horizontal calender" role="form">
-                <div class="mb-3">
-                  <label class="col-sm-3 control-label">Title</label>
-                  <div class="col-sm-9">
-                    <input type="text" class="form-control" id="title2" name="title2">
+            <form id="editEventForm" class="needs-validation" novalidate>
+              <div class="row">
+                <div class="col-md-8 mb-3">
+                  <label for="editEventTitle" class="form-label">Event Title <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="editEventTitle" name="title" required>
+                  <div class="invalid-feedback">
+                    Please provide a valid event title.
                   </div>
                 </div>
-                <div class="mb-3">
-                  <label class="col-sm-3 control-label">Description</label>
-                  <div class="col-sm-9">
-                    <textarea class="form-control" style="height:55px;" id="descr2" name="descr"></textarea>
+                <div class="col-md-4 mb-3">
+                  <label for="editEventColor" class="form-label">Event Color</label>
+                  <select class="form-select" id="editEventColor" name="color">
+                    <option value="#26B99A" data-color="#26B99A">Green</option>
+                    <option value="#5A738E" data-color="#5A738E">Blue</option>
+                    <option value="#E74C3C" data-color="#E74C3C">Red</option>
+                    <option value="#F39C12" data-color="#F39C12">Orange</option>
+                    <option value="#9B59B6" data-color="#9B59B6">Purple</option>
+                    <option value="#34495E" data-color="#34495E">Dark Gray</option>
+                  </select>
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="editEventStartDate" class="form-label">Start Date & Time</label>
+                  <input type="datetime-local" class="form-control" id="editEventStartDate" name="start">
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="editEventEndDate" class="form-label">End Date & Time</label>
+                  <input type="datetime-local" class="form-control" id="editEventEndDate" name="end">
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-md-12 mb-3">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="editAllDayEvent" name="allDay">
+                    <label class="form-check-label" for="editAllDayEvent">
+                      All Day Event
+                    </label>
                   </div>
                 </div>
-
-              </form>
-            </div>
+              </div>
+              
+              <div class="mb-3">
+                <label for="editEventDescription" class="form-label">Description</label>
+                <textarea class="form-control" id="editEventDescription" name="description" rows="3" placeholder="Add event details..."></textarea>
+              </div>
+              
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="editEventLocation" class="form-label">Location</label>
+                  <input type="text" class="form-control" id="editEventLocation" name="location" placeholder="Meeting room, address, etc.">
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="editEventCategory" class="form-label">Category</label>
+                  <select class="form-select" id="editEventCategory" name="category">
+                    <option value="">Select category...</option>
+                    <option value="meeting">Meeting</option>
+                    <option value="conference">Conference</option>
+                    <option value="workshop">Workshop</option>
+                    <option value="personal">Personal</option>
+                    <option value="deadline">Deadline</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+              </div>
+            </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default antoclose2" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary antosubmit2">Save changes</button>
+            <button type="button" class="btn btn-outline-danger" id="deleteEvent">
+              <i class="fas fa-trash me-1"></i> Delete Event
+            </button>
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+              <i class="fas fa-times me-1"></i> Cancel
+            </button>
+            <button type="button" class="btn btn-primary" id="saveEditEvent">
+              <i class="fas fa-save me-1"></i> Save Changes
+            </button>
           </div>
         </div>
       </div>
     </div>
 
-    <div id="fc_create" data-bs-toggle="modal" data-bs-target="#CalenderModalNew"></div>
-    <div id="fc_edit" data-bs-toggle="modal" data-bs-target="#CalenderModalEdit"></div>
-    <!-- /calendar modal -->    <!-- Compiled JavaScript (includes jQuery, Bootstrap, and all vendor scripts) -->
+    <!-- Event Details Modal -->
+    <div id="EventDetailsModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="eventDetailsLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="eventDetailsLabel">
+              <i class="fas fa-calendar-alt me-2"></i>Event Details
+            </h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" id="eventDetailsContent">
+            <!-- Event details will be populated here -->
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-primary" id="editEventBtn">
+              <i class="fas fa-edit me-1"></i> Edit Event
+            </button>
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+              <i class="fas fa-times me-1"></i> Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
     
+    <style>
+      /* Calendar-specific styles */
+      .calendar-container {
+        background: white;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+      
+      .fc-toolbar {
+        margin-bottom: 1.5em !important;
+      }
+      
+      .fc-toolbar-title {
+        font-size: 1.75em !important;
+        font-weight: 600 !important;
+        color: #34495E !important;
+      }
+      
+      .fc-button {
+        padding: 0.375rem 0.75rem !important;
+        font-size: 0.875rem !important;
+        border-radius: 0.375rem !important;
+        border: 1px solid #26B99A !important;
+        background-color: #26B99A !important;
+        color: white !important;
+      }
+      
+      .fc-button:hover {
+        background-color: #1e8e79 !important;
+        border-color: #1e8e79 !important;
+      }
+      
+      .fc-button-active {
+        background-color: #1a7f72 !important;
+        border-color: #1a7f72 !important;
+      }
+      
+      .fc-event {
+        border-radius: 4px !important;
+        padding: 2px 4px !important;
+        font-size: 0.85em !important;
+        font-weight: 500 !important;
+      }
+      
+      .fc-event:hover {
+        opacity: 0.9 !important;
+        transform: translateY(-1px) !important;
+        transition: all 0.2s ease !important;
+      }
+      
+      .fc-day-today {
+        background-color: rgba(38, 185, 154, 0.1) !important;
+      }
+      
+      .fc-daygrid-event {
+        margin: 1px 2px !important;
+      }
+      
+      /* Modal improvements */
+      .modal-lg {
+        max-width: 600px !important;
+      }
+      
+      .form-label {
+        font-weight: 600;
+        color: #34495E;
+        margin-bottom: 0.5rem;
+      }
+      
+      .form-control:focus,
+      .form-select:focus {
+        border-color: #26B99A;
+        box-shadow: 0 0 0 0.2rem rgba(38, 185, 154, 0.25);
+      }
+      
+      .text-danger {
+        color: #E74C3C !important;
+      }
+      
+      /* Quick action buttons */
+      .btn-sm {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.875rem;
+        border-radius: 0.375rem;
+      }
+      
+      /* Responsive improvements */
+      @media (max-width: 768px) {
+        .calendar-container {
+          padding: 10px;
+        }
+        
+        .fc-toolbar {
+          flex-direction: column !important;
+          gap: 10px !important;
+        }
+        
+        .fc-toolbar-chunk {
+          display: flex !important;
+          justify-content: center !important;
+        }
+        
+        .modal-lg {
+          max-width: 95% !important;
+          margin: 10px auto !important;
+        }
+      }
+    </style>
 
   </body>
 </html>

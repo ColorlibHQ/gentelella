@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Simple Test</title>
+    <script type="module" src="/src/main-form-basic-simple.js"></script>
+</head>
+<body>
+    <h1>Simple Module Test</h1>
+    <div id="status"></div>
+    
+    <script>
+        // Test immediately
+        setTimeout(() => {
+            const status = document.getElementById('status');
+            status.innerHTML = `
+                <h3>Status Check:</h3>
+                <ul>
+                    <li>Test Variable: ${window.testVariable || '❌ Missing'}</li>
+                    <li>Module Ready: ${window.moduleReady ? '✅ Yes' : '❌ No'}</li>
+                    <li>jQuery: ${typeof window.$ !== 'undefined' ? '✅ Available' : '❌ Missing'}</li>
+                </ul>
+                <button onclick="window.location.reload()">Reload</button>
+            `;
+        }, 1000);
+        
+        // Listen for our event
+        window.addEventListener('simple-module-ready', () => {
+            console.log('📢 Simple module ready event received!');
+        });
+    </script>
+</body>
+</html> 

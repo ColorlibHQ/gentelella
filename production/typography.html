@@ -16,7 +16,7 @@
     <script type="module" src="/src/main-minimal.js"></script>
   </head>
 
-  <body class="nav-md">
+  <body class="nav-md page-typography">
     <div class="container body">
       <div class="main_container">
         <div class="col-md-3 left_col">
@@ -70,7 +70,7 @@
                       <li><a href="media_gallery.html">Media Gallery</a></li>
                       <li><a href="typography.html">Typography</a></li>
                       <li><a href="icons.html">Icons</a></li>
-                      <li><a href="glyphicons.html">Glyphicons</a></li>
+
                       <li><a href="widgets.html">Widgets</a></li>
                       <li><a href="invoice.html">Invoice</a></li>
                       <li><a href="inbox.html">Inbox</a></li>
@@ -139,7 +139,7 @@
                         </li>
                     </ul>
                   </li>                  
-                  <li><a href="javascript:void(0)"><i class="fas fa-laptop"></i> Landing Page <span class="label label-success pull-right">Coming Soon</span></a></li>
+                  <li><a href="javascript:void(0)"><i class="fas fa-laptop"></i> Landing Page <span class="badge bg-success float-end">Coming Soon</span></a></li>
                 </ul>
               </div>
 
@@ -148,16 +148,16 @@
 
             <!-- /menu footer buttons -->
             <div class="sidebar-footer hidden-small">
-              <a data-bs-toggle="tooltip" data-placement="top" title="Settings">
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Settings">
                 <span class="fas fa-cog" aria-hidden="true"></span>
               </a>
-              <a data-bs-toggle="tooltip" data-placement="top" title="FullScreen">
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="FullScreen">
                 <span class="fas fa-expand" aria-hidden="true"></span>
               </a>
-              <a data-bs-toggle="tooltip" data-placement="top" title="Lock">
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Lock">
                 <span class="fas fa-eye-slash" aria-hidden="true"></span>
               </a>
-              <a data-bs-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Logout" href="login.html">
                 <span class="fas fa-power-off" aria-hidden="true"></span>
               </a>
             </div>
@@ -269,7 +269,7 @@
               <div class="title_right">
                 <div class="col-md-5 col-sm-5 form-group pull-right top_search">
                   <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for...">
+                    <input type="text" class="form-control" placeholder="Search typography...">
                     <span class="input-group-btn">
                         <button class="btn btn-secondary" type="button">Go!</button>
                     </span>
@@ -280,66 +280,374 @@
 
             <div class="clearfix"></div>
 
-            <div class="row">
+            <!-- Headings Section -->
+            <div class="row mb-4">
               <div class="col-md-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Typography <small>different design elements</small></h2>
+                    <h2>Headings <small>HTML heading elements with Bootstrap 5 utilities</small></h2>
                     <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-                      </li>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Settings 1</a>
-                            <a class="dropdown-item" href="#">Settings 2</a>
-                          </div>
-                      </li>
-                      <li><a class="btn-close-link"><i class="fas fa-times"></i></a>
-                      </li>
+                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a></li>
+                      <li><a class="btn-close-link"><i class="fas fa-times"></i></a></li>
                     </ul>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-
-                    <div class="col-md-8 col-lg-8 col-sm-7">
-                      <!-- blockquote -->
-                      <blockquote>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-                          posuere erat a ante Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                        <footer>Someone famous in <cite title="Source Title">Source Title</cite>
-                        </footer>
-                      </blockquote>
-
-                      <blockquote class="blockquote-reverse">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-                          posuere erat a ante Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                        <footer>Someone famous in <cite title="Source Title">Source Title</cite>
-                        </footer>
-                      </blockquote>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <h1>h1. Bootstrap heading <small class="text-muted">Secondary text</small></h1>
+                        <h2>h2. Bootstrap heading <small class="text-muted">Secondary text</small></h2>
+                        <h3>h3. Bootstrap heading <small class="text-muted">Secondary text</small></h3>
+                        <h4>h4. Bootstrap heading <small class="text-muted">Secondary text</small></h4>
+                        <h5>h5. Bootstrap heading <small class="text-muted">Secondary text</small></h5>
+                        <h6>h6. Bootstrap heading <small class="text-muted">Secondary text</small></h6>
+                      </div>
+                      <div class="col-md-6">
+                        <h3>Display Headings</h3>
+                        <h1 class="display-1">Display 1</h1>
+                        <h1 class="display-2">Display 2</h1>
+                        <h1 class="display-3">Display 3</h1>
+                        <h1 class="display-4">Display 4</h1>
+                        <h1 class="display-5">Display 5</h1>
+                        <h1 class="display-6">Display 6</h1>
+                      </div>
                     </div>
-                    <div class="col-md-4 col-lg-4 col-sm-5">
-                      <h1>h1. Bootstrap heading</h1>
-                      <h2>h2. Bootstrap heading</h2>
-                      <h3>h3. Bootstrap heading</h3>
-                      <h4>h4. Bootstrap heading</h4>
-                      <h5>h5. Bootstrap heading</h5>
-                      <h6>h6. Bootstrap heading</h6>
-                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
+            <!-- Text Elements Section -->
+            <div class="row mb-4">
+              <div class="col-md-6">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Text Elements <small>Inline text elements</small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a></li>
+                      <li><a class="btn-close-link"><i class="fas fa-times"></i></a></li>
+                    </ul>
                     <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <p class="lead">This is a lead paragraph. It stands out from regular paragraphs.</p>
+                    
+                    <p>You can use the mark tag to <mark>highlight</mark> text.</p>
+                    <p><del>This line of text is meant to be treated as deleted text.</del></p>
+                    <p><s>This line of text is meant to be treated as no longer accurate.</s></p>
+                    <p><ins>This line of text is meant to be treated as an addition to the document.</ins></p>
+                    <p><u>This line of text will render as underlined.</u></p>
+                    <p><small>This line of text is meant to be treated as fine print.</small></p>
+                    <p><strong>This line rendered as bold text.</strong></p>
+                    <p><em>This line rendered as italicized text.</em></p>
+                    
+                    <h5>Abbreviations</h5>
+                    <p><abbr title="attribute">attr</abbr></p>
+                    <p><abbr title="HyperText Markup Language" class="initialism">HTML</abbr></p>
+                  </div>
+                </div>
+              </div>
 
-                    <div class="col-md-12">
-                      <h4>Labels and badges</h4>
-                      <span class="badge bg-primary">Primary</span>
-                      <span class="badge bg-secondary">Secondary</span>
-                      <span class="badge bg-success">Success</span>
-                      <span class="badge bg-danger">Danger</span>
-                      <span class="badge bg-warning">Warning</span>
-                      <span class="badge bg-info">Info</span>
-                      <span class="badge bg-light">Light</span>
+              <div class="col-md-6">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Text Utilities <small>Bootstrap 5 text classes</small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a></li>
+                      <li><a class="btn-close-link"><i class="fas fa-times"></i></a></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <h5>Text Colors</h5>
+                    <p class="text-primary">Primary text color</p>
+                    <p class="text-secondary">Secondary text color</p>
+                    <p class="text-success">Success text color</p>
+                    <p class="text-danger">Danger text color</p>
+                    <p class="text-warning">Warning text color</p>
+                    <p class="text-info">Info text color</p>
+                    <p class="text-light bg-dark p-2">Light text color</p>
+                    <p class="text-dark">Dark text color</p>
+                    <p class="text-muted">Muted text color</p>
+
+                    <h5>Text Alignment</h5>
+                    <p class="text-start">Left aligned text on all viewport sizes.</p>
+                    <p class="text-center">Center aligned text on all viewport sizes.</p>
+                    <p class="text-end">Right aligned text on all viewport sizes.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Typography Examples Section -->
+            <div class="row mb-4">
+              <div class="col-md-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Real-World Typography Examples <small>Practical usage demonstrations</small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a></li>
+                      <li><a class="btn-close-link"><i class="fas fa-times"></i></a></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div class="row">
+                      <div class="col-md-8">
+                        <!-- Article Example -->
+                        <article class="mb-5">
+                          <header class="mb-4">
+                            <h1 class="display-4">The Future of Web Design</h1>
+                            <p class="lead text-muted">Exploring modern trends and best practices in contemporary web development</p>
+                            <div class="d-flex align-items-center text-muted small">
+                              <span class="me-3"><i class="fas fa-user me-1"></i> By Sarah Johnson</span>
+                              <span class="me-3"><i class="fas fa-calendar me-1"></i> March 15, 2032</span>
+                              <span><i class="fas fa-clock me-1"></i> 8 min read</span>
+                            </div>
+                          </header>
+
+                          <div class="article-content">
+                            <p class="lead">In the rapidly evolving landscape of web design, staying current with the latest trends and technologies is essential for creating engaging, accessible, and performant user experiences.</p>
+
+                            <h2>Design Principles That Matter</h2>
+                            <p>Modern web design is built on several foundational principles that guide successful projects. These include <strong>user-centered design</strong>, <em>accessibility-first thinking</em>, and <mark>performance optimization</mark>.</p>
+
+                            <h3>Key Considerations</h3>
+                            <ul class="list-unstyled">
+                              <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Mobile-first responsive design</li>
+                              <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Semantic HTML structure</li>
+                                                             <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Progressive enhancement</li>
+                              <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Performance budgets</li>
+                            </ul>
+
+                            <blockquote class="blockquote border-start border-4 border-primary ps-4 py-2 my-4">
+                              <p class="mb-2">"Design is not just what it looks like and feels like. Design is how it works."</p>
+                              <footer class="blockquote-footer">Steve Jobs</footer>
+                            </blockquote>
+
+                            <h3>Implementation Strategy</h3>
+                            <p>When implementing these principles, consider the following workflow:</p>
+                            <ol>
+                              <li><strong>Research and Discovery:</strong> Understanding user needs and business requirements</li>
+                              <li><strong>Design and Prototyping:</strong> Creating wireframes and interactive prototypes</li>
+                              <li><strong>Development:</strong> Building with modern frameworks and tools</li>
+                              <li><strong>Testing and Optimization:</strong> Continuous improvement based on user feedback</li>
+                            </ol>
+                          </div>
+                        </article>
+                      </div>
+
+                      <div class="col-md-4">
+                        <!-- Sidebar Example -->
+                        <aside>
+                          <div class="card mb-4">
+                            <div class="card-header">
+                              <h5 class="card-title mb-0">Quick Stats</h5>
+                            </div>
+                            <div class="card-body">
+                              <div class="mb-3">
+                                <div class="d-flex justify-content-between">
+                                  <span class="fw-semibold">Mobile Users</span>
+                                  <span class="badge bg-primary">68%</span>
+                                </div>
+                              </div>
+                              <div class="mb-3">
+                                <div class="d-flex justify-content-between">
+                                  <span class="fw-semibold">Page Load Time</span>
+                                  <span class="badge bg-success">2.3s</span>
+                                </div>
+                              </div>
+                              <div class="mb-3">
+                                <div class="d-flex justify-content-between">
+                                  <span class="fw-semibold">Accessibility Score</span>
+                                  <span class="badge bg-info">95/100</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="card">
+                            <div class="card-header">
+                              <h5 class="card-title mb-0">Related Resources</h5>
+                            </div>
+                            <div class="card-body">
+                              <ul class="list-unstyled mb-0">
+                                <li class="mb-2">
+                                  <a href="#" class="text-decoration-none">
+                                    <i class="fas fa-book me-2 text-primary"></i>
+                                    Web Design Best Practices
+                                  </a>
+                                </li>
+                                <li class="mb-2">
+                                  <a href="#" class="text-decoration-none">
+                                    <i class="fas fa-code me-2 text-success"></i>
+                                    CSS Grid and Flexbox Guide
+                                  </a>
+                                </li>
+                                <li class="mb-2">
+                                  <a href="#" class="text-decoration-none">
+                                    <i class="fas fa-mobile-alt me-2 text-warning"></i>
+                                    Mobile-First Design Patterns
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="#" class="text-decoration-none">
+                                    <i class="fas fa-universal-access me-2 text-info"></i>
+                                    Accessibility Guidelines
+                                  </a>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </aside>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Components Section -->
+            <div class="row mb-4">
+              <div class="col-md-6">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Badges & Labels <small>Status indicators and tags</small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a></li>
+                      <li><a class="btn-close-link"><i class="fas fa-times"></i></a></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <h5>Standard Badges</h5>
+                    <div class="mb-3">
+                      <span class="badge bg-primary me-2">Primary</span>
+                      <span class="badge bg-secondary me-2">Secondary</span>
+                      <span class="badge bg-success me-2">Success</span>
+                      <span class="badge bg-danger me-2">Danger</span>
+                      <span class="badge bg-warning text-dark me-2">Warning</span>
+                      <span class="badge bg-info me-2">Info</span>
+                      <span class="badge bg-light text-dark me-2">Light</span>
                       <span class="badge bg-dark">Dark</span>
-                      <span class="badge bg-green">42</span>
+                    </div>
+
+                    <h5>Rounded Pill Badges</h5>
+                    <div class="mb-3">
+                      <span class="badge rounded-pill bg-primary me-2">Primary</span>
+                      <span class="badge rounded-pill bg-success me-2">Success</span>
+                      <span class="badge rounded-pill bg-warning text-dark me-2">Warning</span>
+                      <span class="badge rounded-pill bg-danger">Danger</span>
+                    </div>
+
+                    <h5>Contextual Usage</h5>
+                    <div class="mb-3">
+                      <h6>Messages <span class="badge bg-secondary">4</span></h6>
+                      <h6>Notifications <span class="badge bg-danger">12</span></h6>
+                      <h6>Tasks <span class="badge bg-success">8</span></h6>
+                    </div>
+
+                    <h5>Status Indicators</h5>
+                    <div>
+                      <p class="mb-1">
+                        <span class="badge bg-success me-2">Online</span> System operational
+                      </p>
+                      <p class="mb-1">
+                        <span class="badge bg-warning text-dark me-2">Maintenance</span> Scheduled downtime
+                      </p>
+                      <p class="mb-1">
+                        <span class="badge bg-danger me-2">Offline</span> Service unavailable
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Lists & Content <small>Structured content examples</small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a></li>
+                      <li><a class="btn-close-link"><i class="fas fa-times"></i></a></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <h5>Definition Lists</h5>
+                    <dl class="row">
+                      <dt class="col-sm-3">Frontend</dt>
+                      <dd class="col-sm-9">The user-facing part of a website or application</dd>
+                      
+                      <dt class="col-sm-3">Backend</dt>
+                      <dd class="col-sm-9">Server-side logic and database management</dd>
+                      
+                      <dt class="col-sm-3">API</dt>
+                      <dd class="col-sm-9">Application Programming Interface for data exchange</dd>
+                    </dl>
+
+                    <h5>Feature List</h5>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Responsive Design
+                        <span class="badge bg-primary rounded-pill">✓</span>
+                      </li>
+                      <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Cross-browser Support
+                        <span class="badge bg-primary rounded-pill">✓</span>
+                      </li>
+                      <li class="list-group-item d-flex justify-content-between align-items-center">
+                        SEO Optimized
+                        <span class="badge bg-success rounded-pill">✓</span>
+                      </li>
+                      <li class="list-group-item d-flex justify-content-between align-items-center">
+                        PWA Ready
+                        <span class="badge bg-warning rounded-pill">Soon</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Code and Preformatted Text -->
+            <div class="row mb-4">
+              <div class="col-md-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Code Examples <small>Inline and block code formatting</small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a></li>
+                      <li><a class="btn-close-link"><i class="fas fa-times"></i></a></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <h5>Inline Code</h5>
+                        <p>Use the <code>&lt;code&gt;</code> tag for inline code snippets like <code>console.log()</code> or <code>document.querySelector()</code>.</p>
+                        
+                        <h5>Keyboard Input</h5>
+                        <p>Press <kbd>Ctrl</kbd> + <kbd>C</kbd> to copy and <kbd>Ctrl</kbd> + <kbd>V</kbd> to paste.</p>
+                        
+                        <h5>Sample Output</h5>
+                        <samp>This text is meant to be treated as sample output from a computer program.</samp>
+                      </div>
+                      <div class="col-md-6">
+                        <h5>Code Block</h5>
+                        <pre><code>function greetUser(name) {
+  if (!name) {
+    throw new Error('Name is required');
+  }
+  
+  return `Hello, ${name}! Welcome to our application.`;
+}
+
+// Usage example
+const message = greetUser('John Doe');
+console.log(message);</code></pre>
+                      </div>
                     </div>
                   </div>
                 </div>

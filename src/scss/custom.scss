@@ -1,4 +1,3 @@
-// Glyphicons completely removed - replaced with Font Awesome 6 icons
 .left_col {
   background: #2A3F54;
 }
@@ -505,6 +504,93 @@ h1, .h1, h2, .h2, h3, .h3 {
   margin-top: 10px;
   margin-bottom: 10px;
 }
+
+/* Fix heading hierarchy - ensure proper font-size progression for content areas only */
+/* Preserve template design while fixing hierarchy for typography showcase */
+
+/* Template-specific heading overrides to maintain original design */
+.x_title h2 {
+  font-size: 18px !important; /* Panel title size - smaller and clean */
+  font-weight: 500;
+}
+
+.page-title .title_left h3 {
+  font-size: 22px !important; /* Page title size - appropriately sized */
+  font-weight: 500;
+}
+
+.x_content h4 {
+  font-size: 16px !important; /* Content subtitle size */
+  font-weight: 500;
+}
+
+/* Typography content areas - proper hierarchy for showcasing typography */
+.x_content h1, 
+.page-typography h1,
+article h1 {
+  font-size: 2.5rem !important; /* 40px */
+  font-weight: 500;
+}
+
+.x_content h2,
+.page-typography h2,
+article h2 {
+  font-size: 2rem !important; /* 32px */
+  font-weight: 500;
+}
+
+.x_content h3,
+.page-typography h3,
+article h3 {
+  font-size: 1.75rem !important; /* 28px */
+  font-weight: 500;
+}
+
+.x_content h4:not(.title):not(.heading),
+.page-typography h4,
+article h4 {
+  font-size: 1.5rem !important; /* 24px */
+  font-weight: 500;
+}
+
+.x_content h5,
+.page-typography h5,
+article h5 {
+  font-size: 1.25rem !important; /* 20px */
+  font-weight: 500;
+}
+
+.x_content h6,
+.page-typography h6,
+article h6 {
+  font-size: 1rem !important; /* 16px */
+  font-weight: 500;
+}
+
+/* Icons page styling */
+.icon-demo {
+  transition: all 0.3s ease;
+  cursor: pointer;
+  background: #fff;
+  border: 1px solid #e6e6e6 !important;
+}
+
+.icon-demo:hover {
+  background: #f8f9fa;
+  border-color: #007bff !important;
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.icon-demo i {
+  transition: all 0.3s ease;
+}
+
+.icon-demo:hover i {
+  transform: scale(1.1);
+}
+
+
 a {
   color: #5A738E;
   text-decoration: none;
@@ -627,6 +713,11 @@ a:hover, a:focus {
 }
 .nav.child_menu {
   display: none;
+}
+
+/* Show child menus when parent is active */
+.nav.side-menu > li.active > ul.nav.child_menu {
+  display: block !important;
 }
 .nav.child_menu li:hover,
 .nav.child_menu li.active {
@@ -2579,53 +2670,7 @@ textarea:focus {
 /* *********  /form textarea  **************************** */
 
 
-/* *********  glyphicons  **************************** */
 
-.bs-glyphicons {
-  margin: 0 -10px 20px;
-  overflow: hidden
-}
-.bs-glyphicons-list {
-  padding-left: 0;
-  list-style: none
-}
-.bs-glyphicons li {
-  float: left;
-  width: 25%;
-  height: 115px;
-  padding: 10px;
-  font-size: 10px;
-  line-height: 1.4;
-  text-align: center;
-  background-color: #f9f9f9;
-  border: 1px solid #fff
-}
-.bs-glyphicons .glyphicon {
-  margin-top: 5px;
-  margin-bottom: 10px;
-  font-size: 24px
-}
-.bs-glyphicons .glyphicon-class {
-  display: block;
-  text-align: center;
-  word-wrap: break-word
-}
-.bs-glyphicons li:hover {
-  color: #fff;
-  background-color: #1ABB9C
-}
-@media (min-width: 768px) {
-  .bs-glyphicons {
-    margin-right: 0;
-    margin-left: 0
-  }
-  .bs-glyphicons li {
-    width: 12.5%;
-    font-size: 12px
-  }
-}
-
-/* *********  /glyphicons  **************************** */
 
 
 /* *********  form tags input  **************************** */
@@ -2920,23 +2965,7 @@ ul.social li {
 .angular .chart {
   margin-top: 0;
 }
-.widget {
-  min-width: 250px;
-  max-width: 310px;
-  background: #fff;
-  border: 1px solid #E6E9ED;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  padding: 15px;
-  margin-bottom: 20px;
-  transition: all .3s ease;
-}
-
-.widget:hover {
-  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-  transform: translateY(-2px);
-  border-color: #ddd;
-}
+/* Widget styling now handled by x_panel */
 .widget_tally_box .btn-group button {
   text-align: center
 }
@@ -3058,7 +3087,7 @@ ul.widget_profile_box li .profile_img {
   height: 140px;
   width: 23%;
 }
-.widget .verticle_bars li .progress.vertical.progress_wide {
+.verticle_bars li .progress.vertical.progress_wide {
   width: 65%;
 }
 ul.count2 {
@@ -4900,4 +4929,472 @@ ul.notifications {
   margin: 0 !important;
   border: none !important;
   background: transparent !important;
+}
+
+/* Fix for vertical progress bars in widgets */
+.progress.vertical {
+  position: relative;
+  width: 35px;
+  height: 140px;
+  display: inline-block;
+  margin: 0 5px;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+  transform: rotate(180deg);
+}
+
+.progress.vertical .progress-bar {
+  width: 100% !important;
+  height: 0%;
+  position: absolute;
+  bottom: 0;
+  border-radius: 0 0 4px 4px;
+  transition: height 0.6s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progress.vertical.bottom {
+  transform: rotate(0deg);
+}
+
+.progress.vertical.bottom .progress-bar {
+  border-radius: 4px 4px 0 0;
+}
+
+/* Widget tally box improvements */
+.widget_tally_box {
+  .flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .verticle_bars {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 140px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    
+    li {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      margin: 0 2px;
+    }
+  }
+}
+
+/* Chart container fixes */
+.chart {
+  position: relative;
+  display: inline-block;
+  width: 110px;
+  height: 110px;
+  margin: 10px auto;
+  text-align: center;
+  
+  canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  .percent {
+    display: inline-block;
+    line-height: 110px;
+    z-index: 2;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    
+    &:after {
+      content: '%';
+      margin-left: 0.1em;
+      font-size: .8em;
+    }
+  }
+}
+
+/* Sparkline container fixes */
+.tile {
+  .sparkline_two,
+  .sparkline_three {
+    display: block;
+    width: 100%;
+    height: 30px;
+  }
+}
+
+/* Widget profile box improvements */
+ul.widget_profile_box {
+  width: 100%;
+  height: 42px;
+  padding: 3px;
+  background: #ececec;
+  margin: 20px 0;
+  border-radius: 5px;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+  li {
+    &:first-child,
+    &:last-child {
+      width: 25%;
+    }
+    
+    &:nth-child(2) {
+      flex: 1;
+      text-align: center;
+    }
+    
+    a {
+      font-size: 22px;
+      text-align: center;
+      width: 35px;
+      height: 35px;
+      border: 1px solid rgba(52, 73, 94, 0.44);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      color: #34495e;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      
+      &:hover {
+        color: #1ABB9C !important;
+        border-color: rgba(38, 185, 154, 1);
+        transform: scale(1.1);
+      }
+    }
+    
+    .profile_img {
+      width: 85px;
+      height: 85px;
+      margin: 0;
+      margin-top: -28px;
+      border-radius: 50%;
+      border: 3px solid #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+  }
+}
+
+/* Count2 styling improvements */
+ul.count2 {
+  width: 100%;
+  margin: 15px 0;
+  border: 1px solid #ddd;
+  border-left: 0;
+  border-right: 0;
+  padding: 15px 0;
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  
+  li {
+    text-align: center;
+    flex: 1;
+    
+    h3 {
+      font-weight: 600;
+      margin: 0 0 5px 0;
+      font-size: 24px;
+      color: #333;
+    }
+    
+    span {
+      font-weight: 400;
+      font-size: 14px;
+      color: #777;
+      text-transform: uppercase;
+    }
+  }
+}
+
+/* Widget tally list improvements */
+ul.widget_tally {
+  width: 100%;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  
+  li {
+    padding: 8px 10px;
+    border-bottom: 1px solid #ECECEC;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    &:last-child {
+      border-bottom: none;
+    }
+    
+    p {
+      margin: 0;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      
+      .month {
+        color: #666;
+        font-size: 13px;
+      }
+      
+      .count {
+        color: #26B99A;
+        font-weight: 600;
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+/* Legend styling improvements */
+ul.legend {
+  margin: 15px 0;
+  padding: 0;
+  list-style: none;
+  
+  li {
+    margin-bottom: 8px;
+    
+    p {
+      display: flex;
+      align-items: center;
+      margin: 0;
+      font-size: 14px;
+      
+      .icon {
+        margin-right: 10px;
+        font-size: 16px;
+        width: 16px;
+        height: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      .name {
+        color: #666;
+      }
+    }
+  }
+}
+
+/* Fixed height widgets */
+.fixed_height_390 {
+  min-height: 390px;
+  max-height: 390px;
+  display: flex;
+  flex-direction: column;
+  
+  .x_content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
+
+/* UI Ribbon improvements */
+.ui-ribbon-container {
+  position: relative;
+  overflow: visible;
+}
+
+.ui-ribbon-wrapper {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  z-index: 2;
+}
+
+.ui-ribbon {
+  background: #E74C3C;
+  color: white;
+  padding: 5px 15px;
+  font-size: 12px;
+  font-weight: bold;
+  transform: rotate(45deg);
+  transform-origin: center;
+  white-space: nowrap;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Responsive improvements for widgets */
+@media (max-width: 768px) {
+  .widget_tally_box {
+    margin-bottom: 20px;
+  }
+  
+  .fixed_height_390 {
+    min-height: auto;
+    max-height: none;
+  }
+  
+  ul.widget_profile_box {
+    .profile_img {
+      width: 70px;
+      height: 70px;
+      margin-top: -25px;
+    }
+  }
+  
+  ul.count2 {
+    li {
+      h3 {
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+/* Button group improvements for widgets */
+.x_panel .btn-group .btn {
+  color: #666;
+  font-weight: 500;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background-color: #e9ecef;
+    border-color: #adb5bd;
+  }
+  
+  &.active {
+    background-color: #26B99A;
+    border-color: #26B99A;
+    color: white;
+  }
+}
+
+/* Divider styling */
+.divider {
+  height: 1px;
+  background: #e9ecef;
+  margin: 15px 0;
+}
+
+/* Name title styling */
+.name_title {
+  text-align: center;
+  margin: 15px 0 5px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Widget name styling */
+.name {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Simplified widget content layout */
+.x_panel {
+  background: #fff;
+  border: 1px solid #E6E9ED;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+  transition: all .3s ease;
+  
+  &:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    transform: translateY(-2px);
+    border-color: #ddd;
+  }
+}
+
+.x_panel .x_content {
+  padding: 15px;
+  overflow: hidden;
+}
+
+/* Canvas sizing fixes */
+.x_content canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Pie chart background improvements */
+.pie_bg {
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  background: rgba(248, 249, 250, 0.8);
+}
+
+/* Widget spacing improvements */
+.top_tiles .tile {
+  padding: 15px;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+  margin-bottom: 15px;
+  
+  h5 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin: 8px 0;
+  }
+  
+  span:first-child {
+    font-size: 12px;
+    color: #777;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+}
+
+/* Fixed widget button groups */
+.x_panel .btn-group {
+  margin: 10px 0;
+  
+  .btn {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+}
+
+/* Widget tally improvements */
+ul.widget_tally {
+  max-height: 150px;
+  overflow-y: auto;
+  
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 2px;
+  }
+}
+
+/* --------------------------------------------------
+   Override legacy fixed footer on modernised pages
+   --------------------------------------------------*/
+.footer_fixed footer {
+  position: relative !important;
+  left: auto !important;
+  bottom: auto !important;
 }

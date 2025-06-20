@@ -65,7 +65,7 @@
                       <li><a href="media_gallery.html">Media Gallery</a></li>
                       <li><a href="typography.html">Typography</a></li>
                       <li><a href="icons.html">Icons</a></li>
-                      <li><a href="glyphicons.html">Glyphicons</a></li>
+
                       <li><a href="widgets.html">Widgets</a></li>
                       <li><a href="invoice.html">Invoice</a></li>
                       <li><a href="inbox.html">Inbox</a></li>
@@ -134,7 +134,7 @@
                         </li>
                     </ul>
                   </li>                  
-                  <li><a href="javascript:void(0)"><i class="fas fa-laptop"></i> Landing Page <span class="label label-success pull-right">Coming Soon</span></a></li>
+                  <li><a href="javascript:void(0)"><i class="fas fa-laptop"></i> Landing Page <span class="badge bg-success float-end">Coming Soon</span></a></li>
                 </ul>
               </div>
 
@@ -143,16 +143,16 @@
 
             <!-- /menu footer buttons -->
             <div class="sidebar-footer hidden-small">
-              <a data-bs-toggle="tooltip" data-placement="top" title="Settings">
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Settings">
                 <span class="fas fa-cog" aria-hidden="true"></span>
               </a>
-              <a data-bs-toggle="tooltip" data-placement="top" title="FullScreen">
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="FullScreen">
                 <span class="fas fa-expand" aria-hidden="true"></span>
               </a>
-              <a data-bs-toggle="tooltip" data-placement="top" title="Lock">
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Lock">
                 <span class="fas fa-eye-slash" aria-hidden="true"></span>
               </a>
-              <a data-bs-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Logout" href="login.html">
                 <span class="fas fa-power-off" aria-hidden="true"></span>
               </a>
             </div>
@@ -172,14 +172,14 @@
                     <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                       <img src="images/img.jpg" alt="">John Doe
                     </a>
-                    <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
+                    <div class="dropdown-menu dropdown-usermenu" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item"  href="javascript:;"> Profile</a>
                         <a class="dropdown-item"  href="javascript:;">
-                          <span class="badge bg-red pull-right">50%</span>
+                          <span class="badge bg-danger float-end">50%</span>
                           <span>Settings</span>
                         </a>
                     <a class="dropdown-item"  href="javascript:;">Help</a>
-                      <a class="dropdown-item"  href="login.html"><i class="fas fa-sign-out-alt pull-right"></i> Log Out</a>
+                      <a class="dropdown-item"  href="login.html"><i class="fas fa-sign-out-alt float-end"></i> Log Out</a>
                     </div>
                   </li>
   
@@ -258,16 +258,16 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Contacts Design</h3>
+                <h3>Contact Management <small>Team Directory</small></h3>
               </div>
 
               <div class="title_right">
-                <div class="col-md-5 col-sm-5 form-group pull-right top_search">
+                <div class="col-md-5 col-sm-5 form-group float-end top_search">
                   <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for...">
-                    <span class="input-group-btn">
-                      <button class="btn btn-default" type="button">Go!</button>
-                    </span>
+                    <input type="text" class="form-control" id="contactSearch" placeholder="Search contacts...">
+                    <button class="btn btn-outline-secondary" type="button" onclick="searchContacts()">
+                      <i class="fas fa-search"></i>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -275,369 +275,173 @@
 
             <div class="clearfix"></div>
 
-            <div class="row">
-                <div class="x_panel">
-                  <div class="x_content">
-                      <div class="col-md-12 col-sm-12 text-center">
-                        <ul class="pagination pagination-split">
-                          <li><a href="#">A</a></li>
-                          <li><a href="#">B</a></li>
-                          <li><a href="#">C</a></li>
-                          <li><a href="#">D</a></li>
-                          <li><a href="#">E</a></li>
-                          <li>...</li>
-                          <li><a href="#">W</a></li>
-                          <li><a href="#">X</a></li>
-                          <li><a href="#">Y</a></li>
-                          <li><a href="#">Z</a></li>
-                        </ul>
-                      </div>
-
-                      <div class="clearfix"></div>
-
-                      <div class="col-md-4 col-sm-4 profile_details">
-                        <div class="well profile_view">
-                          <div class="col-sm-12">
-                            <h4 class="brief"><i>Digital Strategist</i></h4>
-                            <div class="left col-md-7 col-sm-7">
-                              <h2>Nicole Pearson</h2>
-                              <p><strong>About: </strong> Web Designer / UX / Graphic Artist / Coffee Lover </p>
-                              <ul class="list-unstyled">
-                                <li><i class="fas fa-building"></i> Address: </li>
-                                <li><i class="fas fa-phone"></i> Phone #: </li>
-                              </ul>
-                            </div>
-                            <div class="right col-md-5 col-sm-5 text-center">
-                              <img src="images/img.jpg" alt="" class="img-circle img-fluid">
-                            </div>
-                          </div>
-                          <div class="profile-bottom text-center">
-                            <div class="col-sm-6 emphasis">
-                              <p class="ratings">
-                                <a>4.0</a>
-                                <a href="#"><span class="fas fa-star"></span></a>
-                                <a href="#"><span class="fas fa-star"></span></a>
-                                <a href="#"><span class="fas fa-star"></span></a>
-                                <a href="#"><span class="fas fa-star"></span></a>
-                                <a href="#"><span class="fas fa-star"></span></a>
-                              </p>
-                            </div>
-                            <div class="col-sm-6 emphasis">
-                              <button type="button" class="btn btn-success btn-sm"> <i class="fas fa-user">
-                                </i> <i class="far fa-comments"></i> </button>
-                              <button type="button" class="btn btn-primary btn-sm">
-                                <i class="fas fa-user"> </i> View Profile
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="col-md-4 col-sm-4 profile_details">
-                        <div class="well profile_view">
-                          <div class="col-sm-12">
-                            <h4 class="brief"><i>Digital Strategist</i></h4>
-                            <div class="left col-sm-7">
-                              <h2>Nicole Pearson</h2>
-                              <p><strong>About: </strong> Web Designer / UI. </p>
-                              <ul class="list-unstyled">
-                                <li><i class="fas fa-building"></i> Address: </li>
-                                <li><i class="fas fa-phone"></i> Phone #: </li>
-                              </ul>
-                            </div>
-                            <div class="right col-sm-5 text-center">
-                              <img src="images/user.png" alt="" class="img-circle img-fluid">
-                            </div>
-                          </div>
-                          <div class="bottom text-center">
-                            <div class="col-sm-6 emphasis">
-                              <p class="ratings">
-                                <a>4.0</a>
-                                <a href="#"><span class="fas fa-star"></span></a>
-                                <a href="#"><span class="fas fa-star"></span></a>
-                                <a href="#"><span class="fas fa-star"></span></a>
-                                <a href="#"><span class="fas fa-star"></span></a>
-                                <a href="#"><span class="fas fa-star"></span></a>
-                              </p>
-                            </div>
-                            <div class="col-sm-6 emphasis">
-                              <button type="button" class="btn btn-success btn-sm"> <i class="fas fa-user">
-                                </i> <i class="far fa-comments"></i> </button>
-                              <button type="button" class="btn btn-primary btn-sm">
-                                <i class="fas fa-user"> </i> View Profile
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="col-md-4 col-sm-4 profile_details">
-                        <div class="well profile_view">
-                          <div class="col-sm-12">
-                            <h4 class="brief"><i>Digital Strategist</i></h4>
-                            <div class="left col-sm-7">
-                              <h2>Nicole Pearson</h2>
-                              <p><strong>About: </strong> Web Designer / UI. </p>
-                              <ul class="list-unstyled">
-                                <li><i class="fas fa-building"></i> Address: </li>
-                                <li><i class="fas fa-phone"></i> Phone #: </li>
-                              </ul>
-                            </div>
-                            <div class="right col-sm-5 text-center">
-                              <img src="images/user.png" alt="" class="img-circle img-fluid">
-                            </div>
-                          </div>
-                          <div class="bottom text-center">
-                            <div class="col-sm-6 emphasis">
-                              <p class="ratings">
-                                <a>4.0</a>
-                                <a href="#"><span class="fas fa-star"></span></a>
-                                <a href="#"><span class="fas fa-star"></span></a>
-                                <a href="#"><span class="fas fa-star"></span></a>
-                                <a href="#"><span class="fas fa-star"></span></a>
-                                <a href="#"><span class="fas fa-star"></span></a>
-                              </p>
-                            </div>
-                            <div class="col-sm-6 emphasis">
-                              <button type="button" class="btn btn-success btn-sm"> <i class="fas fa-user">
-                                </i> <i class="far fa-comments"></i> </button>
-                              <button type="button" class="btn btn-primary btn-sm">
-                                <i class="fas fa-user"> </i> View Profile
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="col-md-4 col-sm-4 profile_details">
-                        <div class="well profile_view">
-                          <div class="col-sm-12">
-                            <h4 class="brief"><i>Digital Strategist</i></h4>
-                            <div class="left col-sm-7">
-                              <h2>Nicole Pearson</h2>
-                              <p><strong>About: </strong> Web Designer / UI. </p>
-                              <ul class="list-unstyled">
-                                <li><i class="fas fa-building"></i> Address: </li>
-                                <li><i class="fas fa-phone"></i> Phone #: </li>
-                              </ul>
-                            </div>
-                            <div class="right col-sm-5 text-center">
-                              <img src="images/user.png" alt="" class="img-circle img-fluid">
-                            </div>
-                          </div>
-                          <div class="bottom text-center">
-                            <div class="col-sm-6 emphasis">
-                              <p class="ratings">
-                                <a>4.0</a>
-                                <a href="#"><span class="fas fa-star"></span></a>
-                                <a href="#"><span class="fas fa-star"></span></a>
-                                <a href="#"><span class="fas fa-star"></span></a>
-                                <a href="#"><span class="fas fa-star"></span></a>
-                                <a href="#"><span class="fas fa-star"></span></a>
-                              </p>
-                            </div>
-                            <div class="col-sm-6 emphasis">
-                              <button type="button" class="btn btn-success btn-sm"> <i class="fas fa-user">
-                                </i> <i class="far fa-comments"></i> </button>
-                              <button type="button" class="btn btn-primary btn-sm">
-                                <i class="fas fa-user"> </i> View Profile
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      
-                      <div class="col-md-4 col-sm-4 profile_details">
-                        <div class="well profile_view">
-                          <div class="col-sm-12">
-                            <h4 class="brief"><i>Digital Strategist</i></h4>
-                            <div class="left col-sm-7">
-                              <h2>Nicole Pearson</h2>
-                              <p><strong>About: </strong> Web Designer / UX / Graphic Artist / Coffee Lover </p>
-                              <ul class="list-unstyled">
-                                <li><i class="fas fa-building"></i> Address: </li>
-                                <li><i class="fas fa-phone"></i> Phone #: </li>
-                              </ul>
-                            </div>
-                            <div class="right col-sm-5 text-center">
-                              <img src="images/img.jpg" alt="" class="img-circle img-fluid">
-                            </div>
-                          </div>
-                          <div class="bottom text-center">
-                            <div class="col-sm-6 emphasis">
-                              <p class="ratings">
-                                <a>4.0</a>
-                                <a href="#"><span class="fas fa-star"></span></a>
-                                <a href="#"><span class="fas fa-star"></span></a>
-                                <a href="#"><span class="fas fa-star"></span></a>
-                                <a href="#"><span class="fas fa-star"></span></a>
-                                <a href="#"><span class="fas fa-star"></span></a>
-                              </p>
-                            </div>
-                            <div class="col-sm-6 emphasis">
-                              <button type="button" class="btn btn-success btn-sm"> <i class="fas fa-user">
-                                </i> <i class="far fa-comments"></i> </button>
-                              <button type="button" class="btn btn-primary btn-sm">
-                                <i class="fas fa-user"> </i> View Profile
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="col-md-4 col-sm-4 profile_details">
-                        <div class="well profile_view">
-                          <div class="col-sm-12">
-                            <h4 class="brief"><i>Digital Strategist</i></h4>
-                            <div class="left col-sm-7">
-                              <h2>Nicole Pearson</h2>
-                              <p><strong>About: </strong> Web Designer / UI. </p>
-                              <ul class="list-unstyled">
-                                <li><i class="fas fa-building"></i> Address: </li>
-                                <li><i class="fas fa-phone"></i> Phone #: </li>
-                              </ul>
-                            </div>
-                            <div class="right col-sm-5 text-center">
-                              <img src="images/user.png" alt="" class="img-circle img-fluid">
-                            </div>
-                          </div>
-                          <div class="bottom text-center">
-                            <div class="col-sm-6 emphasis">
-                              <p class="ratings">
-                                <a>4.0</a>
-                                <a href="#"><span class="fas fa-star"></span></a>
-                                <a href="#"><span class="fas fa-star"></span></a>
-                                <a href="#"><span class="fas fa-star"></span></a>
-                                <a href="#"><span class="fas fa-star"></span></a>
-                                <a href="#"><span class="fas fa-star"></span></a>
-                              </p>
-                            </div>
-                            <div class="col-sm-6 emphasis">
-                              <button type="button" class="btn btn-success btn-sm"> <i class="fas fa-user">
-                                </i> <i class="far fa-comments"></i> </button>
-                              <button type="button" class="btn btn-primary btn-sm">
-                                <i class="fas fa-user"> </i> View Profile
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="col-md-4 col-sm-4 profile_details">
-                        <div class="well profile_view">
-                          <div class="col-sm-12">
-                            <h4 class="brief"><i>Digital Strategist</i></h4>
-                            <div class="left col-sm-7">
-                              <h2>Nicole Pearson</h2>
-                              <p><strong>About: </strong> Web Designer / UI. </p>
-                              <ul class="list-unstyled">
-                                <li><i class="fas fa-building"></i> Address: </li>
-                                <li><i class="fas fa-phone"></i> Phone #: </li>
-                              </ul>
-                            </div>
-                            <div class="right col-sm-5 text-center">
-                              <img src="images/user.png" alt="" class="img-circle img-fluid">
-                            </div>
-                          </div>
-                          <div class="bottom text-center">
-                            <div class="col-sm-6 emphasis">
-                              <p class="ratings">
-                                <a>4.0</a>
-                                <a href="#"><span class="fas fa-star"></span></a>
-                                <a href="#"><span class="fas fa-star"></span></a>
-                                <a href="#"><span class="fas fa-star"></span></a>
-                                <a href="#"><span class="fas fa-star"></span></a>
-                                <a href="#"><span class="fas fa-star"></span></a>
-                              </p>
-                            </div>
-                            <div class="col-sm-6 emphasis">
-                              <button type="button" class="btn btn-success btn-sm"> <i class="fas fa-user">
-                                </i> <i class="far fa-comments"></i> </button>
-                              <button type="button" class="btn btn-primary btn-sm">
-                                <i class="fas fa-user"> </i> View Profile
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="col-md-4 col-sm-4 profile_details">
-                        <div class="well profile_view">
-                          <div class="col-sm-12">
-                            <h4 class="brief"><i>Digital Strategist</i></h4>
-                            <div class="left col-sm-7">
-                              <h2>Nicole Pearson</h2>
-                              <p><strong>About: </strong> Web Designer / UI. </p>
-                              <ul class="list-unstyled">
-                                <li><i class="fas fa-building"></i> Address: </li>
-                                <li><i class="fas fa-phone"></i> Phone #: </li>
-                              </ul>
-                            </div>
-                            <div class="right col-sm-5 text-center">
-                              <img src="images/user.png" alt="" class="img-circle img-fluid">
-                            </div>
-                          </div>
-                          <div class="bottom text-center">
-                            <div class="col-sm-6 emphasis">
-                              <p class="ratings">
-                                <a>4.0</a>
-                                <a href="#"><span class="fas fa-star"></span></a>
-                                <a href="#"><span class="fas fa-star"></span></a>
-                                <a href="#"><span class="fas fa-star"></span></a>
-                                <a href="#"><span class="fas fa-star"></span></a>
-                                <a href="#"><span class="fas fa-star"></span></a>
-                              </p>
-                            </div>
-                            <div class="col-sm-6 emphasis">
-                              <button type="button" class="btn btn-success btn-sm"> <i class="fas fa-user">
-                                </i> <i class="far fa-comments"></i> </button>
-                              <button type="button" class="btn btn-primary btn-sm">
-                                <i class="fas fa-user"> </i> View Profile
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="col-md-4 col-sm-4 profile_details">
-                        <div class="well profile_view">
-                          <div class="col-sm-12">
-                            <h4 class="brief"><i>Digital Strategist</i></h4>
-                            <div class="left col-sm-7">
-                              <h2>Nicole Pearson</h2>
-                              <p><strong>About: </strong> Web Designer / UI. </p>
-                              <ul class="list-unstyled">
-                                <li><i class="fas fa-building"></i> Address: </li>
-                                <li><i class="fas fa-phone"></i> Phone #: </li>
-                              </ul>
-                            </div>
-                            <div class="right col-sm-5 text-center">
-                              <img src="images/user.png" alt="" class="img-circle img-fluid">
-                            </div>
-                          </div>
-                          <div class="bottom text-center">
-                            <div class="col-sm-6 emphasis">
-                              <p class="ratings">
-                                <a>4.0</a>
-                                <a href="#"><span class="fas fa-star"></span></a>
-                                <a href="#"><span class="fas fa-star"></span></a>
-                                <a href="#"><span class="fas fa-star"></span></a>
-                                <a href="#"><span class="fas fa-star"></span></a>
-                                <a href="#"><span class="fas fa-star"></span></a>
-                              </p>
-                            </div>
-                            <div class="col-sm-6 emphasis">
-                              <button type="button" class="btn btn-success btn-sm"> <i class="fas fa-user">
-                                </i> <i class="far fa-comments"></i> </button>
-                              <button type="button" class="btn btn-primary btn-sm">
-                                <i class="fas fa-user"> </i> View Profile
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+            <!-- Contact Statistics -->
+            <div class="row mb-4">
+              <div class="col-md-3 col-sm-6">
+                <div class="x_panel stats-card">
+                  <div class="x_content text-center">
+                    <div class="stat-icon">
+                      <i class="fas fa-users text-primary"></i>
+                    </div>
+                    <h3 class="stat-number text-primary">20</h3>
+                    <p class="stat-label">Total Contacts</p>
                   </div>
                 </div>
+              </div>
+              <div class="col-md-3 col-sm-6">
+                <div class="x_panel stats-card">
+                  <div class="x_content text-center">
+                    <div class="stat-icon">
+                      <i class="fas fa-user-tie text-success"></i>
+                    </div>
+                    <h3 class="stat-number text-success">10</h3>
+                    <p class="stat-label">Team Members</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6">
+                <div class="x_panel stats-card">
+                  <div class="x_content text-center">
+                    <div class="stat-icon">
+                      <i class="fas fa-handshake text-warning"></i>
+                    </div>
+                    <h3 class="stat-number text-warning">6</h3>
+                    <p class="stat-label">Clients</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6">
+                <div class="x_panel stats-card">
+                  <div class="x_content text-center">
+                    <div class="stat-icon">
+                      <i class="fas fa-building text-info"></i>
+                    </div>
+                    <h3 class="stat-number text-info">4</h3>
+                    <p class="stat-label">Vendors</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Contact Filters and Actions -->
+            <div class="row mb-4">
+              <div class="col-md-12">
+                <div class="x_panel">
+                  <div class="x_content">
+                    <div class="row align-items-center">
+                      <div class="col-md-8">
+                        <div class="contact-filters">
+                          <div class="btn-group me-3" role="group">
+                            <input type="radio" class="btn-check" name="contactType" id="all" autocomplete="off" checked>
+                            <label class="btn btn-outline-primary" for="all">All Contacts</label>
+                            
+                            <input type="radio" class="btn-check" name="contactType" id="team" autocomplete="off">
+                            <label class="btn btn-outline-primary" for="team">Team</label>
+                            
+                            <input type="radio" class="btn-check" name="contactType" id="clients" autocomplete="off">
+                            <label class="btn btn-outline-primary" for="clients">Clients</label>
+                            
+                            <input type="radio" class="btn-check" name="contactType" id="vendors" autocomplete="off">
+                            <label class="btn btn-outline-primary" for="vendors">Vendors</label>
+                          </div>
+                          
+                          <select class="form-select d-inline-block" style="width: auto;" onchange="filterByDepartment(this.value)">
+                            <option value="">All Departments</option>
+                            <option value="development">Development</option>
+                            <option value="design">Design</option>
+                            <option value="marketing">Marketing</option>
+                            <option value="sales">Sales</option>
+                            <option value="support">Support</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-4 text-end">
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addContactModal">
+                          <i class="fas fa-plus me-2"></i>Add Contact
+                        </button>
+                        <div class="btn-group ms-2">
+                          <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown">
+                            <i class="fas fa-ellipsis-h"></i>
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-download me-2"></i>Export Contacts</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-upload me-2"></i>Import Contacts</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Settings</a></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Alphabet Filter -->
+            <div class="row mb-4">
+              <div class="col-md-12">
+                <div class="x_panel">
+                  <div class="x_content">
+                    <div class="alphabet-filter text-center">
+                      <button class="btn btn-sm btn-outline-secondary me-1 mb-1" onclick="filterByLetter('all')">All</button>
+                      <button class="btn btn-sm btn-outline-secondary me-1 mb-1" onclick="filterByLetter('A')">A</button>
+                      <button class="btn btn-sm btn-outline-secondary me-1 mb-1" onclick="filterByLetter('B')">B</button>
+                      <button class="btn btn-sm btn-outline-secondary me-1 mb-1" onclick="filterByLetter('C')">C</button>
+                      <button class="btn btn-sm btn-outline-secondary me-1 mb-1" onclick="filterByLetter('D')">D</button>
+                      <button class="btn btn-sm btn-outline-secondary me-1 mb-1" onclick="filterByLetter('E')">E</button>
+                      <button class="btn btn-sm btn-outline-secondary me-1 mb-1" onclick="filterByLetter('F')">F</button>
+                      <button class="btn btn-sm btn-outline-secondary me-1 mb-1" onclick="filterByLetter('G')">G</button>
+                      <button class="btn btn-sm btn-outline-secondary me-1 mb-1" onclick="filterByLetter('H')">H</button>
+                      <button class="btn btn-sm btn-outline-secondary me-1 mb-1" onclick="filterByLetter('I')">I</button>
+                      <button class="btn btn-sm btn-outline-secondary me-1 mb-1" onclick="filterByLetter('J')">J</button>
+                      <button class="btn btn-sm btn-outline-secondary me-1 mb-1" onclick="filterByLetter('K')">K</button>
+                      <button class="btn btn-sm btn-outline-secondary me-1 mb-1" onclick="filterByLetter('L')">L</button>
+                      <button class="btn btn-sm btn-outline-secondary me-1 mb-1" onclick="filterByLetter('M')">M</button>
+                      <button class="btn btn-sm btn-outline-secondary me-1 mb-1" onclick="filterByLetter('N')">N</button>
+                      <button class="btn btn-sm btn-outline-secondary me-1 mb-1" onclick="filterByLetter('O')">O</button>
+                      <button class="btn btn-sm btn-outline-secondary me-1 mb-1" onclick="filterByLetter('P')">P</button>
+                      <button class="btn btn-sm btn-outline-secondary me-1 mb-1" onclick="filterByLetter('Q')">Q</button>
+                      <button class="btn btn-sm btn-outline-secondary me-1 mb-1" onclick="filterByLetter('R')">R</button>
+                      <button class="btn btn-sm btn-outline-secondary me-1 mb-1" onclick="filterByLetter('S')">S</button>
+                      <button class="btn btn-sm btn-outline-secondary me-1 mb-1" onclick="filterByLetter('T')">T</button>
+                      <button class="btn btn-sm btn-outline-secondary me-1 mb-1" onclick="filterByLetter('U')">U</button>
+                      <button class="btn btn-sm btn-outline-secondary me-1 mb-1" onclick="filterByLetter('V')">V</button>
+                      <button class="btn btn-sm btn-outline-secondary me-1 mb-1" onclick="filterByLetter('W')">W</button>
+                      <button class="btn btn-sm btn-outline-secondary me-1 mb-1" onclick="filterByLetter('X')">X</button>
+                      <button class="btn btn-sm btn-outline-secondary me-1 mb-1" onclick="filterByLetter('Y')">Y</button>
+                      <button class="btn btn-sm btn-outline-secondary me-1 mb-1" onclick="filterByLetter('Z')">Z</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Contact Cards -->
+            <div class="row" id="contactsContainer">
+
+            </div>
+            
+            <!-- Pagination -->
+            <div class="row">
+              <div class="col-md-12">
+                <nav aria-label="Contact pagination">
+                  <ul class="pagination justify-content-center" id="contactPagination">
+                    <li class="page-item">
+                      <a class="page-link" href="#" onclick="previousPage()">
+                        <i class="fas fa-chevron-left"></i> Previous
+                      </a>
+                    </li>
+                    <li class="page-item active"><a class="page-link" href="#" onclick="goToPage(1)">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#" onclick="goToPage(2)">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#" onclick="goToPage(3)">3</a></li>
+                    <li class="page-item">
+                      <a class="page-link" href="#" onclick="nextPage()">
+                        Next <i class="fas fa-chevron-right"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
             </div>
           </div>
         </div>
@@ -645,14 +449,883 @@
 
         <!-- footer content -->
         <footer>
-          <div class="pull-right">
+          <div class="float-end">
             Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
           </div>
           <div class="clearfix"></div>
         </footer>
         <!-- /footer content -->
       </div>
-    </div>    <!-- Compiled JavaScript (includes jQuery, Bootstrap, and all vendor scripts) -->
-    
+    </div>
+
+    <!-- Add Contact Modal -->
+    <div class="modal fade" id="addContactModal" tabindex="-1" aria-labelledby="addContactModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addContactModalLabel">
+              <i class="fas fa-user-plus me-2"></i>Add New Contact
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="addContactForm">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label for="firstName" class="form-label">First Name *</label>
+                    <input type="text" class="form-control" id="firstName" required>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label for="lastName" class="form-label">Last Name *</label>
+                    <input type="text" class="form-control" id="lastName" required>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label for="email" class="form-label">Email *</label>
+                    <input type="email" class="form-control" id="email" required>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label for="phone" class="form-label">Phone</label>
+                    <input type="tel" class="form-control" id="phone">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label for="jobTitle" class="form-label">Job Title</label>
+                    <input type="text" class="form-control" id="jobTitle">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label for="department" class="form-label">Department</label>
+                    <select class="form-select" id="department">
+                      <option value="">Select Department</option>
+                      <option value="development">Development</option>
+                      <option value="design">Design</option>
+                      <option value="marketing">Marketing</option>
+                      <option value="sales">Sales</option>
+                      <option value="support">Support</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label for="company" class="form-label">Company</label>
+                    <input type="text" class="form-control" id="company">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label for="contactType" class="form-label">Contact Type</label>
+                    <select class="form-select" id="contactType">
+                      <option value="team">Team Member</option>
+                      <option value="client">Client</option>
+                      <option value="vendor">Vendor</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="address" class="form-label">Address</label>
+                <textarea class="form-control" id="address" rows="2"></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+              <i class="fas fa-times me-2"></i>Cancel
+            </button>
+            <button type="button" class="btn btn-primary" onclick="saveContact()">
+              <i class="fas fa-save me-2"></i>Save Contact
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Details Modal -->
+    <div class="modal fade" id="contactDetailsModal" tabindex="-1" aria-labelledby="contactDetailsModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="contactDetailsModalLabel">
+              <i class="fas fa-user me-2"></i>Contact Details
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" id="contactDetailsContent">
+            <!-- Contact details will be populated here -->
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-warning" onclick="editContact()">
+              <i class="fas fa-edit me-2"></i>Edit Contact
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+      // Sample contact data
+      const contacts = [
+        {
+          id: 1,
+          firstName: "Sarah",
+          lastName: "Johnson",
+          email: "sarah.johnson@company.com",
+          phone: "+1 (555) 123-4567",
+          jobTitle: "Senior Frontend Developer",
+          department: "development",
+          company: "TechCorp Industries",
+          type: "team",
+          address: "123 Tech Street, San Francisco, CA",
+          avatar: "images/user.png",
+          rating: 4.8
+        },
+        {
+          id: 2,
+          firstName: "Michael",
+          lastName: "Chen",
+          email: "michael.chen@company.com",
+          phone: "+1 (555) 234-5678",
+          jobTitle: "UX Designer",
+          department: "design",
+          company: "TechCorp Industries",
+          type: "team",
+          address: "456 Design Ave, San Francisco, CA",
+          avatar: "images/img.jpg",
+          rating: 4.9
+        },
+        {
+          id: 3,
+          firstName: "Emily",
+          lastName: "Rodriguez",
+          email: "emily.rodriguez@client.com",
+          phone: "+1 (555) 345-6789",
+          jobTitle: "Marketing Director",
+          department: "marketing",
+          company: "Client Solutions LLC",
+          type: "client",
+          address: "789 Business Blvd, New York, NY",
+          avatar: "images/user.png",
+          rating: 4.5
+        },
+        {
+          id: 4,
+          firstName: "David",
+          lastName: "Wilson",
+          email: "david.wilson@company.com",
+          phone: "+1 (555) 456-7890",
+          jobTitle: "Backend Developer",
+          department: "development",
+          company: "TechCorp Industries",
+          type: "team",
+          address: "321 Code Lane, Austin, TX",
+          avatar: "images/img.jpg",
+          rating: 4.7
+        },
+        {
+          id: 5,
+          firstName: "Lisa",
+          lastName: "Thompson",
+          email: "lisa.thompson@vendor.com",
+          phone: "+1 (555) 567-8901",
+          jobTitle: "Account Manager",
+          department: "sales",
+          company: "Vendor Partners Inc",
+          type: "vendor",
+          address: "654 Sales Street, Chicago, IL",
+          avatar: "images/user.png",
+          rating: 4.3
+        },
+        {
+          id: 6,
+          firstName: "James",
+          lastName: "Anderson",
+          email: "james.anderson@company.com",
+          phone: "+1 (555) 678-9012",
+          jobTitle: "DevOps Engineer",
+          department: "development",
+          company: "TechCorp Industries",
+          type: "team",
+          address: "987 Cloud Drive, Seattle, WA",
+          avatar: "images/img.jpg",
+          rating: 4.6
+        },
+        {
+          id: 7,
+          firstName: "Amanda",
+          lastName: "Davis",
+          email: "amanda.davis@company.com",
+          phone: "+1 (555) 789-0123",
+          jobTitle: "UI Designer",
+          department: "design",
+          company: "TechCorp Industries",
+          type: "team",
+          address: "111 Creative Blvd, Los Angeles, CA",
+          avatar: "images/user.png",
+          rating: 4.4
+        },
+        {
+          id: 8,
+          firstName: "Robert",
+          lastName: "Martinez",
+          email: "robert.martinez@client.com",
+          phone: "+1 (555) 890-1234",
+          jobTitle: "Project Manager",
+          department: "marketing",
+          company: "Global Marketing Inc",
+          type: "client",
+          address: "222 Project Way, Denver, CO",
+          avatar: "images/img.jpg",
+          rating: 4.7
+        },
+        {
+          id: 9,
+          firstName: "Jessica",
+          lastName: "Brown",
+          email: "jessica.brown@vendor.com",
+          phone: "+1 (555) 901-2345",
+          jobTitle: "Sales Representative",
+          department: "sales",
+          company: "Business Solutions Ltd",
+          type: "vendor",
+          address: "333 Commerce St, Miami, FL",
+          avatar: "images/user.png",
+          rating: 4.2
+        },
+        {
+          id: 10,
+          firstName: "Kevin",
+          lastName: "Taylor",
+          email: "kevin.taylor@company.com",
+          phone: "+1 (555) 012-3456",
+          jobTitle: "Full Stack Developer",
+          department: "development",
+          company: "TechCorp Industries",
+          type: "team",
+          address: "444 Stack Ave, Portland, OR",
+          avatar: "images/img.jpg",
+          rating: 4.8
+        },
+        {
+          id: 11,
+          firstName: "Michelle",
+          lastName: "Garcia",
+          email: "michelle.garcia@client.com",
+          phone: "+1 (555) 123-4560",
+          jobTitle: "Brand Manager",
+          department: "marketing",
+          company: "Creative Brands Co",
+          type: "client",
+          address: "555 Brand Lane, Nashville, TN",
+          avatar: "images/user.png",
+          rating: 4.6
+        },
+        {
+          id: 12,
+          firstName: "Christopher",
+          lastName: "Lee",
+          email: "christopher.lee@company.com",
+          phone: "+1 (555) 234-5601",
+          jobTitle: "QA Engineer",
+          department: "development",
+          company: "TechCorp Industries",
+          type: "team",
+          address: "666 Quality St, Boston, MA",
+          avatar: "images/img.jpg",
+          rating: 4.5
+        },
+        {
+          id: 13,
+          firstName: "Nicole",
+          lastName: "White",
+          email: "nicole.white@vendor.com",
+          phone: "+1 (555) 345-6012",
+          jobTitle: "Technical Support",
+          department: "support",
+          company: "Support Systems Inc",
+          type: "vendor",
+          address: "777 Help Desk Dr, Phoenix, AZ",
+          avatar: "images/user.png",
+          rating: 4.4
+        },
+        {
+          id: 14,
+          firstName: "Anthony",
+          lastName: "Harris",
+          email: "anthony.harris@company.com",
+          phone: "+1 (555) 456-7012",
+          jobTitle: "Product Manager",
+          department: "design",
+          company: "TechCorp Industries",
+          type: "team",
+          address: "888 Product Plaza, San Diego, CA",
+          avatar: "images/img.jpg",
+          rating: 4.9
+        },
+        {
+          id: 15,
+          firstName: "Rachel",
+          lastName: "Clark",
+          email: "rachel.clark@client.com",
+          phone: "+1 (555) 567-8012",
+          jobTitle: "Content Manager",
+          department: "marketing",
+          company: "Content Creators LLC",
+          type: "client",
+          address: "999 Content Way, Atlanta, GA",
+          avatar: "images/user.png",
+          rating: 4.3
+        },
+        {
+          id: 16,
+          firstName: "Steven",
+          lastName: "Lewis",
+          email: "steven.lewis@vendor.com",
+          phone: "+1 (555) 678-9012",
+          jobTitle: "Business Analyst",
+          department: "sales",
+          company: "Analytics Pro Ltd",
+          type: "vendor",
+          address: "101 Analysis Ave, Dallas, TX",
+          avatar: "images/img.jpg",
+          rating: 4.6
+        },
+        {
+          id: 17,
+          firstName: "Jennifer",
+          lastName: "Walker",
+          email: "jennifer.walker@company.com",
+          phone: "+1 (555) 789-0123",
+          jobTitle: "Data Scientist",
+          department: "development",
+          company: "TechCorp Industries",
+          type: "team",
+          address: "202 Data Dr, Minneapolis, MN",
+          avatar: "images/user.png",
+          rating: 4.8
+        },
+        {
+          id: 18,
+          firstName: "Daniel",
+          lastName: "Hall",
+          email: "daniel.hall@client.com",
+          phone: "+1 (555) 890-1234",
+          jobTitle: "Creative Director",
+          department: "design",
+          company: "Design Studio Pro",
+          type: "client",
+          address: "303 Creative Circle, Las Vegas, NV",
+          avatar: "images/img.jpg",
+          rating: 4.7
+        },
+        {
+          id: 19,
+          firstName: "Angela",
+          lastName: "Allen",
+          email: "angela.allen@vendor.com",
+          phone: "+1 (555) 901-2345",
+          jobTitle: "HR Specialist",
+          department: "support",
+          company: "Human Resources Plus",
+          type: "vendor",
+          address: "404 People Place, Salt Lake City, UT",
+          avatar: "images/user.png",
+          rating: 4.2
+        },
+        {
+          id: 20,
+          firstName: "Ryan",
+          lastName: "Young",
+          email: "ryan.young@company.com",
+          phone: "+1 (555) 012-3456",
+          jobTitle: "Mobile Developer",
+          department: "development",
+          company: "TechCorp Industries",
+          type: "team",
+          address: "505 Mobile Way, Charlotte, NC",
+          avatar: "images/img.jpg",
+          rating: 4.5
+        }
+      ];
+
+      let filteredContacts = [...contacts];
+      let currentPage = 1;
+      const contactsPerPage = 6;
+
+      document.addEventListener('DOMContentLoaded', function() {
+        // Initialize tooltips
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+          return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+
+        // Load contacts
+        displayContacts();
+        
+        // Add event listeners for filter buttons
+        document.querySelectorAll('input[name="contactType"]').forEach(radio => {
+          radio.addEventListener('change', filterContacts);
+        });
+
+        // Add search functionality
+        document.getElementById('contactSearch').addEventListener('input', searchContacts);
+      });
+
+      function displayContacts() {
+        const container = document.getElementById('contactsContainer');
+        const startIndex = (currentPage - 1) * contactsPerPage;
+        const endIndex = startIndex + contactsPerPage;
+        const contactsToShow = filteredContacts.slice(startIndex, endIndex);
+
+        container.innerHTML = '';
+
+        contactsToShow.forEach(contact => {
+          const contactCard = createContactCard(contact);
+          container.appendChild(contactCard);
+        });
+
+        updatePagination();
+      }
+
+      function createContactCard(contact) {
+        const col = document.createElement('div');
+        col.className = 'col-md-4 col-sm-6 mb-4';
+        
+        col.innerHTML = `
+          <div class="contact-card">
+            <div class="contact-header">
+              <img src="${contact.avatar}" alt="${contact.firstName} ${contact.lastName}" class="contact-avatar">
+              <div class="contact-type-badge">
+                <span class="badge bg-${getTypeColor(contact.type)}">${capitalizeFirst(contact.type)}</span>
+              </div>
+            </div>
+            <div class="contact-body">
+              <h5 class="contact-name">${contact.firstName} ${contact.lastName}</h5>
+              <p class="contact-title">${contact.jobTitle}</p>
+              <div class="contact-info">
+                <div class="contact-info-item">
+                  <i class="fas fa-envelope text-primary"></i>
+                  <span>${contact.email}</span>
+                </div>
+                <div class="contact-info-item">
+                  <i class="fas fa-phone text-success"></i>
+                  <span>${contact.phone}</span>
+                </div>
+                <div class="contact-info-item">
+                  <i class="fas fa-building text-info"></i>
+                  <span>${contact.company}</span>
+                </div>
+              </div>
+              <div class="contact-rating">
+                <span class="rating-stars">${generateStars(contact.rating)}</span>
+                <span class="rating-value">${contact.rating}</span>
+              </div>
+            </div>
+            <div class="contact-actions">
+              <button class="btn btn-outline-primary btn-sm" onclick="viewContactDetails(${contact.id})">
+                <i class="fas fa-eye"></i> View
+              </button>
+              <button class="btn btn-outline-success btn-sm" onclick="contactPerson(${contact.id})">
+                <i class="fas fa-comment"></i> Message
+              </button>
+              <button class="btn btn-outline-info btn-sm" onclick="callContact(${contact.id})">
+                <i class="fas fa-phone"></i> Call
+              </button>
+            </div>
+          </div>
+        `;
+        
+        return col;
+      }
+
+      function getTypeColor(type) {
+        const colors = {
+          'team': 'success',
+          'client': 'primary',
+          'vendor': 'warning'
+        };
+        return colors[type] || 'secondary';
+      }
+
+      function capitalizeFirst(str) {
+        return str.charAt(0).toUpperCase() + str.slice(1);
+      }
+
+      function generateStars(rating) {
+        const fullStars = Math.floor(rating);
+        const halfStar = rating % 1 >= 0.5 ? 1 : 0;
+        const emptyStars = 5 - fullStars - halfStar;
+        
+        let stars = '';
+        for (let i = 0; i < fullStars; i++) {
+          stars += '<i class="fas fa-star text-warning"></i>';
+        }
+        if (halfStar) {
+          stars += '<i class="fas fa-star-half-alt text-warning"></i>';
+        }
+        for (let i = 0; i < emptyStars; i++) {
+          stars += '<i class="far fa-star text-warning"></i>';
+        }
+        
+        return stars;
+      }
+
+      function filterContacts() {
+        const selectedType = document.querySelector('input[name="contactType"]:checked').id;
+        const departmentFilter = document.querySelector('select[onchange="filterByDepartment(this.value)"]').value;
+        
+        filteredContacts = contacts.filter(contact => {
+          const typeMatch = selectedType === 'all' || contact.type === selectedType;
+          const deptMatch = !departmentFilter || contact.department === departmentFilter;
+          return typeMatch && deptMatch;
+        });
+        
+        currentPage = 1;
+        displayContacts();
+      }
+
+      function filterByDepartment(department) {
+        filterContacts();
+      }
+
+      function filterByLetter(letter) {
+        if (letter === 'all') {
+          filteredContacts = [...contacts];
+        } else {
+          filteredContacts = contacts.filter(contact => 
+            contact.lastName.charAt(0).toUpperCase() === letter
+          );
+        }
+        
+        currentPage = 1;
+        displayContacts();
+        
+        // Update active button
+        document.querySelectorAll('.alphabet-filter .btn').forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+      }
+
+      function searchContacts() {
+        const searchTerm = document.getElementById('contactSearch').value.toLowerCase();
+        
+        filteredContacts = contacts.filter(contact => 
+          contact.firstName.toLowerCase().includes(searchTerm) ||
+          contact.lastName.toLowerCase().includes(searchTerm) ||
+          contact.email.toLowerCase().includes(searchTerm) ||
+          contact.jobTitle.toLowerCase().includes(searchTerm) ||
+          contact.company.toLowerCase().includes(searchTerm)
+        );
+        
+        currentPage = 1;
+        displayContacts();
+      }
+
+      function updatePagination() {
+        const totalPages = Math.ceil(filteredContacts.length / contactsPerPage);
+        const pagination = document.getElementById('contactPagination');
+        
+        pagination.innerHTML = '';
+        
+        // Previous button
+        const prevLi = document.createElement('li');
+        prevLi.className = `page-item ${currentPage === 1 ? 'disabled' : ''}`;
+        prevLi.innerHTML = `<a class="page-link" href="#" onclick="previousPage()"><i class="fas fa-chevron-left"></i> Previous</a>`;
+        pagination.appendChild(prevLi);
+        
+        // Page numbers
+        for (let i = 1; i <= totalPages; i++) {
+          const pageLi = document.createElement('li');
+          pageLi.className = `page-item ${i === currentPage ? 'active' : ''}`;
+          pageLi.innerHTML = `<a class="page-link" href="#" onclick="goToPage(${i})">${i}</a>`;
+          pagination.appendChild(pageLi);
+        }
+        
+        // Next button
+        const nextLi = document.createElement('li');
+        nextLi.className = `page-item ${currentPage === totalPages ? 'disabled' : ''}`;
+        nextLi.innerHTML = `<a class="page-link" href="#" onclick="nextPage()">Next <i class="fas fa-chevron-right"></i></a>`;
+        pagination.appendChild(nextLi);
+      }
+
+      function previousPage() {
+        if (currentPage > 1) {
+          currentPage--;
+          displayContacts();
+        }
+      }
+
+      function nextPage() {
+        const totalPages = Math.ceil(filteredContacts.length / contactsPerPage);
+        if (currentPage < totalPages) {
+          currentPage++;
+          displayContacts();
+        }
+      }
+
+      function goToPage(page) {
+        currentPage = page;
+        displayContacts();
+      }
+
+      function viewContactDetails(contactId) {
+        const contact = contacts.find(c => c.id === contactId);
+        if (contact) {
+          const modalContent = document.getElementById('contactDetailsContent');
+          modalContent.innerHTML = `
+            <div class="row">
+              <div class="col-md-4 text-center">
+                <img src="${contact.avatar}" alt="${contact.firstName} ${contact.lastName}" class="contact-detail-avatar mb-3">
+                <h4>${contact.firstName} ${contact.lastName}</h4>
+                <p class="text-muted">${contact.jobTitle}</p>
+                <div class="rating mb-3">
+                  ${generateStars(contact.rating)} <span class="ms-2">${contact.rating}/5.0</span>
+                </div>
+              </div>
+              <div class="col-md-8">
+                <h6>Contact Information</h6>
+                <table class="table table-borderless">
+                  <tr><td><strong>Email:</strong></td><td>${contact.email}</td></tr>
+                  <tr><td><strong>Phone:</strong></td><td>${contact.phone}</td></tr>
+                  <tr><td><strong>Company:</strong></td><td>${contact.company}</td></tr>
+                  <tr><td><strong>Department:</strong></td><td>${capitalizeFirst(contact.department)}</td></tr>
+                  <tr><td><strong>Type:</strong></td><td><span class="badge bg-${getTypeColor(contact.type)}">${capitalizeFirst(contact.type)}</span></td></tr>
+                  <tr><td><strong>Address:</strong></td><td>${contact.address}</td></tr>
+                </table>
+              </div>
+            </div>
+          `;
+          
+          const modal = new bootstrap.Modal(document.getElementById('contactDetailsModal'));
+          modal.show();
+        }
+      }
+
+      function saveContact() {
+        // Get form data
+        const form = document.getElementById('addContactForm');
+        const formData = new FormData(form);
+        
+        // Validate required fields
+        if (!document.getElementById('firstName').value || !document.getElementById('lastName').value || !document.getElementById('email').value) {
+          alert('Please fill in all required fields.');
+          return;
+        }
+        
+        // Create new contact object
+        const newContact = {
+          id: contacts.length + 1,
+          firstName: document.getElementById('firstName').value,
+          lastName: document.getElementById('lastName').value,
+          email: document.getElementById('email').value,
+          phone: document.getElementById('phone').value || 'N/A',
+          jobTitle: document.getElementById('jobTitle').value || 'N/A',
+          department: document.getElementById('department').value || 'general',
+          company: document.getElementById('company').value || 'N/A',
+          type: document.getElementById('contactType').value,
+          address: document.getElementById('address').value || 'N/A',
+          avatar: 'images/user.png',
+          rating: 4.0
+        };
+        
+        // Add to contacts array
+        contacts.push(newContact);
+        filteredContacts = [...contacts];
+        
+        // Refresh display
+        displayContacts();
+        
+        // Close modal and reset form
+        const modal = bootstrap.Modal.getInstance(document.getElementById('addContactModal'));
+        modal.hide();
+        form.reset();
+        
+        alert('Contact added successfully!');
+      }
+
+      function contactPerson(contactId) {
+        const contact = contacts.find(c => c.id === contactId);
+        alert(`Messaging ${contact.firstName} ${contact.lastName} at ${contact.email}`);
+      }
+
+      function callContact(contactId) {
+        const contact = contacts.find(c => c.id === contactId);
+        alert(`Calling ${contact.firstName} ${contact.lastName} at ${contact.phone}`);
+      }
+
+      function editContact() {
+        alert('Edit contact functionality would open the edit form.');
+      }
+    </script>
+
+    <style>
+      .stats-card {
+        transition: transform 0.3s ease;
+        border-radius: 10px;
+        border: none;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      }
+
+      .stats-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+      }
+
+      .stat-icon {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+      }
+
+      .stat-number {
+        font-size: 2rem;
+        font-weight: bold;
+        margin: 0;
+      }
+
+      .stat-label {
+        color: #6c757d;
+        font-size: 0.9rem;
+        margin: 0;
+      }
+
+      .contact-card {
+        background: white;
+        border-radius: 15px;
+        padding: 20px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+        height: 100%;
+        border: 1px solid #e9ecef;
+      }
+
+      .contact-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+      }
+
+      .contact-header {
+        text-align: center;
+        position: relative;
+        margin-bottom: 15px;
+      }
+
+      .contact-avatar {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        border: 4px solid #fff;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      }
+
+      .contact-type-badge {
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+
+      .contact-name {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 5px;
+        color: #2c3e50;
+      }
+
+      .contact-title {
+        color: #6c757d;
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+      }
+
+      .contact-info-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 8px;
+        font-size: 0.85rem;
+      }
+
+      .contact-info-item i {
+        width: 20px;
+        margin-right: 8px;
+      }
+
+      .contact-rating {
+        text-align: center;
+        margin: 15px 0;
+        padding: 10px;
+        background: #f8f9fa;
+        border-radius: 8px;
+      }
+
+      .rating-value {
+        font-weight: bold;
+        color: #495057;
+      }
+
+      .contact-actions {
+        display: flex;
+        gap: 5px;
+        justify-content: center;
+      }
+
+      .contact-actions .btn {
+        flex: 1;
+        font-size: 0.8rem;
+      }
+
+      .alphabet-filter .btn {
+        min-width: 40px;
+      }
+
+      .alphabet-filter .btn.active {
+        background-color: #007bff;
+        color: white;
+        border-color: #007bff;
+      }
+
+      .contact-detail-avatar {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        border: 5px solid #f8f9fa;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      }
+
+      .modal-header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border-radius: 0.5rem 0.5rem 0 0;
+      }
+
+      .modal-header .btn-close {
+        filter: invert(1);
+      }
+
+      .x_panel {
+        border-radius: 10px;
+        border: none;
+        box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+      }
+
+      .btn-check:checked + .btn-outline-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        color: white;
+      }
+    </style>
   </body>
 </html>

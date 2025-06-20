@@ -66,7 +66,7 @@
                       <li><a href="media_gallery.html">Media Gallery</a></li>
                       <li><a href="typography.html">Typography</a></li>
                       <li><a href="icons.html">Icons</a></li>
-                      <li><a href="glyphicons.html">Glyphicons</a></li>
+
                       <li><a href="widgets.html">Widgets</a></li>
                       <li><a href="invoice.html">Invoice</a></li>
                       <li><a href="inbox.html">Inbox</a></li>
@@ -135,7 +135,7 @@
                         </li>
                     </ul>
                   </li>                  
-                  <li><a href="javascript:void(0)"><i class="fas fa-laptop"></i> Landing Page <span class="label label-success pull-right">Coming Soon</span></a></li>
+                  <li><a href="javascript:void(0)"><i class="fas fa-laptop"></i> Landing Page <span class="badge bg-success float-end">Coming Soon</span></a></li>
                 </ul>
               </div>
 
@@ -144,16 +144,16 @@
 
             <!-- /menu footer buttons -->
             <div class="sidebar-footer hidden-small">
-              <a data-bs-toggle="tooltip" data-placement="top" title="Settings">
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Settings">
                 <span class="fas fa-cog" aria-hidden="true"></span>
               </a>
-              <a data-bs-toggle="tooltip" data-placement="top" title="FullScreen">
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="FullScreen">
                 <span class="fas fa-expand" aria-hidden="true"></span>
               </a>
-              <a data-bs-toggle="tooltip" data-placement="top" title="Lock">
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Lock">
                 <span class="fas fa-eye-slash" aria-hidden="true"></span>
               </a>
-              <a data-bs-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Logout" href="login.html">
                 <span class="fas fa-power-off" aria-hidden="true"></span>
               </a>
             </div>
@@ -700,10 +700,10 @@
                     <p>Add small overlays of content for housing secondary information.</p>
                     <!-- start pop-over -->
                     <div class="bs-example-popovers">
-                      <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-placement="left" title="Tooltip left">left</button>
-                      <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-placement="top" title="Tooltip top">Top</button>
-                      <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-placement="bottom" title="Tooltip bottom">Bottom</button>
-                      <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-placement="right" title="Tooltip right">Right</button>
+                      <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="left" title="Tooltip on left">Left</button>
+                      <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">Top</button>
+                      <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">Bottom</button>
+                      <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="right" title="Tooltip on right">Right</button>
                     </div>
                     <!-- end pop-over -->
 
@@ -736,14 +736,108 @@
 
                     <p>Hover over the links below to see tooltips:</p>
 
-                    <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-placement="left" title="Tooltip left">Tooltip left</button>
+                    <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="left" title="Tooltip on left">Tooltip left</button>
 
-                    <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-placement="top" title="Tooltip top">Tooltip top</button>
+                    <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">Tooltip top</button>
 
-                    <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-placement="bottom" title="Tooltip bottom">Tooltip bottom</button>
+                    <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">Tooltip bottom</button>
 
-                    <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-placement="right" title="Tooltip right">Tooltip right</button>
+                    <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="right" title="Tooltip on right">Tooltip right</button>
 
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6 col-sm-6">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Toast Notifications <small>Click to demo</small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Settings 1</a>
+                            <a class="dropdown-item" href="#">Settings 2</a>
+                          </div>
+                      </li>
+                      <li><a class="btn-close-link"><i class="fas fa-times"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <p>Click the buttons below to display Bootstrap 5 toast notifications:</p>
+                    <div class="row">
+                      <div class="col-md-6 mb-2">
+                        <button type="button" id="toast-success-btn" class="btn btn-success btn-sm w-100">
+                          <i class="fas fa-check"></i> Success Toast
+                        </button>
+                      </div>
+                      <div class="col-md-6 mb-2">
+                        <button type="button" id="toast-error-btn" class="btn btn-danger btn-sm w-100">
+                          <i class="fas fa-times"></i> Error Toast
+                        </button>
+                      </div>
+                      <div class="col-md-6 mb-2">
+                        <button type="button" id="toast-info-btn" class="btn btn-info btn-sm w-100">
+                          <i class="fas fa-info"></i> Info Toast
+                        </button>
+                      </div>
+                      <div class="col-md-6 mb-2">
+                        <button type="button" id="toast-warning-btn" class="btn btn-warning btn-sm w-100">
+                          <i class="fas fa-exclamation-triangle"></i> Warning Toast
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6 col-sm-6">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Modals <small>Click to demo</small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Settings 1</a>
+                            <a class="dropdown-item" href="#">Settings 2</a>
+                          </div>
+                      </li>
+                      <li><a class="btn-close-link"><i class="fas fa-times"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <p>Click the buttons below to launch Bootstrap 5 modals:</p>
+                    <div class="row">
+                      <div class="col-md-6 mb-2">
+                        <button type="button" class="btn btn-primary btn-sm w-100" data-bs-toggle="modal" data-bs-target="#demoModal">
+                          <i class="fas fa-window-maximize"></i> Standard Modal
+                        </button>
+                      </div>
+                      <div class="col-md-6 mb-2">
+                        <button type="button" class="btn btn-secondary btn-sm w-100" data-bs-toggle="modal" data-bs-target="#largeDemoModal">
+                          <i class="fas fa-expand"></i> Large Modal
+                        </button>
+                      </div>
+                      <div class="col-md-6 mb-2">
+                        <button type="button" class="btn btn-outline-primary btn-sm w-100" data-bs-toggle="modal" data-bs-target="#smallDemoModal">
+                          <i class="fas fa-compress"></i> Small Modal
+                        </button>
+                      </div>
+                      <div class="col-md-6 mb-2">
+                        <button type="button" class="btn btn-outline-secondary btn-sm w-100" data-bs-toggle="popover" data-bs-placement="top" title="Popover Title" data-bs-content="This is a sample popover content triggered by clicking this button.">
+                          <i class="fas fa-comment"></i> Popover Demo
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -853,363 +947,6 @@
                   <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
-
-                  <div class="bs-example" data-example-id="simple-jumbotron">
-                    <div class="bg-light p-5 rounded-3">
-                      <h1>Hello, world!</h1>
-                      <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-6 col-sm-6">
-              <div class="x_panel">
-                <div class="x_title">
-                  <h2><i class="fas fa-chevron-down"></i> Dropdowns <small>Multiple dropdown designs</small></h2>
-                  <ul class="nav navbar-right panel_toolbox">
-                    <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-                    </li>
-                    <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="#">Settings 1</a>
-                          <a class="dropdown-item" href="#">Settings 2</a>
-                        </div>
-                    </li>
-                    <li><a class="btn-close-link"><i class="fas fa-times"></i></a>
-                    </li>
-                  </ul>
-                  <div class="clearfix"></div>
-                </div>
-                <div class="x_content">
-
-                  <p>Gentelella provides you with several dropdown designs for your choosing.</p>
-                  <ul class="nav nav-pills" role="tablist">
-                    <li role="presentation"><a href="#">Regular link</a>
-                    </li>
-                    <li role="presentation" class="dropdown">
-                      <a id="drop4" href="#" class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
-                                  Dropdown
-                                  <span class="caret"></span>
-                              </a>
-                              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                  <a class="dropdown-item" href="#">Action</a>
-                                  <a class="dropdown-item" href="#">Another action</a>
-                                  <a class="dropdown-item" href="#">Something else here</a>
-                                </div>
-                    </li>
-                    <li role="presentation" class="dropdown">
-                      <a id="drop5" href="#" class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
-                                  Dropdown
-                                  <span class="caret"></span>
-                              </a>
-                              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                  <a class="dropdown-item" href="#">Action</a>
-                                  <a class="dropdown-item" href="#">Another action</a>
-                                  <a class="dropdown-item" href="#">Something else here</a>
-                                </div>
-                    </li>
-                    <li role="presentation" class="dropdown">
-                      <a id="drop6" href="#" class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
-                                  Dropdown
-                                  <span class="caret"></span>
-                              </a>
-                              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                  <a class="dropdown-item" href="#">Action</a>
-                                  <a class="dropdown-item" href="#">Another action</a>
-                                  <a class="dropdown-item" href="#">Something else here</a>
-                                </div>
-                    </li>
-                  </ul>
-
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-6 col-sm-6">
-              <div class="x_panel">
-                <div class="x_title">
-                  <h2><i class="fas fa-square-o"></i> Modals</h2>
-                  <ul class="nav navbar-right panel_toolbox">
-                    <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-                    </li>
-                    <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="#">Settings 1</a>
-                          <a class="dropdown-item" href="#">Settings 2</a>
-                        </div>
-                    </li>
-                    <li><a class="btn-close-link"><i class="fas fa-times"></i></a>
-                    </li>
-                  </ul>
-                  <div class="clearfix"></div>
-                </div>
-                <div class="x_content">
-
-                  <!-- modals -->
-                  <!-- Large modal -->
-                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target=".bs-example-modal-lg">Large modal</button>
-
-                  <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                      <div class="modal-content">
-
-                        <div class="modal-header">
-                          <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal"><span aria-hidden="true">×</span>
-                          </button>
-                        </div>
-                        <div class="modal-body">
-                          <h4>Text in a modal</h4>
-                          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-                          <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
-
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Small modal -->
-                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target=".bs-example-modal-sm">Small modal</button>
-
-                  <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog modal-sm">
-                      <div class="modal-content">
-
-                        <div class="modal-header">
-                          <h4 class="modal-title" id="myModalLabel2">Modal title</h4>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
-                          </button>
-                        </div>
-                        <div class="modal-body">
-                          <h4>Text in a modal</h4>
-                          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-                          <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
-
-                      </div>
-                    </div>
-                  </div>
-                  <!-- /modals -->
-                </div>
-              </div>
-            </div>
-
-
-
-            <div class="col-md-6 col-sm-6">
-              <div class="x_panel">
-                <div class="x_title">
-                  <h2><i class="fas fa-bell"></i> Notifications <small>Bootstrap 5 Toasts</small></h2>
-                  <ul class="nav navbar-right panel_toolbox">
-                    <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-                    </li>
-                    <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="#">Settings 1</a>
-                          <a class="dropdown-item" href="#">Settings 2</a>
-                        </div>
-                    </li>
-                    <li><a class="btn-close-link"><i class="fas fa-times"></i></a>
-                    </li>
-                  </ul>
-                  <div class="clearfix"></div>
-                </div>
-                <div class="x_content">
-
-                  <p>Regular notifications are easy to create with Bootstrap 5 Toasts, a lightweight and customizable alert system.</p>
-
-                  <button type="button" class="btn btn-secondary" id="toast-success-btn">Success Toast</button>
-                  <button type="button" class="btn btn-secondary" id="toast-error-btn">Error Toast</button>
-                  <button type="button" class="btn btn-secondary" id="toast-info-btn">Info Toast</button>
-                  <button type="button" class="btn btn-secondary" id="toast-warning-btn">Warning Toast</button>
-
-                </div>
-              </div>
-            </div>
-
-
-            <div class="col-md-6">
-              <div class="x_panel">
-                <div class="x_title">
-                  <h2>Pop Overs <small>Sessions</small></h2>
-                  <ul class="nav navbar-right panel_toolbox">
-                    <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-                    </li>
-                    <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="#">Settings 1</a>
-                          <a class="dropdown-item" href="#">Settings 2</a>
-                        </div>
-                    </li>
-                    <li><a class="btn-close-link"><i class="fas fa-times"></i></a>
-                    </li>
-                  </ul>
-                  <div class="clearfix"></div>
-                </div>
-                <div class="x_content bs-example-popovers">
-
-                  <div class="alert alert-success alert-dismissible" role="alert">
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
-                    </button>
-                    <strong>Holy guacamole!</strong> Best check yo self, you're not looking too good.
-                  </div>
-                  <div class="alert alert-info alert-dismissible" role="alert">
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
-                    </button>
-                    <strong>Holy guacamole!</strong> Best check yo self, you're not looking too good.
-                  </div>
-                  <div class="alert alert-warning alert-dismissible" role="alert">
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
-                    </button>
-                    <strong>Holy guacamole!</strong> Best check yo self, you're not looking too good.
-                  </div>
-                  <div class="alert alert-danger alert-dismissible" role="alert">
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
-                    </button>
-                    <strong>Holy guacamole!</strong> Best check yo self, you're not looking too good.
-                  </div>
-
-                </div>
-              </div>
-            </div>
-
-
-
-            <div class="col-md-6">
-              <div class="x_panel">
-                <div class="x_title">
-                  <h2><i class="fas fa-align-left"></i> Progress bar<small>Sessions</small></h2>
-                  <ul class="nav navbar-right panel_toolbox">
-                    <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-                    </li>
-                    <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="#">Settings 1</a>
-                          <a class="dropdown-item" href="#">Settings 2</a>
-                        </div>
-                    </li>
-                    <li><a class="btn-close-link"><i class="fas fa-times"></i></a>
-                    </li>
-                  </ul>
-                  <div class="clearfix"></div>
-                </div>
-                <div class="x_content">
-
-                  <p>Bootstrap progress bar with animated loading bar, add right to .progress to align right</p>
-                  <div class="progress">
-                    <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <div class="progress">
-                    <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <div class="progress">
-                    <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <div class="progress">
-                    <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <div class="progress">
-                    <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-
-
-
-                </div>
-              </div>
-            </div>
-
-            <!-- Start to do list -->
-            <div class="col-md-6 col-sm-6">
-              <div class="x_panel">
-                <div class="x_title">
-                  <h2>To Do List <small>Sample tasks</small></h2>
-                  <ul class="nav navbar-right panel_toolbox">
-                    <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-                    </li>
-                    <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="#">Settings 1</a>
-                          <a class="dropdown-item" href="#">Settings 2</a>
-                        </div>
-                    </li>
-                    <li><a class="btn-close-link"><i class="fas fa-times"></i></a>
-                    </li>
-                  </ul>
-                  <div class="clearfix"></div>
-                </div>
-                <div class="x_content">
-
-                  <div class="">
-                    <ul class="to_do">
-                      <li>
-                        <p>
-                          <input type="checkbox" class="flat"> Schedule meeting with new client </p>
-                      </li>
-                      <li>
-                        <p>
-                          <input type="checkbox" class="flat"> Create email address for new intern</p>
-                      </li>
-                      <li>
-                        <p>
-                          <input type="checkbox" class="flat"> Have IT fix the network printer</p>
-                      </li>
-                      <li>
-                        <p>
-                          <input type="checkbox" class="flat"> Copy backups to offsite location</p>
-                      </li>
-                      <li>
-                        <p>
-                          <input type="checkbox" class="flat"> Food truck fixie locavors mcsweeney</p>
-                      </li>
-                      <li>
-                        <p>
-                          <input type="checkbox" class="flat"> Food truck fixie locavors mcsweeney</p>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- End to do list -->
-
-
-            <div class="col-md-6">
-              <div class="x_panel">
-                <div class="x_title">
-                  <h2>Daily active users <small>Sessions</small></h2>
-                  <ul class="nav navbar-right panel_toolbox">
-                    <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-                    </li>
-                    <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="#">Settings 1</a>
-                          <a class="dropdown-item" href="#">Settings 2</a>
-                        </div>
-                    </li>
-                    <li><a class="btn-close-link"><i class="fas fa-times"></i></a>
-                    </li>
-                  </ul>
-                  <div class="clearfix"></div>
-                </div>
-                <div class="x_content">
                   <ul class="list-unstyled msg_list">
                     <li>
                       <a>
@@ -1287,6 +1024,83 @@
       </div>
     </div>
 
+    <!-- Demo Modals -->
+    <!-- Standard Modal -->
+    <div class="modal fade" id="demoModal" tabindex="-1" aria-labelledby="demoModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="demoModalLabel">Demo Modal</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>This is a standard Bootstrap 5 modal example. You can include any content here including forms, images, or other components.</p>
+            <p>Modal content is fully responsive and will adapt to different screen sizes.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Large Modal -->
+    <div class="modal fade" id="largeDemoModal" tabindex="-1" aria-labelledby="largeDemoModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="largeDemoModalLabel">Large Modal</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-6">
+                <h6>Left Column</h6>
+                <p>This is a large modal that provides more space for content. You can use the grid system inside modals.</p>
+                <ul>
+                  <li>More content space</li>
+                  <li>Better for complex forms</li>
+                  <li>Responsive design</li>
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <h6>Right Column</h6>
+                <p>The large modal is perfect for displaying detailed information or more complex interfaces.</p>
+                <div class="form-group">
+                  <label for="exampleInput">Example Input</label>
+                  <input type="text" class="form-control" id="exampleInput" placeholder="Example input">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary">Confirm</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Small Modal -->
+    <div class="modal fade" id="smallDemoModal" tabindex="-1" aria-labelledby="smallDemoModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="smallDemoModalLabel">Small Modal</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>This is a small modal for quick confirmations or simple messages.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">No</button>
+            <button type="button" class="btn btn-sm btn-primary">Yes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Toast Container -->
     <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1080">
       <!-- Toasts will be appended here -->
@@ -1302,3 +1116,37 @@
 	
   </body>
 </html>
+
+<script type="module">
+  document.addEventListener('DOMContentLoaded', () => {
+    // Enable tooltips
+    const tooltipTriggerList = Array.from(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    tooltipTriggerList.forEach(el => new bootstrap.Tooltip(el));
+
+    // Enable popovers
+    const popoverTriggerList = Array.from(document.querySelectorAll('[data-bs-toggle="popover"]'));
+    popoverTriggerList.forEach(el => new bootstrap.Popover(el));
+
+    // Toast factory
+    const toastContainer = document.querySelector('.toast-container');
+    const showToast = (variant, message) => {
+      const toastEl = document.createElement('div');
+      toastEl.className = `toast align-items-center text-bg-${variant} border-0`;
+      toastEl.role = 'alert';
+      toastEl.innerHTML = `
+        <div class="d-flex">
+          <div class="toast-body">${message}</div>
+          <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>`;
+      toastContainer.appendChild(toastEl);
+      const toastObj = new bootstrap.Toast(toastEl, { delay: 3000 });
+      toastObj.show();
+      toastEl.addEventListener('hidden.bs.toast', () => toastEl.remove());
+    };
+
+    document.getElementById('toast-success-btn')?.addEventListener('click', () => showToast('success', 'Success toast'));
+    document.getElementById('toast-error-btn')?.addEventListener('click', () => showToast('danger', 'Error toast'));
+    document.getElementById('toast-info-btn')?.addEventListener('click', () => showToast('info', 'Info toast'));
+    document.getElementById('toast-warning-btn')?.addEventListener('click', () => showToast('warning', 'Warning toast'));
+  });
+</script>

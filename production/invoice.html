@@ -6,13 +6,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="images/favicon.ico" type="image/ico" />
 
-    <title>Gentelella Alela! | </title>
+    <title>Invoice - Gentelella</title>
 
-    <!-- Bootstrap -->
-    <!-- Font Awesome -->
-    <!-- NProgress -->
-    <!-- Custom styling plus plugins -->
+    <!-- Vite Entry Point - will bundle all styles -->
     <script type="module" src="/src/main-minimal.js"></script>
   </head>
 
@@ -50,8 +48,8 @@
                     <ul class="nav child_menu">
                       <li><a href="index.html">Dashboard 1</a></li>
                       <li><a href="index2.html">Dashboard 2</a></li>
-                      <li><a href="index3.html">Dashboard 3</a></li><li><a href="index4.html">Dashboard 4</a></li>
                       <li><a href="index3.html">Dashboard 3</a></li>
+                      <li><a href="index4.html">Dashboard 4</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fas fa-edit"></i> Forms <span class="fas fa-chevron-down"></span></a>
@@ -70,7 +68,6 @@
                       <li><a href="media_gallery.html">Media Gallery</a></li>
                       <li><a href="typography.html">Typography</a></li>
                       <li><a href="icons.html">Icons</a></li>
-                      <li><a href="glyphicons.html">Glyphicons</a></li>
                       <li><a href="widgets.html">Widgets</a></li>
                       <li><a href="invoice.html">Invoice</a></li>
                       <li><a href="inbox.html">Inbox</a></li>
@@ -139,7 +136,7 @@
                         </li>
                     </ul>
                   </li>                  
-                  <li><a href="javascript:void(0)"><i class="fas fa-laptop"></i> Landing Page <span class="label label-success pull-right">Coming Soon</span></a></li>
+                  <li><a href="javascript:void(0)"><i class="fas fa-laptop"></i> Landing Page <span class="badge bg-success float-end">Coming Soon</span></a></li>
                 </ul>
               </div>
 
@@ -148,16 +145,16 @@
 
             <!-- /menu footer buttons -->
             <div class="sidebar-footer hidden-small">
-              <a data-bs-toggle="tooltip" data-placement="top" title="Settings">
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Settings">
                 <span class="fas fa-cog" aria-hidden="true"></span>
               </a>
-              <a data-bs-toggle="tooltip" data-placement="top" title="FullScreen">
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="FullScreen">
                 <span class="fas fa-expand" aria-hidden="true"></span>
               </a>
-              <a data-bs-toggle="tooltip" data-placement="top" title="Lock">
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Lock">
                 <span class="fas fa-eye-slash" aria-hidden="true"></span>
               </a>
-              <a data-bs-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Logout" href="login.html">
                 <span class="fas fa-power-off" aria-hidden="true"></span>
               </a>
             </div>
@@ -177,21 +174,21 @@
                     <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                       <img src="images/img.jpg" alt="">John Doe
                     </a>
-                    <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
+                    <div class="dropdown-menu dropdown-usermenu float-end" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item"  href="javascript:;"> Profile</a>
                         <a class="dropdown-item"  href="javascript:;">
-                          <span class="badge bg-red pull-right">50%</span>
+                          <span class="badge bg-danger float-end">50%</span>
                           <span>Settings</span>
                         </a>
                     <a class="dropdown-item"  href="javascript:;">Help</a>
-                      <a class="dropdown-item"  href="login.html"><i class="fas fa-sign-out-alt pull-right"></i> Log Out</a>
+                      <a class="dropdown-item"  href="login.html"><i class="fas fa-sign-out-alt float-end"></i> Log Out</a>
                     </div>
                   </li>
   
                   <li role="presentation" class="nav-item dropdown open">
                     <a href="javascript:;" class="dropdown-toggle info-number" id="navbarDropdown1" data-bs-toggle="dropdown" aria-expanded="false">
                       <i class="fas fa-envelope"></i>
-                      <span class="badge bg-green">6</span>
+                      <span class="badge bg-success">6</span>
                     </a>
                     <ul class="dropdown-menu list-unstyled msg_list" role="menu" aria-labelledby="navbarDropdown1">
                       <li class="nav-item">
@@ -263,16 +260,14 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Invoice <small>Some examples to get you started</small></h3>
+                <h3>Invoice <small>Professional invoice template</small></h3>
               </div>
 
               <div class="title_right">
-                <div class="col-md-5 col-sm-5 form-group pull-right top_search">
+                <div class="col-md-5 col-sm-5 form-group float-end top_search">
                   <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search for...">
-                    <span class="input-group-btn">
-                      <button class="btn btn-secondary" type="button">Go!</button>
-                    </span>
+                    <button class="btn btn-outline-secondary" type="button">Go!</button>
                   </div>
                 </div>
               </div>
@@ -284,7 +279,7 @@
               <div class="col-md-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Invoice Design <small>Sample user invoice design</small></h2>
+                    <h2>Invoice Design <small>Professional invoice layout</small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
                       </li>
@@ -305,46 +300,45 @@
                     <section class="content invoice">
                       <!-- title row -->
                       <div class="row">
-                        <div class="invoice-header">
-                          <h1>
-                                          <i class="fas fa-globe"></i> Invoice.
-                                          <small class="pull-right">Date: 16/08/2016</small>
-                                      </h1>
+                        <div class="col-12">
+                          <div class="invoice-header">
+                            <h1>
+                              <i class="fas fa-globe"></i> Invoice.
+                              <small class="float-end">Date: 16/08/2032</small>
+                            </h1>
+                          </div>
                         </div>
                         <!-- /.col -->
                       </div>
                       <!-- info row -->
                       <div class="row invoice-info">
                         <div class="col-sm-4 invoice-col">
-                          From
+                          <strong>From</strong>
                           <address>
-                                          <strong>Iron Admin, Inc.</strong>
-                                          <br>795 Freedom Ave, Suite 600
-                                          <br>New York, CA 94107
-                                          <br>Phone: 1 (804) 123-9876
-                                          <br>Email: ironadmin.com
-                                      </address>
+                            <strong>Iron Admin, Inc.</strong><br>
+                            795 Freedom Ave, Suite 600<br>
+                            New York, CA 94107<br>
+                            <strong>Phone:</strong> 1 (804) 123-9876<br>
+                            <strong>Email:</strong> contact@ironadmin.com
+                          </address>
                         </div>
                         <!-- /.col -->
                         <div class="col-sm-4 invoice-col">
-                          To
+                          <strong>To</strong>
                           <address>
-                                          <strong>John Doe</strong>
-                                          <br>795 Freedom Ave, Suite 600
-                                          <br>New York, CA 94107
-                                          <br>Phone: 1 (804) 123-9876
-                                          <br>Email: jon@ironadmin.com
-                                      </address>
+                            <strong>John Doe</strong><br>
+                            795 Freedom Ave, Suite 600<br>
+                            New York, CA 94107<br>
+                            <strong>Phone:</strong> 1 (804) 123-9876<br>
+                            <strong>Email:</strong> jon@ironadmin.com
+                          </address>
                         </div>
                         <!-- /.col -->
                         <div class="col-sm-4 invoice-col">
-                          <b>Invoice #007612</b>
+                          <b>Invoice #007612</b><br>
                           <br>
-                          <br>
-                          <b>Order ID:</b> 4F3S8J
-                          <br>
-                          <b>Payment Due:</b> 2/22/2014
-                          <br>
+                          <b>Order ID:</b> 4F3S8J<br>
+                          <b>Payment Due:</b> 2/22/2032<br>
                           <b>Account:</b> 968-34567
                         </div>
                         <!-- /.col -->
@@ -353,49 +347,50 @@
 
                       <!-- Table row -->
                       <div class="row">
-                        <div class="table">
-                          <table class="table table-striped">
-                            <thead>
-                              <tr>
-                                <th>Qty</th>
-                                <th>Product</th>
-                                <th>Serial #</th>
-                                <th style="width: 59%">Description</th>
-                                <th>Subtotal</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td>1</td>
-                                <td>Call of Duty</td>
-                                <td>455-981-221</td>
-                                <td>El snort testosterone trophy driving gloves handsome gerry Richardson helvetica tousled street art master testosterone trophy driving gloves handsome gerry Richardson
-                                </td>
-                                <td>$64.50</td>
-                              </tr>
-                              <tr>
-                                <td>1</td>
-                                <td>Need for Speed IV</td>
-                                <td>247-925-726</td>
-                                <td>Wes Anderson umami biodiesel</td>
-                                <td>$50.00</td>
-                              </tr>
-                              <tr>
-                                <td>1</td>
-                                <td>Monsters DVD</td>
-                                <td>735-845-642</td>
-                                <td>Terry Richardson helvetica tousled street art master, El snort testosterone trophy driving gloves handsome letterpress erry Richardson helvetica tousled</td>
-                                <td>$10.70</td>
-                              </tr>
-                              <tr>
-                                <td>1</td>
-                                <td>Grown Ups Blue Ray</td>
-                                <td>422-568-642</td>
-                                <td>Tousled lomo letterpress erry Richardson helvetica tousled street art master helvetica tousled street art master, El snort testosterone</td>
-                                <td>$25.99</td>
-                              </tr>
-                            </tbody>
-                          </table>
+                        <div class="col-12">
+                          <div class="table-responsive">
+                            <table class="table table-striped">
+                              <thead>
+                                <tr>
+                                  <th>Qty</th>
+                                  <th>Product</th>
+                                  <th>Serial #</th>
+                                  <th>Description</th>
+                                  <th class="text-end">Subtotal</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>1</td>
+                                  <td>Call of Duty</td>
+                                  <td>455-981-221</td>
+                                  <td>Premium gaming experience with advanced graphics and immersive gameplay featuring multiplayer campaigns and special editions</td>
+                                  <td class="text-end">$64.50</td>
+                                </tr>
+                                <tr>
+                                  <td>1</td>
+                                  <td>Need for Speed IV</td>
+                                  <td>247-925-726</td>
+                                  <td>High-speed racing simulation with realistic physics and stunning visual effects</td>
+                                  <td class="text-end">$50.00</td>
+                                </tr>
+                                <tr>
+                                  <td>1</td>
+                                  <td>Monsters DVD</td>
+                                  <td>735-845-642</td>
+                                  <td>Family entertainment collection featuring animated adventures and bonus content with director's commentary</td>
+                                  <td class="text-end">$10.70</td>
+                                </tr>
+                                <tr>
+                                  <td>1</td>
+                                  <td>Grown Ups Blue Ray</td>
+                                  <td>422-568-642</td>
+                                  <td>Comedy film collection in high-definition format with deleted scenes and behind-the-scenes footage</td>
+                                  <td class="text-end">$25.99</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
                         </div>
                         <!-- /.col -->
                       </div>
@@ -405,35 +400,37 @@
                         <!-- accepted payments column -->
                         <div class="col-md-6">
                           <p class="lead">Payment Methods:</p>
-                          <img src="images/visa.png" alt="Visa">
-                          <img src="images/mastercard.png" alt="Mastercard">
-                          <img src="images/american-express.png" alt="American Express">
-                          <img src="images/paypal.png" alt="Paypal">
-                          <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
-                            Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya handango imeem plugg dopplr jibjab, movity jajah plickers sifteo edmodo ifttt zimbra.
-                          </p>
+                          <div class="d-flex gap-2 mb-3">
+                            <img src="images/visa.png" alt="Visa" class="payment-logo">
+                            <img src="images/mastercard.png" alt="Mastercard" class="payment-logo">
+                            <img src="images/american-express.png" alt="American Express" class="payment-logo">
+                            <img src="images/paypal.png" alt="Paypal" class="payment-logo">
+                          </div>
+                          <div class="alert alert-info" role="alert">
+                            <p class="mb-0">We accept all major credit cards and PayPal. All transactions are secure and encrypted for your protection. Payment processing is handled by industry-leading security providers.</p>
+                          </div>
                         </div>
                         <!-- /.col -->
                         <div class="col-md-6">
-                          <p class="lead">Amount Due 2/22/2014</p>
+                          <p class="lead">Amount Due 2/22/2032</p>
                           <div class="table-responsive">
                             <table class="table">
                               <tbody>
                                 <tr>
                                   <th style="width:50%">Subtotal:</th>
-                                  <td>$250.30</td>
+                                  <td class="text-end">$151.19</td>
                                 </tr>
                                 <tr>
-                                  <th>Tax (9.3%)</th>
-                                  <td>$10.34</td>
+                                  <th>Tax (9.3%):</th>
+                                  <td class="text-end">$14.06</td>
                                 </tr>
                                 <tr>
                                   <th>Shipping:</th>
-                                  <td>$5.80</td>
+                                  <td class="text-end">$5.80</td>
                                 </tr>
-                                <tr>
-                                  <th>Total:</th>
-                                  <td>$265.24</td>
+                                <tr class="table-active">
+                                  <th><strong>Total:</strong></th>
+                                  <td class="text-end"><strong>$171.05</strong></td>
                                 </tr>
                               </tbody>
                             </table>
@@ -444,11 +441,15 @@
                       <!-- /.row -->
 
                       <!-- this row will not appear when printing -->
-                      <div class="row no-print">
-                        <div class="">
-                          <button class="btn btn-default" onclick="window.print();"><i class="fas fa-print"></i> Print</button>
-                          <button class="btn btn-success pull-right"><i class="fas fa-credit-card"></i> Submit Payment</button>
-                          <button class="btn btn-primary pull-right" style="margin-right: 5px;"><i class="fas fa-download"></i> Generate PDF</button>
+                      <div class="row no-print mt-4">
+                        <div class="col-12">
+                          <div class="d-flex gap-2 justify-content-between flex-wrap">
+                            <button class="btn btn-outline-secondary" onclick="window.print();"><i class="fas fa-print"></i> Print</button>
+                            <div class="d-flex gap-2">
+                              <button class="btn btn-primary"><i class="fas fa-download"></i> Generate PDF</button>
+                              <button class="btn btn-success"><i class="fas fa-credit-card"></i> Submit Payment</button>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </section>
@@ -462,14 +463,42 @@
 
         <!-- footer content -->
         <footer>
-          <div class="pull-right">
+          <div class="float-end">
             Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
           </div>
           <div class="clearfix"></div>
         </footer>
         <!-- /footer content -->
       </div>
-    </div>    <!-- Compiled JavaScript (includes jQuery, Bootstrap, and all vendor scripts) -->
+    </div>
     
+    <style>
+      .payment-logo {
+        height: 32px;
+        width: auto;
+        object-fit: contain;
+      }
+      
+      .invoice-header h1 {
+        margin-bottom: 20px;
+      }
+      
+      .invoice-col address {
+        line-height: 1.6;
+      }
+      
+      @media print {
+        .no-print {
+          display: none !important;
+        }
+        .sidebar-footer, .top_nav, .left_col {
+          display: none !important;
+        }
+        .right_col {
+          width: 100% !important;
+          margin-left: 0 !important;
+        }
+      }
+    </style>
   </body>
 </html>

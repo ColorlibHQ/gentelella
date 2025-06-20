@@ -7,8 +7,55 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Gentelella Alela! | </title>    <!-- Compiled CSS (includes Bootstrap, Font Awesome, and all vendor styles) -->
+    <title>User Profile | Gentelella Admin</title>
+    <!-- Compiled CSS (includes Bootstrap, Font Awesome, and all vendor styles) -->
     <script type="module" src="/src/main-minimal.js"></script>
+    
+    <style>
+      /* Minimal custom styles - mostly using Bootstrap 5 classes */
+      .profile-header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 15px;
+      }
+      
+      .profile-avatar {
+        width: 150px;
+        height: 150px;
+        border: 5px solid white;
+        transition: transform 0.3s ease;
+      }
+      
+      .profile-avatar:hover {
+        transform: scale(1.05);
+      }
+      
+      .skill-progress .progress {
+        height: 8px;
+      }
+      
+      .activity-timeline::before {
+        content: '';
+        position: absolute;
+        left: 1rem;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: #e9ecef;
+      }
+      
+      .timeline-item::before {
+        content: '';
+        position: absolute;
+        left: -0.5rem;
+        top: 1.5rem;
+        width: 12px;
+        height: 12px;
+        background: #007bff;
+        border-radius: 50%;
+        border: 3px solid white;
+        box-shadow: 0 0 0 3px #e9ecef;
+      }
+    </style>
   </head>
 
   <body class="nav-md">
@@ -17,7 +64,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fas fa-paw"></i> <span>Gentelella Alela!</span></a>
+              <a href="index.html" class="site_title"><i class="fas fa-paw"></i> <span>Gentelella Admin</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -45,8 +92,9 @@
                     <ul class="nav child_menu">
                       <li><a href="index.html">Dashboard 1</a></li>
                       <li><a href="index2.html">Dashboard 2</a></li>
-                      <li><a href="index3.html">Dashboard 3</a></li><li><a href="index4.html">Dashboard 4</a></li>
                       <li><a href="index3.html">Dashboard 3</a></li>
+                      <li><a href="index4.html">Dashboard 4</a></li>
+                      <li><a href="index5.html">Dashboard 5</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fas fa-edit"></i> Forms <span class="fas fa-chevron-down"></span></a>
@@ -65,7 +113,6 @@
                       <li><a href="media_gallery.html">Media Gallery</a></li>
                       <li><a href="typography.html">Typography</a></li>
                       <li><a href="icons.html">Icons</a></li>
-                      <li><a href="glyphicons.html">Glyphicons</a></li>
                       <li><a href="widgets.html">Widgets</a></li>
                       <li><a href="invoice.html">Invoice</a></li>
                       <li><a href="inbox.html">Inbox</a></li>
@@ -134,7 +181,7 @@
                         </li>
                     </ul>
                   </li>                  
-                  <li><a href="javascript:void(0)"><i class="fas fa-laptop"></i> Landing Page <span class="label label-success pull-right">Coming Soon</span></a></li>
+                  <li><a href="javascript:void(0)"><i class="fas fa-laptop"></i> Landing Page <span class="badge bg-success float-end">Coming Soon</span></a></li>
                 </ul>
               </div>
 
@@ -143,16 +190,16 @@
 
             <!-- /menu footer buttons -->
             <div class="sidebar-footer hidden-small">
-              <a data-bs-toggle="tooltip" data-placement="top" title="Settings">
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Settings">
                 <span class="fas fa-cog" aria-hidden="true"></span>
               </a>
-              <a data-bs-toggle="tooltip" data-placement="top" title="FullScreen">
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="FullScreen">
                 <span class="fas fa-expand" aria-hidden="true"></span>
               </a>
-              <a data-bs-toggle="tooltip" data-placement="top" title="Lock">
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Lock">
                 <span class="fas fa-eye-slash" aria-hidden="true"></span>
               </a>
-              <a data-bs-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Logout" href="login.html">
                 <span class="fas fa-power-off" aria-hidden="true"></span>
               </a>
             </div>
@@ -170,34 +217,34 @@
                 <ul class="navbar-right">
                   <li class="nav-item dropdown open" style="padding-left: 15px;">
                     <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                      <img src="images/img.jpg" alt="">John Doe
+                      <img src="images/img.jpg" alt="">Alex Thompson
                     </a>
-                    <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item"  href="javascript:;"> Profile</a>
-                        <a class="dropdown-item"  href="javascript:;">
-                          <span class="badge bg-red pull-right">50%</span>
+                    <div class="dropdown-menu dropdown-usermenu float-end" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="javascript:;"> Profile</a>
+                        <a class="dropdown-item" href="javascript:;">
+                          <span class="badge bg-danger float-end">50%</span>
                           <span>Settings</span>
                         </a>
-                    <a class="dropdown-item"  href="javascript:;">Help</a>
-                      <a class="dropdown-item"  href="login.html"><i class="fas fa-sign-out-alt pull-right"></i> Log Out</a>
+                    <a class="dropdown-item" href="javascript:;">Help</a>
+                      <a class="dropdown-item" href="login.html"><i class="fas fa-sign-out-alt float-end"></i> Log Out</a>
                     </div>
                   </li>
   
                   <li role="presentation" class="nav-item dropdown open">
                     <a href="javascript:;" class="dropdown-toggle info-number" id="navbarDropdown1" data-bs-toggle="dropdown" aria-expanded="false">
                       <i class="fas fa-envelope"></i>
-                      <span class="badge bg-green">6</span>
+                      <span class="badge bg-success">3</span>
                     </a>
                     <ul class="dropdown-menu list-unstyled msg_list" role="menu" aria-labelledby="navbarDropdown1">
                       <li class="nav-item">
                         <a class="dropdown-item">
                           <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
                           <span>
-                            <span>John Smith</span>
-                            <span class="time">3 mins ago</span>
+                            <span>Sarah Johnson</span>
+                            <span class="time">2 mins ago</span>
                           </span>
                           <span class="message">
-                            Film festivals used to be do-or-die moments for movie makers. They were where...
+                            Great work on the latest project! The client is very satisfied with the results...
                           </span>
                         </a>
                       </li>
@@ -205,11 +252,11 @@
                         <a class="dropdown-item">
                           <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
                           <span>
-                            <span>John Smith</span>
-                            <span class="time">3 mins ago</span>
+                            <span>Michael Chen</span>
+                            <span class="time">15 mins ago</span>
                           </span>
                           <span class="message">
-                            Film festivals used to be do-or-die moments for movie makers. They were where...
+                            The design review meeting has been scheduled for tomorrow at 2 PM...
                           </span>
                         </a>
                       </li>
@@ -217,30 +264,18 @@
                         <a class="dropdown-item">
                           <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
                           <span>
-                            <span>John Smith</span>
-                            <span class="time">3 mins ago</span>
+                            <span>Emily Rodriguez</span>
+                            <span class="time">1 hour ago</span>
                           </span>
                           <span class="message">
-                            Film festivals used to be do-or-die moments for movie makers. They were where...
-                          </span>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="dropdown-item">
-                          <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                          <span>
-                            <span>John Smith</span>
-                            <span class="time">3 mins ago</span>
-                          </span>
-                          <span class="message">
-                            Film festivals used to be do-or-die moments for movie makers. They were where...
+                            Please review the updated requirements document when you have a chance...
                           </span>
                         </a>
                       </li>
                       <li class="nav-item">
                         <div class="text-center">
                           <a class="dropdown-item">
-                            <strong>See All Alerts</strong>
+                            <strong>See All Messages</strong>
                             <i class="fas fa-angle-right"></i>
                           </a>
                         </div>
@@ -258,16 +293,16 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>User Profile</h3>
+                <h3>User Profile <small>Professional Dashboard</small></h3>
               </div>
 
               <div class="title_right">
-                <div class="col-md-5 col-sm-5 form-group pull-right top_search">
+                <div class="col-md-5 col-sm-5 form-group float-end top_search">
                   <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for...">
-                    <span class="input-group-btn">
-                      <button class="btn btn-secondary" type="button">Go!</button>
-                    </span>
+                    <input type="text" class="form-control" placeholder="Search profile...">
+                    <button class="btn btn-outline-secondary" type="button">
+                      <i class="fas fa-search"></i>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -275,250 +310,381 @@
             
             <div class="clearfix"></div>
 
+            <!-- Profile Header -->
+            <div class="profile-header text-white p-4 mb-4">
+              <div class="container-fluid">
+                <div class="row align-items-center">
+                  <div class="col-md-3 text-center">
+                    <img src="images/picture.jpg" alt="Profile Picture" class="profile-avatar rounded-circle">
+                  </div>
+                  <div class="col-md-6">
+                    <h2 class="mb-1">Alex Thompson</h2>
+                    <p class="lead mb-3">Senior Full Stack Developer</p>
+                    <span class="badge bg-warning text-dark px-3 py-2 me-2 mb-2 fs-6 rounded-pill">5+ Years Experience</span>
+                    <span class="badge bg-info text-white px-3 py-2 me-2 mb-2 fs-6 rounded-pill">Team Lead</span>
+                    <span class="badge bg-success text-white px-3 py-2 me-2 mb-2 fs-6 rounded-pill">AWS Certified</span>
+                  </div>
+                  <div class="col-md-3 text-center">
+                    <button class="btn btn-light btn-lg me-2 mb-2" onclick="editProfile()">
+                      <i class="fas fa-edit"></i> Edit Profile
+                    </button>
+                    <button class="btn btn-outline-light btn-lg mb-2" onclick="shareProfile()">
+                      <i class="fas fa-share"></i> Share
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Statistics Cards -->
+            <div class="row mb-4">
+              <div class="col-md-3 col-sm-6 mb-3">
+                <div class="card text-center h-100">
+                  <div class="card-body">
+                    <div class="mb-3">
+                      <i class="fas fa-project-diagram fa-2x text-primary"></i>
+                    </div>
+                    <h3 class="text-primary">24</h3>
+                    <p class="text-muted mb-0">Projects Completed</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6 mb-3">
+                <div class="card text-center h-100">
+                  <div class="card-body">
+                    <div class="mb-3">
+                      <i class="fas fa-users fa-2x text-success"></i>
+                    </div>
+                    <h3 class="text-success">12</h3>
+                    <p class="text-muted mb-0">Team Members</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6 mb-3">
+                <div class="card text-center h-100">
+                  <div class="card-body">
+                    <div class="mb-3">
+                      <i class="fas fa-trophy fa-2x text-warning"></i>
+                    </div>
+                    <h3 class="text-warning">8</h3>
+                    <p class="text-muted mb-0">Awards Won</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6 mb-3">
+                <div class="card text-center h-100">
+                  <div class="card-body">
+                    <div class="mb-3">
+                      <i class="fas fa-clock fa-2x text-info"></i>
+                    </div>
+                    <h3 class="text-info">2,340</h3>
+                    <p class="text-muted mb-0">Hours Worked</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <div class="row">
-              <div class="col-md-12 col-sm-12">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h2>User Report <small>Activity report</small></h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
+              <div class="col-md-4">
+                <!-- Contact Information -->
+                <div class="card mb-4">
+                  <div class="card-header">
+                    <h5 class="mb-0">Contact Information</h5>
+                  </div>
+                  <div class="card-body">
+                    <div class="mb-2">
+                      <i class="fas fa-envelope text-primary"></i>
+                      <span class="ms-2">alex.thompson@company.com</span>
+                    </div>
+                    <div class="mb-2">
+                      <i class="fas fa-phone text-primary"></i>
+                      <span class="ms-2">+1 (555) 123-4567</span>
+                    </div>
+                    <div class="mb-2">
+                      <i class="fas fa-map-marker-alt text-primary"></i>
+                      <span class="ms-2">San Francisco, CA, USA</span>
+                    </div>
+                    <div class="mb-2">
+                      <i class="fab fa-linkedin text-primary"></i>
+                      <span class="ms-2">linkedin.com/in/alexthompson</span>
+                    </div>
+                    <div class="mb-0">
+                      <i class="fas fa-globe text-primary"></i>
+                      <span class="ms-2">alexthompson.dev</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Skills Section -->
+                <div class="card mb-4">
+                  <div class="card-header">
+                    <h5 class="mb-0">Technical Skills</h5>
+                  </div>
+                  <div class="card-body">
+                    <div class="skill-progress mb-3">
+                      <div class="d-flex justify-content-between mb-1">
+                        <span>JavaScript / TypeScript</span>
+                        <span>95%</span>
+                      </div>
+                      <div class="progress">
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: 95%"></div>
+                      </div>
+                    </div>
+                    <div class="skill-progress mb-3">
+                      <div class="d-flex justify-content-between mb-1">
+                        <span>React / Next.js</span>
+                        <span>90%</span>
+                      </div>
+                      <div class="progress">
+                        <div class="progress-bar bg-success" role="progressbar" style="width: 90%"></div>
+                      </div>
+                    </div>
+                    <div class="skill-progress mb-3">
+                      <div class="d-flex justify-content-between mb-1">
+                        <span>Node.js / Express</span>
+                        <span>88%</span>
+                      </div>
+                      <div class="progress">
+                        <div class="progress-bar bg-info" role="progressbar" style="width: 88%"></div>
+                      </div>
+                    </div>
+                    <div class="skill-progress mb-3">
+                      <div class="d-flex justify-content-between mb-1">
+                        <span>Database Management</span>
+                        <span>85%</span>
+                      </div>
+                      <div class="progress">
+                        <div class="progress-bar bg-warning" role="progressbar" style="width: 85%"></div>
+                      </div>
+                    </div>
+                    <div class="skill-progress">
+                      <div class="d-flex justify-content-between mb-1">
+                        <span>Cloud Services (AWS)</span>
+                        <span>80%</span>
+                      </div>
+                      <div class="progress">
+                        <div class="progress-bar bg-danger" role="progressbar" style="width: 80%"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="card">
+                  <div class="card-header">
+                    <h5 class="mb-0">Recent Activity</h5>
+                  </div>
+                  <div class="card-body">
+                    <div class="activity-timeline position-relative ps-4">
+                      <div class="timeline-item position-relative bg-light p-3 rounded mb-3">
+                        <div class="d-flex justify-content-between mb-1">
+                          <strong>Completed E-commerce Project</strong>
+                          <small class="text-muted">2 hours ago</small>
+                        </div>
+                        <p class="mb-0 text-muted">Successfully deployed the new e-commerce platform with payment integration.</p>
+                      </div>
+                      <div class="timeline-item position-relative bg-light p-3 rounded mb-3">
+                        <div class="d-flex justify-content-between mb-1">
+                          <strong>Code Review Session</strong>
+                          <small class="text-muted">1 day ago</small>
+                        </div>
+                        <p class="mb-0 text-muted">Conducted code review for the mobile app authentication module.</p>
+                      </div>
+                      <div class="timeline-item position-relative bg-light p-3 rounded">
+                        <div class="d-flex justify-content-between mb-1">
+                          <strong>Team Meeting</strong>
+                          <small class="text-muted">3 days ago</small>
+                        </div>
+                        <p class="mb-0 text-muted">Attended sprint planning meeting for the upcoming product release.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-8">
+                <div class="card">
+                  <div class="card-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <h5 class="mb-0">Performance Dashboard</h5>
+                      <div class="btn-group" role="group">
+                        <input type="radio" class="btn-check" name="timeRange" id="week" autocomplete="off" checked>
+                        <label class="btn btn-outline-primary" for="week">Week</label>
+                        
+                        <input type="radio" class="btn-check" name="timeRange" id="month" autocomplete="off">
+                        <label class="btn btn-outline-primary" for="month">Month</label>
+                        
+                        <input type="radio" class="btn-check" name="timeRange" id="year" autocomplete="off">
+                        <label class="btn btn-outline-primary" for="year">Year</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <!-- Activity Chart Placeholder -->
+                    <div id="activityChart" class="bg-light rounded d-flex align-items-center justify-content-center mb-4" style="height: 300px;">
+                      <div class="text-center">
+                        <i class="fas fa-chart-line fa-3x text-muted mb-3"></i>
+                        <p class="text-muted">Activity Chart</p>
+                        <small class="text-muted">Interactive chart showing daily activity and productivity metrics</small>
+                      </div>
+                    </div>
+
+                    <!-- Tabs Section -->
+                    <ul class="nav nav-tabs justify-content-center mb-4" id="profileTabs" role="tablist">
+                      <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="projects-tab" data-bs-toggle="tab" data-bs-target="#projects" type="button" role="tab">Current Projects</button>
                       </li>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Settings 1</a>
-                            <a class="dropdown-item" href="#">Settings 2</a>
-                          </div>
+                      <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="achievements-tab" data-bs-toggle="tab" data-bs-target="#achievements" type="button" role="tab">Achievements</button>
                       </li>
-                      <li><a class="btn-close-link"><i class="fas fa-times"></i></a>
+                      <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="activity-tab" data-bs-toggle="tab" data-bs-target="#activity" type="button" role="tab">Activity Feed</button>
                       </li>
                     </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                    <div class="col-md-3 col-sm-3 profile_left">
-                      <div class="profile_img">
-                        <div id="crop-avatar">
-                          <!-- Current avatar -->
-                          <img class="img-responsive avatar-view" src="images/picture.jpg" alt="Avatar" title="Change the avatar">
-                        </div>
-                      </div>
-                      <h3>Samuel Doe</h3>
-
-                      <ul class="list-unstyled user_data">
-                        <li><i class="fas fa-map-marker user-profile-icon"></i> San Francisco, California, USA
-                        </li>
-
-                        <li>
-                          <i class="fas fa-briefcase user-profile-icon"></i> Software Engineer
-                        </li>
-
-                        <li class="m-top-xs">
-                          <i class="fas fa-external-link user-profile-icon"></i>
-                          <a href="http://www.kimlabs.com/profile/" target="_blank">www.kimlabs.com</a>
-                        </li>
-                      </ul>
-
-                      <a class="btn btn-success"><i class="fas fa-edit m-right-xs"></i>Edit Profile</a>
-                      <br />
-
-                      <!-- start skills -->
-                      <h4>Skills</h4>
-                      <ul class="list-unstyled user_data">
-                        <li>
-                          <p>Web Applications</p>
-                          <div class="progress progress_sm">
-                            <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="50"></div>
+                    
+                    <div class="tab-content" id="profileTabsContent">
+                      <div class="tab-pane fade show active" id="projects" role="tabpanel">
+                        <div class="row">
+                          <div class="col-md-6 mb-3">
+                            <div class="bg-light p-3 rounded">
+                              <div class="d-flex justify-content-between align-items-start mb-2">
+                                <h6 class="mb-0">E-Commerce Platform</h6>
+                                <span class="badge bg-success">Completed</span>
+                              </div>
+                              <p class="text-muted small mb-2">Full-stack e-commerce solution with React and Node.js</p>
+                              <div class="progress mb-2" style="height: 6px;">
+                                <div class="progress-bar bg-success" style="width: 100%"></div>
+                              </div>
+                              <small class="text-muted">Client: TechCorp Industries</small>
+                            </div>
                           </div>
-                        </li>
-                        <li>
-                          <p>Website Design</p>
-                          <div class="progress progress_sm">
-                            <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="70"></div>
+                          <div class="col-md-6 mb-3">
+                            <div class="bg-light p-3 rounded">
+                              <div class="d-flex justify-content-between align-items-start mb-2">
+                                <h6 class="mb-0">Mobile Banking App</h6>
+                                <span class="badge bg-warning">In Progress</span>
+                              </div>
+                              <p class="text-muted small mb-2">React Native app with biometric authentication</p>
+                              <div class="progress mb-2" style="height: 6px;">
+                                <div class="progress-bar bg-warning" style="width: 75%"></div>
+                              </div>
+                              <small class="text-muted">Client: FinanceFirst Bank</small>
+                            </div>
                           </div>
-                        </li>
-                        <li>
-                          <p>Automation & Testing</p>
-                          <div class="progress progress_sm">
-                            <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="30"></div>
+                          <div class="col-md-6 mb-3">
+                            <div class="bg-light p-3 rounded">
+                              <div class="d-flex justify-content-between align-items-start mb-2">
+                                <h6 class="mb-0">Data Analytics Dashboard</h6>
+                                <span class="badge bg-info">Planning</span>
+                              </div>
+                              <p class="text-muted small mb-2">Real-time analytics with D3.js visualizations</p>
+                              <div class="progress mb-2" style="height: 6px;">
+                                <div class="progress-bar bg-info" style="width: 25%"></div>
+                              </div>
+                              <small class="text-muted">Client: DataFlow Corp</small>
+                            </div>
                           </div>
-                        </li>
-                        <li>
-                          <p>UI / UX</p>
-                          <div class="progress progress_sm">
-                            <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="50"></div>
-                          </div>
-                        </li>
-                      </ul>
-                      <!-- end of skills -->
-
-                    </div>
-                    <div class="col-md-9 col-sm-9">
-
-                      <div class="profile_title">
-                        <div class="col-md-6">
-                          <h2>User Activity Report</h2>
-                        </div>
-                        <div class="col-md-6">
-                          <div id="reportrange" class="pull-right" style="margin-top: 5px; background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #E6E9ED">
-                            <i class="fas fa-calendar"></i>
-                            <span>December 30, 2014 - January 28, 2015</span> <b class="caret"></b>
+                          <div class="col-md-6 mb-3">
+                            <div class="bg-light p-3 rounded">
+                              <div class="d-flex justify-content-between align-items-start mb-2">
+                                <h6 class="mb-0">CRM System Upgrade</h6>
+                                <span class="badge bg-primary">Active</span>
+                              </div>
+                              <p class="text-muted small mb-2">Modernizing legacy CRM with microservices</p>
+                              <div class="progress mb-2" style="height: 6px;">
+                                <div class="progress-bar bg-primary" style="width: 60%"></div>
+                              </div>
+                              <small class="text-muted">Client: Global Sales Inc</small>
+                            </div>
                           </div>
                         </div>
                       </div>
-                      <!-- start of user-activity-graph -->
-                      <div id="graph_bar" style="width:100%; height:280px;"></div>
-                      <!-- end of user-activity-graph -->
-
-                      <div class="" role="tabpanel" data-example-id="togglable-tabs">
-                        <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
-                          <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-bs-toggle="tab" aria-expanded="true">Recent Activity</a>
-                          </li>
-                          <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-bs-toggle="tab" aria-expanded="false">Projects Worked on</a>
-                          </li>
-                          <li role="presentation" class=""><a href="#tab_content3" role="tab" id="profile-tab2" data-bs-toggle="tab" aria-expanded="false">Profile</a>
-                          </li>
-                        </ul>
-                        <div id="myTabContent" class="tab-content">
-                          <div role="tabpanel" class="tab-pane active" id="tab_content1" aria-labelledby="home-tab">
-
-                            <!-- start recent activity -->
-                            <ul class="messages">
-                              <li>
-                                <img src="images/img.jpg" class="avatar" alt="Avatar">
-                                <div class="message_date">
-                                  <h3 class="date text-info">24</h3>
-                                  <p class="month">May</p>
-                                </div>
-                                <div class="message_wrapper">
-                                  <h4 class="heading">Desmond Davison</h4>
-                                  <blockquote class="message">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth.</blockquote>
-                                  <br />
-                                  <p class="url">
-                                    <span class="fs1 text-info" aria-hidden="true" data-icon=""></span>
-                                    <a href="#"><i class="fas fa-paperclip"></i> User Acceptance Test.doc </a>
-                                  </p>
-                                </div>
-                              </li>
-                              <li>
-                                <img src="images/img.jpg" class="avatar" alt="Avatar">
-                                <div class="message_date">
-                                  <h3 class="date text-error">21</h3>
-                                  <p class="month">May</p>
-                                </div>
-                                <div class="message_wrapper">
-                                  <h4 class="heading">Brian Michaels</h4>
-                                  <blockquote class="message">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth.</blockquote>
-                                  <br />
-                                  <p class="url">
-                                    <span class="fs1" aria-hidden="true" data-icon=""></span>
-                                    <a href="#" data-original-title="">Download</a>
-                                  </p>
-                                </div>
-                              </li>
-                              <li>
-                                <img src="images/img.jpg" class="avatar" alt="Avatar">
-                                <div class="message_date">
-                                  <h3 class="date text-info">24</h3>
-                                  <p class="month">May</p>
-                                </div>
-                                <div class="message_wrapper">
-                                  <h4 class="heading">Desmond Davison</h4>
-                                  <blockquote class="message">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth.</blockquote>
-                                  <br />
-                                  <p class="url">
-                                    <span class="fs1 text-info" aria-hidden="true" data-icon=""></span>
-                                    <a href="#"><i class="fas fa-paperclip"></i> User Acceptance Test.doc </a>
-                                  </p>
-                                </div>
-                              </li>
-                              <li>
-                                <img src="images/img.jpg" class="avatar" alt="Avatar">
-                                <div class="message_date">
-                                  <h3 class="date text-error">21</h3>
-                                  <p class="month">May</p>
-                                </div>
-                                <div class="message_wrapper">
-                                  <h4 class="heading">Brian Michaels</h4>
-                                  <blockquote class="message">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth.</blockquote>
-                                  <br />
-                                  <p class="url">
-                                    <span class="fs1" aria-hidden="true" data-icon=""></span>
-                                    <a href="#" data-original-title="">Download</a>
-                                  </p>
-                                </div>
-                              </li>
-
-                            </ul>
-                            <!-- end recent activity -->
-
+                      
+                      <div class="tab-pane fade" id="achievements" role="tabpanel">
+                        <div class="row">
+                          <div class="col-md-6 mb-3">
+                            <div class="text-center p-4 bg-light rounded">
+                              <i class="fas fa-trophy fa-3x text-warning mb-3"></i>
+                              <h6>Employee of the Year 2024</h6>
+                              <p class="text-muted small">Recognized for outstanding performance and leadership</p>
+                              <small class="text-muted">Awarded: December 2024</small>
+                            </div>
                           </div>
-                          <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
-
-                            <!-- start user projects -->
-                            <table class="data table table-striped no-margin">
-                              <thead>
-                                <tr>
-                                  <th>#</th>
-                                  <th>Project Name</th>
-                                  <th>Client Company</th>
-                                  <th class="hidden-phone">Hours Spent</th>
-                                  <th>Contribution</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr>
-                                  <td>1</td>
-                                  <td>New Company Takeover Review</td>
-                                  <td>Deveint Inc</td>
-                                  <td class="hidden-phone">18</td>
-                                  <td class="vertical-align-mid">
-                                    <div class="progress">
-                                      <div class="progress-bar progress-bar-success" data-transitiongoal="35"></div>
-                                    </div>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td>2</td>
-                                  <td>New Partner Contracts Consultanci</td>
-                                  <td>Deveint Inc</td>
-                                  <td class="hidden-phone">13</td>
-                                  <td class="vertical-align-mid">
-                                    <div class="progress">
-                                      <div class="progress-bar progress-bar-danger" data-transitiongoal="15"></div>
-                                    </div>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td>3</td>
-                                  <td>Partners and Inverstors report</td>
-                                  <td>Deveint Inc</td>
-                                  <td class="hidden-phone">30</td>
-                                  <td class="vertical-align-mid">
-                                    <div class="progress">
-                                      <div class="progress-bar progress-bar-success" data-transitiongoal="45"></div>
-                                    </div>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td>4</td>
-                                  <td>New Company Takeover Review</td>
-                                  <td>Deveint Inc</td>
-                                  <td class="hidden-phone">28</td>
-                                  <td class="vertical-align-mid">
-                                    <div class="progress">
-                                      <div class="progress-bar progress-bar-success" data-transitiongoal="75"></div>
-                                    </div>
-                                  </td>
-                                </tr>
-                              </tbody>
-                            </table>
-                            <!-- end user projects -->
-
+                          <div class="col-md-6 mb-3">
+                            <div class="text-center p-4 bg-light rounded">
+                              <i class="fas fa-certificate fa-3x text-primary mb-3"></i>
+                              <h6>AWS Solutions Architect</h6>
+                              <p class="text-muted small">Professional certification in cloud architecture</p>
+                              <small class="text-muted">Certified: June 2024</small>
+                            </div>
                           </div>
-                          <div role="tabpanel" class="tab-pane fade" id="tab_content3" aria-labelledby="profile-tab">
-                            <p>xxFood truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui
-                              photo booth letterpress, commodo enim craft beer mlkshk </p>
+                          <div class="col-md-6 mb-3">
+                            <div class="text-center p-4 bg-light rounded">
+                              <i class="fas fa-star fa-3x text-success mb-3"></i>
+                              <h6>Innovation Award</h6>
+                              <p class="text-muted small">For developing automated deployment pipeline</p>
+                              <small class="text-muted">Awarded: March 2024</small>
+                            </div>
+                          </div>
+                          <div class="col-md-6 mb-3">
+                            <div class="text-center p-4 bg-light rounded">
+                              <i class="fas fa-users fa-3x text-info mb-3"></i>
+                              <h6>Team Leadership</h6>
+                              <p class="text-muted small">Successfully led 5 cross-functional teams</p>
+                              <small class="text-muted">2023 - Present</small>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div class="tab-pane fade" id="activity" role="tabpanel">
+                        <div class="activity-timeline position-relative ps-4">
+                          <div class="timeline-item position-relative bg-light p-3 rounded mb-3">
+                            <div class="d-flex align-items-center mb-2">
+                              <img src="images/img.jpg" alt="Alex" class="rounded-circle me-3" width="40" height="40">
+                              <div class="flex-grow-1">
+                                <strong>Alex Thompson</strong>
+                                <small class="text-muted ms-2">completed project milestone</small>
+                              </div>
+                              <small class="text-muted">2 hours ago</small>
+                            </div>
+                            <p class="mb-0">Successfully deployed the e-commerce platform to production environment. All tests passed and client approval received.</p>
+                          </div>
+                          
+                          <div class="timeline-item position-relative bg-light p-3 rounded mb-3">
+                            <div class="d-flex align-items-center mb-2">
+                              <img src="images/img.jpg" alt="Alex" class="rounded-circle me-3" width="40" height="40">
+                              <div class="flex-grow-1">
+                                <strong>Alex Thompson</strong>
+                                <small class="text-muted ms-2">reviewed code changes</small>
+                              </div>
+                              <small class="text-muted">1 day ago</small>
+                            </div>
+                            <p class="mb-0">Reviewed and approved 12 pull requests from team members. Provided feedback on authentication module improvements.</p>
+                          </div>
+                          
+                          <div class="timeline-item position-relative bg-light p-3 rounded mb-3">
+                            <div class="d-flex align-items-center mb-2">
+                              <img src="images/img.jpg" alt="Alex" class="rounded-circle me-3" width="40" height="40">
+                              <div class="flex-grow-1">
+                                <strong>Alex Thompson</strong>
+                                <small class="text-muted ms-2">attended team meeting</small>
+                              </div>
+                              <small class="text-muted">3 days ago</small>
+                            </div>
+                            <p class="mb-0">Participated in sprint planning meeting. Estimated 15 user stories and assigned tasks to development team.</p>
+                          </div>
+                          
+                          <div class="timeline-item position-relative bg-light p-3 rounded">
+                            <div class="d-flex align-items-center mb-2">
+                              <img src="images/img.jpg" alt="Alex" class="rounded-circle me-3" width="40" height="40">
+                              <div class="flex-grow-1">
+                                <strong>Alex Thompson</strong>
+                                <small class="text-muted ms-2">earned certification</small>
+                              </div>
+                              <small class="text-muted">1 week ago</small>
+                            </div>
+                            <p class="mb-0">Completed AWS Solutions Architect Professional certification. Achieved score of 92% on the examination.</p>
                           </div>
                         </div>
                       </div>
@@ -533,15 +699,55 @@
 
         <!-- footer content -->
         <footer>
-          <div class="pull-right">
+          <div class="float-end">
             Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
           </div>
           <div class="clearfix"></div>
         </footer>
         <!-- /footer content -->
       </div>
-    </div>    <!-- Compiled JavaScript (includes jQuery, Bootstrap, and all vendor scripts) -->
-    
+    </div>
 
+    <script>
+      // Profile functionality
+      function editProfile() {
+        alert('Edit Profile functionality would open a modal or redirect to edit page');
+      }
+      
+      function shareProfile() {
+        if (navigator.share) {
+          navigator.share({
+            title: 'Alex Thompson - Profile',
+            text: 'Check out Alex Thompson\'s professional profile',
+            url: window.location.href,
+          });
+        } else {
+          // Fallback for browsers that don't support Web Share API
+          navigator.clipboard.writeText(window.location.href).then(() => {
+            alert('Profile link copied to clipboard!');
+          });
+        }
+      }
+      
+      // Animate progress bars on page load
+      document.addEventListener('DOMContentLoaded', function() {
+        const progressBars = document.querySelectorAll('.progress-bar');
+        progressBars.forEach(bar => {
+          const width = bar.style.width;
+          bar.style.width = '0%';
+          setTimeout(() => {
+            bar.style.width = width;
+          }, 500);
+        });
+      });
+      
+      // Time range filter functionality
+      document.querySelectorAll('input[name="timeRange"]').forEach(radio => {
+        radio.addEventListener('change', function() {
+          console.log('Time range changed to:', this.id);
+          // Here you would update the chart data based on the selected time range
+        });
+      });
+    </script>
   </body>
 </html>

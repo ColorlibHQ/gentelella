@@ -65,7 +65,7 @@
                       <li><a href="media_gallery.html">Media Gallery</a></li>
                       <li><a href="typography.html">Typography</a></li>
                       <li><a href="icons.html">Icons</a></li>
-                      <li><a href="glyphicons.html">Glyphicons</a></li>
+
                       <li><a href="widgets.html">Widgets</a></li>
                       <li><a href="invoice.html">Invoice</a></li>
                       <li><a href="inbox.html">Inbox</a></li>
@@ -134,7 +134,7 @@
                         </li>
                     </ul>
                   </li>                  
-                  <li><a href="javascript:void(0)"><i class="fas fa-laptop"></i> Landing Page <span class="label label-success pull-right">Coming Soon</span></a></li>
+                  <li><a href="javascript:void(0)"><i class="fas fa-laptop"></i> Landing Page <span class="badge bg-success float-end">Coming Soon</span></a></li>
                 </ul>
               </div>
 
@@ -143,16 +143,16 @@
 
             <!-- /menu footer buttons -->
             <div class="sidebar-footer hidden-small">
-              <a data-bs-toggle="tooltip" data-placement="top" title="Settings">
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Settings">
                 <span class="fas fa-cog" aria-hidden="true"></span>
               </a>
-              <a data-bs-toggle="tooltip" data-placement="top" title="FullScreen">
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="FullScreen">
                 <span class="fas fa-expand" aria-hidden="true"></span>
               </a>
-              <a data-bs-toggle="tooltip" data-placement="top" title="Lock">
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Lock">
                 <span class="fas fa-eye-slash" aria-hidden="true"></span>
               </a>
-              <a data-bs-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Logout" href="login.html">
                 <span class="fas fa-power-off" aria-hidden="true"></span>
               </a>
             </div>
@@ -172,14 +172,14 @@
                     <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                       <img src="images/img.jpg" alt="">John Doe
                     </a>
-                    <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
+                    <div class="dropdown-menu dropdown-usermenu" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item"  href="javascript:;"> Profile</a>
                         <a class="dropdown-item"  href="javascript:;">
-                          <span class="badge bg-red pull-right">50%</span>
+                          <span class="badge bg-danger float-end">50%</span>
                           <span>Settings</span>
                         </a>
                     <a class="dropdown-item"  href="javascript:;">Help</a>
-                      <a class="dropdown-item"  href="login.html"><i class="fas fa-sign-out-alt pull-right"></i> Log Out</a>
+                      <a class="dropdown-item"  href="login.html"><i class="fas fa-sign-out-alt float-end"></i> Log Out</a>
                     </div>
                   </li>
   
@@ -258,16 +258,16 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Project Detail <small> design</small></h3>
+                <h3>Project Details <small>E-Commerce Platform Redesign</small></h3>
               </div>
 
               <div class="title_right">
-                <div class="col-md-5 col-sm-5 form-group pull-right top_search">
+                <div class="col-md-5 col-sm-5 form-group float-end top_search">
                   <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for...">
-                    <span class="input-group-btn">
-                      <button class="btn btn-secondary" type="button">Go!</button>
-                    </span>
+                    <input type="text" class="form-control" placeholder="Search project...">
+                    <button class="btn btn-outline-secondary" type="button">
+                      <i class="fas fa-search"></i>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -275,162 +275,394 @@
             
             <div class="clearfix"></div>
 
-            <div class="row">
+            <!-- Project Header -->
+            <div class="row mb-4">
               <div class="col-md-12">
                 <div class="x_panel">
-                  <div class="x_title">
-                    <h2>New Partner Contracts Consultancy</h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-                      </li>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Settings 1</a>
-                            <a class="dropdown-item" href="#">Settings 2</a>
+                  <div class="x_content">
+                    <div class="row">
+                      <div class="col-md-8">
+                        <h2 class="project-title mb-3">
+                          <i class="fas fa-shopping-cart text-primary me-2"></i>
+                          E-Commerce Platform Redesign
+                          <span class="badge bg-success ms-2">Active</span>
+                        </h2>
+                        <p class="text-muted mb-3">Complete redesign and modernization of the e-commerce platform to improve user experience, performance, and mobile responsiveness.</p>
+                        <div class="project-meta">
+                          <span class="badge bg-info me-2">
+                            <i class="fas fa-tag me-1"></i>Web Development
+                          </span>
+                          <span class="badge bg-danger me-2">
+                            <i class="fas fa-exclamation-circle me-1"></i>High Priority
+                          </span>
+                          <span class="text-muted me-3">
+                            <i class="fas fa-calendar me-1"></i>Started: Jan 15, 2025
+                          </span>
+                          <span class="text-muted">
+                            <i class="fas fa-clock me-1"></i>Due: Mar 30, 2025
+                          </span>
+                        </div>
+                      </div>
+                      <div class="col-md-4 text-end">
+                                                 <div class="project-actions mb-3">
+                           <button class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#editProjectModal">
+                             <i class="fas fa-edit me-2"></i>Edit Project
+                           </button>
+                           <div class="btn-group">
+                             <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown">
+                               <i class="fas fa-ellipsis-h"></i>
+                             </button>
+                             <ul class="dropdown-menu">
+                               <li><a class="dropdown-item" href="#"><i class="fas fa-share me-2"></i>Share Project</a></li>
+                               <li><a class="dropdown-item" href="#"><i class="fas fa-download me-2"></i>Export Data</a></li>
+                               <li><a class="dropdown-item" href="#"><i class="fas fa-archive me-2"></i>Archive Project</a></li>
+                               <li><hr class="dropdown-divider"></li>
+                               <li><a class="dropdown-item text-danger" href="#"><i class="fas fa-trash me-2"></i>Delete Project</a></li>
+                             </ul>
+                           </div>
+                         </div>
+                        <div class="progress-container">
+                          <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="fw-bold">Project Progress</span>
+                            <span class="text-success fw-bold">75%</span>
                           </div>
-                      </li>
-                      <li><a class="btn-close-link"><i class="fas fa-times"></i></a>
-                      </li>
-                    </ul>
+                          <div class="progress" style="height: 10px;">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <!-- Main Content -->
+              <div class="col-md-8">
+                
+                <!-- Project Statistics -->
+                <div class="x_panel mb-4">
+                  <div class="x_title">
+                    <h2><i class="fas fa-chart-bar me-2"></i>Project Statistics</h2>
                     <div class="clearfix"></div>
                   </div>
-
                   <div class="x_content">
+                    <div class="row">
+                      <div class="col-md-4 text-center">
+                        <div class="stat-item">
+                          <h3 class="text-primary mb-1">$45,000</h3>
+                          <p class="text-muted mb-0">Estimated Budget</p>
+                        </div>
+                      </div>
+                      <div class="col-md-4 text-center">
+                        <div class="stat-item">
+                          <h3 class="text-success mb-1">$33,750</h3>
+                          <p class="text-muted mb-0">Amount Spent</p>
+                        </div>
+                      </div>
+                      <div class="col-md-4 text-center">
+                        <div class="stat-item">
+                          <h3 class="text-warning mb-1">65 days</h3>
+                          <p class="text-muted mb-0">Estimated Duration</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
-                    <div class="col-md-9 col-sm-9">
+                <!-- Project Timeline -->
+                <div class="x_panel mb-4">
+                  <div class="x_title">
+                    <h2><i class="fas fa-timeline me-2"></i>Project Timeline</h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div class="timeline">
+                      <div class="timeline-item completed">
+                        <div class="timeline-marker bg-success">
+                          <i class="fas fa-check text-white"></i>
+                        </div>
+                        <div class="timeline-content">
+                          <h6 class="mb-1">Project Kickoff & Requirements Gathering</h6>
+                          <p class="text-muted mb-1">Initial project setup, stakeholder meetings, and requirement documentation.</p>
+                          <small class="text-success">Completed on Jan 20, 2025</small>
+                        </div>
+                      </div>
+                      
+                      <div class="timeline-item completed">
+                        <div class="timeline-marker bg-success">
+                          <i class="fas fa-check text-white"></i>
+                        </div>
+                        <div class="timeline-content">
+                          <h6 class="mb-1">UI/UX Design Phase</h6>
+                          <p class="text-muted mb-1">Wireframes, mockups, and user interface design completion.</p>
+                          <small class="text-success">Completed on Feb 5, 2025</small>
+                        </div>
+                      </div>
+                      
+                      <div class="timeline-item active">
+                        <div class="timeline-marker bg-primary">
+                          <i class="fas fa-code text-white"></i>
+                        </div>
+                        <div class="timeline-content">
+                          <h6 class="mb-1">Frontend Development</h6>
+                          <p class="text-muted mb-1">React components, responsive design implementation, and API integration.</p>
+                          <small class="text-primary">In Progress - 75% Complete</small>
+                        </div>
+                      </div>
+                      
+                      <div class="timeline-item pending">
+                        <div class="timeline-marker bg-secondary">
+                          <i class="fas fa-server text-white"></i>
+                        </div>
+                        <div class="timeline-content">
+                          <h6 class="mb-1">Backend Development</h6>
+                          <p class="text-muted mb-1">API development, database optimization, and security implementation.</p>
+                          <small class="text-muted">Scheduled for Feb 20, 2025</small>
+                        </div>
+                      </div>
+                      
+                      <div class="timeline-item pending">
+                        <div class="timeline-marker bg-secondary">
+                          <i class="fas fa-bug text-white"></i>
+                        </div>
+                        <div class="timeline-content">
+                          <h6 class="mb-1">Testing & Quality Assurance</h6>
+                          <p class="text-muted mb-1">Comprehensive testing, bug fixes, and performance optimization.</p>
+                          <small class="text-muted">Scheduled for Mar 10, 2025</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
-                      <ul class="stats-overview">
-                        <li>
-                          <span class="name"> Estimated budget </span>
-                          <span class="value text-success"> 2300 </span>
-                        </li>
-                        <li>
-                          <span class="name"> Total amount spent </span>
-                          <span class="value text-success"> 2000 </span>
-                        </li>
-                        <li class="hidden-phone">
-                          <span class="name"> Estimated project duration </span>
-                          <span class="value text-success"> 20 </span>
-                        </li>
-                      </ul>
-                      <br />
-
-                      <div id="mainb" style="height:350px;"></div>
-
-                      <div>
-
-                        <h4>Recent Activity</h4>
-
-                        <!-- end of user messages -->
-                        <ul class="messages">
-                          <li>
-                            <img src="images/img.jpg" class="avatar" alt="Avatar">
-                            <div class="message_date">
-                              <h3 class="date text-info">24</h3>
-                              <p class="month">May</p>
-                            </div>
-                            <div class="message_wrapper">
-                              <h4 class="heading">Desmond Davison</h4>
-                              <blockquote class="message">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth.</blockquote>
-                              <br />
-                              <p class="url">
-                                <span class="fs1 text-info" aria-hidden="true" data-icon=""></span>
-                                <a href="#"><i class="fas fa-paperclip"></i> User Acceptance Test.doc </a>
-                              </p>
-                            </div>
-                          </li>
-                          <li>
-                            <img src="images/img.jpg" class="avatar" alt="Avatar">
-                            <div class="message_date">
-                              <h3 class="date text-error">21</h3>
-                              <p class="month">May</p>
-                            </div>
-                            <div class="message_wrapper">
-                              <h4 class="heading">Brian Michaels</h4>
-                              <blockquote class="message">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth.</blockquote>
-                              <br />
-                              <p class="url">
-                                <span class="fs1" aria-hidden="true" data-icon=""></span>
-                                <a href="#" data-original-title="">Download</a>
-                              </p>
-                            </div>
-                          </li>
-                          <li>
-                            <img src="images/img.jpg" class="avatar" alt="Avatar">
-                            <div class="message_date">
-                              <h3 class="date text-info">24</h3>
-                              <p class="month">May</p>
-                            </div>
-                            <div class="message_wrapper">
-                              <h4 class="heading">Desmond Davison</h4>
-                              <blockquote class="message">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth.</blockquote>
-                              <br />
-                              <p class="url">
-                                <span class="fs1 text-info" aria-hidden="true" data-icon=""></span>
-                                <a href="#"><i class="fas fa-paperclip"></i> User Acceptance Test.doc </a>
-                              </p>
-                            </div>
-                          </li>
-                        </ul>
-                        <!-- end of user messages -->
-
-
+                <!-- Recent Activity -->
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2><i class="fas fa-history me-2"></i>Recent Activity</h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div class="activity-feed">
+                      <div class="activity-item">
+                        <div class="activity-avatar">
+                          <img src="images/user.png" alt="John Doe" class="rounded-circle">
+                        </div>
+                        <div class="activity-content">
+                          <div class="activity-header">
+                            <strong>John Doe</strong> completed the checkout page redesign
+                            <span class="activity-time">2 hours ago</span>
+                          </div>
+                          <p class="activity-description">
+                            Finished implementing the new checkout flow with improved user experience and mobile responsiveness.
+                          </p>
+                          <div class="activity-attachments">
+                            <a href="#" class="attachment-link">
+                              <i class="fas fa-paperclip me-1"></i>checkout-mockup-v3.fig
+                            </a>
+                          </div>
+                        </div>
                       </div>
 
-
-                    </div>
-
-                    <!-- start project-detail sidebar -->
-                    <div class="col-md-3 col-sm-3">
-
-                      <section class="panel">
-
-                        <div class="x_title">
-                          <h2>Project Description</h2>
-                          <div class="clearfix"></div>
+                      <div class="activity-item">
+                        <div class="activity-avatar">
+                          <img src="images/user.png" alt="Jane Smith" class="rounded-circle">
                         </div>
-                        <div class="panel-body">
-                          <h3 class="green"><i class="fas fa-paint-brush"></i> Gentelella</h3>
-
-                          <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terr.</p>
-                          <br />
-
-                          <div class="project_detail">
-
-                            <p class="title">Client Company</p>
-                            <p>Deveint Inc</p>
-                            <p class="title">Project Leader</p>
-                            <p>Tony Chicken</p>
+                        <div class="activity-content">
+                          <div class="activity-header">
+                            <strong>Jane Smith</strong> updated the product catalog API
+                            <span class="activity-time">5 hours ago</span>
                           </div>
+                          <p class="activity-description">
+                            Optimized database queries and added new filtering capabilities for better performance.
+                          </p>
+                        </div>
+                      </div>
 
-                          <br />
-                          <h5>Project files</h5>
-                          <ul class="list-unstyled project_files">
-                            <li><a href=""><i class="fas fa-file-word-o"></i> Functional-requirements.docx</a>
-                            </li>
-                            <li><a href=""><i class="fas fa-file-pdf-o"></i> UAT.pdf</a>
-                            </li>
-                            <li><a href=""><i class="fas fa-mail-forward"></i> Email-from-flatbal.mln</a>
-                            </li>
-                            <li><a href=""><i class="fas fa-picture-o"></i> Logo.png</a>
-                            </li>
-                            <li><a href=""><i class="fas fa-file-word-o"></i> Contract-10_12_2014.docx</a>
-                            </li>
-                          </ul>
-                          <br />
-
-                          <div class="text-center mtop20">
-                            <a href="#" class="btn btn-sm btn-primary">Add files</a>
-                            <a href="#" class="btn btn-sm btn-warning">Report contact</a>
+                      <div class="activity-item">
+                        <div class="activity-avatar">
+                          <img src="images/user.png" alt="Mike Johnson" class="rounded-circle">
+                        </div>
+                        <div class="activity-content">
+                          <div class="activity-header">
+                            <strong>Mike Johnson</strong> uploaded design assets
+                            <span class="activity-time">1 day ago</span>
+                          </div>
+                          <p class="activity-description">
+                            New icons, illustrations, and updated brand guidelines for the redesign project.
+                          </p>
+                          <div class="activity-attachments">
+                            <a href="#" class="attachment-link">
+                              <i class="fas fa-images me-1"></i>design-assets.zip
+                            </a>
                           </div>
                         </div>
+                      </div>
 
-                      </section>
-
+                      <div class="activity-item">
+                        <div class="activity-avatar">
+                          <img src="images/user.png" alt="Sarah Wilson" class="rounded-circle">
+                        </div>
+                        <div class="activity-content">
+                          <div class="activity-header">
+                            <strong>Sarah Wilson</strong> completed user testing session
+                            <span class="activity-time">2 days ago</span>
+                          </div>
+                          <p class="activity-description">
+                            Conducted usability testing with 15 users and compiled feedback report.
+                          </p>
+                          <div class="activity-attachments">
+                            <a href="#" class="attachment-link">
+                              <i class="fas fa-file-pdf me-1"></i>user-testing-report.pdf
+                            </a>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <!-- end project-detail sidebar -->
+                  </div>
+                </div>
+              </div>
 
+              <!-- Sidebar -->
+              <div class="col-md-4">
+                
+                <!-- Project Info -->
+                <div class="x_panel mb-4">
+                  <div class="x_title">
+                    <h2><i class="fas fa-info-circle me-2"></i>Project Information</h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div class="project-info-item">
+                      <label class="fw-bold">Client Company:</label>
+                      <p>TechCorp Industries</p>
+                    </div>
+                    <div class="project-info-item">
+                      <label class="fw-bold">Project Manager:</label>
+                      <p>Sarah Wilson</p>
+                    </div>
+                    <div class="project-info-item">
+                      <label class="fw-bold">Development Team:</label>
+                      <div class="team-members">
+                        <div class="team-member">
+                          <img src="images/user.png" alt="John Doe" class="team-avatar">
+                          <span>John Doe - Frontend Lead</span>
+                        </div>
+                        <div class="team-member">
+                          <img src="images/user.png" alt="Jane Smith" class="team-avatar">
+                          <span>Jane Smith - Backend Dev</span>
+                        </div>
+                        <div class="team-member">
+                          <img src="images/user.png" alt="Mike Johnson" class="team-avatar">
+                          <span>Mike Johnson - UI Designer</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="project-info-item">
+                      <label class="fw-bold">Technologies:</label>
+                      <div class="tech-stack">
+                        <span class="badge bg-primary me-1 mb-1">React</span>
+                        <span class="badge bg-success me-1 mb-1">Node.js</span>
+                        <span class="badge bg-info me-1 mb-1">MongoDB</span>
+                        <span class="badge bg-warning me-1 mb-1">AWS</span>
+                        <span class="badge bg-secondary me-1 mb-1">Docker</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Project Files -->
+                <div class="x_panel mb-4">
+                  <div class="x_title">
+                    <h2><i class="fas fa-folder me-2"></i>Project Files</h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div class="file-list">
+                      <div class="file-item">
+                        <div class="file-icon">
+                          <i class="fas fa-file-word text-primary"></i>
+                        </div>
+                        <div class="file-info">
+                          <a href="#" class="file-name">Project Requirements.docx</a>
+                          <small class="file-meta">2.4 MB • Updated 3 days ago</small>
+                        </div>
+                      </div>
+                      
+                      <div class="file-item">
+                        <div class="file-icon">
+                          <i class="fas fa-file-pdf text-danger"></i>
+                        </div>
+                        <div class="file-info">
+                          <a href="#" class="file-name">User Testing Report.pdf</a>
+                          <small class="file-meta">1.8 MB • Updated 2 days ago</small>
+                        </div>
+                      </div>
+                      
+                      <div class="file-item">
+                        <div class="file-icon">
+                          <i class="fab fa-figma text-warning"></i>
+                        </div>
+                        <div class="file-info">
+                          <a href="#" class="file-name">Design Mockups.fig</a>
+                          <small class="file-meta">15.2 MB • Updated 1 day ago</small>
+                        </div>
+                      </div>
+                      
+                      <div class="file-item">
+                        <div class="file-icon">
+                          <i class="fas fa-file-archive text-info"></i>
+                        </div>
+                        <div class="file-info">
+                          <a href="#" class="file-name">Design Assets.zip</a>
+                          <small class="file-meta">45.7 MB • Updated 1 day ago</small>
+                        </div>
+                      </div>
+                      
+                      <div class="file-item">
+                        <div class="file-icon">
+                          <i class="fas fa-file-excel text-success"></i>
+                        </div>
+                        <div class="file-info">
+                          <a href="#" class="file-name">Project Timeline.xlsx</a>
+                          <small class="file-meta">890 KB • Updated 5 days ago</small>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="text-center mt-3">
+                      <button class="btn btn-primary btn-sm me-2" onclick="uploadFile()">
+                        <i class="fas fa-upload me-1"></i>Upload File
+                      </button>
+                      <button class="btn btn-outline-secondary btn-sm">
+                        <i class="fas fa-folder-open me-1"></i>Browse All
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2><i class="fas fa-bolt me-2"></i>Quick Actions</h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div class="d-grid gap-2">
+                      <button class="btn btn-success" onclick="addTask()">
+                        <i class="fas fa-plus me-2"></i>Add New Task
+                      </button>
+                      <button class="btn btn-info" onclick="scheduleMethod()">
+                        <i class="fas fa-calendar-plus me-2"></i>Schedule Meeting
+                      </button>
+                      <button class="btn btn-warning" onclick="generateReport()">
+                        <i class="fas fa-chart-line me-2"></i>Generate Report
+                      </button>
+                      <button class="btn btn-outline-danger" onclick="reportIssue()">
+                        <i class="fas fa-exclamation-triangle me-2"></i>Report Issue
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -441,15 +673,618 @@
 
         <!-- footer content -->
         <footer>
-          <div class="pull-right">
+          <div class="float-end">
             Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
           </div>
           <div class="clearfix"></div>
         </footer>
         <!-- /footer content -->
       </div>
-    </div>    <!-- Compiled JavaScript (includes jQuery, Bootstrap, and all vendor scripts) -->
-    
+    </div>
 
+    <!-- Edit Project Modal -->
+    <div class="modal fade" id="editProjectModal" tabindex="-1" aria-labelledby="editProjectModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="editProjectModalLabel">
+              <i class="fas fa-edit me-2"></i>Edit Project
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="editProjectForm">
+              <div class="row">
+                <div class="col-md-8">
+                  <div class="mb-3">
+                    <label for="projectName" class="form-label">Project Name *</label>
+                    <input type="text" class="form-control" id="projectName" value="E-Commerce Platform Redesign" required>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="mb-3">
+                    <label for="projectStatus" class="form-label">Status *</label>
+                    <select class="form-select" id="projectStatus" required>
+                      <option value="planning">Planning</option>
+                      <option value="active" selected>Active</option>
+                      <option value="on-hold">On Hold</option>
+                      <option value="completed">Completed</option>
+                      <option value="cancelled">Cancelled</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="mb-3">
+                    <label for="projectCategory" class="form-label">Category *</label>
+                    <select class="form-select" id="projectCategory" required>
+                      <option value="web-development" selected>Web Development</option>
+                      <option value="mobile-development">Mobile Development</option>
+                      <option value="design">Design</option>
+                      <option value="marketing">Marketing</option>
+                      <option value="consulting">Consulting</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="mb-3">
+                    <label for="projectPriority" class="form-label">Priority *</label>
+                    <select class="form-select" id="projectPriority" required>
+                      <option value="low">Low</option>
+                      <option value="medium">Medium</option>
+                      <option value="high" selected>High</option>
+                      <option value="critical">Critical</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="mb-3">
+                    <label for="projectProgress" class="form-label">Progress (%)</label>
+                    <input type="number" class="form-control" id="projectProgress" value="75" min="0" max="100">
+                  </div>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="projectDescription" class="form-label">Description</label>
+                <textarea class="form-control" id="projectDescription" rows="3">Complete redesign and modernization of the e-commerce platform to improve user experience, performance, and mobile responsiveness.</textarea>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label for="clientCompany" class="form-label">Client Company</label>
+                    <input type="text" class="form-control" id="clientCompany" value="TechCorp Industries">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label for="projectManager" class="form-label">Project Manager</label>
+                    <select class="form-select" id="projectManager">
+                      <option value="sarah-wilson" selected>Sarah Wilson</option>
+                      <option value="john-doe">John Doe</option>
+                      <option value="jane-smith">Jane Smith</option>
+                      <option value="mike-johnson">Mike Johnson</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="mb-3">
+                    <label for="startDate" class="form-label">Start Date</label>
+                    <input type="date" class="form-control" id="startDate" value="2025-01-15">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="mb-3">
+                    <label for="dueDate" class="form-label">Due Date</label>
+                    <input type="date" class="form-control" id="dueDate" value="2025-03-30">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="mb-3">
+                    <label for="estimatedBudget" class="form-label">Estimated Budget ($)</label>
+                    <input type="number" class="form-control" id="estimatedBudget" value="45000" min="0">
+                  </div>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="teamMembers" class="form-label">Team Members</label>
+                <div class="team-selection">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="john-doe" id="team-john" checked>
+                    <label class="form-check-label" for="team-john">
+                      John Doe - Frontend Lead
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="jane-smith" id="team-jane" checked>
+                    <label class="form-check-label" for="team-jane">
+                      Jane Smith - Backend Developer
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="mike-johnson" id="team-mike" checked>
+                    <label class="form-check-label" for="team-mike">
+                      Mike Johnson - UI Designer
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="lisa-chen" id="team-lisa">
+                    <label class="form-check-label" for="team-lisa">
+                      Lisa Chen - QA Engineer
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="david-brown" id="team-david">
+                    <label class="form-check-label" for="team-david">
+                      David Brown - DevOps Engineer
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="technologies" class="form-label">Technologies</label>
+                <div class="tech-selection">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="react" id="tech-react" checked>
+                        <label class="form-check-label" for="tech-react">React</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="nodejs" id="tech-nodejs" checked>
+                        <label class="form-check-label" for="tech-nodejs">Node.js</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="mongodb" id="tech-mongodb" checked>
+                        <label class="form-check-label" for="tech-mongodb">MongoDB</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="aws" id="tech-aws" checked>
+                        <label class="form-check-label" for="tech-aws">AWS</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="docker" id="tech-docker" checked>
+                        <label class="form-check-label" for="tech-docker">Docker</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="typescript" id="tech-typescript">
+                        <label class="form-check-label" for="tech-typescript">TypeScript</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="projectNotes" class="form-label">Additional Notes</label>
+                <textarea class="form-control" id="projectNotes" rows="2" placeholder="Add any additional notes or special requirements..."></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+              <i class="fas fa-times me-2"></i>Cancel
+            </button>
+            <button type="button" class="btn btn-success" onclick="saveProjectChanges()">
+              <i class="fas fa-save me-2"></i>Save Changes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Initialize tooltips
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+          return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+
+        // Progress bar animation
+        const progressBar = document.querySelector('.progress-bar');
+        setTimeout(() => {
+          progressBar.style.transition = 'width 1.5s ease-in-out';
+          progressBar.style.width = '75%';
+        }, 500);
+      });
+
+             // Project management functions
+       function saveProjectChanges() {
+         // Get form data
+         const formData = {
+           name: document.getElementById('projectName').value,
+           status: document.getElementById('projectStatus').value,
+           category: document.getElementById('projectCategory').value,
+           priority: document.getElementById('projectPriority').value,
+           progress: document.getElementById('projectProgress').value,
+           description: document.getElementById('projectDescription').value,
+           client: document.getElementById('clientCompany').value,
+           manager: document.getElementById('projectManager').value,
+           startDate: document.getElementById('startDate').value,
+           dueDate: document.getElementById('dueDate').value,
+           budget: document.getElementById('estimatedBudget').value
+         };
+
+         // Validate required fields
+         if (!formData.name || !formData.status || !formData.category || !formData.priority) {
+           alert('Please fill in all required fields.');
+           return;
+         }
+
+         // Show success message and close modal
+         alert('Project updated successfully!\n\nChanges saved:\n- ' + Object.entries(formData).map(([key, value]) => `${key.charAt(0).toUpperCase() + key.slice(1)}: ${value}`).join('\n- '));
+         
+         // Close the modal
+         const modal = bootstrap.Modal.getInstance(document.getElementById('editProjectModal'));
+         modal.hide();
+
+         // Update the page content with new data (in a real app, this would refresh from server)
+         updatePageContent(formData);
+       }
+
+       function updatePageContent(formData) {
+         // Update project title
+         document.querySelector('.project-title').innerHTML = `
+           <i class="fas fa-shopping-cart text-primary me-2"></i>
+           ${formData.name}
+           <span class="badge bg-${getStatusColor(formData.status)} ms-2">${formData.status.charAt(0).toUpperCase() + formData.status.slice(1)}</span>
+         `;
+         
+         // Update project description
+         document.querySelector('.text-muted.mb-3').textContent = formData.description;
+         
+         // Update progress bar
+         const progressBar = document.querySelector('.progress-bar');
+         const progressText = document.querySelector('.text-success.fw-bold');
+         progressBar.style.width = formData.progress + '%';
+         progressBar.setAttribute('aria-valuenow', formData.progress);
+         progressText.textContent = formData.progress + '%';
+         
+         // Update client info
+         const projectInfoItems = document.querySelectorAll('.project-info-item p');
+         if (projectInfoItems[0]) projectInfoItems[0].textContent = formData.client;
+         if (projectInfoItems[1]) projectInfoItems[1].textContent = getManagerName(formData.manager);
+       }
+
+       function getStatusColor(status) {
+         const colors = {
+           'planning': 'secondary',
+           'active': 'success',
+           'on-hold': 'warning',
+           'completed': 'primary',
+           'cancelled': 'danger'
+         };
+         return colors[status] || 'secondary';
+       }
+
+       function getManagerName(managerId) {
+         const managers = {
+           'sarah-wilson': 'Sarah Wilson',
+           'john-doe': 'John Doe',
+           'jane-smith': 'Jane Smith',
+           'mike-johnson': 'Mike Johnson'
+         };
+         return managers[managerId] || managerId;
+       }
+
+       function addTask() {
+        alert('Add task functionality would open a task creation modal.');
+      }
+
+      function scheduleMethod() {
+        alert('Schedule meeting functionality would open a calendar interface.');
+      }
+
+      function generateReport() {
+        alert('Generate report functionality would create and download project reports.');
+      }
+
+      function reportIssue() {
+        alert('Report issue functionality would open an issue reporting form.');
+      }
+
+      function uploadFile() {
+        alert('Upload file functionality would open a file upload interface.');
+      }
+    </script>
+
+    <style>
+      .project-title {
+        color: #2c3e50;
+        font-weight: 600;
+      }
+
+      .project-meta .badge {
+        font-size: 0.8rem;
+      }
+
+      .project-actions {
+        margin-bottom: 1rem;
+      }
+
+      .progress-container {
+        background: #f8f9fa;
+        padding: 15px;
+        border-radius: 8px;
+        border: 1px solid #e9ecef;
+      }
+
+      .stat-item {
+        padding: 20px 15px;
+        border-radius: 8px;
+        background: #f8f9fa;
+        margin-bottom: 15px;
+      }
+
+      .timeline {
+        position: relative;
+        padding-left: 30px;
+      }
+
+      .timeline::before {
+        content: '';
+        position: absolute;
+        left: 15px;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: #e9ecef;
+      }
+
+      .timeline-item {
+        position: relative;
+        margin-bottom: 30px;
+      }
+
+      .timeline-marker {
+        position: absolute;
+        left: -23px;
+        top: 0;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 3px solid #fff;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      }
+
+      .timeline-content {
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        border: 1px solid #e9ecef;
+      }
+
+      .activity-feed {
+        max-height: 500px;
+        overflow-y: auto;
+      }
+
+      .activity-item {
+        display: flex;
+        margin-bottom: 20px;
+        padding: 15px;
+        background: #f8f9fa;
+        border-radius: 8px;
+        border: 1px solid #e9ecef;
+      }
+
+      .activity-avatar {
+        margin-right: 15px;
+      }
+
+      .activity-avatar img {
+        width: 40px;
+        height: 40px;
+      }
+
+      .activity-content {
+        flex: 1;
+      }
+
+      .activity-header {
+        display: flex;
+        justify-content: between;
+        align-items: center;
+        margin-bottom: 8px;
+      }
+
+      .activity-time {
+        color: #6c757d;
+        font-size: 0.85rem;
+        margin-left: auto;
+      }
+
+      .activity-description {
+        color: #6c757d;
+        margin-bottom: 10px;
+        font-size: 0.9rem;
+      }
+
+      .attachment-link {
+        color: #007bff;
+        text-decoration: none;
+        font-size: 0.85rem;
+      }
+
+      .attachment-link:hover {
+        text-decoration: underline;
+      }
+
+      .project-info-item {
+        margin-bottom: 20px;
+      }
+
+      .project-info-item label {
+        color: #495057;
+        margin-bottom: 5px;
+        display: block;
+      }
+
+      .team-member {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+
+      .team-avatar {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        margin-right: 8px;
+      }
+
+      .tech-stack {
+        margin-top: 5px;
+      }
+
+      .file-list {
+        max-height: 300px;
+        overflow-y: auto;
+      }
+
+      .file-item {
+        display: flex;
+        align-items: center;
+        padding: 10px 0;
+        border-bottom: 1px solid #e9ecef;
+      }
+
+      .file-item:last-child {
+        border-bottom: none;
+      }
+
+      .file-icon {
+        margin-right: 12px;
+        font-size: 1.2rem;
+      }
+
+      .file-info {
+        flex: 1;
+      }
+
+      .file-name {
+        color: #2c3e50;
+        text-decoration: none;
+        font-weight: 500;
+        display: block;
+      }
+
+      .file-name:hover {
+        color: #007bff;
+        text-decoration: underline;
+      }
+
+      .file-meta {
+        color: #6c757d;
+        font-size: 0.8rem;
+      }
+
+      .x_panel {
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        border-radius: 8px;
+        border: none;
+      }
+
+             .x_title h2 {
+         color: #2c3e50;
+         font-weight: 600;
+       }
+
+       /* Modal Styling */
+       .modal-dialog {
+         max-width: 800px;
+       }
+
+       .modal-header {
+         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+         color: white;
+         border-radius: 0.5rem 0.5rem 0 0;
+       }
+
+       .modal-header .btn-close {
+         filter: invert(1);
+       }
+
+       .modal-title {
+         font-weight: 600;
+         font-size: 1.25rem;
+       }
+
+       .modal-body {
+         padding: 1.5rem;
+         background: #f8f9fa;
+       }
+
+       .form-label {
+         font-weight: 600;
+         color: #495057;
+         margin-bottom: 0.5rem;
+       }
+
+       .form-control, .form-select {
+         border: 1px solid #ced4da;
+         border-radius: 0.375rem;
+         transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+       }
+
+       .form-control:focus, .form-select:focus {
+         border-color: #86b7fe;
+         box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+       }
+
+       .team-selection, .tech-selection {
+         background: white;
+         border: 1px solid #dee2e6;
+         border-radius: 0.375rem;
+         padding: 1rem;
+         max-height: 150px;
+         overflow-y: auto;
+       }
+
+       .form-check {
+         margin-bottom: 0.5rem;
+       }
+
+       .form-check-label {
+         color: #495057;
+         font-weight: 500;
+       }
+
+       .modal-footer {
+         background: white;
+         border-top: 1px solid #dee2e6;
+         padding: 1rem 1.5rem;
+       }
+
+       .modal-footer .btn {
+         font-weight: 600;
+         padding: 0.5rem 1.5rem;
+       }
+
+       /* Form validation styling */
+       .form-control:invalid, .form-select:invalid {
+         border-color: #dc3545;
+       }
+
+       .form-control:valid, .form-select:valid {
+         border-color: #198754;
+       }
+     </style>
   </body>
 </html>

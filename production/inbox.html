@@ -6,15 +6,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="images/favicon.ico" type="image/ico" />
 
-    <title>Gentelella Alela! | </title>
+    <title>Inbox - Gentelella</title>
 
-    <!-- Bootstrap -->
-    <!-- Font Awesome -->
-    <!-- NProgress -->
-    <!-- bootstrap-wysiwyg -->
-    <!-- Custom styling plus plugins -->
-    <script type="module" src="/src/main-minimal.js"></script>
+    <!-- Vite Entry Point with inbox functionality -->
+    <script type="module" src="/src/main-inbox.js"></script>
   </head>
 
   <body class="nav-md">
@@ -51,8 +48,8 @@
                     <ul class="nav child_menu">
                       <li><a href="index.html">Dashboard 1</a></li>
                       <li><a href="index2.html">Dashboard 2</a></li>
-                      <li><a href="index3.html">Dashboard 3</a></li><li><a href="index4.html">Dashboard 4</a></li>
                       <li><a href="index3.html">Dashboard 3</a></li>
+                      <li><a href="index4.html">Dashboard 4</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fas fa-edit"></i> Forms <span class="fas fa-chevron-down"></span></a>
@@ -71,7 +68,6 @@
                       <li><a href="media_gallery.html">Media Gallery</a></li>
                       <li><a href="typography.html">Typography</a></li>
                       <li><a href="icons.html">Icons</a></li>
-                      <li><a href="glyphicons.html">Glyphicons</a></li>
                       <li><a href="widgets.html">Widgets</a></li>
                       <li><a href="invoice.html">Invoice</a></li>
                       <li><a href="inbox.html">Inbox</a></li>
@@ -140,7 +136,7 @@
                         </li>
                     </ul>
                   </li>                  
-                  <li><a href="javascript:void(0)"><i class="fas fa-laptop"></i> Landing Page <span class="label label-success pull-right">Coming Soon</span></a></li>
+                  <li><a href="javascript:void(0)"><i class="fas fa-laptop"></i> Landing Page <span class="badge bg-success float-end">Coming Soon</span></a></li>
                 </ul>
               </div>
 
@@ -149,16 +145,16 @@
 
             <!-- /menu footer buttons -->
             <div class="sidebar-footer hidden-small">
-              <a data-bs-toggle="tooltip" data-placement="top" title="Settings">
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Settings">
                 <span class="fas fa-cog" aria-hidden="true"></span>
               </a>
-              <a data-bs-toggle="tooltip" data-placement="top" title="FullScreen">
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="FullScreen">
                 <span class="fas fa-expand" aria-hidden="true"></span>
               </a>
-              <a data-bs-toggle="tooltip" data-placement="top" title="Lock">
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Lock">
                 <span class="fas fa-eye-slash" aria-hidden="true"></span>
               </a>
-              <a data-bs-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Logout" href="login.html">
                 <span class="fas fa-power-off" aria-hidden="true"></span>
               </a>
             </div>
@@ -178,21 +174,21 @@
                     <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                       <img src="images/img.jpg" alt="">John Doe
                     </a>
-                    <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
+                    <div class="dropdown-menu dropdown-usermenu float-end" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item"  href="javascript:;"> Profile</a>
                         <a class="dropdown-item"  href="javascript:;">
-                          <span class="badge bg-red pull-right">50%</span>
+                          <span class="badge bg-danger float-end">50%</span>
                           <span>Settings</span>
                         </a>
                     <a class="dropdown-item"  href="javascript:;">Help</a>
-                      <a class="dropdown-item"  href="login.html"><i class="fas fa-sign-out-alt pull-right"></i> Log Out</a>
+                      <a class="dropdown-item"  href="login.html"><i class="fas fa-sign-out-alt float-end"></i> Log Out</a>
                     </div>
                   </li>
   
                   <li role="presentation" class="nav-item dropdown open">
                     <a href="javascript:;" class="dropdown-toggle info-number" id="navbarDropdown1" data-bs-toggle="dropdown" aria-expanded="false">
                       <i class="fas fa-envelope"></i>
-                      <span class="badge bg-green">6</span>
+                      <span class="badge bg-success">6</span>
                     </a>
                     <ul class="dropdown-menu list-unstyled msg_list" role="menu" aria-labelledby="navbarDropdown1">
                       <li class="nav-item">
@@ -265,16 +261,14 @@
 
             <div class="page-title">
               <div class="title_left">
-                <h3>Inbox Design <small>Some examples to get you started</small></h3>
+                <h3>Inbox <small>Professional email interface</small></h3>
               </div>
 
               <div class="title_right">
-                <div class="col-md-5 col-sm-5 form-group pull-right top_search">
+                <div class="col-md-5 col-sm-5 form-group float-end top_search">
                   <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for...">
-                    <span class="input-group-btn">
-                      <button class="btn btn-secondary" type="button">Go!</button>
-                    </span>
+                    <input type="text" class="form-control" placeholder="Search emails...">
+                    <button class="btn btn-outline-secondary" type="button">Go!</button>
                   </div>
                 </div>
               </div>
@@ -286,7 +280,7 @@
               <div class="col-md-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Inbox Design<small>User Mail</small></h2>
+                    <h2>Inbox <small>Email Management</small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
                       </li>
@@ -305,95 +299,87 @@
                   <div class="x_content">
                     <div class="row">
                       <div class="col-sm-3 mail_list_column">
-                        <button id="compose" class="btn btn-sm btn-success d-grid" type="button">COMPOSE</button>
-                        <a href="#">
-                          <div class="mail_list">
-                            <div class="left">
-                              <i class="fas fa-circle"></i> <i class="fas fa-edit"></i>
+                        <div class="d-grid gap-2 mb-3">
+                          <button id="compose" class="btn btn-success" type="button">
+                            <i class="fas fa-plus"></i> COMPOSE
+                          </button>
+                        </div>
+                        
+                        <div class="mail-list-container">
+                          <a href="#" class="mail-item">
+                            <div class="mail_list">
+                              <div class="left">
+                                <i class="fas fa-circle text-primary"></i> 
+                                <i class="fas fa-edit text-muted"></i>
+                              </div>
+                              <div class="right">
+                                <h3>Sarah Wilson <small class="text-muted">3:00 PM</small></h3>
+                                <p>Quarterly report review meeting scheduled for next week. Please review the attached documents...</p>
+                              </div>
                             </div>
-                            <div class="right">
-                              <h3>Dennis Mugo <small>3.00 PM</small></h3>
-                              <p>Ut enim ad minim veniam, quis nostrud exercitation enim ad minim veniam, quis nostrud exercitation...</p>
+                          </a>
+                          
+                          <a href="#" class="mail-item active">
+                            <div class="mail_list">
+                              <div class="left">
+                                <i class="fas fa-star text-warning"></i>
+                              </div>
+                              <div class="right">
+                                <h3>Jane Nobert <small class="text-muted">4:09 PM</small></h3>
+                                <p><span class="badge bg-primary">To</span> Project milestone updates and deliverables discussion for Q2 planning...</p>
+                              </div>
                             </div>
-                          </div>
-                        </a>
-                        <a href="#">
-                          <div class="mail_list">
-                            <div class="left">
-                              <i class="fas fa-star"></i>
+                          </a>
+                          
+                          <a href="#" class="mail-item">
+                            <div class="mail_list">
+                              <div class="left">
+                                <i class="far fa-circle text-muted"></i>
+                                <i class="fas fa-paperclip text-secondary"></i>
+                              </div>
+                              <div class="right">
+                                <h3>Michael Chen <small class="text-muted">4:09 PM</small></h3>
+                                <p><span class="badge bg-secondary">CC</span> Design mockups and prototype feedback for the new dashboard interface...</p>
+                              </div>
                             </div>
-                            <div class="right">
-                              <h3>Jane Nobert <small>4.09 PM</small></h3>
-                              <p><span class="badge">To</span> Ut enim ad minim veniam, quis nostrud exercitation enim ad minim veniam, quis nostrud exercitation...</p>
+                          </a>
+                          
+                          <a href="#" class="mail-item">
+                            <div class="mail_list">
+                              <div class="left">
+                                <i class="fas fa-paperclip text-secondary"></i>
+                              </div>
+                              <div class="right">
+                                <h3>Jon Dibbs <small class="text-muted">4:09 PM</small></h3>
+                                <p>Technical documentation updates and API integration guidelines for development team...</p>
+                              </div>
                             </div>
-                          </div>
-                        </a>
-                        <a href="#">
-                          <div class="mail_list">
-                            <div class="left">
-                              <i class="fas fa-circle-o"></i><i class="fas fa-paperclip"></i>
+                          </a>
+                          
+                          <a href="#" class="mail-item">
+                            <div class="mail_list">
+                              <div class="left">
+                                <i class="far fa-circle text-muted"></i>
+                              </div>
+                              <div class="right">
+                                <h3>Team Meeting <small class="text-muted">5:15 PM</small></h3>
+                                <p>Weekly standup meeting notes and action items for the upcoming sprint planning...</p>
+                              </div>
                             </div>
-                            <div class="right">
-                              <h3>Musimbi Anne <small>4.09 PM</small></h3>
-                              <p><span class="badge">CC</span> Ut enim ad minim veniam, quis nostrud exercitation enim ad minim veniam, quis nostrud exercitation...</p>
+                          </a>
+                          
+                          <a href="#" class="mail-item">
+                            <div class="mail_list">
+                              <div class="left">
+                                <i class="far fa-circle text-muted"></i>
+                              </div>
+                              <div class="right">
+                                <h3>Marketing Team <small class="text-muted">6:30 PM</small></h3>
+                                <p>Campaign performance metrics and ROI analysis for the latest product launch...</p>
+                              </div>
                             </div>
-                          </div>
-                        </a>
-                        <a href="#">
-                          <div class="mail_list">
-                            <div class="left">
-                              <i class="fas fa-paperclip"></i>
-                            </div>
-                            <div class="right">
-                              <h3>Jon Dibbs <small>4.09 PM</small></h3>
-                              <p>Ut enim ad minim veniam, quis nostrud exercitation enim ad minim veniam, quis nostrud exercitation...</p>
-                            </div>
-                          </div>
-                        </a>
-                        <a href="#">
-                          <div class="mail_list">
-                            <div class="left">
-                              .
-                            </div>
-                            <div class="right">
-                              <h3>Debbis & Raymond <small>4.09 PM</small></h3>
-                              <p>Ut enim ad minim veniam, quis nostrud exercitation enim ad minim veniam, quis nostrud exercitation...</p>
-                            </div>
-                          </div>
-                        </a>
-                        <a href="#">
-                          <div class="mail_list">
-                            <div class="left">
-                              .
-                            </div>
-                            <div class="right">
-                              <h3>Debbis & Raymond <small>4.09 PM</small></h3>
-                              <p>Ut enim ad minim veniam, quis nostrud exercitation enim ad minim veniam, quis nostrud exercitation...</p>
-                            </div>
-                          </div>
-                        </a>
-                        <a href="#">
-                          <div class="mail_list">
-                            <div class="left">
-                              <i class="fas fa-circle"></i> <i class="fas fa-edit"></i>
-                            </div>
-                            <div class="right">
-                              <h3>Dennis Mugo <small>3.00 PM</small></h3>
-                              <p>Ut enim ad minim veniam, quis nostrud exercitation enim ad minim veniam, quis nostrud exercitation...</p>
-                            </div>
-                          </div>
-                        </a>
-                        <a href="#">
-                          <div class="mail_list">
-                            <div class="left">
-                              <i class="fas fa-star"></i>
-                            </div>
-                            <div class="right">
-                              <h3>Jane Nobert <small>4.09 PM</small></h3>
-                              <p>Ut enim ad minim veniam, quis nostrud exercitation enim ad minim veniam, quis nostrud exercitation...</p>
-                            </div>
-                          </div>
-                        </a>
+                          </a>
+                        </div>
                       </div>
                       <!-- /MAIL LIST -->
 
@@ -402,104 +388,112 @@
                         <div class="inbox-body">
                           <div class="mail_heading row">
                             <div class="col-md-8">
-                              <div class="btn-group">
+                              <div class="btn-group" role="group" aria-label="Email actions">
                                 <button class="btn btn-sm btn-primary" type="button"><i class="fas fa-reply"></i> Reply</button>
-                                <button class="btn btn-sm btn-default" type="button"  data-placement="top" data-bs-toggle="tooltip" data-original-title="Forward"><i class="fas fa-share"></i></button>
-                                <button class="btn btn-sm btn-default" type="button" data-placement="top" data-bs-toggle="tooltip" data-original-title="Print"><i class="fas fa-print"></i></button>
-                                <button class="btn btn-sm btn-default" type="button" data-placement="top" data-bs-toggle="tooltip" data-original-title="Trash"><i class="fas fa-trash"></i></button>
+                                <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-placement="top" data-bs-toggle="tooltip" title="Forward"><i class="fas fa-share"></i></button>
+                                <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-placement="top" data-bs-toggle="tooltip" title="Print"><i class="fas fa-print"></i></button>
+                                <button class="btn btn-sm btn-outline-danger" type="button" data-bs-placement="top" data-bs-toggle="tooltip" title="Delete"><i class="fas fa-trash"></i></button>
                               </div>
                             </div>
                             <div class="col-md-4 text-end">
-                              <p class="date"> 8:02 PM 12 FEB 2014</p>
+                              <p class="date text-muted">8:02 PM 12 FEB 2032</p>
                             </div>
                             <div class="col-md-12">
-                              <h4> Donec vitae leo at sem lobortis porttitor eu consequat risus. Mauris sed congue orci. Donec ultrices faucibus rutrum.</h4>
+                              <h4 class="email-subject">Project Milestone Updates and Q2 Planning Discussion</h4>
                             </div>
                           </div>
+                          
                           <div class="sender-info">
                             <div class="row">
                               <div class="col-md-12">
-                                <strong>Jon Doe</strong>
-                                <span>(jon.doe@gmail.com)</span> to
-                                <strong>me</strong>
-                                <a class="sender-dropdown"><i class="fas fa-chevron-down"></i></a>
+                                <div class="d-flex align-items-center gap-2 mb-3">
+                                  <img src="images/img.jpg" alt="Jane Nobert" class="rounded-circle" style="width: 40px; height: 40px;">
+                                  <div>
+                                    <strong>Jane Nobert</strong>
+                                    <span class="text-muted">(jane.nobert@company.com)</span> to
+                                    <strong>me</strong>
+                                    <a class="sender-dropdown text-muted ms-2"><i class="fas fa-chevron-down"></i></a>
+                                  </div>
+                                </div>
                               </div>
                             </div>
                           </div>
+                          
                           <div class="view-mail">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
-                            <p>Riusmod tempor incididunt ut labor erem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                              mollit anim id est laborum.</p>
-                            <p>Modesed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                          </div>
-                          <div class="attachment">
-                            <p>
-                              <span><i class="fas fa-paperclip"></i> 3 attachments — </span>
-                              <a href="#">Download all attachments</a> |
-                              <a href="#">View all images</a>
-                            </p>
+                            <p>Hi there,</p>
+                            <p>I hope this email finds you well. I wanted to reach out regarding our upcoming Q2 planning session and provide you with an update on our current project milestones.</p>
+                            <p>As we approach the end of Q1, it's crucial that we review our progress and align our objectives for the next quarter. The development team has made significant strides in implementing the new features, and we're on track to meet our delivery deadlines.</p>
+                            <p>Key accomplishments this quarter include:</p>
                             <ul>
-                              <li>
-                                <a href="#" class="atch-thumb">
-                                  <img src="images/inbox.png" alt="img" />
-                                </a>
-
-                                <div class="file-name">
-                                  image-name.jpg
-                                </div>
-                                <span>12KB</span>
-
-
-                                <div class="links">
-                                  <a href="#">View</a> -
-                                  <a href="#">Download</a>
-                                </div>
-                              </li>
-
-                              <li>
-                                <a href="#" class="atch-thumb">
-                                  <img src="images/inbox.png" alt="img" />
-                                </a>
-
-                                <div class="file-name">
-                                  img_name.jpg
-                                </div>
-                                <span>40KB</span>
-
-                                <div class="links">
-                                  <a href="#">View</a> -
-                                  <a href="#">Download</a>
-                                </div>
-                              </li>
-                              <li>
-                                <a href="#" class="atch-thumb">
-                                  <img src="images/inbox.png" alt="img" />
-                                </a>
-
-                                <div class="file-name">
-                                  img_name.jpg
-                                </div>
-                                <span>30KB</span>
-
-                                <div class="links">
-                                  <a href="#">View</a> -
-                                  <a href="#">Download</a>
-                                </div>
-                              </li>
-
+                              <li>Successfully launched the user dashboard redesign</li>
+                              <li>Implemented advanced analytics features</li>
+                              <li>Improved system performance by 35%</li>
+                              <li>Enhanced security protocols and user authentication</li>
                             </ul>
+                            <p>Looking ahead to Q2, we should focus on user experience improvements and expanding our integration capabilities. I've attached the detailed project roadmap for your review.</p>
+                            <p>Best regards,<br>Jane</p>
                           </div>
-                          <div class="btn-group">
+                          
+                          <div class="attachment">
+                            <div class="attachment-header">
+                              <p>
+                                <span><i class="fas fa-paperclip"></i> 3 attachments — </span>
+                                <a href="#" class="text-primary">Download all attachments</a> |
+                                <a href="#" class="text-primary">View all images</a>
+                              </p>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-4">
+                                <div class="attachment-item">
+                                  <a href="#" class="atch-thumb">
+                                    <img src="images/inbox.png" alt="Q2 Roadmap" class="img-fluid rounded" />
+                                  </a>
+                                  <div class="file-name">Q2_Project_Roadmap.pdf</div>
+                                  <span class="file-size badge bg-light text-dark">245KB</span>
+                                  <div class="links mt-2">
+                                    <a href="#" class="btn btn-sm btn-outline-primary">View</a>
+                                    <a href="#" class="btn btn-sm btn-outline-secondary">Download</a>
+                                  </div>
+                                </div>
+                              </div>
+                              
+                              <div class="col-md-4">
+                                <div class="attachment-item">
+                                  <a href="#" class="atch-thumb">
+                                    <img src="images/inbox.png" alt="Analytics Report" class="img-fluid rounded" />
+                                  </a>
+                                  <div class="file-name">Analytics_Report_Q1.xlsx</div>
+                                  <span class="file-size badge bg-light text-dark">180KB</span>
+                                  <div class="links mt-2">
+                                    <a href="#" class="btn btn-sm btn-outline-primary">View</a>
+                                    <a href="#" class="btn btn-sm btn-outline-secondary">Download</a>
+                                  </div>
+                                </div>
+                              </div>
+                              
+                              <div class="col-md-4">
+                                <div class="attachment-item">
+                                  <a href="#" class="atch-thumb">
+                                    <img src="images/inbox.png" alt="Team Schedule" class="img-fluid rounded" />
+                                  </a>
+                                  <div class="file-name">Team_Schedule_Q2.png</div>
+                                  <span class="file-size badge bg-light text-dark">95KB</span>
+                                  <div class="links mt-2">
+                                    <a href="#" class="btn btn-sm btn-outline-primary">View</a>
+                                    <a href="#" class="btn btn-sm btn-outline-secondary">Download</a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          
+                          <div class="btn-group mt-4" role="group" aria-label="Email reply actions">
                             <button class="btn btn-sm btn-primary" type="button"><i class="fas fa-reply"></i> Reply</button>
-                            <button class="btn btn-sm btn-default" type="button"  data-placement="top" data-bs-toggle="tooltip" data-original-title="Forward"><i class="fas fa-share"></i></button>
-                            <button class="btn btn-sm btn-default" type="button" data-placement="top" data-bs-toggle="tooltip" data-original-title="Print"><i class="fas fa-print"></i></button>
-                            <button class="btn btn-sm btn-default" type="button" data-placement="top" data-bs-toggle="tooltip" data-original-title="Trash"><i class="fas fa-trash"></i></button>
+                            <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-placement="top" data-bs-toggle="tooltip" title="Forward"><i class="fas fa-share"></i></button>
+                            <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-placement="top" data-bs-toggle="tooltip" title="Print"><i class="fas fa-print"></i></button>
+                            <button class="btn btn-sm btn-outline-danger" type="button" data-bs-placement="top" data-bs-toggle="tooltip" title="Delete"><i class="fas fa-trash"></i></button>
                           </div>
                         </div>
-
                       </div>
                       <!-- /CONTENT MAIL -->
                     </div>
@@ -513,7 +507,7 @@
 
         <!-- footer content -->
         <footer>
-          <div class="pull-right">
+          <div class="float-end">
             Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
           </div>
           <div class="clearfix"></div>
@@ -522,96 +516,242 @@
       </div>
     </div>
 
-    <!-- compose -->
-    <div class="compose col-md-6">
+    <!-- compose modal -->
+    <div class="compose col-md-6 col-lg-4">
       <div class="compose-header">
-        New Message
-        <button type="button" class="btn-close compose-btn-close">
-          <span>×</span>
-        </button>
+        <div class="d-flex justify-content-between align-items-center">
+          <h5 class="mb-0"><i class="fas fa-envelope"></i> New Message</h5>
+          <button type="button" class="btn-close compose-btn-close" aria-label="Close"></button>
+        </div>
       </div>
 
       <div class="compose-body">
         <div id="alerts"></div>
-
-        <div class="btn-toolbar editor" data-role="editor-toolbar" data-bs-target="#editor">
-          <div class="btn-group">
-            <a class="btn dropdown-toggle" data-bs-toggle="dropdown" title="Font"><i class="fas fa-font"></i><b class="caret"></b></a>
-            <ul class="dropdown-menu">
-            </ul>
+        
+        <form class="compose-form">
+          <div class="mb-3">
+            <label for="email-to" class="form-label">To:</label>
+            <input type="email" class="form-control" id="email-to" placeholder="recipient@example.com">
+          </div>
+          
+          <div class="mb-3">
+            <label for="email-subject" class="form-label">Subject:</label>
+            <input type="text" class="form-control" id="email-subject" placeholder="Enter subject">
           </div>
 
-          <div class="btn-group">
-            <a class="btn dropdown-toggle" data-bs-toggle="dropdown" title="Font Size"><i class="fas fa-text-height"></i>&nbsp;<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li>
-                <a data-edit="fontSize 5">
-                  <p style="font-size:17px">Huge</p>
-                </a>
-              </li>
-              <li>
-                <a data-edit="fontSize 3">
-                  <p style="font-size:14px">Normal</p>
-                </a>
-              </li>
-              <li>
-                <a data-edit="fontSize 1">
-                  <p style="font-size:11px">Small</p>
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div class="btn-group">
-            <a class="btn" data-edit="bold" title="Bold (Ctrl/Cmd+B)"><i class="fas fa-bold"></i></a>
-            <a class="btn" data-edit="italic" title="Italic (Ctrl/Cmd+I)"><i class="fas fa-italic"></i></a>
-            <a class="btn" data-edit="strikethrough" title="Strikethrough"><i class="fas fa-strikethrough"></i></a>
-            <a class="btn" data-edit="underline" title="Underline (Ctrl/Cmd+U)"><i class="fas fa-underline"></i></a>
-          </div>
-
-          <div class="btn-group">
-            <a class="btn" data-edit="insertunorderedlist" title="Bullet list"><i class="fas fa-list-ul"></i></a>
-            <a class="btn" data-edit="insertorderedlist" title="Number list"><i class="fas fa-list-ol"></i></a>
-            <a class="btn" data-edit="outdent" title="Reduce indent (Shift+Tab)"><i class="fas fa-dedent"></i></a>
-            <a class="btn" data-edit="indent" title="Indent (Tab)"><i class="fas fa-indent"></i></a>
-          </div>
-
-          <div class="btn-group">
-            <a class="btn" data-edit="justifyleft" title="Align Left (Ctrl/Cmd+L)"><i class="fas fa-align-left"></i></a>
-            <a class="btn" data-edit="justifycenter" title="Center (Ctrl/Cmd+E)"><i class="fas fa-align-center"></i></a>
-            <a class="btn" data-edit="justifyright" title="Align Right (Ctrl/Cmd+R)"><i class="fas fa-align-right"></i></a>
-            <a class="btn" data-edit="justifyfull" title="Justify (Ctrl/Cmd+J)"><i class="fas fa-align-justify"></i></a>
-          </div>
-
-          <div class="btn-group">
-            <a class="btn dropdown-toggle" data-bs-toggle="dropdown" title="Hyperlink"><i class="fas fa-link"></i></a>
-            <div class="dropdown-menu input-append">
-              <input class="span2" placeholder="URL" type="text" data-edit="createLink" />
-              <button class="btn" type="button">Add</button>
+          <div class="btn-toolbar editor mb-3" data-role="editor-toolbar" data-bs-target="#editor">
+            <div class="btn-group btn-group-sm me-2">
+              <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" title="Font">
+                <i class="fas fa-font"></i>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#" data-edit="fontName Arial">Arial</a></li>
+                <li><a class="dropdown-item" href="#" data-edit="fontName Georgia">Georgia</a></li>
+                <li><a class="dropdown-item" href="#" data-edit="fontName Times">Times</a></li>
+              </ul>
             </div>
-            <a class="btn" data-edit="unlink" title="Remove Hyperlink"><i class="fas fa-cut"></i></a>
+
+            <div class="btn-group btn-group-sm me-2">
+              <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" title="Font Size">
+                <i class="fas fa-text-height"></i>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" data-edit="fontSize 5">Huge</a></li>
+                <li><a class="dropdown-item" data-edit="fontSize 3">Normal</a></li>
+                <li><a class="dropdown-item" data-edit="fontSize 1">Small</a></li>
+              </ul>
+            </div>
+
+            <div class="btn-group btn-group-sm me-2">
+              <button type="button" class="btn btn-outline-secondary" data-edit="bold" title="Bold"><i class="fas fa-bold"></i></button>
+              <button type="button" class="btn btn-outline-secondary" data-edit="italic" title="Italic"><i class="fas fa-italic"></i></button>
+              <button type="button" class="btn btn-outline-secondary" data-edit="underline" title="Underline"><i class="fas fa-underline"></i></button>
+            </div>
+
+            <div class="btn-group btn-group-sm me-2">
+              <button type="button" class="btn btn-outline-secondary" data-edit="insertunorderedlist" title="Bullet list"><i class="fas fa-list-ul"></i></button>
+              <button type="button" class="btn btn-outline-secondary" data-edit="insertorderedlist" title="Number list"><i class="fas fa-list-ol"></i></button>
+            </div>
+
+            <div class="btn-group btn-group-sm me-2">
+              <button type="button" class="btn btn-outline-secondary" data-edit="justifyleft" title="Align Left"><i class="fas fa-align-left"></i></button>
+              <button type="button" class="btn btn-outline-secondary" data-edit="justifycenter" title="Center"><i class="fas fa-align-center"></i></button>
+              <button type="button" class="btn btn-outline-secondary" data-edit="justifyright" title="Align Right"><i class="fas fa-align-right"></i></button>
+            </div>
+
+            <div class="btn-group btn-group-sm">
+              <button type="button" class="btn btn-outline-secondary" data-edit="undo" title="Undo"><i class="fas fa-undo"></i></button>
+              <button type="button" class="btn btn-outline-secondary" data-edit="redo" title="Redo"><i class="fas fa-redo"></i></button>
+            </div>
           </div>
 
-          <div class="btn-group">
-            <a class="btn" title="Insert picture (or just drag & drop)" id="pictureBtn"><i class="fas fa-picture-o"></i></a>
-            <input type="file" data-role="magic-overlay" data-bs-target="#pictureBtn" data-edit="insertImage" />
+          <div id="editor" class="editor-wrapper form-control" contenteditable="true" style="min-height: 200px;">
+            <p>Type your message here...</p>
           </div>
-
-          <div class="btn-group">
-            <a class="btn" data-edit="undo" title="Undo (Ctrl/Cmd+Z)"><i class="fas fa-undo"></i></a>
-            <a class="btn" data-edit="redo" title="Redo (Ctrl/Cmd+Y)"><i class="fas fa-repeat"></i></a>
-          </div>
-        </div>
-
-        <div id="editor" class="editor-wrapper"></div>
+        </form>
       </div>
 
       <div class="compose-footer">
-        <button id="send" class="btn btn-sm btn-success" type="button">Send</button>
+        <div class="d-flex justify-content-between">
+          <div>
+            <input type="file" id="attach-file" class="d-none" multiple>
+            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="document.getElementById('attach-file').click()">
+              <i class="fas fa-paperclip"></i> Attach
+            </button>
+          </div>
+          <div>
+            <button type="button" class="btn btn-sm btn-outline-secondary me-2">Draft</button>
+            <button id="send" class="btn btn-sm btn-success" type="button">
+              <i class="fas fa-paper-plane"></i> Send
+            </button>
+          </div>
+        </div>
       </div>
     </div>
-    <!-- /compose -->    <!-- Compiled JavaScript (includes jQuery, Bootstrap, and all vendor scripts) -->
+    <!-- /compose modal -->
     
-
+    <style>
+      .mail-item {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+        border-bottom: 1px solid #eee;
+        transition: background-color 0.2s ease;
+      }
+      
+      .mail-item:hover {
+        background-color: #f8f9fa;
+        text-decoration: none;
+        color: inherit;
+      }
+      
+      .mail-item.active {
+        background-color: #e3f2fd;
+        border-left: 3px solid #2196f3;
+      }
+      
+      .mail_list {
+        padding: 15px;
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      
+      .mail_list .left {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+        min-width: 30px;
+      }
+      
+      .mail_list .right h3 {
+        font-size: 14px;
+        margin: 0 0 5px 0;
+        font-weight: 600;
+      }
+      
+      .mail_list .right p {
+        font-size: 12px;
+        color: #666;
+        margin: 0;
+        line-height: 1.4;
+      }
+      
+      .email-subject {
+        color: #333;
+        font-size: 18px;
+        font-weight: 600;
+        margin: 15px 0;
+      }
+      
+      .sender-info img {
+        object-fit: cover;
+      }
+      
+      .attachment-item {
+        text-align: center;
+        padding: 15px;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        margin-bottom: 15px;
+      }
+      
+      .attachment-item .atch-thumb img {
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        margin-bottom: 10px;
+      }
+      
+      .file-name {
+        font-size: 12px;
+        font-weight: 600;
+        margin: 5px 0;
+        word-break: break-all;
+      }
+      
+      .file-size {
+        font-size: 10px;
+      }
+      
+      .compose {
+        position: fixed;
+        bottom: 0;
+        right: 20px;
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 8px 8px 0 0;
+        box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+        z-index: 1000;
+        display: none;
+        min-width: 400px;
+        max-width: 500px;
+      }
+      
+      .compose-header {
+        background: #f8f9fa;
+        padding: 15px;
+        border-bottom: 1px solid #ddd;
+        border-radius: 8px 8px 0 0;
+      }
+      
+      .compose-body {
+        padding: 20px;
+        max-height: 500px;
+        overflow-y: auto;
+      }
+      
+      .compose-footer {
+        padding: 15px;
+        border-top: 1px solid #ddd;
+        background: #f8f9fa;
+      }
+      
+      .editor-wrapper {
+        border: 1px solid #ced4da;
+        border-radius: 0.375rem;
+        padding: 10px;
+        min-height: 150px;
+        background: white;
+      }
+      
+      .btn-toolbar .btn-group {
+        margin-bottom: 5px;
+      }
+      
+      @media (max-width: 768px) {
+        .compose {
+          left: 10px;
+          right: 10px;
+          width: auto;
+          min-width: auto;
+        }
+        
+        .mail_list_column {
+          margin-bottom: 20px;
+        }
+      }
+    </style>
   </body>
 </html>

@@ -7,8 +7,291 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Gentelella Alela! | </title>    <!-- Compiled CSS (includes Bootstrap, Font Awesome, and all vendor styles) -->
+    <title>Gentelella Alela! | </title>
+
+    <!-- Compiled CSS (includes Bootstrap, Font Awesome, and all vendor styles) -->
     <script type="module" src="/src/main-form-basic.js"></script>
+
+    <!-- Custom Ion Range Slider Styling -->
+    <style>
+        /* Custom Ion Range Slider Styling for Gentelella Template */
+        .irs {
+            height: 80px; /* Increased height to prevent overlapping */
+            margin-bottom: 25px; /* More bottom margin */
+            margin-top: 15px; /* Top margin for labels */
+            position: relative;
+        }
+        
+        .irs--gentelella .irs-line {
+            height: 6px;
+            background: linear-gradient(to right, #E8E9EA 0%, #DADEE4 100%);
+            border-radius: 3px;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+            top: 35px; /* Position line lower to make room for labels */
+        }
+        
+        .irs--gentelella .irs-bar {
+            height: 6px;
+            background: linear-gradient(to right, #26B99A 0%, #2BBFAB 100%);
+            border-radius: 3px;
+            box-shadow: 0 1px 3px rgba(38, 185, 154, 0.3);
+            top: 35px; /* Match line position */
+        }
+        
+        .irs--gentelella .irs-bar--single {
+            background: linear-gradient(to right, #5A738E 0%, #6C84A0 100%);
+            box-shadow: 0 1px 3px rgba(90, 115, 142, 0.3);
+        }
+        
+        .irs--gentelella .irs-handle {
+            width: 22px;
+            height: 22px;
+            background: #FFFFFF;
+            border: 3px solid #26B99A;
+            border-radius: 50%;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.15), 0 1px 3px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            top: 24px; /* Position handle to align with line */
+        }
+        
+        .irs--gentelella .irs-handle:hover {
+            transform: scale(1.1);
+            border-color: #2BBFAB;
+            box-shadow: 0 4px 12px rgba(38, 185, 154, 0.3), 0 2px 6px rgba(0,0,0,0.1);
+        }
+        
+        .irs--gentelella .irs-handle.state_hover,
+        .irs--gentelella .irs-handle:active {
+            background: #26B99A;
+            border-color: #26B99A;
+        }
+        
+        .irs--gentelella .irs-min,
+        .irs--gentelella .irs-max {
+            background: #F0F3F4;
+            color: #73879C;
+            font-size: 10px;
+            padding: 2px 4px;
+            border-radius: 3px;
+            border: 1px solid #E6E9ED;
+            font-weight: 500;
+            top: 55px; /* Position further below to avoid overlap */
+            height: 16px;
+            line-height: 12px;
+            white-space: nowrap;
+            min-width: 30px;
+            text-align: center;
+        }
+        
+        .irs--gentelella .irs-min {
+            left: 0;
+            transform: translateX(0);
+        }
+        
+        .irs--gentelella .irs-max {
+            right: 0;
+            transform: translateX(0);
+        }
+        
+        .irs--gentelella .irs-from,
+        .irs--gentelella .irs-to,
+        .irs--gentelella .irs-single {
+            background: #26B99A;
+            color: white;
+            font-size: 11px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            box-shadow: 0 2px 6px rgba(38, 185, 154, 0.3);
+            border: none;
+            top: 5px; /* Position above the line */
+            height: 20px;
+            line-height: 12px;
+            white-space: nowrap;
+            min-width: 40px;
+            text-align: center;
+        }
+        
+        .irs--gentelella .irs-from:before,
+        .irs--gentelella .irs-to:before,
+        .irs--gentelella .irs-single:before {
+            border-top-color: #26B99A;
+            top: 20px; /* Adjust arrow position */
+        }
+        
+        .irs--gentelella .irs-grid {
+            top: 55px; /* Position grid at same level as min/max */
+            margin: 0 20px; /* Add margin to create space from edges */
+            height: 20px;
+        }
+        
+        .irs--gentelella .irs-grid-pol {
+            background: #D1D5DB;
+            height: 6px; /* Shorter grid lines */
+            width: 1px;
+        }
+        
+        .irs--gentelella .irs-grid-text {
+            color: #73879C;
+            font-size: 9px;
+            font-weight: 500;
+            padding-top: 8px;
+            white-space: nowrap;
+        }
+        
+        /* Hide duplicate grid text at edges to prevent overlap with min/max */
+        .irs--gentelella .irs-grid-text:first-child,
+        .irs--gentelella .irs-grid-text:last-child {
+            display: none !important;
+        }
+        
+        /* Hide grid lines at edges too to prevent visual clutter */
+        .irs--gentelella .irs-grid-pol:first-child,
+        .irs--gentelella .irs-grid-pol:last-child {
+            display: none !important;
+        }
+        
+        /* Slider container improvements */
+        .slider-container {
+            padding: 20px 15px 25px 15px; /* Extra bottom padding */
+            margin-bottom: 15px;
+            background: #FAFAFA;
+            border-radius: 6px;
+            border: 1px solid #E6E9ED;
+            overflow: hidden; /* Prevent any overflow issues */
+        }
+        
+        .slider-container .form-label {
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .slider-container .text-muted {
+            margin-top: 15px; /* More space from slider */
+            margin-bottom: 0;
+        }
+        
+        /* Special styling for different slider types */
+        .price-slider .irs--gentelella .irs-bar {
+            background: linear-gradient(to right, #1ABB9C 0%, #26B99A 100%);
+        }
+        
+        .price-slider .irs--gentelella .irs-from,
+        .price-slider .irs--gentelella .irs-to {
+            background: #1ABB9C;
+            box-shadow: 0 2px 6px rgba(26, 187, 156, 0.3);
+        }
+        
+        .price-slider .irs--gentelella .irs-from:before,
+        .price-slider .irs--gentelella .irs-to:before {
+            border-top-color: #1ABB9C;
+        }
+        
+        .percentage-slider .irs--gentelella .irs-bar {
+            background: linear-gradient(to right, #3498DB 0%, #5DADE2 100%);
+        }
+        
+        .percentage-slider .irs--gentelella .irs-single {
+            background: #3498DB;
+            box-shadow: 0 2px 6px rgba(52, 152, 219, 0.3);
+        }
+        
+        .percentage-slider .irs--gentelella .irs-single:before {
+            border-top-color: #3498DB;
+        }
+        
+        .age-slider .irs--gentelella .irs-bar {
+            background: linear-gradient(to right, #9B59B6 0%, #BB8FCE 100%);
+        }
+        
+        .age-slider .irs--gentelella .irs-from,
+        .age-slider .irs--gentelella .irs-to {
+            background: #9B59B6;
+            box-shadow: 0 2px 6px rgba(155, 89, 182, 0.3);
+        }
+        
+        .age-slider .irs--gentelella .irs-from:before,
+        .age-slider .irs--gentelella .irs-to:before {
+            border-top-color: #9B59B6;
+        }
+        
+        .temperature-slider .irs--gentelella .irs-bar {
+            background: linear-gradient(to right, #E67E22 0%, #F39C12 100%);
+        }
+        
+        .temperature-slider .irs--gentelella .irs-from,
+        .temperature-slider .irs--gentelella .irs-to {
+            background: #E67E22;
+            box-shadow: 0 2px 6px rgba(230, 126, 34, 0.3);
+        }
+        
+        .temperature-slider .irs--gentelella .irs-from:before,
+        .temperature-slider .irs--gentelella .irs-to:before {
+            border-top-color: #E67E22;
+        }
+        
+        .time-slider .irs--gentelella .irs-bar {
+            background: linear-gradient(to right, #2C3E50 0%, #34495E 100%);
+        }
+        
+        .time-slider .irs--gentelella .irs-from,
+        .time-slider .irs--gentelella .irs-to {
+            background: #2C3E50;
+            box-shadow: 0 2px 6px rgba(44, 62, 80, 0.3);
+        }
+        
+        .time-slider .irs--gentelella .irs-from:before,
+        .time-slider .irs--gentelella .irs-to:before {
+            border-top-color: #2C3E50;
+        }
+        
+        .memory-slider .irs--gentelella .irs-bar {
+            background: linear-gradient(to right, #E74C3C 0%, #EC7063 100%);
+        }
+        
+        .memory-slider .irs--gentelella .irs-single {
+            background: #E74C3C;
+            box-shadow: 0 2px 6px rgba(231, 76, 60, 0.3);
+        }
+        
+        .memory-slider .irs--gentelella .irs-single:before {
+            border-top-color: #E74C3C;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .irs {
+                height: 90px;
+            }
+            
+            .irs--gentelella .irs-from,
+            .irs--gentelella .irs-to,
+            .irs--gentelella .irs-single {
+                font-size: 10px;
+                padding: 3px 6px;
+            }
+            
+            .slider-container {
+                padding: 15px 10px;
+            }
+        }
+
+        /* Hide legacy Cropper.js v1 demo that is no longer needed */
+        .container.cropper { display: none !important; }
+
+        /* Ensure Cropper custom elements fill the designated area */
+        #cropper-container cropper-canvas,
+        #cropper-container cropper-image,
+        #cropper-container cropper-selection,
+        #cropper-container cropper-shade {
+            width: 100% !important;
+            height: 100% !important;
+        }
+    </style>
+
+    <!-- Bootstrap CSS -->
+    <!-- Cropper.js CSS is now bundled with Vite - CDN reference removed -->
   </head>
 
   <body class="nav-md">
@@ -65,7 +348,7 @@
                       <li><a href="media_gallery.html">Media Gallery</a></li>
                       <li><a href="typography.html">Typography</a></li>
                       <li><a href="icons.html">Icons</a></li>
-                      <li><a href="glyphicons.html">Glyphicons</a></li>
+
                       <li><a href="widgets.html">Widgets</a></li>
                       <li><a href="invoice.html">Invoice</a></li>
                       <li><a href="inbox.html">Inbox</a></li>
@@ -134,7 +417,7 @@
                         </li>
                     </ul>
                   </li>                  
-                  <li><a href="javascript:void(0)"><i class="fas fa-laptop"></i> Landing Page <span class="label label-success pull-right">Coming Soon</span></a></li>
+                  <li><a href="javascript:void(0)"><i class="fas fa-laptop"></i> Landing Page <span class="badge bg-success float-end">Coming Soon</span></a></li>
                 </ul>
               </div>
 
@@ -143,16 +426,16 @@
 
             <!-- /menu footer buttons -->
             <div class="sidebar-footer hidden-small">
-              <a data-bs-toggle="tooltip" data-placement="top" title="Settings">
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Settings">
                 <span class="fas fa-cog" aria-hidden="true"></span>
               </a>
-              <a data-bs-toggle="tooltip" data-placement="top" title="FullScreen">
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="FullScreen">
                 <span class="fas fa-expand" aria-hidden="true"></span>
               </a>
-              <a data-bs-toggle="tooltip" data-placement="top" title="Lock">
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Lock">
                 <span class="fas fa-eye-slash" aria-hidden="true"></span>
               </a>
-              <a data-bs-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Logout" href="login.html">
                 <span class="fas fa-power-off" aria-hidden="true"></span>
               </a>
             </div>
@@ -266,7 +549,7 @@
                   <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search for...">
                     <span class="input-group-btn">
-                      <button class="btn btn-default" type="button">Go!</button>
+                      <button class="btn btn-outline-secondary" type="button">Go!</button>
                     </span>
                   </div>
                 </div>
@@ -303,14 +586,14 @@
                       <div class="form-group row">
                         <label class="control-label col-md-3 col-sm-3 col-xs-3">Date Mask</label>
                         <div class="col-md-9 col-sm-9 col-xs-9">
-                          <input type="text" class="form-control" data-inputmask="'mask': '99/99/9999'">
+                                                      <input type="text" class="form-control" data-inputmask="'mask': '99/99/9999'">
                           <span class="fas fa-calendar form-control-feedback right" aria-hidden="true"></span>
                         </div>
                       </div>
                       <div class="form-group row">
                         <label class="control-label col-md-3 col-sm-3 col-xs-3">Phone mask</label>
                         <div class="col-md-9 col-sm-9 col-xs-9">
-                          <input type="text" class="form-control" data-inputmask="'mask' : '(999) 999-9999'">
+                          <input type="text" class="form-control" data-inputmask="'mask': '(999) 999-9999'">
                           <span class="fas fa-phone form-control-feedback right" aria-hidden="true"></span>
                         </div>
                       </div>
@@ -324,21 +607,21 @@
                       <div class="form-group row">
                         <label class="control-label col-md-3 col-sm-3 col-xs-3">Serial Number</label>
                         <div class="col-md-9 col-sm-9 col-xs-9">
-                          <input type="text" class="form-control" data-inputmask="'mask' : '****-****-****-****-****-***'">
+                          <input type="text" class="form-control" data-inputmask="'mask': '****-****-****-****-****-***'">
                           <span class="fas fa-barcode form-control-feedback right" aria-hidden="true"></span>
                         </div>
                       </div>
                       <div class="form-group row">
                         <label class="control-label col-md-3 col-sm-3 col-xs-3">TaxID Mask</label>
                         <div class="col-md-9 col-sm-9 col-xs-9">
-                          <input type="text" class="form-control" data-inputmask="'mask' : '99-99999999'">
+                          <input type="text" class="form-control" data-inputmask="'mask': '99-99999999'">
                           <span class="fas fa-receipt form-control-feedback right" aria-hidden="true"></span>
                         </div>
                       </div>
                       <div class="form-group row">
                         <label class="control-label col-md-3 col-sm-3 col-xs-3">Credit Card Mask</label>
                         <div class="col-md-9 col-sm-9 col-xs-9">
-                          <input type="text" class="form-control" data-inputmask="'mask' : '9999-9999-9999-9999'">
+                          <input type="text" class="form-control" data-inputmask="'mask': '9999-9999-9999-9999'">
                           <span class="fas fa-credit-card form-control-feedback right" aria-hidden="true"></span>
                         </div>
                       </div>
@@ -475,6 +758,40 @@
               </div>
               <!-- /modern color picker -->
 
+              <!-- image cropper (Cropper.js v2) -->
+              <div class="col-md-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Image Cropper <small>Powered by Cropper.js v2</small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
+                      </li>
+                      <li><a class="btn-close-link"><i class="fas fa-times"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div class="row g-3">
+                      <!-- Source image -->
+                      <div id="cropper-container" class="col-md-8 text-center" style="height:450px;">
+                        <img id="cropper-source" src="/images/cropper.jpg" alt="Source" class="img-fluid rounded shadow-sm" style="width:100%; height:auto; max-height:100%; object-fit:contain;">
+                      </div>
+                      <!-- Preview + controls -->
+                      <div class="col-md-4 d-flex flex-column align-items-center gap-3">
+                        <div id="cropper-preview" class="border rounded w-100" style="height: 300px; background: #f7f7f7; display: flex; align-items: center; justify-content: center; overflow: hidden;"><span class="text-muted small">Crop preview</span></div>
+                        <div class="btn-group w-100" role="group" aria-label="Cropper actions">
+                          <button id="cropper-rotate" type="button" class="btn btn-outline-secondary"><i class="fas fa-sync-alt me-1"></i>Rotate 90°</button>
+                          <button id="cropper-reset" type="button" class="btn btn-outline-warning"><i class="fas fa-undo me-1"></i>Reset</button>
+                          <button id="cropper-download" type="button" class="btn btn-outline-success"><i class="fas fa-download me-1"></i>Download</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /image cropper (Cropper.js v2) -->
+
               <!-- form input knob -->
               <div class="col-md-12">
                 <div class="x_panel">
@@ -538,7 +855,7 @@
                 <!-- form date pickers -->
                 <div class="x_panel" style="">
                   <div class="x_title">
-                    <h2>Date Pickers <small> Available with multiple designs</small></h2>
+                    <h2>Date Range Pickers <small>Functional date and time range selection</small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
                       </li>
@@ -558,135 +875,177 @@
                   </div>
                   <div class="x_content">
 
-
-                    <div class="well" style="overflow: auto">
-                      <div class="col-md-4">
-                        <div id="reportrange_right" class="pull-left" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
-                          <i class="fas fa-calendar"></i>
-                          <span>December 30, 2014 - January 28, 2015</span> <b class="caret"></b>
+                    <!-- Modern Date Range Examples -->
+                    <div class="row mb-4">
+                      <div class="col-md-6">
+                        <h5>Date Range Picker (Start - End)</h5>
+                        <div class="d-flex gap-2">
+                          <div class='input-group' id='startDateRange' data-td-target-input="nearest" data-td-target-toggle="nearest">
+                            <input type='text' class="form-control" data-td-target="#startDateRange" placeholder="Start Date" />
+                            <span class="input-group-text" data-td-target="#startDateRange" data-td-toggle="datetimepicker">
+                               <span class="fas fa-calendar"></span>
+                            </span>
+                          </div>
+                          <span class="align-self-center">to</span>
+                          <div class='input-group' id='endDateRange' data-td-target-input="nearest" data-td-target-toggle="nearest">
+                            <input type='text' class="form-control" data-td-target="#endDateRange" placeholder="End Date" />
+                            <span class="input-group-text" data-td-target="#endDateRange" data-td-toggle="datetimepicker">
+                               <span class="fas fa-calendar"></span>
+                            </span>
+                          </div>
                         </div>
                       </div>
-                      <div class="col-md-4">
-                        <p>Date Range Picker with opening to right and left</p>
-                      </div>
-                      <div class="col-md-4">
-                        <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
-                          <i class="fas fa-calendar"></i>
-                          <span>December 30, 2014 - January 28, 2015</span> <b class="caret"></b>
+
+                      <div class="col-md-6">
+                        <h5>DateTime Range Picker</h5>
+                        <div class="d-flex gap-2">
+                          <div class='input-group' id='startDateTimeRange' data-td-target-input="nearest" data-td-target-toggle="nearest">
+                            <input type='text' class="form-control" data-td-target="#startDateTimeRange" placeholder="Start DateTime" />
+                            <span class="input-group-text" data-td-target="#startDateTimeRange" data-td-toggle="datetimepicker">
+                               <span class="fas fa-calendar-plus"></span>
+                            </span>
+                          </div>
+                          <span class="align-self-center">to</span>
+                          <div class='input-group' id='endDateTimeRange' data-td-target-input="nearest" data-td-target-toggle="nearest">
+                            <input type='text' class="form-control" data-td-target="#endDateTimeRange" placeholder="End DateTime" />
+                            <span class="input-group-text" data-td-target="#endDateTimeRange" data-td-toggle="datetimepicker">
+                               <span class="fas fa-calendar-plus"></span>
+                            </span>
+                          </div>
                         </div>
                       </div>
                     </div>
 
-
-                    <div class="well" style="overflow: auto">
-                      <div class="col-md-4">
-                        Date Range Picker
-                        <form class="">
-                          <fieldset>
-                            <div class="control-group">
-                              <div class="controls">
-                                <div class="input-prepend input-group">
-                                  <span class="add-on input-group-addon"><i class="fas fa-calendar"></i></span>
-                                  <input type="text" style="width: 200px" name="reservation" id="reservation" class="form-control" value="01/01/2016 - 01/25/2016" />
-                                </div>
-                              </div>
-                            </div>
-                          </fieldset>
-                        </form>
+                    <!-- Input Masks Section -->
+                    <div class="row mb-4">
+                      <div class="col-md-12">
+                        <h5>Input Masks <small>Formatted input controls</small></h5>
                       </div>
-
-                      <div class="col-md-5">
-                        Date and Time
-                        <form class="">
-                          <fieldset>
-                            <div class="control-group">
-                              <div class="controls">
-                                <div class="input-prepend input-group">
-                                  <span class="add-on input-group-addon"><i class="fas fa-calendar"></i></span>
-                                  <input type="text" name="reservation-time" id="reservation-time" class="form-control" value="01/01/2016 - 01/25/2016" />
-                                </div>
-                              </div>
-                            </div>
-                          </fieldset>
-                        </form>
+                      <div class="col-md-4 mb-3">
+                        <label class="form-label">Date Mask (MM/DD/YYYY)</label>
+                        <input type="text" class="form-control" data-inputmask="'mask': '99/99/9999'" placeholder="MM/DD/YYYY">
+                      </div>
+                      <div class="col-md-4 mb-3">
+                        <label class="form-label">Phone Number</label>
+                        <input type="text" class="form-control" data-inputmask="'mask': '(999) 999-9999'" placeholder="(999) 999-9999">
+                      </div>
+                      <div class="col-md-4 mb-3">
+                        <label class="form-label">Credit Card</label>
+                        <input type="text" class="form-control" data-inputmask="'mask': '9999-9999-9999-9999'" placeholder="9999-9999-9999-9999">
+                      </div>
+                      <div class="col-md-4 mb-3">
+                        <label class="form-label">Serial Number</label>
+                        <input type="text" class="form-control" data-inputmask="'mask': '****-****-****-****-****-***'" placeholder="Serial Number">
+                      </div>
+                      <div class="col-md-4 mb-3">
+                        <label class="form-label">Tax ID</label>
+                        <input type="text" class="form-control" data-inputmask="'mask': '99-99999999'" placeholder="99-99999999">
+                      </div>
+                      <div class="col-md-4 mb-3">
+                        <label class="form-label">Custom Mask</label>
+                        <input type="text" class="form-control" data-inputmask="'mask': '99-999999'" placeholder="99-999999">
                       </div>
                     </div>
 
-                    <div class="calendar-exibit">
-                      <div class="col-md-3">
-                       <div class="daterangepicker dropdown-menu ltr single opensright show-calendar picker_1 xdisplay"><div class="calendar left single" style="display: block;"><div class="daterangepicker_input"><input class="input-mini form-control active" type="text" name="daterangepicker_start" value="" style="display: none;"><i class="fas fa-calendar" style="display: none;"></i><div class="calendar-time" style="display: none;"><div></div><i class="fas fa-clock"></i></div></div><div class="calendar-table"><table class="table-condensed"><thead><tr><th class="prev available"><i class="fas fa-chevron-left"></i></th><th colspan="5" class="month">Oct 2016</th><th class="next available"><i class="fas fa-chevron-right"></i></th></tr><tr><th>Su</th><th>Mo</th><th>Tu</th><th>We</th><th>Th</th><th>Fr</th><th>Sa</th></tr></thead><tbody><tr><td class="weekend off available" data-title="r0c0">25</td><td class="off available" data-title="r0c1">26</td><td class="off available" data-title="r0c2">27</td><td class="off available" data-title="r0c3">28</td><td class="off available" data-title="r0c4">29</td><td class="off available" data-title="r0c5">30</td><td class="weekend available" data-title="r0c6">1</td></tr><tr><td class="weekend available" data-title="r1c0">2</td><td class="available" data-title="r1c1">3</td><td class="available" data-title="r1c2">4</td><td class="available" data-title="r1c3">5</td><td class="available" data-title="r1c4">6</td><td class="available" data-title="r1c5">7</td><td class="weekend available" data-title="r1c6">8</td></tr><tr><td class="weekend available" data-title="r2c0">9</td><td class="available" data-title="r2c1">10</td><td class="available" data-title="r2c2">11</td><td class="available" data-title="r2c3">12</td><td class="available" data-title="r2c4">13</td><td class="available" data-title="r2c5">14</td><td class="weekend available" data-title="r2c6">15</td></tr><tr><td class="weekend available" data-title="r3c0">16</td><td class="available" data-title="r3c1">17</td><td class="today active start-date active end-date available" data-title="r3c2">18</td><td class="available" data-title="r3c3">19</td><td class="available" data-title="r3c4">20</td><td class="available" data-title="r3c5">21</td><td class="weekend available" data-title="r3c6">22</td></tr><tr><td class="weekend available" data-title="r4c0">23</td><td class="available" data-title="r4c1">24</td><td class="available" data-title="r4c2">25</td><td class="available" data-title="r4c3">26</td><td class="available" data-title="r4c4">27</td><td class="available" data-title="r4c5">28</td><td class="weekend available" data-title="r4c6">29</td></tr><tr><td class="weekend available" data-title="r5c0">30</td><td class="available" data-title="r5c1">31</td><td class="off available" data-title="r5c2">1</td><td class="off available" data-title="r5c3">2</td><td class="off available" data-title="r5c4">3</td><td class="off available" data-title="r5c5">4</td><td class="weekend off available" data-title="r5c6">5</td></tr></tbody></table></div></div><div class="calendar right" style="display: none;"><div class="daterangepicker_input"><input class="input-mini form-control" type="text" name="daterangepicker_end" value="" style="display: none;"><i class="fas fa-calendar" style="display: none;"></i><div class="calendar-time" style="display: none;"><div></div><i class="fas fa-clock"></i></div></div><div class="calendar-table"><table class="table-condensed"><thead><tr><th></th><th colspan="5" class="month">Nov 2016</th><th class="next available"><i class="fas fa-chevron-right"></i></th></tr><tr><th>Su</th><th>Mo</th><th>Tu</th><th>We</th><th>Th</th><th>Fr</th><th>Sa</th></tr></thead><tbody><tr><td class="weekend off available" data-title="r0c0">30</td><td class="off available" data-title="r0c1">31</td><td class="available" data-title="r0c2">1</td><td class="available" data-title="r0c3">2</td><td class="available" data-title="r0c4">3</td><td class="available" data-title="r0c5">4</td><td class="weekend available" data-title="r0c6">5</td></tr><tr><td class="weekend available" data-title="r1c0">6</td><td class="available" data-title="r1c1">7</td><td class="available" data-title="r1c2">8</td><td class="available" data-title="r1c3">9</td><td class="available" data-title="r1c4">10</td><td class="available" data-title="r1c5">11</td><td class="weekend available" data-title="r1c6">12</td></tr><tr><td class="weekend available" data-title="r2c0">13</td><td class="available" data-title="r2c1">14</td><td class="available" data-title="r2c2">15</td><td class="available" data-title="r2c3">16</td><td class="available" data-title="r2c4">17</td><td class="available" data-title="r2c5">18</td><td class="weekend available" data-title="r2c6">19</td></tr><tr><td class="weekend available" data-title="r3c0">20</td><td class="available" data-title="r3c1">21</td><td class="available" data-title="r3c2">22</td><td class="available" data-title="r3c3">23</td><td class="available" data-title="r3c4">24</td><td class="available" data-title="r3c5">25</td><td class="weekend available" data-title="r3c6">26</td></tr><tr><td class="weekend available" data-title="r4c0">27</td><td class="available" data-title="r4c1">28</td><td class="available" data-title="r4c2">29</td><td class="available" data-title="r4c3">30</td><td class="off available" data-title="r4c4">1</td><td class="off available" data-title="r4c5">2</td><td class="weekend off available" data-title="r4c6">3</td></tr><tr><td class="weekend off available" data-title="r5c0">4</td><td class="off available" data-title="r5c1">5</td><td class="off available" data-title="r5c2">6</td><td class="off available" data-title="r5c3">7</td><td class="off available" data-title="r5c4">8</td><td class="off available" data-title="r5c5">9</td><td class="weekend off available" data-title="r5c6">10</td></tr></tbody></table></div></div><div class="ranges" style="display: none;"><div class="range_inputs"><button class="applyBtn btn btn-sm btn-success" type="button">Apply</button> <button class="cancelBtn btn btn-sm btn-default" type="button">Cancel</button></div></div></div>
-
-
-                        <fieldset>
-                          <div class="control-group">
-                            <div class="controls">
-                              <div class="col-md-11 xdisplay_inputx form-group row has-feedback">
-                                <input type="text" class="form-control has-feedback-left" id="single_cal1" placeholder="First Name" aria-describedby="inputSuccess2Status">
-                                <span class="fas fa-calendar form-control-feedback left" aria-hidden="true"></span>
-                                <span id="inputSuccess2Status" class="sr-only">(success)</span>
-                              </div>
-                            </div>
-                          </div>
-                        </fieldset>
-
+                    <!-- Color Pickers Section -->
+                    <div class="row mb-4">
+                      <div class="col-md-12">
+                        <h5>Modern Color Pickers <small>Multiple themes and formats</small></h5>
                       </div>
-
-                      <div class="col-md-3">
-                         <div class="daterangepicker dropdown-menu ltr single opensright show-calendar picker_2 xdisplay"><div class="calendar left single" style="display: block;"><div class="daterangepicker_input"><input class="input-mini form-control active" type="text" name="daterangepicker_start" value="" style="display: none;"><i class="fas fa-calendar" style="display: none;"></i><div class="calendar-time" style="display: none;"><div></div><i class="fas fa-clock"></i></div></div><div class="calendar-table"><table class="table-condensed"><thead><tr><th class="prev available"><i class="fas fa-chevron-left"></i></th><th colspan="5" class="month">Oct 2016</th><th class="next available"><i class="fas fa-chevron-right"></i></th></tr><tr><th>Su</th><th>Mo</th><th>Tu</th><th>We</th><th>Th</th><th>Fr</th><th>Sa</th></tr></thead><tbody><tr><td class="weekend off available" data-title="r0c0">25</td><td class="off available" data-title="r0c1">26</td><td class="off available" data-title="r0c2">27</td><td class="off available" data-title="r0c3">28</td><td class="off available" data-title="r0c4">29</td><td class="off available" data-title="r0c5">30</td><td class="weekend available" data-title="r0c6">1</td></tr><tr><td class="weekend available" data-title="r1c0">2</td><td class="available" data-title="r1c1">3</td><td class="available" data-title="r1c2">4</td><td class="available" data-title="r1c3">5</td><td class="available" data-title="r1c4">6</td><td class="available" data-title="r1c5">7</td><td class="weekend available" data-title="r1c6">8</td></tr><tr><td class="weekend available" data-title="r2c0">9</td><td class="available" data-title="r2c1">10</td><td class="available" data-title="r2c2">11</td><td class="available" data-title="r2c3">12</td><td class="available" data-title="r2c4">13</td><td class="available" data-title="r2c5">14</td><td class="weekend available" data-title="r2c6">15</td></tr><tr><td class="weekend available" data-title="r3c0">16</td><td class="available" data-title="r3c1">17</td><td class="today active start-date active end-date available" data-title="r3c2">18</td><td class="available" data-title="r3c3">19</td><td class="available" data-title="r3c4">20</td><td class="available" data-title="r3c5">21</td><td class="weekend available" data-title="r3c6">22</td></tr><tr><td class="weekend available" data-title="r4c0">23</td><td class="available" data-title="r4c1">24</td><td class="available" data-title="r4c2">25</td><td class="available" data-title="r4c3">26</td><td class="available" data-title="r4c4">27</td><td class="available" data-title="r4c5">28</td><td class="weekend available" data-title="r4c6">29</td></tr><tr><td class="weekend available" data-title="r5c0">30</td><td class="available" data-title="r5c1">31</td><td class="off available" data-title="r5c2">1</td><td class="off available" data-title="r5c3">2</td><td class="off available" data-title="r5c4">3</td><td class="off available" data-title="r5c5">4</td><td class="weekend off available" data-title="r5c6">5</td></tr></tbody></table></div></div><div class="calendar right" style="display: none;"><div class="daterangepicker_input"><input class="input-mini form-control" type="text" name="daterangepicker_end" value="" style="display: none;"><i class="fas fa-calendar" style="display: none;"></i><div class="calendar-time" style="display: none;"><div></div><i class="fas fa-clock"></i></div></div><div class="calendar-table"><table class="table-condensed"><thead><tr><th></th><th colspan="5" class="month">Nov 2016</th><th class="next available"><i class="fas fa-chevron-right"></i></th></tr><tr><th>Su</th><th>Mo</th><th>Tu</th><th>We</th><th>Th</th><th>Fr</th><th>Sa</th></tr></thead><tbody><tr><td class="weekend off available" data-title="r0c0">30</td><td class="off available" data-title="r0c1">31</td><td class="available" data-title="r0c2">1</td><td class="available" data-title="r0c3">2</td><td class="available" data-title="r0c4">3</td><td class="available" data-title="r0c5">4</td><td class="weekend available" data-title="r0c6">5</td></tr><tr><td class="weekend available" data-title="r1c0">6</td><td class="available" data-title="r1c1">7</td><td class="available" data-title="r1c2">8</td><td class="available" data-title="r1c3">9</td><td class="available" data-title="r1c4">10</td><td class="available" data-title="r1c5">11</td><td class="weekend available" data-title="r1c6">12</td></tr><tr><td class="weekend available" data-title="r2c0">13</td><td class="available" data-title="r2c1">14</td><td class="available" data-title="r2c2">15</td><td class="available" data-title="r2c3">16</td><td class="available" data-title="r2c4">17</td><td class="available" data-title="r2c5">18</td><td class="weekend available" data-title="r2c6">19</td></tr><tr><td class="weekend available" data-title="r3c0">20</td><td class="available" data-title="r3c1">21</td><td class="available" data-title="r3c2">22</td><td class="available" data-title="r3c3">23</td><td class="available" data-title="r3c4">24</td><td class="available" data-title="r3c5">25</td><td class="weekend available" data-title="r3c6">26</td></tr><tr><td class="weekend available" data-title="r4c0">27</td><td class="available" data-title="r4c1">28</td><td class="available" data-title="r4c2">29</td><td class="available" data-title="r4c3">30</td><td class="off available" data-title="r4c4">1</td><td class="off available" data-title="r4c5">2</td><td class="weekend off available" data-title="r4c6">3</td></tr><tr><td class="weekend off available" data-title="r5c0">4</td><td class="off available" data-title="r5c1">5</td><td class="off available" data-title="r5c2">6</td><td class="off available" data-title="r5c3">7</td><td class="off available" data-title="r5c4">8</td><td class="off available" data-title="r5c5">9</td><td class="weekend off available" data-title="r5c6">10</td></tr></tbody></table></div></div><div class="ranges" style="display: none;"><div class="range_inputs"><button class="applyBtn btn btn-sm btn-success" type="button">Apply</button> <button class="cancelBtn btn btn-sm btn-default" type="button">Cancel</button></div></div></div>
-
-
-                        <fieldset>
-                          <div class="control-group">
-                            <div class="controls">
-                              <div class="col-md-11 xdisplay_inputx form-group row has-feedback">
-                                <input type="text" class="form-control has-feedback-left" id="single_cal2" placeholder="First Name" aria-describedby="inputSuccess2Status2">
-                                <span class="fas fa-calendar form-control-feedback left" aria-hidden="true"></span>
-                                <span id="inputSuccess2Status2" class="sr-only">(success)</span>
-                              </div>
-                            </div>
-                          </div>
-                        </fieldset>
+                      <div class="col-md-4 mb-3">
+                        <label class="form-label">Classic Theme</label>
+                        <div class="d-flex gap-2">
+                          <div class="color-picker-classic" style="width: 40px; height: 40px; border-radius: 6px; cursor: pointer; border: 2px solid #ddd;"></div>
+                          <input type="text" id="classic-result" class="form-control" placeholder="#5367ce" readonly>
+                        </div>
                       </div>
-
-                      <div class="col-md-3">
-                         <div class="daterangepicker dropdown-menu ltr single opensright show-calendar picker_3 xdisplay"><div class="calendar left single" style="display: block;"><div class="daterangepicker_input"><input class="input-mini form-control active" type="text" name="daterangepicker_start" value="" style="display: none;"><i class="fas fa-calendar" style="display: none;"></i><div class="calendar-time" style="display: none;"><div></div><i class="fas fa-clock"></i></div></div><div class="calendar-table"><table class="table-condensed"><thead><tr><th class="prev available"><i class="fas fa-chevron-left"></i></th><th colspan="5" class="month">Oct 2016</th><th class="next available"><i class="fas fa-chevron-right"></i></th></tr><tr><th>Su</th><th>Mo</th><th>Tu</th><th>We</th><th>Th</th><th>Fr</th><th>Sa</th></tr></thead><tbody><tr><td class="weekend off available" data-title="r0c0">25</td><td class="off available" data-title="r0c1">26</td><td class="off available" data-title="r0c2">27</td><td class="off available" data-title="r0c3">28</td><td class="off available" data-title="r0c4">29</td><td class="off available" data-title="r0c5">30</td><td class="weekend available" data-title="r0c6">1</td></tr><tr><td class="weekend available" data-title="r1c0">2</td><td class="available" data-title="r1c1">3</td><td class="available" data-title="r1c2">4</td><td class="available" data-title="r1c3">5</td><td class="available" data-title="r1c4">6</td><td class="available" data-title="r1c5">7</td><td class="weekend available" data-title="r1c6">8</td></tr><tr><td class="weekend available" data-title="r2c0">9</td><td class="available" data-title="r2c1">10</td><td class="available" data-title="r2c2">11</td><td class="available" data-title="r2c3">12</td><td class="available" data-title="r2c4">13</td><td class="available" data-title="r2c5">14</td><td class="weekend available" data-title="r2c6">15</td></tr><tr><td class="weekend available" data-title="r3c0">16</td><td class="available" data-title="r3c1">17</td><td class="today active start-date active end-date available" data-title="r3c2">18</td><td class="available" data-title="r3c3">19</td><td class="available" data-title="r3c4">20</td><td class="available" data-title="r3c5">21</td><td class="weekend available" data-title="r3c6">22</td></tr><tr><td class="weekend available" data-title="r4c0">23</td><td class="available" data-title="r4c1">24</td><td class="available" data-title="r4c2">25</td><td class="available" data-title="r4c3">26</td><td class="available" data-title="r4c4">27</td><td class="available" data-title="r4c5">28</td><td class="weekend available" data-title="r4c6">29</td></tr><tr><td class="weekend available" data-title="r5c0">30</td><td class="available" data-title="r5c1">31</td><td class="off available" data-title="r5c2">1</td><td class="off available" data-title="r5c3">2</td><td class="off available" data-title="r5c4">3</td><td class="off available" data-title="r5c5">4</td><td class="weekend off available" data-title="r5c6">5</td></tr></tbody></table></div></div><div class="calendar right" style="display: none;"><div class="daterangepicker_input"><input class="input-mini form-control" type="text" name="daterangepicker_end" value="" style="display: none;"><i class="fas fa-calendar" style="display: none;"></i><div class="calendar-time" style="display: none;"><div></div><i class="fas fa-clock"></i></div></div><div class="calendar-table"><table class="table-condensed"><thead><tr><th></th><th colspan="5" class="month">Nov 2016</th><th class="next available"><i class="fas fa-chevron-right"></i></th></tr><tr><th>Su</th><th>Mo</th><th>Tu</th><th>We</th><th>Th</th><th>Fr</th><th>Sa</th></tr></thead><tbody><tr><td class="weekend off available" data-title="r0c0">30</td><td class="off available" data-title="r0c1">31</td><td class="available" data-title="r0c2">1</td><td class="available" data-title="r0c3">2</td><td class="available" data-title="r0c4">3</td><td class="available" data-title="r0c5">4</td><td class="weekend available" data-title="r0c6">5</td></tr><tr><td class="weekend available" data-title="r1c0">6</td><td class="available" data-title="r1c1">7</td><td class="available" data-title="r1c2">8</td><td class="available" data-title="r1c3">9</td><td class="available" data-title="r1c4">10</td><td class="available" data-title="r1c5">11</td><td class="weekend available" data-title="r1c6">12</td></tr><tr><td class="weekend available" data-title="r2c0">13</td><td class="available" data-title="r2c1">14</td><td class="available" data-title="r2c2">15</td><td class="available" data-title="r2c3">16</td><td class="available" data-title="r2c4">17</td><td class="available" data-title="r2c5">18</td><td class="weekend available" data-title="r2c6">19</td></tr><tr><td class="weekend available" data-title="r3c0">20</td><td class="available" data-title="r3c1">21</td><td class="available" data-title="r3c2">22</td><td class="available" data-title="r3c3">23</td><td class="available" data-title="r3c4">24</td><td class="available" data-title="r3c5">25</td><td class="weekend available" data-title="r3c6">26</td></tr><tr><td class="weekend available" data-title="r4c0">27</td><td class="available" data-title="r4c1">28</td><td class="available" data-title="r4c2">29</td><td class="available" data-title="r4c3">30</td><td class="off available" data-title="r4c4">1</td><td class="off available" data-title="r4c5">2</td><td class="weekend off available" data-title="r4c6">3</td></tr><tr><td class="weekend off available" data-title="r5c0">4</td><td class="off available" data-title="r5c1">5</td><td class="off available" data-title="r5c2">6</td><td class="off available" data-title="r5c3">7</td><td class="off available" data-title="r5c4">8</td><td class="off available" data-title="r5c5">9</td><td class="weekend off available" data-title="r5c6">10</td></tr></tbody></table></div></div><div class="ranges" style="display: none;"><div class="range_inputs"><button class="applyBtn btn btn-sm btn-success" type="button">Apply</button> <button class="cancelBtn btn btn-sm btn-default" type="button">Cancel</button></div></div></div>
-
-                        <fieldset>
-                          <div class="control-group">
-                            <div class="controls">
-                              <div class="col-md-11 xdisplay_inputx form-group row has-feedback">
-                                <input type="text" class="form-control has-feedback-left" id="single_cal3" placeholder="First Name" aria-describedby="inputSuccess2Status3">
-                                <span class="fas fa-calendar form-control-feedback left" aria-hidden="true"></span>
-                                <span id="inputSuccess2Status3" class="sr-only">(success)</span>
-                              </div>
-                            </div>
-                          </div>
-                        </fieldset>
+                      <div class="col-md-4 mb-3">
+                        <label class="form-label">Monolith Theme</label>
+                        <div class="d-flex gap-2">
+                          <div class="color-picker-monolith" style="width: 40px; height: 40px; border-radius: 6px; cursor: pointer; border: 2px solid #ddd;"></div>
+                          <input type="text" id="monolith-result" class="form-control" placeholder="#e91e63" readonly>
+                        </div>
                       </div>
+                      <div class="col-md-4 mb-3">
+                        <label class="form-label">Nano Theme</label>
+                        <div class="d-flex gap-2">
+                          <div class="color-picker-nano" style="width: 40px; height: 40px; border-radius: 6px; cursor: pointer; border: 2px solid #ddd;"></div>
+                          <input type="text" id="nano-result" class="form-control" placeholder="#ff9800" readonly>
+                        </div>
+                      </div>
+                      <div class="col-md-4 mb-3">
+                        <label class="form-label">With Opacity</label>
+                        <div class="d-flex gap-2">
+                          <div class="color-picker-opacity" style="width: 40px; height: 40px; border-radius: 6px; cursor: pointer; border: 2px solid #ddd;"></div>
+                          <input type="text" id="opacity-result" class="form-control" placeholder="rgba(156, 39, 176, 0.7)" readonly>
+                        </div>
+                      </div>
+                      <div class="col-md-4 mb-3">
+                        <label class="form-label">With Swatches</label>
+                        <div class="d-flex gap-2">
+                          <div class="color-picker-swatches" style="width: 40px; height: 40px; border-radius: 6px; cursor: pointer; border: 2px solid #ddd;"></div>
+                          <input type="text" id="swatches-result" class="form-control" placeholder="#4caf50" readonly>
+                        </div>
+                      </div>
+                      <div class="col-md-4 mb-3">
+                        <label class="form-label">Format Demo</label>
+                        <div class="d-flex gap-2">
+                          <div class="color-picker-formats" style="width: 40px; height: 40px; border-radius: 6px; cursor: pointer; border: 2px solid #ddd;"></div>
+                          <input type="text" id="formats-result" class="form-control" placeholder="#2196f3" readonly>
+                        </div>
+                      </div>
+                    </div>
 
-                      <div class="col-md-3">
-                         <div class="daterangepicker dropdown-menu ltr single opensright show-calendar picker_4 xdisplay"><div class="calendar left single" style="display: block;"><div class="daterangepicker_input"><input class="input-mini form-control active" type="text" name="daterangepicker_start" value="" style="display: none;"><i class="fas fa-calendar" style="display: none;"></i><div class="calendar-time" style="display: none;"><div></div><i class="fas fa-clock"></i></div></div><div class="calendar-table"><table class="table-condensed"><thead><tr><th class="prev available"><i class="fas fa-chevron-left"></i></th><th colspan="5" class="month">Oct 2016</th><th class="next available"><i class="fas fa-chevron-right"></i></th></tr><tr><th>Su</th><th>Mo</th><th>Tu</th><th>We</th><th>Th</th><th>Fr</th><th>Sa</th></tr></thead><tbody><tr><td class="weekend off available" data-title="r0c0">25</td><td class="off available" data-title="r0c1">26</td><td class="off available" data-title="r0c2">27</td><td class="off available" data-title="r0c3">28</td><td class="off available" data-title="r0c4">29</td><td class="off available" data-title="r0c5">30</td><td class="weekend available" data-title="r0c6">1</td></tr><tr><td class="weekend available" data-title="r1c0">2</td><td class="available" data-title="r1c1">3</td><td class="available" data-title="r1c2">4</td><td class="available" data-title="r1c3">5</td><td class="available" data-title="r1c4">6</td><td class="available" data-title="r1c5">7</td><td class="weekend available" data-title="r1c6">8</td></tr><tr><td class="weekend available" data-title="r2c0">9</td><td class="available" data-title="r2c1">10</td><td class="available" data-title="r2c2">11</td><td class="available" data-title="r2c3">12</td><td class="available" data-title="r2c4">13</td><td class="available" data-title="r2c5">14</td><td class="weekend available" data-title="r2c6">15</td></tr><tr><td class="weekend available" data-title="r3c0">16</td><td class="available" data-title="r3c1">17</td><td class="today active start-date active end-date available" data-title="r3c2">18</td><td class="available" data-title="r3c3">19</td><td class="available" data-title="r3c4">20</td><td class="available" data-title="r3c5">21</td><td class="weekend available" data-title="r3c6">22</td></tr><tr><td class="weekend available" data-title="r4c0">23</td><td class="available" data-title="r4c1">24</td><td class="available" data-title="r4c2">25</td><td class="available" data-title="r4c3">26</td><td class="available" data-title="r4c4">27</td><td class="available" data-title="r4c5">28</td><td class="weekend available" data-title="r4c6">29</td></tr><tr><td class="weekend available" data-title="r5c0">30</td><td class="available" data-title="r5c1">31</td><td class="off available" data-title="r5c2">1</td><td class="off available" data-title="r5c3">2</td><td class="off available" data-title="r5c4">3</td><td class="off available" data-title="r5c5">4</td><td class="weekend off available" data-title="r5c6">5</td></tr></tbody></table></div></div><div class="calendar right" style="display: none;"><div class="daterangepicker_input"><input class="input-mini form-control" type="text" name="daterangepicker_end" value="" style="display: none;"><i class="fas fa-calendar" style="display: none;"></i><div class="calendar-time" style="display: none;"><div></div><i class="fas fa-clock"></i></div></div><div class="calendar-table"><table class="table-condensed"><thead><tr><th></th><th colspan="5" class="month">Nov 2016</th><th class="next available"><i class="fas fa-chevron-right"></i></th></tr><tr><th>Su</th><th>Mo</th><th>Tu</th><th>We</th><th>Th</th><th>Fr</th><th>Sa</th></tr></thead><tbody><tr><td class="weekend off available" data-title="r0c0">30</td><td class="off available" data-title="r0c1">31</td><td class="available" data-title="r0c2">1</td><td class="available" data-title="r0c3">2</td><td class="available" data-title="r0c4">3</td><td class="available" data-title="r0c5">4</td><td class="weekend available" data-title="r0c6">5</td></tr><tr><td class="weekend available" data-title="r1c0">6</td><td class="available" data-title="r1c1">7</td><td class="available" data-title="r1c2">8</td><td class="available" data-title="r1c3">9</td><td class="available" data-title="r1c4">10</td><td class="available" data-title="r1c5">11</td><td class="weekend available" data-title="r1c6">12</td></tr><tr><td class="weekend available" data-title="r2c0">13</td><td class="available" data-title="r2c1">14</td><td class="available" data-title="r2c2">15</td><td class="available" data-title="r2c3">16</td><td class="available" data-title="r2c4">17</td><td class="available" data-title="r2c5">18</td><td class="weekend available" data-title="r2c6">19</td></tr><tr><td class="weekend available" data-title="r3c0">20</td><td class="available" data-title="r3c1">21</td><td class="available" data-title="r3c2">22</td><td class="available" data-title="r3c3">23</td><td class="available" data-title="r3c4">24</td><td class="available" data-title="r3c5">25</td><td class="weekend available" data-title="r3c6">26</td></tr><tr><td class="weekend available" data-title="r4c0">27</td><td class="available" data-title="r4c1">28</td><td class="available" data-title="r4c2">29</td><td class="available" data-title="r4c3">30</td><td class="off available" data-title="r4c4">1</td><td class="off available" data-title="r4c5">2</td><td class="weekend off available" data-title="r4c6">3</td></tr><tr><td class="weekend off available" data-title="r5c0">4</td><td class="off available" data-title="r5c1">5</td><td class="off available" data-title="r5c2">6</td><td class="off available" data-title="r5c3">7</td><td class="off available" data-title="r5c4">8</td><td class="off available" data-title="r5c5">9</td><td class="weekend off available" data-title="r5c6">10</td></tr></tbody></table></div></div><div class="ranges" style="display: none;"><div class="range_inputs"><button class="applyBtn btn btn-sm btn-success" type="button">Apply</button> <button class="cancelBtn btn btn-sm btn-default" type="button">Cancel</button></div></div></div>
+                    <!-- jQuery Knob Controls Section -->
+                    <div class="row mb-4">
+                      <div class="col-md-12">
+                        <h5>jQuery Knob Controls <small>Circular progress and value controls</small></h5>
+                      </div>
+                      <div class="col-md-3 text-center mb-3">
+                        <label class="form-label">Percentage</label>
+                        <input type="text" class="knob" value="75" data-width="120" data-height="120" data-fgColor="#26B99A" data-readonly="true">
+                      </div>
+                      <div class="col-md-3 text-center mb-3">
+                        <label class="form-label">Progress Meter</label>
+                        <input type="text" class="knob" value="65" data-min="0" data-max="100" data-width="120" data-height="120" data-fgColor="#3498DB">
+                      </div>
+                      <div class="col-md-3 text-center mb-3">
+                        <label class="form-label">Temperature</label>
+                        <input type="text" class="knob" value="22" data-min="-20" data-max="40" data-suffix="°C" data-width="120" data-height="120" data-fgColor="#E74C3C">
+                      </div>
+                      <div class="col-md-3 text-center mb-3">
+                        <label class="form-label">Volume Control</label>
+                        <input type="text" class="knob" value="8" data-min="0" data-max="10" data-step="0.1" data-width="120" data-height="120" data-fgColor="#9B59B6">
+                      </div>
+                    </div>
 
-
-                        <fieldset>
-                          <div class="control-group">
-                            <div class="controls">
-                              <div class="col-md-11 xdisplay_inputx form-group row has-feedback">
-                                <input type="text" class="form-control has-feedback-left" id="single_cal4" placeholder="First Name" aria-describedby="inputSuccess2Status4">
-                                <span class="fas fa-calendar form-control-feedback left" aria-hidden="true"></span>
-                                <span id="inputSuccess2Status4" class="sr-only">(success)</span>
-                              </div>
-                            </div>
-                          </div>
-                        </fieldset>
+                    <!-- Toggle Switches Section -->
+                    <div class="row mb-4">
+                      <div class="col-md-12">
+                        <h5>iOS-style Toggle Switches <small>Modern switch controls</small></h5>
+                      </div>
+                      <div class="col-md-3 mb-3">
+                        <label class="form-label d-block">Enable Notifications</label>
+                        <input type="checkbox" class="js-switch" checked />
+                      </div>
+                      <div class="col-md-3 mb-3">
+                        <label class="form-label d-block">Auto-save</label>
+                        <input type="checkbox" class="js-switch" />
+                      </div>
+                      <div class="col-md-3 mb-3">
+                        <label class="form-label d-block">Dark Mode</label>
+                        <input type="checkbox" class="js-switch" checked />
+                      </div>
+                      <div class="col-md-3 mb-3">
+                        <label class="form-label d-block">Email Alerts</label>
+                        <input type="checkbox" class="js-switch" />
                       </div>
                     </div>
 
                   </div>
                 </div>
-                <!-- /form datepicker -->
+                <!-- /form date pickers -->
 
-        
                <!-- form datetimepicker -->
 <div class="x_panel" style="">
     <div class="x_title">
@@ -790,10 +1149,10 @@
 </div>
                 <!-- /form datetimepicker -->
 
-                <!-- form grid slider -->
+                <!-- Range Sliders -->
                 <div class="x_panel" style="">
                   <div class="x_title">
-                    <h2>Grid Slider</h2>
+                    <h2>Ion Range Sliders <small>Modern range and value sliders</small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
                       </li>
@@ -812,505 +1171,70 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    <div class="row grid_slider">
-
-                      <div class="col-md-6 col-sm-6">
-                        <p>Default grid slider with min and max values</p>
-                        <input type="text" id="range" value="" name="range" />
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="slider-container price-slider">
+                          <label class="form-label fw-bold text-dark mb-2">
+                            <i class="fas fa-dollar-sign text-success me-2"></i>Price Range Slider
+                          </label>
+                          <input type="text" class="range_01" value="" name="range" />
+                          <p class="text-muted small mt-2">Double slider for price ranges from $200 to $800</p>
+                        </div>
                       </div>
-                      <div class="col-md-6 col-sm-6">
-                        <p>Grid with slider labels are far away outside it's container</p>
-                        <input type="text" id="range_25" value="" name="range" />
+                      <div class="col-md-6">
+                        <div class="slider-container percentage-slider">
+                          <label class="form-label fw-bold text-dark mb-2">
+                            <i class="fas fa-percentage text-primary me-2"></i>Percentage Slider
+                          </label>
+                          <input type="text" class="range_02" value="" name="range" />
+                          <p class="text-muted small mt-2">Single slider with percentage values</p>
+                        </div>
                       </div>
-                      <div class="col-md-6 col-sm-6">
-                        <p>Grid with labels inside container using force_edges attribute</p>
-                        <input type="text" id="range_27" value="" name="range" />
+                      <div class="col-md-6">
+                        <div class="slider-container age-slider">
+                          <label class="form-label fw-bold text-dark mb-2">
+                            <i class="fas fa-users text-purple me-2"></i>Age Range
+                          </label>
+                          <input type="text" class="range_03" value="" name="range" />
+                          <p class="text-muted small mt-2">Age selection from 18 to 65 years</p>
+                        </div>
                       </div>
-                      <div class="col-md-6 col-sm-6">
-                        <p>Create Grid with pre-defined steps</p>
-                        <input type="text" id="range_26" value="" name="range" />
+                      <div class="col-md-6">
+                        <div class="slider-container temperature-slider">
+                          <label class="form-label fw-bold text-dark mb-2">
+                            <i class="fas fa-thermometer-half text-warning me-2"></i>Temperature Range
+                          </label>
+                          <input type="text" class="range_04" value="" name="range" />
+                          <p class="text-muted small mt-2">Temperature range with step values</p>
+                        </div>
                       </div>
-                      <div class="col-md-6 col-sm-6">
-                        <p>Prevent one from dragging the labels</p>
-                        <input type="text" id="range_31" value="" name="range" />
+                      <div class="col-md-6">
+                        <div class="slider-container time-slider">
+                          <label class="form-label fw-bold text-dark mb-2">
+                            <i class="fas fa-clock text-dark me-2"></i>Time Range (24H)
+                          </label>
+                          <input type="text" class="range_time24" value="" name="range" />
+                          <p class="text-muted small mt-2">Time selection in 24-hour format</p>
+                        </div>
                       </div>
-                      <div class="col-md-6 col-sm-6">
-                        <p>Grid with minimum and maximum values</p>
-                        <input type="text" class="range_min_max" value="" name="range" />
-                      </div>
-                      <div>
-                        <p>Grid With time in 24 hour format</p>
-                        <input type="text" class="range_time24" value="" name="range" />
+                      <div class="col-md-6">
+                        <div class="slider-container memory-slider">
+                          <label class="form-label fw-bold text-dark mb-2">
+                            <i class="fas fa-memory text-danger me-2"></i>Memory Size
+                          </label>
+                          <input type="text" class="range_memory" value="" name="range" />
+                          <p class="text-muted small mt-2">Memory allocation with custom values</p>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
                 <br />
                 <br />
-                <!-- /form grid slider -->
+                <!-- /range sliders -->
 
-                <!-- image cropping -->
-                <div class="container cropper">
-                  <div class="row">
-                    <div class="col-md-9">
-                      <div class="img-container">
-                        <img id="image" src="images/cropper.jpg" alt="Picture">
-                      </div>
-                    </div>
-                    <div class="col-md-3">
-                      <div class="docs-preview clearfix">
-                        <div class="img-preview preview-lg"></div>
-                        <div class="img-preview preview-md"></div>
-                        <div class="img-preview preview-sm"></div>
-                        <div class="img-preview preview-xs"></div>
-                      </div>
+                <!-- legacy cropper section removed -->
 
-                      <div class="docs-data">
-                        <div class="input-group input-group-sm">
-                          <label class="input-group-addon" for="dataX">X</label>
-                          <input type="text" class="form-control" id="dataX" placeholder="x">
-                          <span class="input-group-addon">px</span>
-                        </div>
-                        <div class="input-group input-group-sm">
-                          <label class="input-group-addon" for="dataY">Y</label>
-                          <input type="text" class="form-control" id="dataY" placeholder="y">
-                          <span class="input-group-addon">px</span>
-                        </div>
-                        <div class="input-group input-group-sm">
-                          <label class="input-group-addon" for="dataWidth">Width</label>
-                          <input type="text" class="form-control" id="dataWidth" placeholder="width">
-                          <span class="input-group-addon">px</span>
-                        </div>
-                        <div class="input-group input-group-sm">
-                          <label class="input-group-addon" for="dataHeight">Height</label>
-                          <input type="text" class="form-control" id="dataHeight" placeholder="height">
-                          <span class="input-group-addon">px</span>
-                        </div>
-                        <div class="input-group input-group-sm">
-                          <label class="input-group-addon" for="dataRotate">Rotate</label>
-                          <input type="text" class="form-control" id="dataRotate" placeholder="rotate">
-                          <span class="input-group-addon">deg</span>
-                        </div>
-                        <div class="input-group input-group-sm">
-                          <label class="input-group-addon" for="dataScaleX">ScaleX</label>
-                          <input type="text" class="form-control" id="dataScaleX" placeholder="scaleX">
-                        </div>
-                        <div class="input-group input-group-sm">
-                          <label class="input-group-addon" for="dataScaleY">ScaleY</label>
-                          <input type="text" class="form-control" id="dataScaleY" placeholder="scaleY">
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-9 docs-buttons">
-                      <!-- <h3 class="page-header">Toolbar:</h3> -->
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-primary" data-method="setDragMode" data-option="move" title="Move">
-                          <span class="docs-tooltip" data-bs-toggle="tooltip" title="$().cropper(&quot;setDragMode&quot;, &quot;move&quot;)">
-                            <span class="fas fa-arrows"></span>
-                          </span>
-                        </button>
-                        <button type="button" class="btn btn-primary" data-method="setDragMode" data-option="crop" title="Crop">
-                          <span class="docs-tooltip" data-bs-toggle="tooltip" title="$().cropper(&quot;setDragMode&quot;, &quot;crop&quot;)">
-                            <span class="fas fa-crop"></span>
-                          </span>
-                        </button>
-                      </div>
-
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-primary" data-method="zoom" data-option="0.1" title="Zoom In">
-                          <span class="docs-tooltip" data-bs-toggle="tooltip" title="$().cropper(&quot;zoom&quot;, 0.1)">
-                            <span class="fas fa-search-plus"></span>
-                          </span>
-                        </button>
-                        <button type="button" class="btn btn-primary" data-method="zoom" data-option="-0.1" title="Zoom Out">
-                          <span class="docs-tooltip" data-bs-toggle="tooltip" title="$().cropper(&quot;zoom&quot;, -0.1)">
-                            <span class="fas fa-search-minus"></span>
-                          </span>
-                        </button>
-                      </div>
-
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-primary" data-method="move" data-option="-10" data-second-option="0" title="Move Left">
-                          <span class="docs-tooltip" data-bs-toggle="tooltip" title="$().cropper(&quot;move&quot;, -10, 0)">
-                            <span class="fas fa-arrow-left"></span>
-                          </span>
-                        </button>
-                        <button type="button" class="btn btn-primary" data-method="move" data-option="10" data-second-option="0" title="Move Right">
-                          <span class="docs-tooltip" data-bs-toggle="tooltip" title="$().cropper(&quot;move&quot;, 10, 0)">
-                            <span class="fas fa-arrow-right"></span>
-                          </span>
-                        </button>
-                        <button type="button" class="btn btn-primary" data-method="move" data-option="0" data-second-option="-10" title="Move Up">
-                          <span class="docs-tooltip" data-bs-toggle="tooltip" title="$().cropper(&quot;move&quot;, 0, -10)">
-                            <span class="fas fa-arrow-up"></span>
-                          </span>
-                        </button>
-                        <button type="button" class="btn btn-primary" data-method="move" data-option="0" data-second-option="10" title="Move Down">
-                          <span class="docs-tooltip" data-bs-toggle="tooltip" title="$().cropper(&quot;move&quot;, 0, 10)">
-                            <span class="fas fa-arrow-down"></span>
-                          </span>
-                        </button>
-                      </div>
-
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-primary" data-method="rotate" data-option="-45" title="Rotate Left">
-                          <span class="docs-tooltip" data-bs-toggle="tooltip" title="$().cropper(&quot;rotate&quot;, -45)">
-                            <span class="fas fa-rotate-left"></span>
-                          </span>
-                        </button>
-                        <button type="button" class="btn btn-primary" data-method="rotate" data-option="45" title="Rotate Right">
-                          <span class="docs-tooltip" data-bs-toggle="tooltip" title="$().cropper(&quot;rotate&quot;, 45)">
-                            <span class="fas fa-rotate-right"></span>
-                          </span>
-                        </button>
-                      </div>
-
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-primary" data-method="scaleX" data-option="-1" title="Flip Horizontal">
-                          <span class="docs-tooltip" data-bs-toggle="tooltip" title="$().cropper(&quot;scaleX&quot;, -1)">
-                            <span class="fas fa-arrows-h"></span>
-                          </span>
-                        </button>
-                        <button type="button" class="btn btn-primary" data-method="scaleY" data-option="-1" title="Flip Vertical">
-                          <span class="docs-tooltip" data-bs-toggle="tooltip" title="$().cropper(&quot;scaleY&quot;, -1)">
-                            <span class="fas fa-arrows-v"></span>
-                          </span>
-                        </button>
-                      </div>
-
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-primary" data-method="crop" title="Crop">
-                          <span class="docs-tooltip" data-bs-toggle="tooltip" title="$().cropper(&quot;crop&quot;)">
-                            <span class="fas fa-check"></span>
-                          </span>
-                        </button>
-                        <button type="button" class="btn btn-primary" data-method="clear" title="Clear">
-                          <span class="docs-tooltip" data-bs-toggle="tooltip" title="$().cropper(&quot;clear&quot;)">
-                            <span class="fas fa-times"></span>
-                          </span>
-                        </button>
-                      </div>
-
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-primary" data-method="disable" title="Disable">
-                          <span class="docs-tooltip" data-bs-toggle="tooltip" title="$().cropper(&quot;disable&quot;)">
-                            <span class="fas fa-lock"></span>
-                          </span>
-                        </button>
-                        <button type="button" class="btn btn-primary" data-method="enable" title="Enable">
-                          <span class="docs-tooltip" data-bs-toggle="tooltip" title="$().cropper(&quot;enable&quot;)">
-                            <span class="fas fa-unlock"></span>
-                          </span>
-                        </button>
-                      </div>
-
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-primary" data-method="reset" title="Reset">
-                          <span class="docs-tooltip" data-bs-toggle="tooltip" title="$().cropper(&quot;reset&quot;)">
-                            <span class="fas fa-refresh"></span>
-                          </span>
-                        </button>
-                        <label class="btn btn-primary btn-upload" for="inputImage" title="Upload image file">
-                          <input type="file" class="sr-only" id="inputImage" name="file" accept="image/*">
-                          <span class="docs-tooltip" data-bs-toggle="tooltip" title="Import image with Blob URLs">
-                            <span class="fas fa-upload"></span>
-                          </span>
-                        </label>
-                        <button type="button" class="btn btn-primary" data-method="destroy" title="Destroy">
-                          <span class="docs-tooltip" data-bs-toggle="tooltip" title="$().cropper(&quot;destroy&quot;)">
-                            <span class="fas fa-power-off"></span>
-                          </span>
-                        </button>
-                      </div>
-
-                      <div class="btn-group btn-group-crop">
-                        <button type="button" class="btn btn-primary" data-method="getCroppedCanvas">
-                          <span class="docs-tooltip" data-bs-toggle="tooltip" title="$().cropper(&quot;getCroppedCanvas&quot;)">
-                            Get Cropped Canvas
-                          </span>
-                        </button>
-                        <button type="button" class="btn btn-primary" data-method="getCroppedCanvas" data-option="{ &quot;width&quot;: 160, &quot;height&quot;: 90 }">
-                          <span class="docs-tooltip" data-bs-toggle="tooltip" title="$().cropper(&quot;getCroppedCanvas&quot;, { width: 160, height: 90 })">
-                            160&times;90
-                          </span>
-                        </button>
-                        <button type="button" class="btn btn-primary" data-method="getCroppedCanvas" data-option="{ &quot;width&quot;: 320, &quot;height&quot;: 180 }">
-                          <span class="docs-tooltip" data-bs-toggle="tooltip" title="$().cropper(&quot;getCroppedCanvas&quot;, { width: 320, height: 180 })">
-                            320&times;180
-                          </span>
-                        </button>
-                      </div>
-
-                      <!-- Show the cropped image in modal -->
-                      <div class="modal fade docs-cropped" id="getCroppedCanvasModal" aria-hidden="true" aria-labelledby="getCroppedCanvasTitle" role="dialog" tabindex="-1">
-                        <div class="modal-dialog">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
-                              <h4 class="modal-title" id="getCroppedCanvasTitle">Cropped</h4>
-                            </div>
-                            <div class="modal-body"></div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-default" data-bs-dismiss="modal">Close</button>
-                              <a class="btn btn-primary" id="download" href="javascript:void(0);" download="cropped.png">Download</a>
-                            </div>
-                          </div>
-                        </div>
-                      </div><!-- /.modal -->
-
-                      <button type="button" class="btn btn-primary" data-method="getData" data-option data-bs-target="#putData">
-                        <span class="docs-tooltip" data-bs-toggle="tooltip" title="$().cropper(&quot;getData&quot;)">
-                          Get Data
-                        </span>
-                      </button>
-                      <button type="button" class="btn btn-primary" data-method="setData" data-bs-target="#putData">
-                        <span class="docs-tooltip" data-bs-toggle="tooltip" title="$().cropper(&quot;setData&quot;, data)">
-                          Set Data
-                        </span>
-                      </button>
-                      <button type="button" class="btn btn-primary" data-method="getContainerData" data-option data-bs-target="#putData">
-                        <span class="docs-tooltip" data-bs-toggle="tooltip" title="$().cropper(&quot;getContainerData&quot;)">
-                          Get Container Data
-                        </span>
-                      </button>
-                      <button type="button" class="btn btn-primary" data-method="getImageData" data-option data-bs-target="#putData">
-                        <span class="docs-tooltip" data-bs-toggle="tooltip" title="$().cropper(&quot;getImageData&quot;)">
-                          Get Image Data
-                        </span>
-                      </button>
-                      <button type="button" class="btn btn-primary" data-method="getCanvasData" data-option data-bs-target="#putData">
-                        <span class="docs-tooltip" data-bs-toggle="tooltip" title="$().cropper(&quot;getCanvasData&quot;)">
-                          Get Canvas Data
-                        </span>
-                      </button>
-                      <button type="button" class="btn btn-primary" data-method="setCanvasData" data-bs-target="#putData">
-                        <span class="docs-tooltip" data-bs-toggle="tooltip" title="$().cropper(&quot;setCanvasData&quot;, data)">
-                          Set Canvas Data
-                        </span>
-                      </button>
-                      <button type="button" class="btn btn-primary" data-method="getCropBoxData" data-option data-bs-target="#putData">
-                        <span class="docs-tooltip" data-bs-toggle="tooltip" title="$().cropper(&quot;getCropBoxData&quot;)">
-                          Get Crop Box Data
-                        </span>
-                      </button>
-                      <button type="button" class="btn btn-primary" data-method="setCropBoxData" data-bs-target="#putData">
-                        <span class="docs-tooltip" data-bs-toggle="tooltip" title="$().cropper(&quot;setCropBoxData&quot;, data)">
-                          Set Crop Box Data
-                        </span>
-                      </button>
-                      <button type="button" class="btn btn-primary" data-method="moveTo" data-option="0">
-                        <span class="docs-tooltip" data-bs-toggle="tooltip" title="cropper.moveTo(0)">
-                          0,0
-                        </span>
-                      </button>
-                      <button type="button" class="btn btn-primary" data-method="zoomTo" data-option="1">
-                        <span class="docs-tooltip" data-bs-toggle="tooltip" title="cropper.zoomTo(1)">
-                          100%
-                        </span>
-                      </button>
-                      <button type="button" class="btn btn-primary" data-method="rotateTo" data-option="180">
-                        <span class="docs-tooltip" data-bs-toggle="tooltip" title="cropper.rotateTo(180)">
-                          180°
-                        </span>
-                      </button>
-                      <input type="text" class="form-control" id="putData" placeholder="Get data to here or set data with this value">
-                    </div><!-- /.docs-buttons -->
-
-                    <div class="col-md-3 docs-toggles">
-                      <!-- <h3 class="page-header">Toggles:</h3> -->
-                      <div class="btn-group btn-group-justified" data-bs-toggle="buttons">
-                        <label class="btn btn-primary active">
-                          <input type="radio" class="sr-only" id="aspectRatio0" name="aspectRatio" value="1.7777777777777777">
-                          <span class="docs-tooltip" data-bs-toggle="tooltip" title="aspectRatio: 16 / 9">
-                            16:9
-                          </span>
-                        </label>
-                        <label class="btn btn-primary">
-                          <input type="radio" class="sr-only" id="aspectRatio1" name="aspectRatio" value="1.3333333333333333">
-                          <span class="docs-tooltip" data-bs-toggle="tooltip" title="aspectRatio: 4 / 3">
-                            4:3
-                          </span>
-                        </label>
-                        <label class="btn btn-primary">
-                          <input type="radio" class="sr-only" id="aspectRatio2" name="aspectRatio" value="1">
-                          <span class="docs-tooltip" data-bs-toggle="tooltip" title="aspectRatio: 1 / 1">
-                            1:1
-                          </span>
-                        </label>
-                        <label class="btn btn-primary">
-                          <input type="radio" class="sr-only" id="aspectRatio3" name="aspectRatio" value="0.6666666666666666">
-                          <span class="docs-tooltip" data-bs-toggle="tooltip" title="aspectRatio: 2 / 3">
-                            2:3
-                          </span>
-                        </label>
-                        <label class="btn btn-primary">
-                          <input type="radio" class="sr-only" id="aspectRatio4" name="aspectRatio" value="NaN">
-                          <span class="docs-tooltip" data-bs-toggle="tooltip" title="aspectRatio: NaN">
-                            Free
-                          </span>
-                        </label>
-                      </div>
-
-                      <div class="btn-group btn-group-justified" data-bs-toggle="buttons">
-                        <label class="btn btn-primary active">
-                          <input type="radio" class="sr-only" id="viewMode0" name="viewMode" value="0" checked>
-                          <span class="docs-tooltip" data-bs-toggle="tooltip" title="View Mode 0">
-                            VM0
-                          </span>
-                        </label>
-                        <label class="btn btn-primary">
-                          <input type="radio" class="sr-only" id="viewMode1" name="viewMode" value="1">
-                          <span class="docs-tooltip" data-bs-toggle="tooltip" title="View Mode 1">
-                            VM1
-                          </span>
-                        </label>
-                        <label class="btn btn-primary">
-                          <input type="radio" class="sr-only" id="viewMode2" name="viewMode" value="2">
-                          <span class="docs-tooltip" data-bs-toggle="tooltip" title="View Mode 2">
-                            VM2
-                          </span>
-                        </label>
-                        <label class="btn btn-primary">
-                          <input type="radio" class="sr-only" id="viewMode3" name="viewMode" value="3">
-                          <span class="docs-tooltip" data-bs-toggle="tooltip" title="View Mode 3">
-                            VM3
-                          </span>
-                        </label>
-                      </div>
-
-                      <div class="dropup docs-options">
-                        <button type="button" class="btn btn-primary d-grid dropdown-toggle" id="toggleOptions" data-bs-toggle="dropdown" aria-expanded="true">
-                          Toggle Options
-                          <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="toggleOptions" role="menu">
-                          <li role="presentation">
-                            <label class="checkbox-inline">
-                              <input type="checkbox" name="responsive" checked>
-                              responsive
-                            </label>
-                          </li>
-                          <li role="presentation">
-                            <label class="checkbox-inline">
-                              <input type="checkbox" name="restore" checked>
-                              restore
-                            </label>
-                          </li>
-                          <li role="presentation">
-                            <label class="checkbox-inline">
-                              <input type="checkbox" name="checkCrossOrigin" checked>
-                              checkCrossOrigin
-                            </label>
-                          </li>
-                          <li role="presentation">
-                            <label class="checkbox-inline">
-                              <input type="checkbox" name="checkOrientation" checked>
-                              checkOrientation
-                            </label>
-                          </li>
-
-                          <li role="presentation">
-                            <label class="checkbox-inline">
-                              <input type="checkbox" name="modal" checked>
-                              modal
-                            </label>
-                          </li>
-                          <li role="presentation">
-                            <label class="checkbox-inline">
-                              <input type="checkbox" name="guides" checked>
-                              guides
-                            </label>
-                          </li>
-                          <li role="presentation">
-                            <label class="checkbox-inline">
-                              <input type="checkbox" name="center" checked>
-                              center
-                            </label>
-                          </li>
-                          <li role="presentation">
-                            <label class="checkbox-inline">
-                              <input type="checkbox" name="highlight" checked>
-                              highlight
-                            </label>
-                          </li>
-                          <li role="presentation">
-                            <label class="checkbox-inline">
-                              <input type="checkbox" name="background" checked>
-                              background
-                            </label>
-                          </li>
-
-                          <li role="presentation">
-                            <label class="checkbox-inline">
-                              <input type="checkbox" name="autoCrop" checked>
-                              autoCrop
-                            </label>
-                          </li>
-                          <li role="presentation">
-                            <label class="checkbox-inline">
-                              <input type="checkbox" name="movable" checked>
-                              movable
-                            </label>
-                          </li>
-                          <li role="presentation">
-                            <label class="checkbox-inline">
-                              <input type="checkbox" name="rotatable" checked>
-                              rotatable
-                            </label>
-                          </li>
-                          <li role="presentation">
-                            <label class="checkbox-inline">
-                              <input type="checkbox" name="scalable" checked>
-                              scalable
-                            </label>
-                          </li>
-                          <li role="presentation">
-                            <label class="checkbox-inline">
-                              <input type="checkbox" name="zoomable" checked>
-                              zoomable
-                            </label>
-                          </li>
-                          <li role="presentation">
-                            <label class="checkbox-inline">
-                              <input type="checkbox" name="zoomOnTouch" checked>
-                              zoomOnTouch
-                            </label>
-                          </li>
-                          <li role="presentation">
-                            <label class="checkbox-inline">
-                              <input type="checkbox" name="zoomOnWheel" checked>
-                              zoomOnWheel
-                            </label>
-                          </li>
-                          <li role="presentation">
-                            <label class="checkbox-inline">
-                              <input type="checkbox" name="cropBoxMovable" checked>
-                              cropBoxMovable
-                            </label>
-                          </li>
-                          <li role="presentation">
-                            <label class="checkbox-inline">
-                              <input type="checkbox" name="cropBoxResizable" checked>
-                              cropBoxResizable
-                            </label>
-                          </li>
-                          <li role="presentation">
-                            <label class="checkbox-inline">
-                              <input type="checkbox" name="toggleDragModeOnDblclick" checked>
-                              toggleDragModeOnDblclick
-                            </label>
-                          </li>
-                        </ul>
-                      </div><!-- /.dropdown -->
-
-                      <a class="btn btn-default d-grid" data-bs-toggle="tooltip" href="https://fengyuanchen.github.io/cropperjs" title="Cropper without jQuery">Cropper.js</a>
-
-                    </div><!-- /.docs-toggles -->
-                  </div>
-                </div>
-                <!-- /image cropping -->
               </div>
             </div>
           </div>
@@ -1331,228 +1255,263 @@
     
     <!-- Initialize Form Advanced Components -->
 <script type="text/javascript">
+// Listen for both DOMContentLoaded and our custom library event
+let domReady = false;
+let librariesReady = false;
+
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('🚀 DOM loaded, initializing form components...');
+    console.log('📋 DOM loaded, waiting for libraries...');
+    domReady = true;
+    tryInitialize();
+});
+
+window.addEventListener('form-libraries-loaded', function(e) {
+    console.log('📚 Libraries loaded event received:', e.detail);
+    librariesReady = true;
+    tryInitialize();
+});
+
+function tryInitialize() {
+    if (domReady && librariesReady) {
+        console.log('🚀 Both DOM and libraries ready, starting initialization...');
+        waitForLibraries();
+    }
+}
+
+// Fallback: try to initialize after a short delay even if custom event doesn't fire
+setTimeout(() => {
+    if (!librariesReady) {
+        console.log('⚠️ Custom event not received, trying fallback initialization...');
+        librariesReady = true;
+        tryInitialize();
+    }
+}, 1000);
+
+// Make functions globally available for debugging
+window.initializeFormComponents = initializeComponents;
+window.tryInitialize = tryInitialize;
+window.waitForLibraries = waitForLibraries;
+
+function waitForLibraries() {
+    // Check if all required libraries are available
+    const hasJQuery = typeof window.$ !== 'undefined' && typeof window.jQuery !== 'undefined';
+    const hasInputmask = typeof window.Inputmask !== 'undefined';
+    const hasPickr = typeof window.Pickr !== 'undefined';
+    const hasCropper = typeof window.Cropper !== 'undefined';
+    const hasTempusDominus = typeof window.TempusDominus !== 'undefined';
     
-    // Wait for all modules to load, then initialize
-    function waitForLibraries() {
-        // Check if all required libraries are available
-        const hasJQuery = typeof window.$ !== 'undefined' && typeof window.jQuery !== 'undefined';
-        const hasInputmask = typeof window.Inputmask !== 'undefined';
-        const hasPickr = typeof window.Pickr !== 'undefined';
-        const hasCropper = typeof window.Cropper !== 'undefined';
-        const hasTempusDominus = typeof window.TempusDominus !== 'undefined';
+    console.log('🔍 Checking available libraries...');
+    console.log('jQuery available:', hasJQuery);
+    console.log('Inputmask available:', hasInputmask);
+    console.log('Pickr available:', hasPickr);
+    console.log('Cropper available:', hasCropper);
+    console.log('TempusDominus available:', hasTempusDominus);
+    
+    if (hasJQuery) {
+        // Use jQuery from window object
+        const $ = window.$;
+        console.log('ionRangeSlider available:', $.fn.ionRangeSlider ? 'yes' : 'no');
+        console.log('knob available:', $.fn.knob ? 'yes' : 'no');
+    }
+    
+    if (!hasJQuery) {
+        console.warn('⚠️ jQuery not ready yet, waiting...');
+        setTimeout(waitForLibraries, 100);
+        return;
+    }
+    
+    // All libraries are ready, start initialization
+    initializeComponents();
+}
+
+function initializeComponents() {
+    // Use jQuery from window object
+    const $ = window.$;
+    
+    console.log('🚀 Starting component initialization...');
+
+    // Initialize Input Masks
+    if (typeof window.Inputmask !== 'undefined') {
+        const Inputmask = window.Inputmask;
+        console.log('🎭 Initializing input masks...');
         
-        console.log('🔍 Checking available libraries...');
-        console.log('jQuery available:', hasJQuery);
-        console.log('Inputmask available:', hasInputmask);
-        console.log('Pickr available:', hasPickr);
-        console.log('Cropper available:', hasCropper);
-        console.log('TempusDominus available:', hasTempusDominus);
+        // Initialize all elements with data-inputmask attribute
+        const inputmaskElements = document.querySelectorAll('[data-inputmask]');
+        console.log(`Found ${inputmaskElements.length} input mask elements`);
         
-        if (hasJQuery) {
-            // Use jQuery from window object
-            const $ = window.$;
-            console.log('ionRangeSlider available:', $.fn.ionRangeSlider ? 'yes' : 'no');
-            console.log('knob available:', $.fn.knob ? 'yes' : 'no');
+        inputmaskElements.forEach((element, index) => {
+            try {
+                // Let Inputmask read the data-inputmask attribute itself (auto-configuration)
+                Inputmask().mask(element);
+                console.log(`✅ Successfully initialized mask for element ${index + 1}`);
+            } catch (error) {
+                console.warn(`❌ Error initializing input mask for element ${index + 1}:`, element, error);
+            }
+        });
+        
+        // Add some additional advanced masks
+        try {
+            // Email mask (more permissive)
+            const emailElements = document.querySelectorAll('[data-mask="email"]');
+            emailElements.forEach(element => {
+                Inputmask({
+                    mask: "*{1,20}[.*{1,20}][.*{1,20}][.*{1,20}]@*{1,20}[.*{2,6}][.*{1,2}]",
+                    greedy: false,
+                    onBeforePaste: function (pastedValue, opts) {
+                        pastedValue = pastedValue.toLowerCase();
+                        return pastedValue.replace("mailto:", "");
+                    },
+                    definitions: {
+                        '*': {
+                            validator: "[0-9A-Za-z!#$%&'*+/=?^_`{|}~-]",
+                            casing: "lower"
+                        }
+                    }
+                }).mask(element);
+            });
+            
+            // IP Address mask
+            const ipElements = document.querySelectorAll('[data-mask="ip"]');
+            ipElements.forEach(element => {
+                Inputmask("ip").mask(element);
+            });
+            
+            // Currency mask
+            const currencyElements = document.querySelectorAll('[data-mask="currency"]');
+            currencyElements.forEach(element => {
+                Inputmask("currency", {
+                    prefix: "$ ",
+                    radixPoint: ".",
+                    groupSeparator: ",",
+                    digits: 2,
+                    autoGroup: true,
+                    rightAlign: false
+                }).mask(element);
+            });
+            
+        } catch (error) {
+            console.warn('Error setting up advanced masks:', error);
         }
         
-                 if (!hasJQuery) {
-             console.warn('⚠️ jQuery not ready yet, waiting...');
-             setTimeout(waitForLibraries, 100);
-             return;
-         }
-         
-         // All libraries are ready, start initialization
-         initializeComponents();
-     }
-     
-     function initializeComponents() {
-         // Use jQuery from window object
-         const $ = window.$;
-         
-         console.log('🚀 Starting component initialization...');
-     
-                  // Initialize Input Masks
-         if (typeof window.Inputmask !== 'undefined') {
-             const Inputmask = window.Inputmask;
-             // Date mask
-             Inputmask('99/99/9999').mask(document.querySelectorAll('[data-inputmask*="99/99/9999"]'));
-             
-             // Phone mask
-             Inputmask('(999) 999-9999').mask(document.querySelectorAll('[data-inputmask*="(999) 999-9999"]'));
-             
-             // Custom mask
-             Inputmask('99-999999').mask(document.querySelectorAll('[data-inputmask*="99-999999"]'));
-             
-             // Serial number mask
-             Inputmask('****-****-****-****-****-***').mask(document.querySelectorAll('[data-inputmask*="****-****-****-****-****-***"]'));
-             
-             // Tax ID mask
-             Inputmask('99-99999999').mask(document.querySelectorAll('[data-inputmask*="99-99999999"]'));
-             
-             // Credit card mask
-             Inputmask('9999-9999-9999-9999').mask(document.querySelectorAll('[data-inputmask*="9999-9999-9999-9999"]'));
-         }
-    
-                      // Initialize Modern Color Pickers
-         if (typeof window.Pickr !== 'undefined') {
-             const Pickr = window.Pickr;
-             
-             // Classic Theme Picker
-             const classicPicker = Pickr.create({
-                 el: '.color-picker-classic',
-                 theme: 'classic',
-                 default: '#5367ce',
-                 components: {
-                     preview: true,
-                     opacity: true,
-                     hue: true,
-                     interaction: {
-                         hex: true,
-                         rgba: true,
-                         hsla: true,
-                         hsva: true,
-                         input: true,
-                         clear: true,
-                         save: true
-                     }
-                 }
-             }).on('change', (color) => {
-                 document.getElementById('classic-result').value = color.toHEXA().toString();
-             }).on('save', (color) => {
-                 classicPicker.hide();
-             });
-             
-             // Monolith Theme Picker
-             const monolithPicker = Pickr.create({
-                 el: '.color-picker-monolith',
-                 theme: 'monolith',
-                 default: '#e91e63',
-                 components: {
-                     preview: true,
-                     opacity: true,
-                     hue: true,
-                     interaction: {
-                         hex: true,
-                         rgba: true,
-                         input: true,
-                         save: true
-                     }
-                 }
-             }).on('change', (color) => {
-                 document.getElementById('monolith-result').value = color.toHEXA().toString();
-             }).on('save', (color) => {
-                 monolithPicker.hide();
-             });
-             
-             // Nano Theme Picker
-             const nanoPicker = Pickr.create({
-                 el: '.color-picker-nano',
-                 theme: 'nano',
-                 default: '#ff9800',
-                 components: {
-                     preview: true,
-                     hue: true,
-                     interaction: {
-                         hex: true,
-                         input: true,
-                         save: true
-                     }
-                 }
-             }).on('change', (color) => {
-                 document.getElementById('nano-result').value = color.toHEXA().toString();
-             }).on('save', (color) => {
-                 nanoPicker.hide();
-             });
-             
-             // Opacity/Alpha Picker
-             const opacityPicker = Pickr.create({
-                 el: '.color-picker-opacity',
-                 theme: 'classic',
-                 default: 'rgba(156, 39, 176, 0.7)',
-                 components: {
-                     preview: true,
-                     opacity: true,
-                     hue: true,
-                     interaction: {
-                         hex: true,
-                         rgba: true,
-                         input: true,
-                         save: true
-                     }
-                 }
-             }).on('change', (color) => {
-                 document.getElementById('opacity-result').value = color.toRGBA().toString();
-             }).on('save', (color) => {
-                 opacityPicker.hide();
-             });
-             
-             // Swatches Picker with Presets
-             const swatchesPicker = Pickr.create({
-                 el: '.color-picker-swatches',
-                 theme: 'classic',
-                 default: '#4caf50',
-                 swatches: [
-                     '#f44336', '#e91e63', '#9c27b0', '#673ab7',
-                     '#3f51b5', '#2196f3', '#03a9f4', '#00bcd4',
-                     '#009688', '#4caf50', '#8bc34a', '#cddc39',
-                     '#ffeb3b', '#ffc107', '#ff9800', '#ff5722'
-                 ],
-                 components: {
-                     preview: true,
-                     opacity: true,
-                     hue: true,
-                     interaction: {
-                         hex: true,
-                         rgba: true,
-                         input: true,
-                         clear: true,
-                         save: true
-                     }
-                 }
-             }).on('change', (color) => {
-                 document.getElementById('swatches-result').value = color.toHEXA().toString();
-             }).on('save', (color) => {
-                 swatchesPicker.hide();
-             });
-             
-             // Format Demonstration Picker
-             const formatsPicker = Pickr.create({
-                 el: '.color-picker-formats',
-                 theme: 'monolith',
-                 default: '#2196f3',
-                 components: {
-                     preview: true,
-                     opacity: true,
-                     hue: true,
-                     interaction: {
-                         hex: true,
-                         rgba: true,
-                         hsla: true,
-                         hsva: true,
-                         input: true,
-                         save: true
-                     }
-                 }
-             }).on('change', (color) => {
-                 // Demonstrate different format outputs
-                 const formats = [
-                     color.toHEXA().toString(),
-                     color.toRGBA().toString(),
-                     color.toHSLA().toString(),
-                     color.toHSVA().toString()
-                 ];
-                 document.getElementById('formats-result').value = formats[Math.floor(Date.now() / 2000) % 4];
-             }).on('save', (color) => {
-                 formatsPicker.hide();
-             });
-             
-             console.log('✅ Modern Pickr color pickers initialized');
-         }
-    
+        console.log('✅ Input masks initialization completed');
+    } else {
+        console.error('❌ Inputmask library not available');
+    }
+
+    // Initialize Modern Color Pickers
+    if (typeof window.Pickr !== 'undefined') {
+        const Pickr = window.Pickr;
+        console.log('🎨 Initializing color pickers...');
+        
+        // Helper to create pickers for every matching element
+        function createPickrForEach(selector, config, onChangeCb, resultSelector) {
+            document.querySelectorAll(selector).forEach((el) => {
+                const instance = Pickr.create({
+                    el,
+                    ...config
+                });
+                if (onChangeCb) {
+                    instance.on('change', (color) => onChangeCb(color, el));
+                }
+                instance.on('save', () => instance.hide());
+            });
+        }
+
+        const commonComponents = {
+            preview: true,
+            opacity: true,
+            hue: true,
+            interaction: {
+                hex: true,
+                rgba: true,
+                hsla: true,
+                hsva: true,
+                input: true,
+                clear: true,
+                save: true
+            }
+        };
+
+        // Classic theme pickers (all occurrences)
+        createPickrForEach('.color-picker-classic', {
+            theme: 'classic',
+            default: '#5367ce',
+            components: commonComponents
+        }, (color) => {
+            document.querySelectorAll('#classic-result').forEach(r=>r.value = color.toHEXA().toString());
+        });
+
+        // Monolith theme pickers
+        createPickrForEach('.color-picker-monolith', {
+            theme: 'monolith',
+            default: '#e91e63',
+            components: commonComponents
+        }, (color)=>{
+            document.querySelectorAll('#monolith-result').forEach(r=>r.value = color.toHEXA().toString());
+        });
+
+        // Nano theme pickers
+        createPickrForEach('.color-picker-nano', {
+            theme: 'nano',
+            default: '#ff9800',
+            components: commonComponents
+        }, (color)=>{
+            document.querySelectorAll('#nano-result').forEach(r=>r.value = color.toHEXA().toString());
+        });
+
+        // Opacity picker
+        createPickrForEach('.color-picker-opacity', {
+            theme: 'monolith',
+            default: 'rgba(156, 39, 176, 0.7)',
+            components: commonComponents
+        }, (color)=>{
+            document.querySelectorAll('#opacity-result').forEach(r=>r.value = color.toRGBA().toString());
+        });
+
+        // Swatches picker
+        createPickrForEach('.color-picker-swatches', {
+            theme: 'classic',
+            default: '#4caf50',
+            swatches: [
+                '#1abc9c','#2ecc71','#3498db','#9b59b6','#34495e',
+                '#16a085','#27ae60','#2980b9','#8e44ad','#2c3e50',
+                '#f1c40f','#e67e22','#e74c3c','#ecf0f1','#95a5a6',
+                '#f39c12','#d35400','#c0392b','#bdc3c7','#7f8c8d'
+            ],
+            components: commonComponents
+        }, (color)=>{
+            document.querySelectorAll('#swatches-result').forEach(r=>r.value = color.toHEXA().toString());
+        });
+
+        // Formats picker
+        createPickrForEach('.color-picker-formats', {
+            theme: 'nano',
+            default: '#2196f3',
+            components: {
+                preview: true,
+                opacity: true,
+                hue: true,
+                interaction: {
+                    hex: true,
+                    rgba: true,
+                    hsla: true,
+                    hsva: true,
+                    cmyk: true,
+                    input: true,
+                    clear: true,
+                    save: true
+                }
+            }
+        }, (color)=>{
+            document.querySelectorAll('#formats-result').forEach(r=>r.value = color.toHEXA().toString());
+        });
+        
+        console.log('✅ Modern Pickr color pickers initialized');
+    }
+
     // Initialize jQuery Knob controls
     if ($ && $.fn.knob) {
+        console.log('🎛️ Initializing jQuery Knob controls...');
         $('.knob').knob({
             draw: function() {
                 if (this.$.data('skin') == 'tron') {
@@ -1591,67 +1550,225 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         });
+        console.log('✅ jQuery Knob controls initialized');
     }
-    
-             // Initialize Cropper.js for image cropping
-         if (typeof window.Cropper !== 'undefined') {
-             const Cropper = window.Cropper;
+
+    // Initialize Cropper.js for image cropping
+    if (typeof window.Cropper !== 'undefined') {
+        const Cropper = window.Cropper;
         const image = document.getElementById('image');
         if (image) {
+            console.log('🖼️ Initializing Cropper.js...');
             const cropper = new Cropper(image, {
+                viewMode: 1,
                 aspectRatio: 16 / 9,
-                crop(event) {
-                    console.log(event.detail.x);
-                    console.log(event.detail.y);
-                    console.log(event.detail.width);
-                    console.log(event.detail.height);
-                    console.log(event.detail.rotate);
-                    console.log(event.detail.scaleX);
-                    console.log(event.detail.scaleY);
-                }
+                autoCropArea: 0.8,
+                responsive: true,
+                preview: '.img-preview'
             });
             
             // Store cropper instance globally for demo buttons
             window.cropper = cropper;
+
+            // Simplified controls
+            const rotateBtn = document.getElementById('crop-rotate');
+            const resetBtn  = document.getElementById('crop-reset');
+            const downloadBtn = document.getElementById('crop-download');
+
+            if (rotateBtn) rotateBtn.addEventListener('click', () => cropper.rotate(90));
+            if (resetBtn)  resetBtn.addEventListener('click', () => cropper.reset());
+            if (downloadBtn) downloadBtn.addEventListener('click', () => {
+                const canvas = cropper.getCroppedCanvas({fillColor:'#fff'});
+                if (!canvas) return;
+                canvas.toBlob((blob)=>{
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'cropped.jpg';
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+                }, 'image/jpeg', 0.95);
+            });
+
+            // Handle file input for image upload
+            const inputImage = document.getElementById('inputImage');
+            if (inputImage) {
+                inputImage.addEventListener('change', function(e) {
+                    const files = e.target.files;
+                    if (files && files.length > 0) {
+                        const file = files[0];
+                        if (file.type.indexOf('image') === 0) {
+                            const reader = new FileReader();
+                            reader.onload = function(e) {
+                                if (window.cropper) {
+                                    window.cropper.replace(e.target.result);
+                                }
+                            };
+                            reader.readAsDataURL(file);
+                        }
+                    }
+                });
+            }
+            console.log('✅ Cropper.js initialized');
         }
     }
-    
-             // Initialize Switchery for iOS-style toggle switches
-         if (typeof window.Switchery !== 'undefined') {
-             const Switchery = window.Switchery;
+
+    // Initialize Switchery for iOS-style toggle switches
+    if (typeof window.Switchery !== 'undefined') {
+        const Switchery = window.Switchery;
+        console.log('🔄 Initializing Switchery toggles...');
         const elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
         elems.forEach(function(html) {
             const switchery = new Switchery(html, { color: '#26B99A' });
         });
+        console.log('✅ Switchery toggles initialized');
     }
-    
-    // Note: Using TempusDominus for all date functionality instead of DateRangePicker
-    // Date ranges can be implemented using two linked TempusDominus pickers (see below)
-    
+
     // Initialize Ion Range Slider
     if ($ && $.fn.ionRangeSlider) {
+        console.log('🎚️ Initializing Ion Range Sliders...');
+        
+        // Price Range Slider
         $('.range_01').ionRangeSlider({
+            skin: 'gentelella',
             type: 'double',
             min: 0,
             max: 1000,
             from: 200,
             to: 800,
-            grid: true
+            prefix: '$',
+            grid: true,
+            grid_num: 4, // Further reduced for better spacing
+            grid_margin: true, // Add margin to grid
+            force_edges: false, // Don't force edges to prevent overlap
+            hide_min_max: false,
+            hide_from_to: false,
+            prettify_enabled: true,
+            prettify_separator: ',',
+            onChange: function (data) {
+                console.log('Price range changed:', data.from, '-', data.to);
+            }
         });
         
+        // Percentage Slider
         $('.range_02').ionRangeSlider({
+            skin: 'gentelella',
             type: 'single',
             min: 0,
             max: 100,
             from: 50,
             postfix: '%',
-            grid: true
+            grid: true,
+            grid_num: 4, // Further reduced for better spacing
+            grid_margin: true,
+            force_edges: false,
+            hide_min_max: false,
+            hide_from_to: false,
+            onChange: function (data) {
+                console.log('Percentage changed:', data.from);
+            }
         });
+        
+        // Age Range Slider
+        $('.range_03').ionRangeSlider({
+            skin: 'gentelella',
+            type: 'double',
+            min: 18,
+            max: 65,
+            from: 25,
+            to: 45,
+            postfix: ' years',
+            grid: true,
+            grid_num: 3, // Further reduced for better spacing
+            grid_margin: true,
+            force_edges: false,
+            hide_min_max: false,
+            hide_from_to: false,
+            onChange: function (data) {
+                console.log('Age range changed:', data.from, '-', data.to);
+            }
+        });
+        
+        // Temperature Range Slider
+        $('.range_04').ionRangeSlider({
+            skin: 'gentelella',
+            type: 'double',
+            min: -10,
+            max: 40,
+            from: 15,
+            to: 25,
+            postfix: '°C',
+            step: 0.5,
+            grid: true,
+            grid_num: 4, // Further reduced for better spacing
+            grid_margin: true,
+            force_edges: false,
+            hide_min_max: false,
+            hide_from_to: false,
+            prettify: function(value) {
+                return value > 0 ? '+' + value : value;
+            },
+            onChange: function (data) {
+                console.log('Temperature range changed:', data.from, '-', data.to);
+            }
+        });
+        
+        // Time Range Slider (24H)
+        $('.range_time24').ionRangeSlider({
+            skin: 'gentelella',
+            type: 'double',
+            min: 0,
+            max: 1440, // minutes in a day
+            from: 480, // 8:00 AM
+            to: 1020,  // 5:00 PM
+            step: 15,
+            grid: true,
+            grid_num: 6, // Reduced for better spacing (every 4 hours)
+            grid_margin: true,
+            force_edges: false,
+            hide_min_max: false,
+            hide_from_to: false,
+            prettify: function(num) {
+                var hours = Math.floor(num / 60);
+                var minutes = num % 60;
+                return String(hours).padStart(2, '0') + ':' + String(minutes).padStart(2, '0');
+            },
+            onChange: function (data) {
+                console.log('Time range changed:', 
+                    Math.floor(data.from / 60) + ':' + String(data.from % 60).padStart(2, '0'), 
+                    '-', 
+                    Math.floor(data.to / 60) + ':' + String(data.to % 60).padStart(2, '0')
+                );
+            }
+        });
+        
+        // Memory Size Slider
+        $('.range_memory').ionRangeSlider({
+            skin: 'gentelella',
+            type: 'single',
+            min: 1,
+            max: 64,
+            from: 8,
+            values: ['1GB', '2GB', '4GB', '8GB', '16GB', '32GB', '64GB'],
+            grid: false, // Disable grid for custom values to prevent overlap
+            force_edges: false,
+            hide_min_max: true, // Hide min/max since we have custom values
+            hide_from_to: false,
+            onChange: function (data) {
+                console.log('Memory size changed:', data.from_value);
+            }
+        });
+        
+        console.log('✅ Ion Range Sliders initialized');
     }
-    
-             // Initialize TempusDominus DateTimePickers
-         if (typeof window.TempusDominus !== 'undefined') {
-             const TempusDominus = window.TempusDominus;
+
+    // Initialize TempusDominus DateTimePickers
+    if (typeof window.TempusDominus !== 'undefined') {
+        const TempusDominus = window.TempusDominus;
+        console.log('📅 Initializing TempusDominus date pickers...');
+
         // Basic DateTime Picker
         const picker1 = new TempusDominus(document.getElementById('myDatepicker'), {
             display: {
@@ -1733,7 +1850,7 @@ document.addEventListener('DOMContentLoaded', function() {
             useCurrent: false
         });
 
-        // Link the pickers - when picker6 changes, set min date for picker7
+        // Link the pickers
         picker6.subscribe('change.td', (e) => {
             if (e.date) {
                 picker7.updateOptions({
@@ -1744,7 +1861,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // Link the pickers - when picker7 changes, set max date for picker6
         picker7.subscribe('change.td', (e) => {
             if (e.date) {
                 picker6.updateOptions({
@@ -1754,13 +1870,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             }
         });
+
+        console.log('✅ TempusDominus date pickers initialized');
     }
-    
-    } // Close initializeComponents function
-    
-    // Start the initialization process
-    waitForLibraries();
-});
+
+    console.log('🎉 All components initialized successfully!');
+}
 </script>
   </body>
 </html>

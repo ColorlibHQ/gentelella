@@ -144,7 +144,7 @@ if (document.querySelector('.chart-container')) {
 ### UI Elements
 - **Tables** - DataTables with sorting, filtering, pagination
 - **Typography** - Comprehensive typography system
-- **Icons** - Font Awesome 6 + Glyphicons
+- **Icons** - Font Awesome 6
 - **Media Gallery** - Image gallery with lightbox
 - **Calendar** - Full-featured calendar component
 

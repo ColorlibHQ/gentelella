@@ -17,7 +17,7 @@
     <script type="module" src="/src/main-minimal.js"></script>
   </head>
 
-  <body class="nav-md">
+  <body class="nav-md page-media-gallery">
     <div class="container body">
       <div class="main_container">
         <div class="col-md-3 left_col">
@@ -71,7 +71,7 @@
                       <li><a href="media_gallery.html">Media Gallery</a></li>
                       <li><a href="typography.html">Typography</a></li>
                       <li><a href="icons.html">Icons</a></li>
-                      <li><a href="glyphicons.html">Glyphicons</a></li>
+
                       <li><a href="widgets.html">Widgets</a></li>
                       <li><a href="invoice.html">Invoice</a></li>
                       <li><a href="inbox.html">Inbox</a></li>
@@ -140,7 +140,7 @@
                         </li>
                     </ul>
                   </li>                  
-                  <li><a href="javascript:void(0)"><i class="fas fa-laptop"></i> Landing Page <span class="label label-success pull-right">Coming Soon</span></a></li>
+                  <li><a href="javascript:void(0)"><i class="fas fa-laptop"></i> Landing Page <span class="badge bg-success float-end">Coming Soon</span></a></li>
                 </ul>
               </div>
 
@@ -149,16 +149,16 @@
 
             <!-- /menu footer buttons -->
             <div class="sidebar-footer hidden-small">
-              <a data-bs-toggle="tooltip" data-placement="top" title="Settings">
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Settings">
                 <span class="fas fa-cog" aria-hidden="true"></span>
               </a>
-              <a data-bs-toggle="tooltip" data-placement="top" title="FullScreen">
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="FullScreen">
                 <span class="fas fa-expand" aria-hidden="true"></span>
               </a>
-              <a data-bs-toggle="tooltip" data-placement="top" title="Lock">
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Lock">
                 <span class="fas fa-eye-slash" aria-hidden="true"></span>
               </a>
-              <a data-bs-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Logout" href="login.html">
                 <span class="fas fa-power-off" aria-hidden="true"></span>
               </a>
             </div>
@@ -270,10 +270,10 @@
               <div class="title_right">
                 <div class="col-md-5 col-sm-5 form-group pull-right top_search">
                   <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for...">
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" type="button">Go!</button>
-                    </span>
+                    <input type="text" class="form-control" placeholder="Search gallery...">
+                    <button class="btn btn-secondary" type="button">
+                      <i class="fas fa-search"></i>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -281,219 +281,357 @@
 
             <div class="clearfix"></div>
 
-            <div class="row">
+            <!-- Gallery Filter Bar -->
+            <div class="row mb-4">
               <div class="col-md-12">
                 <div class="x_panel">
-                  <div class="x_title">
-                    <h2>Media Gallery <small> gallery design </small></h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-                      </li>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Settings 1</a>
-                            <a class="dropdown-item" href="#">Settings 2</a>
-                          </div>
-                      </li>
-                      <li><a class="btn-close-link"><i class="fas fa-times"></i></a>
-                      </li>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
                   <div class="x_content">
-
-                    <div class="row">
-                      <div class="col-md-55">
-                        <div class="thumbnail">
-                          <div class="image view view-first">
-                            <img style="width: 100%; display: block;" src="images/media.jpg" alt="image" />
-                            <div class="mask">
-                              <p>Your Text</p>
-                              <div class="tools tools-bottom">
-                                <a href="#"><i class="fas fa-link"></i></a>
-                                <a href="#"><i class="fas fa-pencil"></i></a>
-                                <a href="#"><i class="fas fa-times"></i></a>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="caption">
-                            <p>Snow and Ice Incoming for the South</p>
-                          </div>
-                        </div>
+                    <div class="d-flex justify-content-between align-items-center flex-wrap">
+                      <div class="gallery-filters mb-3 mb-md-0">
+                        <button type="button" class="btn btn-outline-primary active me-2" data-filter="all">
+                          <i class="fas fa-th-large"></i> All Photos
+                        </button>
+                        <button type="button" class="btn btn-outline-primary me-2" data-filter="nature">
+                          <i class="fas fa-leaf"></i> Nature
+                        </button>
+                        <button type="button" class="btn btn-outline-primary me-2" data-filter="architecture">
+                          <i class="fas fa-building"></i> Architecture
+                        </button>
+                        <button type="button" class="btn btn-outline-primary me-2" data-filter="people">
+                          <i class="fas fa-users"></i> People
+                        </button>
+                        <button type="button" class="btn btn-outline-primary" data-filter="abstract">
+                          <i class="fas fa-paint-brush"></i> Abstract
+                        </button>
                       </div>
-                      <div class="col-md-55">
-                        <div class="thumbnail">
-                          <div class="image view view-first">
-                            <img style="width: 100%; display: block;" src="images/media.jpg" alt="image" />
-                            <div class="mask">
-                              <p>Your Text</p>
-                              <div class="tools tools-bottom">
-                                <a href="#"><i class="fas fa-link"></i></a>
-                                <a href="#"><i class="fas fa-pencil"></i></a>
-                                <a href="#"><i class="fas fa-times"></i></a>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="caption">
-                            <p>Snow and Ice Incoming for the South</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-55">
-                        <div class="thumbnail">
-                          <div class="image view view-first">
-                            <img style="width: 100%; display: block;" src="images/media.jpg" alt="image" />
-                            <div class="mask">
-                              <p>Your Text</p>
-                              <div class="tools tools-bottom">
-                                <a href="#"><i class="fas fa-link"></i></a>
-                                <a href="#"><i class="fas fa-pencil"></i></a>
-                                <a href="#"><i class="fas fa-times"></i></a>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="caption">
-                            <p>Snow and Ice Incoming for the South</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-55">
-                        <div class="thumbnail">
-                          <div class="image view view-first">
-                            <img style="width: 100%; display: block;" src="images/media.jpg" alt="image" />
-                            <div class="mask">
-                              <p>Your Text</p>
-                              <div class="tools tools-bottom">
-                                <a href="#"><i class="fas fa-link"></i></a>
-                                <a href="#"><i class="fas fa-pencil"></i></a>
-                                <a href="#"><i class="fas fa-times"></i></a>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="caption">
-                            <p>Snow and Ice Incoming for the South</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-55">
-                        <div class="thumbnail">
-                          <div class="image view view-first">
-                            <img style="width: 100%; display: block;" src="images/media.jpg" alt="image" />
-                            <div class="mask">
-                              <p>Your Text</p>
-                              <div class="tools tools-bottom">
-                                <a href="#"><i class="fas fa-link"></i></a>
-                                <a href="#"><i class="fas fa-pencil"></i></a>
-                                <a href="#"><i class="fas fa-times"></i></a>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="caption">
-                            <p>Snow and Ice Incoming for the South</p>
-                          </div>
-                        </div>
-                      </div>
-
-
-                      <div class="col-md-55">
-                        <div class="thumbnail">
-                          <div class="image view view-first">
-                            <img style="width: 100%; display: block;" src="images/media.jpg" alt="image" />
-                            <div class="mask no-caption">
-                              <div class="tools tools-bottom">
-                                <a href="#"><i class="fas fa-link"></i></a>
-                                <a href="#"><i class="fas fa-pencil"></i></a>
-                                <a href="#"><i class="fas fa-times"></i></a>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="caption">
-                            <p><strong>Image Name</strong>
-                            </p>
-                            <p>Snow and Ice Incoming</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-55">
-                        <div class="thumbnail">
-                          <div class="image view view-first">
-                            <img style="width: 100%; display: block;" src="images/media.jpg" alt="image" />
-                            <div class="mask no-caption">
-                              <div class="tools tools-bottom">
-                                <a href="#"><i class="fas fa-link"></i></a>
-                                <a href="#"><i class="fas fa-pencil"></i></a>
-                                <a href="#"><i class="fas fa-times"></i></a>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="caption">
-                            <p><strong>Image Name</strong>
-                            </p>
-                            <p>Snow and Ice Incoming</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-55">
-                        <div class="thumbnail">
-                          <div class="image view view-first">
-                            <img style="width: 100%; display: block;" src="images/media.jpg" alt="image" />
-                            <div class="mask no-caption">
-                              <div class="tools tools-bottom">
-                                <a href="#"><i class="fas fa-link"></i></a>
-                                <a href="#"><i class="fas fa-pencil"></i></a>
-                                <a href="#"><i class="fas fa-times"></i></a>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="caption">
-                            <p><strong>Image Name</strong>
-                            </p>
-                            <p>Snow and Ice Incoming</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-55">
-                        <div class="thumbnail">
-                          <div class="image view view-first">
-                            <img style="width: 100%; display: block;" src="images/media.jpg" alt="image" />
-                            <div class="mask no-caption">
-                              <div class="tools tools-bottom">
-                                <a href="#"><i class="fas fa-link"></i></a>
-                                <a href="#"><i class="fas fa-pencil"></i></a>
-                                <a href="#"><i class="fas fa-times"></i></a>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="caption">
-                            <p><strong>Image Name</strong>
-                            </p>
-                            <p>Snow and Ice Incoming</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-55">
-                        <div class="thumbnail">
-                          <div class="image view view-first">
-                            <img style="width: 100%; display: block;" src="images/media.jpg" alt="image" />
-                            <div class="mask no-caption">
-                              <div class="tools tools-bottom">
-                                <a href="#"><i class="fas fa-link"></i></a>
-                                <a href="#"><i class="fas fa-pencil"></i></a>
-                                <a href="#"><i class="fas fa-times"></i></a>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="caption">
-                            <p><strong>Image Name</strong>
-                            </p>
-                            <p>Snow and Ice Incoming</p>
-                          </div>
+                      <div class="gallery-view-toggle">
+                        <div class="btn-group" role="group">
+                          <button type="button" class="btn btn-outline-secondary active" data-view="grid">
+                            <i class="fas fa-th"></i>
+                          </button>
+                          <button type="button" class="btn btn-outline-secondary" data-view="list">
+                            <i class="fas fa-list"></i>
+                          </button>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="row" id="gallery-container">
+              <!-- Nature Photos -->
+              <div class="col-lg-4 col-md-6 col-sm-12 mb-4 gallery-item" data-category="nature">
+                <div class="card gallery-card h-100">
+                  <div class="gallery-image-container">
+                                         <img src="images/media.jpg" class="card-img-top gallery-image" alt="Forest Landscape" data-title="Serene Forest" data-description="A peaceful forest landscape with morning mist">
+                    <div class="gallery-overlay">
+                      <div class="gallery-actions">
+                        <button class="btn btn-light btn-sm me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="View Full Size">
+                          <i class="fas fa-expand"></i>
+                        </button>
+                        <button class="btn btn-light btn-sm me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Download">
+                          <i class="fas fa-download"></i>
+                        </button>
+                        <button class="btn btn-light btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Share">
+                          <i class="fas fa-share"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <h6 class="card-title mb-2">Serene Forest</h6>
+                    <p class="card-text text-muted small">A peaceful forest landscape with morning mist filtering through ancient trees.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <span class="badge bg-success">Nature</span>
+                      <small class="text-muted">
+                        <i class="fas fa-heart me-1"></i> 45
+                        <i class="fas fa-eye ms-2 me-1"></i> 234
+                      </small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-6 col-sm-12 mb-4 gallery-item" data-category="architecture">
+                <div class="card gallery-card h-100">
+                  <div class="gallery-image-container">
+                                         <img src="images/media.jpg" class="card-img-top gallery-image" alt="Modern Building" data-title="Urban Architecture" data-description="Contemporary glass building with geometric patterns">
+                     <div class="gallery-overlay">
+                       <div class="gallery-actions">
+                         <button class="btn btn-light btn-sm me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="View Full Size">
+                           <i class="fas fa-expand"></i>
+                         </button>
+                         <button class="btn btn-light btn-sm me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Download">
+                           <i class="fas fa-download"></i>
+                         </button>
+                         <button class="btn btn-light btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Share">
+                           <i class="fas fa-share"></i>
+                         </button>
+                       </div>
+                     </div>
+                   </div>
+                   <div class="card-body">
+                     <h6 class="card-title mb-2">Urban Architecture</h6>
+                     <p class="card-text text-muted small">Contemporary glass building showcasing modern architectural design principles.</p>
+                     <div class="d-flex justify-content-between align-items-center">
+                       <span class="badge bg-primary">Architecture</span>
+                       <small class="text-muted">
+                         <i class="fas fa-heart me-1"></i> 67
+                         <i class="fas fa-eye ms-2 me-1"></i> 189
+                       </small>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+ 
+               <div class="col-lg-4 col-md-6 col-sm-12 mb-4 gallery-item" data-category="people">
+                 <div class="card gallery-card h-100">
+                   <div class="gallery-image-container">
+                     <img src="images/media.jpg" class="card-img-top gallery-image" alt="Portrait" data-title="Street Portrait" data-description="Candid street photography capturing human emotion">
+                     <div class="gallery-overlay">
+                       <div class="gallery-actions">
+                         <button class="btn btn-light btn-sm me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="View Full Size">
+                           <i class="fas fa-expand"></i>
+                         </button>
+                         <button class="btn btn-light btn-sm me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Download">
+                           <i class="fas fa-download"></i>
+                         </button>
+                         <button class="btn btn-light btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Share">
+                           <i class="fas fa-share"></i>
+                         </button>
+                       </div>
+                     </div>
+                   </div>
+                   <div class="card-body">
+                     <h6 class="card-title mb-2">Street Portrait</h6>
+                     <p class="card-text text-muted small">Candid street photography capturing authentic human emotion and expression.</p>
+                     <div class="d-flex justify-content-between align-items-center">
+                       <span class="badge bg-warning">People</span>
+                       <small class="text-muted">
+                         <i class="fas fa-heart me-1"></i> 92
+                         <i class="fas fa-eye ms-2 me-1"></i> 356
+                       </small>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+ 
+               <div class="col-lg-4 col-md-6 col-sm-12 mb-4 gallery-item" data-category="abstract">
+                 <div class="card gallery-card h-100">
+                   <div class="gallery-image-container">
+                     <img src="images/media.jpg" class="card-img-top gallery-image" alt="Abstract Art" data-title="Color Symphony" data-description="Abstract composition with vibrant colors and flowing forms">
+                     <div class="gallery-overlay">
+                       <div class="gallery-actions">
+                         <button class="btn btn-light btn-sm me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="View Full Size">
+                           <i class="fas fa-expand"></i>
+                         </button>
+                         <button class="btn btn-light btn-sm me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Download">
+                           <i class="fas fa-download"></i>
+                         </button>
+                         <button class="btn btn-light btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Share">
+                           <i class="fas fa-share"></i>
+                         </button>
+                       </div>
+                     </div>
+                   </div>
+                   <div class="card-body">
+                     <h6 class="card-title mb-2">Color Symphony</h6>
+                     <p class="card-text text-muted small">Abstract composition featuring vibrant colors and flowing organic forms.</p>
+                     <div class="d-flex justify-content-between align-items-center">
+                       <span class="badge bg-info">Abstract</span>
+                       <small class="text-muted">
+                         <i class="fas fa-heart me-1"></i> 78
+                         <i class="fas fa-eye ms-2 me-1"></i> 245
+                       </small>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+ 
+               <div class="col-lg-4 col-md-6 col-sm-12 mb-4 gallery-item" data-category="nature">
+                 <div class="card gallery-card h-100">
+                   <div class="gallery-image-container">
+                     <img src="images/media.jpg" class="card-img-top gallery-image" alt="Mountain View" data-title="Mountain Peaks" data-description="Majestic mountain range during golden hour">
+                     <div class="gallery-overlay">
+                       <div class="gallery-actions">
+                         <button class="btn btn-light btn-sm me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="View Full Size">
+                           <i class="fas fa-expand"></i>
+                         </button>
+                         <button class="btn btn-light btn-sm me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Download">
+                           <i class="fas fa-download"></i>
+                         </button>
+                         <button class="btn btn-light btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Share">
+                           <i class="fas fa-share"></i>
+                         </button>
+                       </div>
+                     </div>
+                   </div>
+                   <div class="card-body">
+                     <h6 class="card-title mb-2">Mountain Peaks</h6>
+                     <p class="card-text text-muted small">Majestic mountain range captured during the magical golden hour light.</p>
+                     <div class="d-flex justify-content-between align-items-center">
+                       <span class="badge bg-success">Nature</span>
+                       <small class="text-muted">
+                         <i class="fas fa-heart me-1"></i> 134
+                         <i class="fas fa-eye ms-2 me-1"></i> 567
+                       </small>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+ 
+               <div class="col-lg-4 col-md-6 col-sm-12 mb-4 gallery-item" data-category="architecture">
+                 <div class="card gallery-card h-100">
+                   <div class="gallery-image-container">
+                     <img src="images/media.jpg" class="card-img-top gallery-image" alt="Historic Architecture" data-title="Gothic Cathedral" data-description="Medieval cathedral with intricate stone work">
+                     <div class="gallery-overlay">
+                       <div class="gallery-actions">
+                         <button class="btn btn-light btn-sm me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="View Full Size">
+                           <i class="fas fa-expand"></i>
+                         </button>
+                         <button class="btn btn-light btn-sm me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Download">
+                           <i class="fas fa-download"></i>
+                         </button>
+                         <button class="btn btn-light btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Share">
+                           <i class="fas fa-share"></i>
+                         </button>
+                       </div>
+                     </div>
+                   </div>
+                   <div class="card-body">
+                     <h6 class="card-title mb-2">Gothic Cathedral</h6>
+                     <p class="card-text text-muted small">Medieval cathedral featuring intricate stone work and soaring spires.</p>
+                     <div class="d-flex justify-content-between align-items-center">
+                       <span class="badge bg-primary">Architecture</span>
+                       <small class="text-muted">
+                         <i class="fas fa-heart me-1"></i> 89
+                         <i class="fas fa-eye ms-2 me-1"></i> 423
+                       </small>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+ 
+               <div class="col-lg-4 col-md-6 col-sm-12 mb-4 gallery-item" data-category="people">
+                 <div class="card gallery-card h-100">
+                   <div class="gallery-image-container">
+                     <img src="images/media.jpg" class="card-img-top gallery-image" alt="Group Photo" data-title="Community" data-description="People gathering in urban plaza">
+                     <div class="gallery-overlay">
+                       <div class="gallery-actions">
+                         <button class="btn btn-light btn-sm me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="View Full Size">
+                           <i class="fas fa-expand"></i>
+                         </button>
+                         <button class="btn btn-light btn-sm me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Download">
+                           <i class="fas fa-download"></i>
+                         </button>
+                         <button class="btn btn-light btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Share">
+                           <i class="fas fa-share"></i>
+                         </button>
+                       </div>
+                     </div>
+                   </div>
+                   <div class="card-body">
+                     <h6 class="card-title mb-2">Community</h6>
+                     <p class="card-text text-muted small">People gathering and socializing in a vibrant urban plaza setting.</p>
+                     <div class="d-flex justify-content-between align-items-center">
+                       <span class="badge bg-warning">People</span>
+                       <small class="text-muted">
+                         <i class="fas fa-heart me-1"></i> 156
+                         <i class="fas fa-eye ms-2 me-1"></i> 678
+                       </small>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+ 
+               <div class="col-lg-4 col-md-6 col-sm-12 mb-4 gallery-item" data-category="abstract">
+                 <div class="card gallery-card h-100">
+                   <div class="gallery-image-container">
+                     <img src="images/media.jpg" class="card-img-top gallery-image" alt="Digital Art" data-title="Digital Dreams" data-description="Contemporary digital art with geometric patterns">
+                     <div class="gallery-overlay">
+                       <div class="gallery-actions">
+                         <button class="btn btn-light btn-sm me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="View Full Size">
+                           <i class="fas fa-expand"></i>
+                         </button>
+                         <button class="btn btn-light btn-sm me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Download">
+                           <i class="fas fa-download"></i>
+                         </button>
+                         <button class="btn btn-light btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Share">
+                           <i class="fas fa-share"></i>
+                         </button>
+                       </div>
+                     </div>
+                   </div>
+                   <div class="card-body">
+                     <h6 class="card-title mb-2">Digital Dreams</h6>
+                     <p class="card-text text-muted small">Contemporary digital art featuring intricate geometric patterns and gradients.</p>
+                     <div class="d-flex justify-content-between align-items-center">
+                       <span class="badge bg-info">Abstract</span>
+                       <small class="text-muted">
+                         <i class="fas fa-heart me-1"></i> 203
+                         <i class="fas fa-eye ms-2 me-1"></i> 789
+                       </small>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+ 
+               <div class="col-lg-4 col-md-6 col-sm-12 mb-4 gallery-item" data-category="nature">
+                 <div class="card gallery-card h-100">
+                   <div class="gallery-image-container">
+                     <img src="images/media.jpg" class="card-img-top gallery-image" alt="Ocean Sunset" data-title="Ocean Sunset" data-description="Breathtaking sunset over calm ocean waters">
+                    <div class="gallery-overlay">
+                      <div class="gallery-actions">
+                        <button class="btn btn-light btn-sm me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="View Full Size">
+                          <i class="fas fa-expand"></i>
+                        </button>
+                        <button class="btn btn-light btn-sm me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Download">
+                          <i class="fas fa-download"></i>
+                        </button>
+                        <button class="btn btn-light btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Share">
+                          <i class="fas fa-share"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <h6 class="card-title mb-2">Ocean Sunset</h6>
+                    <p class="card-text text-muted small">Breathtaking sunset view over calm ocean waters with golden reflections.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <span class="badge bg-success">Nature</span>
+                      <small class="text-muted">
+                        <i class="fas fa-heart me-1"></i> 298
+                        <i class="fas fa-eye ms-2 me-1"></i> 1.2k
+                      </small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="row">
+              <div class="col-md-12">
+                <nav aria-label="Gallery pagination">
+                  <ul class="pagination justify-content-center">
+                    <li class="page-item disabled">
+                      <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                        <i class="fas fa-chevron-left"></i>
+                      </a>
+                    </li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                      <a class="page-link" href="#">
+                        <i class="fas fa-chevron-right"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
               </div>
             </div>
           </div>
@@ -509,7 +647,270 @@
         </footer>
         <!-- /footer content -->
       </div>
-    </div>    <!-- Compiled JavaScript (includes jQuery, Bootstrap, and all vendor scripts) -->
+    </div>
+
+    <!-- Image Modal for Lightbox -->
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="imageModalLabel">Image Title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body text-center">
+            <img src="" class="img-fluid" id="modalImage" alt="">
+            <p class="mt-3 text-muted" id="modalDescription"></p>
+          </div>
+          <div class="modal-footer justify-content-between">
+            <div>
+              <button class="btn btn-outline-primary btn-sm">
+                <i class="fas fa-heart"></i> Like
+              </button>
+              <button class="btn btn-outline-secondary btn-sm">
+                <i class="fas fa-download"></i> Download
+              </button>
+              <button class="btn btn-outline-info btn-sm">
+                <i class="fas fa-share"></i> Share
+              </button>
+            </div>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Compiled JavaScript (includes jQuery, Bootstrap, and all vendor scripts) -->
+    
+    <script type="module">
+      document.addEventListener('DOMContentLoaded', () => {
+        // Initialize tooltips
+        const tooltipTriggerList = Array.from(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        tooltipTriggerList.forEach(el => new bootstrap.Tooltip(el));
+
+        // Gallery filtering
+        const filterButtons = document.querySelectorAll('[data-filter]');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        filterButtons.forEach(button => {
+          button.addEventListener('click', () => {
+            const filter = button.getAttribute('data-filter');
+            
+            // Update active filter button
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            // Filter gallery items
+            galleryItems.forEach(item => {
+              const category = item.getAttribute('data-category');
+              if (filter === 'all' || category === filter) {
+                item.style.display = 'block';
+                item.classList.add('fade-in');
+              } else {
+                item.style.display = 'none';
+                item.classList.remove('fade-in');
+              }
+            });
+          });
+        });
+
+        // View toggle (grid/list)
+        const viewButtons = document.querySelectorAll('[data-view]');
+        const galleryContainer = document.getElementById('gallery-container');
+
+        viewButtons.forEach(button => {
+          button.addEventListener('click', () => {
+            const view = button.getAttribute('data-view');
+            
+            // Update active view button
+            viewButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            // Apply view changes
+            if (view === 'list') {
+              galleryContainer.classList.add('list-view');
+              galleryItems.forEach(item => {
+                item.className = 'col-12 mb-3 gallery-item';
+              });
+            } else {
+              galleryContainer.classList.remove('list-view');
+              galleryItems.forEach(item => {
+                item.className = 'col-lg-4 col-md-6 col-sm-12 mb-4 gallery-item';
+              });
+            }
+          });
+        });
+
+                 // Image modal functionality
+         const imageModal = document.getElementById('imageModal');
+         const modalTitle = document.getElementById('imageModalLabel');
+         const modalImage = document.getElementById('modalImage');
+         const modalDescription = document.getElementById('modalDescription');
+
+         // Handle image clicks for lightbox
+         document.querySelectorAll('.gallery-image').forEach(img => {
+           img.addEventListener('click', (e) => {
+             e.preventDefault();
+             const title = img.getAttribute('data-title');
+             const description = img.getAttribute('data-description');
+             const src = img.src;
+
+             modalTitle.textContent = title;
+             modalImage.src = src;
+             modalDescription.textContent = description;
+             
+             // Show the modal
+             const modal = new bootstrap.Modal(imageModal);
+             modal.show();
+           });
+         });
+
+         // Also handle clicks on the expand buttons in overlay
+         document.querySelectorAll('.gallery-actions .btn').forEach(btn => {
+           if (btn.title === 'View Full Size' || btn.getAttribute('data-bs-original-title') === 'View Full Size') {
+             btn.addEventListener('click', (e) => {
+               e.preventDefault();
+               e.stopPropagation();
+               
+               const img = btn.closest('.gallery-image-container').querySelector('.gallery-image');
+               const title = img.getAttribute('data-title');
+               const description = img.getAttribute('data-description');
+               const src = img.src;
+
+               modalTitle.textContent = title;
+               modalImage.src = src;
+               modalDescription.textContent = description;
+               
+               // Show the modal
+               const modal = new bootstrap.Modal(imageModal);
+               modal.show();
+             });
+           }
+         });
+
+        // Search functionality
+        const searchInput = document.querySelector('input[placeholder="Search gallery..."]');
+        if (searchInput) {
+          searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            
+            galleryItems.forEach(item => {
+              const title = item.querySelector('.card-title').textContent.toLowerCase();
+              const description = item.querySelector('.card-text').textContent.toLowerCase();
+              const category = item.getAttribute('data-category').toLowerCase();
+              
+              if (title.includes(searchTerm) || description.includes(searchTerm) || category.includes(searchTerm)) {
+                item.style.display = 'block';
+              } else {
+                item.style.display = 'none';
+              }
+            });
+          });
+        }
+
+        // Hover effects for gallery cards
+        document.querySelectorAll('.gallery-card').forEach(card => {
+          card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-5px)';
+            card.style.boxShadow = '0 8px 25px rgba(0,0,0,0.15)';
+          });
+
+          card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(0)';
+            card.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+          });
+        });
+      });
+    </script>
+
+    <style>
+      .gallery-card {
+        transition: all 0.3s ease;
+        border: none;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      }
+
+      .gallery-image-container {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .gallery-image {
+        height: 250px;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+        cursor: pointer;
+      }
+
+      .gallery-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0,0,0,0.7);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .gallery-image-container:hover .gallery-overlay {
+        opacity: 1;
+      }
+
+      .gallery-image-container:hover .gallery-image {
+        transform: scale(1.05);
+      }
+
+      .gallery-actions {
+        display: flex;
+        gap: 0.5rem;
+      }
+
+      .fade-in {
+        animation: fadeIn 0.5s ease-in;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .list-view .gallery-card {
+        display: flex;
+        flex-direction: row;
+        max-height: 200px;
+      }
+
+      .list-view .gallery-image-container {
+        flex: 0 0 300px;
+      }
+
+      .list-view .gallery-image {
+        height: 200px;
+        width: 300px;
+      }
+
+      .list-view .card-body {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .btn-outline-primary.active {
+        background-color: var(--bs-primary);
+        color: white;
+        border-color: var(--bs-primary);
+      }
+
+      .btn-outline-secondary.active {
+        background-color: var(--bs-secondary);
+        color: white;
+        border-color: var(--bs-secondary);
+      }
+    </style>
     
   </body>
 </html>

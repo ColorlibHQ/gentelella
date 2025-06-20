@@ -65,7 +65,7 @@
                       <li><a href="media_gallery.html">Media Gallery</a></li>
                       <li><a href="typography.html">Typography</a></li>
                       <li><a href="icons.html">Icons</a></li>
-                      <li><a href="glyphicons.html">Glyphicons</a></li>
+
                       <li><a href="widgets.html">Widgets</a></li>
                       <li><a href="invoice.html">Invoice</a></li>
                       <li><a href="inbox.html">Inbox</a></li>
@@ -134,7 +134,7 @@
                         </li>
                     </ul>
                   </li>                  
-                  <li><a href="javascript:void(0)"><i class="fas fa-laptop"></i> Landing Page <span class="label label-success pull-right">Coming Soon</span></a></li>
+                  <li><a href="javascript:void(0)"><i class="fas fa-laptop"></i> Landing Page <span class="badge bg-success float-end">Coming Soon</span></a></li>
                 </ul>
               </div>
 
@@ -143,16 +143,16 @@
 
             <!-- /menu footer buttons -->
             <div class="sidebar-footer hidden-small">
-              <a data-bs-toggle="tooltip" data-placement="top" title="Settings">
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Settings">
                 <span class="fas fa-cog" aria-hidden="true"></span>
               </a>
-              <a data-bs-toggle="tooltip" data-placement="top" title="FullScreen">
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="FullScreen">
                 <span class="fas fa-expand" aria-hidden="true"></span>
               </a>
-              <a data-bs-toggle="tooltip" data-placement="top" title="Lock">
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Lock">
                 <span class="fas fa-eye-slash" aria-hidden="true"></span>
               </a>
-              <a data-bs-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Logout" href="login.html">
                 <span class="fas fa-power-off" aria-hidden="true"></span>
               </a>
             </div>
@@ -299,272 +299,321 @@
                   </div>
                   <div class="x_content">
 
+                    <!-- ========================= -->
+                    <!-- Modern Bootstrap-5 Wizard -->
+                    <!-- Horizontal style first   -->
+                    <!-- ========================= -->
 
-                    <!-- Smart Wizard -->
-                    <p>This is a basic form wizard example that inherits the colors from the selected scheme.</p>
-                    <div id="wizard" class="form_wizard wizard_horizontal">
-                      <ul class="wizard_steps">
-                        <li>
-                          <a href="#step-1">
-                            <span class="step_no">1</span>
-                            <span class="step_descr">
-                                              Step 1<br />
-                                              <small>Step 1 description</small>
-                                          </span>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#step-2">
-                            <span class="step_no">2</span>
-                            <span class="step_descr">
-                                              Step 2<br />
-                                              <small>Step 2 description</small>
-                                          </span>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#step-3">
-                            <span class="step_no">3</span>
-                            <span class="step_descr">
-                                              Step 3<br />
-                                              <small>Step 3 description</small>
-                                          </span>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#step-4">
-                            <span class="step_no">4</span>
-                            <span class="step_descr">
-                                              Step 4<br />
-                                              <small>Step 4 description</small>
-                                          </span>
-                          </a>
-                        </li>
-                      </ul>
-                      <div id="step-1">
-                        <form class="form-horizontal form-label-left">
+                    <div class="x_panel">
+                      <div class="x_title">
+                        <h2>Horizontal Wizard <small class="text-muted">Bootstrap 5 nav-pills</small></h2>
+                        <div class="clearfix"></div>
+                      </div>
+                      <div class="x_content">
+                        <!-- Progress pills -->
+                        <ul class="nav nav-pills mb-4 justify-content-center" id="hzWizardNav" role="tablist">
+                          <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="h-step1-tab" data-bs-toggle="pill" data-bs-target="#h-step1" type="button" role="tab">1. Personal</button>
+                          </li>
+                          <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="h-step2-tab" data-bs-toggle="pill" data-bs-target="#h-step2" type="button" role="tab">2. Address</button>
+                          </li>
+                          <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="h-step3-tab" data-bs-toggle="pill" data-bs-target="#h-step3" type="button" role="tab">3. Review</button>
+                          </li>
+                        </ul>
 
-                          <div class="form-group row">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">First Name <span class="required">*</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6">
-                              <input type="text" id="first-name" required="required" class="form-control">
-                            </div>
-                          </div>
-                          <div class="form-group row">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Last Name <span class="required">*</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6">
-                              <input type="text" id="last-name" name="last-name" required="required" class="form-control">
-                            </div>
-                          </div>
-                          <div class="form-group row">
-                            <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Middle Name / Initial</label>
-                            <div class="col-md-6 col-sm-6">
-                              <input id="middle-name" class="form-control col" type="text" name="middle-name">
-                            </div>
-                          </div>
-                          <div class="form-group row">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align">Gender</label>
-                            <div class="col-md-6 col-sm-6">
-                              <div id="gender" class="btn-group" data-bs-toggle="buttons">
-                                <label class="btn btn-secondary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-secondary">
-                                  <input type="radio" name="gender" value="male" class="join-btn"> &nbsp; Male &nbsp;
-                                </label>
-                                <label class="btn btn-primary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-secondary">
-                                  <input type="radio" name="gender" value="female" class="join-btn"> Female
-                                </label>
+                        <!-- Step panes -->
+                        <div class="tab-content" id="hzWizardContent">
+                          <div class="tab-pane fade show active" id="h-step1" role="tabpanel" aria-labelledby="h-step1-tab">
+                            <form class="row g-3">
+                              <div class="col-md-6">
+                                <label class="form-label">First name</label>
+                                <input type="text" class="form-control" placeholder="John" required>
                               </div>
-                            </div>
-                          </div>
-                          <div class="form-group row">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align">Date Of Birth <span class="required">*</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6">
-                              <div class="input-group" id="birthday" data-td-target-input="nearest" data-td-target-toggle="nearest">
-                                <input type="text" class="form-control" data-td-target="#birthday" required="required" />
-                                <span class="input-group-text" data-td-target="#birthday" data-td-toggle="datetimepicker">
-                                  <span class="fas fa-calendar"></span>
-                                </span>
+                              <div class="col-md-6">
+                                <label class="form-label">Last name</label>
+                                <input type="text" class="form-control" placeholder="Doe" required>
                               </div>
-                            </div>
-                          </div>
-
-                        </form>
-
-                      </div>
-                      <div id="step-2">
-                        <h2 class="StepTitle">Step 2 Content</h2>
-                        <p>
-                          do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                          fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                          in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
-                      </div>
-                      <div id="step-3">
-                        <h2 class="StepTitle">Step 3 Content</h2>
-                        <p>
-                          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
-                          eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                          in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
-                      </div>
-                      <div id="step-4">
-                        <h2 class="StepTitle">Step 4 Content</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                          in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                          in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
-                      </div>
-
-                    </div>
-                    <!-- End SmartWizard Content -->
-
-
-
-
-
-                    <h2>Example: Vertical Style</h2>
-                    <!-- Tabs -->
-                    <div id="wizard_verticle" class="form_wizard wizard_verticle">
-                      <ul class="list-unstyled wizard_steps">
-                        <li>
-                          <a href="#step-11">
-                            <span class="step_no">1</span>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#step-22">
-                            <span class="step_no">2</span>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#step-33">
-                            <span class="step_no">3</span>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#step-44">
-                            <span class="step_no">4</span>
-                          </a>
-                        </li>
-                      </ul>
-
-                      <div id="step-11">
-                        <h2 class="StepTitle">Step 1 Content</h2>
-                        <form class="form-horizontal form-label-left">
-
-                          <span class="section">Personal Info</span>
-
-                          <div class="form-group row">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">First Name <span class="required">*</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6">
-                              <input type="text" id="first-name2" required="required" class="form-control">
-                            </div>
-                          </div>
-                          <div class="form-group row">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Last Name <span class="required">*</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6">
-                              <input type="text" id="last-name2" name="last-name" required="required" class="form-control">
-                            </div>
-                          </div>
-                          <div class="form-group row">
-                            <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Middle Name / Initial</label>
-                            <div class="col-md-6 col-sm-6">
-                              <input id="middle-name2" class="form-control" type="text" name="middle-name">
-                            </div>
-                          </div>
-                          <div class="form-group row">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align">Gender</label>
-                            <div class="col-md-6 col-sm-6">
-                              <div id="gender2" class="btn-group" data-bs-toggle="buttons">
-                                <label class="btn btn-secondary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-secondary">
-                                  <input type="radio" name="gender" value="male" class="join-btn"> &nbsp; Male &nbsp;
-                                </label>
-                                <label class="btn btn-primary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-secondary">
-                                  <input type="radio" name="gender" value="female" class="join-btn" checked=""> Female
-                                </label>
+                              <div class="col-md-6">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-control" placeholder="john@example.com" required>
                               </div>
-                            </div>
-                          </div>
-                          <div class="form-group row">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align">Date Of Birth <span class="required">*</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6">
-                              <div class="input-group" id="birthday2" data-td-target-input="nearest" data-td-target-toggle="nearest">
-                                <input type="text" class="form-control" data-td-target="#birthday2" required="required" />
-                                <span class="input-group-text" data-td-target="#birthday2" data-td-toggle="datetimepicker">
-                                  <span class="fas fa-calendar"></span>
-                                </span>
+                              <div class="col-md-6">
+                                <label class="form-label">Phone</label>
+                                <input type="tel" class="form-control" placeholder="+1 555-…">
                               </div>
-                            </div>
+                              <div class="d-flex justify-content-end gap-2">
+                                <button type="button" class="btn btn-theme" data-wz-next>Next</button>
+                              </div>
+                            </form>
                           </div>
 
-                        </form>
-                      </div>
-                      <div id="step-22">
-                        <h2 class="StepTitle">Step 2 Content</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                          in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                          in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                          in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                          in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
-                      </div>
-                      <div id="step-33">
-                        <h2 class="StepTitle">Step 3 Content</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                          in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
-                      </div>
-                      <div id="step-44">
-                        <h2 class="StepTitle">Step 4 Content</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                          in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                          in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
+                          <div class="tab-pane fade" id="h-step2" role="tabpanel" aria-labelledby="h-step2-tab">
+                            <form class="row g-3">
+                              <div class="col-md-8">
+                                <label class="form-label">Street</label>
+                                <input type="text" class="form-control" placeholder="123 Main St" required>
+                              </div>
+                              <div class="col-md-4">
+                                <label class="form-label">City</label>
+                                <input type="text" class="form-control" placeholder="New York" required>
+                              </div>
+                              <div class="col-md-4">
+                                <label class="form-label">State</label>
+                                <input type="text" class="form-control" placeholder="NY" required>
+                              </div>
+                              <div class="col-md-4">
+                                <label class="form-label">ZIP</label>
+                                <input type="text" class="form-control" placeholder="10001" required>
+                              </div>
+                              <div class="d-flex justify-content-between gap-2">
+                                <button type="button" class="btn btn-secondary" data-wz-prev>Back</button>
+                                <button type="button" class="btn btn-theme" data-wz-next>Next</button>
+                              </div>
+                            </form>
+                          </div>
+
+                          <div class="tab-pane fade" id="h-step3" role="tabpanel" aria-labelledby="h-step3-tab">
+                            <div class="alert alert-info">Review your information and click <strong>Finish</strong>.</div>
+                            <div class="d-flex justify-content-between gap-2">
+                              <button type="button" class="btn btn-secondary" data-wz-prev>Back</button>
+                              <button type="button" class="btn btn-success" data-wz-finish>Finish</button>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                    <!-- End SmartWizard Content -->
+
+                    <!-- ========================= -->
+                    <!-- Vertical Wizard example   -->
+                    <!-- ========================= -->
+
+                    <div class="x_panel">
+                      <div class="x_title">
+                        <h2>Vertical Wizard</h2>
+                        <div class="clearfix"></div>
+                      </div>
+                      <div class="x_content">
+                        <div class="row">
+                          <div class="col-md-3">
+                            <div class="nav flex-column nav-pills" id="vtWizardNav" role="tablist">
+                              <button class="nav-link active" data-bs-target="#v-step1" data-bs-toggle="pill" type="button">Step 1</button>
+                              <button class="nav-link" data-bs-target="#v-step2" data-bs-toggle="pill" type="button">Step 2</button>
+                              <button class="nav-link" data-bs-target="#v-step3" data-bs-toggle="pill" type="button">Step 3</button>
+                            </div>
+                          </div>
+                          <div class="col-md-9">
+                            <div class="tab-content" id="vtWizardContent">
+                              <div class="tab-pane fade show active" id="v-step1" role="tabpanel">
+                                <p class="lead mb-3">Some placeholder content for step 1.</p>
+                                <button class="btn btn-theme" data-wz-next>Next</button>
+                              </div>
+                              <div class="tab-pane fade" id="v-step2" role="tabpanel">
+                                <p class="lead mb-3">Placeholder for step 2.</p>
+                                <div class="d-flex justify-content-between">
+                                  <button class="btn btn-secondary" data-wz-prev>Back</button>
+                                  <button class="btn btn-theme" data-wz-next>Next</button>
+                                </div>
+                              </div>
+                              <div class="tab-pane fade" id="v-step3" role="tabpanel">
+                                <p class="lead mb-3">Done! 🎉</p>
+                                <button class="btn btn-secondary" data-wz-prev>Back</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- ========================= -->
+                    <!-- Progress Bar Wizard       -->
+                    <!-- ========================= -->
+
+                    <div class="x_panel">
+                      <div class="x_title">
+                        <h2>Progress Bar Wizard <small>with hidden nav</small></h2>
+                        <div class="clearfix"></div>
+                      </div>
+                      <div class="x_content">
+                        <!-- Hidden nav just for JS targeting -->
+                        <ul class="nav nav-pills d-none" id="pgWizardNav" role="tablist">
+                          <li class="nav-item"><button class="nav-link active" data-bs-target="#p-step1" data-bs-toggle="pill" type="button">1</button></li>
+                          <li class="nav-item"><button class="nav-link" data-bs-target="#p-step2" data-bs-toggle="pill" type="button">2</button></li>
+                          <li class="nav-item"><button class="nav-link" data-bs-target="#p-step3" data-bs-toggle="pill" type="button">3</button></li>
+                        </ul>
+
+                        <!-- Dynamic progress -->
+                        <div class="progress mb-4" style="height:8px;">
+                          <div class="progress-bar bg-theme" role="progressbar" style="width: 33%;" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+
+                        <div class="tab-content" id="pgWizardContent">
+                          <div class="tab-pane fade show active" id="p-step1" role="tabpanel">
+                            <h4 class="mb-3">Basic Info</h4>
+                            <p class="text-muted">Enter some basic information.</p>
+                            <div class="mb-3"><input type="text" class="form-control" placeholder="Title"></div>
+                            <div class="d-flex justify-content-end">
+                              <button class="btn btn-theme" data-wz-next>Next</button>
+                            </div>
+                          </div>
+                          <div class="tab-pane fade" id="p-step2" role="tabpanel">
+                            <h4 class="mb-3">Details</h4>
+                            <p class="text-muted">Add your details here.</p>
+                            <div class="mb-3"><textarea class="form-control" rows="3"></textarea></div>
+                            <div class="d-flex justify-content-between">
+                              <button class="btn btn-secondary" data-wz-prev>Back</button>
+                              <button class="btn btn-theme" data-wz-next>Next</button>
+                            </div>
+                          </div>
+                          <div class="tab-pane fade" id="p-step3" role="tabpanel">
+                            <h4 class="mb-3">Finish</h4>
+                            <div class="alert alert-warning">Click finish when ready.</div>
+                            <div class="d-flex justify-content-between">
+                              <button class="btn btn-secondary" data-wz-prev>Back</button>
+                              <button class="btn btn-success" data-wz-finish>Finish</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- ========================= -->
+                    <!-- Accordion Wizard (Steps)  -->
+                    <!-- ========================= -->
+
+                    <div class="x_panel">
+                      <div class="x_title">
+                        <h2>Accordion Wizard</h2>
+                        <div class="clearfix"></div>
+                      </div>
+                      <div class="x_content">
+                        <div class="accordion" id="accordionWizard">
+                          <div class="accordion-item">
+                            <h2 class="accordion-header" id="aw-headingOne">
+                              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#aw-step1" aria-expanded="true">
+                                Step 1: Account Setup
+                              </button>
+                            </h2>
+                            <div id="aw-step1" class="accordion-collapse collapse show" data-bs-parent="#accordionWizard">
+                              <div class="accordion-body">
+                                <div class="mb-3"><input type="email" class="form-control" placeholder="Email"></div>
+                                <button class="btn btn-theme" data-aw-next>Next</button>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="accordion-item">
+                            <h2 class="accordion-header" id="aw-headingTwo">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#aw-step2">
+                                Step 2: Profile Info
+                              </button>
+                            </h2>
+                            <div id="aw-step2" class="accordion-collapse collapse" data-bs-parent="#accordionWizard">
+                              <div class="accordion-body">
+                                <div class="mb-3"><input type="text" class="form-control" placeholder="Full Name"></div>
+                                <div class="d-flex justify-content-between">
+                                  <button class="btn btn-secondary" data-aw-prev>Back</button>
+                                  <button class="btn btn-theme" data-aw-next>Next</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="accordion-item">
+                            <h2 class="accordion-header" id="aw-headingThree">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#aw-step3">
+                                Step 3: Confirm
+                              </button>
+                            </h2>
+                            <div id="aw-step3" class="accordion-collapse collapse" data-bs-parent="#accordionWizard">
+                              <div class="accordion-body">
+                                <div class="alert alert-success">All set! 🎉</div>
+                                <div class="d-flex justify-content-between">
+                                  <button class="btn btn-secondary" data-aw-prev>Back</button>
+                                  <button class="btn btn-success" data-aw-finish>Finish</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Wizard helper script (vanilla JS) -->
+                    <script type="module">
+                      /** Generic helpers **/
+                      const wizardNavClick = (container, pane) => {
+                        // Prefer nav-link inside this wizard; fallback to manual show
+                        const nav = container.querySelector(`[data-bs-target="#${pane.id}"]`);
+                        if (nav) {
+                          nav.click();
+                        } else {
+                          container.querySelectorAll('.tab-pane.active').forEach(p => p.classList.remove('show', 'active'));
+                          pane.classList.add('show', 'active');
+                        }
+                      };
+
+                      const updateProgress = (container) => {
+                        const bar = container.querySelector('.progress-bar');
+                        if (!bar) return;
+                        const panes = Array.from(container.querySelectorAll('.tab-content .tab-pane'));
+                        const activeIdx = panes.findIndex(p => p.classList.contains('active'));
+                        if (activeIdx === -1) return;
+                        const percent = Math.round(((activeIdx + 1) / panes.length) * 100);
+                        bar.style.width = percent + '%';
+                        bar.setAttribute('aria-valuenow', percent);
+                      };
+
+                      // NEXT / PREV / FINISH for tab-based wizards
+                      document.querySelectorAll('[data-wz-next]').forEach(btn => {
+                        btn.addEventListener('click', () => {
+                          const current = btn.closest('.tab-pane');
+                          if (!current) return;
+                          const container = current.closest('.x_panel');
+                          const next = current.nextElementSibling;
+                          if (next && next.classList.contains('tab-pane')) {
+                            wizardNavClick(container, next);
+                            updateProgress(container);
+                          }
+                        });
+                      });
+                      document.querySelectorAll('[data-wz-prev]').forEach(btn => {
+                        btn.addEventListener('click', () => {
+                          const current = btn.closest('.tab-pane');
+                          if (!current) return;
+                          const container = current.closest('.x_panel');
+                          const prev = current.previousElementSibling;
+                          if (prev && prev.classList.contains('tab-pane')) {
+                            wizardNavClick(container, prev);
+                            updateProgress(container);
+                          }
+                        });
+                      });
+                      document.querySelectorAll('[data-wz-finish]').forEach(btn => {
+                        btn.addEventListener('click', () => {
+                          btn.closest('.x_panel').querySelector('.tab-content').innerHTML = '<div class="alert alert-success"><strong>Success!</strong> All steps completed.</div>';
+                        });
+                      });
+
+                      /** Accordion wizard controls **/
+                      const awToItem = (elem, dir) => {
+                        const item = elem.closest('.accordion-item');
+                        if (!item) return;
+                        const sibling = dir === 'next' ? item.nextElementSibling : item.previousElementSibling;
+                        if (sibling && sibling.querySelector('.accordion-button')) {
+                          sibling.querySelector('.accordion-button').click();
+                        }
+                      };
+
+                      document.querySelectorAll('[data-aw-next]').forEach(btn => btn.addEventListener('click', () => awToItem(btn, 'next')));
+                      document.querySelectorAll('[data-aw-prev]').forEach(btn => btn.addEventListener('click', () => awToItem(btn, 'prev')));
+                      document.querySelectorAll('[data-aw-finish]').forEach(btn => {
+                        btn.addEventListener('click', () => {
+                          const accordion = btn.closest('.accordion');
+                          accordion.innerHTML = '<div class="alert alert-success"><strong>Finished!</strong> All accordion steps complete.</div>';
+                        });
+                      });
+                    </script>
+                    <!-- End Modern Wizard -->
                   </div>
                 </div>
               </div>

@@ -65,7 +65,7 @@
                       <li><a href="media_gallery.html">Media Gallery</a></li>
                       <li><a href="typography.html">Typography</a></li>
                       <li><a href="icons.html">Icons</a></li>
-                      <li><a href="glyphicons.html">Glyphicons</a></li>
+
                       <li><a href="widgets.html">Widgets</a></li>
                       <li><a href="invoice.html">Invoice</a></li>
                       <li><a href="inbox.html">Inbox</a></li>
@@ -134,7 +134,7 @@
                         </li>
                     </ul>
                   </li>                  
-                  <li><a href="javascript:void(0)"><i class="fas fa-laptop"></i> Landing Page <span class="label label-success pull-right">Coming Soon</span></a></li>
+                  <li><a href="javascript:void(0)"><i class="fas fa-laptop"></i> Landing Page <span class="badge bg-success float-end">Coming Soon</span></a></li>
                 </ul>
               </div>
 
@@ -143,16 +143,16 @@
 
             <!-- /menu footer buttons -->
             <div class="sidebar-footer hidden-small">
-              <a data-bs-toggle="tooltip" data-placement="top" title="Settings">
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Settings">
                 <span class="fas fa-cog" aria-hidden="true"></span>
               </a>
-              <a data-bs-toggle="tooltip" data-placement="top" title="FullScreen">
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="FullScreen">
                 <span class="fas fa-expand" aria-hidden="true"></span>
               </a>
-              <a data-bs-toggle="tooltip" data-placement="top" title="Lock">
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Lock">
                 <span class="fas fa-eye-slash" aria-hidden="true"></span>
               </a>
-              <a data-bs-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Logout" href="login.html">
                 <span class="fas fa-power-off" aria-hidden="true"></span>
               </a>
             </div>
@@ -172,14 +172,14 @@
                     <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                       <img src="images/img.jpg" alt="">John Doe
                     </a>
-                    <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
+                    <div class="dropdown-menu dropdown-usermenu" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item"  href="javascript:;"> Profile</a>
                         <a class="dropdown-item"  href="javascript:;">
-                          <span class="badge bg-red pull-right">50%</span>
+                          <span class="badge bg-danger float-end">50%</span>
                           <span>Settings</span>
                         </a>
                     <a class="dropdown-item"  href="javascript:;">Help</a>
-                      <a class="dropdown-item"  href="login.html"><i class="fas fa-sign-out-alt pull-right"></i> Log Out</a>
+                      <a class="dropdown-item"  href="login.html"><i class="fas fa-sign-out-alt float-end"></i> Log Out</a>
                     </div>
                   </li>
   
@@ -263,12 +263,10 @@
               </div>
 
               <div class="title_right">
-                <div class="col-md-5 col-sm-5 form-group pull-right top_search">
+                <div class="col-md-5 col-sm-5 form-group float-end top_search">
                   <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search for...">
-                    <span class="input-group-btn">
-                      <button class="btn btn-default" type="button">Go!</button>
-                    </span>
+                    <button class="btn btn-outline-secondary" type="button">Go!</button>
                   </div>
                 </div>
               </div>
@@ -297,30 +295,40 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-
-                    <div class="col-md-7 col-sm-7">
-                      <div class="product-image">
-                        <img src="images/prod-1.jpg" alt="..." />
+                    <div class="row">
+                      <div class="col-lg-7 col-md-6 mb-4">
+                        <div class="product-image mb-3">
+                          <img id="mainProductImage" src="images/prod-1.jpg" alt="LOWA Men's Renegade GTX Mid Hiking Boots" class="img-fluid rounded" />
+                        </div>
+                        <div class="product_gallery">
+                          <div class="row g-2">
+                            <div class="col-3">
+                              <a href="#" class="d-block gallery-thumb" data-image="images/prod-1.jpg">
+                                <img src="images/prod-1.jpg" alt="Product view 1" class="img-fluid rounded" />
+                              </a>
+                            </div>
+                            <div class="col-3">
+                              <a href="#" class="d-block gallery-thumb" data-image="images/prod-2.jpg">
+                                <img src="images/prod-2.jpg" alt="Product view 2" class="img-fluid rounded" />
+                              </a>
+                            </div>
+                            <div class="col-3">
+                              <a href="#" class="d-block gallery-thumb" data-image="images/prod-3.jpg">
+                                <img src="images/prod-3.jpg" alt="Product view 3" class="img-fluid rounded" />
+                              </a>
+                            </div>
+                            <div class="col-3">
+                              <a href="#" class="d-block gallery-thumb" data-image="images/prod-4.jpg">
+                                <img src="images/prod-4.jpg" alt="Product view 4" class="img-fluid rounded" />
+                              </a>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      <div class="product_gallery">
-                        <a>
-                          <img src="images/prod-2.jpg" alt="..." />
-                        </a>
-                        <a>
-                          <img src="images/prod-3.jpg" alt="..." />
-                        </a>
-                        <a>
-                          <img src="images/prod-4.jpg" alt="..." />
-                        </a>
-                        <a>
-                          <img src="images/prod-5.jpg" alt="..." />
-                        </a>
-                      </div>
-                    </div>
 
-                    <div class="col-md-5 col-sm-5" style="border:0px solid #e5e5e5;">
+                      <div class="col-lg-5 col-md-6">
 
-                      <h3 class="prod_title">LOWA Men’s Renegade GTX Mid Hiking Boots Review</h3>
+                      <h3 class="prod_title">LOWA Men's Renegade GTX Mid Hiking Boots Review</h3>
 
                       <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terr.</p>
                       <br />
@@ -353,75 +361,267 @@
                         <h2>Size <small>Please select one</small></h2>
                         <ul class="list-inline prod_size display-layout">
                           <li>
-                            <button type="button" class="btn btn-default btn-xs">Small</button>
+                            <button type="button" class="btn btn-outline-secondary btn-sm">Small</button>
                           </li>
                           <li>
-                            <button type="button" class="btn btn-default btn-xs">Medium</button>
+                            <button type="button" class="btn btn-outline-secondary btn-sm">Medium</button>
                           </li>
                           <li>
-                            <button type="button" class="btn btn-default btn-xs">Large</button>
+                            <button type="button" class="btn btn-outline-secondary btn-sm">Large</button>
                           </li>
                           <li>
-                            <button type="button" class="btn btn-default btn-xs">Xtra-Large</button>
+                            <button type="button" class="btn btn-outline-secondary btn-sm">Xtra-Large</button>
                           </li>
                         </ul>
                       </div>
                       <br />
 
-                      <div class="">
-                        <div class="product_price">
-                          <h1 class="price">Ksh80.00</h1>
-                          <span class="price-tax">Ex Tax: Ksh80.00</span>
-                          <br>
+                        <div class="mb-4">
+                          <div class="product_price">
+                            <h2 class="price text-success fw-bold mb-1">$80.00</h2>
+                            <span class="price-tax text-muted small">Ex Tax: $80.00</span>
+                          </div>
                         </div>
-                      </div>
 
-                      <div class="">
-                        <button type="button" class="btn btn-default btn-lg">Add to Cart</button>
-                        <button type="button" class="btn btn-default btn-lg">Add to Wishlist</button>
-                      </div>
+                        <div class="d-grid gap-2 d-md-block mb-4">
+                          <button type="button" class="btn btn-primary btn-lg me-2">
+                            <i class="fas fa-shopping-cart me-2"></i>Add to Cart
+                          </button>
+                          <button type="button" class="btn btn-outline-danger btn-lg">
+                            <i class="fas fa-heart me-2"></i>Add to Wishlist
+                          </button>
+                        </div>
 
-                      <div class="product_social">
-                        <ul class="list-inline display-layout">
-                          <li><a href="#"><i class="fas fa-facebook-square"></i></a>
-                          </li>
-                          <li><a href="#"><i class="fas fa-twitter-square"></i></a>
-                          </li>
-                          <li><a href="#"><i class="fas fa-envelope-square"></i></a>
-                          </li>
-                          <li><a href="#"><i class="fas fa-rss-square"></i></a>
-                          </li>
-                        </ul>
+                        <div class="product_social">
+                          <h6 class="text-muted mb-2">Share this product:</h6>
+                          <div class="d-flex gap-2">
+                            <a href="#" class="btn btn-outline-primary btn-sm">
+                              <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="btn btn-outline-info btn-sm">
+                              <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="btn btn-outline-secondary btn-sm">
+                              <i class="fas fa-envelope"></i>
+                            </a>
+                            <a href="#" class="btn btn-outline-warning btn-sm">
+                              <i class="fas fa-rss"></i>
+                            </a>
+                          </div>
+                        </div>
                       </div>
 
                     </div>
 
 
-                    <div class="col-md-12">
+                    </div>
+                    
+                    <div class="col-12 mt-4">
 
                       <ul class="nav nav-tabs bar_tabs" id="myTab" role="tablist">
                         <li class="nav-item">
-                          <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
+                          <a class="nav-link active" id="description-tab" data-bs-toggle="tab" href="#description" role="tab" aria-controls="description" aria-selected="true">Description</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
+                          <a class="nav-link" id="specifications-tab" data-bs-toggle="tab" href="#specifications" role="tab" aria-controls="specifications" aria-selected="false">Specifications</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" id="contact-tab" data-bs-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+                          <a class="nav-link" id="reviews-tab" data-bs-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">Reviews</a>
                         </li>
                       </ul>
                       <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                          Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher
-                              synth. Cosby sweater eu banh mi, qui irure terr.
+                        <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
+                          <div class="p-3">
+                            <h4>Product Description</h4>
+                            <p>The LOWA Men's Renegade GTX Mid Hiking Boots are designed for serious outdoor enthusiasts who demand comfort, durability, and performance on challenging terrain. These premium hiking boots feature GORE-TEX waterproof technology to keep your feet dry in wet conditions while maintaining breathability.</p>
+                            
+                            <h5>Key Features:</h5>
+                            <ul>
+                              <li>GORE-TEX waterproof and breathable membrane</li>
+                              <li>Nubuck leather upper for durability</li>
+                              <li>Vibram Evo sole for superior traction</li>
+                              <li>Climate control footbed for moisture management</li>
+                              <li>Polyurethane MONOWRAP frame for stability</li>
+                              <li>Derby lacing system for customized fit</li>
+                            </ul>
+                            
+                            <p>Whether you're trekking through muddy trails, crossing streams, or navigating rocky terrain, these boots provide the support and protection you need for your outdoor adventures.</p>
+                          </div>
                         </div>
-                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                          Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo
-                              booth letterpress, commodo enim craft beer mlkshk aliquip
+                        <div class="tab-pane fade" id="specifications" role="tabpanel" aria-labelledby="specifications-tab">
+                          <div class="p-3">
+                            <h4>Technical Specifications</h4>
+                            <div class="row">
+                              <div class="col-md-6">
+                                <table class="table table-striped">
+                                  <tr>
+                                    <td><strong>Brand</strong></td>
+                                    <td>LOWA</td>
+                                  </tr>
+                                  <tr>
+                                    <td><strong>Model</strong></td>
+                                    <td>Renegade GTX Mid</td>
+                                  </tr>
+                                  <tr>
+                                    <td><strong>Gender</strong></td>
+                                    <td>Men's</td>
+                                  </tr>
+                                  <tr>
+                                    <td><strong>Boot Height</strong></td>
+                                    <td>Mid (ankle height)</td>
+                                  </tr>
+                                  <tr>
+                                    <td><strong>Waterproof</strong></td>
+                                    <td>Yes (GORE-TEX)</td>
+                                  </tr>
+                                </table>
+                              </div>
+                              <div class="col-md-6">
+                                <table class="table table-striped">
+                                  <tr>
+                                    <td><strong>Upper Material</strong></td>
+                                    <td>Nubuck Leather</td>
+                                  </tr>
+                                  <tr>
+                                    <td><strong>Sole</strong></td>
+                                    <td>Vibram Evo</td>
+                                  </tr>
+                                  <tr>
+                                    <td><strong>Weight</strong></td>
+                                    <td>1.8 lbs (per boot)</td>
+                                  </tr>
+                                  <tr>
+                                    <td><strong>Sizes Available</strong></td>
+                                    <td>7-13 US</td>
+                                  </tr>
+                                  <tr>
+                                    <td><strong>Colors</strong></td>
+                                    <td>Sepia/Sepia, Slate/Orange</td>
+                                  </tr>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
                         </div>
-                        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                          xxFood truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo
-                              booth letterpress, commodo enim craft beer mlkshk 
+                        <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+                          <div class="p-3">
+                            <h4>Customer Reviews</h4>
+                            
+                            <div class="review-summary mb-4">
+                              <div class="row">
+                                <div class="col-md-3 text-center">
+                                  <h2 class="text-warning">4.5</h2>
+                                  <div class="stars text-warning mb-2">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                  </div>
+                                  <p class="text-muted">Based on 156 reviews</p>
+                                </div>
+                                <div class="col-md-9">
+                                  <div class="rating-breakdown">
+                                    <div class="d-flex align-items-center mb-1">
+                                      <span class="me-2">5</span>
+                                      <div class="progress flex-grow-1 me-2" style="height: 8px;">
+                                        <div class="progress-bar bg-warning" style="width: 70%"></div>
+                                      </div>
+                                      <span class="text-muted small">70%</span>
+                                    </div>
+                                    <div class="d-flex align-items-center mb-1">
+                                      <span class="me-2">4</span>
+                                      <div class="progress flex-grow-1 me-2" style="height: 8px;">
+                                        <div class="progress-bar bg-warning" style="width: 20%"></div>
+                                      </div>
+                                      <span class="text-muted small">20%</span>
+                                    </div>
+                                    <div class="d-flex align-items-center mb-1">
+                                      <span class="me-2">3</span>
+                                      <div class="progress flex-grow-1 me-2" style="height: 8px;">
+                                        <div class="progress-bar bg-warning" style="width: 7%"></div>
+                                      </div>
+                                      <span class="text-muted small">7%</span>
+                                    </div>
+                                    <div class="d-flex align-items-center mb-1">
+                                      <span class="me-2">2</span>
+                                      <div class="progress flex-grow-1 me-2" style="height: 8px;">
+                                        <div class="progress-bar bg-warning" style="width: 2%"></div>
+                                      </div>
+                                      <span class="text-muted small">2%</span>
+                                    </div>
+                                    <div class="d-flex align-items-center mb-1">
+                                      <span class="me-2">1</span>
+                                      <div class="progress flex-grow-1 me-2" style="height: 8px;">
+                                        <div class="progress-bar bg-warning" style="width: 1%"></div>
+                                      </div>
+                                      <span class="text-muted small">1%</span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="reviews-list">
+                              <div class="review-item border-bottom pb-3 mb-3">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                  <div>
+                                    <h6 class="mb-1">Mike Thompson</h6>
+                                    <div class="stars text-warning small">
+                                      <i class="fas fa-star"></i>
+                                      <i class="fas fa-star"></i>
+                                      <i class="fas fa-star"></i>
+                                      <i class="fas fa-star"></i>
+                                      <i class="fas fa-star"></i>
+                                    </div>
+                                  </div>
+                                  <small class="text-muted">2 weeks ago</small>
+                                </div>
+                                <p class="mb-1"><strong>Excellent hiking boots!</strong></p>
+                                <p class="text-muted">I've used these boots on multiple hiking trips and they're fantastic. Waterproof, comfortable, and great traction. Highly recommended for serious hikers.</p>
+                              </div>
+
+                              <div class="review-item border-bottom pb-3 mb-3">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                  <div>
+                                    <h6 class="mb-1">Sarah Johnson</h6>
+                                    <div class="stars text-warning small">
+                                      <i class="fas fa-star"></i>
+                                      <i class="fas fa-star"></i>
+                                      <i class="fas fa-star"></i>
+                                      <i class="fas fa-star"></i>
+                                      <i class="far fa-star"></i>
+                                    </div>
+                                  </div>
+                                  <small class="text-muted">1 month ago</small>
+                                </div>
+                                <p class="mb-1"><strong>Great quality, runs slightly large</strong></p>
+                                <p class="text-muted">Love the quality and waterproofing. Only issue is they run about half a size large, so order accordingly. Otherwise, perfect boots for outdoor activities.</p>
+                              </div>
+
+                              <div class="review-item pb-3 mb-3">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                  <div>
+                                    <h6 class="mb-1">David Chen</h6>
+                                    <div class="stars text-warning small">
+                                      <i class="fas fa-star"></i>
+                                      <i class="fas fa-star"></i>
+                                      <i class="fas fa-star"></i>
+                                      <i class="fas fa-star"></i>
+                                      <i class="fas fa-star"></i>
+                                    </div>
+                                  </div>
+                                  <small class="text-muted">2 months ago</small>
+                                </div>
+                                <p class="mb-1"><strong>Worth every penny</strong></p>
+                                <p class="text-muted">Invested in these after wearing out cheaper boots. The difference is night and day. Comfortable from day one, no break-in period needed. Will definitely buy LOWA again.</p>
+                              </div>
+                            </div>
+
+                            <div class="text-center">
+                              <button class="btn btn-outline-primary">Load More Reviews</button>
+                            </div>
+                          </div>
                         </div>
                       </div>
 
@@ -436,7 +636,7 @@
 
         <!-- footer content -->
         <footer>
-          <div class="pull-right">
+          <div class="float-end">
             Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
           </div>
           <div class="clearfix"></div>
@@ -445,5 +645,58 @@
       </div>
     </div>    <!-- Compiled JavaScript (includes jQuery, Bootstrap, and all vendor scripts) -->
     
+    <script>
+      // Product gallery functionality
+      document.addEventListener('DOMContentLoaded', function() {
+        const galleryThumbs = document.querySelectorAll('.gallery-thumb');
+        const mainImage = document.getElementById('mainProductImage');
+        
+        galleryThumbs.forEach(thumb => {
+          thumb.addEventListener('click', function(e) {
+            e.preventDefault();
+            const newImageSrc = this.getAttribute('data-image');
+            mainImage.src = newImageSrc;
+            
+            // Remove active class from all thumbnails
+            galleryThumbs.forEach(t => t.classList.remove('active'));
+            // Add active class to clicked thumbnail
+            this.classList.add('active');
+          });
+        });
+        
+        // Set first thumbnail as active
+        if (galleryThumbs.length > 0) {
+          galleryThumbs[0].classList.add('active');
+        }
+      });
+    </script>
+    
+    <style>
+      .gallery-thumb {
+        border: 2px solid transparent;
+        border-radius: 0.375rem;
+        transition: border-color 0.3s ease;
+      }
+      
+      .gallery-thumb.active {
+        border-color: #0d6efd;
+      }
+      
+      .gallery-thumb:hover {
+        border-color: #86b7fe;
+      }
+      
+      .stars i {
+        margin-right: 2px;
+      }
+      
+      .review-summary .progress {
+        height: 8px;
+      }
+      
+      .rating-breakdown {
+        font-size: 0.9rem;
+      }
+    </style>
   </body>
 </html>
