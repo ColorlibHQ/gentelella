@@ -637,7 +637,6 @@ function initSalesAnalytics() {
       // Store the target width
       const targetWidth = targetWidths[index];
       bar.setAttribute('data-target-width', targetWidth);
-      bar.style.setProperty('--bar-width', targetWidth);
       
       // Start with 0% width for animation
       bar.style.width = '0%';
@@ -651,12 +650,6 @@ function initSalesAnalytics() {
           const targetWidth = bar.getAttribute('data-target-width');
           if (targetWidth) {
             bar.style.width = targetWidth;
-            // Lock the width permanently
-            setTimeout(() => {
-              bar.style.transition = 'none';
-              bar.style.width = targetWidth; // Force it again
-              bar.classList.add('animation-complete');
-            }, 1000);
           }
         }, index * 150);
       });

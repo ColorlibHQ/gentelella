@@ -5796,30 +5796,39 @@ input[type="radio"].flat:disabled + label {
   .progress {
     border-radius: 4px;
     overflow: hidden;
+    background-color: #e9ecef;
     
     .progress-bar {
-      transition: width 0.6s ease;
+      transition: width 0.8s ease-out;
       border-radius: 4px;
-      animation: slideIn 0.8s ease-out;
+      position: relative;
+      overflow: hidden;
+      
+      // Ensure the width is maintained
+      &.bg-primary { 
+        background-color: #007bff !important;
+      }
+      &.bg-success { 
+        background-color: #28a745 !important;
+      }
+      &.bg-warning { 
+        background-color: #ffc107 !important;
+      }
+      &.bg-info { 
+        background-color: #17a2b8 !important;
+      }
     }
   }
   
   .small.fw-bold {
     font-size: 0.875rem;
     color: #495057;
+    font-weight: 600;
   }
   
   .small.text-muted {
     font-size: 0.75rem;
-  }
-}
-
-@keyframes slideIn {
-  from {
-    width: 0;
-  }
-  to {
-    width: var(--final-width);
+    color: #6c757d;
   }
 }
 
@@ -5832,9 +5841,8 @@ input[type="radio"].flat:disabled + label {
   }
 }
 
-// Progress bar color variations
-.bg-primary { --final-width: 75%; }
-.bg-success { --final-width: 60%; }
-.bg-warning { --final-width: 85%; }
-.bg-info { --final-width: 45%; }
+// Force width maintenance - this ensures the bars don't revert
+.sales-progress .progress-bar[style*="width"] {
+  width: var(--bar-width) !important;
+}
 
