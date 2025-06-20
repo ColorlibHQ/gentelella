@@ -624,63 +624,13 @@ $(document).ready(function() {
 
 });
 
-// Sales Analytics Widget Initialization
-function initSalesAnalytics() {
-  const progressBars = document.querySelectorAll('.sales-progress .progress-bar');
+// Universal Progress Bars Initialization
+function initUniversalProgressBars() {
+  // Find all progress bars across all pages
+  const allProgressBars = document.querySelectorAll('.progress-bar');
   
-  if (progressBars.length > 0) {
-    // Define the target widths based on the data in the HTML
-    const targetWidths = ['75%', '60%', '85%', '45%'];
-    
-    // Set up the animation
-    progressBars.forEach((bar, index) => {
-      // Store the target width
-      const targetWidth = targetWidths[index];
-      bar.setAttribute('data-target-width', targetWidth);
-      bar.style.setProperty('--bar-width', targetWidth);
-      
-      // Start with 0% width for animation
-      bar.style.width = '0%';
-      bar.style.transition = 'width 0.8s ease-out';
-    });
-    
-    // Animate them to their target width with a staggered delay
-    setTimeout(() => {
-      progressBars.forEach((bar, index) => {
-        setTimeout(() => {
-          const targetWidth = bar.getAttribute('data-target-width');
-          if (targetWidth) {
-            bar.style.width = targetWidth;
-            // Lock the width permanently
-            setTimeout(() => {
-              bar.style.transition = 'none';
-              bar.style.width = targetWidth; // Force it again
-              bar.classList.add('animation-complete');
-            }, 1000);
-          }
-        }, index * 150);
-      });
-    }, 300);
-  }
-}
-
-// Initialize sales analytics on DOM ready
-document.addEventListener('DOMContentLoaded', function() {
-  setTimeout(initSalesAnalytics, 200);
-});
-
-// Index2 Progress Bars Initialization
-function initIndex2ProgressBars() {
-  // Only run on index2.html
-  if (!window.location.pathname.includes('index2.html')) {
-    return;
-  }
-  
-  // Find all progress bars on index2 using multiple selector strategies
-  const allIndex2Bars = document.querySelectorAll('.progress-bar');
-  
-  if (allIndex2Bars.length > 0) {
-    allIndex2Bars.forEach((bar, index) => {
+  if (allProgressBars.length > 0) {
+    allProgressBars.forEach((bar, index) => {
       // Read the existing inline width style
       const inlineWidth = bar.style.width;
       const computedStyle = window.getComputedStyle(bar);
@@ -712,7 +662,7 @@ function initIndex2ProgressBars() {
   }
 }
 
-// Initialize index2 progress bars on DOM ready
+// Initialize universal progress bars on DOM ready
 document.addEventListener('DOMContentLoaded', function() {
-  setTimeout(initIndex2ProgressBars, 200);
+  setTimeout(initUniversalProgressBars, 200);
 }); 
