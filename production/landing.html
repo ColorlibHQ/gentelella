@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Gentelella - Free Bootstrap Admin Template">
+    <meta name="author" content="Colorlib">
+
+    <title>Gentelella - Premium Bootstrap Admin Template</title>
+
+    <!-- Bootstrap -->
+    <link href="../src/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../src/vendors/font-awesome/css/fontawesome.css" rel="stylesheet">
+    <link href="../src/vendors/font-awesome/css/all.min.css" rel="stylesheet">
+    <link href="../src/vendors/font-awesome/css/brands.min.css" rel="stylesheet">
+    <link href="../src/vendors/font-awesome/css/solid.min.css" rel="stylesheet">
+    
+    <!-- Custom Theme Style -->
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      body {
+        font-family: 'Roboto', Arial, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        overflow-x: hidden;
+      }
+      
+      /* Hero Section */
+      .hero {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 120px 0;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+        background-size: 50px 50px;
+        animation: float 20s infinite linear;
+      }
+      
+      @keyframes float {
+        0% { transform: translateY(0px) translateX(0px); }
+        100% { transform: translateY(-100px) translateX(-100px); }
+      }
+      
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+      }
+      
+      .hero h1 {
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      }
+      
+      .hero .subtitle {
+        font-size: 1.4rem;
+        margin-bottom: 2rem;
+        opacity: 0.9;
+        font-weight: 300;
+      }
+      
+      .cta-buttons {
+        margin-top: 2rem;
+      }
+      
+      .btn-primary-custom {
+        background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+        border: none;
+        padding: 15px 30px;
+        font-size: 1.1rem;
+        border-radius: 50px;
+        margin: 0 10px;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+        color: white;
+        font-weight: 600;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      }
+      
+      .btn-primary-custom:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        color: white;
+        text-decoration: none;
+      }
+      
+      .btn-outline-custom {
+        background: transparent;
+        border: 2px solid white;
+        padding: 13px 28px;
+        font-size: 1.1rem;
+        border-radius: 50px;
+        margin: 0 10px;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+        color: white;
+        font-weight: 600;
+      }
+      
+      .btn-outline-custom:hover {
+        background: white;
+        color: #667eea;
+        text-decoration: none;
+      }
+      
+      /* Features Section */
+      .features {
+        padding: 100px 0;
+        background: #f8f9fa;
+      }
+      
+      .section-title {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+      
+      .section-title h2 {
+        font-size: 2.5rem;
+        color: #2c3e50;
+        margin-bottom: 1rem;
+      }
+      
+      .section-title p {
+        font-size: 1.2rem;
+        color: #7f8c8d;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      
+      .feature-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        text-align: center;
+        margin-bottom: 2rem;
+        transition: all 0.3s ease;
+        height: 100%;
+      }
+      
+      .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      }
+      
+      .feature-icon {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.5rem;
+        font-size: 2rem;
+        color: white;
+      }
+      
+      .feature-card h4 {
+        color: #2c3e50;
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+      }
+      
+      .feature-card p {
+        color: #7f8c8d;
+        line-height: 1.6;
+      }
+      
+      /* Screenshot Section */
+      .screenshots {
+        padding: 100px 0;
+        background: white;
+      }
+      
+      .dashboard-preview {
+        background: #f8f9fa;
+        border-radius: 15px;
+        padding: 2rem;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        margin: 2rem 0;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .dashboard-preview::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 40px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 15px 15px 0 0;
+      }
+      
+      .dashboard-preview::after {
+        content: '';
+        position: absolute;
+        top: 15px;
+        left: 20px;
+        width: 12px;
+        height: 12px;
+        background: #ff5f56;
+        border-radius: 50%;
+        box-shadow: 20px 0 0 #ffbd2e, 40px 0 0 #27ca3f;
+      }
+      
+      .dashboard-mockup {
+        margin-top: 40px;
+        padding: 2rem;
+        background: white;
+        border-radius: 10px;
+        min-height: 300px;
+      }
+      
+      .mockup-header {
+        display: flex;
+        justify-content: between;
+        align-items: center;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid #e9ecef;
+      }
+      
+      .mockup-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin-bottom: 2rem;
+      }
+      
+      .stat-card {
+        background: #f8f9fa;
+        padding: 1.5rem;
+        border-radius: 8px;
+        text-align: center;
+      }
+      
+      .stat-number {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #667eea;
+        margin-bottom: 0.5rem;
+      }
+      
+      .stat-label {
+        color: #7f8c8d;
+        font-size: 0.9rem;
+      }
+      
+      /* Stats Section */
+      .stats {
+        padding: 100px 0;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+      }
+      
+      .stat-item {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+      
+      .stat-item h3 {
+        font-size: 3rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+      }
+      
+      .stat-item p {
+        font-size: 1.1rem;
+        opacity: 0.9;
+      }
+      
+      /* CTA Section */
+      .cta-section {
+        padding: 100px 0;
+        background: #2c3e50;
+        color: white;
+        text-align: center;
+      }
+      
+      .cta-section h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+      
+      .cta-section p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        opacity: 0.9;
+      }
+      
+      /* Footer */
+      .footer {
+        background: #34495e;
+        color: white;
+        padding: 3rem 0 2rem;
+        text-align: center;
+      }
+      
+      .footer p {
+        margin: 0;
+        opacity: 0.8;
+      }
+      
+      /* Responsive */
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+        
+        .hero .subtitle {
+          font-size: 1.1rem;
+        }
+        
+        .btn-primary-custom,
+        .btn-outline-custom {
+          display: block;
+          margin: 10px auto;
+          width: 200px;
+        }
+        
+        .section-title h2 {
+          font-size: 2rem;
+        }
+        
+        .mockup-stats {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1>Gentelella</h1>
+          <p class="subtitle">Free Bootstrap Admin Dashboard Template</p>
+          <p style="font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.8;">
+            A beautiful, responsive admin template built with Bootstrap. Perfect for dashboards, 
+            admin panels, and backend applications.
+          </p>
+          <div class="cta-buttons">
+            <a href="index.html" class="btn-primary-custom">
+              <i class="fas fa-chart-line"></i> View Dashboard
+            </a>
+            <a href="login.html" class="btn-outline-custom">
+              <i class="fas fa-sign-in-alt"></i> Login Demo
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+      <div class="container">
+        <div class="section-title">
+          <h2>Powerful Features</h2>
+          <p>Everything you need to build modern admin dashboards and web applications</p>
+        </div>
+        
+        <div class="row">
+          <div class="col-md-4">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-mobile-alt"></i>
+              </div>
+              <h4>Fully Responsive</h4>
+              <p>Works perfectly on all devices - desktop, tablet, and mobile. Built with mobile-first approach for optimal user experience.</p>
+            </div>
+          </div>
+          
+          <div class="col-md-4">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-chart-bar"></i>
+              </div>
+              <h4>Rich Components</h4>
+              <p>Includes charts, tables, forms, widgets, and dozens of UI components to build comprehensive admin panels.</p>
+            </div>
+          </div>
+          
+          <div class="col-md-4">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-code"></i>
+              </div>
+              <h4>Clean Code</h4>
+              <p>Well-structured, semantic HTML with clean CSS and organized JavaScript. Easy to customize and extend.</p>
+            </div>
+          </div>
+          
+          <div class="col-md-4">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-palette"></i>
+              </div>
+              <h4>Modern Design</h4>
+              <p>Contemporary flat design with beautiful color schemes and smooth animations for an engaging user experience.</p>
+            </div>
+          </div>
+          
+          <div class="col-md-4">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-rocket"></i>
+              </div>
+              <h4>Fast Performance</h4>
+              <p>Optimized for speed with minimal CSS/JS footprint. Loads quickly and runs smoothly on all browsers.</p>
+            </div>
+          </div>
+          
+          <div class="col-md-4">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-tools"></i>
+              </div>
+              <h4>Easy to Customize</h4>
+              <p>Modular SCSS files and well-documented code make it simple to customize colors, layouts, and components.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dashboard Preview Section -->
+    <section class="screenshots">
+      <div class="container">
+        <div class="section-title">
+          <h2>Dashboard Preview</h2>
+          <p>Get a glimpse of what your admin dashboard will look like</p>
+        </div>
+        
+        <div class="dashboard-preview">
+          <div class="dashboard-mockup">
+            <div class="mockup-header">
+              <h4 style="color: #2c3e50; margin: 0;">Analytics Dashboard</h4>
+              <small style="color: #7f8c8d;">Real-time data overview</small>
+            </div>
+            
+            <div class="mockup-stats">
+              <div class="stat-card">
+                <div class="stat-number">2,540</div>
+                <div class="stat-label">Total Users</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-number">$24,567</div>
+                <div class="stat-label">Revenue</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-number">1,240</div>
+                <div class="stat-label">Orders</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-number">98.5%</div>
+                <div class="stat-label">Uptime</div>
+              </div>
+            </div>
+            
+            <div style="background: #f8f9fa; height: 200px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #7f8c8d;">
+              <div style="text-align: center;">
+                <i class="fas fa-chart-area" style="font-size: 3rem; margin-bottom: 1rem; color: #667eea;"></i>
+                <p>Interactive Charts & Graphs</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="stat-item">
+              <h3>50+</h3>
+              <p>UI Components</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="stat-item">
+              <h3>15+</h3>
+              <p>Sample Pages</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="stat-item">
+              <h3>100%</h3>
+              <p>Responsive</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="stat-item">
+              <h3>Free</h3>
+              <p>Open Source</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="container">
+        <h2>Ready to Get Started?</h2>
+        <p>Join thousands of developers who trust Gentelella for their admin dashboards</p>
+        <div class="cta-buttons">
+          <a href="index.html" class="btn-primary-custom" style="margin-right: 20px;">
+            <i class="fas fa-play"></i> Explore Dashboard
+          </a>
+          <a href="login.html" class="btn-outline-custom">
+            <i class="fas fa-user"></i> Try Login
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2025 Gentelella. Free Bootstrap Admin Template. Built with ❤️ for developers.</p>
+      </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="../src/vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../src/vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
