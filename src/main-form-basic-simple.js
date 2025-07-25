@@ -23,4 +23,3 @@ window.moduleReady = true;
 
 // Dispatch event
 window.dispatchEvent(new CustomEvent('simple-module-ready'));
- 

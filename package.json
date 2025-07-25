@@ -5,7 +5,13 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "eslint src/",
+    "lint:fix": "eslint src/ --fix",
+    "format": "prettier --write src/",
+    "format:check": "prettier --check src/",
+    "analyze": "npm run build && open dist/stats.html",
+    "analyze:ci": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -35,13 +41,22 @@
   },
   "homepage": "https://github.com/puikinsh/gentelella#readme",
   "devDependencies": {
+    "@eslint/js": "^9.31.0",
+    "@typescript-eslint/eslint-plugin": "^8.38.0",
+    "@typescript-eslint/parser": "^8.38.0",
+    "eslint": "^9.31.0",
+    "eslint-config-prettier": "^10.1.8",
     "glob": "^11.0.2",
+    "prettier": "^3.6.2",
+    "rollup-plugin-visualizer": "^6.0.3",
     "sass": "^1.89.2",
-    "vite": "^6.3.5"
+    "terser": "^5.43.1",
+    "typescript": "^5.8.3",
+    "vite": "^7.0.6"
   },
   "dependencies": {
     "@eonasdan/tempus-dominus": "^6.10.4",
-    "@fortawesome/fontawesome-free": "^6.6.0",
+    "@fortawesome/fontawesome-free": "^7.0.0",
     "@fullcalendar/core": "^6.1.17",
     "@fullcalendar/daygrid": "^6.1.17",
     "@fullcalendar/interaction": "^6.1.17",
@@ -50,7 +65,6 @@
     "@simonwep/pickr": "^1.9.1",
     "autosize": "^6.0.1",
     "bootstrap": "^5.3.6",
-    "bootstrap-wysiwyg": "^2.0.1",
     "chart.js": "^4.4.2",
     "cropperjs": "^2.0.0",
     "datatables.net": "^2.3.2",
@@ -61,9 +75,10 @@
     "datatables.net-keytable": "^2.12.1",
     "datatables.net-responsive": "^3.0.4",
     "datatables.net-responsive-bs5": "^3.0.4",
-    "datatables.net-scroller": "^2.4.3",
+    "daterangepicker": "^3.1.0",
     "dayjs": "^1.11.13",
-    "dropzone": "^5.9.3",
+    "dompurify": "^3.2.6",
+    "dropzone": "^6.0.0-beta.2",
     "echarts": "^5.6.0",
     "flot": "^4.2.6",
     "inputmask": "^5.0.9",
@@ -74,9 +89,9 @@
     "jquery-ui": "^1.14.1",
     "jszip": "^3.10.1",
     "leaflet": "^1.9.4",
+    "moment": "^2.30.1",
     "nprogress": "^0.2.0",
-    "pdfmake": "^0.2.20",
-    "select2": "^4.0.13",
+    "select2": "^4.1.0-rc.0",
     "skycons": "^1.0.0",
     "switchery": "^0.0.2"
   }

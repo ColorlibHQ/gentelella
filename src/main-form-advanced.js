@@ -44,24 +44,24 @@ try {
 // Create a library availability checker for inline scripts
 window.waitForLibraries = function(libraries, callback, timeout = 5000) {
   const startTime = Date.now();
-  
+
   function check() {
     const allAvailable = libraries.every(lib => {
       return (typeof window[lib] !== 'undefined') || (typeof globalThis[lib] !== 'undefined');
     });
-    
+
     if (allAvailable) {
       callback();
     } else if (Date.now() - startTime < timeout) {
       setTimeout(check, 50);
     } else {
-      console.warn('Timeout waiting for libraries:', libraries.filter(lib => 
+      console.warn('Timeout waiting for libraries:', libraries.filter(lib =>
         typeof window[lib] === 'undefined' && typeof globalThis[lib] === 'undefined'
       ));
       callback(); // Call anyway to prevent hanging
     }
   }
-  
+
   check();
 };
 
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     window.Inputmask = Inputmask;
     globalThis.Inputmask = Inputmask;
 
-    // Modern Color Picker 
+    // Modern Color Picker
     const { default: Pickr } = await import('@simonwep/pickr');
     window.Pickr = Pickr;
     globalThis.Pickr = Pickr;
@@ -90,4 +90,4 @@ document.addEventListener('DOMContentLoaded', async function() {
   } catch (error) {
     console.error('❌ Error loading form components:', error);
   }
-}); 
+});

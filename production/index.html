@@ -4,8 +4,13 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Security Headers -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.googleapis.com; img-src 'self' data: https: blob:; font-src 'self' data: https://fonts.gstatic.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; connect-src 'self' ws: wss: http://localhost:* https://api.example.com https://*.googleapis.com; frame-src 'self' https://www.youtube.com https://player.vimeo.com; media-src 'self' https: blob:; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
 	<link rel="icon" href="images/favicon.ico" type="image/ico" />
 
     <title>Dashboard 1 - Gentelella</title>
@@ -13,7 +18,7 @@
 
 
     <!-- Vite Entry Point - will bundle all styles -->
-    <script type="module" src="/src/main-minimal.js"></script>
+    <script type="module" src="/src/main.js"></script>
   </head>
 
   <body class="nav-md page-index">
@@ -1206,7 +1211,7 @@
     document.addEventListener('DOMContentLoaded', function() {
       // Wait for libraries to be available before initializing
       if (typeof window.waitForLibraries === 'function') {
-        window.waitForLibraries(['TempusDominus'], function() {
+        window.waitForLibraries(['TempusDominus', 'DateTime'], function() {
           const TempusDominus = window.TempusDominus || globalThis.TempusDominus;
           if (TempusDominus) {
         // Initialize the date pickers
@@ -1238,11 +1243,17 @@
         
         // Set default dates (last 30 days)
         try {
-          const today = new Date();
-          const thirtyDaysAgo = new Date(new Date().setDate(today.getDate() - 30));
-          
-          startPicker.dates.setValue(thirtyDaysAgo);
-          endPicker.dates.setValue(today);
+          // TempusDominus requires DateTime objects, not raw Date objects
+          const DateTime = window.DateTime || globalThis.DateTime;
+          if (DateTime) {
+            const today = new DateTime();
+            const thirtyDaysAgo = new DateTime().manipulate(-30, 'days');
+            
+            startPicker.dates.setValue(thirtyDaysAgo);
+            endPicker.dates.setValue(today);
+          } else {
+            console.warn('DateTime class not available for TempusDominus');
+          }
         } catch (error) {
           console.error('Error setting default dates for date range picker:', error);
         }

@@ -34,4 +34,4 @@ export default {
   autosize,
   Switchery,
   initialized: true
-}; 
+};

@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+docs/_site/
+
+# Generated files
+*.min.js
+*.min.css
+package-lock.json
+
+# Images and binary files
+production/images/
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.svg
+*.ico
+
+# Logs
+*.log
+
+# Legacy files (to be cleaned up later)
+production/*.html

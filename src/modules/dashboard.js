@@ -18,4 +18,4 @@ import 'flot/dist/es5/jquery.flot.js';
 
 export default {
   initialized: true
-}; 
+};

@@ -2,6 +2,16 @@
 // Import jQuery setup first - still needed for some widgets
 import $ from './jquery-setup.js';
 
+// Import and expose security utilities globally
+import { sanitizeHtml, sanitizeText, setSafeInnerHTML } from './utils/security.js';
+window.sanitizeHtml = sanitizeHtml;
+window.sanitizeText = sanitizeText;
+window.setSafeInnerHTML = setSafeInnerHTML;
+
+// Import and expose validation utilities globally
+import * as ValidationUtils from './utils/validation.js';
+window.ValidationUtils = ValidationUtils;
+
 // Bootstrap 5 - Essential for all pages
 import * as bootstrap from 'bootstrap';
 window.bootstrap = bootstrap;
@@ -62,4 +72,4 @@ window.loadModule = async function(moduleName) {
     console.error(`Failed to load module ${moduleName}:`, error);
     return null;
   }
-}; 
+};

@@ -24,4 +24,4 @@ export default {
   Chart,
   Skycons,
   initialized: true
-}; 
+};

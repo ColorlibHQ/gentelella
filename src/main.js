@@ -40,7 +40,7 @@ import NProgress from 'nprogress';
 window.NProgress = NProgress;
 globalThis.NProgress = NProgress;
 
-// Chart.js v4 - No jQuery dependency 
+// Chart.js v4 - No jQuery dependency
 import { Chart, registerables } from 'chart.js';
 Chart.register(...registerables);
 window.Chart = Chart;
@@ -69,7 +69,7 @@ import '@simonwep/pickr/dist/themes/classic.min.css';
 import 'ion-rangeslider/css/ion.rangeSlider.min.css';
 
 // Cropper CSS
-import 'cropper/dist/cropper.min.css';
+// Cropper CSS is included in the main SCSS bundle
 
 // Legacy scripts that depend on global jQuery - LOAD IN CORRECT ORDER
 import './js/helpers/smartresize.js';
@@ -81,8 +81,83 @@ import './js/init.js';
 
 // Day.js for date manipulation (modern replacement for moment.js)
 import dayjs from 'dayjs';
-window.dayjs = dayjs;
-globalThis.dayjs = dayjs;
+
+// Day.js plugins needed for daterangepicker compatibility
+import duration from 'dayjs/plugin/duration';
+import relativeTime from 'dayjs/plugin/relativeTime';
+import utc from 'dayjs/plugin/utc';
+import timezone from 'dayjs/plugin/timezone';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
+import advancedFormat from 'dayjs/plugin/advancedFormat';
+import isBetween from 'dayjs/plugin/isBetween';
+import weekOfYear from 'dayjs/plugin/weekOfYear';
+import dayOfYear from 'dayjs/plugin/dayOfYear';
+
+// Enable Day.js plugins IMMEDIATELY
+dayjs.extend(duration);
+dayjs.extend(relativeTime);
+dayjs.extend(utc);
+dayjs.extend(timezone);
+dayjs.extend(customParseFormat);
+dayjs.extend(advancedFormat);
+dayjs.extend(isBetween);
+dayjs.extend(weekOfYear);
+dayjs.extend(dayOfYear);
+
+// Add clone method to Day.js for moment.js compatibility - CRITICAL FOR DATERANGEPICKER
+dayjs.prototype.clone = function() {
+  return dayjs(this);
+};
+
+// Create enhanced dayjs wrapper that ensures clone method
+const createDayjsWithClone = function(...args) {
+  const instance = dayjs(...args);
+  // Ensure each instance has the clone method (defensive programming)
+  if (!instance.clone) {
+    instance.clone = function() { return dayjs(this); };
+  }
+  return instance;
+};
+
+// Copy all static methods and properties from dayjs to wrapper
+Object.keys(dayjs).forEach(key => {
+  createDayjsWithClone[key] = dayjs[key];
+});
+createDayjsWithClone.prototype = dayjs.prototype;
+createDayjsWithClone.fn = dayjs.prototype;
+
+// Add moment.js API compatibility methods
+dayjs.prototype.format = dayjs.prototype.format;
+dayjs.prototype.startOf = dayjs.prototype.startOf;
+dayjs.prototype.endOf = dayjs.prototype.endOf;
+dayjs.prototype.add = dayjs.prototype.add;
+dayjs.prototype.subtract = dayjs.prototype.subtract;
+
+// Make Day.js available globally IMMEDIATELY
+window.dayjs = createDayjsWithClone;
+globalThis.dayjs = createDayjsWithClone;
+
+// Import real moment.js for daterangepicker compatibility
+import moment from 'moment';
+
+// For daterangepicker compatibility, expose real moment.js
+window.moment = moment;
+globalThis.moment = moment;
+
+// Keep dayjs available for other uses  
+window.dayjs = createDayjsWithClone;
+globalThis.dayjs = createDayjsWithClone;
+
+// NOW import daterangepicker after moment/dayjs is fully set up
+import 'daterangepicker';
+import 'daterangepicker/daterangepicker.css';
+
+// Verify moment/dayjs is available for daterangepicker
+console.log('Date libraries setup complete:', {
+  dayjs: typeof window.dayjs,
+  moment: typeof window.moment,
+  momentClone: typeof window.moment().clone
+});
 
 // Tempus Dominus DateTimePicker (Bootstrap 5 compatible)
 import { TempusDominus, DateTime } from '@eonasdan/tempus-dominus';
@@ -108,7 +183,7 @@ $.extend($.easing, {
     return c * ((t = t / d - 1) * t * t + 1) + b;
   },
   easeInOutQuart: function(x, t, b, c, d) {
-    if ((t /= d / 2) < 1) return c / 2 * t * t * t * t + b;
+    if ((t /= d / 2) < 1) {return c / 2 * t * t * t * t + b;}
     return -c / 2 * ((t -= 2) * t * t * t - 2) + b;
   }
 });
@@ -131,11 +206,12 @@ window.autosize = autosize;
 globalThis.autosize = autosize;
 
 // Flot charts
-import 'flot/dist/es5/jquery.flot.js';
-import 'flot/source/jquery.flot.pie.js';
-import 'flot/source/jquery.flot.time.js';
-import 'flot/source/jquery.flot.stack.js';
-import 'flot/source/jquery.flot.resize.js';
+// Flot charts removed - using Chart.js instead
+// import 'flot/dist/es5/jquery.flot.js';
+// import 'flot/source/jquery.flot.pie.js';
+// import 'flot/source/jquery.flot.time.js';
+// import 'flot/source/jquery.flot.stack.js';
+// import 'flot/source/jquery.flot.resize.js';
 
 // ECharts
 import * as echarts from 'echarts';
@@ -156,29 +232,31 @@ globalThis.Pickr = Pickr;
 import 'jquery-knob';
 
 // Cropper.js for image cropping
-import 'cropper';
+import Cropper from 'cropperjs';
+window.Cropper = Cropper;
+globalThis.Cropper = Cropper;
 
 // Create a library availability checker for inline scripts
 window.waitForLibraries = function(libraries, callback, timeout = 5000) {
   const startTime = Date.now();
-  
+
   function check() {
     const allAvailable = libraries.every(lib => {
       return (typeof window[lib] !== 'undefined') || (typeof globalThis[lib] !== 'undefined');
     });
-    
+
     if (allAvailable) {
       callback();
     } else if (Date.now() - startTime < timeout) {
       setTimeout(check, 50);
     } else {
-      console.warn('Timeout waiting for libraries:', libraries.filter(lib => 
+      console.warn('Timeout waiting for libraries:', libraries.filter(lib =>
         typeof window[lib] === 'undefined' && typeof globalThis[lib] === 'undefined'
       ));
       callback(); // Call anyway to prevent hanging
     }
   }
-  
+
   check();
 };
 

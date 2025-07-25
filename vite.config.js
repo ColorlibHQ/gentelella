@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite';
+import { visualizer } from 'rollup-plugin-visualizer';
 
 export default defineConfig({
   root: '.',
@@ -10,6 +11,16 @@ export default defineConfig({
     sourcemap: false,
     target: 'es2022',
     rollupOptions: {
+      plugins: [
+        // Bundle analyzer - generates stats.html file
+        visualizer({
+          filename: 'dist/stats.html',
+          open: false,
+          gzipSize: true,
+          brotliSize: true,
+          template: 'treemap' // 'treemap', 'sunburst', 'network'
+        })
+      ],
       output: {
         manualChunks: {
           'vendor-core': ['jquery', 'bootstrap', '@popperjs/core'],
@@ -116,9 +127,26 @@ export default defineConfig({
       jquery: 'jquery'
     }
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        // Silence Sass deprecation warnings
+        silenceDeprecations: ['legacy-js-api', 'import', 'global-builtin', 'color-functions'],
+        // Additional settings for better performance
+        includePaths: ['node_modules']
+      }
+    }
+  },
   define: {
     global: 'globalThis',
-    'process.env': {},
+    process: JSON.stringify({
+      env: {
+        NODE_ENV: 'production'
+      }
+    }),
+    'process.env': JSON.stringify({
+      NODE_ENV: 'production'
+    }),
     'process.env.NODE_ENV': '"production"'
   }
 }); 

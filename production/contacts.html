@@ -4,7 +4,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Contact Form | Gentelella Alela! by Colorlib</title>    <!-- Compiled CSS (includes Bootstrap, Font Awesome, and all vendor styles) -->
@@ -1064,12 +1063,22 @@
         const contact = contacts.find(c => c.id === contactId);
         if (contact) {
           const modalContent = document.getElementById('contactDetailsContent');
-          modalContent.innerHTML = `
+          
+          // Sanitize all user-controlled data to prevent XSS attacks
+          const safeFirstName = window.sanitizeText ? window.sanitizeText(contact.firstName) : contact.firstName;
+          const safeLastName = window.sanitizeText ? window.sanitizeText(contact.lastName) : contact.lastName;
+          const safeJobTitle = window.sanitizeText ? window.sanitizeText(contact.jobTitle) : contact.jobTitle;
+          const safeEmail = window.sanitizeText ? window.sanitizeText(contact.email) : contact.email;
+          const safePhone = window.sanitizeText ? window.sanitizeText(contact.phone) : contact.phone;
+          const safeCompany = window.sanitizeText ? window.sanitizeText(contact.company) : contact.company;
+          const safeAddress = window.sanitizeText ? window.sanitizeText(contact.address) : contact.address;
+          
+          const contactDetailsHtml = `
             <div class="row">
               <div class="col-md-4 text-center">
-                <img src="${contact.avatar}" alt="${contact.firstName} ${contact.lastName}" class="contact-detail-avatar mb-3">
-                <h4>${contact.firstName} ${contact.lastName}</h4>
-                <p class="text-muted">${contact.jobTitle}</p>
+                <img src="${contact.avatar}" alt="${safeFirstName} ${safeLastName}" class="contact-detail-avatar mb-3">
+                <h4>${safeFirstName} ${safeLastName}</h4>
+                <p class="text-muted">${safeJobTitle}</p>
                 <div class="rating mb-3">
                   ${generateStars(contact.rating)} <span class="ms-2">${contact.rating}/5.0</span>
                 </div>
@@ -1077,16 +1086,23 @@
               <div class="col-md-8">
                 <h6>Contact Information</h6>
                 <table class="table table-borderless">
-                  <tr><td><strong>Email:</strong></td><td>${contact.email}</td></tr>
-                  <tr><td><strong>Phone:</strong></td><td>${contact.phone}</td></tr>
-                  <tr><td><strong>Company:</strong></td><td>${contact.company}</td></tr>
+                  <tr><td><strong>Email:</strong></td><td>${safeEmail}</td></tr>
+                  <tr><td><strong>Phone:</strong></td><td>${safePhone}</td></tr>
+                  <tr><td><strong>Company:</strong></td><td>${safeCompany}</td></tr>
                   <tr><td><strong>Department:</strong></td><td>${capitalizeFirst(contact.department)}</td></tr>
                   <tr><td><strong>Type:</strong></td><td><span class="badge bg-${getTypeColor(contact.type)}">${capitalizeFirst(contact.type)}</span></td></tr>
-                  <tr><td><strong>Address:</strong></td><td>${contact.address}</td></tr>
+                  <tr><td><strong>Address:</strong></td><td>${safeAddress}</td></tr>
                 </table>
               </div>
             </div>
           `;
+          
+          // Use safe innerHTML setter if available, otherwise sanitize manually
+          if (window.setSafeInnerHTML) {
+            window.setSafeInnerHTML(modalContent, contactDetailsHtml);
+          } else {
+            modalContent.innerHTML = contactDetailsHtml; // Fallback for development
+          }
           
           const modal = new bootstrap.Modal(document.getElementById('contactDetailsModal'));
           modal.show();

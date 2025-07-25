@@ -3,6 +3,9 @@
 // Import jQuery setup first - needed for all jQuery-dependent features
 import $ from './jquery-setup.js';
 
+// Import security utilities for XSS protection
+import './utils/security.js';
+
 // Ensure jQuery is available globally FIRST - this is critical for Vite builds
 window.jQuery = window.$ = $;
 globalThis.jQuery = globalThis.$ = $;
@@ -21,7 +24,7 @@ $.extend($.easing, {
     return c * ((t = t / d - 1) * t * t + 1) + b;
   },
   easeInOutQuart: function(x, t, b, c, d) {
-    if ((t /= d / 2) < 1) return c / 2 * t * t * t * t + b;
+    if ((t /= d / 2) < 1) {return c / 2 * t * t * t * t + b;}
     return -c / 2 * ((t -= 2) * t * t * t - 2) + b;
   }
 });
@@ -149,28 +152,28 @@ document.addEventListener('DOMContentLoaded', () => {
         responsive: true,
         pageLength: 10,
         lengthChange: true,
-        lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+        lengthMenu: [[10, 25, 50, -1], [10, 25, 50, 'All']],
         searching: true,
         ordering: true,
         info: true,
         paging: true,
         columnDefs: [
           { orderable: false, targets: [5] }, // Disable sorting on Actions column
-          { className: "text-center", targets: [3, 5] } // Center align Status and Actions
+          { className: 'text-center', targets: [3, 5] } // Center align Status and Actions
         ],
         language: {
-          search: "Search invoices:",
-          lengthMenu: "Show _MENU_ invoices per page",
-          info: "Showing _START_ to _END_ of _TOTAL_ invoices",
+          search: 'Search invoices:',
+          lengthMenu: 'Show _MENU_ invoices per page',
+          info: 'Showing _START_ to _END_ of _TOTAL_ invoices',
           paginate: {
-            first: "First",
-            last: "Last",
-            next: "Next",
-            previous: "Previous"
+            first: 'First',
+            last: 'Last',
+            next: 'Next',
+            previous: 'Previous'
           }
         }
       });
-      
+
     } catch (error) {
       console.error('❌ DataTable initialization failed:', error);
     }
@@ -181,135 +184,135 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {
   // Check if we're on the tables_dynamic page
   if (window.location.pathname.includes('tables_dynamic.html')) {
-    
-    
+
+
     // Wait a short moment to ensure all assets are loaded
     setTimeout(() => {
-    
-    // Initialize all DataTables with proper configurations
-    
-    // Basic DataTable
-    if (document.getElementById('datatable') && !$.fn.DataTable.isDataTable('#datatable')) {
-      new DataTable('#datatable', {
-        responsive: true,
-        pageLength: 10,
-        lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
-        language: {
-          search: "Search employees:",
-          lengthMenu: "Show _MENU_ employees per page",
-          info: "Showing _START_ to _END_ of _TOTAL_ employees"
-        }
-      });
-      
-    }
 
-    // DataTable with checkboxes
-    if (document.getElementById('datatable-checkbox') && !$.fn.DataTable.isDataTable('#datatable-checkbox')) {
-      new DataTable('#datatable-checkbox', {
-        responsive: true,
-        pageLength: 10,
-        order: [[1, 'asc']],
-        columnDefs: [
-          { orderable: false, targets: [0] }
-        ],
-        language: {
-          search: "Search employees:",
-          lengthMenu: "Show _MENU_ employees per page",
-          info: "Showing _START_ to _END_ of _TOTAL_ employees"
-        }
-      });
-      
-    }
+      // Initialize all DataTables with proper configurations
 
-    // DataTable with buttons
-    if (document.getElementById('datatable-buttons') && !$.fn.DataTable.isDataTable('#datatable-buttons')) {
-      new DataTable('#datatable-buttons', {
-        responsive: true,
-        pageLength: 10,
-        dom: 'Bfrtip',
-        buttons: [
-          {
-            extend: 'copy',
-            className: 'btn btn-sm btn-outline-secondary',
-            text: '<i class="fas fa-copy me-1"></i>Copy'
-          },
-          {
-            extend: 'csv',
-            className: 'btn btn-sm btn-outline-success',
-            text: '<i class="fas fa-file-csv me-1"></i>CSV'
-          },
-          {
-            extend: 'excel',
-            className: 'btn btn-sm btn-outline-success',
-            text: '<i class="fas fa-file-excel me-1"></i>Excel'
-          },
-          {
-            extend: 'pdf',
-            className: 'btn btn-sm btn-outline-danger',
-            text: '<i class="fas fa-file-pdf me-1"></i>PDF'
-          },
-          {
-            extend: 'print',
-            className: 'btn btn-sm btn-outline-primary',
-            text: '<i class="fas fa-print me-1"></i>Print'
+      // Basic DataTable
+      if (document.getElementById('datatable') && !$.fn.DataTable.isDataTable('#datatable')) {
+        new DataTable('#datatable', {
+          responsive: true,
+          pageLength: 10,
+          lengthMenu: [[10, 25, 50, -1], [10, 25, 50, 'All']],
+          language: {
+            search: 'Search employees:',
+            lengthMenu: 'Show _MENU_ employees per page',
+            info: 'Showing _START_ to _END_ of _TOTAL_ employees'
           }
-        ],
-        language: {
-          search: "Search employees:",
-          lengthMenu: "Show _MENU_ employees per page",
-          info: "Showing _START_ to _END_ of _TOTAL_ employees"
-        }
-      });
-      
-    }
+        });
 
-    // DataTable with fixed header
-    if (document.getElementById('datatable-fixed-header') && !$.fn.DataTable.isDataTable('#datatable-fixed-header')) {
-      new DataTable('#datatable-fixed-header', {
-        responsive: true,
-        pageLength: 10,
-        fixedHeader: true,
-        language: {
-          search: "Search employees:",
-          lengthMenu: "Show _MENU_ employees per page",
-          info: "Showing _START_ to _END_ of _TOTAL_ employees"
-        }
-      });
-      
-    }
+      }
 
-    // DataTable with KeyTable extension
-    if (document.getElementById('datatable-keytable') && !$.fn.DataTable.isDataTable('#datatable-keytable')) {
-      new DataTable('#datatable-keytable', {
-        responsive: true,
-        pageLength: 10,
-        keys: true,
-        language: {
-          search: "Search employees:",
-          lengthMenu: "Show _MENU_ employees per page",
-          info: "Showing _START_ to _END_ of _TOTAL_ employees"
-        }
-      });
-      
-    }
+      // DataTable with checkboxes
+      if (document.getElementById('datatable-checkbox') && !$.fn.DataTable.isDataTable('#datatable-checkbox')) {
+        new DataTable('#datatable-checkbox', {
+          responsive: true,
+          pageLength: 10,
+          order: [[1, 'asc']],
+          columnDefs: [
+            { orderable: false, targets: [0] }
+          ],
+          language: {
+            search: 'Search employees:',
+            lengthMenu: 'Show _MENU_ employees per page',
+            info: 'Showing _START_ to _END_ of _TOTAL_ employees'
+          }
+        });
 
-    // Responsive DataTable
-    if (document.getElementById('datatable-responsive') && !$.fn.DataTable.isDataTable('#datatable-responsive')) {
-      new DataTable('#datatable-responsive', {
-        responsive: true,
-        pageLength: 10,
-        language: {
-          search: "Search employees:",
-          lengthMenu: "Show _MENU_ employees per page",
-          info: "Showing _START_ to _END_ of _TOTAL_ employees"
-        }
-      });
-      
-    }
+      }
 
-    // Add custom styles for DataTables buttons
-    const style = document.createElement('style');
-    style.textContent = `
+      // DataTable with buttons
+      if (document.getElementById('datatable-buttons') && !$.fn.DataTable.isDataTable('#datatable-buttons')) {
+        new DataTable('#datatable-buttons', {
+          responsive: true,
+          pageLength: 10,
+          dom: 'Bfrtip',
+          buttons: [
+            {
+              extend: 'copy',
+              className: 'btn btn-sm btn-outline-secondary',
+              text: '<i class="fas fa-copy me-1"></i>Copy'
+            },
+            {
+              extend: 'csv',
+              className: 'btn btn-sm btn-outline-success',
+              text: '<i class="fas fa-file-csv me-1"></i>CSV'
+            },
+            {
+              extend: 'excel',
+              className: 'btn btn-sm btn-outline-success',
+              text: '<i class="fas fa-file-excel me-1"></i>Excel'
+            },
+            {
+              extend: 'pdf',
+              className: 'btn btn-sm btn-outline-danger',
+              text: '<i class="fas fa-file-pdf me-1"></i>PDF'
+            },
+            {
+              extend: 'print',
+              className: 'btn btn-sm btn-outline-primary',
+              text: '<i class="fas fa-print me-1"></i>Print'
+            }
+          ],
+          language: {
+            search: 'Search employees:',
+            lengthMenu: 'Show _MENU_ employees per page',
+            info: 'Showing _START_ to _END_ of _TOTAL_ employees'
+          }
+        });
+
+      }
+
+      // DataTable with fixed header
+      if (document.getElementById('datatable-fixed-header') && !$.fn.DataTable.isDataTable('#datatable-fixed-header')) {
+        new DataTable('#datatable-fixed-header', {
+          responsive: true,
+          pageLength: 10,
+          fixedHeader: true,
+          language: {
+            search: 'Search employees:',
+            lengthMenu: 'Show _MENU_ employees per page',
+            info: 'Showing _START_ to _END_ of _TOTAL_ employees'
+          }
+        });
+
+      }
+
+      // DataTable with KeyTable extension
+      if (document.getElementById('datatable-keytable') && !$.fn.DataTable.isDataTable('#datatable-keytable')) {
+        new DataTable('#datatable-keytable', {
+          responsive: true,
+          pageLength: 10,
+          keys: true,
+          language: {
+            search: 'Search employees:',
+            lengthMenu: 'Show _MENU_ employees per page',
+            info: 'Showing _START_ to _END_ of _TOTAL_ employees'
+          }
+        });
+
+      }
+
+      // Responsive DataTable
+      if (document.getElementById('datatable-responsive') && !$.fn.DataTable.isDataTable('#datatable-responsive')) {
+        new DataTable('#datatable-responsive', {
+          responsive: true,
+          pageLength: 10,
+          language: {
+            search: 'Search employees:',
+            lengthMenu: 'Show _MENU_ employees per page',
+            info: 'Showing _START_ to _END_ of _TOTAL_ employees'
+          }
+        });
+
+      }
+
+      // Add custom styles for DataTables buttons
+      const style = document.createElement('style');
+      style.textContent = `
       .dt-buttons {
         margin-bottom: 1rem;
       }
@@ -328,16 +331,16 @@ document.addEventListener('DOMContentLoaded', () => {
         padding: 0.375rem 0.75rem;
       }
     `;
-    document.head.appendChild(style);
+      document.head.appendChild(style);
 
-    
+
     }, 100); // Close the setTimeout
   }
 
   // Initialize DataTables for tables.html page
   if (window.location.pathname.includes('tables.html')) {
-    
-    
+
+
     // Advanced DataTable for Employee Management
     if (document.getElementById('advancedDataTable') && !$.fn.DataTable.isDataTable('#advancedDataTable')) {
       try {
@@ -347,42 +350,42 @@ document.addEventListener('DOMContentLoaded', () => {
           lengthMenu: [[5, 10, 25, 50], [5, 10, 25, 50]],
           order: [[0, 'asc']],
           language: {
-            search: "Search employees:",
-            lengthMenu: "Show _MENU_ employees per page",
-            info: "Showing _START_ to _END_ of _TOTAL_ employees",
+            search: 'Search employees:',
+            lengthMenu: 'Show _MENU_ employees per page',
+            info: 'Showing _START_ to _END_ of _TOTAL_ employees',
             paginate: {
-              first: "First",
-              last: "Last",
-              next: "Next",
-              previous: "Previous"
+              first: 'First',
+              last: 'Last',
+              next: 'Next',
+              previous: 'Previous'
             }
           },
           columnDefs: [
-            { 
-              orderable: false, 
+            {
+              orderable: false,
               targets: [6] // Actions column
             }
           ]
         });
-        
+
       } catch (error) {
         console.error('❌ Failed to initialize Advanced DataTable:', error);
       }
     }
 
-    
+
   }
 });
 
 // Create a library availability checker for inline scripts BEFORE importing init.js
 window.waitForLibraries = function(libraries, callback, timeout = 5000) {
   const startTime = Date.now();
-  
+
   function check() {
     const allAvailable = libraries.every(lib => {
       return (typeof window[lib] !== 'undefined') || (typeof globalThis[lib] !== 'undefined');
     });
-    
+
     if (allAvailable) {
       callback();
     } else if (Date.now() - startTime < timeout) {
@@ -390,14 +393,14 @@ window.waitForLibraries = function(libraries, callback, timeout = 5000) {
     } else {
       // Only warn in development
       if (process.env.NODE_ENV === 'development') {
-        console.warn('Timeout waiting for libraries:', libraries.filter(lib => 
+        console.warn('Timeout waiting for libraries:', libraries.filter(lib =>
           typeof window[lib] === 'undefined' && typeof globalThis[lib] === 'undefined'
         ));
       }
       callback(); // Call anyway to prevent hanging
     }
   }
-  
+
   check();
 };
 
@@ -419,9 +422,9 @@ $(document).ready(function() {
     if (typeof $.fn.sparkline === 'undefined') {
       return;
     }
-    
+
     // Sparkline chart configurations
-    $(".sparkline_one, .sparkline_two").sparkline([2, 4, 3, 4, 5, 4, 5, 4, 3, 4, 5, 6, 4, 5, 6, 3, 5, 4, 5, 4, 5, 4, 3, 4, 5, 6, 7, 5, 4, 3, 5, 6], {
+    $('.sparkline_one, .sparkline_two').sparkline([2, 4, 3, 4, 5, 4, 5, 4, 3, 4, 5, 6, 4, 5, 6, 3, 5, 4, 5, 4, 5, 4, 3, 4, 5, 6, 7, 5, 4, 3, 5, 6], {
       type: 'line',
       width: '100%',
       height: '30',
@@ -431,8 +434,8 @@ $(document).ready(function() {
       spotColor: '#26B99A',
       minSpotColor: '#26B99A'
     });
-    
-    $(".sparkline_three").sparkline([2, 4, 3, 4, 5, 4, 5, 4, 3, 4, 5, 6, 7, 5, 4, 3, 5, 6], {
+
+    $('.sparkline_three').sparkline([2, 4, 3, 4, 5, 4, 5, 4, 3, 4, 5, 6, 7, 5, 4, 3, 5, 6], {
       type: 'line',
       width: '100%',
       height: '30',
@@ -443,15 +446,15 @@ $(document).ready(function() {
       minSpotColor: '#34495E'
     });
   }
-  
+
   // Initialize Charts
   function initWidgetCharts() {
     // Only run if Chart.js is available
     if (typeof Chart === 'undefined') {
-      
+
       return;
     }
-    
+
     // Chart configuration
     const commonChartOptions = {
       responsive: true,
@@ -471,10 +474,10 @@ $(document).ready(function() {
         }
       }
     };
-    
+
     // Initialize line charts for widgets
     const lineChartCanvases = ['canvas_line', 'canvas_line1', 'canvas_line2', 'canvas_line3', 'canvas_line4'];
-    
+
     lineChartCanvases.forEach(canvasId => {
       const canvas = document.getElementById(canvasId);
       if (canvas) {
@@ -496,10 +499,10 @@ $(document).ready(function() {
         });
       }
     });
-    
+
     // Initialize doughnut charts
     const doughnutCanvases = ['canvas_doughnut', 'canvas_doughnut2', 'canvas_doughnut3', 'canvas_doughnut4'];
-    
+
     doughnutCanvases.forEach(canvasId => {
       const canvas = document.getElementById(canvasId);
       if (canvas) {
@@ -526,7 +529,7 @@ $(document).ready(function() {
         });
       }
     });
-    
+
     // Initialize Agent Performance chart for index3.html
     const agentPerformanceChart = document.getElementById('agentPerformanceChart');
     if (agentPerformanceChart) {
@@ -551,76 +554,76 @@ $(document).ready(function() {
           indexAxis: 'y',
           responsive: true,
           maintainAspectRatio: false,
-          plugins: { 
-            legend: { 
-              display: false 
-            } 
+          plugins: {
+            legend: {
+              display: false
+            }
           },
-          scales: { 
-            x: { 
-              beginAtZero: true 
-            } 
+          scales: {
+            x: {
+              beginAtZero: true
+            }
           }
         }
       });
     }
   }
-  
+
   // Initialize circular progress (jQuery Knob)
   function initCircularProgress() {
     if (typeof $.fn.knob === 'undefined') {
       return;
     }
-    
-    $(".chart").each(function() {
+
+    $('.chart').each(function() {
       const $this = $(this);
       const percent = $this.data('percent') || 50;
-      
+
       $this.knob({
         angleArc: 250,
         angleOffset: -125,
         readOnly: true,
         width: 100,
         height: 100,
-        fgColor: "#26B99A",
-        bgColor: "#E8E8E8",
+        fgColor: '#26B99A',
+        bgColor: '#E8E8E8',
         thickness: 0.1,
-        lineCap: "round"
+        lineCap: 'round'
       });
-      
+
       // Animate the knob
       $({ animatedVal: 0 }).animate({ animatedVal: percent }, {
         duration: 1000,
-        easing: "swing",
+        easing: 'swing',
         step: function() {
           $this.val(Math.ceil(this.animatedVal)).trigger('change');
         }
       });
     });
   }
-  
+
   // Initialize progress bars
   function initProgressBars() {
     $('.progress .progress-bar').each(function() {
       const $this = $(this);
-      
+
       // Skip bars with data-transitiongoal as they're handled by initUniversalProgressBars
       if ($this.attr('data-transitiongoal')) {
         return;
       }
-      
+
       const goal = $this.data('transitiongoal') || 0;
-      
+
       // Animate progress bar
       $this.animate({
         width: goal + '%'
       }, 1000, 'easeInOutQuart');
     });
   }
-  
+
   // Run all initializations with a delay to ensure dependencies are loaded
   setTimeout(() => {
-    
+
     initSparklines();
     initWidgetCharts();
     initCircularProgress();
@@ -634,16 +637,16 @@ $(document).ready(function() {
 function initUniversalProgressBars() {
   // Find all progress bars across all pages
   const allProgressBars = document.querySelectorAll('.progress-bar');
-  
+
   if (allProgressBars.length > 0) {
     allProgressBars.forEach((bar, index) => {
       // Skip if already animated
       if (bar.classList.contains('animation-complete')) {
         return;
       }
-      
+
       let targetWidth = null;
-      
+
       // Check for data-transitiongoal attribute first (Top Campaign Performance)
       const transitionGoal = bar.getAttribute('data-transitiongoal');
       if (transitionGoal) {
@@ -653,27 +656,27 @@ function initUniversalProgressBars() {
         const inlineWidth = bar.style.width;
         const computedStyle = window.getComputedStyle(bar);
         const currentWidth = inlineWidth || computedStyle.width;
-        
+
         // Only use meaningful width values
         if (currentWidth && currentWidth !== '0px' && currentWidth !== '0%' && currentWidth !== 'auto') {
           targetWidth = currentWidth;
         }
       }
-      
+
       // Animate if we have a target width
       if (targetWidth) {
         // Store the target width
         bar.setAttribute('data-target-width', targetWidth);
         bar.style.setProperty('--bar-width', targetWidth);
-        
+
         // Start animation from 0%
         bar.style.width = '0%';
         bar.style.transition = 'width 0.8s ease-out';
-        
+
         // Animate to target width with staggered delay
         setTimeout(() => {
           bar.style.width = targetWidth;
-          
+
           // Lock the width permanently after animation
           setTimeout(() => {
             bar.style.transition = 'none';
@@ -689,4 +692,4 @@ function initUniversalProgressBars() {
 // Initialize universal progress bars on DOM ready
 document.addEventListener('DOMContentLoaded', function() {
   setTimeout(initUniversalProgressBars, 200);
-}); 
+});

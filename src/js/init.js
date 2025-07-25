@@ -3,10 +3,13 @@
    * This file contains all the component initialization logic.
    * It is loaded after all vendor and custom libraries, so it has access to everything.
    */
+  
+  // Get security utilities from window if available
+  const sanitizeHtml = window.sanitizeHtml || function(html) { return html; };
   $(window).on('load', function() {
 
     // NProgress (we start it on document ready, but stop it on window load)
-    if (typeof NProgress != 'undefined') {
+    if (typeof NProgress !== 'undefined') {
       NProgress.done();
     }
 
@@ -82,15 +85,15 @@
       try {
         var mapContainer = document.getElementById('world-map-gdp');
         mapContainer.style.height = '400px'; // Set a specific height for the map
-        
+
         // Initialize Leaflet map
         var visitorsMap = L.map('world-map-gdp').setView([40, 0], 2);
-        
+
         // Add OpenStreetMap tiles
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
           attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(visitorsMap);
-        
+
         // Add markers for visitor locations with popups showing percentages
         var visitorData = [
           { coords: [39.8283, -98.5795], country: 'United States', percentage: '33%' },
@@ -99,64 +102,64 @@
           { coords: [40.4637, -3.7492], country: 'Spain', percentage: '11%' },
           { coords: [55.3781, -3.4360], country: 'United Kingdom', percentage: '10%' }
         ];
-        
+
         visitorData.forEach(function(location) {
           L.marker(location.coords)
             .addTo(visitorsMap)
             .bindPopup(`<b>${location.country}</b><br/>Visitors: ${location.percentage}`)
             .openPopup();
         });
-        
-        
+
+
       } catch (error) {
         console.error('❌ Map initialization failed:', error);
       }
     }
 
     // Chart.js initialization - Main Dashboard Chart
-    
+
     const Chart = window.Chart || globalThis.Chart;
     if (typeof Chart !== 'undefined') {
-      
-      
+
+
       // Main chart in dashboard (chart_plot_01 is a div, so we create canvas inside)
       if ($('#chart_plot_01').length) {
-        
-        var chartDiv = document.getElementById("chart_plot_01");
-        
+
+        var chartDiv = document.getElementById('chart_plot_01');
+
         // Clear any existing content and create canvas
-        chartDiv.innerHTML = '';
+        chartDiv.innerHTML = sanitizeHtml('');
         var canvas = document.createElement('canvas');
         canvas.id = 'mainChart';
         canvas.width = chartDiv.offsetWidth || 800;
         canvas.height = 300;
         chartDiv.appendChild(canvas);
-        
+
         var ctx = canvas.getContext('2d');
         var lineChart = new Chart(ctx, {
           type: 'line',
           data: {
-            labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
             datasets: [{
-              label: "My First dataset",
-              backgroundColor: "rgba(38, 185, 154, 0.31)",
-              borderColor: "rgba(38, 185, 154, 0.7)",
-              pointBorderColor: "rgba(38, 185, 154, 0.7)",
-              pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
-              pointHoverBackgroundColor: "#fff",
-              pointHoverBorderColor: "rgba(220,220,220,1)",
+              label: 'My First dataset',
+              backgroundColor: 'rgba(38, 185, 154, 0.31)',
+              borderColor: 'rgba(38, 185, 154, 0.7)',
+              pointBorderColor: 'rgba(38, 185, 154, 0.7)',
+              pointBackgroundColor: 'rgba(38, 185, 154, 0.7)',
+              pointHoverBackgroundColor: '#fff',
+              pointHoverBorderColor: 'rgba(220,220,220,1)',
               pointBorderWidth: 1,
               data: [31, 74, 6, 39, 20, 85, 7, 45, 38, 62, 29, 41],
               fill: true,
               tension: 0.4
             }, {
-              label: "My Second dataset",
-              backgroundColor: "rgba(3, 88, 106, 0.3)",
-              borderColor: "rgba(3, 88, 106, 0.70)",
-              pointBorderColor: "rgba(3, 88, 106, 0.70)",
-              pointBackgroundColor: "rgba(3, 88, 106, 0.70)",
-              pointHoverBackgroundColor: "#fff",
-              pointHoverBorderColor: "rgba(151,187,205,1)",
+              label: 'My Second dataset',
+              backgroundColor: 'rgba(3, 88, 106, 0.3)',
+              borderColor: 'rgba(3, 88, 106, 0.70)',
+              pointBorderColor: 'rgba(3, 88, 106, 0.70)',
+              pointBackgroundColor: 'rgba(3, 88, 106, 0.70)',
+              pointHoverBackgroundColor: '#fff',
+              pointHoverBorderColor: 'rgba(151,187,205,1)',
               pointBorderWidth: 1,
               data: [82, 23, 66, 9, 99, 4, 2, 25, 67, 44, 55, 33],
               fill: true,
@@ -174,12 +177,12 @@
           }
         });
       } else {
-        
+
       }
 
       // Doughnut Chart (using class selector since DOM shows class="canvasDoughnut")
       if ($('.canvasDoughnut').length) {
-        
+
 
         var originalCanvas = document.querySelector('.canvasDoughnut');
         var xContent = originalCanvas.closest('.x_content');
@@ -193,25 +196,25 @@
 
         if (xContent) {
           // 1. Clear the problematic table layout
-          xContent.innerHTML = '';
+          xContent.innerHTML = sanitizeHtml('');
 
           // 2. Create a new, simple container for the chart
           var chartContainer = document.createElement('div');
           chartContainer.style.height = '250px'; // Adjust container height
           chartContainer.style.position = 'relative';
-          
+
           var newCanvas = document.createElement('canvas');
           chartContainer.appendChild(newCanvas);
           xContent.appendChild(chartContainer);
-          
+
           // 3. Initialize the chart in the new clean container
           var ctx_doughnut = newCanvas.getContext('2d');
           var data = {
-            labels: ["IOS", "Android", "Blackberry", "Symbian", "Others"],
+            labels: ['IOS', 'Android', 'Blackberry', 'Symbian', 'Others'],
             datasets: [{
               data: [30, 10, 20, 15, 30],
-              backgroundColor: ["#3498DB", "#2ECC71", "#9B59B6", "#1ABC9C", "#E74C3C"],
-              hoverBackgroundColor: ["#5DADE2", "#58D68D", "#BB8FCE", "#52C9B4", "#EC7063"]
+              backgroundColor: ['#3498DB', '#2ECC71', '#9B59B6', '#1ABC9C', '#E74C3C'],
+              hoverBackgroundColor: ['#5DADE2', '#58D68D', '#BB8FCE', '#52C9B4', '#EC7063']
             }]
           };
 
@@ -238,38 +241,38 @@
           console.error("Doughnut chart's .x_content container not found.");
         }
       } else {
-        
+
       }
 
       // Chart.js pages - Line Chart
       if ($('#lineChart').length) {
-        
-        var canvas = document.getElementById("lineChart");
+
+        var canvas = document.getElementById('lineChart');
         canvas.style.height = '400px'; // Set explicit height
         var ctx = canvas.getContext('2d');
         new Chart(ctx, {
           type: 'line',
           data: {
-            labels: ["January", "February", "March", "April", "May", "June", "July"],
+            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
             datasets: [{
-              label: "My First dataset",
-              backgroundColor: "rgba(38, 185, 154, 0.31)",
-              borderColor: "rgba(38, 185, 154, 0.7)",
-              pointBorderColor: "rgba(38, 185, 154, 0.7)",
-              pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
-              pointHoverBackgroundColor: "#fff",
-              pointHoverBorderColor: "rgba(220,220,220,1)",
+              label: 'My First dataset',
+              backgroundColor: 'rgba(38, 185, 154, 0.31)',
+              borderColor: 'rgba(38, 185, 154, 0.7)',
+              pointBorderColor: 'rgba(38, 185, 154, 0.7)',
+              pointBackgroundColor: 'rgba(38, 185, 154, 0.7)',
+              pointHoverBackgroundColor: '#fff',
+              pointHoverBorderColor: 'rgba(220,220,220,1)',
               pointBorderWidth: 1,
               data: [31, 74, 6, 39, 20, 85, 7],
               tension: 0.4
             }, {
-              label: "My Second dataset",
-              backgroundColor: "rgba(3, 88, 106, 0.3)",
-              borderColor: "rgba(3, 88, 106, 0.70)",
-              pointBorderColor: "rgba(3, 88, 106, 0.70)",
-              pointBackgroundColor: "rgba(3, 88, 106, 0.70)",
-              pointHoverBackgroundColor: "#fff",
-              pointHoverBorderColor: "rgba(151,187,205,1)",
+              label: 'My Second dataset',
+              backgroundColor: 'rgba(3, 88, 106, 0.3)',
+              borderColor: 'rgba(3, 88, 106, 0.70)',
+              pointBorderColor: 'rgba(3, 88, 106, 0.70)',
+              pointBackgroundColor: 'rgba(3, 88, 106, 0.70)',
+              pointHoverBackgroundColor: '#fff',
+              pointHoverBorderColor: 'rgba(151,187,205,1)',
               pointBorderWidth: 1,
               data: [82, 23, 66, 9, 99, 4, 2],
               tension: 0.4
@@ -284,14 +287,14 @@
 
       // Chart.js pages - Bar Chart
       if ($('#mybarChart').length) {
-        
-        var canvas = document.getElementById("mybarChart");
+
+        var canvas = document.getElementById('mybarChart');
         canvas.style.height = '400px'; // Set explicit height
         var ctx = canvas.getContext('2d');
         new Chart(ctx, {
           type: 'bar',
           data: {
-            labels: ["January", "February", "March", "April", "May", "June", "July"],
+            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
             datasets: [{
               label: '# of Votes',
               data: [51, 30, 40, 28, 92, 50, 45],
@@ -330,31 +333,31 @@
 
       // Chart.js pages - Radar Chart
       if ($('#canvasRadar').length) {
-        
-        var canvas = document.getElementById("canvasRadar");
+
+        var canvas = document.getElementById('canvasRadar');
         canvas.style.height = '400px'; // Set explicit height
         var ctx = canvas.getContext('2d');
         new Chart(ctx, {
           type: 'radar',
           data: {
-            labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
+            labels: ['Eating', 'Drinking', 'Sleeping', 'Designing', 'Coding', 'Cycling', 'Running'],
             datasets: [{
-              label: "My First dataset",
-              backgroundColor: "rgba(38, 185, 154, 0.2)",
-              borderColor: "rgba(38, 185, 154, 0.85)",
-              pointBackgroundColor: "rgba(38, 185, 154, 0.85)",
-              pointBorderColor: "#fff",
-              pointHoverBackgroundColor: "#fff",
-              pointHoverBorderColor: "rgba(38, 185, 154, 0.85)",
+              label: 'My First dataset',
+              backgroundColor: 'rgba(38, 185, 154, 0.2)',
+              borderColor: 'rgba(38, 185, 154, 0.85)',
+              pointBackgroundColor: 'rgba(38, 185, 154, 0.85)',
+              pointBorderColor: '#fff',
+              pointHoverBackgroundColor: '#fff',
+              pointHoverBorderColor: 'rgba(38, 185, 154, 0.85)',
               data: [65, 59, 90, 81, 56, 55, 40]
             }, {
-              label: "My Second dataset",
-              backgroundColor: "rgba(3, 88, 106, 0.2)",
-              borderColor: "rgba(3, 88, 106, 0.85)",
-              pointBackgroundColor: "rgba(3, 88, 106, 0.85)",
-              pointBorderColor: "#fff",
-              pointHoverBackgroundColor: "#fff",
-              pointHoverBorderColor: "rgba(3, 88, 106, 0.85)",
+              label: 'My Second dataset',
+              backgroundColor: 'rgba(3, 88, 106, 0.2)',
+              borderColor: 'rgba(3, 88, 106, 0.85)',
+              pointBackgroundColor: 'rgba(3, 88, 106, 0.85)',
+              pointBorderColor: '#fff',
+              pointHoverBackgroundColor: '#fff',
+              pointHoverBorderColor: 'rgba(3, 88, 106, 0.85)',
               data: [28, 48, 40, 19, 96, 27, 100]
             }]
           },
@@ -367,29 +370,29 @@
 
       // Chart.js pages - Doughnut Chart (ID version)
       if ($('#canvasDoughnut').length) {
-        
-        var canvas = document.getElementById("canvasDoughnut");
+
+        var canvas = document.getElementById('canvasDoughnut');
         canvas.style.height = '400px'; // Set explicit height
         var ctx = canvas.getContext('2d');
         new Chart(ctx, {
           type: 'doughnut',
           data: {
-            labels: ["Dark Grey", "Purple", "Blue", "Grey", "Green"],
+            labels: ['Dark Grey', 'Purple', 'Blue', 'Grey', 'Green'],
             datasets: [{
               data: [15, 20, 30, 10, 30],
               backgroundColor: [
-                "#455C73",
-                "#9B59B6",
-                "#26B99A",
-                "#3498DB",
-                "#BDC3C7"
+                '#455C73',
+                '#9B59B6',
+                '#26B99A',
+                '#3498DB',
+                '#BDC3C7'
               ],
               hoverBackgroundColor: [
-                "#34495E",
-                "#B370CF",
-                "#36CAAB",
-                "#49A9EA",
-                "#CFD4D8"
+                '#34495E',
+                '#B370CF',
+                '#36CAAB',
+                '#49A9EA',
+                '#CFD4D8'
               ]
             }]
           },
@@ -402,29 +405,29 @@
 
       // Chart.js pages - Pie Chart
       if ($('#pieChart').length) {
-        
-        var canvas = document.getElementById("pieChart");
+
+        var canvas = document.getElementById('pieChart');
         canvas.style.height = '400px'; // Set explicit height
         var ctx = canvas.getContext('2d');
         new Chart(ctx, {
           type: 'pie',
           data: {
-            labels: ["Dark Grey", "Purple", "Blue", "Grey", "Green"],
+            labels: ['Dark Grey', 'Purple', 'Blue', 'Grey', 'Green'],
             datasets: [{
               data: [20, 50, 30, 25, 40],
               backgroundColor: [
-                "#455C73",
-                "#9B59B6",
-                "#26B99A",
-                "#3498DB",
-                "#BDC3C7"
+                '#455C73',
+                '#9B59B6',
+                '#26B99A',
+                '#3498DB',
+                '#BDC3C7'
               ],
               hoverBackgroundColor: [
-                "#34495E",
-                "#B370CF",
-                "#36CAAB",
-                "#49A9EA",
-                "#CFD4D8"
+                '#34495E',
+                '#B370CF',
+                '#36CAAB',
+                '#49A9EA',
+                '#CFD4D8'
               ]
             }]
           },
@@ -437,29 +440,29 @@
 
       // Chart.js pages - Polar Area Chart
       if ($('#polarArea').length) {
-        
-        var canvas = document.getElementById("polarArea");
+
+        var canvas = document.getElementById('polarArea');
         canvas.style.height = '400px'; // Set explicit height
         var ctx = canvas.getContext('2d');
         new Chart(ctx, {
           type: 'polarArea',
           data: {
-            labels: ["Dark Grey", "Purple", "Blue", "Grey", "Green"],
+            labels: ['Dark Grey', 'Purple', 'Blue', 'Grey', 'Green'],
             datasets: [{
               data: [20, 50, 30, 25, 40],
               backgroundColor: [
-                "#455C73",
-                "#9B59B6",
-                "#26B99A",
-                "#3498DB",
-                "#BDC3C7"
+                '#455C73',
+                '#9B59B6',
+                '#26B99A',
+                '#3498DB',
+                '#BDC3C7'
               ],
               hoverBackgroundColor: [
-                "#34495E",
-                "#B370CF",
-                "#36CAAB",
-                "#49A9EA",
-                "#CFD4D8"
+                '#34495E',
+                '#B370CF',
+                '#36CAAB',
+                '#49A9EA',
+                '#CFD4D8'
               ]
             }]
           },
@@ -471,19 +474,19 @@
       }
 
     } else {
-      
+
     }
   });
 
   // We still want NProgress to start early, so we'll keep this separate.
   $(document).ready(function() {
-    
 
-    if (typeof NProgress != 'undefined') {
+
+    if (typeof NProgress !== 'undefined') {
       NProgress.start();
     }
 
-  
+
 
     // Skycons initialization moved to initializeSkycons() function
 
@@ -501,30 +504,66 @@
   function initializeProgressBars() {
     // Animate all progress bars with data-transitiongoal
     const progressBars = document.querySelectorAll('.progress-bar[data-transitiongoal]');
-    
+
     progressBars.forEach(bar => {
       const targetPercent = parseInt(bar.getAttribute('data-transitiongoal'), 10);
       const displayText = bar.getAttribute('data-display-text') !== 'false';
+
+      // Remove any inline width styles to allow animation
+      bar.style.removeProperty('width');
       
-      // Set initial state
-      bar.style.width = '0%';
+      // Set initial state with !important to override any CSS
+      bar.style.setProperty('width', '0%', 'important');
       bar.setAttribute('aria-valuenow', '0');
-      
+
       // Animate to target value
       setTimeout(() => {
-        bar.style.transition = 'width 1s ease-in-out';
-        bar.style.width = targetPercent + '%';
+        bar.style.setProperty('transition', 'width 1s ease-in-out', 'important');
+        bar.style.setProperty('width', targetPercent + '%', 'important');
         bar.setAttribute('aria-valuenow', targetPercent);
-        
+
         if (displayText) {
           bar.textContent = targetPercent + '%';
         }
       }, 100);
     });
 
-    // For progress bars without data-transitiongoal, just show them immediately
+    // Handle App Versions progress bars (widget_summary containers)
+    const appVersionBars = document.querySelectorAll('.widget_summary .progress-bar');
+    appVersionBars.forEach(bar => {
+      // Skip if already processed with data-transitiongoal
+      if (bar.getAttribute('data-transitiongoal')) {
+        return;
+      }
+      
+      // Extract target percentage from inline style
+      const inlineWidth = bar.style.width;
+      if (inlineWidth && inlineWidth.includes('%')) {
+        const targetPercent = parseInt(inlineWidth.replace('%', ''), 10);
+        
+        // Remove inline width and animate
+        bar.style.removeProperty('width');
+        bar.style.setProperty('width', '0%', 'important');
+        bar.setAttribute('aria-valuenow', '0');
+        
+        // Animate to target value with delay for staggered effect
+        const delay = Array.from(appVersionBars).indexOf(bar) * 100 + 200;
+        setTimeout(() => {
+          bar.style.setProperty('transition', 'width 1s ease-in-out', 'important');
+          bar.style.setProperty('width', targetPercent + '%', 'important');
+          bar.setAttribute('aria-valuenow', targetPercent);
+        }, delay);
+      }
+    });
+
+    // For other progress bars without data-transitiongoal, just show them immediately
     const staticProgressBars = document.querySelectorAll('.progress-bar:not([data-transitiongoal])');
     staticProgressBars.forEach(bar => {
+      // Skip App Versions bars as they're handled above
+      if (bar.closest('.widget_summary')) {
+        return;
+      }
+      
       const currentPercent = bar.style.width || bar.getAttribute('aria-valuenow') + '%' || '0%';
       bar.style.width = currentPercent;
     });
@@ -544,34 +583,34 @@
 
     const isChartJs1 = document.body.classList.contains('page-chartjs1');
     const isChartJs2 = document.body.classList.contains('page-chartjs2');
-      const isChart3 = document.body.classList.contains('page-chart3');
-  
-  if (!isChartJs1 && !isChartJs2 && !isChart3) {
+    const isChart3 = document.body.classList.contains('page-chart3');
+
+    if (!isChartJs1 && !isChartJs2 && !isChart3) {
       return;
     }
 
-    
+
     const chartCanvases = document.querySelectorAll('[data-chart]');
 
     chartCanvases.forEach((canvas, index) => {
       let type = canvas.dataset.chart;
       const ctx = canvas.getContext('2d');
-      if (!type || !ctx) return;
+      if (!type || !ctx) {return;}
 
       let chartType = type; // Use separate variable for Chart.js type
       let data, options = {
         responsive: true,
         maintainAspectRatio: false,
         plugins: {
-          legend: { 
+          legend: {
             position: 'top',
             labels: {
               boxWidth: 12,
               padding: 8
             }
           },
-          title: { 
-            display: true, 
+          title: {
+            display: true,
             padding: {
               top: 5,
               bottom: 8
@@ -586,26 +625,26 @@
 
         if (type === 'line' || type === 'bar' || type === 'radar') {
           data = {
-            labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
             datasets: [{
-              label: "Primary Sales",
-              backgroundColor: "rgba(38, 185, 154, 0.31)",
-              borderColor: "rgba(38, 185, 154, 0.7)",
+              label: 'Primary Sales',
+              backgroundColor: 'rgba(38, 185, 154, 0.31)',
+              borderColor: 'rgba(38, 185, 154, 0.7)',
               data: [65, 59, 80, 81, 56, 55, 40, 58, 70, 60, 75, 68]
             }, {
-              label: "Secondary Sales",
-              backgroundColor: "rgba(3, 88, 106, 0.3)",
-              borderColor: "rgba(3, 88, 106, 0.70)",
+              label: 'Secondary Sales',
+              backgroundColor: 'rgba(3, 88, 106, 0.3)',
+              borderColor: 'rgba(3, 88, 106, 0.70)',
               data: [28, 48, 40, 19, 86, 27, 90, 75, 88, 70, 80, 72]
             }]
           };
-          if (type === 'line') data.datasets.forEach(d => d.tension = 0.4);
+          if (type === 'line') {data.datasets.forEach(d => d.tension = 0.4);}
         } else {
           data = {
-            labels: ["Green", "Blue", "Gray", "Purple", "Red"],
+            labels: ['Green', 'Blue', 'Gray', 'Purple', 'Red'],
             datasets: [{
               data: [120, 50, 140, 180, 100],
-              backgroundColor: ["#26B99A", "#3498DB", "#BDC3C7", "#9B59B6", "#E74C3C"]
+              backgroundColor: ['#26B99A', '#3498DB', '#BDC3C7', '#9B59B6', '#E74C3C']
             }]
           };
         }
@@ -615,33 +654,33 @@
 
         if (type === 'line' || type === 'bar' || type === 'radar') {
           data = {
-            labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+            labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
             datasets: [{
-              label: "Online Orders",
-              backgroundColor: "rgba(243, 156, 18, 0.3)",
-              borderColor: "rgba(243, 156, 18, 0.7)",
+              label: 'Online Orders',
+              backgroundColor: 'rgba(243, 156, 18, 0.3)',
+              borderColor: 'rgba(243, 156, 18, 0.7)',
               data: [45, 62, 55, 78, 58, 65, 80]
             }, {
-              label: "In-Store Pickups",
-              backgroundColor: "rgba(231, 76, 60, 0.3)",
-              borderColor: "rgba(231, 76, 60, 0.7)",
+              label: 'In-Store Pickups',
+              backgroundColor: 'rgba(231, 76, 60, 0.3)',
+              borderColor: 'rgba(231, 76, 60, 0.7)',
               data: [33, 40, 32, 51, 44, 48, 55]
             }]
           };
-          if (type === 'line') data.datasets.forEach(d => d.stepped = true);
+          if (type === 'line') {data.datasets.forEach(d => d.stepped = true);}
         } else {
           data = {
-            labels: ["Laptops", "Monitors", "Keyboards", "Mice", "Webcams"],
+            labels: ['Laptops', 'Monitors', 'Keyboards', 'Mice', 'Webcams'],
             datasets: [{
               data: [350, 250, 180, 220, 150],
-              backgroundColor: ["#F39C12", "#E74C3C", "#8E44AD", "#3498DB", "#16A085"]
+              backgroundColor: ['#F39C12', '#E74C3C', '#8E44AD', '#3498DB', '#16A085']
             }]
           };
         }
-          } else if (isChart3) {
+      } else if (isChart3) {
       // Data and options for chart3.html (Chart.js implementation)
         options.plugins.title.text = `${type.charAt(0).toUpperCase() + type.slice(1)} Chart`;
-        
+
         // Make charts fill more space and be visually appealing
         options.aspectRatio = 2.2; // Make charts even taller
         options.layout = {
@@ -675,138 +714,138 @@
 
         switch (index) {
           case 0: // Bar
-            data = { 
-              labels: ["2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030"], 
+            data = {
+              labels: ['2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025', '2026', '2027', '2028', '2029', '2030'],
               datasets: [
-                { 
-                  label: 'Licensed Vehicles (thousands)', 
-                  data: [3407, 3551, 3269, 3846, 4171, 4387, 4625, 4891, 5156, 5423, 5678, 5945, 6201], 
+                {
+                  label: 'Licensed Vehicles (thousands)',
+                  data: [3407, 3551, 3269, 3846, 4171, 4387, 4625, 4891, 5156, 5423, 5678, 5945, 6201],
                   backgroundColor: '#26B99A',
                   borderColor: '#1e8e7a',
                   borderWidth: 1
-                }, 
-                { 
-                  label: 'SORN (Off Road)', 
-                  data: [660, 729, 818, 761, 681, 645, 598, 567, 534, 501, 468, 435, 402], 
+                },
+                {
+                  label: 'SORN (Off Road)',
+                  data: [660, 729, 818, 761, 681, 645, 598, 567, 534, 501, 468, 435, 402],
                   backgroundColor: '#34495E',
                   borderColor: '#2c3e50',
                   borderWidth: 1
                 }
-              ] 
+              ]
             };
             break;
           case 1: // Grouped Bar
-            data = { 
-              labels: ["2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030"], 
+            data = {
+              labels: ['2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025', '2026', '2027', '2028', '2029', '2030'],
               datasets: [
-                { 
-                  label: 'Cloud Services (millions)', 
-                  data: [2407, 2851, 3469, 4246, 5057, 5687, 6225, 6891, 7456, 8123, 8678, 9245, 9801], 
+                {
+                  label: 'Cloud Services (millions)',
+                  data: [2407, 2851, 3469, 4246, 5057, 5687, 6225, 6891, 7456, 8123, 8678, 9245, 9801],
                   backgroundColor: '#26B99A',
                   borderColor: '#1e8e7a',
                   borderWidth: 1
-                }, 
-                { 
-                  label: 'AI/ML Adoption (millions)', 
-                  data: [360, 529, 718, 961, 1281, 1645, 2098, 2567, 3034, 3501, 3968, 4435, 4902], 
+                },
+                {
+                  label: 'AI/ML Adoption (millions)',
+                  data: [360, 529, 718, 961, 1281, 1645, 2098, 2567, 3034, 3501, 3968, 4435, 4902],
                   backgroundColor: '#3498DB',
                   borderColor: '#2980b9',
                   borderWidth: 1
                 }
-              ] 
+              ]
             };
             break;
           case 2: // Line
-            data = { 
-              labels: ['2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025', '2026', '2027', '2028', '2029', '2030'], 
+            data = {
+              labels: ['2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025', '2026', '2027', '2028', '2029', '2030'],
               datasets: [
-                { 
-                  label: 'Revenue (millions)', 
-                  data: [100, 125, 95, 138, 164, 195, 226, 258, 291, 325, 360, 396, 433], 
-                  borderColor: '#26B99A', 
+                {
+                  label: 'Revenue (millions)',
+                  data: [100, 125, 95, 138, 164, 195, 226, 258, 291, 325, 360, 396, 433],
+                  borderColor: '#26B99A',
                   backgroundColor: 'rgba(38, 185, 154, 0.1)',
                   tension: 0.4,
                   pointBackgroundColor: '#26B99A',
                   pointBorderColor: '#1e8e7a',
                   pointRadius: 4
-                }, 
-                { 
-                  label: 'Profit (millions)', 
-                  data: [25, 35, 18, 42, 58, 72, 89, 108, 127, 147, 168, 190, 213], 
-                  borderColor: '#3498DB', 
+                },
+                {
+                  label: 'Profit (millions)',
+                  data: [25, 35, 18, 42, 58, 72, 89, 108, 127, 147, 168, 190, 213],
+                  borderColor: '#3498DB',
                   backgroundColor: 'rgba(52, 152, 219, 0.1)',
                   tension: 0.4,
                   pointBackgroundColor: '#3498DB',
                   pointBorderColor: '#2980b9',
                   pointRadius: 4
-                }, 
-                { 
-                  label: 'Expenses (millions)', 
-                  data: [75, 90, 77, 96, 106, 123, 137, 150, 164, 178, 192, 206, 220], 
-                  borderColor: '#E74C3C', 
+                },
+                {
+                  label: 'Expenses (millions)',
+                  data: [75, 90, 77, 96, 106, 123, 137, 150, 164, 178, 192, 206, 220],
+                  borderColor: '#E74C3C',
                   backgroundColor: 'rgba(231, 76, 60, 0.1)',
                   tension: 0.4,
                   pointBackgroundColor: '#E74C3C',
                   pointBorderColor: '#c0392b',
                   pointRadius: 4
                 }
-              ] 
+              ]
             };
             break;
           case 3: // Area
             options.plugins.title.text = 'Area Chart';
-            data = { 
-              labels: ["2018 Q1", "2018 Q2", "2018 Q3", "2018 Q4", "2019 Q1", "2019 Q2", "2019 Q3", "2019 Q4", "2020 Q1", "2020 Q2", "2020 Q3", "2020 Q4", "2021 Q1", "2021 Q2", "2021 Q3", "2021 Q4", "2022 Q1", "2022 Q2", "2022 Q3", "2022 Q4", "2023 Q1", "2023 Q2", "2023 Q3", "2023 Q4", "2024 Q1"], 
+            data = {
+              labels: ['2018 Q1', '2018 Q2', '2018 Q3', '2018 Q4', '2019 Q1', '2019 Q2', '2019 Q3', '2019 Q4', '2020 Q1', '2020 Q2', '2020 Q3', '2020 Q4', '2021 Q1', '2021 Q2', '2021 Q3', '2021 Q4', '2022 Q1', '2022 Q2', '2022 Q3', '2022 Q4', '2023 Q1', '2023 Q2', '2023 Q3', '2023 Q4', '2024 Q1'],
               datasets: [
-                { 
-                  label: 'Mobile Revenue (millions)', 
-                  data: [2666, 2778, 4912, 3767, 6810, 7234, 8156, 9023, 8567, 9234, 10456, 11789, 12345, 13567, 14890, 16123, 17456, 18789, 20123, 21456, 22789, 24123, 25456, 26789, 28123], 
-                  fill: true, 
-                  backgroundColor: 'rgba(38, 185, 154, 0.3)', 
+                {
+                  label: 'Mobile Revenue (millions)',
+                  data: [2666, 2778, 4912, 3767, 6810, 7234, 8156, 9023, 8567, 9234, 10456, 11789, 12345, 13567, 14890, 16123, 17456, 18789, 20123, 21456, 22789, 24123, 25456, 26789, 28123],
+                  fill: true,
+                  backgroundColor: 'rgba(38, 185, 154, 0.3)',
                   borderColor: '#26B99A',
                   tension: 0.4,
                   pointBackgroundColor: '#26B99A',
                   pointBorderColor: '#1e8e7a',
                   pointRadius: 3
-                }, 
-                { 
-                  label: 'Web Revenue (millions)', 
-                  data: [1890, 2294, 1969, 3597, 1914, 2456, 2789, 3123, 3456, 3789, 4123, 4456, 4789, 5123, 5456, 5789, 6123, 6456, 6789, 7123, 7456, 7789, 8123, 8456, 8789], 
-                  fill: true, 
-                  backgroundColor: 'rgba(52, 152, 219, 0.3)', 
+                },
+                {
+                  label: 'Web Revenue (millions)',
+                  data: [1890, 2294, 1969, 3597, 1914, 2456, 2789, 3123, 3456, 3789, 4123, 4456, 4789, 5123, 5456, 5789, 6123, 6456, 6789, 7123, 7456, 7789, 8123, 8456, 8789],
+                  fill: true,
+                  backgroundColor: 'rgba(52, 152, 219, 0.3)',
                   borderColor: '#3498DB',
                   tension: 0.4,
                   pointBackgroundColor: '#3498DB',
                   pointBorderColor: '#2980b9',
                   pointRadius: 3
                 }
-              ] 
+              ]
             };
             chartType = 'line'; // Area chart is a line chart with fill
             break;
           case 4: // Donut
-            data = { 
-              labels: ['Mobile Apps', 'Web Applications', 'Desktop Software', 'IoT Solutions', 'AI Services', 'Cloud Platforms', 'Data Analytics'], 
+            data = {
+              labels: ['Mobile Apps', 'Web Applications', 'Desktop Software', 'IoT Solutions', 'AI Services', 'Cloud Platforms', 'Data Analytics'],
               datasets: [
-                { 
-                  data: [32, 28, 18, 12, 7, 5, 3], 
+                {
+                  data: [32, 28, 18, 12, 7, 5, 3],
                   backgroundColor: ['#26B99A', '#3498DB', '#E74C3C', '#F39C12', '#9B59B6', '#1ABC9C', '#34495E'],
                   borderColor: ['#1e8e7a', '#2980b9', '#c0392b', '#d68910', '#7d3c98', '#16a085', '#2c3e50'],
                   borderWidth: 2,
                   hoverOffset: 10
                 }
-              ] 
+              ]
             };
             break;
           case 5: // Line 2
-            data = { 
-              labels: ['2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025', '2026', '2027', '2028', '2029', '2030'], 
+            data = {
+              labels: ['2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025', '2026', '2027', '2028', '2029', '2030'],
               datasets: [
-                { 
-                  label: 'Performance Score (%)', 
-                  data: [72, 68, 58, 65, 78, 85, 89, 92, 95, 97, 98, 99, 100], 
+                {
+                  label: 'Performance Score (%)',
+                  data: [72, 68, 58, 65, 78, 85, 89, 92, 95, 97, 98, 99, 100],
                   borderColor: '#3498DB',
-                  backgroundColor: 'rgba(52, 152, 219, 0.1)', 
+                  backgroundColor: 'rgba(52, 152, 219, 0.1)',
                   fill: false,
                   tension: 0.4,
                   pointBackgroundColor: '#3498DB',
@@ -814,11 +853,11 @@
                   pointRadius: 5,
                   pointHoverRadius: 7
                 },
-                { 
-                  label: 'User Satisfaction (%)', 
-                  data: [78, 82, 75, 80, 85, 88, 91, 93, 96, 97, 98, 99, 99], 
+                {
+                  label: 'User Satisfaction (%)',
+                  data: [78, 82, 75, 80, 85, 88, 91, 93, 96, 97, 98, 99, 99],
                   borderColor: '#26B99A',
-                  backgroundColor: 'rgba(38, 185, 154, 0.1)', 
+                  backgroundColor: 'rgba(38, 185, 154, 0.1)',
                   fill: false,
                   tension: 0.4,
                   pointBackgroundColor: '#26B99A',
@@ -826,14 +865,14 @@
                   pointRadius: 5,
                   pointHoverRadius: 7
                 }
-              ] 
+              ]
             };
             break;
         }
       }
 
       new Chart(ctx, { type: chartType, data, options });
-      
+
     });
   }
 
@@ -847,7 +886,7 @@
       canvas1.width = netCtx1.offsetWidth;
       canvas1.height = 250;
       netCtx1.appendChild(canvas1);
-      
+
       new Chart(canvas1, {
         type: 'line',
         data: {
@@ -894,10 +933,10 @@
           }
         }
       });
-      
+
     }
 
-    // Network Activity Chart 2 (index2.html)  
+    // Network Activity Chart 2 (index2.html)
     if (document.getElementById('chart_plot_02')) {
       const netCtx2 = document.getElementById('chart_plot_02');
       const canvas2 = document.createElement('canvas');
@@ -905,7 +944,7 @@
       canvas2.width = netCtx2.offsetWidth;
       canvas2.height = 250;
       netCtx2.appendChild(canvas2);
-      
+
       new Chart(canvas2, {
         type: 'line',
         data: {
@@ -944,7 +983,7 @@
           }
         }
       });
-      
+
     }
 
     // Network Activity Chart 3 (index3.html)
@@ -955,7 +994,7 @@
       canvas3.width = netCtx3.offsetWidth;
       canvas3.height = 250;
       netCtx3.appendChild(canvas3);
-      
+
       new Chart(canvas3, {
         type: 'line',
         data: {
@@ -994,23 +1033,25 @@
           }
         }
       });
-      
+
     }
   }
 
   // ECharts initialization function
   function initializeECharts() {
-    if (!document.body.classList.contains('page-echarts')) {
-      return;
-    }
-
     const echarts = window.echarts || globalThis.echarts;
     if (typeof echarts === 'undefined') {
       console.warn('⚠️ ECharts library not available');
       return;
     }
 
-    
+    // Check if there are any ECharts elements on the page
+    const echartElements = document.querySelectorAll('[id^="echart"]');
+    if (echartElements.length === 0) {
+      return;
+    }
+
+
 
     try {
       // 1. Bar Chart (mainb)
@@ -1060,7 +1101,7 @@
           ]
         };
         mainbChart.setOption(mainbOption);
-        
+
       }
 
       // 2. Mini Pie Chart (echart_mini_pie)
@@ -1097,7 +1138,7 @@
           ]
         };
         miniPieChart.setOption(miniPieOption);
-        
+
       }
 
       // 3. Regular Pie Chart (echart_pie)
@@ -1134,7 +1175,7 @@
           ]
         };
         pieChart.setOption(pieOption);
-        
+
       }
 
       // 4. Pie Area Chart (echart_pie2)
@@ -1180,7 +1221,7 @@
           ]
         };
         pie2Chart.setOption(pie2Option);
-        
+
       }
 
       // 5. Donut Chart (echart_donut)
@@ -1217,7 +1258,7 @@
           ]
         };
         donutChart.setOption(donutOption);
-        
+
       }
 
       // 6. Scatter Chart (echart_scatter)
@@ -1265,7 +1306,7 @@
           ]
         };
         scatterChart.setOption(scatterOption);
-        
+
       }
 
       // 7. Line Chart (echart_line)
@@ -1316,7 +1357,7 @@
           ]
         };
         lineChart.setOption(lineOption);
-        
+
       }
 
       // 8. Horizontal Bar Chart (echart_bar_horizontal)
@@ -1355,420 +1396,420 @@
           ]
         };
         hBarChart.setOption(hBarOption);
-        
+
       }
 
-             // 9. World Map (echart_world_map) - Interactive scatter plot with geographic visualization
-       if (document.getElementById('echart_world_map')) {
-         const worldMapChart = echarts.init(document.getElementById('echart_world_map'));
-         
-         // Global user distribution data with coordinates
-         const globalData = [
-           {name: 'United States', value: [2300, -95.7129, 37.0902], users: 2300},
-           {name: 'China', value: [1800, 104.1954, 35.8617], users: 1800},
-           {name: 'Japan', value: [1200, 138.2529, 36.2048], users: 1200},
-           {name: 'Germany', value: [1000, 10.4515, 51.1657], users: 1000},
-           {name: 'United Kingdom', value: [800, -3.4360, 55.3781], users: 800},
-           {name: 'France', value: [750, 2.2137, 46.2276], users: 750},
-           {name: 'India', value: [700, 78.9629, 20.5937], users: 700},
-           {name: 'Canada', value: [650, -106.3468, 56.1304], users: 650},
-           {name: 'Brazil', value: [600, -51.9253, -14.2350], users: 600},
-           {name: 'Australia', value: [550, 133.7751, -25.2744], users: 550},
-           {name: 'South Korea', value: [500, 127.7669, 35.9078], users: 500},
-           {name: 'Italy', value: [450, 12.5674, 41.8719], users: 450},
-           {name: 'Spain', value: [400, -3.7492, 40.4637], users: 400},
-           {name: 'Netherlands', value: [350, 5.2913, 52.1326], users: 350},
-           {name: 'Sweden', value: [300, 18.6435, 60.1282], users: 300},
-           {name: 'Russia', value: [275, 105.3188, 61.5240], users: 275},
-           {name: 'Mexico', value: [250, -102.5528, 23.6345], users: 250},
-           {name: 'Switzerland', value: [225, 8.2275, 46.8182], users: 225},
-           {name: 'Singapore', value: [200, 103.8198, 1.3521], users: 200},
-           {name: 'Norway', value: [175, 8.4689, 60.4720], users: 175}
-         ];
-         
-         const worldMapOption = {
-           backgroundColor: '#f5f5f5',
-           title: {
-             text: 'Global User Distribution',
-             left: 'center',
-             top: 20,
-             textStyle: { 
-               fontSize: 18,
-               color: '#333',
-               fontWeight: 'bold'
-             }
-           },
-           tooltip: {
-             trigger: 'item',
-             formatter: function(params) {
-               if (params.data) {
-                 return `<div style="padding: 8px;">
+      // 9. World Map (echart_world_map) - Interactive scatter plot with geographic visualization
+      if (document.getElementById('echart_world_map')) {
+        const worldMapChart = echarts.init(document.getElementById('echart_world_map'));
+
+        // Global user distribution data with coordinates
+        const globalData = [
+          {name: 'United States', value: [2300, -95.7129, 37.0902], users: 2300},
+          {name: 'China', value: [1800, 104.1954, 35.8617], users: 1800},
+          {name: 'Japan', value: [1200, 138.2529, 36.2048], users: 1200},
+          {name: 'Germany', value: [1000, 10.4515, 51.1657], users: 1000},
+          {name: 'United Kingdom', value: [800, -3.4360, 55.3781], users: 800},
+          {name: 'France', value: [750, 2.2137, 46.2276], users: 750},
+          {name: 'India', value: [700, 78.9629, 20.5937], users: 700},
+          {name: 'Canada', value: [650, -106.3468, 56.1304], users: 650},
+          {name: 'Brazil', value: [600, -51.9253, -14.2350], users: 600},
+          {name: 'Australia', value: [550, 133.7751, -25.2744], users: 550},
+          {name: 'South Korea', value: [500, 127.7669, 35.9078], users: 500},
+          {name: 'Italy', value: [450, 12.5674, 41.8719], users: 450},
+          {name: 'Spain', value: [400, -3.7492, 40.4637], users: 400},
+          {name: 'Netherlands', value: [350, 5.2913, 52.1326], users: 350},
+          {name: 'Sweden', value: [300, 18.6435, 60.1282], users: 300},
+          {name: 'Russia', value: [275, 105.3188, 61.5240], users: 275},
+          {name: 'Mexico', value: [250, -102.5528, 23.6345], users: 250},
+          {name: 'Switzerland', value: [225, 8.2275, 46.8182], users: 225},
+          {name: 'Singapore', value: [200, 103.8198, 1.3521], users: 200},
+          {name: 'Norway', value: [175, 8.4689, 60.4720], users: 175}
+        ];
+
+        const worldMapOption = {
+          backgroundColor: '#f5f5f5',
+          title: {
+            text: 'Global User Distribution',
+            left: 'center',
+            top: 20,
+            textStyle: {
+              fontSize: 18,
+              color: '#333',
+              fontWeight: 'bold'
+            }
+          },
+          tooltip: {
+            trigger: 'item',
+            formatter: function(params) {
+              if (params.data) {
+                return `<div style="padding: 8px;">
                    <div style="font-weight: bold; color: #333; margin-bottom: 4px;">${params.data.name}</div>
                    <div style="color: #666;">Active Users: <span style="color: #26B99A; font-weight: bold;">${params.data.users}k</span></div>
                    <div style="color: #999; font-size: 11px;">Coordinates: ${params.data.value[1].toFixed(2)}°, ${params.data.value[2].toFixed(2)}°</div>
                  </div>`;
-               }
-               return params.name;
-             },
-             backgroundColor: 'rgba(255, 255, 255, 0.95)',
-             borderColor: '#ccc',
-             borderWidth: 1,
-             textStyle: {
-               color: '#333'
-             }
-           },
-           legend: {
-             data: ['Global Users'],
-             left: 'left',
-             top: 60,
-             textStyle: {
-               color: '#333'
-             }
-           },
-           geo: {
-             type: 'map',
-             map: 'world',
-             roam: true,
-             zoom: 1.2,
-             center: [0, 20],
-             itemStyle: {
-               areaColor: '#e6f4ff',
-               borderColor: '#99d6ff',
-               borderWidth: 1
-             },
-             emphasis: {
-               itemStyle: {
-                 areaColor: '#cce7ff'
-               }
-             },
-             regions: [
-               {
-                 name: 'Antarctica',
-                 itemStyle: {
-                   areaColor: '#f0f0f0',
-                   borderColor: '#ccc'
-                 }
-               }
-             ]
-           },
-           visualMap: {
-             min: 0,
-             max: 2500,
-             left: 'right',
-             top: 'bottom',
-             text: ['High Activity', 'Low Activity'],
-             textStyle: {
-               color: '#333'
-             },
-             inRange: {
-               symbolSize: [6, 60],
-               color: ['#26B99A', '#2ECC71', '#F39C12', '#E74C3C']
-             },
-             calculable: true,
-             realtime: false
-           },
-           series: [
-             {
-               name: 'Global Users',
-               type: 'scatter',
-               coordinateSystem: 'geo',
-               data: globalData,
-               symbol: 'circle',
-               symbolSize: function (val) {
-                 return Math.max(8, val[0] / 50);
-               },
-               itemStyle: {
-                 color: function(params) {
-                   const users = params.data.users;
-                   if (users > 1500) return '#E74C3C';
-                   if (users > 1000) return '#F39C12';
-                   if (users > 500) return '#2ECC71';
-                   return '#26B99A';
-                 },
-                 shadowBlur: 10,
-                 shadowColor: 'rgba(0, 0, 0, 0.3)'
-               },
-               emphasis: {
-                 itemStyle: {
-                   borderColor: '#333',
-                   borderWidth: 2
-                 }
-               },
-               label: {
-                 show: false,
-                 formatter: '{b}',
-                 position: 'right'
-               }
-             }
-           ]
-         };
-         
-         // Load world map from CDN
-         fetch('https://geo.datav.aliyun.com/areas_v3/bound/world.json')
-           .then(response => response.json())
-           .then(geoData => {
-             echarts.registerMap('world', geoData);
-             worldMapChart.setOption(worldMapOption);
-             
-           })
-           .catch(error => {
-             console.warn('⚠️ Failed to load world map data from CDN, using fallback visualization');
-             // Fallback to scatter plot only
-             const fallbackOption = {
-               backgroundColor: '#f5f5f5',
-               title: {
-                 text: 'Global User Distribution',
-                 subtext: 'Interactive Scatter Plot View',
-                 left: 'center',
-                 top: 20,
-                 textStyle: { 
-                   fontSize: 18,
-                   color: '#333',
-                   fontWeight: 'bold'
-                 },
-                 subtextStyle: {
-                   color: '#666',
-                   fontSize: 12
-                 }
-               },
-               tooltip: {
-                 trigger: 'item',
-                 formatter: function(params) {
-                   return `<div style="padding: 8px;">
+              }
+              return params.name;
+            },
+            backgroundColor: 'rgba(255, 255, 255, 0.95)',
+            borderColor: '#ccc',
+            borderWidth: 1,
+            textStyle: {
+              color: '#333'
+            }
+          },
+          legend: {
+            data: ['Global Users'],
+            left: 'left',
+            top: 60,
+            textStyle: {
+              color: '#333'
+            }
+          },
+          geo: {
+            type: 'map',
+            map: 'world',
+            roam: true,
+            zoom: 1.2,
+            center: [0, 20],
+            itemStyle: {
+              areaColor: '#e6f4ff',
+              borderColor: '#99d6ff',
+              borderWidth: 1
+            },
+            emphasis: {
+              itemStyle: {
+                areaColor: '#cce7ff'
+              }
+            },
+            regions: [
+              {
+                name: 'Antarctica',
+                itemStyle: {
+                  areaColor: '#f0f0f0',
+                  borderColor: '#ccc'
+                }
+              }
+            ]
+          },
+          visualMap: {
+            min: 0,
+            max: 2500,
+            left: 'right',
+            top: 'bottom',
+            text: ['High Activity', 'Low Activity'],
+            textStyle: {
+              color: '#333'
+            },
+            inRange: {
+              symbolSize: [6, 60],
+              color: ['#26B99A', '#2ECC71', '#F39C12', '#E74C3C']
+            },
+            calculable: true,
+            realtime: false
+          },
+          series: [
+            {
+              name: 'Global Users',
+              type: 'scatter',
+              coordinateSystem: 'geo',
+              data: globalData,
+              symbol: 'circle',
+              symbolSize: function (val) {
+                return Math.max(8, val[0] / 50);
+              },
+              itemStyle: {
+                color: function(params) {
+                  const users = params.data.users;
+                  if (users > 1500) {return '#E74C3C';}
+                  if (users > 1000) {return '#F39C12';}
+                  if (users > 500) {return '#2ECC71';}
+                  return '#26B99A';
+                },
+                shadowBlur: 10,
+                shadowColor: 'rgba(0, 0, 0, 0.3)'
+              },
+              emphasis: {
+                itemStyle: {
+                  borderColor: '#333',
+                  borderWidth: 2
+                }
+              },
+              label: {
+                show: false,
+                formatter: '{b}',
+                position: 'right'
+              }
+            }
+          ]
+        };
+
+        // Load world map from CDN
+        fetch('https://geo.datav.aliyun.com/areas_v3/bound/world.json')
+          .then(response => response.json())
+          .then(geoData => {
+            echarts.registerMap('world', geoData);
+            worldMapChart.setOption(worldMapOption);
+
+          })
+          .catch(error => {
+            console.warn('⚠️ Failed to load world map data from CDN, using fallback visualization');
+            // Fallback to scatter plot only
+            const fallbackOption = {
+              backgroundColor: '#f5f5f5',
+              title: {
+                text: 'Global User Distribution',
+                subtext: 'Interactive Scatter Plot View',
+                left: 'center',
+                top: 20,
+                textStyle: {
+                  fontSize: 18,
+                  color: '#333',
+                  fontWeight: 'bold'
+                },
+                subtextStyle: {
+                  color: '#666',
+                  fontSize: 12
+                }
+              },
+              tooltip: {
+                trigger: 'item',
+                formatter: function(params) {
+                  return `<div style="padding: 8px;">
                      <div style="font-weight: bold; color: #333; margin-bottom: 4px;">${params.data.name}</div>
                      <div style="color: #666;">Active Users: <span style="color: #26B99A; font-weight: bold;">${params.data.users}k</span></div>
                    </div>`;
-                 },
-                 backgroundColor: 'rgba(255, 255, 255, 0.95)',
-                 borderColor: '#ccc',
-                 borderWidth: 1
-               },
-               grid: {
-                 left: '10%',
-                 right: '15%',
-                 top: '20%',
-                 bottom: '15%'
-               },
-               xAxis: {
-                 type: 'value',
-                 name: 'Longitude',
-                 nameLocation: 'middle',
-                 nameGap: 25,
-                 min: -180,
-                 max: 180,
-                 axisLine: {
-                   lineStyle: { color: '#ccc' }
-                 },
-                 splitLine: {
-                   lineStyle: { color: '#eee' }
-                 }
-               },
-               yAxis: {
-                 type: 'value',
-                 name: 'Latitude',
-                 nameLocation: 'middle',
-                 nameGap: 35,
-                 min: -90,
-                 max: 90,
-                 axisLine: {
-                   lineStyle: { color: '#ccc' }
-                 },
-                 splitLine: {
-                   lineStyle: { color: '#eee' }
-                 }
-               },
-               visualMap: {
-                 min: 0,
-                 max: 2500,
-                 right: 10,
-                 top: 'center',
-                 text: ['High', 'Low'],
-                 inRange: {
-                   symbolSize: [8, 40],
-                   color: ['#26B99A', '#2ECC71', '#F39C12', '#E74C3C']
-                 },
-                 textStyle: {
-                   color: '#333'
-                 }
-               },
-               series: [
-                 {
-                   name: 'Global Users',
-                   type: 'scatter',
-                   data: globalData.map(item => ({
-                     name: item.name,
-                     value: [item.value[1], item.value[2], item.users],
-                     users: item.users
-                   })),
-                   symbolSize: function (data) {
-                     return Math.max(8, data[2] / 50);
-                   },
-                   itemStyle: {
-                     color: function(params) {
-                       const users = params.data.users;
-                       if (users > 1500) return '#E74C3C';
-                       if (users > 1000) return '#F39C12';
-                       if (users > 500) return '#2ECC71';
-                       return '#26B99A';
-                     },
-                     shadowBlur: 10,
-                     shadowColor: 'rgba(0, 0, 0, 0.3)'
-                   },
-                   emphasis: {
-                     itemStyle: {
-                       borderColor: '#333',
-                       borderWidth: 2
-                     }
-                   }
-                 }
-               ]
-             };
-             worldMapChart.setOption(fallbackOption);
-           });
-       }
+                },
+                backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                borderColor: '#ccc',
+                borderWidth: 1
+              },
+              grid: {
+                left: '10%',
+                right: '15%',
+                top: '20%',
+                bottom: '15%'
+              },
+              xAxis: {
+                type: 'value',
+                name: 'Longitude',
+                nameLocation: 'middle',
+                nameGap: 25,
+                min: -180,
+                max: 180,
+                axisLine: {
+                  lineStyle: { color: '#ccc' }
+                },
+                splitLine: {
+                  lineStyle: { color: '#eee' }
+                }
+              },
+              yAxis: {
+                type: 'value',
+                name: 'Latitude',
+                nameLocation: 'middle',
+                nameGap: 35,
+                min: -90,
+                max: 90,
+                axisLine: {
+                  lineStyle: { color: '#ccc' }
+                },
+                splitLine: {
+                  lineStyle: { color: '#eee' }
+                }
+              },
+              visualMap: {
+                min: 0,
+                max: 2500,
+                right: 10,
+                top: 'center',
+                text: ['High', 'Low'],
+                inRange: {
+                  symbolSize: [8, 40],
+                  color: ['#26B99A', '#2ECC71', '#F39C12', '#E74C3C']
+                },
+                textStyle: {
+                  color: '#333'
+                }
+              },
+              series: [
+                {
+                  name: 'Global Users',
+                  type: 'scatter',
+                  data: globalData.map(item => ({
+                    name: item.name,
+                    value: [item.value[1], item.value[2], item.users],
+                    users: item.users
+                  })),
+                  symbolSize: function (data) {
+                    return Math.max(8, data[2] / 50);
+                  },
+                  itemStyle: {
+                    color: function(params) {
+                      const users = params.data.users;
+                      if (users > 1500) {return '#E74C3C';}
+                      if (users > 1000) {return '#F39C12';}
+                      if (users > 500) {return '#2ECC71';}
+                      return '#26B99A';
+                    },
+                    shadowBlur: 10,
+                    shadowColor: 'rgba(0, 0, 0, 0.3)'
+                  },
+                  emphasis: {
+                    itemStyle: {
+                      borderColor: '#333',
+                      borderWidth: 2
+                    }
+                  }
+                }
+              ]
+            };
+            worldMapChart.setOption(fallbackOption);
+          });
+      }
 
-             // 10. Pyramid Chart (echart_pyramid) - Using bar chart to create pyramid effect
-       if (document.getElementById('echart_pyramid')) {
-         const pyramidChart = echarts.init(document.getElementById('echart_pyramid'));
-         const pyramidOption = {
-           title: {
-             text: 'User Hierarchy',
-             left: 'center',
-             textStyle: { fontSize: 14 }
-           },
-           tooltip: {
-             trigger: 'item',
-             formatter: '{b}: {c}%'
-           },
-           xAxis: {
-             type: 'value',
-             show: false
-           },
-           yAxis: {
-             type: 'category',
-             data: ['Admin', 'Enterprise', 'Pro Users', 'Premium Users', 'Basic Users'],
-             axisLabel: {
-               fontSize: 12
-             }
-           },
-           series: [
-             {
-               name: 'User Levels',
-               type: 'bar',
-               data: [
-                 { value: 20, name: 'Admin', itemStyle: { color: '#E74C3C' } },
-                 { value: 40, name: 'Enterprise', itemStyle: { color: '#9B59B6' } },
-                 { value: 60, name: 'Pro Users', itemStyle: { color: '#F39C12' } },
-                 { value: 80, name: 'Premium Users', itemStyle: { color: '#3498DB' } },
-                 { value: 100, name: 'Basic Users', itemStyle: { color: '#26B99A' } }
-               ],
-               label: {
-                 show: true,
-                 position: 'right',
-                 formatter: '{c}%'
-               },
-               barWidth: '60%'
-             }
-           ],
-           grid: {
-             left: '30%',
-             right: '10%',
-             top: '15%',
-             bottom: '10%'
-           }
-         };
-         pyramidChart.setOption(pyramidOption);
-         
-       }
+      // 10. Pyramid Chart (echart_pyramid) - Using bar chart to create pyramid effect
+      if (document.getElementById('echart_pyramid')) {
+        const pyramidChart = echarts.init(document.getElementById('echart_pyramid'));
+        const pyramidOption = {
+          title: {
+            text: 'User Hierarchy',
+            left: 'center',
+            textStyle: { fontSize: 14 }
+          },
+          tooltip: {
+            trigger: 'item',
+            formatter: '{b}: {c}%'
+          },
+          xAxis: {
+            type: 'value',
+            show: false
+          },
+          yAxis: {
+            type: 'category',
+            data: ['Admin', 'Enterprise', 'Pro Users', 'Premium Users', 'Basic Users'],
+            axisLabel: {
+              fontSize: 12
+            }
+          },
+          series: [
+            {
+              name: 'User Levels',
+              type: 'bar',
+              data: [
+                { value: 20, name: 'Admin', itemStyle: { color: '#E74C3C' } },
+                { value: 40, name: 'Enterprise', itemStyle: { color: '#9B59B6' } },
+                { value: 60, name: 'Pro Users', itemStyle: { color: '#F39C12' } },
+                { value: 80, name: 'Premium Users', itemStyle: { color: '#3498DB' } },
+                { value: 100, name: 'Basic Users', itemStyle: { color: '#26B99A' } }
+              ],
+              label: {
+                show: true,
+                position: 'right',
+                formatter: '{c}%'
+              },
+              barWidth: '60%'
+            }
+          ],
+          grid: {
+            left: '30%',
+            right: '10%',
+            top: '15%',
+            bottom: '10%'
+          }
+        };
+        pyramidChart.setOption(pyramidOption);
 
-             // 11. Sonar/Radar Chart (echart_sonar)
-       if (document.getElementById('echart_sonar')) {
-         const sonarChart = echarts.init(document.getElementById('echart_sonar'));
-         const sonarOption = {
-           title: {
-             text: 'Technology Skills Radar',
-             left: 'center',
-             top: 10,
-             textStyle: { fontSize: 14 }
-           },
-           tooltip: {
-             trigger: 'item'
-           },
-           legend: {
-             data: ['Senior Developer', 'Full Stack Engineer'],
-             top: 30,
-             left: 'center'
-           },
-           radar: {
-             center: ['50%', '60%'],
-             radius: '60%',
-             indicator: [
-               { name: 'Frontend', max: 100 },
-               { name: 'Backend', max: 100 },
-               { name: 'Database', max: 100 },
-               { name: 'DevOps', max: 100 },
-               { name: 'Mobile', max: 100 },
-               { name: 'AI/ML', max: 100 }
-             ],
-             name: {
-               textStyle: {
-                 color: '#333',
-                 fontSize: 11
-               }
-             },
-             splitArea: {
-               areaStyle: {
-                 color: ['#f8f9fa', '#ecf0f1']
-               }
-             }
-           },
-           series: [
-             {
-               name: 'Skills Comparison',
-               type: 'radar',
-               data: [
-                 {
-                   value: [90, 85, 80, 70, 75, 60],
-                   name: 'Senior Developer',
-                   areaStyle: {
-                     color: 'rgba(38, 185, 154, 0.3)'
-                   },
-                   lineStyle: {
-                     color: '#26B99A'
-                   },
-                   itemStyle: {
-                     color: '#26B99A'
-                   }
-                 },
-                 {
-                   value: [70, 95, 90, 85, 60, 80],
-                   name: 'Full Stack Engineer',
-                   areaStyle: {
-                     color: 'rgba(52, 152, 219, 0.3)'
-                   },
-                   lineStyle: {
-                     color: '#3498DB'
-                   },
-                   itemStyle: {
-                     color: '#3498DB'
-                   }
-                 }
-               ]
-             }
-           ]
-         };
-         sonarChart.setOption(sonarOption);
-         
-       }
+      }
+
+      // 11. Sonar/Radar Chart (echart_sonar)
+      if (document.getElementById('echart_sonar')) {
+        const sonarChart = echarts.init(document.getElementById('echart_sonar'));
+        const sonarOption = {
+          title: {
+            text: 'Technology Skills Radar',
+            left: 'center',
+            top: 10,
+            textStyle: { fontSize: 14 }
+          },
+          tooltip: {
+            trigger: 'item'
+          },
+          legend: {
+            data: ['Senior Developer', 'Full Stack Engineer'],
+            top: 30,
+            left: 'center'
+          },
+          radar: {
+            center: ['50%', '60%'],
+            radius: '60%',
+            indicator: [
+              { name: 'Frontend', max: 100 },
+              { name: 'Backend', max: 100 },
+              { name: 'Database', max: 100 },
+              { name: 'DevOps', max: 100 },
+              { name: 'Mobile', max: 100 },
+              { name: 'AI/ML', max: 100 }
+            ],
+            name: {
+              textStyle: {
+                color: '#333',
+                fontSize: 11
+              }
+            },
+            splitArea: {
+              areaStyle: {
+                color: ['#f8f9fa', '#ecf0f1']
+              }
+            }
+          },
+          series: [
+            {
+              name: 'Skills Comparison',
+              type: 'radar',
+              data: [
+                {
+                  value: [90, 85, 80, 70, 75, 60],
+                  name: 'Senior Developer',
+                  areaStyle: {
+                    color: 'rgba(38, 185, 154, 0.3)'
+                  },
+                  lineStyle: {
+                    color: '#26B99A'
+                  },
+                  itemStyle: {
+                    color: '#26B99A'
+                  }
+                },
+                {
+                  value: [70, 95, 90, 85, 60, 80],
+                  name: 'Full Stack Engineer',
+                  areaStyle: {
+                    color: 'rgba(52, 152, 219, 0.3)'
+                  },
+                  lineStyle: {
+                    color: '#3498DB'
+                  },
+                  itemStyle: {
+                    color: '#3498DB'
+                  }
+                }
+              ]
+            }
+          ]
+        };
+        sonarChart.setOption(sonarOption);
+
+      }
 
 
 
       // Make all charts responsive
       window.addEventListener('resize', function() {
-        const chartIds = ['mainb', 'echart_mini_pie', 'echart_pie', 'echart_pie2', 'echart_donut', 
-                         'echart_scatter', 'echart_line', 'echart_bar_horizontal', 'echart_world_map', 
-                         'echart_pyramid', 'echart_sonar'];
-        
+        const chartIds = ['mainb', 'echart_mini_pie', 'echart_pie', 'echart_pie2', 'echart_donut',
+          'echart_scatter', 'echart_line', 'echart_bar_horizontal', 'echart_world_map',
+          'echart_pyramid', 'echart_sonar'];
+
         chartIds.forEach(id => {
           const element = document.getElementById(id);
           if (element) {
@@ -1791,22 +1832,22 @@
       return;
     }
 
-    
+
 
     try {
       // 1. USA Map using Leaflet (replacing vector map)
       if (document.getElementById('usa_map')) {
         const usaMapContainer = document.getElementById('usa_map');
         usaMapContainer.style.height = '400px';
-        
+
         // Initialize Leaflet map focused on USA
         const usaMap = L.map('usa_map').setView([39.8283, -98.5795], 4);
-        
+
         // Add OpenStreetMap tiles
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
           attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(usaMap);
-        
+
         // Add markers for major US cities with business data
         const usaCities = [
           { coords: [40.7128, -74.0060], city: 'New York', value: '$2.5M', color: '#26B99A' },
@@ -1818,7 +1859,7 @@
           { coords: [32.7767, -96.7970], city: 'Dallas', value: '$920K', color: '#E67E22' },
           { coords: [37.7749, -122.4194], city: 'San Francisco', value: '$2.1M', color: '#2ECC71' }
         ];
-        
+
         usaCities.forEach(function(location) {
           const marker = L.circleMarker(location.coords, {
             color: location.color,
@@ -1826,11 +1867,11 @@
             fillOpacity: 0.7,
             radius: 12
           }).addTo(usaMap);
-          
+
           marker.bindPopup(`<b>${location.city}</b><br/>Revenue: ${location.value}`);
         });
-        
-        
+
+
       }
 
       // 2. Easy Pie Charts using ECharts gauge charts (circular progress indicators)
@@ -1845,30 +1886,30 @@
       Object.keys(chartSizes).forEach(function(chartClass) {
         const charts = document.querySelectorAll(`.${chartClass}[data-percent]`);
         const config = chartSizes[chartClass];
-        
+
         charts.forEach(function(element, index) {
           const percent = parseInt(element.getAttribute('data-percent'));
           const label = element.getAttribute('data-label') || '';
           const chartId = `${chartClass}-${index}`;
-          
+
           // Clear existing content and create container for ECharts
-          element.innerHTML = '';
+          element.innerHTML = sanitizeHtml('');
           element.style.position = 'relative';
           element.style.width = config.width + 'px';
           element.style.height = config.height + 'px';
           element.style.margin = '0 auto';
           element.style.display = 'block';
-          
+
           const chartDiv = document.createElement('div');
           chartDiv.id = chartId;
           chartDiv.style.width = config.width + 'px';
           chartDiv.style.height = config.height + 'px';
           element.appendChild(chartDiv);
-          
+
           // Create ECharts gauge chart for circular progress
           if (typeof echarts !== 'undefined') {
             const gaugeChart = echarts.init(chartDiv);
-            
+
             // Dynamic color based on percentage and critical thresholds
             let color;
             if (label === 'Storage' && percent >= 90) {
@@ -1884,7 +1925,7 @@
             } else {
               color = '#3498DB'; // Low
             }
-            
+
             const option = {
               series: [
                 {
@@ -1956,9 +1997,9 @@
                 }
               ]
             };
-            
+
             gaugeChart.setOption(option);
-            
+
             // Add animation on hover for interactivity
             chartDiv.addEventListener('mouseenter', function() {
               gaugeChart.setOption({
@@ -1972,7 +2013,7 @@
                 }]
               });
             });
-            
+
             chartDiv.addEventListener('mouseleave', function() {
               gaugeChart.setOption({
                 series: [{
@@ -1984,7 +2025,7 @@
                 }]
               });
             });
-            
+
             // Store chart reference for resize handling
             window.addEventListener('resize', function() {
               setTimeout(() => {
@@ -1994,48 +2035,48 @@
           }
         });
       });
-      
-      
+
+
 
       // 3. Sparkline Charts using ECharts - Larger size to match pie charts
       const sparklineElements = [
-        { 
-          selector: '.sparkline_line', 
-          type: 'line', 
-          data: [45, 52, 38, 64, 51, 47, 59, 68, 42, 58, 73, 65, 78, 82], 
-          width: 180, 
+        {
+          selector: '.sparkline_line',
+          type: 'line',
+          data: [45, 52, 38, 64, 51, 47, 59, 68, 42, 58, 73, 65, 78, 82],
+          width: 180,
           height: 80,
           color: '#26B99A'
         },
-        { 
-          selector: '.sparkline_area', 
-          type: 'area', 
-          data: [32, 48, 54, 41, 67, 59, 45, 73, 68, 52, 84, 76, 59, 91], 
-          width: 180, 
+        {
+          selector: '.sparkline_area',
+          type: 'area',
+          data: [32, 48, 54, 41, 67, 59, 45, 73, 68, 52, 84, 76, 59, 91],
+          width: 180,
           height: 80,
           color: '#3498DB'
         },
-        { 
-          selector: '.sparkline_bar', 
-          type: 'bar', 
-          data: [25, 42, 58, 31, 49, 63, 37, 54, 48, 66, 52, 71, 45, 68], 
-          width: 180, 
+        {
+          selector: '.sparkline_bar',
+          type: 'bar',
+          data: [25, 42, 58, 31, 49, 63, 37, 54, 48, 66, 52, 71, 45, 68],
+          width: 180,
           height: 80,
           color: '#E74C3C'
         },
-        { 
-          selector: '.sparkline_pie', 
-          type: 'pie', 
-          data: [35, 28, 22, 15], 
-          width: 120, 
+        {
+          selector: '.sparkline_pie',
+          type: 'pie',
+          data: [35, 28, 22, 15],
+          width: 120,
           height: 120,
           color: '#F39C12'
         },
-        { 
-          selector: '.sparkline_discreet', 
-          type: 'scatter', 
-          data: [12, 24, 18, 32, 28, 15, 41, 38, 22, 29, 45, 33, 19, 36, 42, 27, 51, 38], 
-          width: 380, 
+        {
+          selector: '.sparkline_discreet',
+          type: 'scatter',
+          data: [12, 24, 18, 32, 28, 15, 41, 38, 22, 29, 45, 33, 19, 36, 42, 27, 51, 38],
+          width: 380,
           height: 80,
           color: '#9B59B6'
         }
@@ -2045,23 +2086,23 @@
         const element = document.querySelector(config.selector);
         if (element && typeof echarts !== 'undefined') {
           const chartId = `sparkline-${index}`;
-          
+
           // Clear existing content
-          element.innerHTML = '';
+          element.innerHTML = sanitizeHtml('');
           element.style.width = config.width + 'px';
           element.style.height = config.height + 'px';
           element.style.margin = '0 auto';
           element.style.display = 'block';
-          
+
           const chartDiv = document.createElement('div');
           chartDiv.id = chartId;
           chartDiv.style.width = config.width + 'px';
           chartDiv.style.height = config.height + 'px';
           element.appendChild(chartDiv);
-          
+
           const sparkChart = echarts.init(chartDiv);
           let option;
-          
+
           if (config.type === 'pie') {
             option = {
               series: [
@@ -2076,7 +2117,7 @@
                     { value: config.data[3], name: 'Others', itemStyle: { color: '#F39C12' } }
                   ],
                   label: { show: false },
-                  emphasis: { 
+                  emphasis: {
                     scale: true,
                     scaleSize: 5
                   },
@@ -2136,9 +2177,9 @@
               ]
             };
           }
-          
+
           sparkChart.setOption(option);
-          
+
           // Add hover effects for interactivity
           if (config.type !== 'pie') {
             chartDiv.addEventListener('mouseenter', function() {
@@ -2152,7 +2193,7 @@
                 }]
               });
             });
-            
+
             chartDiv.addEventListener('mouseleave', function() {
               sparkChart.setOption({
                 series: [{
@@ -2166,8 +2207,8 @@
           }
         }
       });
-      
-      
+
+
 
       // Make charts responsive
       window.addEventListener('resize', function() {
@@ -2179,7 +2220,7 @@
             chart.resize();
           }
         });
-        
+
         // Resize Leaflet maps
         if (window.usaMap) {
           setTimeout(() => window.usaMap.invalidateSize(), 100);
@@ -2196,7 +2237,7 @@
     if (!document.body.classList.contains('page-index2')) {
       return;
     }
-    
+
 
     // Initialize Weekly Summary Charts
     initializeWeeklySummaryCharts();
@@ -2428,7 +2469,7 @@
     if (!document.body.classList.contains('page-index4')) {
       return;
     }
-    
+
 
     // 1. Sales Statistics Chart
     const salesChartCanvas = document.getElementById('salesStatisticsChart');
@@ -2441,12 +2482,12 @@
             label: 'Sales ($)',
             data: [120, 150, 180, 220, 190, 210, 240],
             backgroundColor: '#26B99A',
-            borderRadius: 4,
+            borderRadius: 4
           }, {
             label: 'Orders',
             data: [80, 95, 110, 130, 120, 140, 155],
             backgroundColor: '#3498DB',
-            borderRadius: 4,
+            borderRadius: 4
           }]
         },
         options: {
@@ -2458,7 +2499,7 @@
           }
         }
       });
-      
+
     }
 
     // 2. Weekly Sales Chart
@@ -2486,7 +2527,7 @@
           }
         }
       });
-      
+
     }
 
     // 3. Revenue by Location Map
@@ -2496,7 +2537,7 @@
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       }).addTo(map);
-      
+
       const locations = [
         { lat: 51.5, lng: -0.09, profit: 12000, name: 'London' },
         { lat: 40.71, lng: -74.00, profit: 18000, name: 'New York' },
@@ -2513,9 +2554,9 @@
           radius: loc.profit * 20 // Adjust multiplier for radius
         }).addTo(map).bindPopup(`<b>${loc.name}</b><br>Profit: $${loc.profit.toLocaleString()}`);
       });
-      
+
     }
-    
+
     // 4. Top Selling Products (Static for now)
     const topProductsList = document.querySelector('.top_products_scroll');
     if(topProductsList) {
@@ -2538,10 +2579,10 @@
           </li>
         `;
       });
-      topProductsList.innerHTML = productHTML;
-      
+      topProductsList.innerHTML = sanitizeHtml(productHTML);
+
     }
-    
+
     // 5. Latest Orders DataTable
     const latestOrdersTable = document.getElementById('latestOrdersTable');
     if (latestOrdersTable && typeof $ !== 'undefined' && $.fn.DataTable) {
@@ -2552,7 +2593,7 @@
         ['#ORD-1242', 'Sarah Davis', '2024-07-26', '$34.99', '<span class="badge bg-red">Cancelled</span>'],
         ['#ORD-1241', 'David Wilson', '2024-07-25', '$499.99', '<span class="badge bg-green">Shipped</span>']
       ];
-      
+
       $(latestOrdersTable).DataTable({
         data: ordersData,
         columns: [
@@ -2569,17 +2610,17 @@
         ordering: true,
         info: false
       });
-      
+
     }
   }
 
   // Skycons (Weather Icons) - Fixed initialization for weather widgets
   function initializeSkycons() {
     // Check if we're on a page that has weather widgets
-    const hasWeatherWidget = document.body.classList.contains('page-index') || 
+    const hasWeatherWidget = document.body.classList.contains('page-index') ||
                              document.body.classList.contains('page-index3') ||
                              document.querySelector('.weather-icon') !== null;
-    
+
     if (!hasWeatherWidget) {
       return;
     }
@@ -2590,14 +2631,14 @@
       return;
     }
 
-    
+
 
     try {
-      var skycons = new Skycons({ 
+      var skycons = new Skycons({
         color: '#73879C',
         resizeClear: true
       });
-      
+
       // Weather icons mapping with more comprehensive coverage
       var weatherElements = [
         { id: 'clear-day', type: Skycons.CLEAR_DAY },
@@ -2622,23 +2663,23 @@
           // Ensure canvas has proper dimensions
           element.width = element.width || 84;
           element.height = element.height || 84;
-          
+
           skycons.add(element, weather.type);
           iconsAdded++;
-          
+
         }
       });
 
       if (iconsAdded > 0) {
         skycons.play();
-        
-        
+
+
         // Store skycons instance globally for potential cleanup
         window.skycons = skycons;
       } else {
         console.warn('⚠️ No weather canvas elements found for Skycons');
       }
-      
+
     } catch (error) {
       console.error('❌ Skycons initialization error:', error);
     }
@@ -2648,16 +2689,16 @@
     if (!document.body.classList.contains('page-general-elements')) {
       return;
     }
-  
-    
-  
+
+
+
     // Check if toast container exists before proceeding
     const toastContainer = document.querySelector('.toast-container');
     if (!toastContainer) {
-      
+
       return;
     }
-  
+
     const createToast = (title, body, type = 'success') => {
       const toastId = `toast-${Date.now()}`;
       const bgClass = {
@@ -2666,7 +2707,7 @@
         info: 'bg-info',
         warning: 'bg-warning'
       }[type];
-  
+
       const toastHTML = `
         <div id="${toastId}" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
           <div class="toast-header ${bgClass} text-white">
@@ -2680,16 +2721,16 @@
         </div>
       `;
       toastContainer.insertAdjacentHTML('beforeend', toastHTML);
-  
+
       const toastElement = document.getElementById(toastId);
       const toast = new bootstrap.Toast(toastElement);
       toast.show();
-  
+
       toastElement.addEventListener('hidden.bs.toast', () => {
         toastElement.remove();
       });
     };
-  
+
     // Only add event listeners if the buttons exist
     const toastSuccessBtn = document.getElementById('toast-success-btn');
     if (toastSuccessBtn) {
@@ -2697,21 +2738,21 @@
         createToast('Success!', 'This is a success notification.', 'success');
       });
     }
-  
+
     const toastErrorBtn = document.getElementById('toast-error-btn');
     if (toastErrorBtn) {
       toastErrorBtn.addEventListener('click', () => {
         createToast('Error!', 'This is an error notification.', 'error');
       });
     }
-  
+
     const toastInfoBtn = document.getElementById('toast-info-btn');
     if (toastInfoBtn) {
       toastInfoBtn.addEventListener('click', () => {
         createToast('Info', 'This is an informational notification.', 'info');
       });
     }
-  
+
     const toastWarningBtn = document.getElementById('toast-warning-btn');
     if (toastWarningBtn) {
       toastWarningBtn.addEventListener('click', () => {
@@ -2731,7 +2772,7 @@
       return;
     }
 
-    
+
 
     try {
       const map = L.map('leaflet-map').setView([51.505, -0.09], 2);
@@ -2751,7 +2792,7 @@
 
   // Sidebar Profile Completion Gauges - ECharts implementation
   function initializeSidebarGauges() {
-    
+
 
     const echarts = window.echarts || globalThis.echarts;
 
@@ -2778,7 +2819,7 @@
         }]
       });
       window.addEventListener('resize', () => gaugeChart.resize());
-      
+
     }
 
     // Profile Completion Gauge (index3.html)
@@ -2804,7 +2845,7 @@
         }]
       });
       window.addEventListener('resize', () => gaugeChart3.resize());
-      
+
     }
 
     // Goal Progress Gauge (index3.html)
@@ -2830,7 +2871,7 @@
         }]
       });
       window.addEventListener('resize', () => goalChart.resize());
-      
+
     }
 
     // Profile Completion Gauge (test_page.html)
@@ -2856,7 +2897,7 @@
         }]
       });
       window.addEventListener('resize', () => gaugeChartTest.resize());
-      
+
     }
   }
 
@@ -2872,7 +2913,7 @@
       return;
     }
 
-    
+
 
     try {
       // Sales Overview (Line)
@@ -2882,370 +2923,370 @@
         return;
       }
       const salesOverviewChart = echarts.init(salesOverviewContainer);
-    salesOverviewChart.setOption({
-      tooltip: { trigger: 'axis' },
-      legend: { data: ['Sales', 'Orders'] },
-      xAxis: { type: 'category', data: Array.from({length: 30}, (_, i) => `Day ${i+1}`) },
-      yAxis: { type: 'value' },
-      series: [
-        { name: 'Sales', type: 'line', data: [120, 132, 101, 134, 90, 230, 210, 180, 160, 170, 190, 200, 210, 220, 230, 240, 250, 260, 270, 280, 290, 300, 310, 320, 330, 340, 350, 360, 370, 380], smooth: true, lineStyle: { color: '#26B99A' } },
-        { name: 'Orders', type: 'line', data: [80, 95, 110, 130, 120, 140, 155, 160, 150, 145, 140, 135, 130, 125, 120, 115, 110, 105, 100, 95, 90, 85, 80, 75, 70, 65, 60, 55, 50, 45], smooth: true, lineStyle: { color: '#3498DB' } }
-      ]
-    });
-    
-
-    // Revenue Breakdown (Pie)
-    const revenueBreakdownContainer = document.getElementById('revenueBreakdownChart');
-    if (!revenueBreakdownContainer) {
-      console.warn('revenueBreakdownChart container not found');
-      return;
-    }
-    const revenueBreakdownChart = echarts.init(revenueBreakdownContainer);
-    revenueBreakdownChart.setOption({
-      tooltip: { trigger: 'item' },
-      legend: { orient: 'vertical', left: 'left' },
-      series: [{
-        name: 'Revenue', type: 'pie', radius: '60%',
-        data: [
-          { value: 10480, name: 'Online' },
-          { value: 7350, name: 'In-Store' },
-          { value: 5800, name: 'Mobile' },
-          { value: 4840, name: 'Phone' }
-        ],
-        emphasis: { itemStyle: { shadowBlur: 10, shadowOffsetX: 0, shadowColor: 'rgba(0,0,0,0.5)' } }
-      }]
-    });
-    
-
-    // Top Products (Bar)
-    const topProductsContainer = document.getElementById('topProductsChart');
-    if (!topProductsContainer) {
-      console.warn('topProductsChart container not found');
-      return;
-    }
-    const topProductsChart = echarts.init(topProductsContainer);
-    topProductsChart.setOption({
-      tooltip: { trigger: 'axis' },
-      xAxis: { type: 'category', data: ['Chair', 'Headphones', 'Hub', 'Camera', 'Keyboard'] },
-      yAxis: { type: 'value' },
-      series: [{
-        data: [124, 98, 76, 65, 52],
-        type: 'bar',
-        itemStyle: { color: '#1ABB9C' }
-      }]
-    });
-    
-
-    // Conversion Funnel (Funnel)
-    const conversionFunnelContainer = document.getElementById('conversionFunnelChart');
-    if (!conversionFunnelContainer) {
-      console.warn('conversionFunnelChart container not found');
-      return;
-    }
-    const conversionFunnelChart = echarts.init(conversionFunnelContainer);
-    conversionFunnelChart.setOption({
-      tooltip: { trigger: 'item', formatter: '{b} : {c}%' },
-      series: [{
-        name: 'Funnel',
-        type: 'funnel',
-        left: '10%',
-        top: 20,
-        bottom: 20,
-        width: '80%',
-        min: 0,
-        max: 100,
-        minSize: '0%',
-        maxSize: '100%',
-        sort: 'descending',
-        gap: 2,
-        label: { show: true, position: 'inside' },
-        labelLine: { length: 10, lineStyle: { width: 1, type: 'solid' } },
-        itemStyle: { borderColor: '#fff', borderWidth: 1 },
-        emphasis: { label: { fontSize: 16 } },
-        data: [
-          { value: 100, name: 'Visits' },
-          { value: 80, name: 'Signups' },
-          { value: 60, name: 'Add to Cart' },
-          { value: 40, name: 'Checkout' },
-          { value: 20, name: 'Purchase' }
+      salesOverviewChart.setOption({
+        tooltip: { trigger: 'axis' },
+        legend: { data: ['Sales', 'Orders'] },
+        xAxis: { type: 'category', data: Array.from({length: 30}, (_, i) => `Day ${i+1}`) },
+        yAxis: { type: 'value' },
+        series: [
+          { name: 'Sales', type: 'line', data: [120, 132, 101, 134, 90, 230, 210, 180, 160, 170, 190, 200, 210, 220, 230, 240, 250, 260, 270, 280, 290, 300, 310, 320, 330, 340, 350, 360, 370, 380], smooth: true, lineStyle: { color: '#26B99A' } },
+          { name: 'Orders', type: 'line', data: [80, 95, 110, 130, 120, 140, 155, 160, 150, 145, 140, 135, 130, 125, 120, 115, 110, 105, 100, 95, 90, 85, 80, 75, 70, 65, 60, 55, 50, 45], smooth: true, lineStyle: { color: '#3498DB' } }
         ]
-      }]
-    });
-    
+      });
 
-    // Traffic Sources (Radar)
-    const trafficSourcesContainer = document.getElementById('trafficSourcesChart');
-    if (!trafficSourcesContainer) {
-      console.warn('trafficSourcesChart container not found');
-      return;
-    }
-    const trafficSourcesChart = echarts.init(trafficSourcesContainer);
-    trafficSourcesChart.setOption({
-      tooltip: {},
-      legend: { data: ['Traffic'] },
-      radar: {
-        indicator: [
-          { name: 'Organic', max: 100 },
-          { name: 'Direct', max: 100 },
-          { name: 'Referral', max: 100 },
-          { name: 'Social', max: 100 },
-          { name: 'Email', max: 100 }
-        ]
-      },
-      series: [{
-        name: 'Traffic Sources',
-        type: 'radar',
-        data: [
-          { value: [85, 65, 50, 40, 30], name: 'Traffic' }
-        ],
-        areaStyle: { opacity: 0.2 },
-        lineStyle: { color: '#3498DB' },
-        itemStyle: { color: '#3498DB' }
-      }]
-    });
-    
 
-    // Orders Analytics Dashboard
-    try {
-      
-      
-      // Orders Analytics Chart (Line Chart)
-      const ordersAnalyticsContainer = document.getElementById('ordersAnalyticsChart');
-      if (ordersAnalyticsContainer) {
-        const ordersChart = echarts.init(ordersAnalyticsContainer);
-        
-        // Generate data for the last 30 days
-        const dates = [];
-        const orderCounts = [];
-        const revenues = [];
-        
-        for (let i = 29; i >= 0; i--) {
-          const date = new Date();
-          date.setDate(date.getDate() - i);
-          dates.push(date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }));
-          
-          // Simulate realistic order data with some variation
-          const baseOrders = 15 + Math.floor(Math.random() * 10);
-          const weekendReduction = date.getDay() === 0 || date.getDay() === 6 ? 0.7 : 1;
-          orderCounts.push(Math.floor(baseOrders * weekendReduction));
-          
-          // Revenue correlates with orders but has some randomness
-          const avgOrderValue = 800 + Math.random() * 400;
-          revenues.push(Math.floor(orderCounts[orderCounts.length - 1] * avgOrderValue));
+      // Revenue Breakdown (Pie)
+      const revenueBreakdownContainer = document.getElementById('revenueBreakdownChart');
+      if (!revenueBreakdownContainer) {
+        console.warn('revenueBreakdownChart container not found');
+        return;
+      }
+      const revenueBreakdownChart = echarts.init(revenueBreakdownContainer);
+      revenueBreakdownChart.setOption({
+        tooltip: { trigger: 'item' },
+        legend: { orient: 'vertical', left: 'left' },
+        series: [{
+          name: 'Revenue', type: 'pie', radius: '60%',
+          data: [
+            { value: 10480, name: 'Online' },
+            { value: 7350, name: 'In-Store' },
+            { value: 5800, name: 'Mobile' },
+            { value: 4840, name: 'Phone' }
+          ],
+          emphasis: { itemStyle: { shadowBlur: 10, shadowOffsetX: 0, shadowColor: 'rgba(0,0,0,0.5)' } }
+        }]
+      });
+
+
+      // Top Products (Bar)
+      const topProductsContainer = document.getElementById('topProductsChart');
+      if (!topProductsContainer) {
+        console.warn('topProductsChart container not found');
+        return;
+      }
+      const topProductsChart = echarts.init(topProductsContainer);
+      topProductsChart.setOption({
+        tooltip: { trigger: 'axis' },
+        xAxis: { type: 'category', data: ['Chair', 'Headphones', 'Hub', 'Camera', 'Keyboard'] },
+        yAxis: { type: 'value' },
+        series: [{
+          data: [124, 98, 76, 65, 52],
+          type: 'bar',
+          itemStyle: { color: '#1ABB9C' }
+        }]
+      });
+
+
+      // Conversion Funnel (Funnel)
+      const conversionFunnelContainer = document.getElementById('conversionFunnelChart');
+      if (!conversionFunnelContainer) {
+        console.warn('conversionFunnelChart container not found');
+        return;
+      }
+      const conversionFunnelChart = echarts.init(conversionFunnelContainer);
+      conversionFunnelChart.setOption({
+        tooltip: { trigger: 'item', formatter: '{b} : {c}%' },
+        series: [{
+          name: 'Funnel',
+          type: 'funnel',
+          left: '10%',
+          top: 20,
+          bottom: 20,
+          width: '80%',
+          min: 0,
+          max: 100,
+          minSize: '0%',
+          maxSize: '100%',
+          sort: 'descending',
+          gap: 2,
+          label: { show: true, position: 'inside' },
+          labelLine: { length: 10, lineStyle: { width: 1, type: 'solid' } },
+          itemStyle: { borderColor: '#fff', borderWidth: 1 },
+          emphasis: { label: { fontSize: 16 } },
+          data: [
+            { value: 100, name: 'Visits' },
+            { value: 80, name: 'Signups' },
+            { value: 60, name: 'Add to Cart' },
+            { value: 40, name: 'Checkout' },
+            { value: 20, name: 'Purchase' }
+          ]
+        }]
+      });
+
+
+      // Traffic Sources (Radar)
+      const trafficSourcesContainer = document.getElementById('trafficSourcesChart');
+      if (!trafficSourcesContainer) {
+        console.warn('trafficSourcesChart container not found');
+        return;
+      }
+      const trafficSourcesChart = echarts.init(trafficSourcesContainer);
+      trafficSourcesChart.setOption({
+        tooltip: {},
+        legend: { data: ['Traffic'] },
+        radar: {
+          indicator: [
+            { name: 'Organic', max: 100 },
+            { name: 'Direct', max: 100 },
+            { name: 'Referral', max: 100 },
+            { name: 'Social', max: 100 },
+            { name: 'Email', max: 100 }
+          ]
+        },
+        series: [{
+          name: 'Traffic Sources',
+          type: 'radar',
+          data: [
+            { value: [85, 65, 50, 40, 30], name: 'Traffic' }
+          ],
+          areaStyle: { opacity: 0.2 },
+          lineStyle: { color: '#3498DB' },
+          itemStyle: { color: '#3498DB' }
+        }]
+      });
+
+
+      // Orders Analytics Dashboard
+      try {
+
+
+        // Orders Analytics Chart (Line Chart)
+        const ordersAnalyticsContainer = document.getElementById('ordersAnalyticsChart');
+        if (ordersAnalyticsContainer) {
+          const ordersChart = echarts.init(ordersAnalyticsContainer);
+
+          // Generate data for the last 30 days
+          const dates = [];
+          const orderCounts = [];
+          const revenues = [];
+
+          for (let i = 29; i >= 0; i--) {
+            const date = new Date();
+            date.setDate(date.getDate() - i);
+            dates.push(date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }));
+
+            // Simulate realistic order data with some variation
+            const baseOrders = 15 + Math.floor(Math.random() * 10);
+            const weekendReduction = date.getDay() === 0 || date.getDay() === 6 ? 0.7 : 1;
+            orderCounts.push(Math.floor(baseOrders * weekendReduction));
+
+            // Revenue correlates with orders but has some randomness
+            const avgOrderValue = 800 + Math.random() * 400;
+            revenues.push(Math.floor(orderCounts[orderCounts.length - 1] * avgOrderValue));
+          }
+
+          const ordersOption = {
+            tooltip: {
+              trigger: 'axis',
+              axisPointer: {
+                type: 'cross',
+                label: {
+                  backgroundColor: '#6a7985'
+                }
+              },
+              formatter: function(params) {
+                let result = `<strong>${params[0].axisValue}</strong><br/>`;
+                params.forEach(param => {
+                  const value = param.seriesName === 'Revenue' ?
+                    `$${(param.value / 1000).toFixed(1)}K` :
+                    param.value;
+                  result += `${param.marker} ${param.seriesName}: ${value}<br/>`;
+                });
+                return result;
+              }
+            },
+            legend: {
+              data: ['Orders', 'Revenue'],
+              top: 0
+            },
+            grid: {
+              left: '3%',
+              right: '4%',
+              bottom: '3%',
+              containLabel: true
+            },
+            xAxis: {
+              type: 'category',
+              boundaryGap: false,
+              data: dates,
+              axisLabel: {
+                rotate: 45,
+                fontSize: 10
+              }
+            },
+            yAxis: [
+              {
+                type: 'value',
+                name: 'Orders',
+                position: 'left',
+                splitLine: {
+                  show: true,
+                  lineStyle: {
+                    color: '#f0f0f0'
+                  }
+                }
+              },
+              {
+                type: 'value',
+                name: 'Revenue ($)',
+                position: 'right',
+                splitLine: {
+                  show: false
+                },
+                axisLabel: {
+                  formatter: function(value) {
+                    return '$' + (value / 1000).toFixed(0) + 'K';
+                  }
+                }
+              }
+            ],
+            series: [
+              {
+                name: 'Orders',
+                type: 'line',
+                yAxisIndex: 0,
+                data: orderCounts,
+                smooth: true,
+                symbol: 'circle',
+                symbolSize: 6,
+                lineStyle: {
+                  width: 3,
+                  color: '#5470c6'
+                },
+                areaStyle: {
+                  color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                    { offset: 0, color: 'rgba(84, 112, 198, 0.3)' },
+                    { offset: 1, color: 'rgba(84, 112, 198, 0.05)' }
+                  ])
+                }
+              },
+              {
+                name: 'Revenue',
+                type: 'line',
+                yAxisIndex: 1,
+                data: revenues,
+                smooth: true,
+                symbol: 'circle',
+                symbolSize: 6,
+                lineStyle: {
+                  width: 3,
+                  color: '#91cc75'
+                },
+                areaStyle: {
+                  color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                    { offset: 0, color: 'rgba(145, 204, 117, 0.3)' },
+                    { offset: 1, color: 'rgba(145, 204, 117, 0.05)' }
+                  ])
+                }
+              }
+            ]
+          };
+
+          ordersChart.setOption(ordersOption);
+
+
+          // Add to resize handler
+          window.addEventListener('resize', () => ordersChart.resize());
         }
 
-        const ordersOption = {
-          tooltip: {
-            trigger: 'axis',
-            axisPointer: {
-              type: 'cross',
-              label: {
-                backgroundColor: '#6a7985'
+        // Order Status Distribution Chart (Donut Chart)
+        const orderStatusContainer = document.getElementById('orderStatusChart');
+        if (orderStatusContainer) {
+          const statusChart = echarts.init(orderStatusContainer);
+
+          const statusOption = {
+            tooltip: {
+              trigger: 'item',
+              formatter: '{a} <br/>{b}: {c} ({d}%)'
+            },
+            legend: {
+              orient: 'vertical',
+              left: 'left',
+              bottom: 20,
+              textStyle: {
+                fontSize: 11
               }
             },
-            formatter: function(params) {
-              let result = `<strong>${params[0].axisValue}</strong><br/>`;
-              params.forEach(param => {
-                const value = param.seriesName === 'Revenue' ? 
-                  `$${(param.value / 1000).toFixed(1)}K` : 
-                  param.value;
-                result += `${param.marker} ${param.seriesName}: ${value}<br/>`;
-              });
-              return result;
-            }
-          },
-          legend: {
-            data: ['Orders', 'Revenue'],
-            top: 0
-          },
-          grid: {
-            left: '3%',
-            right: '4%',
-            bottom: '3%',
-            containLabel: true
-          },
-          xAxis: {
-            type: 'category',
-            boundaryGap: false,
-            data: dates,
-            axisLabel: {
-              rotate: 45,
-              fontSize: 10
-            }
-          },
-          yAxis: [
-            {
-              type: 'value',
-              name: 'Orders',
-              position: 'left',
-              splitLine: {
-                show: true,
-                lineStyle: {
-                  color: '#f0f0f0'
-                }
-              }
-            },
-            {
-              type: 'value',
-              name: 'Revenue ($)',
-              position: 'right',
-              splitLine: {
-                show: false
-              },
-              axisLabel: {
-                formatter: function(value) {
-                  return '$' + (value / 1000).toFixed(0) + 'K';
-                }
-              }
-            }
-          ],
-          series: [
-            {
-              name: 'Orders',
-              type: 'line',
-              yAxisIndex: 0,
-              data: orderCounts,
-              smooth: true,
-              symbol: 'circle',
-              symbolSize: 6,
-              lineStyle: {
-                width: 3,
-                color: '#5470c6'
-              },
-              areaStyle: {
-                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                  { offset: 0, color: 'rgba(84, 112, 198, 0.3)' },
-                  { offset: 1, color: 'rgba(84, 112, 198, 0.05)' }
-                ])
-              }
-            },
-            {
-              name: 'Revenue',
-              type: 'line',
-              yAxisIndex: 1,
-              data: revenues,
-              smooth: true,
-              symbol: 'circle',
-              symbolSize: 6,
-              lineStyle: {
-                width: 3,
-                color: '#91cc75'
-              },
-              areaStyle: {
-                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                  { offset: 0, color: 'rgba(145, 204, 117, 0.3)' },
-                  { offset: 1, color: 'rgba(145, 204, 117, 0.05)' }
-                ])
-              }
-            }
-          ]
-        };
-
-        ordersChart.setOption(ordersOption);
-        
-
-        // Add to resize handler
-        window.addEventListener('resize', () => ordersChart.resize());
-      }
-
-      // Order Status Distribution Chart (Donut Chart)
-      const orderStatusContainer = document.getElementById('orderStatusChart');
-      if (orderStatusContainer) {
-        const statusChart = echarts.init(orderStatusContainer);
-        
-        const statusOption = {
-          tooltip: {
-            trigger: 'item',
-            formatter: '{a} <br/>{b}: {c} ({d}%)'
-          },
-          legend: {
-            orient: 'vertical',
-            left: 'left',
-            bottom: 20,
-            textStyle: {
-              fontSize: 11
-            }
-          },
-          series: [
-            {
-              name: 'Order Status',
-              type: 'pie',
-              radius: ['40%', '70%'],
-              center: ['60%', '45%'],
-              avoidLabelOverlap: false,
-              itemStyle: {
-                borderRadius: 8,
-                borderColor: '#fff',
-                borderWidth: 2
-              },
-              label: {
-                show: false,
-                position: 'center'
-              },
-              emphasis: {
+            series: [
+              {
+                name: 'Order Status',
+                type: 'pie',
+                radius: ['40%', '70%'],
+                center: ['60%', '45%'],
+                avoidLabelOverlap: false,
+                itemStyle: {
+                  borderRadius: 8,
+                  borderColor: '#fff',
+                  borderWidth: 2
+                },
                 label: {
-                  show: true,
-                  fontSize: 16,
-                  fontWeight: 'bold'
-                }
-              },
-              labelLine: {
-                show: false
-              },
-              data: [
-                { 
-                  value: 45, 
-                  name: 'Delivered',
-                  itemStyle: { color: '#28a745' }
+                  show: false,
+                  position: 'center'
                 },
-                { 
-                  value: 25, 
-                  name: 'Shipped',
-                  itemStyle: { color: '#17a2b8' }
+                emphasis: {
+                  label: {
+                    show: true,
+                    fontSize: 16,
+                    fontWeight: 'bold'
+                  }
                 },
-                { 
-                  value: 20, 
-                  name: 'Pending',
-                  itemStyle: { color: '#ffc107' }
+                labelLine: {
+                  show: false
                 },
-                { 
-                  value: 7, 
-                  name: 'Cancelled',
-                  itemStyle: { color: '#dc3545' }
-                },
-                { 
-                  value: 3, 
-                  name: 'Returned',
-                  itemStyle: { color: '#6c757d' }
-                }
-              ]
-            }
-          ]
-        };
+                data: [
+                  {
+                    value: 45,
+                    name: 'Delivered',
+                    itemStyle: { color: '#28a745' }
+                  },
+                  {
+                    value: 25,
+                    name: 'Shipped',
+                    itemStyle: { color: '#17a2b8' }
+                  },
+                  {
+                    value: 20,
+                    name: 'Pending',
+                    itemStyle: { color: '#ffc107' }
+                  },
+                  {
+                    value: 7,
+                    name: 'Cancelled',
+                    itemStyle: { color: '#dc3545' }
+                  },
+                  {
+                    value: 3,
+                    name: 'Returned',
+                    itemStyle: { color: '#6c757d' }
+                  }
+                ]
+              }
+            ]
+          };
 
-        statusChart.setOption(statusOption);
-        
+          statusChart.setOption(statusOption);
 
-        // Add to resize handler
-        window.addEventListener('resize', () => statusChart.resize());
+
+          // Add to resize handler
+          window.addEventListener('resize', () => statusChart.resize());
+        }
+
+
+      } catch (error) {
+        console.error('❌ Error initializing Orders Analytics:', error);
       }
 
-      
-    } catch (error) {
-      console.error('❌ Error initializing Orders Analytics:', error);
-    }
-
-    // Responsive
-    window.addEventListener('resize', function() {
-      salesOverviewChart.resize();
-      revenueBreakdownChart.resize();
-      topProductsChart.resize();
-      conversionFunnelChart.resize();
-      trafficSourcesChart.resize();
+      // Responsive
+      window.addEventListener('resize', function() {
+        salesOverviewChart.resize();
+        revenueBreakdownChart.resize();
+        topProductsChart.resize();
+        conversionFunnelChart.resize();
+        trafficSourcesChart.resize();
       // Orders Analytics charts will handle their own resize in their function
-    });
+      });
 
-    
+
     } catch (error) {
       console.error('❌ Error initializing Index3 charts:', error);
     }
@@ -3253,4 +3294,4 @@
 
 
 
-})(jQuery); 
+})(jQuery);

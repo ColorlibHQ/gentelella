@@ -2,6 +2,7 @@ nbproject
 npm-debug.log
 node_modules
 .sass-cache
+CLAUDE.md
 
 # Build outputs
 dist/
@@ -22,3 +23,5 @@ Thumbs.db
 
 # Logs
 *.log
+JQUERY_PHASE_OUT_PLAN.md
+COMPREHENSIVE_IMPROVEMENT_PLAN.md

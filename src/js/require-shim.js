@@ -32,4 +32,4 @@
   if (typeof global.jQuery === 'undefined') {
     global.addEventListener('load', ensureModuleExports);
   }
-})(typeof window !== 'undefined' ? window : this); 
+})(typeof window !== 'undefined' ? window : this);

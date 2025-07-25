@@ -1,0 +1,99 @@
+<!-- Security Headers Template for Gentelella -->
+<!-- IMPORTANT: Some headers can only be set via HTTP response headers, not meta tags -->
+
+<!-- Content Security Policy Template for Gentelella -->
+<!-- Add this meta tag to the <head> section of all HTML files -->
+
+<!-- Development CSP (more permissive) -->
+<meta http-equiv="Content-Security-Policy" content="
+  default-src 'self';
+  script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com;
+  style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.googleapis.com;
+  img-src 'self' data: https: blob:;
+  font-src 'self' data: https://fonts.gstatic.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com;
+  connect-src 'self' ws: wss: http://localhost:* https://api.* https://*.googleapis.com;
+  frame-src 'self' https://www.youtube.com https://player.vimeo.com;
+  media-src 'self' https: blob:;
+  object-src 'none';
+  base-uri 'self';
+  form-action 'self';
+  frame-ancestors 'self';
+  upgrade-insecure-requests;
+">
+
+<!-- Production CSP (more restrictive) -->
+<!-- Uncomment and customize for production use -->
+<!--
+<meta http-equiv="Content-Security-Policy" content="
+  default-src 'self';
+  script-src 'self' 'nonce-{NONCE}' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com;
+  style-src 'self' 'nonce-{NONCE}' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.googleapis.com;
+  img-src 'self' data: https:;
+  font-src 'self' data: https://fonts.gstatic.com https://cdn.jsdelivr.net;
+  connect-src 'self' https://api.*;
+  frame-src 'none';
+  media-src 'self';
+  object-src 'none';
+  base-uri 'self';
+  form-action 'self';
+  frame-ancestors 'none';
+  upgrade-insecure-requests;
+">
+-->
+
+<!-- CSP Reporting (optional) -->
+<!-- Add report-uri or report-to directive to monitor violations -->
+<!--
+  report-uri https://your-domain.com/csp-violations;
+  report-to csp-endpoint;
+-->
+
+<!-- Additional Security Headers (add as separate meta tags) -->
+<!-- NOTE: X-Frame-Options cannot be set via meta tag - must be HTTP header -->
+<!-- <meta http-equiv="X-Frame-Options" content="SAMEORIGIN"> -->
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+<meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
+
+<!-- 
+  CSP Directives Explanation:
+  
+  - default-src: Fallback for all resource types
+  - script-src: Controls JavaScript sources
+    - 'self': Allow scripts from same origin
+    - 'unsafe-inline': Required for inline scripts (avoid in production)
+    - 'unsafe-eval': Required for eval() and similar (avoid in production)
+    - 'nonce-{NONCE}': Use nonces for inline scripts in production
+  
+  - style-src: Controls CSS sources
+    - 'unsafe-inline': Required for inline styles (consider nonces in production)
+  
+  - img-src: Controls image sources
+    - data: Allow data URI images
+    - blob: Allow blob URI images (for dynamic image generation)
+  
+  - font-src: Controls font sources
+    - data: Allow data URI fonts
+  
+  - connect-src: Controls AJAX, WebSocket, and EventSource connections
+    - ws:/wss: Allow WebSocket connections (for development hot reload)
+  
+  - frame-src: Controls iframe sources
+  
+  - object-src: Controls <object>, <embed>, and <applet> (should be 'none')
+  
+  - base-uri: Restricts <base> tag URLs
+  
+  - form-action: Restricts form submission targets
+  
+  - frame-ancestors: Controls who can embed this page
+  
+  - upgrade-insecure-requests: Upgrades HTTP requests to HTTPS
+  
+  For production:
+  1. Remove 'unsafe-inline' and 'unsafe-eval'
+  2. Use nonces or hashes for inline scripts/styles
+  3. Minimize external sources
+  4. Add CSP reporting
+  5. Test thoroughly before deploying
+-->

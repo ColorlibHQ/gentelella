@@ -3,6 +3,9 @@
 // Import jQuery setup first
 import $ from './jquery-setup.js';
 
+// Import security utilities
+import { sanitizeHtml } from './utils/security.js';
+
 // Bootstrap 5 - No jQuery dependency needed
 import * as bootstrap from 'bootstrap';
 window.bootstrap = bootstrap;
@@ -51,12 +54,12 @@ import * as CropperModule from 'cropperjs';
 // Create a library availability checker for inline scripts
 window.waitForLibraries = function(libraries, callback, timeout = 5000) {
   const startTime = Date.now();
-  
+
   function check() {
     const allAvailable = libraries.every(lib => {
       return (typeof window[lib] !== 'undefined') || (typeof globalThis[lib] !== 'undefined');
     });
-    
+
     if (allAvailable) {
       callback();
     } else if (Date.now() - startTime < timeout) {
@@ -65,13 +68,13 @@ window.waitForLibraries = function(libraries, callback, timeout = 5000) {
       callback(); // Call anyway to prevent hanging
     }
   }
-  
+
   check();
 };
 
 // Dispatch a custom event when all modules are loaded
-window.dispatchEvent(new CustomEvent('form-libraries-loaded', { 
-  detail: { 
+window.dispatchEvent(new CustomEvent('form-libraries-loaded', {
+  detail: {
     timestamp: Date.now(),
     libraries: {
       jQuery: typeof window.$,
@@ -81,7 +84,7 @@ window.dispatchEvent(new CustomEvent('form-libraries-loaded', {
       Inputmask: typeof window.Inputmask,
       Switchery: typeof window.Switchery
     }
-  } 
+  }
 }));
 
 // Also immediately trigger initialization when DOM is ready
@@ -104,14 +107,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Helper to refresh preview canvas
     const previewEl = document.getElementById('cropper-preview');
     const refreshPreview = () => {
-      if (!previewEl) return;
+      if (!previewEl) {return;}
       const currentSel = cropperInstance.getCropperSelection();
       if (!currentSel || currentSel.hidden) {
-        previewEl.innerHTML = '<span class="text-muted small">No selection</span>';
+        previewEl.innerHTML = sanitizeHtml('<span class="text-muted small">No selection</span>');
         return;
       }
       currentSel.$toCanvas().then(canvas => {
-        previewEl.innerHTML = '';
+        previewEl.innerHTML = sanitizeHtml('');
         canvas.style.width = '100%';
         canvas.style.height = 'auto';
         previewEl.appendChild(canvas);
@@ -151,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (downloadBtn) {
       downloadBtn.addEventListener('click', () => {
         const selection = cropperInstance.getCropperSelection();
-        if (!selection) return;
+        if (!selection) {return;}
         selection.$toCanvas().then(canvas => {
           const link = document.createElement('a');
           link.href = canvas.toDataURL('image/jpeg');
@@ -169,4 +172,4 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     console.warn('⚠️ Cropper source image or library not found. Skipping Cropper.js v2 initialization');
   }
-}); 
+});
