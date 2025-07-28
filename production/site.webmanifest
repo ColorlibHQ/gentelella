@@ -1,0 +1,21 @@
+{
+    "name": "Gentelella Admin",
+    "short_name": "Gentelella",
+    "description": "Bootstrap 5 Admin Template",
+    "icons": [
+        {
+            "src": "images/android-chrome-192x192.svg",
+            "sizes": "192x192",
+            "type": "image/svg+xml"
+        },
+        {
+            "src": "images/android-chrome-512x512.svg",
+            "sizes": "512x512",
+            "type": "image/svg+xml"
+        }
+    ],
+    "theme_color": "rgb(42, 63, 84)",
+    "background_color": "rgb(42, 63, 84)",
+    "display": "standalone",
+    "start_url": "/index.html"
+}

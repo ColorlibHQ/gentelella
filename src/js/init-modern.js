@@ -22,22 +22,21 @@ async function initializeDatePickers() {
   const datePickerElements = DOM.selectAll('.datepicker, [data-datepicker]');
   
   if (datePickerElements.length === 0) {
-    // No date pickers found, skip initialization
     return;
   }
 
   // Check if TempusDominus is available, if not try to load forms module
   if (typeof TempusDominus === 'undefined') {
     try {
-      console.log('📅 Date pickers detected, loading forms module...');
       if (typeof window.loadModule === 'function') {
         await window.loadModule('forms');
       } else {
-        console.warn('loadModule function not available, TempusDominus may not be loaded');
         return;
       }
     } catch (error) {
-      console.error('❌ Failed to load forms module for date pickers:', error);
+      if (process.env.NODE_ENV === 'development') {
+        console.error('Failed to load forms module for date pickers:', error);
+      }
       return;
     }
   }
@@ -58,16 +57,12 @@ async function initializeDatePickers() {
           }
         });
 
-        console.log(`✅ Date picker initialized: ${element.id || 'unnamed'}`);
-
       } catch (error) {
-        console.error('❌ Failed to initialize date picker:', error);
+        if (process.env.NODE_ENV === 'development') {
+          console.error('Failed to initialize date picker:', error);
+        }
       }
     });
-    
-    console.log('✅ Date pickers initialization complete');
-  } else {
-    console.warn('⚠️ TempusDominus is not available after loading forms module');
   }
 }
 
@@ -121,8 +116,6 @@ function initializePanelToolbox() {
       }
     });
   });
-  
-  console.log('✅ Panel toolbox functionality initialized');
 }
 
 /**
@@ -156,7 +149,6 @@ function initializeProgressBars() {
     }
   });
   
-  console.log('✅ Progress bar animations initialized');
 }
 
 /**
@@ -202,7 +194,6 @@ function initializeFormValidation() {
     });
   });
 
-  console.log('✅ Modern form validation initialized');
 }
 
 /**
@@ -242,7 +233,6 @@ function initializeTabsAndAccordions() {
     });
   });
 
-  console.log('✅ Tabs and accordions initialized');
 }
 
 /**
@@ -267,7 +257,6 @@ function initializeModals() {
     }
   });
 
-  console.log('✅ Modals initialized');
 }
 
 /**
@@ -304,7 +293,6 @@ function initializeDragAndDrop() {
     });
   });
 
-  console.log('✅ Drag and drop initialized');
 }
 
 /**
@@ -342,7 +330,6 @@ function initializeSearchAndFilter() {
     });
   });
 
-  console.log('✅ Search and filter initialized');
 }
 
 /**
@@ -380,7 +367,6 @@ function initializeKeyboardShortcuts() {
     }
   });
 
-  console.log('✅ Keyboard shortcuts initialized');
 }
 
 /**
@@ -388,8 +374,6 @@ function initializeKeyboardShortcuts() {
  * Coordinates all modern initialization functions
  */
 async function initializeModernComponents() {
-  console.log('🚀 Initializing modern components...');
-
   try {
     // Initialize components that still need initialization
     await initializeDatePickers();
@@ -403,11 +387,10 @@ async function initializeModernComponents() {
     initializeKeyboardShortcuts();
 
     // DataTables now handled by modern tables module (jQuery-free)
-
-    console.log('✅ All modern components initialized successfully');
-
   } catch (error) {
-    console.error('❌ Failed to initialize modern components:', error);
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Failed to initialize modern components:', error);
+    }
   }
 }
 
@@ -443,11 +426,6 @@ function showLoadingStatus() {
 if (typeof document !== 'undefined') {
   document.addEventListener('DOMContentLoaded', async () => {
     await initializeModernComponents();
-    
-    // Show loading status in development
-    if (process.env.NODE_ENV !== 'production') {
-      showLoadingStatus();
-    }
   });
 }
 

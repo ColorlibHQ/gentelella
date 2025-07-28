@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="180" height="180" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background with brand color -->
+  <rect width="180" height="180" fill="rgb(42, 63, 84)" rx="20"/>
+  
+  <!-- Dashboard/grid icon - scaled for 180x180 (Apple touch icon) -->
+  <g transform="translate(90, 90)" fill="white">
+    <!-- Top row -->
+    <rect x="-33" y="-33" width="20" height="20" rx="3"/>
+    <rect x="-10" y="-33" width="20" height="20" rx="3"/>
+    <rect x="13" y="-33" width="20" height="20" rx="3"/>
+    
+    <!-- Middle row -->
+    <rect x="-33" y="-10" width="20" height="20" rx="3"/>
+    <rect x="-10" y="-10" width="20" height="20" rx="3"/>
+    <rect x="13" y="-10" width="20" height="20" rx="3"/>
+    
+    <!-- Bottom row -->
+    <rect x="-33" y="13" width="20" height="20" rx="3"/>
+    <rect x="-10" y="13" width="20" height="20" rx="3"/>
+    <rect x="13" y="13" width="20" height="20" rx="3"/>
+  </g>
+</svg>

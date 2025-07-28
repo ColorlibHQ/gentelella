@@ -273,5 +273,3 @@ globalThis.DOM = DOM;
 
 // Export for module usage
 export default DOM;
-
-console.log('✅ Modern DOM utilities loaded (jQuery-free)');

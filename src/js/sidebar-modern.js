@@ -147,8 +147,6 @@ function initSidebar() {
 
   // Recalculate on window resize
   window.addEventListener('resize', setContentHeight);
-
-  console.log('✅ Modern sidebar initialized (jQuery-free)');
 }
 
 // Initialize when DOM is ready

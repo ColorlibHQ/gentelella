@@ -239,13 +239,6 @@
   position: relative;
 }
 .info-number {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  padding: 0 15px;
-  text-decoration: none;
-  color: #333;
   position: relative;
 }
 
@@ -255,23 +248,8 @@
   line-height: 13px;
   padding: 2px 6px;
   position: absolute;
-  right: 5px;
-  top: 8px;
-}
-
-.info-number i {
-  font-size: 18px;
-  vertical-align: middle;
-}
-
-.info-number:hover {
-  background-color: rgba(0, 0, 0, 0.05);
-  transition: background-color 0.2s ease;
-}
-
-.user-profile:hover {
-  background-color: rgba(0, 0, 0, 0.05);
-  transition: background-color 0.2s ease;
+  right: -2px;
+  top: -8px;
 }
 
 
@@ -827,12 +805,10 @@ a:hover, a:focus {
   float: right;
   display: flex;
   align-items: center;
-  height: 50px; /* Match navbar height */
+  flex-direction: row-reverse;
 }
 .top_nav .navbar-right li {
-  display: flex;
-  align-items: center;
-  height: 100%;
+  display: inline-block;
   position: static;
 }
 @media (min-width: 480px) {
@@ -841,15 +817,6 @@ a:hover, a:focus {
   }
   .item{
     display:block;
-  }
-  
-  /* Ensure full height on larger screens */
-  .top_nav .navbar-right {
-    height: 50px;
-  }
-  
-  .top_nav .navbar-right li {
-    height: 100%;
   }
 }
 .top_nav .dropdown-menu li {
@@ -865,12 +832,8 @@ a:hover, a:focus {
 
 /* User profile dropdown alignment */
 .user-profile {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  height: 100%;
-  padding: 0 15px;
-  text-decoration: none;
-  color: #333;
 }
 
 .user-profile img {
@@ -4851,12 +4814,8 @@ ul.notifications {
     line-height: 13px;
     padding: 2px 6px;
     position: absolute;
-    right: 5px;
-    top: 8px;
-  }
-  
-  .top_nav .navbar-right li {
-    height: 40px; /* Reduced height for mobile */
+    right: -2px;
+    top: -8px;
   }
 .tile, .graph {
   zoom: 71%;
@@ -4870,12 +4829,8 @@ ul.notifications {
     line-height: 13px;
     padding: 2px 6px;
     position: absolute;
-    right: 5px;
-    top: 8px;
-  }
-  
-  .top_nav .navbar-right li {
-    height: 45px; /* Medium height for tablets */
+    right: -2px;
+    top: -6px;
   }
 }
 

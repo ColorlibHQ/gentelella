@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background with brand color -->
+  <rect width="512" height="512" fill="rgb(42, 63, 84)" rx="50"/>
+  
+  <!-- Dashboard/grid icon - scaled for 512x512 (high-res) -->
+  <g transform="translate(256, 256)" fill="white">
+    <!-- Top row -->
+    <rect x="-96" y="-96" width="60" height="60" rx="8"/>
+    <rect x="-30" y="-96" width="60" height="60" rx="8"/>
+    <rect x="36" y="-96" width="60" height="60" rx="8"/>
+    
+    <!-- Middle row -->
+    <rect x="-96" y="-30" width="60" height="60" rx="8"/>
+    <rect x="-30" y="-30" width="60" height="60" rx="8"/>
+    <rect x="36" y="-30" width="60" height="60" rx="8"/>
+    
+    <!-- Bottom row -->
+    <rect x="-96" y="36" width="60" height="60" rx="8"/>
+    <rect x="-30" y="36" width="60" height="60" rx="8"/>
+    <rect x="36" y="36" width="60" height="60" rx="8"/>
+  </g>
+</svg>

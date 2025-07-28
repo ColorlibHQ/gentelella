@@ -6,16 +6,24 @@ Gentelella is a powerful, free-to-use Bootstrap 5 admin template that has been c
 
 ![Gentelella Bootstrap Admin Template](https://colorlib.com/wp/wp-content/uploads/sites/2/gentelella-admin-template-preview.jpg "Gentelella Theme Browser Preview")
 
-## ✨ What's New in v2.0.0 (Stable Release)
+## ✨ What's New in v2.1.0 (Latest Release)
+
+- **⚡ jQuery-Free Core System** - Complete main-core.js modernization with vanilla JavaScript
+- **🎨 Brand-Consistent Favicon Suite** - Modern favicon system with comprehensive browser support
+- **🎯 Perfect UI Alignment** - Precision vertical centering for navigation elements
+- **🧹 Production-Ready Code** - Clean console output with professional debugging
+- **📱 Enhanced Mobile Experience** - Improved touch interactions and responsive behavior
+- **🔧 Modern DOM Utilities** - Comprehensive jQuery-free DOM manipulation library
+
+### Previous Major Release: v2.0.0
 
 - **🚀 Vite Build System** - Lightning-fast development and optimized production builds
-- **📦 Bootstrap 5.3.7** - Latest Bootstrap with modern design system
+- **📦 Bootstrap 5.3.7** - Latest Bootstrap with modern design system  
 - **⚡ Performance Optimized** - 90% smaller initial bundle size with smart code splitting
 - **🔧 Modern JavaScript** - ES6+ modules with dynamic imports
 - **🎯 TypeScript Ready** - Full TypeScript support available
 - **📱 Mobile First** - Responsive design optimized for all devices
 - **🎨 Morris.js Eliminated** - Complete replacement with modern Chart.js
-- **🔧 jQuery Easing Fixed** - All animation errors resolved
 
 ## 📊 Performance Improvements
 
@@ -71,10 +79,12 @@ gentelella/
 │   ├── *.html           # 42 pre-built admin pages
 │   └── images/          # Image assets
 ├── src/                 # Source files
-│   ├── main-core.js     # Core essentials (79 KB)
+│   ├── main-core.js     # Core essentials (79 KB, jQuery-free)
 │   ├── main.scss        # Styles entry point
-│   ├── js/              # Custom JavaScript
+│   ├── js/              # Custom JavaScript (modernized)
 │   ├── scss/            # Custom SASS files
+│   ├── utils/           # Modern utility libraries
+│   │   └── dom-modern.js # jQuery-free DOM manipulation
 │   └── modules/         # Feature-specific modules
 │       ├── charts.js    # Chart functionality (219 KB)
 │       ├── forms.js     # Form enhancements (200 KB)
@@ -87,13 +97,27 @@ gentelella/
 
 ## 🎯 Smart Loading System
 
-The template now uses intelligent code splitting:
+The template uses intelligent code splitting with modern JavaScript:
 
-- **Core Bundle** (79 KB): Essential libraries loaded on every page
+- **Core Bundle** (79 KB): Essential libraries with jQuery-free DOM utilities
 - **Chart Module** (219 KB): Only loads on pages with charts
-- **Form Module** (200 KB): Only loads on pages with advanced forms
+- **Form Module** (200 KB): Only loads on pages with advanced forms  
 - **Table Module**: Only loads on pages with DataTables
 - **Dashboard Module**: Only loads dashboard-specific widgets
+
+## ⚡ Modern JavaScript Architecture
+
+### jQuery-Free Core System
+- **Vanilla JavaScript**: All core functionality uses modern DOM APIs
+- **Dynamic Loading**: Intelligent module loading with caching and performance monitoring
+- **Error Boundaries**: Robust error handling with development debugging tools
+- **Loading States**: Visual indicators for better user experience
+
+### DOM Utilities Library
+- **Complete jQuery Replacement**: Full-featured DOM manipulation without dependencies
+- **Animation Support**: Slide, fade, and custom animations using CSS transitions
+- **Event Management**: Modern event handling with custom event support
+- **Responsive Utilities**: Mobile-first responsive behavior management
 
 ## 📱 Responsive Design
 
@@ -129,6 +153,16 @@ if (document.querySelector('.chart-container')) {
 }
 ```
 
+### Modern Favicon System
+
+The template includes a comprehensive favicon suite optimized for 2025 standards:
+
+- **SVG-first approach** - Sharp display across all devices and screen densities
+- **Apple Touch Icon** - Optimized for iOS devices and web apps
+- **Android Chrome Icons** - PWA-ready with multiple sizes (192x192, 512x512)
+- **Legacy ICO support** - Fallback for older browsers
+- **Web App Manifest** - Complete PWA integration with theme colors
+
 ## 📦 Available Components
 
 ### Dashboard Features
@@ -159,13 +193,14 @@ if (document.querySelector('.chart-container')) {
 ## 🎨 Built With
 
 ### Core Technologies
-- **🚀 Vite 6.3.5** - Ultra-fast ES module build system with 90% smaller bundle size
-- **📦 Bootstrap 5.3.7** - Latest Bootstrap with modern design system
+- **🚀 Vite 7.0.6** - Ultra-fast ES module build system with 90% smaller bundle size
+- **📦 Bootstrap 5.3.6** - Latest Bootstrap with modern design system
 - **🎨 SASS Modules** - Modern CSS architecture with custom theme variables
-- **jQuery 3.6.1** - DOM manipulation (being phased out)
+- **⚡ Vanilla JavaScript** - Modern DOM APIs with jQuery-free core system
+- **🔧 Modern DOM Utilities** - Custom library for jQuery-free DOM manipulation
 
 ### Charts & Visualization
-- **Chart.js 4.5.0** - Modern charting library (Morris.js completely removed)
+- **Chart.js 4.4.2** - Modern charting library (Morris.js completely removed)
 - **ECharts 5.6.0** - Professional data visualization
 - **Sparklines** - Mini charts and graphs
 - **jVectorMap** - Interactive world maps

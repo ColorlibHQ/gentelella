@@ -61,7 +61,7 @@ window.addEventListener('error', (event) => {
 // Performance monitoring for module loading
 window.moduleLoadTimes = new Map();
 
-// Enhanced console logging in development
+// Console logging in development only
 if (process.env.NODE_ENV === 'development') {
   const originalLog = console.log;
   const originalError = console.error;
@@ -125,7 +125,6 @@ window.hideModuleLoadingState = function(indicator) {
 window.loadModule = async function(moduleName, showLoading = true) {
   // Check cache first
   if (window.moduleCache.has(moduleName)) {
-    console.log(`📦 Module ${moduleName} loaded from cache`);
     return window.moduleCache.get(moduleName);
   }
 
@@ -136,7 +135,6 @@ window.loadModule = async function(moduleName, showLoading = true) {
 
   try {
     const startTime = performance.now();
-    console.log(`📦 Loading module: ${moduleName}...`);
     let module;
     
     switch(moduleName) {
@@ -168,7 +166,6 @@ window.loadModule = async function(moduleName, showLoading = true) {
         module = await import('./modules/echarts-modern.js');
         break;
       default:
-        console.warn(`❌ Module ${moduleName} not found`);
         return null;
     }
 
@@ -176,11 +173,12 @@ window.loadModule = async function(moduleName, showLoading = true) {
     window.moduleCache.set(moduleName, module);
     const loadTime = performance.now() - startTime;
     window.moduleLoadTimes.set(moduleName, loadTime);
-    console.log(`✅ Module ${moduleName} loaded successfully in ${loadTime.toFixed(2)}ms`);
     
     return module;
   } catch (error) {
-    console.error(`❌ Failed to load module ${moduleName}:`, error);
+    if (process.env.NODE_ENV === 'development') {
+      console.error(`Failed to load module ${moduleName}:`, error);
+    }
     return null;
   } finally {
     if (loadingIndicator) {
@@ -191,13 +189,8 @@ window.loadModule = async function(moduleName, showLoading = true) {
 
 // Utility to preload modules for better performance
 window.preloadModules = async function(moduleNames) {
-  console.log('🚀 Preloading modules:', moduleNames);
   const promises = moduleNames.map(name => window.loadModule(name, false));
   const results = await Promise.allSettled(promises);
-  
-  const successful = results.filter(r => r.status === 'fulfilled').length;
-  console.log(`✅ Preloaded ${successful}/${moduleNames.length} modules`);
-  
   return results;
 };
 
@@ -228,12 +221,10 @@ window.waitForPageReady = function(callback, timeout = 10000) {
     const scriptsReady = typeof window.loadModule !== 'undefined';
     
     if (basicReady && bootstrapReady && scriptsReady) {
-      console.log('✅ Page fully ready for modern components');
       callback();
     } else if (Date.now() - startTime < timeout) {
       setTimeout(checkReady, 50);
     } else {
-      console.warn('⚠️ Page readiness timeout, proceeding anyway');
       callback();
     }
   }

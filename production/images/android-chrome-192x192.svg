@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="192" height="192" viewBox="0 0 192 192" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background with brand color -->
+  <rect width="192" height="192" fill="rgb(42, 63, 84)" rx="20"/>
+  
+  <!-- Dashboard/grid icon - scaled for 192x192 (Android) -->
+  <g transform="translate(96, 96)" fill="white">
+    <!-- Top row -->
+    <rect x="-36" y="-36" width="22" height="22" rx="3"/>
+    <rect x="-11" y="-36" width="22" height="22" rx="3"/>
+    <rect x="14" y="-36" width="22" height="22" rx="3"/>
+    
+    <!-- Middle row -->
+    <rect x="-36" y="-11" width="22" height="22" rx="3"/>
+    <rect x="-11" y="-11" width="22" height="22" rx="3"/>
+    <rect x="14" y="-11" width="22" height="22" rx="3"/>
+    
+    <!-- Bottom row -->
+    <rect x="-36" y="14" width="22" height="22" rx="3"/>
+    <rect x="-11" y="14" width="22" height="22" rx="3"/>
+    <rect x="14" y="14" width="22" height="22" rx="3"/>
+  </g>
+</svg>

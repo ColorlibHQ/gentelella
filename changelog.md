@@ -1,5 +1,49 @@
 # Gentelella Changelog
 
+## 2.1.0 - 28.07.2025
+
+**Enhancement Release - jQuery-Free Core System & Brand Refresh**
+
+### New Features
+- **jQuery-Free Core System**: Complete main-core.js modernization with vanilla JavaScript
+  - Dynamic module loading with caching and performance monitoring  
+  - Loading states and visual indicators for better UX
+  - Enhanced error handling and development debugging tools
+- **Brand-Consistent Favicon Suite**: Modern favicon system with complete browser support
+  - SVG-first approach for sharp display across all devices
+  - Apple Touch Icon, Android Chrome icons, and PWA manifest
+  - Modern standard implementation with proper fallbacks
+
+### UI/UX Improvements  
+- **Top Navigation Alignment**: Perfect vertical centering of user profile and notification elements
+- **Modern DOM Utilities**: Comprehensive jQuery-free DOM manipulation library
+  - Slide animations, fade effects, and smooth transitions
+  - Event handling and element manipulation without jQuery dependency
+- **Enhanced Visual Consistency**: Improved spacing and alignment throughout interface
+
+### Technical Enhancements
+- **Console Log Cleanup**: Production-ready code with clean, professional output
+  - Development-only logging wrapped in environment checks
+  - Removed verbose initialization messages and debug output
+- **Code Quality**: Streamlined codebase with reduced development artifacts
+- **Performance Optimizations**: Further improvements to module loading system
+
+### Bug Fixes
+- Fixed loadModule reference errors when using main-minimal.js
+- Resolved favicon display issues in legacy browsers  
+- Corrected navigation element positioning and alignment
+- Eliminated development console noise in production builds
+
+### File Structure
+- Added centralized DOM utilities (`src/utils/dom-modern.js`)
+- Updated favicon implementation with proper size variants
+- Cleaned development files and reduced repository size
+
+### Developer Experience
+- Improved error boundaries and debugging capabilities
+- Enhanced module performance monitoring and statistics
+- Better development vs production environment handling
+
 ## 2.0.0 - 20.06.2025 🎉
 
 **Major Stable Release - Bootstrap 5 with Modern Build System**
