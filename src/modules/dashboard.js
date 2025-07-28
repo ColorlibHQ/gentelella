@@ -1,20 +1,8 @@
 // Dashboard Module - Only loaded on dashboard pages
 
-
-// Dashboard-specific widgets
-
-// Map functionality for dashboard
-// import 'jqvmap';
-// import 'jqvmap/dist/maps/jquery.vmap.world.js';
-
-// Dashboard notifications and widgets
-// Note: Additional dashboard-specific libraries can be added here
-
-// Dashboard-specific JavaScript
-import $ from 'jquery';
-
-// Flot charts
-import 'flot/dist/es5/jquery.flot.js';
+// Dashboard-specific widgets and functionality
+// Uses Chart.js for charting (imported via charts module)
+// Uses modern JavaScript APIs instead of jQuery where possible
 
 export default {
   initialized: true

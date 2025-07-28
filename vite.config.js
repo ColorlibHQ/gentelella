@@ -25,11 +25,11 @@ export default defineConfig({
       ],
       output: {
         manualChunks: {
-          'vendor-core': ['jquery', 'bootstrap', '@popperjs/core'],
+          'vendor-core': ['bootstrap', '@popperjs/core'],
           'vendor-charts': ['chart.js', 'echarts', 'leaflet'],
           'vendor-forms': ['select2', 'ion-rangeslider', 'autosize', 'switchery', '@eonasdan/tempus-dominus'],
-          'vendor-ui': ['jquery-ui', 'nprogress', 'datatables.net', 'datatables.net-bs5'],
-          'vendor-utils': ['dayjs', 'jquery-sparkline', 'skycons']
+          'vendor-ui': ['nprogress', 'datatables.net', 'datatables.net-bs5'],
+          'vendor-utils': ['dayjs', 'skycons']
         },
         assetFileNames: (assetInfo) => {
           const info = assetInfo.name.split('.');
@@ -116,7 +116,6 @@ export default defineConfig({
   },
   optimizeDeps: {
     include: [
-      'jquery', 
       'bootstrap',
       '@popperjs/core',
       'dayjs',
@@ -125,9 +124,7 @@ export default defineConfig({
     force: true
   },
   resolve: {
-    alias: {
-      jquery: 'jquery'
-    }
+    // Modern build without jQuery aliases
   },
   css: {
     // Enable CSS source maps in development

@@ -9,24 +9,8 @@
 
   <title>Gentelella Alela! | Vector Maps</title>
 
-  <!-- Bootstrap core CSS -->
-
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-
-  <link href="css/animate.min.css" rel="stylesheet">
-
-  <!-- Custom styling plus plugins -->
-  <link href="../build/css/style.css" rel="stylesheet">
-
-  <script src="js/jquery.min.js"></script>
-
-  <!--[if lt IE 9]>
-        <script src="../assets/js/ie8-responsive-file-warning.js"></script>
-        <![endif]-->
-
-  <!-- IE compatibility scripts removed - modern browsers only -->
-
-  <script type="module" src="/src/main-minimal.js"></script>
+  <!-- Compiled CSS (includes Bootstrap, Font Awesome, and all vendor styles) -->
+  <script type="module" src="/src/main-core.js"></script>
 </head>
 
 
@@ -51,7 +35,7 @@
             </div>
             <div class="profile_info">
               <span>Welcome,</span>
-              <h2>John Doe</h2>
+              <h4>John Doe</h4>
             </div>
           </div>
           <!-- /menu prile quick info -->
@@ -264,7 +248,7 @@
             <div class="col-md-12">
               <div class="x_panel">
                 <div class="x_title">
-                  <h2>World Map</h2>
+                  <h4>World Map</h4>
                   <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
@@ -289,15 +273,43 @@
     </div>
   </div>
 
-  <script src="js/bootstrap.min.js"></script>
-
-  <!-- chart js -->
-  <script src="js/chartjs/chart.min.js"></script>
-
-  <script src="../build/js/new-custom.js"></script>
-
-  <!-- pace -->
-  <script src="js/pace/pace.min.js"></script>
+  <script>
+    // Initialize Leaflet map when page loads
+    document.addEventListener('DOMContentLoaded', async function() {
+      try {
+        // Load the charts module which includes Leaflet
+        const charts = await loadModule('charts');
+        
+        // Initialize the Leaflet map
+        const map = L.map('leaflet-map').setView([40.7128, -74.0060], 4);
+        
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+        
+        // Add some sample markers
+        const cities = [
+          { name: 'New York', lat: 40.7128, lng: -74.0060 },
+          { name: 'London', lat: 51.5074, lng: -0.1278 },
+          { name: 'Tokyo', lat: 35.6762, lng: 139.6503 },
+          { name: 'Sydney', lat: -33.8688, lng: 151.2093 },
+          { name: 'São Paulo', lat: -23.5505, lng: -46.6333 }
+        ];
+        
+        cities.forEach(city => {
+          L.marker([city.lat, city.lng])
+            .addTo(map)
+            .bindPopup(`<b>${city.name}</b><br>Sample location marker`);
+        });
+        
+      } catch (error) {
+        console.error('Error loading map:', error);
+        document.getElementById('leaflet-map').innerHTML = 
+          '<div class="d-flex align-items-center justify-content-center h-100"><div class="text-center"><i class="fas fa-map fa-3x text-muted mb-3"></i><p class="text-muted">Map failed to load</p></div></div>';
+      }
+    });
+  </script>
 
 </body>
 

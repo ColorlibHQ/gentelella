@@ -4,18 +4,8 @@
  * Only contains functionality that hasn't been moved to separate modules
  */
 
-// Modern DOM utilities (no jQuery dependency)
-const DOM = {
-  select: (selector) => document.querySelector(selector),
-  selectAll: (selector) => [...document.querySelectorAll(selector)],
-  exists: (selector) => document.querySelector(selector) !== null,
-  on: (element, event, handler) => element.addEventListener(event, handler),
-  find: (element, selector) => element.querySelector(selector),
-  closest: (element, selector) => element.closest(selector),
-  addClass: (element, className) => element.classList.add(className),
-  removeClass: (element, className) => element.classList.remove(className),
-  toggle: (element, className) => element.classList.toggle(className)
-};
+// Use the centralized DOM utilities
+const DOM = window.DOM;
 
 /**
  * NOTE: DataTables initialization moved to modern tables module
@@ -27,10 +17,34 @@ const DOM = {
  * Date Picker Initialization - MODERNIZED
  * Uses modern date picker libraries instead of jQuery UI
  */
-function initializeDatePickers() {
-  // Modern date picker using Tempus Dominus (already available)
+async function initializeDatePickers() {
+  // Check if there are any date picker elements on the page
+  const datePickerElements = DOM.selectAll('.datepicker, [data-datepicker]');
+  
+  if (datePickerElements.length === 0) {
+    // No date pickers found, skip initialization
+    return;
+  }
+
+  // Check if TempusDominus is available, if not try to load forms module
+  if (typeof TempusDominus === 'undefined') {
+    try {
+      console.log('📅 Date pickers detected, loading forms module...');
+      if (typeof window.loadModule === 'function') {
+        await window.loadModule('forms');
+      } else {
+        console.warn('loadModule function not available, TempusDominus may not be loaded');
+        return;
+      }
+    } catch (error) {
+      console.error('❌ Failed to load forms module for date pickers:', error);
+      return;
+    }
+  }
+
+  // Initialize date pickers if TempusDominus is now available
   if (typeof TempusDominus !== 'undefined') {
-    DOM.selectAll('.datepicker, [data-datepicker]').forEach(element => {
+    datePickerElements.forEach(element => {
       try {
         new TempusDominus(element, {
           display: {
@@ -50,10 +64,99 @@ function initializeDatePickers() {
         console.error('❌ Failed to initialize date picker:', error);
       }
     });
+    
+    console.log('✅ Date pickers initialization complete');
+  } else {
+    console.warn('⚠️ TempusDominus is not available after loading forms module');
   }
+}
 
-  // Date range pickers - already handled by TempusDominus in main.js
-  console.log('✅ Date pickers initialization complete');
+/**
+ * Panel Toolbox Functionality - MODERNIZED FROM JQUERY
+ * Handles collapse/expand and close functionality for x_panel elements
+ */
+function initializePanelToolbox() {
+  // Collapse/Expand functionality
+  DOM.selectAll('.collapse-link').forEach(link => {
+    DOM.on(link, 'click', function(event) {
+      event.preventDefault();
+      
+      const panel = DOM.closest(link, '.x_panel');
+      const icon = DOM.find(link, 'i');
+      const content = DOM.find(panel, '.x_content');
+      
+      if (!panel || !content) return;
+      
+      // Check if panel is currently collapsed
+      const isCollapsed = content.style.display === 'none';
+      
+      if (isCollapsed) {
+        // Expand
+        DOM.slideDown(content);
+        DOM.removeClass(icon, 'fa-chevron-down');
+        DOM.addClass(icon, 'fa-chevron-up');
+        panel.style.height = 'auto';
+      } else {
+        // Collapse
+        DOM.slideUp(content);
+        DOM.removeClass(icon, 'fa-chevron-up');
+        DOM.addClass(icon, 'fa-chevron-down');
+      }
+    });
+  });
+  
+  // Close panel functionality
+  DOM.selectAll('.close-link').forEach(link => {
+    DOM.on(link, 'click', function(event) {
+      event.preventDefault();
+      
+      const panel = DOM.closest(link, '.x_panel');
+      if (panel) {
+        // Fade out and remove panel
+        panel.style.transition = 'opacity 0.3s ease';
+        panel.style.opacity = '0';
+        setTimeout(() => {
+          panel.remove();
+        }, 300);
+      }
+    });
+  });
+  
+  console.log('✅ Panel toolbox functionality initialized');
+}
+
+/**
+ * Progress Bar Animations - MODERNIZED FROM JQUERY
+ * Animates progress bars with data-transitiongoal attribute
+ */
+function initializeProgressBars() {
+  DOM.selectAll('.progress-bar[data-transitiongoal]').forEach(bar => {
+    const goal = bar.getAttribute('data-transitiongoal');
+    if (goal) {
+      // Reset to 0 and animate to goal
+      bar.style.width = '0%';
+      bar.style.transition = 'width 1.5s ease-in-out';
+      
+      // Use setTimeout to ensure the transition triggers
+      setTimeout(() => {
+        bar.style.width = goal + '%';
+      }, 100);
+    }
+  });
+  
+  // Animate regular progress bars on page load
+  DOM.selectAll('.progress-bar:not([data-transitiongoal])').forEach(bar => {
+    const currentWidth = bar.style.width;
+    if (currentWidth) {
+      bar.style.width = '0%';
+      bar.style.transition = 'width 1.2s ease-out';
+      setTimeout(() => {
+        bar.style.width = currentWidth;
+      }, 200);
+    }
+  });
+  
+  console.log('✅ Progress bar animations initialized');
 }
 
 /**
@@ -284,12 +387,14 @@ function initializeKeyboardShortcuts() {
  * Main Initialization - MODERNIZED FROM JQUERY
  * Coordinates all modern initialization functions
  */
-function initializeModernComponents() {
+async function initializeModernComponents() {
   console.log('🚀 Initializing modern components...');
 
   try {
     // Initialize components that still need initialization
-    initializeDatePickers();
+    await initializeDatePickers();
+    initializePanelToolbox();
+    initializeProgressBars();
     initializeFormValidation();
     initializeTabsAndAccordions();
     initializeModals();
@@ -336,8 +441,8 @@ function showLoadingStatus() {
 
 // Initialize when DOM is ready
 if (typeof document !== 'undefined') {
-  document.addEventListener('DOMContentLoaded', () => {
-    initializeModernComponents();
+  document.addEventListener('DOMContentLoaded', async () => {
+    await initializeModernComponents();
     
     // Show loading status in development
     if (process.env.NODE_ENV !== 'production') {

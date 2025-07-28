@@ -18,7 +18,7 @@
 
 
     <!-- Vite Entry Point - will bundle all styles -->
-    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/main-minimal.js"></script>
   </head>
 
   <body class="nav-md page-index">
@@ -39,7 +39,7 @@
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2>John Doe</h2>
+                <h4>John Doe</h4>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -337,7 +337,7 @@
                 </div>
                 <div class="col-md-3 col-sm-3 bg-white">
                   <div class="x_title">
-                    <h2>Top Campaign Performance</h2>
+                    <h4>Top Campaign Performance</h4>
                     <div class="clearfix"></div>
                   </div>
 
@@ -393,7 +393,7 @@
             <div class="col-md-4 col-sm-4">
               <div class="x_panel tile fixed_height_320">
                 <div class="x_title">
-                  <h2>App Versions</h2>
+                  <h4>App Versions</h4>
                   <ul class="nav navbar-right panel_toolbox">
                     <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
                     <li class="dropdown">
@@ -497,7 +497,7 @@
             <div class="col-md-4 col-sm-4">
               <div class="x_panel tile fixed_height_320 overflow_hidden">
                 <div class="x_title">
-                  <h2>Device Usage</h2>
+                  <h4>Device Usage</h4>
                   <ul class="nav navbar-right panel_toolbox">
                     <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
                     <li class="dropdown">
@@ -573,7 +573,7 @@
             <div class="col-md-4 col-sm-4">
               <div class="x_panel tile fixed_height_320">
                 <div class="x_title">
-                  <h2>Quick Settings</h2>
+                  <h4>Quick Settings</h4>
                   <ul class="nav navbar-right panel_toolbox">
                     <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
                     <li class="dropdown">
@@ -618,7 +618,7 @@
             <div class="col-md-4 col-sm-4">
               <div class="x_panel">
                 <div class="x_title">
-                  <h2>Recent Activities <small>Sessions</small></h2>
+                  <h4>Recent Activities <small>Sessions</small></h4>
                   <ul class="nav navbar-right panel_toolbox">
                     <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
                     <li class="dropdown">
@@ -735,7 +735,7 @@
               <!-- Sales Statistics Widget -->
               <div class="x_panel" style="min-height: 450px;">
                 <div class="x_title">
-                  <h2>Sales Statistics <small>Monthly overview</small></h2>
+                  <h4>Sales Statistics <small>Monthly overview</small></h4>
                   <ul class="nav navbar-right panel_toolbox">
                     <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
                     <li class="dropdown">
@@ -850,7 +850,7 @@
                 <div class="col-md-12 col-sm-12">
                   <div class="x_panel">
                     <div class="x_title">
-                      <h2>Recent Orders <small>Latest transactions</small></h2>
+                      <h4>Recent Orders <small>Latest transactions</small></h4>
                       <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
                         <li class="dropdown">
@@ -966,7 +966,7 @@
                 <div class="col-md-12 col-sm-12">
                   <div class="x_panel">
                     <div class="x_title">
-                      <h2>Visitors location <small>geo-presentation</small></h2>
+                      <h4>Visitors location <small>geo-presentation</small></h4>
                       <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
                         <li class="dropdown">
@@ -1023,7 +1023,7 @@
                 <div class="col-md-6 col-sm-6">
                   <div class="x_panel">
                     <div class="x_title">
-                      <h2>To Do List <small>Sample tasks</small></h2>
+                      <h4>To Do List <small>Sample tasks</small></h4>
                       <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
                         <li class="dropdown">
@@ -1091,7 +1091,7 @@
                 <div class="col-md-6 col-sm-6">
                   <div class="x_panel">
                     <div class="x_title">
-                      <h2>Daily active users <small>Sessions</small></h2>
+                      <h4>Daily active users <small>Sessions</small></h4>
                       <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
                         <li class="dropdown">
@@ -1213,81 +1213,214 @@
     // It doesn't affect the functionality of our application.
     
     document.addEventListener('DOMContentLoaded', function() {
-      // Wait for libraries to be available before initializing
-      if (typeof window.waitForLibraries === 'function') {
-        window.waitForLibraries(['TempusDominus', 'DateTime'], function() {
-          const TempusDominus = window.TempusDominus || globalThis.TempusDominus;
-          if (TempusDominus) {
-        // Initialize the date pickers
-        const startPicker = new TempusDominus(document.getElementById('startDatePicker'), {
-          display: {
-            components: {
-              clock: false,
-              seconds: false
-            }
-          },
-          localization: {
-            format: 'MM/dd/yyyy',
-            hourCycle: 'h12'
-          }
-        });
-        
-        const endPicker = new TempusDominus(document.getElementById('endDatePicker'), {
-          display: {
-            components: {
-              clock: false,
-              seconds: false
-            }
-          },
-          localization: {
-            format: 'MM/dd/yyyy',
-            hourCycle: 'h12'
-          }
-        });
-        
-        // Set default dates (last 30 days)
+      // Check if we have date picker elements
+      const startDatePicker = document.getElementById('startDatePicker');
+      const endDatePicker = document.getElementById('endDatePicker');
+      
+      if (startDatePicker && endDatePicker) {
         try {
-          // TempusDominus requires DateTime objects, not raw Date objects
+          // TempusDominus is directly available in main-minimal.js
+          console.log('📅 Initializing date pickers with TempusDominus...');
+          
+          const TempusDominus = window.TempusDominus || globalThis.TempusDominus;
           const DateTime = window.DateTime || globalThis.DateTime;
-          if (DateTime) {
-            const today = new DateTime();
-            const thirtyDaysAgo = new DateTime().manipulate(-30, 'date');
+          
+          if (TempusDominus && DateTime) {
+            // Initialize the date pickers
+            const startPicker = new TempusDominus(startDatePicker, {
+              display: {
+                components: {
+                  clock: false,
+                  seconds: false
+                }
+              },
+              localization: {
+                format: 'MM/dd/yyyy',
+                hourCycle: 'h12'
+              }
+            });
             
-            // Set the selected dates using setValue method
-            startPicker.dates.setValue(thirtyDaysAgo);
-            endPicker.dates.setValue(today);
+            const endPicker = new TempusDominus(endDatePicker, {
+              display: {
+                components: {
+                  clock: false,
+                  seconds: false
+                }
+              },
+              localization: {
+                format: 'MM/dd/yyyy',
+                hourCycle: 'h12'
+              }
+            });
             
-            // Also update the input values
-            document.getElementById('startDatePicker').value = thirtyDaysAgo.format('MM/DD/YYYY h:mm A');
-            document.getElementById('endDatePicker').value = today.format('MM/DD/YYYY h:mm A');
+            // Set default dates (last 30 days)
+            try {
+              const today = new DateTime();
+              const thirtyDaysAgo = new DateTime().manipulate(-30, 'date');
+              
+              startPicker.dates.setValue(thirtyDaysAgo);
+              endPicker.dates.setValue(today);
+              
+              console.log('✅ Date pickers initialized with default dates');
+            } catch (error) {
+              console.error('Error setting default dates for date range picker:', error);
+            }
+            
+            // Link pickers
+            startDatePicker.addEventListener('change.td', function(e) {
+              endPicker.updateOptions({ restrictions: { maxDate: e.detail.date } });
+            });
+            
+            endDatePicker.addEventListener('change.td', function(e) {
+              startPicker.updateOptions({ restrictions: { minDate: e.detail.date } });
+            });
+            
+            console.log('✅ Dashboard date pickers initialized');
           } else {
-            console.warn('DateTime class not available for TempusDominus');
+            console.warn('TempusDominus or DateTime not available after loading forms module');
           }
         } catch (error) {
-          console.error('Error setting default dates for date range picker:', error);
+          console.error('Failed to initialize date pickers:', error);
         }
-        
-        // Link pickers without summary display
-        document.getElementById('startDatePicker').addEventListener('change.td', function(e) {
-          endPicker.updateOptions({ restrictions: { minDate: e.detail.date } });
-        });
-        
-        document.getElementById('endDatePicker').addEventListener('change.td', function(e) {
-          startPicker.updateOptions({ restrictions: { maxDate: e.detail.date } });
-        });
-          } else {
-            console.warn('TempusDominus is not available');
+      }
+    });
+
+    // Dashboard chart initialization - define functions first
+    function initializeDashboardChart() {
+      const ctx = document.getElementById('chart_plot_01');
+      if (!ctx) return;
+
+      // Sample data for the main dashboard chart
+      const chartData = {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        datasets: [{
+          label: 'Revenue',
+          data: [12, 19, 8, 15, 22, 18, 25, 32, 28, 35, 30, 40],
+          borderColor: '#1ABB9C',
+          backgroundColor: 'rgba(26, 187, 156, 0.1)',
+          borderWidth: 2,
+          fill: true,
+          tension: 0.4
+        }, {
+          label: 'Expenses',
+          data: [8, 12, 6, 10, 15, 12, 18, 22, 20, 25, 22, 28],
+          borderColor: '#E74C3C',
+          backgroundColor: 'rgba(231, 76, 60, 0.1)',
+          borderWidth: 2,
+          fill: true,
+          tension: 0.4
+        }]
+      };
+
+      const config = {
+        type: 'line',
+        data: chartData,
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'top',
+            },
+            title: {
+              display: true,
+              text: 'Monthly Financial Overview'
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              grid: {
+                color: 'rgba(0,0,0,0.1)'
+              }
+            },
+            x: {
+              grid: {
+                color: 'rgba(0,0,0,0.1)'
+              }
+            }
           }
-        });
-      } else {
-        // Fallback: directly check for TempusDominus
-        const TempusDominus = window.TempusDominus || globalThis.TempusDominus;
-        if (TempusDominus) {
-          // Use the same initialization code here if needed
-          console.log('TempusDominus available via fallback');
-        } else {
-          console.warn('TempusDominus is not available');
         }
+      };
+
+      new Chart(ctx, config);
+      console.log('✅ Dashboard chart initialized');
+    }
+
+    // Profile completion gauge
+    function initializeProfileGauge() {
+      const gaugeElement = document.getElementById('profile_completion_gauge');
+      if (!gaugeElement) return;
+
+      // Create a simple donut chart for profile completion
+      const ctx = document.createElement('canvas');
+      ctx.width = 160;
+      ctx.height = 120;
+      gaugeElement.appendChild(ctx);
+
+      const data = {
+        datasets: [{
+          data: [67, 33],
+          backgroundColor: ['#1ABB9C', '#ECF0F1'],
+          borderWidth: 0
+        }]
+      };
+
+      const config = {
+        type: 'doughnut',
+        data: data,
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          cutout: '75%',
+          plugins: {
+            legend: {
+              display: false
+            },
+            tooltip: {
+              enabled: false
+            }
+          }
+        }
+      };
+
+      new Chart(ctx, config);
+      console.log('✅ Profile completion gauge initialized');
+    }
+
+    // Initialize charts - Chart.js is directly available in main-minimal.js
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('📊 Index.html DOM loaded, starting chart initialization...');
+      
+      // Check if basic elements exist
+      const chartContainer = document.getElementById('chart_plot_01');
+      const collapseLinks = document.querySelectorAll('.collapse-link');
+      console.log('📊 Chart container found:', !!chartContainer);
+      console.log('🎛️ Collapse links found:', collapseLinks.length);
+      
+      if (chartContainer) {
+        try {
+          // Chart.js is directly available in main-minimal.js
+          console.log('📈 Chart.js available:', typeof window.Chart);
+          
+          if (typeof window.Chart !== 'undefined') {
+            // Initialize main dashboard chart
+            initializeDashboardChart();
+            
+            // Initialize profile completion gauge
+            if (document.getElementById('profile_completion_gauge')) {
+              initializeProfileGauge();
+            }
+            
+            console.log('✅ Charts initialized successfully');
+          } else {
+            console.error('❌ Chart.js not available');
+          }
+        } catch (error) {
+          console.error('❌ Failed to initialize charts:', error);
+        }
+      } else {
+        console.warn('⚠️ No chart container found on this page');
       }
     });
     </script>

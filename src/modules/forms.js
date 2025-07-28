@@ -20,10 +20,10 @@ window.autosize = autosize;
 import Switchery from 'switchery';
 window.Switchery = Switchery;
 
-// jQuery UI components for forms
-import 'jquery-ui/ui/widgets/progressbar.js';
-import 'jquery-ui/ui/widgets/datepicker.js';
-import 'jquery-ui/ui/widgets/slider.js';
+// Modern alternatives:
+// - Progress bars: Bootstrap 5 native progress components
+// - Date pickers: TempusDominus (already imported above)
+// - Sliders: Ion Range Slider (already imported above)
 
 // Form validation libraries
 // Note: Parsley.js and other form validators can be added here

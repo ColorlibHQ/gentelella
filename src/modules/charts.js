@@ -6,22 +6,22 @@ import { Chart, registerables } from 'chart.js';
 Chart.register(...registerables);
 window.Chart = Chart;
 
-// JQVMap for geographical charts
-import 'jqvmap';
-import 'jqvmap/dist/maps/jquery.vmap.world.js';
+// Leaflet for maps
+import 'leaflet';
+import 'leaflet/dist/leaflet.css';
 
 // Skycons for animated weather icons (used in some charts)
 import SkyconsFactory from 'skycons';
 const Skycons = SkyconsFactory(window);
 window.Skycons = Skycons;
 
-// jQuery Sparkline for mini charts
-import 'jquery-sparkline';
+// Mini charts now handled by Chart.js instead of jQuery Sparkline
 
 // Morris.js removed - using Chart.js instead
 
 export default {
   Chart,
   Skycons,
+  L: window.L,
   initialized: true
 };
