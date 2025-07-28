@@ -1,0 +1,35 @@
+# Development files
+.editorconfig
+.prettierignore
+.prettierrc
+.github/
+.claude/
+eslint.config.js
+vite.config.js
+GITHUB_RELEASE_TEMPLATE.md
+RELEASE_NOTES_2.1.0.md
+
+# Documentation
+docs/
+README_CN.md
+
+# Test files
+tests/
+production/debug-test.html
+production/browser-test.html
+production/csp-template.html
+production/sidebar_test.html
+
+# Build artifacts
+dist/
+*.tgz
+
+# Other
+.DS_Store
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# Keep only essential files for npm package
