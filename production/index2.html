@@ -16,7 +16,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fas fa-paw"></i> <span>Gentelella Alela!</span></a>
+              <a href="index.html" class="site_title"><img src="images/logo.svg" alt="Gentelella Alela!" class="logo-full" style="height: 40px;"><img src="images/logo-icon.svg" alt="Gentelella" class="logo-icon" style="height: 30px; display: none;"></a>
             </div>
 
             <div class="clearfix"></div>
@@ -729,23 +729,34 @@
     <!-- Initialize linked Tempus Dominus pickers for date range -->
     <script type="text/javascript">
     document.addEventListener('DOMContentLoaded', function() {
+        // Only initialize if TempusDominus is available AND the elements exist
         if (typeof TempusDominus !== 'undefined') {
-            const startPicker = new TempusDominus(document.getElementById('startDatePicker'), {
-                display: { components: { clock: false } },
-                localization: { format: 'MM/dd/yyyy' }
-            });
-            const endPicker = new TempusDominus(document.getElementById('endDatePicker'), {
-                display: { components: { clock: false } },
-                localization: { format: 'MM/dd/yyyy' }
-            });
-            // Link pickers
-            document.getElementById('startDatePicker').addEventListener('change.td', function(e) {
-                endPicker.updateOptions({ restrictions: { minDate: e.detail.date } });
-            });
-            document.getElementById('endDatePicker').addEventListener('change.td', function(e) {
-                startPicker.updateOptions({ restrictions: { maxDate: e.detail.date } });
-            });
-
+            const startElement = document.getElementById('startDatePicker');
+            const endElement = document.getElementById('endDatePicker');
+            
+            // Check if the required elements exist on this page
+            if (startElement && endElement) {
+                const startPicker = new TempusDominus(startElement, {
+                    display: { components: { clock: false } },
+                    localization: { format: 'MM/dd/yyyy' }
+                });
+                const endPicker = new TempusDominus(endElement, {
+                    display: { components: { clock: false } },
+                    localization: { format: 'MM/dd/yyyy' }
+                });
+                
+                // Link pickers
+                startElement.addEventListener('change.td', function(e) {
+                    endPicker.updateOptions({ restrictions: { minDate: e.detail.date } });
+                });
+                endElement.addEventListener('change.td', function(e) {
+                    startPicker.updateOptions({ restrictions: { maxDate: e.detail.date } });
+                });
+                
+                console.log('✅ Date range pickers initialized on index2.html');
+            } else {
+                console.log('ℹ️ Date picker elements not found on this page - skipping initialization');
+            }
         }
     });
     </script>

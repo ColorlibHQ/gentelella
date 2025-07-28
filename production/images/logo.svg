@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="180" height="45" viewBox="0 0 180 45" xmlns="http://www.w3.org/2000/svg">
+  <!-- Dashboard/grid icon - vertically centered with text -->
+  <g transform="translate(15, 22.5)" fill="white">
+    <!-- Top row -->
+    <rect x="-8.5" y="-8.5" width="5.5" height="5.5" rx="1"/>
+    <rect x="-2" y="-8.5" width="5.5" height="5.5" rx="1"/>
+    <rect x="4.5" y="-8.5" width="5.5" height="5.5" rx="1"/>
+    
+    <!-- Middle row -->
+    <rect x="-8.5" y="-2" width="5.5" height="5.5" rx="1"/>
+    <rect x="-2" y="-2" width="5.5" height="5.5" rx="1"/>
+    <rect x="4.5" y="-2" width="5.5" height="5.5" rx="1"/>
+    
+    <!-- Bottom row -->
+    <rect x="-8.5" y="4.5" width="5.5" height="5.5" rx="1"/>
+    <rect x="-2" y="4.5" width="5.5" height="5.5" rx="1"/>
+    <rect x="4.5" y="4.5" width="5.5" height="5.5" rx="1"/>
+  </g>
+  
+  <!-- Text -->
+  <text x="40" y="29" font-family="'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="400" fill="#E7E7E7">Gentelella Alela!</text>
+</svg>

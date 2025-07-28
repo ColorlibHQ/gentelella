@@ -27,7 +27,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fas fa-paw"></i> <span>Gentelella Alela!</span></a>
+              <a href="index.html" class="site_title"><img src="images/logo.svg" alt="Gentelella Alela!" class="logo-full" style="height: 40px;"><img src="images/logo-icon.svg" alt="Gentelella" class="logo-icon" style="height: 30px; display: none;"></a>
             </div>
 
             <div class="clearfix"></div>
@@ -1208,6 +1208,10 @@
 
     <!-- Date Range Picker Logic -->
     <script type="text/javascript">
+    // Note: The "Uncaught (in promise) Error: A listener indicated an asynchronous response" 
+    // error is caused by browser extensions (like ad blockers) and can be safely ignored.
+    // It doesn't affect the functionality of our application.
+    
     document.addEventListener('DOMContentLoaded', function() {
       // Wait for libraries to be available before initializing
       if (typeof window.waitForLibraries === 'function') {
@@ -1247,10 +1251,15 @@
           const DateTime = window.DateTime || globalThis.DateTime;
           if (DateTime) {
             const today = new DateTime();
-            const thirtyDaysAgo = new DateTime().manipulate(-30, 'days');
+            const thirtyDaysAgo = new DateTime().manipulate(-30, 'date');
             
+            // Set the selected dates using setValue method
             startPicker.dates.setValue(thirtyDaysAgo);
             endPicker.dates.setValue(today);
+            
+            // Also update the input values
+            document.getElementById('startDatePicker').value = thirtyDaysAgo.format('MM/DD/YYYY h:mm A');
+            document.getElementById('endDatePicker').value = today.format('MM/DD/YYYY h:mm A');
           } else {
             console.warn('DateTime class not available for TempusDominus');
           }

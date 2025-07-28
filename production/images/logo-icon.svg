@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30" height="30" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
+  <!-- Dashboard/grid icon - perfectly centered in square -->
+  <g transform="translate(15, 15)" fill="white">
+    <!-- Top row -->
+    <rect x="-7.5" y="-7.5" width="4.5" height="4.5" rx="0.8"/>
+    <rect x="-2.25" y="-7.5" width="4.5" height="4.5" rx="0.8"/>
+    <rect x="3" y="-7.5" width="4.5" height="4.5" rx="0.8"/>
+    
+    <!-- Middle row -->
+    <rect x="-7.5" y="-2.25" width="4.5" height="4.5" rx="0.8"/>
+    <rect x="-2.25" y="-2.25" width="4.5" height="4.5" rx="0.8"/>
+    <rect x="3" y="-2.25" width="4.5" height="4.5" rx="0.8"/>
+    
+    <!-- Bottom row -->
+    <rect x="-7.5" y="3" width="4.5" height="4.5" rx="0.8"/>
+    <rect x="-2.25" y="3" width="4.5" height="4.5" rx="0.8"/>
+    <rect x="3" y="3" width="4.5" height="4.5" rx="0.8"/>
+  </g>
+</svg>

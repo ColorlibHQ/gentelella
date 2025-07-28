@@ -7,7 +7,7 @@
   max-width: 100%;
 }
 .nav-sm .container.body .col-md-3.left_col {
-  min-height: 100%;
+  min-height: 100vh;
   width: 70px;
   padding: 0;
   z-index: 9999;
@@ -38,6 +38,28 @@
 .nav-sm .navbar.nav_title a i {
   font-size: 27px;
   margin: 13px 0 0 3px;
+}
+
+// SVG Logo handling for expanded sidebar
+.nav-md .navbar.nav_title a .logo-full {
+  display: inline-block !important;
+}
+.nav-md .navbar.nav_title a .logo-icon {
+  display: none !important;
+}
+
+// SVG Logo handling for collapsed sidebar
+.nav-sm .navbar.nav_title a .logo-full {
+  display: none !important;
+}
+.nav-sm .navbar.nav_title a .logo-icon {
+  display: block !important;
+  width: 30px !important;
+  height: 30px !important;
+  margin: 15px auto 0 auto !important;
+}
+.nav-sm .site_title {
+  padding-left: 0 !important;
 }
 .site_title i {
   border: 1px solid #EAEAEA;
@@ -234,7 +256,7 @@
 
 }
 .nav-md .container.body .col-md-3.left_col {
-  min-height: 100%;
+  min-height: 100vh;
   width: 230px;
   padding: 0;
   position: absolute;
@@ -391,6 +413,12 @@ body .container.body .right_col {
 .top_nav .nav>li>a:focus, .top_nav .nav>li>a:hover, .top_nav .nav .open>a, .top_nav .nav .open>a:focus, .top_nav .nav .open>a:hover {
   // background: #D9DEE4;
 }
+// Fix infinite scrolling issue by defining explicit heights
+html, body {
+  height: 100%;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
 body {
   color: #73879C;
   background: #2A3F54;
@@ -404,7 +432,14 @@ body {
   margin-left: 230px;
 }
 .main_container {
+  max-height: 100vh;
+  overflow-y: auto;
+}
 
+/* Additional constraint for right column content */
+.right_col {
+  max-height: calc(100vh - 60px); /* Account for header/footer */
+  overflow-y: auto;
 }
 .no-padding {
   padding: 0 !important;

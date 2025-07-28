@@ -71,10 +71,24 @@ import 'ion-rangeslider/css/ion.rangeSlider.min.css';
 // Cropper CSS
 // Cropper CSS is included in the main SCSS bundle
 
+// Modern modular components (jQuery-free)
+import './modules/ui-components.js';
+import './modules/weather.js';
+import './modules/maps.js';
+import './modules/chart-core.js';
+import './modules/echarts-modern.js';
+import './modules/dashboard-pages.js';
+import './modules/tables-modern.js';
+
 // Legacy scripts that depend on global jQuery - LOAD IN CORRECT ORDER
 import './js/helpers/smartresize.js';
 import './js/sidebar.js';
-import './js/init.js';
+
+// Modern initialization (jQuery eliminated)
+import './js/init-modern.js';
+
+// Keep old init.js as fallback (will be removed in next phase)
+// import './js/init.js';
 
 // Confirm all components loaded
 

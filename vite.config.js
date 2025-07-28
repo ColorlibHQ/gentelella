@@ -8,7 +8,9 @@ export default defineConfig({
     outDir: 'dist',
     emptyOutDir: true,
     chunkSizeWarningLimit: 1000,
-    sourcemap: false,
+    // Optimize source maps: 'hidden' for production (generates but doesn't reference in bundle)
+    // This allows debugging in production without exposing source maps to users
+    sourcemap: process.env.NODE_ENV === 'production' ? 'hidden' : true,
     target: 'es2022',
     rollupOptions: {
       plugins: [
@@ -128,12 +130,17 @@ export default defineConfig({
     }
   },
   css: {
+    // Enable CSS source maps in development
+    devSourcemap: true,
     preprocessorOptions: {
       scss: {
         // Silence Sass deprecation warnings
         silenceDeprecations: ['legacy-js-api', 'import', 'global-builtin', 'color-functions'],
         // Additional settings for better performance
-        includePaths: ['node_modules']
+        includePaths: ['node_modules'],
+        // Generate source maps for better debugging
+        sourceMap: true,
+        sourceMapContents: true
       }
     }
   },
