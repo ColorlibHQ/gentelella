@@ -1,0 +1,737 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+  <link rel="stylesheet" href="/gentelella/assets/css/just-the-docs-default.css">
+
+  <link rel="stylesheet" href="/gentelella/assets/css/just-the-docs-head-nav.css" id="jtd-head-nav-stylesheet">
+
+  <style id="jtd-nav-activation">
+  
+
+    
+    .site-nav > ul.nav-list:first-child > li:not(:nth-child(11)) > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li a {
+      background-image: none;
+    }
+
+    .site-nav > ul.nav-list:not(:first-child) a,
+    .site-nav li.external a {
+      background-image: none;
+    }
+
+    .site-nav > ul.nav-list:first-child > li:nth-child(11) > a {
+      font-weight: 600;
+      text-decoration: none;
+    }.site-nav > ul.nav-list:first-child > li:nth-child(11) > button svg {
+      transform: rotate(-90deg);
+    }.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(11) > ul.nav-list {
+      display: block;
+    }
+  </style>
+
+  
+
+  
+    <script src="/gentelella/assets/js/vendor/lunr.min.js"></script>
+  
+
+  <script src="/gentelella/assets/js/just-the-docs.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+
+  <link rel="icon" href="/gentelella/favicon.ico" type="image/x-icon">
+
+
+
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Security Headers Implementation Guide | Gentelella Admin Template</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Security Headers Implementation Guide" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Modern Bootstrap 5 Admin Dashboard Template with Performance Optimizations" />
+<meta property="og:description" content="Modern Bootstrap 5 Admin Dashboard Template with Performance Optimizations" />
+<link rel="canonical" href="https://puikinsh.github.io/gentelella/security-headers/" />
+<meta property="og:url" content="https://puikinsh.github.io/gentelella/security-headers/" />
+<meta property="og:site_name" content="Gentelella Admin Template" />
+<meta property="og:image" content="https://puikinsh.github.io/gentelella/assets/images/gentelella-preview.jpg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://puikinsh.github.io/gentelella/assets/images/gentelella-preview.jpg" />
+<meta property="twitter:title" content="Security Headers Implementation Guide" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Modern Bootstrap 5 Admin Dashboard Template with Performance Optimizations","headline":"Security Headers Implementation Guide","image":"https://puikinsh.github.io/gentelella/assets/images/gentelella-preview.jpg","url":"https://puikinsh.github.io/gentelella/security-headers/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  
+
+</head>
+
+<body>
+  <a class="skip-to-main" href="#main-content">Skip to main content</a>
+  <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+  <symbol id="svg-link" viewBox="0 0 24 24">
+  <title>Link</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link">
+    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+  </svg>
+</symbol>
+
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+  <title>Menu</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+    <line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>
+  </svg>
+</symbol>
+
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+  <title>Expand</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+    <polyline points="9 18 15 12 9 6"></polyline>
+  </svg>
+</symbol>
+
+  <!-- Feather. MIT License: https://github.com/feathericons/feather/blob/master/LICENSE -->
+<symbol id="svg-external-link" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link">
+  <title id="svg-external-link-title">(external link)</title>
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>
+</symbol>
+
+  
+    <symbol id="svg-doc" viewBox="0 0 24 24">
+  <title>Document</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file">
+    <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline>
+  </svg>
+</symbol>
+
+    <symbol id="svg-search" viewBox="0 0 24 24">
+  <title>Search</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search">
+    <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+  </svg>
+</symbol>
+
+  
+  
+    <!-- Bootstrap Icons. MIT License: https://github.com/twbs/icons/blob/main/LICENSE.md -->
+<symbol id="svg-copy" viewBox="0 0 16 16">
+  <title>Copy</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
+    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+    <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+  </svg>
+</symbol>
+<symbol id="svg-copied" viewBox="0 0 16 16">
+  <title>Copied</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-check-fill" viewBox="0 0 16 16">
+    <path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3Zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3Z"/>
+    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5v-1Zm6.854 7.354-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708.708Z"/>
+  </svg>
+</symbol>
+
+  
+</svg>
+
+  
+    <div class="side-bar">
+  <div class="site-header" role="banner">
+    <a href="/gentelella/" class="site-title lh-tight">
+  Gentelella Admin Template
+
+</a>
+    <button id="menu-button" class="site-button btn-reset" aria-label="Toggle menu" aria-pressed="false">
+      <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use xlink:href="#svg-menu"></use></svg>
+    </button>
+  </div>
+
+  <nav aria-label="Main" id="site-nav" class="site-nav">
+  
+  
+    <ul class="nav-list"><li class="nav-list-item"><a href="/gentelella/" class="nav-list-link">Gentelella Admin Template Documentation</a></li><li class="nav-list-item"><a href="/gentelella/installation/" class="nav-list-link">Installation Guide</a></li><li class="nav-list-item"><a href="/gentelella/configuration/" class="nav-list-link">Configuration</a></li><li class="nav-list-item"><a href="/gentelella/components/" class="nav-list-link">Components Guide</a></li><li class="nav-list-item"><a href="/gentelella/deployment/" class="nav-list-link">Deployment Guide</a></li><li class="nav-list-item"><a href="/gentelella/customization/" class="nav-list-link">Customization Guide</a></li><li class="nav-list-item"><a href="/gentelella/api-integration/" class="nav-list-link">API Integration</a></li><li class="nav-list-item"><a href="/gentelella/bundle-analysis/" class="nav-list-link">Bundle Analysis Guide</a></li><li class="nav-list-item"><a href="/gentelella/jquery-elimination-complete/" class="nav-list-link">Complete jQuery Elimination Achievement 🎉</a></li><li class="nav-list-item"><a href="/gentelella/daterangepicker-fix/" class="nav-list-link">Date Range Picker Fix Documentation</a></li><li class="nav-list-item"><a href="/gentelella/security-headers/" class="nav-list-link">Security Headers Implementation Guide</a></li></ul>
+  
+</nav>
+
+
+
+
+  
+  
+    <footer class="site-footer">
+      This site uses <a href="https://github.com/just-the-docs/just-the-docs">Just the Docs</a>, a documentation theme for Jekyll.
+    </footer>
+  
+</div>
+
+  
+  <div class="main" id="top">
+    <div id="main-header" class="main-header">
+  
+    
+
+<div class="search" role="search">
+  <div class="search-input-wrap">
+    <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="Search Gentelella Admin Template" aria-label="Search Gentelella Admin Template" autocomplete="off">
+    <label for="search-input" class="search-label"><svg viewBox="0 0 24 24" class="search-icon"><use xlink:href="#svg-search"></use></svg></label>
+  </div>
+  <div id="search-results" class="search-results"></div>
+</div>
+
+  
+  
+  
+    <nav aria-label="Auxiliary" class="aux-nav">
+  <ul class="aux-nav-list">
+    
+      <li class="aux-nav-list-item">
+        <a href="//github.com/puikinsh/gentelella" class="site-button"
+          
+        >
+          Gentelella on GitHub
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="//colorlib.com" class="site-button"
+          
+        >
+          Colorlib
+        </a>
+      </li>
+    
+  </ul>
+</nav>
+
+  
+</div>
+
+    <div class="main-content-wrap">
+      
+      <div id="main-content" class="main-content">
+        <main>
+          
+            <h1 id="security-headers-implementation-guide">
+  
+  
+    <a href="#security-headers-implementation-guide" class="anchor-heading" aria-labelledby="security-headers-implementation-guide"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Security Headers Implementation Guide
+  
+  
+</h1>
+    
+
+<p>This guide explains how to implement security headers for the Gentelella admin template, including which headers can be set via meta tags and which require server configuration.</p>
+<h2 id="quick-reference">
+  
+  
+    <a href="#quick-reference" class="anchor-heading" aria-labelledby="quick-reference"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Quick Reference
+  
+  
+</h2>
+    
+<h3 id="-can-be-set-via-meta-tags">
+  
+  
+    <a href="#-can-be-set-via-meta-tags" class="anchor-heading" aria-labelledby="-can-be-set-via-meta-tags"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ✅ Can be set via Meta Tags
+  
+  
+</h3>
+    
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Content-Security-Policy</code> (with limitations)</li>
+  <li><code class="language-plaintext highlighter-rouge">X-Content-Type-Options</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Referrer-Policy</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Permissions-Policy</code></li>
+</ul>
+<h3 id="-must-be-set-via-http-headers">
+  
+  
+    <a href="#-must-be-set-via-http-headers" class="anchor-heading" aria-labelledby="-must-be-set-via-http-headers"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ❌ Must be set via HTTP Headers
+  
+  
+</h3>
+    
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">X-Frame-Options</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Strict-Transport-Security</code> (HSTS)</li>
+  <li><code class="language-plaintext highlighter-rouge">X-XSS-Protection</code> (deprecated but sometimes required)</li>
+  <li><code class="language-plaintext highlighter-rouge">frame-ancestors</code> CSP directive (ignored in meta tags)</li>
+</ul>
+<h2 id="current-implementation">
+  
+  
+    <a href="#current-implementation" class="anchor-heading" aria-labelledby="current-implementation"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Current Implementation
+  
+  
+</h2>
+    
+<h3 id="meta-tags-in-html-files">
+  
+  
+    <a href="#meta-tags-in-html-files" class="anchor-heading" aria-labelledby="meta-tags-in-html-files"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Meta Tags (in HTML files)
+  
+  
+</h3>
+    
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- Already implemented in index.html --&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"Content-Security-Policy"</span> <span class="na">content=</span><span class="s">"default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.googleapis.com; img-src 'self' data: https: blob:; font-src 'self' data: https://fonts.gstatic.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; connect-src 'self' ws: wss: http://localhost:* https://api.example.com https://*.googleapis.com; frame-src 'self' https://www.youtube.com https://player.vimeo.com; media-src 'self' https: blob:; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"X-Content-Type-Options"</span> <span class="na">content=</span><span class="s">"nosniff"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"Referrer-Policy"</span> <span class="na">content=</span><span class="s">"strict-origin-when-cross-origin"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"Permissions-Policy"</span> <span class="na">content=</span><span class="s">"camera=(), microphone=(), geolocation=()"</span><span class="nt">&gt;</span>
+</code></pre></div></div>
+<h2 id="server-configuration-required">
+  
+  
+    <a href="#server-configuration-required" class="anchor-heading" aria-labelledby="server-configuration-required"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Server Configuration Required
+  
+  
+</h2>
+    
+<h3 id="apache-htaccess">
+  
+  
+    <a href="#apache-htaccess" class="anchor-heading" aria-labelledby="apache-htaccess"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Apache (.htaccess)
+  
+  
+</h3>
+    
+<div class="language-apache highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Security Headers for Gentelella Admin Template</span>
+
+<span class="c"># X-Frame-Options (prevents clickjacking)</span>
+<span class="nc">Header</span> <span class="ss">always</span> <span class="ss">set</span> X-Frame-Options "SAMEORIGIN"
+
+<span class="c"># Strict Transport Security (HTTPS only - enable only if using HTTPS)</span>
+<span class="c"># Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"</span>
+
+<span class="c"># Content Security Policy (more flexible than meta tag)</span>
+<span class="nc">Header</span> <span class="ss">always</span> <span class="ss">set</span> Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.googleapis.com; img-src 'self' data: https: blob:; font-src 'self' data: https://fonts.gstatic.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; connect-src 'self' ws: wss: http://localhost:* https://api.example.com https://*.googleapis.com; frame-src 'self' https://www.youtube.com https://player.vimeo.com; media-src 'self' https: blob:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests;"
+
+<span class="c"># X-Content-Type-Options</span>
+<span class="nc">Header</span> <span class="ss">always</span> <span class="ss">set</span> X-Content-Type-Options "nosniff"
+
+<span class="c"># Referrer Policy</span>
+<span class="nc">Header</span> <span class="ss">always</span> <span class="ss">set</span> Referrer-Policy "strict-origin-when-cross-origin"
+
+<span class="c"># Permissions Policy</span>
+<span class="nc">Header</span> <span class="ss">always</span> <span class="ss">set</span> Permissions-Policy "camera=(), microphone=(), geolocation=()"
+
+<span class="c"># X-XSS-Protection (legacy, but some scanners still check for it)</span>
+<span class="nc">Header</span> <span class="ss">always</span> <span class="ss">set</span> X-XSS-Protection "1; mode=block"
+</code></pre></div></div>
+<h3 id="nginx">
+  
+  
+    <a href="#nginx" class="anchor-heading" aria-labelledby="nginx"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Nginx
+  
+  
+</h3>
+    
+<div class="language-nginx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Security Headers for Gentelella Admin Template</span>
+
+<span class="c1"># X-Frame-Options (prevents clickjacking)</span>
+<span class="k">add_header</span> <span class="s">X-Frame-Options</span> <span class="s">"SAMEORIGIN"</span> <span class="s">always</span><span class="p">;</span>
+
+<span class="c1"># Strict Transport Security (HTTPS only - enable only if using HTTPS)</span>
+<span class="c1"># add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;</span>
+
+<span class="c1"># Content Security Policy</span>
+<span class="k">add_header</span> <span class="s">Content-Security-Policy</span> <span class="s">"default-src</span> <span class="s">'self'</span><span class="p">;</span> <span class="k">script-src</span> <span class="s">'self'</span> <span class="s">'unsafe-inline'</span> <span class="s">'unsafe-eval'</span> <span class="s">https://cdn.jsdelivr.net</span> <span class="s">https://cdnjs.cloudflare.com</span><span class="p">;</span> <span class="k">style-src</span> <span class="s">'self'</span> <span class="s">'unsafe-inline'</span> <span class="s">https://cdn.jsdelivr.net</span> <span class="s">https://cdnjs.cloudflare.com</span> <span class="s">https://fonts.googleapis.com</span><span class="p">;</span> <span class="k">img-src</span> <span class="s">'self'</span> <span class="s">data:</span> <span class="s">https:</span> <span class="s">blob:</span><span class="p">;</span> <span class="k">font-src</span> <span class="s">'self'</span> <span class="s">data:</span> <span class="s">https://fonts.gstatic.com</span> <span class="s">https://cdn.jsdelivr.net</span> <span class="s">https://cdnjs.cloudflare.com</span><span class="p">;</span> <span class="k">connect-src</span> <span class="s">'self'</span> <span class="s">ws:</span> <span class="s">wss:</span> <span class="s">http://localhost:*</span> <span class="s">https://api.example.com</span> <span class="s">https://*.googleapis.com</span><span class="p">;</span> <span class="k">frame-src</span> <span class="s">'self'</span> <span class="s">https://www.youtube.com</span> <span class="s">https://player.vimeo.com</span><span class="p">;</span> <span class="k">media-src</span> <span class="s">'self'</span> <span class="s">https:</span> <span class="s">blob:</span><span class="p">;</span> <span class="k">object-src</span> <span class="s">'none'</span><span class="p">;</span> <span class="k">base-uri</span> <span class="s">'self'</span><span class="p">;</span> <span class="k">form-action</span> <span class="s">'self'</span><span class="p">;</span> <span class="k">frame-ancestors</span> <span class="s">'self'</span><span class="p">;</span> <span class="k">upgrade-insecure-requests</span><span class="p">;</span><span class="k">"</span> <span class="s">always</span><span class="p">;</span>
+
+<span class="c1"># X-Content-Type-Options</span>
+<span class="k">add_header</span> <span class="s">X-Content-Type-Options</span> <span class="s">"nosniff"</span> <span class="s">always</span><span class="p">;</span>
+
+<span class="c1"># Referrer Policy</span>
+<span class="k">add_header</span> <span class="s">Referrer-Policy</span> <span class="s">"strict-origin-when-cross-origin"</span> <span class="s">always</span><span class="p">;</span>
+
+<span class="c1"># Permissions Policy</span>
+<span class="k">add_header</span> <span class="s">Permissions-Policy</span> <span class="s">"camera=(),</span> <span class="s">microphone=(),</span> <span class="s">geolocation=()"</span> <span class="s">always</span><span class="p">;</span>
+
+<span class="c1"># X-XSS-Protection (legacy)</span>
+<span class="k">add_header</span> <span class="s">X-XSS-Protection</span> <span class="s">"1</span><span class="p">;</span> <span class="k">mode=block"</span> <span class="s">always</span><span class="p">;</span>
+</code></pre></div></div>
+<h3 id="expressjs-nodejs">
+  
+  
+    <a href="#expressjs-nodejs" class="anchor-heading" aria-labelledby="expressjs-nodejs"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Express.js (Node.js)
+  
+  
+</h3>
+    
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">express</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">helmet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">helmet</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
+
+<span class="c1">// Use Helmet for security headers</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">helmet</span><span class="p">({</span>
+  <span class="na">contentSecurityPolicy</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">directives</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">defaultSrc</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">'self'</span><span class="dl">"</span><span class="p">],</span>
+      <span class="na">scriptSrc</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">'self'</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">'unsafe-inline'</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">'unsafe-eval'</span><span class="dl">"</span><span class="p">,</span> 
+                  <span class="dl">"</span><span class="s2">https://cdn.jsdelivr.net</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://cdnjs.cloudflare.com</span><span class="dl">"</span><span class="p">],</span>
+      <span class="na">styleSrc</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">'self'</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">'unsafe-inline'</span><span class="dl">"</span><span class="p">,</span> 
+                 <span class="dl">"</span><span class="s2">https://cdn.jsdelivr.net</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://cdnjs.cloudflare.com</span><span class="dl">"</span><span class="p">,</span> 
+                 <span class="dl">"</span><span class="s2">https://fonts.googleapis.com</span><span class="dl">"</span><span class="p">],</span>
+      <span class="na">imgSrc</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">'self'</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">data:</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https:</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">blob:</span><span class="dl">"</span><span class="p">],</span>
+      <span class="na">fontSrc</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">'self'</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">data:</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://fonts.gstatic.com</span><span class="dl">"</span><span class="p">,</span> 
+                <span class="dl">"</span><span class="s2">https://cdn.jsdelivr.net</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://cdnjs.cloudflare.com</span><span class="dl">"</span><span class="p">],</span>
+      <span class="na">connectSrc</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">'self'</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">ws:</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">wss:</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">http://localhost:*</span><span class="dl">"</span><span class="p">,</span> 
+                   <span class="dl">"</span><span class="s2">https://api.example.com</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://*.googleapis.com</span><span class="dl">"</span><span class="p">],</span>
+      <span class="na">frameSrc</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">'self'</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://www.youtube.com</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://player.vimeo.com</span><span class="dl">"</span><span class="p">],</span>
+      <span class="na">mediaSrc</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">'self'</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https:</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">blob:</span><span class="dl">"</span><span class="p">],</span>
+      <span class="na">objectSrc</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">'none'</span><span class="dl">"</span><span class="p">],</span>
+      <span class="na">baseUri</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">'self'</span><span class="dl">"</span><span class="p">],</span>
+      <span class="na">formAction</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">'self'</span><span class="dl">"</span><span class="p">],</span>
+      <span class="na">frameAncestors</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">'self'</span><span class="dl">"</span><span class="p">],</span>
+      <span class="na">upgradeInsecureRequests</span><span class="p">:</span> <span class="p">[]</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="na">frameguard</span><span class="p">:</span> <span class="p">{</span> <span class="na">action</span><span class="p">:</span> <span class="dl">'</span><span class="s1">sameorigin</span><span class="dl">'</span> <span class="p">},</span>
+  <span class="na">noSniff</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">referrerPolicy</span><span class="p">:</span> <span class="p">{</span> <span class="na">policy</span><span class="p">:</span> <span class="dl">'</span><span class="s1">strict-origin-when-cross-origin</span><span class="dl">'</span> <span class="p">}</span>
+<span class="p">}));</span>
+
+<span class="c1">// Custom Permissions Policy</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">((</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="dl">'</span><span class="s1">Permissions-Policy</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">camera=(), microphone=(), geolocation=()</span><span class="dl">'</span><span class="p">);</span>
+  <span class="nx">next</span><span class="p">();</span>
+<span class="p">});</span>
+</code></pre></div></div>
+<h2 id="security-header-explanations">
+  
+  
+    <a href="#security-header-explanations" class="anchor-heading" aria-labelledby="security-header-explanations"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Security Header Explanations
+  
+  
+</h2>
+    
+<h3 id="content-security-policy-csp">
+  
+  
+    <a href="#content-security-policy-csp" class="anchor-heading" aria-labelledby="content-security-policy-csp"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Content Security Policy (CSP)
+  
+  
+</h3>
+    
+<p><strong>Purpose</strong>: Prevents XSS attacks by controlling resource loading
+<strong>Current Settings</strong>:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">default-src 'self'</code>: Only allow resources from same origin by default</li>
+  <li><code class="language-plaintext highlighter-rouge">script-src</code>: Allow scripts from self, inline scripts, and CDNs</li>
+  <li><code class="language-plaintext highlighter-rouge">style-src</code>: Allow styles from self, inline styles, and font/CDN sources</li>
+  <li><code class="language-plaintext highlighter-rouge">img-src</code>: Allow images from self, data URIs, HTTPS, and blobs</li>
+  <li><code class="language-plaintext highlighter-rouge">connect-src</code>: Allow AJAX/WebSocket connections to self, localhost, and APIs</li>
+  <li><code class="language-plaintext highlighter-rouge">frame-src</code>: Allow iframes from self and video platforms</li>
+  <li><code class="language-plaintext highlighter-rouge">object-src 'none'</code>: Block plugins (Flash, etc.)</li>
+  <li><code class="language-plaintext highlighter-rouge">upgrade-insecure-requests</code>: Upgrade HTTP to HTTPS automatically</li>
+</ul>
+<h3 id="x-frame-options">
+  
+  
+    <a href="#x-frame-options" class="anchor-heading" aria-labelledby="x-frame-options"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> X-Frame-Options
+  
+  
+</h3>
+    
+<p><strong>Purpose</strong>: Prevents clickjacking attacks
+<strong>Setting</strong>: <code class="language-plaintext highlighter-rouge">SAMEORIGIN</code> - only allow framing from same origin
+<strong>Note</strong>: Must be set via HTTP header, not meta tag</p>
+<h3 id="x-content-type-options">
+  
+  
+    <a href="#x-content-type-options" class="anchor-heading" aria-labelledby="x-content-type-options"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> X-Content-Type-Options
+  
+  
+</h3>
+    
+<p><strong>Purpose</strong>: Prevents MIME type sniffing attacks
+<strong>Setting</strong>: <code class="language-plaintext highlighter-rouge">nosniff</code> - browsers must not sniff content types</p>
+<h3 id="referrer-policy">
+  
+  
+    <a href="#referrer-policy" class="anchor-heading" aria-labelledby="referrer-policy"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Referrer-Policy
+  
+  
+</h3>
+    
+<p><strong>Purpose</strong>: Controls how much referrer information is sent with requests
+<strong>Setting</strong>: <code class="language-plaintext highlighter-rouge">strict-origin-when-cross-origin</code> - balanced privacy and functionality</p>
+<h3 id="permissions-policy">
+  
+  
+    <a href="#permissions-policy" class="anchor-heading" aria-labelledby="permissions-policy"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Permissions-Policy
+  
+  
+</h3>
+    
+<p><strong>Purpose</strong>: Controls browser feature access
+<strong>Setting</strong>: Disable camera, microphone, and geolocation for privacy</p>
+<h3 id="strict-transport-security-hsts">
+  
+  
+    <a href="#strict-transport-security-hsts" class="anchor-heading" aria-labelledby="strict-transport-security-hsts"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Strict-Transport-Security (HSTS)
+  
+  
+</h3>
+    
+<p><strong>Purpose</strong>: Forces HTTPS connections
+<strong>Note</strong>: Only enable if serving over HTTPS
+<strong>Recommended</strong>: <code class="language-plaintext highlighter-rouge">max-age=31536000; includeSubDomains; preload</code></p>
+<h2 id="development-vs-production">
+  
+  
+    <a href="#development-vs-production" class="anchor-heading" aria-labelledby="development-vs-production"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Development vs Production
+  
+  
+</h2>
+    
+<h3 id="development-current">
+  
+  
+    <a href="#development-current" class="anchor-heading" aria-labelledby="development-current"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Development (Current)
+  
+  
+</h3>
+    
+<ul>
+  <li>Meta tags used where possible for easy testing</li>
+  <li><code class="language-plaintext highlighter-rouge">'unsafe-inline'</code> and <code class="language-plaintext highlighter-rouge">'unsafe-eval'</code> allowed for development flexibility</li>
+  <li>Localhost connections allowed for hot reload</li>
+</ul>
+<h3 id="production-recommendations">
+  
+  
+    <a href="#production-recommendations" class="anchor-heading" aria-labelledby="production-recommendations"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Production Recommendations
+  
+  
+</h3>
+    
+<ol>
+  <li><strong>Use HTTP headers instead of meta tags</strong> for better security</li>
+  <li><strong>Remove <code class="language-plaintext highlighter-rouge">'unsafe-inline'</code> and <code class="language-plaintext highlighter-rouge">'unsafe-eval'</code></strong> from CSP</li>
+  <li><strong>Use nonces or hashes</strong> for inline scripts/styles</li>
+  <li><strong>Enable HSTS</strong> if using HTTPS</li>
+  <li><strong>Add specific API endpoints</strong> instead of wildcards</li>
+  <li><strong>Set up CSP reporting</strong> to monitor violations</li>
+</ol>
+<h2 id="testing-security-headers">
+  
+  
+    <a href="#testing-security-headers" class="anchor-heading" aria-labelledby="testing-security-headers"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Testing Security Headers
+  
+  
+</h2>
+    
+<h3 id="online-tools">
+  
+  
+    <a href="#online-tools" class="anchor-heading" aria-labelledby="online-tools"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Online Tools
+  
+  
+</h3>
+    
+<ul>
+  <li><a href="https://securityheaders.com">securityheaders.com</a></li>
+  <li><a href="https://observatory.mozilla.org">Mozilla Observatory</a></li>
+  <li><a href="https://csp-evaluator.withgoogle.com">CSP Evaluator</a></li>
+</ul>
+<h3 id="browser-developer-tools">
+  
+  
+    <a href="#browser-developer-tools" class="anchor-heading" aria-labelledby="browser-developer-tools"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Browser Developer Tools
+  
+  
+</h3>
+    
+<ol>
+  <li>Open DevTools → Console</li>
+  <li>Look for CSP violation warnings</li>
+  <li>Test frame embedding in different origins</li>
+  <li>Check network requests for blocked resources</li>
+</ol>
+<h3 id="command-line-testing">
+  
+  
+    <a href="#command-line-testing" class="anchor-heading" aria-labelledby="command-line-testing"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Command Line Testing
+  
+  
+</h3>
+    
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Test with curl</span>
+curl <span class="nt">-I</span> https://your-domain.com
+
+<span class="c"># Test CSP specifically</span>
+curl <span class="nt">-H</span> <span class="s2">"User-Agent: Mozilla/5.0"</span> <span class="nt">-I</span> https://your-domain.com | <span class="nb">grep</span> <span class="nt">-i</span> <span class="s2">"content-security-policy"</span>
+</code></pre></div></div>
+<h2 id="common-issues-and-solutions">
+  
+  
+    <a href="#common-issues-and-solutions" class="anchor-heading" aria-labelledby="common-issues-and-solutions"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Common Issues and Solutions
+  
+  
+</h2>
+    
+<h3 id="issue-csp-violations">
+  
+  
+    <a href="#issue-csp-violations" class="anchor-heading" aria-labelledby="issue-csp-violations"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Issue: CSP Violations
+  
+  
+</h3>
+    
+<p><strong>Symptoms</strong>: Resources blocked, console warnings
+<strong>Solutions</strong>:</p>
+<ul>
+  <li>Add missing sources to CSP directives</li>
+  <li>Use nonces for inline scripts: <code class="language-plaintext highlighter-rouge">&lt;script nonce="random-value"&gt;</code></li>
+  <li>Move inline styles to external files</li>
+</ul>
+<h3 id="issue-mixed-content-warnings">
+  
+  
+    <a href="#issue-mixed-content-warnings" class="anchor-heading" aria-labelledby="issue-mixed-content-warnings"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Issue: Mixed Content Warnings
+  
+  
+</h3>
+    
+<p><strong>Symptoms</strong>: HTTP resources blocked on HTTPS pages
+<strong>Solutions</strong>:</p>
+<ul>
+  <li>Use <code class="language-plaintext highlighter-rouge">upgrade-insecure-requests</code> directive</li>
+  <li>Update all resource URLs to HTTPS</li>
+  <li>Use protocol-relative URLs: <code class="language-plaintext highlighter-rouge">//cdn.example.com</code></li>
+</ul>
+<h3 id="issue-frame-embedding-blocked">
+  
+  
+    <a href="#issue-frame-embedding-blocked" class="anchor-heading" aria-labelledby="issue-frame-embedding-blocked"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Issue: Frame Embedding Blocked
+  
+  
+</h3>
+    
+<p><strong>Symptoms</strong>: Site cannot be embedded in iframes
+<strong>Solutions</strong>:</p>
+<ul>
+  <li>Adjust <code class="language-plaintext highlighter-rouge">X-Frame-Options</code> header</li>
+  <li>Use <code class="language-plaintext highlighter-rouge">frame-ancestors</code> CSP directive</li>
+  <li>Allow specific domains if needed</li>
+</ul>
+<h3 id="issue-hsts-errors">
+  
+  
+    <a href="#issue-hsts-errors" class="anchor-heading" aria-labelledby="issue-hsts-errors"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Issue: HSTS Errors
+  
+  
+</h3>
+    
+<p><strong>Symptoms</strong>: Cannot access site over HTTP after HSTS
+<strong>Solutions</strong>:</p>
+<ul>
+  <li>Only enable HSTS on HTTPS sites</li>
+  <li>Use shorter max-age during testing</li>
+  <li>Clear HSTS settings in browser for testing</li>
+</ul>
+<h2 id="monitoring-and-maintenance">
+  
+  
+    <a href="#monitoring-and-maintenance" class="anchor-heading" aria-labelledby="monitoring-and-maintenance"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Monitoring and Maintenance
+  
+  
+</h2>
+    
+<h3 id="csp-reporting">
+  
+  
+    <a href="#csp-reporting" class="anchor-heading" aria-labelledby="csp-reporting"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> CSP Reporting
+  
+  
+</h3>
+    
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Add to CSP header</span>
+<span class="dl">"</span><span class="s2">report-uri https://your-domain.com/csp-violations</span><span class="dl">"</span>
+
+<span class="c1">// Or use newer report-to</span>
+<span class="dl">"</span><span class="s2">report-to csp-endpoint</span><span class="dl">"</span>
+</code></pre></div></div>
+<h3 id="regular-security-audits">
+  
+  
+    <a href="#regular-security-audits" class="anchor-heading" aria-labelledby="regular-security-audits"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Regular Security Audits
+  
+  
+</h3>
+    
+<ol>
+  <li><strong>Monthly</strong>: Run automated security header scans</li>
+  <li><strong>Quarterly</strong>: Review CSP violations and adjust policies</li>
+  <li><strong>Annually</strong>: Full security assessment including penetration testing</li>
+</ol>
+<h3 id="keeping-headers-updated">
+  
+  
+    <a href="#keeping-headers-updated" class="anchor-heading" aria-labelledby="keeping-headers-updated"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Keeping Headers Updated
+  
+  
+</h3>
+    
+<ul>
+  <li>Monitor browser compatibility changes</li>
+  <li>Update CSP as new features/dependencies are added</li>
+  <li>Review and tighten security policies periodically</li>
+</ul>
+<h2 id="resources">
+  
+  
+    <a href="#resources" class="anchor-heading" aria-labelledby="resources"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Resources
+  
+  
+</h2>
+    
+
+<ul>
+  <li><a href="https://owasp.org/www-project-secure-headers/">OWASP Secure Headers Project</a></li>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers#security">MDN Security Headers</a></li>
+  <li><a href="https://content-security-policy.com/">CSP Reference</a></li>
+  <li><a href="https://securityheaders.com/">Security Headers Quick Reference</a></li>
+</ul>
+
+          
+
+          
+            
+          
+        </main>
+        
+
+  <hr>
+  <footer>
+    
+      <p><a href="#top" id="back-to-top">Back to top</a></p>
+    
+
+    <p class="text-small text-grey-dk-100 mb-0">Copyright &copy; {{ 'now' | date: '%Y' }} Colorlib. Distributed under the <a href="https://github.com/puikinsh/gentelella/blob/master/LICENSE.txt">MIT license</a>.</p>
+
+    
+  </footer>
+
+
+      </div>
+    </div>
+    
+      
+
+<div class="search-overlay"></div>
+
+    
+  </div>
+
+  
+</body>
+</html>
+

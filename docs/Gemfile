@@ -3,6 +3,9 @@ source "https://rubygems.org"
 # GitHub Pages compatible Jekyll version
 gem "github-pages", group: :jekyll_plugins
 
+# Override nokogiri to get latest security patches
+gem "nokogiri", ">= 1.16.0"
+
 # Theme
 gem "just-the-docs"
 
