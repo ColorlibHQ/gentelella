@@ -6,8 +6,8 @@
 
 // Modern DOM utilities (jQuery replacement)
 const DOM = {
-  select: (selector) => document.querySelector(selector),
-  selectAll: (selector) => [...document.querySelectorAll(selector)],
+  select: selector => document.querySelector(selector),
+  selectAll: selector => [...document.querySelectorAll(selector)],
   on: (element, event, handler) => element.addEventListener(event, handler),
   find: (element, selector) => element.querySelector(selector),
   closest: (element, selector) => element.closest(selector),
@@ -47,7 +47,7 @@ const DOM = {
 export function initializePanelToolbox() {
   // Close panel functionality - MODERNIZED
   DOM.selectAll('.close-link').forEach(link => {
-    DOM.on(link, 'click', function(e) {
+    DOM.on(link, 'click', function (e) {
       e.preventDefault();
       const panel = DOM.closest(this, '.x_panel');
       if (panel) {
@@ -58,12 +58,12 @@ export function initializePanelToolbox() {
 
   // Collapse panel functionality - MODERNIZED
   DOM.selectAll('.collapse-link').forEach(link => {
-    DOM.on(link, 'click', function(e) {
+    DOM.on(link, 'click', function (e) {
       e.preventDefault();
       const panel = DOM.closest(this, '.x_panel');
       const content = DOM.find(panel, '.x_content');
       const icon = DOM.find(this, 'i');
-      
+
       if (content && icon) {
         if (content.style.display === 'none') {
           DOM.slideDown(content);
@@ -95,7 +95,7 @@ export function initializeProgressBars() {
 
     // Remove any inline width styles to allow animation
     bar.style.removeProperty('width');
-    
+
     // Set initial state with !important to override any CSS
     bar.style.setProperty('width', '0%', 'important');
     bar.setAttribute('aria-valuenow', '0');
@@ -119,17 +119,17 @@ export function initializeProgressBars() {
     if (bar.getAttribute('data-transitiongoal')) {
       return;
     }
-    
+
     // Extract target percentage from inline style
     const inlineWidth = bar.style.width;
     if (inlineWidth && inlineWidth.includes('%')) {
       const targetPercent = parseInt(inlineWidth.replace('%', ''), 10);
-      
+
       // Remove inline width and animate
       bar.style.removeProperty('width');
       bar.style.setProperty('width', '0%', 'important');
       bar.setAttribute('aria-valuenow', '0');
-      
+
       // Animate to target value with delay for staggered effect
       const delay = Array.from(appVersionBars).indexOf(bar) * 100 + 200;
       setTimeout(() => {
@@ -147,7 +147,7 @@ export function initializeProgressBars() {
     if (DOM.closest(bar, '.widget_summary')) {
       return;
     }
-    
+
     const currentPercent = bar.style.width || bar.getAttribute('aria-valuenow') + '%' || '0%';
     bar.style.width = currentPercent;
   });
@@ -162,12 +162,12 @@ export function initializeProgressBars() {
 export function initializeToasts() {
   // Initialize all toast elements
   const toastElements = DOM.selectAll('.toast');
-  
+
   toastElements.forEach(toastEl => {
     // Use Bootstrap 5 native Toast API instead of jQuery plugin
     if (typeof bootstrap !== 'undefined' && bootstrap.Toast) {
       const toast = new bootstrap.Toast(toastEl);
-      
+
       // Auto-show toasts marked with data-show
       if (toastEl.getAttribute('data-show') === 'true') {
         toast.show();
@@ -211,8 +211,9 @@ export function initializeSwitchery() {
   }
 
   DOM.selectAll('.js-switch').forEach(element => {
-    if (!element.switchery) { // Avoid double initialization
-      new Switchery(element, { 
+    if (!element.switchery) {
+      // Avoid double initialization
+      new Switchery(element, {
         color: '#26B99A',
         size: 'small'
       });

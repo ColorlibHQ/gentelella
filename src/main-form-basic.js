@@ -52,12 +52,12 @@ import 'jquery-knob';
 import * as CropperModule from 'cropperjs';
 
 // Create a library availability checker for inline scripts
-window.waitForLibraries = function(libraries, callback, timeout = 5000) {
+window.waitForLibraries = function (libraries, callback, timeout = 5000) {
   const startTime = Date.now();
 
   function check() {
     const allAvailable = libraries.every(lib => {
-      return (typeof window[lib] !== 'undefined') || (typeof globalThis[lib] !== 'undefined');
+      return typeof window[lib] !== 'undefined' || typeof globalThis[lib] !== 'undefined';
     });
 
     if (allAvailable) {
@@ -73,19 +73,21 @@ window.waitForLibraries = function(libraries, callback, timeout = 5000) {
 };
 
 // Dispatch a custom event when all modules are loaded
-window.dispatchEvent(new CustomEvent('form-libraries-loaded', {
-  detail: {
-    timestamp: Date.now(),
-    libraries: {
-      jQuery: typeof window.$,
-      TempusDominus: typeof window.TempusDominus,
-      Cropper: typeof window.Cropper,
-      Pickr: typeof window.Pickr,
-      Inputmask: typeof window.Inputmask,
-      Switchery: typeof window.Switchery
+window.dispatchEvent(
+  new CustomEvent('form-libraries-loaded', {
+    detail: {
+      timestamp: Date.now(),
+      libraries: {
+        jQuery: typeof window.$,
+        TempusDominus: typeof window.TempusDominus,
+        Cropper: typeof window.Cropper,
+        Pickr: typeof window.Pickr,
+        Inputmask: typeof window.Inputmask,
+        Switchery: typeof window.Switchery
+      }
     }
-  }
-}));
+  })
+);
 
 // Also immediately trigger initialization when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
@@ -107,18 +109,23 @@ document.addEventListener('DOMContentLoaded', () => {
     // Helper to refresh preview canvas
     const previewEl = document.getElementById('cropper-preview');
     const refreshPreview = () => {
-      if (!previewEl) {return;}
+      if (!previewEl) {
+        return;
+      }
       const currentSel = cropperInstance.getCropperSelection();
       if (!currentSel || currentSel.hidden) {
         previewEl.innerHTML = sanitizeHtml('<span class="text-muted small">No selection</span>');
         return;
       }
-      currentSel.$toCanvas().then(canvas => {
-        previewEl.innerHTML = sanitizeHtml('');
-        canvas.style.width = '100%';
-        canvas.style.height = 'auto';
-        previewEl.appendChild(canvas);
-      }).catch(err => console.error('Preview render error:', err));
+      currentSel
+        .$toCanvas()
+        .then(canvas => {
+          previewEl.innerHTML = sanitizeHtml('');
+          canvas.style.width = '100%';
+          canvas.style.height = 'auto';
+          previewEl.appendChild(canvas);
+        })
+        .catch(err => console.error('Preview render error:', err));
     };
 
     // Rotate button
@@ -154,13 +161,18 @@ document.addEventListener('DOMContentLoaded', () => {
     if (downloadBtn) {
       downloadBtn.addEventListener('click', () => {
         const selection = cropperInstance.getCropperSelection();
-        if (!selection) {return;}
-        selection.$toCanvas().then(canvas => {
-          const link = document.createElement('a');
-          link.href = canvas.toDataURL('image/jpeg');
-          link.download = 'cropped-image.jpg';
-          link.click();
-        }).catch(err => console.error('Download failed:', err));
+        if (!selection) {
+          return;
+        }
+        selection
+          .$toCanvas()
+          .then(canvas => {
+            const link = document.createElement('a');
+            link.href = canvas.toDataURL('image/jpeg');
+            link.download = 'cropped-image.jpg';
+            link.click();
+          })
+          .catch(err => console.error('Download failed:', err));
       });
     }
 
@@ -170,6 +182,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initial preview render after load
     setTimeout(refreshPreview, 600);
   } else {
-    console.warn('⚠️ Cropper source image or library not found. Skipping Cropper.js v2 initialization');
+    console.warn(
+      '⚠️ Cropper source image or library not found. Skipping Cropper.js v2 initialization'
+    );
   }
 });

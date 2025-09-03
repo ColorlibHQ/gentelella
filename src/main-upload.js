@@ -1,6 +1,5 @@
 // Form Upload.html specific JavaScript with Dropzone integration
 
-
 // Import jQuery setup first
 import $ from './jquery-setup.js';
 window.jQuery = window.$ = $;
@@ -27,15 +26,11 @@ import 'dropzone/dist/dropzone.css';
 window.Dropzone = Dropzone;
 globalThis.Dropzone = Dropzone;
 
-
-
 // Configure Dropzone defaults
 Dropzone.autoDiscover = false;
 
 // Initialize Dropzone when DOM is ready
-document.addEventListener('DOMContentLoaded', function() {
-
-
+document.addEventListener('DOMContentLoaded', function () {
   const dropzoneElement = document.querySelector('.dropzone');
 
   if (dropzoneElement) {
@@ -94,25 +89,17 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                 `,
 
-        init: function() {
-          this.on('addedfile', function(file) {
+        init: function () {
+          this.on('addedfile', function (file) {});
 
-          });
+          this.on('removedfile', function (file) {});
 
-          this.on('removedfile', function(file) {
+          this.on('success', function (file, response) {});
 
-          });
-
-          this.on('success', function(file, response) {
-
-          });
-
-          this.on('error', function(file, errorMessage) {
-
-          });
+          this.on('error', function (file, errorMessage) {});
 
           // Since this is a demo, simulate successful uploads
-          this.on('sending', function(file, xhr, formData) {
+          this.on('sending', function (file, xhr, formData) {
             // Simulate upload success after 2 seconds
             setTimeout(() => {
               this.emit('success', file, 'Upload successful (demo)');
@@ -128,9 +115,6 @@ document.addEventListener('DOMContentLoaded', function() {
       // Store reference globally
       window.myDropzone = myDropzone;
       globalThis.myDropzone = myDropzone;
-
-
-
     } catch (error) {
       console.error('❌ Error initializing Dropzone:', error);
     }
@@ -138,4 +122,3 @@ document.addEventListener('DOMContentLoaded', function() {
     console.warn('⚠️ Dropzone element not found');
   }
 });
-

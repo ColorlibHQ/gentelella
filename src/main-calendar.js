@@ -1,6 +1,5 @@
 // Calendar.html specific JavaScript with FullCalendar integration
 
-
 // Import jQuery setup first
 import $ from './jquery-setup.js';
 window.jQuery = window.$ = $;
@@ -32,8 +31,6 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 window.FullCalendar = { Calendar, dayGridPlugin, interactionPlugin, timeGridPlugin };
 globalThis.FullCalendar = { Calendar, dayGridPlugin, interactionPlugin, timeGridPlugin };
 
-
-
 // Global variables
 let currentCalendar = null;
 let selectedEvent = null;
@@ -47,7 +44,8 @@ const sampleEvents = [
     end: '2032-06-01T11:00:00',
     backgroundColor: '#26B99A',
     borderColor: '#26B99A',
-    description: 'Quarterly review meeting with stakeholders to discuss performance metrics and strategic planning.',
+    description:
+      'Quarterly review meeting with stakeholders to discuss performance metrics and strategic planning.',
     location: 'Conference Room A',
     category: 'meeting'
   },
@@ -69,7 +67,8 @@ const sampleEvents = [
     end: '2032-06-14T17:00:00',
     backgroundColor: '#E74C3C',
     borderColor: '#E74C3C',
-    description: 'Annual product launch conference featuring new product announcements and industry insights.',
+    description:
+      'Annual product launch conference featuring new product announcements and industry insights.',
     location: 'Convention Center',
     category: 'conference'
   },
@@ -80,7 +79,8 @@ const sampleEvents = [
     end: '2032-06-15T16:00:00',
     backgroundColor: '#F39C12',
     borderColor: '#F39C12',
-    description: 'Hands-on technical workshop covering new development frameworks and best practices.',
+    description:
+      'Hands-on technical workshop covering new development frameworks and best practices.',
     location: 'Training Room',
     category: 'workshop'
   },
@@ -98,7 +98,9 @@ const sampleEvents = [
 
 // Utility functions
 function formatDateForInput(date) {
-  if (!date) {return '';}
+  if (!date) {
+    return '';
+  }
   const d = new Date(date);
   const year = d.getFullYear();
   const month = String(d.getMonth() + 1).padStart(2, '0');
@@ -113,9 +115,7 @@ function generateEventId() {
 }
 
 // Initialize calendar when DOM is ready
-document.addEventListener('DOMContentLoaded', function() {
-
-
+document.addEventListener('DOMContentLoaded', function () {
   const calendarEl = document.getElementById('calendar');
 
   if (calendarEl) {
@@ -138,18 +138,16 @@ document.addEventListener('DOMContentLoaded', function() {
       events: sampleEvents,
 
       // Event handlers
-      select: function(selectInfo) {
-
+      select: function (selectInfo) {
         openNewEventModal(selectInfo);
       },
 
-      eventClick: function(eventClickInfo) {
-
+      eventClick: function (eventClickInfo) {
         selectedEvent = eventClickInfo.event;
         showEventDetails(eventClickInfo.event);
       },
 
-      eventDidMount: function(info) {
+      eventDidMount: function (info) {
         // Add tooltip to events
         info.el.setAttribute('title', info.event.title);
         if (info.event.extendedProps.description) {
@@ -161,14 +159,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
     currentCalendar.render();
 
-
     // Make calendar available globally
     window.calendar = currentCalendar;
     globalThis.calendar = currentCalendar;
 
     // Initialize tooltips
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+    const tooltipList = [...tooltipTriggerList].map(
+      tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl)
+    );
   }
 
   // Modal event handlers
@@ -205,9 +204,15 @@ function showEventDetails(event) {
 
   // Sanitize all user-controlled data to prevent XSS attacks
   const safeTitle = DOMPurify.sanitize(event.title || '');
-  const safeDescription = event.extendedProps.description ? DOMPurify.sanitize(event.extendedProps.description) : '';
-  const safeLocation = event.extendedProps.location ? DOMPurify.sanitize(event.extendedProps.location) : '';
-  const safeCategory = event.extendedProps.category ? DOMPurify.sanitize(event.extendedProps.category) : '';
+  const safeDescription = event.extendedProps.description
+    ? DOMPurify.sanitize(event.extendedProps.description)
+    : '';
+  const safeLocation = event.extendedProps.location
+    ? DOMPurify.sanitize(event.extendedProps.location)
+    : '';
+  const safeCategory = event.extendedProps.category
+    ? DOMPurify.sanitize(event.extendedProps.category)
+    : '';
 
   const eventDetailsHtml = `
         <div class="row mb-3">
@@ -218,30 +223,46 @@ function showEventDetails(event) {
             <div class="col-md-3"><strong>Start:</strong></div>
             <div class="col-md-9">${startDate} ${startTime}</div>
         </div>
-        ${event.end ? `
+        ${
+          event.end
+            ? `
         <div class="row mb-3">
             <div class="col-md-3"><strong>End:</strong></div>
             <div class="col-md-9">${endDate} ${endTime}</div>
         </div>
-        ` : ''}
-        ${safeDescription ? `
+        `
+            : ''
+        }
+        ${
+          safeDescription
+            ? `
         <div class="row mb-3">
             <div class="col-md-3"><strong>Description:</strong></div>
             <div class="col-md-9">${safeDescription}</div>
         </div>
-        ` : ''}
-        ${safeLocation ? `
+        `
+            : ''
+        }
+        ${
+          safeLocation
+            ? `
         <div class="row mb-3">
             <div class="col-md-3"><strong>Location:</strong></div>
             <div class="col-md-9">${safeLocation}</div>
         </div>
-        ` : ''}
-        ${safeCategory ? `
+        `
+            : ''
+        }
+        ${
+          safeCategory
+            ? `
         <div class="row mb-3">
             <div class="col-md-3"><strong>Category:</strong></div>
             <div class="col-md-9"><span class="badge bg-secondary">${safeCategory}</span></div>
         </div>
-        ` : ''}
+        `
+            : ''
+        }
     `;
 
   // Final sanitization of the entire HTML block
@@ -268,7 +289,7 @@ function openEditEventModal(event) {
 
 function setupModalHandlers() {
   // Save new event
-  document.getElementById('saveNewEvent').addEventListener('click', function() {
+  document.getElementById('saveNewEvent').addEventListener('click', function () {
     const form = document.getElementById('newEventForm');
 
     if (form.checkValidity()) {
@@ -294,14 +315,13 @@ function setupModalHandlers() {
 
       // Show success message
       showToast('Event created successfully!', 'success');
-
     } else {
       form.classList.add('was-validated');
     }
   });
 
   // Save edited event
-  document.getElementById('saveEditEvent').addEventListener('click', function() {
+  document.getElementById('saveEditEvent').addEventListener('click', function () {
     if (selectedEvent) {
       const form = document.getElementById('editEventForm');
 
@@ -324,7 +344,6 @@ function setupModalHandlers() {
 
         // Show success message
         showToast('Event updated successfully!', 'success');
-
       } else {
         form.classList.add('was-validated');
       }
@@ -332,7 +351,7 @@ function setupModalHandlers() {
   });
 
   // Delete event
-  document.getElementById('deleteEvent').addEventListener('click', function() {
+  document.getElementById('deleteEvent').addEventListener('click', function () {
     if (selectedEvent && confirm('Are you sure you want to delete this event?')) {
       selectedEvent.remove();
 
@@ -345,7 +364,7 @@ function setupModalHandlers() {
   });
 
   // Edit event button from details modal
-  document.getElementById('editEventBtn').addEventListener('click', function() {
+  document.getElementById('editEventBtn').addEventListener('click', function () {
     if (selectedEvent) {
       // Close details modal
       bootstrap.Modal.getInstance(document.getElementById('EventDetailsModal')).hide();
@@ -356,12 +375,12 @@ function setupModalHandlers() {
   });
 
   // Clear form validation on modal close
-  document.getElementById('CalenderModalNew').addEventListener('hidden.bs.modal', function() {
+  document.getElementById('CalenderModalNew').addEventListener('hidden.bs.modal', function () {
     document.getElementById('newEventForm').classList.remove('was-validated');
     document.getElementById('newEventForm').reset();
   });
 
-  document.getElementById('CalenderModalEdit').addEventListener('hidden.bs.modal', function() {
+  document.getElementById('CalenderModalEdit').addEventListener('hidden.bs.modal', function () {
     document.getElementById('editEventForm').classList.remove('was-validated');
     selectedEvent = null;
   });
@@ -392,7 +411,7 @@ function showToast(message, type = 'info') {
   toast.show();
 
   // Remove toast element after it's hidden
-  toastElement.addEventListener('hidden.bs.toast', function() {
+  toastElement.addEventListener('hidden.bs.toast', function () {
     toastElement.remove();
   });
 }
@@ -404,4 +423,3 @@ function createToastContainer() {
   document.body.appendChild(container);
   return container;
 }
-

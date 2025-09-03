@@ -46,7 +46,7 @@ export function initializeSkycons() {
       initializedCount++;
     }
 
-    // Legacy support: Humidity widget (if exists)  
+    // Legacy support: Humidity widget (if exists)
     const humidityElement = document.getElementById('canvas-humidity');
     if (humidityElement) {
       skycons.add(humidityElement, Skycons.CLOUDY);
@@ -86,7 +86,6 @@ export function initializeSkycons() {
 
     // Return skycons instance for external control
     return skycons;
-
   } catch (error) {
     console.error('❌ Failed to initialize Skycons:', error);
   }
@@ -106,16 +105,24 @@ export function simulateWeatherData() {
 
   // Update weather displays if they exist
   const tempDisplay = document.querySelector('[data-weather-temp]');
-  if (tempDisplay) tempDisplay.textContent = weatherData.temperature;
+  if (tempDisplay) {
+    tempDisplay.textContent = weatherData.temperature;
+  }
 
   const humidityDisplay = document.querySelector('[data-weather-humidity]');
-  if (humidityDisplay) humidityDisplay.textContent = weatherData.humidity;
+  if (humidityDisplay) {
+    humidityDisplay.textContent = weatherData.humidity;
+  }
 
   const windDisplay = document.querySelector('[data-weather-wind]');
-  if (windDisplay) windDisplay.textContent = weatherData.windSpeed;
+  if (windDisplay) {
+    windDisplay.textContent = weatherData.windSpeed;
+  }
 
   const rainDisplay = document.querySelector('[data-weather-rain]');
-  if (rainDisplay) rainDisplay.textContent = weatherData.rainfall;
+  if (rainDisplay) {
+    rainDisplay.textContent = weatherData.rainfall;
+  }
 
   return weatherData;
 }
@@ -129,7 +136,7 @@ export async function fetchWeatherData(location = 'New York') {
     // Replace with your weather API endpoint
     // const response = await fetch(`https://api.weather.com/current?location=${location}`);
     // const data = await response.json();
-    
+
     // For now, return simulated data
     return simulateWeatherData();
   } catch (error) {
@@ -143,8 +150,8 @@ if (typeof document !== 'undefined') {
   document.addEventListener('DOMContentLoaded', () => {
     const weatherElements = document.querySelectorAll(
       '.weather-icon, [data-weather], ' +
-      '#canvas-temperature, #canvas-humidity, #canvas-wind, #canvas-rain, ' +
-      '#partly-cloudy-day, #clear-day, #rain, #snow, #sleet, #wind, #cloudy'
+        '#canvas-temperature, #canvas-humidity, #canvas-wind, #canvas-rain, ' +
+        '#partly-cloudy-day, #clear-day, #rain, #snow, #sleet, #wind, #cloudy'
     );
     if (weatherElements.length > 0) {
       initializeSkycons();

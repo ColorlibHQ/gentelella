@@ -13,9 +13,9 @@ import 'datatables.net-keytable';
 
 // Modern DOM utilities
 const DOM = {
-  select: (selector) => document.querySelector(selector),
-  selectAll: (selector) => [...document.querySelectorAll(selector)],
-  exists: (selector) => document.querySelector(selector) !== null,
+  select: selector => document.querySelector(selector),
+  selectAll: selector => [...document.querySelectorAll(selector)],
+  exists: selector => document.querySelector(selector) !== null,
   getAttribute: (element, attr) => element?.getAttribute(attr),
   addClass: (element, className) => element?.classList.add(className),
   removeClass: (element, className) => element?.classList.remove(className)
@@ -30,7 +30,7 @@ export function initializeModernDataTables() {
 
   // Find all tables marked for DataTable initialization
   const tableElements = DOM.selectAll('.datatable, [data-table], .table-responsive table');
-  
+
   if (tableElements.length === 0) {
     console.log('ℹ️ No tables found for DataTable initialization');
     return;
@@ -47,16 +47,15 @@ export function initializeModernDataTables() {
 
       // Get configuration from data attributes
       const config = getTableConfig(table);
-      
+
       // Initialize DataTable with modern JavaScript (no jQuery)
       const dataTable = new DataTable(table, config);
-      
+
       // Store reference for external access
       table.dataTableInstance = dataTable;
       initializedTables.push({ table, instance: dataTable });
 
       console.log(`✅ DataTable initialized: ${table.id || 'table-' + initializedTables.length}`);
-
     } catch (error) {
       console.error('❌ Failed to initialize DataTable:', error);
     }
@@ -79,10 +78,10 @@ function getTableConfig(table) {
     // Bootstrap 5 styling (built-in with datatables.net-bs5)
     responsive: true,
     autoWidth: false,
-    
+
     // Modern pagination
     pagingType: 'simple_numbers',
-    
+
     // Language configuration
     language: {
       search: 'Search:',
@@ -101,9 +100,10 @@ function getTableConfig(table) {
     },
 
     // Bootstrap 5 compatible DOM structure
-    dom: '<"row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6"f>>' +
-         '<"row"<"col-sm-12"tr>>' +
-         '<"row"<"col-sm-12 col-md-5"i><"col-sm-12 col-md-7"p>>'
+    dom:
+      '<"row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6"f>>' +
+      '<"row"<"col-sm-12"tr>>' +
+      '<"row"<"col-sm-12 col-md-5"i><"col-sm-12 col-md-7"p>>'
   };
 
   // Get configuration from data attributes
@@ -133,11 +133,11 @@ function initializeAdvancedTables() {
   DOM.selectAll('.advanced-table').forEach(table => {
     if (table.dataTableInstance) {
       const dataTable = table.dataTableInstance;
-      
+
       // Add custom search functionality
       const customSearch = DOM.select(`[data-table-search="${table.id}"]`);
       if (customSearch) {
-        customSearch.addEventListener('input', function() {
+        customSearch.addEventListener('input', function () {
           dataTable.search(this.value).draw();
         });
       }
@@ -145,7 +145,7 @@ function initializeAdvancedTables() {
       // Add column-specific filters
       DOM.selectAll(`[data-column-filter="${table.id}"]`).forEach(filter => {
         const columnIndex = parseInt(DOM.getAttribute(filter, 'data-column'));
-        filter.addEventListener('change', function() {
+        filter.addEventListener('change', function () {
           dataTable.column(columnIndex).search(this.value).draw();
         });
       });
@@ -158,12 +158,14 @@ function initializeAdvancedTables() {
  */
 function initializeExportTables() {
   DOM.selectAll('.export-table, [data-export]').forEach(table => {
-    if (!table.dataTableInstance) return;
+    if (!table.dataTableInstance) {
+      return;
+    }
 
     try {
       // Add export buttons using DataTables buttons extension
       const dataTable = table.dataTableInstance;
-      
+
       // Configure export buttons
       const exportConfig = {
         dom: 'Bfrtip',
@@ -202,11 +204,10 @@ function initializeExportTables() {
         ...getTableConfig(table),
         ...exportConfig
       });
-      
+
       table.dataTableInstance = newTable;
 
       console.log(`✅ Export functionality added to table: ${table.id || 'unnamed'}`);
-
     } catch (error) {
       console.error('❌ Failed to add export functionality:', error);
     }
@@ -218,12 +219,14 @@ function initializeExportTables() {
  */
 function initializeResponsiveTables() {
   DOM.selectAll('.responsive-table').forEach(table => {
-    if (!table.dataTableInstance) return;
+    if (!table.dataTableInstance) {
+      return;
+    }
 
     const dataTable = table.dataTableInstance;
 
     // Add responsive breakpoint handling
-    dataTable.on('responsive-display', function(e, datatable, row, showHide, update) {
+    dataTable.on('responsive-display', function (e, datatable, row, showHide, update) {
       if (showHide) {
         // Row details shown
         DOM.addClass(row.node(), 'row-details-open');
@@ -256,19 +259,18 @@ export function updateTableData(tableId, newData) {
 
   try {
     const dataTable = table.dataTableInstance;
-    
+
     // Clear existing data
     dataTable.clear();
-    
+
     // Add new data
     dataTable.rows.add(newData);
-    
+
     // Redraw table
     dataTable.draw();
-    
+
     console.log(`✅ Table data updated: ${tableId}`);
     return true;
-
   } catch (error) {
     console.error('❌ Failed to update table data:', error);
     return false;
@@ -333,7 +335,7 @@ export const TableUtils = {
     const table = DOM.select(`#${tableId}`);
     if (table && table.dataTableInstance) {
       const dataTable = table.dataTableInstance;
-      
+
       switch (format.toLowerCase()) {
         case 'csv':
           dataTable.button('.buttons-csv').trigger();
@@ -378,10 +380,10 @@ export const TableUtils = {
       if (table.dataTableInstance) {
         table.dataTableInstance.destroy();
       }
-      
+
       const dataTable = new DataTable(table, getTableConfig(table));
       table.dataTableInstance = dataTable;
-      
+
       console.log(`✅ Table reinitialized: ${tableId}`);
       return true;
     }
@@ -417,15 +419,15 @@ export function initializeSampleTables() {
           </tr>
         </thead>
         <tbody>
-          ${sampleData.map(row => 
-            `<tr>${row.map(cell => `<td>${cell}</td>`).join('')}</tr>`
-          ).join('')}
+          ${sampleData
+            .map(row => `<tr>${row.map(cell => `<td>${cell}</td>`).join('')}</tr>`)
+            .join('')}
         </tbody>
       </table>
     `;
-    
+
     demoContainer.innerHTML = tableHTML;
-    
+
     // Initialize the demo table
     const demoTable = new DataTable('#demo-table', {
       responsive: true,
@@ -443,7 +445,7 @@ if (typeof document !== 'undefined') {
   document.addEventListener('DOMContentLoaded', () => {
     // Initialize modern DataTables (jQuery-free)
     initializeModernDataTables();
-    
+
     // Initialize sample tables for demo
     initializeSampleTables();
   });

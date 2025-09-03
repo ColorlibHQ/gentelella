@@ -40,7 +40,7 @@
   .wf-loading & {
     visibility: hidden;
   }
-  
+
   // Show text when fonts are loaded
   .wf-active &,
   .wf-inactive & {
@@ -49,13 +49,15 @@
 }
 
 // System font stack fallback for better performance
-$system-font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+$system-font-stack:
+  -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+  "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
 // Ensure good fallbacks for custom fonts
 body {
   // This ensures text is visible even if custom fonts fail to load
   font-family: $system-font-stack;
-  
+
   // When custom fonts load, they'll override this
   .wf-active & {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;

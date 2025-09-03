@@ -16,14 +16,17 @@ function initSidebar() {
     const navMenu = DOM.select('.nav_menu');
     const footer = DOM.select('footer');
 
-    if (!rightCol) return;
+    if (!rightCol) {
+      return;
+    }
 
     // reset height
     DOM.css(rightCol, 'min-height', window.innerHeight + 'px');
 
     const bodyHeight = DOM.outerHeight(body);
-    const footerHeight = DOM.hasClass(body, 'footer_fixed') ? -10 : (footer ? DOM.height(footer) : 0);
-    const leftColHeight = (leftCol ? DOM.height(leftCol) : 0) + (sidebarFooter ? DOM.height(sidebarFooter) : 0);
+    const footerHeight = DOM.hasClass(body, 'footer_fixed') ? -10 : footer ? DOM.height(footer) : 0;
+    const leftColHeight =
+      (leftCol ? DOM.height(leftCol) : 0) + (sidebarFooter ? DOM.height(sidebarFooter) : 0);
     let contentHeight = bodyHeight < leftColHeight ? leftColHeight : bodyHeight;
 
     // normalize content
@@ -36,12 +39,16 @@ function initSidebar() {
   const body = document.body;
   const currentUrl = window.location.href.split('#')[0].split('?')[0];
 
-  if (!sidebarMenu) return;
+  if (!sidebarMenu) {
+    return;
+  }
 
   // Enhanced sidebar menu click handler
-  sidebarMenu.addEventListener('click', function(ev) {
+  sidebarMenu.addEventListener('click', function (ev) {
     const target = ev.target.closest('a');
-    if (!target) return;
+    if (!target) {
+      return;
+    }
 
     const li = target.parentElement;
     const submenu = li.querySelector('ul.child_menu');
@@ -87,19 +94,23 @@ function initSidebar() {
   // Menu toggle functionality
   const menuToggle = DOM.select('#menu_toggle');
   if (menuToggle) {
-    menuToggle.addEventListener('click', function(ev) {
+    menuToggle.addEventListener('click', function (ev) {
       ev.preventDefault();
-      
+
       if (DOM.hasClass(body, 'nav-md')) {
         DOM.removeClass(body, 'nav-md');
         DOM.addClass(body, 'nav-sm');
-        
+
         // Hide full logo, show icon logo
         const logoFull = DOM.select('.logo-full');
         const logoIcon = DOM.select('.logo-icon');
-        if (logoFull) logoFull.style.display = 'none';
-        if (logoIcon) logoIcon.style.display = 'inline-block';
-        
+        if (logoFull) {
+          logoFull.style.display = 'none';
+        }
+        if (logoIcon) {
+          logoIcon.style.display = 'inline-block';
+        }
+
         // Close all submenus when collapsing
         DOM.selectAll('#sidebar-menu ul.child_menu').forEach(submenu => {
           submenu.style.display = 'none';
@@ -110,14 +121,18 @@ function initSidebar() {
       } else {
         DOM.removeClass(body, 'nav-sm');
         DOM.addClass(body, 'nav-md');
-        
+
         // Show full logo, hide icon logo
         const logoFull = DOM.select('.logo-full');
         const logoIcon = DOM.select('.logo-icon');
-        if (logoFull) logoFull.style.display = 'inline-block';
-        if (logoIcon) logoIcon.style.display = 'none';
+        if (logoFull) {
+          logoFull.style.display = 'inline-block';
+        }
+        if (logoIcon) {
+          logoIcon.style.display = 'none';
+        }
       }
-      
+
       setContentHeight();
     });
   }
@@ -127,7 +142,7 @@ function initSidebar() {
     DOM.selectAll('#sidebar-menu a').forEach(link => {
       if (link.href && link.href === currentUrl) {
         DOM.addClass(link.parentElement, 'current-page');
-        
+
         // Open parent menus if this is a submenu item
         let parent = link.closest('ul.child_menu');
         while (parent) {

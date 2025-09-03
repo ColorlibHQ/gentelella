@@ -13,7 +13,22 @@ export function sanitizeHtml(html, options = {}) {
   }
 
   const config = {
-    ALLOWED_TAGS: ['div', 'span', 'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'strong', 'em', 'br', 'img', 'a'],
+    ALLOWED_TAGS: [
+      'div',
+      'span',
+      'p',
+      'h1',
+      'h2',
+      'h3',
+      'h4',
+      'h5',
+      'h6',
+      'strong',
+      'em',
+      'br',
+      'img',
+      'a'
+    ],
     ALLOWED_ATTR: ['class', 'id', 'src', 'alt', 'href', 'target', 'title'],
     ALLOW_DATA_ATTR: false,
     ...options

@@ -9,19 +9,23 @@ function debounce(func, wait = 250, immediate = false) {
   return function executedFunction(...args) {
     const later = () => {
       timeout = null;
-      if (!immediate) func(...args);
+      if (!immediate) {
+        func(...args);
+      }
     };
     const callNow = immediate && !timeout;
     clearTimeout(timeout);
     timeout = setTimeout(later, wait);
-    if (callNow) func(...args);
+    if (callNow) {
+      func(...args);
+    }
   };
 }
 
 // Smart resize functionality
 const smartResize = {
   handlers: new Set(),
-  
+
   // Add a resize handler
   add(handler, wait = 250) {
     const debouncedHandler = debounce(handler, wait);
@@ -29,13 +33,13 @@ const smartResize = {
     window.addEventListener('resize', debouncedHandler);
     return debouncedHandler;
   },
-  
+
   // Remove a resize handler
   remove(handler) {
     window.removeEventListener('resize', handler);
     this.handlers.delete(handler);
   },
-  
+
   // Clear all handlers
   clear() {
     this.handlers.forEach(handler => {
@@ -52,7 +56,7 @@ if (!window.smartResize) {
 
 // Also provide a simple function for direct use
 window.addSmartResize = (handler, wait) => smartResize.add(handler, wait);
-window.removeSmartResize = (handler) => smartResize.remove(handler);
+window.removeSmartResize = handler => smartResize.remove(handler);
 
 console.log('✅ Modern smart resize initialized (jQuery-free)');
 

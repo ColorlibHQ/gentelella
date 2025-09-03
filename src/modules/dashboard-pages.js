@@ -6,9 +6,9 @@
 
 // Modern DOM utilities
 const DOM = {
-  select: (selector) => document.querySelector(selector),
-  selectAll: (selector) => [...document.querySelectorAll(selector)],
-  exists: (selector) => document.querySelector(selector) !== null,
+  select: selector => document.querySelector(selector),
+  selectAll: selector => [...document.querySelectorAll(selector)],
+  exists: selector => document.querySelector(selector) !== null,
   addClass: (element, className) => element?.classList.add(className),
   removeClass: (element, className) => element?.classList.remove(className)
 };
@@ -38,7 +38,9 @@ export function initializeIndex2() {
  * Weekly Summary Chart - MODERNIZED FROM JQUERY
  */
 function initializeWeeklySummaryChart() {
-  if (!DOM.exists('#weekly_summary')) return;
+  if (!DOM.exists('#weekly_summary')) {
+    return;
+  }
 
   if (typeof echarts === 'undefined') {
     console.warn('⚠️ ECharts not available for weekly summary');
@@ -46,9 +48,9 @@ function initializeWeeklySummaryChart() {
   }
 
   const weeklySummaryChart = echarts.init(DOM.select('#weekly_summary'));
-  
+
   const weeklyData = generateWeeklyData();
-  
+
   weeklySummaryChart.setOption({
     title: {
       text: 'Weekly Performance Summary',
@@ -98,11 +100,7 @@ function initializeWeeklySummaryChart() {
   setInterval(() => {
     const newData = generateWeeklyData();
     weeklySummaryChart.setOption({
-      series: [
-        { data: newData.sales },
-        { data: newData.visitors },
-        { data: newData.orders }
-      ]
+      series: [{ data: newData.sales }, { data: newData.visitors }, { data: newData.orders }]
     });
   }, 30000);
 }
@@ -111,7 +109,9 @@ function initializeWeeklySummaryChart() {
  * Daily Activities Chart
  */
 function initializeDailyActivitiesChart() {
-  if (!DOM.exists('#daily_activities')) return;
+  if (!DOM.exists('#daily_activities')) {
+    return;
+  }
 
   if (typeof echarts === 'undefined') {
     console.warn('⚠️ ECharts not available for daily activities');
@@ -119,29 +119,31 @@ function initializeDailyActivitiesChart() {
   }
 
   const dailyChart = echarts.init(DOM.select('#daily_activities'));
-  
+
   dailyChart.setOption({
     title: {
       text: 'Daily Activities',
       left: 'center'
     },
     tooltip: { trigger: 'item' },
-    series: [{
-      type: 'pie',
-      radius: ['40%', '70%'],
-      center: ['50%', '50%'],
-      data: [
-        { value: 35, name: 'Meetings' },
-        { value: 25, name: 'Development' },
-        { value: 20, name: 'Planning' },
-        { value: 20, name: 'Other' }
-      ],
-      itemStyle: {
-        borderRadius: 10,
-        borderColor: '#fff',
-        borderWidth: 2
+    series: [
+      {
+        type: 'pie',
+        radius: ['40%', '70%'],
+        center: ['50%', '50%'],
+        data: [
+          { value: 35, name: 'Meetings' },
+          { value: 25, name: 'Development' },
+          { value: 20, name: 'Planning' },
+          { value: 20, name: 'Other' }
+        ],
+        itemStyle: {
+          borderRadius: 10,
+          borderColor: '#fff',
+          borderWidth: 2
+        }
       }
-    }]
+    ]
   });
 }
 
@@ -171,7 +173,9 @@ export function initializeIndex3() {
  * Sales Overview Chart - MODERNIZED FROM JQUERY
  */
 function initializeSalesOverviewChart() {
-  if (!DOM.exists('#sales_overview')) return;
+  if (!DOM.exists('#sales_overview')) {
+    return;
+  }
 
   if (typeof echarts === 'undefined') {
     console.warn('⚠️ ECharts not available for sales overview');
@@ -179,9 +183,9 @@ function initializeSalesOverviewChart() {
   }
 
   const salesChart = echarts.init(DOM.select('#sales_overview'));
-  
+
   const salesData = generateSalesData();
-  
+
   salesChart.setOption({
     title: {
       text: 'Sales Overview',
@@ -190,10 +194,11 @@ function initializeSalesOverviewChart() {
     },
     tooltip: {
       trigger: 'axis',
-      formatter: function(params) {
+      formatter: function (params) {
         let result = params[0].name + '<br/>';
         params.forEach(param => {
-          result += param.marker + param.seriesName + ': $' + param.value.toLocaleString() + '<br/>';
+          result +=
+            param.marker + param.seriesName + ': $' + param.value.toLocaleString() + '<br/>';
         });
         return result;
       }
@@ -245,12 +250,16 @@ function initializeSalesOverviewChart() {
  * Revenue Chart with different visualization
  */
 function initializeRevenueChart() {
-  if (!DOM.exists('#revenue_chart')) return;
+  if (!DOM.exists('#revenue_chart')) {
+    return;
+  }
 
-  if (typeof echarts === 'undefined') return;
+  if (typeof echarts === 'undefined') {
+    return;
+  }
 
   const revenueChart = echarts.init(DOM.select('#revenue_chart'));
-  
+
   revenueChart.setOption({
     title: { text: 'Monthly Revenue Breakdown', left: 'center' },
     tooltip: { trigger: 'axis' },
@@ -259,18 +268,20 @@ function initializeRevenueChart() {
       data: ['Q1', 'Q2', 'Q3', 'Q4']
     },
     yAxis: { type: 'value' },
-    series: [{
-      name: 'Revenue',
-      type: 'bar',
-      data: [450, 520, 480, 650],
-      itemStyle: {
-        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-          { offset: 0, color: '#26B99A' },
-          { offset: 1, color: '#1ABC9C' }
-        ])
-      },
-      barWidth: '60%'
-    }]
+    series: [
+      {
+        name: 'Revenue',
+        type: 'bar',
+        data: [450, 520, 480, 650],
+        itemStyle: {
+          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+            { offset: 0, color: '#26B99A' },
+            { offset: 1, color: '#1ABC9C' }
+          ])
+        },
+        barWidth: '60%'
+      }
+    ]
   });
 }
 
@@ -278,33 +289,39 @@ function initializeRevenueChart() {
  * Top Products Chart
  */
 function initializeTopProductsChart() {
-  if (!DOM.exists('#top_products')) return;
+  if (!DOM.exists('#top_products')) {
+    return;
+  }
 
-  if (typeof echarts === 'undefined') return;
+  if (typeof echarts === 'undefined') {
+    return;
+  }
 
   const topProductsChart = echarts.init(DOM.select('#top_products'));
-  
+
   topProductsChart.setOption({
     title: { text: 'Top Selling Products', left: 'center' },
     tooltip: { trigger: 'item' },
-    series: [{
-      type: 'pie',
-      radius: '70%',
-      data: [
-        { value: 1048, name: 'Laptop Pro' },
-        { value: 735, name: 'Smartphone X' },
-        { value: 580, name: 'Tablet Air' },
-        { value: 484, name: 'Smart Watch' },
-        { value: 300, name: 'Headphones' }
-      ],
-      emphasis: {
-        itemStyle: {
-          shadowBlur: 10,
-          shadowOffsetX: 0,
-          shadowColor: 'rgba(0, 0, 0, 0.5)'
+    series: [
+      {
+        type: 'pie',
+        radius: '70%',
+        data: [
+          { value: 1048, name: 'Laptop Pro' },
+          { value: 735, name: 'Smartphone X' },
+          { value: 580, name: 'Tablet Air' },
+          { value: 484, name: 'Smart Watch' },
+          { value: 300, name: 'Headphones' }
+        ],
+        emphasis: {
+          itemStyle: {
+            shadowBlur: 10,
+            shadowOffsetX: 0,
+            shadowColor: 'rgba(0, 0, 0, 0.5)'
+          }
         }
       }
-    }]
+    ]
   });
 }
 
@@ -334,7 +351,9 @@ export function initializeIndex4() {
  * Store Analytics Chart - MODERNIZED FROM JQUERY
  */
 function initializeStoreAnalyticsChart() {
-  if (!DOM.exists('#store_analytics')) return;
+  if (!DOM.exists('#store_analytics')) {
+    return;
+  }
 
   if (typeof echarts === 'undefined') {
     console.warn('⚠️ ECharts not available for store analytics');
@@ -342,7 +361,7 @@ function initializeStoreAnalyticsChart() {
   }
 
   const storeChart = echarts.init(DOM.select('#store_analytics'));
-  
+
   storeChart.setOption({
     title: {
       text: 'Store Performance Analytics',
@@ -392,30 +411,36 @@ function initializeStoreAnalyticsChart() {
  * Customer Segment Chart
  */
 function initializeCustomerSegmentChart() {
-  if (!DOM.exists('#customer_segments')) return;
+  if (!DOM.exists('#customer_segments')) {
+    return;
+  }
 
-  if (typeof echarts === 'undefined') return;
+  if (typeof echarts === 'undefined') {
+    return;
+  }
 
   const segmentChart = echarts.init(DOM.select('#customer_segments'));
-  
+
   segmentChart.setOption({
     title: { text: 'Customer Segments', left: 'center' },
     tooltip: { trigger: 'item' },
-    series: [{
-      type: 'pie',
-      radius: ['30%', '70%'],
-      data: [
-        { value: 40, name: 'Regular Customers' },
-        { value: 25, name: 'Premium Members' },
-        { value: 20, name: 'New Customers' },
-        { value: 15, name: 'VIP Customers' }
-      ],
-      itemStyle: {
-        borderRadius: 8,
-        borderColor: '#fff',
-        borderWidth: 2
+    series: [
+      {
+        type: 'pie',
+        radius: ['30%', '70%'],
+        data: [
+          { value: 40, name: 'Regular Customers' },
+          { value: 25, name: 'Premium Members' },
+          { value: 20, name: 'New Customers' },
+          { value: 15, name: 'VIP Customers' }
+        ],
+        itemStyle: {
+          borderRadius: 8,
+          borderColor: '#fff',
+          borderWidth: 2
+        }
       }
-    }]
+    ]
   });
 }
 
@@ -423,12 +448,16 @@ function initializeCustomerSegmentChart() {
  * Inventory Chart
  */
 function initializeInventoryChart() {
-  if (!DOM.exists('#inventory_status')) return;
+  if (!DOM.exists('#inventory_status')) {
+    return;
+  }
 
-  if (typeof echarts === 'undefined') return;
+  if (typeof echarts === 'undefined') {
+    return;
+  }
 
   const inventoryChart = echarts.init(DOM.select('#inventory_status'));
-  
+
   inventoryChart.setOption({
     title: { text: 'Inventory Status', left: 'center' },
     tooltip: { trigger: 'axis' },
@@ -437,17 +466,19 @@ function initializeInventoryChart() {
       data: ['Electronics', 'Clothing', 'Books', 'Home & Garden', 'Sports']
     },
     yAxis: { type: 'value' },
-    series: [{
-      name: 'Stock Level',
-      type: 'bar',
-      data: [450, 280, 180, 320, 210],
-      itemStyle: {
-        color: function(params) {
-          const colors = ['#26B99A', '#3498DB', '#F39C12', '#E74C3C', '#9B59B6'];
-          return colors[params.dataIndex];
+    series: [
+      {
+        name: 'Stock Level',
+        type: 'bar',
+        data: [450, 280, 180, 320, 210],
+        itemStyle: {
+          color: function (params) {
+            const colors = ['#26B99A', '#3498DB', '#F39C12', '#E74C3C', '#9B59B6'];
+            return colors[params.dataIndex];
+          }
         }
       }
-    }]
+    ]
   });
 }
 
@@ -458,7 +489,9 @@ function initializeInventoryChart() {
 export function initializeSidebarGauges() {
   // Only initialize if gauge elements exist
   const gaugeElements = DOM.selectAll('.sidebar-gauge, [data-gauge]');
-  if (gaugeElements.length === 0) return;
+  if (gaugeElements.length === 0) {
+    return;
+  }
 
   console.log('🎯 Initializing sidebar gauges...');
 
@@ -475,7 +508,9 @@ export function initializeSidebarGauges() {
  * Profile Completion Gauge - MODERNIZED FROM JQUERY
  */
 function initializeProfileCompletionGauge() {
-  if (!DOM.exists('#profile_completion')) return;
+  if (!DOM.exists('#profile_completion')) {
+    return;
+  }
 
   if (typeof echarts === 'undefined') {
     console.warn('⚠️ ECharts not available for profile completion gauge');
@@ -483,47 +518,53 @@ function initializeProfileCompletionGauge() {
   }
 
   const profileGauge = echarts.init(DOM.select('#profile_completion'));
-  
+
   profileGauge.setOption({
-    series: [{
-      name: 'Profile Completion',
-      type: 'gauge',
-      startAngle: 180,
-      endAngle: 0,
-      min: 0,
-      max: 100,
-      data: [{ value: 75, name: 'Completed' }],
-      axisLine: {
-        lineStyle: {
-          width: 8,
-          color: [[0.5, '#E74C3C'], [0.8, '#F39C12'], [1, '#26B99A']]
-        }
-      },
-      pointer: {
-        icon: 'circle',
-        length: '12%',
-        width: 20,
-        offsetCenter: [0, '-60%'],
-        itemStyle: { color: 'auto' }
-      },
-      axisTick: { show: false },
-      splitLine: { show: false },
-      axisLabel: { show: false },
-      title: {
-        offsetCenter: [0, '-20%'],
-        fontSize: 14,
-        color: '#333'
-      },
-      detail: {
-        fontSize: 20,
-        offsetCenter: [0, '10%'],
-        valueAnimation: true,
-        formatter: function(value) {
-          return Math.round(value) + '%';
+    series: [
+      {
+        name: 'Profile Completion',
+        type: 'gauge',
+        startAngle: 180,
+        endAngle: 0,
+        min: 0,
+        max: 100,
+        data: [{ value: 75, name: 'Completed' }],
+        axisLine: {
+          lineStyle: {
+            width: 8,
+            color: [
+              [0.5, '#E74C3C'],
+              [0.8, '#F39C12'],
+              [1, '#26B99A']
+            ]
+          }
         },
-        color: 'auto'
+        pointer: {
+          icon: 'circle',
+          length: '12%',
+          width: 20,
+          offsetCenter: [0, '-60%'],
+          itemStyle: { color: 'auto' }
+        },
+        axisTick: { show: false },
+        splitLine: { show: false },
+        axisLabel: { show: false },
+        title: {
+          offsetCenter: [0, '-20%'],
+          fontSize: 14,
+          color: '#333'
+        },
+        detail: {
+          fontSize: 20,
+          offsetCenter: [0, '10%'],
+          valueAnimation: true,
+          formatter: function (value) {
+            return Math.round(value) + '%';
+          },
+          color: 'auto'
+        }
       }
-    }]
+    ]
   });
 }
 
@@ -538,52 +579,64 @@ function initializeSystemHealthGauges() {
   ];
 
   healthGauges.forEach(config => {
-    if (!DOM.exists(`#${config.id}`)) return;
+    if (!DOM.exists(`#${config.id}`)) {
+      return;
+    }
 
-    if (typeof echarts === 'undefined') return;
+    if (typeof echarts === 'undefined') {
+      return;
+    }
 
     const gauge = echarts.init(DOM.select(`#${config.id}`));
-    
+
     gauge.setOption({
-      series: [{
-        name: config.title,
-        type: 'gauge',
-        radius: '90%',
-        min: 0,
-        max: 100,
-        data: [{ value: config.value, name: config.title }],
-        axisLine: {
-          lineStyle: {
-            width: 6,
-            color: [[0.7, '#26B99A'], [0.9, '#F39C12'], [1, '#E74C3C']]
+      series: [
+        {
+          name: config.title,
+          type: 'gauge',
+          radius: '90%',
+          min: 0,
+          max: 100,
+          data: [{ value: config.value, name: config.title }],
+          axisLine: {
+            lineStyle: {
+              width: 6,
+              color: [
+                [0.7, '#26B99A'],
+                [0.9, '#F39C12'],
+                [1, '#E74C3C']
+              ]
+            }
+          },
+          pointer: {
+            itemStyle: { color: 'auto' }
+          },
+          axisTick: { show: false },
+          splitLine: { show: false },
+          axisLabel: { show: false },
+          title: {
+            fontSize: 12,
+            color: '#666'
+          },
+          detail: {
+            fontSize: 16,
+            valueAnimation: true,
+            formatter: '{value}%',
+            color: 'auto'
           }
-        },
-        pointer: {
-          itemStyle: { color: 'auto' }
-        },
-        axisTick: { show: false },
-        splitLine: { show: false },
-        axisLabel: { show: false },
-        title: {
-          fontSize: 12,
-          color: '#666'
-        },
-        detail: {
-          fontSize: 16,
-          valueAnimation: true,
-          formatter: '{value}%',
-          color: 'auto'
         }
-      }]
+      ]
     });
 
     // Simulate real-time updates
     setInterval(() => {
       const newValue = Math.max(10, Math.min(95, config.value + (Math.random() - 0.5) * 20));
       gauge.setOption({
-        series: [{
-          data: [{ value: newValue, name: config.title }]
-        }]
+        series: [
+          {
+            data: [{ value: newValue, name: config.title }]
+          }
+        ]
       });
     }, 5000);
   });

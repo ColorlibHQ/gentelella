@@ -99,7 +99,7 @@ export function validatePassword(password) {
 export function isValidCreditCard(cardNumber) {
   // Remove spaces and non-digits
   const cleaned = cardNumber.replace(/\D/g, '');
-  
+
   if (cleaned.length < 13 || cleaned.length > 19) {
     return false;
   }
@@ -107,21 +107,21 @@ export function isValidCreditCard(cardNumber) {
   // Luhn algorithm
   let sum = 0;
   let isEven = false;
-  
+
   for (let i = cleaned.length - 1; i >= 0; i--) {
     let digit = parseInt(cleaned[i]);
-    
+
     if (isEven) {
       digit *= 2;
       if (digit > 9) {
         digit -= 9;
       }
     }
-    
+
     sum += digit;
     isEven = !isEven;
   }
-  
+
   return sum % 10 === 0;
 }
 
@@ -132,11 +132,15 @@ export function isValidCreditCard(cardNumber) {
  * @returns {boolean} - True if valid date
  */
 export function isValidDate(dateString, format = 'YYYY-MM-DD') {
-  if (!dateString) return false;
-  
+  if (!dateString) {
+    return false;
+  }
+
   const date = new Date(dateString);
-  if (isNaN(date.getTime())) return false;
-  
+  if (isNaN(date.getTime())) {
+    return false;
+  }
+
   // Additional format validation
   if (format === 'MM/DD/YYYY') {
     const regex = /^(0[1-9]|1[0-2])\/(0[1-9]|[12]\d|3[01])\/\d{4}$/;
@@ -145,7 +149,7 @@ export function isValidDate(dateString, format = 'YYYY-MM-DD') {
     const regex = /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/;
     return regex.test(dateString);
   }
-  
+
   return true;
 }
 
@@ -178,9 +182,15 @@ export function isInRange(value, min, max) {
  * @returns {boolean} - True if value is not empty
  */
 export function isRequired(value) {
-  if (value === null || value === undefined) return false;
-  if (typeof value === 'string') return value.trim().length > 0;
-  if (Array.isArray(value)) return value.length > 0;
+  if (value === null || value === undefined) {
+    return false;
+  }
+  if (typeof value === 'string') {
+    return value.trim().length > 0;
+  }
+  if (Array.isArray(value)) {
+    return value.length > 0;
+  }
   return true;
 }
 
@@ -191,12 +201,14 @@ export function isRequired(value) {
  * @returns {boolean} - True if valid file type
  */
 export function isValidFileType(file, allowedTypes) {
-  if (!file || !allowedTypes || allowedTypes.length === 0) return false;
-  
+  if (!file || !allowedTypes || allowedTypes.length === 0) {
+    return false;
+  }
+
   const fileType = file.type;
   const fileName = file.name;
   const fileExtension = fileName.split('.').pop().toLowerCase();
-  
+
   return allowedTypes.some(type => {
     // Check MIME type
     if (type.includes('/')) {
@@ -214,7 +226,9 @@ export function isValidFileType(file, allowedTypes) {
  * @returns {boolean} - True if file size is within limit
  */
 export function isValidFileSize(file, maxSizeInMB) {
-  if (!file) return false;
+  if (!file) {
+    return false;
+  }
   const maxSizeInBytes = maxSizeInMB * 1024 * 1024;
   return file.size <= maxSizeInBytes;
 }
@@ -228,11 +242,11 @@ export function isValidFileSize(file, maxSizeInMB) {
 export function validateForm(form, rules) {
   const errors = {};
   const formData = new FormData(form);
-  
+
   for (const [fieldName, fieldRules] of Object.entries(rules)) {
     const value = formData.get(fieldName);
     const fieldErrors = [];
-    
+
     for (const rule of fieldRules) {
       if (rule.type === 'required' && !isRequired(value)) {
         fieldErrors.push(rule.message || `${fieldName} is required`);
@@ -252,12 +266,12 @@ export function validateForm(form, rules) {
         }
       }
     }
-    
+
     if (fieldErrors.length > 0) {
       errors[fieldName] = fieldErrors;
     }
   }
-  
+
   return {
     isValid: Object.keys(errors).length === 0,
     errors
@@ -277,17 +291,17 @@ export function displayValidationErrors(form, errors) {
   form.querySelectorAll('.invalid-feedback').forEach(el => {
     el.remove();
   });
-  
+
   // Display new errors
   for (const [fieldName, fieldErrors] of Object.entries(errors)) {
     const field = form.elements[fieldName];
     if (field) {
       field.classList.add('is-invalid');
-      
+
       const errorDiv = document.createElement('div');
       errorDiv.className = 'invalid-feedback';
       errorDiv.textContent = fieldErrors[0]; // Show first error
-      
+
       if (field.parentElement.classList.contains('form-group')) {
         field.parentElement.appendChild(errorDiv);
       } else {

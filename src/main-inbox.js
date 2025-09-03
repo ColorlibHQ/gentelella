@@ -1,6 +1,5 @@
 // Inbox.html specific JavaScript with Bootstrap WYSIWYG editor
 
-
 // Import jQuery setup first
 import $ from './jquery-setup.js';
 window.jQuery = window.$ = $;
@@ -25,12 +24,8 @@ import './js/init.js';
 // Bootstrap WYSIWYG Editor
 // bootstrap-wysiwyg removed - was unused dependency
 
-
-
 // Initialize WYSIWYG editor when DOM is ready
-document.addEventListener('DOMContentLoaded', function() {
-
-
+document.addEventListener('DOMContentLoaded', function () {
   // Check if we have the required elements
   const editorEl = document.getElementById('editor');
   const toolbarEl = document.querySelector('[data-role="editor-toolbar"]');
@@ -53,8 +48,8 @@ document.addEventListener('DOMContentLoaded', function() {
       // Style the editor
       $(editorEl).css({
         'min-height': '200px',
-        'padding': '10px',
-        'border': '1px solid #E6E9ED',
+        padding: '10px',
+        border: '1px solid #E6E9ED',
         'border-radius': '4px',
         'background-color': '#fff'
       });
@@ -62,12 +57,10 @@ document.addEventListener('DOMContentLoaded', function() {
       // Add some default content
       $(editorEl).html(sanitizeHtml('<p>Start typing your message here...</p>'));
 
-
-
       // Handle toolbar button states
-      $(editorEl).on('keyup mouseup', function() {
+      $(editorEl).on('keyup mouseup', function () {
         // Update toolbar button states based on current selection
-        $('[data-role="editor-toolbar"] [data-edit]').each(function() {
+        $('[data-role="editor-toolbar"] [data-edit]').each(function () {
           const command = $(this).data('edit');
           if (document.queryCommandState(command)) {
             $(this).addClass('active btn-info');
@@ -78,18 +71,20 @@ document.addEventListener('DOMContentLoaded', function() {
       });
 
       // Handle file upload for images
-      $('#file-upload').on('change', function(e) {
+      $('#file-upload').on('change', function (e) {
         const file = e.target.files[0];
         if (file && file.type.match('image.*')) {
           const reader = new FileReader();
-          reader.onload = function(event) {
-            const img = '<img src="' + event.target.result + '" class="img-responsive" style="max-width: 100%; height: auto;">';
+          reader.onload = function (event) {
+            const img =
+              '<img src="' +
+              event.target.result +
+              '" class="img-responsive" style="max-width: 100%; height: auto;">';
             $(editorEl).append(img);
           };
           reader.readAsDataURL(file);
         }
       });
-
     } catch (error) {
       console.error('❌ Error initializing WYSIWYG editor:', error);
     }
@@ -99,11 +94,10 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Handle send button
-document.addEventListener('click', function(e) {
+document.addEventListener('click', function (e) {
   if (e.target.matches('[data-action="send"]')) {
     e.preventDefault();
     const content = document.getElementById('editor').innerHTML;
-
 
     // Show success message
     if (window.bootstrap && window.bootstrap.Toast) {
@@ -129,4 +123,3 @@ document.addEventListener('click', function(e) {
     }
   }
 });
-

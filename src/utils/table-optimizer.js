@@ -9,13 +9,13 @@
 export function optimizeTablePerformance() {
   // Add loading skeleton for tables while DataTables initializes
   addTableLoadingSkeletons();
-  
+
   // Implement progressive table initialization with delays between each table
   initializeTablesProgressively();
-  
+
   // Add intersection observer for lazy loading of off-screen tables
   implementLazyTableLoading();
-  
+
   // Optimize table dimensions to prevent layout shifts
   optimizeTableDimensions();
 }
@@ -25,11 +25,11 @@ export function optimizeTablePerformance() {
  */
 function addTableLoadingSkeletons() {
   const tables = document.querySelectorAll('table[id^="datatable"]');
-  
+
   tables.forEach(table => {
     // Add a minimum height to prevent layout shift
     table.style.minHeight = '400px';
-    
+
     // Add loading indicator
     const loadingDiv = document.createElement('div');
     loadingDiv.className = 'table-loading-overlay';
@@ -54,12 +54,12 @@ function addTableLoadingSkeletons() {
       justify-content: center;
       min-height: 200px;
     `;
-    
+
     // Make parent container relative
     const parent = table.closest('.table-responsive') || table.parentElement;
     parent.style.position = 'relative';
     parent.appendChild(loadingDiv);
-    
+
     // Store reference for removal later
     table.loadingOverlay = loadingDiv;
   });
@@ -75,7 +75,7 @@ function initializeTablesProgressively() {
     { id: 'datatable-buttons', delay: 600 },
     { id: 'datatable-responsive', delay: 900 }
   ];
-  
+
   tableConfigs.forEach(config => {
     setTimeout(() => {
       initializeSpecificTable(config.id);
@@ -88,8 +88,10 @@ function initializeTablesProgressively() {
  */
 function initializeSpecificTable(tableId) {
   const table = document.getElementById(tableId);
-  if (!table || table.dataTableInstance) return;
-  
+  if (!table || table.dataTableInstance) {
+    return;
+  }
+
   try {
     // Basic configuration optimized for performance
     const config = {
@@ -99,15 +101,16 @@ function initializeSpecificTable(tableId) {
       stateSave: true, // Save user state
       responsive: true,
       autoWidth: false,
-      dom: '<"row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6"f>>' +
-           '<"row"<"col-sm-12"tr>>' +
-           '<"row"<"col-sm-12 col-md-5"i><"col-sm-12 col-md-7"p>>',
+      dom:
+        '<"row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6"f>>' +
+        '<"row"<"col-sm-12"tr>>' +
+        '<"row"<"col-sm-12 col-md-5"i><"col-sm-12 col-md-7"p>>',
       language: {
         processing: 'Loading...',
         loadingRecords: 'Loading...',
         emptyTable: 'No data available'
       },
-      initComplete: function() {
+      initComplete: function () {
         // Remove loading overlay when table is ready
         if (table.loadingOverlay) {
           table.loadingOverlay.remove();
@@ -116,13 +119,13 @@ function initializeSpecificTable(tableId) {
         console.log(`✅ Table ${tableId} initialized successfully`);
       }
     };
-    
+
     // Add specific features based on table type
     if (tableId === 'datatable-buttons') {
       config.buttons = ['copy', 'csv', 'excel', 'pdf', 'print'];
       config.dom = 'Bfrtip';
     }
-    
+
     // Initialize DataTable - check both global DataTable and jQuery DataTable
     if (typeof DataTable !== 'undefined') {
       const dataTable = new DataTable(table, config);
@@ -131,7 +134,6 @@ function initializeSpecificTable(tableId) {
       const dataTable = $(table).DataTable(config);
       table.dataTableInstance = dataTable;
     }
-    
   } catch (error) {
     console.error(`❌ Failed to initialize table ${tableId}:`, error);
     // Remove loading overlay even on error
@@ -147,30 +149,34 @@ function initializeSpecificTable(tableId) {
  */
 function implementLazyTableLoading() {
   if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const table = entry.target;
-          const tableId = table.id;
-          
-          // Initialize table when it becomes visible
-          if (!table.dataTableInstance) {
-            setTimeout(() => {
-              initializeSpecificTable(tableId);
-            }, 100);
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const table = entry.target;
+            const tableId = table.id;
+
+            // Initialize table when it becomes visible
+            if (!table.dataTableInstance) {
+              setTimeout(() => {
+                initializeSpecificTable(tableId);
+              }, 100);
+            }
+
+            // Stop observing once initialized
+            observer.unobserve(table);
           }
-          
-          // Stop observing once initialized
-          observer.unobserve(table);
-        }
-      });
-    }, {
-      rootMargin: '100px' // Start loading 100px before element is visible
-    });
-    
+        });
+      },
+      {
+        rootMargin: '100px' // Start loading 100px before element is visible
+      }
+    );
+
     // Observe tables that aren't in the initial viewport
     document.querySelectorAll('table[id^="datatable"]').forEach((table, index) => {
-      if (index > 1) { // Only lazy load tables after the first 2 (since we now have 4 total)
+      if (index > 1) {
+        // Only lazy load tables after the first 2 (since we now have 4 total)
         observer.observe(table);
       }
     });

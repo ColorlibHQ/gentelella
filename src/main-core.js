@@ -18,7 +18,7 @@ import * as bootstrap from 'bootstrap';
 window.bootstrap = bootstrap;
 
 // Initialize Bootstrap tooltips and popovers
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   // Initialize all tooltips
   const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
   const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
@@ -43,7 +43,7 @@ window.NProgress = NProgress;
 // Essential UI components are now handled by Bootstrap 5 and custom modules
 
 // Add global error boundary to catch and handle errors gracefully
-window.addEventListener('error', (event) => {
+window.addEventListener('error', event => {
   console.error('🚨 Global error caught:', {
     message: event.message,
     filename: event.filename,
@@ -51,7 +51,7 @@ window.addEventListener('error', (event) => {
     colno: event.colno,
     error: event.error
   });
-  
+
   // Could send to error tracking service in production
   if (process.env.NODE_ENV === 'production') {
     // Example: sendErrorToService(event.error);
@@ -66,16 +66,16 @@ if (process.env.NODE_ENV === 'development') {
   const originalLog = console.log;
   const originalError = console.error;
   const originalWarn = console.warn;
-  
-  console.log = function(...args) {
+
+  console.log = function (...args) {
     originalLog(`[${new Date().toLocaleTimeString()}]`, ...args);
   };
-  
-  console.error = function(...args) {
+
+  console.error = function (...args) {
     originalError(`[${new Date().toLocaleTimeString()}] ❌`, ...args);
   };
-  
-  console.warn = function(...args) {
+
+  console.warn = function (...args) {
     originalWarn(`[${new Date().toLocaleTimeString()}] ⚠️`, ...args);
   };
 }
@@ -92,7 +92,7 @@ import './js/init-modern.js';
 window.moduleCache = new Map();
 
 // Loading states for better UX
-window.showModuleLoadingState = function(moduleName) {
+window.showModuleLoadingState = function (moduleName) {
   const indicator = document.createElement('div');
   indicator.id = `loading-${moduleName}`;
   indicator.style.cssText = `
@@ -112,7 +112,7 @@ window.showModuleLoadingState = function(moduleName) {
   return indicator;
 };
 
-window.hideModuleLoadingState = function(indicator) {
+window.hideModuleLoadingState = function (indicator) {
   if (indicator && indicator.parentNode) {
     indicator.style.opacity = '0';
     indicator.style.transform = 'translateX(100%)';
@@ -122,7 +122,7 @@ window.hideModuleLoadingState = function(indicator) {
 };
 
 // Enhanced dynamic loader for page-specific modules
-window.loadModule = async function(moduleName, showLoading = true) {
+window.loadModule = async function (moduleName, showLoading = true) {
   // Check cache first
   if (window.moduleCache.has(moduleName)) {
     return window.moduleCache.get(moduleName);
@@ -136,8 +136,8 @@ window.loadModule = async function(moduleName, showLoading = true) {
   try {
     const startTime = performance.now();
     let module;
-    
-    switch(moduleName) {
+
+    switch (moduleName) {
       case 'charts':
         module = await import('./modules/charts.js');
         break;
@@ -173,7 +173,7 @@ window.loadModule = async function(moduleName, showLoading = true) {
     window.moduleCache.set(moduleName, module);
     const loadTime = performance.now() - startTime;
     window.moduleLoadTimes.set(moduleName, loadTime);
-    
+
     return module;
   } catch (error) {
     if (process.env.NODE_ENV === 'development') {
@@ -188,38 +188,38 @@ window.loadModule = async function(moduleName, showLoading = true) {
 };
 
 // Utility to preload modules for better performance
-window.preloadModules = async function(moduleNames) {
+window.preloadModules = async function (moduleNames) {
   const promises = moduleNames.map(name => window.loadModule(name, false));
   const results = await Promise.allSettled(promises);
   return results;
 };
 
 // Debug utility to show module loading stats
-window.getModuleStats = function() {
+window.getModuleStats = function () {
   console.group('📊 Module Loading Statistics');
   console.log('Cached modules:', Array.from(window.moduleCache.keys()));
   console.log('Load times:');
-  
+
   Array.from(window.moduleLoadTimes.entries())
     .sort((a, b) => b[1] - a[1])
     .forEach(([module, time]) => {
       console.log(`  ${module}: ${time.toFixed(2)}ms`);
     });
-  
+
   const totalTime = Array.from(window.moduleLoadTimes.values()).reduce((a, b) => a + b, 0);
   console.log(`Total load time: ${totalTime.toFixed(2)}ms`);
   console.groupEnd();
 };
 
 // Enhanced page readiness detector
-window.waitForPageReady = function(callback, timeout = 10000) {
+window.waitForPageReady = function (callback, timeout = 10000) {
   const startTime = Date.now();
-  
+
   function checkReady() {
     const basicReady = document.readyState === 'complete';
     const bootstrapReady = typeof window.bootstrap !== 'undefined';
     const scriptsReady = typeof window.loadModule !== 'undefined';
-    
+
     if (basicReady && bootstrapReady && scriptsReady) {
       callback();
     } else if (Date.now() - startTime < timeout) {
@@ -228,6 +228,6 @@ window.waitForPageReady = function(callback, timeout = 10000) {
       callback();
     }
   }
-  
+
   checkReady();
 };

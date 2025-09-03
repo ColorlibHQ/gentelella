@@ -20,11 +20,13 @@ export function initializeMaps() {
   document.querySelectorAll('[data-map], .leaflet-map').forEach(mapElement => {
     try {
       const mapId = mapElement.id || 'map_' + Date.now();
-      if (!mapElement.id) mapElement.id = mapId;
+      if (!mapElement.id) {
+        mapElement.id = mapId;
+      }
 
       // Get configuration from data attributes
       const lat = parseFloat(mapElement.getAttribute('data-lat')) || 40.7128;
-      const lng = parseFloat(mapElement.getAttribute('data-lng')) || -74.0060;
+      const lng = parseFloat(mapElement.getAttribute('data-lng')) || -74.006;
       const zoom = parseInt(mapElement.getAttribute('data-zoom')) || 13;
       const markerTitle = mapElement.getAttribute('data-marker') || 'Location';
 
@@ -49,7 +51,6 @@ export function initializeMaps() {
       maps.push({ id: mapId, map, element: mapElement });
 
       console.log(`✅ Map initialized: ${mapId}`);
-
     } catch (error) {
       console.error('❌ Failed to initialize map:', error);
     }
@@ -68,12 +69,14 @@ export function initializeMaps() {
  */
 function initializeLocationMap() {
   const locationMapElement = document.getElementById('locationMap');
-  if (!locationMapElement) return;
+  if (!locationMapElement) {
+    return;
+  }
 
   try {
     // Office location coordinates (example: New York)
-    const officeLocation = [40.7128, -74.0060];
-    
+    const officeLocation = [40.7128, -74.006];
+
     const locationMap = L.map('locationMap').setView(officeLocation, 15);
 
     // Add tile layer
@@ -90,7 +93,6 @@ function initializeLocationMap() {
     locationMapElement.style.borderRadius = '8px';
 
     console.log('✅ Location map initialized');
-
   } catch (error) {
     console.error('❌ Failed to initialize location map:', error);
   }
@@ -101,12 +103,14 @@ function initializeLocationMap() {
  */
 function initializeWorldMapGDP() {
   const worldMapElement = document.getElementById('world-map-gdp');
-  if (!worldMapElement) return;
+  if (!worldMapElement) {
+    return;
+  }
 
   try {
     // World map centered on a global view
     const worldCenter = [20, 0]; // Centered globally
-    
+
     const worldMap = L.map('world-map-gdp').setView(worldCenter, 2);
 
     // Add tile layer with a nice style for world view
@@ -118,7 +122,7 @@ function initializeWorldMapGDP() {
 
     // Sample GDP/visitor data markers for major cities
     const gdpLocations = [
-      { lat: 40.7128, lng: -74.0060, city: 'New York', visitors: '2.1M', gdp: '$1.8T' },
+      { lat: 40.7128, lng: -74.006, city: 'New York', visitors: '2.1M', gdp: '$1.8T' },
       { lat: 51.5074, lng: -0.1278, city: 'London', visitors: '1.8M', gdp: '$0.9T' },
       { lat: 35.6762, lng: 139.6503, city: 'Tokyo', visitors: '1.5M', gdp: '$4.9T' },
       { lat: 48.8566, lng: 2.3522, city: 'Paris', visitors: '1.2M', gdp: '$0.7T' },
@@ -130,7 +134,7 @@ function initializeWorldMapGDP() {
     // Add markers for each location
     gdpLocations.forEach(location => {
       const marker = L.marker([location.lat, location.lng]).addTo(worldMap);
-      
+
       marker.bindPopup(`
         <div style="text-align: center; min-width: 150px;">
           <h6 style="margin-bottom: 8px; color: #26B99A;">${location.city}</h6>
@@ -143,7 +147,7 @@ function initializeWorldMapGDP() {
       `);
 
       // Add custom marker styling
-      marker.on('mouseover', function(e) {
+      marker.on('mouseover', function (e) {
         this.openPopup();
       });
     });
@@ -152,12 +156,14 @@ function initializeWorldMapGDP() {
     worldMap.zoomControl.setPosition('topright');
 
     // Set max bounds to prevent excessive panning
-    const bounds = L.latLngBounds([[-85, -180], [85, 180]]);
+    const bounds = L.latLngBounds([
+      [-85, -180],
+      [85, 180]
+    ]);
     worldMap.setMaxBounds(bounds);
 
     console.log('✅ World GDP map initialized');
     return worldMap;
-
   } catch (error) {
     console.error('❌ Failed to initialize world GDP map:', error);
   }
@@ -168,12 +174,14 @@ function initializeWorldMapGDP() {
  */
 function initializeContactMap() {
   const contactMapElement = document.getElementById('contactMap');
-  if (!contactMapElement) return;
+  if (!contactMapElement) {
+    return;
+  }
 
   try {
     // Contact location coordinates
     const contactLocation = [40.7589, -73.9851]; // Times Square example
-    
+
     const contactMap = L.map('contactMap').setView(contactLocation, 14);
 
     // Add tile layer
@@ -198,7 +206,6 @@ function initializeContactMap() {
     contactMap.zoomControl.setPosition('topright');
 
     console.log('✅ Contact map initialized');
-
   } catch (error) {
     console.error('❌ Failed to initialize contact map:', error);
   }
@@ -210,18 +217,35 @@ function initializeContactMap() {
  */
 export function initializeMultiLocationMap(locations = []) {
   const mapElement = document.getElementById('multiLocationMap');
-  if (!mapElement) return;
+  if (!mapElement) {
+    return;
+  }
 
   try {
     // Default locations if none provided
     const defaultLocations = [
-      { lat: 40.7128, lng: -74.0060, title: 'New York Office', popup: 'Main Office<br>New York, NY' },
-      { lat: 34.0522, lng: -118.2437, title: 'Los Angeles Office', popup: 'West Coast Office<br>Los Angeles, CA' },
-      { lat: 41.8781, lng: -87.6298, title: 'Chicago Office', popup: 'Midwest Office<br>Chicago, IL' }
+      {
+        lat: 40.7128,
+        lng: -74.006,
+        title: 'New York Office',
+        popup: 'Main Office<br>New York, NY'
+      },
+      {
+        lat: 34.0522,
+        lng: -118.2437,
+        title: 'Los Angeles Office',
+        popup: 'West Coast Office<br>Los Angeles, CA'
+      },
+      {
+        lat: 41.8781,
+        lng: -87.6298,
+        title: 'Chicago Office',
+        popup: 'Midwest Office<br>Chicago, IL'
+      }
     ];
 
     const mapLocations = locations.length > 0 ? locations : defaultLocations;
-    
+
     // Calculate center point
     const centerLat = mapLocations.reduce((sum, loc) => sum + loc.lat, 0) / mapLocations.length;
     const centerLng = mapLocations.reduce((sum, loc) => sum + loc.lng, 0) / mapLocations.length;
@@ -242,14 +266,17 @@ export function initializeMultiLocationMap(locations = []) {
     });
 
     // Fit map to show all markers
-    const group = new L.featureGroup(multiMap.eachLayer(layer => {
-      if (layer instanceof L.Marker) return layer;
-    }));
+    const group = new L.featureGroup(
+      multiMap.eachLayer(layer => {
+        if (layer instanceof L.Marker) {
+          return layer;
+        }
+      })
+    );
     multiMap.fitBounds(group.getBounds().pad(0.1));
 
     console.log('✅ Multi-location map initialized');
     return multiMap;
-
   } catch (error) {
     console.error('❌ Failed to initialize multi-location map:', error);
   }
@@ -267,7 +294,7 @@ export const MapUtils = {
       // This would typically use a geocoding service
       console.log(`Geocoding address: ${address}`);
       // Return mock coordinates for now
-      return { lat: 40.7128, lng: -74.0060 };
+      return { lat: 40.7128, lng: -74.006 };
     } catch (error) {
       console.error('Geocoding failed:', error);
       return null;
@@ -279,12 +306,15 @@ export const MapUtils = {
    */
   calculateDistance(lat1, lng1, lat2, lng2) {
     const R = 6371; // Earth's radius in kilometers
-    const dLat = (lat2 - lat1) * Math.PI / 180;
-    const dLng = (lng2 - lng1) * Math.PI / 180;
-    const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-              Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
-              Math.sin(dLng/2) * Math.sin(dLng/2);
-    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    const dLat = ((lat2 - lat1) * Math.PI) / 180;
+    const dLng = ((lng2 - lng1) * Math.PI) / 180;
+    const a =
+      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos((lat1 * Math.PI) / 180) *
+        Math.cos((lat2 * Math.PI) / 180) *
+        Math.sin(dLng / 2) *
+        Math.sin(dLng / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     return R * c; // Distance in kilometers
   },
 
@@ -299,9 +329,11 @@ export const MapUtils = {
     customZoom.addTo(map);
 
     // Custom scale control
-    L.control.scale({
-      position: 'bottomright'
-    }).addTo(map);
+    L.control
+      .scale({
+        position: 'bottomright'
+      })
+      .addTo(map);
 
     return { zoom: customZoom };
   }
@@ -310,7 +342,9 @@ export const MapUtils = {
 // Auto-initialize maps when DOM is ready
 if (typeof document !== 'undefined') {
   document.addEventListener('DOMContentLoaded', () => {
-    const mapElements = document.querySelectorAll('[data-map], .leaflet-map, #locationMap, #contactMap, #multiLocationMap, #world-map-gdp');
+    const mapElements = document.querySelectorAll(
+      '[data-map], .leaflet-map, #locationMap, #contactMap, #multiLocationMap, #world-map-gdp'
+    );
     if (mapElements.length > 0) {
       initializeMaps();
     }

@@ -7,7 +7,10 @@
 (function (global) {
   // Helper – link module.exports to jQuery if possible
   function ensureModuleExports() {
-    if (typeof global.jQuery !== 'undefined' && (typeof global.module === 'undefined' || !global.module.exports)) {
+    if (
+      typeof global.jQuery !== 'undefined' &&
+      (typeof global.module === 'undefined' || !global.module.exports)
+    ) {
       global.module = { exports: global.jQuery };
       global.exports = global.jQuery;
     }

@@ -1,9 +1,8 @@
-(function($) {
-/**
- * Enhanced sidebar menu with proper multilevel support
- */
+(function ($) {
+  /**
+   * Enhanced sidebar menu with proper multilevel support
+   */
   function init_sidebar() {
-
     // Helper function to set the content height
     var setContentHeight = function () {
       var $BODY = $('body'),
@@ -35,7 +34,7 @@
     $SIDEBAR_MENU.off('click.sidebar');
 
     // Enhanced sidebar menu click handler
-    $SIDEBAR_MENU.on('click.sidebar', 'a', function(ev) {
+    $SIDEBAR_MENU.on('click.sidebar', 'a', function (ev) {
       var $link = $(this);
       var $li = $link.parent('li');
       var $submenu = $li.children('ul.child_menu');
@@ -51,16 +50,16 @@
 
       // Toggle submenu
       if ($li.hasClass('active')) {
-      // Close this menu and all nested menus
+        // Close this menu and all nested menus
         $li.removeClass('active');
-        $submenu.slideUp(200, function() {
+        $submenu.slideUp(200, function () {
           setContentHeight();
         });
         // Close all nested active menus
         $submenu.find('li.active').removeClass('active').children('ul.child_menu').hide();
       } else {
-      // Close sibling menus at the same level
-        $li.siblings('li.active').each(function() {
+        // Close sibling menus at the same level
+        $li.siblings('li.active').each(function () {
           var $sibling = $(this);
           $sibling.removeClass('active');
           $sibling.children('ul.child_menu').slideUp(200);
@@ -70,7 +69,7 @@
 
         // Open this menu
         $li.addClass('active');
-        $submenu.slideDown(200, function() {
+        $submenu.slideDown(200, function () {
           setContentHeight();
         });
       }
@@ -81,13 +80,13 @@
     // Menu toggle (hamburger menu) handler
     var $MENU_TOGGLE = $('#menu_toggle');
 
-    $MENU_TOGGLE.off('click.sidebar').on('click.sidebar', function() {
+    $MENU_TOGGLE.off('click.sidebar').on('click.sidebar', function () {
       if ($BODY.hasClass('nav-md')) {
-      // Hide all active submenus when collapsing
+        // Hide all active submenus when collapsing
         $SIDEBAR_MENU.find('li.active ul.child_menu').hide();
         $BODY.removeClass('nav-md').addClass('nav-sm');
       } else {
-      // Show active submenus when expanding
+        // Show active submenus when expanding
         $SIDEBAR_MENU.find('li.active ul.child_menu').show();
         $BODY.removeClass('nav-sm').addClass('nav-md');
       }
@@ -101,7 +100,7 @@
       $currentLi.addClass('current-page');
 
       // Open all parent menus
-      $currentLi.parents('li').each(function() {
+      $currentLi.parents('li').each(function () {
         var $parentLi = $(this);
         if ($parentLi.children('ul.child_menu').length) {
           $parentLi.addClass('active');
@@ -111,24 +110,25 @@
     }
 
     // Handle window resize
-    $(window).off('resize.sidebar').on('resize.sidebar', function() {
-      setContentHeight();
-    });
+    $(window)
+      .off('resize.sidebar')
+      .on('resize.sidebar', function () {
+        setContentHeight();
+      });
 
     // Set initial height
     setContentHeight();
   }
 
   // Initialize the sidebar when the document is ready
-  $(document).ready(function() {
+  $(document).ready(function () {
     init_sidebar();
   });
 
   // Also try to initialize immediately if jQuery is available
   if (typeof $ !== 'undefined') {
-    $(function() {
+    $(function () {
       init_sidebar();
     });
   }
-
 })(window.jQuery || window.$);

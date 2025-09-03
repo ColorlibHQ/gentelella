@@ -1,24 +1,25 @@
 .daterangepicker {
   .ranges {
     li {
-      color: #73879C;
-      
-      &.active, &:hover {
-        background: #536A7F;
-        border: 1px solid #536A7F;
-        color: #fff;  
+      color: #73879c;
+
+      &.active,
+      &:hover {
+        background: #536a7f;
+        border: 1px solid #536a7f;
+        color: #fff;
       }
     }
   }
 
   .input-mini {
-      background-color: #eee;
-      border: 1px solid #ccc;
-      box-shadow: none !important;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    box-shadow: none !important;
 
-      &.active {
-        border: 1px solid #ccc;
-      }
+    &.active {
+      border: 1px solid #ccc;
+    }
   }
 
   select {
@@ -34,7 +35,7 @@
       margin: 0;
       cursor: default;
       height: 30px;
-      border: 1px solid #ADB2B5;
+      border: 1px solid #adb2b5;
       line-height: 30px;
       border-radius: 0px !important;
     }
@@ -46,22 +47,24 @@
 
   td {
     &.in-range {
-      background: #E4E7EA;
-      color: #73879C;
+      background: #e4e7ea;
+      color: #73879c;
     }
 
-    &.active, &.active:hover {
-      background-color: #536A7F;
+    &.active,
+    &.active:hover {
+      background-color: #536a7f;
       color: #fff;
-    }      
+    }
   }
 
   th.available:hover {
     background: #eee;
-    color: #34495E;
+    color: #34495e;
   }
 
-  &:before, &:after {
+  &:before,
+  &:after {
     content: none;
   }
 
@@ -88,10 +91,10 @@
 
   &.picker_1 {
     color: #fff;
-    background: #34495E;
+    background: #34495e;
 
     .calendar-table {
-      background: #34495E;
+      background: #34495e;
 
       thead {
         & tr {
@@ -99,17 +102,17 @@
         }
 
         & tr:first-child {
-          background: #1ABB9C;
+          background: #1abb9c;
         }
       }
 
       td.off {
-        background: #34495E;
+        background: #34495e;
         color: #999;
       }
 
       td.available:hover {
-        color: #34495E;
+        color: #34495e;
       }
     }
   }
@@ -118,11 +121,11 @@
     .calendar-table {
       thead {
         & tr {
-          color: #1ABB9C;
+          color: #1abb9c;
         }
 
         & tr:first-child {
-          color: #73879C;
+          color: #73879c;
         }
       }
     }
@@ -133,7 +136,7 @@
       thead {
         & tr:first-child {
           color: #fff;
-          background: #1ABB9C;
+          background: #1abb9c;
         }
       }
     }
@@ -144,18 +147,19 @@
       thead {
         & tr:first-child {
           color: #fff;
-          background: #34495E;;
+          background: #34495e;
         }
       }
 
-      td, td.off  {
-        background: #ECF0F1;
+      td,
+      td.off {
+        background: #ecf0f1;
         border: 1px solid #fff;
         border-radius: 0;
       }
 
       td.active {
-        background: #34495E;
+        background: #34495e;
       }
     }
   }
@@ -169,7 +173,7 @@
     background-color: #fff;
     border: 1px solid #ccc;
     margin-bottom: 20px;
-    border: 1px solid rgba(0,0,0,0.15);
+    border: 1px solid rgba(0, 0, 0, 0.15);
     overflow: hidden;
 
     .calendar {
@@ -177,7 +181,7 @@
     }
 
     &.picker_1 {
-      background: #34495E;
+      background: #34495e;
     }
   }
 

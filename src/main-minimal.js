@@ -20,12 +20,14 @@ if (!$.easing) {
 
 // Add missing easing functions as fallbacks
 $.extend($.easing, {
-  easeOutElastic: function(x, t, b, c, d) {
+  easeOutElastic: function (x, t, b, c, d) {
     return c * ((t = t / d - 1) * t * t + 1) + b;
   },
-  easeInOutQuart: function(x, t, b, c, d) {
-    if ((t /= d / 2) < 1) {return c / 2 * t * t * t * t + b;}
-    return -c / 2 * ((t -= 2) * t * t * t - 2) + b;
+  easeInOutQuart: function (x, t, b, c, d) {
+    if ((t /= d / 2) < 1) {
+      return (c / 2) * t * t * t * t + b;
+    }
+    return (-c / 2) * ((t -= 2) * t * t * t - 2) + b;
   }
 });
 
@@ -85,13 +87,13 @@ globalThis.L = L;
 import './main.scss';
 
 // Add global error handlers to prevent uncaught promise rejections
-window.addEventListener('unhandledrejection', (event) => {
+window.addEventListener('unhandledrejection', event => {
   console.warn('🚨 Unhandled promise rejection:', event.reason);
   // Prevent the default browser behavior (like logging to console)
   event.preventDefault();
 });
 
-window.addEventListener('error', (event) => {
+window.addEventListener('error', event => {
   console.warn('🚨 Global error caught:', event.error);
 });
 
@@ -152,7 +154,10 @@ document.addEventListener('DOMContentLoaded', () => {
         responsive: true,
         pageLength: 10,
         lengthChange: true,
-        lengthMenu: [[10, 25, 50, -1], [10, 25, 50, 'All']],
+        lengthMenu: [
+          [10, 25, 50, -1],
+          [10, 25, 50, 'All']
+        ],
         searching: true,
         ordering: true,
         info: true,
@@ -173,7 +178,6 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         }
       });
-
     } catch (error) {
       console.error('❌ DataTable initialization failed:', error);
     }
@@ -187,15 +191,19 @@ import './utils/table-optimizer.js';
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize DataTables for tables.html page
   if (window.location.pathname.includes('tables.html')) {
-
-
     // Advanced DataTable for Employee Management
-    if (document.getElementById('advancedDataTable') && !$.fn.DataTable.isDataTable('#advancedDataTable')) {
+    if (
+      document.getElementById('advancedDataTable') &&
+      !$.fn.DataTable.isDataTable('#advancedDataTable')
+    ) {
       try {
         new DataTable('#advancedDataTable', {
           responsive: true,
           pageLength: 10,
-          lengthMenu: [[5, 10, 25, 50], [5, 10, 25, 50]],
+          lengthMenu: [
+            [5, 10, 25, 50],
+            [5, 10, 25, 50]
+          ],
           order: [[0, 'asc']],
           language: {
             search: 'Search employees:',
@@ -215,23 +223,20 @@ document.addEventListener('DOMContentLoaded', () => {
             }
           ]
         });
-
       } catch (error) {
         console.error('❌ Failed to initialize Advanced DataTable:', error);
       }
     }
-
-
   }
 });
 
 // Create a library availability checker for inline scripts BEFORE importing init.js
-window.waitForLibraries = function(libraries, callback, timeout = 5000) {
+window.waitForLibraries = function (libraries, callback, timeout = 5000) {
   const startTime = Date.now();
 
   function check() {
     const allAvailable = libraries.every(lib => {
-      return (typeof window[lib] !== 'undefined') || (typeof globalThis[lib] !== 'undefined');
+      return typeof window[lib] !== 'undefined' || typeof globalThis[lib] !== 'undefined';
     });
 
     if (allAvailable) {
@@ -241,9 +246,12 @@ window.waitForLibraries = function(libraries, callback, timeout = 5000) {
     } else {
       // Only warn in development
       if (process.env.NODE_ENV === 'development') {
-        console.warn('Timeout waiting for libraries:', libraries.filter(lib =>
-          typeof window[lib] === 'undefined' && typeof globalThis[lib] === 'undefined'
-        ));
+        console.warn(
+          'Timeout waiting for libraries:',
+          libraries.filter(
+            lib => typeof window[lib] === 'undefined' && typeof globalThis[lib] === 'undefined'
+          )
+        );
       }
       callback(); // Call anyway to prevent hanging
     }
@@ -264,7 +272,7 @@ import './js/init.js';
 // Import page-specific chart initializations
 
 // Widget-specific initialization
-$(document).ready(function() {
+$(document).ready(function () {
   // Initialize Sparklines
   function initSparklines() {
     if (typeof $.fn.sparkline === 'undefined') {
@@ -272,16 +280,22 @@ $(document).ready(function() {
     }
 
     // Sparkline chart configurations
-    $('.sparkline_one, .sparkline_two').sparkline([2, 4, 3, 4, 5, 4, 5, 4, 3, 4, 5, 6, 4, 5, 6, 3, 5, 4, 5, 4, 5, 4, 3, 4, 5, 6, 7, 5, 4, 3, 5, 6], {
-      type: 'line',
-      width: '100%',
-      height: '30',
-      lineColor: '#26B99A',
-      fillColor: '#ccc',
-      lineWidth: 2,
-      spotColor: '#26B99A',
-      minSpotColor: '#26B99A'
-    });
+    $('.sparkline_one, .sparkline_two').sparkline(
+      [
+        2, 4, 3, 4, 5, 4, 5, 4, 3, 4, 5, 6, 4, 5, 6, 3, 5, 4, 5, 4, 5, 4, 3, 4, 5, 6, 7, 5, 4, 3, 5,
+        6
+      ],
+      {
+        type: 'line',
+        width: '100%',
+        height: '30',
+        lineColor: '#26B99A',
+        fillColor: '#ccc',
+        lineWidth: 2,
+        spotColor: '#26B99A',
+        minSpotColor: '#26B99A'
+      }
+    );
 
     $('.sparkline_three').sparkline([2, 4, 3, 4, 5, 4, 5, 4, 3, 4, 5, 6, 7, 5, 4, 3, 5, 6], {
       type: 'line',
@@ -299,7 +313,6 @@ $(document).ready(function() {
   function initWidgetCharts() {
     // Only run if Chart.js is available
     if (typeof Chart === 'undefined') {
-
       return;
     }
 
@@ -324,7 +337,13 @@ $(document).ready(function() {
     };
 
     // Initialize line charts for widgets
-    const lineChartCanvases = ['canvas_line', 'canvas_line1', 'canvas_line2', 'canvas_line3', 'canvas_line4'];
+    const lineChartCanvases = [
+      'canvas_line',
+      'canvas_line1',
+      'canvas_line2',
+      'canvas_line3',
+      'canvas_line4'
+    ];
 
     lineChartCanvases.forEach(canvasId => {
       const canvas = document.getElementById(canvasId);
@@ -333,15 +352,30 @@ $(document).ready(function() {
         new Chart(ctx, {
           type: 'line',
           data: {
-            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-            datasets: [{
-              data: [12, 19, 3, 5, 2, 3, 15, 8, 12, 7, 14, 9],
-              borderColor: '#26B99A',
-              backgroundColor: 'rgba(38, 185, 154, 0.1)',
-              borderWidth: 2,
-              fill: true,
-              tension: 0.4
-            }]
+            labels: [
+              'Jan',
+              'Feb',
+              'Mar',
+              'Apr',
+              'May',
+              'Jun',
+              'Jul',
+              'Aug',
+              'Sep',
+              'Oct',
+              'Nov',
+              'Dec'
+            ],
+            datasets: [
+              {
+                data: [12, 19, 3, 5, 2, 3, 15, 8, 12, 7, 14, 9],
+                borderColor: '#26B99A',
+                backgroundColor: 'rgba(38, 185, 154, 0.1)',
+                borderWidth: 2,
+                fill: true,
+                tension: 0.4
+              }
+            ]
           },
           options: commonChartOptions
         });
@@ -349,7 +383,12 @@ $(document).ready(function() {
     });
 
     // Initialize doughnut charts
-    const doughnutCanvases = ['canvas_doughnut', 'canvas_doughnut2', 'canvas_doughnut3', 'canvas_doughnut4'];
+    const doughnutCanvases = [
+      'canvas_doughnut',
+      'canvas_doughnut2',
+      'canvas_doughnut3',
+      'canvas_doughnut4'
+    ];
 
     doughnutCanvases.forEach(canvasId => {
       const canvas = document.getElementById(canvasId);
@@ -359,11 +398,13 @@ $(document).ready(function() {
           type: 'doughnut',
           data: {
             labels: ['A', 'B', 'C', 'D'],
-            datasets: [{
-              data: [30, 25, 25, 20],
-              backgroundColor: ['#26B99A', '#3498DB', '#E74C3C', '#F39C12'],
-              borderWidth: 0
-            }]
+            datasets: [
+              {
+                data: [30, 25, 25, 20],
+                backgroundColor: ['#26B99A', '#3498DB', '#E74C3C', '#F39C12'],
+                borderWidth: 0
+              }
+            ]
           },
           options: {
             responsive: true,
@@ -386,17 +427,19 @@ $(document).ready(function() {
         type: 'bar',
         data: {
           labels: ['Agent A', 'Agent B', 'Agent C', 'Agent D'],
-          datasets: [{
-            label: 'Orders',
-            data: [8, 6, 5, 5],
-            backgroundColor: [
-              'rgba(52, 152, 219, 0.8)',
-              'rgba(26, 188, 156, 0.8)',
-              'rgba(54, 162, 235, 0.8)',
-              'rgba(243, 156, 18, 0.8)'
-            ],
-            borderWidth: 1
-          }]
+          datasets: [
+            {
+              label: 'Orders',
+              data: [8, 6, 5, 5],
+              backgroundColor: [
+                'rgba(52, 152, 219, 0.8)',
+                'rgba(26, 188, 156, 0.8)',
+                'rgba(54, 162, 235, 0.8)',
+                'rgba(243, 156, 18, 0.8)'
+              ],
+              borderWidth: 1
+            }
+          ]
         },
         options: {
           indexAxis: 'y',
@@ -423,7 +466,7 @@ $(document).ready(function() {
       return;
     }
 
-    $('.chart').each(function() {
+    $('.chart').each(function () {
       const $this = $(this);
       const percent = $this.data('percent') || 50;
 
@@ -440,19 +483,22 @@ $(document).ready(function() {
       });
 
       // Animate the knob
-      $({ animatedVal: 0 }).animate({ animatedVal: percent }, {
-        duration: 1000,
-        easing: 'swing',
-        step: function() {
-          $this.val(Math.ceil(this.animatedVal)).trigger('change');
+      $({ animatedVal: 0 }).animate(
+        { animatedVal: percent },
+        {
+          duration: 1000,
+          easing: 'swing',
+          step: function () {
+            $this.val(Math.ceil(this.animatedVal)).trigger('change');
+          }
         }
-      });
+      );
     });
   }
 
   // Initialize progress bars
   function initProgressBars() {
-    $('.progress .progress-bar').each(function() {
+    $('.progress .progress-bar').each(function () {
       const $this = $(this);
 
       // Skip bars with data-transitiongoal as they're handled by initUniversalProgressBars
@@ -463,22 +509,23 @@ $(document).ready(function() {
       const goal = $this.data('transitiongoal') || 0;
 
       // Animate progress bar
-      $this.animate({
-        width: goal + '%'
-      }, 1000, 'easeInOutQuart');
+      $this.animate(
+        {
+          width: goal + '%'
+        },
+        1000,
+        'easeInOutQuart'
+      );
     });
   }
 
   // Run all initializations with a delay to ensure dependencies are loaded
   setTimeout(() => {
-
     initSparklines();
     initWidgetCharts();
     initCircularProgress();
     initProgressBars();
   }, 200); // Small delay to ensure init.js has run first
-
-
 });
 
 // Universal Progress Bars Initialization
@@ -506,7 +553,12 @@ function initUniversalProgressBars() {
         const currentWidth = inlineWidth || computedStyle.width;
 
         // Only use meaningful width values
-        if (currentWidth && currentWidth !== '0px' && currentWidth !== '0%' && currentWidth !== 'auto') {
+        if (
+          currentWidth &&
+          currentWidth !== '0px' &&
+          currentWidth !== '0%' &&
+          currentWidth !== 'auto'
+        ) {
           targetWidth = currentWidth;
         }
       }
@@ -522,22 +574,25 @@ function initUniversalProgressBars() {
         bar.style.transition = 'width 0.8s ease-out';
 
         // Animate to target width with staggered delay
-        setTimeout(() => {
-          bar.style.width = targetWidth;
-
-          // Lock the width permanently after animation
-          setTimeout(() => {
-            bar.style.transition = 'none';
+        setTimeout(
+          () => {
             bar.style.width = targetWidth;
-            bar.classList.add('animation-complete');
-          }, 1000);
-        }, index * 100 + 300); // Staggered animation
+
+            // Lock the width permanently after animation
+            setTimeout(() => {
+              bar.style.transition = 'none';
+              bar.style.width = targetWidth;
+              bar.classList.add('animation-complete');
+            }, 1000);
+          },
+          index * 100 + 300
+        ); // Staggered animation
       }
     });
   }
 }
 
 // Initialize universal progress bars on DOM ready
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   setTimeout(initUniversalProgressBars, 200);
 });

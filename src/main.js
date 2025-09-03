@@ -7,7 +7,6 @@ globalThis.jQuery = globalThis.$ = $;
 
 // Debug log to confirm script is loading
 
-
 // Import jQuery-dependent vendor libraries AFTER jQuery is global
 
 // Bootstrap 5 - No jQuery dependency needed
@@ -21,7 +20,7 @@ window.Switchery = Switchery;
 globalThis.Switchery = Switchery;
 
 // Initialize Bootstrap tooltips
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   // Initialize all tooltips
   const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
   const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
@@ -63,8 +62,6 @@ import '@eonasdan/tempus-dominus/dist/css/tempus-dominus.min.css';
 // Pickr CSS
 import '@simonwep/pickr/dist/themes/classic.min.css';
 
-
-
 // Ion Range Slider CSS
 import 'ion-rangeslider/css/ion.rangeSlider.min.css';
 
@@ -92,7 +89,6 @@ import './js/init-modern.js';
 
 // Confirm all components loaded
 
-
 // Day.js for date manipulation (modern replacement for moment.js)
 import dayjs from 'dayjs';
 
@@ -119,16 +115,18 @@ dayjs.extend(weekOfYear);
 dayjs.extend(dayOfYear);
 
 // Add clone method to Day.js for moment.js compatibility - CRITICAL FOR DATERANGEPICKER
-dayjs.prototype.clone = function() {
+dayjs.prototype.clone = function () {
   return dayjs(this);
 };
 
 // Create enhanced dayjs wrapper that ensures clone method
-const createDayjsWithClone = function(...args) {
+const createDayjsWithClone = function (...args) {
   const instance = dayjs(...args);
   // Ensure each instance has the clone method (defensive programming)
   if (!instance.clone) {
-    instance.clone = function() { return dayjs(this); };
+    instance.clone = function () {
+      return dayjs(this);
+    };
   }
   return instance;
 };
@@ -158,7 +156,7 @@ import moment from 'moment';
 window.moment = moment;
 globalThis.moment = moment;
 
-// Keep dayjs available for other uses  
+// Keep dayjs available for other uses
 window.dayjs = createDayjsWithClone;
 globalThis.dayjs = createDayjsWithClone;
 
@@ -193,12 +191,14 @@ if (!$.easing) {
 
 // Add missing easing functions as fallbacks
 $.extend($.easing, {
-  easeOutElastic: function(x, t, b, c, d) {
+  easeOutElastic: function (x, t, b, c, d) {
     return c * ((t = t / d - 1) * t * t + 1) + b;
   },
-  easeInOutQuart: function(x, t, b, c, d) {
-    if ((t /= d / 2) < 1) {return c / 2 * t * t * t * t + b;}
-    return -c / 2 * ((t -= 2) * t * t * t - 2) + b;
+  easeInOutQuart: function (x, t, b, c, d) {
+    if ((t /= d / 2) < 1) {
+      return (c / 2) * t * t * t * t + b;
+    }
+    return (-c / 2) * ((t -= 2) * t * t * t - 2) + b;
   }
 });
 
@@ -251,12 +251,12 @@ window.Cropper = Cropper;
 globalThis.Cropper = Cropper;
 
 // Create a library availability checker for inline scripts
-window.waitForLibraries = function(libraries, callback, timeout = 5000) {
+window.waitForLibraries = function (libraries, callback, timeout = 5000) {
   const startTime = Date.now();
 
   function check() {
     const allAvailable = libraries.every(lib => {
-      return (typeof window[lib] !== 'undefined') || (typeof globalThis[lib] !== 'undefined');
+      return typeof window[lib] !== 'undefined' || typeof globalThis[lib] !== 'undefined';
     });
 
     if (allAvailable) {
@@ -264,15 +264,15 @@ window.waitForLibraries = function(libraries, callback, timeout = 5000) {
     } else if (Date.now() - startTime < timeout) {
       setTimeout(check, 50);
     } else {
-      console.warn('Timeout waiting for libraries:', libraries.filter(lib =>
-        typeof window[lib] === 'undefined' && typeof globalThis[lib] === 'undefined'
-      ));
+      console.warn(
+        'Timeout waiting for libraries:',
+        libraries.filter(
+          lib => typeof window[lib] === 'undefined' && typeof globalThis[lib] === 'undefined'
+        )
+      );
       callback(); // Call anyway to prevent hanging
     }
   }
 
   check();
 };
-
-
-

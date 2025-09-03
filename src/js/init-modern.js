@@ -20,7 +20,7 @@ const DOM = window.DOM;
 async function initializeDatePickers() {
   // Check if there are any date picker elements on the page
   const datePickerElements = DOM.selectAll('.datepicker, [data-datepicker]');
-  
+
   if (datePickerElements.length === 0) {
     return;
   }
@@ -56,7 +56,6 @@ async function initializeDatePickers() {
             format: 'MM/dd/yyyy'
           }
         });
-
       } catch (error) {
         if (process.env.NODE_ENV === 'development') {
           console.error('Failed to initialize date picker:', error);
@@ -73,18 +72,20 @@ async function initializeDatePickers() {
 function initializePanelToolbox() {
   // Collapse/Expand functionality
   DOM.selectAll('.collapse-link').forEach(link => {
-    DOM.on(link, 'click', function(event) {
+    DOM.on(link, 'click', function (event) {
       event.preventDefault();
-      
+
       const panel = DOM.closest(link, '.x_panel');
       const icon = DOM.find(link, 'i');
       const content = DOM.find(panel, '.x_content');
-      
-      if (!panel || !content) return;
-      
+
+      if (!panel || !content) {
+        return;
+      }
+
       // Check if panel is currently collapsed
       const isCollapsed = content.style.display === 'none';
-      
+
       if (isCollapsed) {
         // Expand
         DOM.slideDown(content);
@@ -99,12 +100,12 @@ function initializePanelToolbox() {
       }
     });
   });
-  
+
   // Close panel functionality
   DOM.selectAll('.close-link').forEach(link => {
-    DOM.on(link, 'click', function(event) {
+    DOM.on(link, 'click', function (event) {
       event.preventDefault();
-      
+
       const panel = DOM.closest(link, '.x_panel');
       if (panel) {
         // Fade out and remove panel
@@ -129,14 +130,14 @@ function initializeProgressBars() {
       // Reset to 0 and animate to goal
       bar.style.width = '0%';
       bar.style.transition = 'width 1.5s ease-in-out';
-      
+
       // Use setTimeout to ensure the transition triggers
       setTimeout(() => {
         bar.style.width = goal + '%';
       }, 100);
     }
   });
-  
+
   // Animate regular progress bars on page load
   DOM.selectAll('.progress-bar:not([data-transitiongoal])').forEach(bar => {
     const currentWidth = bar.style.width;
@@ -148,7 +149,6 @@ function initializeProgressBars() {
       }, 200);
     }
   });
-  
 }
 
 /**
@@ -157,15 +157,15 @@ function initializeProgressBars() {
  */
 function initializeFormValidation() {
   DOM.selectAll('form[data-validate], .needs-validation').forEach(form => {
-    DOM.on(form, 'submit', function(event) {
+    DOM.on(form, 'submit', function (event) {
       if (!form.checkValidity()) {
         event.preventDefault();
         event.stopPropagation();
-        
+
         // Add visual feedback for invalid fields
         DOM.selectAll(':invalid', form).forEach(field => {
           DOM.addClass(field, 'is-invalid');
-          
+
           // Show custom error message if provided
           const errorMsg = field.getAttribute('data-error-message');
           if (errorMsg) {
@@ -179,13 +179,13 @@ function initializeFormValidation() {
           }
         });
       }
-      
+
       DOM.addClass(form, 'was-validated');
     });
 
     // Remove error styling when field becomes valid
     DOM.selectAll('input, select, textarea', form).forEach(field => {
-      DOM.on(field, 'input', function() {
+      DOM.on(field, 'input', function () {
         if (field.checkValidity()) {
           DOM.removeClass(field, 'is-invalid');
           DOM.addClass(field, 'is-valid');
@@ -193,7 +193,6 @@ function initializeFormValidation() {
       });
     });
   });
-
 }
 
 /**
@@ -210,7 +209,7 @@ function initializeTabsAndAccordions() {
     const tabPanes = DOM.selectAll('.tab-pane', tabContainer);
 
     tabButtons.forEach(button => {
-      DOM.on(button, 'click', function() {
+      DOM.on(button, 'click', function () {
         const targetId = this.getAttribute('data-target');
         const targetPane = DOM.select(targetId);
 
@@ -232,7 +231,6 @@ function initializeTabsAndAccordions() {
       });
     });
   });
-
 }
 
 /**
@@ -244,19 +242,20 @@ function initializeModals() {
   DOM.selectAll('.modal').forEach(modalElement => {
     if (typeof bootstrap !== 'undefined' && bootstrap.Modal) {
       const modal = new bootstrap.Modal(modalElement);
-      
+
       // Store modal instance for external access
       modalElement.modalInstance = modal;
 
       // Custom event handlers
-      modalElement.addEventListener('shown.bs.modal', function() {
+      modalElement.addEventListener('shown.bs.modal', function () {
         // Auto-focus first input in modal
         const firstInput = DOM.select('input, textarea, select', this);
-        if (firstInput) firstInput.focus();
+        if (firstInput) {
+          firstInput.focus();
+        }
       });
     }
   });
-
 }
 
 /**
@@ -270,21 +269,21 @@ function initializeDragAndDrop() {
     items.forEach(item => {
       item.draggable = true;
 
-      DOM.on(item, 'dragstart', function(e) {
+      DOM.on(item, 'dragstart', function (e) {
         e.dataTransfer.setData('text/plain', '');
         DOM.addClass(this, 'dragging');
       });
 
-      DOM.on(item, 'dragend', function() {
+      DOM.on(item, 'dragend', function () {
         DOM.removeClass(this, 'dragging');
       });
     });
 
-    DOM.on(container, 'dragover', function(e) {
+    DOM.on(container, 'dragover', function (e) {
       e.preventDefault();
       const dragging = DOM.select('.dragging', this);
       const siblings = [...DOM.selectAll('.sortable-item:not(.dragging)', this)];
-      
+
       const nextSibling = siblings.find(sibling => {
         return e.clientY <= sibling.getBoundingClientRect().top + sibling.offsetHeight / 2;
       });
@@ -292,7 +291,6 @@ function initializeDragAndDrop() {
       this.insertBefore(dragging, nextSibling);
     });
   });
-
 }
 
 /**
@@ -304,15 +302,15 @@ function initializeSearchAndFilter() {
     const targetSelector = searchInput.getAttribute('data-target') || '.searchable-item';
     const targetElements = DOM.selectAll(targetSelector);
 
-    DOM.on(searchInput, 'input', function() {
+    DOM.on(searchInput, 'input', function () {
       const query = this.value.toLowerCase().trim();
 
       targetElements.forEach(element => {
         const text = element.textContent.toLowerCase();
         const matches = text.includes(query);
-        
+
         element.style.display = matches ? '' : 'none';
-        
+
         // Add/remove highlight class
         if (matches && query) {
           DOM.addClass(element, 'search-match');
@@ -329,7 +327,6 @@ function initializeSearchAndFilter() {
       }
     });
   });
-
 }
 
 /**
@@ -339,14 +336,14 @@ function initializeSearchAndFilter() {
 function initializeKeyboardShortcuts() {
   const shortcuts = {
     'Ctrl+/': () => DOM.select('.search-input')?.focus(),
-    'Escape': () => {
+    Escape: () => {
       // Close modals
       DOM.selectAll('.modal.show').forEach(modal => {
         if (modal.modalInstance) {
           modal.modalInstance.hide();
         }
       });
-      
+
       // Clear search
       DOM.selectAll('.search-input').forEach(input => {
         input.value = '';
@@ -355,18 +352,18 @@ function initializeKeyboardShortcuts() {
     }
   };
 
-  document.addEventListener('keydown', function(e) {
-    const key = (e.ctrlKey ? 'Ctrl+' : '') + 
-                (e.altKey ? 'Alt+' : '') + 
-                (e.shiftKey ? 'Shift+' : '') + 
-                (e.key === ' ' ? 'Space' : e.key);
+  document.addEventListener('keydown', function (e) {
+    const key =
+      (e.ctrlKey ? 'Ctrl+' : '') +
+      (e.altKey ? 'Alt+' : '') +
+      (e.shiftKey ? 'Shift+' : '') +
+      (e.key === ' ' ? 'Space' : e.key);
 
     if (shortcuts[key]) {
       e.preventDefault();
       shortcuts[key]();
     }
   });
-
 }
 
 /**
@@ -430,9 +427,4 @@ if (typeof document !== 'undefined') {
 }
 
 // Export for external use
-export {
-  initializeModernComponents,
-  initializeDatePickers,
-  initializeFormValidation,
-  DOM
-};
+export { initializeModernComponents, initializeDatePickers, initializeFormValidation, DOM };

@@ -5,10 +5,10 @@
 
 const DOM = {
   // Basic selection
-  select: (selector) => document.querySelector(selector),
-  selectAll: (selector) => [...document.querySelectorAll(selector)],
-  exists: (selector) => document.querySelector(selector) !== null,
-  
+  select: selector => document.querySelector(selector),
+  selectAll: selector => [...document.querySelectorAll(selector)],
+  exists: selector => document.querySelector(selector) !== null,
+
   // Event handling
   on: (element, event, handler) => element.addEventListener(event, handler),
   off: (element, event, handler) => element.removeEventListener(event, handler),
@@ -16,21 +16,21 @@ const DOM = {
     const customEvent = new CustomEvent(event, { detail: data });
     element.dispatchEvent(customEvent);
   },
-  
+
   // DOM traversal
   find: (element, selector) => element.querySelector(selector),
   findAll: (element, selector) => [...element.querySelectorAll(selector)],
   closest: (element, selector) => element.closest(selector),
-  parent: (element) => element.parentElement,
-  children: (element) => [...element.children],
-  siblings: (element) => [...element.parentElement.children].filter(el => el !== element),
-  
+  parent: element => element.parentElement,
+  children: element => [...element.children],
+  siblings: element => [...element.parentElement.children].filter(el => el !== element),
+
   // Class manipulation
   hasClass: (element, className) => element.classList.contains(className),
   addClass: (element, className) => element.classList.add(className),
   removeClass: (element, className) => element.classList.remove(className),
   toggleClass: (element, className) => element.classList.toggle(className),
-  
+
   // Style manipulation
   css: (element, property, value) => {
     if (typeof property === 'object') {
@@ -46,25 +46,25 @@ const DOM = {
       return getComputedStyle(element)[property];
     }
   },
-  
+
   // Dimensions
-  width: (element) => element.offsetWidth,
-  height: (element) => element.offsetHeight,
-  outerWidth: (element) => {
+  width: element => element.offsetWidth,
+  height: element => element.offsetHeight,
+  outerWidth: element => {
     const rect = element.getBoundingClientRect();
     const computedStyle = getComputedStyle(element);
-    return rect.width + 
-           parseFloat(computedStyle.marginLeft) + 
-           parseFloat(computedStyle.marginRight);
+    return (
+      rect.width + parseFloat(computedStyle.marginLeft) + parseFloat(computedStyle.marginRight)
+    );
   },
-  outerHeight: (element) => {
+  outerHeight: element => {
     const rect = element.getBoundingClientRect();
     const computedStyle = getComputedStyle(element);
-    return rect.height + 
-           parseFloat(computedStyle.marginTop) + 
-           parseFloat(computedStyle.marginBottom);
+    return (
+      rect.height + parseFloat(computedStyle.marginTop) + parseFloat(computedStyle.marginBottom)
+    );
   },
-  
+
   // Content manipulation
   html: (element, content) => {
     if (content !== undefined) {
@@ -87,7 +87,7 @@ const DOM = {
       return element.value;
     }
   },
-  
+
   // Attributes
   attr: (element, name, value) => {
     if (value !== undefined) {
@@ -105,7 +105,7 @@ const DOM = {
       return element.getAttribute(dataKey);
     }
   },
-  
+
   // DOM manipulation
   append: (parent, child) => {
     if (typeof child === 'string') {
@@ -135,35 +135,35 @@ const DOM = {
       element.parentNode.insertBefore(newElement, element);
     }
   },
-  remove: (element) => element.remove(),
+  remove: element => element.remove(),
   clone: (element, deep = true) => element.cloneNode(deep),
-  
+
   // Visibility
-  show: (element) => {
+  show: element => {
     element.style.display = '';
   },
-  hide: (element) => {
+  hide: element => {
     element.style.display = 'none';
   },
-  toggle: (element) => {
+  toggle: element => {
     element.style.display = element.style.display === 'none' ? '' : 'none';
   },
-  
+
   // Animations (jQuery-like slide effects)
   slideDown: (element, duration = 300) => {
     element.style.height = '0px';
     element.style.overflow = 'hidden';
     element.style.transition = `height ${duration}ms ease`;
     element.style.display = 'block';
-    
+
     // Get the natural height
     const height = element.scrollHeight + 'px';
-    
+
     // Animate to natural height
     requestAnimationFrame(() => {
       element.style.height = height;
     });
-    
+
     // Clean up after animation
     setTimeout(() => {
       element.style.height = 'auto';
@@ -171,17 +171,17 @@ const DOM = {
       element.style.transition = '';
     }, duration);
   },
-  
+
   slideUp: (element, duration = 300) => {
     element.style.height = element.scrollHeight + 'px';
-    element.style.overflow = 'hidden';  
+    element.style.overflow = 'hidden';
     element.style.transition = `height ${duration}ms ease`;
-    
+
     // Animate to zero height
     requestAnimationFrame(() => {
       element.style.height = '0px';
     });
-    
+
     // Hide element after animation
     setTimeout(() => {
       element.style.display = 'none';
@@ -190,7 +190,7 @@ const DOM = {
       element.style.transition = '';
     }, duration);
   },
-  
+
   slideToggle: (element, duration = 300) => {
     if (element.style.display === 'none' || element.offsetHeight === 0) {
       DOM.slideDown(element, duration);
@@ -198,57 +198,57 @@ const DOM = {
       DOM.slideUp(element, duration);
     }
   },
-  
+
   fadeIn: (element, duration = 300) => {
     element.style.opacity = '0';
     element.style.display = 'block';
     element.style.transition = `opacity ${duration}ms ease`;
-    
+
     requestAnimationFrame(() => {
       element.style.opacity = '1';
     });
-    
+
     setTimeout(() => {
       element.style.transition = '';
     }, duration);
   },
-  
+
   fadeOut: (element, duration = 300) => {
     element.style.transition = `opacity ${duration}ms ease`;
     element.style.opacity = '0';
-    
+
     setTimeout(() => {
       element.style.display = 'none';
       element.style.transition = '';
       element.style.opacity = '';
     }, duration);
   },
-  
+
   // Ready state
-  ready: (callback) => {
+  ready: callback => {
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', callback);
     } else {
       callback();
     }
   },
-  
+
   // Position and offset
-  offset: (element) => {
+  offset: element => {
     const rect = element.getBoundingClientRect();
     return {
       top: rect.top + window.scrollY,
       left: rect.left + window.scrollX
     };
   },
-  
-  position: (element) => {
+
+  position: element => {
     return {
       top: element.offsetTop,
       left: element.offsetLeft
     };
   },
-  
+
   // Scroll
   scrollTop: (element, value) => {
     if (value !== undefined) {
@@ -257,7 +257,7 @@ const DOM = {
       return element.scrollTop;
     }
   },
-  
+
   scrollLeft: (element, value) => {
     if (value !== undefined) {
       element.scrollLeft = value;

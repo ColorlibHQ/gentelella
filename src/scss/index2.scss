@@ -6,15 +6,15 @@
     position: relative;
     padding: 10px 0;
     border-bottom: 1px solid #f0f0f0;
-    
+
     &:last-child {
       border-bottom: none;
     }
-    
+
     .pull-left {
       margin-right: 15px;
     }
-    
+
     .profile_thumb {
       width: 50px;
       height: 50px;
@@ -31,31 +31,31 @@
         object-fit: cover;
         border-radius: 50%;
       }
-      
+
       &.border-aero {
-        background-color: #1ABB9C;
+        background-color: #1abb9c;
       }
-      
+
       &.border-green {
-        background-color: #26B99A;
+        background-color: #26b99a;
       }
-      
+
       &.border-blue {
-        background-color: #3498DB;
+        background-color: #3498db;
       }
-      
+
       &.border-red {
-        background-color: #E74C3C;
+        background-color: #e74c3c;
       }
-      
+
       &.border-purple {
-        background-color: #9B59B6;
+        background-color: #9b59b6;
       }
     }
-    
+
     .media-body {
       flex: 1;
-      
+
       .title {
         font-weight: 600;
         font-size: 16px;
@@ -63,22 +63,22 @@
         text-decoration: none;
         display: block;
         margin-bottom: 5px;
-        
+
         &:hover {
-          color: #1ABB9C;
+          color: #1abb9c;
         }
       }
-      
+
       p {
         margin: 0;
         font-size: 14px;
         color: #666;
-        
+
         strong {
-          color: #1ABB9C;
+          color: #1abb9c;
           font-weight: 600;
         }
-        
+
         small {
           color: #999;
           font-size: 12px;
@@ -93,7 +93,7 @@
   .pull-left.date {
     width: 60px;
     height: 60px;
-    background: #1ABB9C;
+    background: #1abb9c;
     border-radius: 10px;
     text-align: center;
     color: white;
@@ -102,14 +102,14 @@
     flex-direction: column;
     justify-content: center;
     margin-right: 15px;
-    
+
     .month {
       font-size: 12px;
       margin: 0;
       text-transform: uppercase;
       font-weight: 500;
     }
-    
+
     .day {
       font-size: 20px;
       font-weight: bold;
@@ -122,21 +122,21 @@
 /* Engagement Metrics Styling */
 .metric {
   margin-bottom: 15px;
-  
+
   p {
     margin: 0 0 5px 0;
     font-size: 14px;
-    
+
     .metric-label {
-      color: #73879C;
+      color: #73879c;
     }
-    
+
     .metric-value {
       font-weight: 600;
       color: #333;
     }
   }
-  
+
   .progress.progress_sm {
     height: 8px;
     border-radius: 4px;
@@ -149,22 +149,22 @@
     background: white;
     padding: 20px;
     margin-bottom: 20px;
-    border-left: 3px solid #1ABB9C;
-    
+    border-left: 3px solid #1abb9c;
+
     span:first-child {
       font-size: 14px;
       color: #999;
       text-transform: uppercase;
       font-weight: 500;
     }
-    
+
     h2 {
       font-size: 32px;
       font-weight: bold;
       color: #333;
       margin: 10px 0;
     }
-    
+
     .graph {
       margin-top: 10px;
     }
@@ -175,19 +175,19 @@
 .top_profiles.scroll-view.page-index2-profiles {
   max-height: 385px;
   overflow-y: auto;
-  
+
   &::-webkit-scrollbar {
     width: 6px;
   }
-  
+
   &::-webkit-scrollbar-track {
     background: #f1f1f1;
   }
-  
+
   &::-webkit-scrollbar-thumb {
     background: #888;
     border-radius: 3px;
-    
+
     &:hover {
       background: #555;
     }
@@ -205,15 +205,27 @@
 }
 
 /* Color Classes for Icons */
-.aero { color: #1ABB9C !important; }
-.green { color: #26B99A !important; }
-.blue { color: #3498DB !important; }
-.red { color: #E74C3C !important; }
-.purple { color: #9B59B6 !important; }
+.aero {
+  color: #1abb9c !important;
+}
+.green {
+  color: #26b99a !important;
+}
+.blue {
+  color: #3498db !important;
+}
+.red {
+  color: #e74c3c !important;
+}
+.purple {
+  color: #9b59b6 !important;
+}
 
 /* Panel Improvements */
 .x_panel {
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.12),
+    0 1px 2px rgba(0, 0, 0, 0.24);
   border-radius: 5px;
 }
 
@@ -227,4 +239,4 @@
 /* Weekly Summary Styling */
 .canvasDoughnut {
   border-radius: 50%;
-} 
+}

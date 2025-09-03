@@ -6,9 +6,9 @@
 
 // Modern DOM utilities
 const DOM = {
-  select: (selector) => document.querySelector(selector),
-  selectAll: (selector) => [...document.querySelectorAll(selector)],
-  exists: (selector) => document.querySelector(selector) !== null,
+  select: selector => document.querySelector(selector),
+  selectAll: selector => [...document.querySelectorAll(selector)],
+  exists: selector => document.querySelector(selector) !== null,
   getAttribute: (element, attr) => element?.getAttribute(attr)
 };
 
@@ -44,7 +44,6 @@ export function initializeECharts() {
     setupEChartsResize();
 
     console.log('✅ All ECharts initialized successfully');
-
   } catch (error) {
     console.error('❌ Failed to initialize ECharts:', error);
   }
@@ -60,25 +59,27 @@ function initializePieCharts() {
     miniPieChart.setOption({
       tooltip: { trigger: 'item' },
       legend: { orient: 'vertical', left: 'left' },
-      series: [{
-        name: 'Traffic Sources',
-        type: 'pie',
-        radius: '50%',
-        data: [
-          { value: 335, name: 'Direct' },
-          { value: 310, name: 'Email' },
-          { value: 274, name: 'Affiliate' },
-          { value: 235, name: 'Video' },
-          { value: 400, name: 'Search' }
-        ],
-        emphasis: {
-          itemStyle: {
-            shadowBlur: 10,
-            shadowOffsetX: 0,
-            shadowColor: 'rgba(0, 0, 0, 0.5)'
+      series: [
+        {
+          name: 'Traffic Sources',
+          type: 'pie',
+          radius: '50%',
+          data: [
+            { value: 335, name: 'Direct' },
+            { value: 310, name: 'Email' },
+            { value: 274, name: 'Affiliate' },
+            { value: 235, name: 'Video' },
+            { value: 400, name: 'Search' }
+          ],
+          emphasis: {
+            itemStyle: {
+              shadowBlur: 10,
+              shadowOffsetX: 0,
+              shadowColor: 'rgba(0, 0, 0, 0.5)'
+            }
           }
         }
-      }]
+      ]
     });
   }
 
@@ -88,20 +89,26 @@ function initializePieCharts() {
     pieChart.setOption({
       title: { text: 'Website Traffic Sources', left: 'center' },
       tooltip: { trigger: 'item', formatter: '{a} <br/>{b}: {c} ({d}%)' },
-      legend: { orient: 'vertical', left: 10, data: ['Direct', 'Email', 'Affiliate', 'Video', 'Search'] },
-      series: [{
-        name: 'Traffic Sources',
-        type: 'pie',
-        radius: ['40%', '70%'],
-        avoidLabelOverlap: false,
-        data: [
-          { value: 335, name: 'Direct' },
-          { value: 310, name: 'Email' },
-          { value: 274, name: 'Affiliate' },
-          { value: 235, name: 'Video' },
-          { value: 400, name: 'Search' }
-        ]
-      }]
+      legend: {
+        orient: 'vertical',
+        left: 10,
+        data: ['Direct', 'Email', 'Affiliate', 'Video', 'Search']
+      },
+      series: [
+        {
+          name: 'Traffic Sources',
+          type: 'pie',
+          radius: ['40%', '70%'],
+          avoidLabelOverlap: false,
+          data: [
+            { value: 335, name: 'Direct' },
+            { value: 310, name: 'Email' },
+            { value: 274, name: 'Affiliate' },
+            { value: 235, name: 'Video' },
+            { value: 400, name: 'Search' }
+          ]
+        }
+      ]
     });
   }
 
@@ -112,28 +119,30 @@ function initializePieCharts() {
       title: { text: 'User Demographics', left: 'center' },
       tooltip: { trigger: 'item' },
       legend: { bottom: 10, left: 'center' },
-      series: [{
-        type: 'pie',
-        radius: ['40%', '70%'],
-        center: ['50%', '45%'],
-        data: [
-          { value: 26, name: '18-24 years' },
-          { value: 32, name: '25-34 years' },
-          { value: 24, name: '35-44 years' },
-          { value: 18, name: '45+ years' }
-        ],
-        itemStyle: {
-          borderRadius: 10,
-          borderColor: '#fff',
-          borderWidth: 2
+      series: [
+        {
+          type: 'pie',
+          radius: ['40%', '70%'],
+          center: ['50%', '45%'],
+          data: [
+            { value: 26, name: '18-24 years' },
+            { value: 32, name: '25-34 years' },
+            { value: 24, name: '35-44 years' },
+            { value: 18, name: '45+ years' }
+          ],
+          itemStyle: {
+            borderRadius: 10,
+            borderColor: '#fff',
+            borderWidth: 2
+          }
         }
-      }]
+      ]
     });
   }
 }
 
 /**
- * Bar Charts - MODERNIZED FROM JQUERY  
+ * Bar Charts - MODERNIZED FROM JQUERY
  */
 function initializeBarCharts() {
   // Horizontal Bar Chart - MODERNIZED
@@ -157,17 +166,28 @@ function initializeBarCharts() {
         type: 'value',
         name: 'Popularity %'
       },
-      series: [{
-        name: 'Popularity',
-        type: 'bar',
-        data: [68, 62, 58, 45, 38, 28, 18, 15],
-        itemStyle: {
-          color: function(params) {
-            const colors = ['#26B99A', '#3498DB', '#E74C3C', '#F39C12', '#9B59B6', '#1ABC9C', '#E67E22', '#34495E'];
-            return colors[params.dataIndex];
+      series: [
+        {
+          name: 'Popularity',
+          type: 'bar',
+          data: [68, 62, 58, 45, 38, 28, 18, 15],
+          itemStyle: {
+            color: function (params) {
+              const colors = [
+                '#26B99A',
+                '#3498DB',
+                '#E74C3C',
+                '#F39C12',
+                '#9B59B6',
+                '#1ABC9C',
+                '#E67E22',
+                '#34495E'
+              ];
+              return colors[params.dataIndex];
+            }
           }
         }
-      }]
+      ]
     });
   }
 
@@ -182,12 +202,14 @@ function initializeBarCharts() {
         data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
       },
       yAxis: { type: 'value' },
-      series: [{
-        name: 'Sales',
-        type: 'bar',
-        data: [820, 932, 901, 934, 1290, 1330, 1320, 1200, 1100, 1400, 1300, 1600],
-        itemStyle: { color: '#26B99A' }
-      }]
+      series: [
+        {
+          name: 'Sales',
+          type: 'bar',
+          data: [820, 932, 901, 934, 1290, 1330, 1320, 1200, 1100, 1400, 1300, 1600],
+          itemStyle: { color: '#26B99A' }
+        }
+      ]
     });
   }
 }
@@ -233,15 +255,11 @@ function initializeLineCharts() {
 function initializeScatterCharts() {
   if (DOM.exists('#echart_scatter')) {
     const scatterChart = echarts.init(DOM.select('#echart_scatter'));
-    
+
     // Generate scatter data
     const scatterData = [];
     for (let i = 0; i < 100; i++) {
-      scatterData.push([
-        Math.random() * 100,
-        Math.random() * 100,
-        Math.random() * 50 + 10
-      ]);
+      scatterData.push([Math.random() * 100, Math.random() * 100, Math.random() * 50 + 10]);
     }
 
     scatterChart.setOption({
@@ -252,18 +270,20 @@ function initializeScatterCharts() {
       },
       xAxis: { name: 'Purchase Frequency' },
       yAxis: { name: 'Average Order Value' },
-      series: [{
-        name: 'Customers',
-        type: 'scatter',
-        data: scatterData,
-        symbolSize: function(data) {
-          return data[2];
-        },
-        itemStyle: {
-          color: '#26B99A',
-          opacity: 0.7
+      series: [
+        {
+          name: 'Customers',
+          type: 'scatter',
+          data: scatterData,
+          symbolSize: function (data) {
+            return data[2];
+          },
+          itemStyle: {
+            color: '#26B99A',
+            opacity: 0.7
+          }
         }
-      }]
+      ]
     });
   }
 }
@@ -274,14 +294,14 @@ function initializeScatterCharts() {
 function initializeMapCharts() {
   if (DOM.exists('#echart_world_map')) {
     const worldMapChart = echarts.init(DOM.select('#echart_world_map'));
-    
+
     // Global user distribution data
     const globalData = [
-      {name: 'United States', value: 2300},
-      {name: 'China', value: 1800},
-      {name: 'Japan', value: 1200},
-      {name: 'Germany', value: 1000},
-      {name: 'United Kingdom', value: 800}
+      { name: 'United States', value: 2300 },
+      { name: 'China', value: 1800 },
+      { name: 'Japan', value: 1200 },
+      { name: 'Germany', value: 1000 },
+      { name: 'United Kingdom', value: 800 }
     ];
 
     worldMapChart.setOption({
@@ -305,23 +325,25 @@ function initializeMapCharts() {
           color: ['#e0f3f1', '#26B99A']
         }
       },
-      series: [{
-        name: 'User Distribution',
-        type: 'scatter',
-        coordinateSystem: 'geo',
-        data: globalData.map(item => ({
-          name: item.name,
-          value: [Math.random() * 360 - 180, Math.random() * 180 - 90, item.value]
-        })),
-        symbolSize: function(val) {
-          return Math.max(val[2] / 100, 8);
-        },
-        itemStyle: {
-          color: '#26B99A',
-          shadowBlur: 10,
-          shadowColor: 'rgba(38, 185, 154, 0.5)'
+      series: [
+        {
+          name: 'User Distribution',
+          type: 'scatter',
+          coordinateSystem: 'geo',
+          data: globalData.map(item => ({
+            name: item.name,
+            value: [Math.random() * 360 - 180, Math.random() * 180 - 90, item.value]
+          })),
+          symbolSize: function (val) {
+            return Math.max(val[2] / 100, 8);
+          },
+          itemStyle: {
+            color: '#26B99A',
+            shadowBlur: 10,
+            shadowColor: 'rgba(38, 185, 154, 0.5)'
+          }
         }
-      }],
+      ],
       geo: {
         map: 'world',
         roam: true,
@@ -353,44 +375,50 @@ function initializeGaugeCharts() {
     if (DOM.exists(`#${config.id}`)) {
       const gaugeChart = echarts.init(DOM.select(`#${config.id}`));
       gaugeChart.setOption({
-        series: [{
-          name: config.title,
-          type: 'gauge',
-          startAngle: 180,
-          endAngle: 0,
-          min: 0,
-          max: 100,
-          data: [{ value: config.value, name: config.title }],
-          axisLine: {
-            lineStyle: {
-              width: 8,
-              color: [[0.3, '#E74C3C'], [0.7, '#F39C12'], [1, '#26B99A']]
-            }
-          },
-          pointer: {
-            icon: 'circle',
-            length: '12%',
-            width: 20,
-            offsetCenter: [0, '-60%'],
-            itemStyle: { color: 'auto' }
-          },
-          axisTick: { show: false },
-          splitLine: { show: false },
-          axisLabel: { show: false },
-          title: {
-            offsetCenter: [0, '-20%'],
-            fontSize: 14
-          },
-          detail: {
-            fontSize: 24,
-            offsetCenter: [0, '0%'],
-            valueAnimation: true,
-            formatter: function(value) {
-              return Math.round(value) + '%';
+        series: [
+          {
+            name: config.title,
+            type: 'gauge',
+            startAngle: 180,
+            endAngle: 0,
+            min: 0,
+            max: 100,
+            data: [{ value: config.value, name: config.title }],
+            axisLine: {
+              lineStyle: {
+                width: 8,
+                color: [
+                  [0.3, '#E74C3C'],
+                  [0.7, '#F39C12'],
+                  [1, '#26B99A']
+                ]
+              }
             },
-            color: 'auto'
+            pointer: {
+              icon: 'circle',
+              length: '12%',
+              width: 20,
+              offsetCenter: [0, '-60%'],
+              itemStyle: { color: 'auto' }
+            },
+            axisTick: { show: false },
+            splitLine: { show: false },
+            axisLabel: { show: false },
+            title: {
+              offsetCenter: [0, '-20%'],
+              fontSize: 14
+            },
+            detail: {
+              fontSize: 24,
+              offsetCenter: [0, '0%'],
+              valueAnimation: true,
+              formatter: function (value) {
+                return Math.round(value) + '%';
+              },
+              color: 'auto'
+            }
           }
-        }]
+        ]
       });
     }
   });
@@ -439,7 +467,7 @@ function initializeMixedCharts() {
  */
 function setupEChartsResize() {
   const echartElements = DOM.selectAll('[id^="echart"]');
-  
+
   // Store chart instances for resize handling
   const chartInstances = [];
   echartElements.forEach(element => {
@@ -451,7 +479,7 @@ function setupEChartsResize() {
   });
 
   // Handle window resize - MODERNIZED FROM JQUERY
-  window.addEventListener('resize', function() {
+  window.addEventListener('resize', function () {
     chartInstances.forEach(chart => {
       if (chart && !chart.isDisposed()) {
         chart.resize();
@@ -498,7 +526,7 @@ export const EChartsUtils = {
         backgroundColor: '#fff',
         ...options
       });
-      
+
       // Download the image
       const link = document.createElement('a');
       link.download = `${chartId}.png`;

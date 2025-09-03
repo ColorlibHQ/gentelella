@@ -1,7 +1,11 @@
 // Sales Analytics Widget Initialization
 
 // Get security utilities from window if available
-const sanitizeHtml = window.sanitizeHtml || function(html) { return html; };
+const sanitizeHtml =
+  window.sanitizeHtml ||
+  function (html) {
+    return html;
+  };
 
 function initSalesAnalytics() {
   // Animate progress bars on page load
@@ -17,7 +21,8 @@ function initSalesAnalytics() {
     setTimeout(() => {
       progressBars.forEach((bar, index) => {
         setTimeout(() => {
-          const targetWidth = bar.style.getPropertyValue('--final-width') || bar.getAttribute('data-width');
+          const targetWidth =
+            bar.style.getPropertyValue('--final-width') || bar.getAttribute('data-width');
           if (targetWidth) {
             bar.style.width = targetWidth;
           } else {
@@ -36,9 +41,12 @@ function initSalesAnalytics() {
   }
 
   // Add hover effects to the View Details button
-  const viewDetailsBtn = document.querySelector('.sales-progress').closest('.card').querySelector('.btn-outline-success');
+  const viewDetailsBtn = document
+    .querySelector('.sales-progress')
+    .closest('.card')
+    .querySelector('.btn-outline-success');
   if (viewDetailsBtn) {
-    viewDetailsBtn.addEventListener('click', function(e) {
+    viewDetailsBtn.addEventListener('click', function (e) {
       e.preventDefault();
 
       // Simple animation feedback
@@ -54,7 +62,7 @@ function initSalesAnalytics() {
 }
 
 // Auto-initialize when DOM is ready
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   // Small delay to ensure styles are loaded
   setTimeout(initSalesAnalytics, 200);
 });
