@@ -1,5 +1,51 @@
 # Gentelella Changelog
 
+## 2.1.1 - 05.12.2025
+
+**Maintenance Release - Dependency Updates & Chart Fixes**
+
+### Dependency Updates
+- **Latest Dependencies**: All dependencies updated to latest versions for security and performance
+  - Vite 7.0.6 → 7.1.4
+  - Bootstrap 5.3.6 → 5.3.8
+  - ECharts 5.6.0 → 6.0.0 (major version upgrade)
+  - Chart.js 4.4.2 → 4.5.0
+  - jQuery 3.6.1 → 3.7.1
+  - TypeScript 5.8.3 → 5.9.2
+  - ESLint 9.31.0 → 9.34.0
+  - DataTables 2.3.2 → 2.3.3
+  - Font Awesome 7.0.0 → 7.0.1
+- **Security Updates**: Ruby 3.3.9 and Nokogiri 1.18.9 resolve all CVE vulnerabilities
+
+### Chart & Widget Improvements
+- **ECharts Functionality**: Fixed all missing charts on echarts.html page
+  - Added missing pyramid sales funnel chart with improved readability
+  - Fixed world map visualization
+  - Enhanced chart sizing and positioning
+- **Widget System Enhancement**: Improved content density in widgets.html
+  - Enhanced metric cards with additional context information
+  - Added growth indicators and supplementary metrics
+  - Professional styling with hover effects and better typography
+- **Chart Color Consistency**: Fixed Device Usage chart colors to match label indicators
+- **Interactive Maps**: Fixed visitors location map and skycons weather icons on index.html
+
+### Developer Experience
+- **Dev Server Stability**: Fixed development server crashes with auto-restart capability
+  - Enhanced Vite configuration for better stability
+  - Added dev:watch script for automatic server restart
+  - Improved file watching and HMR reliability
+- **Console Log Cleanup**: Production builds now clean with comprehensive console statement removal
+  - Enhanced Terser configuration for complete console removal
+  - Development-only console logging with environment checks
+- **Build Optimization**: Enhanced production build configuration
+  - Better chunk splitting and manual chunks optimization
+  - Improved Terser settings with additional compression options
+
+### Technical Enhancements
+- **ES Module Support**: Added "type": "module" to package.json for modern JavaScript
+- **Code Quality**: Enhanced ESLint and Prettier configurations
+- **Bundle Analysis**: Improved build analysis tools and documentation
+
 ## 2.1.0 - 28.07.2025
 
 **Enhancement Release - jQuery-Free Core System & Brand Refresh**

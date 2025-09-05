@@ -6,14 +6,25 @@ Gentelella is a powerful, free-to-use Bootstrap 5 admin template that has been c
 
 ![Gentelella Bootstrap Admin Template](https://colorlib.com/wp/wp-content/uploads/sites/2/gentelella-admin-template-preview.jpg "Gentelella Theme Browser Preview")
 
-## ✨ What's New in v2.1.0 (Latest Release)
+## What's New in v2.1.1 (Latest Release - December 5, 2025)
 
-- **⚡ jQuery-Free Core System** - Complete main-core.js modernization with vanilla JavaScript
-- **🎨 Brand-Consistent Favicon Suite** - Modern favicon system with comprehensive browser support
-- **🎯 Perfect UI Alignment** - Precision vertical centering for navigation elements
-- **🧹 Production-Ready Code** - Clean console output with professional debugging
-- **📱 Enhanced Mobile Experience** - Improved touch interactions and responsive behavior
-- **🔧 Modern DOM Utilities** - Comprehensive jQuery-free DOM manipulation library
+- **Latest Dependencies** - All dependencies updated to latest versions for security and performance
+- **ECharts 6.0.0** - Major upgrade to latest ECharts with all chart types working
+- **Enhanced Widget System** - Improved widget content density and professional styling
+- **Dev Server Stability** - Fixed development server crashes with auto-restart capability
+- **Console Log Cleanup** - Production builds now clean with comprehensive console statement removal
+- **Security Updates** - Ruby 3.3.9 and Nokogiri 1.18.9 resolve all CVE vulnerabilities
+- **Chart Functionality Fixes** - Fixed visitors map, skycons weather icons, and device usage chart colors
+- **Production Optimization** - Enhanced Terser configuration with better minification
+
+### Previous Release: v2.1.0
+
+- **jQuery-Free Core System** - Complete main-core.js modernization with vanilla JavaScript
+- **Brand-Consistent Favicon Suite** - Modern favicon system with comprehensive browser support
+- **Perfect UI Alignment** - Precision vertical centering for navigation elements
+- **Production-Ready Code** - Clean console output with professional debugging
+- **Enhanced Mobile Experience** - Improved touch interactions and responsive behavior
+- **Modern DOM Utilities** - Comprehensive jQuery-free DOM manipulation library
 
 ### Previous Major Release: v2.0.0
 
