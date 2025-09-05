@@ -170,7 +170,6 @@ class ChartInitializer {
           attempts++;
           setTimeout(checkChart, 50);
         } else {
-          console.warn('⚠️ Chart.js not loaded after 5 seconds');
           resolve(false);
         }
       };
@@ -221,7 +220,6 @@ class ChartInitializer {
     const data = customData || SAMPLE_DATA[chartType];
     
     if (!config || !data) {
-      console.warn(`Invalid chart type: ${chartType}`);
       return null;
     }
 
@@ -238,10 +236,8 @@ class ChartInitializer {
       const canvasId = ctx.canvas.id || `chart_${Date.now()}`;
       this.charts.set(canvasId, chart);
       
-      console.log(`✅ ${chartType} chart created:`, canvasId);
       return chart;
     } catch (error) {
-      console.error(`❌ Failed to create ${chartType} chart:`, error);
       return null;
     }
   }
@@ -322,7 +318,6 @@ class ChartInitializer {
     const chartReady = await this.waitForChart();
     if (!chartReady) return;
 
-    console.log('🚀 Starting comprehensive chart initialization...');
 
     // 1. Chart.js demo pages (chartjs.html, chartjs2.html)
     this.initChartjsPages();
@@ -347,13 +342,11 @@ class ChartInitializer {
 
     // 8. Weather icons handled by dedicated weather.js module
 
-    console.log('✅ Comprehensive chart initialization complete!');
   }
 
   initChartjsPages() {
     // Handle canvas elements with data-chart attribute
     const chartCanvases = this.DOM.selectAll('canvas[data-chart]');
-    console.log(`📊 Found ${chartCanvases.length} Chart.js demo canvases`);
 
     chartCanvases.forEach(canvas => {
       const chartType = canvas.getAttribute('data-chart');
@@ -830,7 +823,6 @@ class ChartInitializer {
       element.style.display = 'inline-block';
       element.appendChild(centerText);
 
-      console.log(`✅ ${label} chart (${percent}%) initialized`);
     });
   }
 
@@ -880,9 +872,7 @@ class ChartInitializer {
             }
           }
         });
-        console.log('✅ USA revenue chart initialized');
       } catch (error) {
-        console.error('❌ Failed to initialize USA map:', error);
       }
     }
 
@@ -890,6 +880,11 @@ class ChartInitializer {
     if (this.DOM.select('#world-map-gdp') && typeof L !== 'undefined') {
       try {
         const worldMapContainer = this.DOM.select('#world-map-gdp');
+        
+        // Check if map is already initialized
+        if (worldMapContainer._leaflet_id) {
+          return;
+        }
         
         // Create interactive world map
         const map = L.map('world-map-gdp').setView([20, 0], 2);
@@ -915,9 +910,7 @@ class ChartInitializer {
           marker.bindPopup(`<b>${market.name}</b><br>Revenue: ${market.revenue}`);
         });
 
-        console.log('✅ World map initialized with revenue markers');
       } catch (error) {
-        console.error('❌ Failed to initialize World map:', error);
       }
     }
   }
@@ -925,11 +918,9 @@ class ChartInitializer {
   initDataTables() {
     // Wait for DataTables to be available
     if (typeof DataTable === 'undefined') {
-      console.warn('DataTables not available');
       return;
     }
 
-    console.log('🚀 Initializing DataTables...');
 
     // Basic DataTable
     const basicTable = this.DOM.select('#datatable');
@@ -953,9 +944,7 @@ class ChartInitializer {
           }
         });
         basicTable.dataTableInstance = dataTable;
-        console.log('✅ Basic DataTable initialized');
       } catch (error) {
-        console.error('❌ Failed to initialize basic DataTable:', error);
       }
     }
 
@@ -995,9 +984,7 @@ class ChartInitializer {
           }
         });
         buttonsTable.dataTableInstance = dataTable;
-        console.log('✅ DataTable with Buttons initialized');
       } catch (error) {
-        console.error('❌ Failed to initialize DataTable with Buttons:', error);
       }
     }
 
@@ -1019,19 +1006,15 @@ class ChartInitializer {
           ]
         });
         responsiveTable.dataTableInstance = dataTable;
-        console.log('✅ Responsive DataTable initialized');
       } catch (error) {
-        console.error('❌ Failed to initialize Responsive DataTable:', error);
       }
     }
 
-    console.log('✅ All DataTables initialized successfully');
   }
 
   destroyAllCharts() {
     this.charts.forEach(chart => chart.destroy());
     this.charts.clear();
-    console.log('🧹 All charts destroyed');
   }
 }
 

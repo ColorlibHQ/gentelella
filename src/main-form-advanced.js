@@ -38,7 +38,6 @@ try {
   await import('./js/sidebar-modern.js');
   await import('./js/init-modern.js');
 } catch (error) {
-  console.error('❌ Error loading JavaScript modules:', error);
 }
 
 // Create a library availability checker for inline scripts
@@ -55,7 +54,6 @@ window.waitForLibraries = function (libraries, callback, timeout = 5000) {
     } else if (Date.now() - startTime < timeout) {
       setTimeout(check, 50);
     } else {
-      console.warn(
         'Timeout waiting for libraries:',
         libraries.filter(
           lib => typeof window[lib] === 'undefined' && typeof globalThis[lib] === 'undefined'
@@ -90,6 +88,5 @@ document.addEventListener('DOMContentLoaded', async function () {
     // Cropper.js
     await import('cropper');
   } catch (error) {
-    console.error('❌ Error loading form components:', error);
   }
 });

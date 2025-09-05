@@ -27,10 +27,28 @@ export default defineConfig({
       ],
       output: {
         manualChunks: {
+          // Core UI framework - used on all pages
           'vendor-core': ['bootstrap', '@popperjs/core'],
-          'vendor-charts': ['chart.js', 'echarts', 'leaflet'],
+          
+          // Chart libraries - only loaded on chart pages  
+          'vendor-charts': ['chart.js', 'echarts'],
+          
+          // Maps - separate since it's large and only used on map pages
+          'vendor-maps': ['leaflet'],
+          
+          // Form libraries - loaded on form pages
           'vendor-forms': ['choices.js', 'nouislider', 'autosize', 'switchery', '@eonasdan/tempus-dominus'],
-          'vendor-ui': ['nprogress', 'datatables.net', 'datatables.net-bs5'],
+          
+          // DataTables core - frequently used
+          'vendor-tables': ['datatables.net', 'datatables.net-bs5'],
+          
+          // DataTables extensions - only loaded when needed
+          'vendor-tables-ext': ['jszip'],
+          
+          // UI utilities and progress
+          'vendor-ui': ['nprogress'],
+          
+          // Date/time and small utilities
           'vendor-utils': ['dayjs', 'skycons']
         },
         assetFileNames: (assetInfo) => {
@@ -96,7 +114,8 @@ export default defineConfig({
         pricing_tables: 'production/pricing_tables.html',
         
         level2: 'production/level2.html',
-        map: 'production/map.html'
+        map: 'production/map.html',
+        landing: 'production/landing.html'
       }
     },
     minify: 'terser',
@@ -104,7 +123,8 @@ export default defineConfig({
       compress: {
         drop_console: true,
         drop_debugger: true,
-        pure_funcs: ['console.log', 'console.info', 'console.warn', 'console.error', 'console.debug', 'console.group', 'console.groupEnd', 'console.trace']
+        unsafe_comps: true,
+        passes: 2
       },
       mangle: {
         safari10: true

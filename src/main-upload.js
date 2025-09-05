@@ -116,9 +116,7 @@ document.addEventListener('DOMContentLoaded', function () {
       window.myDropzone = myDropzone;
       globalThis.myDropzone = myDropzone;
     } catch (error) {
-      console.error('❌ Error initializing Dropzone:', error);
     }
   } else {
-    console.warn('⚠️ Dropzone element not found');
   }
 });

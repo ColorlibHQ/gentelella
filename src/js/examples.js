@@ -1434,14 +1434,14 @@ function init_IonRangeSlider() {
     max_interval: 50
   });
   $('.range_time24').ionRangeSlider({
-    min: +moment().subtract(12, 'hours').format('X'),
-    max: +moment().format('X'),
-    from: +moment().subtract(6, 'hours').format('X'),
+    min: +dayjs().subtract(12, 'hours').unix(),
+    max: +dayjs().unix(),
+    from: +dayjs().subtract(6, 'hours').unix(),
     grid: true,
     force_edges: true,
     prettify: function (num) {
-      var m = moment(num, 'X');
-      return m.format('Do MMMM, HH:mm');
+      var d = dayjs.unix(num);
+      return d.format('Do MMMM, HH:mm');
     }
   });
 }
@@ -4906,7 +4906,6 @@ $(document).ready(function () {
   init_EasyPieChart();
   init_charts();
   init_echarts();
-  // init_morris_charts(); // Removed - using Chart.js instead
   init_skycons();
   init_select2();
   init_validator();

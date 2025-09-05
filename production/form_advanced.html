@@ -1208,20 +1208,17 @@ let domReady = false;
 let librariesReady = false;
 
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('📋 DOM loaded, waiting for libraries...');
     domReady = true;
     tryInitialize();
 });
 
 window.addEventListener('form-libraries-loaded', function(e) {
-    console.log('📚 Libraries loaded event received:', e.detail);
     librariesReady = true;
     tryInitialize();
 });
 
 function tryInitialize() {
     if (domReady && librariesReady) {
-        console.log('🚀 Both DOM and libraries ready, starting initialization...');
         waitForLibraries();
     }
 }
@@ -1229,7 +1226,6 @@ function tryInitialize() {
 // Fallback: try to initialize after a short delay even if custom event doesn't fire
 setTimeout(() => {
     if (!librariesReady) {
-        console.log('⚠️ Custom event not received, trying fallback initialization...');
         librariesReady = true;
         tryInitialize();
     }
@@ -1248,22 +1244,13 @@ function waitForLibraries() {
     const hasCropper = typeof window.Cropper !== 'undefined';
     const hasTempusDominus = typeof window.TempusDominus !== 'undefined';
     
-    console.log('🔍 Checking available libraries...');
-    console.log('jQuery available:', hasJQuery);
-    console.log('Inputmask available:', hasInputmask);
-    console.log('Pickr available:', hasPickr);
-    console.log('Cropper available:', hasCropper);
-    console.log('TempusDominus available:', hasTempusDominus);
     
     if (hasJQuery) {
         // Use jQuery from window object
         const $ = window.$;
-        console.log('ionRangeSlider available:', $.fn.ionRangeSlider ? 'yes' : 'no');
-        console.log('knob available:', $.fn.knob ? 'yes' : 'no');
     }
     
     if (!hasJQuery) {
-        console.warn('⚠️ jQuery not ready yet, waiting...');
         setTimeout(waitForLibraries, 100);
         return;
     }
@@ -1276,24 +1263,19 @@ function initializeComponents() {
     // Use jQuery from window object
     const $ = window.$;
     
-    console.log('🚀 Starting component initialization...');
 
     // Initialize Input Masks
     if (typeof window.Inputmask !== 'undefined') {
         const Inputmask = window.Inputmask;
-        console.log('🎭 Initializing input masks...');
         
         // Initialize all elements with data-inputmask attribute
         const inputmaskElements = document.querySelectorAll('[data-inputmask]');
-        console.log(`Found ${inputmaskElements.length} input mask elements`);
         
         inputmaskElements.forEach((element, index) => {
             try {
                 // Let Inputmask read the data-inputmask attribute itself (auto-configuration)
                 Inputmask().mask(element);
-                console.log(`✅ Successfully initialized mask for element ${index + 1}`);
             } catch (error) {
-                console.warn(`❌ Error initializing input mask for element ${index + 1}:`, element, error);
             }
         });
         
@@ -1338,18 +1320,14 @@ function initializeComponents() {
             });
             
         } catch (error) {
-            console.warn('Error setting up advanced masks:', error);
         }
         
-        console.log('✅ Input masks initialization completed');
     } else {
-        console.error('❌ Inputmask library not available');
     }
 
     // Initialize Modern Color Pickers
     if (typeof window.Pickr !== 'undefined') {
         const Pickr = window.Pickr;
-        console.log('🎨 Initializing color pickers...');
         
         // Helper to create pickers for every matching element
         function createPickrForEach(selector, config, onChangeCb, resultSelector) {
@@ -1454,12 +1432,10 @@ function initializeComponents() {
             document.querySelectorAll('#formats-result').forEach(r=>r.value = color.toHEXA().toString());
         });
         
-        console.log('✅ Modern Pickr color pickers initialized');
     }
 
     // Initialize jQuery Knob controls
     if ($ && $.fn.knob) {
-        console.log('🎛️ Initializing jQuery Knob controls...');
         $('.knob').knob({
             draw: function() {
                 if (this.$.data('skin') == 'tron') {
@@ -1498,7 +1474,6 @@ function initializeComponents() {
                 }
             }
         });
-        console.log('✅ jQuery Knob controls initialized');
     }
 
     // Initialize Cropper.js for image cropping
@@ -1506,7 +1481,6 @@ function initializeComponents() {
         const Cropper = window.Cropper;
         const image = document.getElementById('image');
         if (image) {
-            console.log('🖼️ Initializing Cropper.js...');
             const cropper = new Cropper(image, {
                 viewMode: 1,
                 aspectRatio: 16 / 9,
@@ -1559,24 +1533,20 @@ function initializeComponents() {
                     }
                 });
             }
-            console.log('✅ Cropper.js initialized');
         }
     }
 
     // Initialize Switchery for iOS-style toggle switches
     if (typeof window.Switchery !== 'undefined') {
         const Switchery = window.Switchery;
-        console.log('🔄 Initializing Switchery toggles...');
         const elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
         elems.forEach(function(html) {
             const switchery = new Switchery(html, { color: '#26B99A' });
         });
-        console.log('✅ Switchery toggles initialized');
     }
 
     // Initialize Ion Range Slider
     if ($ && $.fn.ionRangeSlider) {
-        console.log('🎚️ Initializing Ion Range Sliders...');
         
         // Price Range Slider
         $('.range_01').ionRangeSlider({
@@ -1596,7 +1566,6 @@ function initializeComponents() {
             prettify_enabled: true,
             prettify_separator: ',',
             onChange: function (data) {
-                console.log('Price range changed:', data.from, '-', data.to);
             }
         });
         
@@ -1615,7 +1584,6 @@ function initializeComponents() {
             hide_min_max: false,
             hide_from_to: false,
             onChange: function (data) {
-                console.log('Percentage changed:', data.from);
             }
         });
         
@@ -1635,7 +1603,6 @@ function initializeComponents() {
             hide_min_max: false,
             hide_from_to: false,
             onChange: function (data) {
-                console.log('Age range changed:', data.from, '-', data.to);
             }
         });
         
@@ -1659,7 +1626,6 @@ function initializeComponents() {
                 return value > 0 ? '+' + value : value;
             },
             onChange: function (data) {
-                console.log('Temperature range changed:', data.from, '-', data.to);
             }
         });
         
@@ -1684,7 +1650,6 @@ function initializeComponents() {
                 return String(hours).padStart(2, '0') + ':' + String(minutes).padStart(2, '0');
             },
             onChange: function (data) {
-                console.log('Time range changed:', 
                     Math.floor(data.from / 60) + ':' + String(data.from % 60).padStart(2, '0'), 
                     '-', 
                     Math.floor(data.to / 60) + ':' + String(data.to % 60).padStart(2, '0')
@@ -1705,17 +1670,14 @@ function initializeComponents() {
             hide_min_max: true, // Hide min/max since we have custom values
             hide_from_to: false,
             onChange: function (data) {
-                console.log('Memory size changed:', data.from_value);
             }
         });
         
-        console.log('✅ Ion Range Sliders initialized');
     }
 
     // Initialize TempusDominus DateTimePickers
     if (typeof window.TempusDominus !== 'undefined') {
         const TempusDominus = window.TempusDominus;
-        console.log('📅 Initializing TempusDominus date pickers...');
 
         // Basic DateTime Picker
         const picker1 = new TempusDominus(document.getElementById('myDatepicker'), {
@@ -1819,10 +1781,8 @@ function initializeComponents() {
             }
         });
 
-        console.log('✅ TempusDominus date pickers initialized');
     }
 
-    console.log('🎉 All components initialized successfully!');
 }
 </script>
   </body>

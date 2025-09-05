@@ -107,6 +107,12 @@ function initializeWorldMapGDP() {
     return;
   }
 
+  // Check if map is already initialized
+  if (worldMapElement._leaflet_id) {
+    console.log('World GDP map already initialized, skipping...');
+    return;
+  }
+
   try {
     // World map centered on a global view
     const worldCenter = [20, 0]; // Centered globally

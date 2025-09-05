@@ -86,10 +86,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       });
     } catch (error) {
-      console.error('❌ Error initializing WYSIWYG editor:', error);
     }
   } else {
-    console.warn('⚠️ WYSIWYG editor elements not found or jQuery not available');
   }
 });
 

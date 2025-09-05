@@ -101,7 +101,6 @@ try {
   window.Chart = Chart;
   globalThis.Chart = Chart;
 } catch (error) {
-  console.error('❌ Chart.js registration error:', error);
   window.Chart = Chart;
   globalThis.Chart = Chart;
 }
@@ -118,7 +117,6 @@ try {
   window.Skycons = Skycons;
   globalThis.Skycons = Skycons;
 } catch (error) {
-  console.error('Skycons loading error:', error);
 }
 
 // Leaflet (for maps)
@@ -131,12 +129,10 @@ import './main.scss';
 
 // Add global error handlers to prevent uncaught promise rejections
 window.addEventListener('unhandledrejection', event => {
-  console.warn('🚨 Unhandled promise rejection:', event.reason);
   event.preventDefault();
 });
 
 window.addEventListener('error', event => {
-  console.warn('🚨 Global error caught:', event.error);
 });
 
 // CSS imports for libraries
@@ -214,7 +210,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       advancedTableEl.dataTableInstance = dataTable;
     } catch (error) {
-      console.error('❌ DataTable initialization failed:', error);
     }
   }
 });
@@ -256,7 +251,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         advancedTable.dataTableInstance = dataTable;
       } catch (error) {
-        console.error('❌ Failed to initialize Advanced DataTable:', error);
       }
     }
   }
@@ -269,7 +263,6 @@ import './chart-initializer.js';
 
 // Widget-specific initialization (jQuery-free)
 DOM.ready(() => {
-  console.log('🎯 DOM ready, chart initializer will handle all charts automatically');
   
   // The chart initializer handles all chart initialization
   // No need for manual chart initialization here anymore
@@ -357,4 +350,3 @@ import './modules/maps.js';
 // Import echarts module for echarts.html
 import './modules/echarts-modern.js';
 
-console.log('✅ Modern jQuery-free bundle loaded successfully');

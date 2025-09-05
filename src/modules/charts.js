@@ -16,7 +16,6 @@ window.Skycons = Skycons;
 
 // Mini charts now handled by Chart.js instead of jQuery Sparkline
 
-// Morris.js removed - using Chart.js instead
 
 export default {
   Chart,

@@ -59,7 +59,6 @@ try {
   window.Chart = Chart;
   globalThis.Chart = Chart;
 } catch (error) {
-  console.error('❌ Chart.js registration error:', error);
   window.Chart = Chart; // Still assign even if registration fails
   globalThis.Chart = Chart;
 }
@@ -78,7 +77,6 @@ try {
   window.Skycons = Skycons;
   globalThis.Skycons = Skycons;
 } catch (error) {
-  console.error('Skycons loading error:', error);
 }
 
 // Leaflet (for maps)
@@ -91,13 +89,11 @@ import './main.scss';
 
 // Add global error handlers to prevent uncaught promise rejections
 window.addEventListener('unhandledrejection', event => {
-  console.warn('🚨 Unhandled promise rejection:', event.reason);
   // Prevent the default browser behavior (like logging to console)
   event.preventDefault();
 });
 
 window.addEventListener('error', event => {
-  console.warn('🚨 Global error caught:', event.error);
 });
 
 // Leaflet CSS
@@ -181,7 +177,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
     } catch (error) {
-      console.error('❌ DataTable initialization failed:', error);
     }
   }
 });
@@ -225,7 +220,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         advancedTable.dataTableInstance = dataTable;
       } catch (error) {
-        console.error('❌ Failed to initialize Advanced DataTable:', error);
       }
     }
   }
@@ -247,7 +241,6 @@ window.waitForLibraries = function (libraries, callback, timeout = 5000) {
     } else {
       // Only warn in development
       if (process.env.NODE_ENV === 'development') {
-        console.warn(
           'Timeout waiting for libraries:',
           libraries.filter(
             lib => typeof window[lib] === 'undefined' && typeof globalThis[lib] === 'undefined'

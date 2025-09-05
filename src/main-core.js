@@ -46,7 +46,7 @@ window.NProgress = NProgress;
 window.addEventListener('error', event => {
   // Only log to console in development
   if (process.env.NODE_ENV === 'development') {
-    console.error('🚨 Global error caught:', {
+    console.error({
       message: event.message,
       filename: event.filename,
       lineno: event.lineno,
@@ -69,16 +69,16 @@ if (process.env.NODE_ENV === 'development') {
   const originalLog = console.log;
   const originalError = console.error;
   const originalWarn = console.warn;
-
-  console.log = function (...args) {
+  
+  console.log = (...args) => {
     originalLog(`[${new Date().toLocaleTimeString()}]`, ...args);
   };
 
-  console.error = function (...args) {
+  console.error = (...args) => {
     originalError(`[${new Date().toLocaleTimeString()}] ❌`, ...args);
   };
 
-  console.warn = function (...args) {
+  console.warn = (...args) => {
     originalWarn(`[${new Date().toLocaleTimeString()}] ⚠️`, ...args);
   };
 }
@@ -180,7 +180,6 @@ window.loadModule = async function (moduleName, showLoading = true) {
     return module;
   } catch (error) {
     if (process.env.NODE_ENV === 'development') {
-      console.error(`Failed to load module ${moduleName}:`, error);
     }
     return null;
   } finally {
@@ -200,19 +199,13 @@ window.preloadModules = async function (moduleNames) {
 // Debug utility to show module loading stats (development only)
 window.getModuleStats = function () {
   if (process.env.NODE_ENV === 'development') {
-    console.group('📊 Module Loading Statistics');
-    console.log('Cached modules:', Array.from(window.moduleCache.keys()));
-    console.log('Load times:');
 
     Array.from(window.moduleLoadTimes.entries())
       .sort((a, b) => b[1] - a[1])
       .forEach(([module, time]) => {
-        console.log(`  ${module}: ${time.toFixed(2)}ms`);
       });
 
     const totalTime = Array.from(window.moduleLoadTimes.values()).reduce((a, b) => a + b, 0);
-    console.log(`Total load time: ${totalTime.toFixed(2)}ms`);
-    console.groupEnd();
   }
 };
 

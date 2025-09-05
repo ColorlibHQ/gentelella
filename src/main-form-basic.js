@@ -135,7 +135,6 @@ document.addEventListener('DOMContentLoaded', () => {
           canvas.style.height = 'auto';
           previewEl.appendChild(canvas);
         })
-        .catch(err => console.error('Preview render error:', err));
     };
 
     // Rotate button
@@ -147,7 +146,6 @@ document.addEventListener('DOMContentLoaded', () => {
           imgElement && imgElement.$rotate(90);
           refreshPreview();
         } catch (err) {
-          console.error('Rotate failed:', err);
         }
       });
     }
@@ -161,7 +159,6 @@ document.addEventListener('DOMContentLoaded', () => {
           cropperInstance.getCropperSelection()?.$reset();
           refreshPreview();
         } catch (err) {
-          console.error('Reset failed:', err);
         }
       });
     }
@@ -182,7 +179,6 @@ document.addEventListener('DOMContentLoaded', () => {
             link.download = 'cropped-image.jpg';
             link.click();
           })
-          .catch(err => console.error('Download failed:', err));
       });
     }
 
@@ -191,9 +187,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initial preview render after load
     setTimeout(refreshPreview, 600);
-  } else {
-    console.warn(
-      '⚠️ Cropper source image or library not found. Skipping Cropper.js v2 initialization'
-    );
   }
 });
