@@ -8,10 +8,10 @@
 // CSS files using @import (legacy approach for .css files)
 @import "@fortawesome/fontawesome-free/css/all.min.css";
 @import "nprogress/nprogress.css";
-@import "jquery-ui/dist/themes/ui-lightness/jquery-ui.css";
-@import "select2/dist/css/select2.min.css";
-@import "ion-rangeslider/css/ion.rangeSlider.css";
-@import "./css/switchery.min.css";
+// @import "jquery-ui/dist/themes/ui-lightness/jquery-ui.css"; // Package not installed
+// @import "select2/dist/css/select2.min.css"; // Package not installed  
+// @import "ion-rangeslider/css/ion.rangeSlider.css"; // Package not installed
+// Switchery CSS is now imported directly from node_modules via JS imports
 @import "@eonasdan/tempus-dominus/dist/css/tempus-dominus.min.css";
 
 // Import Leaflet's CSS

@@ -1,42 +1,46 @@
-// Minimal test - adding back essential functionality step by step
-
-// Import jQuery setup first - needed for all jQuery-dependent features
-import $ from './jquery-setup.js';
+// Minimal test - jQuery-free version with modern alternatives
 
 // Import security utilities for XSS protection
 import './utils/security.js';
 
-// Ensure jQuery is available globally FIRST - this is critical for Vite builds
-window.jQuery = window.$ = $;
-globalThis.jQuery = globalThis.$ = $;
-
-// jQuery UI effect.js (provides easing functions)
-import 'jquery-ui/ui/effect.js';
-
-// Ensure basic easing functions are available as fallbacks
-if (!$.easing) {
-  $.easing = {};
-}
-
-// Add missing easing functions as fallbacks
-$.extend($.easing, {
-  easeOutElastic: function (x, t, b, c, d) {
-    return c * ((t = t / d - 1) * t * t + 1) + b;
-  },
-  easeInOutQuart: function (x, t, b, c, d) {
-    if ((t /= d / 2) < 1) {
-      return (c / 2) * t * t * t * t + b;
+// Native easing functions (jQuery-free)
+const EasingFunctions = {
+  easeOutElastic: function (t, b, c, d) {
+    let s = 1.70158; let p = 0; let a = c;
+    if (t === 0) return b;
+    if ((t /= d) === 1) return b + c;
+    if (!p) p = d * 0.3;
+    if (a < Math.abs(c)) {
+      a = c; s = p / 4;
+    } else {
+      s = p / (2 * Math.PI) * Math.asin(c / a);
     }
-    return (-c / 2) * ((t -= 2) * t * t * t - 2) + b;
+    return a * Math.pow(2, -10 * t) * Math.sin((t * d - s) * (2 * Math.PI) / p) + c + b;
+  },
+  easeInOutQuart: function (t, b, c, d) {
+    if ((t /= d / 2) < 1) {
+      return c / 2 * t * t * t * t + b;
+    }
+    return -c / 2 * ((t -= 2) * t * t * t - 2) + b;
   }
-});
+};
 
-// Import jQuery-dependent vendor libraries AFTER jQuery is global
+window.EasingFunctions = EasingFunctions;
+
+// Import jQuery-free vendor libraries
 
 // Switchery (iOS-style toggle switches)
 import Switchery from 'switchery';
 window.Switchery = Switchery;
 globalThis.Switchery = Switchery;
+
+// Choices.js (Select2 replacement)
+import Choices from 'choices.js';
+window.Choices = Choices;
+
+// NoUiSlider (Ion Range Slider replacement)
+import noUiSlider from 'nouislider';
+window.noUiSlider = noUiSlider;
 
 // Bootstrap 5 - No jQuery dependency needed
 import * as bootstrap from 'bootstrap';
@@ -60,8 +64,7 @@ try {
   globalThis.Chart = Chart;
 }
 
-// jQuery Sparkline (for mini charts in widgets)
-import 'jquery-sparkline';
+// Chart.js for mini charts (Sparkline replacement)
 
 // ECharts - Apache ECharts library
 import * as echarts from 'echarts';
@@ -103,12 +106,11 @@ import 'leaflet/dist/leaflet.css';
 // TempusDominus CSS
 import '@eonasdan/tempus-dominus/dist/css/tempus-dominus.min.css';
 
-// Ion Range Slider
-import 'ion-rangeslider';
-window.ionRangeSlider = true;
+// NoUiSlider CSS
+import 'nouislider/dist/nouislider.css';
 
-// Ion Range Slider CSS
-import 'ion-rangeslider/css/ion.rangeSlider.min.css';
+// Choices.js CSS
+import 'choices.js/public/assets/styles/choices.min.css';
 
 // Input Mask
 import Inputmask from 'inputmask';
@@ -116,15 +118,15 @@ window.Inputmask = Inputmask;
 globalThis.Inputmask = Inputmask;
 
 // Modern Color Picker
-import Pickr from '@simonwep/pickr';
+import * as PickrModule from '@simonwep/pickr';
+const Pickr = PickrModule.default || PickrModule.Pickr || PickrModule;
 window.Pickr = Pickr;
 globalThis.Pickr = Pickr;
 
 // Pickr CSS
 import '@simonwep/pickr/dist/themes/classic.min.css';
 
-// jQuery Knob (needs jQuery to be global first)
-import 'jquery-knob';
+// Chart.js gauge charts (jQuery Knob replacement)
 
 // Cropper.js for image cropping
 import Cropper from 'cropperjs';
@@ -192,12 +194,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize DataTables for tables.html page
   if (window.location.pathname.includes('tables.html')) {
     // Advanced DataTable for Employee Management
-    if (
-      document.getElementById('advancedDataTable') &&
-      !$.fn.DataTable.isDataTable('#advancedDataTable')
-    ) {
+    const advancedTable = document.getElementById('advancedDataTable');
+    if (advancedTable && !advancedTable.dataTableInstance) {
       try {
-        new DataTable('#advancedDataTable', {
+        const dataTable = new DataTable(advancedTable, {
           responsive: true,
           pageLength: 10,
           lengthMenu: [
@@ -223,6 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
           ]
         });
+        advancedTable.dataTableInstance = dataTable;
       } catch (error) {
         console.error('❌ Failed to initialize Advanced DataTable:', error);
       }
@@ -262,12 +263,12 @@ window.waitForLibraries = function (libraries, callback, timeout = 5000) {
 
 // CRITICAL: Ensure all globals are available before importing the JS modules
 // Add the essential JavaScript functionality - SYNCHRONOUS imports to ensure proper order
-import './js/helpers/smartresize.js';
-import './js/sidebar.js';
+import './js/helpers/smartresize-modern.js';
+import './js/sidebar-modern.js';
 
 // IMPORTANT: Load init.js synchronously but ensure all globals are ready first
 // Import init.js synchronously - all dependencies should be loaded by now
-import './js/init.js';
+import './js/init-modern.js';
 
 // Import page-specific chart initializations
 

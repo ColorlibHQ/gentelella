@@ -4,6 +4,8 @@ import { visualizer } from 'rollup-plugin-visualizer';
 export default defineConfig({
   root: '.',
   publicDir: 'production',
+  logLevel: 'info',
+  clearScreen: false,
   build: {
     outDir: 'dist',
     emptyOutDir: true,
@@ -27,7 +29,7 @@ export default defineConfig({
         manualChunks: {
           'vendor-core': ['bootstrap', '@popperjs/core'],
           'vendor-charts': ['chart.js', 'echarts', 'leaflet'],
-          'vendor-forms': ['select2', 'ion-rangeslider', 'autosize', 'switchery', '@eonasdan/tempus-dominus'],
+          'vendor-forms': ['choices.js', 'nouislider', 'autosize', 'switchery', '@eonasdan/tempus-dominus'],
           'vendor-ui': ['nprogress', 'datatables.net', 'datatables.net-bs5'],
           'vendor-utils': ['dayjs', 'skycons']
         },
@@ -94,16 +96,18 @@ export default defineConfig({
         pricing_tables: 'production/pricing_tables.html',
         
         level2: 'production/level2.html',
-        sidebar_test: 'production/sidebar_test.html',
-        map: 'production/map.html',
-        xx: 'production/xx.html'
+        map: 'production/map.html'
       }
     },
     minify: 'terser',
     terserOptions: {
       compress: {
         drop_console: true,
-        drop_debugger: true
+        drop_debugger: true,
+        pure_funcs: ['console.log', 'console.info', 'console.warn', 'console.error', 'console.debug', 'console.group', 'console.groupEnd', 'console.trace']
+      },
+      mangle: {
+        safari10: true
       }
     }
   },
@@ -111,8 +115,17 @@ export default defineConfig({
     target: 'es2022'
   },
   server: {
-    open: '/production/index.html',
-    port: 3000
+    open: '/index.html',
+    port: 3000,
+    host: true,
+    watch: {
+      usePolling: false,
+      interval: 100,
+      ignored: ['**/node_modules/**', '**/dist/**']
+    },
+    hmr: {
+      overlay: false
+    }
   },
   optimizeDeps: {
     include: [
@@ -121,7 +134,8 @@ export default defineConfig({
       'dayjs',
       'nprogress'
     ],
-    force: true
+    force: false,
+    exclude: ['@simonwep/pickr']
   },
   resolve: {
     // Modern build without jQuery aliases

@@ -17,9 +17,9 @@ globalThis.bootstrap = bootstrap;
 import './main.scss';
 
 // Essential scripts for layout
-import './js/helpers/smartresize.js';
-import './js/sidebar.js';
-import './js/init.js';
+import './js/helpers/smartresize-modern.js';
+import './js/sidebar-modern.js';
+import './js/init-modern.js';
 
 // FullCalendar Core and Plugins
 import { Calendar } from '@fullcalendar/core';
@@ -224,45 +224,45 @@ function showEventDetails(event) {
             <div class="col-md-9">${startDate} ${startTime}</div>
         </div>
         ${
-          event.end
-            ? `
+  event.end
+    ? `
         <div class="row mb-3">
             <div class="col-md-3"><strong>End:</strong></div>
             <div class="col-md-9">${endDate} ${endTime}</div>
         </div>
         `
-            : ''
-        }
+    : ''
+}
         ${
-          safeDescription
-            ? `
+  safeDescription
+    ? `
         <div class="row mb-3">
             <div class="col-md-3"><strong>Description:</strong></div>
             <div class="col-md-9">${safeDescription}</div>
         </div>
         `
-            : ''
-        }
+    : ''
+}
         ${
-          safeLocation
-            ? `
+  safeLocation
+    ? `
         <div class="row mb-3">
             <div class="col-md-3"><strong>Location:</strong></div>
             <div class="col-md-9">${safeLocation}</div>
         </div>
         `
-            : ''
-        }
+    : ''
+}
         ${
-          safeCategory
-            ? `
+  safeCategory
+    ? `
         <div class="row mb-3">
             <div class="col-md-3"><strong>Category:</strong></div>
             <div class="col-md-9"><span class="badge bg-secondary">${safeCategory}</span></div>
         </div>
         `
-            : ''
-        }
+    : ''
+}
     `;
 
   // Final sanitization of the entire HTML block

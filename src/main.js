@@ -78,8 +78,8 @@ import './modules/dashboard-pages.js';
 import './modules/tables-modern.js';
 
 // Legacy scripts that depend on global jQuery - LOAD IN CORRECT ORDER
-import './js/helpers/smartresize.js';
-import './js/sidebar.js';
+import './js/helpers/smartresize-modern.js';
+import './js/sidebar-modern.js';
 
 // Modern initialization (jQuery eliminated)
 import './js/init-modern.js';
@@ -238,7 +238,7 @@ window.Inputmask = Inputmask;
 globalThis.Inputmask = Inputmask;
 
 // Modern Color Picker
-import Pickr from '@simonwep/pickr';
+import * as PickrModule from '@simonwep/pickr'; const Pickr = PickrModule.default || PickrModule.Pickr || PickrModule;
 window.Pickr = Pickr;
 globalThis.Pickr = Pickr;
 

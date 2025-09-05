@@ -8,8 +8,8 @@ $.fn.popover.Constructor.prototype.leave = function (obj) {
     obj instanceof this.constructor
       ? obj
       : $(obj.currentTarget)
-          [this.type](this.getDelegateOptions())
-          .data('bs.' + this.type);
+        [this.type](this.getDelegateOptions())
+        .data('bs.' + this.type);
   var container, timeout;
 
   originalLeave.call(this, obj);
@@ -28,13 +28,13 @@ $.fn.popover.Constructor.prototype.leave = function (obj) {
   }
 };
 
-$('body').popover({
-  selector: '[data-popover]',
-  trigger: 'click hover',
-  delay: {
-    show: 50,
-    hide: 400
-  }
+// Initialize popovers using Bootstrap 5 API
+const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-popover]'));
+popoverTriggerList.map(function (popoverTriggerEl) {
+  return new bootstrap.Popover(popoverTriggerEl, {
+    trigger: 'click hover',
+    delay: { show: 50, hide: 400 }
+  });
 });
 
 function gd(year, month, day) {
@@ -948,15 +948,23 @@ function init_wysiwyg() {
         )
       );
     });
-    $('a[title]').tooltip({
-      container: 'body'
+    // Initialize tooltips using Bootstrap 5 API
+    const tooltipTriggerList = [].slice.call(document.querySelectorAll('a[title]'));
+    tooltipTriggerList.map(function (tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl, {
+        container: 'body'
+      });
     });
     $('.dropdown-menu input')
       .click(function () {
         return false;
       })
       .change(function () {
-        $(this).parent('.dropdown-menu').siblings('.dropdown-toggle').dropdown('toggle');
+        const dropdownToggle = $(this).parent('.dropdown-menu').siblings('.dropdown-toggle')[0];
+        if (dropdownToggle) {
+          const dropdown = bootstrap.Dropdown.getInstance(dropdownToggle);
+          if (dropdown) {dropdown.toggle();}
+        }
       })
       .keydown('esc', function () {
         this.value = '';
@@ -1046,7 +1054,11 @@ function init_cropper() {
   };
 
   // Tooltip
-  $('[data-toggle="tooltip"]').tooltip();
+  // Initialize tooltips using Bootstrap 5 API
+  const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"], [data-toggle="tooltip"]'));
+  tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl);
+  });
 
   // Cropper
   $image
@@ -1139,7 +1151,9 @@ function init_cropper() {
         case 'getCroppedCanvas':
           if (result) {
             // Bootstrap's Modal
-            $('#getCroppedCanvasModal').modal().find('.modal-body').html(sanitizeHtml(result));
+            const modal = new bootstrap.Modal(document.getElementById('getCroppedCanvasModal'));
+            modal.show();
+            modal._element.querySelector('.modal-body').innerHTML = sanitizeHtml(result);
 
             if (!$download.hasClass('disabled')) {
               $download.attr('href', result.toDataURL());
@@ -1912,8 +1926,8 @@ function init_EasyPieChart() {
       obj instanceof this.constructor
         ? obj
         : $(obj.currentTarget)
-            [this.type](this.getDelegateOptions())
-            .data('bs.' + this.type);
+          [this.type](this.getDelegateOptions())
+          .data('bs.' + this.type);
     var container, timeout;
 
     originalLeave.call(this, obj);
@@ -1932,13 +1946,13 @@ function init_EasyPieChart() {
     }
   };
 
-  $('body').popover({
-    selector: '[data-popover]',
-    trigger: 'click hover',
-    delay: {
-      show: 50,
-      hide: 400
-    }
+  // Initialize popovers using Bootstrap 5 API
+  const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-popover]'));
+  popoverTriggerList.map(function (popoverTriggerEl) {
+    return new bootstrap.Popover(popoverTriggerEl, {
+      trigger: 'click hover',
+      delay: { show: 50, hide: 400 }
+    });
   });
 }
 

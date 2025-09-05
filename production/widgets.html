@@ -8,7 +8,7 @@
 
     <title>Widgets | Gentelella</title>
     <!-- Compiled CSS (includes Bootstrap, Font Awesome, and all vendor styles) -->
-    <script type="module" src="/src/main-minimal.js"></script>
+    <script type="module" src="/src/main-minimal-modern.js"></script>
   </head>
 
   <body class="nav-md">
@@ -300,33 +300,81 @@
 
                     <!-- Sparkline Charts Row -->
                     <div class="row top_tiles mb-4" style="margin: 10px 0;">
-                      <div class="col-lg-3 col-md-6 col-sm-6 mb-3 tile">
-                        <span>Total Sessions</span>
-                        <h5>231,809</h5>
-                        <span class="sparkline_two" style="height: 160px;">
-                          <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
-                        </span>
+                      <div class="col-lg-3 col-md-6 col-sm-6 mb-3 tile" style="padding: 20px; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                          <div>
+                            <span class="text-muted small">Total Sessions</span>
+                            <h3 class="mb-1 fw-bold text-primary">231,809</h3>
+                            <span class="badge bg-success small">+12.5% vs last month</span>
+                          </div>
+                          <i class="fas fa-chart-line text-primary" style="font-size: 24px; opacity: 0.7;"></i>
+                        </div>
+                        <div style="height: 80px; margin-top: 15px;">
+                          <span class="sparkline_two">
+                            <canvas width="200" height="80" style="display: block; width: 100%;"></canvas>
+                          </span>
+                        </div>
+                        <div class="d-flex justify-content-between text-muted small mt-3">
+                          <span>Avg Session Duration: 3:42</span>
+                          <span>Bounce Rate: 42.3%</span>
+                        </div>
                       </div>
-                      <div class="col-lg-3 col-md-6 col-sm-6 mb-3 tile">
-                        <span>Total Revenue</span>
-                        <h5>$ 1,231,809</h5>
-                        <span class="sparkline_two" style="height: 160px;">
-                          <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
-                        </span>
+                      <div class="col-lg-3 col-md-6 col-sm-6 mb-3 tile" style="padding: 20px; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                          <div>
+                            <span class="text-muted small">Total Revenue</span>
+                            <h3 class="mb-1 fw-bold text-success">$1,231,809</h3>
+                            <span class="badge bg-primary small">+8.2% growth</span>
+                          </div>
+                          <i class="fas fa-dollar-sign text-success" style="font-size: 24px; opacity: 0.7;"></i>
+                        </div>
+                        <div style="height: 80px; margin-top: 15px;">
+                          <span class="sparkline_two">
+                            <canvas width="200" height="80" style="display: block; width: 100%;"></canvas>
+                          </span>
+                        </div>
+                        <div class="d-flex justify-content-between text-muted small mt-3">
+                          <span>Monthly Target: $1.5M</span>
+                          <span>Conversion: 2.8%</span>
+                        </div>
                       </div>
-                      <div class="col-lg-3 col-md-6 col-sm-6 mb-3 tile">
-                        <span>Unique Visitors</span>
-                        <h5>89,456</h5>
-                        <span class="sparkline_three" style="height: 160px;">
-                          <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
-                        </span>
+                      <div class="col-lg-3 col-md-6 col-sm-6 mb-3 tile" style="padding: 20px; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                          <div>
+                            <span class="text-muted small">Unique Visitors</span>
+                            <h3 class="mb-1 fw-bold text-info">89,456</h3>
+                            <span class="badge bg-warning small">+5.7% increase</span>
+                          </div>
+                          <i class="fas fa-users text-info" style="font-size: 24px; opacity: 0.7;"></i>
+                        </div>
+                        <div style="height: 80px; margin-top: 15px;">
+                          <span class="sparkline_three">
+                            <canvas width="200" height="80" style="display: block; width: 100%;"></canvas>
+                          </span>
+                        </div>
+                        <div class="d-flex justify-content-between text-muted small mt-3">
+                          <span>New Users: 67%</span>
+                          <span>Returning: 33%</span>
+                        </div>
                       </div>
-                      <div class="col-lg-3 col-md-6 col-sm-6 mb-3 tile">
-                        <span>Page Views</span>
-                        <h5>567,234</h5>
-                        <span class="sparkline_two" style="height: 160px;">
-                          <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
-                        </span>
+                      <div class="col-lg-3 col-md-6 col-sm-6 mb-3 tile" style="padding: 20px; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                          <div>
+                            <span class="text-muted small">Page Views</span>
+                            <h3 class="mb-1 fw-bold text-secondary">567,234</h3>
+                            <span class="badge bg-info small">+15.3% traffic</span>
+                          </div>
+                          <i class="fas fa-eye text-secondary" style="font-size: 24px; opacity: 0.7;"></i>
+                        </div>
+                        <div style="height: 80px; margin-top: 15px;">
+                          <span class="sparkline_two">
+                            <canvas width="200" height="80" style="display: block; width: 100%;"></canvas>
+                          </span>
+                        </div>
+                        <div class="d-flex justify-content-between text-muted small mt-3">
+                          <span>Pages/Session: 6.34</span>
+                          <span>Exit Rate: 28.5%</span>
+                        </div>
                       </div>
                     </div>
 

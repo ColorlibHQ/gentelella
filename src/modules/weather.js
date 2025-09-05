@@ -9,23 +9,23 @@
  * Modern JavaScript implementation
  */
 export function initializeSkycons() {
-  if (typeof Skycons === 'undefined') {
+  if (typeof window.Skycons === 'undefined') {
     console.warn('⚠️ Skycons library not available');
     return;
   }
 
   try {
-    const skycons = new Skycons({ color: '#73879C' });
+    const skycons = new window.Skycons({ color: '#73879C' });
 
     // Index.html specific weather icons (actual IDs from the HTML)
     const weatherIcons = [
-      { id: 'partly-cloudy-day', type: Skycons.PARTLY_CLOUDY_DAY },
-      { id: 'clear-day', type: Skycons.CLEAR_DAY },
-      { id: 'rain', type: Skycons.RAIN },
-      { id: 'snow', type: Skycons.SNOW },
-      { id: 'sleet', type: Skycons.SLEET },
-      { id: 'wind', type: Skycons.WIND },
-      { id: 'cloudy', type: Skycons.CLOUDY }
+      { id: 'partly-cloudy-day', type: window.Skycons.PARTLY_CLOUDY_DAY },
+      { id: 'clear-day', type: window.Skycons.CLEAR_DAY },
+      { id: 'rain', type: window.Skycons.RAIN },
+      { id: 'snow', type: window.Skycons.SNOW },
+      { id: 'sleet', type: window.Skycons.SLEET },
+      { id: 'wind', type: window.Skycons.WIND },
+      { id: 'cloudy', type: window.Skycons.CLOUDY }
     ];
 
     let initializedCount = 0;
@@ -42,36 +42,36 @@ export function initializeSkycons() {
     // Legacy support: Temperature widget (if exists)
     const tempElement = document.getElementById('canvas-temperature');
     if (tempElement) {
-      skycons.add(tempElement, Skycons.PARTLY_CLOUDY_DAY);
+      skycons.add(tempElement, window.Skycons.PARTLY_CLOUDY_DAY);
       initializedCount++;
     }
 
     // Legacy support: Humidity widget (if exists)
     const humidityElement = document.getElementById('canvas-humidity');
     if (humidityElement) {
-      skycons.add(humidityElement, Skycons.CLOUDY);
+      skycons.add(humidityElement, window.Skycons.CLOUDY);
       initializedCount++;
     }
 
     // Legacy support: Wind widget (if exists)
     const windElement = document.getElementById('canvas-wind');
     if (windElement) {
-      skycons.add(windElement, Skycons.WIND);
+      skycons.add(windElement, window.Skycons.WIND);
       initializedCount++;
     }
 
     // Legacy support: Rain widget (if exists)
     const rainElement = document.getElementById('canvas-rain');
     if (rainElement) {
-      skycons.add(rainElement, Skycons.RAIN);
+      skycons.add(rainElement, window.Skycons.RAIN);
       initializedCount++;
     }
 
     // Generic weather icons with data attributes
     document.querySelectorAll('[data-weather]').forEach(element => {
       const weatherType = element.getAttribute('data-weather').toUpperCase();
-      if (Skycons[weatherType]) {
-        skycons.add(element, Skycons[weatherType]);
+      if (window.Skycons[weatherType]) {
+        skycons.add(element, window.Skycons[weatherType]);
         initializedCount++;
       }
     });

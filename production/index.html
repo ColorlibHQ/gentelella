@@ -31,7 +31,7 @@
 
 
     <!-- Vite Entry Point - will bundle all styles -->
-    <script type="module" src="/src/main-minimal.js"></script>
+    <script type="module" src="/src/main-minimal-modern.js"></script>
   </head>
 
   <body class="nav-md page-index">
@@ -257,62 +257,60 @@
         <!-- page content -->
         <div class="right_col" role="main">
           <!-- top tiles -->
-          <div class="row">
-            <div class="tile_count" style="display: flex; flex-wrap: wrap; gap: 20px; margin-bottom: 30px; width: 100%;">
-              <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count" style="flex: 1; min-width: 180px; height: 120px; display: flex; flex-direction: column; justify-content: center; background: #fff; border: 1px solid #e6e9ed; border-radius: 5px; padding: 15px; box-shadow: 0 1px 3px rgba(0,0,0,0.12);">
-                <span class="count_top" style="display: flex; align-items: center; margin-bottom: 8px;">
-                  <i class="fas fa-users" style="color: #3498db; font-size: 32px; margin-right: 12px;"></i>
-                  <div>
-                    <div class="count" style="font-size: 24px; font-weight: bold; color: #34495e; line-height: 1;">2,500</div>
-                    <span class="count_bottom" style="font-size: 12px; color: #7f8c8d; text-transform: uppercase;">Total Users</span>
-                  </div>
-                </span>
-              </div>
-              <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count" style="flex: 1; min-width: 180px; height: 120px; display: flex; flex-direction: column; justify-content: center; background: #fff; border: 1px solid #e6e9ed; border-radius: 5px; padding: 15px; box-shadow: 0 1px 3px rgba(0,0,0,0.12);">
-                <span class="count_top" style="display: flex; align-items: center; margin-bottom: 8px;">
-                  <i class="fas fa-clock" style="color: #e74c3c; font-size: 32px; margin-right: 12px;"></i>
-                  <div>
-                    <div class="count" style="font-size: 24px; font-weight: bold; color: #34495e; line-height: 1;">123.5<small>min</small></div>
-                    <span class="count_bottom" style="font-size: 12px; color: #7f8c8d; text-transform: uppercase;">Average Time</span>
-                  </div>
-                </span>
-              </div>
-              <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count" style="flex: 1; min-width: 180px; height: 120px; display: flex; flex-direction: column; justify-content: center; background: #fff; border: 1px solid #e6e9ed; border-radius: 5px; padding: 15px; box-shadow: 0 1px 3px rgba(0,0,0,0.12);">
-                <span class="count_top" style="display: flex; align-items: center; margin-bottom: 8px;">
-                  <i class="fas fa-shopping-cart" style="color: #f39c12; font-size: 32px; margin-right: 12px;"></i>
-                  <div>
-                    <div class="count" style="font-size: 24px; font-weight: bold; color: #34495e; line-height: 1;">1,240</div>
-                    <span class="count_bottom" style="font-size: 12px; color: #7f8c8d; text-transform: uppercase;">Total Orders</span>
-                  </div>
-                </span>
-              </div>
-              <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count" style="flex: 1; min-width: 180px; height: 120px; display: flex; flex-direction: column; justify-content: center; background: #fff; border: 1px solid #e6e9ed; border-radius: 5px; padding: 15px; box-shadow: 0 1px 3px rgba(0,0,0,0.12);">
-                <span class="count_top" style="display: flex; align-items: center; margin-bottom: 8px;">
-                  <i class="fas fa-dollar-sign" style="color: #2ecc71; font-size: 32px; margin-right: 12px;"></i>
-                  <div>
-                    <div class="count" style="font-size: 24px; font-weight: bold; color: #34495e; line-height: 1;">$24,567</div>
-                    <span class="count_bottom" style="font-size: 12px; color: #7f8c8d; text-transform: uppercase;">Total Revenue</span>
-                  </div>
-                </span>
-              </div>
-              <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count" style="flex: 1; min-width: 180px; height: 120px; display: flex; flex-direction: column; justify-content: center; background: #fff; border: 1px solid #e6e9ed; border-radius: 5px; padding: 15px; box-shadow: 0 1px 3px rgba(0,0,0,0.12);">
-                <span class="count_top" style="display: flex; align-items: center; margin-bottom: 8px;">
-                  <i class="fas fa-chart-line" style="color: #9b59b6; font-size: 32px; margin-right: 12px;"></i>
-                  <div>
-                    <div class="count" style="font-size: 24px; font-weight: bold; color: #34495e; line-height: 1;">2,315</div>
-                    <span class="count_bottom" style="font-size: 12px; color: #7f8c8d; text-transform: uppercase;">Conversions</span>
-                  </div>
-                </span>
-              </div>
-              <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count" style="flex: 1; min-width: 180px; height: 120px; display: flex; flex-direction: column; justify-content: center; background: #fff; border: 1px solid #e6e9ed; border-radius: 5px; padding: 15px; box-shadow: 0 1px 3px rgba(0,0,0,0.12);">
-                <span class="count_top" style="display: flex; align-items: center; margin-bottom: 8px;">
-                  <i class="fas fa-eye" style="color: #1abc9c; font-size: 32px; margin-right: 12px;"></i>
-                  <div>
-                    <div class="count" style="font-size: 24px; font-weight: bold; color: #34495e; line-height: 1;">47,325</div>
-                    <span class="count_bottom" style="font-size: 12px; color: #7f8c8d; text-transform: uppercase;">Page Views</span>
-                  </div>
-                </span>
-              </div>
+          <div class="row tile_count" style="margin-bottom: 30px;">
+            <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12 tile_stats_count" style="height: 120px; display: flex; flex-direction: column; justify-content: center; background: #fff; border: 1px solid #e6e9ed; border-radius: 5px; padding: 15px; box-shadow: 0 1px 3px rgba(0,0,0,0.12); margin-bottom: 15px;">
+              <span class="count_top" style="display: flex; align-items: center; margin-bottom: 8px;">
+                <i class="fas fa-users" style="color: #3498db; font-size: 32px; margin-right: 12px;"></i>
+                <div>
+                  <div class="count" style="font-size: 24px; font-weight: bold; color: #34495e; line-height: 1;">2,500</div>
+                  <span class="count_bottom" style="font-size: 12px; color: #7f8c8d; text-transform: uppercase;">Total Users</span>
+                </div>
+              </span>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12 tile_stats_count" style="height: 120px; display: flex; flex-direction: column; justify-content: center; background: #fff; border: 1px solid #e6e9ed; border-radius: 5px; padding: 15px; box-shadow: 0 1px 3px rgba(0,0,0,0.12); margin-bottom: 15px;">
+              <span class="count_top" style="display: flex; align-items: center; margin-bottom: 8px;">
+                <i class="fas fa-clock" style="color: #e74c3c; font-size: 32px; margin-right: 12px;"></i>
+                <div>
+                  <div class="count" style="font-size: 24px; font-weight: bold; color: #34495e; line-height: 1;">123.5<small>min</small></div>
+                  <span class="count_bottom" style="font-size: 12px; color: #7f8c8d; text-transform: uppercase;">Average Time</span>
+                </div>
+              </span>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12 tile_stats_count" style="height: 120px; display: flex; flex-direction: column; justify-content: center; background: #fff; border: 1px solid #e6e9ed; border-radius: 5px; padding: 15px; box-shadow: 0 1px 3px rgba(0,0,0,0.12); margin-bottom: 15px;">
+              <span class="count_top" style="display: flex; align-items: center; margin-bottom: 8px;">
+                <i class="fas fa-shopping-cart" style="color: #f39c12; font-size: 32px; margin-right: 12px;"></i>
+                <div>
+                  <div class="count" style="font-size: 24px; font-weight: bold; color: #34495e; line-height: 1;">1,240</div>
+                  <span class="count_bottom" style="font-size: 12px; color: #7f8c8d; text-transform: uppercase;">Total Orders</span>
+                </div>
+              </span>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12 tile_stats_count" style="height: 120px; display: flex; flex-direction: column; justify-content: center; background: #fff; border: 1px solid #e6e9ed; border-radius: 5px; padding: 15px; box-shadow: 0 1px 3px rgba(0,0,0,0.12); margin-bottom: 15px;">
+              <span class="count_top" style="display: flex; align-items: center; margin-bottom: 8px;">
+                <i class="fas fa-dollar-sign" style="color: #2ecc71; font-size: 32px; margin-right: 12px;"></i>
+                <div>
+                  <div class="count" style="font-size: 24px; font-weight: bold; color: #34495e; line-height: 1;">$24,567</div>
+                  <span class="count_bottom" style="font-size: 12px; color: #7f8c8d; text-transform: uppercase;">Total Revenue</span>
+                </div>
+              </span>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12 tile_stats_count" style="height: 120px; display: flex; flex-direction: column; justify-content: center; background: #fff; border: 1px solid #e6e9ed; border-radius: 5px; padding: 15px; box-shadow: 0 1px 3px rgba(0,0,0,0.12); margin-bottom: 15px;">
+              <span class="count_top" style="display: flex; align-items: center; margin-bottom: 8px;">
+                <i class="fas fa-chart-line" style="color: #9b59b6; font-size: 32px; margin-right: 12px;"></i>
+                <div>
+                  <div class="count" style="font-size: 24px; font-weight: bold; color: #34495e; line-height: 1;">2,315</div>
+                  <span class="count_bottom" style="font-size: 12px; color: #7f8c8d; text-transform: uppercase;">Conversions</span>
+                </div>
+              </span>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12 tile_stats_count" style="height: 120px; display: flex; flex-direction: column; justify-content: center; background: #fff; border: 1px solid #e6e9ed; border-radius: 5px; padding: 15px; box-shadow: 0 1px 3px rgba(0,0,0,0.12); margin-bottom: 15px;">
+              <span class="count_top" style="display: flex; align-items: center; margin-bottom: 8px;">
+                <i class="fas fa-eye" style="color: #1abc9c; font-size: 32px; margin-right: 12px;"></i>
+                <div>
+                  <div class="count" style="font-size: 24px; font-weight: bold; color: #34495e; line-height: 1;">47,325</div>
+                  <span class="count_bottom" style="font-size: 12px; color: #7f8c8d; text-transform: uppercase;">Page Views</span>
+                </div>
+              </span>
             </div>
           </div>
           <!-- /top tiles -->
@@ -1232,7 +1230,7 @@
       
       if (startDatePicker && endDatePicker) {
         try {
-          // TempusDominus is directly available in main-minimal.js
+          // TempusDominus is directly available in main-minimal-modern.js
           console.log('📅 Initializing date pickers with TempusDominus...');
           
           const TempusDominus = window.TempusDominus || globalThis.TempusDominus;
@@ -1300,7 +1298,17 @@
 
     // Dashboard chart initialization - define functions first
     function initializeDashboardChart() {
-      const ctx = document.getElementById('chart_plot_01');
+      const container = document.getElementById('chart_plot_01');
+      if (!container) return;
+      
+      // Create canvas element
+      const canvas = document.createElement('canvas');
+      canvas.width = container.offsetWidth || 800;
+      canvas.height = 400;
+      container.innerHTML = ''; // Clear any existing content
+      container.appendChild(canvas);
+      
+      const ctx = canvas.getContext('2d');
       if (!ctx) return;
 
       // Sample data for the main dashboard chart
@@ -1366,10 +1374,11 @@
       if (!gaugeElement) return;
 
       // Create a simple donut chart for profile completion
-      const ctx = document.createElement('canvas');
-      ctx.width = 160;
-      ctx.height = 120;
-      gaugeElement.appendChild(ctx);
+      const canvas = document.createElement('canvas');
+      canvas.width = 160;
+      canvas.height = 120;
+      gaugeElement.appendChild(canvas);
+      const ctx = canvas.getContext('2d');
 
       const data = {
         datasets: [{
@@ -1401,7 +1410,7 @@
       console.log('✅ Profile completion gauge initialized');
     }
 
-    // Initialize charts - Chart.js is directly available in main-minimal.js
+    // Initialize charts - Chart.js is directly available in main-minimal-modern.js
     document.addEventListener('DOMContentLoaded', function() {
       console.log('📊 Index.html DOM loaded, starting chart initialization...');
       
@@ -1412,26 +1421,32 @@
       console.log('🎛️ Collapse links found:', collapseLinks.length);
       
       if (chartContainer) {
-        try {
-          // Chart.js is directly available in main-minimal.js
-          console.log('📈 Chart.js available:', typeof window.Chart);
-          
+        // Wait for Chart.js to be available (from module)
+        function waitForChart() {
           if (typeof window.Chart !== 'undefined') {
-            // Initialize main dashboard chart
-            initializeDashboardChart();
-            
-            // Initialize profile completion gauge
-            if (document.getElementById('profile_completion_gauge')) {
-              initializeProfileGauge();
+            try {
+              console.log('📈 Chart.js available:', typeof window.Chart);
+              
+              // Initialize main dashboard chart
+              initializeDashboardChart();
+              
+              // Initialize profile completion gauge
+              if (document.getElementById('profile_completion_gauge')) {
+                initializeProfileGauge();
+              }
+              
+              console.log('✅ Charts initialized successfully');
+            } catch (error) {
+              console.error('❌ Failed to initialize charts:', error);
             }
-            
-            console.log('✅ Charts initialized successfully');
           } else {
-            console.error('❌ Chart.js not available');
+            // Try again in 50ms
+            setTimeout(waitForChart, 50);
           }
-        } catch (error) {
-          console.error('❌ Failed to initialize charts:', error);
         }
+        
+        // Start waiting
+        waitForChart();
       } else {
         console.warn('⚠️ No chart container found on this page');
       }

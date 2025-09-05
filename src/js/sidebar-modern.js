@@ -3,8 +3,72 @@
  * Enhanced sidebar menu with proper multilevel support
  */
 
-// Use the centralized DOM utilities
-const DOM = window.DOM;
+// Define DOM utilities locally if not available globally
+const DOM = window.DOM || {
+  select: (selector) => document.querySelector(selector),
+  selectAll: (selector) => [...document.querySelectorAll(selector)],
+  addClass: (element, className) => element?.classList.add(className),
+  removeClass: (element, className) => element?.classList.remove(className),
+  toggleClass: (element, className) => element?.classList.toggle(className),
+  hasClass: (element, className) => element?.classList.contains(className),
+  closest: (element, selector) => element?.closest(selector),
+  find: (element, selector) => element?.querySelector(selector),
+  findAll: (element, selector) => [...(element?.querySelectorAll(selector) || [])],
+  css: (element, property, value) => {
+    if (element) {
+      if (value !== undefined) {
+        element.style[property] = value;
+      } else {
+        return window.getComputedStyle(element)[property];
+      }
+    }
+  },
+  height: (element) => element ? element.offsetHeight : 0,
+  outerHeight: (element) => element ? element.offsetHeight : 0,
+  slideUp: (element, duration = 300) => {
+    if (element) {
+      element.style.transition = `height ${duration}ms ease`;
+      element.style.height = element.offsetHeight + 'px';
+      element.style.overflow = 'hidden';
+      
+      requestAnimationFrame(() => {
+        element.style.height = '0px';
+        setTimeout(() => {
+          element.style.display = 'none';
+          element.style.transition = '';
+          element.style.overflow = '';
+        }, duration);
+      });
+    }
+  },
+  slideDown: (element, duration = 300) => {
+    if (element) {
+      element.style.display = '';
+      element.style.overflow = 'hidden';
+      element.style.height = '0px';
+      element.style.transition = `height ${duration}ms ease`;
+      
+      requestAnimationFrame(() => {
+        element.style.height = element.scrollHeight + 'px';
+        setTimeout(() => {
+          element.style.height = '';
+          element.style.transition = '';
+          element.style.overflow = '';
+        }, duration);
+      });
+    }
+  },
+  slideToggle: (element, duration = 300) => {
+    if (element) {
+      const isVisible = element.offsetHeight > 0;
+      if (isVisible) {
+        DOM.slideUp(element, duration);
+      } else {
+        DOM.slideDown(element, duration);
+      }
+    }
+  }
+};
 
 function initSidebar() {
   // Helper function to set the content height

@@ -5,11 +5,13 @@ import { TempusDominus, DateTime } from '@eonasdan/tempus-dominus';
 window.TempusDominus = TempusDominus;
 window.DateTime = DateTime;
 
-// Select2 (Enhanced select boxes)
-import 'select2';
+// Choices.js (Enhanced select boxes - jQuery-free replacement for Select2)
+import Choices from 'choices.js';
+window.Choices = Choices;
 
-// Ion Range Slider
-import 'ion-rangeslider';
+// NoUiSlider (Range slider - jQuery-free replacement for Ion Range Slider)
+import noUiSlider from 'nouislider';
+window.noUiSlider = noUiSlider;
 
 // Autosize (Auto-resizing textareas)
 import autosize from 'autosize';
@@ -19,10 +21,15 @@ window.autosize = autosize;
 import Switchery from 'switchery';
 window.Switchery = Switchery;
 
+// Import CSS for the new libraries
+import 'choices.js/public/assets/styles/choices.min.css';
+import 'nouislider/dist/nouislider.css';
+
 // Modern alternatives:
 // - Progress bars: Bootstrap 5 native progress components
 // - Date pickers: TempusDominus (already imported above)
-// - Sliders: Ion Range Slider (already imported above)
+// - Sliders: NoUiSlider (already imported above)
+// - Select dropdowns: Choices.js (already imported above)
 
 // Form validation libraries
 // Note: Parsley.js and other form validators can be added here
@@ -30,6 +37,8 @@ window.Switchery = Switchery;
 export default {
   TempusDominus,
   DateTime,
+  Choices,
+  noUiSlider,
   autosize,
   Switchery,
   initialized: true

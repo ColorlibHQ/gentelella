@@ -302,7 +302,9 @@ export function displayValidationErrors(form, errors) {
       errorDiv.className = 'invalid-feedback';
       errorDiv.textContent = fieldErrors[0]; // Show first error
 
-      if (field.parentElement.classList.contains('form-group')) {
+      // Bootstrap 5: Check for both mb-3 (new) and form-group (legacy) classes
+      if (field.parentElement.classList.contains('form-group') ||
+          field.parentElement.classList.contains('mb-3')) {
         field.parentElement.appendChild(errorDiv);
       } else {
         field.parentNode.insertBefore(errorDiv, field.nextSibling);

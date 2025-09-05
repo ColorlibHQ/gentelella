@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Gentelella Alela! | </title>    <!-- Compiled CSS (includes Bootstrap, Font Awesome, and all vendor styles) -->
-    <script type="module" src="/src/main-minimal.js"></script>
+    <script type="module" src="/src/main-minimal-modern.js"></script>
   </head>
 
   <body class="nav-md page-other-charts">
@@ -253,46 +253,59 @@
             
             <div class="clearfix"></div>
 
+            <!-- US Revenue Map Card -->
             <div class="row">
-              <div class="col-md-12">
+              <div class="col-md-6">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h4>Other Graph types <small> Assorted graph types</small></h4>
+                    <h4>USA Revenue Map <small>State-by-state performance</small></h4>
                     <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Settings 1</a>
-                            <a class="dropdown-item" href="#">Settings 2</a>
-                          </div>
-                      <li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a>
+                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a></li>
+                      <li><a class="btn-close-link"><i class="fas fa-times"></i></a></li>
                     </ul>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
+                    <p class="text-muted mb-3">Interactive map showing revenue by US state</p>
+                    <div id="usa_map" style="height:400px;"></div>
+                  </div>
+                </div>
+              </div>
 
-                    <div class="row">
-                      <div class="col-md-6" style="padding: 30px">
-                        <p>USA Vector Map</p>
-                        <div id="usa_map" style="height:400px !important;"></div>
-                      </div>
-                      <div class="col-md-6" style="padding: 30px">
-                        <p>World Vector Map</p>
-                        <div id="world-map-gdp" style="height:400px;"></div>
-                      </div>
-                    </div>
+              <!-- World Revenue Map Card -->
+              <div class="col-md-6">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h4>Global Revenue Map <small>Worldwide market presence</small></h4>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a></li>
+                      <li><a class="btn-close-link"><i class="fas fa-times"></i></a></li>
+                    </ul>
                     <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <p class="text-muted mb-3">Revenue and market penetration by country</p>
+                    <div id="world-map-gdp" style="height:400px;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
 
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="panel panel-body">
-                          <div class="x_title">
-                            <h4>Easy Pie Charts - Performance Metrics</h4>
-                          </div>
-
-                          <p>Interactive pie charts showing various performance metrics and KPIs with color-coded indicators.</p>
+            <!-- Performance Metrics Card -->
+            <div class="row">
+              <div class="col-md-6">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h4>Performance Metrics <small>System performance indicators</small></h4>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a></li>
+                      <li><a class="btn-close-link"><i class="fas fa-times"></i></a></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <p class="text-muted mb-4">Interactive pie charts showing various performance metrics and KPIs with color-coded indicators.</p>
                           
                           <!-- Three Column Layout -->
                           <div class="row">
@@ -364,16 +377,23 @@
                             <div class="clearfix"></div>
                           </div>
 
-                        </div>
-                      </div>
+                  </div>
+                </div>
+              </div>
 
-                      <div class="col-md-6">
-                        <div class="panel panel-body">
-                          <div class="x_title">
-                            <h4>Sparkline Analytics Dashboard</h4>
-                          </div>
-
-                          <p>Interactive mini charts showing key performance trends and metrics</p>
+              <!-- Sparkline Analytics Card -->
+              <div class="col-md-6">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h4>Sparkline Analytics <small>Trend visualizations</small></h4>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a></li>
+                      <li><a class="btn-close-link"><i class="fas fa-times"></i></a></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <p class="text-muted mb-4">Interactive mini charts showing key performance trends and metrics</p>
                           
                           <!-- Sparkline Grid Layout -->
                           <div class="row">
@@ -422,13 +442,11 @@
                             </div>
                           </div>
 
-                        </div>
-                      </div>
-                    </div>
                   </div>
                 </div>
               </div>
             </div>
+
           </div>
         </div>
         <!-- /page content -->

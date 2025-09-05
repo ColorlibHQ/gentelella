@@ -420,8 +420,8 @@ export function initializeSampleTables() {
         </thead>
         <tbody>
           ${sampleData
-            .map(row => `<tr>${row.map(cell => `<td>${cell}</td>`).join('')}</tr>`)
-            .join('')}
+    .map(row => `<tr>${row.map(cell => `<td>${cell}</td>`).join('')}</tr>`)
+    .join('')}
         </tbody>
       </table>
     `;

@@ -17,7 +17,7 @@ const DOM = {
  * Detects EChart elements and initializes them automatically
  */
 export function initializeECharts() {
-  if (typeof echarts === 'undefined') {
+  if (typeof window.echarts === 'undefined') {
     console.warn('⚠️ ECharts library not available');
     return;
   }
@@ -55,7 +55,7 @@ export function initializeECharts() {
 function initializePieCharts() {
   // Mini Pie Chart
   if (DOM.exists('#echart_mini_pie')) {
-    const miniPieChart = echarts.init(DOM.select('#echart_mini_pie'));
+    const miniPieChart = window.echarts.init(DOM.select('#echart_mini_pie'));
     miniPieChart.setOption({
       tooltip: { trigger: 'item' },
       legend: { orient: 'vertical', left: 'left' },
@@ -85,7 +85,7 @@ function initializePieCharts() {
 
   // Regular Pie Chart
   if (DOM.exists('#echart_pie')) {
-    const pieChart = echarts.init(DOM.select('#echart_pie'));
+    const pieChart = window.echarts.init(DOM.select('#echart_pie'));
     pieChart.setOption({
       title: { text: 'Website Traffic Sources', left: 'center' },
       tooltip: { trigger: 'item', formatter: '{a} <br/>{b}: {c} ({d}%)' },
@@ -114,7 +114,7 @@ function initializePieCharts() {
 
   // Donut Chart
   if (DOM.exists('#echart_donut')) {
-    const donutChart = echarts.init(DOM.select('#echart_donut'));
+    const donutChart = window.echarts.init(DOM.select('#echart_donut'));
     donutChart.setOption({
       title: { text: 'User Demographics', left: 'center' },
       tooltip: { trigger: 'item' },
@@ -139,15 +139,93 @@ function initializePieCharts() {
       ]
     });
   }
+
+  // Second Pie Chart
+  if (DOM.exists('#echart_pie2')) {
+    const pie2Chart = window.echarts.init(DOM.select('#echart_pie2'));
+    pie2Chart.setOption({
+      title: { text: 'Device Categories', left: 'center' },
+      tooltip: { trigger: 'item', formatter: '{a} <br/>{b}: {c} ({d}%)' },
+      legend: { bottom: 10, left: 'center' },
+      series: [
+        {
+          name: 'Device Categories',
+          type: 'pie',
+          radius: '60%',
+          data: [
+            { value: 540, name: 'Mobile Phones', itemStyle: { color: '#5470c6' } },
+            { value: 735, name: 'Tablets', itemStyle: { color: '#91cc75' } },
+            { value: 580, name: 'Laptops', itemStyle: { color: '#fac858' } },
+            { value: 484, name: 'Desktops', itemStyle: { color: '#ee6666' } },
+            { value: 300, name: 'Other', itemStyle: { color: '#73c0de' } }
+          ],
+          emphasis: {
+            itemStyle: {
+              shadowBlur: 10,
+              shadowOffsetX: 0,
+              shadowColor: 'rgba(0, 0, 0, 0.5)'
+            }
+          }
+        }
+      ]
+    });
+  }
 }
 
 /**
  * Bar Charts - MODERNIZED FROM JQUERY
  */
 function initializeBarCharts() {
+  // Main Bar Chart (#mainb)
+  if (DOM.exists('#mainb')) {
+    const mainBarChart = window.echarts.init(DOM.select('#mainb'));
+    mainBarChart.setOption({
+      title: {
+        text: 'Monthly Sales Performance',
+        left: 'center'
+      },
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: { type: 'shadow' }
+      },
+      legend: {
+        data: ['Sales', 'Revenue', 'Profit'],
+        top: 30
+      },
+      xAxis: {
+        type: 'category',
+        data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+      },
+      yAxis: {
+        type: 'value',
+        name: 'Amount (K)'
+      },
+      series: [
+        {
+          name: 'Sales',
+          type: 'bar',
+          data: [120, 200, 150, 80, 70, 110, 130, 180, 160, 190, 170, 220],
+          itemStyle: { color: '#5470c6' }
+        },
+        {
+          name: 'Revenue',
+          type: 'bar',
+          data: [90, 150, 120, 60, 50, 85, 100, 140, 120, 150, 130, 180],
+          itemStyle: { color: '#91cc75' }
+        },
+        {
+          name: 'Profit',
+          type: 'bar',
+          data: [30, 50, 30, 20, 20, 25, 30, 40, 40, 40, 40, 40],
+          itemStyle: { color: '#fac858' }
+        }
+      ]
+    });
+  }
+
   // Horizontal Bar Chart - MODERNIZED
   if (DOM.exists('#echart_bar_horizontal')) {
-    const hBarChart = echarts.init(DOM.select('#echart_bar_horizontal'));
+    const hBarChart = window.echarts.init(DOM.select('#echart_bar_horizontal'));
     hBarChart.setOption({
       title: {
         text: 'Top Programming Languages',
@@ -193,7 +271,7 @@ function initializeBarCharts() {
 
   // Vertical Bar Chart
   if (DOM.exists('#echart_bar_vertical')) {
-    const vBarChart = echarts.init(DOM.select('#echart_bar_vertical'));
+    const vBarChart = window.echarts.init(DOM.select('#echart_bar_vertical'));
     vBarChart.setOption({
       title: { text: 'Monthly Sales', left: 'center' },
       tooltip: { trigger: 'axis' },
@@ -219,7 +297,7 @@ function initializeBarCharts() {
  */
 function initializeLineCharts() {
   if (DOM.exists('#echart_line')) {
-    const lineChart = echarts.init(DOM.select('#echart_line'));
+    const lineChart = window.echarts.init(DOM.select('#echart_line'));
     lineChart.setOption({
       title: { text: 'Website Analytics', left: 'center' },
       tooltip: { trigger: 'axis' },
@@ -254,7 +332,7 @@ function initializeLineCharts() {
  */
 function initializeScatterCharts() {
   if (DOM.exists('#echart_scatter')) {
-    const scatterChart = echarts.init(DOM.select('#echart_scatter'));
+    const scatterChart = window.echarts.init(DOM.select('#echart_scatter'));
 
     // Generate scatter data
     const scatterData = [];
@@ -293,17 +371,9 @@ function initializeScatterCharts() {
  */
 function initializeMapCharts() {
   if (DOM.exists('#echart_world_map')) {
-    const worldMapChart = echarts.init(DOM.select('#echart_world_map'));
+    const worldMapChart = window.echarts.init(DOM.select('#echart_world_map'));
 
-    // Global user distribution data
-    const globalData = [
-      { name: 'United States', value: 2300 },
-      { name: 'China', value: 1800 },
-      { name: 'Japan', value: 1200 },
-      { name: 'Germany', value: 1000 },
-      { name: 'United Kingdom', value: 800 }
-    ];
-
+    // Simplified world map visualization using bar chart (more reliable)
     worldMapChart.setOption({
       title: {
         text: 'Global User Distribution',
@@ -311,52 +381,42 @@ function initializeMapCharts() {
         textStyle: { fontSize: 16 }
       },
       tooltip: {
-        trigger: 'item',
-        formatter: '{b}: {c} users'
+        trigger: 'axis',
+        axisPointer: { type: 'shadow' }
       },
-      visualMap: {
-        min: 0,
-        max: 2500,
-        left: 'left',
-        top: 'bottom',
-        text: ['High', 'Low'],
-        calculable: true,
-        inRange: {
-          color: ['#e0f3f1', '#26B99A']
-        }
+      xAxis: {
+        type: 'category',
+        data: ['USA', 'China', 'Japan', 'Germany', 'UK', 'France', 'Canada', 'Australia'],
+        axisLabel: { rotate: 45 }
+      },
+      yAxis: {
+        type: 'value',
+        name: 'Users (K)'
       },
       series: [
         {
-          name: 'User Distribution',
-          type: 'scatter',
-          coordinateSystem: 'geo',
-          data: globalData.map(item => ({
-            name: item.name,
-            value: [Math.random() * 360 - 180, Math.random() * 180 - 90, item.value]
-          })),
-          symbolSize: function (val) {
-            return Math.max(val[2] / 100, 8);
+          name: 'User Count',
+          type: 'bar',
+          data: [2300, 1800, 1200, 1000, 800, 650, 500, 400],
+          itemStyle: {
+            color: function(params) {
+              const colors = ['#5470c6', '#91cc75', '#fac858', '#ee6666', '#73c0de', '#3ba272', '#fc8452', '#9a60b4'];
+              return colors[params.dataIndex];
+            }
           },
-          itemStyle: {
-            color: '#26B99A',
-            shadowBlur: 10,
-            shadowColor: 'rgba(38, 185, 154, 0.5)'
+          label: {
+            show: true,
+            position: 'top',
+            formatter: '{c}K'
+          },
+          emphasis: {
+            itemStyle: {
+              shadowBlur: 10,
+              shadowColor: 'rgba(38, 185, 154, 0.5)'
+            }
           }
         }
-      ],
-      geo: {
-        map: 'world',
-        roam: true,
-        itemStyle: {
-          areaColor: '#f3f3f3',
-          borderColor: '#999'
-        },
-        emphasis: {
-          itemStyle: {
-            areaColor: '#e6f3ff'
-          }
-        }
-      }
+      ]
     });
   }
 }
@@ -373,7 +433,7 @@ function initializeGaugeCharts() {
 
   gaugeConfigs.forEach(config => {
     if (DOM.exists(`#${config.id}`)) {
-      const gaugeChart = echarts.init(DOM.select(`#${config.id}`));
+      const gaugeChart = window.echarts.init(DOM.select(`#${config.id}`));
       gaugeChart.setOption({
         series: [
           {
@@ -429,7 +489,7 @@ function initializeGaugeCharts() {
  */
 function initializeMixedCharts() {
   if (DOM.exists('#echart_mixed')) {
-    const mixedChart = echarts.init(DOM.select('#echart_mixed'));
+    const mixedChart = window.echarts.init(DOM.select('#echart_mixed'));
     mixedChart.setOption({
       title: { text: 'Sales & Revenue Overview', left: 'center' },
       tooltip: { trigger: 'axis' },
@@ -456,6 +516,116 @@ function initializeMixedCharts() {
           data: [220, 182, 191, 234, 290, 330],
           smooth: true,
           itemStyle: { color: '#3498DB' }
+        }
+      ]
+    });
+  }
+
+  // Pyramid Chart
+  if (DOM.exists('#echart_pyramid')) {
+    const pyramidChart = window.echarts.init(DOM.select('#echart_pyramid'));
+    pyramidChart.setOption({
+      title: {
+        text: 'Sales Funnel',
+        left: 'center',
+        top: 10
+      },
+      tooltip: {
+        trigger: 'item',
+        formatter: '{a} <br/>{b}: {c}%'
+      },
+      series: [
+        {
+          name: 'Sales Funnel',
+          type: 'funnel',
+          left: '5%',
+          top: 50,
+          bottom: 20,
+          width: '90%',
+          min: 0,
+          max: 100,
+          minSize: '10%',
+          maxSize: '95%',
+          sort: 'descending',
+          gap: 8,
+          label: {
+            show: true,
+            position: 'inside',
+            fontSize: 14,
+            fontWeight: 'bold',
+            color: '#fff',
+            formatter: '{b}\n{c}%'
+          },
+          labelLine: {
+            length: 10,
+            lineStyle: {
+              width: 1,
+              type: 'solid'
+            }
+          },
+          itemStyle: {
+            borderColor: '#fff',
+            borderWidth: 2,
+            shadowBlur: 5,
+            shadowColor: 'rgba(0, 0, 0, 0.2)'
+          },
+          emphasis: {
+            label: {
+              fontSize: 16,
+              fontWeight: 'bold'
+            }
+          },
+          data: [
+            { value: 100, name: 'Website Visits', itemStyle: { color: '#5470c6' } },
+            { value: 80, name: 'Product Interest', itemStyle: { color: '#91cc75' } },
+            { value: 60, name: 'Add to Cart', itemStyle: { color: '#fac858' } },
+            { value: 40, name: 'Checkout Started', itemStyle: { color: '#ee6666' } },
+            { value: 25, name: 'Purchase Complete', itemStyle: { color: '#73c0de' } }
+          ]
+        }
+      ]
+    });
+  }
+
+  // Sonar Chart (Radar)
+  if (DOM.exists('#echart_sonar')) {
+    const sonarChart = window.echarts.init(DOM.select('#echart_sonar'));
+    sonarChart.setOption({
+      title: {
+        text: 'Performance Metrics',
+        left: 'center'
+      },
+      tooltip: {},
+      radar: {
+        indicator: [
+          { name: 'Speed', max: 100 },
+          { name: 'Reliability', max: 100 },
+          { name: 'Security', max: 100 },
+          { name: 'Performance', max: 100 },
+          { name: 'Usability', max: 100 },
+          { name: 'Scalability', max: 100 }
+        ],
+        center: ['50%', '55%'],
+        radius: '75%'
+      },
+      series: [
+        {
+          name: 'Current vs Target',
+          type: 'radar',
+          data: [
+            {
+              value: [85, 90, 78, 92, 88, 75],
+              name: 'Current',
+              areaStyle: { opacity: 0.1 },
+              itemStyle: { color: '#26B99A' }
+            },
+            {
+              value: [95, 95, 90, 98, 95, 85],
+              name: 'Target',
+              areaStyle: { opacity: 0.1 },
+              itemStyle: { color: '#E74C3C' }
+            }
+          ]
         }
       ]
     });
@@ -542,7 +712,7 @@ export const EChartsUtils = {
    */
   disposeAllCharts() {
     DOM.selectAll('[id^="echart"]').forEach(element => {
-      const instance = echarts.getInstanceByDom(element);
+      const instance = window.echarts.getInstanceByDom(element);
       if (instance) {
         instance.dispose();
       }
@@ -555,8 +725,8 @@ export const EChartsUtils = {
 if (typeof document !== 'undefined') {
   document.addEventListener('DOMContentLoaded', () => {
     // Only initialize if ECharts is available and elements exist
-    if (typeof echarts !== 'undefined') {
-      const echartElements = DOM.selectAll('[id^="echart"]');
+    if (typeof window.echarts !== 'undefined') {
+      const echartElements = DOM.selectAll('[id^="echart"], #mainb');
       if (echartElements.length > 0) {
         initializeECharts();
       }

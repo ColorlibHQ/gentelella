@@ -1,7 +1,4 @@
-// Very basic main.js for form_advanced.html - just core functionality
-
-// Import jQuery setup first
-import $ from './jquery-setup.js';
+// jQuery-free main.js for form_advanced.html - modern alternatives
 
 // Import security utilities
 import { sanitizeHtml } from './utils/security.js';
@@ -14,39 +11,52 @@ globalThis.bootstrap = bootstrap;
 // Global styles (Bootstrap 5 + custom) - most important for layout
 import './main.scss';
 
-// Essential scripts for layout
-import './js/helpers/smartresize.js';
-import './js/sidebar.js';
-import './js/init.js';
+// Essential scripts for layout - modern versions
+import './js/helpers/smartresize-modern.js';
+import './js/sidebar-modern.js';
+import './js/init-modern.js';
 
-// TempusDominus for date/time pickers (synchronous import)
+// TempusDominus for date/time pickers
 import { TempusDominus } from '@eonasdan/tempus-dominus';
+window.TempusDominus = TempusDominus;
 
 // TempusDominus CSS
 import '@eonasdan/tempus-dominus/dist/css/tempus-dominus.min.css';
 
-// Switchery for iOS-style toggles (synchronous import)
-import * as SwitcheryModule from 'switchery';
+// Switchery for iOS-style toggles
+import Switchery from 'switchery';
+window.Switchery = Switchery;
 
-// Input Mask for input formatting (synchronous import)
-import * as InputmaskModule from 'inputmask';
+// Input Mask for input formatting
+import Inputmask from 'inputmask';
+window.Inputmask = Inputmask;
 
-// Ion Range Slider (synchronous import)
-import 'ion-rangeslider';
+// NoUiSlider (Ion Range Slider replacement)
+import noUiSlider from 'nouislider';
+window.noUiSlider = noUiSlider;
 
-// Ion Range Slider CSS
-import 'ion-rangeslider/css/ion.rangeSlider.min.css';
+// NoUiSlider CSS
+import 'nouislider/dist/nouislider.css';
 
-// Modern Color Picker (Pickr) (synchronous import)
+// Choices.js (Select2 replacement)
+import Choices from 'choices.js';
+window.Choices = Choices;
+
+// Choices.js CSS
+import 'choices.js/public/assets/styles/choices.min.css';
+
+// Modern Color Picker (Pickr)
 import * as PickrModule from '@simonwep/pickr';
+const Pickr = PickrModule.default || PickrModule.Pickr || PickrModule;
+window.Pickr = Pickr;
 
-// Pickr CSS - Multiple themes
+// Pickr CSS - Classic theme
 import '@simonwep/pickr/dist/themes/classic.min.css';
-import '@simonwep/pickr/dist/themes/monolith.min.css';
-import '@simonwep/pickr/dist/themes/nano.min.css';
 
-// jQuery Knob for circular inputs (synchronous import)
-import 'jquery-knob';
+// Chart.js for circular progress (jQuery Knob replacement)
+import { Chart, registerables } from 'chart.js';
+Chart.register(...registerables);
+window.Chart = Chart;
 
 // Cropper.js 2.0 for image cropping (using cropperjs package)
 import * as CropperModule from 'cropperjs';

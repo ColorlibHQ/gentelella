@@ -4,8 +4,56 @@
  * Only contains functionality that hasn't been moved to separate modules
  */
 
-// Use the centralized DOM utilities
-const DOM = window.DOM;
+// DOM utilities - Define locally if not available globally
+const DOM = window.DOM || {
+  select: (selector) => document.querySelector(selector),
+  selectAll: (selector) => [...document.querySelectorAll(selector)],
+  addClass: (element, className) => element?.classList.add(className),
+  removeClass: (element, className) => element?.classList.remove(className),
+  toggleClass: (element, className) => element?.classList.toggle(className),
+  hasClass: (element, className) => element?.classList.contains(className),
+  closest: (element, selector) => element?.closest(selector),
+  find: (element, selector) => element?.querySelector(selector),
+  findAll: (element, selector) => [...(element?.querySelectorAll(selector) || [])],
+  slideToggle: (element, duration = 200) => {
+    const isVisible = element.offsetHeight > 0;
+    
+    if (isVisible) {
+      element.style.overflow = 'hidden';
+      element.style.transition = `height ${duration}ms ease`;
+      element.style.height = element.offsetHeight + 'px';
+      
+      requestAnimationFrame(() => {
+        element.style.height = '0px';
+        setTimeout(() => {
+          element.style.display = 'none';
+          element.style.height = '';
+          element.style.transition = '';
+          element.style.overflow = '';
+        }, duration);
+      });
+    } else {
+      element.style.display = '';
+      element.style.overflow = 'hidden';
+      element.style.height = '0px';
+      element.style.transition = `height ${duration}ms ease`;
+      
+      requestAnimationFrame(() => {
+        element.style.height = element.scrollHeight + 'px';
+        setTimeout(() => {
+          element.style.height = '';
+          element.style.transition = '';
+          element.style.overflow = '';
+        }, duration);
+      });
+    }
+  }
+};
+
+// Make DOM utilities available globally if not already
+if (!window.DOM) {
+  window.DOM = DOM;
+}
 
 /**
  * NOTE: DataTables initialization moved to modern tables module

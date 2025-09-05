@@ -34,9 +34,9 @@ import 'cropper/dist/cropper.min.css';
 // Add the essential JavaScript functionality
 try {
   // Import helpers and sidebar
-  await import('./js/helpers/smartresize.js');
-  await import('./js/sidebar.js');
-  await import('./js/init.js');
+  await import('./js/helpers/smartresize-modern.js');
+  await import('./js/sidebar-modern.js');
+  await import('./js/init-modern.js');
 } catch (error) {
   console.error('❌ Error loading JavaScript modules:', error);
 }

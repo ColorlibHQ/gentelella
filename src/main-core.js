@@ -44,13 +44,16 @@ window.NProgress = NProgress;
 
 // Add global error boundary to catch and handle errors gracefully
 window.addEventListener('error', event => {
-  console.error('🚨 Global error caught:', {
-    message: event.message,
-    filename: event.filename,
-    lineno: event.lineno,
-    colno: event.colno,
-    error: event.error
-  });
+  // Only log to console in development
+  if (process.env.NODE_ENV === 'development') {
+    console.error('🚨 Global error caught:', {
+      message: event.message,
+      filename: event.filename,
+      lineno: event.lineno,
+      colno: event.colno,
+      error: event.error
+    });
+  }
 
   // Could send to error tracking service in production
   if (process.env.NODE_ENV === 'production') {
@@ -145,7 +148,7 @@ window.loadModule = async function (moduleName, showLoading = true) {
         module = await import('./modules/forms.js');
         break;
       case 'tables':
-        module = await import('./modules/tables.js');
+        module = await import('./modules/tables-modern.js');
         break;
       case 'tables-modern':
         module = await import('./modules/tables-modern.js');
@@ -194,21 +197,23 @@ window.preloadModules = async function (moduleNames) {
   return results;
 };
 
-// Debug utility to show module loading stats
+// Debug utility to show module loading stats (development only)
 window.getModuleStats = function () {
-  console.group('📊 Module Loading Statistics');
-  console.log('Cached modules:', Array.from(window.moduleCache.keys()));
-  console.log('Load times:');
+  if (process.env.NODE_ENV === 'development') {
+    console.group('📊 Module Loading Statistics');
+    console.log('Cached modules:', Array.from(window.moduleCache.keys()));
+    console.log('Load times:');
 
-  Array.from(window.moduleLoadTimes.entries())
-    .sort((a, b) => b[1] - a[1])
-    .forEach(([module, time]) => {
-      console.log(`  ${module}: ${time.toFixed(2)}ms`);
-    });
+    Array.from(window.moduleLoadTimes.entries())
+      .sort((a, b) => b[1] - a[1])
+      .forEach(([module, time]) => {
+        console.log(`  ${module}: ${time.toFixed(2)}ms`);
+      });
 
-  const totalTime = Array.from(window.moduleLoadTimes.values()).reduce((a, b) => a + b, 0);
-  console.log(`Total load time: ${totalTime.toFixed(2)}ms`);
-  console.groupEnd();
+    const totalTime = Array.from(window.moduleLoadTimes.values()).reduce((a, b) => a + b, 0);
+    console.log(`Total load time: ${totalTime.toFixed(2)}ms`);
+    console.groupEnd();
+  }
 };
 
 // Enhanced page readiness detector
