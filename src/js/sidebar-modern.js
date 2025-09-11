@@ -30,7 +30,7 @@ const DOM = window.DOM || {
       element.style.transition = `height ${duration}ms ease`;
       element.style.height = element.offsetHeight + 'px';
       element.style.overflow = 'hidden';
-      
+
       requestAnimationFrame(() => {
         element.style.height = '0px';
         setTimeout(() => {
@@ -47,7 +47,7 @@ const DOM = window.DOM || {
       element.style.overflow = 'hidden';
       element.style.height = '0px';
       element.style.transition = `height ${duration}ms ease`;
-      
+
       requestAnimationFrame(() => {
         element.style.height = element.scrollHeight + 'px';
         setTimeout(() => {

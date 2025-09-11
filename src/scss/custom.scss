@@ -175,9 +175,13 @@
   padding: 4px;
 }
 .profile_info {
-  padding: 25px 10px 10px;
+  padding: 25px 8px 10px;
   width: 65%;
   float: left;
+  min-height: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .profile_info span {
   font-size: 13px;
@@ -191,6 +195,22 @@
   margin: 0 !important;
   font-weight: 300 !important;
   line-height: 1.2 !important;
+}
+
+/* Improved h4 styling for profile names with better scalability */
+.left_col .profile_info h4 {
+  font-size: 14px !important;
+  color: #ecf0f1 !important;
+  margin: 0 !important;
+  font-weight: 400 !important;
+  line-height: 1.2 !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  hyphens: auto !important;
+  max-width: 100% !important;
+  display: block !important;
+  max-height: 2.4em !important; /* Allow up to 2 lines */
+  overflow: hidden !important;
 }
 .profile.img_2 {
   text-align: center;

@@ -69,7 +69,7 @@ if (process.env.NODE_ENV === 'development') {
   const originalLog = console.log;
   const originalError = console.error;
   const originalWarn = console.warn;
-  
+
   console.log = (...args) => {
     originalLog(`[${new Date().toLocaleTimeString()}]`, ...args);
   };

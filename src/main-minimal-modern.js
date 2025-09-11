@@ -28,9 +28,9 @@ const DOM = {
         element.style[camelProp] = properties[prop];
         transitions.push(`${prop} ${duration}ms ${easing}`);
       });
-      
+
       element.style.transition = transitions.join(', ');
-      
+
       setTimeout(() => {
         element.style.transition = '';
         resolve();
@@ -49,9 +49,9 @@ import './utils/security.js';
 const EasingFunctions = {
   easeOutElastic: function (t, b, c, d) {
     let s = 1.70158; let p = 0; let a = c;
-    if (t === 0) return b;
-    if ((t /= d) === 1) return b + c;
-    if (!p) p = d * 0.3;
+    if (t === 0) {return b;}
+    if ((t /= d) === 1) {return b + c;}
+    if (!p) {p = d * 0.3;}
     if (a < Math.abs(c)) {
       a = c; s = p / 4;
     } else {
@@ -263,23 +263,23 @@ import './chart-initializer.js';
 
 // Widget-specific initialization (jQuery-free)
 DOM.ready(() => {
-  
+
   // The chart initializer handles all chart initialization
   // No need for manual chart initialization here anymore
 
   // Initialize progress bars (vanilla JS) - keep this as it's not chart-related
   function initProgressBars() {
     const progressBars = DOM.selectAll('.progress .progress-bar');
-    
+
     progressBars.forEach(bar => {
-      if (bar.getAttribute('data-transitiongoal')) return;
+      if (bar.getAttribute('data-transitiongoal')) {return;}
 
       const goal = parseInt(bar.dataset.transitiongoal) || 0;
-      
+
       if (goal > 0) {
         bar.style.width = '0%';
         bar.style.transition = 'width 1s ease-in-out';
-        
+
         setTimeout(() => {
           bar.style.width = goal + '%';
         }, 100);
@@ -297,11 +297,11 @@ function initUniversalProgressBars() {
 
   if (allProgressBars.length > 0) {
     allProgressBars.forEach((bar, index) => {
-      if (bar.classList.contains('animation-complete')) return;
+      if (bar.classList.contains('animation-complete')) {return;}
 
       let targetWidth = null;
       const transitionGoal = bar.getAttribute('data-transitiongoal');
-      
+
       if (transitionGoal) {
         targetWidth = transitionGoal + '%';
       } else {

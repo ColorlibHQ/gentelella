@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
           canvas.style.width = '100%';
           canvas.style.height = 'auto';
           previewEl.appendChild(canvas);
-        })
+        });
     };
 
     // Rotate button
@@ -178,7 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
             link.href = canvas.toDataURL('image/jpeg');
             link.download = 'cropped-image.jpg';
             link.click();
-          })
+          });
       });
     }
 

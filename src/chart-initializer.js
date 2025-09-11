@@ -15,7 +15,7 @@ const CHART_CONFIGS = {
     }
   },
   bar: {
-    type: 'bar', 
+    type: 'bar',
     options: {
       responsive: true,
       maintainAspectRatio: false,
@@ -90,7 +90,7 @@ const SAMPLE_DATA = {
       data: [12, 19, 3, 5, 2, 3],
       backgroundColor: [
         'rgba(255, 99, 132, 0.8)',
-        'rgba(54, 162, 235, 0.8)', 
+        'rgba(54, 162, 235, 0.8)',
         'rgba(255, 205, 86, 0.8)',
         'rgba(75, 192, 192, 0.8)',
         'rgba(153, 102, 255, 0.8)',
@@ -188,14 +188,14 @@ class ChartInitializer {
 
   getCanvasContext(canvasOrId, containerWidth, containerHeight) {
     let canvas;
-    
+
     if (typeof canvasOrId === 'string') {
       const element = this.DOM.select(canvasOrId);
       if (!element) {
         // Element doesn't exist on this page - this is normal
         return null;
       }
-      
+
       if (element.tagName === 'CANVAS') {
         canvas = element;
       } else {
@@ -218,7 +218,7 @@ class ChartInitializer {
 
     const config = { ...CHART_CONFIGS[chartType] };
     const data = customData || SAMPLE_DATA[chartType];
-    
+
     if (!config || !data) {
       return null;
     }
@@ -235,7 +235,7 @@ class ChartInitializer {
 
       const canvasId = ctx.canvas.id || `chart_${Date.now()}`;
       this.charts.set(canvasId, chart);
-      
+
       return chart;
     } catch (error) {
       return null;
@@ -244,7 +244,7 @@ class ChartInitializer {
 
   initSparkline(container, data = null, color = '#26B99A', chartType = 'line') {
     let canvas = container.querySelector('canvas');
-    
+
     if (!canvas) {
       canvas = document.createElement('canvas');
       canvas.width = container.offsetWidth || 200;
@@ -271,10 +271,10 @@ class ChartInitializer {
     };
 
     const config = chartType === 'bar' ? 'bar' : 'sparkline';
-    const options = chartType === 'bar' ? 
-      { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { display: false }, y: { display: false } } } : 
+    const options = chartType === 'bar' ?
+      { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { display: false }, y: { display: false } } } :
       { responsive: true, maintainAspectRatio: false };
-    
+
     return this.initChart(canvas, config, customData, options);
   }
 
@@ -290,7 +290,7 @@ class ChartInitializer {
     };
 
     const chart = this.initChart(canvas, 'doughnut', data, {
-      plugins: { 
+      plugins: {
         legend: { display: false },
         tooltip: { enabled: false }
       }
@@ -306,7 +306,7 @@ class ChartInitializer {
     centerText.style.fontWeight = 'bold';
     centerText.style.color = '#26B99A';
     centerText.textContent = percent + '%';
-    
+
     container.style.position = 'relative';
     container.appendChild(centerText);
 
@@ -316,7 +316,7 @@ class ChartInitializer {
   // Initialize all charts on the page
   async initializeAllCharts() {
     const chartReady = await this.waitForChart();
-    if (!chartReady) return;
+    if (!chartReady) {return;}
 
 
     // 1. Chart.js demo pages (chartjs.html, chartjs2.html)
@@ -596,7 +596,7 @@ class ChartInitializer {
           data: [2400, 1800, 3200, 800, 600, 400],
           backgroundColor: [
             'rgba(52, 152, 219, 0.8)',
-            'rgba(26, 188, 156, 0.8)', 
+            'rgba(26, 188, 156, 0.8)',
             'rgba(241, 196, 15, 0.8)',
             'rgba(230, 126, 34, 0.8)',
             'rgba(155, 89, 182, 0.8)',
@@ -609,7 +609,7 @@ class ChartInitializer {
           legend: { display: false }
         },
         scales: {
-          y: { 
+          y: {
             beginAtZero: true,
             title: { display: true, text: 'Revenue ($000s)' }
           },
@@ -659,7 +659,7 @@ class ChartInitializer {
             data: [30, 10, 20, 15, 30],
             backgroundColor: [
               '#3498db', // IOS - blue
-              '#26b99a', // Android - green  
+              '#26b99a', // Android - green
               '#9b59b6', // Blackberry - purple
               '#1abb9c', // Symbian - aero (teal)
               '#e74c3c'  // Others - red
@@ -694,7 +694,7 @@ class ChartInitializer {
       this.DOM.selectAll(selector).forEach((element, index) => {
         const color = element.classList.contains('sparkline_three') ? '#34495E' : '#26B99A';
         let data, chartType = 'line';
-        
+
         // Different data and chart types based on sparkline class
         if (element.classList.contains('sparkline_line')) {
           data = [12, 14, 18, 21, 19, 25, 22, 28, 24, 32, 30, 35];
@@ -709,11 +709,11 @@ class ChartInitializer {
           data = [2, 4, 6, 8, 5, 3, 7, 9, 6, 4, 8, 5, 7, 9, 3, 6, 8, 4];
           chartType = 'line';
         } else {
-          data = element.classList.contains('sparkline_three') ? 
+          data = element.classList.contains('sparkline_three') ?
             [2, 4, 3, 4, 5, 4, 5, 4, 3, 4, 5, 6, 7, 5, 4, 3, 5, 6] :
             [2, 4, 3, 4, 5, 4, 5, 4, 3, 4, 5, 6, 4, 5, 6, 3, 5, 4, 5, 4, 5, 4, 3, 4, 5, 6, 7, 5, 4, 3, 5, 6];
         }
-        
+
         this.initSparkline(element, data, color, chartType);
       });
     });
@@ -721,7 +721,7 @@ class ChartInitializer {
     // Handle sparkline_pie separately as it needs a different chart type
     this.DOM.selectAll('.sparkline_pie').forEach(element => {
       let canvas = element.querySelector('canvas');
-      
+
       if (!canvas) {
         canvas = document.createElement('canvas');
         canvas.width = 80;
@@ -751,7 +751,7 @@ class ChartInitializer {
         options: {
           responsive: false,
           maintainAspectRatio: false,
-          plugins: { 
+          plugins: {
             legend: { display: false },
             tooltip: {
               callbacks: {
@@ -777,7 +777,7 @@ class ChartInitializer {
     this.DOM.selectAll('.chart-medium').forEach(element => {
       const percent = parseInt(element.dataset.percent) || 50;
       const label = element.dataset.label || 'Metric';
-      
+
       // Create canvas for the chart
       let canvas = element.querySelector('canvas');
       if (!canvas) {
@@ -801,7 +801,7 @@ class ChartInitializer {
         options: {
           responsive: false,
           maintainAspectRatio: false,
-          plugins: { 
+          plugins: {
             legend: { display: false },
             tooltip: { enabled: false }
           }
@@ -818,7 +818,7 @@ class ChartInitializer {
       centerText.style.fontWeight = 'bold';
       centerText.style.color = '#26B99A';
       centerText.textContent = percent + '%';
-      
+
       element.style.position = 'relative';
       element.style.display = 'inline-block';
       element.appendChild(centerText);
@@ -832,12 +832,12 @@ class ChartInitializer {
       try {
         const usaMapContainer = this.DOM.select('#usa_map');
         usaMapContainer.innerHTML = '';
-        
+
         const canvas = document.createElement('canvas');
         canvas.width = usaMapContainer.offsetWidth || 600;
         canvas.height = 400;
         usaMapContainer.appendChild(canvas);
-        
+
         const ctx = canvas.getContext('2d');
         new Chart(ctx, {
           type: 'bar',
@@ -862,7 +862,7 @@ class ChartInitializer {
               title: { display: true, text: 'Top 10 US States by Revenue' }
             },
             scales: {
-              y: { 
+              y: {
                 beginAtZero: true,
                 title: { display: true, text: 'Revenue ($000s)' }
               },
@@ -880,15 +880,15 @@ class ChartInitializer {
     if (this.DOM.select('#world-map-gdp') && typeof L !== 'undefined') {
       try {
         const worldMapContainer = this.DOM.select('#world-map-gdp');
-        
+
         // Check if map is already initialized
         if (worldMapContainer._leaflet_id) {
           return;
         }
-        
+
         // Create interactive world map
         const map = L.map('world-map-gdp').setView([20, 0], 2);
-        
+
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
           attribution: '© OpenStreetMap contributors',
           maxZoom: 5,
@@ -929,7 +929,7 @@ class ChartInitializer {
         const dataTable = new DataTable(basicTable, {
           responsive: true,
           pageLength: 10,
-          lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+          lengthMenu: [[10, 25, 50, -1], [10, 25, 50, 'All']],
           order: [[0, 'asc']],
           language: {
             search: 'Search employees:',
@@ -937,7 +937,7 @@ class ChartInitializer {
             info: 'Showing _START_ to _END_ of _TOTAL_ entries',
             paginate: {
               first: 'First',
-              last: 'Last', 
+              last: 'Last',
               next: 'Next',
               previous: 'Previous'
             }
@@ -968,7 +968,7 @@ class ChartInitializer {
               className: 'btn btn-success btn-sm'
             },
             {
-              extend: 'excel', 
+              extend: 'excel',
               text: 'Excel',
               className: 'btn btn-primary btn-sm'
             },

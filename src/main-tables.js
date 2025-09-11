@@ -51,10 +51,10 @@ import './js/init-modern.js';
 
 // Initialize DataTables immediately when DOM is ready
 DOM.ready(() => {
-  
+
   // Small delay to ensure all modules are loaded
   setTimeout(() => {
-    
+
     if (typeof window.DataTable === 'undefined') {
       return;
     }

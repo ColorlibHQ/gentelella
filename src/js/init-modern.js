@@ -17,12 +17,12 @@ const DOM = window.DOM || {
   findAll: (element, selector) => [...(element?.querySelectorAll(selector) || [])],
   slideToggle: (element, duration = 200) => {
     const isVisible = element.offsetHeight > 0;
-    
+
     if (isVisible) {
       element.style.overflow = 'hidden';
       element.style.transition = `height ${duration}ms ease`;
       element.style.height = element.offsetHeight + 'px';
-      
+
       requestAnimationFrame(() => {
         element.style.height = '0px';
         setTimeout(() => {
@@ -37,7 +37,7 @@ const DOM = window.DOM || {
       element.style.overflow = 'hidden';
       element.style.height = '0px';
       element.style.transition = `height ${duration}ms ease`;
-      
+
       requestAnimationFrame(() => {
         element.style.height = element.scrollHeight + 'px';
         setTimeout(() => {
