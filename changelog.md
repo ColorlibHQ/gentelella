@@ -1,19 +1,20 @@
 # Gentelella Changelog
 
-## 2.1.1 - 05.09.2025
+## 2.1.1 - 11.09.2025
 
-**Maintenance Release - Dependency Updates & Chart Fixes**
+**Maintenance Release - Dependency Updates, Chart Fixes & UI Improvements**
 
 ### Dependency Updates
 - **Latest Dependencies**: All dependencies updated to latest versions for security and performance
-  - Vite 7.0.6 → 7.1.4
+  - Vite 7.1.4 → 7.1.5
   - Bootstrap 5.3.6 → 5.3.8
   - ECharts 5.6.0 → 6.0.0 (major version upgrade)
   - Chart.js 4.4.2 → 4.5.0
   - jQuery 3.6.1 → 3.7.1
   - TypeScript 5.8.3 → 5.9.2
-  - ESLint 9.31.0 → 9.34.0
-  - DataTables 2.3.2 → 2.3.3
+  - ESLint 9.34.0 → 9.35.0
+  - SASS 1.92.0 → 1.92.1
+  - DataTables 2.3.3 → 2.3.4 with all related packages
   - Font Awesome 7.0.0 → 7.0.1
 - **Security Updates**: Ruby 3.3.9 and Nokogiri 1.18.9 resolve all CVE vulnerabilities
 
@@ -28,6 +29,15 @@
   - Professional styling with hover effects and better typography
 - **Chart Color Consistency**: Fixed Device Usage chart colors to match label indicators
 - **Interactive Maps**: Fixed visitors location map and skycons weather icons on index.html
+
+### UI/UX Improvements
+- **Sidebar Profile Enhancement**: Improved sidebar name section for better scalability
+  - Reduced font size from default h4 to 14px for optimal space utilization
+  - Added proper typography with font-weight 400 and line-height 1.2
+  - Enhanced profile_info container with flexbox layout for better vertical centering
+  - Added word-wrapping and break-word support for long names
+  - Limited to 2.4em max-height to prevent sidebar expansion while allowing up to 2 lines
+  - Gracefully handles both short names and longer names without breaking layout
 
 ### Developer Experience
 - **Dev Server Stability**: Fixed development server crashes with auto-restart capability
