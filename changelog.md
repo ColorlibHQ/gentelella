@@ -1,6 +1,6 @@
 # Gentelella Changelog
 
-## 2.1.1 - 05.12.2025
+## 2.1.1 - 05.09.2025
 
 **Maintenance Release - Dependency Updates & Chart Fixes**
 
