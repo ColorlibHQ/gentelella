@@ -15,7 +15,9 @@
     "format": "prettier --write src/",
     "format:check": "prettier --check src/",
     "analyze": "npm run build && open dist/stats.html",
-    "analyze:ci": "npm run build"
+    "analyze:ci": "npm run build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
@@ -43,7 +45,7 @@
   "bugs": {
     "url": "https://github.com/puikinsh/gentelella/issues"
   },
-  "homepage": "https://github.com/puikinsh/gentelella#readme",
+
   "devDependencies": {
     "@eslint/js": "^9.35.0",
     "@typescript-eslint/eslint-plugin": "^8.43.0",
@@ -53,7 +55,7 @@
     "glob": "^11.0.3",
     "prettier": "^3.6.2",
     "rollup-plugin-visualizer": "^6.0.3",
-    "sass": "^1.92.1",
+    "sass": "^1.93.2",
     "terser": "^5.44.0",
     "typescript": "^5.9.2",
     "vite": "^7.1.5"
@@ -85,6 +87,7 @@
     "dropzone": "^6.0.0-beta.2",
     "echarts": "^6.0.0",
     "flot": "^4.2.6",
+    "gh-pages": "^6.3.0",
     "inputmask": "^5.0.9",
     "jszip": "^3.10.1",
     "leaflet": "^1.9.4",

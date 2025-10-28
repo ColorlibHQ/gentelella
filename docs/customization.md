@@ -239,7 +239,7 @@ new ThemeToggle();
 <!-- Update logo in HTML files -->
 <a href="index.html" class="site_title">
   <div class="logo">
-    <img src="/images/logo.svg" alt="Your Brand">
+    <img src="/images/logo.jpg" alt="Your Brand">
   </div>
   <span class="brand-text">
     Your Brand
