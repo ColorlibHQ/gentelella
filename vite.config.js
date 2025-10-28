@@ -2,42 +2,54 @@ import { defineConfig } from 'vite';
 import { visualizer } from 'rollup-plugin-visualizer';
 
 export default defineConfig({
-  // Tells Vite your project's main folder is 'production'
-  root: 'production',
-
-  // Ensures all asset paths are relative, which is critical for Vercel
-  base: './',
-
+  root: '.',
+  publicDir: 'production',
   logLevel: 'info',
+  base:'/MediReach',
   clearScreen: false,
   build: {
-    // Correctly places the 'dist' folder in your project's top-level directory
-    outDir: '../dist',
-    
+    outDir: 'dist',
     emptyOutDir: true,
     chunkSizeWarningLimit: 1000,
+    // Optimize source maps: 'hidden' for production (generates but doesn't reference in bundle)
+    // This allows debugging in production without exposing source maps to users
     sourcemap: process.env.NODE_ENV === 'production' ? 'hidden' : true,
     target: 'es2022',
     rollupOptions: {
       plugins: [
+        // Bundle analyzer - generates stats.html file
         visualizer({
-          // Adjusted path for the stats file
-          filename: '../dist/stats.html',
+          filename: 'dist/stats.html',
           open: false,
           gzipSize: true,
           brotliSize: true,
-          template: 'treemap'
+          template: 'treemap' // 'treemap', 'sunburst', 'network'
         })
       ],
       output: {
         manualChunks: {
+          // Core UI framework - used on all pages
           'vendor-core': ['bootstrap', '@popperjs/core'],
+          
+          // Chart libraries - only loaded on chart pages  
           'vendor-charts': ['chart.js', 'echarts'],
+          
+          // Maps - separate since it's large and only used on map pages
           'vendor-maps': ['leaflet'],
+          
+          // Form libraries - loaded on form pages
           'vendor-forms': ['choices.js', 'nouislider', 'autosize', 'switchery', '@eonasdan/tempus-dominus'],
+          
+          // DataTables core - frequently used
           'vendor-tables': ['datatables.net', 'datatables.net-bs5'],
+          
+          // DataTables extensions - only loaded when needed
           'vendor-tables-ext': ['jszip'],
+          
+          // UI utilities and progress
           'vendor-ui': ['nprogress'],
+          
+          // Date/time and small utilities
           'vendor-utils': ['dayjs', 'skycons']
         },
         assetFileNames: (assetInfo) => {
@@ -54,49 +66,57 @@ export default defineConfig({
         chunkFileNames: 'js/[name]-[hash].js',
         entryFileNames: 'js/[name]-[hash].js'
       },
-      // Input paths are now relative to the 'production' root
       input: {
-        main: 'index.html',
-        index2: 'index2.html',
-        index3: 'index3.html',
-        index4: 'index4.html',
-        form: 'form.html',
-        form_advanced: 'form_advanced.html',
-        form_buttons: 'form_buttons.html',
-        form_upload: 'form_upload.html',
-        form_validation: 'form_validation.html',
-        form_wizards: 'form_wizards.html',
-        general_elements: 'general_elements.html',
-        media_gallery: 'media_gallery.html',
-        typography: 'typography.html',
-        icons: 'icons.html',
-        widgets: 'widgets.html',
-        invoice: 'invoice.html',
-        inbox: 'inbox.html',
-        calendar: 'calendar.html',
-        tables: 'tables.html',
-        tables_dynamic: 'tables_dynamic.html',
-        chartjs: 'chartjs.html',
-        chartjs2: 'chartjs2.html',
-        chart3: 'chart3.html',
-        echarts: 'echarts.html',
-        other_charts: 'other_charts.html',
-        fixed_sidebar: 'fixed_sidebar.html',
-        fixed_footer: 'fixed_footer.html',
-        e_commerce: 'e_commerce.html',
-        projects: 'projects.html',
-        project_detail: 'project_detail.html',
-        contacts: 'contacts.html',
-        profile: 'profile.html',
-        page_403: 'page_403.html',
-        page_404: 'page_404.html',
-        page_500: 'page_500.html',
-        plain_page: 'plain_page.html',
-        login: 'login.html',
-        pricing_tables: 'pricing_tables.html',
-        level2: 'level2.html',
-        map: 'map.html',
-        landing: 'landing.html'
+        main: 'production/index.html',
+        index2: 'production/index2.html',
+        index3: 'production/index3.html',
+        index4: 'production/index4.html',
+        
+        form: 'production/form.html',
+        form_advanced: 'production/form_advanced.html',
+        form_buttons: 'production/form_buttons.html',
+        form_upload: 'production/form_upload.html',
+        form_validation: 'production/form_validation.html',
+        form_wizards: 'production/form_wizards.html',
+        
+        general_elements: 'production/general_elements.html',
+        media_gallery: 'production/media_gallery.html',
+        typography: 'production/typography.html',
+        icons: 'production/icons.html',
+
+        widgets: 'production/widgets.html',
+        invoice: 'production/invoice.html',
+        inbox: 'production/inbox.html',
+        calendar: 'production/calendar.html',
+        
+        tables: 'production/tables.html',
+        tables_dynamic: 'production/tables_dynamic.html',
+        
+        chartjs: 'production/chartjs.html',
+        chartjs2: 'production/chartjs2.html',
+        chart3: 'production/chart3.html',
+        echarts: 'production/echarts.html',
+        other_charts: 'production/other_charts.html',
+        
+        fixed_sidebar: 'production/fixed_sidebar.html',
+        fixed_footer: 'production/fixed_footer.html',
+        
+        e_commerce: 'production/e_commerce.html',
+        projects: 'production/projects.html',
+        project_detail: 'production/project_detail.html',
+        contacts: 'production/contacts.html',
+        profile: 'production/profile.html',
+        
+        page_403: 'production/page_403.html',
+        page_404: 'production/page_404.html',
+        page_500: 'production/page_500.html',
+        plain_page: 'production/plain_page.html',
+        login: 'production/login.html',
+        pricing_tables: 'production/pricing_tables.html',
+        
+        level2: 'production/level2.html',
+        map: 'production/map.html',
+        landing: 'production/landing.html'
       }
     },
     minify: 'terser',
@@ -142,11 +162,15 @@ export default defineConfig({
     // Modern build without jQuery aliases
   },
   css: {
+    // Enable CSS source maps in development
     devSourcemap: true,
     preprocessorOptions: {
       scss: {
+        // Silence Sass deprecation warnings
         silenceDeprecations: ['legacy-js-api', 'import', 'global-builtin', 'color-functions'],
+        // Additional settings for better performance
         includePaths: ['node_modules'],
+        // Generate source maps for better debugging
         sourceMap: true,
         sourceMapContents: true
       }
@@ -164,4 +188,4 @@ export default defineConfig({
     }),
     'process.env.NODE_ENV': '"production"'
   }
-});
+}); 
