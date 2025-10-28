@@ -45,7 +45,7 @@
   "bugs": {
     "url": "https://github.com/puikinsh/gentelella/issues"
   },
-  "homepage": "https://yashguptaji.github.io/MediReach",
+
   "devDependencies": {
     "@eslint/js": "^9.35.0",
     "@typescript-eslint/eslint-plugin": "^8.43.0",

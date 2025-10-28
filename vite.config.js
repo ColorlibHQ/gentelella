@@ -5,7 +5,7 @@ export default defineConfig({
   root: '.',
   publicDir: 'production',
   logLevel: 'info',
-  base:'/MediReach',
+  base: process.env.VITE_BASE_PATH || "/MediReach",
   clearScreen: false,
   build: {
     outDir: 'dist',
