@@ -1,0 +1,86 @@
+// File Manager Permissions Styles
+
+.permission-section {
+  margin-bottom: 25px;
+  h6 {
+    margin-bottom: 15px;
+    font-weight: 600;
+    color: #333;
+  }
+}
+
+.form-check {
+  margin-bottom: 12px;
+  .form-check-label {
+    margin-left: 5px;
+    font-weight: 400;
+  }
+}
+
+.shared-users {
+  margin-top: 15px;
+  .user-share {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    img {
+      margin-right: 10px;
+    }
+    span {
+      flex: 1;
+      margin-right: 10px;
+    }
+    .permission-level {
+      background: #1abb9c;
+      color: #fff;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-right: 10px;
+    }
+  }
+}
+
+.input-group {
+  .btn {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}
+
+// Modal Styling
+.modal-content {
+  border-radius: 8px;
+  .modal-header {
+    background: #f8f9fa;
+    border-bottom: 1px solid #e0e0e0;
+    h5 {
+      font-weight: 600;
+      color: #333;
+    }
+  }
+  .modal-body {
+    padding: 25px;
+  }
+  .modal-footer {
+    background: #f8f9fa;
+    border-top: 1px solid #e0e0e0;
+  }
+}
+
+// Responsive Design
+@media (max-width: 576px) {
+  .shared-users .user-share {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    .permission-level {
+      margin-right: 0;
+    }
+  }
+}

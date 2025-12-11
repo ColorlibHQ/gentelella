@@ -1,0 +1,237 @@
+// File Manager Styles
+
+.file-manager-container {
+  width: 100%;
+  height: 100%;
+}
+
+// Breadcrumb Navigation
+.breadcrumb-nav {
+  margin-bottom: 20px;
+  .breadcrumb {
+    margin: 0;
+    background: #fff;
+    border-radius: 4px;
+    padding: 10px 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    li {
+      a {
+        color: #1abb9c;
+        text-decoration: none;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+    .active {
+      color: #666;
+    }
+  }
+}
+
+// Toolbar
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 4px;
+  .view-toggle {
+    button {
+      margin-left: 5px;
+      &.active {
+        background-color: #1abb9c;
+        border-color: #1abb9c;
+        color: #fff;
+      }
+    }
+  }
+}
+
+// File Container
+.file-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px 0;
+  transition: all 0.3s ease;
+
+  &.list-view {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
+
+// File Item
+.file-item {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+  }
+
+  &.dragging {
+    opacity: 0.5;
+    transform: scale(0.95);
+  }
+
+  &.drag-over {
+    border-color: #1abb9c;
+    background-color: #f0f8f6;
+    box-shadow: 0 0 0 2px rgba(26, 187, 156, 0.2);
+  }
+
+  .file-icon {
+    margin-bottom: 15px;
+    i {
+      transition: all 0.3s ease;
+    }
+  }
+
+  .file-name {
+    font-weight: 600;
+    margin-bottom: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+  }
+
+  .file-info {
+    font-size: 12px;
+    color: #666;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+  }
+}
+
+// List View Style
+.file-container.list-view .file-item {
+  flex-direction: row;
+  align-items: center;
+  text-align: left;
+  padding: 15px;
+  
+  .file-icon {
+    margin-bottom: 0;
+    margin-right: 20px;
+  }
+
+  .file-name {
+    width: auto;
+    margin-right: 20px;
+  }
+
+  .file-info {
+    width: auto;
+  }
+}
+
+// Upload Progress
+.upload-progress {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 15px;
+  .progress-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    .file-name {
+      font-weight: 600;
+    }
+    .file-size {
+      font-size: 12px;
+      color: #666;
+    }
+  }
+  .progress {
+    height: 6px;
+    background-color: #f0f0f0;
+    border-radius: 3px;
+    overflow: hidden;
+    .progress-bar {
+      height: 100%;
+      transition: width 0.5s ease;
+    }
+  }
+}
+
+// Notifications
+.file-manager-notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #1abb9c;
+  color: #fff;
+  padding: 15px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 9999;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: all 0.3s ease;
+
+  &.show {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  i {
+    font-size: 18px;
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .file-container {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+  }
+
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    .view-toggle {
+      justify-content: center;
+    }
+  }
+
+  .breadcrumb-nav {
+    margin-bottom: 15px;
+    .breadcrumb {
+      padding: 8px 12px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .file-container {
+    grid-template-columns: 1fr;
+  }
+
+  .file-item {
+    padding: 15px;
+  }
+}
