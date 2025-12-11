@@ -3,6 +3,7 @@ npm-debug.log
 node_modules
 .sass-cache
 CLAUDE.md
+.env.local
 
 # Build outputs
 dist/

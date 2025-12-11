@@ -1,11 +1,16 @@
-import { defineConfig } from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 import { visualizer } from 'rollup-plugin-visualizer';
 
-export default defineConfig({
-  root: '.',
-  publicDir: 'production',
-  logLevel: 'info',
-  clearScreen: false,
+export default defineConfig(({ mode }) => {
+  // Load env file based on `mode` in the current working directory.
+  // Set the third parameter to '' to load all env regardless of the `VITE_` prefix.
+  const env = loadEnv(mode, process.cwd(), '');
+
+  return {
+    root: '.',
+    publicDir: 'production',
+    logLevel: 'info',
+    clearScreen: false,
   build: {
     outDir: 'dist',
     emptyOutDir: true,
@@ -29,25 +34,25 @@ export default defineConfig({
         manualChunks: {
           // Core UI framework - used on all pages
           'vendor-core': ['bootstrap', '@popperjs/core'],
-          
-          // Chart libraries - only loaded on chart pages  
+
+          // Chart libraries - only loaded on chart pages
           'vendor-charts': ['chart.js', 'echarts'],
-          
+
           // Maps - separate since it's large and only used on map pages
           'vendor-maps': ['leaflet'],
-          
+
           // Form libraries - loaded on form pages
           'vendor-forms': ['choices.js', 'nouislider', 'autosize', 'switchery', '@eonasdan/tempus-dominus'],
-          
+
           // DataTables core - frequently used
           'vendor-tables': ['datatables.net', 'datatables.net-bs5'],
-          
+
           // DataTables extensions - only loaded when needed
           'vendor-tables-ext': ['jszip'],
-          
+
           // UI utilities and progress
           'vendor-ui': ['nprogress'],
-          
+
           // Date/time and small utilities
           'vendor-utils': ['dayjs', 'skycons']
         },
@@ -70,14 +75,14 @@ export default defineConfig({
         index2: 'production/index2.html',
         index3: 'production/index3.html',
         index4: 'production/index4.html',
-        
+
         form: 'production/form.html',
         form_advanced: 'production/form_advanced.html',
         form_buttons: 'production/form_buttons.html',
         form_upload: 'production/form_upload.html',
         form_validation: 'production/form_validation.html',
         form_wizards: 'production/form_wizards.html',
-        
+
         general_elements: 'production/general_elements.html',
         media_gallery: 'production/media_gallery.html',
         typography: 'production/typography.html',
@@ -87,32 +92,32 @@ export default defineConfig({
         invoice: 'production/invoice.html',
         inbox: 'production/inbox.html',
         calendar: 'production/calendar.html',
-        
+
         tables: 'production/tables.html',
         tables_dynamic: 'production/tables_dynamic.html',
-        
+
         chartjs: 'production/chartjs.html',
         chartjs2: 'production/chartjs2.html',
         chart3: 'production/chart3.html',
         echarts: 'production/echarts.html',
         other_charts: 'production/other_charts.html',
-        
+
         fixed_sidebar: 'production/fixed_sidebar.html',
         fixed_footer: 'production/fixed_footer.html',
-        
+
         e_commerce: 'production/e_commerce.html',
         projects: 'production/projects.html',
         project_detail: 'production/project_detail.html',
         contacts: 'production/contacts.html',
         profile: 'production/profile.html',
-        
+
         page_403: 'production/page_403.html',
         page_404: 'production/page_404.html',
         page_500: 'production/page_500.html',
         plain_page: 'production/plain_page.html',
         login: 'production/login.html',
         pricing_tables: 'production/pricing_tables.html',
-        
+
         level2: 'production/level2.html',
         map: 'production/map.html',
         landing: 'production/landing.html'
@@ -136,7 +141,7 @@ export default defineConfig({
   },
   server: {
     open: '/index.html',
-    port: 3000,
+    port: env.VITE_PORT ? parseInt(env.VITE_PORT) : 3000,
     host: true,
     watch: {
       usePolling: false,
@@ -187,4 +192,5 @@ export default defineConfig({
     }),
     'process.env.NODE_ENV': '"production"'
   }
-}); 
+  };
+});
