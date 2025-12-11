@@ -98,6 +98,7 @@ export default defineConfig(({ mode }) => {
 
         chartjs: 'production/chartjs.html',
         chartjs2: 'production/chartjs2.html',
+        construction_dashboard: 'production/construction_dashboard.html',
         chart3: 'production/chart3.html',
         echarts: 'production/echarts.html',
         other_charts: 'production/other_charts.html',

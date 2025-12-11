@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Security Headers -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.googleapis.com; img-src 'self' data: https: blob:; font-src 'self' data: https://fonts.gstatic.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; connect-src 'self' ws: wss: http://localhost:* https://api.example.com https://*.googleapis.com; frame-src 'self' https://www.youtube.com https://player.vimeo.com; media-src 'self' https: blob:; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
+  <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/images/favicon-32x32.svg" type="image/svg+xml" sizes="32x32">
+  <link rel="icon" href="/images/favicon-16x16.svg" type="image/svg+xml" sizes="16x16">
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+  
+  <!-- Apple Touch Icon -->
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.svg" sizes="180x180">
+  
+  <!-- Android/Chrome -->
+  <link rel="manifest" href="/site.webmanifest">
+  
+  <!-- Theme colors -->
+  <meta name="theme-color" content="rgb(42, 63, 84)">
+  <meta name="msapplication-TileColor" content="rgb(42, 63, 84)">
+
+  <title>建筑行业数字大屏 - Gentelella</title>
+
+  <!-- Vite Entry Point - will bundle all styles -->
+  <script type="module" src="/src/main-minimal-modern.js"></script>
+  
+  <!-- Custom Styles -->
+  <style>
+    :root {
+      --construction-primary: #165DFF;
+      --construction-secondary: #0FC6C2;
+      --construction-success: #00B42A;
+      --construction-warning: #FF7D00;
+      --construction-danger: #F53F3F;
+      --construction-dark: #1D2129;
+      --construction-bg: #0A0E17;
+      --construction-card: #141925;
+      --construction-border: #252B3B;
+      --sidebar-width: 280px;
+      --header-height: 60px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--construction-bg);
+      color: #E5E6EB;
+      font-family: 'Microsoft YaHei', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* 顶部导航 */
+    .top-header {
+      height: var(--header-height);
+      background: var(--construction-card);
+      border-bottom: 1px solid var(--construction-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      position: fixed;
+      top: 0;
+      left: var(--sidebar-width);
+      right: 0;
+      z-index: 1000;
+    }
+
+    .header-title {
+      font-size: 20px;
+      font-weight: 600;
+      color: #FFFFFF;
+    }
+
+    .header-user {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    /* 侧边栏 */
+    .sidebar {
+      width: var(--sidebar-width);
+      background: var(--construction-card);
+      border-right: 1px solid var(--construction-border);
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      z-index: 1001;
+      padding: 20px 0;
+    }
+
+    .sidebar-logo {
+      text-align: center;
+      padding: 0 20px 30px;
+      border-bottom: 1px solid var(--construction-border);
+      margin-bottom: 20px;
+    }
+
+    .sidebar-logo h2 {
+      color: var(--construction-primary);
+      font-size: 24px;
+      margin-bottom: 5px;
+    }
+
+    .sidebar-logo p {
+      color: #86909C;
+      font-size: 12px;
+    }
+
+    .sidebar-menu {
+      list-style: none;
+      padding: 0 20px;
+    }
+
+    .sidebar-menu-item {
+      margin-bottom: 8px;
+    }
+
+    .sidebar-menu-item a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px;
+      color: #E5E6EB;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      font-size: 14px;
+    }
+
+    .sidebar-menu-item a:hover,
+    .sidebar-menu-item.active a {
+      background: var(--construction-primary);
+      color: #FFFFFF;
+    }
+
+    .dashboard-container {
+      min-height: 100vh;
+      padding: calc(var(--header-height) + 20px) 20px 20px calc(var(--sidebar-width) + 20px);
+    }
+
+    .dashboard-header {
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid var(--construction-border);
+    }
+
+    .dashboard-title {
+      font-size: 28px;
+      font-weight: 600;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .filter-bar {
+      background: var(--construction-card);
+      border: 1px solid var(--construction-border);
+      border-radius: 8px;
+      padding: 15px 20px;
+      margin-bottom: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .filter-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .filter-label {
+      font-size: 14px;
+      color: #86909C;
+      white-space: nowrap;
+    }
+
+    .filter-select {
+      background: var(--construction-dark);
+      border: 1px solid var(--construction-border);
+      color: #E5E6EB;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    .filter-select:focus {
+      outline: none;
+      border-color: var(--construction-primary);
+    }
+
+    .stat-card {
+      background: var(--construction-card);
+      border: 1px solid var(--construction-border);
+      border-radius: 12px;
+      padding: 20px;
+      height: 100%;
+      transition: all 0.3s ease;
+    }
+
+    .stat-card:hover {
+      border-color: var(--construction-primary);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(22, 93, 255, 0.15);
+    }
+
+    .stat-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 15px;
+    }
+
+    .stat-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+
+    .stat-icon.project { background: rgba(22, 93, 255, 0.1); color: var(--construction-primary); }
+    .stat-icon.safety { background: rgba(0, 180, 42, 0.1); color: var(--construction-success); }
+    .stat-icon.resource { background: rgba(15, 198, 194, 0.1); color: var(--construction-secondary); }
+    .stat-icon.cost { background: rgba(245, 63, 63, 0.1); color: var(--construction-danger); }
+    .stat-icon.quality { background: rgba(255, 125, 0, 0.1); color: var(--construction-warning); }
+    .stat-icon.progress { background: rgba(135, 100, 255, 0.1); color: #8764FF; }
+
+    .stat-title {
+      font-size: 14px;
+      color: #86909C;
+      margin-bottom: 8px;
+    }
+
+    .stat-value {
+      font-size: 28px;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 8px;
+    }
+
+    .stat-change {
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .stat-change.positive { color: var(--construction-success); }
+    .stat-change.negative { color: var(--construction-danger); }
+
+    .chart-card {
+      background: var(--construction-card);
+      border: 1px solid var(--construction-border);
+      border-radius: 12px;
+      padding: 20px;
+      height: 100%;
+    }
+
+    .chart-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #FFFFFF;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .gantt-container {
+      background: var(--construction-dark);
+      border-radius: 8px;
+      padding: 15px;
+      margin-top: 15px;
+    }
+
+    .gantt-task {
+      background: var(--construction-primary);
+      border-radius: 6px;
+      padding: 10px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .safety-indicator {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--construction-border);
+    }
+
+    .safety-indicator:last-child {
+      border-bottom: none;
+    }
+
+    .safety-status {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .safety-status.safe { background: var(--construction-success); }
+    .safety-status.warning { background: var(--construction-warning); }
+    .safety-status.danger { background: var(--construction-danger); }
+
+    /* 响应式适配 */
+    @media (max-width: 1200px) {
+      .stat-value {
+        font-size: 24px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .dashboard-title {
+        font-size: 22px;
+      }
+      
+      .filter-bar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      
+      .stat-value {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 侧边栏 -->
+  <div class="sidebar">
+    <div class="sidebar-logo">
+      <h2>建筑大屏</h2>
+      <p>行业数据分析平台</p>
+    </div>
+    <ul class="sidebar-menu">
+      <li class="sidebar-menu-item active">
+        <a href="#overview">
+          <i class="fas fa-tachometer-alt"></i>
+          <span>项目概览</span>
+        </a>
+      </li>
+      <li class="sidebar-menu-item">
+        <a href="#progress">
+          <i class="fas fa-chart-line"></i>
+          <span>项目进度</span>
+        </a>
+      </li>
+      <li class="sidebar-menu-item">
+        <a href="#safety">
+          <i class="fas fa-shield-alt"></i>
+          <span>施工安全</span>
+        </a>
+      </li>
+      <li class="sidebar-menu-item">
+        <a href="#resources">
+          <i class="fas fa-boxes"></i>
+          <span>资源管理</span>
+        </a>
+      </li>
+      <li class="sidebar-menu-item">
+        <a href="#cost">
+          <i class="fas fa-coins"></i>
+          <span>成本分析</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- 顶部导航 -->
+  <div class="top-header">
+    <div class="header-title">
+      <i class="fas fa-building"></i>
+      <span>建筑行业数字大屏</span>
+    </div>
+    <div class="header-user">
+      <span>管理员</span>
+      <i class="fas fa-user-circle" style="font-size: 24px;"></i>
+    </div>
+  </div>
+
+  <!-- 主内容区 -->
+  <div class="dashboard-container">
+    <!-- Header -->
+    <div class="dashboard-header">
+      <h1 class="dashboard-title">
+        <i class="fas fa-city"></i>
+        建筑行业数字孪生大屏
+      </h1>
+    </div>
+
+    <!-- Filter Bar -->
+    <div class="filter-bar">
+      <div class="filter-item">
+        <span class="filter-label">项目选择:</span>
+        <select class="filter-select" id="projectSelect">
+          <option value="all">全部项目</option>
+          <option value="project1">CBD商业综合体</option>
+          <option value="project2">轨道交通1号线</option>
+          <option value="project3">滨江住宅小区</option>
+        </select>
+      </div>
+      <div class="filter-item">
+        <span class="filter-label">时间范围:</span>
+        <select class="filter-select" id="timeRange">
+          <option value="week">本周</option>
+          <option value="month">本月</option>
+          <option value="quarter">本季度</option>
+          <option value="year">本年</option>
+        </select>
+      </div>
+      <div class="filter-item ms-auto">
+        <span class="filter-label">实时更新:</span>
+        <label class="switch">
+          <input type="checkbox" checked id="realTimeUpdate">
+          <span class="slider round"></span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Stats Row -->
+    <div class="row gy-4 mb-4">
+      <div class="col-xl-2 col-md-4">
+        <div class="stat-card">
+          <div class="stat-header">
+            <div>
+              <div class="stat-title">项目总数</div>
+              <div class="stat-value">12</div>
+            </div>
+            <div class="stat-icon project">
+              <i class="fas fa-building"></i>
+            </div>
+          </div>
+          <div class="stat-change positive">
+            <i class="fas fa-arrow-up"></i>
+            <span>+2 个项目</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-2 col-md-4">
+        <div class="stat-card">
+          <div class="stat-header">
+            <div>
+              <div class="stat-title">安全事故率</div>
+              <div class="stat-value">0.23%</div>
+            </div>
+            <div class="stat-icon safety">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+          </div>
+          <div class="stat-change negative">
+            <i class="fas fa-arrow-down"></i>
+            <span>-12.5%</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-2 col-md-4">
+        <div class="stat-card">
+          <div class="stat-header">
+            <div>
+              <div class="stat-title">资源利用率</div>
+              <div class="stat-value">87.5%</div>
+            </div>
+            <div class="stat-icon resource">
+              <i class="fas fa-cogs"></i>
+            </div>
+          </div>
+          <div class="stat-change positive">
+            <i class="fas fa-arrow-up"></i>
+            <span>+3.2%</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-2 col-md-4">
+        <div class="stat-card">
+          <div class="stat-header">
+            <div>
+              <div class="stat-title">成本偏差</div>
+              <div class="stat-value">+2.1%</div>
+            </div>
+            <div class="stat-icon cost">
+              <i class="fas fa-money-bill-wave"></i>
+            </div>
+          </div>
+          <div class="stat-change negative">
+            <i class="fas fa-arrow-up"></i>
+            <span>+0.8%</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-2 col-md-4">
+        <div class="stat-card">
+          <div class="stat-header">
+            <div>
+              <div class="stat-title">质检合格率</div>
+              <div class="stat-value">96.8%</div>
+            </div>
+            <div class="stat-icon quality">
+              <i class="fas fa-check-circle"></i>
+            </div>
+          </div>
+          <div class="stat-change positive">
+            <i class="fas fa-arrow-up"></i>
+            <span>+1.5%</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-2 col-md-4">
+        <div class="stat-card">
+          <div class="stat-header">
+            <div>
+              <div class="stat-title">整体进度</div>
+              <div class="stat-value">68.2%</div>
+            </div>
+            <div class="stat-icon progress">
+              <i class="fas fa-chart-line"></i>
+            </div>
+          </div>
+          <div class="stat-change positive">
+            <i class="fas fa-arrow-up"></i>
+            <span>+4.7%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Charts Row 1 -->
+    <div class="row gy-4 mb-4">
+      <div class="col-xl-8">
+        <div class="chart-card">
+          <h3 class="chart-title">
+            <i class="fas fa-chart-line"></i>
+            成本消耗趋势
+          </h3>
+          <canvas id="costTrendChart" height="300"></canvas>
+        </div>
+      </div>
+      <div class="col-xl-4">
+        <div class="chart-card">
+          <h3 class="chart-title">
+            <i class="fas fa-pie-chart"></i>
+            资源利用率分布
+          </h3>
+          <canvas id="resourceUtilizationChart" height="300"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- Charts Row 2 -->
+    <div class="row gy-4 mb-4">
+      <div class="col-xl-6">
+        <div class="chart-card">
+          <h3 class="chart-title">
+            <i class="fas fa-tasks"></i>
+            项目进度甘特图
+          </h3>
+          <div class="gantt-container">
+            <div class="gantt-task">
+              <div>
+                <div style="font-weight: 600;">基础施工</div>
+                <div style="font-size: 12px; color: #86909C;">01.01 - 03.15</div>
+              </div>
+              <div style="font-size: 14px; font-weight: 600; color: var(--construction-success);">100%</div>
+            </div>
+            <div class="gantt-task">
+              <div>
+                <div style="font-weight: 600;">主体结构</div>
+                <div style="font-size: 12px; color: #86909C;">03.16 - 07.30</div>
+              </div>
+              <div style="font-size: 14px; font-weight: 600; color: var(--construction-warning);">78%</div>
+            </div>
+            <div class="gantt-task">
+              <div>
+                <div style="font-weight: 600;">机电安装</div>
+                <div style="font-size: 12px; color: #86909C;">06.15 - 10.20</div>
+              </div>
+              <div style="font-size: 14px; font-weight: 600; color: var(--construction-primary);">45%</div>
+            </div>
+            <div class="gantt-task">
+              <div>
+                <div style="font-weight: 600;">精装修</div>
+                <div style="font-size: 12px; color: #86909C;">09.01 - 12.15</div>
+              </div>
+              <div style="font-size: 14px; font-weight: 600; color: var(--construction-info);">22%</div>
+            </div>
+            <div class="gantt-task">
+              <div>
+                <div style="font-weight: 600;">竣工验收</div>
+                <div style="font-size: 12px; color: #86909C;">12.16 - 12.30</div>
+              </div>
+              <div style="font-size: 14px; font-weight: 600; color: var(--construction-secondary);">0%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-6">
+        <div class="chart-card">
+          <h3 class="chart-title">
+            <i class="fas fa-shield-alt"></i>
+            施工安全指标
+          </h3>
+          <div style="margin-top: 15px;">
+            <div class="safety-indicator">
+              <div class="safety-status safe"></div>
+              <div style="flex: 1;">
+                <div style="font-weight: 600;">安全帽佩戴率</div>
+                <div style="font-size: 12px; color: #86909C;">现场施工人员安全帽合规佩戴</div>
+              </div>
+              <div style="font-weight: 600; font-size: 18px;">99.2%</div>
+            </div>
+            <div class="safety-indicator">
+              <div class="safety-status safe"></div>
+              <div style="flex: 1;">
+                <div style="font-weight: 600;">安全带合格率</div>
+                <div style="font-size: 12px; color: #86909C;">高空作业人员安全带规范使用</div>
+              </div>
+              <div style="font-weight: 600; font-size: 18px;">98.7%</div>
+            </div>
+            <div class="safety-indicator">
+              <div class="safety-status warning"></div>
+              <div style="flex: 1;">
+                <div style="font-weight: 600;">消防设施完好率</div>
+                <div style="font-size: 12px; color: #86909C;">施工现场消防设备有效运行</div>
+              </div>
+              <div style="font-weight: 600; font-size: 18px;">94.3%</div>
+            </div>
+            <div class="safety-indicator">
+              <div class="safety-status safe"></div>
+              <div style="flex: 1;">
+                <div style="font-weight: 600;">安全培训覆盖率</div>
+                <div style="font-size: 12px; color: #86909C;">施工人员安全培训完成情况</div>
+              </div>
+              <div style="font-weight: 600; font-size: 18px;">100%</div>
+            </div>
+            <div class="safety-indicator">
+              <div class="safety-status danger"></div>
+              <div style="flex: 1;">
+                <div style="font-weight: 600;">隐患整改率</div>
+                <div style="font-size: 12px; color: #86909C;">安全隐患闭环处理情况</div>
+              </div>
+              <div style="font-weight: 600; font-size: 18px;">87.6%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Charts Row 3 -->
+    <div class="row gy-4">
+      <div class="col-xl-12">
+        <div class="chart-card">
+          <h3 class="chart-title">
+            <i class="fas fa-chart-bar"></i>
+            各项目进度对比
+          </h3>
+          <canvas id="projectProgressChart" height="250"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    // 导入本地Chart.js和Bootstrap模块
+    import { Chart, registerables } from '../node_modules/chart.js/dist/chart.js';
+    import '../node_modules/bootstrap/dist/js/bootstrap.bundle.js';
+
+    // 注册Chart组件
+    Chart.register(...registerables);
+    window.Chart = Chart;
+
+    // 图表初始化函数
+    function initCharts() {
+      // 成本趋势线图
+      const costCtx = document.getElementById('costTrendChart').getContext('2d');
+      const costChart = new Chart(costCtx, {
+        type: 'line',
+        data: {
+          labels: ['1月', '2月', '3月', '4月', '5月', '6月'],
+          datasets: [{
+            label: '成本支出 (万元)',
+            data: [120, 190, 150, 220, 180, 250],
+            borderColor: '#165DFF',
+            backgroundColor: 'rgba(22, 93, 255, 0.1)',
+            tension: 0.4,
+            fill: true
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          plugins: {
+            legend: { position: 'top', labels: { color: '#E5E6EB' } },
+            tooltip: { mode: 'index', intersect: false, backgroundColor: '#141925', titleColor: '#FFFFFF', bodyColor: '#E5E6EB', borderColor: '#252B3B', borderWidth: 1 }
+          },
+          scales: {
+            y: { beginAtZero: true, grid: { color: 'rgba(255, 255, 255, 0.1)' }, ticks: { color: '#86909C' } },
+            x: { grid: { display: false }, ticks: { color: '#86909C' } }
+          }
+        }
+      });
+
+      // 资源利用率饼图
+      const resourceCtx = document.getElementById('resourceUtilizationChart').getContext('2d');
+      const resourceChart = new Chart(resourceCtx, {
+        type: 'doughnut',
+        data: {
+          labels: ['人力 (75%)', '设备 (60%)', '材料 (85%)', '其他 (50%)'],
+          datasets: [{
+            data: [75, 60, 85, 50],
+            backgroundColor: ['#165DFF', '#0FC6C2', '#00B42A', '#FF7D00'],
+            borderWidth: 0
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          plugins: {
+            legend: { position: 'bottom', labels: { color: '#E5E6EB' } }
+          }
+        }
+      });
+
+      // 项目进度对比柱状图
+      const progressCtx = document.getElementById('projectProgressChart').getContext('2d');
+      const progressChart = new Chart(progressCtx, {
+        type: 'bar',
+        data: {
+          labels: ['CBD商业综合体', '轨道交通1号线', '滨江住宅小区', '科技产业园', '会展中心'],
+          datasets: [{
+            label: '实际进度 (%)',
+            data: [75, 60, 85, 90, 70],
+            backgroundColor: '#165DFF'
+          }, {
+            label: '计划进度 (%)',
+            data: [80, 70, 90, 95, 75],
+            backgroundColor: '#86909C'
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          plugins: {
+            legend: { position: 'top', labels: { color: '#E5E6EB' } },
+            tooltip: { backgroundColor: '#141925', titleColor: '#FFFFFF', bodyColor: '#E5E6EB', borderColor: '#252B3B', borderWidth: 1 }
+          },
+          scales: {
+            y: { beginAtZero: true, max: 100, grid: { color: 'rgba(255, 255, 255, 0.1)' }, ticks: { color: '#86909C' } },
+            x: { grid: { display: false }, ticks: { color: '#86909C' } }
+          }
+        }
+      });
+    }
+
+    // 实时更新数据
+    function updateData() {
+      console.log('数据已更新');
+    }
+
+    // 页面加载完成后初始化图表
+    window.addEventListener('DOMContentLoaded', () => {
+      initCharts();
+      // 每30秒更新一次数据
+      setInterval(updateData, 30000);
+    });
+  </script>
+</body>
+</html>
