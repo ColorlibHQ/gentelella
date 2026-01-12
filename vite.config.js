@@ -30,7 +30,7 @@ export default defineConfig({
           // Core UI framework - used on all pages
           'vendor-core': ['bootstrap', '@popperjs/core'],
 
-          // Chart.js - used on chartjs.html, chartjs2.html, chart3.html, other_charts.html
+          // Chart.js - used on chartjs.html, other_charts.html, dashboards
           'vendor-chartjs': ['chart.js'],
 
           // ECharts - separate chunk, only used on echarts.html (large library ~800KB)
@@ -111,8 +111,6 @@ export default defineConfig({
         tables_dynamic: 'production/tables_dynamic.html',
         
         chartjs: 'production/chartjs.html',
-        chartjs2: 'production/chartjs2.html',
-        chart3: 'production/chart3.html',
         echarts: 'production/echarts.html',
         other_charts: 'production/other_charts.html',
         

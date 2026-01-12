@@ -7,6 +7,19 @@
     <title>Advanced Form Components | Gentelella</title>
     <script type="module" src="/src/main-form-basic.js"></script>
     <style>
+      /* Cropper.js v2 web component styling */
+      .cropper-container {
+        width: 100%;
+        height: 500px;
+        background: #1a1a2e;
+        border-radius: 6px;
+        overflow: hidden;
+      }
+      cropper-canvas {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
       /* Cropper preview container */
       #cropper-preview {
         overflow: hidden;
@@ -39,12 +52,12 @@
   <body class="nav-md">
     <div class="container body">
       <div class="main_container">
-        <div class="col-md-3 left_col">
+        <aside class="col-md-3 left_col" aria-label="Sidebar navigation">
           <div class="left_col scroll-view">
-            <div class="navbar nav_title" style="border: 0;">
+            <div class="navbar nav_title border-0">
               <a href="index.html" class="site_title">
-                <img src="images/logo.svg" alt="Gentelella" class="logo-full" style="height: 40px;">
-                <img src="images/logo-icon.svg" alt="Gentelella" class="logo-icon" style="height: 30px; display: none;">
+                <img src="images/logo.svg" alt="Gentelella" class="logo-full logo-main" loading="lazy">
+                <img src="images/logo-icon.svg" alt="Gentelella" class="logo-icon" loading="lazy">
               </a>
             </div>
 
@@ -52,7 +65,7 @@
 
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="images/img.jpg" alt="User" class="img-circle profile_img">
+                <img src="images/img.jpg" alt="User" class="img-circle profile_img" loading="lazy">
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
@@ -66,14 +79,14 @@
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                  <li><a><i class="fas fa-home"></i> Home <span class="fas fa-chevron-down"></span></a>
+                  <li><a><i class="bi bi-house"></i> Home <span class="bi bi-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="index.html">Dashboard 1</a></li>
                       <li><a href="index2.html">Dashboard 2</a></li>
                       <li><a href="index3.html">Dashboard 3</a></li>
                     </ul>
                   </li>
-                  <li><a><i class="fas fa-edit"></i> Forms <span class="fas fa-chevron-down"></span></a>
+                  <li><a><i class="bi bi-pencil-square"></i> Forms <span class="bi bi-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="form.html">General Form</a></li>
                       <li><a href="form_advanced.html">Advanced Components</a></li>
@@ -83,7 +96,7 @@
                       <li><a href="form_buttons.html">Form Buttons</a></li>
                     </ul>
                   </li>
-                  <li><a><i class="fas fa-desktop"></i> UI Elements <span class="fas fa-chevron-down"></span></a>
+                  <li><a><i class="bi bi-display"></i> UI Elements <span class="bi bi-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="general_elements.html">General Elements</a></li>
                       <li><a href="media_gallery.html">Media Gallery</a></li>
@@ -95,15 +108,15 @@
                       <li><a href="calendar.html">Calendar</a></li>
                     </ul>
                   </li>
-                  <li><a><i class="fas fa-table"></i> Tables <span class="fas fa-chevron-down"></span></a>
+                  <li><a><i class="bi bi-table"></i> Tables <span class="bi bi-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="tables.html">Tables</a></li>
                       <li><a href="tables_dynamic.html">Table Dynamic</a></li>
                     </ul>
                   </li>
-                  <li><a><i class="fas fa-chart-bar"></i> Data Presentation <span class="fas fa-chevron-down"></span></a>
+                  <li><a><i class="fas fa-chart-bar"></i> Data Presentation <span class="bi bi-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="chartjs.html">Chart JS</a></li>
+                      <li><a href="chartjs.html">Chart.js</a></li>
                       <li><a href="echarts.html">ECharts</a></li>
                     </ul>
                   </li>
@@ -129,20 +142,84 @@
         </div>
 
         <div class="top_nav">
-          <div class="nav_menu">
+          <div class="nav_menu d-flex align-items-center justify-content-between">
             <div class="nav toggle">
               <a id="menu_toggle"><i class="fas fa-bars"></i></a>
             </div>
-            <nav class="nav navbar-nav">
-              <ul class="navbar-right">
-                <li class="nav-item dropdown open" style="padding-left: 15px;">
-                  <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <nav class="nav navbar-nav ms-auto">
+              <ul class="navbar-right d-flex align-items-center gap-3 pe-3">
+                <li class="nav-item dropdown">
+                  <a href="#" role="button" class="dropdown-toggle info-number" id="navbarDropdown1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-envelope"></i>
+                    <span class="badge bg-green">6</span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end list-unstyled msg_list" style="min-width: 320px;" role="menu" aria-labelledby="navbarDropdown1">
+                    <li class="nav-item">
+                      <a class="dropdown-item">
+                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="dropdown-item">
+                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="dropdown-item">
+                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="dropdown-item">
+                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <div class="text-center">
+                        <a class="dropdown-item">
+                          <strong>See All Alerts</strong>
+                          <i class="fas fa-angle-right"></i>
+                        </a>
+                      </div>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item dropdown">
+                  <a href="#" role="button" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                     <img src="images/img.jpg" alt="">John Doe
                   </a>
-                  <div class="dropdown-menu dropdown-usermenu float-end" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="javascript:;">Profile</a>
-                    <a class="dropdown-item" href="javascript:;">Settings</a>
-                    <a class="dropdown-item" href="javascript:;">Help</a>
+                  <div class="dropdown-menu dropdown-menu-end dropdown-usermenu" style="min-width: 200px;" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#" role="button">Profile</a>
+                    <a class="dropdown-item" href="#" role="button">Settings</a>
+                    <a class="dropdown-item" href="#" role="button">Help</a>
                     <a class="dropdown-item" href="login.html"><i class="fas fa-sign-out-alt float-end"></i> Log Out</a>
                   </div>
                 </li>
@@ -152,7 +229,7 @@
         </div>
 
         <!-- Page Content -->
-        <div class="right_col" role="main">
+        <main class="right_col" role="main" aria-label="Main content">
           <div class="">
             <div class="page-title">
               <div class="title_left">
@@ -537,8 +614,8 @@
 
                     <div class="row">
                       <div class="col-lg-9 col-md-8 mb-3">
-                        <div style="min-height: 450px; max-height: 600px;">
-                          <img id="cropper-source" src="images/cropper.jpg" alt="Source Image" style="max-width: 100%; display: block;">
+                        <div id="cropper-wrapper" class="cropper-container">
+                          <img id="cropper-source" src="images/cropper.jpg" alt="Source Image">
                         </div>
                       </div>
 

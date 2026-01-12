@@ -108,10 +108,14 @@ document.addEventListener('DOMContentLoaded', () => {
   // Cropper.js v2 initialization (web component API)
   // -----------------------------
   const sourceImg = document.getElementById('cropper-source');
-  if (sourceImg && window.Cropper) {
+  const cropperWrapper = document.getElementById('cropper-wrapper');
+  if (sourceImg && cropperWrapper && window.Cropper) {
+    // Hide the original image - Cropper v2 will create its own canvas
+    sourceImg.style.display = 'none';
+
     // Cropper.js v2 uses a web component-based approach
     const cropperInstance = new window.Cropper(sourceImg, {
-      container: sourceImg.parentElement
+      container: cropperWrapper
     });
     window.cropper = cropperInstance;
 

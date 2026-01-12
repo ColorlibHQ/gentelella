@@ -2,7 +2,26 @@
 
 ## 2.1.3 - 12.01.2026
 
-**Code Quality & Naming Standardization Release**
+**Code Quality, Naming Standardization & UI Modernization Release**
+
+### UI Modernization
+
+- **Bootstrap Icons Integration**: Added Bootstrap Icons as alternative to Font Awesome
+  - Installed `bootstrap-icons` package (v1.13.1)
+  - Sidebar navigation now uses thinner, more modern Bootstrap Icons
+  - Icon mappings: `fa-home` → `bi-house`, `fa-edit` → `bi-pencil-square`, `fa-desktop` → `bi-display`, etc.
+  - All 35 HTML files updated with new icon classes
+
+- **Header Navigation Fixes**: Rebuilt top navigation using proper Bootstrap 5 flexbox utilities
+  - Uses `d-flex`, `align-items-center`, `justify-content-between`, `ms-auto`, `gap-3` classes
+  - Dropdown order corrected: notifications first, then user profile
+  - Dropdown menus widened (320px for notifications, 200px for user profile)
+  - Proper `dropdown-menu-end` alignment for right-side dropdowns
+
+- **Sidebar Improvements**:
+  - Hamburger menu properly positioned for both expanded (230px) and collapsed (70px) sidebar states
+  - Logo icon centered in collapsed sidebar mode using flexbox
+  - Chevron arrows positioned to right side of menu items with `margin-left: auto`
 
 ### Code Cleanup
 

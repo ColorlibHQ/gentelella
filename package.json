@@ -1,6 +1,6 @@
 {
   "name": "gentelella",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "type": "module",
   "description": "Gentelella Admin is a free to use Bootstrap admin template",
   "scripts": {
@@ -76,6 +76,7 @@
     "@uppy/dashboard": "^4.0.0",
     "@uppy/xhr-upload": "^4.0.0",
     "bootstrap": "^5.3.8",
+    "bootstrap-icons": "^1.13.1",
     "chart.js": "^4.5.1",
     "choices.js": "^11.1.0",
     "cropperjs": "^2.1.0",

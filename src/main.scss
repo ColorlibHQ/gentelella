@@ -1,6 +1,17 @@
 // SCSS files using @use (must come first)
 @use "bootstrap/scss/bootstrap";
+
+// =============================================================================
+// THEME SELECTION
+// =============================================================================
+// To switch themes, comment/uncomment the appropriate line below:
+//
+// CLASSIC THEME (current):
 @use "./scss/variables"; // CSS custom properties and SCSS variables
+//
+// MODERN THEME (experimental - softer shadows, cooler grays, vibrant colors):
+// @use "./scss/variables-modern" as variables;
+// =============================================================================
 @use "./scss/custom.scss";
 @use "./scss/font-optimization.scss";
 @use "./scss/index2.scss";
@@ -9,6 +20,7 @@
 
 // CSS files using @import (legacy approach for .css files)
 @import "@fortawesome/fontawesome-free/css/all.min.css";
+@import "bootstrap-icons/font/bootstrap-icons.min.css";
 // @import "jquery-ui/dist/themes/ui-lightness/jquery-ui.css"; // Package not installed
 // @import "select2/dist/css/select2.min.css"; // Package not installed  
 // @import "ion-rangeslider/css/ion.rangeSlider.css"; // Package not installed

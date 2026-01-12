@@ -14,6 +14,33 @@ const CHART_CONFIGS = {
       scales: { x: { display: true }, y: { beginAtZero: true } }
     }
   },
+  area: {
+    type: 'line',
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { position: 'top' } },
+      scales: { x: { display: true }, y: { beginAtZero: true } }
+    }
+  },
+  multiLine: {
+    type: 'line',
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { position: 'top' } },
+      scales: { x: { display: true }, y: { beginAtZero: true } }
+    }
+  },
+  smoothLine: {
+    type: 'line',
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { position: 'top' } },
+      scales: { x: { display: true }, y: { beginAtZero: true } }
+    }
+  },
   bar: {
     type: 'bar',
     options: {
@@ -21,6 +48,37 @@ const CHART_CONFIGS = {
       maintainAspectRatio: false,
       plugins: { legend: { position: 'top' } },
       scales: { x: { display: true }, y: { beginAtZero: true } }
+    }
+  },
+  horizontalBar: {
+    type: 'bar',
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      indexAxis: 'y',
+      plugins: { legend: { position: 'top' } },
+      scales: { x: { beginAtZero: true }, y: { display: true } }
+    }
+  },
+  groupedBar: {
+    type: 'bar',
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { position: 'top' } },
+      scales: { x: { display: true }, y: { beginAtZero: true } }
+    }
+  },
+  stackedBar: {
+    type: 'bar',
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { position: 'top' } },
+      scales: {
+        x: { stacked: true, display: true },
+        y: { stacked: true, beginAtZero: true }
+      }
     }
   },
   doughnut: {
@@ -77,56 +135,169 @@ const SAMPLE_DATA = {
       label: 'Dataset 1',
       data: [12, 19, 3, 5, 2, 3],
       borderColor: '#26B99A',
-      backgroundColor: 'rgba(38, 185, 154, 0.1)',
+      backgroundColor: 'transparent',
+      borderWidth: 2,
+      fill: false,
+      tension: 0
+    }]
+  },
+  area: {
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
+    datasets: [{
+      label: 'Revenue',
+      data: [28, 48, 40, 65, 55, 78, 72, 95],
+      borderColor: '#3498DB',
+      backgroundColor: 'rgba(52, 152, 219, 0.3)',
       borderWidth: 2,
       fill: true,
       tension: 0.4
     }]
   },
-  bar: {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+  multiLine: {
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
     datasets: [{
-      label: 'Dataset 1',
+      label: 'Product A',
+      data: [65, 59, 80, 81, 56, 55],
+      borderColor: '#E74C3C',
+      backgroundColor: 'transparent',
+      borderWidth: 2,
+      fill: false
+    }, {
+      label: 'Product B',
+      data: [28, 48, 40, 19, 86, 27],
+      borderColor: '#3498DB',
+      backgroundColor: 'transparent',
+      borderWidth: 2,
+      fill: false
+    }, {
+      label: 'Product C',
+      data: [45, 25, 50, 60, 42, 70],
+      borderColor: '#2ECC71',
+      backgroundColor: 'transparent',
+      borderWidth: 2,
+      fill: false
+    }]
+  },
+  smoothLine: {
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
+    datasets: [{
+      label: 'Smooth Dataset',
+      data: [30, 45, 35, 60, 48, 72, 58, 85],
+      borderColor: '#9B59B6',
+      backgroundColor: 'rgba(155, 89, 182, 0.1)',
+      borderWidth: 3,
+      fill: true,
+      tension: 0.4
+    }]
+  },
+  bar: {
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+    datasets: [{
+      label: 'Sales',
       data: [12, 19, 3, 5, 2, 3],
       backgroundColor: [
-        'rgba(255, 99, 132, 0.8)',
-        'rgba(54, 162, 235, 0.8)',
-        'rgba(255, 205, 86, 0.8)',
-        'rgba(75, 192, 192, 0.8)',
-        'rgba(153, 102, 255, 0.8)',
-        'rgba(255, 159, 64, 0.8)'
-      ]
+        'rgba(52, 152, 219, 0.8)',
+        'rgba(46, 204, 113, 0.8)',
+        'rgba(241, 196, 15, 0.8)',
+        'rgba(231, 76, 60, 0.8)',
+        'rgba(155, 89, 182, 0.8)',
+        'rgba(230, 126, 34, 0.8)'
+      ],
+      borderWidth: 1
+    }]
+  },
+  horizontalBar: {
+    labels: ['Marketing', 'Sales', 'Engineering', 'Support', 'Operations'],
+    datasets: [{
+      label: 'Budget ($K)',
+      data: [85, 72, 120, 45, 60],
+      backgroundColor: [
+        'rgba(52, 152, 219, 0.8)',
+        'rgba(46, 204, 113, 0.8)',
+        'rgba(155, 89, 182, 0.8)',
+        'rgba(241, 196, 15, 0.8)',
+        'rgba(230, 126, 34, 0.8)'
+      ],
+      borderWidth: 1
+    }]
+  },
+  groupedBar: {
+    labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+    datasets: [{
+      label: '2024',
+      data: [65, 59, 80, 81],
+      backgroundColor: 'rgba(52, 152, 219, 0.8)',
+      borderWidth: 1
+    }, {
+      label: '2025',
+      data: [28, 48, 40, 55],
+      backgroundColor: 'rgba(46, 204, 113, 0.8)',
+      borderWidth: 1
+    }]
+  },
+  stackedBar: {
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+    datasets: [{
+      label: 'Direct',
+      data: [12, 19, 15, 20, 18, 25],
+      backgroundColor: 'rgba(52, 152, 219, 0.8)',
+      borderWidth: 1
+    }, {
+      label: 'Referral',
+      data: [8, 12, 10, 15, 14, 18],
+      backgroundColor: 'rgba(46, 204, 113, 0.8)',
+      borderWidth: 1
+    }, {
+      label: 'Organic',
+      data: [5, 8, 7, 10, 9, 12],
+      backgroundColor: 'rgba(241, 196, 15, 0.8)',
+      borderWidth: 1
     }]
   },
   doughnut: {
-    labels: ['Red', 'Blue', 'Yellow', 'Green'],
+    labels: ['Direct', 'Organic', 'Referral', 'Social'],
     datasets: [{
-      data: [300, 50, 100, 80],
-      backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0']
+      data: [300, 150, 100, 80],
+      backgroundColor: ['#3498DB', '#2ECC71', '#E74C3C', '#F39C12'],
+      borderWidth: 2
     }]
   },
   pie: {
-    labels: ['Red', 'Blue', 'Yellow', 'Green'],
+    labels: ['Desktop', 'Mobile', 'Tablet', 'Other'],
     datasets: [{
-      data: [300, 50, 100, 80],
-      backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0']
+      data: [45, 35, 15, 5],
+      backgroundColor: ['#3498DB', '#2ECC71', '#9B59B6', '#E74C3C'],
+      borderWidth: 2
     }]
   },
   radar: {
-    labels: ['Running', 'Swimming', 'Eating', 'Cycling', 'Programming'],
+    labels: ['Speed', 'Reliability', 'Comfort', 'Safety', 'Efficiency', 'Design'],
     datasets: [{
-      label: 'Dataset 1',
-      data: [20, 10, 4, 2, 5],
-      borderColor: '#26B99A',
-      backgroundColor: 'rgba(38, 185, 154, 0.2)',
+      label: 'Model A',
+      data: [85, 90, 78, 95, 72, 88],
+      borderColor: '#3498DB',
+      backgroundColor: 'rgba(52, 152, 219, 0.2)',
+      borderWidth: 2
+    }, {
+      label: 'Model B',
+      data: [75, 85, 92, 80, 88, 75],
+      borderColor: '#E74C3C',
+      backgroundColor: 'rgba(231, 76, 60, 0.2)',
       borderWidth: 2
     }]
   },
   polarArea: {
-    labels: ['Red', 'Green', 'Yellow', 'Grey', 'Blue'],
+    labels: ['North', 'East', 'South', 'West', 'Central'],
     datasets: [{
-      data: [11, 16, 7, 3, 14],
-      backgroundColor: ['#FF6384', '#4BC0C0', '#FFCE56', '#E7E9ED', '#36A2EB']
+      data: [11, 16, 7, 14, 9],
+      backgroundColor: [
+        'rgba(52, 152, 219, 0.7)',
+        'rgba(46, 204, 113, 0.7)',
+        'rgba(241, 196, 15, 0.7)',
+        'rgba(155, 89, 182, 0.7)',
+        'rgba(230, 126, 34, 0.7)'
+      ],
+      borderWidth: 2
     }]
   },
   sparkline: {

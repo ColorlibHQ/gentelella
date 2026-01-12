@@ -2,51 +2,65 @@
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Chart JS Graph Examples | Gentelella Alela! by Colorlib</title>    <!-- Compiled CSS (includes Bootstrap, Font Awesome, and all vendor styles) -->
+    <link rel="icon" href="images/favicon.ico" type="image/ico" />
+    <title>Chart.js Examples | Gentelella</title>
+    <style>
+      /* Chart panel styling */
+      .page-chartjs .x_panel .x_content {
+        min-height: 350px;
+        padding: 15px 20px 20px 20px;
+      }
+      .page-chartjs .x_panel {
+        margin-bottom: 25px;
+      }
+      .page-chartjs canvas {
+        max-height: 320px !important;
+      }
+    </style>
+    <script type="module" src="/src/main-minimal.js"></script>
   </head>
 
-  <body class="nav-md page-chartjs1">
+  <body class="nav-md page-chartjs">
     <div class="container body">
       <div class="main_container">
-        <div class="col-md-3 left_col">
+        <aside class="col-md-3 left_col" aria-label="Sidebar navigation">
           <div class="left_col scroll-view">
-            <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><img src="images/logo.svg" alt="Gentelella Alela!" class="logo-full" style="height: 40px;"><img src="images/logo-icon.svg" alt="Gentelella" class="logo-icon" style="height: 30px; display: none;"></a>
+            <div class="navbar nav_title border-0">
+              <a href="index.html" class="site_title">
+                <img src="images/logo.svg" alt="Gentelella" class="logo-full logo-main" loading="lazy">
+                <img src="images/logo-icon.svg" alt="Gentelella" class="logo-icon" loading="lazy">
+              </a>
             </div>
 
             <div class="clearfix"></div>
 
-            <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+                <img src="images/img.jpg" alt="User" class="img-circle profile_img" loading="lazy">
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
                 <h4>John Doe</h4>
               </div>
             </div>
-            <!-- /menu profile quick info -->
 
             <br />
 
-            <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                  <li><a><i class="fas fa-home"></i> Home <span class="fas fa-chevron-down"></span></a>
+                  <li><a><i class="bi bi-house"></i> Home <span class="bi bi-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="index.html">Dashboard 1</a></li>
                       <li><a href="index2.html">Dashboard 2</a></li>
-                      <li><a href="index3.html">Dashboard 3</a></li><li><a href="index4.html">Dashboard 4</a></li>
                       <li><a href="index3.html">Dashboard 3</a></li>
+                      <li><a href="index4.html">Dashboard 4</a></li>
                     </ul>
-                  <li><a><i class="fas fa-edit"></i> Forms <span class="fas fa-chevron-down"></span></a>
+                  </li>
+                  <li><a><i class="bi bi-pencil-square"></i> Forms <span class="bi bi-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="form.html">General Form</a></li>
                       <li><a href="form_advanced.html">Advanced Components</a></li>
@@ -55,42 +69,44 @@
                       <li><a href="form_upload.html">Form Upload</a></li>
                       <li><a href="form_buttons.html">Form Buttons</a></li>
                     </ul>
-                  <li><a><i class="fas fa-desktop"></i> UI Elements <span class="fas fa-chevron-down"></span></a>
+                  </li>
+                  <li><a><i class="bi bi-display"></i> UI Elements <span class="bi bi-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="general_elements.html">General Elements</a></li>
                       <li><a href="media_gallery.html">Media Gallery</a></li>
                       <li><a href="typography.html">Typography</a></li>
                       <li><a href="icons.html">Icons</a></li>
-
                       <li><a href="widgets.html">Widgets</a></li>
                       <li><a href="invoice.html">Invoice</a></li>
                       <li><a href="inbox.html">Inbox</a></li>
                       <li><a href="calendar.html">Calendar</a></li>
                     </ul>
-                  <li><a><i class="fas fa-table"></i> Tables <span class="fas fa-chevron-down"></span></a>
+                  </li>
+                  <li><a><i class="bi bi-table"></i> Tables <span class="bi bi-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="tables.html">Tables</a></li>
                       <li><a href="tables_dynamic.html">Table Dynamic</a></li>
                     </ul>
-                  <li><a><i class="fas fa-chart-column"></i> Data Presentation <span class="fas fa-chevron-down"></span></a>
+                  </li>
+                  <li><a><i class="bi bi-bar-chart"></i> Data Presentation <span class="bi bi-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="chartjs.html">Chart JS</a></li>
-                      <li><a href="chartjs2.html">Chart JS2</a></li>
-                      <li><a href="chart3.html">Chart JS3</a></li>
+                      <li><a href="chartjs.html">Chart.js</a></li>
                       <li><a href="echarts.html">ECharts</a></li>
                       <li><a href="other_charts.html">Other Charts</a></li>
                     </ul>
-                  <li><a><i class="fas fa-clone"></i>Layouts <span class="fas fa-chevron-down"></span></a>
+                  </li>
+                  <li><a><i class="bi bi-layout-split"></i> Layouts <span class="bi bi-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="fixed_sidebar.html">Fixed Sidebar</a></li>
                       <li><a href="fixed_footer.html">Fixed Footer</a></li>
                     </ul>
+                  </li>
                 </ul>
               </div>
               <div class="menu_section">
                 <h3>Live On</h3>
                 <ul class="nav side-menu">
-                  <li><a><i class="fas fa-bug"></i> Additional Pages <span class="fas fa-chevron-down"></span></a>
+                  <li><a><i class="bi bi-file-earmark-text"></i> Additional Pages <span class="bi bi-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="e_commerce.html">E-commerce</a></li>
                       <li><a href="projects.html">Projects</a></li>
@@ -98,7 +114,8 @@
                       <li><a href="contacts.html">Contacts</a></li>
                       <li><a href="profile.html">Profile</a></li>
                     </ul>
-                  <li><a><i class="fas fa-window-restore"></i> Extras <span class="fas fa-chevron-down"></span></a>
+                  </li>
+                  <li><a><i class="bi bi-window-stack"></i> Extras <span class="bi bi-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="page_403.html">403 Error</a></li>
                       <li><a href="page_404.html">404 Error</a></li>
@@ -107,25 +124,25 @@
                       <li><a href="login.html">Login Page</a></li>
                       <li><a href="pricing_tables.html">Pricing Tables</a></li>
                     </ul>
-                  <li><a><i class="fas fa-sitemap"></i> Multilevel Menu <span class="fas fa-chevron-down"></span></a>
+                  </li>
+                  <li><a><i class="bi bi-diagram-3"></i> Multilevel Menu <span class="bi bi-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                        <li><a href="#level1_1">Level One</a></li>
-                        <li><a>Level One<span class="fas fa-chevron-down"></span></a>
-                          <ul class="nav child_menu">
-                            <li class="sub_menu"><a href="level2.html">Level Two</a>
-                            <li><a href="#level2_1">Level Two</a>
-                            <li><a href="#level2_2">Level Two</a>
-                          </ul>
-                        <li><a href="#level1_2">Level One</a></li>
+                      <li><a href="#level1_1">Level One</a></li>
+                      <li><a>Level One<span class="bi bi-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                          <li class="sub_menu"><a href="level2.html">Level Two</a></li>
+                          <li><a href="#level2_1">Level Two</a></li>
+                          <li><a href="#level2_2">Level Two</a></li>
+                        </ul>
+                      </li>
+                      <li><a href="#level1_2">Level One</a></li>
                     </ul>
-                  <li><a href="landing.html"><i class="fas fa-laptop"></i> Landing Page</a></li>
+                  </li>
+                  <li><a href="landing.html"><i class="bi bi-laptop"></i> Landing Page</a></li>
                 </ul>
               </div>
-
             </div>
-            <!-- sidebar menu -->
 
-            <!-- menu footer buttons -->
             <div class="sidebar-footer hidden-small">
               <a data-bs-toggle="tooltip" data-bs-placement="top" title="Settings">
                 <span class="fas fa-cog" aria-hidden="true"></span>
@@ -140,132 +157,120 @@
                 <span class="fas fa-power-off" aria-hidden="true"></span>
               </a>
             </div>
-            <!-- menu footer buttons -->
+          </div>
+        </aside>
+
+        <div class="top_nav">
+          <div class="nav_menu d-flex align-items-center justify-content-between">
+            <div class="nav toggle">
+              <a id="menu_toggle"><i class="fas fa-bars"></i></a>
+            </div>
+            <nav class="nav navbar-nav ms-auto">
+              <ul class="navbar-right d-flex align-items-center gap-3 pe-3">
+                <li class="nav-item dropdown">
+                  <a href="#" role="button" class="dropdown-toggle info-number" id="navbarDropdown1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-envelope"></i>
+                    <span class="badge bg-green">6</span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end list-unstyled msg_list" style="min-width: 320px;" role="menu" aria-labelledby="navbarDropdown1">
+                    <li class="nav-item">
+                      <a class="dropdown-item">
+                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="dropdown-item">
+                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="dropdown-item">
+                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="dropdown-item">
+                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <div class="text-center">
+                        <a class="dropdown-item">
+                          <strong>See All Alerts</strong>
+                          <i class="fas fa-angle-right"></i>
+                        </a>
+                      </div>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item dropdown">
+                  <a href="#" role="button" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="images/img.jpg" alt="">John Doe
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-end dropdown-usermenu" style="min-width: 200px;" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#" role="button">Profile</a>
+                    <a class="dropdown-item" href="#" role="button">Settings</a>
+                    <a class="dropdown-item" href="#" role="button">Help</a>
+                    <a class="dropdown-item" href="login.html"><i class="fas fa-sign-out-alt float-end"></i> Log Out</a>
+                  </div>
+                </li>
+              </ul>
+            </nav>
           </div>
         </div>
 
-        <!-- top navigation -->
-        <div class="top_nav">
-            <div class="nav_menu">
-                <div class="nav toggle">
-                  <a id="menu_toggle"><i class="fas fa-bars"></i></a>
-                </div>
-                <nav class="nav navbar-nav">
-                <ul class="navbar-right">
-                  <li class="nav-item dropdown open" style="padding-left: 15px;">
-                    <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                      <img src="images/img.jpg" alt="">John Doe
-                    </a>
-                    <div class="dropdown-menu dropdown-usermenu float-end" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item"  href="javascript:;"> Profile</a>
-                        <a class="dropdown-item"  href="javascript:;">
-                          <span class="badge bg-red float-end">50%</span>
-                          <span>Settings</span>
-                        </a>
-                    <a class="dropdown-item"  href="javascript:;">Help</a>
-                      <a class="dropdown-item"  href="login.html"><i class="fas fa-sign-out-alt float-end"></i> Log Out</a>
-                    </div>
-  
-                  <li role="presentation" class="nav-item dropdown open">
-                    <a href="javascript:;" class="dropdown-toggle info-number" id="navbarDropdown1" data-bs-toggle="dropdown" aria-expanded="false">
-                      <i class="fas fa-envelope"></i>
-                      <span class="badge bg-green">6</span>
-                    </a>
-                    <ul class="dropdown-menu list-unstyled msg_list" role="menu" aria-labelledby="navbarDropdown1">
-                      <li class="nav-item">
-                        <a class="dropdown-item">
-                          <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                          <span>
-                            <span>John Smith</span>
-                            <span class="time">3 mins ago</span>
-                          </span>
-                          <span class="message">
-                            Film festivals used to be do-or-die moments for movie makers. They were where...
-                          </span>
-                        </a>
-                      <li class="nav-item">
-                        <a class="dropdown-item">
-                          <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                          <span>
-                            <span>John Smith</span>
-                            <span class="time">3 mins ago</span>
-                          </span>
-                          <span class="message">
-                            Film festivals used to be do-or-die moments for movie makers. They were where...
-                          </span>
-                        </a>
-                      <li class="nav-item">
-                        <a class="dropdown-item">
-                          <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                          <span>
-                            <span>John Smith</span>
-                            <span class="time">3 mins ago</span>
-                          </span>
-                          <span class="message">
-                            Film festivals used to be do-or-die moments for movie makers. They were where...
-                          </span>
-                        </a>
-                      <li class="nav-item">
-                        <a class="dropdown-item">
-                          <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                          <span>
-                            <span>John Smith</span>
-                            <span class="time">3 mins ago</span>
-                          </span>
-                          <span class="message">
-                            Film festivals used to be do-or-die moments for movie makers. They were where...
-                          </span>
-                        </a>
-                      <li class="nav-item">
-                        <div class="text-center">
-                          <a class="dropdown-item">
-                            <strong>See All Alerts</strong>
-                            <i class="fas fa-angle-right"></i>
-                          </a>
-                        </div>
-                    </ul>
-                </ul>
-              </nav>
-            </div>
-          </div>
-        <!-- top navigation -->
-
-        <!-- page content -->
-        <div class="right_col" role="main">
+        <main class="right_col" role="main" aria-label="Main content">
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Chart Js <small>Some examples to get you started</small></h3>
-              </div>
-
-              <div class="title_right">
-                          <div class="col-md-5 col-sm-5 mb-3 float-end top_search">
-            <div class="input-group search-bar-fix">
-              <input type="text" class="form-control" placeholder="Search for...">
-              <button class="btn btn-outline-secondary" type="button">
-                <i class="fas fa-search"></i>
-              </button>
-            </div>
-          </div>
+                <h3>Chart.js Examples</h3>
               </div>
             </div>
 
             <div class="clearfix"></div>
 
+            <!-- Section: Line Charts -->
             <div class="row">
-              <div class="col-md-6 col-sm-6">
+              <div class="col-12">
+                <h4 class="text-muted mb-3"><i class="fas fa-chart-line me-2"></i>Line Charts</h4>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h4>Line graph<small>Sessions</small></h4>
+                    <h4>Line Chart</h4>
                     <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Settings 1</a>
-                            <a class="dropdown-item" href="#">Settings 2</a>
-                          </div>
-                      <li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a>
+                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a></li>
                     </ul>
                     <div class="clearfix"></div>
                   </div>
@@ -275,89 +280,143 @@
                 </div>
               </div>
 
-              <div class="col-md-6 col-sm-6">
+              <div class="col-md-6">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h4>Bar graph <small>Sessions</small></h4>
+                    <h4>Area Chart (Filled)</h4>
                     <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Settings 1</a>
-                            <a class="dropdown-item" href="#">Settings 2</a>
-                          </div>
-                      <li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a>
+                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a></li>
                     </ul>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    <canvas id="mybarChart" data-chart="bar"></canvas>
+                    <canvas id="areaChart" data-chart="area"></canvas>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="clearfix"></div>
+
             <div class="row">
-              <div class="col-md-6 col-sm-6">
+              <div class="col-md-6">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h4>Radar <small>Sessions</small></h4>
+                    <h4>Multi-Series Line Chart</h4>
                     <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Settings 1</a>
-                            <a class="dropdown-item" href="#">Settings 2</a>
-                          </div>
-                      <li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a>
+                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a></li>
                     </ul>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    <canvas id="canvasRadar" data-chart="radar"></canvas>
+                    <canvas id="multiLineChart" data-chart="multiLine"></canvas>
                   </div>
                 </div>
               </div>
 
-              <div class="col-md-6 col-sm-6">
+              <div class="col-md-6">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h4>Donut Graph <small>Sessions</small></h4>
+                    <h4>Smooth Line Chart</h4>
                     <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Settings 1</a>
-                            <a class="dropdown-item" href="#">Settings 2</a>
-                          </div>
-                      <li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a>
+                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a></li>
                     </ul>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    <canvas id="canvasDoughnut" data-chart="doughnut"></canvas>
+                    <canvas id="smoothLineChart" data-chart="smoothLine"></canvas>
                   </div>
                 </div>
               </div>
             </div>
+
             <div class="clearfix"></div>
+
+            <!-- Section: Bar Charts -->
             <div class="row">
-              <div class="col-md-6 col-sm-6">
+              <div class="col-12">
+                <h4 class="text-muted mb-3 mt-3"><i class="fas fa-chart-bar me-2"></i>Bar Charts</h4>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h4>Pie Graph Chart <small>Sessions</small></h4>
+                    <h4>Vertical Bar Chart</h4>
                     <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Settings 1</a>
-                            <a class="dropdown-item" href="#">Settings 2</a>
-                          </div>
-                      <li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a>
+                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <canvas id="barChart" data-chart="bar"></canvas>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h4>Horizontal Bar Chart</h4>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <canvas id="horizontalBarChart" data-chart="horizontalBar"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h4>Grouped Bar Chart</h4>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <canvas id="groupedBarChart" data-chart="groupedBar"></canvas>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h4>Stacked Bar Chart</h4>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <canvas id="stackedBarChart" data-chart="stackedBar"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <!-- Section: Circular Charts -->
+            <div class="row">
+              <div class="col-12">
+                <h4 class="text-muted mb-3 mt-3"><i class="fas fa-chart-pie me-2"></i>Circular Charts</h4>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h4>Pie Chart</h4>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a></li>
                     </ul>
                     <div class="clearfix"></div>
                   </div>
@@ -367,44 +426,64 @@
                 </div>
               </div>
 
-              <div class="col-md-6 col-sm-6">
+              <div class="col-md-6">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h4>Pie Area Graph <small>Sessions</small></h4>
+                    <h4>Doughnut Chart</h4>
                     <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Settings 1</a>
-                            <a class="dropdown-item" href="#">Settings 2</a>
-                          </div>
-                      <li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a>
+                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a></li>
                     </ul>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    <canvas id="polarArea" data-chart="polarArea"></canvas>
+                    <canvas id="doughnutChart" data-chart="doughnut"></canvas>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-        <!-- page content -->
 
-        <!-- footer content -->
+            <div class="row">
+              <div class="col-md-6">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h4>Polar Area Chart</h4>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <canvas id="polarAreaChart" data-chart="polarArea"></canvas>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h4>Radar Chart</h4>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <canvas id="radarChart" data-chart="radar"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </main>
+
         <footer>
           <div class="float-end">
             Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
           </div>
           <div class="clearfix"></div>
         </footer>
-        <!-- footer content -->
       </div>
     </div>
-
-    <!-- Vite Entry Point - will bundle all styles -->
-    <script type="module" src="/src/main-minimal.js"></script>
   </body>
 </html>

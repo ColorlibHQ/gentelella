@@ -21,17 +21,17 @@
 
     <div class="main_container">
 
-      <div class="col-md-3 left_col">
+      <aside class="col-md-3 left_col" aria-label="Sidebar navigation">
         <div class="left_col scroll-view">
 
-          <div class="navbar nav_title" style="border: 0;">
-            <a href="index.html" class="site_title"><img src="images/logo.svg" alt="Gentelella Alela!" class="logo-full" style="height: 40px;"><img src="images/logo-icon.svg" alt="Gentelella" class="logo-icon" style="height: 30px; display: none;"></a>
+          <div class="navbar nav_title border-0">
+            <a href="index.html" class="site_title"><img src="images/logo.svg" alt="Gentelella Alela!" class="logo-full logo-main" loading="lazy"><img src="images/logo-icon.svg" alt="Gentelella" class="logo-icon" loading="lazy"></a>
           </div>
 
           <!-- menu prile quick info -->
           <div class="profile clearfix">
             <div class="profile_pic">
-              <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+              <img src="images/img.jpg" alt="User profile photo" class="img-circle profile_img" loading="lazy">
             </div>
             <div class="profile_info">
               <span>Welcome,</span>
@@ -48,13 +48,13 @@
             <div class="menu_section">
               <h3>General</h3>
               <ul class="nav side-menu">
-                <li><a><i class="fas fa-home"></i> Home <span class="fas fa-chevron-down"></span></a>
+                <li><a><i class="bi bi-house"></i> Home <span class="bi bi-chevron-down"></span></a>
                   <ul class="nav child_menu">
                     <li><a href="index.html">Dashboard</a>
                     <li><a href="index2.html">Dashboard2</a>
                     <li><a href="index3.html">Dashboard 3</a>
                   </ul>
-                <li><a><i class="fas fa-edit"></i> Forms <span class="fas fa-chevron-down"></span></a>
+                <li><a><i class="bi bi-pencil-square"></i> Forms <span class="bi bi-chevron-down"></span></a>
                   <ul class="nav child_menu">
                     <li><a href="form.html">General Form</a>
                     <li><a href="form_advanced.html">Advanced Components</a>
@@ -63,7 +63,7 @@
                     <li><a href="form_upload.html">Form Upload</a>
                     <li><a href="form_buttons.html">Form Buttons</a>
                   </ul>
-                <li><a><i class="fas fa-desktop"></i> UI Elements <span class="fas fa-chevron-down"></span></a>
+                <li><a><i class="bi bi-display"></i> UI Elements <span class="bi bi-chevron-down"></span></a>
                   <ul class="nav child_menu">
                     <li><a href="general_elements.html">General Elements</a>
                     <li><a href="media_gallery.html">Media Gallery</a>
@@ -75,20 +75,18 @@
                     <li><a href="inbox.html">Inbox</a>
                     <li><a href="calendar.html">Calendar</a>
                   </ul>
-                <li><a><i class="fas fa-table"></i> Tables <span class="fas fa-chevron-down"></span></a>
+                <li><a><i class="bi bi-table"></i> Tables <span class="bi bi-chevron-down"></span></a>
                   <ul class="nav child_menu">
                     <li><a href="tables.html">Tables</a>
                     <li><a href="tables_dynamic.html">Table Dynamic</a>
                   </ul>
-                <li><a><i class="fas fa-chart-column"></i> Data Presentation <span class="fas fa-chevron-down"></span></a>
+                <li><a><i class="bi bi-bar-chart"></i> Data Presentation <span class="bi bi-chevron-down"></span></a>
                   <ul class="nav child_menu">
-                    <li><a href="chartjs.html">Chart JS</a>
-                    <li><a href="chartjs2.html">Chart JS2</a>
-                    <li><a href="chart3.html">Chart JS3</a>
-                    <li><a href="echarts.html">ECharts </a>
-                    <li><a href="other_charts.html">Other Charts </a>
+                    <li><a href="chartjs.html">Chart.js</a>
+                    <li><a href="echarts.html">ECharts</a>
+                    <li><a href="other_charts.html">Other Charts</a>
                   </ul>
-                <li><a><i class="fas fa-clone"></i>Layouts <span class="fas fa-chevron-down"></span></a>
+                <li><a><i class="bi bi-layout-split"></i>Layouts <span class="bi bi-chevron-down"></span></a>
                   <ul class="nav child_menu">
                     <li><a href="fixed_sidebar.html">Fixed Sidebar</a>
                     <li><a href="fixed_footer.html">Fixed Footer</a>
@@ -98,7 +96,7 @@
             <div class="menu_section">
               <h3>Live On</h3>
               <ul class="nav side-menu">
-                <li><a><i class="fas fa-bug"></i> Additional Pages <span class="fas fa-chevron-down"></span></a>
+                <li><a><i class="bi bi-file-earmark-text"></i> Additional Pages <span class="bi bi-chevron-down"></span></a>
                   <ul class="nav child_menu">
                     <li><a href="e_commerce.html">E-commerce</a>
                     <li><a href="e_commerce_backend.html">E-commerce Backend</a>
@@ -109,7 +107,7 @@
                     <li><a href="real_estate.html">Real Estate</a>
 
                   </ul>
-                <li><a><i class="fas fa-window-restore"></i> Extras <span class="fas fa-chevron-down"></span></a>
+                <li><a><i class="bi bi-window-stack"></i> Extras <span class="bi bi-chevron-down"></span></a>
                   <ul class="nav child_menu">
                     <li><a href="page_403.html">403 Error</a>
                     <li><a href="page_404.html">404 Error</a>
@@ -121,7 +119,7 @@
                     <li><a href="pricing_tables.html">Pricing Tables</a>
 
                   </ul>
-                <li><a href="landing.html"><i class="fas fa-laptop"></i> Landing Page</a>
+                <li><a href="landing.html"><i class="bi bi-laptop"></i> Landing Page</a>
               </ul>
             </div>
 
@@ -149,32 +147,18 @@
 
       <!-- top navigation -->
       <div class="top_nav">
-          <div class="nav_menu">
+          <div class="nav_menu d-flex align-items-center justify-content-between">
               <div class="nav toggle">
                 <a id="menu_toggle"><i class="fas fa-bars"></i></a>
               </div>
-              <nav class="nav navbar-nav">
-              <ul class="navbar-right">
-                <li class="nav-item dropdown open" style="padding-left: 15px;">
-                  <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="images/img.jpg" alt="">John Doe
-                  </a>
-                  <div class="dropdown-menu dropdown-usermenu float-end" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item"  href="javascript:;"> Profile</a>
-                      <a class="dropdown-item"  href="javascript:;">
-                        <span class="badge bg-red float-end">50%</span>
-                        <span>Settings</span>
-                      </a>
-                  <a class="dropdown-item"  href="javascript:;">Help</a>
-                    <a class="dropdown-item"  href="login.html"><i class="fas fa-sign-out-alt float-end"></i> Log Out</a>
-                  </div>
-
-                <li role="presentation" class="nav-item dropdown open">
-                  <a href="javascript:;" class="dropdown-toggle info-number" id="navbarDropdown1" data-bs-toggle="dropdown" aria-expanded="false">
+              <nav class="nav navbar-nav ms-auto">
+              <ul class="navbar-right d-flex align-items-center gap-3 pe-3">
+                <li class="nav-item dropdown">
+                  <a href="#" role="button" class="dropdown-toggle info-number" id="navbarDropdown1" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fas fa-envelope"></i>
                     <span class="badge bg-green">6</span>
                   </a>
-                  <ul class="dropdown-menu list-unstyled msg_list" role="menu" aria-labelledby="navbarDropdown1">
+                  <ul class="dropdown-menu dropdown-menu-end list-unstyled msg_list" style="min-width: 320px;" role="menu" aria-labelledby="navbarDropdown1">
                     <li class="nav-item">
                       <a class="dropdown-item">
                         <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
@@ -227,6 +211,21 @@
                         </a>
                       </div>
                   </ul>
+                </li>
+                <li class="nav-item dropdown">
+                  <a href="#" role="button" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="images/img.jpg" alt="">John Doe
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-end dropdown-usermenu" style="min-width: 200px;" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item"  href="#" role="button"> Profile</a>
+                      <a class="dropdown-item"  href="#" role="button">
+                        <span class="badge bg-red float-end">50%</span>
+                        <span>Settings</span>
+                      </a>
+                  <a class="dropdown-item"  href="#" role="button">Help</a>
+                    <a class="dropdown-item"  href="login.html"><i class="fas fa-sign-out-alt float-end"></i> Log Out</a>
+                  </div>
+                </li>
               </ul>
             </nav>
           </div>
@@ -236,7 +235,7 @@
       <!-- page content -->
 
 
-      <div class="right_col" role="main">
+      <main class="right_col" role="main" aria-label="Main content">
         <div class="">
           <div class="page-title">
             <div class="title_left">

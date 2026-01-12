@@ -1,0 +1,198 @@
+// =============================================================================
+// Gentelella CSS Variables - MODERN THEME
+// =============================================================================
+// This is the modernized color scheme with:
+// - Cooler, slate-based gray tones (Tailwind-inspired)
+// - Softer, single-layer shadows
+// - Larger border radius
+// - More vibrant brand colors
+//
+// TO USE THIS THEME:
+// In main.scss, change: @import 'variables';
+// To: @import 'variables-modern';
+//
+// TO COMPARE: Run the dev server and toggle between imports
+// =============================================================================
+
+:root {
+  // =========================================================================
+  // Brand Colors (More vibrant, modern tones)
+  // =========================================================================
+  --gt-primary: #10b981;           // Emerald green (was #1abb9c)
+  --gt-primary-dark: #059669;      // Darker emerald (was #26b99a)
+  --gt-secondary: #1e293b;         // Slate 800 (was #2a3f54)
+  --gt-accent: #3b82f6;            // Blue 500 (was #3498db)
+
+  // =========================================================================
+  // Semantic Colors (Cleaner, modern tones)
+  // =========================================================================
+  --gt-success: #10b981;           // Emerald 500
+  --gt-info: #3b82f6;              // Blue 500
+  --gt-warning: #f59e0b;           // Amber 500 (was #f39c12)
+  --gt-danger: #ef4444;            // Red 500 (was #e74c3c)
+  --gt-purple: #8b5cf6;            // Violet 500 (was #9b59b6)
+
+  // =========================================================================
+  // Neutral Colors (Cooler slate tones)
+  // =========================================================================
+  --gt-white: #ffffff;
+  --gt-black: #000000;
+  --gt-dark: #1e293b;              // Slate 800 (was #34495e)
+  --gt-gray-900: #0f172a;          // Slate 900
+  --gt-gray-800: #1e293b;          // Slate 800
+  --gt-gray-700: #334155;          // Slate 700
+  --gt-gray-600: #475569;          // Slate 600 (was #73879c)
+  --gt-gray-500: #64748b;          // Slate 500
+  --gt-gray-400: #94a3b8;          // Slate 400 (was #999999)
+  --gt-gray-300: #cbd5e1;          // Slate 300 (was #cccccc)
+  --gt-gray-200: #e2e8f0;          // Slate 200 (was #dddddd)
+  --gt-gray-100: #f1f5f9;          // Slate 100 (was #e6e6e6)
+  --gt-gray-50: #f8fafc;           // Slate 50 (was #f7f7f7)
+
+  // =========================================================================
+  // Background Colors
+  // =========================================================================
+  --gt-body-bg: #f8fafc;           // Slate 50 (cooler)
+  --gt-content-bg: #ffffff;
+  --gt-sidebar-bg: #1e293b;        // Slate 800
+  --gt-sidebar-active-bg: #10b981; // Emerald
+  --gt-panel-bg: #ffffff;
+  --gt-input-bg: #ffffff;
+
+  // =========================================================================
+  // Border Colors (Softer)
+  // =========================================================================
+  --gt-border-color: #e2e8f0;      // Slate 200 (was #e6e9ed)
+  --gt-border-light: #f1f5f9;      // Slate 100 (was #dee2e6)
+  --gt-border-dark: #cbd5e1;       // Slate 300 (was #d9dee4)
+
+  // =========================================================================
+  // Text Colors
+  // =========================================================================
+  --gt-text-primary: #475569;      // Slate 600 (was #73879c)
+  --gt-text-dark: #1e293b;         // Slate 800 (was #34495e)
+  --gt-text-muted: #94a3b8;        // Slate 400 (was #999999)
+  --gt-text-light: #ffffff;
+  --gt-link-color: #10b981;        // Emerald
+  --gt-link-hover: #059669;        // Darker emerald
+
+  // =========================================================================
+  // Component-specific Colors
+  // =========================================================================
+  // Sidebar
+  --gt-sidebar-text: #e2e8f0;      // Slate 200
+  --gt-sidebar-heading: #f8fafc;   // Slate 50
+  --gt-sidebar-hover-bg: rgba(255, 255, 255, 0.08);
+
+  // Navigation
+  --gt-nav-bg: #f1f5f9;            // Slate 100
+  --gt-nav-active: #10b981;        // Emerald
+
+  // Tables
+  --gt-table-border: #e2e8f0;      // Slate 200
+  --gt-table-striped: rgba(0, 0, 0, 0.015);
+  --gt-table-hover: rgba(0, 0, 0, 0.03);
+
+  // Forms
+  --gt-input-border: #cbd5e1;      // Slate 300 (was #cccccc)
+  --gt-input-focus-border: #10b981;
+  --gt-input-placeholder: #94a3b8; // Slate 400
+
+  // Alerts & Notifications (Softer backgrounds)
+  --gt-alert-success-bg: #d1fae5;  // Emerald 100
+  --gt-alert-info-bg: #dbeafe;     // Blue 100
+  --gt-alert-warning-bg: #fef3c7;  // Amber 100
+  --gt-alert-danger-bg: #fee2e2;   // Red 100
+
+  // =========================================================================
+  // Spacing (unchanged)
+  // =========================================================================
+  --gt-spacing-xs: 5px;
+  --gt-spacing-sm: 10px;
+  --gt-spacing-md: 15px;
+  --gt-spacing-lg: 20px;
+  --gt-spacing-xl: 30px;
+
+  // =========================================================================
+  // Typography (unchanged)
+  // =========================================================================
+  --gt-font-family: 'Helvetica Neue', Roboto, Arial, 'Droid Sans', sans-serif;
+  --gt-font-size-base: 13px;
+  --gt-font-size-sm: 12px;
+  --gt-font-size-lg: 15px;
+  --gt-line-height: 1.471;
+
+  // =========================================================================
+  // Shadows (REDUCED - softer, single-layer)
+  // =========================================================================
+  --gt-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --gt-shadow-md: 0 2px 4px rgba(0, 0, 0, 0.06);
+  --gt-shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.08);
+
+  // Panel-specific shadows (softer)
+  --gt-panel-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --gt-panel-shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+  // =========================================================================
+  // Transitions (unchanged)
+  // =========================================================================
+  --gt-transition-fast: 150ms ease-in-out;
+  --gt-transition-normal: 300ms ease-in-out;
+  --gt-transition-slow: 500ms ease-in-out;
+
+  // =========================================================================
+  // Border Radius (INCREASED - softer corners)
+  // =========================================================================
+  --gt-radius-sm: 4px;             // was 2px
+  --gt-radius-md: 6px;             // was 4px
+  --gt-radius-lg: 8px;             // was 6px
+  --gt-radius-xl: 12px;            // was 10px
+  --gt-radius-round: 50%;
+
+  // =========================================================================
+  // Z-index Scale (unchanged)
+  // =========================================================================
+  --gt-z-dropdown: 1000;
+  --gt-z-sticky: 1020;
+  --gt-z-fixed: 1030;
+  --gt-z-modal-backdrop: 1040;
+  --gt-z-modal: 1050;
+  --gt-z-popover: 1060;
+  --gt-z-tooltip: 1070;
+}
+
+// =============================================================================
+// SCSS Variables (for use in SCSS files)
+// =============================================================================
+$gt-primary: #10b981;
+$gt-primary-dark: #059669;
+$gt-secondary: #1e293b;
+$gt-accent: #3b82f6;
+
+$gt-success: #10b981;
+$gt-info: #3b82f6;
+$gt-warning: #f59e0b;
+$gt-danger: #ef4444;
+$gt-purple: #8b5cf6;
+
+$gt-white: #ffffff;
+$gt-black: #000000;
+$gt-dark: #1e293b;
+$gt-gray-600: #475569;
+$gt-gray-200: #e2e8f0;
+$gt-gray-100: #f1f5f9;
+$gt-gray-50: #f8fafc;
+
+$gt-body-bg: #f8fafc;
+$gt-sidebar-bg: #1e293b;
+$gt-border-color: #e2e8f0;
+
+// Color utility classes map
+$color-classes: (
+  'green': $gt-primary,
+  'aero': #67e8f9,                  // Cyan 300 (was #9cc2cb)
+  'blue': $gt-accent,
+  'red': $gt-danger,
+  'purple': $gt-purple,
+  'dark': $gt-dark
+);

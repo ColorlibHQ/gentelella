@@ -6,16 +6,21 @@ Gentelella is a powerful, free-to-use Bootstrap 5 admin template that has been c
 
 ![Gentelella Bootstrap Admin Template](https://colorlib.com/wp/wp-content/uploads/sites/2/gentelella-admin-template-preview.jpg "Gentelella Theme Browser Preview")
 
-## What's New in v2.1.2 (Latest Release - January 12, 2026)
+## What's New in v2.1.3 (Latest Release - January 12, 2026)
+
+- **Bootstrap Icons Integration** - Added Bootstrap Icons for modern, minimalist sidebar navigation
+- **Header Navigation Rebuilt** - Proper Bootstrap 5 flexbox utilities for top navigation layout
+- **Sidebar UI Improvements** - Centered collapsed logo, right-aligned chevron arrows
+- **Code Quality & Cleanup** - Removed legacy jQuery files, standardized naming conventions
+- **126 Unit Tests** - Comprehensive test coverage with Vitest framework
+- **CSS Variables System** - New custom properties for easier theming
+
+### Previous Release: v2.1.2
 
 - **Comprehensive Dependency Updates** - All dependencies updated to their latest versions
 - **Vite 7.3.1** - Latest build system with performance improvements
 - **ESLint 9.39.2** - Updated linting with comprehensive browser globals configuration
 - **Font Awesome 7.1.0** - Latest icon library
-- **DataTables 2.3.6** - Updated table functionality with all extensions
-- **DOMPurify 3.3.1** - Latest security library for XSS protection
-- **CropperJS 2.1.0** - Updated image cropping functionality
-- **Code Quality** - Fixed ESLint configuration and parsing errors
 
 ### Previous Release: v2.1.1
 
@@ -191,7 +196,7 @@ The template includes a comprehensive favicon suite optimized for 2025 standards
 ### UI Elements
 - **Tables** - DataTables with sorting, filtering, pagination
 - **Typography** - Comprehensive typography system
-- **Icons** - Font Awesome 6
+- **Icons** - Font Awesome 7 + Bootstrap Icons
 - **Media Gallery** - Image gallery with lightbox
 - **Calendar** - Full-featured calendar component
 
@@ -227,7 +232,7 @@ The template includes a comprehensive favicon suite optimized for 2025 standards
 - **Day.js** - Lightweight date library
 - **NProgress** - Progress bars for page loading
 - **Autosize** - Auto-resizing textareas
-- **Font Awesome 6** - Icon library
+- **Font Awesome 7 + Bootstrap Icons** - Icon libraries
 
 ## 🔧 Configuration
 
