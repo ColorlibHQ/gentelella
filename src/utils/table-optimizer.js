@@ -129,12 +129,9 @@ function initializeSpecificTable(tableId) {
       config.dom = 'Bfrtip';
     }
 
-    // Initialize DataTable - check both global DataTable and jQuery DataTable
+    // Initialize DataTable using native API
     if (typeof DataTable !== 'undefined') {
       const dataTable = new DataTable(table, config);
-      table.dataTableInstance = dataTable;
-    } else if (typeof window.$ !== 'undefined' && $.fn.DataTable) {
-      const dataTable = $(table).DataTable(config);
       table.dataTableInstance = dataTable;
     }
   } catch (error) {

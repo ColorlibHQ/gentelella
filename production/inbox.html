@@ -516,55 +516,8 @@
             <input type="text" class="form-control" id="email-subject" placeholder="Enter subject">
           </div>
 
-          <div class="btn-toolbar editor mb-3" data-role="editor-toolbar" data-bs-target="#editor">
-            <div class="btn-group btn-group-sm me-2">
-              <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" title="Font">
-                <i class="fas fa-font"></i>
-              </button>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#" data-edit="fontName Arial">Arial</a></li>
-                <li><a class="dropdown-item" href="#" data-edit="fontName Georgia">Georgia</a></li>
-                <li><a class="dropdown-item" href="#" data-edit="fontName Times">Times</a></li>
-              </ul>
-            </div>
-
-            <div class="btn-group btn-group-sm me-2">
-              <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" title="Font Size">
-                <i class="fas fa-text-height"></i>
-              </button>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" data-edit="fontSize 5">Huge</a></li>
-                <li><a class="dropdown-item" data-edit="fontSize 3">Normal</a></li>
-                <li><a class="dropdown-item" data-edit="fontSize 1">Small</a></li>
-              </ul>
-            </div>
-
-            <div class="btn-group btn-group-sm me-2">
-              <button type="button" class="btn btn-outline-secondary" data-edit="bold" title="Bold"><i class="fas fa-bold"></i></button>
-              <button type="button" class="btn btn-outline-secondary" data-edit="italic" title="Italic"><i class="fas fa-italic"></i></button>
-              <button type="button" class="btn btn-outline-secondary" data-edit="underline" title="Underline"><i class="fas fa-underline"></i></button>
-            </div>
-
-            <div class="btn-group btn-group-sm me-2">
-              <button type="button" class="btn btn-outline-secondary" data-edit="insertunorderedlist" title="Bullet list"><i class="fas fa-list-ul"></i></button>
-              <button type="button" class="btn btn-outline-secondary" data-edit="insertorderedlist" title="Number list"><i class="fas fa-list-ol"></i></button>
-            </div>
-
-            <div class="btn-group btn-group-sm me-2">
-              <button type="button" class="btn btn-outline-secondary" data-edit="justifyleft" title="Align Left"><i class="fas fa-align-left"></i></button>
-              <button type="button" class="btn btn-outline-secondary" data-edit="justifycenter" title="Center"><i class="fas fa-align-center"></i></button>
-              <button type="button" class="btn btn-outline-secondary" data-edit="justifyright" title="Align Right"><i class="fas fa-align-right"></i></button>
-            </div>
-
-            <div class="btn-group btn-group-sm">
-              <button type="button" class="btn btn-outline-secondary" data-edit="undo" title="Undo"><i class="fas fa-undo"></i></button>
-              <button type="button" class="btn btn-outline-secondary" data-edit="redo" title="Redo"><i class="fas fa-redo"></i></button>
-            </div>
-          </div>
-
-          <div id="editor" class="editor-wrapper form-control" contenteditable="true" style="min-height: 200px;">
-            <p>Type your message here...</p>
-          </div>
+          <!-- Quill Rich Text Editor Container -->
+          <div id="editor-container" style="min-height: 200px;"></div>
         </form>
       </div>
 

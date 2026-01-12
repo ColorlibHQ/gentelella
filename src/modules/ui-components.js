@@ -157,29 +157,6 @@ export function initializeBootstrapComponents() {
   logger.log('Bootstrap components initialized (jQuery-free)');
 }
 
-/**
- * Switchery Toggle Switches
- * Modern implementation - ALREADY MODERN
- */
-export function initializeSwitchery() {
-  if (typeof Switchery === 'undefined') {
-    logger.warn('Switchery library not available');
-    return;
-  }
-
-  DOM.selectAll('.js-switch').forEach(element => {
-    if (!element.switchery) {
-      // Avoid double initialization
-      new Switchery(element, {
-        color: '#26B99A',
-        size: 'small'
-      });
-    }
-  });
-
-  logger.log('Switchery initialized (jQuery-free)');
-}
-
 // Export DOM utilities for other modules
 export { DOM };
 
@@ -190,6 +167,5 @@ if (typeof document !== 'undefined') {
     initializeProgressBars();
     initializeToasts();
     initializeBootstrapComponents();
-    initializeSwitchery();
   });
 }

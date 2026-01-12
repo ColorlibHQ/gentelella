@@ -13,19 +13,12 @@ window.Choices = Choices;
 import noUiSlider from 'nouislider';
 window.noUiSlider = noUiSlider;
 
-// Autosize (Auto-resizing textareas)
-import autosize from 'autosize';
-window.autosize = autosize;
-
-// Switchery (iOS-style toggle switches)
-import Switchery from 'switchery';
-window.Switchery = Switchery;
-
 // Import CSS for the new libraries
 import 'choices.js/public/assets/styles/choices.min.css';
 import 'nouislider/dist/nouislider.css';
 
 // Modern alternatives:
+// - Toggle switches: Bootstrap 5 native form-switch (replaced Switchery)
 // - Progress bars: Bootstrap 5 native progress components
 // - Date pickers: TempusDominus (already imported above)
 // - Sliders: NoUiSlider (already imported above)
@@ -39,7 +32,5 @@ export default {
   DateTime,
   Choices,
   noUiSlider,
-  autosize,
-  Switchery,
   initialized: true
 };

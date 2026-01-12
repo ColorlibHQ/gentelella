@@ -1,8 +1,5 @@
 // jQuery-free main.js for form_advanced.html - modern alternatives
 
-// Import security utilities
-import { sanitizeHtml } from './utils/security.js';
-
 // Bootstrap 5 - No jQuery dependency needed
 import * as bootstrap from 'bootstrap';
 window.bootstrap = bootstrap;
@@ -23,9 +20,7 @@ window.TempusDominus = TempusDominus;
 // TempusDominus CSS
 import '@eonasdan/tempus-dominus/dist/css/tempus-dominus.min.css';
 
-// Switchery for iOS-style toggles
-import Switchery from 'switchery';
-window.Switchery = Switchery;
+// Toggle switches now use Bootstrap 5 native form-switch component
 
 // Input Mask for input formatting
 import Inputmask from 'inputmask';
@@ -46,20 +41,23 @@ window.Choices = Choices;
 import 'choices.js/public/assets/styles/choices.min.css';
 
 // Modern Color Picker (Pickr)
+// Pickr uses UMD format - import as namespace and get the class
 import * as PickrModule from '@simonwep/pickr';
-const Pickr = PickrModule.default || PickrModule.Pickr || PickrModule;
+const Pickr = PickrModule.default || PickrModule;
 window.Pickr = Pickr;
 
-// Pickr CSS - Classic theme
+// Pickr CSS - All themes
 import '@simonwep/pickr/dist/themes/classic.min.css';
+import '@simonwep/pickr/dist/themes/monolith.min.css';
+import '@simonwep/pickr/dist/themes/nano.min.css';
 
-// Chart.js for circular progress (jQuery Knob replacement)
-import { Chart, registerables } from 'chart.js';
-Chart.register(...registerables);
-window.Chart = Chart;
+// ECharts for circular gauge controls (jQuery Knob replacement)
+import * as echarts from 'echarts';
+window.echarts = echarts;
 
-// Cropper.js 2.0 for image cropping (using cropperjs package)
-import * as CropperModule from 'cropperjs';
+// Cropper.js v2 for image cropping (uses web components, no CSS needed)
+import Cropper from 'cropperjs';
+window.Cropper = Cropper;
 
 // Create a library availability checker for inline scripts
 window.waitForLibraries = function (libraries, callback, timeout = 5000) {
@@ -88,12 +86,12 @@ window.dispatchEvent(
     detail: {
       timestamp: Date.now(),
       libraries: {
-        jQuery: typeof window.$,
         TempusDominus: typeof window.TempusDominus,
         Cropper: typeof window.Cropper,
         Pickr: typeof window.Pickr,
         Inputmask: typeof window.Inputmask,
-        Switchery: typeof window.Switchery
+        Bootstrap: typeof window.bootstrap,
+        ECharts: typeof window.echarts
       }
     }
   })
@@ -107,45 +105,42 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // -----------------------------
-  // Cropper.js v2 demo
+  // Cropper.js v2 initialization (web component API)
   // -----------------------------
   const sourceImg = document.getElementById('cropper-source');
   if (sourceImg && window.Cropper) {
+    // Cropper.js v2 uses a web component-based approach
     const cropperInstance = new window.Cropper(sourceImg, {
       container: sourceImg.parentElement
     });
-    window.cropper = cropperInstance; // expose globally for debugging
+    window.cropper = cropperInstance;
 
-    // Helper to refresh preview canvas
+    // Helper to update preview
     const previewEl = document.getElementById('cropper-preview');
-    const refreshPreview = () => {
-      if (!previewEl) {
-        return;
-      }
-      const currentSel = cropperInstance.getCropperSelection();
-      if (!currentSel || currentSel.hidden) {
-        previewEl.innerHTML = sanitizeHtml('<span class="text-muted small">No selection</span>');
-        return;
-      }
-      currentSel
-        .$toCanvas()
-        .then(canvas => {
-          previewEl.innerHTML = sanitizeHtml('');
+    const updatePreview = async () => {
+      if (!previewEl) return;
+      try {
+        const selection = cropperInstance.getCropperSelection();
+        if (selection && !selection.hidden) {
+          const canvas = await selection.$toCanvas();
+          previewEl.innerHTML = '';
           canvas.style.width = '100%';
           canvas.style.height = 'auto';
           previewEl.appendChild(canvas);
-        });
+        }
+      } catch (e) {
+        // Ignore preview errors
+      }
     };
 
     // Rotate button
     const rotateBtn = document.getElementById('cropper-rotate');
     if (rotateBtn) {
       rotateBtn.addEventListener('click', () => {
-        try {
-          const imgElement = cropperInstance.getCropperImage();
-          imgElement && imgElement.$rotate(90);
-          refreshPreview();
-        } catch (err) {
+        const image = cropperInstance.getCropperImage();
+        if (image) {
+          image.$rotate(90);
+          setTimeout(updatePreview, 100);
         }
       });
     }
@@ -154,38 +149,43 @@ document.addEventListener('DOMContentLoaded', () => {
     const resetBtn = document.getElementById('cropper-reset');
     if (resetBtn) {
       resetBtn.addEventListener('click', () => {
-        try {
-          cropperInstance.getCropperImage()?.$resetTransform();
-          cropperInstance.getCropperSelection()?.$reset();
-          refreshPreview();
-        } catch (err) {
-        }
+        const image = cropperInstance.getCropperImage();
+        const selection = cropperInstance.getCropperSelection();
+        if (image) image.$resetTransform();
+        if (selection) selection.$reset();
+        setTimeout(updatePreview, 100);
       });
     }
 
     // Download button
     const downloadBtn = document.getElementById('cropper-download');
     if (downloadBtn) {
-      downloadBtn.addEventListener('click', () => {
+      downloadBtn.addEventListener('click', async () => {
         const selection = cropperInstance.getCropperSelection();
-        if (!selection) {
-          return;
-        }
-        selection
-          .$toCanvas()
-          .then(canvas => {
+        if (!selection) return;
+        try {
+          const canvas = await selection.$toCanvas();
+          canvas.toBlob(blob => {
+            const url = URL.createObjectURL(blob);
             const link = document.createElement('a');
-            link.href = canvas.toDataURL('image/jpeg');
+            link.href = url;
             link.download = 'cropped-image.jpg';
             link.click();
-          });
+            URL.revokeObjectURL(url);
+          }, 'image/jpeg', 0.95);
+        } catch (e) {
+          console.warn('Failed to download cropped image:', e);
+        }
       });
     }
 
-    // Listen for any selection change events on the canvas
-    cropperInstance.getCropperCanvas()?.addEventListener('change', refreshPreview);
+    // Listen for selection changes
+    const canvas = cropperInstance.getCropperCanvas();
+    if (canvas) {
+      canvas.addEventListener('change', updatePreview);
+    }
 
-    // Initial preview render after load
-    setTimeout(refreshPreview, 600);
+    // Initial preview after load
+    setTimeout(updatePreview, 500);
   }
 });

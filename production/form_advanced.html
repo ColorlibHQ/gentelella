@@ -2,295 +2,38 @@
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Gentelella Alela! | </title>
-
-    <!-- Compiled CSS (includes Bootstrap, Font Awesome, and all vendor styles) -->
+    <title>Advanced Form Components | Gentelella</title>
     <script type="module" src="/src/main-form-basic.js"></script>
-
-    <!-- Custom Ion Range Slider Styling -->
     <style>
-        /* Custom Ion Range Slider Styling for Gentelella Template */
-        .irs {
-            height: 80px; /* Increased height to prevent overlapping */
-            margin-bottom: 25px; /* More bottom margin */
-            margin-top: 15px; /* Top margin for labels */
-            position: relative;
-        }
-        
-        .irs--gentelella .irs-line {
-            height: 6px;
-            background: linear-gradient(to right, #E8E9EA 0%, #DADEE4 100%);
-            border-radius: 3px;
-            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
-            top: 35px; /* Position line lower to make room for labels */
-        }
-        
-        .irs--gentelella .irs-bar {
-            height: 6px;
-            background: linear-gradient(to right, #26B99A 0%, #2BBFAB 100%);
-            border-radius: 3px;
-            box-shadow: 0 1px 3px rgba(38, 185, 154, 0.3);
-            top: 35px; /* Match line position */
-        }
-        
-        .irs--gentelella .irs-bar--single {
-            background: linear-gradient(to right, #5A738E 0%, #6C84A0 100%);
-            box-shadow: 0 1px 3px rgba(90, 115, 142, 0.3);
-        }
-        
-        .irs--gentelella .irs-handle {
-            width: 22px;
-            height: 22px;
-            background: #FFFFFF;
-            border: 3px solid #26B99A;
-            border-radius: 50%;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.15), 0 1px 3px rgba(0,0,0,0.1);
-            cursor: pointer;
-            transition: all 0.2s ease;
-            top: 24px; /* Position handle to align with line */
-        }
-        
-        .irs--gentelella .irs-handle:hover {
-            transform: scale(1.1);
-            border-color: #2BBFAB;
-            box-shadow: 0 4px 12px rgba(38, 185, 154, 0.3), 0 2px 6px rgba(0,0,0,0.1);
-        }
-        
-        .irs--gentelella .irs-handle.state_hover,
-        .irs--gentelella .irs-handle:active {
-            background: #26B99A;
-            border-color: #26B99A;
-        }
-        
-        .irs--gentelella .irs-min,
-        .irs--gentelella .irs-max {
-            background: #F0F3F4;
-            color: #73879C;
-            font-size: 10px;
-            padding: 2px 4px;
-            border-radius: 3px;
-            border: 1px solid #E6E9ED;
-            font-weight: 500;
-            top: 55px; /* Position further below to avoid overlap */
-            height: 16px;
-            line-height: 12px;
-            white-space: nowrap;
-            min-width: 30px;
-            text-align: center;
-        }
-        
-        .irs--gentelella .irs-min {
-            left: 0;
-            transform: translateX(0);
-        }
-        
-        .irs--gentelella .irs-max {
-            right: 0;
-            transform: translateX(0);
-        }
-        
-        .irs--gentelella .irs-from,
-        .irs--gentelella .irs-to,
-        .irs--gentelella .irs-single {
-            background: #26B99A;
-            color: white;
-            font-size: 11px;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-weight: 600;
-            box-shadow: 0 2px 6px rgba(38, 185, 154, 0.3);
-            border: none;
-            top: 5px; /* Position above the line */
-            height: 20px;
-            line-height: 12px;
-            white-space: nowrap;
-            min-width: 40px;
-            text-align: center;
-        }
-        
-        .irs--gentelella .irs-from:before,
-        .irs--gentelella .irs-to:before,
-        .irs--gentelella .irs-single:before {
-            border-top-color: #26B99A;
-            top: 20px; /* Adjust arrow position */
-        }
-        
-        .irs--gentelella .irs-grid {
-            top: 55px; /* Position grid at same level as min/max */
-            margin: 0 20px; /* Add margin to create space from edges */
-            height: 20px;
-        }
-        
-        .irs--gentelella .irs-grid-pol {
-            background: #D1D5DB;
-            height: 6px; /* Shorter grid lines */
-            width: 1px;
-        }
-        
-        .irs--gentelella .irs-grid-text {
-            color: #73879C;
-            font-size: 9px;
-            font-weight: 500;
-            padding-top: 8px;
-            white-space: nowrap;
-        }
-        
-        /* Hide duplicate grid text at edges to prevent overlap with min/max */
-        .irs--gentelella .irs-grid-text:first-child,
-        .irs--gentelella .irs-grid-text:last-child {
-            display: none !important;
-        }
-        
-        /* Hide grid lines at edges too to prevent visual clutter */
-        .irs--gentelella .irs-grid-pol:first-child,
-        .irs--gentelella .irs-grid-pol:last-child {
-            display: none !important;
-        }
-        
-        /* Slider container improvements */
-        .slider-container {
-            padding: 20px 15px 25px 15px; /* Extra bottom padding */
-            margin-bottom: 15px;
-            background: #FAFAFA;
-            border-radius: 6px;
-            border: 1px solid #E6E9ED;
-            overflow: hidden; /* Prevent any overflow issues */
-        }
-        
-        .slider-container .form-label {
-            margin-bottom: 10px;
-            display: block;
-        }
-        
-        .slider-container .text-muted {
-            margin-top: 15px; /* More space from slider */
-            margin-bottom: 0;
-        }
-        
-        /* Special styling for different slider types */
-        .price-slider .irs--gentelella .irs-bar {
-            background: linear-gradient(to right, #1ABB9C 0%, #26B99A 100%);
-        }
-        
-        .price-slider .irs--gentelella .irs-from,
-        .price-slider .irs--gentelella .irs-to {
-            background: #1ABB9C;
-            box-shadow: 0 2px 6px rgba(26, 187, 156, 0.3);
-        }
-        
-        .price-slider .irs--gentelella .irs-from:before,
-        .price-slider .irs--gentelella .irs-to:before {
-            border-top-color: #1ABB9C;
-        }
-        
-        .percentage-slider .irs--gentelella .irs-bar {
-            background: linear-gradient(to right, #3498DB 0%, #5DADE2 100%);
-        }
-        
-        .percentage-slider .irs--gentelella .irs-single {
-            background: #3498DB;
-            box-shadow: 0 2px 6px rgba(52, 152, 219, 0.3);
-        }
-        
-        .percentage-slider .irs--gentelella .irs-single:before {
-            border-top-color: #3498DB;
-        }
-        
-        .age-slider .irs--gentelella .irs-bar {
-            background: linear-gradient(to right, #9B59B6 0%, #BB8FCE 100%);
-        }
-        
-        .age-slider .irs--gentelella .irs-from,
-        .age-slider .irs--gentelella .irs-to {
-            background: #9B59B6;
-            box-shadow: 0 2px 6px rgba(155, 89, 182, 0.3);
-        }
-        
-        .age-slider .irs--gentelella .irs-from:before,
-        .age-slider .irs--gentelella .irs-to:before {
-            border-top-color: #9B59B6;
-        }
-        
-        .temperature-slider .irs--gentelella .irs-bar {
-            background: linear-gradient(to right, #E67E22 0%, #F39C12 100%);
-        }
-        
-        .temperature-slider .irs--gentelella .irs-from,
-        .temperature-slider .irs--gentelella .irs-to {
-            background: #E67E22;
-            box-shadow: 0 2px 6px rgba(230, 126, 34, 0.3);
-        }
-        
-        .temperature-slider .irs--gentelella .irs-from:before,
-        .temperature-slider .irs--gentelella .irs-to:before {
-            border-top-color: #E67E22;
-        }
-        
-        .time-slider .irs--gentelella .irs-bar {
-            background: linear-gradient(to right, #2C3E50 0%, #34495E 100%);
-        }
-        
-        .time-slider .irs--gentelella .irs-from,
-        .time-slider .irs--gentelella .irs-to {
-            background: #2C3E50;
-            box-shadow: 0 2px 6px rgba(44, 62, 80, 0.3);
-        }
-        
-        .time-slider .irs--gentelella .irs-from:before,
-        .time-slider .irs--gentelella .irs-to:before {
-            border-top-color: #2C3E50;
-        }
-        
-        .memory-slider .irs--gentelella .irs-bar {
-            background: linear-gradient(to right, #E74C3C 0%, #EC7063 100%);
-        }
-        
-        .memory-slider .irs--gentelella .irs-single {
-            background: #E74C3C;
-            box-shadow: 0 2px 6px rgba(231, 76, 60, 0.3);
-        }
-        
-        .memory-slider .irs--gentelella .irs-single:before {
-            border-top-color: #E74C3C;
-        }
-        
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .irs {
-                height: 90px;
-            }
-            
-            .irs--gentelella .irs-from,
-            .irs--gentelella .irs-to,
-            .irs--gentelella .irs-single {
-                font-size: 10px;
-                padding: 3px 6px;
-            }
-            
-            .slider-container {
-                padding: 15px 10px;
-            }
-        }
-
-        /* Hide legacy Cropper.js v1 demo that is no longer needed */
-        .container.cropper { display: none !important; }
-
-        /* Ensure Cropper custom elements fill the designated area */
-        #cropper-container cropper-canvas,
-        #cropper-container cropper-image,
-        #cropper-container cropper-selection,
-        #cropper-container cropper-shade {
-            width: 100% !important;
-            height: 100% !important;
-        }
+      /* Cropper preview container */
+      #cropper-preview {
+        overflow: hidden;
+        background: #f8f9fa;
+      }
+      /* noUiSlider custom styling */
+      .noUi-connect {
+        background: #26B99A;
+      }
+      .noUi-horizontal {
+        height: 10px;
+      }
+      .noUi-horizontal .noUi-handle {
+        width: 20px;
+        height: 20px;
+        top: -6px;
+        border-radius: 50%;
+      }
+      .noUi-tooltip {
+        font-size: 12px;
+        padding: 2px 8px;
+      }
+      /* ECharts gauge containers */
+      .echart-gauge, .echart-gauge-ring, .echart-gauge-temp {
+        margin: 0 auto;
+      }
     </style>
-
-    <!-- Bootstrap CSS -->
-    <!-- Cropper.js CSS is now bundled with Vite - CDN reference removed -->
   </head>
 
   <body class="nav-md">
@@ -299,26 +42,26 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><img src="images/logo.svg" alt="Gentelella Alela!" class="logo-full" style="height: 40px;"><img src="images/logo-icon.svg" alt="Gentelella" class="logo-icon" style="height: 30px; display: none;"></a>
+              <a href="index.html" class="site_title">
+                <img src="images/logo.svg" alt="Gentelella" class="logo-full" style="height: 40px;">
+                <img src="images/logo-icon.svg" alt="Gentelella" class="logo-icon" style="height: 30px; display: none;">
+              </a>
             </div>
 
             <div class="clearfix"></div>
 
-            <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+                <img src="images/img.jpg" alt="User" class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
                 <h4>John Doe</h4>
               </div>
             </div>
-            <!-- /menu profile quick info -->
 
             <br />
 
-            <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <h3>General</h3>
@@ -327,9 +70,9 @@
                     <ul class="nav child_menu">
                       <li><a href="index.html">Dashboard 1</a></li>
                       <li><a href="index2.html">Dashboard 2</a></li>
-                      <li><a href="index3.html">Dashboard 3</a></li><li><a href="index4.html">Dashboard 4</a></li>
                       <li><a href="index3.html">Dashboard 3</a></li>
                     </ul>
+                  </li>
                   <li><a><i class="fas fa-edit"></i> Forms <span class="fas fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="form.html">General Form</a></li>
@@ -339,77 +82,35 @@
                       <li><a href="form_upload.html">Form Upload</a></li>
                       <li><a href="form_buttons.html">Form Buttons</a></li>
                     </ul>
+                  </li>
                   <li><a><i class="fas fa-desktop"></i> UI Elements <span class="fas fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="general_elements.html">General Elements</a></li>
                       <li><a href="media_gallery.html">Media Gallery</a></li>
                       <li><a href="typography.html">Typography</a></li>
                       <li><a href="icons.html">Icons</a></li>
-
                       <li><a href="widgets.html">Widgets</a></li>
                       <li><a href="invoice.html">Invoice</a></li>
                       <li><a href="inbox.html">Inbox</a></li>
                       <li><a href="calendar.html">Calendar</a></li>
                     </ul>
+                  </li>
                   <li><a><i class="fas fa-table"></i> Tables <span class="fas fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="tables.html">Tables</a></li>
                       <li><a href="tables_dynamic.html">Table Dynamic</a></li>
                     </ul>
-                  <li><a><i class="fas fa-chart-column"></i> Data Presentation <span class="fas fa-chevron-down"></span></a>
+                  </li>
+                  <li><a><i class="fas fa-chart-bar"></i> Data Presentation <span class="fas fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="chartjs.html">Chart JS</a></li>
-                      <li><a href="chartjs2.html">Chart JS2</a></li>
-                      <li><a href="chart3.html">Chart JS3</a></li>
                       <li><a href="echarts.html">ECharts</a></li>
-                      <li><a href="other_charts.html">Other Charts</a></li>
                     </ul>
-                  <li><a><i class="fas fa-clone"></i>Layouts <span class="fas fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="fixed_sidebar.html">Fixed Sidebar</a></li>
-                      <li><a href="fixed_footer.html">Fixed Footer</a></li>
-                    </ul>
+                  </li>
                 </ul>
               </div>
-              <div class="menu_section">
-                <h3>Live On</h3>
-                <ul class="nav side-menu">
-                  <li><a><i class="fas fa-bug"></i> Additional Pages <span class="fas fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="e_commerce.html">E-commerce</a></li>
-                      <li><a href="projects.html">Projects</a></li>
-                      <li><a href="project_detail.html">Project Detail</a></li>
-                      <li><a href="contacts.html">Contacts</a></li>
-                      <li><a href="profile.html">Profile</a></li>
-                    </ul>
-                  <li><a><i class="fas fa-window-restore"></i> Extras <span class="fas fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="page_403.html">403 Error</a></li>
-                      <li><a href="page_404.html">404 Error</a></li>
-                      <li><a href="page_500.html">500 Error</a></li>
-                      <li><a href="plain_page.html">Plain Page</a></li>
-                      <li><a href="login.html">Login Page</a></li>
-                      <li><a href="pricing_tables.html">Pricing Tables</a></li>
-                    </ul>
-                  <li><a><i class="fas fa-sitemap"></i> Multilevel Menu <span class="fas fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                        <li><a href="#level1_1">Level One</a></li>
-                        <li><a>Level One<span class="fas fa-chevron-down"></span></a>
-                          <ul class="nav child_menu">
-                            <li class="sub_menu"><a href="level2.html">Level Two</a>
-                            <li><a href="#level2_1">Level Two</a>
-                            <li><a href="#level2_2">Level Two</a>
-                          </ul>
-                        <li><a href="#level1_2">Level One</a></li>
-                    </ul>
-                  <li><a href="landing.html"><i class="fas fa-laptop"></i> Landing Page</a></li>
-                </ul>
-              </div>
-
             </div>
-            <!-- /sidebar menu -->
 
-            <!-- /menu footer buttons -->
             <div class="sidebar-footer hidden-small">
               <a data-bs-toggle="tooltip" data-bs-placement="top" title="Settings">
                 <span class="fas fa-cog" aria-hidden="true"></span>
@@ -424,1366 +125,852 @@
                 <span class="fas fa-power-off" aria-hidden="true"></span>
               </a>
             </div>
-            <!-- /menu footer buttons -->
           </div>
         </div>
 
-        <!-- top navigation -->
         <div class="top_nav">
-            <div class="nav_menu">
-                <div class="nav toggle">
-                  <a id="menu_toggle"><i class="fas fa-bars"></i></a>
-                </div>
-                <nav class="nav navbar-nav">
-                <ul class="navbar-right">
-                  <li class="nav-item dropdown open" style="padding-left: 15px;">
-                    <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                      <img src="images/img.jpg" alt="">John Doe
-                    </a>
-                    <div class="dropdown-menu dropdown-usermenu float-end" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item"  href="javascript:;"> Profile</a>
-                        <a class="dropdown-item"  href="javascript:;">
-                          <span class="badge bg-red float-end">50%</span>
-                          <span>Settings</span>
-                        </a>
-                    <a class="dropdown-item"  href="javascript:;">Help</a>
-                      <a class="dropdown-item"  href="login.html"><i class="fas fa-sign-out-alt float-end"></i> Log Out</a>
-                    </div>
-  
-                  <li role="presentation" class="nav-item dropdown open">
-                    <a href="javascript:;" class="dropdown-toggle info-number" id="navbarDropdown1" data-bs-toggle="dropdown" aria-expanded="false">
-                      <i class="fas fa-envelope"></i>
-                      <span class="badge bg-green">6</span>
-                    </a>
-                    <ul class="dropdown-menu list-unstyled msg_list" role="menu" aria-labelledby="navbarDropdown1">
-                      <li class="nav-item">
-                        <a class="dropdown-item">
-                          <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                          <span>
-                            <span>John Smith</span>
-                            <span class="time">3 mins ago</span>
-                          </span>
-                          <span class="message">
-                            Film festivals used to be do-or-die moments for movie makers. They were where...
-                          </span>
-                        </a>
-                      <li class="nav-item">
-                        <a class="dropdown-item">
-                          <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                          <span>
-                            <span>John Smith</span>
-                            <span class="time">3 mins ago</span>
-                          </span>
-                          <span class="message">
-                            Film festivals used to be do-or-die moments for movie makers. They were where...
-                          </span>
-                        </a>
-                      <li class="nav-item">
-                        <a class="dropdown-item">
-                          <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                          <span>
-                            <span>John Smith</span>
-                            <span class="time">3 mins ago</span>
-                          </span>
-                          <span class="message">
-                            Film festivals used to be do-or-die moments for movie makers. They were where...
-                          </span>
-                        </a>
-                      <li class="nav-item">
-                        <a class="dropdown-item">
-                          <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                          <span>
-                            <span>John Smith</span>
-                            <span class="time">3 mins ago</span>
-                          </span>
-                          <span class="message">
-                            Film festivals used to be do-or-die moments for movie makers. They were where...
-                          </span>
-                        </a>
-                      <li class="nav-item">
-                        <div class="text-center">
-                          <a class="dropdown-item">
-                            <strong>See All Alerts</strong>
-                            <i class="fas fa-angle-right"></i>
-                          </a>
-                        </div>
-                    </ul>
-                </ul>
-              </nav>
+          <div class="nav_menu">
+            <div class="nav toggle">
+              <a id="menu_toggle"><i class="fas fa-bars"></i></a>
             </div>
+            <nav class="nav navbar-nav">
+              <ul class="navbar-right">
+                <li class="nav-item dropdown open" style="padding-left: 15px;">
+                  <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="images/img.jpg" alt="">John Doe
+                  </a>
+                  <div class="dropdown-menu dropdown-usermenu float-end" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="javascript:;">Profile</a>
+                    <a class="dropdown-item" href="javascript:;">Settings</a>
+                    <a class="dropdown-item" href="javascript:;">Help</a>
+                    <a class="dropdown-item" href="login.html"><i class="fas fa-sign-out-alt float-end"></i> Log Out</a>
+                  </div>
+                </li>
+              </ul>
+            </nav>
           </div>
-        <!-- /top navigation -->
+        </div>
 
-        <!-- page content -->
+        <!-- Page Content -->
         <div class="right_col" role="main">
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Form advanced</h3>
-              </div>
-
-              <div class="title_right">
-                <div class="col-md-5 col-sm-5 mb-3 float-end top_search">
-                  <div class="input-group search-bar-fix">
-                    <input type="text" class="form-control" placeholder="Search for...">
-                    <button class="btn btn-outline-secondary" type="button">
-                      <i class="fas fa-search"></i>
-                    </button>
-                  </div>
-                </div>
+                <h3>Advanced Form Components</h3>
               </div>
             </div>
 
             <div class="clearfix"></div>
 
             <div class="row">
-              <!-- form input mask -->
-              <div class="col-md-6 col-sm-12">
+              <!-- Input Masks -->
+              <div class="col-md-6">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h4>Input Mask</h4>
+                    <h2><i class="fas fa-keyboard me-2"></i>Input Masks</h2>
                     <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Settings 1</a>
-                            <a class="dropdown-item" href="#">Settings 2</a>
-                          </div>
-                      <li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a>
+                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a></li>
                     </ul>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    <br />
-                    <form class="form-horizontal form-label-left">
+                    <p class="text-muted">Formatted input fields with automatic masking.</p>
 
-                      <div class="mb-3 row">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-3">Date Mask</label>
-                        <div class="col-md-9 col-sm-9 col-xs-9">
-                                                      <input type="text" class="form-control" data-inputmask="'mask': '99/99/9999'">
-                          <span class="fas fa-calendar form-control-feedback right" aria-hidden="true"></span>
-                        </div>
-                      </div>
-                      <div class="mb-3 row">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-3">Phone mask</label>
-                        <div class="col-md-9 col-sm-9 col-xs-9">
-                          <input type="text" class="form-control" data-inputmask="'mask': '(999) 999-9999'">
-                          <span class="fas fa-phone form-control-feedback right" aria-hidden="true"></span>
-                        </div>
-                      </div>
-                      <div class="mb-3 row">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-3">Custom Mask</label>
-                        <div class="col-md-9 col-sm-9 col-xs-9">
-                          <input type="text" class="form-control" data-inputmask="'mask': '99-999999'">
-                          <span class="fas fa-tag form-control-feedback right" aria-hidden="true"></span>
-                        </div>
-                      </div>
-                      <div class="mb-3 row">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-3">Serial Number</label>
-                        <div class="col-md-9 col-sm-9 col-xs-9">
-                          <input type="text" class="form-control" data-inputmask="'mask': '****-****-****-****-****-***'">
-                          <span class="fas fa-barcode form-control-feedback right" aria-hidden="true"></span>
-                        </div>
-                      </div>
-                      <div class="mb-3 row">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-3">TaxID Mask</label>
-                        <div class="col-md-9 col-sm-9 col-xs-9">
-                          <input type="text" class="form-control" data-inputmask="'mask': '99-99999999'">
-                          <span class="fas fa-receipt form-control-feedback right" aria-hidden="true"></span>
-                        </div>
-                      </div>
-                      <div class="mb-3 row">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-3">Credit Card Mask</label>
-                        <div class="col-md-9 col-sm-9 col-xs-9">
-                          <input type="text" class="form-control" data-inputmask="'mask': '9999-9999-9999-9999'">
-                          <span class="fas fa-credit-card form-control-feedback right" aria-hidden="true"></span>
-                        </div>
-                      </div>
-                      <div class="ln_solid"></div>
+                    <div class="mb-3">
+                      <label class="form-label">Date (MM/DD/YYYY)</label>
+                      <input type="text" class="form-control" data-inputmask="'mask': '99/99/9999'" placeholder="MM/DD/YYYY">
+                    </div>
 
-                      <div class="mb-3 row">
-                        <div class="col-md-9 offset-md-3">
-                          <button type="submit" class="btn btn-primary">Cancel</button>
-                          <button type="submit" class="btn btn-success">Submit</button>
-                        </div>
-                      </div>
+                    <div class="mb-3">
+                      <label class="form-label">Phone Number</label>
+                      <input type="text" class="form-control" data-inputmask="'mask': '(999) 999-9999'" placeholder="(999) 999-9999">
+                    </div>
 
-                    </form>
-                  </div>
-                </div>
-              </div>
-              <!-- /form input mask -->
+                    <div class="mb-3">
+                      <label class="form-label">Credit Card</label>
+                      <input type="text" class="form-control" data-inputmask="'mask': '9999-9999-9999-9999'" placeholder="9999-9999-9999-9999">
+                    </div>
 
-              <!-- modern color picker -->
-              <div class="col-md-6 col-sm-12">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h4>Modern Color Picker <small>Powered by Pickr</small></h4>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-                        <ul class="dropdown-menu" role="menu">
-                          <li><a href="#">Settings 1</a>
-                          <li><a href="#">Settings 2</a>
-                        </ul>
-                      <li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                    <br />
-                    <form class="form-horizontal form-label-left">
+                    <div class="mb-3">
+                      <label class="form-label">Tax ID</label>
+                      <input type="text" class="form-control" data-inputmask="'mask': '99-9999999'" placeholder="99-9999999">
+                    </div>
 
-                      <div class="mb-3 row">
-                        <label class="control-label col-md-3 col-sm-3">Classic Theme</label>
-                        <div class="col-md-9 col-sm-9">
-                          <div class="input-group">
-                            <span class="input-group-text d-flex align-items-center justify-content-center p-0" style="width: 50px; height: 38px;">
-                              <div class="color-picker-classic" style="width: 32px; height: 32px; border: 2px solid #fff; border-radius: 4px; cursor: pointer; box-shadow: 0 0 0 1px rgba(0,0,0,0.1); margin-top: 1px;"></div>
-                            </span>
-                            <input type="text" class="form-control" id="classic-result" readonly value="#5367ce" />
-                            <span class="input-group-text"><i class="fas fa-palette"></i></span>
-                          </div>
-                          <small class="text-muted">Full-featured picker with all components</small>
-                        </div>
-                      </div>
-
-                      <div class="mb-3 row">
-                        <label class="control-label col-md-3 col-sm-3">Monolith Theme</label>
-                        <div class="col-md-9 col-sm-9">
-                          <div class="input-group">
-                            <span class="input-group-text d-flex align-items-center justify-content-center p-0" style="width: 50px; height: 38px;">
-                              <div class="color-picker-monolith" style="width: 32px; height: 32px; border: 2px solid #fff; border-radius: 4px; cursor: pointer; box-shadow: 0 0 0 1px rgba(0,0,0,0.1); margin-top: 1px;"></div>
-                            </span>
-                            <input type="text" class="form-control" id="monolith-result" readonly value="#e91e63" />
-                            <span class="input-group-text"><i class="fas fa-droplet"></i></span>
-                          </div>
-                          <small class="text-muted">Compact design with modern styling</small>
-                        </div>
-                      </div>
-
-                      <div class="mb-3 row">
-                        <label class="control-label col-md-3 col-sm-3">Nano Theme</label>
-                        <div class="col-md-9 col-sm-9">
-                          <div class="input-group">
-                            <span class="input-group-text d-flex align-items-center justify-content-center p-0" style="width: 50px; height: 38px;">
-                              <div class="color-picker-nano" style="width: 32px; height: 32px; border: 2px solid #fff; border-radius: 4px; cursor: pointer; box-shadow: 0 0 0 1px rgba(0,0,0,0.1); margin-top: 1px;"></div>
-                            </span>
-                            <input type="text" class="form-control" id="nano-result" readonly value="#ff9800" />
-                            <span class="input-group-text"><i class="fas fa-circle"></i></span>
-                          </div>
-                          <small class="text-muted">Minimal picker for simple color selection</small>
-                        </div>
-                      </div>
-
-                      <div class="mb-3 row">
-                        <label class="control-label col-md-3 col-sm-3">With Opacity</label>
-                        <div class="col-md-9 col-sm-9">
-                          <div class="input-group">
-                            <span class="input-group-text d-flex align-items-center justify-content-center p-0" style="width: 50px; height: 38px;">
-                              <div class="color-picker-opacity" style="width: 32px; height: 32px; border: 2px solid #fff; border-radius: 4px; cursor: pointer; box-shadow: 0 0 0 1px rgba(0,0,0,0.1); margin-top: 1px;"></div>
-                            </span>
-                            <input type="text" class="form-control" id="opacity-result" readonly value="rgba(156, 39, 176, 0.7)" />
-                            <span class="input-group-text"><i class="fas fa-adjust"></i></span>
-                          </div>
-                          <small class="text-muted">Includes alpha/transparency control</small>
-                        </div>
-                      </div>
-
-                      <div class="mb-3 row">
-                        <label class="control-label col-md-3 col-sm-3">Swatches & Presets</label>
-                        <div class="col-md-9 col-sm-9">
-                          <div class="input-group">
-                            <span class="input-group-text d-flex align-items-center justify-content-center p-0" style="width: 50px; height: 38px;">
-                              <div class="color-picker-swatches" style="width: 32px; height: 32px; border: 2px solid #fff; border-radius: 4px; cursor: pointer; box-shadow: 0 0 0 1px rgba(0,0,0,0.1); margin-top: 1px;"></div>
-                            </span>
-                            <input type="text" class="form-control" id="swatches-result" readonly value="#4caf50" />
-                            <span class="input-group-text"><i class="fas fa-swatchbook"></i></span>
-                          </div>
-                          <small class="text-muted">Pre-defined color palette with custom swatches</small>
-                        </div>
-                      </div>
-
-                      <div class="mb-3 row">
-                        <label class="control-label col-md-3 col-sm-3">Output Formats</label>
-                        <div class="col-md-9 col-sm-9">
-                          <div class="input-group">
-                            <span class="input-group-text d-flex align-items-center justify-content-center p-0" style="width: 50px; height: 38px;">
-                              <div class="color-picker-formats" style="width: 32px; height: 32px; border: 2px solid #fff; border-radius: 4px; cursor: pointer; box-shadow: 0 0 0 1px rgba(0,0,0,0.1); margin-top: 1px;"></div>
-                            </span>
-                            <input type="text" class="form-control" id="formats-result" readonly value="#2196f3" />
-                            <span class="input-group-text"><i class="fas fa-code"></i></span>
-                          </div>
-                          <small class="text-muted">Supports HEX, RGB, HSL, HSV formats</small>
-                        </div>
-                      </div>
-
-
-
-                    </form>
-                  </div>
-                </div>
-              </div>
-              <!-- /modern color picker -->
-
-              <!-- image cropper (Cropper.js v2) -->
-              <div class="col-md-12">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h4>Image Cropper <small>Powered by Cropper.js v2</small></h4>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-                      <li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                    <div class="row g-3">
-                      <!-- Source image -->
-                      <div id="cropper-container" class="col-md-8 text-center" style="height:450px;">
-                        <img id="cropper-source" src="/images/cropper.jpg" alt="Source" class="img-fluid rounded shadow-sm" style="width:100%; height:auto; max-height:100%; object-fit:contain;">
-                      </div>
-                      <!-- Preview + controls -->
-                      <div class="col-md-4 d-flex flex-column align-items-center gap-3">
-                        <div id="cropper-preview" class="border rounded w-100" style="height: 300px; background: #f7f7f7; display: flex; align-items: center; justify-content: center; overflow: hidden;"><span class="text-muted small">Crop preview</span></div>
-                        <div class="btn-group w-100" role="group" aria-label="Cropper actions">
-                          <button id="cropper-rotate" type="button" class="btn btn-outline-secondary"><i class="fas fa-sync-alt me-1"></i>Rotate 90°</button>
-                          <button id="cropper-reset" type="button" class="btn btn-outline-warning"><i class="fas fa-undo me-1"></i>Reset</button>
-                          <button id="cropper-download" type="button" class="btn btn-outline-success"><i class="fas fa-download me-1"></i>Download</button>
-                        </div>
-                      </div>
+                    <div class="mb-3">
+                      <label class="form-label">Serial Number</label>
+                      <input type="text" class="form-control" data-inputmask="'mask': 'AAA-999-AAA'" placeholder="AAA-999-AAA">
                     </div>
                   </div>
                 </div>
               </div>
-              <!-- /image cropper (Cropper.js v2) -->
 
-              <!-- form input knob -->
-              <div class="col-md-12">
+              <!-- Color Pickers -->
+              <div class="col-md-6">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h4>Input knob</h4>
+                    <h2><i class="fas fa-palette me-2"></i>Color Pickers</h2>
                     <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-                        <ul class="dropdown-menu" role="menu">
-                          <li><a href="#">Settings 1</a>
-                          <li><a href="#">Settings 2</a>
-                        </ul>
-                      <li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a>
+                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a></li>
                     </ul>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    <div class="col-md-2">
-                      <p>Display value</p>
-                      <input class="knob" data-width="100" data-height="120" data-min="-100" data-displayPrevious=true data-fgColor="#26B99A" value="44">
-                    </div>
-                    <div class="col-md-2">
-                      <p>&#215; 'cursor' mode</p>
-                      <input class="knob" data-width="100" data-height="120" data-cursor=true data-fgColor="#34495E" value="29">
-                    </div>
-                    <div class="col-md-2">
-                      <p>Step 0.1</p>
-                      <input class="knob" data-width="100" data-height="120" data-min="-10000" data-displayPrevious=true data-fgColor="#26B99A" data-max="10000" data-step=".1" value="0">
-                    </div>
-                    <div class="col-md-2">
-                      <p>Angle arc</p>
-                      <input class="knob" data-width="100" data-height="120" data-angleOffset=-125 data-angleArc=250 data-fgColor="#34495E" data-rotation="anticlockwise" value="35">
-                    </div>
-                    <div class="col-md-2">
-                      <p>Alternate design</p>
-                      <input class="knob" data-width="110" data-height="120" data-displayPrevious=true data-fgColor="#26B99A" data-skin="tron" data-thickness=".2" value="75">
-                    </div>
-                    <div class="col-md-2">
-                      <p>Angle offset</p>
-                      <input class="knob" data-width="100" data-height="120" data-angleOffset=90 data-linecap=round data-fgColor="#26B99A" value="35">
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- /form input knob -->
+                    <p class="text-muted">Modern color selection with multiple themes.</p>
 
-            </div>
-
-
-
-
-            <div class="row">
-              <div class="col-md-12">
-
-                <!-- form date pickers -->
-                <div class="x_panel" style="">
-                  <div class="x_title">
-                    <h4>Date Range Pickers <small>Functional date and time range selection</small></h4>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-                        <ul class="dropdown-menu" role="menu">
-                          <li><a href="#">Settings 1</a>
-                          <li><a href="#">Settings 2</a>
-                        </ul>
-                      <li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-
-                    <!-- Modern Date Range Examples -->
-                    <div class="row mb-4">
-                      <div class="col-md-6">
-                        <h5>Date Range Picker (Start - End)</h5>
-                        <div class="d-flex gap-2">
-                          <div class='input-group' id='startDateRange' data-td-target-input="nearest" data-td-target-toggle="nearest">
-                            <input type='text' class="form-control" data-td-target="#startDateRange" placeholder="Start Date" />
-                            <span class="input-group-text" data-td-target="#startDateRange" data-td-toggle="datetimepicker">
-                               <span class="fas fa-calendar"></span>
-                            </span>
-                          </div>
-                          <span class="align-self-center">to</span>
-                          <div class='input-group' id='endDateRange' data-td-target-input="nearest" data-td-target-toggle="nearest">
-                            <input type='text' class="form-control" data-td-target="#endDateRange" placeholder="End Date" />
-                            <span class="input-group-text" data-td-target="#endDateRange" data-td-toggle="datetimepicker">
-                               <span class="fas fa-calendar"></span>
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="col-md-6">
-                        <h5>DateTime Range Picker</h5>
-                        <div class="d-flex gap-2">
-                          <div class='input-group' id='startDateTimeRange' data-td-target-input="nearest" data-td-target-toggle="nearest">
-                            <input type='text' class="form-control" data-td-target="#startDateTimeRange" placeholder="Start DateTime" />
-                            <span class="input-group-text" data-td-target="#startDateTimeRange" data-td-toggle="datetimepicker">
-                               <span class="fas fa-calendar-plus"></span>
-                            </span>
-                          </div>
-                          <span class="align-self-center">to</span>
-                          <div class='input-group' id='endDateTimeRange' data-td-target-input="nearest" data-td-target-toggle="nearest">
-                            <input type='text' class="form-control" data-td-target="#endDateTimeRange" placeholder="End DateTime" />
-                            <span class="input-group-text" data-td-target="#endDateTimeRange" data-td-toggle="datetimepicker">
-                               <span class="fas fa-calendar-plus"></span>
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- Input Masks Section -->
-                    <div class="row mb-4">
-                      <div class="col-md-12">
-                        <h5>Input Masks <small>Formatted input controls</small></h5>
-                      </div>
-                      <div class="col-md-4 mb-3">
-                        <label class="form-label">Date Mask (MM/DD/YYYY)</label>
-                        <input type="text" class="form-control" data-inputmask="'mask': '99/99/9999'" placeholder="MM/DD/YYYY">
-                      </div>
-                      <div class="col-md-4 mb-3">
-                        <label class="form-label">Phone Number</label>
-                        <input type="text" class="form-control" data-inputmask="'mask': '(999) 999-9999'" placeholder="(999) 999-9999">
-                      </div>
-                      <div class="col-md-4 mb-3">
-                        <label class="form-label">Credit Card</label>
-                        <input type="text" class="form-control" data-inputmask="'mask': '9999-9999-9999-9999'" placeholder="9999-9999-9999-9999">
-                      </div>
-                      <div class="col-md-4 mb-3">
-                        <label class="form-label">Serial Number</label>
-                        <input type="text" class="form-control" data-inputmask="'mask': '****-****-****-****-****-***'" placeholder="Serial Number">
-                      </div>
-                      <div class="col-md-4 mb-3">
-                        <label class="form-label">Tax ID</label>
-                        <input type="text" class="form-control" data-inputmask="'mask': '99-99999999'" placeholder="99-99999999">
-                      </div>
-                      <div class="col-md-4 mb-3">
-                        <label class="form-label">Custom Mask</label>
-                        <input type="text" class="form-control" data-inputmask="'mask': '99-999999'" placeholder="99-999999">
-                      </div>
-                    </div>
-
-                    <!-- Color Pickers Section -->
-                    <div class="row mb-4">
-                      <div class="col-md-12">
-                        <h5>Modern Color Pickers <small>Multiple themes and formats</small></h5>
-                      </div>
-                      <div class="col-md-4 mb-3">
-                        <label class="form-label">Classic Theme</label>
-                        <div class="d-flex gap-2">
-                          <div class="color-picker-classic" style="width: 40px; height: 40px; border-radius: 6px; cursor: pointer; border: 2px solid #ddd;"></div>
-                          <input type="text" id="classic-result" class="form-control" placeholder="#5367ce" readonly>
-                        </div>
-                      </div>
-                      <div class="col-md-4 mb-3">
-                        <label class="form-label">Monolith Theme</label>
-                        <div class="d-flex gap-2">
-                          <div class="color-picker-monolith" style="width: 40px; height: 40px; border-radius: 6px; cursor: pointer; border: 2px solid #ddd;"></div>
-                          <input type="text" id="monolith-result" class="form-control" placeholder="#e91e63" readonly>
-                        </div>
-                      </div>
-                      <div class="col-md-4 mb-3">
-                        <label class="form-label">Nano Theme</label>
-                        <div class="d-flex gap-2">
-                          <div class="color-picker-nano" style="width: 40px; height: 40px; border-radius: 6px; cursor: pointer; border: 2px solid #ddd;"></div>
-                          <input type="text" id="nano-result" class="form-control" placeholder="#ff9800" readonly>
-                        </div>
-                      </div>
-                      <div class="col-md-4 mb-3">
-                        <label class="form-label">With Opacity</label>
-                        <div class="d-flex gap-2">
-                          <div class="color-picker-opacity" style="width: 40px; height: 40px; border-radius: 6px; cursor: pointer; border: 2px solid #ddd;"></div>
-                          <input type="text" id="opacity-result" class="form-control" placeholder="rgba(156, 39, 176, 0.7)" readonly>
-                        </div>
-                      </div>
-                      <div class="col-md-4 mb-3">
-                        <label class="form-label">With Swatches</label>
-                        <div class="d-flex gap-2">
-                          <div class="color-picker-swatches" style="width: 40px; height: 40px; border-radius: 6px; cursor: pointer; border: 2px solid #ddd;"></div>
-                          <input type="text" id="swatches-result" class="form-control" placeholder="#4caf50" readonly>
-                        </div>
-                      </div>
-                      <div class="col-md-4 mb-3">
-                        <label class="form-label">Format Demo</label>
-                        <div class="d-flex gap-2">
-                          <div class="color-picker-formats" style="width: 40px; height: 40px; border-radius: 6px; cursor: pointer; border: 2px solid #ddd;"></div>
-                          <input type="text" id="formats-result" class="form-control" placeholder="#2196f3" readonly>
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- jQuery Knob Controls Section -->
-                    <div class="row mb-4">
-                      <div class="col-md-12">
-                        <h5>jQuery Knob Controls <small>Circular progress and value controls</small></h5>
-                      </div>
-                      <div class="col-md-3 text-center mb-3">
-                        <label class="form-label">Percentage</label>
-                        <input type="text" class="knob" value="75" data-width="120" data-height="120" data-fgColor="#26B99A" data-readonly="true">
-                      </div>
-                      <div class="col-md-3 text-center mb-3">
-                        <label class="form-label">Progress Meter</label>
-                        <input type="text" class="knob" value="65" data-min="0" data-max="100" data-width="120" data-height="120" data-fgColor="#3498DB">
-                      </div>
-                      <div class="col-md-3 text-center mb-3">
-                        <label class="form-label">Temperature</label>
-                        <input type="text" class="knob" value="22" data-min="-20" data-max="40" data-suffix="°C" data-width="120" data-height="120" data-fgColor="#E74C3C">
-                      </div>
-                      <div class="col-md-3 text-center mb-3">
-                        <label class="form-label">Volume Control</label>
-                        <input type="text" class="knob" value="8" data-min="0" data-max="10" data-step="0.1" data-width="120" data-height="120" data-fgColor="#9B59B6">
-                      </div>
-                    </div>
-
-                    <!-- Toggle Switches Section -->
-                    <div class="row mb-4">
-                      <div class="col-md-12">
-                        <h5>iOS-style Toggle Switches <small>Modern switch controls</small></h5>
-                      </div>
-                      <div class="col-md-3 mb-3">
-                        <label class="form-label d-block">Enable Notifications</label>
-                        <input type="checkbox" class="js-switch" checked />
-                      </div>
-                      <div class="col-md-3 mb-3">
-                        <label class="form-label d-block">Auto-save</label>
-                        <input type="checkbox" class="js-switch" />
-                      </div>
-                      <div class="col-md-3 mb-3">
-                        <label class="form-label d-block">Dark Mode</label>
-                        <input type="checkbox" class="js-switch" checked />
-                      </div>
-                      <div class="col-md-3 mb-3">
-                        <label class="form-label d-block">Email Alerts</label>
-                        <input type="checkbox" class="js-switch" />
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
-                <!-- /form date pickers -->
-
-               <!-- form datetimepicker -->
-<div class="x_panel" style="">
-    <div class="x_title">
-        <h4>Date Pickers <small> Available with multiple designs</small></h4>
-        <ul class="nav navbar-right panel_toolbox">
-            <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">Settings 1</a>
-                    <li><a href="#">Settings 2</a>
-                </ul>
-            <li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a>
-        </ul>
-        <div class="clearfix"></div>
-    </div>
-    <div class="x_content">
-
-        <div class="container">
-            <div class="row">
-
-                <div class='col-sm-4'>
-                    Basic Example
-                    <div class="mb-3">
-                        <div class='input-group' id='myDatepicker' data-td-target-input="nearest" data-td-target-toggle="nearest">
-                            <input type='text' class="form-control" data-td-target="#myDatepicker" />
-                            <span class="input-group-text" data-td-target="#myDatepicker" data-td-toggle="datetimepicker">
-                               <span class="fas fa-calendar"></span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class='col-sm-4'>
-                    Only Date Picker
-                    <div class="mb-3">
-                        <div class='input-group' id='myDatepicker2' data-td-target-input="nearest" data-td-target-toggle="nearest">
-                            <input type='text' class="form-control" data-td-target="#myDatepicker2" />
-                            <span class="input-group-text" data-td-target="#myDatepicker2" data-td-toggle="datetimepicker">
-                               <span class="fas fa-calendar"></span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                
-                 <div class='col-sm-4'>
-                    Only Time Picker <small>For 24H format use format: 'HH:mm'</small>
-                    <div class="mb-3">
-                        <div class='input-group' id='myDatepicker3' data-td-target-input="nearest" data-td-target-toggle="nearest">
-                            <input type='text' class="form-control" data-td-target="#myDatepicker3" />
-                            <span class="input-group-text" data-td-target="#myDatepicker3" data-td-toggle="datetimepicker">
-                               <span class="fas fa-clock"></span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class='col-sm-4'>
-                    Using ReadOnly
-                    <div class="mb-3">
-                        <div class='input-group' id='myDatepicker4' data-td-target-input="nearest" data-td-target-toggle="nearest">
-                            <input type='text' class="form-control" readonly="readonly" data-td-target="#myDatepicker4" />
-                            <span class="input-group-text" data-td-target="#myDatepicker4" data-td-toggle="datetimepicker">
-                               <span class="fas fa-calendar"></span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                
-                 <div class='col-sm-4'>
-                    Linked Picker Parent
-                    <div class="mb-3">
-                        <div class='input-group' id='datetimepicker6' data-td-target-input="nearest" data-td-target-toggle="nearest">
-                            <input type='text' class="form-control" data-td-target="#datetimepicker6" />
-                            <span class="input-group-text" data-td-target="#datetimepicker6" data-td-toggle="datetimepicker">
-                                    <span class="fas fa-calendar"></span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class='col-sm-4'>
-                    Linked Picker Children
-                    <div class="mb-3">
-                        <div class='input-group' id='datetimepicker7' data-td-target-input="nearest" data-td-target-toggle="nearest">
-                            <input type='text' class="form-control" data-td-target="#datetimepicker7" />
-                            <span class="input-group-text" data-td-target="#datetimepicker7" data-td-toggle="datetimepicker">
-                                    <span class="fas fa-calendar"></span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-    </div>
-</div>
-                <!-- /form datetimepicker -->
-
-                <!-- Range Sliders -->
-                <div class="x_panel" style="">
-                  <div class="x_title">
-                    <h4>Ion Range Sliders <small>Modern range and value sliders</small></h4>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-                        <ul class="dropdown-menu" role="menu">
-                          <li><a href="#">Settings 1</a>
-                          <li><a href="#">Settings 2</a>
-                        </ul>
-                      <li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
                     <div class="row">
-                      <div class="col-md-6">
-                        <div class="slider-container price-slider">
-                          <label class="form-label fw-bold text-dark mb-2">
-                            <i class="fas fa-dollar-sign text-success me-2"></i>Price Range Slider
-                          </label>
-                          <input type="text" class="range_01" value="" name="range" />
-                          <p class="text-muted small mt-2">Double slider for price ranges from $200 to $800</p>
+                      <div class="col-md-6 mb-3">
+                        <label class="form-label">Classic Theme</label>
+                        <div class="d-flex align-items-center gap-2">
+                          <div class="color-picker-classic"></div>
+                          <input type="text" id="classic-result" class="form-control form-control-sm" value="#5367ce" readonly>
                         </div>
                       </div>
-                      <div class="col-md-6">
-                        <div class="slider-container percentage-slider">
-                          <label class="form-label fw-bold text-dark mb-2">
-                            <i class="fas fa-percentage text-primary me-2"></i>Percentage Slider
-                          </label>
-                          <input type="text" class="range_02" value="" name="range" />
-                          <p class="text-muted small mt-2">Single slider with percentage values</p>
+
+                      <div class="col-md-6 mb-3">
+                        <label class="form-label">Monolith Theme</label>
+                        <div class="d-flex align-items-center gap-2">
+                          <div class="color-picker-monolith"></div>
+                          <input type="text" id="monolith-result" class="form-control form-control-sm" value="#e91e63" readonly>
                         </div>
                       </div>
-                      <div class="col-md-6">
-                        <div class="slider-container age-slider">
-                          <label class="form-label fw-bold text-dark mb-2">
-                            <i class="fas fa-users text-purple me-2"></i>Age Range
-                          </label>
-                          <input type="text" class="range_03" value="" name="range" />
-                          <p class="text-muted small mt-2">Age selection from 18 to 65 years</p>
+
+                      <div class="col-md-6 mb-3">
+                        <label class="form-label">Nano Theme</label>
+                        <div class="d-flex align-items-center gap-2">
+                          <div class="color-picker-nano"></div>
+                          <input type="text" id="nano-result" class="form-control form-control-sm" value="#ff9800" readonly>
                         </div>
                       </div>
-                      <div class="col-md-6">
-                        <div class="slider-container temperature-slider">
-                          <label class="form-label fw-bold text-dark mb-2">
-                            <i class="fas fa-thermometer-half text-warning me-2"></i>Temperature Range
-                          </label>
-                          <input type="text" class="range_04" value="" name="range" />
-                          <p class="text-muted small mt-2">Temperature range with step values</p>
+
+                      <div class="col-md-6 mb-3">
+                        <label class="form-label">With Opacity</label>
+                        <div class="d-flex align-items-center gap-2">
+                          <div class="color-picker-opacity"></div>
+                          <input type="text" id="opacity-result" class="form-control form-control-sm" value="rgba(156, 39, 176, 0.7)" readonly>
                         </div>
                       </div>
-                      <div class="col-md-6">
-                        <div class="slider-container time-slider">
-                          <label class="form-label fw-bold text-dark mb-2">
-                            <i class="fas fa-clock text-dark me-2"></i>Time Range (24H)
-                          </label>
-                          <input type="text" class="range_time24" value="" name="range" />
-                          <p class="text-muted small mt-2">Time selection in 24-hour format</p>
+
+                      <div class="col-md-6 mb-3">
+                        <label class="form-label">With Swatches</label>
+                        <div class="d-flex align-items-center gap-2">
+                          <div class="color-picker-swatches"></div>
+                          <input type="text" id="swatches-result" class="form-control form-control-sm" value="#4caf50" readonly>
                         </div>
                       </div>
-                      <div class="col-md-6">
-                        <div class="slider-container memory-slider">
-                          <label class="form-label fw-bold text-dark mb-2">
-                            <i class="fas fa-memory text-danger me-2"></i>Memory Size
-                          </label>
-                          <input type="text" class="range_memory" value="" name="range" />
-                          <p class="text-muted small mt-2">Memory allocation with custom values</p>
+
+                      <div class="col-md-6 mb-3">
+                        <label class="form-label">All Formats</label>
+                        <div class="d-flex align-items-center gap-2">
+                          <div class="color-picker-formats"></div>
+                          <input type="text" id="formats-result" class="form-control form-control-sm" value="#2196f3" readonly>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <br />
-                <br />
-                <!-- /range sliders -->
-
-                <!-- legacy cropper section removed -->
-
               </div>
             </div>
+
+            <div class="row">
+              <!-- Date/Time Pickers -->
+              <div class="col-md-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2><i class="fas fa-calendar-alt me-2"></i>Date & Time Pickers</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <p class="text-muted">Flexible date and time selection components.</p>
+
+                    <div class="row">
+                      <div class="col-md-4 mb-3">
+                        <label class="form-label">Date & Time</label>
+                        <div class="input-group" id="myDatepicker" data-td-target-input="nearest" data-td-target-toggle="nearest">
+                          <input type="text" class="form-control" data-td-target="#myDatepicker" placeholder="Select date & time">
+                          <span class="input-group-text" data-td-target="#myDatepicker" data-td-toggle="datetimepicker">
+                            <i class="fas fa-calendar"></i>
+                          </span>
+                        </div>
+                      </div>
+
+                      <div class="col-md-4 mb-3">
+                        <label class="form-label">Date Only</label>
+                        <div class="input-group" id="myDatepicker2" data-td-target-input="nearest" data-td-target-toggle="nearest">
+                          <input type="text" class="form-control" data-td-target="#myDatepicker2" placeholder="Select date">
+                          <span class="input-group-text" data-td-target="#myDatepicker2" data-td-toggle="datetimepicker">
+                            <i class="fas fa-calendar"></i>
+                          </span>
+                        </div>
+                      </div>
+
+                      <div class="col-md-4 mb-3">
+                        <label class="form-label">Time Only</label>
+                        <div class="input-group" id="myDatepicker3" data-td-target-input="nearest" data-td-target-toggle="nearest">
+                          <input type="text" class="form-control" data-td-target="#myDatepicker3" placeholder="Select time">
+                          <span class="input-group-text" data-td-target="#myDatepicker3" data-td-toggle="datetimepicker">
+                            <i class="fas fa-clock"></i>
+                          </span>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6 mb-3">
+                        <label class="form-label">Start Date (Linked)</label>
+                        <div class="input-group" id="datetimepicker6" data-td-target-input="nearest" data-td-target-toggle="nearest">
+                          <input type="text" class="form-control" data-td-target="#datetimepicker6" placeholder="Start date">
+                          <span class="input-group-text" data-td-target="#datetimepicker6" data-td-toggle="datetimepicker">
+                            <i class="fas fa-calendar"></i>
+                          </span>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6 mb-3">
+                        <label class="form-label">End Date (Linked)</label>
+                        <div class="input-group" id="datetimepicker7" data-td-target-input="nearest" data-td-target-toggle="nearest">
+                          <input type="text" class="form-control" data-td-target="#datetimepicker7" placeholder="End date">
+                          <span class="input-group-text" data-td-target="#datetimepicker7" data-td-toggle="datetimepicker">
+                            <i class="fas fa-calendar"></i>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <!-- Range Sliders -->
+              <div class="col-md-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2><i class="fas fa-sliders-h me-2"></i>Range Sliders</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <p class="text-muted">Interactive range and value selection sliders.</p>
+
+                    <div class="row">
+                      <div class="col-md-6 mb-4">
+                        <label class="form-label fw-semibold">
+                          <i class="fas fa-dollar-sign text-success me-1"></i>Price Range
+                        </label>
+                        <div id="slider-price" class="mt-3 mb-2"></div>
+                        <div class="d-flex justify-content-between">
+                          <span class="text-muted small" id="slider-price-min">$200</span>
+                          <span class="text-muted small" id="slider-price-max">$800</span>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6 mb-4">
+                        <label class="form-label fw-semibold">
+                          <i class="fas fa-percent text-primary me-1"></i>Percentage
+                        </label>
+                        <div id="slider-percentage" class="mt-3 mb-2"></div>
+                        <div class="text-center">
+                          <span class="text-muted small" id="slider-percentage-value">50%</span>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6 mb-4">
+                        <label class="form-label fw-semibold">
+                          <i class="fas fa-users text-info me-1"></i>Age Range
+                        </label>
+                        <div id="slider-age" class="mt-3 mb-2"></div>
+                        <div class="d-flex justify-content-between">
+                          <span class="text-muted small" id="slider-age-min">25 years</span>
+                          <span class="text-muted small" id="slider-age-max">45 years</span>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6 mb-4">
+                        <label class="form-label fw-semibold">
+                          <i class="fas fa-thermometer-half text-danger me-1"></i>Temperature
+                        </label>
+                        <div id="slider-temperature" class="mt-3 mb-2"></div>
+                        <div class="d-flex justify-content-between">
+                          <span class="text-muted small" id="slider-temp-min">+15°C</span>
+                          <span class="text-muted small" id="slider-temp-max">+25°C</span>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6 mb-4">
+                        <label class="form-label fw-semibold">
+                          <i class="fas fa-clock text-secondary me-1"></i>Time Range (24H)
+                        </label>
+                        <div id="slider-time" class="mt-3 mb-2"></div>
+                        <div class="d-flex justify-content-between">
+                          <span class="text-muted small" id="slider-time-min">08:00</span>
+                          <span class="text-muted small" id="slider-time-max">17:00</span>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6 mb-4">
+                        <label class="form-label fw-semibold">
+                          <i class="fas fa-memory text-warning me-1"></i>Memory Size
+                        </label>
+                        <div id="slider-memory" class="mt-3 mb-2"></div>
+                        <div class="text-center">
+                          <span class="text-muted small" id="slider-memory-value">8 GB</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <!-- Toggle Switches -->
+              <div class="col-md-6">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2><i class="fas fa-toggle-on me-2"></i>Toggle Switches</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <p class="text-muted">Bootstrap 5 native toggle switches.</p>
+
+                    <div class="mb-3">
+                      <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="switch1" checked>
+                        <label class="form-check-label" for="switch1">Enable Notifications</label>
+                      </div>
+                    </div>
+
+                    <div class="mb-3">
+                      <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="switch2">
+                        <label class="form-check-label" for="switch2">Auto-save Documents</label>
+                      </div>
+                    </div>
+
+                    <div class="mb-3">
+                      <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="switch3" checked>
+                        <label class="form-check-label" for="switch3">Dark Mode</label>
+                      </div>
+                    </div>
+
+                    <div class="mb-3">
+                      <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="switch4">
+                        <label class="form-check-label" for="switch4">Email Alerts</label>
+                      </div>
+                    </div>
+
+                    <div class="mb-3">
+                      <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="switch5" disabled>
+                        <label class="form-check-label" for="switch5">Disabled Option</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Gauge Controls -->
+              <div class="col-md-6">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2><i class="fas fa-tachometer-alt me-2"></i>Gauge Controls</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <p class="text-muted">ECharts-powered circular indicators.</p>
+
+                    <div class="row text-center">
+                      <div class="col-4 mb-3">
+                        <div id="gauge-1" class="echart-gauge" style="width: 100px; height: 100px;" data-value="75" data-min="0" data-max="100" data-color="#26B99A"></div>
+                        <small class="text-muted">Progress</small>
+                      </div>
+
+                      <div class="col-4 mb-3">
+                        <div id="gauge-2" class="echart-gauge" style="width: 100px; height: 100px;" data-value="45" data-min="0" data-max="100" data-color="#3498DB"></div>
+                        <small class="text-muted">Performance</small>
+                      </div>
+
+                      <div class="col-4 mb-3">
+                        <div id="gauge-3" class="echart-gauge-ring" style="width: 100px; height: 100px;" data-value="88" data-min="0" data-max="100" data-color="#9B59B6"></div>
+                        <small class="text-muted">Score</small>
+                      </div>
+
+                      <div class="col-6 mb-3">
+                        <div id="gauge-4" class="echart-gauge-temp" style="width: 120px; height: 120px;" data-value="22" data-min="-10" data-max="40" data-color="#E74C3C" data-suffix="°C"></div>
+                        <small class="text-muted">Temperature</small>
+                      </div>
+
+                      <div class="col-6 mb-3">
+                        <div id="gauge-5" class="echart-gauge" style="width: 120px; height: 120px;" data-value="7" data-min="0" data-max="10" data-color="#F39C12"></div>
+                        <small class="text-muted">Rating</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <!-- Image Cropper -->
+              <div class="col-md-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2><i class="fas fa-crop-alt me-2"></i>Image Cropper</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <p class="text-muted">Crop, rotate, and download images.</p>
+
+                    <div class="row">
+                      <div class="col-lg-9 col-md-8 mb-3">
+                        <div style="min-height: 450px; max-height: 600px;">
+                          <img id="cropper-source" src="images/cropper.jpg" alt="Source Image" style="max-width: 100%; display: block;">
+                        </div>
+                      </div>
+
+                      <div class="col-lg-3 col-md-4">
+                        <div class="mb-3">
+                          <label class="form-label fw-semibold">Preview</label>
+                          <div id="cropper-preview" class="border rounded bg-light" style="width: 100%; height: 180px; overflow: hidden;"></div>
+                        </div>
+
+                        <div class="d-grid gap-2 mb-3">
+                          <button id="cropper-rotate" type="button" class="btn btn-outline-secondary">
+                            <i class="fas fa-sync-alt me-1"></i>Rotate 90°
+                          </button>
+                          <button id="cropper-reset" type="button" class="btn btn-outline-warning">
+                            <i class="fas fa-undo me-1"></i>Reset
+                          </button>
+                          <button id="cropper-download" type="button" class="btn btn-success">
+                            <i class="fas fa-download me-1"></i>Download Cropped
+                          </button>
+                        </div>
+
+                        <div class="small text-muted">
+                          <p class="mb-1"><strong>Tips:</strong></p>
+                          <ul class="ps-3 mb-0">
+                            <li>Drag to move selection</li>
+                            <li>Drag corners to resize</li>
+                            <li>Use rotate to adjust orientation</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
-        <!-- /page content -->
+        <!-- /Page Content -->
 
-        <!-- footer content -->
         <footer>
           <div class="float-end">
             Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
           </div>
           <div class="clearfix"></div>
         </footer>
-        <!-- /footer content -->
       </div>
-    </div>    <!-- Compiled JavaScript (includes jQuery, Bootstrap, and all vendor scripts) -->
-    
-    
-    <!-- Initialize Form Advanced Components -->
-<script type="text/javascript">
-// Listen for both DOMContentLoaded and our custom library event
-let domReady = false;
-let librariesReady = false;
+    </div>
 
-document.addEventListener('DOMContentLoaded', function() {
-    domReady = true;
-    tryInitialize();
-});
-
-window.addEventListener('form-libraries-loaded', function(e) {
-    librariesReady = true;
-    tryInitialize();
-});
-
-function tryInitialize() {
-    if (domReady && librariesReady) {
-        waitForLibraries();
-    }
-}
-
-// Fallback: try to initialize after a short delay even if custom event doesn't fire
-setTimeout(() => {
-    if (!librariesReady) {
-        librariesReady = true;
-        tryInitialize();
-    }
-}, 1000);
-
-// Make functions globally available for debugging
-window.initializeFormComponents = initializeComponents;
-window.tryInitialize = tryInitialize;
-window.waitForLibraries = waitForLibraries;
-
-function waitForLibraries() {
-    // Check if all required libraries are available
-    const hasJQuery = typeof window.$ !== 'undefined' && typeof window.jQuery !== 'undefined';
-    const hasInputmask = typeof window.Inputmask !== 'undefined';
-    const hasPickr = typeof window.Pickr !== 'undefined';
-    const hasCropper = typeof window.Cropper !== 'undefined';
-    const hasTempusDominus = typeof window.TempusDominus !== 'undefined';
-    
-    
-    if (hasJQuery) {
-        // Use jQuery from window object
-        const $ = window.$;
-    }
-    
-    if (!hasJQuery) {
-        setTimeout(waitForLibraries, 100);
-        return;
-    }
-    
-    // All libraries are ready, start initialization
-    initializeComponents();
-}
-
-function initializeComponents() {
-    // Use jQuery from window object
-    const $ = window.$;
-    
-
-    // Initialize Input Masks
-    if (typeof window.Inputmask !== 'undefined') {
-        const Inputmask = window.Inputmask;
-        
-        // Initialize all elements with data-inputmask attribute
-        const inputmaskElements = document.querySelectorAll('[data-inputmask]');
-        
-        inputmaskElements.forEach((element, index) => {
-            try {
-                // Let Inputmask read the data-inputmask attribute itself (auto-configuration)
-                Inputmask().mask(element);
-            } catch (error) {
-            }
-        });
-        
-        // Add some additional advanced masks
-        try {
-            // Email mask (more permissive)
-            const emailElements = document.querySelectorAll('[data-mask="email"]');
-            emailElements.forEach(element => {
-                Inputmask({
-                    mask: "*{1,20}[.*{1,20}][.*{1,20}][.*{1,20}]@*{1,20}[.*{2,6}][.*{1,2}]",
-                    greedy: false,
-                    onBeforePaste: function (pastedValue, opts) {
-                        pastedValue = pastedValue.toLowerCase();
-                        return pastedValue.replace("mailto:", "");
-                    },
-                    definitions: {
-                        '*': {
-                            validator: "[0-9A-Za-z!#$%&'*+/=?^_`{|}~-]",
-                            casing: "lower"
-                        }
-                    }
-                }).mask(element);
-            });
-            
-            // IP Address mask
-            const ipElements = document.querySelectorAll('[data-mask="ip"]');
-            ipElements.forEach(element => {
-                Inputmask("ip").mask(element);
-            });
-            
-            // Currency mask
-            const currencyElements = document.querySelectorAll('[data-mask="currency"]');
-            currencyElements.forEach(element => {
-                Inputmask("currency", {
-                    prefix: "$ ",
-                    radixPoint: ".",
-                    groupSeparator: ",",
-                    digits: 2,
-                    autoGroup: true,
-                    rightAlign: false
-                }).mask(element);
-            });
-            
-        } catch (error) {
-        }
-        
-    } else {
-    }
-
-    // Initialize Modern Color Pickers
-    if (typeof window.Pickr !== 'undefined') {
-        const Pickr = window.Pickr;
-        
-        // Helper to create pickers for every matching element
-        function createPickrForEach(selector, config, onChangeCb, resultSelector) {
-            document.querySelectorAll(selector).forEach((el) => {
-                const instance = Pickr.create({
-                    el,
-                    ...config
-                });
-                if (onChangeCb) {
-                    instance.on('change', (color) => onChangeCb(color, el));
-                }
-                instance.on('save', () => instance.hide());
-            });
-        }
-
-        const commonComponents = {
-            preview: true,
-            opacity: true,
-            hue: true,
-            interaction: {
-                hex: true,
-                rgba: true,
-                hsla: true,
-                hsva: true,
-                input: true,
-                clear: true,
-                save: true
-            }
+    <script>
+      // Initialize components when libraries are loaded
+      document.addEventListener('DOMContentLoaded', function() {
+        // Wait for libraries to be ready
+        const checkAndInit = () => {
+          if (typeof window.Pickr === 'undefined' ||
+              typeof window.noUiSlider === 'undefined' ||
+              typeof window.echarts === 'undefined') {
+            setTimeout(checkAndInit, 100);
+            return;
+          }
+          initializeComponents();
         };
 
-        // Classic theme pickers (all occurrences)
-        createPickrForEach('.color-picker-classic', {
-            theme: 'classic',
-            default: '#5367ce',
-            components: commonComponents
-        }, (color) => {
-            document.querySelectorAll('#classic-result').forEach(r=>r.value = color.toHEXA().toString());
-        });
+        // Start checking after a brief delay
+        setTimeout(checkAndInit, 200);
+      });
 
-        // Monolith theme pickers
-        createPickrForEach('.color-picker-monolith', {
-            theme: 'monolith',
-            default: '#e91e63',
-            components: commonComponents
-        }, (color)=>{
-            document.querySelectorAll('#monolith-result').forEach(r=>r.value = color.toHEXA().toString());
-        });
+      function initializeComponents() {
+        initInputMasks();
+        initColorPickers();
+        initDatePickers();
+        initRangeSliders();
+        initGauges();
+      }
 
-        // Nano theme pickers
-        createPickrForEach('.color-picker-nano', {
-            theme: 'nano',
-            default: '#ff9800',
-            components: commonComponents
-        }, (color)=>{
-            document.querySelectorAll('#nano-result').forEach(r=>r.value = color.toHEXA().toString());
-        });
+      // Input Masks
+      function initInputMasks() {
+        if (typeof window.Inputmask === 'undefined') return;
 
-        // Opacity picker
-        createPickrForEach('.color-picker-opacity', {
-            theme: 'monolith',
-            default: 'rgba(156, 39, 176, 0.7)',
-            components: commonComponents
-        }, (color)=>{
-            document.querySelectorAll('#opacity-result').forEach(r=>r.value = color.toRGBA().toString());
+        document.querySelectorAll('[data-inputmask]').forEach(el => {
+          try {
+            window.Inputmask().mask(el);
+          } catch (e) {
+            console.warn('Inputmask error:', e);
+          }
         });
+      }
 
-        // Swatches picker
-        createPickrForEach('.color-picker-swatches', {
-            theme: 'classic',
-            default: '#4caf50',
-            swatches: [
-                '#1abc9c','#2ecc71','#3498db','#9b59b6','#34495e',
-                '#16a085','#27ae60','#2980b9','#8e44ad','#2c3e50',
-                '#f1c40f','#e67e22','#e74c3c','#ecf0f1','#95a5a6',
-                '#f39c12','#d35400','#c0392b','#bdc3c7','#7f8c8d'
-            ],
-            components: commonComponents
-        }, (color)=>{
-            document.querySelectorAll('#swatches-result').forEach(r=>r.value = color.toHEXA().toString());
-        });
+      // Color Pickers
+      function initColorPickers() {
+        if (typeof window.Pickr === 'undefined') return;
 
-        // Formats picker
-        createPickrForEach('.color-picker-formats', {
-            theme: 'nano',
-            default: '#2196f3',
-            components: {
+        const Pickr = window.Pickr;
+
+        const pickers = [
+          { selector: '.color-picker-classic', theme: 'classic', default: '#5367ce', result: '#classic-result' },
+          { selector: '.color-picker-monolith', theme: 'monolith', default: '#e91e63', result: '#monolith-result' },
+          { selector: '.color-picker-nano', theme: 'nano', default: '#ff9800', result: '#nano-result' },
+          { selector: '.color-picker-opacity', theme: 'monolith', default: 'rgba(156, 39, 176, 0.7)', result: '#opacity-result' },
+          { selector: '.color-picker-swatches', theme: 'classic', default: '#4caf50', result: '#swatches-result',
+            swatches: ['#f44336', '#e91e63', '#9c27b0', '#673ab7', '#3f51b5', '#2196f3', '#03a9f4', '#00bcd4', '#009688', '#4caf50', '#8bc34a', '#cddc39', '#ffeb3b', '#ffc107', '#ff9800', '#ff5722'] },
+          { selector: '.color-picker-formats', theme: 'nano', default: '#2196f3', result: '#formats-result' }
+        ];
+
+        pickers.forEach(config => {
+          const el = document.querySelector(config.selector);
+          if (!el) return;
+
+          try {
+            const pickerConfig = {
+              el: el,
+              theme: config.theme,
+              default: config.default,
+              swatches: config.swatches || null,
+              components: {
                 preview: true,
                 opacity: true,
                 hue: true,
                 interaction: {
-                    hex: true,
-                    rgba: true,
-                    hsla: true,
-                    hsva: true,
-                    cmyk: true,
-                    input: true,
-                    clear: true,
-                    save: true
+                  hex: true,
+                  rgba: true,
+                  input: true,
+                  save: true
                 }
-            }
-        }, (color)=>{
-            document.querySelectorAll('#formats-result').forEach(r=>r.value = color.toHEXA().toString());
-        });
-        
-    }
+              }
+            };
 
-    // Initialize jQuery Knob controls
-    if ($ && $.fn.knob) {
-        $('.knob').knob({
-            draw: function() {
-                if (this.$.data('skin') == 'tron') {
-                    var a = this.angle(this.cv),
-                        sa = this.startAngle,
-                        sat = this.startAngle,
-                        ea,
-                        eat = sat + a,
-                        r = true;
-                    
-                    this.g.lineWidth = this.lineWidth;
-                    
-                    this.o.cursor && (sat = eat - 0.3) && (eat = eat + 0.3);
-                    
-                    if (this.o.displayPrevious) {
-                        ea = this.startAngle + this.angle(this.value);
-                        this.o.cursor && (sa = ea - 0.3) && (ea = ea + 0.3);
-                        this.g.beginPath();
-                        this.g.strokeStyle = this.previousColor;
-                        this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sa, ea, false);
-                        this.g.stroke();
-                    }
-                    
-                    this.g.beginPath();
-                    this.g.strokeStyle = r ? this.o.fgColor : this.fgColor;
-                    this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sat, eat, false);
-                    this.g.stroke();
-                    
-                    this.g.lineWidth = 2;
-                    this.g.beginPath();
-                    this.g.strokeStyle = this.o.fgColor;
-                    this.g.arc(this.xy, this.xy, this.radius - this.lineWidth + 1 + this.lineWidth * 2 / 3, 0, 2 * Math.PI, false);
-                    this.g.stroke();
-                    
-                    return false;
-                }
-            }
-        });
-    }
+            // Pickr.create is the static factory method
+            const instance = Pickr.create(pickerConfig);
 
-    // Initialize Cropper.js for image cropping
-    if (typeof window.Cropper !== 'undefined') {
-        const Cropper = window.Cropper;
-        const image = document.getElementById('image');
-        if (image) {
-            const cropper = new Cropper(image, {
-                viewMode: 1,
-                aspectRatio: 16 / 9,
-                autoCropArea: 0.8,
-                responsive: true,
-                preview: '.img-preview'
-            });
-            
-            // Store cropper instance globally for demo buttons
-            window.cropper = cropper;
-
-            // Simplified controls
-            const rotateBtn = document.getElementById('crop-rotate');
-            const resetBtn  = document.getElementById('crop-reset');
-            const downloadBtn = document.getElementById('crop-download');
-
-            if (rotateBtn) rotateBtn.addEventListener('click', () => cropper.rotate(90));
-            if (resetBtn)  resetBtn.addEventListener('click', () => cropper.reset());
-            if (downloadBtn) downloadBtn.addEventListener('click', () => {
-                const canvas = cropper.getCroppedCanvas({fillColor:'#fff'});
-                if (!canvas) return;
-                canvas.toBlob((blob)=>{
-                    const url = URL.createObjectURL(blob);
-                    const a = document.createElement('a');
-                    a.href = url;
-                    a.download = 'cropped.jpg';
-                    document.body.appendChild(a);
-                    a.click();
-                    document.body.removeChild(a);
-                    URL.revokeObjectURL(url);
-                }, 'image/jpeg', 0.95);
+            instance.on('change', color => {
+              const resultEl = document.querySelector(config.result);
+              if (resultEl) {
+                resultEl.value = config.result.includes('opacity') ? color.toRGBA().toString() : color.toHEXA().toString();
+              }
             });
 
-            // Handle file input for image upload
-            const inputImage = document.getElementById('inputImage');
-            if (inputImage) {
-                inputImage.addEventListener('change', function(e) {
-                    const files = e.target.files;
-                    if (files && files.length > 0) {
-                        const file = files[0];
-                        if (file.type.indexOf('image') === 0) {
-                            const reader = new FileReader();
-                            reader.onload = function(e) {
-                                if (window.cropper) {
-                                    window.cropper.replace(e.target.result);
-                                }
-                            };
-                            reader.readAsDataURL(file);
-                        }
-                    }
-                });
-            }
+            instance.on('save', () => instance.hide());
+          } catch (e) {
+            console.warn('Pickr init error:', e);
+          }
+        });
+      }
+
+      // Date Pickers
+      function initDatePickers() {
+        if (typeof window.TempusDominus === 'undefined') return;
+
+        const TD = window.TempusDominus;
+
+        // DateTime picker
+        const picker1El = document.getElementById('myDatepicker');
+        if (picker1El) {
+          new TD(picker1El, {
+            display: { components: { clock: true, date: true } },
+            localization: { format: 'MM/dd/yyyy HH:mm' }
+          });
         }
-    }
 
-    // Initialize Switchery for iOS-style toggle switches
-    if (typeof window.Switchery !== 'undefined') {
-        const Switchery = window.Switchery;
-        const elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
-        elems.forEach(function(html) {
-            const switchery = new Switchery(html, { color: '#26B99A' });
-        });
-    }
+        // Date only
+        const picker2El = document.getElementById('myDatepicker2');
+        if (picker2El) {
+          new TD(picker2El, {
+            display: { components: { clock: false, date: true } },
+            localization: { format: 'MM/dd/yyyy' }
+          });
+        }
 
-    // Initialize Ion Range Slider
-    if ($ && $.fn.ionRangeSlider) {
-        
-        // Price Range Slider
-        $('.range_01').ionRangeSlider({
-            skin: 'gentelella',
-            type: 'double',
-            min: 0,
-            max: 1000,
-            from: 200,
-            to: 800,
-            prefix: '$',
-            grid: true,
-            grid_num: 4, // Further reduced for better spacing
-            grid_margin: true, // Add margin to grid
-            force_edges: false, // Don't force edges to prevent overlap
-            hide_min_max: false,
-            hide_from_to: false,
-            prettify_enabled: true,
-            prettify_separator: ',',
-            onChange: function (data) {
-            }
-        });
-        
-        // Percentage Slider
-        $('.range_02').ionRangeSlider({
-            skin: 'gentelella',
-            type: 'single',
-            min: 0,
-            max: 100,
-            from: 50,
-            postfix: '%',
-            grid: true,
-            grid_num: 4, // Further reduced for better spacing
-            grid_margin: true,
-            force_edges: false,
-            hide_min_max: false,
-            hide_from_to: false,
-            onChange: function (data) {
-            }
-        });
-        
-        // Age Range Slider
-        $('.range_03').ionRangeSlider({
-            skin: 'gentelella',
-            type: 'double',
-            min: 18,
-            max: 65,
-            from: 25,
-            to: 45,
-            postfix: ' years',
-            grid: true,
-            grid_num: 3, // Further reduced for better spacing
-            grid_margin: true,
-            force_edges: false,
-            hide_min_max: false,
-            hide_from_to: false,
-            onChange: function (data) {
-            }
-        });
-        
-        // Temperature Range Slider
-        $('.range_04').ionRangeSlider({
-            skin: 'gentelella',
-            type: 'double',
-            min: -10,
-            max: 40,
-            from: 15,
-            to: 25,
-            postfix: '°C',
-            step: 0.5,
-            grid: true,
-            grid_num: 4, // Further reduced for better spacing
-            grid_margin: true,
-            force_edges: false,
-            hide_min_max: false,
-            hide_from_to: false,
-            prettify: function(value) {
-                return value > 0 ? '+' + value : value;
-            },
-            onChange: function (data) {
-            }
-        });
-        
-        // Time Range Slider (24H)
-        $('.range_time24').ionRangeSlider({
-            skin: 'gentelella',
-            type: 'double',
-            min: 0,
-            max: 1440, // minutes in a day
-            from: 480, // 8:00 AM
-            to: 1020,  // 5:00 PM
-            step: 15,
-            grid: true,
-            grid_num: 6, // Reduced for better spacing (every 4 hours)
-            grid_margin: true,
-            force_edges: false,
-            hide_min_max: false,
-            hide_from_to: false,
-            prettify: function(num) {
-                var hours = Math.floor(num / 60);
-                var minutes = num % 60;
-                return String(hours).padStart(2, '0') + ':' + String(minutes).padStart(2, '0');
-            },
-            onChange: function (data) {
-                    Math.floor(data.from / 60) + ':' + String(data.from % 60).padStart(2, '0'), 
-                    '-', 
-                    Math.floor(data.to / 60) + ':' + String(data.to % 60).padStart(2, '0')
-                );
-            }
-        });
-        
-        // Memory Size Slider
-        $('.range_memory').ionRangeSlider({
-            skin: 'gentelella',
-            type: 'single',
-            min: 1,
-            max: 64,
-            from: 8,
-            values: ['1GB', '2GB', '4GB', '8GB', '16GB', '32GB', '64GB'],
-            grid: false, // Disable grid for custom values to prevent overlap
-            force_edges: false,
-            hide_min_max: true, // Hide min/max since we have custom values
-            hide_from_to: false,
-            onChange: function (data) {
-            }
-        });
-        
-    }
+        // Time only
+        const picker3El = document.getElementById('myDatepicker3');
+        if (picker3El) {
+          new TD(picker3El, {
+            display: { components: { clock: true, date: false } },
+            localization: { format: 'hh:mm a' }
+          });
+        }
 
-    // Initialize TempusDominus DateTimePickers
-    if (typeof window.TempusDominus !== 'undefined') {
-        const TempusDominus = window.TempusDominus;
+        // Linked pickers
+        const picker6El = document.getElementById('datetimepicker6');
+        const picker7El = document.getElementById('datetimepicker7');
 
-        // Basic DateTime Picker
-        const picker1 = new TempusDominus(document.getElementById('myDatepicker'), {
-            display: {
-                components: {
-                    clock: true,
-                    date: true
-                }
-            },
-            localization: {
-                format: 'MM/dd/yyyy HH:mm'
-            }
-        });
+        if (picker6El && picker7El) {
+          const picker6 = new TD(picker6El, {
+            display: { components: { clock: false, date: true } },
+            localization: { format: 'MM/dd/yyyy' }
+          });
 
-        // Date Only Picker
-        const picker2 = new TempusDominus(document.getElementById('myDatepicker2'), {
-            display: {
-                components: {
-                    clock: false,
-                    date: true
-                }
-            },
-            localization: {
-                format: 'dd.MM.yyyy'
-            }
-        });
-
-        // Time Only Picker
-        const picker3 = new TempusDominus(document.getElementById('myDatepicker3'), {
-            display: {
-                components: {
-                    clock: true,
-                    date: false,
-                    hours: true,
-                    minutes: true,
-                    useTwentyfourHour: false
-                }
-            },
-            localization: {
-                format: 'hh:mm a'
-            }
-        });
-
-        // ReadOnly Picker
-        const picker4 = new TempusDominus(document.getElementById('myDatepicker4'), {
-            display: {
-                components: {
-                    clock: true,
-                    date: true
-                }
-            },
-            localization: {
-                format: 'MM/dd/yyyy HH:mm'
-            }
-        });
-
-        // Linked Pickers
-        const picker6 = new TempusDominus(document.getElementById('datetimepicker6'), {
-            display: {
-                components: {
-                    clock: false,
-                    date: true
-                }
-            },
-            localization: {
-                format: 'MM/dd/yyyy'
-            }
-        });
-
-        const picker7 = new TempusDominus(document.getElementById('datetimepicker7'), {
-            display: {
-                components: {
-                    clock: false,
-                    date: true
-                }
-            },
-            localization: {
-                format: 'MM/dd/yyyy'
-            },
+          const picker7 = new TD(picker7El, {
+            display: { components: { clock: false, date: true } },
+            localization: { format: 'MM/dd/yyyy' },
             useCurrent: false
-        });
+          });
 
-        // Link the pickers
-        picker6.subscribe('change.td', (e) => {
-            if (e.date) {
-                picker7.updateOptions({
-                    restrictions: {
-                        minDate: e.date
-                    }
-                });
+          picker6.subscribe('change.td', e => {
+            if (e.date) picker7.updateOptions({ restrictions: { minDate: e.date } });
+          });
+
+          picker7.subscribe('change.td', e => {
+            if (e.date) picker6.updateOptions({ restrictions: { maxDate: e.date } });
+          });
+        }
+      }
+
+      // Range Sliders
+      function initRangeSliders() {
+        if (typeof window.noUiSlider === 'undefined') return;
+
+        // Price Range
+        const priceSlider = document.getElementById('slider-price');
+        if (priceSlider) {
+          noUiSlider.create(priceSlider, {
+            start: [200, 800],
+            connect: true,
+            range: { min: 0, max: 1000 },
+            step: 10,
+            tooltips: true,
+            format: {
+              to: v => '$' + Math.round(v),
+              from: v => Number(v.replace('$', ''))
             }
-        });
+          });
+          priceSlider.noUiSlider.on('update', values => {
+            document.getElementById('slider-price-min').textContent = values[0];
+            document.getElementById('slider-price-max').textContent = values[1];
+          });
+        }
 
-        picker7.subscribe('change.td', (e) => {
-            if (e.date) {
-                picker6.updateOptions({
-                    restrictions: {
-                        maxDate: e.date
-                    }
-                });
+        // Percentage
+        const percentSlider = document.getElementById('slider-percentage');
+        if (percentSlider) {
+          noUiSlider.create(percentSlider, {
+            start: [50],
+            connect: [true, false],
+            range: { min: 0, max: 100 },
+            tooltips: true,
+            format: {
+              to: v => Math.round(v) + '%',
+              from: v => Number(v.replace('%', ''))
             }
+          });
+          percentSlider.noUiSlider.on('update', values => {
+            document.getElementById('slider-percentage-value').textContent = values[0];
+          });
+        }
+
+        // Age Range
+        const ageSlider = document.getElementById('slider-age');
+        if (ageSlider) {
+          noUiSlider.create(ageSlider, {
+            start: [25, 45],
+            connect: true,
+            range: { min: 18, max: 65 },
+            tooltips: true,
+            format: {
+              to: v => Math.round(v) + ' yrs',
+              from: v => Number(v.replace(' yrs', ''))
+            }
+          });
+          ageSlider.noUiSlider.on('update', values => {
+            document.getElementById('slider-age-min').textContent = values[0];
+            document.getElementById('slider-age-max').textContent = values[1];
+          });
+        }
+
+        // Temperature
+        const tempSlider = document.getElementById('slider-temperature');
+        if (tempSlider) {
+          noUiSlider.create(tempSlider, {
+            start: [15, 25],
+            connect: true,
+            range: { min: -10, max: 40 },
+            step: 1,
+            tooltips: true,
+            format: {
+              to: v => (v > 0 ? '+' : '') + Math.round(v) + '°C',
+              from: v => Number(v.replace('°C', '').replace('+', ''))
+            }
+          });
+          tempSlider.noUiSlider.on('update', values => {
+            document.getElementById('slider-temp-min').textContent = values[0];
+            document.getElementById('slider-temp-max').textContent = values[1];
+          });
+        }
+
+        // Time
+        const timeSlider = document.getElementById('slider-time');
+        if (timeSlider) {
+          const formatTime = mins => {
+            const totalMins = Math.round(Number(mins));
+            const h = Math.floor(totalMins / 60);
+            const m = totalMins % 60;
+            return String(h).padStart(2, '0') + ':' + String(m).padStart(2, '0');
+          };
+          noUiSlider.create(timeSlider, {
+            start: [480, 1020],
+            connect: true,
+            range: { min: 0, max: 1440 },
+            step: 15,
+            tooltips: [
+              { to: formatTime },
+              { to: formatTime }
+            ]
+          });
+          timeSlider.noUiSlider.on('update', (values, handle) => {
+            const minEl = document.getElementById('slider-time-min');
+            const maxEl = document.getElementById('slider-time-max');
+            if (minEl) minEl.textContent = formatTime(values[0]);
+            if (maxEl) maxEl.textContent = formatTime(values[1]);
+          });
+        }
+
+        // Memory
+        const memSlider = document.getElementById('slider-memory');
+        if (memSlider) {
+          const memValues = [1, 2, 4, 8, 16, 32, 64];
+          noUiSlider.create(memSlider, {
+            start: [3],
+            connect: [true, false],
+            range: { min: 0, max: memValues.length - 1 },
+            step: 1,
+            tooltips: {
+              to: v => memValues[Math.round(v)] + ' GB'
+            },
+            format: {
+              to: v => Math.round(v),
+              from: v => Number(v)
+            }
+          });
+          memSlider.noUiSlider.on('update', values => {
+            document.getElementById('slider-memory-value').textContent = memValues[Math.round(values[0])] + ' GB';
+          });
+        }
+      }
+
+      // ECharts Gauges
+      function initGauges() {
+        if (typeof window.echarts === 'undefined') return;
+
+        // Standard gauges
+        document.querySelectorAll('.echart-gauge').forEach(el => {
+          const value = parseFloat(el.dataset.value) || 0;
+          const min = parseFloat(el.dataset.min) || 0;
+          const max = parseFloat(el.dataset.max) || 100;
+          const color = el.dataset.color || '#26B99A';
+
+          const chart = echarts.init(el);
+          chart.setOption({
+            series: [{
+              type: 'gauge',
+              startAngle: 200,
+              endAngle: -20,
+              min, max,
+              itemStyle: { color },
+              progress: { show: true, width: 8 },
+              pointer: { show: false },
+              axisLine: { lineStyle: { width: 8, color: [[1, '#E6EBF8']] } },
+              axisTick: { show: false },
+              splitLine: { show: false },
+              axisLabel: { show: false },
+              detail: {
+                valueAnimation: true,
+                fontSize: 16,
+                fontWeight: 'bold',
+                color,
+                offsetCenter: [0, '30%'],
+                formatter: '{value}'
+              },
+              data: [{ value }]
+            }]
+          });
+          window.addEventListener('resize', () => chart.resize());
         });
 
-    }
+        // Ring gauges
+        document.querySelectorAll('.echart-gauge-ring').forEach(el => {
+          const value = parseFloat(el.dataset.value) || 0;
+          const color = el.dataset.color || '#26B99A';
 
-}
-</script>
+          const chart = echarts.init(el);
+          chart.setOption({
+            series: [{
+              type: 'gauge',
+              startAngle: 90,
+              endAngle: -270,
+              pointer: { show: false },
+              progress: { show: true, overlap: false, roundCap: true, clip: false, itemStyle: { color } },
+              axisLine: { lineStyle: { width: 12, color: [[1, '#E6EBF8']] } },
+              splitLine: { show: false },
+              axisTick: { show: false },
+              axisLabel: { show: false },
+              detail: { fontSize: 18, fontWeight: 'bold', color, offsetCenter: [0, 0], formatter: '{value}%' },
+              data: [{ value }]
+            }]
+          });
+          window.addEventListener('resize', () => chart.resize());
+        });
+
+        // Temperature gauges
+        document.querySelectorAll('.echart-gauge-temp').forEach(el => {
+          const value = parseFloat(el.dataset.value) || 0;
+          const min = parseFloat(el.dataset.min) || -20;
+          const max = parseFloat(el.dataset.max) || 40;
+          const color = el.dataset.color || '#E74C3C';
+          const suffix = el.dataset.suffix || '°C';
+
+          const chart = echarts.init(el);
+          chart.setOption({
+            series: [{
+              type: 'gauge',
+              startAngle: 200,
+              endAngle: -20,
+              min, max,
+              itemStyle: { color },
+              progress: { show: true, width: 8 },
+              pointer: { show: false },
+              axisLine: { lineStyle: { width: 8, color: [[1, '#E6EBF8']] } },
+              axisTick: { show: false },
+              splitLine: { show: false },
+              axisLabel: { show: false },
+              detail: {
+                fontSize: 16,
+                fontWeight: 'bold',
+                color,
+                offsetCenter: [0, '30%'],
+                formatter: '{value}' + suffix
+              },
+              data: [{ value }]
+            }]
+          });
+          window.addEventListener('resize', () => chart.resize());
+        });
+      }
+    </script>
   </body>
 </html>

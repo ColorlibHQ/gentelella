@@ -1,10 +1,5 @@
 // Calendar.html specific JavaScript with FullCalendar integration
 
-// Import jQuery setup first
-import $ from './jquery-setup.js';
-window.jQuery = window.$ = $;
-globalThis.jQuery = globalThis.$ = $;
-
 // Import DOMPurify for XSS protection
 import DOMPurify from 'dompurify';
 

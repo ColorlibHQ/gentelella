@@ -48,7 +48,10 @@ export default defineConfig({
           ],
 
           // Form libraries - loaded on form pages
-          'vendor-forms': ['choices.js', 'nouislider', 'autosize', 'switchery', '@eonasdan/tempus-dominus'],
+          'vendor-forms': ['choices.js', 'nouislider', '@eonasdan/tempus-dominus'],
+
+          // File upload - Uppy (replaces Dropzone)
+          'vendor-upload': ['@uppy/core', '@uppy/dashboard', '@uppy/xhr-upload'],
 
           // DataTables core - frequently used
           'vendor-tables': ['datatables.net', 'datatables.net-bs5'],
@@ -63,9 +66,6 @@ export default defineConfig({
             'datatables.net-fixedheader',
             'datatables.net-keytable'
           ],
-
-          // UI utilities and progress
-          'vendor-ui': ['nprogress'],
 
           // Date/time and small utilities
           'vendor-utils': ['dayjs', 'skycons']
@@ -179,10 +179,9 @@ export default defineConfig({
       'bootstrap',
       '@popperjs/core',
       'dayjs',
-      'nprogress'
+      '@simonwep/pickr'
     ],
-    force: false,
-    exclude: ['@simonwep/pickr']
+    force: false
   },
   resolve: {
     // Modern build without jQuery aliases

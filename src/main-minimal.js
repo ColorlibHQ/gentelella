@@ -71,10 +71,7 @@ window.EasingFunctions = EasingFunctions;
 
 // Import jQuery-free vendor libraries
 
-// Switchery (iOS-style toggle switches)
-import Switchery from 'switchery';
-window.Switchery = Switchery;
-globalThis.Switchery = Switchery;
+// Toggle switches now use Bootstrap 5 native form-switch component
 
 // Choices.js (Select2 replacement)
 import Choices from 'choices.js';
@@ -147,9 +144,10 @@ import Inputmask from 'inputmask';
 window.Inputmask = Inputmask;
 globalThis.Inputmask = Inputmask;
 
-// Modern Color Picker
+// Modern Color Picker (Pickr)
+// Pickr uses UMD format - import as namespace and get the class
 import * as PickrModule from '@simonwep/pickr';
-const Pickr = PickrModule.default || PickrModule.Pickr || PickrModule;
+const Pickr = PickrModule.default || PickrModule;
 window.Pickr = Pickr;
 globalThis.Pickr = Pickr;
 

@@ -6439,7 +6439,7 @@ input[type="radio"].flat:disabled + label {
     border-color: #dee2e6;
     transform: translateY(-1px);
   }
-  
+
   .metric-icon {
     width: 48px;
     height: 48px;
@@ -6448,10 +6448,154 @@ input[type="radio"].flat:disabled + label {
     align-items: center;
     justify-content: center;
     font-size: 20px;
-    
+
     &.primary { background: rgba(13, 110, 253, 0.1); }
     &.success { background: rgba(25, 135, 84, 0.1); }
     &.info { background: rgba(13, 202, 240, 0.1); }
     &.secondary { background: rgba(108, 117, 125, 0.1); }
   }
+}
+
+// ========================================
+// noUiSlider Custom Styles (Gentelella Theme)
+// ========================================
+
+.noui-slider {
+  height: 8px;
+  margin: 10px 0 15px;
+}
+
+// Track (base bar)
+.noUi-target {
+  background: #e9ecef;
+  border-radius: 4px;
+  border: none;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+// Connected range (colored bar between handles)
+.noUi-connect {
+  background: linear-gradient(135deg, #1ABB9C 0%, #16a085 100%);
+  border-radius: 4px;
+}
+
+// Handle (draggable)
+.noUi-handle {
+  height: 20px;
+  width: 20px;
+  top: -7px;
+  right: -10px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid #1ABB9C;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+  &::before,
+  &::after {
+    display: none; // Remove default lines
+  }
+
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: 0 3px 10px rgba(26, 187, 156, 0.3);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(26, 187, 156, 0.25);
+  }
+
+  &:active {
+    transform: scale(1.05);
+  }
+}
+
+// Horizontal specific adjustments
+.noUi-horizontal .noUi-handle {
+  right: -10px;
+}
+
+// Tooltips
+.noUi-tooltip {
+  display: block;
+  position: absolute;
+  border: none;
+  border-radius: 6px;
+  background: #2A3F54;
+  color: #ffffff;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.noUi-horizontal .noUi-tooltip {
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  // Arrow
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #2A3F54;
+  }
+}
+
+// Slider container styling
+.slider-container {
+  padding: 15px 0;
+
+  .slider-value {
+    font-size: 13px;
+    font-weight: 500;
+  }
+}
+
+// Color variations for different slider types
+.slider-container.price-slider .noUi-connect {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+}
+
+.slider-container.percentage-slider .noUi-connect {
+  background: linear-gradient(135deg, #007bff 0%, #6610f2 100%);
+}
+
+.slider-container.age-slider .noUi-connect {
+  background: linear-gradient(135deg, #6f42c1 0%, #e83e8c 100%);
+}
+
+.slider-container.temperature-slider .noUi-connect {
+  background: linear-gradient(135deg, #fd7e14 0%, #ffc107 100%);
+}
+
+.slider-container.time-slider .noUi-connect {
+  background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+}
+
+.slider-container.memory-slider .noUi-connect {
+  background: linear-gradient(135deg, #dc3545 0%, #fd7e14 100%);
+}
+
+// Pips (scale markers) if needed
+.noUi-pips {
+  color: #6c757d;
+  font-size: 11px;
+}
+
+.noUi-marker {
+  background: #dee2e6;
+}
+
+.noUi-value {
+  color: #6c757d;
 }

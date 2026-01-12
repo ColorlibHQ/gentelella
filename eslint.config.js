@@ -1,6 +1,4 @@
 import js from '@eslint/js';
-import tsPlugin from '@typescript-eslint/eslint-plugin';
-import tsParser from '@typescript-eslint/parser';
 import prettierConfig from 'eslint-config-prettier';
 
 export default [
@@ -59,17 +57,14 @@ export default [
         bootstrap: 'readonly',
         Chart: 'readonly',
         echarts: 'readonly',
-        NProgress: 'readonly',
         dayjs: 'readonly',
         Skycons: 'readonly',
-        Switchery: 'readonly',
         DataTable: 'readonly',
         L: 'readonly',
-        autosize: 'readonly',
         hljs: 'readonly',
         Choices: 'readonly',
         noUiSlider: 'readonly',
-        Dropzone: 'readonly',
+        Uppy: 'readonly',
         Cropper: 'readonly',
         Inputmask: 'readonly',
         moment: 'readonly',
@@ -97,18 +92,18 @@ export default [
       'no-console': 'warn',
       'no-debugger': 'error',
       'no-alert': 'warn',
-      
+
       // Best Practices
       'eqeqeq': ['error', 'always'],
       'curly': ['error', 'all'],
       'no-eval': 'error',
       'no-implied-eval': 'error',
       'no-new-func': 'error',
-      
+
       // Security
       'no-script-url': 'error',
       'no-void': 'error',
-      
+
       // Style (basic)
       'semi': ['error', 'always'],
       'quotes': ['error', 'single', { avoidEscape: true }],
@@ -116,26 +111,6 @@ export default [
       'comma-dangle': ['error', 'never'],
       'no-trailing-spaces': 'error',
       'eol-last': 'error'
-    }
-  },
-  {
-    files: ['**/*.ts', '**/*.tsx'],
-    languageOptions: {
-      parser: tsParser,
-      parserOptions: {
-        ecmaVersion: 2022,
-        sourceType: 'module'
-      }
-    },
-    plugins: {
-      '@typescript-eslint': tsPlugin
-    },
-    rules: {
-      ...tsPlugin.configs.recommended.rules,
-      '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
-      '@typescript-eslint/no-explicit-any': 'warn',
-      '@typescript-eslint/explicit-function-return-type': 'off',
-      '@typescript-eslint/explicit-module-boundary-types': 'off'
     }
   },
   {

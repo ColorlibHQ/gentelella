@@ -36,10 +36,6 @@ document.addEventListener('DOMContentLoaded', function () {
 import dayjs from 'dayjs';
 window.dayjs = dayjs;
 
-// NProgress (Loading bar) - used across many pages
-import NProgress from 'nprogress';
-window.NProgress = NProgress;
-
 // Essential UI components are now handled by Bootstrap 5 and custom modules
 
 // Add global error boundary to catch and handle errors gracefully

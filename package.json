@@ -51,8 +51,6 @@
   "devDependencies": {
     "@eslint/js": "^9.39.2",
     "@testing-library/dom": "^10.4.1",
-    "@typescript-eslint/eslint-plugin": "^8.52.0",
-    "@typescript-eslint/parser": "^8.52.0",
     "@vitest/coverage-v8": "^4.0.16",
     "eslint": "^9.39.2",
     "eslint-config-prettier": "^10.1.8",
@@ -62,7 +60,6 @@
     "rollup-plugin-visualizer": "^6.0.5",
     "sass": "^1.97.2",
     "terser": "^5.44.1",
-    "typescript": "^5.9.3",
     "vite": "^7.3.1",
     "vitest": "^4.0.16"
   },
@@ -75,7 +72,9 @@
     "@fullcalendar/timegrid": "^6.1.20",
     "@popperjs/core": "^2.11.8",
     "@simonwep/pickr": "^1.9.1",
-    "autosize": "^6.0.1",
+    "@uppy/core": "^4.0.0",
+    "@uppy/dashboard": "^4.0.0",
+    "@uppy/xhr-upload": "^4.0.0",
     "bootstrap": "^5.3.8",
     "chart.js": "^4.5.1",
     "choices.js": "^11.1.0",
@@ -90,14 +89,12 @@
     "datatables.net-responsive-bs5": "^3.0.7",
     "dayjs": "^1.11.19",
     "dompurify": "^3.3.1",
-    "dropzone": "^6.0.0-beta.2",
     "echarts": "^6.0.0",
     "inputmask": "^5.0.9",
     "jszip": "^3.10.1",
     "leaflet": "^1.9.4",
     "nouislider": "^15.8.1",
-    "nprogress": "^0.2.0",
-    "skycons": "^1.0.0",
-    "switchery": "^0.0.2"
+    "quill": "^2.0.3",
+    "skycons": "^1.0.0"
   }
 }

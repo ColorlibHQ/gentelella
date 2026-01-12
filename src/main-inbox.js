@@ -1,9 +1,4 @@
-// Inbox.html specific JavaScript with Bootstrap WYSIWYG editor
-
-// Import jQuery setup first
-import $ from './jquery-setup.js';
-window.jQuery = window.$ = $;
-globalThis.jQuery = globalThis.$ = $;
+// Inbox.html specific JavaScript with Quill rich text editor
 
 // Import security utilities
 import { sanitizeHtml } from './utils/security.js';
@@ -21,101 +16,100 @@ import './js/helpers/smartresize.js';
 import './js/sidebar.js';
 import './js/init.js';
 
-// Bootstrap WYSIWYG Editor
-// bootstrap-wysiwyg removed - was unused dependency
+// Quill Rich Text Editor (replaces jQuery WYSIWYG)
+import Quill from 'quill';
+import 'quill/dist/quill.snow.css';
 
-// Initialize WYSIWYG editor when DOM is ready
+// Make Quill available globally for debugging
+window.Quill = Quill;
+
+// Store editor instance globally
+let quillEditor = null;
+
+// Initialize Quill editor when DOM is ready
 document.addEventListener('DOMContentLoaded', function () {
-  // Check if we have the required elements
-  const editorEl = document.getElementById('editor');
-  const toolbarEl = document.querySelector('[data-role="editor-toolbar"]');
+  const editorContainer = document.getElementById('editor-container');
 
-  if (editorEl && toolbarEl && window.jQuery) {
+  if (editorContainer) {
     try {
-      // Initialize the WYSIWYG editor
-      $(editorEl).wysiwyg({
-        toolbarSelector: '[data-role="editor-toolbar"]',
-        activeToolbarClass: 'btn-info',
-        hotKeys: {
-          'ctrl+b meta+b': 'bold',
-          'ctrl+i meta+i': 'italic',
-          'ctrl+u meta+u': 'underline',
-          'ctrl+z meta+z': 'undo',
-          'ctrl+y meta+y meta+shift+z': 'redo'
-        }
+      // Initialize Quill with Snow theme
+      quillEditor = new Quill('#editor-container', {
+        theme: 'snow',
+        placeholder: 'Type your message here...',
+        modules: {
+          toolbar: [
+            [{ font: [] }, { size: ['small', false, 'large', 'huge'] }],
+            ['bold', 'italic', 'underline', 'strike'],
+            [{ color: [] }, { background: [] }],
+            [{ list: 'ordered' }, { list: 'bullet' }],
+            [{ align: [] }],
+            ['link', 'image'],
+            ['clean'],
+          ],
+        },
       });
 
-      // Style the editor
-      $(editorEl).css({
-        'min-height': '200px',
-        padding: '10px',
-        border: '1px solid #E6E9ED',
-        'border-radius': '4px',
-        'background-color': '#fff'
-      });
-
-      // Add some default content
-      $(editorEl).html(sanitizeHtml('<p>Start typing your message here...</p>'));
-
-      // Handle toolbar button states
-      $(editorEl).on('keyup mouseup', function () {
-        // Update toolbar button states based on current selection
-        $('[data-role="editor-toolbar"] [data-edit]').each(function () {
-          const command = $(this).data('edit');
-          if (document.queryCommandState(command)) {
-            $(this).addClass('active btn-info');
-          } else {
-            $(this).removeClass('active btn-info');
-          }
-        });
-      });
-
-      // Handle file upload for images
-      $('#file-upload').on('change', function (e) {
-        const file = e.target.files[0];
-        if (file && file.type.match('image.*')) {
-          const reader = new FileReader();
-          reader.onload = function (event) {
-            const img =
-              '<img src="' +
-              event.target.result +
-              '" class="img-responsive" style="max-width: 100%; height: auto;">';
-            $(editorEl).append(img);
-          };
-          reader.readAsDataURL(file);
-        }
-      });
+      // Store instance globally for access
+      window.quillEditor = quillEditor;
     } catch (error) {
+      console.error('Failed to initialize Quill editor:', error);
     }
-  } else {
+  }
+
+  // Handle file attachment for images
+  const attachFile = document.getElementById('attach-file');
+  if (attachFile) {
+    attachFile.addEventListener('change', function (e) {
+      const file = e.target.files[0];
+      if (file && file.type.match('image.*') && quillEditor) {
+        const reader = new FileReader();
+        reader.onload = function (event) {
+          const range = quillEditor.getSelection(true);
+          quillEditor.insertEmbed(range.index, 'image', event.target.result);
+        };
+        reader.readAsDataURL(file);
+      }
+    });
   }
 });
 
 // Handle send button
 document.addEventListener('click', function (e) {
-  if (e.target.matches('[data-action="send"]')) {
+  if (
+    e.target.matches('#send') ||
+    e.target.matches('[data-action="send"]') ||
+    e.target.closest('#send')
+  ) {
     e.preventDefault();
-    const content = document.getElementById('editor').innerHTML;
+
+    // Get content from Quill
+    const content = quillEditor ? quillEditor.root.innerHTML : '';
 
     // Show success message
     if (window.bootstrap && window.bootstrap.Toast) {
       const toastHtml = `
-                <div class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
-                    <div class="d-flex">
-                        <div class="toast-body">
-                            Message sent successfully!
-                        </div>
-                        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
-                    </div>
-                </div>
-            `;
+        <div class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="d-flex">
+            <div class="toast-body">
+              Message sent successfully!
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+          </div>
+        </div>
+      `;
 
       const toastContainer = document.createElement('div');
+      toastContainer.className = 'toast-container position-fixed top-0 end-0 p-3';
       toastContainer.innerHTML = sanitizeHtml(toastHtml);
       document.body.appendChild(toastContainer);
 
       const toast = new bootstrap.Toast(toastContainer.querySelector('.toast'));
       toast.show();
+
+      // Remove container after toast hides
+      toastContainer.addEventListener('hidden.bs.toast', () => {
+        toastContainer.remove();
+      });
     } else {
       alert('Message sent successfully!');
     }

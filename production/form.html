@@ -793,25 +793,21 @@
 										<div class="mb-3 row">
 											<label class="control-label col-md-3 col-sm-3">Switch</label>
 											<div class="col-md-9 col-sm-9">
-												<div class="">
-													<label>
-														<input type="checkbox" class="js-switch" checked /> Checked
-													</label>
+												<div class="form-check form-switch mb-2">
+													<input class="form-check-input" type="checkbox" role="switch" id="switch1" checked>
+													<label class="form-check-label" for="switch1">Checked</label>
 												</div>
-												<div class="">
-													<label>
-														<input type="checkbox" class="js-switch" /> Unchecked
-													</label>
+												<div class="form-check form-switch mb-2">
+													<input class="form-check-input" type="checkbox" role="switch" id="switch2">
+													<label class="form-check-label" for="switch2">Unchecked</label>
 												</div>
-												<div class="">
-													<label>
-														<input type="checkbox" class="js-switch" disabled="disabled" /> Disabled
-													</label>
+												<div class="form-check form-switch mb-2">
+													<input class="form-check-input" type="checkbox" role="switch" id="switch3" disabled>
+													<label class="form-check-label" for="switch3">Disabled</label>
 												</div>
-												<div class="">
-													<label>
-														<input type="checkbox" class="js-switch" disabled="disabled" checked="checked" /> Disabled Checked
-													</label>
+												<div class="form-check form-switch mb-2">
+													<input class="form-check-input" type="checkbox" role="switch" id="switch4" checked disabled>
+													<label class="form-check-label" for="switch4">Disabled Checked</label>
 												</div>
 											</div>
 										</div>
@@ -1280,16 +1276,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }, false);
     });
 
-    // Initialize Switchery for all .js-switch elements
-    if (typeof Switchery !== 'undefined') {
-        const switchElements = document.querySelectorAll('.js-switch');
-        switchElements.forEach(function(element) {
-            new Switchery(element, { 
-                color: '#26B99A',
-                size: 'small' 
-            });
-        });
-    }
+    // Bootstrap 5 switches are native - no JS initialization needed
+    // Custom styling applied via CSS variables in custom.scss
 
     // Enhanced form interactions
     const formInputs = document.querySelectorAll('.form-control, .form-select');
