@@ -2,151 +2,474 @@
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Gentelella - Free Bootstrap Admin Template by Colorlib. Beautiful, responsive admin dashboard template for building modern web applications.">
+    <meta name="description" content="Gentelella - Free Bootstrap 5 Admin Template. Modern, responsive admin dashboard built with Vite, no jQuery dependency. 40+ pages, Chart.js, ECharts, DataTables included.">
     <meta name="author" content="Colorlib">
+    <meta name="keywords" content="bootstrap 5, admin template, dashboard, vite, no jquery, free, open source, chart.js, echarts, datatables">
     <link rel="icon" href="images/favicon.ico" type="image/ico" />
 
-    <title>Gentelella - Free Bootstrap Admin Dashboard Template by Colorlib</title>
+    <title>Gentelella - Free Bootstrap 5 Admin Dashboard Template | No jQuery | Vite Powered</title>
 
-    <!-- Vite Entry Point - will bundle all styles -->
+    <!-- Vite Entry Point -->
     <script type="module" src="/src/main-minimal.js"></script>
-    
-    <!-- Custom Landing Page Styles are now in external SCSS -->
   </head>
 
   <body class="landing-page">
+    <!-- Navigation -->
+    <nav class="landing-nav" id="landingNav">
+      <div class="nav-container">
+        <a href="#" class="nav-logo">
+          <span class="logo-icon">G</span>
+          <span class="logo-text">Gentelella</span>
+        </a>
+
+        <div class="nav-links">
+          <a href="#features">Features</a>
+          <a href="#tech-stack">Tech Stack</a>
+          <a href="#pages">Pages</a>
+          <a href="#use-cases">Use Cases</a>
+        </div>
+
+        <div class="nav-actions">
+          <a href="https://github.com/ColorlibHQ/gentelella" class="nav-btn nav-btn-outline" target="_blank" rel="noopener">
+            <i class="fab fa-github"></i> GitHub
+          </a>
+          <a href="index.html" class="nav-btn nav-btn-primary">
+            <i class="fas fa-play"></i> Live Demo
+          </a>
+        </div>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" id="hero">
       <div class="container container-custom">
         <div class="hero-content">
+          <div class="hero-badges">
+            <span class="badge badge-bootstrap">
+              <i class="fab fa-bootstrap"></i> Bootstrap 5.3
+            </span>
+            <span class="badge badge-vite">
+              <i class="fas fa-bolt"></i> Vite Powered
+            </span>
+            <span class="badge badge-jquery">
+              <i class="fas fa-times-circle"></i> No jQuery
+            </span>
+          </div>
+
           <h1>Gentelella</h1>
-          <p class="subtitle">Free Bootstrap Admin Dashboard Template</p>
-          <p class="credit">by <a href="https://colorlib.com" style="color: white; text-decoration: underline;">Colorlib</a></p>
+          <p class="subtitle">Free Bootstrap 5 Admin Dashboard Template</p>
+          <p class="credit">by <a href="https://colorlib.com" target="_blank" rel="noopener">Colorlib</a></p>
           <p class="description">
-            A beautiful, responsive admin template built with Bootstrap 5. Perfect for building 
-            modern dashboards, admin panels, and web applications with elegant design and rich functionality.
+            A modern, responsive admin template built with Bootstrap 5 and Vite.
+            Zero jQuery dependency, lightning-fast builds, and 40+ ready-to-use pages
+            for building professional dashboards and web applications.
           </p>
+
           <div class="cta-buttons">
             <a href="index.html" class="btn-primary-custom">
               <i class="fas fa-chart-line"></i> Explore Dashboard
             </a>
-            <a href="login.html" class="btn-outline-custom">
-              <i class="fas fa-sign-in-alt"></i> Try Demo
+            <a href="https://github.com/ColorlibHQ/gentelella" class="btn-outline-custom" target="_blank" rel="noopener">
+              <i class="fab fa-github"></i> View on GitHub
             </a>
           </div>
+
+          <div class="hero-trust">
+            <div class="trust-item">
+              <i class="fas fa-star"></i>
+              <span>21k+ GitHub Stars</span>
+            </div>
+            <div class="trust-item">
+              <i class="fas fa-download"></i>
+              <span>Millions of Downloads</span>
+            </div>
+            <div class="trust-item">
+              <i class="fas fa-code-branch"></i>
+              <span>Active Community</span>
+            </div>
+          </div>
         </div>
+      </div>
+      <div class="hero-wave">
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+          <path d="M0,64 C480,150 960,-20 1440,64 L1440,120 L0,120 Z" fill="white"/>
+        </svg>
       </div>
     </section>
 
     <!-- Features Section -->
-    <section class="features">
+    <section class="features" id="features">
       <div class="container container-features">
         <div class="section-title">
-          <h4>Powerful Features</h4>
-          <p>Everything you need to build modern admin dashboards and web applications with confidence</p>
+          <span class="section-label">Why Choose Gentelella</span>
+          <h2>Powerful Features</h2>
+          <p>Everything you need to build modern admin dashboards and web applications</p>
         </div>
-        
+
         <div class="features-grid">
-          <div class="feature-card">
+          <div class="feature-card" data-animate>
             <div class="feature-icon">
               <i class="fas fa-mobile-alt"></i>
             </div>
             <h4>Fully Responsive</h4>
-            <p>Works flawlessly on all devices - desktop, tablet, and mobile. Built with a mobile-first approach for optimal user experience across all screen sizes.</p>
+            <p>Works flawlessly on all devices with a mobile-first approach. Breakpoints optimized for desktop, tablet, and mobile screens.</p>
           </div>
-          
-          <div class="feature-card">
+
+          <div class="feature-card" data-animate>
             <div class="feature-icon">
               <i class="fas fa-chart-bar"></i>
             </div>
             <h4>Rich Components</h4>
-            <p>Includes interactive charts, data tables, forms, widgets, and dozens of UI components to build comprehensive admin panels and dashboards.</p>
+            <p>50+ UI components including interactive charts, data tables, forms, widgets, and modals ready for production use.</p>
           </div>
-          
-          <div class="feature-card">
+
+          <div class="feature-card" data-animate>
             <div class="feature-icon">
-              <i class="fas fa-code"></i>
+              <i class="fas fa-bolt"></i>
             </div>
-            <h4>Clean Code</h4>
-            <p>Well-structured, semantic HTML with clean CSS and organized JavaScript. Easy to customize, extend, and maintain for long-term projects.</p>
+            <h4>Vite Powered</h4>
+            <p>Lightning-fast development with Vite's instant HMR. Optimized production builds with automatic code splitting.</p>
           </div>
-          
-          <div class="feature-card">
+
+          <div class="feature-card" data-animate>
+            <div class="feature-icon">
+              <i class="fas fa-feather-alt"></i>
+            </div>
+            <h4>No jQuery</h4>
+            <p>Modern vanilla JavaScript throughout. Smaller bundle size, better performance, and cleaner code architecture.</p>
+          </div>
+
+          <div class="feature-card" data-animate>
             <div class="feature-icon">
               <i class="fas fa-palette"></i>
             </div>
             <h4>Modern Design</h4>
-            <p>Contemporary flat design with beautiful color schemes, smooth animations, and intuitive user interface for engaging user experiences.</p>
+            <p>Clean, professional aesthetics with consistent spacing, typography, and color system. Dark mode ready.</p>
           </div>
-          
-          <div class="feature-card">
+
+          <div class="feature-card" data-animate>
             <div class="feature-icon">
-              <i class="fas fa-rocket"></i>
+              <i class="fas fa-code"></i>
             </div>
-            <h4>Fast Performance</h4>
-            <p>Optimized for speed with minimal CSS/JS footprint and modern build tools. Loads quickly and runs smoothly on all modern browsers.</p>
-          </div>
-          
-          <div class="feature-card">
-            <div class="feature-icon">
-              <i class="fas fa-tools"></i>
-            </div>
-            <h4>Easy Customization</h4>
-            <p>Modular SCSS files and well-documented code make it simple to customize colors, layouts, and components to match your brand.</p>
+            <h4>Developer Friendly</h4>
+            <p>ESLint + Prettier configured. Modular SCSS. Well-documented code that's easy to customize and extend.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Dashboard Preview Section -->
-    <section class="dashboard-preview-section">
-      <div class="container container-wide-custom">
+    <!-- Tech Stack Section -->
+    <section class="tech-stack" id="tech-stack">
+      <div class="container container-features">
         <div class="section-title">
-          <h4>Dashboard Preview</h4>
-          <p>See how your admin dashboard will look with real data and modern interface design</p>
+          <span class="section-label">Built With</span>
+          <h2>Modern Technology Stack</h2>
+          <p>Powered by the latest tools and libraries for optimal performance</p>
         </div>
-        
-        <div class="dashboard-preview">
-          <div class="dashboard-content">
-            <div class="dashboard-header">
-              <div>
-                <h3 class="dashboard-title">Analytics Dashboard</h3>
-                <p class="dashboard-subtitle">Real-time insights and performance metrics</p>
-              </div>
-              <div class="dashboard-user">
-                <div class="user-avatar">JD</div>
-                <div>
-                  <div style="font-weight: 600; color: var(--text-dark);">John Doe</div>
-                  <div>Administrator</div>
-                </div>
+
+        <div class="tech-grid">
+          <div class="tech-card tech-card-featured" data-animate>
+            <div class="tech-icon tech-icon-bootstrap">
+              <i class="fab fa-bootstrap"></i>
+            </div>
+            <h4>Bootstrap 5.3</h4>
+            <p>Latest Bootstrap with no jQuery dependency. Full utility classes and component library.</p>
+            <span class="tech-tag">CSS Framework</span>
+          </div>
+
+          <div class="tech-card tech-card-featured" data-animate>
+            <div class="tech-icon tech-icon-vite">
+              <i class="fas fa-bolt"></i>
+            </div>
+            <h4>Vite</h4>
+            <p>Next-generation frontend tooling. Instant server start and lightning-fast HMR.</p>
+            <span class="tech-tag">Build Tool</span>
+          </div>
+
+          <div class="tech-card" data-animate>
+            <div class="tech-icon tech-icon-chartjs">
+              <i class="fas fa-chart-pie"></i>
+            </div>
+            <h4>Chart.js</h4>
+            <p>Simple yet flexible JavaScript charting for designers and developers.</p>
+            <span class="tech-tag">Charts</span>
+          </div>
+
+          <div class="tech-card" data-animate>
+            <div class="tech-icon tech-icon-echarts">
+              <i class="fas fa-chart-area"></i>
+            </div>
+            <h4>ECharts</h4>
+            <p>Powerful, interactive charting and visualization library by Apache.</p>
+            <span class="tech-tag">Charts</span>
+          </div>
+
+          <div class="tech-card" data-animate>
+            <div class="tech-icon tech-icon-datatables">
+              <i class="fas fa-table"></i>
+            </div>
+            <h4>DataTables</h4>
+            <p>Advanced interaction controls for HTML tables with sorting, filtering, and pagination.</p>
+            <span class="tech-tag">Tables</span>
+          </div>
+
+          <div class="tech-card" data-animate>
+            <div class="tech-icon tech-icon-dayjs">
+              <i class="fas fa-calendar-alt"></i>
+            </div>
+            <h4>Day.js</h4>
+            <p>2KB immutable date library. Fast alternative to Moment.js with same API.</p>
+            <span class="tech-tag">Dates</span>
+          </div>
+
+          <div class="tech-card" data-animate>
+            <div class="tech-icon tech-icon-choices">
+              <i class="fas fa-list-ul"></i>
+            </div>
+            <h4>Choices.js</h4>
+            <p>Lightweight, configurable select boxes, text inputs, and multi-select.</p>
+            <span class="tech-tag">Forms</span>
+          </div>
+
+          <div class="tech-card" data-animate>
+            <div class="tech-icon tech-icon-eslint">
+              <i class="fas fa-check-circle"></i>
+            </div>
+            <h4>ESLint + Prettier</h4>
+            <p>Code quality and formatting tools pre-configured for consistent codebase.</p>
+            <span class="tech-tag">Dev Tools</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pages Showcase Section -->
+    <section class="pages-showcase" id="pages">
+      <div class="container container-features">
+        <div class="section-title">
+          <span class="section-label">40+ Pages Included</span>
+          <h2>Template Pages</h2>
+          <p>Ready-to-use pages for every admin dashboard need</p>
+        </div>
+
+        <div class="pages-grid">
+          <a href="index.html" class="page-card" data-animate>
+            <div class="page-preview">
+              <div class="page-placeholder">
+                <i class="fas fa-tachometer-alt"></i>
               </div>
             </div>
-            
-            <div class="stats-grid">
-              <div class="stat-card">
-                <span class="stat-number">2,847</span>
-                <div class="stat-label">Total Users</div>
-              </div>
-              <div class="stat-card">
-                <span class="stat-number">$28,567</span>
-                <div class="stat-label">Revenue</div>
-              </div>
-              <div class="stat-card">
-                <span class="stat-number">1,428</span>
-                <div class="stat-label">Orders</div>
+            <div class="page-info">
+              <h5>Main Dashboard</h5>
+              <p>Analytics overview with charts and widgets</p>
+            </div>
+          </a>
+
+          <a href="index2.html" class="page-card" data-animate>
+            <div class="page-preview">
+              <div class="page-placeholder">
+                <i class="fas fa-chart-line"></i>
               </div>
             </div>
-            
-            <div class="chart-area">
-              <div class="chart-placeholder">
+            <div class="page-info">
+              <h5>Dashboard v2</h5>
+              <p>Alternative dashboard layout</p>
+            </div>
+          </a>
+
+          <a href="index3.html" class="page-card" data-animate>
+            <div class="page-preview">
+              <div class="page-placeholder">
+                <i class="fas fa-chart-bar"></i>
+              </div>
+            </div>
+            <div class="page-info">
+              <h5>Dashboard v3</h5>
+              <p>Data-focused dashboard variant</p>
+            </div>
+          </a>
+
+          <a href="echarts.html" class="page-card" data-animate>
+            <div class="page-preview">
+              <div class="page-placeholder">
                 <i class="fas fa-chart-area"></i>
-                <p>Interactive Charts & Analytics</p>
-                <small>Real-time data visualization with Chart.js, ECharts & more</small>
               </div>
             </div>
+            <div class="page-info">
+              <h5>ECharts</h5>
+              <p>Interactive Apache ECharts demos</p>
+            </div>
+          </a>
+
+          <a href="chartjs.html" class="page-card" data-animate>
+            <div class="page-preview">
+              <div class="page-placeholder">
+                <i class="fas fa-chart-pie"></i>
+              </div>
+            </div>
+            <div class="page-info">
+              <h5>Chart.js</h5>
+              <p>Beautiful Chart.js visualizations</p>
+            </div>
+          </a>
+
+          <a href="tables_dynamic.html" class="page-card" data-animate>
+            <div class="page-preview">
+              <div class="page-placeholder">
+                <i class="fas fa-table"></i>
+              </div>
+            </div>
+            <div class="page-info">
+              <h5>DataTables</h5>
+              <p>Advanced sortable, filterable tables</p>
+            </div>
+          </a>
+
+          <a href="form_advanced.html" class="page-card" data-animate>
+            <div class="page-preview">
+              <div class="page-placeholder">
+                <i class="fas fa-edit"></i>
+              </div>
+            </div>
+            <div class="page-info">
+              <h5>Advanced Forms</h5>
+              <p>Date pickers, selects, sliders</p>
+            </div>
+          </a>
+
+          <a href="e_commerce.html" class="page-card" data-animate>
+            <div class="page-preview">
+              <div class="page-placeholder">
+                <i class="fas fa-shopping-cart"></i>
+              </div>
+            </div>
+            <div class="page-info">
+              <h5>E-Commerce</h5>
+              <p>Product management dashboard</p>
+            </div>
+          </a>
+
+          <a href="calendar.html" class="page-card" data-animate>
+            <div class="page-preview">
+              <div class="page-placeholder">
+                <i class="fas fa-calendar"></i>
+              </div>
+            </div>
+            <div class="page-info">
+              <h5>Calendar</h5>
+              <p>Event scheduling interface</p>
+            </div>
+          </a>
+
+          <a href="inbox.html" class="page-card" data-animate>
+            <div class="page-preview">
+              <div class="page-placeholder">
+                <i class="fas fa-envelope"></i>
+              </div>
+            </div>
+            <div class="page-info">
+              <h5>Inbox</h5>
+              <p>Email client interface</p>
+            </div>
+          </a>
+
+          <a href="projects.html" class="page-card" data-animate>
+            <div class="page-preview">
+              <div class="page-placeholder">
+                <i class="fas fa-project-diagram"></i>
+              </div>
+            </div>
+            <div class="page-info">
+              <h5>Projects</h5>
+              <p>Project management board</p>
+            </div>
+          </a>
+
+          <a href="contacts.html" class="page-card" data-animate>
+            <div class="page-preview">
+              <div class="page-placeholder">
+                <i class="fas fa-address-book"></i>
+              </div>
+            </div>
+            <div class="page-info">
+              <h5>Contacts</h5>
+              <p>Contact directory with profiles</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="pages-cta">
+          <a href="index.html" class="btn-secondary-custom">
+            <i class="fas fa-th-large"></i> View All 40+ Pages
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <section class="use-cases" id="use-cases">
+      <div class="container container-features">
+        <div class="section-title section-title-light">
+          <span class="section-label">Perfect For</span>
+          <h2>Use Cases</h2>
+          <p>Gentelella adapts to any admin dashboard project</p>
+        </div>
+
+        <div class="use-cases-grid">
+          <div class="use-case-card" data-animate>
+            <div class="use-case-icon">
+              <i class="fas fa-cloud"></i>
+            </div>
+            <h4>SaaS Dashboards</h4>
+            <p>Build analytics and control panels for your SaaS products with comprehensive data visualization.</p>
+          </div>
+
+          <div class="use-case-card" data-animate>
+            <div class="use-case-icon">
+              <i class="fas fa-users-cog"></i>
+            </div>
+            <h4>Admin Panels</h4>
+            <p>Create powerful backend administration interfaces with user management and settings.</p>
+          </div>
+
+          <div class="use-case-card" data-animate>
+            <div class="use-case-icon">
+              <i class="fas fa-handshake"></i>
+            </div>
+            <h4>CRM Systems</h4>
+            <p>Manage customer relationships with contact directories, pipelines, and activity tracking.</p>
+          </div>
+
+          <div class="use-case-card" data-animate>
+            <div class="use-case-icon">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <h4>Analytics Platforms</h4>
+            <p>Display complex data with interactive charts, graphs, and real-time metrics dashboards.</p>
+          </div>
+
+          <div class="use-case-card" data-animate>
+            <div class="use-case-icon">
+              <i class="fas fa-store"></i>
+            </div>
+            <h4>E-Commerce Backends</h4>
+            <p>Manage products, orders, inventory, and customer data in a unified interface.</p>
+          </div>
+
+          <div class="use-case-card" data-animate>
+            <div class="use-case-icon">
+              <i class="fas fa-tasks"></i>
+            </div>
+            <h4>Project Management</h4>
+            <p>Track projects, tasks, timelines, and team collaboration with intuitive interfaces.</p>
           </div>
         </div>
       </div>
@@ -156,21 +479,51 @@
     <section class="stats-section">
       <div class="container container-features">
         <div class="stats-grid-main">
-          <div class="stat-item-main">
+          <div class="stat-item-main" data-animate>
+            <h3>40+</h3>
+            <p>Template Pages</p>
+          </div>
+          <div class="stat-item-main" data-animate>
             <h3>50+</h3>
             <p>UI Components</p>
           </div>
-          <div class="stat-item-main">
-            <h3>15+</h3>
-            <p>Sample Pages</p>
+          <div class="stat-item-main" data-animate>
+            <h3>21k+</h3>
+            <p>GitHub Stars</p>
           </div>
-          <div class="stat-item-main">
-            <h3>100%</h3>
-            <p>Responsive</p>
+          <div class="stat-item-main" data-animate>
+            <h3>MIT</h3>
+            <p>Open Source License</p>
           </div>
-          <div class="stat-item-main">
-            <h3>Free</h3>
-            <p>Open Source</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Community Section -->
+    <section class="community-section" id="community">
+      <div class="container container-custom">
+        <div class="community-content">
+          <div class="community-badge">
+            <i class="fas fa-heart"></i>
+          </div>
+          <h2>Open Source & Free Forever</h2>
+          <p>
+            Gentelella is released under the MIT license. Use it for personal projects,
+            client work, or commercial products. No attribution required, though always appreciated.
+          </p>
+          <div class="community-links">
+            <a href="https://github.com/ColorlibHQ/gentelella" class="community-link" target="_blank" rel="noopener">
+              <i class="fab fa-github"></i>
+              <span>Star on GitHub</span>
+            </a>
+            <a href="https://github.com/ColorlibHQ/gentelella/issues" class="community-link" target="_blank" rel="noopener">
+              <i class="fas fa-bug"></i>
+              <span>Report Issues</span>
+            </a>
+            <a href="https://github.com/ColorlibHQ/gentelella/fork" class="community-link" target="_blank" rel="noopener">
+              <i class="fas fa-code-branch"></i>
+              <span>Fork Project</span>
+            </a>
           </div>
         </div>
       </div>
@@ -179,14 +532,14 @@
     <!-- CTA Section -->
     <section class="cta-section">
       <div class="container container-custom">
-        <h4>Ready to Build Something Amazing?</h4>
-        <p>Join thousands of developers who trust Gentelella for building beautiful admin dashboards and web applications</p>
+        <h2>Ready to Build Something Amazing?</h2>
+        <p>Start building your next admin dashboard with Gentelella today</p>
         <div class="cta-buttons">
           <a href="index.html" class="btn-primary-custom">
-            <i class="fas fa-play"></i> Start Exploring
+            <i class="fas fa-rocket"></i> Get Started
           </a>
-          <a href="login.html" class="btn-outline-custom">
-            <i class="fas fa-user"></i> View Demo
+          <a href="https://github.com/ColorlibHQ/gentelella" class="btn-outline-custom" target="_blank" rel="noopener">
+            <i class="fab fa-github"></i> Download Free
           </a>
         </div>
       </div>
@@ -194,9 +547,122 @@
 
     <!-- Footer -->
     <footer class="footer">
-      <div class="container container-custom">
-        <p>&copy; 2025 Gentelella. Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>. Built with ❤️ for developers worldwide.</p>
+      <div class="container container-features">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="footer-logo">
+              <span class="logo-icon">G</span>
+              <span class="logo-text">Gentelella</span>
+            </div>
+            <p>Free Bootstrap 5 admin template by Colorlib. Built with modern tools for modern developers.</p>
+          </div>
+
+          <div class="footer-links">
+            <h5>Demo Pages</h5>
+            <ul>
+              <li><a href="index.html">Dashboard</a></li>
+              <li><a href="chartjs.html">Charts</a></li>
+              <li><a href="tables_dynamic.html">Tables</a></li>
+              <li><a href="form_advanced.html">Forms</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-links">
+            <h5>Resources</h5>
+            <ul>
+              <li><a href="https://github.com/ColorlibHQ/gentelella" target="_blank" rel="noopener">GitHub</a></li>
+              <li><a href="https://github.com/ColorlibHQ/gentelella/issues" target="_blank" rel="noopener">Issues</a></li>
+              <li><a href="https://colorlib.com" target="_blank" rel="noopener">Colorlib</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-links">
+            <h5>Legal</h5>
+            <ul>
+              <li><a href="https://github.com/ColorlibHQ/gentelella/blob/master/LICENSE" target="_blank" rel="noopener">MIT License</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2025 Gentelella. Made with <i class="fas fa-heart" style="color: #e74c3c;"></i> by <a href="https://colorlib.com" target="_blank" rel="noopener">Colorlib</a></p>
+        </div>
       </div>
     </footer>
+
+    <!-- Smooth Scroll & Animations Script -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Sticky Navigation
+        const nav = document.getElementById('landingNav');
+        const hero = document.getElementById('hero');
+
+        function handleScroll() {
+          if (window.scrollY > 50) {
+            nav.classList.add('nav-scrolled');
+          } else {
+            nav.classList.remove('nav-scrolled');
+          }
+        }
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        handleScroll();
+
+        // Mobile Navigation Toggle
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.querySelector('.nav-links');
+        const navActions = document.querySelector('.nav-actions');
+
+        if (navToggle) {
+          navToggle.addEventListener('click', function() {
+            navToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            navActions.classList.toggle('active');
+          });
+        }
+
+        // Smooth Scroll for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href === '#') return;
+
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+              const navHeight = nav.offsetHeight;
+              const targetPosition = target.offsetTop - navHeight;
+
+              window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+              });
+
+              // Close mobile menu if open
+              navToggle.classList.remove('active');
+              navLinks.classList.remove('active');
+              navActions.classList.remove('active');
+            }
+          });
+        });
+
+        // Intersection Observer for Animations
+        const animateElements = document.querySelectorAll('[data-animate]');
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('animate-in');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.1,
+          rootMargin: '0px 0px -50px 0px'
+        });
+
+        animateElements.forEach(el => observer.observe(el));
+      });
+    </script>
   </body>
 </html>

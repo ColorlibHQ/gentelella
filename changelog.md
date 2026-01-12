@@ -28,6 +28,12 @@
 
 ### New Features
 
+- **Test Suite**: Added comprehensive unit testing infrastructure
+  - Vitest testing framework with JSDOM environment
+  - 126 unit tests covering all utility modules
+  - Test coverage for security.js, validation.js, dom.js, logger.js
+  - New npm scripts: `test`, `test:watch`, `test:coverage`
+
 - **Logger Utility**: Added centralized development-only logging (`src/utils/logger.js`)
   - Wraps console methods with environment checks
   - Automatic suppression in production builds
