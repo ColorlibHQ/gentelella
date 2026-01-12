@@ -1,7 +1,7 @@
 .daterangepicker {
   .ranges {
     li {
-      color: #73879c;
+      color: var(--gt-text-primary);
 
       &.active,
       &:hover {
@@ -48,7 +48,7 @@
   td {
     &.in-range {
       background: #e4e7ea;
-      color: #73879c;
+      color: var(--gt-text-primary);
     }
 
     &.active,
@@ -102,7 +102,7 @@
         }
 
         & tr:first-child {
-          background: #1abb9c;
+          background: var(--gt-primary);
         }
       }
 
@@ -121,11 +121,11 @@
     .calendar-table {
       thead {
         & tr {
-          color: #1abb9c;
+          color: var(--gt-primary);
         }
 
         & tr:first-child {
-          color: #73879c;
+          color: var(--gt-text-primary);
         }
       }
     }
@@ -136,7 +136,7 @@
       thead {
         & tr:first-child {
           color: #fff;
-          background: #1abb9c;
+          background: var(--gt-primary);
         }
       }
     }

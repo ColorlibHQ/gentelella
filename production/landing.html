@@ -13,6 +13,28 @@
 
     <!-- Vite Entry Point -->
     <script type="module" src="/src/main-minimal.js"></script>
+
+    <!-- Critical styles for sticky nav (must come after Vite to override SCSS) -->
+    <style>
+      body.landing-page .landing-nav.nav-scrolled {
+        background: #ffffff !important;
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1) !important;
+        padding: 12px 0 !important;
+      }
+      body.landing-page .landing-nav.nav-scrolled .nav-logo .logo-text,
+      body.landing-page .landing-nav.nav-scrolled .nav-links a {
+        color: #2A3F54 !important;
+      }
+      body.landing-page .landing-nav.nav-scrolled .nav-btn-outline {
+        border-color: #2A3F54 !important;
+        color: #2A3F54 !important;
+      }
+      body.landing-page .landing-nav.nav-scrolled .nav-btn-primary {
+        background: linear-gradient(135deg, #1ABB9C 0%, #16a085 100%) !important;
+        border-color: #1ABB9C !important;
+        color: white !important;
+      }
+    </style>
   </head>
 
   <body class="landing-page">
@@ -35,7 +57,7 @@
           <a href="https://github.com/ColorlibHQ/gentelella" class="nav-btn nav-btn-outline" target="_blank" rel="noopener">
             <i class="fab fa-github"></i> GitHub
           </a>
-          <a href="index.html" class="nav-btn nav-btn-primary">
+          <a href="https://colorlib.com/polygon/gentelella/index.html" class="nav-btn nav-btn-primary" target="_blank" rel="noopener">
             <i class="fas fa-play"></i> Live Demo
           </a>
         </div>
@@ -47,6 +69,75 @@
         </button>
       </div>
     </nav>
+    <!-- Sticky Nav Script - Must be immediately after nav -->
+    <script>
+      (function() {
+        var nav = document.getElementById('landingNav');
+        if (!nav) return;
+
+        function getScrollTop() {
+          return Math.max(
+            window.scrollY || 0,
+            window.pageYOffset || 0,
+            document.documentElement.scrollTop || 0,
+            document.body.scrollTop || 0
+          );
+        }
+
+        function updateNav() {
+          var scrollY = getScrollTop();
+
+          if (scrollY > 50) {
+            nav.style.background = '#ffffff';
+            nav.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            nav.style.padding = '12px 0';
+            // Update text colors
+            var logoText = nav.querySelector('.logo-text');
+            var links = nav.querySelectorAll('.nav-links a');
+            var btnOutline = nav.querySelector('.nav-btn-outline');
+            if (logoText) logoText.style.color = '#2A3F54';
+            for (var i = 0; i < links.length; i++) {
+              links[i].style.color = '#2A3F54';
+            }
+            if (btnOutline) {
+              btnOutline.style.borderColor = '#2A3F54';
+              btnOutline.style.color = '#2A3F54';
+            }
+          } else {
+            nav.style.background = 'transparent';
+            nav.style.boxShadow = 'none';
+            nav.style.padding = '20px 0';
+            // Reset text colors
+            var logoText = nav.querySelector('.logo-text');
+            var links = nav.querySelectorAll('.nav-links a');
+            var btnOutline = nav.querySelector('.nav-btn-outline');
+            if (logoText) logoText.style.color = '';
+            for (var i = 0; i < links.length; i++) {
+              links[i].style.color = '';
+            }
+            if (btnOutline) {
+              btnOutline.style.borderColor = '';
+              btnOutline.style.color = '';
+            }
+          }
+        }
+
+        // Bind to multiple possible scroll sources
+        window.addEventListener('scroll', updateNav, { passive: true });
+        document.addEventListener('scroll', updateNav, { passive: true });
+        document.body.addEventListener('scroll', updateNav, { passive: true });
+        document.documentElement.addEventListener('scroll', updateNav, { passive: true });
+
+        // Run on load
+        updateNav();
+        setTimeout(updateNav, 100);
+
+        // Debug: Log scroll values on any interaction
+        window.addEventListener('wheel', function() {
+          console.log('Wheel event - scrollY:', getScrollTop());
+        }, { passive: true });
+      })();
+    </script>
 
     <!-- Hero Section -->
     <section class="hero" id="hero">
@@ -74,7 +165,7 @@
           </p>
 
           <div class="cta-buttons">
-            <a href="index.html" class="btn-primary-custom">
+            <a href="https://colorlib.com/polygon/gentelella/index.html" class="btn-primary-custom" target="_blank" rel="noopener">
               <i class="fas fa-chart-line"></i> Explore Dashboard
             </a>
             <a href="https://github.com/ColorlibHQ/gentelella" class="btn-outline-custom" target="_blank" rel="noopener">
@@ -247,6 +338,24 @@
             <p>Code quality and formatting tools pre-configured for consistent codebase.</p>
             <span class="tech-tag">Dev Tools</span>
           </div>
+
+          <div class="tech-card" data-animate>
+            <div class="tech-icon tech-icon-fullcalendar">
+              <i class="fas fa-calendar-check"></i>
+            </div>
+            <h4>FullCalendar</h4>
+            <p>Full-featured event calendar with drag-and-drop, scheduling, and multiple views.</p>
+            <span class="tech-tag">Calendar</span>
+          </div>
+
+          <div class="tech-card" data-animate>
+            <div class="tech-icon tech-icon-leaflet">
+              <i class="fas fa-map-marked-alt"></i>
+            </div>
+            <h4>Leaflet</h4>
+            <p>Mobile-friendly interactive maps with markers, popups, and custom layers.</p>
+            <span class="tech-tag">Maps</span>
+          </div>
         </div>
       </div>
     </section>
@@ -261,7 +370,7 @@
         </div>
 
         <div class="pages-grid">
-          <a href="index.html" class="page-card" data-animate>
+          <a href="https://colorlib.com/polygon/gentelella/index.html" class="page-card" target="_blank" rel="noopener" data-animate>
             <div class="page-preview">
               <div class="page-placeholder">
                 <i class="fas fa-tachometer-alt"></i>
@@ -273,7 +382,7 @@
             </div>
           </a>
 
-          <a href="index2.html" class="page-card" data-animate>
+          <a href="https://colorlib.com/polygon/gentelella/index2.html" class="page-card" target="_blank" rel="noopener" data-animate>
             <div class="page-preview">
               <div class="page-placeholder">
                 <i class="fas fa-chart-line"></i>
@@ -285,7 +394,7 @@
             </div>
           </a>
 
-          <a href="index3.html" class="page-card" data-animate>
+          <a href="https://colorlib.com/polygon/gentelella/index3.html" class="page-card" target="_blank" rel="noopener" data-animate>
             <div class="page-preview">
               <div class="page-placeholder">
                 <i class="fas fa-chart-bar"></i>
@@ -297,7 +406,7 @@
             </div>
           </a>
 
-          <a href="echarts.html" class="page-card" data-animate>
+          <a href="https://colorlib.com/polygon/gentelella/echarts.html" class="page-card" target="_blank" rel="noopener" data-animate>
             <div class="page-preview">
               <div class="page-placeholder">
                 <i class="fas fa-chart-area"></i>
@@ -309,7 +418,7 @@
             </div>
           </a>
 
-          <a href="chartjs.html" class="page-card" data-animate>
+          <a href="https://colorlib.com/polygon/gentelella/chartjs.html" class="page-card" target="_blank" rel="noopener" data-animate>
             <div class="page-preview">
               <div class="page-placeholder">
                 <i class="fas fa-chart-pie"></i>
@@ -321,7 +430,7 @@
             </div>
           </a>
 
-          <a href="tables_dynamic.html" class="page-card" data-animate>
+          <a href="https://colorlib.com/polygon/gentelella/tables_dynamic.html" class="page-card" target="_blank" rel="noopener" data-animate>
             <div class="page-preview">
               <div class="page-placeholder">
                 <i class="fas fa-table"></i>
@@ -333,7 +442,7 @@
             </div>
           </a>
 
-          <a href="form_advanced.html" class="page-card" data-animate>
+          <a href="https://colorlib.com/polygon/gentelella/form_advanced.html" class="page-card" target="_blank" rel="noopener" data-animate>
             <div class="page-preview">
               <div class="page-placeholder">
                 <i class="fas fa-edit"></i>
@@ -345,7 +454,7 @@
             </div>
           </a>
 
-          <a href="e_commerce.html" class="page-card" data-animate>
+          <a href="https://colorlib.com/polygon/gentelella/e_commerce.html" class="page-card" target="_blank" rel="noopener" data-animate>
             <div class="page-preview">
               <div class="page-placeholder">
                 <i class="fas fa-shopping-cart"></i>
@@ -357,7 +466,7 @@
             </div>
           </a>
 
-          <a href="calendar.html" class="page-card" data-animate>
+          <a href="https://colorlib.com/polygon/gentelella/calendar.html" class="page-card" target="_blank" rel="noopener" data-animate>
             <div class="page-preview">
               <div class="page-placeholder">
                 <i class="fas fa-calendar"></i>
@@ -369,7 +478,7 @@
             </div>
           </a>
 
-          <a href="inbox.html" class="page-card" data-animate>
+          <a href="https://colorlib.com/polygon/gentelella/inbox.html" class="page-card" target="_blank" rel="noopener" data-animate>
             <div class="page-preview">
               <div class="page-placeholder">
                 <i class="fas fa-envelope"></i>
@@ -381,7 +490,7 @@
             </div>
           </a>
 
-          <a href="projects.html" class="page-card" data-animate>
+          <a href="https://colorlib.com/polygon/gentelella/projects.html" class="page-card" target="_blank" rel="noopener" data-animate>
             <div class="page-preview">
               <div class="page-placeholder">
                 <i class="fas fa-project-diagram"></i>
@@ -393,7 +502,7 @@
             </div>
           </a>
 
-          <a href="contacts.html" class="page-card" data-animate>
+          <a href="https://colorlib.com/polygon/gentelella/contacts.html" class="page-card" target="_blank" rel="noopener" data-animate>
             <div class="page-preview">
               <div class="page-placeholder">
                 <i class="fas fa-address-book"></i>
@@ -407,7 +516,7 @@
         </div>
 
         <div class="pages-cta">
-          <a href="index.html" class="btn-secondary-custom">
+          <a href="https://colorlib.com/polygon/gentelella/index.html" class="btn-secondary-custom" target="_blank" rel="noopener">
             <i class="fas fa-th-large"></i> View All 40+ Pages
           </a>
         </div>
@@ -535,7 +644,7 @@
         <h2>Ready to Build Something Amazing?</h2>
         <p>Start building your next admin dashboard with Gentelella today</p>
         <div class="cta-buttons">
-          <a href="index.html" class="btn-primary-custom">
+          <a href="https://colorlib.com/polygon/gentelella/index.html" class="btn-primary-custom" target="_blank" rel="noopener">
             <i class="fas fa-rocket"></i> Get Started
           </a>
           <a href="https://github.com/ColorlibHQ/gentelella" class="btn-outline-custom" target="_blank" rel="noopener">
@@ -560,10 +669,10 @@
           <div class="footer-links">
             <h5>Demo Pages</h5>
             <ul>
-              <li><a href="index.html">Dashboard</a></li>
-              <li><a href="chartjs.html">Charts</a></li>
-              <li><a href="tables_dynamic.html">Tables</a></li>
-              <li><a href="form_advanced.html">Forms</a></li>
+              <li><a href="https://colorlib.com/polygon/gentelella/index.html" target="_blank" rel="noopener">Dashboard</a></li>
+              <li><a href="https://colorlib.com/polygon/gentelella/chartjs.html" target="_blank" rel="noopener">Charts</a></li>
+              <li><a href="https://colorlib.com/polygon/gentelella/tables_dynamic.html" target="_blank" rel="noopener">Tables</a></li>
+              <li><a href="https://colorlib.com/polygon/gentelella/form_advanced.html" target="_blank" rel="noopener">Forms</a></li>
             </ul>
           </div>
 
@@ -593,20 +702,7 @@
     <!-- Smooth Scroll & Animations Script -->
     <script>
       document.addEventListener('DOMContentLoaded', function() {
-        // Sticky Navigation
         const nav = document.getElementById('landingNav');
-        const hero = document.getElementById('hero');
-
-        function handleScroll() {
-          if (window.scrollY > 50) {
-            nav.classList.add('nav-scrolled');
-          } else {
-            nav.classList.remove('nav-scrolled');
-          }
-        }
-
-        window.addEventListener('scroll', handleScroll, { passive: true });
-        handleScroll();
 
         // Mobile Navigation Toggle
         const navToggle = document.getElementById('navToggle');

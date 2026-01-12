@@ -29,25 +29,44 @@ export default defineConfig({
         manualChunks: {
           // Core UI framework - used on all pages
           'vendor-core': ['bootstrap', '@popperjs/core'],
-          
-          // Chart libraries - only loaded on chart pages  
-          'vendor-charts': ['chart.js', 'echarts'],
-          
+
+          // Chart.js - used on chartjs.html, chartjs2.html, chart3.html, other_charts.html
+          'vendor-chartjs': ['chart.js'],
+
+          // ECharts - separate chunk, only used on echarts.html (large library ~800KB)
+          'vendor-echarts': ['echarts'],
+
           // Maps - separate since it's large and only used on map pages
           'vendor-maps': ['leaflet'],
-          
+
+          // FullCalendar - only used on calendar.html (~220KB total)
+          'vendor-calendar': [
+            '@fullcalendar/core',
+            '@fullcalendar/daygrid',
+            '@fullcalendar/timegrid',
+            '@fullcalendar/interaction'
+          ],
+
           // Form libraries - loaded on form pages
           'vendor-forms': ['choices.js', 'nouislider', 'autosize', 'switchery', '@eonasdan/tempus-dominus'],
-          
+
           // DataTables core - frequently used
           'vendor-tables': ['datatables.net', 'datatables.net-bs5'],
-          
-          // DataTables extensions - only loaded when needed
-          'vendor-tables-ext': ['jszip'],
-          
+
+          // DataTables extensions - only loaded when needed (export, responsive, etc.)
+          'vendor-tables-ext': [
+            'jszip',
+            'datatables.net-buttons',
+            'datatables.net-buttons-bs5',
+            'datatables.net-responsive',
+            'datatables.net-responsive-bs5',
+            'datatables.net-fixedheader',
+            'datatables.net-keytable'
+          ],
+
           // UI utilities and progress
           'vendor-ui': ['nprogress'],
-          
+
           // Date/time and small utilities
           'vendor-utils': ['dayjs', 'skycons']
         },
@@ -124,10 +143,18 @@ export default defineConfig({
         drop_console: true,
         drop_debugger: true,
         unsafe_comps: true,
-        passes: 2
+        passes: 3,
+        pure_getters: true,
+        reduce_vars: true,
+        collapse_vars: true,
+        dead_code: true,
+        unused: true
       },
       mangle: {
         safari10: true
+      },
+      format: {
+        comments: false
       }
     }
   },
@@ -161,17 +188,17 @@ export default defineConfig({
     // Modern build without jQuery aliases
   },
   css: {
-    // Enable CSS source maps in development
-    devSourcemap: true,
+    // Enable CSS source maps only in development (saves ~8MB in production build)
+    devSourcemap: process.env.NODE_ENV !== 'production',
     preprocessorOptions: {
       scss: {
         // Silence Sass deprecation warnings
         silenceDeprecations: ['legacy-js-api', 'import', 'global-builtin', 'color-functions'],
         // Additional settings for better performance
         includePaths: ['node_modules'],
-        // Generate source maps for better debugging
-        sourceMap: true,
-        sourceMapContents: true
+        // Generate source maps only in development
+        sourceMap: process.env.NODE_ENV !== 'production',
+        sourceMapContents: process.env.NODE_ENV !== 'production'
       }
     }
   },

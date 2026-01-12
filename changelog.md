@@ -44,10 +44,53 @@
   - Spacing, typography, shadows, transitions
   - Z-index scale and border radius tokens
 
+### Bundle Optimization
+
+- **Removed Unused Dependencies**: Eliminated dead weight from bundle
+  - Removed `flot` (4.2 MB package, never imported)
+  - Removed `moment` (67 KB, dayjs already used as lightweight alternative)
+
+- **Smart Chunk Splitting**: Optimized vendor chunks for better caching
+  - Split Chart.js (203 KB) and ECharts (1,109 KB) into separate chunks
+  - Pages using only Chart.js now save ~1 MB vs loading both
+  - Added `vendor-calendar` chunk for FullCalendar (256 KB)
+  - Extended `vendor-tables-ext` to include all DataTables extensions
+
+- **Production Build Optimization**
+  - Disabled CSS source maps in production (saves ~8 MB build size)
+  - Enhanced Terser compression with `pure_getters`, `reduce_vars`, `collapse_vars`
+  - 3-pass minification for additional size reduction
+
 ### SCSS Improvements
 
 - **Fixed Color Inconsistencies**: Resolved `.aero` color class conflict between files
 - **Improved Organization**: Added table of contents to custom.scss for navigation
+
+### Bootstrap 5 Consolidation (Migration Phase 1-3)
+
+- **CSS Variables Integration**: Replaced ~90 hardcoded color values with CSS custom properties
+  - Primary colors (#1abb9c, #2a3f54, #e74c3c, etc.) now use `var(--gt-*)` references
+  - Enables easier theming and dark mode support
+
+- **Reduced !important Declarations**: Cut from 278 to 138 (50% reduction)
+  - Sidebar toggle states now use `body.nav-md`/`body.nav-sm` for specificity
+  - Typography hierarchy uses body prefix instead of !important
+  - Profile and panel sections modernized
+
+- **Bootstrap Collapse Integration**: Panel toolbox now uses Bootstrap 5's Collapse API
+  - Collapse/expand functionality leverages native Bootstrap component
+  - Automatic icon rotation via collapse events
+  - Removed dependency on custom slideUp/slideDown for panels
+
+- **Float to Flexbox Conversion**: Modernized key layout sections
+  - `.profile` section uses flexbox instead of float
+  - `.x_title` panel header uses flexbox for title/filter alignment
+  - `.nav_menu` converted to flexbox layout
+  - Removed float from `.x_content`
+
+- **Color Utility Documentation**: Added migration guide comments for legacy color classes
+  - Documents Bootstrap equivalents (.blue → .text-info, .bg-green → .bg-success)
+  - Classes kept for backward compatibility with existing HTML
 
 ### Documentation Updates
 

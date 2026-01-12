@@ -150,6 +150,11 @@ const DOM = {
   },
 
   // Animations (jQuery-like slide effects)
+  // NOTE: For new code, prefer using Bootstrap 5's Collapse component:
+  //   - Add 'collapse' class to element
+  //   - Use data-bs-toggle="collapse" on trigger
+  //   - Or use: new bootstrap.Collapse(element).show/hide()
+  // These functions are kept for backward compatibility with existing code.
   slideDown: (element, duration = 300) => {
     element.style.height = '0px';
     element.style.overflow = 'hidden';

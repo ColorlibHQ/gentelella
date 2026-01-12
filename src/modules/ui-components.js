@@ -11,42 +11,29 @@ import DOM from '../utils/dom.js';
 import logger from '../utils/logger.js';
 
 /**
- * Panel Toolbox Functionality
- * Modernized from jQuery event handlers
+ * Panel Toolbox Functionality - Bootstrap 5 Compatible
+ * Uses Bootstrap Collapse for animations (initialized in init.js)
+ * This module handles close functionality only
  */
 export function initializePanelToolbox() {
-  // Close panel functionality - MODERNIZED
+  // Close panel functionality - uses CSS fade transition
   DOM.selectAll('.close-link').forEach(link => {
     DOM.on(link, 'click', function (e) {
       e.preventDefault();
       const panel = DOM.closest(this, '.x_panel');
       if (panel) {
-        DOM.slideUp(panel);
+        // Fade out and remove panel
+        panel.style.transition = 'opacity 0.3s ease';
+        panel.style.opacity = '0';
+        setTimeout(() => {
+          panel.remove();
+        }, 300);
       }
     });
   });
 
-  // Collapse panel functionality - MODERNIZED
-  DOM.selectAll('.collapse-link').forEach(link => {
-    DOM.on(link, 'click', function (e) {
-      e.preventDefault();
-      const panel = DOM.closest(this, '.x_panel');
-      const content = DOM.find(panel, '.x_content');
-      const icon = DOM.find(this, 'i');
-
-      if (content && icon) {
-        if (content.style.display === 'none') {
-          DOM.slideDown(content);
-          DOM.removeClass(icon, 'fa-chevron-down');
-          DOM.addClass(icon, 'fa-chevron-up');
-        } else {
-          DOM.slideUp(content);
-          DOM.removeClass(icon, 'fa-chevron-up');
-          DOM.addClass(icon, 'fa-chevron-down');
-        }
-      }
-    });
-  });
+  // NOTE: Collapse functionality is now handled via Bootstrap Collapse API
+  // See init.js for the Bootstrap-based collapse implementation
 
   logger.log('Panel toolbox initialized (jQuery-free)');
 }

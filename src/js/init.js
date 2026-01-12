@@ -65,42 +65,56 @@ async function initializeDatePickers() {
 }
 
 /**
- * Panel Toolbox Functionality - MODERNIZED FROM JQUERY
- * Handles collapse/expand and close functionality for x_panel elements
+ * Panel Toolbox Functionality - Bootstrap 5 Compatible
+ * Uses Bootstrap 5's Collapse API for smooth animations
+ * Falls back to CSS transitions if Bootstrap is not available
  */
 function initializePanelToolbox() {
-  // Collapse/Expand functionality
-  DOM.selectAll('.collapse-link').forEach(link => {
-    DOM.on(link, 'click', function (event) {
-      event.preventDefault();
+  // Collapse/Expand functionality - use Bootstrap Collapse API
+  DOM.selectAll('.collapse-link').forEach((link, index) => {
+    const panel = DOM.closest(link, '.x_panel');
+    const content = DOM.find(panel, '.x_content');
 
-      const panel = DOM.closest(link, '.x_panel');
+    if (!panel || !content) {
+      return;
+    }
+
+    // Add unique ID if not present (needed for Bootstrap Collapse)
+    if (!content.id) {
+      content.id = `panel-content-${index}`;
+    }
+
+    // Add Bootstrap collapse classes if not present
+    if (!DOM.hasClass(content, 'collapse')) {
+      DOM.addClass(content, 'collapse');
+      DOM.addClass(content, 'show'); // Start expanded
+    }
+
+    // Set up the toggle attributes
+    link.setAttribute('data-bs-toggle', 'collapse');
+    link.setAttribute('data-bs-target', `#${content.id}`);
+    link.setAttribute('aria-expanded', 'true');
+    link.setAttribute('aria-controls', content.id);
+
+    // Handle icon rotation via Bootstrap collapse events
+    content.addEventListener('hide.bs.collapse', () => {
       const icon = DOM.find(link, 'i');
-      const content = DOM.find(panel, '.x_content');
-
-      if (!panel || !content) {
-        return;
-      }
-
-      // Check if panel is currently collapsed
-      const isCollapsed = content.style.display === 'none';
-
-      if (isCollapsed) {
-        // Expand
-        DOM.slideDown(content);
-        DOM.removeClass(icon, 'fa-chevron-down');
-        DOM.addClass(icon, 'fa-chevron-up');
-        panel.style.height = 'auto';
-      } else {
-        // Collapse
-        DOM.slideUp(content);
+      if (icon) {
         DOM.removeClass(icon, 'fa-chevron-up');
         DOM.addClass(icon, 'fa-chevron-down');
       }
     });
+
+    content.addEventListener('show.bs.collapse', () => {
+      const icon = DOM.find(link, 'i');
+      if (icon) {
+        DOM.removeClass(icon, 'fa-chevron-down');
+        DOM.addClass(icon, 'fa-chevron-up');
+      }
+    });
   });
 
-  // Close panel functionality
+  // Close panel functionality - uses CSS transitions
   DOM.selectAll('.close-link').forEach(link => {
     DOM.on(link, 'click', function (event) {
       event.preventDefault();

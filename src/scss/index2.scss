@@ -33,7 +33,7 @@
       }
 
       &.border-aero {
-        background-color: #1abb9c;
+        background-color: var(--gt-primary);
       }
 
       &.border-green {
@@ -41,11 +41,11 @@
       }
 
       &.border-blue {
-        background-color: #3498db;
+        background-color: var(--gt-accent);
       }
 
       &.border-red {
-        background-color: #e74c3c;
+        background-color: var(--gt-danger);
       }
 
       &.border-purple {
@@ -65,7 +65,7 @@
         margin-bottom: 5px;
 
         &:hover {
-          color: #1abb9c;
+          color: var(--gt-primary);
         }
       }
 
@@ -75,7 +75,7 @@
         color: #666;
 
         strong {
-          color: #1abb9c;
+          color: var(--gt-primary);
           font-weight: 600;
         }
 
@@ -93,7 +93,7 @@
   .pull-left.date {
     width: 60px;
     height: 60px;
-    background: #1abb9c;
+    background: var(--gt-primary);
     border-radius: 10px;
     text-align: center;
     color: white;
@@ -128,7 +128,7 @@
     font-size: 14px;
 
     .metric-label {
-      color: #73879c;
+      color: var(--gt-text-primary);
     }
 
     .metric-value {
@@ -149,7 +149,7 @@
     background: white;
     padding: 20px;
     margin-bottom: 20px;
-    border-left: 3px solid #1abb9c;
+    border-left: 3px solid var(--gt-primary);
 
     span:first-child {
       font-size: 14px;

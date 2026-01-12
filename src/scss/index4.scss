@@ -53,7 +53,7 @@
         margin-bottom: 5px;
 
         &:hover {
-          color: #1abb9c;
+          color: var(--gt-primary);
         }
       }
 
@@ -63,7 +63,7 @@
         color: #666;
 
         strong {
-          color: #1abb9c;
+          color: var(--gt-primary);
           font-weight: 600;
         }
       }
@@ -73,6 +73,6 @@
 
 // Custom badge color for 'Pending' status
 .badge.bg-orange {
-  background-color: #f39c12 !important;
+  background-color: var(--gt-warning) !important;
   color: white;
 }
