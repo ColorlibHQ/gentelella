@@ -1,6 +1,9 @@
 // Import security utilities
 import { sanitizeHtml, sanitizeText } from '../utils/security.js';
 
+// Import development logger
+import logger from '../utils/logger.js';
+
 //hover and retain popover when on popover content
 var originalLeave = $.fn.popover.Constructor.prototype.leave;
 $.fn.popover.Constructor.prototype.leave = function (obj) {
@@ -1716,7 +1719,7 @@ function init_datetimepicker() {
       });
     });
   } catch (error) {
-    console.warn('Basic datepicker initialization failed:', error);
+    logger.warn('Basic datepicker initialization failed:', error);
   }
 
   // Initialize datetime pickers
@@ -1736,7 +1739,7 @@ function init_datetimepicker() {
       });
     });
   } catch (error) {
-    console.warn('DateTime picker initialization failed:', error);
+    logger.warn('DateTime picker initialization failed:', error);
   }
 
   // Initialize date-picker class elements
@@ -1755,7 +1758,7 @@ function init_datetimepicker() {
       });
     });
   } catch (error) {
-    console.warn('Date picker class initialization failed:', error);
+    logger.warn('Date picker class initialization failed:', error);
   }
 }
 

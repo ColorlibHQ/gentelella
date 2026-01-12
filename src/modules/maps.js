@@ -4,13 +4,16 @@
  * Already modern JavaScript - extracted from init.js
  */
 
+// Import development logger
+import logger from '../utils/logger.js';
+
 /**
  * Initialize basic Leaflet maps
  * Modern JavaScript implementation
  */
 export function initializeMaps() {
   if (typeof L === 'undefined') {
-    console.warn('⚠️ Leaflet library not available');
+    logger.warn('Leaflet library not available');
     return;
   }
 
@@ -50,9 +53,9 @@ export function initializeMaps() {
       // Store map reference
       maps.push({ id: mapId, map, element: mapElement });
 
-      console.log(`✅ Map initialized: ${mapId}`);
+      logger.log(`Map initialized: ${mapId}`);
     } catch (error) {
-      console.error('❌ Failed to initialize map:', error);
+      logger.error('Failed to initialize map:', error);
     }
   });
 
@@ -92,9 +95,9 @@ function initializeLocationMap() {
     locationMapElement.style.height = '400px';
     locationMapElement.style.borderRadius = '8px';
 
-    console.log('✅ Location map initialized');
+    logger.log('Location map initialized');
   } catch (error) {
-    console.error('❌ Failed to initialize location map:', error);
+    logger.error('Failed to initialize location map:', error);
   }
 }
 
@@ -109,7 +112,7 @@ function initializeWorldMapGDP() {
 
   // Check if map is already initialized
   if (worldMapElement._leaflet_id) {
-    console.log('World GDP map already initialized, skipping...');
+    logger.log('World GDP map already initialized, skipping...');
     return;
   }
 
@@ -168,10 +171,10 @@ function initializeWorldMapGDP() {
     ]);
     worldMap.setMaxBounds(bounds);
 
-    console.log('✅ World GDP map initialized');
+    logger.log('World GDP map initialized');
     return worldMap;
   } catch (error) {
-    console.error('❌ Failed to initialize world GDP map:', error);
+    logger.error('Failed to initialize world GDP map:', error);
   }
 }
 
@@ -211,9 +214,9 @@ function initializeContactMap() {
     // Disable zoom control for cleaner look
     contactMap.zoomControl.setPosition('topright');
 
-    console.log('✅ Contact map initialized');
+    logger.log('Contact map initialized');
   } catch (error) {
-    console.error('❌ Failed to initialize contact map:', error);
+    logger.error('Failed to initialize contact map:', error);
   }
 }
 
@@ -281,10 +284,10 @@ export function initializeMultiLocationMap(locations = []) {
     );
     multiMap.fitBounds(group.getBounds().pad(0.1));
 
-    console.log('✅ Multi-location map initialized');
+    logger.log('Multi-location map initialized');
     return multiMap;
   } catch (error) {
-    console.error('❌ Failed to initialize multi-location map:', error);
+    logger.error('Failed to initialize multi-location map:', error);
   }
 }
 
@@ -298,11 +301,11 @@ export const MapUtils = {
   async geocode(address) {
     try {
       // This would typically use a geocoding service
-      console.log(`Geocoding address: ${address}`);
+      logger.log(`Geocoding address: ${address}`);
       // Return mock coordinates for now
       return { lat: 40.7128, lng: -74.006 };
     } catch (error) {
-      console.error('Geocoding failed:', error);
+      logger.error('Geocoding failed:', error);
       return null;
     }
   },

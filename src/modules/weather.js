@@ -4,13 +4,16 @@
  * Already modern JavaScript - extracted from init.js
  */
 
+// Import development logger
+import logger from '../utils/logger.js';
+
 /**
  * Initialize Skycons weather icons
  * Modern JavaScript implementation
  */
 export function initializeSkycons() {
   if (typeof window.Skycons === 'undefined') {
-    console.warn('⚠️ Skycons library not available');
+    logger.warn('Skycons library not available');
     return;
   }
 
@@ -35,7 +38,7 @@ export function initializeSkycons() {
       if (element) {
         skycons.add(element, icon.type);
         initializedCount++;
-        console.log(`✅ Skycon initialized: ${icon.id}`);
+        logger.log(`Skycon initialized: ${icon.id}`);
       }
     });
 
@@ -79,15 +82,15 @@ export function initializeSkycons() {
     if (initializedCount > 0) {
       // Start the animation
       skycons.play();
-      console.log(`✅ ${initializedCount} Skycons weather icons initialized and animated`);
+      logger.log(`${initializedCount} Skycons weather icons initialized and animated`);
     } else {
-      console.log('ℹ️ No weather icon elements found on this page');
+      logger.log('No weather icon elements found on this page');
     }
 
     // Return skycons instance for external control
     return skycons;
   } catch (error) {
-    console.error('❌ Failed to initialize Skycons:', error);
+    logger.error('Failed to initialize Skycons:', error);
   }
 }
 
@@ -140,7 +143,7 @@ export async function fetchWeatherData(location = 'New York') {
     // For now, return simulated data
     return simulateWeatherData();
   } catch (error) {
-    console.error('❌ Failed to fetch weather data:', error);
+    logger.error('Failed to fetch weather data:', error);
     return simulateWeatherData(); // Fallback to simulated data
   }
 }

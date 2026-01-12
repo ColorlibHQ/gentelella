@@ -11,28 +11,24 @@ import 'datatables.net-buttons-bs5';
 import 'datatables.net-fixedheader';
 import 'datatables.net-keytable';
 
-// Modern DOM utilities
-const DOM = {
-  select: selector => document.querySelector(selector),
-  selectAll: selector => [...document.querySelectorAll(selector)],
-  exists: selector => document.querySelector(selector) !== null,
-  getAttribute: (element, attr) => element?.getAttribute(attr),
-  addClass: (element, className) => element?.classList.add(className),
-  removeClass: (element, className) => element?.classList.remove(className)
-};
+// Import canonical DOM utilities
+import DOM from '../utils/dom-modern.js';
+
+// Import development logger
+import logger from '../utils/logger.js';
 
 /**
  * Initialize Modern DataTables - JQUERY ELIMINATED
  * Uses DataTables 2.x native JavaScript API
  */
 export function initializeModernDataTables() {
-  console.log('🎯 Initializing modern DataTables (jQuery-free)...');
+  logger.log('Initializing modern DataTables (jQuery-free)...');
 
   // Find all tables marked for DataTable initialization
   const tableElements = DOM.selectAll('.datatable, [data-table], .table-responsive table');
 
   if (tableElements.length === 0) {
-    console.log('ℹ️ No tables found for DataTable initialization');
+    logger.log('No tables found for DataTable initialization');
     return;
   }
 
@@ -55,9 +51,9 @@ export function initializeModernDataTables() {
       table.dataTableInstance = dataTable;
       initializedTables.push({ table, instance: dataTable });
 
-      console.log(`✅ DataTable initialized: ${table.id || 'table-' + initializedTables.length}`);
+      logger.log(`DataTable initialized: ${table.id || 'table-' + initializedTables.length}`);
     } catch (error) {
-      console.error('❌ Failed to initialize DataTable:', error);
+      logger.error('Failed to initialize DataTable:', error);
     }
   });
 
@@ -66,7 +62,7 @@ export function initializeModernDataTables() {
   initializeExportTables();
   initializeResponsiveTables();
 
-  console.log(`✅ ${initializedTables.length} DataTables initialized successfully`);
+  logger.log(`${initializedTables.length} DataTables initialized successfully`);
   return initializedTables;
 }
 
@@ -207,9 +203,9 @@ function initializeExportTables() {
 
       table.dataTableInstance = newTable;
 
-      console.log(`✅ Export functionality added to table: ${table.id || 'unnamed'}`);
+      logger.log(`Export functionality added to table: ${table.id || 'unnamed'}`);
     } catch (error) {
-      console.error('❌ Failed to add export functionality:', error);
+      logger.error('Failed to add export functionality:', error);
     }
   });
 }
@@ -253,7 +249,7 @@ function initializeResponsiveTables() {
 export function updateTableData(tableId, newData) {
   const table = DOM.select(`#${tableId}`);
   if (!table || !table.dataTableInstance) {
-    console.warn(`⚠️ Table not found or not initialized: ${tableId}`);
+    logger.warn(`Table not found or not initialized: ${tableId}`);
     return false;
   }
 
@@ -269,10 +265,10 @@ export function updateTableData(tableId, newData) {
     // Redraw table
     dataTable.draw();
 
-    console.log(`✅ Table data updated: ${tableId}`);
+    logger.log(`Table data updated: ${tableId}`);
     return true;
   } catch (error) {
-    console.error('❌ Failed to update table data:', error);
+    logger.error('Failed to update table data:', error);
     return false;
   }
 }
@@ -350,7 +346,7 @@ export const TableUtils = {
           dataTable.button('.buttons-print').trigger();
           break;
         default:
-          console.warn(`⚠️ Unsupported export format: ${format}`);
+          logger.warn(`Unsupported export format: ${format}`);
           return false;
       }
       return true;
@@ -368,7 +364,7 @@ export const TableUtils = {
         table.dataTableInstance = null;
       }
     });
-    console.log('✅ All DataTables destroyed');
+    logger.log('All DataTables destroyed');
   },
 
   /**
@@ -384,7 +380,7 @@ export const TableUtils = {
       const dataTable = new DataTable(table, getTableConfig(table));
       table.dataTableInstance = dataTable;
 
-      console.log(`✅ Table reinitialized: ${tableId}`);
+      logger.log(`Table reinitialized: ${tableId}`);
       return true;
     }
     return false;
@@ -436,7 +432,7 @@ export function initializeSampleTables() {
       buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
     });
 
-    console.log('✅ Demo table created and initialized');
+    logger.log('Demo table created and initialized');
   }
 }
 

@@ -1,0 +1,186 @@
+// =============================================================================
+// Gentelella CSS Variables
+// =============================================================================
+// This file defines all CSS custom properties (variables) for the template.
+// Use these variables instead of hardcoded color values for consistency.
+
+:root {
+  // =========================================================================
+  // Brand Colors
+  // =========================================================================
+  --gt-primary: #1abb9c;           // Primary green/teal
+  --gt-primary-dark: #26b99a;      // Darker shade of primary
+  --gt-secondary: #2a3f54;         // Dark blue (sidebar, headers)
+  --gt-accent: #3498db;            // Blue accent
+
+  // =========================================================================
+  // Semantic Colors
+  // =========================================================================
+  --gt-success: #1abb9c;           // Same as primary
+  --gt-info: #3498db;              // Blue
+  --gt-warning: #f39c12;           // Orange
+  --gt-danger: #e74c3c;            // Red
+  --gt-purple: #9b59b6;            // Purple
+
+  // =========================================================================
+  // Neutral Colors
+  // =========================================================================
+  --gt-white: #ffffff;
+  --gt-black: #000000;
+  --gt-dark: #34495e;              // Dark text
+  --gt-gray-900: #333333;
+  --gt-gray-800: #555555;
+  --gt-gray-700: #666666;
+  --gt-gray-600: #73879c;          // Muted text
+  --gt-gray-500: #777777;
+  --gt-gray-400: #999999;
+  --gt-gray-300: #cccccc;
+  --gt-gray-200: #dddddd;
+  --gt-gray-100: #e6e6e6;
+  --gt-gray-50: #f7f7f7;
+
+  // =========================================================================
+  // Background Colors
+  // =========================================================================
+  --gt-body-bg: #f7f7f7;
+  --gt-content-bg: #ffffff;
+  --gt-sidebar-bg: #2a3f54;
+  --gt-sidebar-active-bg: #1abb9c;
+  --gt-panel-bg: #ffffff;
+  --gt-input-bg: #ffffff;
+
+  // =========================================================================
+  // Border Colors
+  // =========================================================================
+  --gt-border-color: #e6e9ed;
+  --gt-border-light: #dee2e6;
+  --gt-border-dark: #d9dee4;
+
+  // =========================================================================
+  // Text Colors
+  // =========================================================================
+  --gt-text-primary: #73879c;
+  --gt-text-dark: #34495e;
+  --gt-text-muted: #999999;
+  --gt-text-light: #ffffff;
+  --gt-link-color: #1abb9c;
+  --gt-link-hover: #26b99a;
+
+  // =========================================================================
+  // Component-specific Colors
+  // =========================================================================
+  // Sidebar
+  --gt-sidebar-text: #e7e7e7;
+  --gt-sidebar-heading: #f7f7f7;
+  --gt-sidebar-hover-bg: rgba(255, 255, 255, 0.1);
+
+  // Navigation
+  --gt-nav-bg: #ededed;
+  --gt-nav-active: #1abb9c;
+
+  // Tables
+  --gt-table-border: #dee2e6;
+  --gt-table-striped: rgba(0, 0, 0, 0.02);
+  --gt-table-hover: rgba(0, 0, 0, 0.04);
+
+  // Forms
+  --gt-input-border: #cccccc;
+  --gt-input-focus-border: #1abb9c;
+  --gt-input-placeholder: #999999;
+
+  // Alerts & Notifications
+  --gt-alert-success-bg: #dff0d8;
+  --gt-alert-info-bg: #d9edf7;
+  --gt-alert-warning-bg: #fcf8e3;
+  --gt-alert-danger-bg: #f2dede;
+
+  // =========================================================================
+  // Spacing (for reference)
+  // =========================================================================
+  --gt-spacing-xs: 5px;
+  --gt-spacing-sm: 10px;
+  --gt-spacing-md: 15px;
+  --gt-spacing-lg: 20px;
+  --gt-spacing-xl: 30px;
+
+  // =========================================================================
+  // Typography
+  // =========================================================================
+  --gt-font-family: 'Helvetica Neue', Roboto, Arial, 'Droid Sans', sans-serif;
+  --gt-font-size-base: 13px;
+  --gt-font-size-sm: 12px;
+  --gt-font-size-lg: 15px;
+  --gt-line-height: 1.471;
+
+  // =========================================================================
+  // Shadows
+  // =========================================================================
+  --gt-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --gt-shadow-md: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  --gt-shadow-lg: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+
+  // =========================================================================
+  // Transitions
+  // =========================================================================
+  --gt-transition-fast: 150ms ease-in-out;
+  --gt-transition-normal: 300ms ease-in-out;
+  --gt-transition-slow: 500ms ease-in-out;
+
+  // =========================================================================
+  // Border Radius
+  // =========================================================================
+  --gt-radius-sm: 2px;
+  --gt-radius-md: 4px;
+  --gt-radius-lg: 6px;
+  --gt-radius-xl: 10px;
+  --gt-radius-round: 50%;
+
+  // =========================================================================
+  // Z-index Scale
+  // =========================================================================
+  --gt-z-dropdown: 1000;
+  --gt-z-sticky: 1020;
+  --gt-z-fixed: 1030;
+  --gt-z-modal-backdrop: 1040;
+  --gt-z-modal: 1050;
+  --gt-z-popover: 1060;
+  --gt-z-tooltip: 1070;
+}
+
+// =============================================================================
+// SCSS Variables (for use in SCSS files)
+// =============================================================================
+// These map to the CSS custom properties for SCSS operations
+
+$gt-primary: #1abb9c;
+$gt-primary-dark: #26b99a;
+$gt-secondary: #2a3f54;
+$gt-accent: #3498db;
+
+$gt-success: #1abb9c;
+$gt-info: #3498db;
+$gt-warning: #f39c12;
+$gt-danger: #e74c3c;
+$gt-purple: #9b59b6;
+
+$gt-white: #ffffff;
+$gt-black: #000000;
+$gt-dark: #34495e;
+$gt-gray-600: #73879c;
+$gt-gray-200: #dddddd;
+$gt-gray-100: #e6e6e6;
+$gt-gray-50: #f7f7f7;
+
+$gt-body-bg: #f7f7f7;
+$gt-sidebar-bg: #2a3f54;
+$gt-border-color: #e6e9ed;
+
+// Color utility classes map
+$color-classes: (
+  'green': $gt-primary,
+  'aero': #9cc2cb,
+  'blue': $gt-accent,
+  'red': $gt-danger,
+  'purple': $gt-purple,
+  'dark': $gt-dark
+);

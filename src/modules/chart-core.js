@@ -4,14 +4,11 @@
  * Extracted and modernized from init.js - jQuery eliminated
  */
 
-// Modern DOM utilities (imported from ui-components)
-const DOM = {
-  select: selector => document.querySelector(selector),
-  selectAll: selector => [...document.querySelectorAll(selector)],
-  exists: selector => document.querySelector(selector) !== null,
-  getAttribute: (element, attr) => element?.getAttribute(attr),
-  setAttribute: (element, attr, value) => element?.setAttribute(attr, value)
-};
+// Import canonical DOM utilities
+import DOM from '../utils/dom-modern.js';
+
+// Import development logger
+import logger from '../utils/logger.js';
 
 /**
  * Chart.js Initialization - MODERNIZED FROM JQUERY
@@ -19,7 +16,7 @@ const DOM = {
  */
 export function initializeCharts() {
   if (typeof Chart === 'undefined') {
-    console.error('❌ Chart.js not loaded.');
+    logger.error('Chart.js not loaded.');
     return;
   }
 
@@ -37,7 +34,7 @@ export function initializeCharts() {
       const chartOptions = DOM.getAttribute(canvas, 'data-chart-options');
 
       if (!chartType) {
-        console.warn('⚠️ Chart type not specified for canvas:', canvas.id);
+        logger.warn('Chart type not specified for canvas:', canvas.id);
         return;
       }
 
@@ -53,7 +50,7 @@ export function initializeCharts() {
           options = JSON.parse(chartOptions);
         }
       } catch (parseError) {
-        console.error('❌ Failed to parse chart data/options:', parseError);
+        logger.error('Failed to parse chart data/options:', parseError);
       }
 
       // Create Chart.js instance
@@ -70,9 +67,9 @@ export function initializeCharts() {
       // Store chart reference for external access
       canvas.chartInstance = chart;
 
-      console.log(`✅ Chart.js ${chartType} initialized: ${canvas.id || 'unnamed'}`);
+      logger.log(`Chart.js ${chartType} initialized: ${canvas.id || 'unnamed'}`);
     } catch (error) {
-      console.error('❌ Failed to initialize chart:', error);
+      logger.error('Failed to initialize chart:', error);
     }
   });
 }
@@ -148,9 +145,9 @@ export function initializeNetworkCharts() {
       // Start real-time updates
       startNetworkUpdates(chart, chartConfig.id);
 
-      console.log(`✅ Network chart initialized: ${chartConfig.id}`);
+      logger.log(`Network chart initialized: ${chartConfig.id}`);
     } catch (error) {
-      console.error(`❌ Failed to initialize network chart ${chartConfig.id}:`, error);
+      logger.error(`Failed to initialize network chart ${chartConfig.id}:`, error);
     }
   });
 }
@@ -201,7 +198,7 @@ function startNetworkUpdates(chart, chartId) {
 export function createGaugeChart(canvasId, value, options = {}) {
   const canvas = DOM.select(`#${canvasId}`);
   if (!canvas) {
-    console.warn(`⚠️ Canvas element not found: ${canvasId}`);
+    logger.warn(`Canvas element not found: ${canvasId}`);
     return null;
   }
 
@@ -285,7 +282,7 @@ export const ChartUtils = {
         canvas.chartInstance = null;
       }
     });
-    console.log('✅ All charts destroyed');
+    logger.log('All charts destroyed');
   },
 
   /**
@@ -356,7 +353,7 @@ export function setupResponsiveCharts() {
     });
   });
 
-  console.log('✅ Responsive chart handling initialized');
+  logger.log('Responsive chart handling initialized');
 }
 
 /**
@@ -364,7 +361,7 @@ export function setupResponsiveCharts() {
  * Creates the specific charts that exist in the main dashboard
  */
 export function initializeIndexDashboardCharts() {
-  console.log('🎯 Initializing index dashboard charts...');
+  logger.log('Initializing index dashboard charts...');
 
   // 1. Main Network Activities Chart (chart_plot_01)
   const mainChartContainer = DOM.select('#chart_plot_01');
@@ -411,7 +408,7 @@ export function initializeIndexDashboardCharts() {
     });
 
     canvas.chartInstance = chart;
-    console.log('✅ Main network activities chart initialized');
+    logger.log('Main network activities chart initialized');
   }
 
   // 2. Device Usage Doughnut Chart (canvasDoughnut)
@@ -447,7 +444,7 @@ export function initializeIndexDashboardCharts() {
     });
 
     doughnutCanvas.chartInstance = chart;
-    console.log('✅ Device usage doughnut chart initialized');
+    logger.log('Device usage doughnut chart initialized');
   }
 
   // 3. Profile Completion Gauge (profile_completion_gauge)
@@ -530,10 +527,10 @@ export function initializeIndexDashboardCharts() {
 
     gauge.setOption(option);
     gaugeContainer.chartInstance = gauge;
-    console.log('✅ Profile completion gauge initialized');
+    logger.log('Profile completion gauge initialized');
   }
 
-  console.log('✅ Index dashboard charts initialization complete');
+  logger.log('Index dashboard charts initialization complete');
 }
 
 // Auto-initialize charts when DOM is ready

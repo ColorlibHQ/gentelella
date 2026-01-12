@@ -204,22 +204,13 @@
   flex: 1;
 }
 
-/* Color Classes for Icons */
-.aero {
-  color: #1abb9c !important;
-}
-.green {
-  color: #26b99a !important;
-}
-.blue {
-  color: #3498db !important;
-}
-.red {
-  color: #e74c3c !important;
-}
-.purple {
-  color: #9b59b6 !important;
-}
+/* Color Classes for Icons - using values from custom.scss for consistency */
+/* .aero = #9cc2cb (light steel blue) */
+/* .green = #1abb9c (primary green) */
+/* .blue = #3498db */
+/* .red = #e74c3c */
+/* .purple = #9b59b6 */
+/* Note: Duplicate definitions removed - use custom.scss as single source of truth */
 
 /* Panel Improvements */
 .x_panel {

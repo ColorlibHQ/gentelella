@@ -3,6 +3,9 @@
  * Demonstrates how to use the validation utilities with Gentelella forms
  */
 
+// Import development logger
+import logger from '../utils/logger.js';
+
 document.addEventListener('DOMContentLoaded', function () {
   // Initialize Bootstrap 5 form validation
   const forms = document.querySelectorAll('.needs-validation');
@@ -279,7 +282,7 @@ function handleValidForm(form) {
   form.insertBefore(alert, form.firstChild);
 
   // In a real application, you would submit the form data here
-  console.log('Form is valid and ready for submission');
+  logger.log('Form is valid and ready for submission');
 
   // Optional: Reset form after successful submission
   setTimeout(() => {

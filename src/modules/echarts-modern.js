@@ -4,13 +4,11 @@
  * Handles all ECharts implementations with modern JavaScript
  */
 
-// Modern DOM utilities
-const DOM = {
-  select: selector => document.querySelector(selector),
-  selectAll: selector => [...document.querySelectorAll(selector)],
-  exists: selector => document.querySelector(selector) !== null,
-  getAttribute: (element, attr) => element?.getAttribute(attr)
-};
+// Import canonical DOM utilities
+import DOM from '../utils/dom-modern.js';
+
+// Import development logger
+import logger from '../utils/logger.js';
 
 /**
  * ECharts Initialization - MODERNIZED FROM JQUERY
@@ -18,7 +16,7 @@ const DOM = {
  */
 export function initializeECharts() {
   if (typeof window.echarts === 'undefined') {
-    console.warn('⚠️ ECharts library not available');
+    logger.warn('ECharts library not available');
     return;
   }
 
@@ -28,7 +26,7 @@ export function initializeECharts() {
     return;
   }
 
-  console.log(`🎯 Initializing ${echartElements.length} ECharts...`);
+  logger.log(`Initializing ${echartElements.length} ECharts...`);
 
   try {
     // Initialize specific chart types
@@ -43,9 +41,9 @@ export function initializeECharts() {
     // Setup responsive handling for all ECharts
     setupEChartsResize();
 
-    console.log('✅ All ECharts initialized successfully');
+    logger.log('All ECharts initialized successfully');
   } catch (error) {
-    console.error('❌ Failed to initialize ECharts:', error);
+    logger.error('Failed to initialize ECharts:', error);
   }
 }
 
@@ -657,7 +655,7 @@ function setupEChartsResize() {
     });
   });
 
-  console.log(`✅ Responsive handling setup for ${chartInstances.length} ECharts`);
+  logger.log(`Responsive handling setup for ${chartInstances.length} ECharts`);
 }
 
 /**
@@ -717,7 +715,7 @@ export const EChartsUtils = {
         instance.dispose();
       }
     });
-    console.log('✅ All ECharts disposed');
+    logger.log('All ECharts disposed');
   }
 };
 

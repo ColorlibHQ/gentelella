@@ -3,6 +3,9 @@
  * Fixes performance issues with large DataTables
  */
 
+// Import development logger
+import logger from './logger.js';
+
 /**
  * Optimize large tables by implementing lazy loading and progressive enhancement
  */
@@ -116,7 +119,7 @@ function initializeSpecificTable(tableId) {
           table.loadingOverlay.remove();
           delete table.loadingOverlay;
         }
-        console.log(`✅ Table ${tableId} initialized successfully`);
+        logger.log(`Table ${tableId} initialized successfully`);
       }
     };
 
@@ -135,7 +138,7 @@ function initializeSpecificTable(tableId) {
       table.dataTableInstance = dataTable;
     }
   } catch (error) {
-    console.error(`❌ Failed to initialize table ${tableId}:`, error);
+    logger.error(`Failed to initialize table ${tableId}:`, error);
     // Remove loading overlay even on error
     if (table.loadingOverlay) {
       table.loadingOverlay.remove();

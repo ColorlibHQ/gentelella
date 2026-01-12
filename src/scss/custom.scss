@@ -1,3 +1,29 @@
+// =============================================================================
+// Gentelella Custom Styles
+// =============================================================================
+// This is the main custom stylesheet for the Gentelella admin template.
+// For CSS custom properties and SCSS variables, see _variables.scss
+//
+// TABLE OF CONTENTS
+// =============================================================================
+// 1. Layout & Sidebar        (lines ~20-400)
+// 2. Navigation & Menu       (lines ~400-800)
+// 3. Color Utility Classes   (lines ~370-420)
+// 4. Top Navigation          (lines ~800-1100)
+// 5. Dashboard Tiles         (lines ~2100-2500)
+// 6. Inbox & Messaging       (lines ~2500-2700)
+// 7. Calendar Styles         (lines ~2700-3100)
+// 8. Tabs & Panels           (lines ~3100-3200)
+// 9. Forms & Inputs          (lines ~3200-4000)
+// 10. Login & Authentication (lines ~4000-4300)
+// 11. Third-party Overrides  (lines ~4300-5500)
+//     - Select2, Switchery, Cropper, Smart Wizard
+//     - PNotify, FullCalendar, Dropzone
+// 12. Charts & Data Viz      (lines ~5500-5900)
+// 13. Buttons & UI Elements  (lines ~5900-6200)
+// 14. Responsive Overrides   (lines ~6200-6400)
+// =============================================================================
+
 .left_col {
   background: #2a3f54;
 }

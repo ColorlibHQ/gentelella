@@ -4,14 +4,11 @@
  * Modernized from jQuery to vanilla JavaScript
  */
 
-// Modern DOM utilities
-const DOM = {
-  select: selector => document.querySelector(selector),
-  selectAll: selector => [...document.querySelectorAll(selector)],
-  exists: selector => document.querySelector(selector) !== null,
-  addClass: (element, className) => element?.classList.add(className),
-  removeClass: (element, className) => element?.classList.remove(className)
-};
+// Import canonical DOM utilities
+import DOM from '../utils/dom-modern.js';
+
+// Import development logger
+import logger from '../utils/logger.js';
 
 /**
  * Index2 Dashboard - Weekly Summary Charts
@@ -23,14 +20,14 @@ export function initializeIndex2() {
     return;
   }
 
-  console.log('🎯 Initializing Index2 dashboard...');
+  logger.log('Initializing Index2 dashboard...');
 
   try {
     initializeWeeklySummaryChart();
     initializeDailyActivitiesChart();
-    console.log('✅ Index2 dashboard initialized');
+    logger.log('Index2 dashboard initialized');
   } catch (error) {
-    console.error('❌ Failed to initialize Index2 dashboard:', error);
+    logger.error('Failed to initialize Index2 dashboard:', error);
   }
 }
 
@@ -43,7 +40,7 @@ function initializeWeeklySummaryChart() {
   }
 
   if (typeof echarts === 'undefined') {
-    console.warn('⚠️ ECharts not available for weekly summary');
+    logger.warn('ECharts not available for weekly summary');
     return;
   }
 
@@ -114,7 +111,7 @@ function initializeDailyActivitiesChart() {
   }
 
   if (typeof echarts === 'undefined') {
-    console.warn('⚠️ ECharts not available for daily activities');
+    logger.warn('ECharts not available for daily activities');
     return;
   }
 
@@ -157,15 +154,15 @@ export function initializeIndex3() {
     return;
   }
 
-  console.log('🎯 Initializing Index3 sales analytics...');
+  logger.log('Initializing Index3 sales analytics...');
 
   try {
     initializeSalesOverviewChart();
     initializeRevenueChart();
     initializeTopProductsChart();
-    console.log('✅ Index3 sales analytics initialized');
+    logger.log('Index3 sales analytics initialized');
   } catch (error) {
-    console.error('❌ Failed to initialize Index3 dashboard:', error);
+    logger.error('Failed to initialize Index3 dashboard:', error);
   }
 }
 
@@ -178,7 +175,7 @@ function initializeSalesOverviewChart() {
   }
 
   if (typeof echarts === 'undefined') {
-    console.warn('⚠️ ECharts not available for sales overview');
+    logger.warn('ECharts not available for sales overview');
     return;
   }
 
@@ -335,15 +332,15 @@ export function initializeIndex4() {
     return;
   }
 
-  console.log('🎯 Initializing Index4 store analytics...');
+  logger.log('Initializing Index4 store analytics...');
 
   try {
     initializeStoreAnalyticsChart();
     initializeCustomerSegmentChart();
     initializeInventoryChart();
-    console.log('✅ Index4 store analytics initialized');
+    logger.log('Index4 store analytics initialized');
   } catch (error) {
-    console.error('❌ Failed to initialize Index4 dashboard:', error);
+    logger.error('Failed to initialize Index4 dashboard:', error);
   }
 }
 
@@ -356,7 +353,7 @@ function initializeStoreAnalyticsChart() {
   }
 
   if (typeof echarts === 'undefined') {
-    console.warn('⚠️ ECharts not available for store analytics');
+    logger.warn('ECharts not available for store analytics');
     return;
   }
 
@@ -493,14 +490,14 @@ export function initializeSidebarGauges() {
     return;
   }
 
-  console.log('🎯 Initializing sidebar gauges...');
+  logger.log('Initializing sidebar gauges...');
 
   try {
     initializeProfileCompletionGauge();
     initializeSystemHealthGauges();
-    console.log('✅ Sidebar gauges initialized');
+    logger.log('Sidebar gauges initialized');
   } catch (error) {
-    console.error('❌ Failed to initialize sidebar gauges:', error);
+    logger.error('Failed to initialize sidebar gauges:', error);
   }
 }
 
@@ -513,7 +510,7 @@ function initializeProfileCompletionGauge() {
   }
 
   if (typeof echarts === 'undefined') {
-    console.warn('⚠️ ECharts not available for profile completion gauge');
+    logger.warn('ECharts not available for profile completion gauge');
     return;
   }
 

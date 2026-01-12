@@ -3,6 +3,9 @@
  * Debounced resize event handler for better performance
  */
 
+// Import development logger
+import logger from '../../utils/logger.js';
+
 // Debounce function to limit resize event frequency
 function debounce(func, wait = 250, immediate = false) {
   let timeout;
@@ -58,6 +61,6 @@ if (!window.smartResize) {
 window.addSmartResize = (handler, wait) => smartResize.add(handler, wait);
 window.removeSmartResize = handler => smartResize.remove(handler);
 
-console.log('✅ Modern smart resize initialized (jQuery-free)');
+logger.log('Modern smart resize initialized (jQuery-free)');
 
 export default smartResize;

@@ -4,56 +4,11 @@
  * Only contains functionality that hasn't been moved to separate modules
  */
 
-// DOM utilities - Define locally if not available globally
-const DOM = window.DOM || {
-  select: (selector) => document.querySelector(selector),
-  selectAll: (selector) => [...document.querySelectorAll(selector)],
-  addClass: (element, className) => element?.classList.add(className),
-  removeClass: (element, className) => element?.classList.remove(className),
-  toggleClass: (element, className) => element?.classList.toggle(className),
-  hasClass: (element, className) => element?.classList.contains(className),
-  closest: (element, selector) => element?.closest(selector),
-  find: (element, selector) => element?.querySelector(selector),
-  findAll: (element, selector) => [...(element?.querySelectorAll(selector) || [])],
-  slideToggle: (element, duration = 200) => {
-    const isVisible = element.offsetHeight > 0;
+// Import canonical DOM utilities
+import DOM from '../utils/dom-modern.js';
 
-    if (isVisible) {
-      element.style.overflow = 'hidden';
-      element.style.transition = `height ${duration}ms ease`;
-      element.style.height = element.offsetHeight + 'px';
-
-      requestAnimationFrame(() => {
-        element.style.height = '0px';
-        setTimeout(() => {
-          element.style.display = 'none';
-          element.style.height = '';
-          element.style.transition = '';
-          element.style.overflow = '';
-        }, duration);
-      });
-    } else {
-      element.style.display = '';
-      element.style.overflow = 'hidden';
-      element.style.height = '0px';
-      element.style.transition = `height ${duration}ms ease`;
-
-      requestAnimationFrame(() => {
-        element.style.height = element.scrollHeight + 'px';
-        setTimeout(() => {
-          element.style.height = '';
-          element.style.transition = '';
-          element.style.overflow = '';
-        }, duration);
-      });
-    }
-  }
-};
-
-// Make DOM utilities available globally if not already
-if (!window.DOM) {
-  window.DOM = DOM;
-}
+// Import development logger
+import logger from '../utils/logger.js';
 
 /**
  * NOTE: DataTables initialization moved to modern tables module
@@ -82,9 +37,7 @@ async function initializeDatePickers() {
         return;
       }
     } catch (error) {
-      if (process.env.NODE_ENV === 'development') {
-        console.error('Failed to load forms module for date pickers:', error);
-      }
+      logger.error('Failed to load forms module for date pickers:', error);
       return;
     }
   }
@@ -105,9 +58,7 @@ async function initializeDatePickers() {
           }
         });
       } catch (error) {
-        if (process.env.NODE_ENV === 'development') {
-          console.error('Failed to initialize date picker:', error);
-        }
+        logger.error('Failed to initialize date picker:', error);
       }
     });
   }
@@ -433,9 +384,7 @@ async function initializeModernComponents() {
 
     // DataTables now handled by modern tables module (jQuery-free)
   } catch (error) {
-    if (process.env.NODE_ENV === 'development') {
-      console.error('Failed to initialize modern components:', error);
-    }
+    logger.error('Failed to initialize modern components:', error);
   }
 }
 

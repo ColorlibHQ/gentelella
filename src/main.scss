@@ -1,5 +1,6 @@
 // SCSS files using @use (must come first)
 @use "bootstrap/scss/bootstrap";
+@use "./scss/variables"; // CSS custom properties and SCSS variables
 @use "./scss/custom.scss";
 @use "./scss/font-optimization.scss";
 @use "./scss/index2.scss";

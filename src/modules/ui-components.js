@@ -4,41 +4,11 @@
  * Modernized from jQuery to vanilla JavaScript
  */
 
-// Modern DOM utilities (jQuery replacement)
-const DOM = {
-  select: selector => document.querySelector(selector),
-  selectAll: selector => [...document.querySelectorAll(selector)],
-  on: (element, event, handler) => element.addEventListener(event, handler),
-  find: (element, selector) => element.querySelector(selector),
-  closest: (element, selector) => element.closest(selector),
-  addClass: (element, className) => element.classList.add(className),
-  removeClass: (element, className) => element.classList.remove(className),
-  toggle: (element, className) => element.classList.toggle(className),
-  slideUp: (element, duration = 300) => {
-    element.style.transition = `height ${duration}ms ease`;
-    element.style.overflow = 'hidden';
-    element.style.height = element.offsetHeight + 'px';
-    element.offsetHeight; // Force reflow
-    element.style.height = '0px';
-    setTimeout(() => {
-      element.style.display = 'none';
-    }, duration);
-  },
-  slideDown: (element, duration = 300) => {
-    element.style.display = 'block';
-    const height = element.scrollHeight;
-    element.style.height = '0px';
-    element.style.transition = `height ${duration}ms ease`;
-    element.style.overflow = 'hidden';
-    element.offsetHeight; // Force reflow
-    element.style.height = height + 'px';
-    setTimeout(() => {
-      element.style.height = '';
-      element.style.overflow = '';
-      element.style.transition = '';
-    }, duration);
-  }
-};
+// Import canonical DOM utilities
+import DOM from '../utils/dom-modern.js';
+
+// Import development logger
+import logger from '../utils/logger.js';
 
 /**
  * Panel Toolbox Functionality
@@ -78,7 +48,7 @@ export function initializePanelToolbox() {
     });
   });
 
-  console.log('✅ Panel toolbox initialized (jQuery-free)');
+  logger.log('Panel toolbox initialized (jQuery-free)');
 }
 
 /**
@@ -152,7 +122,7 @@ export function initializeProgressBars() {
     bar.style.width = currentPercent;
   });
 
-  console.log('✅ Progress bars initialized (jQuery-free)');
+  logger.log('Progress bars initialized (jQuery-free)');
 }
 
 /**
@@ -175,7 +145,7 @@ export function initializeToasts() {
     }
   });
 
-  console.log('✅ Toasts initialized (jQuery-free)');
+  logger.log('Toasts initialized (jQuery-free)');
 }
 
 /**
@@ -197,7 +167,7 @@ export function initializeBootstrapComponents() {
     });
   }
 
-  console.log('✅ Bootstrap components initialized (jQuery-free)');
+  logger.log('Bootstrap components initialized (jQuery-free)');
 }
 
 /**
@@ -206,7 +176,7 @@ export function initializeBootstrapComponents() {
  */
 export function initializeSwitchery() {
   if (typeof Switchery === 'undefined') {
-    console.warn('⚠️ Switchery library not available');
+    logger.warn('Switchery library not available');
     return;
   }
 
@@ -220,7 +190,7 @@ export function initializeSwitchery() {
     }
   });
 
-  console.log('✅ Switchery initialized (jQuery-free)');
+  logger.log('Switchery initialized (jQuery-free)');
 }
 
 // Export DOM utilities for other modules
