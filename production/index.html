@@ -31,7 +31,7 @@
 
 
     <!-- Vite Entry Point - will bundle all styles -->
-    <script type="module" src="/src/main-minimal-modern.js"></script>
+    <script type="module" src="/src/main-minimal.js"></script>
   </head>
 
   <body class="nav-md page-index">
@@ -1307,7 +1307,7 @@
       
       if (startDatePicker && endDatePicker) {
         try {
-          // TempusDominus is directly available in main-minimal-modern.js
+          // TempusDominus is directly available in main-minimal.js
           
           const TempusDominus = window.TempusDominus || globalThis.TempusDominus;
           const DateTime = window.DateTime || globalThis.DateTime;
@@ -1479,7 +1479,7 @@
       new Chart(ctx, config);
     }
 
-    // Initialize charts - Chart.js is directly available in main-minimal-modern.js
+    // Initialize charts - Chart.js is directly available in main-minimal.js
     document.addEventListener('DOMContentLoaded', function() {
       
       // Check if basic elements exist

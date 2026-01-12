@@ -1,5 +1,55 @@
 # Gentelella Changelog
 
+## 2.1.3 - 12.01.2026
+
+**Code Quality & Naming Standardization Release**
+
+### Code Cleanup
+
+- **Removed Legacy Files**: Deleted orphaned jQuery-based files no longer in use
+  - `src/js/examples.js` - Legacy jQuery popover and Flot chart examples
+  - `src/js/form-validation-init.js` - Unused validation demo file
+  - `src/main.js` - Legacy full jQuery bundle
+  - `src/main-minimal.js` (old) - Legacy jQuery minimal bundle
+  - `src/main-form-advanced.js` - Unreferenced form entry point
+  - `src/main-form-basic-simple.js` - Orphaned stub file
+  - `src/js/require-shim.js` - Legacy CommonJS shim
+
+### Naming Standardization
+
+- **Removed "-modern" suffixes**: Standardized file naming throughout the codebase
+  - `dom-modern.js` → `dom.js`
+  - `sidebar-modern.js` → `sidebar.js`
+  - `init-modern.js` → `init.js`
+  - `smartresize-modern.js` → `smartresize.js`
+  - `tables-modern.js` → `tables.js`
+  - `echarts-modern.js` → `echarts.js`
+  - `main-minimal-modern.js` → `main-minimal.js`
+
+### New Features
+
+- **Logger Utility**: Added centralized development-only logging (`src/utils/logger.js`)
+  - Wraps console methods with environment checks
+  - Automatic suppression in production builds
+  - Group logging support for better debugging
+
+- **CSS Variables System**: Added comprehensive CSS custom properties (`src/scss/_variables.scss`)
+  - Brand colors, semantic colors, neutral palette
+  - Spacing, typography, shadows, transitions
+  - Z-index scale and border radius tokens
+
+### SCSS Improvements
+
+- **Fixed Color Inconsistencies**: Resolved `.aero` color class conflict between files
+- **Improved Organization**: Added table of contents to custom.scss for navigation
+
+### Documentation Updates
+
+- Updated CLAUDE.md with new file structure and renamed modules
+- Updated directory layout to reflect cleaned-up architecture
+
+---
+
 ## 2.1.2 - 12.01.2026
 
 Maintenance Release - Comprehensive Dependency Updates

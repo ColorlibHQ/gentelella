@@ -339,14 +339,14 @@ DOM.ready(() => {
 });
 
 // Import essential JavaScript functionality - modern versions
-import './js/helpers/smartresize-modern.js';
-import './js/sidebar-modern.js';
-import './js/init-modern.js';
+import './js/helpers/smartresize.js';
+import './js/sidebar.js';
+import './js/init.js';
 
 // Import weather and maps modules for index.html
 import './modules/weather.js';
 import './modules/maps.js';
 
 // Import echarts module for echarts.html
-import './modules/echarts-modern.js';
+import './modules/echarts.js';
 

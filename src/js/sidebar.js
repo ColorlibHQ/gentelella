@@ -4,7 +4,7 @@
  */
 
 // Import canonical DOM utilities
-import DOM from '../utils/dom-modern.js';
+import DOM from '../utils/dom.js';
 
 function initSidebar() {
   // Helper function to set the content height

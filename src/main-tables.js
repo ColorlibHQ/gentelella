@@ -45,9 +45,9 @@ const DOM = {
 window.DOM = DOM;
 
 // Essential JavaScript functionality - modern versions
-import './js/helpers/smartresize-modern.js';
-import './js/sidebar-modern.js';
-import './js/init-modern.js';
+import './js/helpers/smartresize.js';
+import './js/sidebar.js';
+import './js/init.js';
 
 // Initialize DataTables immediately when DOM is ready
 DOM.ready(() => {

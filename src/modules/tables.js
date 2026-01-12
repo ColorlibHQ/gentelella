@@ -12,7 +12,7 @@ import 'datatables.net-fixedheader';
 import 'datatables.net-keytable';
 
 // Import canonical DOM utilities
-import DOM from '../utils/dom-modern.js';
+import DOM from '../utils/dom.js';
 
 // Import development logger
 import logger from '../utils/logger.js';

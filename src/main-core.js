@@ -11,7 +11,7 @@ import * as ValidationUtils from './utils/validation.js';
 window.ValidationUtils = ValidationUtils;
 
 // Import modern DOM utilities
-import DOM from './utils/dom-modern.js';
+import DOM from './utils/dom.js';
 
 // Bootstrap 5 - Essential for all pages
 import * as bootstrap from 'bootstrap';
@@ -87,9 +87,9 @@ if (process.env.NODE_ENV === 'development') {
 import './main.scss';
 
 // Core scripts that all pages need
-import './js/helpers/smartresize-modern.js';
-import './js/sidebar-modern.js';
-import './js/init-modern.js';
+import './js/helpers/smartresize.js';
+import './js/sidebar.js';
+import './js/init.js';
 
 // Module loading cache to prevent duplicate loads
 window.moduleCache = new Map();
@@ -148,10 +148,7 @@ window.loadModule = async function (moduleName, showLoading = true) {
         module = await import('./modules/forms.js');
         break;
       case 'tables':
-        module = await import('./modules/tables-modern.js');
-        break;
-      case 'tables-modern':
-        module = await import('./modules/tables-modern.js');
+        module = await import('./modules/tables.js');
         break;
       case 'ui':
         module = await import('./modules/ui-components.js');
@@ -166,7 +163,7 @@ window.loadModule = async function (moduleName, showLoading = true) {
         module = await import('./modules/maps.js');
         break;
       case 'echarts':
-        module = await import('./modules/echarts-modern.js');
+        module = await import('./modules/echarts.js');
         break;
       default:
         return null;

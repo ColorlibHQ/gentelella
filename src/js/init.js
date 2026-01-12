@@ -5,7 +5,7 @@
  */
 
 // Import canonical DOM utilities
-import DOM from '../utils/dom-modern.js';
+import DOM from '../utils/dom.js';
 
 // Import development logger
 import logger from '../utils/logger.js';
@@ -13,7 +13,7 @@ import logger from '../utils/logger.js';
 /**
  * NOTE: DataTables initialization moved to modern tables module
  * No longer uses jQuery - uses DataTables 2.x native JavaScript API
- * See: /modules/tables-modern.js
+ * See: /modules/tables.js
  */
 
 /**
