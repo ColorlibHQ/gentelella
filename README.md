@@ -6,18 +6,18 @@ Gentelella is a powerful, free-to-use Bootstrap 5 admin template that has been c
 
 ![Gentelella Bootstrap Admin Template](https://colorlib.com/wp/wp-content/uploads/sites/2/gentelella-admin-template-preview.jpg "Gentelella Theme Browser Preview")
 
-## What's New in v2.1.1 (Latest Release - September 11, 2025)
+## What's New in v2.1.2 (Latest Release - January 12, 2026)
 
-- **Latest Dependencies** - All dependencies updated to latest versions for security and performance
-- **ECharts 6.0.0** - Major upgrade to latest ECharts with all chart types working
-- **Enhanced Widget System** - Improved widget content density and professional styling
-- **Dev Server Stability** - Fixed development server crashes with auto-restart capability
-- **Console Log Cleanup** - Production builds now clean with comprehensive console statement removal
-- **Security Updates** - Ruby 3.3.9 and Nokogiri 1.18.9 resolve all CVE vulnerabilities
-- **Chart Functionality Fixes** - Fixed visitors map, skycons weather icons, and device usage chart colors
-- **Production Optimization** - Enhanced Terser configuration with better minification
+- **Comprehensive Dependency Updates** - All dependencies updated to their latest versions
+- **Vite 7.3.1** - Latest build system with performance improvements
+- **ESLint 9.39.2** - Updated linting with comprehensive browser globals configuration
+- **Font Awesome 7.1.0** - Latest icon library
+- **DataTables 2.3.6** - Updated table functionality with all extensions
+- **DOMPurify 3.3.1** - Latest security library for XSS protection
+- **CropperJS 2.1.0** - Updated image cropping functionality
+- **Code Quality** - Fixed ESLint configuration and parsing errors
 
-### Previous Release: v2.1.0
+### Previous Release: v2.1.1
 
 - **jQuery-Free Core System** - Complete main-core.js modernization with vanilla JavaScript
 - **Brand-Consistent Favicon Suite** - Modern favicon system with comprehensive browser support

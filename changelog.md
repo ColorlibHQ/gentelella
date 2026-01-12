@@ -1,5 +1,56 @@
 # Gentelella Changelog
 
+## 2.1.2 - 12.01.2026
+
+Maintenance Release - Comprehensive Dependency Updates
+
+### Dependency Updates
+
+All dependencies updated to their latest versions for improved security, performance, and compatibility.
+
+#### Dev Dependencies
+
+- **Vite** 7.1.5 → 7.3.1 (build system improvements)
+- **ESLint** 9.35.0 → 9.39.2 (linting engine)
+- **@eslint/js** 9.35.0 → 9.39.2
+- **@typescript-eslint/eslint-plugin** 8.43.0 → 8.52.0
+- **@typescript-eslint/parser** 8.43.0 → 8.52.0
+- **TypeScript** 5.9.2 → 5.9.3
+- **Prettier** 3.6.2 → 3.7.4 (code formatter)
+- **SASS** 1.92.1 → 1.97.2 (CSS preprocessor)
+- **Terser** 5.44.0 → 5.44.1 (JS minifier)
+- **glob** 11.0.3 → 13.0.0 (major version upgrade)
+- **rollup-plugin-visualizer** 6.0.3 → 6.0.5
+
+#### Runtime Dependencies
+
+- **Font Awesome** 7.0.1 → 7.1.0 (icon library)
+- **FullCalendar** 6.1.19 → 6.1.20 (all packages)
+- **Chart.js** 4.5.0 → 4.5.1
+- **CropperJS** 2.0.1 → 2.1.0
+- **DataTables** 2.3.4 → 2.3.6 (core and BS5 styling)
+- **DataTables Buttons** 3.2.5 → 3.2.6
+- **DataTables FixedHeader** 4.0.3 → 4.0.5
+- **DataTables KeyTable** 2.12.1 → 2.12.2
+- **DataTables Responsive** 3.0.6 → 3.0.7
+- **Day.js** 1.11.18 → 1.11.19
+- **DOMPurify** 3.2.6 → 3.3.1 (security library)
+
+### Code Quality Improvements
+
+- **ESLint Configuration**: Added comprehensive browser globals to eliminate false-positive errors
+  - Added all standard browser APIs (setTimeout, fetch, localStorage, etc.)
+  - Added DOM interfaces (HTMLElement, Event, CustomEvent, etc.)
+  - Added library globals (TempusDominus, Skycons, DataTable, etc.)
+- **Bug Fix**: Fixed parsing error in main-form-advanced.js (incomplete console statement)
+
+### Known Issues
+
+- Sass deprecation warnings in build output are from Bootstrap's internal SCSS files and will be resolved in future Bootstrap releases
+- All functionality tested and verified working with updated dependencies
+
+---
+
 ## 2.1.1 - 11.09.2025
 
 **Maintenance Release - Dependency Updates, Chart Fixes & UI Improvements**
