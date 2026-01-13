@@ -21,47 +21,60 @@ import logger from '../utils/logger.js';
  * Uses modern date picker libraries instead of jQuery UI
  */
 async function initializeDatePickers() {
-  // Check if there are any date picker elements on the page
-  const datePickerElements = DOM.selectAll('.datepicker, [data-datepicker]');
-
-  if (datePickerElements.length === 0) {
+  // Check if TempusDominus is available
+  const TempusDominus = window.TempusDominus;
+  if (typeof TempusDominus === 'undefined') {
     return;
   }
 
-  // Check if TempusDominus is available, if not try to load forms module
-  if (typeof TempusDominus === 'undefined') {
+  // Initialize standard date pickers (.datepicker, [data-datepicker])
+  const datePickerElements = DOM.selectAll('.datepicker, [data-datepicker]');
+  datePickerElements.forEach(element => {
     try {
-      if (typeof window.loadModule === 'function') {
-        await window.loadModule('forms');
-      } else {
-        return;
-      }
-    } catch (error) {
-      logger.error('Failed to load forms module for date pickers:', error);
-      return;
-    }
-  }
-
-  // Initialize date pickers if TempusDominus is now available
-  if (typeof TempusDominus !== 'undefined') {
-    datePickerElements.forEach(element => {
-      try {
-        new TempusDominus(element, {
-          display: {
-            components: {
-              clock: false,
-              seconds: false
-            }
-          },
-          localization: {
-            format: 'MM/dd/yyyy'
+      new TempusDominus(element, {
+        display: {
+          components: {
+            clock: false,
+            seconds: false
           }
-        });
-      } catch (error) {
-        logger.error('Failed to initialize date picker:', error);
-      }
-    });
-  }
+        },
+        localization: {
+          format: 'MM/dd/yyyy'
+        }
+      });
+    } catch (error) {
+      logger.error('Failed to initialize date picker:', error);
+    }
+  });
+
+  // Initialize Tempus Dominus date pickers with data-td-target attributes
+  const tdDatePickers = DOM.selectAll('[data-td-target-input="nearest"]');
+  tdDatePickers.forEach(element => {
+    // Skip if already initialized
+    if (element._tempusDominus) return;
+
+    try {
+      const picker = new TempusDominus(element, {
+        display: {
+          components: {
+            clock: false,
+            seconds: false
+          },
+          buttons: {
+            today: true,
+            clear: true,
+            close: true
+          }
+        },
+        localization: {
+          format: 'MM/dd/yyyy'
+        }
+      });
+      element._tempusDominus = picker;
+    } catch (error) {
+      logger.error('Failed to initialize Tempus Dominus date picker:', error);
+    }
+  });
 }
 
 /**
@@ -152,7 +165,13 @@ function initializeProgressBars() {
   });
 
   // Animate regular progress bars on page load
+  // Skip bars inside .sales-progress as they have their own styling
   DOM.selectAll('.progress-bar:not([data-transitiongoal])').forEach(bar => {
+    // Skip progress bars in sales-progress widget - keep their inline width
+    if (bar.closest('.sales-progress')) {
+      return;
+    }
+
     const currentWidth = bar.style.width;
     if (currentWidth) {
       bar.style.width = '0%';

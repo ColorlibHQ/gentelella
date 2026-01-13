@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="forest">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Theme Comparison | Gentelella</title>
+    <script type="module" src="/src/main-minimal.js"></script>
+    <style>
+      .comparison-section {
+        padding: 30px 0;
+        border-bottom: 1px solid var(--gt-border-color);
+      }
+      .comparison-section:last-child {
+        border-bottom: none;
+      }
+      .section-title {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        color: var(--gt-text-dark);
+      }
+      .color-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 15px;
+      }
+      .color-swatch {
+        border-radius: var(--gt-radius-lg);
+        overflow: hidden;
+        box-shadow: var(--gt-shadow-md);
+      }
+      .color-swatch .swatch-color {
+        height: 80px;
+      }
+      .color-swatch .swatch-info {
+        padding: 10px;
+        background: var(--gt-white);
+        font-size: 12px;
+      }
+      .color-swatch .swatch-name {
+        font-weight: 600;
+        color: var(--gt-text-dark);
+      }
+      .color-swatch .swatch-value {
+        color: var(--gt-text-muted);
+        font-family: monospace;
+      }
+      .shadow-demo {
+        display: flex;
+        gap: 30px;
+        flex-wrap: wrap;
+      }
+      .shadow-box {
+        width: 150px;
+        height: 100px;
+        background: var(--gt-white);
+        border-radius: var(--gt-radius-lg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 13px;
+        color: var(--gt-text-muted);
+      }
+      .radius-demo {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        align-items: flex-end;
+      }
+      .radius-box {
+        width: 80px;
+        height: 80px;
+        background: var(--gt-primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 11px;
+        text-align: center;
+      }
+      .gray-scale {
+        display: flex;
+        border-radius: var(--gt-radius-lg);
+        overflow: hidden;
+        box-shadow: var(--gt-shadow-md);
+      }
+      .gray-scale .gray-item {
+        flex: 1;
+        height: 60px;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        padding-bottom: 5px;
+        font-size: 10px;
+        font-weight: 500;
+      }
+      .component-demo {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+        align-items: flex-start;
+      }
+    </style>
+  </head>
+
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <!-- Minimal sidebar for navigation -->
+        <aside class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title border-0">
+              <a href="index.html" class="site_title">
+                <img src="images/logo.svg" alt="Gentelella" class="logo-full logo-main" loading="lazy">
+                <img src="images/logo-icon.svg" alt="Gentelella" class="logo-icon" loading="lazy">
+              </a>
+            </div>
+            <div class="clearfix"></div>
+            <br />
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+                <h3>Theme Testing</h3>
+                <ul class="nav side-menu">
+                  <li><a href="index.html"><i class="bi bi-arrow-left"></i> Back to Dashboard</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <div class="top_nav">
+          <div class="nav_menu d-flex align-items-center justify-content-between">
+            <div class="nav toggle">
+              <a id="menu_toggle"><i class="fas fa-bars"></i></a>
+            </div>
+            <nav class="nav navbar-nav ms-auto">
+              <ul class="navbar-right d-flex align-items-center gap-3 pe-3">
+                <li class="nav-item">
+                  <span class="badge bg-primary">Theme Comparison</span>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+
+        <main class="right_col" role="main">
+          <div class="">
+            <div class="page-title">
+              <div class="title_left">
+                <h3>Theme Comparison <small>Classic vs Modern</small></h3>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+
+            <!-- Instructions -->
+            <div class="row">
+              <div class="col-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>How to Switch Themes</h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div class="alert alert-info">
+                      <h4><i class="bi bi-info-circle me-2"></i>Theme Switching Instructions</h4>
+                      <p class="mb-2">To switch between themes, edit <code>src/main.scss</code> and toggle the import:</p>
+                      <pre class="bg-dark text-light p-3 rounded mb-0"><code>// CLASSIC THEME (current):
+@use "./scss/variables";
+
+// MODERN THEME (experimental):
+// @use "./scss/variables-modern" as variables;</code></pre>
+                      <p class="mt-2 mb-0">Comment out the classic line and uncomment the modern line to see the new theme. The dev server will hot-reload automatically.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Brand Colors -->
+            <div class="row">
+              <div class="col-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Brand Colors</h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div class="color-grid">
+                      <div class="color-swatch">
+                        <div class="swatch-color" style="background: var(--gt-primary);"></div>
+                        <div class="swatch-info">
+                          <div class="swatch-name">Primary</div>
+                          <div class="swatch-value">--gt-primary</div>
+                        </div>
+                      </div>
+                      <div class="color-swatch">
+                        <div class="swatch-color" style="background: var(--gt-primary-dark);"></div>
+                        <div class="swatch-info">
+                          <div class="swatch-name">Primary Dark</div>
+                          <div class="swatch-value">--gt-primary-dark</div>
+                        </div>
+                      </div>
+                      <div class="color-swatch">
+                        <div class="swatch-color" style="background: var(--gt-secondary);"></div>
+                        <div class="swatch-info">
+                          <div class="swatch-name">Secondary</div>
+                          <div class="swatch-value">--gt-secondary</div>
+                        </div>
+                      </div>
+                      <div class="color-swatch">
+                        <div class="swatch-color" style="background: var(--gt-accent);"></div>
+                        <div class="swatch-info">
+                          <div class="swatch-name">Accent</div>
+                          <div class="swatch-value">--gt-accent</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Semantic Colors -->
+            <div class="row">
+              <div class="col-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Semantic Colors</h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div class="color-grid">
+                      <div class="color-swatch">
+                        <div class="swatch-color" style="background: var(--gt-success);"></div>
+                        <div class="swatch-info">
+                          <div class="swatch-name">Success</div>
+                          <div class="swatch-value">--gt-success</div>
+                        </div>
+                      </div>
+                      <div class="color-swatch">
+                        <div class="swatch-color" style="background: var(--gt-info);"></div>
+                        <div class="swatch-info">
+                          <div class="swatch-name">Info</div>
+                          <div class="swatch-value">--gt-info</div>
+                        </div>
+                      </div>
+                      <div class="color-swatch">
+                        <div class="swatch-color" style="background: var(--gt-warning);"></div>
+                        <div class="swatch-info">
+                          <div class="swatch-name">Warning</div>
+                          <div class="swatch-value">--gt-warning</div>
+                        </div>
+                      </div>
+                      <div class="color-swatch">
+                        <div class="swatch-color" style="background: var(--gt-danger);"></div>
+                        <div class="swatch-info">
+                          <div class="swatch-name">Danger</div>
+                          <div class="swatch-value">--gt-danger</div>
+                        </div>
+                      </div>
+                      <div class="color-swatch">
+                        <div class="swatch-color" style="background: var(--gt-purple);"></div>
+                        <div class="swatch-info">
+                          <div class="swatch-name">Purple</div>
+                          <div class="swatch-value">--gt-purple</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Gray Scale -->
+            <div class="row">
+              <div class="col-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Gray Scale</h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div class="gray-scale">
+                      <div class="gray-item" style="background: var(--gt-gray-900); color: white;">900</div>
+                      <div class="gray-item" style="background: var(--gt-gray-800); color: white;">800</div>
+                      <div class="gray-item" style="background: var(--gt-gray-700); color: white;">700</div>
+                      <div class="gray-item" style="background: var(--gt-gray-600); color: white;">600</div>
+                      <div class="gray-item" style="background: var(--gt-gray-500); color: white;">500</div>
+                      <div class="gray-item" style="background: var(--gt-gray-400); color: #333;">400</div>
+                      <div class="gray-item" style="background: var(--gt-gray-300); color: #333;">300</div>
+                      <div class="gray-item" style="background: var(--gt-gray-200); color: #333;">200</div>
+                      <div class="gray-item" style="background: var(--gt-gray-100); color: #333;">100</div>
+                      <div class="gray-item" style="background: var(--gt-gray-50); color: #333;">50</div>
+                    </div>
+                    <p class="text-muted mt-3 mb-0"><small>Modern theme uses cooler slate-based grays inspired by Tailwind CSS</small></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Shadows -->
+            <div class="row">
+              <div class="col-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Shadows</h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div class="shadow-demo">
+                      <div class="shadow-box" style="box-shadow: var(--gt-shadow-sm);">
+                        shadow-sm
+                      </div>
+                      <div class="shadow-box" style="box-shadow: var(--gt-shadow-md);">
+                        shadow-md
+                      </div>
+                      <div class="shadow-box" style="box-shadow: var(--gt-shadow-lg);">
+                        shadow-lg
+                      </div>
+                    </div>
+                    <p class="text-muted mt-3 mb-0"><small>Modern theme uses softer, single-layer shadows for a cleaner look</small></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Border Radius -->
+            <div class="row">
+              <div class="col-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Border Radius</h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div class="radius-demo">
+                      <div class="radius-box" style="border-radius: var(--gt-radius-sm);">
+                        radius-sm
+                      </div>
+                      <div class="radius-box" style="border-radius: var(--gt-radius-md);">
+                        radius-md
+                      </div>
+                      <div class="radius-box" style="border-radius: var(--gt-radius-lg);">
+                        radius-lg
+                      </div>
+                      <div class="radius-box" style="border-radius: var(--gt-radius-xl);">
+                        radius-xl
+                      </div>
+                      <div class="radius-box" style="border-radius: var(--gt-radius-round); width: 80px; height: 80px;">
+                        round
+                      </div>
+                    </div>
+                    <p class="text-muted mt-3 mb-0"><small>Modern theme uses slightly larger radius values for softer corners</small></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- UI Components -->
+            <div class="row">
+              <div class="col-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>UI Components</h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <h5 class="mb-3">Buttons</h5>
+                    <div class="component-demo mb-4">
+                      <button class="btn btn-primary">Primary</button>
+                      <button class="btn btn-secondary">Secondary</button>
+                      <button class="btn btn-success">Success</button>
+                      <button class="btn btn-info">Info</button>
+                      <button class="btn btn-warning">Warning</button>
+                      <button class="btn btn-danger">Danger</button>
+                      <button class="btn btn-outline-primary">Outline</button>
+                    </div>
+
+                    <h5 class="mb-3">Alerts</h5>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="alert alert-success">Success alert message</div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="alert alert-info">Info alert message</div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="alert alert-warning">Warning alert message</div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="alert alert-danger">Danger alert message</div>
+                      </div>
+                    </div>
+
+                    <h5 class="mb-3">Form Inputs</h5>
+                    <div class="row">
+                      <div class="col-md-4">
+                        <input type="text" class="form-control mb-2" placeholder="Default input">
+                      </div>
+                      <div class="col-md-4">
+                        <input type="text" class="form-control mb-2 is-valid" placeholder="Valid input">
+                      </div>
+                      <div class="col-md-4">
+                        <input type="text" class="form-control mb-2 is-invalid" placeholder="Invalid input">
+                      </div>
+                    </div>
+
+                    <h5 class="mb-3">Badges</h5>
+                    <div class="component-demo mb-4">
+                      <span class="badge bg-primary">Primary</span>
+                      <span class="badge bg-secondary">Secondary</span>
+                      <span class="badge bg-success">Success</span>
+                      <span class="badge bg-danger">Danger</span>
+                      <span class="badge bg-warning text-dark">Warning</span>
+                      <span class="badge bg-info">Info</span>
+                    </div>
+
+                    <h5 class="mb-3">Progress Bars</h5>
+                    <div class="progress mb-2" style="height: 20px;">
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 25%">25%</div>
+                    </div>
+                    <div class="progress mb-2" style="height: 20px;">
+                      <div class="progress-bar bg-info" role="progressbar" style="width: 50%">50%</div>
+                    </div>
+                    <div class="progress mb-2" style="height: 20px;">
+                      <div class="progress-bar bg-warning" role="progressbar" style="width: 75%">75%</div>
+                    </div>
+                    <div class="progress" style="height: 20px;">
+                      <div class="progress-bar bg-danger" role="progressbar" style="width: 100%">100%</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sample Panel -->
+            <div class="row">
+              <div class="col-md-6">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Sample Panel <small>Default state</small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a></li>
+                      <li><a class="close-link"><i class="fas fa-times"></i></a></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <p>This is a standard x_panel component. Hover over it to see the shadow transition effect.</p>
+                    <p class="text-muted mb-0">The modern theme uses softer shadows and slightly larger border radius.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="x_panel tile">
+                  <div class="x_title">
+                    <h2>Tile Panel</h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div class="d-flex align-items-center">
+                      <div class="me-3">
+                        <span class="fa-stack fa-2x">
+                          <i class="fas fa-circle fa-stack-2x" style="color: var(--gt-primary);"></i>
+                          <i class="fas fa-chart-line fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </div>
+                      <div>
+                        <h4 class="mb-1">1,234</h4>
+                        <p class="text-muted mb-0">Total Users</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Theme Values Reference -->
+            <div class="row">
+              <div class="col-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Theme Values Reference</h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div class="table-responsive">
+                      <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th>Variable</th>
+                            <th>Classic Value</th>
+                            <th>Modern Value</th>
+                            <th>Description</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td><code>--gt-primary</code></td>
+                            <td>#1abb9c</td>
+                            <td>#10b981</td>
+                            <td>Primary brand color</td>
+                          </tr>
+                          <tr>
+                            <td><code>--gt-secondary</code></td>
+                            <td>#2a3f54</td>
+                            <td>#1e293b</td>
+                            <td>Sidebar/header color</td>
+                          </tr>
+                          <tr>
+                            <td><code>--gt-body-bg</code></td>
+                            <td>#f7f7f7</td>
+                            <td>#f8fafc</td>
+                            <td>Page background</td>
+                          </tr>
+                          <tr>
+                            <td><code>--gt-shadow-md</code></td>
+                            <td>0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)</td>
+                            <td>0 2px 4px rgba(0,0,0,0.06)</td>
+                            <td>Medium shadow</td>
+                          </tr>
+                          <tr>
+                            <td><code>--gt-radius-lg</code></td>
+                            <td>6px</td>
+                            <td>8px</td>
+                            <td>Large border radius</td>
+                          </tr>
+                          <tr>
+                            <td><code>--gt-radius-xl</code></td>
+                            <td>10px</td>
+                            <td>12px</td>
+                            <td>Extra large border radius</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </main>
+
+        <footer>
+          <div class="pull-right">
+            Theme Comparison Page - <a href="index.html">Back to Dashboard</a>
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>

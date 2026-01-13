@@ -297,6 +297,12 @@ function initUniversalProgressBars() {
     allProgressBars.forEach((bar, index) => {
       if (bar.classList.contains('animation-complete')) {return;}
 
+      // Skip animation for progress bars inside sales-progress - they already have width set
+      if (bar.closest('.sales-progress')) {
+        bar.classList.add('animation-complete');
+        return;
+      }
+
       let targetWidth = null;
       const transitionGoal = bar.getAttribute('data-transitiongoal');
 

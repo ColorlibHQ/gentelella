@@ -132,7 +132,10 @@ export default defineConfig({
         
         level2: 'production/level2.html',
         map: 'production/map.html',
-        landing: 'production/landing.html'
+        landing: 'production/landing.html',
+
+        // Theme comparison page (for testing)
+        theme_comparison: 'production/theme-comparison.html'
       }
     },
     minify: 'terser',

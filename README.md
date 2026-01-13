@@ -160,6 +160,80 @@ Built with mobile-first approach:
 }
 ```
 
+### Color Schemes (2026 Modern Collection)
+
+Gentelella includes 10 professionally designed color schemes that users can switch between at runtime. Each theme is carefully crafted for accessibility and modern aesthetics.
+
+#### Available Themes
+
+| Theme         | Primary Color       | Description            | Best For                   |
+| ------------- | ------------------- | ---------------------- | -------------------------- |
+| **Default**   | Emerald `#10b981`   | Modern emerald green   | General purpose            |
+| **Ocean**     | Sky `#0ea5e9`       | Deep blue professional | Corporate, enterprise      |
+| **Sunset**    | Orange `#f97316`    | Warm coral/orange      | Creative, marketing        |
+| **Lavender**  | Violet `#8b5cf6`    | Soft purple/violet     | Design tools, SaaS         |
+| **Forest**    | Green `#22c55e`     | Natural green tones    | Health, environmental      |
+| **Midnight**  | Cyan `#22d3ee`      | Dark mode optimized    | Developer tools, night use |
+| **Rose**      | Pink `#ec4899`      | Modern pink/magenta    | Fashion, lifestyle         |
+| **Slate**     | Slate `#64748b`     | Neutral monochrome     | Content-focused apps       |
+| **Indigo**    | Indigo `#6366f1`    | Classic tech blue      | Tech, productivity         |
+| **Teal**      | Teal `#14b8a6`      | Calming teal           | Healthcare, wellness       |
+
+#### Usage
+
+##### HTML Attribute (Recommended)
+
+```html
+<html data-theme="ocean">
+```
+
+##### CSS Class
+
+```html
+<body class="theme-ocean">
+```
+
+##### JavaScript Theme Switcher
+
+```javascript
+// Set theme
+function setTheme(themeName) {
+  document.documentElement.setAttribute('data-theme', themeName);
+  localStorage.setItem('theme', themeName);
+}
+
+// Load saved theme on page load
+function loadTheme() {
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme) {
+    document.documentElement.setAttribute('data-theme', savedTheme);
+  }
+}
+
+// Initialize
+loadTheme();
+
+// Switch to ocean theme
+setTheme('ocean');
+```
+
+##### Theme Selector Dropdown Example
+
+```html
+<select onchange="setTheme(this.value)">
+  <option value="">Default (Emerald)</option>
+  <option value="ocean">Ocean</option>
+  <option value="sunset">Sunset</option>
+  <option value="lavender">Lavender</option>
+  <option value="forest">Forest</option>
+  <option value="midnight">Midnight (Dark)</option>
+  <option value="rose">Rose</option>
+  <option value="slate">Slate</option>
+  <option value="indigo">Indigo</option>
+  <option value="teal">Teal</option>
+</select>
+```
+
 ### Adding Features
 
 ```javascript

@@ -22,6 +22,7 @@
 // 12. Charts & Data Viz      (lines ~5500-5900)
 // 13. Buttons & UI Elements  (lines ~5900-6200)
 // 14. Responsive Overrides   (lines ~6200-6400)
+// 15. Utility Classes         (lines ~6470+) - Avatar sizes, progress bars, charts, stats
 // =============================================================================
 
 .left_col {
@@ -292,10 +293,16 @@ body.nav-sm .left_col .menu_section h3 {
 }
 // Top navigation bar - uses Bootstrap 5 flexbox utilities in HTML
 .nav_menu {
-  background: #ededed;
-  border-bottom: 1px solid var(--gt-border-dark);
-  margin-bottom: 10px;
+  background: var(--gt-white);
+  border-bottom: 1px solid var(--gt-border-color);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  margin-bottom: 0;
   padding-left: 10px;
+}
+// Add spacing to content area instead of nav margin (prevents gap when sticky)
+.right_col > .page-title:first-child,
+.right_col > div:first-child {
+  padding-top: 10px;
 }
 
 .info-number {
@@ -314,9 +321,7 @@ body.nav-sm .left_col .menu_section h3 {
 
 // Small screens and up (Bootstrap 5: sm = 576px)
 @media (min-width: 576px) {
-  .nav_menu {
-    position: static;
-  }
+  // Note: Removed position: static from .nav_menu - it interferes with sticky header
   .item {
     display: block;
   }
@@ -494,7 +499,7 @@ body {
 
 body {
   color: var(--gt-text-primary);
-  background: var(--gt-secondary);
+  background: var(--gt-body-bg);
   font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif;
   font-size: 13px;
   font-weight: 400;
@@ -508,15 +513,12 @@ body {
     margin-left: 230px;
   }
 }
-.main_container {
-  max-height: 100vh;
-  overflow-y: auto;
-}
-
-/* Additional constraint for right column content */
-.right_col {
-  max-height: calc(100vh - 60px); /* Account for header/footer */
-  overflow-y: auto;
+// Top navigation - sticky positioning for scroll behavior
+.top_nav {
+  position: sticky;
+  top: 0;
+  z-index: var(--gt-z-sticky);
+  background: var(--gt-white);
 }
 .no-padding {
   padding: 0 !important;
@@ -955,6 +957,14 @@ a:focus {
 }
 .top_nav li a i {
   font-size: 15px;
+}
+// Top nav icon links - clean white background styling
+.top_nav .navbar-right > li > a {
+  color: var(--gt-gray-600);
+  transition: color var(--gt-transition-fast);
+}
+.top_nav .navbar-right > li > a:hover {
+  color: var(--gt-primary);
 }
 
 /* User profile dropdown alignment */
@@ -2201,7 +2211,10 @@ span.right {
   padding: 0;
 }
 a.user-profile {
-  color: #5e6974 !important;
+  color: var(--gt-gray-600) !important;
+}
+a.user-profile:hover {
+  color: var(--gt-primary) !important;
 }
 .user-profile img {
   width: 29px;
@@ -4627,7 +4640,10 @@ fieldset {
 /** jQuery Smart Wizard  **/
 
 .progress {
-  border-radius: 0;
+  border-radius: 4px;
+  background-color: var(--bs-secondary-bg, #e9ecef);
+  height: 8px;
+  overflow: hidden;
 }
 
 .progress-bar-info {
@@ -4677,17 +4693,17 @@ fieldset {
 }
 
 .progress.progress_sm {
-  border-radius: 0;
+  border-radius: 4px;
   margin-bottom: 18px;
-  height: 18px !important;
+  height: 8px !important;
+  background-color: var(--bs-secondary-bg, #e9ecef);
+  overflow: hidden;
 }
 
 .progress.progress_sm .progress-bar {
-  height: 18px !important;
-  line-height: 18px !important;
-  font-size: 12px;
-  font-weight: 500;
-  text-align: center;
+  height: 100% !important;
+  min-height: 8px;
+  border-radius: 4px;
 }
 
 .dashboard_graph p {
@@ -6067,32 +6083,49 @@ input[type="radio"].flat:disabled + label {
 
 // Sales Analytics Widget Styles
 .sales-progress {
-  .progress {
+  .progress,
+  .progress.progress-sm {
+    --bs-progress-height: 8px;
+    height: 8px !important;
+    min-height: 8px;
     border-radius: 4px;
     overflow: hidden;
-    background-color: #e9ecef;
+    background-color: var(--bs-secondary-bg, #e9ecef);
+    display: flex;
+  }
 
-    .progress-bar {
-      transition: width 0.8s ease-out;
-      border-radius: 4px;
-      position: relative;
-      overflow: hidden;
+  .progress-bar,
+  .progress .progress-bar,
+  .progress.progress-sm .progress-bar {
+    height: 100% !important;
+    min-height: 8px;
+    flex-shrink: 0;
+    transition: width 0.8s ease-out;
+    border-radius: 4px;
+    // Ensure width is not overridden
+    position: relative;
+    bottom: auto;
 
-      // Ensure the width is maintained
-      &.bg-primary {
-        background-color: #007bff !important;
-      }
-      &.bg-success {
-        background-color: #28a745 !important;
-      }
-      &.bg-warning {
-        background-color: #ffc107 !important;
-      }
-      &.bg-info {
-        background-color: #17a2b8 !important;
-      }
+    // Ensure the colors are applied
+    &.bg-primary {
+      background-color: var(--bs-primary, #007bff) !important;
+    }
+    &.bg-success {
+      background-color: var(--bs-success, #28a745) !important;
+    }
+    &.bg-warning {
+      background-color: var(--bs-warning, #ffc107) !important;
+    }
+    &.bg-info {
+      background-color: var(--bs-info, #17a2b8) !important;
     }
   }
+
+  // Specific width classes to ensure inline widths work
+  .progress-bar[style*="width: 75%"] { width: 75% !important; }
+  .progress-bar[style*="width: 60%"] { width: 60% !important; }
+  .progress-bar[style*="width: 85%"] { width: 85% !important; }
+  .progress-bar[style*="width: 45%"] { width: 45% !important; }
 
   .small.fw-bold {
     font-size: 0.875rem;
@@ -6115,16 +6148,12 @@ input[type="radio"].flat:disabled + label {
   }
 }
 
-// Force width maintenance - this ensures the bars don't revert
-.sales-progress .progress-bar[style*="width"] {
-  width: var(--bar-width) !important;
-}
 
 // Index2 Progress Bar Styles
 .progress-bar {
+  height: 100%;
+  display: flex;
   transition: width 0.8s ease-out;
-  position: relative;
-  overflow: hidden;
 
   // Ensure colors are maintained
   &.bg-green {
@@ -6146,10 +6175,6 @@ input[type="radio"].flat:disabled + label {
     background-color: #ffc107 !important;
   }
 
-  // Force width maintenance for all progress bars
-  &[style*="width"] {
-    width: var(--bar-width) !important;
-  }
 
   // Animation complete state
   &.animation-complete {
@@ -6419,9 +6444,15 @@ input[type="radio"].flat:disabled + label {
 // Padding utilities for sidebar
 .ps-sidebar { padding-left: 15px; }
 
-// Progress bar heights
-.progress-xs { height: 6px; }
-.progress-sm { height: 8px; }
+// Progress bar heights (override Bootstrap's CSS variable)
+.progress-xs {
+  --bs-progress-height: 6px;
+  height: 6px !important;
+}
+.progress-sm {
+  --bs-progress-height: 8px;
+  height: 8px !important;
+}
 
 // Stat label styling
 .stat-label {
@@ -6468,3 +6499,112 @@ input[type="radio"].flat:disabled + label {
 
 // Iframe no-border
 .iframe-noborder { border: 0; }
+
+// =============================================================================
+// 15. UTILITY CLASSES (to reduce inline styles)
+// =============================================================================
+
+// Avatar/Image size utilities
+.avatar-xs { width: 36px; height: 36px; }
+.avatar-sm { width: 40px; height: 40px; }
+.avatar-md { width: 48px; height: 48px; }
+.avatar-lg { width: 50px; height: 50px; }
+.avatar-xl { width: 100px; height: 100px; }
+
+// Progress bar height utilities (with Bootstrap 5 CSS variable override)
+.progress-xs { --bs-progress-height: 6px; height: 6px !important; }
+.progress-sm { --bs-progress-height: 8px; height: 8px !important; }
+.progress-md { --bs-progress-height: 20px; height: 20px !important; }
+
+// Chart container heights
+.chart-sm { height: 120px; }
+.chart-md { height: 250px; }
+.chart-lg { height: 370px; }
+.chart-xl { height: 400px; }
+
+// Dropdown width utilities (for nav dropdowns)
+.dropdown-menu-sm { min-width: 200px; }
+.dropdown-menu-lg { min-width: 320px; }
+
+// Widget card styling
+.widget-card {
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+// Stat/metric display styling
+.stat-label {
+  color: #73879C;
+  font-size: 10px;
+  margin: 3px 0 0;
+}
+.stat-value {
+  color: #2A3F54;
+  font-size: 12px;
+  font-weight: 600;
+  margin: 0;
+}
+.stat-title {
+  font-weight: bold;
+  color: #333;
+  font-size: 14px;
+}
+.stat-subtitle {
+  color: #666;
+  font-size: 12px;
+}
+
+// Flex utility for stat items
+.stat-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+// Info box with border
+.info-box {
+  background: #f7f7f7;
+  border: 1px solid #E6E9ED;
+  border-radius: 3px;
+  padding: 12px;
+}
+
+// Legend dot indicators
+.legend-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 1px;
+  display: inline-block;
+}
+.legend-dot-round {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+// Icon container utilities
+.icon-circle-sm {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.icon-square-sm {
+  width: 18px;
+  height: 18px;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Logo heights
+.logo-sm { height: 35px; width: auto; }
+
+// Skycons weather icon size
+.skycons-icon { width: 160px; height: 120px; margin: 0 auto; }

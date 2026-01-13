@@ -1,0 +1,538 @@
+// =============================================================================
+// Gentelella Color Schemes - 2026 Modern Collection
+// =============================================================================
+// A curated collection of modern color schemes for the Gentelella admin template.
+// Each scheme is designed with accessibility and modern design trends in mind.
+//
+// HOW TO USE:
+// 1. Add a data attribute to your <html> tag: <html data-theme="ocean">
+// 2. Or apply a class to <body>: <body class="theme-ocean">
+// 3. For JavaScript toggle, see README.md
+//
+// AVAILABLE THEMES:
+// - default (Emerald - the base modern theme)
+// - ocean (Deep blue professional)
+// - sunset (Warm coral/orange)
+// - lavender (Soft purple/violet)
+// - forest (Natural green tones)
+// - midnight (Dark mode optimized)
+// - rose (Modern pink/magenta)
+// - slate (Neutral monochrome)
+// =============================================================================
+
+// =============================================================================
+// THEME: Ocean - Deep Blue Professional
+// =============================================================================
+// A professional blue theme inspired by deep ocean tones. Perfect for
+// corporate dashboards and enterprise applications.
+// =============================================================================
+[data-theme="ocean"],
+.theme-ocean {
+  // Brand Colors
+  --gt-primary: #0ea5e9;           // Sky 500
+  --gt-primary-dark: #0284c7;      // Sky 600
+  --gt-secondary: #0c4a6e;         // Sky 900
+  --gt-accent: #06b6d4;            // Cyan 500
+
+  // Semantic Colors
+  --gt-success: #22c55e;           // Green 500
+  --gt-info: #0ea5e9;              // Sky 500
+  --gt-warning: #f59e0b;           // Amber 500
+  --gt-danger: #ef4444;            // Red 500
+  --gt-purple: #8b5cf6;            // Violet 500
+
+  // Background Colors
+  --gt-body-bg: #f0f9ff;           // Sky 50
+  --gt-sidebar-bg: #0c4a6e;        // Sky 900
+  --gt-sidebar-active-bg: #0ea5e9; // Sky 500
+  --gt-panel-bg: #ffffff;
+  --gt-nav-bg: #e0f2fe;            // Sky 100
+
+  // Text Colors
+  --gt-text-primary: #475569;      // Slate 600
+  --gt-text-dark: #0c4a6e;         // Sky 900
+  --gt-link-color: #0ea5e9;        // Sky 500
+  --gt-link-hover: #0284c7;        // Sky 600
+
+  // Sidebar
+  --gt-sidebar-text: #e0f2fe;      // Sky 100
+  --gt-sidebar-heading: #f0f9ff;   // Sky 50
+
+  // Navigation
+  --gt-nav-active: #0ea5e9;        // Sky 500
+
+  // Forms
+  --gt-input-focus-border: #0ea5e9;
+
+  // Alerts
+  --gt-alert-success-bg: #dcfce7;  // Green 100
+  --gt-alert-info-bg: #e0f2fe;     // Sky 100
+  --gt-alert-warning-bg: #fef3c7;  // Amber 100
+  --gt-alert-danger-bg: #fee2e2;   // Red 100
+}
+
+// =============================================================================
+// THEME: Sunset - Warm Coral/Orange
+// =============================================================================
+// A warm, energetic theme with coral and orange tones. Great for creative
+// projects, marketing dashboards, and engagement-focused applications.
+// =============================================================================
+[data-theme="sunset"],
+.theme-sunset {
+  // Brand Colors
+  --gt-primary: #f97316;           // Orange 500
+  --gt-primary-dark: #ea580c;      // Orange 600
+  --gt-secondary: #7c2d12;         // Orange 900
+  --gt-accent: #fb923c;            // Orange 400
+
+  // Semantic Colors
+  --gt-success: #22c55e;           // Green 500
+  --gt-info: #3b82f6;              // Blue 500
+  --gt-warning: #eab308;           // Yellow 500
+  --gt-danger: #dc2626;            // Red 600
+  --gt-purple: #a855f7;            // Purple 500
+
+  // Background Colors
+  --gt-body-bg: #fff7ed;           // Orange 50
+  --gt-sidebar-bg: #7c2d12;        // Orange 900
+  --gt-sidebar-active-bg: #f97316; // Orange 500
+  --gt-panel-bg: #ffffff;
+  --gt-nav-bg: #ffedd5;            // Orange 100
+
+  // Text Colors
+  --gt-text-primary: #57534e;      // Stone 600
+  --gt-text-dark: #7c2d12;         // Orange 900
+  --gt-link-color: #f97316;        // Orange 500
+  --gt-link-hover: #ea580c;        // Orange 600
+
+  // Sidebar
+  --gt-sidebar-text: #fed7aa;      // Orange 200
+  --gt-sidebar-heading: #fff7ed;   // Orange 50
+
+  // Navigation
+  --gt-nav-active: #f97316;        // Orange 500
+
+  // Forms
+  --gt-input-focus-border: #f97316;
+
+  // Alerts
+  --gt-alert-success-bg: #dcfce7;  // Green 100
+  --gt-alert-info-bg: #dbeafe;     // Blue 100
+  --gt-alert-warning-bg: #fef9c3;  // Yellow 100
+  --gt-alert-danger-bg: #fee2e2;   // Red 100
+}
+
+// =============================================================================
+// THEME: Lavender - Soft Purple/Violet
+// =============================================================================
+// An elegant purple theme with soft violet tones. Ideal for creative tools,
+// design applications, and modern SaaS products.
+// =============================================================================
+[data-theme="lavender"],
+.theme-lavender {
+  // Brand Colors
+  --gt-primary: #8b5cf6;           // Violet 500
+  --gt-primary-dark: #7c3aed;      // Violet 600
+  --gt-secondary: #4c1d95;         // Violet 900
+  --gt-accent: #a78bfa;            // Violet 400
+
+  // Semantic Colors
+  --gt-success: #22c55e;           // Green 500
+  --gt-info: #3b82f6;              // Blue 500
+  --gt-warning: #f59e0b;           // Amber 500
+  --gt-danger: #ef4444;            // Red 500
+  --gt-purple: #8b5cf6;            // Violet 500
+
+  // Background Colors
+  --gt-body-bg: #faf5ff;           // Purple 50
+  --gt-sidebar-bg: #4c1d95;        // Violet 900
+  --gt-sidebar-active-bg: #8b5cf6; // Violet 500
+  --gt-panel-bg: #ffffff;
+  --gt-nav-bg: #f3e8ff;            // Purple 100
+
+  // Text Colors
+  --gt-text-primary: #525252;      // Neutral 600
+  --gt-text-dark: #4c1d95;         // Violet 900
+  --gt-link-color: #8b5cf6;        // Violet 500
+  --gt-link-hover: #7c3aed;        // Violet 600
+
+  // Sidebar
+  --gt-sidebar-text: #e9d5ff;      // Purple 200
+  --gt-sidebar-heading: #faf5ff;   // Purple 50
+
+  // Navigation
+  --gt-nav-active: #8b5cf6;        // Violet 500
+
+  // Forms
+  --gt-input-focus-border: #8b5cf6;
+
+  // Alerts
+  --gt-alert-success-bg: #dcfce7;  // Green 100
+  --gt-alert-info-bg: #dbeafe;     // Blue 100
+  --gt-alert-warning-bg: #fef3c7;  // Amber 100
+  --gt-alert-danger-bg: #fee2e2;   // Red 100
+}
+
+// =============================================================================
+// THEME: Forest - Natural Green Tones
+// =============================================================================
+// An earthy green theme with natural forest tones. Perfect for environmental,
+// health, and nature-focused applications.
+// =============================================================================
+[data-theme="forest"],
+.theme-forest {
+  // Brand Colors
+  --gt-primary: #22c55e;           // Green 500
+  --gt-primary-dark: #16a34a;      // Green 600
+  --gt-secondary: #14532d;         // Green 900
+  --gt-accent: #4ade80;            // Green 400
+
+  // Semantic Colors
+  --gt-success: #22c55e;           // Green 500
+  --gt-info: #06b6d4;              // Cyan 500
+  --gt-warning: #f59e0b;           // Amber 500
+  --gt-danger: #ef4444;            // Red 500
+  --gt-purple: #8b5cf6;            // Violet 500
+
+  // Background Colors
+  --gt-body-bg: #f0fdf4;           // Green 50
+  --gt-sidebar-bg: #14532d;        // Green 900
+  --gt-sidebar-active-bg: #22c55e; // Green 500
+  --gt-panel-bg: #ffffff;
+  --gt-nav-bg: #dcfce7;            // Green 100
+
+  // Text Colors
+  --gt-text-primary: #525252;      // Neutral 600
+  --gt-text-dark: #14532d;         // Green 900
+  --gt-link-color: #22c55e;        // Green 500
+  --gt-link-hover: #16a34a;        // Green 600
+
+  // Sidebar
+  --gt-sidebar-text: #bbf7d0;      // Green 200
+  --gt-sidebar-heading: #f0fdf4;   // Green 50
+
+  // Navigation
+  --gt-nav-active: #22c55e;        // Green 500
+
+  // Forms
+  --gt-input-focus-border: #22c55e;
+
+  // Alerts
+  --gt-alert-success-bg: #dcfce7;  // Green 100
+  --gt-alert-info-bg: #cffafe;     // Cyan 100
+  --gt-alert-warning-bg: #fef3c7;  // Amber 100
+  --gt-alert-danger-bg: #fee2e2;   // Red 100
+}
+
+// =============================================================================
+// THEME: Midnight - Dark Mode Optimized
+// =============================================================================
+// A sleek dark theme optimized for low-light environments. Features high
+// contrast and reduced eye strain. Perfect for developer tools and night use.
+// =============================================================================
+[data-theme="midnight"],
+.theme-midnight {
+  // Brand Colors
+  --gt-primary: #22d3ee;           // Cyan 400
+  --gt-primary-dark: #06b6d4;      // Cyan 500
+  --gt-secondary: #0f172a;         // Slate 900
+  --gt-accent: #38bdf8;            // Sky 400
+
+  // Semantic Colors
+  --gt-success: #4ade80;           // Green 400
+  --gt-info: #38bdf8;              // Sky 400
+  --gt-warning: #fbbf24;           // Amber 400
+  --gt-danger: #f87171;            // Red 400
+  --gt-purple: #a78bfa;            // Violet 400
+
+  // Neutral Colors (Dark mode adjusted)
+  --gt-white: #f8fafc;
+  --gt-dark: #0f172a;              // Slate 900
+  --gt-gray-900: #020617;          // Slate 950
+  --gt-gray-800: #0f172a;          // Slate 900
+  --gt-gray-700: #1e293b;          // Slate 800
+  --gt-gray-600: #334155;          // Slate 700
+  --gt-gray-500: #475569;          // Slate 600
+  --gt-gray-400: #64748b;          // Slate 500
+  --gt-gray-300: #94a3b8;          // Slate 400
+  --gt-gray-200: #cbd5e1;          // Slate 300
+  --gt-gray-100: #e2e8f0;          // Slate 200
+  --gt-gray-50: #f1f5f9;           // Slate 100
+
+  // Background Colors (Dark)
+  --gt-body-bg: #0f172a;           // Slate 900
+  --gt-content-bg: #1e293b;        // Slate 800
+  --gt-sidebar-bg: #020617;        // Slate 950
+  --gt-sidebar-active-bg: #22d3ee; // Cyan 400
+  --gt-panel-bg: #1e293b;          // Slate 800
+  --gt-input-bg: #1e293b;          // Slate 800
+  --gt-nav-bg: #1e293b;            // Slate 800
+
+  // Border Colors (Dark adjusted)
+  --gt-border-color: #334155;      // Slate 700
+  --gt-border-light: #1e293b;      // Slate 800
+  --gt-border-dark: #475569;       // Slate 600
+
+  // Text Colors (Dark mode - lighter text)
+  --gt-text-primary: #e2e8f0;      // Slate 200
+  --gt-text-dark: #f8fafc;         // Slate 50
+  --gt-text-muted: #94a3b8;        // Slate 400
+  --gt-link-color: #22d3ee;        // Cyan 400
+  --gt-link-hover: #67e8f9;        // Cyan 300
+
+  // Sidebar
+  --gt-sidebar-text: #94a3b8;      // Slate 400
+  --gt-sidebar-heading: #e2e8f0;   // Slate 200
+  --gt-sidebar-hover-bg: rgba(255, 255, 255, 0.05);
+
+  // Navigation
+  --gt-nav-active: #22d3ee;        // Cyan 400
+
+  // Tables
+  --gt-table-border: #334155;      // Slate 700
+  --gt-table-striped: rgba(255, 255, 255, 0.02);
+  --gt-table-hover: rgba(255, 255, 255, 0.05);
+
+  // Forms
+  --gt-input-border: #475569;      // Slate 600
+  --gt-input-focus-border: #22d3ee;
+  --gt-input-placeholder: #64748b; // Slate 500
+
+  // Alerts (Dark mode - muted backgrounds)
+  --gt-alert-success-bg: rgba(34, 197, 94, 0.15);
+  --gt-alert-info-bg: rgba(56, 189, 248, 0.15);
+  --gt-alert-warning-bg: rgba(251, 191, 36, 0.15);
+  --gt-alert-danger-bg: rgba(248, 113, 113, 0.15);
+
+  // Shadows (Dark mode - subtle glow)
+  --gt-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --gt-shadow-md: 0 2px 4px rgba(0, 0, 0, 0.4);
+  --gt-shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.5);
+  --gt-panel-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --gt-panel-shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+// =============================================================================
+// THEME: Rose - Modern Pink/Magenta
+// =============================================================================
+// A bold, modern theme with pink and magenta tones. Great for fashion,
+// lifestyle, and consumer-focused applications.
+// =============================================================================
+[data-theme="rose"],
+.theme-rose {
+  // Brand Colors
+  --gt-primary: #ec4899;           // Pink 500
+  --gt-primary-dark: #db2777;      // Pink 600
+  --gt-secondary: #831843;         // Pink 900
+  --gt-accent: #f472b6;            // Pink 400
+
+  // Semantic Colors
+  --gt-success: #22c55e;           // Green 500
+  --gt-info: #3b82f6;              // Blue 500
+  --gt-warning: #f59e0b;           // Amber 500
+  --gt-danger: #ef4444;            // Red 500
+  --gt-purple: #a855f7;            // Purple 500
+
+  // Background Colors
+  --gt-body-bg: #fdf2f8;           // Pink 50
+  --gt-sidebar-bg: #831843;        // Pink 900
+  --gt-sidebar-active-bg: #ec4899; // Pink 500
+  --gt-panel-bg: #ffffff;
+  --gt-nav-bg: #fce7f3;            // Pink 100
+
+  // Text Colors
+  --gt-text-primary: #525252;      // Neutral 600
+  --gt-text-dark: #831843;         // Pink 900
+  --gt-link-color: #ec4899;        // Pink 500
+  --gt-link-hover: #db2777;        // Pink 600
+
+  // Sidebar
+  --gt-sidebar-text: #fbcfe8;      // Pink 200
+  --gt-sidebar-heading: #fdf2f8;   // Pink 50
+
+  // Navigation
+  --gt-nav-active: #ec4899;        // Pink 500
+
+  // Forms
+  --gt-input-focus-border: #ec4899;
+
+  // Alerts
+  --gt-alert-success-bg: #dcfce7;  // Green 100
+  --gt-alert-info-bg: #dbeafe;     // Blue 100
+  --gt-alert-warning-bg: #fef3c7;  // Amber 100
+  --gt-alert-danger-bg: #fee2e2;   // Red 100
+}
+
+// =============================================================================
+// THEME: Slate - Neutral Monochrome
+// =============================================================================
+// A sophisticated neutral theme with no dominant color. Perfect for
+// content-focused applications where you want the content to stand out.
+// =============================================================================
+[data-theme="slate"],
+.theme-slate {
+  // Brand Colors
+  --gt-primary: #64748b;           // Slate 500
+  --gt-primary-dark: #475569;      // Slate 600
+  --gt-secondary: #1e293b;         // Slate 800
+  --gt-accent: #94a3b8;            // Slate 400
+
+  // Semantic Colors
+  --gt-success: #22c55e;           // Green 500
+  --gt-info: #3b82f6;              // Blue 500
+  --gt-warning: #f59e0b;           // Amber 500
+  --gt-danger: #ef4444;            // Red 500
+  --gt-purple: #8b5cf6;            // Violet 500
+
+  // Background Colors
+  --gt-body-bg: #f8fafc;           // Slate 50
+  --gt-sidebar-bg: #1e293b;        // Slate 800
+  --gt-sidebar-active-bg: #64748b; // Slate 500
+  --gt-panel-bg: #ffffff;
+  --gt-nav-bg: #f1f5f9;            // Slate 100
+
+  // Text Colors
+  --gt-text-primary: #475569;      // Slate 600
+  --gt-text-dark: #1e293b;         // Slate 800
+  --gt-link-color: #475569;        // Slate 600
+  --gt-link-hover: #334155;        // Slate 700
+
+  // Sidebar
+  --gt-sidebar-text: #cbd5e1;      // Slate 300
+  --gt-sidebar-heading: #f1f5f9;   // Slate 100
+
+  // Navigation
+  --gt-nav-active: #64748b;        // Slate 500
+
+  // Forms
+  --gt-input-focus-border: #64748b;
+
+  // Alerts
+  --gt-alert-success-bg: #dcfce7;  // Green 100
+  --gt-alert-info-bg: #dbeafe;     // Blue 100
+  --gt-alert-warning-bg: #fef3c7;  // Amber 100
+  --gt-alert-danger-bg: #fee2e2;   // Red 100
+}
+
+// =============================================================================
+// THEME: Indigo - Classic Tech Blue
+// =============================================================================
+// A classic indigo theme popular in tech and productivity apps.
+// Trusted, professional, and versatile.
+// =============================================================================
+[data-theme="indigo"],
+.theme-indigo {
+  // Brand Colors
+  --gt-primary: #6366f1;           // Indigo 500
+  --gt-primary-dark: #4f46e5;      // Indigo 600
+  --gt-secondary: #312e81;         // Indigo 900
+  --gt-accent: #818cf8;            // Indigo 400
+
+  // Semantic Colors
+  --gt-success: #22c55e;           // Green 500
+  --gt-info: #3b82f6;              // Blue 500
+  --gt-warning: #f59e0b;           // Amber 500
+  --gt-danger: #ef4444;            // Red 500
+  --gt-purple: #a855f7;            // Purple 500
+
+  // Background Colors
+  --gt-body-bg: #eef2ff;           // Indigo 50
+  --gt-sidebar-bg: #312e81;        // Indigo 900
+  --gt-sidebar-active-bg: #6366f1; // Indigo 500
+  --gt-panel-bg: #ffffff;
+  --gt-nav-bg: #e0e7ff;            // Indigo 100
+
+  // Text Colors
+  --gt-text-primary: #475569;      // Slate 600
+  --gt-text-dark: #312e81;         // Indigo 900
+  --gt-link-color: #6366f1;        // Indigo 500
+  --gt-link-hover: #4f46e5;        // Indigo 600
+
+  // Sidebar
+  --gt-sidebar-text: #c7d2fe;      // Indigo 200
+  --gt-sidebar-heading: #eef2ff;   // Indigo 50
+
+  // Navigation
+  --gt-nav-active: #6366f1;        // Indigo 500
+
+  // Forms
+  --gt-input-focus-border: #6366f1;
+
+  // Alerts
+  --gt-alert-success-bg: #dcfce7;  // Green 100
+  --gt-alert-info-bg: #dbeafe;     // Blue 100
+  --gt-alert-warning-bg: #fef3c7;  // Amber 100
+  --gt-alert-danger-bg: #fee2e2;   // Red 100
+}
+
+// =============================================================================
+// THEME: Teal - Healthcare/Wellness
+// =============================================================================
+// A calming teal theme perfect for healthcare, wellness, and
+// professional service applications.
+// =============================================================================
+[data-theme="teal"],
+.theme-teal {
+  // Brand Colors
+  --gt-primary: #14b8a6;           // Teal 500
+  --gt-primary-dark: #0d9488;      // Teal 600
+  --gt-secondary: #134e4a;         // Teal 900
+  --gt-accent: #2dd4bf;            // Teal 400
+
+  // Semantic Colors
+  --gt-success: #22c55e;           // Green 500
+  --gt-info: #3b82f6;              // Blue 500
+  --gt-warning: #f59e0b;           // Amber 500
+  --gt-danger: #ef4444;            // Red 500
+  --gt-purple: #8b5cf6;            // Violet 500
+
+  // Background Colors
+  --gt-body-bg: #f0fdfa;           // Teal 50
+  --gt-sidebar-bg: #134e4a;        // Teal 900
+  --gt-sidebar-active-bg: #14b8a6; // Teal 500
+  --gt-panel-bg: #ffffff;
+  --gt-nav-bg: #ccfbf1;            // Teal 100
+
+  // Text Colors
+  --gt-text-primary: #525252;      // Neutral 600
+  --gt-text-dark: #134e4a;         // Teal 900
+  --gt-link-color: #14b8a6;        // Teal 500
+  --gt-link-hover: #0d9488;        // Teal 600
+
+  // Sidebar
+  --gt-sidebar-text: #99f6e4;      // Teal 200
+  --gt-sidebar-heading: #f0fdfa;   // Teal 50
+
+  // Navigation
+  --gt-nav-active: #14b8a6;        // Teal 500
+
+  // Forms
+  --gt-input-focus-border: #14b8a6;
+
+  // Alerts
+  --gt-alert-success-bg: #dcfce7;  // Green 100
+  --gt-alert-info-bg: #dbeafe;     // Blue 100
+  --gt-alert-warning-bg: #fef3c7;  // Amber 100
+  --gt-alert-danger-bg: #fee2e2;   // Red 100
+}
+
+// =============================================================================
+// JavaScript Theme Switcher Helper
+// =============================================================================
+// Add this to your JavaScript to enable theme switching:
+//
+// function setTheme(themeName) {
+//   document.documentElement.setAttribute('data-theme', themeName);
+//   localStorage.setItem('theme', themeName);
+// }
+//
+// function loadTheme() {
+//   const savedTheme = localStorage.getItem('theme');
+//   if (savedTheme) {
+//     document.documentElement.setAttribute('data-theme', savedTheme);
+//   }
+// }
+//
+// // Call on page load
+// loadTheme();
+// =============================================================================

@@ -12,6 +12,16 @@
 // MODERN THEME (experimental - softer shadows, cooler grays, vibrant colors):
 // @use "./scss/variables-modern" as variables;
 // =============================================================================
+
+// =============================================================================
+// COLOR SCHEMES (2026 Modern Collection)
+// =============================================================================
+// Optional color schemes that users can switch between at runtime.
+// Apply via: <html data-theme="ocean"> or <body class="theme-ocean">
+// Available: ocean, sunset, lavender, forest, midnight, rose, slate, indigo, teal
+// =============================================================================
+@use "./scss/color-schemes";
+
 @use "./scss/custom.scss";
 @use "./scss/font-optimization.scss";
 @use "./scss/index2.scss";
