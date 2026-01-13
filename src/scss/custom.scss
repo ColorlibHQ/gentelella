@@ -2233,15 +2233,39 @@ ul.top_profiles li:nth-child(odd) {
   background-color: #eee;
 }
 .media .profile_thumb {
-  border: 1px solid;
   width: 50px;
   height: 50px;
   margin: 5px 10px 5px 0;
   border-radius: 50%;
-  padding: 9px 12px;
-}
-.media .profile_thumb i {
-  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+
+  // Colorful backgrounds with white icons
+  &.border-aero {
+    background-color: #9cc2cb;
+  }
+  &.border-green {
+    background-color: var(--gt-primary);
+  }
+  &.border-blue {
+    background-color: var(--gt-accent);
+  }
+  &.border-purple {
+    background-color: var(--gt-purple);
+  }
+  &.border-orange {
+    background-color: var(--gt-warning);
+  }
+  &.border-red {
+    background-color: var(--gt-danger);
+  }
+
+  i {
+    font-size: 22px;
+    color: #fff !important;
+  }
 }
 .media .date {
   background: #ccc;
