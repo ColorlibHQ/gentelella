@@ -1,5 +1,58 @@
 # Gentelella Changelog
 
+## 2.1.4 - 13.01.2026
+
+**UI Polish & Navigation Enhancement Release**
+
+### New Features
+
+- **Go Pro Sidebar Link**: Added prominent "Go Pro" menu item linking to DashboardPack premium templates
+  - Positioned at top of sidebar for visibility
+  - Includes UTM tracking for analytics
+  - Opens in new tab for seamless user experience
+
+- **Sidebar Badge System**: Introduced colorful badges throughout sidebar navigation
+  - "Pro" badge (yellow) on Go Pro link
+  - "Hot" badge (red) on UI Elements menu
+  - "New" badge (green) on Data Presentation menu
+  - "Updated" badge (blue) on ECharts and Landing Page items
+  - Consistent 52px width across all badges with right alignment
+
+### UI/UX Improvements
+
+- **Avatar/Profile Thumbnails**: Redesigned profile icons in activity feeds
+  - Colorful circular backgrounds (aero, green, blue, purple, orange, red)
+  - White icons for better contrast and modern look
+  - Flexbox centering for perfect alignment
+
+- **Progress Bar Fixes**: Fixed invisible progress bars across dashboard pages
+  - Added proper background color to `.progress` container
+  - Removed conflicting CSS variable override that was zeroing out widths
+  - Consistent 8px height with rounded corners
+
+- **Spacing Consistency**: Removed extra `<br>` tag causing uneven card spacing on index.html
+
+### File Upload Modernization
+
+- **Uppy Integration**: Replaced legacy Dropzone.js with modern Uppy file uploader
+  - Drag & drop support with visual feedback
+  - Image preview thumbnails
+  - Progress indicators for uploads
+  - Cleaner, more maintainable codebase
+
+### Cross-Page Consistency
+
+- **Unified Sidebar Menu**: All 33 HTML template pages now share identical sidebar navigation
+  - Consistent menu structure and badges across all pages
+  - Improved user experience when navigating between pages
+
+### Code Quality
+
+- **Removed Inline CSS**: Cleaned up inline styles, moved to proper SCSS files
+- **SCSS Organization**: Consolidated badge and progress bar styles
+
+---
+
 ## 2.1.3 - 12.01.2026
 
 **Code Quality, Naming Standardization & UI Modernization Release**

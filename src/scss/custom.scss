@@ -1012,6 +1012,7 @@ a:focus {
   font-weight: 500;
   font-size: 14px;
   transition: all 0.3s ease;
+
 }
 
 // Icon styling for sidebar menu
@@ -1211,6 +1212,19 @@ body .nav.top_menu > li > a {
   font-size: 12px;
   padding: 9px;
 }
+
+// Unified sidebar badge styling
+#sidebar-menu .badge {
+  font-size: 9px !important;
+  font-weight: 600 !important;
+  padding: 3px 6px !important;
+  margin-left: auto;
+  width: 52px !important;
+  text-align: center !important;
+  display: inline-block !important;
+  flex: 0 0 auto;
+}
+
 .panel_toolbox {
   float: right;
   min-width: 70px;

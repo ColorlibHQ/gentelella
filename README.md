@@ -6,7 +6,16 @@ Gentelella is a powerful, free-to-use Bootstrap 5 admin template that has been c
 
 ![Gentelella Bootstrap Admin Template](https://colorlib.com/wp/wp-content/uploads/sites/2/gentelella-admin-template-preview.jpg "Gentelella Theme Browser Preview")
 
-## What's New in v2.1.3 (Latest Release - January 12, 2026)
+## What's New in v2.1.4 (Latest Release - January 13, 2026)
+
+- **Go Pro Sidebar Link** - Premium templates promotion with UTM tracking
+- **Sidebar Badge System** - Colorful Pro, Hot, New, and Updated badges
+- **Avatar Redesign** - Colorful circular backgrounds with white icons
+- **Progress Bar Fixes** - Fixed invisible progress bars across dashboards
+- **Uppy File Upload** - Replaced Dropzone.js with modern Uppy uploader
+- **Cross-Page Consistency** - Unified sidebar menu across all 33 template pages
+
+### Previous Release: v2.1.3
 
 - **Bootstrap Icons Integration** - Added Bootstrap Icons for modern, minimalist sidebar navigation
 - **Header Navigation Rebuilt** - Proper Bootstrap 5 flexbox utilities for top navigation layout
