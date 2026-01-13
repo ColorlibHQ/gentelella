@@ -3,7 +3,8 @@ import { visualizer } from 'rollup-plugin-visualizer';
 
 export default defineConfig({
   root: '.',
-  publicDir: 'production',
+  base: '/polygon/gentelella/',
+  publicDir: 'public',
   logLevel: 'info',
   clearScreen: false,
   build: {
