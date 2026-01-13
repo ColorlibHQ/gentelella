@@ -4,7 +4,9 @@
 
 Gentelella is a powerful, free-to-use Bootstrap 5 admin template that has been completely modernized with Vite, performance optimizations, and the latest web technologies. This template provides a comprehensive foundation for building admin panels, dashboards, and back-end applications.
 
-![Gentelella Bootstrap Admin Template](https://colorlib.com/wp/wp-content/uploads/sites/2/gentelella-admin-template-preview.jpg "Gentelella Theme Browser Preview")
+[![Gentelella Bootstrap Admin Template](https://colorlib.com/wp/wp-content/uploads/sites/2/gentelella-admin-template-preview.jpg "Gentelella Theme Browser Preview")](https://colorlib.com/polygon/gentelella/index.html)
+
+**[View Live Demo](https://colorlib.com/polygon/gentelella/index.html)**
 
 ## What's New in v2.1.4 (Latest Release - January 13, 2026)
 
