@@ -6,6 +6,9 @@
 // Import canonical DOM utilities
 import DOM from '../utils/dom.js';
 
+// Key for persisting sidebar state across page navigations
+const SIDEBAR_STATE_KEY = 'gentelella_sidebar_state';
+
 function initSidebar() {
   // Helper function to set the content height
   const setContentHeight = function () {
@@ -41,6 +44,22 @@ function initSidebar() {
 
   if (!sidebarMenu) {
     return;
+  }
+
+  // Restore persisted sidebar state from localStorage
+  const savedState = localStorage.getItem(SIDEBAR_STATE_KEY);
+  if (savedState === 'nav-sm' && DOM.hasClass(body, 'nav-md')) {
+    DOM.removeClass(body, 'nav-md');
+    DOM.addClass(body, 'nav-sm');
+
+    const logoFull = DOM.select('.logo-full');
+    const logoIcon = DOM.select('.logo-icon');
+    if (logoFull) { logoFull.style.display = 'none'; }
+    if (logoIcon) { logoIcon.style.display = 'inline-block'; }
+
+    DOM.selectAll('#sidebar-menu ul.child_menu').forEach(submenu => {
+      submenu.style.display = 'none';
+    });
   }
 
   // Enhanced sidebar menu click handler
@@ -132,6 +151,10 @@ function initSidebar() {
           logoIcon.style.display = 'none';
         }
       }
+
+      // Persist sidebar state for cross-page navigation
+      localStorage.setItem(SIDEBAR_STATE_KEY,
+        DOM.hasClass(body, 'nav-sm') ? 'nav-sm' : 'nav-md');
 
       setContentHeight();
     });
