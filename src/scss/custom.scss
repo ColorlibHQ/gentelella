@@ -473,14 +473,9 @@ body .container.body .right_col {
   border-color: #50c1cf !important;
   color: #fff;
 }
-.container {
-  width: 100%;
-  padding: 0;
-  max-width: 100%;
-}
+// Navigation text color
 .navbar-nav > li > a,
-.navbar-brand,
-.navbar-nav > li > a {
+.navbar-brand {
   color: #fff !important;
 }
 .top_nav .nav > li > a:focus,

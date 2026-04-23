@@ -10,6 +10,9 @@ import DOM from '../utils/dom.js';
 // Import development logger
 import logger from '../utils/logger.js';
 
+// Timer registry for cleanup — prevents memory leaks on page transitions
+const _activeIntervals = [];
+
 /**
  * Index2 Dashboard - Weekly Summary Charts
  * MODERNIZED FROM JQUERY - was using $('#element').length
@@ -94,12 +97,12 @@ function initializeWeeklySummaryChart() {
   });
 
   // Auto-refresh every 30 seconds
-  setInterval(() => {
+  _activeIntervals.push(setInterval(() => {
     const newData = generateWeeklyData();
     weeklySummaryChart.setOption({
       series: [{ data: newData.sales }, { data: newData.visitors }, { data: newData.orders }]
     });
-  }, 30000);
+  }, 30000));
 }
 
 /**
@@ -626,7 +629,9 @@ function initializeSystemHealthGauges() {
     });
 
     // Simulate real-time updates
-    setInterval(() => {
+    _activeIntervals.push(setInterval(() => {
+      // Skip updates when tab is hidden (performance optimization)
+      if (document.hidden) { return; }
       const newValue = Math.max(10, Math.min(95, config.value + (Math.random() - 0.5) * 20));
       gauge.setOption({
         series: [
@@ -635,7 +640,7 @@ function initializeSystemHealthGauges() {
           }
         ]
       });
-    }, 5000);
+    }, 5000));
   });
 }
 
@@ -658,6 +663,16 @@ function generateSalesData() {
   };
 }
 
+/**
+ * Cleanup all active dashboard timers to prevent memory leaks.
+ * Called automatically on page unload; can also be called manually.
+ */
+export function cleanupDashboardTimers() {
+  _activeIntervals.forEach(id => clearInterval(id));
+  _activeIntervals.length = 0;
+  logger.log('Dashboard timers cleaned up');
+}
+
 // Auto-initialize based on page context
 if (typeof document !== 'undefined') {
   document.addEventListener('DOMContentLoaded', () => {
@@ -667,4 +682,7 @@ if (typeof document !== 'undefined') {
     initializeIndex4();
     initializeSidebarGauges();
   });
+
+  // Cleanup timers on page unload to prevent memory leaks
+  window.addEventListener('beforeunload', cleanupDashboardTimers);
 }

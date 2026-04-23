@@ -10,6 +10,9 @@ import DOM from '../utils/dom.js';
 // Import development logger
 import logger from '../utils/logger.js';
 
+// Timer registry for network chart cleanup — prevents memory leaks
+const _networkIntervals = [];
+
 /**
  * Chart.js Initialization - MODERNIZED FROM JQUERY
  * Discovers and initializes Chart.js charts via data attributes
@@ -173,7 +176,10 @@ function generateNetworkData() {
  * Real-time network chart updates
  */
 function startNetworkUpdates(chart, chartId) {
-  setInterval(() => {
+  const intervalId = setInterval(() => {
+    // Skip updates when tab is hidden (performance optimization)
+    if (document.hidden) { return; }
+
     // Add new data point
     const newValue = Math.random() * 100;
     const newLabel = new Date().toLocaleTimeString();
@@ -189,6 +195,7 @@ function startNetworkUpdates(chart, chartId) {
 
     chart.update('none'); // Update without animation for real-time feel
   }, 2000); // Update every 2 seconds
+  _networkIntervals.push(intervalId);
 }
 
 /**
@@ -533,6 +540,16 @@ export function initializeIndexDashboardCharts() {
   logger.log('Index dashboard charts initialization complete');
 }
 
+/**
+ * Cleanup all active network chart timers to prevent memory leaks.
+ * Called automatically on page unload; can also be called manually.
+ */
+export function cleanupNetworkTimers() {
+  _networkIntervals.forEach(id => clearInterval(id));
+  _networkIntervals.length = 0;
+  logger.log('Network chart timers cleaned up');
+}
+
 // Auto-initialize charts when DOM is ready
 if (typeof document !== 'undefined') {
   document.addEventListener('DOMContentLoaded', () => {
@@ -550,4 +567,7 @@ if (typeof document !== 'undefined') {
       initializeNetworkCharts();
     }
   });
+
+  // Cleanup timers on page unload to prevent memory leaks
+  window.addEventListener('beforeunload', cleanupNetworkTimers);
 }
