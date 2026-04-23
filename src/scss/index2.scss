@@ -212,18 +212,12 @@
 /* .purple = #9b59b6 */
 /* Note: Duplicate definitions removed - use custom.scss as single source of truth */
 
-/* Panel Improvements */
-.x_panel {
-  box-shadow:
-    0 1px 3px rgba(0, 0, 0, 0.12),
-    0 1px 2px rgba(0, 0, 0, 0.24);
-  border-radius: 5px;
-}
+// .x_panel styling is owned by custom.scss — do not override radius/shadow
+// here. Keeping this file focused on index2-specific elements only.
 
-/* Chart Container Improvements */
 .demo-container {
-  background: white;
-  border-radius: 5px;
+  background: var(--gt-panel-bg);
+  border-radius: var(--gt-radius-card);
   padding: 10px;
 }
 

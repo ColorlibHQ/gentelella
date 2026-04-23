@@ -28,6 +28,33 @@
 .left_col {
   background: var(--gt-secondary);
 }
+
+// Small square "app icon" badge used alongside the Gentelella wordmark on
+// auth/error pages, where the sidebar-tinted logo.svg is nearly invisible.
+// Mirrors the dashboard grid from logo-icon.svg but renders in brand color.
+.brand-mark {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--gt-radius-md);
+  background-color: var(--gt-secondary);
+  background-image:
+    linear-gradient(#fff, #fff),
+    linear-gradient(#fff, #fff),
+    linear-gradient(#fff, #fff),
+    linear-gradient(#fff, #fff),
+    linear-gradient(#fff, #fff),
+    linear-gradient(#fff, #fff),
+    linear-gradient(#fff, #fff),
+    linear-gradient(#fff, #fff),
+    linear-gradient(#fff, #fff);
+  background-repeat: no-repeat;
+  background-size: 5px 5px;
+  background-position:
+    7px 7px, 13.5px 7px, 20px 7px,
+    7px 13.5px, 13.5px 13.5px, 20px 13.5px,
+    7px 20px, 13.5px 20px, 20px 20px;
+}
 .container {
   width: 100%;
   padding: 0;
@@ -473,14 +500,8 @@ body .container.body .right_col {
   border-color: #50c1cf !important;
   color: #fff;
 }
-.container {
-  width: 100%;
-  padding: 0;
-  max-width: 100%;
-}
 .navbar-nav > li > a,
-.navbar-brand,
-.navbar-nav > li > a {
+.navbar-brand {
   color: #fff !important;
 }
 .top_nav .nav > li > a:focus,
@@ -1037,7 +1058,7 @@ a:focus {
   text-align: right;
 }
 .nav.side-menu > li > a:hover {
-  color: #f2f5f7 !important;
+  color: var(--gt-surface-muted) !important;
 }
 .nav.side-menu > li > a:hover,
 .nav > li > a:focus {
@@ -1213,15 +1234,17 @@ body .nav.top_menu > li > a {
   padding: 9px;
 }
 
-// Unified sidebar badge styling
+// Sidebar badge styling. The `#sidebar-menu .badge` selector already
+// outranks Bootstrap's `.badge` class by specificity, so no !important
+// needed here.
 #sidebar-menu .badge {
-  font-size: 9px !important;
-  font-weight: 600 !important;
-  padding: 3px 6px !important;
+  font-size: 9px;
+  font-weight: 600;
+  padding: 3px 6px;
   margin-left: auto;
-  width: 52px !important;
-  text-align: center !important;
-  display: inline-block !important;
+  width: 52px;
+  text-align: center;
+  display: inline-block;
   flex: 0 0 auto;
 }
 
@@ -1286,9 +1309,9 @@ footer {
   text-align: center;
 }
 .jqstooltip {
-  background: var(--gt-dark) !important;
-  width: 30px !important;
-  height: 22px !important;
+  background: var(--gt-dark);
+  width: 30px;
+  height: 22px;
   text-decoration: none;
 }
 .tooltip {
@@ -1402,13 +1425,13 @@ article.media {
   border-bottom: 1px solid #efefef;
 }
 .accordion .panel-heading {
-  background: #f2f5f7;
+  background: var(--gt-surface-muted);
   padding: 13px;
   width: 100%;
   display: block;
 }
 .accordion .panel:hover {
-  background: #f2f5f7;
+  background: var(--gt-surface-muted);
 }
 .x_panel {
   position: relative;
@@ -1416,19 +1439,22 @@ article.media {
   margin-bottom: 20px;
   padding: 15px 20px;
   display: inline-block;
-  background: #fff;
-  border: 1px solid var(--gt-border-color);
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background: var(--gt-panel-bg);
+  border: 1px solid var(--gt-card-border);
+  border-radius: var(--gt-radius-card);
+  box-shadow: var(--gt-shadow-card);
   column-break-inside: avoid;
   opacity: 1;
-  transition: all 0.3s ease;
+  transition:
+    box-shadow var(--gt-transition-normal),
+    border-color var(--gt-transition-normal),
+    transform var(--gt-transition-normal);
 }
 
 .x_panel:hover {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--gt-shadow-card-hover);
   transform: translateY(-2px);
-  border-color: #ddd;
+  border-color: var(--gt-card-border-hover);
 }
 
 // x_title - modernized to flexbox
@@ -1706,23 +1732,28 @@ table.countries_list td {
   border-top: 1px solid #eeeeee;
 }
 
+// Legacy DataTables 1.x selectors (.dataTables_paginate, paging_full_numbers,
+// DTTT_button) are no longer emitted — DataTables 2.x with the Bootstrap 5
+// integration uses .pagination, .page-item, .page-link instead. Removing
+// these blocks entirely would be a bigger cleanup; for now drop the
+// !important since these selectors no longer match anything in production.
 .dataTables_paginate a {
-  padding: 6px 9px !important;
-  background: #ddd !important;
-  border-color: #ddd !important;
+  padding: 6px 9px;
+  background: var(--gt-gray-200);
+  border-color: var(--gt-gray-200);
 }
 
 .paging_full_numbers a.paginate_active {
-  background-color: rgba(38, 185, 154, 0.59) !important;
-  border-color: rgba(38, 185, 154, 0.59) !important;
+  background-color: rgba(38, 185, 154, 0.59);
+  border-color: rgba(38, 185, 154, 0.59);
 }
 
 button.DTTT_button,
 div.DTTT_button,
 a.DTTT_button {
-  border: 1px solid var(--gt-sidebar-text) !important;
-  background: var(--gt-sidebar-text) !important;
-  box-shadow: none !important;
+  border: 1px solid var(--gt-sidebar-text);
+  background: var(--gt-sidebar-text);
+  box-shadow: none;
 }
 
 table.jambo_table {
@@ -2206,19 +2237,22 @@ span.right {
 /** /top tiles **/
 
 .dashboard_graph {
-  background: #fff;
+  background: var(--gt-panel-bg);
   padding: 15px 20px;
-  border: 1px solid var(--gt-border-color);
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--gt-card-border);
+  border-radius: var(--gt-radius-card);
+  box-shadow: var(--gt-shadow-card);
   margin-bottom: 20px;
-  transition: all 0.3s ease;
+  transition:
+    box-shadow var(--gt-transition-normal),
+    border-color var(--gt-transition-normal),
+    transform var(--gt-transition-normal);
 }
 
 .dashboard_graph:hover {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--gt-shadow-card-hover);
   transform: translateY(-2px);
-  border-color: #ddd;
+  border-color: var(--gt-card-border-hover);
 }
 .dashboard_graph .col-md-9,
 .dashboard_graph .col-md-3 {
@@ -2359,15 +2393,18 @@ h4.graph_title {
   position: relative;
   display: block;
   margin-bottom: 20px;
-  border: 1px solid #e4e4e4;
+  border: 1px solid var(--gt-card-border);
   overflow: hidden;
   padding: 25px 20px 20px 20px;
-  border-radius: 8px;
+  border-radius: var(--gt-radius-card);
   background-clip: padding-box;
-  background: #fff;
-  transition: all 300ms ease-in-out;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background: var(--gt-panel-bg);
+  box-shadow: var(--gt-shadow-card);
   min-height: 160px;
+  transition:
+    box-shadow var(--gt-transition-normal),
+    border-color var(--gt-transition-normal),
+    transform var(--gt-transition-normal);
 }
 
 .tile-stats:hover .icon i {
@@ -2488,11 +2525,10 @@ table.tile_info span.right {
   text-align: left;
 }
 
-/* Hover effects for tile stats */
 .tile-stats:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-  border-color: #ddd;
+  box-shadow: var(--gt-shadow-card-hover);
+  border-color: var(--gt-card-border-hover);
 }
 
 /* Top tiles container */
@@ -2939,8 +2975,8 @@ select.parsley-error {
 /* ***** autocomplete ***** */
 
 .autocomplete-suggestions {
-  border: 1px solid #e4e4e4;
-  background: #f4f4f4;
+  border: 1px solid var(--gt-border-color);
+  background: var(--gt-gray-50);
   cursor: default;
   overflow: auto;
 }
@@ -4891,7 +4927,7 @@ ul.notifications {
   display: flex;
 }
 .profile-bottom {
-  background: #f2f5f7;
+  background: var(--gt-surface-muted);
   padding: 9px 0;
   border-top: 1px solid var(--gt-border-color);
 }
@@ -5607,22 +5643,7 @@ ul.legend {
   color: #333;
 }
 
-/* Simplified widget content layout */
-.x_panel {
-  background: #fff;
-  border: 1px solid var(--gt-border-color);
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-  transition: all 0.3s ease;
-
-  &:hover {
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-    transform: translateY(-2px);
-    border-color: #ddd;
-  }
-}
-
+// .x_panel is defined once at the top of this file — don't redeclare it here.
 .x_panel .x_content {
   padding: 15px;
   overflow: hidden;
@@ -5634,20 +5655,19 @@ ul.legend {
   height: auto;
 }
 
-/* Pie chart background improvements */
 .pie_bg {
   padding: 10px;
   margin: 10px 0;
-  border-radius: 5px;
+  border-radius: var(--gt-radius-md);
   background: rgba(248, 249, 250, 0.8);
 }
 
-/* Widget spacing improvements */
 .top_tiles .tile {
   padding: 15px;
-  background: white;
-  border-radius: 5px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  background: var(--gt-panel-bg);
+  border: 1px solid var(--gt-card-border);
+  border-radius: var(--gt-radius-card);
+  box-shadow: var(--gt-shadow-card);
   margin-bottom: 15px;
 
   h5 {
@@ -6177,12 +6197,23 @@ input[type="radio"].flat:disabled + label {
   }
 }
 
-// Enhanced card styling for analytics
+// Bootstrap's `.card` shares the card-surface tokens with `.x_panel`,
+// `.dashboard_graph`, `.tile-stats` and `.top_tiles .tile` so raised
+// surfaces look identical no matter which markup authored them.
 .card {
-  transition: box-shadow 0.15s ease-in-out;
+  background-color: var(--gt-panel-bg);
+  border: 1px solid var(--gt-card-border);
+  border-radius: var(--gt-radius-card);
+  box-shadow: var(--gt-shadow-card);
+  transition:
+    box-shadow var(--gt-transition-normal),
+    border-color var(--gt-transition-normal),
+    transform var(--gt-transition-normal);
 
   &:hover {
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+    box-shadow: var(--gt-shadow-card-hover);
+    border-color: var(--gt-card-border-hover);
+    transform: translateY(-2px);
   }
 }
 

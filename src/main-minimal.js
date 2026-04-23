@@ -48,7 +48,7 @@ import './utils/security.js';
 // Native easing functions (jQuery-free)
 const EasingFunctions = {
   easeOutElastic: function (t, b, c, d) {
-    let s = 1.70158; let p = 0; let a = c;
+    let s; let p = 0; let a = c;
     if (t === 0) {return b;}
     if ((t /= d) === 1) {return b + c;}
     if (!p) {p = d * 0.3;}
@@ -102,8 +102,9 @@ try {
   globalThis.Chart = Chart;
 }
 
-// ECharts - Apache ECharts library
-import * as echarts from 'echarts';
+// ECharts — tree-shaken bundle (registers only the charts/components used).
+// See src/lib/echarts.js for the active module list.
+import echarts from './lib/echarts.js';
 window.echarts = echarts;
 globalThis.echarts = echarts;
 

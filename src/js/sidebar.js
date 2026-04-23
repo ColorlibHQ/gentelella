@@ -6,6 +6,27 @@
 // Import canonical DOM utilities
 import DOM from '../utils/dom.js';
 
+// Persists only the collapsed/expanded state of the sidebar across page
+// navigations. Wrapped in try/catch because localStorage throws in Safari
+// private mode and when storage is full or disabled.
+const SIDEBAR_STATE_KEY = 'gentelella:sidebar-collapsed';
+
+function readSidebarCollapsed() {
+  try {
+    return localStorage.getItem(SIDEBAR_STATE_KEY) === '1';
+  } catch {
+    return false;
+  }
+}
+
+function writeSidebarCollapsed(collapsed) {
+  try {
+    localStorage.setItem(SIDEBAR_STATE_KEY, collapsed ? '1' : '0');
+  } catch {
+    /* storage unavailable — state is ephemeral, not a failure */
+  }
+}
+
 function initSidebar() {
   // Helper function to set the content height
   const setContentHeight = function () {
@@ -41,6 +62,41 @@ function initSidebar() {
 
   if (!sidebarMenu) {
     return;
+  }
+
+  const setLogoForState = function (collapsed) {
+    const logoFull = DOM.select('.logo-full');
+    const logoIcon = DOM.select('.logo-icon');
+    if (logoFull) {
+      logoFull.style.display = collapsed ? 'none' : 'inline-block';
+    }
+    if (logoIcon) {
+      logoIcon.style.display = collapsed ? 'inline-block' : 'none';
+    }
+  };
+
+  const collapseSidebar = function () {
+    DOM.removeClass(body, 'nav-md');
+    DOM.addClass(body, 'nav-sm');
+    setLogoForState(true);
+    DOM.selectAll('#sidebar-menu ul.child_menu').forEach(submenu => {
+      submenu.style.display = 'none';
+    });
+    DOM.selectAll('#sidebar-menu li.active').forEach(li => {
+      DOM.removeClass(li, 'active');
+    });
+  };
+
+  const expandSidebar = function () {
+    DOM.removeClass(body, 'nav-sm');
+    DOM.addClass(body, 'nav-md');
+    setLogoForState(false);
+  };
+
+  // Restore persisted collapsed state before menu-highlight logic runs so we
+  // don't open a submenu that will immediately be collapsed.
+  if (readSidebarCollapsed() && DOM.hasClass(body, 'nav-md')) {
+    collapseSidebar();
   }
 
   // Enhanced sidebar menu click handler
@@ -91,67 +147,41 @@ function initSidebar() {
     setContentHeight();
   });
 
-  // Menu toggle functionality
   const menuToggle = DOM.select('#menu_toggle');
   if (menuToggle) {
     menuToggle.addEventListener('click', function (ev) {
       ev.preventDefault();
 
-      if (DOM.hasClass(body, 'nav-md')) {
-        DOM.removeClass(body, 'nav-md');
-        DOM.addClass(body, 'nav-sm');
-
-        // Hide full logo, show icon logo
-        const logoFull = DOM.select('.logo-full');
-        const logoIcon = DOM.select('.logo-icon');
-        if (logoFull) {
-          logoFull.style.display = 'none';
-        }
-        if (logoIcon) {
-          logoIcon.style.display = 'inline-block';
-        }
-
-        // Close all submenus when collapsing
-        DOM.selectAll('#sidebar-menu ul.child_menu').forEach(submenu => {
-          submenu.style.display = 'none';
-        });
-        DOM.selectAll('#sidebar-menu li.active').forEach(li => {
-          DOM.removeClass(li, 'active');
-        });
+      const willCollapse = DOM.hasClass(body, 'nav-md');
+      if (willCollapse) {
+        collapseSidebar();
       } else {
-        DOM.removeClass(body, 'nav-sm');
-        DOM.addClass(body, 'nav-md');
-
-        // Show full logo, hide icon logo
-        const logoFull = DOM.select('.logo-full');
-        const logoIcon = DOM.select('.logo-icon');
-        if (logoFull) {
-          logoFull.style.display = 'inline-block';
-        }
-        if (logoIcon) {
-          logoIcon.style.display = 'none';
-        }
+        expandSidebar();
       }
+      writeSidebarCollapsed(willCollapse);
 
       setContentHeight();
     });
   }
 
-  // Highlight current page in menu
+  // Highlight current page in menu. Skip forcing submenus open when the
+  // sidebar is collapsed — CSS handles the hover-flyout in that mode.
   if (currentUrl) {
+    const collapsed = DOM.hasClass(body, 'nav-sm');
     DOM.selectAll('#sidebar-menu a').forEach(link => {
       if (link.href && link.href === currentUrl) {
         DOM.addClass(link.parentElement, 'current-page');
 
-        // Open parent menus if this is a submenu item
-        let parent = link.closest('ul.child_menu');
-        while (parent) {
-          parent.style.display = 'block';
-          const parentLi = parent.closest('li');
-          if (parentLi) {
-            DOM.addClass(parentLi, 'active');
+        if (!collapsed) {
+          let parent = link.closest('ul.child_menu');
+          while (parent) {
+            parent.style.display = 'block';
+            const parentLi = parent.closest('li');
+            if (parentLi) {
+              DOM.addClass(parentLi, 'active');
+            }
+            parent = parent.parentElement.closest('ul.child_menu');
           }
-          parent = parent.parentElement.closest('ul.child_menu');
         }
       }
     });

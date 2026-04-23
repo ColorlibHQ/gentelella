@@ -32,6 +32,7 @@ export default [
         FormData: 'readonly',
         FileReader: 'readonly',
         Blob: 'readonly',
+        File: 'readonly',
         Image: 'readonly',
         alert: 'readonly',
         confirm: 'readonly',
@@ -87,8 +88,17 @@ export default [
       }
     },
     rules: {
-      // Code Quality
-      'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+      // Code Quality. Unused vars are a warning (not error) because this is
+      // a template: consumers routinely declare state they haven't wired up
+      // yet. Use a leading underscore to intentionally silence the warning.
+      'no-unused-vars': [
+        'warn',
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+          caughtErrorsIgnorePattern: '^_'
+        }
+      ],
       'no-console': 'warn',
       'no-debugger': 'error',
       'no-alert': 'warn',
@@ -96,6 +106,9 @@ export default [
       // Best Practices
       'eqeqeq': ['error', 'always'],
       'curly': ['error', 'all'],
+      // The defensive-init pattern in chart modules uses empty catches to
+      // skip a chart when its library isn't present — intentional, not a bug.
+      'no-empty': ['error', { allowEmptyCatch: true }],
       'no-eval': 'error',
       'no-implied-eval': 'error',
       'no-new-func': 'error',

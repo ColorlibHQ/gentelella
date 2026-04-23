@@ -18,9 +18,9 @@ import Uppy from '@uppy/core';
 import Dashboard from '@uppy/dashboard';
 import XHRUpload from '@uppy/xhr-upload';
 
-// Import Uppy CSS
-import '@uppy/core/dist/style.min.css';
-import '@uppy/dashboard/dist/style.min.css';
+// Import Uppy CSS (path changed in Uppy v5: /dist/ → /css/)
+import '@uppy/core/css/style.min.css';
+import '@uppy/dashboard/css/style.min.css';
 
 // Make Uppy available globally
 window.Uppy = Uppy;

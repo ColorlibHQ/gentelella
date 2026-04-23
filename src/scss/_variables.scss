@@ -136,6 +136,22 @@
   --gt-radius-round: 50%;
 
   // =========================================================================
+  // Card / panel / tile surfaces (single source of truth for all card-like
+  // containers: .x_panel, .dashboard_graph, .tile-stats, .top_tiles .tile,
+  // and anywhere else a raised surface is needed). Kept separate from the
+  // generic --gt-shadow-* scale which is denser and suited for overlays.
+  // =========================================================================
+  --gt-radius-card: 8px;
+  --gt-shadow-card: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --gt-shadow-card-hover: 0 4px 16px rgba(0, 0, 0, 0.12);
+  --gt-card-border: #eaecef;
+  --gt-card-border-hover: #d9dee4;
+
+  // Muted surface — accordion panel heads, profile footer, sidebar hover,
+  // and anywhere a slightly-recessed secondary background is wanted.
+  --gt-surface-muted: #f2f5f7;
+
+  // =========================================================================
   // Z-index Scale
   // =========================================================================
   --gt-z-dropdown: 1000;

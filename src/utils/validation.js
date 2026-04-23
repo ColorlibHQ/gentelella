@@ -22,7 +22,7 @@ export function isValidPhone(phone) {
   // Remove all non-digit characters except + at the beginning
   const cleaned = phone.replace(/[^\d+]/g, '');
   // Check for valid formats: +1234567890, 1234567890, etc.
-  const phoneRegex = /^(\+?\d{1,3})?[\d\s\-\(\)]{7,}$/;
+  const phoneRegex = /^(\+?\d{1,3})?[\d\s\-()]{7,}$/;
   return phoneRegex.test(cleaned) && cleaned.replace(/\D/g, '').length >= 7;
 }
 

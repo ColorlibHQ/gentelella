@@ -7,7 +7,25 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Gentelella Alela! | </title>
+    <!-- Security headers -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.googleapis.com; img-src 'self' data: https: blob:; font-src 'self' data: https://fonts.gstatic.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; connect-src 'self' ws: wss: http://localhost:* https://api.example.com https://*.googleapis.com; frame-src 'self' https://www.youtube.com https://player.vimeo.com; media-src 'self' https: blob:; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
+
+    <!-- Favicons -->
+    <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="../images/favicon-32x32.svg" type="image/svg+xml" sizes="32x32">
+    <link rel="icon" href="../images/favicon-16x16.svg" type="image/svg+xml" sizes="16x16">
+    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.svg" sizes="180x180">
+    <link rel="manifest" href="../site.webmanifest">
+
+    <!-- Theme color -->
+    <meta name="theme-color" content="#2a3f54">
+    <meta name="msapplication-TileColor" content="#2a3f54">
+
+    <title>Media Gallery | Gentelella</title>
 
     <!-- Bootstrap -->
     <!-- Font Awesome -->
@@ -22,7 +40,7 @@
         <aside class="col-md-3 left_col" aria-label="Sidebar navigation">
           <div class="left_col scroll-view">
             <div class="navbar nav_title border-0">
-              <a href="index.html" class="site_title"><img src="images/logo.svg" alt="Gentelella Alela!" class="logo-full logo-main" loading="lazy"><img src="images/logo-icon.svg" alt="Gentelella" class="logo-icon" loading="lazy"></a>
+              <a href="index.html" class="site_title"><img src="../images/logo.svg" alt="Gentelella Alela!" class="logo-full logo-main" loading="lazy"><img src="../images/logo-icon.svg" alt="Gentelella" class="logo-icon" loading="lazy"></a>
             </div>
 
             <div class="clearfix"></div>
@@ -30,7 +48,7 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="images/img.jpg" alt="User profile photo" class="img-circle profile_img" loading="lazy">
+                <img src="../images/img.jpg" alt="User profile photo" class="img-circle profile_img" loading="lazy">
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
@@ -54,6 +72,7 @@
                       <li><a href="index3.html">Dashboard 3</a></li>
                       <li><a href="index4.html">Dashboard 4</a></li>
                     </ul>
+                  </li>
                   <li><a><i class="bi bi-pencil-square"></i> Forms <span class="bi bi-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="form.html">General Form</a></li>
@@ -63,6 +82,7 @@
                       <li><a href="form_upload.html">Form Upload</a></li>
                       <li><a href="form_buttons.html">Form Buttons</a></li>
                     </ul>
+                  </li>
                   <li><a><i class="bi bi-display"></i> UI Elements <span class="badge bg-danger">Hot</span> <span class="bi bi-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="general_elements.html">General Elements</a></li>
@@ -74,22 +94,26 @@
                       <li><a href="inbox.html">Inbox</a></li>
                       <li><a href="calendar.html">Calendar</a></li>
                     </ul>
+                  </li>
                   <li><a><i class="bi bi-table"></i> Tables <span class="bi bi-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="tables.html">Tables</a></li>
                       <li><a href="tables_dynamic.html">Table Dynamic</a></li>
                     </ul>
+                  </li>
                   <li><a><i class="bi bi-bar-chart"></i> Data Presentation <span class="badge bg-success">New</span> <span class="bi bi-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="chartjs.html">Chart.js</a></li>
                       <li><a href="echarts.html">ECharts <span class="badge bg-info">Updated</span></a></li>
                       <li><a href="other_charts.html">Other Charts</a></li>
                     </ul>
+                  </li>
                   <li><a><i class="bi bi-layout-split"></i>Layouts <span class="bi bi-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="fixed_sidebar.html">Fixed Sidebar</a></li>
                       <li><a href="fixed_footer.html">Fixed Footer</a></li>
                     </ul>
+                  </li>
                 </ul>
               </div>
               <div class="menu_section">
@@ -103,6 +127,7 @@
                       <li><a href="contacts.html">Contacts</a></li>
                       <li><a href="profile.html">Profile</a></li>
                     </ul>
+                  </li>
                   <li><a><i class="bi bi-window-stack"></i> Extras <span class="bi bi-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="page_403.html">403 Error</a></li>
@@ -112,17 +137,20 @@
                       <li><a href="login.html">Login Page</a></li>
                       <li><a href="pricing_tables.html">Pricing Tables</a></li>
                     </ul>
+                  </li>
                   <li><a><i class="bi bi-diagram-3"></i> Multilevel Menu <span class="bi bi-chevron-down"></span></a>
                     <ul class="nav child_menu">
                         <li><a href="#level1_1">Level One</a></li>
                         <li><a>Level One<span class="bi bi-chevron-down"></span></a>
                           <ul class="nav child_menu">
-                            <li class="sub_menu"><a href="level2.html">Level Two</a>
-                            <li><a href="#level2_1">Level Two</a>
-                            <li><a href="#level2_2">Level Two</a>
+                            <li class="sub_menu"><a href="level2.html">Level Two</a></li>
+                            <li><a href="#level2_1">Level Two</a></li>
+                            <li><a href="#level2_2">Level Two</a></li>
                           </ul>
+                        </li>
                         <li><a href="#level1_2">Level One</a></li>
                     </ul>
+                  </li>
                   <li><a href="landing.html"><i class="bi bi-laptop"></i> Landing Page <span class="badge bg-info">Updated</span></a></li>
                 </ul>
               </div>
@@ -165,7 +193,7 @@
                     <ul class="dropdown-menu dropdown-menu-end list-unstyled msg_list dropdown-menu-lg" role="menu" aria-labelledby="navbarDropdown1">
                       <li class="nav-item">
                         <a class="dropdown-item">
-                          <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                          <span class="image"><img src="../images/img.jpg" alt="Profile Image" /></span>
                           <span>
                             <span>John Smith</span>
                             <span class="time">3 mins ago</span>
@@ -174,9 +202,10 @@
                             Film festivals used to be do-or-die moments for movie makers. They were where...
                           </span>
                         </a>
+                      </li>
                       <li class="nav-item">
                         <a class="dropdown-item">
-                          <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                          <span class="image"><img src="../images/img.jpg" alt="Profile Image" /></span>
                           <span>
                             <span>John Smith</span>
                             <span class="time">3 mins ago</span>
@@ -185,9 +214,10 @@
                             Film festivals used to be do-or-die moments for movie makers. They were where...
                           </span>
                         </a>
+                      </li>
                       <li class="nav-item">
                         <a class="dropdown-item">
-                          <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                          <span class="image"><img src="../images/img.jpg" alt="Profile Image" /></span>
                           <span>
                             <span>John Smith</span>
                             <span class="time">3 mins ago</span>
@@ -196,9 +226,10 @@
                             Film festivals used to be do-or-die moments for movie makers. They were where...
                           </span>
                         </a>
+                      </li>
                       <li class="nav-item">
                         <a class="dropdown-item">
-                          <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                          <span class="image"><img src="../images/img.jpg" alt="Profile Image" /></span>
                           <span>
                             <span>John Smith</span>
                             <span class="time">3 mins ago</span>
@@ -207,6 +238,7 @@
                             Film festivals used to be do-or-die moments for movie makers. They were where...
                           </span>
                         </a>
+                      </li>
                       <li class="nav-item">
                         <div class="text-center">
                           <a class="dropdown-item">
@@ -214,11 +246,12 @@
                             <i class="fas fa-angle-right"></i>
                           </a>
                         </div>
+                      </li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
                     <a href="#" role="button" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                      <img src="images/img.jpg" alt="">John Doe
+                      <img src="../images/img.jpg" alt="">John Doe
                     </a>
                     <div class="dropdown-menu dropdown-menu-end dropdown-usermenu dropdown-menu-sm" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item"  href="#" role="button"> Profile</a>
@@ -241,7 +274,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3> Media Gallery <small> gallery design</small> </h3>
+                <h1 class="page-heading h3"> Media Gallery <small> gallery design</small> </h1>
               </div>
 
               <div class="title_right">
@@ -303,7 +336,7 @@
               <div class="col-lg-4 col-md-6 col-sm-12 mb-4 gallery-item" data-category="nature">
                 <div class="card gallery-card h-100">
                   <div class="gallery-image-container">
-                                         <img src="images/media.jpg" class="card-img-top gallery-image" alt="Forest Landscape" data-title="Serene Forest" data-description="A peaceful forest landscape with morning mist">
+                                         <img src="../images/media.jpg" class="card-img-top gallery-image" alt="Forest Landscape" data-title="Serene Forest" data-description="A peaceful forest landscape with morning mist">
                     <div class="gallery-overlay">
                       <div class="gallery-actions">
                         <button class="btn btn-light btn-sm me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="View Full Size">
@@ -335,7 +368,7 @@
               <div class="col-lg-4 col-md-6 col-sm-12 mb-4 gallery-item" data-category="architecture">
                 <div class="card gallery-card h-100">
                   <div class="gallery-image-container">
-                                         <img src="images/media.jpg" class="card-img-top gallery-image" alt="Modern Building" data-title="Urban Architecture" data-description="Contemporary glass building with geometric patterns">
+                                         <img src="../images/media.jpg" class="card-img-top gallery-image" alt="Modern Building" data-title="Urban Architecture" data-description="Contemporary glass building with geometric patterns">
                      <div class="gallery-overlay">
                        <div class="gallery-actions">
                          <button class="btn btn-light btn-sm me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="View Full Size">
@@ -367,7 +400,7 @@
                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 gallery-item" data-category="people">
                  <div class="card gallery-card h-100">
                    <div class="gallery-image-container">
-                     <img src="images/media.jpg" class="card-img-top gallery-image" alt="Portrait" data-title="Street Portrait" data-description="Candid street photography capturing human emotion">
+                     <img src="../images/media.jpg" class="card-img-top gallery-image" alt="Portrait" data-title="Street Portrait" data-description="Candid street photography capturing human emotion">
                      <div class="gallery-overlay">
                        <div class="gallery-actions">
                          <button class="btn btn-light btn-sm me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="View Full Size">
@@ -399,7 +432,7 @@
                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 gallery-item" data-category="abstract">
                  <div class="card gallery-card h-100">
                    <div class="gallery-image-container">
-                     <img src="images/media.jpg" class="card-img-top gallery-image" alt="Abstract Art" data-title="Color Symphony" data-description="Abstract composition with vibrant colors and flowing forms">
+                     <img src="../images/media.jpg" class="card-img-top gallery-image" alt="Abstract Art" data-title="Color Symphony" data-description="Abstract composition with vibrant colors and flowing forms">
                      <div class="gallery-overlay">
                        <div class="gallery-actions">
                          <button class="btn btn-light btn-sm me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="View Full Size">
@@ -431,7 +464,7 @@
                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 gallery-item" data-category="nature">
                  <div class="card gallery-card h-100">
                    <div class="gallery-image-container">
-                     <img src="images/media.jpg" class="card-img-top gallery-image" alt="Mountain View" data-title="Mountain Peaks" data-description="Majestic mountain range during golden hour">
+                     <img src="../images/media.jpg" class="card-img-top gallery-image" alt="Mountain View" data-title="Mountain Peaks" data-description="Majestic mountain range during golden hour">
                      <div class="gallery-overlay">
                        <div class="gallery-actions">
                          <button class="btn btn-light btn-sm me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="View Full Size">
@@ -463,7 +496,7 @@
                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 gallery-item" data-category="architecture">
                  <div class="card gallery-card h-100">
                    <div class="gallery-image-container">
-                     <img src="images/media.jpg" class="card-img-top gallery-image" alt="Historic Architecture" data-title="Gothic Cathedral" data-description="Medieval cathedral with intricate stone work">
+                     <img src="../images/media.jpg" class="card-img-top gallery-image" alt="Historic Architecture" data-title="Gothic Cathedral" data-description="Medieval cathedral with intricate stone work">
                      <div class="gallery-overlay">
                        <div class="gallery-actions">
                          <button class="btn btn-light btn-sm me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="View Full Size">
@@ -495,7 +528,7 @@
                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 gallery-item" data-category="people">
                  <div class="card gallery-card h-100">
                    <div class="gallery-image-container">
-                     <img src="images/media.jpg" class="card-img-top gallery-image" alt="Group Photo" data-title="Community" data-description="People gathering in urban plaza">
+                     <img src="../images/media.jpg" class="card-img-top gallery-image" alt="Group Photo" data-title="Community" data-description="People gathering in urban plaza">
                      <div class="gallery-overlay">
                        <div class="gallery-actions">
                          <button class="btn btn-light btn-sm me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="View Full Size">
@@ -527,7 +560,7 @@
                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 gallery-item" data-category="abstract">
                  <div class="card gallery-card h-100">
                    <div class="gallery-image-container">
-                     <img src="images/media.jpg" class="card-img-top gallery-image" alt="Digital Art" data-title="Digital Dreams" data-description="Contemporary digital art with geometric patterns">
+                     <img src="../images/media.jpg" class="card-img-top gallery-image" alt="Digital Art" data-title="Digital Dreams" data-description="Contemporary digital art with geometric patterns">
                      <div class="gallery-overlay">
                        <div class="gallery-actions">
                          <button class="btn btn-light btn-sm me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="View Full Size">
@@ -559,7 +592,7 @@
                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 gallery-item" data-category="nature">
                  <div class="card gallery-card h-100">
                    <div class="gallery-image-container">
-                     <img src="images/media.jpg" class="card-img-top gallery-image" alt="Ocean Sunset" data-title="Ocean Sunset" data-description="Breathtaking sunset over calm ocean waters">
+                     <img src="../images/media.jpg" class="card-img-top gallery-image" alt="Ocean Sunset" data-title="Ocean Sunset" data-description="Breathtaking sunset over calm ocean waters">
                     <div class="gallery-overlay">
                       <div class="gallery-actions">
                         <button class="btn btn-light btn-sm me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="View Full Size">

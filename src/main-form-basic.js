@@ -51,8 +51,9 @@ import '@simonwep/pickr/dist/themes/classic.min.css';
 import '@simonwep/pickr/dist/themes/monolith.min.css';
 import '@simonwep/pickr/dist/themes/nano.min.css';
 
-// ECharts for circular gauge controls (jQuery Knob replacement)
-import * as echarts from 'echarts';
+// ECharts for circular gauge controls (jQuery Knob replacement) —
+// tree-shaken bundle, see src/lib/echarts.js for the active module list.
+import echarts from './lib/echarts.js';
 window.echarts = echarts;
 
 // Cropper.js v2 for image cropping (uses web components, no CSS needed)
@@ -122,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Helper to update preview
     const previewEl = document.getElementById('cropper-preview');
     const updatePreview = async () => {
-      if (!previewEl) return;
+      if (!previewEl) {return;}
       try {
         const selection = cropperInstance.getCropperSelection();
         if (selection && !selection.hidden) {
@@ -155,8 +156,8 @@ document.addEventListener('DOMContentLoaded', () => {
       resetBtn.addEventListener('click', () => {
         const image = cropperInstance.getCropperImage();
         const selection = cropperInstance.getCropperSelection();
-        if (image) image.$resetTransform();
-        if (selection) selection.$reset();
+        if (image) {image.$resetTransform();}
+        if (selection) {selection.$reset();}
         setTimeout(updatePreview, 100);
       });
     }
@@ -166,7 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (downloadBtn) {
       downloadBtn.addEventListener('click', async () => {
         const selection = cropperInstance.getCropperSelection();
-        if (!selection) return;
+        if (!selection) {return;}
         try {
           const canvas = await selection.$toCanvas();
           canvas.toBlob(blob => {

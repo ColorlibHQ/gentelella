@@ -1,17 +1,9 @@
 // SCSS files using @use (must come first)
 @use "bootstrap/scss/bootstrap";
 
-// =============================================================================
-// THEME SELECTION
-// =============================================================================
-// To switch themes, comment/uncomment the appropriate line below:
-//
-// CLASSIC THEME (current):
-@use "./scss/variables"; // CSS custom properties and SCSS variables
-//
-// MODERN THEME (experimental - softer shadows, cooler grays, vibrant colors):
-// @use "./scss/variables-modern" as variables;
-// =============================================================================
+// Design-token source of truth — CSS custom properties + SCSS variables.
+// See _variables.scss for the full token catalogue.
+@use "./scss/variables";
 
 // =============================================================================
 // COLOR SCHEMES (2026 Modern Collection)

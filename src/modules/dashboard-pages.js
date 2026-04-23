@@ -93,8 +93,10 @@ function initializeWeeklySummaryChart() {
     ]
   });
 
-  // Auto-refresh every 30 seconds
   setInterval(() => {
+    if (document.hidden) {
+      return;
+    }
     const newData = generateWeeklyData();
     weeklySummaryChart.setOption({
       series: [{ data: newData.sales }, { data: newData.visitors }, { data: newData.orders }]
@@ -625,8 +627,10 @@ function initializeSystemHealthGauges() {
       ]
     });
 
-    // Simulate real-time updates
     setInterval(() => {
+      if (document.hidden) {
+      return;
+    }
       const newValue = Math.max(10, Math.min(95, config.value + (Math.random() - 0.5) * 20));
       gauge.setOption({
         series: [

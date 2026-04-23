@@ -8,7 +8,20 @@ Gentelella is a powerful, free-to-use Bootstrap 5 admin template that has been c
 
 **[View Live Demo](https://colorlib.com/polygon/gentelella/index.html)**
 
-## What's New in v2.1.4 (Latest Release - January 13, 2026)
+## What's New in v2.2.0 (Latest Release - April 23, 2026)
+
+- **Fresh dependencies for 2026** — Vite 8 (with Rolldown, 35% faster builds), ESLint 10, Uppy 5, jsdom 29, rollup-plugin-visualizer 7, plus patch/minor bumps across the stack
+- **Tree-shaken ECharts** — `vendor-echarts` chunk reduced from 1,108 kB → 752 kB (-32%) by importing only the chart types and components the dashboards actually use
+- **Unified card/panel design system** — every raised surface (`.x_panel`, `.dashboard_graph`, `.tile-stats`, `.top_tiles .tile`, Bootstrap `.card`) now pulls from shared `--gt-radius-card` / `--gt-shadow-card` / `--gt-card-border` tokens; no more mismatched top rows
+- **HTML validity sweep** — closed ~600 unclosed `<li>` tags across 34 pages (sidebar menu + dropdown items), fixed broken `<h2 class="h3">…</h4>` close tags on error pages, and normalized every page's `<head>` with full security headers, favicon set, and a consistent `{Page} | Gentelella` title
+- **Proper heading hierarchy** — every page now has exactly one `<h1>`; dashboard index pages use visually-hidden H1s
+- **Sidebar state persistence** — collapsed/expanded state survives page navigation via a safe `localStorage` wrapper
+- **Chart performance** — real-time chart intervals pause while the tab is hidden; ECharts resize is debounced at 150 ms
+- **Dev server fix** — local `/polygon/gentelella/` URL no longer 404s; `base` path is now environment-aware
+- **Global `<a href="#">` safety net** — one delegated click handler prevents the jump-to-top behavior that afflicted ~108 placeholder links
+- **Asset path fix** — images and web manifest now load correctly in both dev and production
+
+### Previous Release: v2.1.4 (January 13, 2026)
 
 - **Go Pro Sidebar Link** - Premium templates promotion with UTM tracking
 - **Sidebar Badge System** - Colorful Pro, Hot, New, and Updated badges

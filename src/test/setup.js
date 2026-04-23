@@ -10,7 +10,7 @@ vi.mock('dompurify', () => ({
   default: {
     sanitize: (html, config = {}) => {
       // Simple mock that strips script tags and onerror handlers
-      if (!html || typeof html !== 'string') return '';
+      if (!html || typeof html !== 'string') {return '';}
 
       let sanitized = html;
 

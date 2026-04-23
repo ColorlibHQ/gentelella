@@ -10,6 +10,20 @@ import DOM from '../utils/dom.js';
 // Import development logger
 import logger from '../utils/logger.js';
 
+// Stop placeholder `<a href="#">` links from scrolling the page to the top.
+// Bootstrap toggles (data-bs-toggle) handle their own preventDefault, so
+// they're skipped. One delegated listener covers the entire document.
+document.addEventListener('click', event => {
+  const link = event.target.closest('a[href="#"]');
+  if (!link) {
+    return;
+  }
+  if (link.hasAttribute('data-bs-toggle')) {
+    return;
+  }
+  event.preventDefault();
+});
+
 /**
  * NOTE: DataTables initialization moved to modern tables module
  * No longer uses jQuery - uses DataTables 2.x native JavaScript API
@@ -51,7 +65,7 @@ async function initializeDatePickers() {
   const tdDatePickers = DOM.selectAll('[data-td-target-input="nearest"]');
   tdDatePickers.forEach(element => {
     // Skip if already initialized
-    if (element._tempusDominus) return;
+    if (element._tempusDominus) {return;}
 
     try {
       const picker = new TempusDominus(element, {

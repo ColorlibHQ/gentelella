@@ -1,9 +1,13 @@
 import { defineConfig } from 'vite';
 import { visualizer } from 'rollup-plugin-visualizer';
 
-export default defineConfig({
+// `base` is the public path the built site is served from (e.g. when hosted
+// at https://example.com/polygon/gentelella/). Local dev should always serve
+// from `/` — otherwise the dev server URL becomes /polygon/gentelella/... and
+// nothing matches because the HTML entries live under production/.
+export default defineConfig(({ command }) => ({
   root: '.',
-  base: '/polygon/gentelella/',
+  base: command === 'build' ? '/polygon/gentelella/' : '/',
   publicDir: 'public',
   logLevel: 'info',
   clearScreen: false,
@@ -27,57 +31,29 @@ export default defineConfig({
         })
       ],
       output: {
-        manualChunks: {
-          // Core UI framework - used on all pages
-          'vendor-core': ['bootstrap', '@popperjs/core'],
-
-          // Chart.js - used on chartjs.html, other_charts.html, dashboards
-          'vendor-chartjs': ['chart.js'],
-
-          // ECharts - separate chunk, only used on echarts.html (large library ~800KB)
-          'vendor-echarts': ['echarts'],
-
-          // Maps - separate since it's large and only used on map pages
-          'vendor-maps': ['leaflet'],
-
-          // FullCalendar - only used on calendar.html (~220KB total)
-          'vendor-calendar': [
-            '@fullcalendar/core',
-            '@fullcalendar/daygrid',
-            '@fullcalendar/timegrid',
-            '@fullcalendar/interaction'
-          ],
-
-          // Form libraries - loaded on form pages
-          'vendor-forms': ['choices.js', 'nouislider', '@eonasdan/tempus-dominus'],
-
-          // File upload - Uppy (replaces Dropzone)
-          'vendor-upload': ['@uppy/core', '@uppy/dashboard', '@uppy/xhr-upload'],
-
-          // DataTables core - frequently used
-          'vendor-tables': ['datatables.net', 'datatables.net-bs5'],
-
-          // DataTables extensions - only loaded when needed (export, responsive, etc.)
-          'vendor-tables-ext': [
-            'jszip',
-            'datatables.net-buttons',
-            'datatables.net-buttons-bs5',
-            'datatables.net-responsive',
-            'datatables.net-responsive-bs5',
-            'datatables.net-fixedheader',
-            'datatables.net-keytable'
-          ],
-
-          // Date/time and small utilities
-          'vendor-utils': ['dayjs', 'skycons']
+        // Function form required by Rolldown (Vite 8+). Matches by
+        // node_modules path because rolldown doesn't resolve package names.
+        manualChunks(id) {
+          if (!id.includes('node_modules')) return;
+          if (/node_modules\/(bootstrap|@popperjs)\//.test(id)) return 'vendor-core';
+          if (/node_modules\/chart\.js\//.test(id)) return 'vendor-chartjs';
+          if (/node_modules\/echarts\//.test(id)) return 'vendor-echarts';
+          if (/node_modules\/leaflet\//.test(id)) return 'vendor-maps';
+          if (/node_modules\/@fullcalendar\//.test(id)) return 'vendor-calendar';
+          if (/node_modules\/(choices\.js|nouislider|@eonasdan\/tempus-dominus)\//.test(id)) return 'vendor-forms';
+          if (/node_modules\/@uppy\//.test(id)) return 'vendor-upload';
+          if (/node_modules\/jszip\//.test(id)) return 'vendor-tables-ext';
+          if (/node_modules\/datatables\.net-(buttons|responsive|fixedheader|keytable)/.test(id)) return 'vendor-tables-ext';
+          if (/node_modules\/datatables\.net(-bs5)?\//.test(id)) return 'vendor-tables';
+          if (/node_modules\/(dayjs|skycons)\//.test(id)) return 'vendor-utils';
         },
         assetFileNames: (assetInfo) => {
-          const info = assetInfo.name.split('.');
-          const extType = info[info.length - 1];
-          if (/\.(png|jpe?g|svg|gif|tiff|bmp|ico)$/i.test(assetInfo.name)) {
+          // Rolldown (Vite 8+) passes `names` (array); Rollup passes `name`.
+          const name = assetInfo.name ?? assetInfo.names?.[0] ?? '';
+          if (/\.(png|jpe?g|svg|gif|tiff|bmp|ico)$/i.test(name)) {
             return `images/[name]-[hash][extname]`;
           }
-          if (/\.(woff2?|eot|ttf|otf)$/i.test(assetInfo.name)) {
+          if (/\.(woff2?|eot|ttf|otf)$/i.test(name)) {
             return `fonts/[name]-[hash][extname]`;
           }
           return `assets/[name]-[hash][extname]`;
@@ -164,7 +140,8 @@ export default defineConfig({
     target: 'es2022'
   },
   server: {
-    open: '/index.html',
+    // Entry HTMLs live in production/, not at the project root.
+    open: '/production/index.html',
     port: 3000,
     host: true,
     watch: {
@@ -215,4 +192,4 @@ export default defineConfig({
     }),
     'process.env.NODE_ENV': '"production"'
   }
-}); 
+}));

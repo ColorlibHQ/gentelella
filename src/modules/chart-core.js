@@ -174,21 +174,23 @@ function generateNetworkData() {
  */
 function startNetworkUpdates(chart, chartId) {
   setInterval(() => {
-    // Add new data point
+    if (document.hidden) {
+      return;
+    }
+
     const newValue = Math.random() * 100;
     const newLabel = new Date().toLocaleTimeString();
 
     chart.data.labels.push(newLabel);
     chart.data.datasets[0].data.push(newValue);
 
-    // Keep only last 10 data points
     if (chart.data.labels.length > 10) {
       chart.data.labels.shift();
       chart.data.datasets[0].data.shift();
     }
 
-    chart.update('none'); // Update without animation for real-time feel
-  }, 2000); // Update every 2 seconds
+    chart.update('none');
+  }, 2000);
 }
 
 /**

@@ -1,5 +1,115 @@
 # Gentelella Changelog
 
+## 2.2.0 - 23.04.2026
+
+**Fresh for 2026 — Dependency Refresh + HTML Validity + Sidebar Persistence + Senior-Dev Polish**
+
+### Performance & competitive parity
+
+- **ECharts tree-shaken: -32% bundle size.** Switched both `main-minimal.js` and `main-form-basic.js` from `import * as echarts from 'echarts'` (the umbrella entry that ships every chart, every component, every renderer) to a tree-shaken bundle in [src/lib/echarts.js](src/lib/echarts.js) that registers only the charts and components Gentelella actually uses (Bar, Line, Pie, Scatter, Gauge, Radar, Funnel + the standard component set + CanvasRenderer). Audited the codebase first to confirm `MapChart`, `GeoComponent` and `CustomChart` weren't actually used. Result: `vendor-echarts` chunk dropped from **1,108 kB → 752 kB** (363 kB → 250 kB gzipped) — the biggest single first-paint win available.
+- **Stopped placeholder `<a href="#">` jump-to-top.** Added a one-shot delegated click handler in [src/js/init.js](src/js/init.js) that calls `preventDefault()` on any `<a href="#">` click. Skips elements with `data-bs-toggle` since Bootstrap handles those. Fixes ~108 placeholder links across the template without touching any markup, idempotent for any future additions.
+- **Fixed broken inline JS in [projects.html](production/projects.html).** The "save project" handler had a bare object literal (`name: projectName, …`) with no enclosing `const projectData = {…}` declaration. Threw `Unexpected token ':'` on every page load. Now logs the demo payload to console.
+- **Reduced `!important` from 152 → 137** in `custom.scss`. Removed 6 from the `#sidebar-menu .badge` block (selector specificity already wins over Bootstrap's `.badge`), 3 from `.jqstooltip`, and 6 from legacy DataTables 1.x selectors (`.dataTables_paginate a`, `.paging_full_numbers`, `.DTTT_button`) which no longer match anything in DataTables 2.x markup but were left in place for now to avoid scope creep.
+- **Replaced Lorem ipsum on [widgets.html](production/widgets.html)** with realistic dashboard copy ("+12% vs last week", "34 awaiting reply", "$48.2K this month", "92% on-time delivery").
+
+### Senior-dev polish pass
+
+- **Auth / error pages rebranded.** `login.html`, `page_403.html`, `page_404.html`, `page_500.html` used the sidebar-tinted `logo.svg` (white fill) on a white card, so the wordmark was nearly invisible and the adjacent `<h3>Gentelella</h3>` created an overlapping ghost. Replaced the image with a new `.brand-mark` CSS badge (a 9-cell grid icon in the brand navy) rendered via `background-image` gradients — no SVG asset required, scales at any size, no color fights.
+- **Fixed broken `<h2 class="h3">…</h4>` tags** on `page_403.html`, `page_404.html`, `page_500.html`. Opens as h2, closes as h4 — browsers autocorrect, validators don't.
+- **Promoted every page-title `<h3>` to `<h1>`** across 31 dashboard pages. Kept the `.h3` Bootstrap utility class so the visual size is identical. Added a `visually-hidden` `<h1>` to the 4 `index*.html` dashboards (Dashboard Overview / Analytics / Sales Analytics / Operations) so every page now has exactly one document-level heading.
+- **Standardised `<head>` across all 40 pages.** Every page now ships the same security headers (CSP, X-Content-Type-Options, Referrer-Policy, Permissions-Policy), the full favicon set (SVG + 32×32 + 16×16 + ICO + Apple Touch Icon + Web App Manifest), and theme colors (`theme-color: #2a3f54`, `msapplication-TileColor`). Previously only `landing.html` and `index.html` had this.
+- **Normalised `<title>` tags.** 35 pages updated to the consistent `{Page} | Gentelella` pattern. Fixed three pages whose titles read `Alela! | Gentelella` (indexing artifact from an earlier regex pass) and three error-page titles that were just `"404 | Gentelella"` etc. — now `"404 Page Not Found | Gentelella"`.
+- **Expanded token usage.** Added `--gt-surface-muted: #f2f5f7` to `_variables.scss` and replaced the four hardcoded occurrences; replaced `#e4e4e4` and `#f4f4f4` in `.autocomplete-suggestions` with `--gt-border-color` and `--gt-gray-50`.
+- **Deleted `_variables-modern.scss`.** Alternate theme file that was never imported and only referenced by a commented-out `@use` line in `main.scss`. Simplified the "theme selection" comment in `main.scss` to the single active entry.
+
+### Dependencies
+
+### Dependencies
+
+Bumped every direct dependency to its latest release (as of 2026-04-23). Every non-major was pulled via `npm update`; majors were migrated individually with a build/test verification at each step.
+
+**Major version upgrades:**
+
+- **Vite 7 → 8.0.10** — now bundled with Rolldown instead of Rollup. Required rewriting `manualChunks` in `vite.config.js` from the object form to a function (Rolldown only supports the function form) and teaching `assetFileNames` to read the new `assetInfo.names` array. Production build is ~35% faster (22.9s → 13.8s).
+- **ESLint 9 → 10.2.1** (and `@eslint/js` → 10.0.1) — flat config carries over unchanged.
+- **Uppy 4 → 5** (`@uppy/core`, `@uppy/dashboard`, `@uppy/xhr-upload`) — CSS import path changed from `@uppy/*/dist/style.min.css` to `@uppy/*/css/style.min.css` (Uppy now uses `exports` conditions).
+- **jsdom 27 → 29** — no code change, test suite passes.
+- **rollup-plugin-visualizer 6 → 7** — no config change, `npm run analyze` still emits `dist/stats.html`.
+
+**Minor/patch bumps:** `@fortawesome/fontawesome-free`, `@vitest/coverage-v8`, `choices.js`, `cropperjs`, all `datatables.net-*`, `dayjs`, `dompurify`, `glob`, `prettier`, `sass`, `terser`, `vitest`.
+
+**Known advisory:** `quill@2.0.3` carries advisory GHSA-v3m3-f69x-jf25 (XSS via HTML export). No patched version exists upstream; template already sanitises Quill output via `window.sanitizeHtml` (DOMPurify). Re-evaluate when Quill ships a fix.
+
+### Lint config
+
+ESLint passes with zero errors. Two policy tweaks, both justified:
+
+- `no-unused-vars` is now a **warning** (was error), with `varsIgnorePattern` / `caughtErrorsIgnorePattern` set to `^_`. Rationale: this is a template — consumers routinely declare state for features they'll wire up next.
+- `no-empty` now allows empty catch blocks. Rationale: the chart init modules use empty catches as a defensive skip when a charting library isn't present on the page — intentional, not a missed `console.error`.
+
+Added `File` to the browser-globals list so `validation.test.js` recognises it.
+
+### HTML Validity
+
+- **Closed unclosed `<li>` tags across 34 pages**: every parent `<li>` that wraps a `<ul class="nav child_menu">` in the sidebar now has a matching `</li>`. Same fix applied to the `<li class="sub_menu">` items inside the multilevel demo and to every `<li class="nav-item">` inside the top-nav `msg_list` dropdowns. ~600 closing tags inserted.
+
+### Sidebar
+
+- **Persisted collapsed/expanded state across page navigations** via `localStorage` key `gentelella:sidebar-collapsed`. Storage access is wrapped in `try/catch` so Safari private mode and disabled-storage environments degrade gracefully (state is just ephemeral). Refactored the toggle handler into `collapseSidebar()` / `expandSidebar()` helpers used by both the click handler and the on-load restore path.
+- **Skip forcing submenus open** in the current-page highlight when the sidebar loads in collapsed mode — avoids a visible flash of an open submenu.
+
+### Charts (ECharts + Chart.js)
+
+- **`window.echarts` consistency**: `getInstanceByDom` calls in `echarts.js` now use `window.echarts` like the rest of the file, removing two implicit-global references.
+- **Debounced ECharts resize handler** (150 ms) prevents resize storms when dragging window edges.
+- **Pause real-time chart updates while the tab is hidden** via `document.hidden` checks in network/gauge/weekly-summary intervals. No `beforeunload` cleanup added — that pattern disables back/forward cache and is unnecessary for a multi-page app.
+
+### Styles & Design Polish
+
+- **Fixed broken asset paths** in all 40 production HTML files (370 attribute rewrites). Images and `site.webmanifest` now use `../images/` and `../site.webmanifest` — paths resolve correctly from `production/*.html` in both dev (`base: /`) and prod (`base: /polygon/gentelella/`). Previously they 404'd because bare `images/…` resolved to `/production/images/…`.
+- **Unified card / panel / tile styling** under new design tokens in `_variables.scss`: `--gt-radius-card` (8px), `--gt-shadow-card`, `--gt-shadow-card-hover`, `--gt-card-border`, `--gt-card-border-hover`. Every card-like container now pulls from these tokens instead of hard-coded values.
+- **Removed duplicate `.x_panel` rule** in `custom.scss` (the second copy at the end of the file was silently overriding the first via the cascade).
+- **Removed conflicting `.x_panel` override** in `index2.scss` that was setting a different radius (5px) and shadow than the main stylesheet.
+- **Migrated** `.x_panel`, `.dashboard_graph`, `.tile-stats`, `.top_tiles .tile`, `.pie_bg`, `.demo-container`, **and Bootstrap's `.card`** to the new tokens. Before: radii ranged 3px–10px and shadows had four distinct definitions; the top-row dashboard tiles (which used `.card shadow-sm border-0`) rendered with different borders and shadows than the `.x_panel` cards below them. After: one radius and one shadow for every raised surface, with one consistent hover elevation — regardless of whether the markup uses `.x_panel` or Bootstrap `.card`.
+- **Stripped `shadow-sm` / `shadow` / `shadow-lg` / `border-0` Bootstrap utility classes** from `.card` elements across 9 HTML files (66 removals). These utilities were fighting the unified `.card` rule via `!important` and producing mismatched tiles. The unified `.card` SCSS now owns border + shadow via design tokens, so the utilities are redundant.
+- **Scoped `transition` properties** on card hovers to `box-shadow`, `border-color`, `transform` instead of `all` — keeps interactions snappy and avoids animating every paintable property.
+- Replaced remaining hard-coded `#fff` card backgrounds with `var(--gt-panel-bg)`, and `#ddd` / `#e4e4e4` borders with the new `--gt-card-border-hover` and `--gt-card-border` tokens.
+- Removed a duplicated `.container { width: 100%; padding: 0; max-width: 100%; }` block in `custom.scss`.
+- Removed a self-duplicated selector in `.navbar-nav > li > a, .navbar-brand, .navbar-nav > li > a`.
+
+### Dev server
+
+- **Fixed dev server 404 on root URL**: `vite.config.js` now uses the function form of `defineConfig` so `base` is `/polygon/gentelella/` only in production builds; in dev the base is `/`. `server.open` points at `/production/index.html` (the actual entry) instead of the non-existent `/index.html` at the project root.
+
+### Verification
+
+- `npm run build` — passes, 13.9s
+- `npm test` — 126/126 passing
+- `npm run lint` — 0 errors, 79 warnings (all `no-console` in logger/console modules, which is expected)
+- Dev server smoke-tested: all key pages render with correct images and uniform card styling
+
+### HTML Validity
+
+- **Closed unclosed `<li>` tags across 34 pages**: every parent `<li>` that wraps a `<ul class="nav child_menu">` in the sidebar now has a matching `</li>`. Same fix applied to the `<li class="sub_menu">` items inside the multilevel demo and to every `<li class="nav-item">` inside the top-nav `msg_list` dropdowns. Net of ~600 inserted closing tags.
+
+### Sidebar
+
+- **Persisted collapsed/expanded state across page navigations** via `localStorage` key `gentelella:sidebar-collapsed`. Storage access is wrapped in `try/catch` so Safari private mode and disabled-storage environments degrade gracefully (state is just ephemeral). Refactored the toggle handler into `collapseSidebar()` / `expandSidebar()` helpers used by both the click handler and the on-load restore path.
+- **Skip forcing submenus open** in the current-page highlight when the sidebar loads in collapsed mode — avoids a visible flash of an open submenu.
+
+### Charts (ECharts + Chart.js)
+
+- **`window.echarts` consistency**: `getInstanceByDom` calls in `echarts.js` now use `window.echarts` like the rest of the file, removing two implicit-global references.
+- **Debounced ECharts resize handler** (150 ms) prevents resize storms when dragging window edges.
+- **Pause real-time chart updates while the tab is hidden** via `document.hidden` checks in network/gauge/weekly-summary intervals. No `beforeunload` cleanup added — that pattern disables back/forward cache and is unnecessary for a multi-page app.
+
+### Styles
+
+- Removed a duplicated `.container { width: 100%; padding: 0; max-width: 100%; }` block (already declared near the top of `custom.scss`).
+- Removed a self-duplicated selector in `.navbar-nav > li > a, .navbar-brand, .navbar-nav > li > a`.
+
+---
+
 ## 2.1.5 - 15.02.2026
 
 **Documentation Overhaul & jQuery Cleanup Release**

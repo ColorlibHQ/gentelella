@@ -171,9 +171,7 @@ window.loadModule = async function (moduleName, showLoading = true) {
     window.moduleLoadTimes.set(moduleName, loadTime);
 
     return module;
-  } catch (error) {
-    if (process.env.NODE_ENV === 'development') {
-    }
+  } catch (_error) {
     return null;
   } finally {
     if (loadingIndicator) {

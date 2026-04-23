@@ -44,9 +44,9 @@ document.addEventListener('DOMContentLoaded', function () {
             [{ list: 'ordered' }, { list: 'bullet' }],
             [{ align: [] }],
             ['link', 'image'],
-            ['clean'],
-          ],
-        },
+            ['clean']
+          ]
+        }
       });
 
       // Store instance globally for access

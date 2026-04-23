@@ -639,20 +639,22 @@ function setupEChartsResize() {
   // Store chart instances for resize handling
   const chartInstances = [];
   echartElements.forEach(element => {
-    // Get ECharts instance if it exists
-    const instance = echarts.getInstanceByDom(element);
+    const instance = window.echarts.getInstanceByDom(element);
     if (instance) {
       chartInstances.push(instance);
     }
   });
 
-  // Handle window resize - MODERNIZED FROM JQUERY
+  let resizeTimer;
   window.addEventListener('resize', function () {
-    chartInstances.forEach(chart => {
-      if (chart && !chart.isDisposed()) {
-        chart.resize();
-      }
-    });
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      chartInstances.forEach(chart => {
+        if (chart && !chart.isDisposed()) {
+          chart.resize();
+        }
+      });
+    }, 150);
   });
 
   logger.log(`Responsive handling setup for ${chartInstances.length} ECharts`);
@@ -667,7 +669,7 @@ export const EChartsUtils = {
    */
   getChart(chartId) {
     const element = DOM.select(`#${chartId}`);
-    return element ? echarts.getInstanceByDom(element) : null;
+    return element ? window.echarts.getInstanceByDom(element) : null;
   },
 
   /**
