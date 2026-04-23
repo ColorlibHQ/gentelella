@@ -106,7 +106,10 @@ window.showModuleLoadingState = function (moduleName) {
     z-index: 10000;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
   `;
-  indicator.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Loading ${moduleName}...`;
+  const spinnerIcon = document.createElement('i');
+  spinnerIcon.className = 'fas fa-spinner fa-spin';
+  indicator.appendChild(spinnerIcon);
+  indicator.appendChild(document.createTextNode(` Loading ${moduleName}...`));
   document.body.appendChild(indicator);
   return indicator;
 };

@@ -36,14 +36,27 @@ function addTableLoadingSkeletons() {
     // Add loading indicator
     const loadingDiv = document.createElement('div');
     loadingDiv.className = 'table-loading-overlay';
-    loadingDiv.innerHTML = `
-      <div class="d-flex justify-content-center align-items-center h-100">
-        <div class="spinner-border text-primary" role="status">
-          <span class="visually-hidden">Loading table...</span>
-        </div>
-        <span class="ms-2">Initializing table...</span>
-      </div>
-    `;
+
+    // Build loading indicator using DOM API instead of innerHTML
+    const innerWrapper = document.createElement('div');
+    innerWrapper.className = 'd-flex justify-content-center align-items-center h-100';
+
+    const spinner = document.createElement('div');
+    spinner.className = 'spinner-border text-primary';
+    spinner.setAttribute('role', 'status');
+
+    const srText = document.createElement('span');
+    srText.className = 'visually-hidden';
+    srText.textContent = 'Loading table...';
+    spinner.appendChild(srText);
+
+    const label = document.createElement('span');
+    label.className = 'ms-2';
+    label.textContent = 'Initializing table...';
+
+    innerWrapper.appendChild(spinner);
+    innerWrapper.appendChild(label);
+    loadingDiv.appendChild(innerWrapper);
     loadingDiv.style.cssText = `
       position: absolute;
       top: 0;
