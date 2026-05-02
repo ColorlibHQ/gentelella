@@ -1,1335 +1,594 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<!-- Meta, title, CSS, favicons, etc. -->
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Security headers -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.googleapis.com; img-src 'self' data: https: blob:; font-src 'self' data: https://fonts.gstatic.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; connect-src 'self' ws: wss: http://localhost:* https://api.example.com https://*.googleapis.com; frame-src 'self' https://www.youtube.com https://player.vimeo.com; media-src 'self' https: blob:; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
-
-    <!-- Favicons -->
-    <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
-    <link rel="icon" href="../images/favicon-32x32.svg" type="image/svg+xml" sizes="32x32">
-    <link rel="icon" href="../images/favicon-16x16.svg" type="image/svg+xml" sizes="16x16">
-    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="../images/apple-touch-icon.svg" sizes="180x180">
-    <link rel="manifest" href="../site.webmanifest">
-
-    <!-- Theme color -->
-    <meta name="theme-color" content="#2a3f54">
-    <meta name="msapplication-TileColor" content="#2a3f54">
-
-    <title>Form | Gentelella</title>    <!-- Compiled CSS (includes Bootstrap, Font Awesome, and all vendor styles) -->
-    <script type="module" src="/src/main-minimal.js"></script>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forms | Gentelella 2026 v4</title>
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script type="module" src="/src/main-v4.js"></script>
 </head>
+<body data-shell="admin" data-page="forms" data-breadcrumb="Home > Forms > General">
 
-<body class="nav-md page-form">
-	<div class="container body">
-		<div class="main_container">
-			<aside class="col-md-3 left_col" aria-label="Sidebar navigation">
-				<div class="left_col scroll-view">
-					<div class="navbar nav_title border-0">
-						<a href="index.html" class="site_title"><img src="../images/logo.svg" alt="Gentelella Alela!" class="logo-full logo-main" loading="lazy"><img src="../images/logo-icon.svg" alt="Gentelella" class="logo-icon" loading="lazy"></a>
-					</div>
+<main class="main">
+<div class="page-wrapper">
 
-					<div class="clearfix"></div>
+  <div class="page-header">
+    <div class="page-header-row">
+      <div>
+        <div class="page-pretitle">UI</div>
+        <div class="page-title">Forms</div>
+      </div>
+      <div class="page-actions">
+        <a class="btn btn-outline" href="form_advanced.html">Advanced</a>
+        <a class="btn btn-outline" href="form_validation.html">Validation</a>
+        <a class="btn btn-outline" href="form_wizards.html">Wizard</a>
+        <a class="btn btn-outline" href="form_upload.html">Upload</a>
+      </div>
+    </div>
+  </div>
 
-					<!-- menu profile quick info -->
-					<div class="profile clearfix">
-						<div class="profile_pic">
-							<img src="../images/img.jpg" alt="User profile photo" class="img-circle profile_img" loading="lazy">
-						</div>
-						<div class="profile_info">
-							<span>Welcome,</span>
-							<h4>John Doe</h4>
-						</div>
-					</div>
-					<!-- /menu profile quick info -->
+  <!-- ── Section 1: Project form (full-width with side help) ── -->
+  <div class="row col-8-4">
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">New project</div>
+          <div class="card-subtitle">Tell us about the project you're starting.</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <form>
+          <div class="form-group">
+            <label class="form-label" for="projectName">Project name <span class="required">*</span></label>
+            <input type="text" id="projectName" class="form-control" placeholder="e.g. Acme website redesign">
+            <div class="form-help">A short, recognizable name. You can change it later.</div>
+          </div>
 
-					<br />
-
-					<!-- sidebar menu -->
-					<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-						<div class="menu_section">
-							<h3>General</h3>
-							<ul class="nav side-menu">
-								<li><a href="https://dashboardpack.com/?utm_source=gentelella&utm_medium=sidebar&utm_campaign=premium" target="_blank"><i class="bi bi-stars"></i> Go Pro <span class="badge bg-warning">Pro</span></a></li>
-								<li><a><i class="bi bi-house"></i> Home <span class="bi bi-chevron-down"></span></a>
-									<ul class="nav child_menu">
-										<li><a href="index.html">Dashboard 1</a></li>
-										<li><a href="index2.html">Dashboard 2</a></li>
-										<li><a href="index3.html">Dashboard 3</a></li>
-										<li><a href="index4.html">Dashboard 4</a></li>
-									</ul>
-								</li>
-								<li><a><i class="bi bi-pencil-square"></i> Forms <span class="bi bi-chevron-down"></span></a>
-									<ul class="nav child_menu">
-										<li><a href="form.html">General Form</a></li>
-										<li><a href="form_advanced.html">Advanced Components</a></li>
-										<li><a href="form_validation.html">Form Validation</a></li>
-										<li><a href="form_wizards.html">Form Wizard</a></li>
-										<li><a href="form_upload.html">Form Upload</a></li>
-										<li><a href="form_buttons.html">Form Buttons</a></li>
-									</ul>
-								</li>
-								<li><a><i class="bi bi-display"></i> UI Elements <span class="badge bg-danger">Hot</span> <span class="bi bi-chevron-down"></span></a>
-									<ul class="nav child_menu">
-										<li><a href="general_elements.html">General Elements</a></li>
-										<li><a href="media_gallery.html">Media Gallery</a></li>
-										<li><a href="typography.html">Typography</a></li>
-										<li><a href="icons.html">Icons</a></li>
-										<li><a href="widgets.html">Widgets</a></li>
-										<li><a href="invoice.html">Invoice</a></li>
-										<li><a href="inbox.html">Inbox</a></li>
-										<li><a href="calendar.html">Calendar</a></li>
-									</ul>
-								</li>
-								<li><a><i class="bi bi-table"></i> Tables <span class="bi bi-chevron-down"></span></a>
-									<ul class="nav child_menu">
-										<li><a href="tables.html">Tables</a></li>
-										<li><a href="tables_dynamic.html">Table Dynamic</a></li>
-									</ul>
-								</li>
-								<li><a><i class="bi bi-bar-chart"></i> Data Presentation <span class="badge bg-success">New</span> <span class="bi bi-chevron-down"></span></a>
-									<ul class="nav child_menu">
-										<li><a href="chartjs.html">Chart.js</a></li>
-										<li><a href="echarts.html">ECharts <span class="badge bg-info">Updated</span></a></li>
-										<li><a href="other_charts.html">Other Charts</a></li>
-									</ul>
-								</li>
-								<li><a><i class="bi bi-layout-split"></i>Layouts <span class="bi bi-chevron-down"></span></a>
-									<ul class="nav child_menu">
-										<li><a href="fixed_sidebar.html">Fixed Sidebar</a></li>
-										<li><a href="fixed_footer.html">Fixed Footer</a></li>
-									</ul>
-								</li>
-							</ul>
-						</div>
-						<div class="menu_section">
-							<h3>Live On</h3>
-							<ul class="nav side-menu">
-								<li><a><i class="bi bi-file-earmark-text"></i> Additional Pages <span class="bi bi-chevron-down"></span></a>
-									<ul class="nav child_menu">
-										<li><a href="e_commerce.html">E-commerce</a></li>
-										<li><a href="projects.html">Projects</a></li>
-										<li><a href="project_detail.html">Project Detail</a></li>
-										<li><a href="contacts.html">Contacts</a></li>
-										<li><a href="profile.html">Profile</a></li>
-									</ul>
-								</li>
-								<li><a><i class="bi bi-window-stack"></i> Extras <span class="bi bi-chevron-down"></span></a>
-									<ul class="nav child_menu">
-										<li><a href="page_403.html">403 Error</a></li>
-										<li><a href="page_404.html">404 Error</a></li>
-										<li><a href="page_500.html">500 Error</a></li>
-										<li><a href="plain_page.html">Plain Page</a></li>
-										<li><a href="login.html">Login Page</a></li>
-										<li><a href="pricing_tables.html">Pricing Tables</a></li>
-									</ul>
-								</li>
-								<li><a><i class="bi bi-diagram-3"></i> Multilevel Menu <span class="bi bi-chevron-down"></span></a>
-									<ul class="nav child_menu">
-										<li><a href="#level1_1">Level One</a></li>
-										<li><a>Level One<span class="bi bi-chevron-down"></span></a>
-											<ul class="nav child_menu">
-												<li class="sub_menu"><a href="level2.html">Level Two</a></li>
-												<li><a href="#level2_1">Level Two</a></li>
-												<li><a href="#level2_2">Level Two</a></li>
-											</ul>
-										</li>
-										<li><a href="#level1_2">Level One</a></li>
-									</ul>
-								</li>
-								<li><a href="landing.html"><i class="bi bi-laptop"></i> Landing Page <span class="badge bg-info">Updated</span></a></li>
-							</ul>
-						</div>
-
-					</div>
-					<!-- /sidebar menu -->
-
-					<!-- /menu footer buttons -->
-					<div class="sidebar-footer hidden-small">
-						<a data-bs-toggle="tooltip" data-bs-placement="top" title="Settings">
-							<span class="fas fa-cog" aria-hidden="true"></span>
-						</a>
-						<a data-bs-toggle="tooltip" data-bs-placement="top" title="FullScreen">
-							<span class="fas fa-expand" aria-hidden="true"></span>
-						</a>
-						<a data-bs-toggle="tooltip" data-bs-placement="top" title="Lock">
-							<span class="fas fa-eye-slash" aria-hidden="true"></span>
-						</a>
-						<a data-bs-toggle="tooltip" data-bs-placement="top" title="Logout" href="login.html">
-							<span class="fas fa-power-off" aria-hidden="true"></span>
-						</a>
-					</div>
-					<!-- /menu footer buttons -->
-				</div>
-			</div>
-
-			<!-- top navigation -->
-			<div class="top_nav">
-				<div class="nav_menu d-flex align-items-center justify-content-between">
-					<div class="nav toggle">
-						<a id="menu_toggle"><i class="fas fa-bars"></i></a>
-					</div>
-					<nav class="nav navbar-nav ms-auto">
-						<ul class="navbar-right d-flex align-items-center gap-3 pe-3">
-                <li class="nav-item dropdown">
-								<a href="#" role="button" class="dropdown-toggle info-number" id="navbarDropdown1" data-bs-toggle="dropdown" aria-expanded="false">
-									<i class="fas fa-envelope"></i>
-									<span class="badge bg-green">6</span>
-								</a>
-								<ul class="dropdown-menu dropdown-menu-end list-unstyled msg_list dropdown-menu-lg" role="menu" aria-labelledby="navbarDropdown1">
-									<li class="nav-item">
-										<a class="dropdown-item">
-											<span class="image"><img src="../images/img.jpg" alt="Profile Image" /></span>
-											<span>
-												<span>John Smith</span>
-												<span class="time">3 mins ago</span>
-											</span>
-											<span class="message">
-												Film festivals used to be do-or-die moments for movie makers. They were where...
-											</span>
-										</a>
-									</li>
-									<li class="nav-item">
-										<a class="dropdown-item">
-											<span class="image"><img src="../images/img.jpg" alt="Profile Image" /></span>
-											<span>
-												<span>John Smith</span>
-												<span class="time">3 mins ago</span>
-											</span>
-											<span class="message">
-												Film festivals used to be do-or-die moments for movie makers. They were where...
-											</span>
-										</a>
-									</li>
-									<li class="nav-item">
-										<a class="dropdown-item">
-											<span class="image"><img src="../images/img.jpg" alt="Profile Image" /></span>
-											<span>
-												<span>John Smith</span>
-												<span class="time">3 mins ago</span>
-											</span>
-											<span class="message">
-												Film festivals used to be do-or-die moments for movie makers. They were where...
-											</span>
-										</a>
-									</li>
-									<li class="nav-item">
-										<a class="dropdown-item">
-											<span class="image"><img src="../images/img.jpg" alt="Profile Image" /></span>
-											<span>
-												<span>John Smith</span>
-												<span class="time">3 mins ago</span>
-											</span>
-											<span class="message">
-												Film festivals used to be do-or-die moments for movie makers. They were where...
-											</span>
-										</a>
-									</li>
-									<li class="nav-item">
-										<div class="text-center">
-											<a class="dropdown-item">
-												<strong>See All Alerts</strong>
-												<i class="fas fa-angle-right"></i>
-											</a>
-										</div>
-									</li>
-								</ul>
-                </li>
-                <li class="nav-item dropdown">
-								<a href="#" role="button" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-									<img src="../images/img.jpg" alt="">John Doe
-								</a>
-								<div class="dropdown-menu dropdown-menu-end dropdown-usermenu dropdown-menu-sm" aria-labelledby="navbarDropdown">
-									<a class="dropdown-item" href="#" role="button"> Profile</a>
-									<a class="dropdown-item" href="#" role="button">
-										<span class="badge bg-red float-end">50%</span>
-										<span>Settings</span>
-									</a>
-									<a class="dropdown-item" href="#" role="button">Help</a>
-									<a class="dropdown-item" href="login.html"><i class="fas fa-sign-out-alt float-end"></i> Log Out</a>
-								</div>
-                </li>
-              </ul>
-					</nav>
-				</div>
-			</div>
-			<!-- /top navigation -->
-
-			<!-- page content -->
-			<main class="right_col" role="main" aria-label="Main content">
-				<div class="">
-					<div class="page-title">
-						<div class="title_left">
-							<h1 class="page-heading h3">Form Elements</h1>
-						</div>
-
-						<div class="title_right">
-							          <div class="col-md-5 col-sm-5 mb-3 float-end top_search">
-            <div class="input-group search-bar-fix">
-              <input type="text" class="form-control" placeholder="Search for...">
-              <button class="btn btn-outline-secondary" type="button">
-                <i class="fas fa-search"></i>
-              </button>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="client">Client</label>
+              <select id="client" class="form-control">
+                <option>Acme Corp</option>
+                <option>Globex Inc</option>
+                <option>Initech</option>
+                <option>Umbrella Co</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="budget">Budget (USD)</label>
+              <div class="input-affix">
+                <span class="affix prefix">$</span>
+                <input type="number" id="budget" class="form-control" placeholder="25000">
+                <span class="affix">USD</span>
+              </div>
             </div>
           </div>
-						</div>
-					</div>
-					<div class="clearfix"></div>
-					<div class="row">
-						<div class="col-md-12 col-sm-12">
-							<div class="x_panel">
-								<div class="x_title">
-									<h4>Form Design <small>different form elements</small></h4>
-									<ul class="nav navbar-right panel_toolbox">
-										<li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-										<li class="dropdown">
-											<a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-											<ul class="dropdown-menu" role="menu">
-												<li><a class="dropdown-item" href="#">Settings 1</a>
-												<li><a class="dropdown-item" href="#">Settings 2</a>
-											</ul>
-										</li>
-										<li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a>
-									</ul>
-									<div class="clearfix"></div>
-								</div>
-								<div class="x_content">
-									<br />
-														<form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
 
-						<div class="row mb-3">
-							<label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">First Name <span class="required text-danger">*</span>
-							</label>
-							<div class="col-md-6 col-sm-6">
-								<input type="text" id="first-name" name="first-name" required="required" class="form-control" aria-describedby="first-name-help">
-								<div id="first-name-help" class="form-text">Enter your first name</div>
-							</div>
-						</div>
-						<div class="row mb-3">
-							<label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Last Name <span class="required text-danger">*</span>
-							</label>
-							<div class="col-md-6 col-sm-6">
-								<input type="text" id="last-name" name="last-name" required="required" class="form-control" aria-describedby="last-name-help">
-								<div id="last-name-help" class="form-text">Enter your last name</div>
-							</div>
-						</div>
-						<div class="row mb-3">
-							<label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Middle Name / Initial</label>
-							<div class="col-md-6 col-sm-6">
-								<input id="middle-name" class="form-control" type="text" name="middle-name" aria-describedby="middle-name-help">
-								<div id="middle-name-help" class="form-text">Optional middle name or initial</div>
-							</div>
-						</div>
-						<div class="row mb-3">
-							<label class="col-form-label col-md-3 col-sm-3 label-align">Gender</label>
-							<div class="col-md-6 col-sm-6">
-								<div class="form-check form-check-inline">
-									<input class="form-check-input" type="radio" name="gender" id="genderM" value="M" checked required>
-									<label class="form-check-label" for="genderM">Male</label>
-								</div>
-								<div class="form-check form-check-inline">
-									<input class="form-check-input" type="radio" name="gender" id="genderF" value="F" required>
-									<label class="form-check-label" for="genderF">Female</label>
-								</div>
-							</div>
-						</div>
-						<div class="row mb-3">
-							<label class="col-form-label col-md-3 col-sm-3 label-align" for="birthday-input">Date Of Birth <span class="required text-danger">*</span>
-							</label>
-							<div class="col-md-6 col-sm-6">
-								<div class="input-group" id="birthday" data-td-target-input="nearest" data-td-target-toggle="nearest">
-									<input type="text" id="birthday-input" class="form-control" data-td-target="#birthday" placeholder="dd-mm-yyyy" required="required" aria-describedby="birthday-help" />
-									<button class="btn btn-outline-secondary" type="button" data-td-target="#birthday" data-td-toggle="datetimepicker" aria-label="Open calendar">
-										<i class="fas fa-calendar" aria-hidden="true"></i>
-									</button>
-								</div>
-								<div id="birthday-help" class="form-text">Select your date of birth</div>
-							</div>
-						</div>
-																<div class="ln_solid"></div>
-						<div class="row mb-3">
-							<div class="col-md-6 col-sm-6 offset-md-3">
-								<div class="d-grid gap-2 d-md-flex justify-content-md-start">
-									<button class="btn btn-outline-secondary" type="button">Cancel</button>
-									<button class="btn btn-outline-primary" type="reset">Reset</button>
-									<button type="submit" class="btn btn-success">Submit</button>
-								</div>
-							</div>
-						</div>
-
-									</form>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="col-md-6">
-							<div class="x_panel">
-								<div class="x_title">
-									<h4>Form Design <small>different form elements</small></h4>
-									<ul class="nav navbar-right panel_toolbox">
-										<li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-										<li class="dropdown">
-											<a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-											<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-												<a class="dropdown-item" href="#">Settings 1</a>
-												<a class="dropdown-item" href="#">Settings 2</a>
-											</div>
-										<li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a>
-									</ul>
-									<div class="clearfix"></div>
-								</div>
-								<div class="x_content">
-									<br />
-									<form class="form-label-left input_mask">
-
-																		<div class="col-md-6 col-sm-6 mb-3">
-									<div class="input-group">
-										<span class="input-group-text"><i class="fas fa-user" aria-hidden="true"></i></span>
-										<input type="text" class="form-control" id="inputSuccess2" placeholder="First Name" aria-label="First Name">
-									</div>
-								</div>
-
-								<div class="col-md-6 col-sm-6 mb-3">
-									<div class="input-group">
-										<input type="text" class="form-control" id="inputSuccess3" placeholder="Last Name" aria-label="Last Name">
-										<span class="input-group-text"><i class="fas fa-user" aria-hidden="true"></i></span>
-									</div>
-								</div>
-
-								<div class="col-md-6 col-sm-6 mb-3">
-									<div class="input-group">
-										<span class="input-group-text"><i class="fas fa-envelope" aria-hidden="true"></i></span>
-										<input type="email" class="form-control" id="inputSuccess4" placeholder="Email" aria-label="Email address">
-									</div>
-								</div>
-
-								<div class="col-md-6 col-sm-6 mb-3">
-									<div class="input-group">
-										<input type="tel" class="form-control" id="inputSuccess5" placeholder="Phone" aria-label="Phone number">
-										<span class="input-group-text"><i class="fas fa-phone" aria-hidden="true"></i></span>
-									</div>
-								</div>
-
-										<div class="mb-3 row">
-											<label class="col-form-label col-md-3 col-sm-3">Default Input</label>
-											<div class="col-md-9 col-sm-9">
-												<input type="text" class="form-control" placeholder="Default Input">
-											</div>
-										</div>
-										<div class="mb-3 row">
-											<label class="col-form-label col-md-3 col-sm-3">Disabled Input </label>
-											<div class="col-md-9 col-sm-9">
-												<input type="text" class="form-control" disabled="disabled" placeholder="Disabled Input">
-											</div>
-										</div>
-										<div class="mb-3 row">
-											<label class="col-form-label col-md-3 col-sm-3">Read-Only Input</label>
-											<div class="col-md-9 col-sm-9">
-												<input type="text" class="form-control" readonly="readonly" placeholder="Read-Only Input">
-											</div>
-										</div>
-										<div class="mb-3 row">
-											<label class="col-form-label col-md-3 col-sm-3">Date Of Birth <span class="required text-danger">*</span>
-											</label>
-											<div class="col-md-9 col-sm-9">
-												<div class="input-group" id="birthday2" data-td-target-input="nearest" data-td-target-toggle="nearest">
-													<input type="text" class="form-control" data-td-target="#birthday2" placeholder="dd-mm-yyyy" required="required" aria-label="Date of Birth" />
-													<button class="btn btn-outline-secondary" type="button" data-td-target="#birthday2" data-td-toggle="datetimepicker" aria-label="Open calendar">
-														<i class="fas fa-calendar" aria-hidden="true"></i>
-													</button>
-												</div>
-											</div>
-										</div>
-										<div class="ln_solid"></div>
-										<div class="mb-3 row">
-											<div class="col-md-9 col-sm-9 offset-md-3">
-												<div class="d-grid gap-2 d-md-flex justify-content-md-start">
-													<button type="button" class="btn btn-outline-secondary">Cancel</button>
-													<button class="btn btn-outline-primary" type="reset">Reset</button>
-													<button type="submit" class="btn btn-success">Submit</button>
-												</div>
-											</div>
-										</div>
-
-									</form>
-								</div>
-							</div>
-
-							<div class="x_panel">
-								<div class="x_title">
-									<h4>Star Rating</h4>
-									<ul class="nav navbar-right panel_toolbox">
-										<li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-										<li class="dropdown">
-											<a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-											<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-												<a class="dropdown-item" href="#">Settings 1</a>
-												<a class="dropdown-item" href="#">Settings 2</a>
-											</div>
-										<li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a>
-									</ul>
-									<div class="clearfix"></div>
-								</div>
-								<div class="x_content">
-									<h4>Star Ratings<small> Hover and click on a star</small></h4>
-									<div>
-										<div class="starrr stars"></div>
-										You gave a rating of <span class="stars-count">0</span> star(s)
-									</div>
-
-									<p>Also you can give a default rating by adding attribute data-rating</p>
-									<div class="starrr stars-existing" data-rating='4'></div>
-									You gave a rating of <span class="stars-count-existing">4</span> star(s)
-								</div>
-							</div>
-
-							<div class="x_panel">
-								<div class="x_title">
-									<h4>Registration Form <small>Click to validate</small></h4>
-									<ul class="nav navbar-right panel_toolbox">
-										<li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-										<li class="dropdown">
-											<a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-											<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-												<a class="dropdown-item" href="#">Settings 1</a>
-												<a class="dropdown-item" href="#">Settings 2</a>
-											</div>
-										<li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a>
-									</ul>
-									<div class="clearfix"></div>
-								</div>
-								<div class="x_content">
-
-									<!-- start form for validation -->
-									<form id="demo-form" data-parsley-validate class="needs-validation" novalidate>
-										<div class="mb-3">
-											<label for="fullname" class="form-label">Full Name <span class="text-danger">*</span></label>
-											<input type="text" id="fullname" class="form-control" name="fullname" required>
-											<div class="invalid-feedback">
-												Please provide a valid full name.
-											</div>
-										</div>
-
-										<div class="mb-3">
-											<label for="email" class="form-label">Email <span class="text-danger">*</span></label>
-											<input type="email" id="email" class="form-control" name="email" data-parsley-trigger="change" required>
-											<div class="invalid-feedback">
-												Please provide a valid email address.
-											</div>
-										</div>
-
-										<div class="row mb-3">
-											<label class="col-form-label col-md-3 col-sm-3 label-align">Gender</label>
-											<div class="col-md-6 col-sm-6">
-												<div class="form-check form-check-inline">
-													<input class="form-check-input" type="radio" name="gender" id="genderM" value="M" checked required>
-													<label class="form-check-label" for="genderM">Male</label>
-												</div>
-												<div class="form-check form-check-inline">
-													<input class="form-check-input" type="radio" name="gender" id="genderF" value="F" required>
-													<label class="form-check-label" for="genderF">Female</label>
-												</div>
-											</div>
-										</div>
-										<div class="row mb-3">
-											<label class="col-form-label col-md-3 col-sm-3 label-align" for="birthday-input">Date Of Birth <span class="required text-danger">*</span>
-											</label>
-											<div class="col-md-6 col-sm-6">
-												<div class="input-group" id="birthday" data-td-target-input="nearest" data-td-target-toggle="nearest">
-													<input type="text" id="birthday-input" class="form-control" data-td-target="#birthday" placeholder="dd-mm-yyyy" required="required" aria-describedby="birthday-help" />
-													<button class="btn btn-outline-secondary" type="button" data-td-target="#birthday" data-td-toggle="datetimepicker" aria-label="Open calendar">
-														<i class="fas fa-calendar" aria-hidden="true"></i>
-													</button>
-												</div>
-												<div id="birthday-help" class="form-text">Select your date of birth</div>
-											</div>
-										</div>
-
-										<div class="mb-3">
-											<label for="heard" class="form-label">Heard us by <span class="text-danger">*</span></label>
-											<select id="heard" class="form-select" required>
-												<option value="">Choose..</option>
-												<option value="press">Press</option>
-												<option value="net">Internet</option>
-												<option value="mouth">Word of mouth</option>
-											</select>
-											<div class="invalid-feedback">
-												Please select how you heard about us.
-											</div>
-										</div>
-
-										<div class="mb-3">
-											<label for="message" class="form-label">Message (20 chars min, 100 max)</label>
-											<textarea id="message" required="required" class="form-control" name="message" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.." data-parsley-validation-threshold="10" rows="4"></textarea>
-											<div class="invalid-feedback">
-												Please enter a message between 20 and 100 characters.
-											</div>
-										</div>
-
-										<div class="mb-3">
-											<button type="submit" class="btn btn-primary">Validate form</button>
-										</div>
-									</form>
-									<!-- end form for validations -->
-
-								</div>
-							</div>
-
-
-						</div>
-
-						<div class="col-md-6">
-							<div class="x_panel">
-								<div class="x_title">
-									<h4>Form Basic Elements <small>different form elements</small></h4>
-									<ul class="nav navbar-right panel_toolbox">
-										<li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-										<li class="dropdown">
-											<a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-											<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-												<a class="dropdown-item" href="#">Settings 1</a>
-												<a class="dropdown-item" href="#">Settings 2</a>
-											</div>
-										<li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a>
-									</ul>
-									<div class="clearfix"></div>
-								</div>
-								<div class="x_content">
-									<br />
-									<form class="form-horizontal form-label-left">
-
-										<div class="mb-3 row">
-											<label class="col-form-label col-md-3 col-sm-3">Default Input</label>
-											<div class="col-md-9 col-sm-9">
-												<input type="text" class="form-control" placeholder="Default Input">
-											</div>
-										</div>
-										<div class="mb-3 row">
-											<label class="col-form-label col-md-3 col-sm-3">Disabled Input </label>
-											<div class="col-md-9 col-sm-9">
-												<input type="text" class="form-control" disabled="disabled" placeholder="Disabled Input">
-											</div>
-										</div>
-										<div class="mb-3 row">
-											<label class="col-form-label col-md-3 col-sm-3">Read-Only Input</label>
-											<div class="col-md-9 col-sm-9">
-												<input type="text" class="form-control" readonly="readonly" placeholder="Read-Only Input">
-											</div>
-										</div>
-										<div class="mb-3 row">
-											<label class="col-form-label col-md-3 col-sm-3">Date Of Birth <span class="required text-danger">*</span>
-											</label>
-											<div class="col-md-9 col-sm-9">
-												<textarea class="form-control" rows="3" placeholder="Date Of Birth"></textarea>
-											</div>
-										</div>
-										<div class="mb-3 row">
-											<label class="col-form-label col-md-3 col-sm-3">Password</label>
-											<div class="col-md-9 col-sm-9">
-												<input type="password" class="form-control" value="passwordonetwo">
-											</div>
-										</div>
-										<div class="mb-3 row">
-											<label class="col-form-label col-md-3 col-sm-3">AutoComplete</label>
-											<div class="col-md-9 col-sm-9">
-												<input type="text" name="country" id="autocomplete-custom-append" class="form-control" />
-											</div>
-										</div>
-										<div class="mb-3 row">
-											<label class="col-form-label col-md-3 col-sm-3">Select</label>
-											<div class="col-md-9 col-sm-9">
-												<select class="form-select">
-													<option>Choose option</option>
-													<option>Option one</option>
-													<option>Option two</option>
-													<option>Option three</option>
-													<option>Option four</option>
-												</select>
-											</div>
-										</div>
-										<div class="mb-3 row">
-											<label class="col-form-label col-md-3 col-sm-3">Select Custom</label>
-											<div class="col-md-9 col-sm-9">
-												<select class="select2_single form-control" tabindex="-1">
-													<option></option>
-													<option value="AK">Alaska</option>
-													<option value="HI">Hawaii</option>
-													<option value="CA">California</option>
-													<option value="NV">Nevada</option>
-													<option value="OR">Oregon</option>
-													<option value="WA">Washington</option>
-													<option value="AZ">Arizona</option>
-													<option value="CO">Colorado</option>
-													<option value="ID">Idaho</option>
-													<option value="MT">Montana</option>
-													<option value="NE">Nebraska</option>
-													<option value="NM">New Mexico</option>
-													<option value="ND">North Dakota</option>
-													<option value="UT">Utah</option>
-													<option value="WY">Wyoming</option>
-													<option value="AR">Arkansas</option>
-													<option value="IL">Illinois</option>
-													<option value="IA">Iowa</option>
-													<option value="KS">Kansas</option>
-													<option value="KY">Kentucky</option>
-													<option value="LA">Louisiana</option>
-													<option value="MN">Minnesota</option>
-													<option value="MS">Mississippi</option>
-													<option value="MO">Missouri</option>
-													<option value="OK">Oklahoma</option>
-													<option value="SD">South Dakota</option>
-													<option value="TX">Texas</option>
-												</select>
-											</div>
-										</div>
-										<div class="mb-3 row">
-											<label class="col-form-label col-md-3 col-sm-3">Select Grouped</label>
-											<div class="col-md-9 col-sm-9">
-												<select class="select2_group form-control">
-													<optgroup label="Alaskan/Hawaiian Time Zone">
-														<option value="AK">Alaska</option>
-														<option value="HI">Hawaii</option>
-													</optgroup>
-													<optgroup label="Pacific Time Zone">
-														<option value="CA">California</option>
-														<option value="NV">Nevada</option>
-														<option value="OR">Oregon</option>
-														<option value="WA">Washington</option>
-													</optgroup>
-													<optgroup label="Mountain Time Zone">
-														<option value="AZ">Arizona</option>
-														<option value="CO">Colorado</option>
-														<option value="ID">Idaho</option>
-														<option value="MT">Montana</option>
-														<option value="NE">Nebraska</option>
-														<option value="NM">New Mexico</option>
-														<option value="ND">North Dakota</option>
-														<option value="UT">Utah</option>
-														<option value="WY">Wyoming</option>
-													</optgroup>
-													<optgroup label="Central Time Zone">
-														<option value="AL">Alabama</option>
-														<option value="AR">Arkansas</option>
-														<option value="IL">Illinois</option>
-														<option value="IA">Iowa</option>
-														<option value="KS">Kansas</option>
-														<option value="KY">Kentucky</option>
-														<option value="LA">Louisiana</option>
-														<option value="MN">Minnesota</option>
-														<option value="MS">Mississippi</option>
-														<option value="MO">Missouri</option>
-														<option value="OK">Oklahoma</option>
-														<option value="SD">South Dakota</option>
-														<option value="TX">Texas</option>
-														<option value="TN">Tennessee</option>
-														<option value="WI">Wisconsin</option>
-													</optgroup>
-													<optgroup label="Eastern Time Zone">
-														<option value="CT">Connecticut</option>
-														<option value="DE">Delaware</option>
-														<option value="FL">Florida</option>
-														<option value="GA">Georgia</option>
-														<option value="IN">Indiana</option>
-														<option value="ME">Maine</option>
-														<option value="MD">Maryland</option>
-														<option value="MA">Massachusetts</option>
-														<option value="MI">Michigan</option>
-														<option value="NH">New Hampshire</option>
-														<option value="NJ">New Jersey</option>
-														<option value="NY">New York</option>
-														<option value="NC">North Carolina</option>
-														<option value="OH">Ohio</option>
-														<option value="PA">Pennsylvania</option>
-														<option value="RI">Rhode Island</option>
-														<option value="SC">South Carolina</option>
-														<option value="VT">Vermont</option>
-														<option value="VA">Virginia</option>
-														<option value="WV">West Virginia</option>
-													</optgroup>
-												</select>
-											</div>
-										</div>
-										<div class="mb-3 row">
-											<label class="col-form-label col-md-3 col-sm-3">Select Multiple</label>
-											<div class="col-md-9 col-sm-9">
-												<select class="select2_multiple form-control" multiple="multiple">
-													<option>Choose option</option>
-													<option>Option one</option>
-													<option>Option two</option>
-													<option>Option three</option>
-													<option>Option four</option>
-													<option>Option five</option>
-													<option>Option six</option>
-												</select>
-											</div>
-										</div>
-
-										<div class="control-group row">
-											<label class="control-label col-md-3 col-sm-3">Input Tags</label>
-											<div class="col-md-9 col-sm-9">
-												<input id="tags_1" type="text" class="tags form-control" value="social, adverts, sales" />
-												<div id="suggestions-container" style="position: relative; float: left; width: 250px; margin: 10px;"></div>
-											</div>
-										</div>
-										<div class="mb-3 row">
-											<label class="col-form-label col-md-3 col-sm-3 col-form-label">Checkboxes and radios
-												<br>
-												<small class="text-muted">Custom styled elements</small>
-											</label>
-
-											<div class="col-md-9 col-sm-9">
-												<div class="form-check mb-2">
-													<input class="form-check-input" type="checkbox" id="customCheck1" checked>
-													<label class="form-check-label" for="customCheck1">Checked</label>
-												</div>
-												<div class="form-check mb-2">
-													<input class="form-check-input" type="checkbox" id="customCheck2">
-													<label class="form-check-label" for="customCheck2">Unchecked</label>
-												</div>
-												<div class="form-check mb-2">
-													<input class="form-check-input" type="checkbox" id="customCheck3" disabled>
-													<label class="form-check-label" for="customCheck3">Disabled</label>
-												</div>
-												<div class="form-check mb-3">
-													<input class="form-check-input" type="checkbox" id="customCheck4" disabled checked>
-													<label class="form-check-label" for="customCheck4">Disabled & checked</label>
-												</div>
-												<div class="form-check mb-2">
-													<input class="form-check-input" type="radio" name="customRadio" id="customRadio1" checked>
-													<label class="form-check-label" for="customRadio1">Checked</label>
-												</div>
-												<div class="form-check mb-2">
-													<input class="form-check-input" type="radio" name="customRadio" id="customRadio2">
-													<label class="form-check-label" for="customRadio2">Unchecked</label>
-												</div>
-												<div class="form-check mb-2">
-													<input class="form-check-input" type="radio" name="customRadio3" id="customRadio3" disabled>
-													<label class="form-check-label" for="customRadio3">Disabled</label>
-												</div>
-												<div class="form-check">
-													<input class="form-check-input" type="radio" name="customRadio4" id="customRadio4" disabled checked>
-													<label class="form-check-label" for="customRadio4">Disabled & Checked</label>
-												</div>
-											</div>
-										</div>
-
-										<div class="mb-3 row">
-											<label class="control-label col-md-3 col-sm-3">Switch</label>
-											<div class="col-md-9 col-sm-9">
-												<div class="form-check form-switch mb-2">
-													<input class="form-check-input" type="checkbox" role="switch" id="switch1" checked>
-													<label class="form-check-label" for="switch1">Checked</label>
-												</div>
-												<div class="form-check form-switch mb-2">
-													<input class="form-check-input" type="checkbox" role="switch" id="switch2">
-													<label class="form-check-label" for="switch2">Unchecked</label>
-												</div>
-												<div class="form-check form-switch mb-2">
-													<input class="form-check-input" type="checkbox" role="switch" id="switch3" disabled>
-													<label class="form-check-label" for="switch3">Disabled</label>
-												</div>
-												<div class="form-check form-switch mb-2">
-													<input class="form-check-input" type="checkbox" role="switch" id="switch4" checked disabled>
-													<label class="form-check-label" for="switch4">Disabled Checked</label>
-												</div>
-											</div>
-										</div>
-
-
-										<div class="ln_solid"></div>
-										<div class="mb-3">
-											<div class="col-md-9 col-sm-9 offset-md-3">
-												<div class="d-grid gap-2 d-md-flex justify-content-md-start">
-													<button type="button" class="btn btn-outline-secondary">Cancel</button>
-													<button type="reset" class="btn btn-outline-primary">Reset</button>
-													<button type="submit" class="btn btn-success">Submit</button>
-												</div>
-											</div>
-										</div>
-
-									</form>
-								</div>
-							</div>
-						</div>
-
-
-						<div class="col-md-6 col-sm-12">
-							<div class="x_panel">
-								<div class="x_title">
-									<h4>Form Buttons <small>Sessions</small></h4>
-									<ul class="nav navbar-right panel_toolbox">
-										<li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-										<li class="dropdown">
-											<a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-											<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-												<a class="dropdown-item" href="#">Settings 1</a>
-												<a class="dropdown-item" href="#">Settings 2</a>
-											</div>
-										<li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a>
-									</ul>
-									<div class="clearfix"></div>
-								</div>
-								<div class="x_content">
-
-									<form class="form-horizontal form-label-left">
-
-										<div class="mb-3 row">
-											<label class="col-sm-3 col-form-label">Button addons</label>
-
-											<div class="col-sm-9">
-												<div class="input-group mb-3">
-													<button type="button" class="btn btn-primary">Go!</button>
-													<input type="text" class="form-control" placeholder="Search..." aria-label="Search" aria-label="Search input with button">
-												</div>
-												<div class="input-group">
-													<input type="text" class="form-control" placeholder="Search..." aria-label="Search" aria-label="Search input with button">
-													<button type="button" class="btn btn-primary">Go!</button>
-												</div>
-											</div>
-										</div>
-										<div class="divider-dashed"></div>
-
-										<div class="mb-3 row">
-											<label class="col-sm-3 col-form-label">Dropdown addons</label>
-
-											<div class="col-sm-9">
-												<div class="input-group mb-3">
-													<input type="text" class="form-control" aria-label="Text input with dropdown button">
-													<button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Action</button>
-													<ul class="dropdown-menu dropdown-menu-end">
-														<li><a class="dropdown-item" href="#">Action</a></li>
-														<li><a class="dropdown-item" href="#">Another action</a></li>
-														<li><a class="dropdown-item" href="#">Something else here</a></li>
-														<li><hr class="dropdown-divider"></li>
-														<li><a class="dropdown-item" href="#">Separated link</a></li>
-													</ul>
-												</div>
-												<div class="input-group">
-													<input type="text" class="form-control" placeholder="Search..." aria-label="Search" aria-label="Search input">
-													<button type="button" class="btn btn-primary">Go!</button>
-												</div>
-											</div>
-										</div>
-									</form>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-md-12 col-sm-12">
-						<div class="x_panel">
-							<div class="x_title">
-								<h4>Text areas<small>Sessions</small></h4>
-								<ul class="nav navbar-right panel_toolbox">
-									<li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-									<li class="dropdown">
-										<a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-										<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-											<a class="dropdown-item" href="#">Settings 1</a>
-											<a class="dropdown-item" href="#">Settings 2</a>
-										</div>
-									<li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a>
-								</ul>
-								<div class="clearfix"></div>
-							</div>
-							<div class="x_content">
-								<div id="alerts"></div>
-								<div class="btn-toolbar editor" data-role="editor-toolbar" data-bs-target="#editor-one">
-									<div class="btn-group">
-										<a class="btn dropdown-toggle" data-bs-toggle="dropdown" title="Font"><i class="fas fa-font"></i><b class="caret"></b></a>
-										<ul class="dropdown-menu">
-										</ul>
-									</div>
-
-									<div class="btn-group">
-										<a class="btn dropdown-toggle" data-bs-toggle="dropdown" title="Font Size"><i class="fas fa-text-height"></i>&nbsp;<b class="caret"></b></a>
-										<ul class="dropdown-menu">
-											<li>
-												<a data-edit="fontSize 5">
-													<p style="font-size:17px">Huge</p>
-												</a>
-											<li>
-												<a data-edit="fontSize 3">
-													<p style="font-size:14px">Normal</p>
-												</a>
-											<li>
-												<a data-edit="fontSize 1">
-													<p style="font-size:11px">Small</p>
-												</a>
-										</ul>
-									</div>
-
-									<div class="btn-group">
-										<a class="btn" data-edit="bold" title="Bold (Ctrl/Cmd+B)"><i class="fas fa-bold"></i></a>
-										<a class="btn" data-edit="italic" title="Italic (Ctrl/Cmd+I)"><i class="fas fa-italic"></i></a>
-										<a class="btn" data-edit="strikethrough" title="Strikethrough"><i class="fas fa-strikethrough"></i></a>
-										<a class="btn" data-edit="underline" title="Underline (Ctrl/Cmd+U)"><i class="fas fa-underline"></i></a>
-									</div>
-
-									<div class="btn-group">
-										<a class="btn" data-edit="insertunorderedlist" title="Bullet list"><i class="fas fa-list-ul"></i></a>
-										<a class="btn" data-edit="insertorderedlist" title="Number list"><i class="fas fa-list-ol"></i></a>
-										<a class="btn" data-edit="outdent" title="Reduce indent (Shift+Tab)"><i class="fas fa-dedent"></i></a>
-										<a class="btn" data-edit="indent" title="Indent (Tab)"><i class="fas fa-indent"></i></a>
-									</div>
-
-									<div class="btn-group">
-										<a class="btn" data-edit="justifyleft" title="Align Left (Ctrl/Cmd+L)"><i class="fas fa-align-left"></i></a>
-										<a class="btn" data-edit="justifycenter" title="Center (Ctrl/Cmd+E)"><i class="fas fa-align-center"></i></a>
-										<a class="btn" data-edit="justifyright" title="Align Right (Ctrl/Cmd+R)"><i class="fas fa-align-right"></i></a>
-										<a class="btn" data-edit="justifyfull" title="Justify (Ctrl/Cmd+J)"><i class="fas fa-align-justify"></i></a>
-									</div>
-
-									<div class="btn-group">
-										<a class="btn dropdown-toggle" data-bs-toggle="dropdown" title="Hyperlink"><i class="fas fa-link"></i></a>
-										<div class="dropdown-menu input-append">
-											<input class="span2" placeholder="URL" type="text" data-edit="createLink" />
-											<button class="btn" type="button">Add</button>
-										</div>
-										<a class="btn" data-edit="unlink" title="Remove Hyperlink"><i class="fas fa-cut"></i></a>
-									</div>
-
-									<div class="btn-group">
-										<a class="btn" title="Insert picture (or just drag & drop)" id="pictureBtn"><i class="fas fa-picture-o"></i></a>
-										<input type="file" data-role="magic-overlay" data-bs-target="#pictureBtn" data-edit="insertImage" />
-									</div>
-
-									<div class="btn-group">
-										<a class="btn" data-edit="undo" title="Undo (Ctrl/Cmd+Z)"><i class="fas fa-undo"></i></a>
-										<a class="btn" data-edit="redo" title="Redo (Ctrl/Cmd+Y)"><i class="fas fa-repeat"></i></a>
-									</div>
-								</div>
-
-								<div id="editor-one" class="editor-wrapper"></div>
-
-								<textarea name="descr" id="descr" style="display:none;"></textarea>
-
-								<br />
-
-								<div class="ln_solid"></div>
-
-								<div class="mb-3">
-									<label class="control-label col-md-3 col-sm-3">Resizable Text area</label>
-									<div class="col-md-9 col-sm-9">
-										<textarea class="resizable_textarea form-control" placeholder="This text area automatically resizes its height as you fill in more text courtesy of autosize-master it out..."></textarea>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="x_panel">
-						<div class="x_title">
-							<h4>Form Input Grid <small>form input </small></h4>
-							<ul class="nav navbar-right panel_toolbox">
-								<li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-								<li class="dropdown">
-									<a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-									<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-										<a class="dropdown-item" href="#">Settings 1</a>
-										<a class="dropdown-item" href="#">Settings 2</a>
-									</div>
-								<li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a>
-							</ul>
-							<div class="clearfix"></div>
-						</div>
-						<div class="x_content">
-
-							<div class="row">
-
-								<div class="col-md-12 col-sm-12 mb-3">
-									<input type="text" placeholder=".col-md-12" class="form-control">
-								</div>
-
-								<div class="col-md-6 col-sm-12 mb-3">
-									<input type="text" placeholder=".col-md-6" class="form-control">
-								</div>
-
-								<div class="col-md-6 col-sm-12 mb-3">
-									<input type="text" placeholder=".col-md-6" class="form-control">
-								</div>
-
-
-								<div class="col-md-4 col-sm-12 mb-3">
-									<input type="text" placeholder=".col-md-4" class="form-control">
-								</div>
-
-								<div class="col-md-4 col-sm-12 mb-3">
-									<input type="text" placeholder=".col-md-4" class="form-control">
-								</div>
-
-								<div class="col-md-4 col-sm-12 mb-3">
-									<input type="text" placeholder=".col-md-4" class="form-control">
-								</div>
-
-
-								<div class="col-md-3 col-sm-12 mb-3">
-									<input type="text" placeholder=".col-md-3" class="form-control">
-								</div>
-
-								<div class="col-md-3 col-sm-12 mb-3">
-									<input type="text" placeholder=".col-md-3" class="form-control">
-								</div>
-
-								<div class="col-md-3 col-sm-12 mb-3">
-									<input type="text" placeholder=".col-md-3" class="form-control">
-								</div>
-
-								<div class="col-md-3 col-sm-12 mb-3">
-									<input type="text" placeholder=".col-md-3" class="form-control">
-								</div>
-
-
-								<div class="col-md-2 col-sm-12 mb-3">
-									<input type="text" placeholder=".col-md-2" class="form-control">
-								</div>
-
-								<div class="col-md-2 col-sm-12 mb-3">
-									<input type="text" placeholder=".col-md-2" class="form-control">
-								</div>
-
-								<div class="col-md-2 col-sm-12 mb-3">
-									<input type="text" placeholder=".col-md-2" class="form-control">
-								</div>
-
-								<div class="col-md-2 col-sm-12 mb-3">
-									<input type="text" placeholder=".col-md-2" class="form-control">
-								</div>
-
-								<div class="col-md-2 col-sm-12 mb-3">
-									<input type="text" placeholder=".col-md-2" class="form-control">
-								</div>
-
-								<div class="col-md-2 col-sm-12 mb-3">
-									<input type="text" placeholder=".col-md-2" class="form-control">
-								</div>
-
-
-								<div class="col-md-1 col-sm-12 mb-3">
-									<input type="text" placeholder=".col-md-1" class="form-control">
-								</div>
-
-								<div class="col-md-1 col-sm-12 mb-3">
-									<input type="text" placeholder=".col-md-1" class="form-control">
-								</div>
-
-								<div class="col-md-1 col-sm-12 mb-3">
-									<input type="text" placeholder=".col-md-1" class="form-control">
-								</div>
-
-								<div class="col-md-1 col-sm-12 mb-3">
-									<input type="text" placeholder=".col-md-1" class="form-control">
-								</div>
-
-								<div class="col-md-1 col-sm-12 mb-3">
-									<input type="text" placeholder=".col-md-1" class="form-control">
-								</div>
-
-								<div class="col-md-1 col-sm-12 mb-3">
-									<input type="text" placeholder=".col-md-1" class="form-control">
-								</div>
-
-								<div class="col-md-1 col-sm-12 mb-3">
-									<input type="text" placeholder=".col-md-1" class="form-control">
-								</div>
-
-								<div class="col-md-1 col-sm-12 mb-3">
-									<input type="text" placeholder=".col-md-1" class="form-control">
-								</div>
-
-								<div class="col-md-1 col-sm-12 mb-3">
-									<input type="text" placeholder=".col-md-1" class="form-control">
-								</div>
-
-								<div class="col-md-1 col-sm-12 mb-3">
-									<input type="text" placeholder=".col-md-1" class="form-control">
-								</div>
-
-								<div class="col-md-1 col-sm-12 mb-3">
-									<input type="text" placeholder=".col-md-1" class="form-control">
-								</div>
-							</div>
-
-						</div>
-					</div>
-
-
-					<div class="x_panel">
-						<div class="x_title">
-							<h4>Form Design <small>different form elements</small></h4>
-							<ul class="nav navbar-right panel_toolbox">
-								<li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-								<li class="dropdown">
-									<a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-									<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-										<a class="dropdown-item" href="#">Settings 1</a>
-										<a class="dropdown-item" href="#">Settings 2</a>
-									</div>
-								<li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a>
-							</ul>
-							<div class="clearfix"></div>
-						</div>
-						<div class="x_content">
-							<br />
-
-							<h4>Horizontal labels</h4>
-							<p class="font-gray-dark">
-								Using the grid system you can control the position of the labels. The form example below has the <b>col-md-10</b> which sets the width to 10/12 and <b>center-margin</b> which centers it.
-							</p>
-							<form class="form-horizontal form-label-left">
-								<div class="mb-3 row">
-									<label class="control-label col-md-3" for="first-name">First Name <span class="required text-danger">*</span>
-									</label>
-									<div class="col-md-7">
-										<input type="text" id="first-name2" required="required" class="form-control">
-									</div>
-								</div>
-								<div class="mb-3 row">
-									<label class="control-label col-md-3" for="last-name">Last Name <span class="required text-danger">*</span>
-									</label>
-									<div class="col-md-7">
-										<input type="text" id="last-name2" name="last-name" required="required" class="form-control">
-									</div>
-								</div>
-							</form>
-
-
-							<h4>Vertical labels</h4>
-							<p class="font-gray-dark">
-								For making labels vertical you have two options, either use the apropiate grid <b>.col-</b> class or wrap the form in the <b>form-vertical</b> class.
-							</p>
-							<div class="col-md-8 center-margin">
-								<form class="form-horizontal form-label-left">
-									<div class="mb-3">
-										<label class="form-label">Email address</label>
-										<input type="email" class="form-control" placeholder="Enter email">
-									</div>
-									<div class="mb-3">
-										<label class="form-label">Password</label>
-										<input type="password" class="form-control" placeholder="Password">
-									</div>
-								</form>
-							</div>
-
-							<h4>Inline Form </h4>
-							<p class="font-gray-dark">
-								Add .form-inline to your form (which doesn't have to be a &lt;form&gt;) for left-aligned and inline-block controls.
-							</p>
-							<form class="row g-3 align-items-center">
-								<div class="col-auto">
-									<label for="ex3" class="form-label">Email address</label>
-								</div>
-								<div class="col-auto">
-									<input type="text" id="ex3" class="form-control" placeholder="Enter name">
-								</div>
-								<div class="col-auto">
-									<label for="ex4" class="form-label">Email address</label>
-								</div>
-								<div class="col-auto">
-									<input type="email" id="ex4" class="form-control" placeholder="Enter email">
-								</div>
-								<div class="col-auto">
-									<div class="form-check">
-										<input class="form-check-input" type="checkbox" id="inlineFormCheck">
-										<label class="form-check-label" for="inlineFormCheck">Remember me</label>
-									</div>
-								</div>
-								<div class="col-auto">
-									<button type="submit" class="btn btn-primary">Send invitation</button>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- /page content -->
-
-			<!-- footer content -->
-			<footer>
-				<div class="float-end">
-					Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
-				</div>
-				<div class="clearfix"></div>
-			</footer>
-			<!-- /footer content -->
-		</div>
-	</div>    <!-- Compiled JavaScript (Bootstrap and vendor scripts) -->
-    
-
-<!-- Initialize Tempus Dominus datetimepicker -->
-<script type="text/javascript">
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize Tempus Dominus date pickers
-    if (typeof TempusDominus !== 'undefined') {
-        // Initialize birthday pickers
-        const birthdayPicker = new TempusDominus(document.getElementById('birthday'), {
-            display: {
-                components: {
-                    clock: false,
-                    date: true
-                }
-            },
-            localization: {
-                format: 'dd-MM-yyyy'
-            }
-        });
-
-        const birthdayPicker2 = new TempusDominus(document.getElementById('birthday2'), {
-            display: {
-                components: {
-                    clock: false,
-                    date: true
-                }
-            },
-            localization: {
-                format: 'dd-MM-yyyy'
-            }
-        });
-    }
-
-    // Bootstrap 5 form validation
-    const forms = document.querySelectorAll('.needs-validation');
-    Array.from(forms).forEach(function(form) {
-        form.addEventListener('submit', function(event) {
-            if (!form.checkValidity()) {
-                event.preventDefault();
-                event.stopPropagation();
-            }
-            form.classList.add('was-validated');
-        }, false);
-    });
-
-    // Bootstrap 5 switches are native - no JS initialization needed
-    // Custom styling applied via CSS variables in custom.scss
-
-    // Enhanced form interactions
-    const formInputs = document.querySelectorAll('.form-control, .form-select');
-    formInputs.forEach(function(input) {
-        input.addEventListener('focus', function() {
-            this.parentElement.classList.add('focused');
-        });
-        
-        input.addEventListener('blur', function() {
-            this.parentElement.classList.remove('focused');
-            if (this.value) {
-                this.classList.add('has-value');
-            } else {
-                this.classList.remove('has-value');
-            }
-        });
-    });
-
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="startDate">Start date</label>
+              <input type="date" id="startDate" class="form-control">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="endDate">End date</label>
+              <input type="date" id="endDate" class="form-control">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="description">Description</label>
+            <textarea id="description" class="form-control" placeholder="What problem are we solving?"></textarea>
+            <div class="form-help">Markdown is supported.</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Visibility</label>
+            <div class="segmented" role="radiogroup">
+              <label><input type="radio" name="vis" checked><span>Private</span></label>
+              <label><input type="radio" name="vis"><span>Team</span></label>
+              <label><input type="radio" name="vis"><span>Public</span></label>
+            </div>
+            <div class="form-help">Private — only invited members. Public — anyone with the link.</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="tagInput">Tags</label>
+            <div class="tag-input" id="tagInput" tabindex="0">
+              <span class="tag-pill">Web<button type="button" aria-label="Remove">×</button></span>
+              <span class="tag-pill">Design<button type="button" aria-label="Remove">×</button></span>
+              <span class="tag-pill">Q2<button type="button" aria-label="Remove">×</button></span>
+              <input type="text" placeholder="Add tag…">
+            </div>
+            <div class="form-help">Press Enter to add a tag.</div>
+          </div>
+
+          <div class="form-actions right">
+            <button type="reset" class="btn btn-outline">Save as draft</button>
+            <button type="submit" class="btn btn-primary">Create project</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div class="card">
+        <div class="card-header"><div class="card-title">Tips</div></div>
+        <div class="card-body">
+          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;font-size:12.5px;color:var(--text-secondary);line-height:1.5">
+            <li><strong style="color:var(--text)">Be specific</strong> with your project name — it shows up in URLs and notifications.</li>
+            <li><strong style="color:var(--text)">Set a realistic budget</strong>. You can adjust it as scope changes.</li>
+            <li><strong style="color:var(--text)">Tags</strong> help filter and group projects across your workspace.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">Need help?</div></div>
+        <div class="card-body" style="font-size:12.5px;color:var(--text-secondary);line-height:1.5">
+          Read our <a href="faq.html">project guide</a> or reach out to <a href="#">support</a> — we usually reply within an hour.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Section 2: Profile + avatar ── -->
+  <div class="row col-2">
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Profile</div>
+          <div class="card-subtitle">Avatar upload, names, bio.</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div style="display:flex;gap:20px;align-items:center;margin-bottom:18px">
+          <label class="avatar-upload" for="avatar">
+            A
+            <span class="overlay">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7a2 2 0 012-2h2l2-2h6l2 2h2a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"/><circle cx="12" cy="12" r="3.5"/></svg>
+            </span>
+            <input type="file" id="avatar" accept="image/*" hidden>
+          </label>
+          <div>
+            <div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px">Aigars Silkalns</div>
+            <div style="font-size:12.5px;color:var(--text-muted);margin-bottom:8px">Owner · aigars@example.com</div>
+            <button class="btn btn-outline btn-sm">Upload new photo</button>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="firstName">First name</label>
+            <input type="text" id="firstName" class="form-control" value="Aigars">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="lastName">Last name</label>
+            <input type="text" id="lastName" class="form-control" value="Silkalns">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="username">Username</label>
+          <div class="input-affix">
+            <span class="affix prefix">colorlib.com/</span>
+            <input type="text" id="username" class="form-control" value="aigars">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="bio">Bio</label>
+          <textarea id="bio" class="form-control" placeholder="A few words about yourself…">Founder of Colorlib. Building Gentelella v4.</textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- Account security -->
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Account security</div>
+          <div class="card-subtitle">Password, 2FA, password strength.</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="form-group">
+          <label class="form-label" for="currentPwd">Current password</label>
+          <div class="input-group">
+            <svg class="input-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="7" width="10" height="7" rx="1.5"/><path d="M5 7V5a3 3 0 016 0v2"/></svg>
+            <input type="password" id="currentPwd" class="form-control" value="••••••••">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="newPwd">New password</label>
+          <div class="input-group">
+            <svg class="input-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="7" width="10" height="7" rx="1.5"/><path d="M5 7V5a3 3 0 016 0v2"/></svg>
+            <input type="password" id="newPwd" class="form-control" placeholder="At least 12 characters" value="Goat-Stapler99!">
+          </div>
+          <div class="password-strength s4"><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div></div>
+          <div class="password-strength-label">Strength: <strong>Strong</strong> · 12+ chars, mixed case, number, symbol</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Two-factor authentication</label>
+          <label class="switch">
+            <input type="checkbox" checked>
+            <span class="track"></span>
+            <span class="switch-label">Enabled — codes from authenticator app</span>
+          </label>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Verify with one-time code</label>
+          <div class="otp-grid">
+            <input class="otp-input" type="text" inputmode="numeric" pattern="[0-9]" maxlength="1" placeholder="·">
+            <input class="otp-input" type="text" inputmode="numeric" pattern="[0-9]" maxlength="1" placeholder="·">
+            <input class="otp-input" type="text" inputmode="numeric" pattern="[0-9]" maxlength="1" placeholder="·">
+            <input class="otp-input" type="text" inputmode="numeric" pattern="[0-9]" maxlength="1" placeholder="·">
+            <input class="otp-input" type="text" inputmode="numeric" pattern="[0-9]" maxlength="1" placeholder="·">
+            <input class="otp-input" type="text" inputmode="numeric" pattern="[0-9]" maxlength="1" placeholder="·">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Section 3: Preferences (sliders, switches, color, segmented) ── -->
+  <div class="row col-2">
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Preferences</div>
+          <div class="card-subtitle">Range sliders, switches, segmented controls.</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="form-group">
+          <label class="form-label" for="volume">Notification volume</label>
+          <div class="slider-row">
+            <input type="range" id="volume" class="slider" min="0" max="100" value="62">
+            <span class="slider-value" data-slider-display="volume">62%</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="font-size">Font size</label>
+          <div class="slider-row">
+            <input type="range" id="font-size" class="slider" min="12" max="20" step="1" value="14">
+            <span class="slider-value" data-slider-display="font-size">14px</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Theme</label>
+          <div class="segmented" role="radiogroup">
+            <label><input type="radio" name="pref-theme"><span>Light</span></label>
+            <label><input type="radio" name="pref-theme"><span>Dark</span></label>
+            <label><input type="radio" name="pref-theme" checked><span>System</span></label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Density</label>
+          <div class="segmented" role="radiogroup">
+            <label><input type="radio" name="pref-density" checked><span>Cozy</span></label>
+            <label><input type="radio" name="pref-density"><span>Comfortable</span></label>
+            <label><input type="radio" name="pref-density"><span>Compact</span></label>
+          </div>
+        </div>
+        <div class="form-group" style="display:flex;flex-direction:column;gap:8px">
+          <label class="switch"><input type="checkbox" checked><span class="track"></span><span class="switch-label">Send weekly summary email</span></label>
+          <label class="switch"><input type="checkbox"><span class="track"></span><span class="switch-label">Beta features</span></label>
+          <label class="switch"><input type="checkbox" checked><span class="track"></span><span class="switch-label">Sounds for incoming messages</span></label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Color + rating + stepper -->
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Project meta</div>
+          <div class="card-subtitle">Color tag, priority, team size, rating.</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="form-group">
+          <label class="form-label">Project color</label>
+          <div class="color-grid" role="radiogroup">
+            <span class="color-swatch active" style="background:var(--primary)" data-color="primary"></span>
+            <span class="color-swatch" style="background:var(--azure)" data-color="azure"></span>
+            <span class="color-swatch" style="background:var(--blue)" data-color="blue"></span>
+            <span class="color-swatch" style="background:var(--purple)" data-color="purple"></span>
+            <span class="color-swatch" style="background:var(--pink)" data-color="pink"></span>
+            <span class="color-swatch" style="background:var(--red)" data-color="red"></span>
+            <span class="color-swatch" style="background:var(--orange)" data-color="orange"></span>
+            <span class="color-swatch" style="background:var(--yellow)" data-color="yellow"></span>
+            <span class="color-swatch" style="background:var(--green)" data-color="green"></span>
+            <span class="color-swatch" style="background:var(--cyan)" data-color="cyan"></span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="priority">Priority</label>
+          <select id="priority" class="form-control">
+            <option>Low</option>
+            <option selected>Medium</option>
+            <option>High</option>
+            <option>Critical</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Team size</label>
+          <div class="stepper">
+            <button type="button" data-step="-1">−</button>
+            <input type="number" value="6" min="1" max="50">
+            <button type="button" data-step="1">+</button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Project rating</label>
+          <div class="rating" data-rating="4">
+            <button type="button" class="on" aria-label="1 star"><svg viewBox="0 0 16 16"><path d="M8 1l2 5 5 .5-4 3.5 1 5-4-2.5-4 2.5 1-5-4-3.5 5-.5z"/></svg></button>
+            <button type="button" class="on" aria-label="2 stars"><svg viewBox="0 0 16 16"><path d="M8 1l2 5 5 .5-4 3.5 1 5-4-2.5-4 2.5 1-5-4-3.5 5-.5z"/></svg></button>
+            <button type="button" class="on" aria-label="3 stars"><svg viewBox="0 0 16 16"><path d="M8 1l2 5 5 .5-4 3.5 1 5-4-2.5-4 2.5 1-5-4-3.5 5-.5z"/></svg></button>
+            <button type="button" class="on" aria-label="4 stars"><svg viewBox="0 0 16 16"><path d="M8 1l2 5 5 .5-4 3.5 1 5-4-2.5-4 2.5 1-5-4-3.5 5-.5z"/></svg></button>
+            <button type="button" aria-label="5 stars"><svg viewBox="0 0 16 16"><path d="M8 1l2 5 5 .5-4 3.5 1 5-4-2.5-4 2.5 1-5-4-3.5 5-.5z"/></svg></button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Cover image</label>
+          <label class="file-input" for="cover">
+            <span class="file-input-trigger">Choose file</span>
+            <span class="file-input-name" id="cover-name">cover-redesign-final.jpg</span>
+            <input id="cover" type="file" accept="image/*">
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Section 4: Search with suggestions, validation states ── -->
+  <div class="row col-2">
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Search with suggestions</div>
+          <div class="card-subtitle">Live autocomplete pattern.</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="form-group">
+          <label class="form-label" for="searchInput">Search clients</label>
+          <div class="input-group">
+            <svg class="input-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="7" r="5"/><path d="M11 11l3.5 3.5"/></svg>
+            <input type="text" id="searchInput" class="form-control" value="acm">
+          </div>
+          <div class="search-suggest">
+            <div class="search-suggest-row"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/></svg><span><mark>Acm</mark>e Corp</span><span class="meta">Pro · NYC</span></div>
+            <div class="search-suggest-row"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/></svg><span><mark>Acm</mark>e Industries</span><span class="meta">Business · Berlin</span></div>
+            <div class="search-suggest-row"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/></svg><span><mark>Acm</mark>e Studio</span><span class="meta">Starter · Tokyo</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Validation states</div>
+          <div class="card-subtitle">Helper, error, disabled, and required.</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="form-group">
+          <label class="form-label" for="email-ok">Email <span class="required">*</span></label>
+          <input type="email" id="email-ok" class="form-control" value="aigars@example.com">
+          <div class="form-help">We'll never share your email.</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="email-bad">Backup email</label>
+          <input type="email" id="email-bad" class="form-control is-invalid" value="not-an-email">
+          <div class="form-error">Please enter a valid email address.</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="readonly-input">Account ID (read-only)</label>
+          <input type="text" id="readonly-input" class="form-control" value="acct_8f3k29df3lkj" disabled>
+          <div class="form-help">Generated automatically. Cannot be changed.</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="char-count">Tagline (max 80)</label>
+          <textarea id="char-count" class="form-control" maxlength="80" data-char-counter>The free Bootstrap admin template, redesigned for 2026.</textarea>
+          <div class="form-help"><span data-char-display="char-count">56</span>/80 characters</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Section 5: Advanced controls (date-range, multi-select, rich text) ── -->
+  <div class="row col-2">
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Date range</div>
+          <div class="card-subtitle">Two-month picker · presets · keyboard nav</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="form-group">
+          <label class="form-label" for="dr-input">Report period</label>
+          <div class="date-range" data-date-range>
+            <input id="dr-input" class="form-control" placeholder="Pick a date range">
+          </div>
+          <div class="form-help">Click the input to open the picker. Built from scratch — no library.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Multi-select with chips</div>
+          <div class="card-subtitle">Type to filter · Enter to add · Backspace to remove</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="form-group">
+          <label class="form-label">Project tags</label>
+          <div class="multi-select" data-multi-select>
+            <select multiple hidden>
+              <option value="Design" selected>Design</option>
+              <option value="Engineering" selected>Engineering</option>
+              <option value="Product">Product</option>
+              <option value="Marketing">Marketing</option>
+              <option value="Support">Support</option>
+              <option value="Sales">Sales</option>
+              <option value="Operations">Operations</option>
+              <option value="Legal">Legal</option>
+              <option value="Finance">Finance</option>
+              <option value="HR">HR</option>
+            </select>
+          </div>
+          <div class="form-help">Bound to a real <code>&lt;select multiple&gt;</code> so it submits with any form.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row col-1">
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Rich text editor</div>
+          <div class="card-subtitle">Bold · italic · headings · lists · links · code · keyboard shortcuts</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="form-group" style="margin-bottom:0">
+          <label class="form-label" for="rt-bio">About</label>
+          <div class="rich-text" data-rich-text>
+            <textarea id="rt-bio" name="bio" hidden>&lt;p&gt;Click any button in the toolbar — &lt;strong&gt;bold&lt;/strong&gt;, &lt;em&gt;italic&lt;/em&gt;, lists, links, code blocks. Try &lt;kbd&gt;⌘B&lt;/kbd&gt; / &lt;kbd&gt;⌘I&lt;/kbd&gt; / &lt;kbd&gt;⌘K&lt;/kbd&gt;. The hidden &lt;code&gt;&amp;lt;textarea&amp;gt;&lt;/code&gt; stays in sync so a parent form picks it up on submit.&lt;/p&gt;</textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</main>
+
+<script type="module">
+// Slider value display
+document.querySelectorAll('input[type="range"].slider').forEach((r) => {
+  const display = document.querySelector(`[data-slider-display="${r.id}"]`);
+  if (!display) return;
+  const suffix = r.id === 'volume' ? '%' : (r.id === 'font-size' ? 'px' : '');
+  r.addEventListener('input', () => { display.textContent = r.value + suffix; });
 });
+
+// Color swatch selection
+document.querySelectorAll('.color-grid').forEach((grid) => {
+  grid.addEventListener('click', (e) => {
+    const sw = e.target.closest('.color-swatch');
+    if (!sw) return;
+    grid.querySelectorAll('.color-swatch').forEach((s) => s.classList.remove('active'));
+    sw.classList.add('active');
+  });
+});
+
+// Stepper +/-
+document.querySelectorAll('.stepper').forEach((step) => {
+  const input = step.querySelector('input');
+  step.querySelectorAll('button[data-step]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const delta = parseInt(btn.dataset.step, 10);
+      const min = parseInt(input.min || '-Infinity', 10);
+      const max = parseInt(input.max || 'Infinity', 10);
+      const next = Math.max(min, Math.min(max, (parseInt(input.value, 10) || 0) + delta));
+      input.value = next;
+      input.dispatchEvent(new Event('input', { bubbles: true }));
+    });
+  });
+});
+
+// Tag input
+document.querySelectorAll('.tag-input').forEach((wrap) => {
+  const input = wrap.querySelector('input');
+  wrap.addEventListener('click', (e) => {
+    if (e.target === wrap) input.focus();
+    const close = e.target.closest('.tag-pill button');
+    if (close) close.closest('.tag-pill').remove();
+  });
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && input.value.trim()) {
+      e.preventDefault();
+      const pill = document.createElement('span');
+      pill.className = 'tag-pill';
+      pill.innerHTML = input.value.trim().replace(/[<>&]/g, '') + '<button type="button" aria-label="Remove">×</button>';
+      wrap.insertBefore(pill, input);
+      input.value = '';
+    } else if (e.key === 'Backspace' && !input.value) {
+      const last = wrap.querySelector('.tag-pill:last-of-type');
+      if (last) last.remove();
+    }
+  });
+});
+
+// Rating
+document.querySelectorAll('.rating').forEach((rating) => {
+  const stars = [...rating.querySelectorAll('button')];
+  stars.forEach((star, i) => {
+    star.addEventListener('click', () => {
+      stars.forEach((s, j) => s.classList.toggle('on', j <= i));
+      rating.dataset.rating = String(i + 1);
+    });
+  });
+});
+
+// File input — show selected name
+document.querySelectorAll('.file-input input[type="file"]').forEach((inp) => {
+  const display = inp.closest('.file-input').querySelector('.file-input-name');
+  if (!display) return;
+  inp.addEventListener('change', () => {
+    if (inp.files?.[0]) display.textContent = inp.files[0].name;
+  });
+});
+
+// OTP — auto-advance
+document.querySelectorAll('.otp-grid').forEach((grid) => {
+  const inputs = [...grid.querySelectorAll('.otp-input')];
+  inputs.forEach((inp, i) => {
+    inp.addEventListener('input', () => {
+      if (inp.value && i < inputs.length - 1) inputs[i + 1].focus();
+    });
+    inp.addEventListener('keydown', (e) => {
+      if (e.key === 'Backspace' && !inp.value && i > 0) inputs[i - 1].focus();
+    });
+  });
+});
+
+// Char counter
+document.querySelectorAll('[data-char-counter]').forEach((el) => {
+  const display = document.querySelector(`[data-char-display="${el.id}"]`);
+  if (!display) return;
+  const update = () => { display.textContent = String(el.value.length); };
+  el.addEventListener('input', update);
+  update();
+});
+
+// Password strength
+const newPwd = document.getElementById('newPwd');
+if (newPwd) {
+  const meter = newPwd.closest('.form-group')?.querySelector('.password-strength');
+  const label = newPwd.closest('.form-group')?.querySelector('.password-strength-label strong');
+  const score = (v) => {
+    let s = 0;
+    if (v.length >= 8) s++;
+    if (v.length >= 12) s++;
+    if (/[A-Z]/.test(v) && /[a-z]/.test(v)) s++;
+    if (/\d/.test(v) && /[^A-Za-z0-9]/.test(v)) s++;
+    return s;
+  };
+  const labels = ['Empty', 'Weak', 'Fair', 'Good', 'Strong'];
+  newPwd.addEventListener('input', () => {
+    const s = score(newPwd.value);
+    if (meter) meter.className = `password-strength s${s}`;
+    if (label) label.textContent = labels[s];
+  });
+}
 </script>
+
 </body>
 </html>

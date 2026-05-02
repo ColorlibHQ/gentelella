@@ -1,641 +1,357 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Operations dashboard | Gentelella 2026 v4</title>
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script type="module" src="/src/main-v4.js"></script>
+</head>
+<body data-shell="admin" data-page="dashboard-4" data-breadcrumb="Home > Dashboards > Operations">
 
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<main class="main">
+<div class="page-wrapper">
 
-    <!-- Security headers -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.googleapis.com; img-src 'self' data: https: blob:; font-src 'self' data: https://fonts.gstatic.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; connect-src 'self' ws: wss: http://localhost:* https://api.example.com https://*.googleapis.com; frame-src 'self' https://www.youtube.com https://player.vimeo.com; media-src 'self' https: blob:; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
-
-    <!-- Favicons -->
-    <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
-    <link rel="icon" href="../images/favicon-32x32.svg" type="image/svg+xml" sizes="32x32">
-    <link rel="icon" href="../images/favicon-16x16.svg" type="image/svg+xml" sizes="16x16">
-    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="../images/apple-touch-icon.svg" sizes="180x180">
-    <link rel="manifest" href="../site.webmanifest">
-
-    <!-- Theme color -->
-    <meta name="theme-color" content="#2a3f54">
-    <meta name="msapplication-TileColor" content="#2a3f54">
-
-    <title>Dashboard 4 | Gentelella</title>    <!-- Compiled CSS (includes Bootstrap, Font Awesome, and all vendor styles) -->
-    <script type="module" src="/src/main-minimal.js"></script>
-  </head>
-
-  <body class="nav-md page-index4">
-    <div class="container body">
-      <div class="main_container">
-        <aside class="col-md-3 left_col" aria-label="Sidebar navigation">
-          <div class="left_col scroll-view">
-            <div class="navbar nav_title border-0">
-              <a href="index.html" class="site_title"><img src="../images/logo.svg" alt="Gentelella Alela!" class="logo-full logo-main" loading="lazy"><img src="../images/logo-icon.svg" alt="Gentelella" class="logo-icon" loading="lazy"></a>
-            </div>
-
-            <div class="clearfix"></div>
-
-            <!-- menu profile quick info -->
-            <div class="profile clearfix">
-              <div class="profile_pic">
-                <img src="../images/img.jpg" alt="User profile photo" class="img-circle profile_img" loading="lazy">
-              </div>
-              <div class="profile_info">
-                <span>Welcome,</span>
-                <h4>John Doe</h4>
-              </div>
-            </div>
-            <!-- /menu profile quick info -->
-
-            <br />
-
-            <!-- sidebar menu -->
-            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-              <div class="menu_section">
-                <h3>General</h3>
-                <ul class="nav side-menu">
-                  <li><a href="https://dashboardpack.com/?utm_source=gentelella&utm_medium=sidebar&utm_campaign=premium" target="_blank"><i class="bi bi-stars"></i> Go Pro <span class="badge bg-warning">Pro</span></a></li>
-                  <li><a><i class="bi bi-house"></i> Home <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="index.html">Dashboard 1</a></li>
-                      <li><a href="index2.html">Dashboard 2</a></li>
-                      <li><a href="index3.html">Dashboard 3</a></li>
-                      <li><a href="index4.html">Dashboard 4</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="bi bi-pencil-square"></i> Forms <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="form.html">General Form</a></li>
-                      <li><a href="form_advanced.html">Advanced Components</a></li>
-                      <li><a href="form_validation.html">Form Validation</a></li>
-                      <li><a href="form_wizards.html">Form Wizard</a></li>
-                      <li><a href="form_upload.html">Form Upload</a></li>
-                      <li><a href="form_buttons.html">Form Buttons</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="bi bi-display"></i> UI Elements <span class="badge bg-danger">Hot</span> <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="general_elements.html">General Elements</a></li>
-                      <li><a href="media_gallery.html">Media Gallery</a></li>
-                      <li><a href="typography.html">Typography</a></li>
-                      <li><a href="icons.html">Icons</a></li>
-                      <li><a href="widgets.html">Widgets</a></li>
-                      <li><a href="invoice.html">Invoice</a></li>
-                      <li><a href="inbox.html">Inbox</a></li>
-                      <li><a href="calendar.html">Calendar</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="bi bi-table"></i> Tables <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="tables.html">Tables</a></li>
-                      <li><a href="tables_dynamic.html">Table Dynamic</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="bi bi-bar-chart"></i> Data Presentation <span class="badge bg-success">New</span> <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="chartjs.html">Chart.js</a></li>
-                      <li><a href="echarts.html">ECharts <span class="badge bg-info">Updated</span></a></li>
-                      <li><a href="other_charts.html">Other Charts</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="bi bi-layout-split"></i>Layouts <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="fixed_sidebar.html">Fixed Sidebar</a></li>
-                      <li><a href="fixed_footer.html">Fixed Footer</a></li>
-                    </ul>
-                  </li>
-                </ul>
-              </div>
-              <div class="menu_section">
-                <h3>Live On</h3>
-                <ul class="nav side-menu">
-                  <li><a><i class="bi bi-file-earmark-text"></i> Additional Pages <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="e_commerce.html">E-commerce</a></li>
-                      <li><a href="projects.html">Projects</a></li>
-                      <li><a href="project_detail.html">Project Detail</a></li>
-                      <li><a href="contacts.html">Contacts</a></li>
-                      <li><a href="profile.html">Profile</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="bi bi-window-stack"></i> Extras <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="page_403.html">403 Error</a></li>
-                      <li><a href="page_404.html">404 Error</a></li>
-                      <li><a href="page_500.html">500 Error</a></li>
-                      <li><a href="plain_page.html">Plain Page</a></li>
-                      <li><a href="login.html">Login Page</a></li>
-                      <li><a href="pricing_tables.html">Pricing Tables</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="bi bi-diagram-3"></i> Multilevel Menu <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                        <li><a href="#level1_1">Level One</a></li>
-                        <li><a>Level One<span class="bi bi-chevron-down"></span></a>
-                          <ul class="nav child_menu">
-                            <li class="sub_menu"><a href="level2.html">Level Two</a></li>
-                            <li><a href="#level2_1">Level Two</a></li>
-                            <li><a href="#level2_2">Level Two</a></li>
-                          </ul>
-                        </li>
-                        <li><a href="#level1_2">Level One</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="landing.html"><i class="bi bi-laptop"></i> Landing Page <span class="badge bg-info">Updated</span></a></li>
-                </ul>
-              </div>
-
-            </div>
-            <!-- /sidebar menu -->
-
-            <!-- /menu footer buttons -->
-            <div class="sidebar-footer hidden-small">
-              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Settings">
-                <span class="fas fa-cog" aria-hidden="true"></span>
-              </a>
-              <a data-bs-toggle="tooltip" data-bs-placement="top" title="FullScreen">
-                <span class="fas fa-expand" aria-hidden="true"></span>
-              </a>
-              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Lock">
-                <span class="fas fa-eye-slash" aria-hidden="true"></span>
-              </a>
-              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Logout" href="login.html">
-                <span class="fas fa-power-off" aria-hidden="true"></span>
-              </a>
-            </div>
-            <!-- /menu footer buttons -->
-          </div>
-        </div>
-
-        <!-- top navigation -->
-        <div class="top_nav">
-            <div class="nav_menu d-flex align-items-center justify-content-between">
-                <div class="nav toggle">
-                  <a id="menu_toggle"><i class="fas fa-bars"></i></a>
-                </div>
-                <nav class="nav navbar-nav ms-auto">
-                <ul class="navbar-right d-flex align-items-center gap-3 pe-3">
-                <li class="nav-item dropdown">
-                    <a href="#" role="button" class="dropdown-toggle info-number" id="navbarDropdown1" data-bs-toggle="dropdown" aria-expanded="false">
-                      <i class="fas fa-envelope"></i>
-                      <span class="badge bg-green">6</span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end list-unstyled msg_list dropdown-menu-lg" role="menu" aria-labelledby="navbarDropdown1">
-                      <li class="nav-item">
-                        <a class="dropdown-item">
-                          <span class="image"><img src="../images/img.jpg" alt="Profile Image" /></span>
-                          <span>
-                            <span>John Smith</span>
-                            <span class="time">3 mins ago</span>
-                          </span>
-                          <span class="message">
-                            Film festivals used to be do-or-die moments for movie makers. They were where...
-                          </span>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="dropdown-item">
-                          <span class="image"><img src="../images/img.jpg" alt="Profile Image" /></span>
-                          <span>
-                            <span>John Smith</span>
-                            <span class="time">3 mins ago</span>
-                          </span>
-                          <span class="message">
-                            Film festivals used to be do-or-die moments for movie makers. They were where...
-                          </span>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="dropdown-item">
-                          <span class="image"><img src="../images/img.jpg" alt="Profile Image" /></span>
-                          <span>
-                            <span>John Smith</span>
-                            <span class="time">3 mins ago</span>
-                          </span>
-                          <span class="message">
-                            Film festivals used to be do-or-die moments for movie makers. They were where...
-                          </span>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="dropdown-item">
-                          <span class="image"><img src="../images/img.jpg" alt="Profile Image" /></span>
-                          <span>
-                            <span>John Smith</span>
-                            <span class="time">3 mins ago</span>
-                          </span>
-                          <span class="message">
-                            Film festivals used to be do-or-die moments for movie makers. They were where...
-                          </span>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <div class="text-center">
-                          <a class="dropdown-item">
-                            <strong>See All Alerts</strong>
-                            <i class="fas fa-angle-right"></i>
-                          </a>
-                        </div>
-                      </li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a href="#" role="button" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                      <img src="../images/img.jpg" alt="">John Doe
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-end dropdown-usermenu dropdown-menu-sm" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item"  href="#" role="button"> Profile</a>
-                        <a class="dropdown-item"  href="#" role="button">
-                          <span class="badge bg-red float-end">50%</span>
-                          <span>Settings</span>
-                        </a>
-                    <a class="dropdown-item"  href="#" role="button">Help</a>
-                      <a class="dropdown-item"  href="login.html"><i class="fas fa-sign-out-alt float-end"></i> Log Out</a>
-                    </div>
-                </li>
-              </ul>
-              </nav>
-            </div>
-          </div>
-        <!-- /top navigation -->
-
-        <!-- page content -->
-        <main class="right_col" role="main" aria-label="Main content">
-          <h1 class="visually-hidden">Operations Dashboard</h1>
-          <!-- top tiles -->
-          <div class="row g-3 mb-4">
-            <div class="col-xl-3 col-md-6">
-              <div class="card h-100">
-                <div class="card-body d-flex align-items-center">
-                  <div class="flex-shrink-0 me-3">
-                    <div class="rounded-circle bg-primary bg-opacity-10 d-flex align-items-center justify-content-center avatar-md">
-                      <i class="fas fa-dollar-sign text-primary fs-5"></i>
-                    </div>
-                  </div>
-                  <div class="flex-grow-1">
-                    <div class="small text-muted mb-1">Top Sale</div>
-                    <div class="h4 mb-1 fw-bold">$8,450.00</div>
-                    <div class="small">
-                      <span class="text-success me-1">
-                        <i class="fas fa-arrow-up"></i> 4%
-                      </span>
-                      <span class="text-muted">from last week</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-xl-3 col-md-6">
-              <div class="card h-100">
-                <div class="card-body d-flex align-items-center">
-                  <div class="flex-shrink-0 me-3">
-                    <div class="rounded-circle bg-success bg-opacity-10 d-flex align-items-center justify-content-center avatar-md">
-                      <i class="fas fa-chart-line text-success fs-5"></i>
-                    </div>
-                  </div>
-                  <div class="flex-grow-1">
-                    <div class="small text-muted mb-1">Total Profit</div>
-                    <div class="h4 mb-1 fw-bold">$24,380.00</div>
-                    <div class="small">
-                      <span class="text-success me-1">
-                        <i class="fas fa-arrow-up"></i> 12%
-                      </span>
-                      <span class="text-muted">from last week</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-xl-3 col-md-6">
-              <div class="card h-100">
-                <div class="card-body d-flex align-items-center">
-                  <div class="flex-shrink-0 me-3">
-                    <div class="rounded-circle bg-info bg-opacity-10 d-flex align-items-center justify-content-center avatar-md">
-                      <i class="fas fa-shopping-cart text-info fs-5"></i>
-                    </div>
-                  </div>
-                  <div class="flex-grow-1">
-                    <div class="small text-muted mb-1">New Orders</div>
-                    <div class="h4 mb-1 fw-bold">1,204</div>
-                    <div class="small">
-                      <span class="text-success me-1">
-                        <i class="fas fa-arrow-up"></i> 25%
-                      </span>
-                      <span class="text-muted">from last week</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-xl-3 col-md-6">
-              <div class="card h-100">
-                <div class="card-body d-flex align-items-center">
-                  <div class="flex-shrink-0 me-3">
-                    <div class="rounded-circle bg-warning bg-opacity-10 d-flex align-items-center justify-content-center avatar-md">
-                      <i class="fas fa-users text-warning fs-5"></i>
-                    </div>
-                  </div>
-                  <div class="flex-grow-1">
-                    <div class="small text-muted mb-1">New Customers</div>
-                    <div class="h4 mb-1 fw-bold">43</div>
-                    <div class="small">
-                      <span class="text-danger me-1">
-                        <i class="fas fa-arrow-down"></i> 5%
-                      </span>
-                      <span class="text-muted">from last week</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- /top tiles -->
-
-          <div class="row">
-            <div class="col-md-8 col-sm-8">
-              <div class="x_panel">
-                <div class="x_title">
-                  <h4>Sales Statistics <small>Sales vs Orders</small></h4>
-                  <div class="clearfix"></div>
-                </div>
-                <div class="x_content">
-                  <canvas id="salesStatisticsChart" height="200"></canvas>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4 col-sm-4">
-              <div class="x_panel">
-                <div class="x_title">
-                  <h4>Weekly Sales <small>Last 7 days</small></h4>
-                  <div class="clearfix"></div>
-                </div>
-                <div class="x_content">
-                  <canvas id="weeklySalesChart" height="200"></canvas>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-md-4 col-sm-4">
-              <div class="x_panel">
-                <div class="x_title">
-                  <h4>Top Selling Products</h4>
-                  <div class="clearfix"></div>
-                </div>
-                <div class="x_content">
-                  <ul class="list-unstyled top_products_scroll" style="max-height: 400px; overflow-y: auto; padding-right: 15px; margin-right: -5px;">
-                    <li class="media event border-bottom py-3">
-                      <div class="media-body">
-                        <div class="d-flex justify-content-between align-items-center">
-                          <div>
-                            <h6 class="mb-1">MacBook Pro 16"</h6>
-                            <p class="mb-0 small text-muted">Electronics</p>
-                          </div>
-                          <div class="text-end">
-                            <span class="fw-bold text-success">$2,399</span>
-                            <p class="mb-0 small text-muted">1,234 sold</p>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li class="media event border-bottom py-3">
-                      <div class="media-body">
-                        <div class="d-flex justify-content-between align-items-center">
-                          <div>
-                            <h6 class="mb-1">iPhone 15 Pro</h6>
-                            <p class="mb-0 small text-muted">Mobile Phones</p>
-                          </div>
-                          <div class="text-end">
-                            <span class="fw-bold text-success">$999</span>
-                            <p class="mb-0 small text-muted">2,156 sold</p>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li class="media event border-bottom py-3">
-                      <div class="media-body">
-                        <div class="d-flex justify-content-between align-items-center">
-                          <div>
-                            <h6 class="mb-1">Samsung 4K TV</h6>
-                            <p class="mb-0 small text-muted">Home Entertainment</p>
-                          </div>
-                          <div class="text-end">
-                            <span class="fw-bold text-success">$1,299</span>
-                            <p class="mb-0 small text-muted">567 sold</p>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li class="media event border-bottom py-3">
-                      <div class="media-body">
-                        <div class="d-flex justify-content-between align-items-center">
-                          <div>
-                            <h6 class="mb-1">AirPods Pro</h6>
-                            <p class="mb-0 small text-muted">Audio</p>
-                          </div>
-                          <div class="text-end">
-                            <span class="fw-bold text-success">$249</span>
-                            <p class="mb-0 small text-muted">3,421 sold</p>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li class="media event border-bottom py-3">
-                      <div class="media-body">
-                        <div class="d-flex justify-content-between align-items-center">
-                          <div>
-                            <h6 class="mb-1">Gaming Laptop</h6>
-                            <p class="mb-0 small text-muted">Computers</p>
-                          </div>
-                          <div class="text-end">
-                            <span class="fw-bold text-success">$1,899</span>
-                            <p class="mb-0 small text-muted">345 sold</p>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li class="media event py-3">
-                      <div class="media-body">
-                        <div class="d-flex justify-content-between align-items-center">
-                          <div>
-                            <h6 class="mb-1">Wireless Mouse</h6>
-                            <p class="mb-0 small text-muted">Accessories</p>
-                          </div>
-                          <div class="text-end">
-                            <span class="fw-bold text-success">$79</span>
-                            <p class="mb-0 small text-muted">1,890 sold</p>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-8 col-sm-8">
-              <div class="x_panel">
-                <div class="x_title">
-                  <h4>Revenue by Location</h4>
-                  <div class="clearfix"></div>
-                </div>
-                <div class="x_content">
-                  <div id="revenueMap" class="chart-height-lg"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-md-12">
-              <div class="x_panel">
-                <div class="x_title">
-                  <h4>Latest Orders</h4>
-                  <div class="clearfix"></div>
-                </div>
-                <div class="x_content">
-                  <table id="latestOrdersTable" class="table table-striped table-bordered" style="width:100%">
-                    <thead>
-                      <tr>
-                        <th>Order ID</th>
-                        <th>Customer</th>
-                        <th>Date</th>
-                        <th>Total</th>
-                        <th>Status</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td><strong>#ORD-12345</strong></td>
-                        <td>John Smith</td>
-                        <td>2032-01-15</td>
-                        <td><strong>$1,250.00</strong></td>
-                        <td><span class="badge bg-success">Completed</span></td>
-                      </tr>
-                      <tr>
-                        <td><strong>#ORD-12346</strong></td>
-                        <td>Emily Johnson</td>
-                        <td>2032-01-15</td>
-                        <td><strong>$875.50</strong></td>
-                        <td><span class="badge bg-warning text-dark">Processing</span></td>
-                      </tr>
-                      <tr>
-                        <td><strong>#ORD-12347</strong></td>
-                        <td>Michael Chen</td>
-                        <td>2032-01-14</td>
-                        <td><strong>$2,150.75</strong></td>
-                        <td><span class="badge bg-success">Completed</span></td>
-                      </tr>
-                      <tr>
-                        <td><strong>#ORD-12348</strong></td>
-                        <td>Sarah Davis</td>
-                        <td>2032-01-14</td>
-                        <td><strong>$650.00</strong></td>
-                        <td><span class="badge bg-info">Shipped</span></td>
-                      </tr>
-                      <tr>
-                        <td><strong>#ORD-12349</strong></td>
-                        <td>Robert Wilson</td>
-                        <td>2032-01-13</td>
-                        <td><strong>$1,480.25</strong></td>
-                        <td><span class="badge bg-danger">Cancelled</span></td>
-                      </tr>
-                      <tr>
-                        <td><strong>#ORD-12350</strong></td>
-                        <td>Lisa Brown</td>
-                        <td>2032-01-13</td>
-                        <td><strong>$920.00</strong></td>
-                        <td><span class="badge bg-success">Completed</span></td>
-                      </tr>
-                      <tr>
-                        <td><strong>#ORD-12351</strong></td>
-                        <td>David Garcia</td>
-                        <td>2032-01-12</td>
-                        <td><strong>$1,125.50</strong></td>
-                        <td><span class="badge bg-warning text-dark">Processing</span></td>
-                      </tr>
-                      <tr>
-                        <td><strong>#ORD-12352</strong></td>
-                        <td>Anna Martinez</td>
-                        <td>2032-01-12</td>
-                        <td><strong>$775.00</strong></td>
-                        <td><span class="badge bg-info">Shipped</span></td>
-                      </tr>
-                      <tr>
-                        <td><strong>#ORD-12353</strong></td>
-                        <td>James Taylor</td>
-                        <td>2032-01-11</td>
-                        <td><strong>$2,340.00</strong></td>
-                        <td><span class="badge bg-success">Completed</span></td>
-                      </tr>
-                      <tr>
-                        <td><strong>#ORD-12354</strong></td>
-                        <td>Maria Rodriguez</td>
-                        <td>2032-01-11</td>
-                        <td><strong>$560.75</strong></td>
-                        <td><span class="badge bg-warning text-dark">Processing</span></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- /page content -->
-
-        <!-- footer content -->
-        <footer>
-          <div class="float-end">
-            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
-          </div>
-          <div class="clearfix"></div>
-        </footer>
-        <!-- /footer content -->
+  <div class="page-header">
+    <div class="page-header-row">
+      <div>
+        <div class="page-pretitle">Operations</div>
+        <div class="page-title">System health</div>
       </div>
-    </div>    <!-- Compiled JavaScript (Bootstrap and vendor scripts) -->
-    
-    <!-- Initialize linked Tempus Dominus pickers for date range -->
-    <script type="text/javascript">
-    document.addEventListener('DOMContentLoaded', function() {
-        // Only initialize if TempusDominus is available AND the elements exist
-        if (typeof TempusDominus !== 'undefined') {
-            const startElement = document.getElementById('startDatePicker');
-            const endElement = document.getElementById('endDatePicker');
-            
-            // Check if the required elements exist on this page
-            if (startElement && endElement) {
-                const startPicker = new TempusDominus(startElement, {
-                    display: { components: { clock: false } },
-                    localization: { format: 'MM/dd/yyyy' }
-                });
-                const endPicker = new TempusDominus(endElement, {
-                    display: { components: { clock: false } },
-                    localization: { format: 'MM/dd/yyyy' }
-                });
-                
-                // Link pickers
-                startElement.addEventListener('change.td', function(e) {
-                    endPicker.updateOptions({ restrictions: { minDate: e.detail.date } });
-                });
-                endElement.addEventListener('change.td', function(e) {
-                    startPicker.updateOptions({ restrictions: { maxDate: e.detail.date } });
-                });
-                
-            } else {
-            }
-        }
-    });
-    </script>
-  </body>
+      <div class="page-actions">
+        <span class="status status-green" style="font-size:12.5px;margin-right:8px">
+          <span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--green);margin-right:4px;animation:pulse-dot 2s infinite"></span>
+          All systems operational
+        </span>
+        <button class="btn btn-outline">Status page</button>
+        <button class="btn btn-primary">Run incident drill</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Maintenance banner ── -->
+  <div class="row col-1">
+    <div class="banner banner-info">
+      <svg class="banner-icon" width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v.01M8 7v4"/></svg>
+      <div class="banner-body"><strong>Scheduled maintenance</strong> — API gateway upgrade <strong>Friday Apr 30 at 02:00 UTC</strong>. Expected 15 min of partial degradation.</div>
+      <div class="banner-actions"><button class="btn btn-outline btn-sm">View runbook</button></div>
+    </div>
+  </div>
+
+  <!-- ── Row 1: 4-up KPIs ── -->
+  <div class="row col-4">
+    <div class="card"><div class="stat">
+      <div class="stat-icon green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 12l5 5L21 4"/></svg></div>
+      <div class="stat-content">
+        <div class="stat-label">Uptime</div>
+        <div class="stat-value-row"><span class="stat-value">99.98%</span></div>
+        <div class="stat-subtext">30-day rolling</div>
+      </div>
+    </div></div>
+
+    <div class="card"><div class="stat">
+      <div class="stat-icon teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+      <div class="stat-content">
+        <div class="stat-label">P95 latency</div>
+        <div class="stat-value-row"><span class="stat-value">142ms</span><span class="stat-change up">↑ 8ms</span></div>
+        <div class="stat-subtext">SLO: 200ms</div>
+      </div>
+    </div></div>
+
+    <div class="card"><div class="stat">
+      <div class="stat-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12h6M16 12h6M12 2v6M12 16v6"/><circle cx="12" cy="12" r="4"/></svg></div>
+      <div class="stat-content">
+        <div class="stat-label">Requests/min</div>
+        <div class="stat-value-row"><span class="stat-value">8,432</span></div>
+        <div class="stat-subtext">peak today: 11,402</div>
+      </div>
+    </div></div>
+
+    <div class="card"><div class="stat">
+      <div class="stat-icon yellow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7v10l10 5 10-5V7z"/></svg></div>
+      <div class="stat-content">
+        <div class="stat-label">Error rate</div>
+        <div class="stat-value-row"><span class="stat-value">0.04%</span><span class="stat-change down">↓ 0.01pp</span></div>
+        <div class="stat-subtext">28 errors in 1h</div>
+      </div>
+    </div></div>
+  </div>
+
+  <!-- ── Row 2: Traffic chart + Quick health gauges ── -->
+  <div class="row col-8-4">
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Traffic — last 7 days</div>
+          <div class="card-subtitle">Sessions & page views</div>
+        </div>
+        <div class="chart-tabs">
+          <button class="chart-tab active">7d</button>
+          <button class="chart-tab">24h</button>
+          <button class="chart-tab">1h</button>
+        </div>
+      </div>
+      <div class="chart-area" style="height:240px">
+        <div data-chart="dashboard-network" style="width:100%;height:100%"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-title">Resource usage</div></div>
+      <div class="card-body" style="display:flex;flex-direction:column;gap:14px">
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:4px"><span style="color:var(--text)"><strong>CPU</strong></span><span style="color:var(--text-muted)">62% · 4 cores</span></div>
+          <div class="progress-thin"><div class="bar" style="width:62%;background:var(--primary)"></div></div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:4px"><span style="color:var(--text)"><strong>Memory</strong></span><span style="color:var(--text-muted)">5.8 / 16 GB</span></div>
+          <div class="progress-thin"><div class="bar" style="width:36%;background:var(--azure)"></div></div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:4px"><span style="color:var(--text)"><strong>Disk</strong></span><span style="color:var(--text-muted)">186 / 500 GB</span></div>
+          <div class="progress-thin"><div class="bar" style="width:37%;background:var(--green)"></div></div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:4px"><span style="color:var(--text)"><strong>Network in</strong></span><span style="color:var(--text-muted)">128 Mbps</span></div>
+          <div class="progress-thin"><div class="bar" style="width:42%;background:var(--purple)"></div></div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:4px"><span style="color:var(--text)"><strong>Network out</strong></span><span style="color:var(--text-muted)">94 Mbps</span></div>
+          <div class="progress-thin"><div class="bar" style="width:32%;background:var(--yellow)"></div></div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:4px"><span style="color:var(--text)"><strong>API quota</strong></span><span style="color:var(--text-muted)">87,400 / 100,000</span></div>
+          <div class="progress-thin"><div class="bar" style="width:87%;background:var(--red)"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Row 3: API endpoint stats + Cache hit gauge ── -->
+  <div class="row col-8-4">
+    <div class="card">
+      <div class="card-header"><div class="card-title">API endpoints · last hour</div><a href="#" style="font-size:12px">View all</a></div>
+      <div class="card-body p-0">
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr><th>Endpoint</th><th style="text-align:right">Requests</th><th style="text-align:right">P50</th><th style="text-align:right">P95</th><th style="text-align:right">Errors</th><th>Status</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="font-family:var(--font-mono);font-size:12px">GET /api/users</td>
+                <td style="text-align:right">42,810</td>
+                <td style="text-align:right">38ms</td>
+                <td style="text-align:right">98ms</td>
+                <td style="text-align:right">0.01%</td>
+                <td><span class="status status-green">OK</span></td>
+              </tr>
+              <tr>
+                <td style="font-family:var(--font-mono);font-size:12px">POST /api/orders</td>
+                <td style="text-align:right">18,402</td>
+                <td style="text-align:right">52ms</td>
+                <td style="text-align:right">182ms</td>
+                <td style="text-align:right">0.04%</td>
+                <td><span class="status status-green">OK</span></td>
+              </tr>
+              <tr>
+                <td style="font-family:var(--font-mono);font-size:12px">GET /api/search</td>
+                <td style="text-align:right">12,938</td>
+                <td style="text-align:right">120ms</td>
+                <td style="text-align:right">340ms</td>
+                <td style="text-align:right">0.18%</td>
+                <td><span class="status status-yellow">Slow</span></td>
+              </tr>
+              <tr>
+                <td style="font-family:var(--font-mono);font-size:12px">PATCH /api/users/:id</td>
+                <td style="text-align:right">8,124</td>
+                <td style="text-align:right">61ms</td>
+                <td style="text-align:right">134ms</td>
+                <td style="text-align:right">0.02%</td>
+                <td><span class="status status-green">OK</span></td>
+              </tr>
+              <tr>
+                <td style="font-family:var(--font-mono);font-size:12px">GET /api/reports/export</td>
+                <td style="text-align:right">2,401</td>
+                <td style="text-align:right">820ms</td>
+                <td style="text-align:right">2.4s</td>
+                <td style="text-align:right">0.84%</td>
+                <td><span class="status status-red">Degraded</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Cache hit rate</div>
+          <div class="card-subtitle">last 24h</div>
+        </div>
+      </div>
+      <div class="chart-area" style="height:240px">
+        <div data-chart="gauge" style="width:100%;height:100%"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Row 4: Service status + Recent incidents ── -->
+  <div class="row col-2">
+    <div class="card">
+      <div class="card-header"><div class="card-title">Service status</div></div>
+      <div class="card-body p-0">
+        <div class="table-responsive">
+          <table class="table">
+            <thead><tr><th>Service</th><th>Status</th><th>Uptime</th><th>Region</th></tr></thead>
+            <tbody>
+              <tr><td class="cell-strong">api.gentelella.io</td><td><span class="status status-green">Operational</span></td><td>99.99%</td><td>us-east-1</td></tr>
+              <tr><td class="cell-strong">app.gentelella.io</td><td><span class="status status-green">Operational</span></td><td>99.97%</td><td>us-east-1</td></tr>
+              <tr><td class="cell-strong">cdn.gentelella.io</td><td><span class="status status-green">Operational</span></td><td>100%</td><td>global</td></tr>
+              <tr><td class="cell-strong">queue-worker</td><td><span class="status status-yellow">Degraded</span></td><td>99.4%</td><td>eu-west-1</td></tr>
+              <tr><td class="cell-strong">stripe-webhook</td><td><span class="status status-green">Operational</span></td><td>99.95%</td><td>us-east-1</td></tr>
+              <tr><td class="cell-strong">db-primary</td><td><span class="status status-green">Operational</span></td><td>99.99%</td><td>us-east-1</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-title">Incident timeline</div></div>
+      <div class="card-body">
+        <div class="timeline">
+          <div class="timeline-item is-yellow">
+            <div class="ti-time">14 min ago · ongoing</div>
+            <div class="ti-title">Queue worker degraded</div>
+            <div class="ti-desc">eu-west-1 latency spike, mitigated via autoscale.</div>
+          </div>
+          <div class="timeline-item is-green">
+            <div class="ti-time">2 hours ago · resolved</div>
+            <div class="ti-title">Database failover completed</div>
+            <div class="ti-desc">Replica promoted; primary recovered in 4m12s.</div>
+          </div>
+          <div class="timeline-item is-red">
+            <div class="ti-time">Yesterday · resolved</div>
+            <div class="ti-title">Auth outage — 3 minutes</div>
+            <div class="ti-desc">4xx spike on /login. Cause: stale JWT signing key.</div>
+          </div>
+          <div class="timeline-item is-green">
+            <div class="ti-time">2 days ago · resolved</div>
+            <div class="ti-title">SSL cert renewed</div>
+            <div class="ti-desc">gentelella.io · auto-renewed via ACM.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Row 5: Background jobs + Deployment history + Recent errors ── -->
+  <div class="row col-3">
+    <div class="card">
+      <div class="card-header"><div class="card-title">Background jobs</div><div class="card-subtitle" style="margin-left:8px">queue: default</div></div>
+      <div class="card-body" style="padding:12px 16px">
+        <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:14px">
+          <div><div style="font-size:24px;font-weight:600;color:var(--text);line-height:1">1,284</div><div style="font-size:11px;color:var(--text-muted);margin-top:2px">queued</div></div>
+          <div><div style="font-size:24px;font-weight:600;color:var(--green);line-height:1">42</div><div style="font-size:11px;color:var(--text-muted);margin-top:2px">/sec</div></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;font-size:12.5px">
+          <div style="display:flex;justify-content:space-between"><span style="color:var(--text-muted)">Pending</span><span class="cell-strong">1,284</span></div>
+          <div style="display:flex;justify-content:space-between"><span style="color:var(--text-muted)">Processing</span><span style="color:var(--primary);font-weight:500">28</span></div>
+          <div style="display:flex;justify-content:space-between"><span style="color:var(--text-muted)">Completed (24h)</span><span class="cell-strong">3.6M</span></div>
+          <div style="display:flex;justify-content:space-between"><span style="color:var(--text-muted)">Failed (24h)</span><span style="color:var(--red);font-weight:500">142</span></div>
+          <div style="display:flex;justify-content:space-between"><span style="color:var(--text-muted)">Retries</span><span style="color:var(--yellow);font-weight:500">38</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-title">Recent deployments</div></div>
+      <div class="card-body" style="padding:8px 16px">
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="display:flex;align-items:center;gap:10px;font-size:12.5px">
+            <span class="status status-green" style="font-size:10px">v4.0.2</span>
+            <div style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">
+              <span style="color:var(--text);font-weight:500">feat: settings persistence</span>
+              <span style="color:var(--text-muted);margin-left:6px">· main</span>
+            </div>
+            <span style="font-size:11px;color:var(--text-muted);white-space:nowrap">2h · 28s</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:12.5px">
+            <span class="status status-green" style="font-size:10px">v4.0.1</span>
+            <div style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">
+              <span style="color:var(--text);font-weight:500">fix: chart skeleton flash</span>
+              <span style="color:var(--text-muted);margin-left:6px">· main</span>
+            </div>
+            <span style="font-size:11px;color:var(--text-muted);white-space:nowrap">5h · 31s</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:12.5px">
+            <span class="status status-green" style="font-size:10px">v4.0.0</span>
+            <div style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">
+              <span style="color:var(--text);font-weight:500">feat: full inbox client</span>
+              <span style="color:var(--text-muted);margin-left:6px">· main</span>
+            </div>
+            <span style="font-size:11px;color:var(--text-muted);white-space:nowrap">1d · 42s</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:12.5px">
+            <span class="status status-red" style="font-size:10px">rollback</span>
+            <div style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">
+              <span style="color:var(--text);font-weight:500">v3.9.4 reverted</span>
+              <span style="color:var(--text-muted);margin-left:6px">· hotfix</span>
+            </div>
+            <span style="font-size:11px;color:var(--text-muted);white-space:nowrap">2d · 12s</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:12.5px">
+            <span class="status status-green" style="font-size:10px">v3.9.3</span>
+            <div style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">
+              <span style="color:var(--text);font-weight:500">perf: lazy-load charts</span>
+              <span style="color:var(--text-muted);margin-left:6px">· main</span>
+            </div>
+            <span style="font-size:11px;color:var(--text-muted);white-space:nowrap">3d · 38s</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-title">Recent errors</div><a href="#" style="font-size:12px">Sentry →</a></div>
+      <div class="card-body" style="padding:8px 16px;display:flex;flex-direction:column;gap:10px">
+        <div style="padding:8px 10px;border-left:3px solid var(--red);background:var(--red-lt);border-radius:var(--radius-sm)">
+          <div style="font-family:var(--font-mono);font-size:11.5px;color:var(--red);font-weight:600">TypeError: Cannot read 'id' of null</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:2px">api/orders.js:142 · 28× in last hour</div>
+        </div>
+        <div style="padding:8px 10px;border-left:3px solid var(--yellow);background:var(--yellow-lt);border-radius:var(--radius-sm)">
+          <div style="font-family:var(--font-mono);font-size:11.5px;color:var(--yellow);font-weight:600">Timeout: stripe-webhook (30s)</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:2px">webhooks/stripe.js · 4× in last hour</div>
+        </div>
+        <div style="padding:8px 10px;border-left:3px solid var(--orange);background:rgba(247,103,7,0.1);border-radius:var(--radius-sm)">
+          <div style="font-family:var(--font-mono);font-size:11.5px;color:var(--orange);font-weight:600">429 Too Many Requests</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:2px">middleware/rate-limit.js · 12×</div>
+        </div>
+        <div style="padding:8px 10px;border-left:3px solid var(--text-muted);background:var(--bg-surface-secondary);border-radius:var(--radius-sm)">
+          <div style="font-family:var(--font-mono);font-size:11.5px;color:var(--text);font-weight:600">DeprecationWarning: util._extend</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:2px">node_modules/legacy-pkg · 6×</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</main>
+
+<style>
+@keyframes pulse-dot {
+  0% { box-shadow: 0 0 0 0 rgba(47,179,68,0.5); }
+  70% { box-shadow: 0 0 0 6px rgba(47,179,68,0); }
+  100% { box-shadow: 0 0 0 0 rgba(47,179,68,0); }
+}
+.progress-thin { height: 5px; background: var(--bg-surface-secondary); border-radius: 3px; overflow: hidden; }
+.progress-thin .bar { height: 100%; border-radius: 3px; transition: width 200ms; }
+</style>
+
+</body>
 </html>

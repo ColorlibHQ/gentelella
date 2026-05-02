@@ -1,508 +1,323 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Security headers -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.googleapis.com; img-src 'self' data: https: blob:; font-src 'self' data: https://fonts.gstatic.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; connect-src 'self' ws: wss: http://localhost:* https://api.example.com https://*.googleapis.com; frame-src 'self' https://www.youtube.com https://player.vimeo.com; media-src 'self' https: blob:; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Charts | Gentelella 2026 v4</title>
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script type="module" src="/src/main-v4.js"></script>
+</head>
+<body data-shell="admin" data-page="charts" data-breadcrumb="Home > Charts">
 
-    <!-- Favicons -->
-    <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
-    <link rel="icon" href="../images/favicon-32x32.svg" type="image/svg+xml" sizes="32x32">
-    <link rel="icon" href="../images/favicon-16x16.svg" type="image/svg+xml" sizes="16x16">
-    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="../images/apple-touch-icon.svg" sizes="180x180">
-    <link rel="manifest" href="../site.webmanifest">
+<main class="main">
+<div class="page-wrapper">
 
-    <!-- Theme color -->
-    <meta name="theme-color" content="#2a3f54">
-    <meta name="msapplication-TileColor" content="#2a3f54">
-
-    <title>Chart.js Examples | Gentelella</title>
-    <style>
-      /* Chart panel styling */
-      .page-chartjs .x_panel .x_content {
-        min-height: 350px;
-        padding: 15px 20px 20px 20px;
-      }
-      .page-chartjs .x_panel {
-        margin-bottom: 25px;
-      }
-      .page-chartjs canvas {
-        max-height: 320px !important;
-      }
-    </style>
-    <script type="module" src="/src/main-minimal.js"></script>
-  </head>
-
-  <body class="nav-md page-chartjs">
-    <div class="container body">
-      <div class="main_container">
-        <aside class="col-md-3 left_col" aria-label="Sidebar navigation">
-          <div class="left_col scroll-view">
-            <div class="navbar nav_title border-0">
-              <a href="index.html" class="site_title">
-                <img src="../images/logo.svg" alt="Gentelella" class="logo-full logo-main" loading="lazy">
-                <img src="../images/logo-icon.svg" alt="Gentelella" class="logo-icon" loading="lazy">
-              </a>
-            </div>
-
-            <div class="clearfix"></div>
-
-            <div class="profile clearfix">
-              <div class="profile_pic">
-                <img src="../images/img.jpg" alt="User" class="img-circle profile_img" loading="lazy">
-              </div>
-              <div class="profile_info">
-                <span>Welcome,</span>
-                <h4>John Doe</h4>
-              </div>
-            </div>
-
-            <br />
-
-            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-              <div class="menu_section">
-                <h3>General</h3>
-                <ul class="nav side-menu">
-                  <li><a href="https://dashboardpack.com/?utm_source=gentelella&utm_medium=sidebar&utm_campaign=premium" target="_blank"><i class="bi bi-stars"></i> Go Pro <span class="badge bg-warning">Pro</span></a></li>
-                  <li><a><i class="bi bi-house"></i> Home <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="index.html">Dashboard 1</a></li>
-                      <li><a href="index2.html">Dashboard 2</a></li>
-                      <li><a href="index3.html">Dashboard 3</a></li>
-                      <li><a href="index4.html">Dashboard 4</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="bi bi-pencil-square"></i> Forms <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="form.html">General Form</a></li>
-                      <li><a href="form_advanced.html">Advanced Components</a></li>
-                      <li><a href="form_validation.html">Form Validation</a></li>
-                      <li><a href="form_wizards.html">Form Wizard</a></li>
-                      <li><a href="form_upload.html">Form Upload</a></li>
-                      <li><a href="form_buttons.html">Form Buttons</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="bi bi-display"></i> UI Elements <span class="badge bg-danger">Hot</span> <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="general_elements.html">General Elements</a></li>
-                      <li><a href="media_gallery.html">Media Gallery</a></li>
-                      <li><a href="typography.html">Typography</a></li>
-                      <li><a href="icons.html">Icons</a></li>
-                      <li><a href="widgets.html">Widgets</a></li>
-                      <li><a href="invoice.html">Invoice</a></li>
-                      <li><a href="inbox.html">Inbox</a></li>
-                      <li><a href="calendar.html">Calendar</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="bi bi-table"></i> Tables <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="tables.html">Tables</a></li>
-                      <li><a href="tables_dynamic.html">Table Dynamic</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="bi bi-bar-chart"></i> Data Presentation <span class="badge bg-success">New</span> <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="chartjs.html">Chart.js</a></li>
-                      <li><a href="echarts.html">ECharts <span class="badge bg-info">Updated</span></a></li>
-                      <li><a href="other_charts.html">Other Charts</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="bi bi-layout-split"></i>Layouts <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="fixed_sidebar.html">Fixed Sidebar</a></li>
-                      <li><a href="fixed_footer.html">Fixed Footer</a></li>
-                    </ul>
-                  </li>
-                </ul>
-              </div>
-              <div class="menu_section">
-                <h3>Live On</h3>
-                <ul class="nav side-menu">
-                  <li><a><i class="bi bi-file-earmark-text"></i> Additional Pages <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="e_commerce.html">E-commerce</a></li>
-                      <li><a href="projects.html">Projects</a></li>
-                      <li><a href="project_detail.html">Project Detail</a></li>
-                      <li><a href="contacts.html">Contacts</a></li>
-                      <li><a href="profile.html">Profile</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="bi bi-window-stack"></i> Extras <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="page_403.html">403 Error</a></li>
-                      <li><a href="page_404.html">404 Error</a></li>
-                      <li><a href="page_500.html">500 Error</a></li>
-                      <li><a href="plain_page.html">Plain Page</a></li>
-                      <li><a href="login.html">Login Page</a></li>
-                      <li><a href="pricing_tables.html">Pricing Tables</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="bi bi-diagram-3"></i> Multilevel Menu <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                        <li><a href="#level1_1">Level One</a></li>
-                        <li><a>Level One<span class="bi bi-chevron-down"></span></a>
-                          <ul class="nav child_menu">
-                            <li class="sub_menu"><a href="level2.html">Level Two</a></li>
-                            <li><a href="#level2_1">Level Two</a></li>
-                            <li><a href="#level2_2">Level Two</a></li>
-                          </ul>
-                        </li>
-                        <li><a href="#level1_2">Level One</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="landing.html"><i class="bi bi-laptop"></i> Landing Page <span class="badge bg-info">Updated</span></a></li>
-                </ul>
-              </div>
-
-            </div>
-
-            <div class="sidebar-footer hidden-small">
-              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Settings">
-                <span class="fas fa-cog" aria-hidden="true"></span>
-              </a>
-              <a data-bs-toggle="tooltip" data-bs-placement="top" title="FullScreen">
-                <span class="fas fa-expand" aria-hidden="true"></span>
-              </a>
-              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Lock">
-                <span class="fas fa-eye-slash" aria-hidden="true"></span>
-              </a>
-              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Logout" href="login.html">
-                <span class="fas fa-power-off" aria-hidden="true"></span>
-              </a>
-            </div>
-          </div>
-        </aside>
-
-        <div class="top_nav">
-          <div class="nav_menu d-flex align-items-center justify-content-between">
-            <div class="nav toggle">
-              <a id="menu_toggle"><i class="fas fa-bars"></i></a>
-            </div>
-            <nav class="nav navbar-nav ms-auto">
-              <ul class="navbar-right d-flex align-items-center gap-3 pe-3">
-                <li class="nav-item dropdown">
-                  <a href="#" role="button" class="dropdown-toggle info-number" id="navbarDropdown1" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fas fa-envelope"></i>
-                    <span class="badge bg-green">6</span>
-                  </a>
-                  <ul class="dropdown-menu dropdown-menu-end list-unstyled msg_list dropdown-menu-lg" role="menu" aria-labelledby="navbarDropdown1">
-                    <li class="nav-item">
-                      <a class="dropdown-item">
-                        <span class="image"><img src="../images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="dropdown-item">
-                        <span class="image"><img src="../images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="dropdown-item">
-                        <span class="image"><img src="../images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="dropdown-item">
-                        <span class="image"><img src="../images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <div class="text-center">
-                        <a class="dropdown-item">
-                          <strong>See All Alerts</strong>
-                          <i class="fas fa-angle-right"></i>
-                        </a>
-                      </div>
-                    </li>
-                  </ul>
-                </li>
-                <li class="nav-item dropdown">
-                  <a href="#" role="button" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="../images/img.jpg" alt="">John Doe
-                  </a>
-                  <div class="dropdown-menu dropdown-menu-end dropdown-usermenu dropdown-menu-sm" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#" role="button">Profile</a>
-                    <a class="dropdown-item" href="#" role="button">Settings</a>
-                    <a class="dropdown-item" href="#" role="button">Help</a>
-                    <a class="dropdown-item" href="login.html"><i class="fas fa-sign-out-alt float-end"></i> Log Out</a>
-                  </div>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-
-        <main class="right_col" role="main" aria-label="Main content">
-          <div class="">
-            <div class="page-title">
-              <div class="title_left">
-                <h1 class="page-heading h3">Chart.js Examples</h1>
-              </div>
-            </div>
-
-            <div class="clearfix"></div>
-
-            <!-- Section: Line Charts -->
-            <div class="row">
-              <div class="col-12">
-                <h4 class="text-muted mb-3"><i class="fas fa-chart-line me-2"></i>Line Charts</h4>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-6">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h4>Line Chart</h4>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a></li>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                    <canvas id="lineChart" data-chart="line"></canvas>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-6">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h4>Area Chart (Filled)</h4>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a></li>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                    <canvas id="areaChart" data-chart="area"></canvas>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-6">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h4>Multi-Series Line Chart</h4>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a></li>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                    <canvas id="multiLineChart" data-chart="multiLine"></canvas>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-6">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h4>Smooth Line Chart</h4>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a></li>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                    <canvas id="smoothLineChart" data-chart="smoothLine"></canvas>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="clearfix"></div>
-
-            <!-- Section: Bar Charts -->
-            <div class="row">
-              <div class="col-12">
-                <h4 class="text-muted mb-3 mt-3"><i class="fas fa-chart-bar me-2"></i>Bar Charts</h4>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-6">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h4>Vertical Bar Chart</h4>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a></li>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                    <canvas id="barChart" data-chart="bar"></canvas>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-6">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h4>Horizontal Bar Chart</h4>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a></li>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                    <canvas id="horizontalBarChart" data-chart="horizontalBar"></canvas>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-6">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h4>Grouped Bar Chart</h4>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a></li>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                    <canvas id="groupedBarChart" data-chart="groupedBar"></canvas>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-6">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h4>Stacked Bar Chart</h4>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a></li>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                    <canvas id="stackedBarChart" data-chart="stackedBar"></canvas>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="clearfix"></div>
-
-            <!-- Section: Circular Charts -->
-            <div class="row">
-              <div class="col-12">
-                <h4 class="text-muted mb-3 mt-3"><i class="fas fa-chart-pie me-2"></i>Circular Charts</h4>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-6">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h4>Pie Chart</h4>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a></li>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                    <canvas id="pieChart" data-chart="pie"></canvas>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-6">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h4>Doughnut Chart</h4>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a></li>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                    <canvas id="doughnutChart" data-chart="doughnut"></canvas>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-6">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h4>Polar Area Chart</h4>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a></li>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                    <canvas id="polarAreaChart" data-chart="polarArea"></canvas>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-6">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h4>Radar Chart</h4>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a></li>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                    <canvas id="radarChart" data-chart="radar"></canvas>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </main>
-
-        <footer>
-          <div class="float-end">
-            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
-          </div>
-          <div class="clearfix"></div>
-        </footer>
+  <div class="page-header">
+    <div class="page-header-row">
+      <div>
+        <div class="page-pretitle">Visualisations</div>
+        <div class="page-title">Charts</div>
+      </div>
+      <div class="page-actions">
+        <button class="btn btn-outline">Refresh</button>
+        <button class="btn btn-primary">Export PNG</button>
       </div>
     </div>
-  </body>
+  </div>
+
+  <!-- ── Trends row ── -->
+  <div class="row col-2">
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Revenue trend</div>
+          <div class="card-subtitle">12-month area chart</div>
+        </div>
+      </div>
+      <div class="chart-area" style="height:260px">
+        <div data-chart="revenue-line" style="width:100%;height:100%"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Plan growth</div>
+          <div class="card-subtitle">Stacked area · Pro · Business · Starter</div>
+        </div>
+      </div>
+      <div class="chart-area" style="height:260px">
+        <div data-chart="stacked-area" style="width:100%;height:100%"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Categorical row ── -->
+  <div class="row col-2">
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Sales by channel</div>
+          <div class="card-subtitle">Q1 2026 · vertical bar</div>
+        </div>
+      </div>
+      <div class="chart-area" style="height:260px">
+        <div data-chart="sales-bar" style="width:100%;height:100%"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Top countries</div>
+          <div class="card-subtitle">Active users · horizontal bar</div>
+        </div>
+      </div>
+      <div class="chart-area" style="height:260px">
+        <div data-chart="horizontal-bar" style="width:100%;height:100%"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Mixed + Distribution row ── -->
+  <div class="row col-2">
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Orders & AOV</div>
+          <div class="card-subtitle">Bar with secondary-axis line</div>
+        </div>
+      </div>
+      <div class="chart-area" style="height:280px">
+        <div data-chart="mixed-bar-line" style="width:100%;height:100%"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Engagement vs retention</div>
+          <div class="card-subtitle">Bubble plot · size = MAU</div>
+        </div>
+      </div>
+      <div class="chart-area" style="height:280px">
+        <div data-chart="scatter" style="width:100%;height:100%"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Comparison + Funnel row ── -->
+  <div class="row col-2">
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">v3 vs v4</div>
+          <div class="card-subtitle">6-axis radar comparison</div>
+        </div>
+      </div>
+      <div class="chart-area" style="height:300px">
+        <div data-chart="radar" style="width:100%;height:100%"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Conversion funnel</div>
+          <div class="card-subtitle">Visitor → Paid stages</div>
+        </div>
+      </div>
+      <div class="chart-area" style="height:300px">
+        <div data-chart="funnel" style="width:100%;height:100%"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Heatmap + Polar + Gauge row ── -->
+  <div class="row col-3">
+    <div class="card" style="grid-column: span 2">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Activity heatmap</div>
+          <div class="card-subtitle">Events by hour and day-of-week</div>
+        </div>
+      </div>
+      <div class="chart-area" style="height:240px">
+        <div data-chart="heatmap" style="width:100%;height:100%"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Quarterly target</div>
+          <div class="card-subtitle">Gauge · 78% of goal</div>
+        </div>
+      </div>
+      <div class="chart-area" style="height:240px">
+        <div data-chart="gauge" style="width:100%;height:100%"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Market + Donut + Polar row ── -->
+  <div class="row col-3">
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Stock OHLC</div>
+          <div class="card-subtitle">Candlestick · 14 sessions</div>
+        </div>
+      </div>
+      <div class="chart-area" style="height:240px">
+        <div data-chart="candlestick" style="width:100%;height:100%"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-title">Traffic sources</div></div>
+      <div class="card-body">
+        <div class="donut-block">
+          <div class="donut-svg">
+            <div data-chart="traffic-donut" style="width:100%;height:100%"></div>
+            <div class="donut-center-label"><div class="num">42k</div><div class="sub">visits</div></div>
+          </div>
+          <div class="donut-legend">
+            <div class="donut-legend-item"><span class="dot" style="background:var(--primary)"></span> Organic <span class="pct">40%</span></div>
+            <div class="donut-legend-item"><span class="dot" style="background:var(--azure)"></span> Direct <span class="pct">20%</span></div>
+            <div class="donut-legend-item"><span class="dot" style="background:var(--yellow)"></span> Referral <span class="pct">15%</span></div>
+            <div class="donut-legend-item"><span class="dot" style="background:var(--purple)"></span> Social <span class="pct">12%</span></div>
+            <div class="donut-legend-item"><span class="dot" style="background:var(--green)"></span> Email <span class="pct">13%</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Monthly mix</div>
+          <div class="card-subtitle">Polar bar by month</div>
+        </div>
+      </div>
+      <div class="chart-area" style="height:240px">
+        <div data-chart="polar-bar" style="width:100%;height:100%"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Treemap + Sankey row ── -->
+  <div class="row col-2">
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Revenue by product</div>
+          <div class="card-subtitle">Treemap · proportional cells</div>
+        </div>
+      </div>
+      <div class="chart-area" style="height:260px">
+        <div data-chart="treemap" style="width:100%;height:100%"></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">User flow</div>
+          <div class="card-subtitle">Sankey · acquisition → conversion</div>
+        </div>
+      </div>
+      <div class="chart-area" style="height:260px">
+        <div data-chart="sankey" style="width:100%;height:100%"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Calendar heatmap (full width) ── -->
+  <div class="row col-1">
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Activity — last 12 months</div>
+          <div class="card-subtitle">Calendar heatmap · contributions per day</div>
+        </div>
+      </div>
+      <div class="chart-area" style="height:180px">
+        <div data-chart="calendar-heatmap" style="width:100%;height:100%"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Gantt (full width) ── -->
+  <div class="row col-1">
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Roadmap</div>
+          <div class="card-subtitle">Gantt · 7 tracks · custom-series</div>
+        </div>
+      </div>
+      <div class="chart-area" style="height:300px">
+        <div data-chart="gantt" style="width:100%;height:100%"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Existing widgets row (sparklines + alerts) ── -->
+  <div class="row col-2">
+    <div class="card">
+      <div class="card-header"><div class="card-title">Top metrics</div></div>
+      <div class="card-body" style="display:flex;flex-direction:column;gap:14px">
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-muted);margin-bottom:4px">
+            <span>Sessions</span><span class="cell-strong">12,348</span>
+          </div>
+          <div class="stat-spark" style="height:24px">
+            <div class="bar" style="height:30%"></div><div class="bar" style="height:50%"></div><div class="bar" style="height:40%"></div><div class="bar" style="height:60%"></div><div class="bar" style="height:55%"></div><div class="bar" style="height:75%"></div><div class="bar" style="height:65%"></div><div class="bar" style="height:85%"></div><div class="bar" style="height:90%"></div><div class="bar" style="height:80%"></div>
+          </div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-muted);margin-bottom:4px">
+            <span>Bounce rate</span><span class="cell-strong">38.4%</span>
+          </div>
+          <div class="stat-spark" style="height:24px">
+            <div class="bar" style="height:80%;background:var(--red)"></div><div class="bar" style="height:75%;background:var(--red)"></div><div class="bar" style="height:60%;background:var(--red)"></div><div class="bar" style="height:65%;background:var(--red)"></div><div class="bar" style="height:55%;background:var(--red)"></div><div class="bar" style="height:50%;background:var(--red)"></div><div class="bar" style="height:45%;background:var(--red)"></div><div class="bar" style="height:40%;background:var(--red)"></div><div class="bar" style="height:42%;background:var(--red)"></div><div class="bar" style="height:38%;background:var(--red)"></div>
+          </div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-muted);margin-bottom:4px">
+            <span>Avg duration</span><span class="cell-strong">3:42</span>
+          </div>
+          <div class="stat-spark" style="height:24px">
+            <div class="bar" style="height:50%;background:var(--blue)"></div><div class="bar" style="height:55%;background:var(--blue)"></div><div class="bar" style="height:60%;background:var(--blue)"></div><div class="bar" style="height:65%;background:var(--blue)"></div><div class="bar" style="height:70%;background:var(--blue)"></div><div class="bar" style="height:75%;background:var(--blue)"></div><div class="bar" style="height:80%;background:var(--blue)"></div><div class="bar" style="height:85%;background:var(--blue)"></div><div class="bar" style="height:90%;background:var(--blue)"></div><div class="bar" style="height:95%;background:var(--blue)"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-title">Status</div></div>
+      <div class="card-body">
+        <div class="alert alert-success">
+          <svg class="alert-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M5 8l2 2 4-4"/></svg>
+          <div class="alert-body"><strong>All systems operational</strong> — no incidents in the last 7 days.</div>
+        </div>
+        <div class="alert alert-info">
+          <svg class="alert-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v.01M8 7v4"/></svg>
+          <div class="alert-body"><strong>Maintenance window</strong> scheduled for Friday 02:00 UTC.</div>
+        </div>
+        <div class="alert alert-warning">
+          <svg class="alert-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2L1 14h14L8 2z"/><path d="M8 6v3M8 11v.01"/></svg>
+          <div class="alert-body"><strong>API rate near limit</strong> — 87% of monthly quota consumed.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</main>
+
+</body>
 </html>

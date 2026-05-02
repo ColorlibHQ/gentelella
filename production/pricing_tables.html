@@ -1,702 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing | Gentelella 2026 v4</title>
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script type="module" src="/src/main-v4.js"></script>
+</head>
+<body data-shell="admin" data-page="pricing" data-breadcrumb="Home > Pricing">
 
-    <!-- Security headers -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.googleapis.com; img-src 'self' data: https: blob:; font-src 'self' data: https://fonts.gstatic.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; connect-src 'self' ws: wss: http://localhost:* https://api.example.com https://*.googleapis.com; frame-src 'self' https://www.youtube.com https://player.vimeo.com; media-src 'self' https: blob:; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
+<main class="main">
+<div class="page-wrapper">
 
-    <!-- Favicons -->
-    <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
-    <link rel="icon" href="../images/favicon-32x32.svg" type="image/svg+xml" sizes="32x32">
-    <link rel="icon" href="../images/favicon-16x16.svg" type="image/svg+xml" sizes="16x16">
-    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="../images/apple-touch-icon.svg" sizes="180x180">
-    <link rel="manifest" href="../site.webmanifest">
-
-    <!-- Theme color -->
-    <meta name="theme-color" content="#2a3f54">
-    <meta name="msapplication-TileColor" content="#2a3f54">
-
-    <title>Pricing Tables | Gentelella</title>    <!-- Compiled CSS (includes Bootstrap, Font Awesome, and all vendor styles) -->
-    <script type="module" src="/src/main-minimal.js"></script>
-  </head>
-
-  <body class="nav-md page-pricing-tables">
-    <div class="container body">
-      <div class="main_container">
-        <aside class="col-md-3 left_col" aria-label="Sidebar navigation">
-          <div class="left_col scroll-view">
-            <div class="navbar nav_title border-0">
-              <a href="index.html" class="site_title"><img src="../images/logo.svg" alt="Gentelella Alela!" class="logo-full logo-main" loading="lazy"><img src="../images/logo-icon.svg" alt="Gentelella" class="logo-icon" loading="lazy"></a>
-            </div>
-
-            <div class="clearfix"></div>
-
-            <!-- menu profile quick info -->
-            <div class="profile clearfix">
-              <div class="profile_pic">
-                <img src="../images/img.jpg" alt="User profile photo" class="img-circle profile_img" loading="lazy">
-              </div>
-              <div class="profile_info">
-                <span>Welcome,</span>
-                <h4>John Doe</h4>
-              </div>
-            </div>
-            <!-- /menu profile quick info -->
-
-            <br />
-
-            <!-- sidebar menu -->
-            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-              <div class="menu_section">
-                <h3>General</h3>
-                <ul class="nav side-menu">
-                  <li><a href="https://dashboardpack.com/?utm_source=gentelella&utm_medium=sidebar&utm_campaign=premium" target="_blank"><i class="bi bi-stars"></i> Go Pro <span class="badge bg-warning">Pro</span></a></li>
-                  <li><a><i class="bi bi-house"></i> Home <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="index.html">Dashboard 1</a></li>
-                      <li><a href="index2.html">Dashboard 2</a></li>
-                      <li><a href="index3.html">Dashboard 3</a></li>
-                      <li><a href="index4.html">Dashboard 4</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="bi bi-pencil-square"></i> Forms <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="form.html">General Form</a></li>
-                      <li><a href="form_advanced.html">Advanced Components</a></li>
-                      <li><a href="form_validation.html">Form Validation</a></li>
-                      <li><a href="form_wizards.html">Form Wizard</a></li>
-                      <li><a href="form_upload.html">Form Upload</a></li>
-                      <li><a href="form_buttons.html">Form Buttons</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="bi bi-display"></i> UI Elements <span class="badge bg-danger">Hot</span> <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="general_elements.html">General Elements</a></li>
-                      <li><a href="media_gallery.html">Media Gallery</a></li>
-                      <li><a href="typography.html">Typography</a></li>
-                      <li><a href="icons.html">Icons</a></li>
-                      <li><a href="widgets.html">Widgets</a></li>
-                      <li><a href="invoice.html">Invoice</a></li>
-                      <li><a href="inbox.html">Inbox</a></li>
-                      <li><a href="calendar.html">Calendar</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="bi bi-table"></i> Tables <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="tables.html">Tables</a></li>
-                      <li><a href="tables_dynamic.html">Table Dynamic</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="bi bi-bar-chart"></i> Data Presentation <span class="badge bg-success">New</span> <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="chartjs.html">Chart.js</a></li>
-                      <li><a href="echarts.html">ECharts <span class="badge bg-info">Updated</span></a></li>
-                      <li><a href="other_charts.html">Other Charts</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="bi bi-layout-split"></i>Layouts <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="fixed_sidebar.html">Fixed Sidebar</a></li>
-                      <li><a href="fixed_footer.html">Fixed Footer</a></li>
-                    </ul>
-                  </li>
-                </ul>
-              </div>
-              <div class="menu_section">
-                <h3>Live On</h3>
-                <ul class="nav side-menu">
-                  <li><a><i class="bi bi-file-earmark-text"></i> Additional Pages <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="e_commerce.html">E-commerce</a></li>
-                      <li><a href="projects.html">Projects</a></li>
-                      <li><a href="project_detail.html">Project Detail</a></li>
-                      <li><a href="contacts.html">Contacts</a></li>
-                      <li><a href="profile.html">Profile</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="bi bi-window-stack"></i> Extras <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="page_403.html">403 Error</a></li>
-                      <li><a href="page_404.html">404 Error</a></li>
-                      <li><a href="page_500.html">500 Error</a></li>
-                      <li><a href="plain_page.html">Plain Page</a></li>
-                      <li><a href="login.html">Login Page</a></li>
-                      <li><a href="pricing_tables.html">Pricing Tables</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="bi bi-diagram-3"></i> Multilevel Menu <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                        <li><a href="#level1_1">Level One</a></li>
-                        <li><a>Level One<span class="bi bi-chevron-down"></span></a>
-                          <ul class="nav child_menu">
-                            <li class="sub_menu"><a href="level2.html">Level Two</a></li>
-                            <li><a href="#level2_1">Level Two</a></li>
-                            <li><a href="#level2_2">Level Two</a></li>
-                          </ul>
-                        </li>
-                        <li><a href="#level1_2">Level One</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="landing.html"><i class="bi bi-laptop"></i> Landing Page <span class="badge bg-info">Updated</span></a></li>
-                </ul>
-              </div>
-
-            </div>
-            <!-- /sidebar menu -->
-
-            <!-- /menu footer buttons -->
-            <div class="sidebar-footer hidden-small">
-              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Settings">
-                <span class="fas fa-cog" aria-hidden="true"></span>
-              </a>
-              <a data-bs-toggle="tooltip" data-bs-placement="top" title="FullScreen">
-                <span class="fas fa-expand" aria-hidden="true"></span>
-              </a>
-              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Lock">
-                <span class="fas fa-eye-slash" aria-hidden="true"></span>
-              </a>
-              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Logout" href="login.html">
-                <span class="fas fa-power-off" aria-hidden="true"></span>
-              </a>
-            </div>
-            <!-- /menu footer buttons -->
-          </div>
+  <div class="page-header">
+    <div class="page-header-row">
+      <div>
+        <div class="page-pretitle">Plans</div>
+        <div class="page-title">Pricing</div>
+      </div>
+      <div class="page-actions">
+        <div class="chart-tabs">
+          <button class="chart-tab active">Monthly</button>
+          <button class="chart-tab">Annual <span style="margin-left:4px;color:var(--green);font-weight:600">−20%</span></button>
         </div>
-
-        <!-- top navigation -->
-        <div class="top_nav">
-            <div class="nav_menu d-flex align-items-center justify-content-between">
-                <div class="nav toggle">
-                  <a id="menu_toggle"><i class="fas fa-bars"></i></a>
-                </div>
-                <nav class="nav navbar-nav ms-auto">
-                <ul class="navbar-right d-flex align-items-center gap-3 pe-3">
-                <li class="nav-item dropdown">
-                    <a href="#" role="button" class="dropdown-toggle info-number" id="navbarDropdown1" data-bs-toggle="dropdown" aria-expanded="false">
-                      <i class="fas fa-envelope"></i>
-                      <span class="badge bg-green">6</span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end list-unstyled msg_list dropdown-menu-lg" role="menu" aria-labelledby="navbarDropdown1">
-                      <li class="nav-item">
-                        <a class="dropdown-item">
-                          <span class="image"><img src="../images/img.jpg" alt="Profile Image" /></span>
-                          <span>
-                            <span>John Smith</span>
-                            <span class="time">3 mins ago</span>
-                          </span>
-                          <span class="message">
-                            Film festivals used to be do-or-die moments for movie makers. They were where...
-                          </span>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="dropdown-item">
-                          <span class="image"><img src="../images/img.jpg" alt="Profile Image" /></span>
-                          <span>
-                            <span>John Smith</span>
-                            <span class="time">3 mins ago</span>
-                          </span>
-                          <span class="message">
-                            Film festivals used to be do-or-die moments for movie makers. They were where...
-                          </span>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="dropdown-item">
-                          <span class="image"><img src="../images/img.jpg" alt="Profile Image" /></span>
-                          <span>
-                            <span>John Smith</span>
-                            <span class="time">3 mins ago</span>
-                          </span>
-                          <span class="message">
-                            Film festivals used to be do-or-die moments for movie makers. They were where...
-                          </span>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="dropdown-item">
-                          <span class="image"><img src="../images/img.jpg" alt="Profile Image" /></span>
-                          <span>
-                            <span>John Smith</span>
-                            <span class="time">3 mins ago</span>
-                          </span>
-                          <span class="message">
-                            Film festivals used to be do-or-die moments for movie makers. They were where...
-                          </span>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <div class="text-center">
-                          <a class="dropdown-item">
-                            <strong>See All Alerts</strong>
-                            <i class="fas fa-angle-right"></i>
-                          </a>
-                        </div>
-                      </li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a href="#" role="button" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                      <img src="../images/img.jpg" alt="">John Doe
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-end dropdown-usermenu dropdown-menu-sm" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item"  href="#" role="button"> Profile</a>
-                        <a class="dropdown-item"  href="#" role="button">
-                          <span class="badge bg-red float-end">50%</span>
-                          <span>Settings</span>
-                        </a>
-                    <a class="dropdown-item"  href="#" role="button">Help</a>
-                      <a class="dropdown-item"  href="login.html"><i class="fas fa-sign-out-alt float-end"></i> Log Out</a>
-                    </div>
-                </li>
-              </ul>
-              </nav>
-            </div>
-          </div>
-        <!-- /top navigation -->
-
-        <!-- page content -->
-        <main class="right_col" role="main" aria-label="Main content">
-          <div class="">
-            <div class="page-title">
-              <div class="title_left">
-                <h1 class="page-heading h3">Pricing Tables <small>Modern Bootstrap 5 pricing examples</small></h1>
-              </div>
-
-              <div class="title_right">
-                <div class="col-md-5 col-sm-5 mb-3 float-end top_search">
-                  <div class="input-group search-bar-fix">
-                    <input type="text" class="form-control" placeholder="Search pricing plans...">
-                    <button class="btn btn-outline-secondary" type="button">
-                      <i class="fas fa-search"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="clearfix"></div>
-
-            <!-- Modern Card Pricing Section -->
-            <div class="row mb-5">
-              <div class="col-md-12">
-                <div class="card">
-                  <div class="card-header bg-primary text-white">
-                    <h4 class="mb-0"><i class="fas fa-star me-2"></i>Premium Pricing Plans</h4>
-                    <p class="mb-0 opacity-75">Choose the perfect plan for your business needs</p>
-                  </div>
-                  <div class="card-body">
-                    <div class="row g-4">
-                      <!-- Basic Plan -->
-                      <div class="col-lg-3 col-md-6">
-                        <div class="card h-100">
-                          <div class="card-header bg-light text-center">
-                            <h5 class="text-primary mb-1">Basic</h5>
-                            <p class="text-muted small mb-0">Perfect for startups</p>
-                          </div>
-                          <div class="card-body text-center">
-                            <div class="display-6 fw-bold text-primary">Free</div>
-                            <p class="text-muted">Forever</p>
-                            <ul class="list-unstyled mt-4 mb-4">
-                              <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Up to 3 projects</li>
-                              <li class="mb-2"><i class="fas fa-check text-success me-2"></i>1GB storage</li>
-                              <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Email support</li>
-                              <li class="mb-2"><i class="fas fa-times text-danger me-2"></i>Priority support</li>
-                              <li class="mb-2"><i class="fas fa-times text-danger me-2"></i>Custom integrations</li>
-                            </ul>
-                          </div>
-                          <div class="card-footer bg-transparent">
-                            <div class="d-grid">
-                              <button class="btn btn-outline-primary">Get Started</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <!-- Professional Plan -->
-                      <div class="col-lg-3 col-md-6">
-                        <div class="card h-100 border-primary">
-                          <div class="position-relative">
-                            <span class="badge bg-primary position-absolute top-0 start-50 translate-middle px-3 py-2">Most Popular</span>
-                          </div>
-                          <div class="card-header bg-primary text-white text-center">
-                            <h5 class="mb-1">Professional</h5>
-                            <p class="mb-0 opacity-75">Great for growing teams</p>
-                          </div>
-                          <div class="card-body text-center">
-                            <div class="display-6 fw-bold text-primary">$29</div>
-                            <p class="text-muted">per month</p>
-                            <ul class="list-unstyled mt-4 mb-4">
-                              <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Unlimited projects</li>
-                              <li class="mb-2"><i class="fas fa-check text-success me-2"></i>100GB storage</li>
-                              <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Priority email support</li>
-                              <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Advanced analytics</li>
-                              <li class="mb-2"><i class="fas fa-times text-danger me-2"></i>Custom integrations</li>
-                            </ul>
-                          </div>
-                          <div class="card-footer bg-transparent">
-                            <div class="d-grid">
-                              <button class="btn btn-primary">Start Free Trial</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <!-- Business Plan -->
-                      <div class="col-lg-3 col-md-6">
-                        <div class="card h-100">
-                          <div class="card-header bg-light text-center">
-                            <h5 class="text-success mb-1">Business</h5>
-                            <p class="text-muted small mb-0">For established companies</p>
-                          </div>
-                          <div class="card-body text-center">
-                            <div class="display-6 fw-bold text-success">$99</div>
-                            <p class="text-muted">per month</p>
-                            <ul class="list-unstyled mt-4 mb-4">
-                              <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Unlimited everything</li>
-                              <li class="mb-2"><i class="fas fa-check text-success me-2"></i>1TB storage</li>
-                              <li class="mb-2"><i class="fas fa-check text-success me-2"></i>24/7 phone support</li>
-                              <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Advanced analytics</li>
-                              <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Custom integrations</li>
-                            </ul>
-                          </div>
-                          <div class="card-footer bg-transparent">
-                            <div class="d-grid">
-                              <button class="btn btn-success">Contact Sales</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <!-- Enterprise Plan -->
-                      <div class="col-lg-3 col-md-6">
-                        <div class="card h-100">
-                          <div class="card-header bg-light text-center">
-                            <h5 class="text-warning mb-1">Enterprise</h5>
-                            <p class="text-muted small mb-0">For large organizations</p>
-                          </div>
-                          <div class="card-body text-center">
-                            <div class="display-6 fw-bold text-warning">Custom</div>
-                            <p class="text-muted">pricing</p>
-                            <ul class="list-unstyled mt-4 mb-4">
-                              <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Everything included</li>
-                              <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Unlimited storage</li>
-                              <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Dedicated support</li>
-                              <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Custom development</li>
-                              <li class="mb-2"><i class="fas fa-check text-success me-2"></i>SLA guarantees</li>
-                            </ul>
-                          </div>
-                          <div class="card-footer bg-transparent">
-                            <div class="d-grid">
-                              <button class="btn btn-warning">Get Quote</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Simple Table Pricing -->
-            <div class="row mb-5">
-              <div class="col-md-12">
-                <div class="card">
-                  <div class="card-header bg-info text-white">
-                    <h4 class="mb-0"><i class="fas fa-table me-2"></i>SaaS Pricing Comparison</h4>
-                    <p class="mb-0 opacity-75">Compare features across all plans</p>
-                  </div>
-                  <div class="card-body">
-                    <div class="table-responsive">
-                      <table class="table table-hover align-middle">
-                        <thead class="table-light">
-                          <tr>
-                            <th scope="col" class="border-0">Features</th>
-                            <th scope="col" class="text-center border-0">
-                              <div class="badge bg-light text-dark py-2 px-3 mb-2">Starter</div>
-                              <div class="h5 text-primary mb-0">$9/mo</div>
-                            </th>
-                            <th scope="col" class="text-center border-0">
-                              <div class="badge bg-primary py-2 px-3 mb-2">Professional</div>
-                              <div class="h5 text-primary mb-0">$29/mo</div>
-                            </th>
-                            <th scope="col" class="text-center border-0">
-                              <div class="badge bg-success py-2 px-3 mb-2">Enterprise</div>
-                              <div class="h5 text-success mb-0">$99/mo</div>
-                            </th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td class="fw-semibold">Users</td>
-                            <td class="text-center">Up to 5</td>
-                            <td class="text-center">Up to 25</td>
-                            <td class="text-center">Unlimited</td>
-                          </tr>
-                          <tr>
-                            <td class="fw-semibold">Storage</td>
-                            <td class="text-center">10GB</td>
-                            <td class="text-center">100GB</td>
-                            <td class="text-center">1TB</td>
-                          </tr>
-                          <tr>
-                            <td class="fw-semibold">Projects</td>
-                            <td class="text-center">10</td>
-                            <td class="text-center">Unlimited</td>
-                            <td class="text-center">Unlimited</td>
-                          </tr>
-                          <tr>
-                            <td class="fw-semibold">API Access</td>
-                            <td class="text-center"><i class="fas fa-times text-danger"></i></td>
-                            <td class="text-center"><i class="fas fa-check text-success"></i></td>
-                            <td class="text-center"><i class="fas fa-check text-success"></i></td>
-                          </tr>
-                          <tr>
-                            <td class="fw-semibold">Advanced Analytics</td>
-                            <td class="text-center"><i class="fas fa-times text-danger"></i></td>
-                            <td class="text-center"><i class="fas fa-check text-success"></i></td>
-                            <td class="text-center"><i class="fas fa-check text-success"></i></td>
-                          </tr>
-                          <tr>
-                            <td class="fw-semibold">Priority Support</td>
-                            <td class="text-center"><i class="fas fa-times text-danger"></i></td>
-                            <td class="text-center"><i class="fas fa-times text-danger"></i></td>
-                            <td class="text-center"><i class="fas fa-check text-success"></i></td>
-                          </tr>
-                          <tr>
-                            <td class="fw-semibold">Custom Integrations</td>
-                            <td class="text-center"><i class="fas fa-times text-danger"></i></td>
-                            <td class="text-center"><i class="fas fa-times text-danger"></i></td>
-                            <td class="text-center"><i class="fas fa-check text-success"></i></td>
-                          </tr>
-                        </tbody>
-                        <tfoot class="table-light">
-                          <tr>
-                            <td class="border-0"></td>
-                            <td class="text-center border-0">
-                              <button class="btn btn-outline-primary btn-sm">Choose Plan</button>
-                            </td>
-                            <td class="text-center border-0">
-                              <button class="btn btn-primary btn-sm">Choose Plan</button>
-                            </td>
-                            <td class="text-center border-0">
-                              <button class="btn btn-success btn-sm">Choose Plan</button>
-                            </td>
-                          </tr>
-                        </tfoot>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Toggle Pricing (Annual/Monthly) -->
-            <div class="row mb-5">
-              <div class="col-md-12">
-                <div class="card">
-                  <div class="card-header bg-success text-white">
-                    <h4 class="mb-0"><i class="fas fa-toggle-on me-2"></i>Flexible Billing Options</h4>
-                    <p class="mb-0 opacity-75">Save up to 20% with annual billing</p>
-                  </div>
-                  <div class="card-body">
-                    <!-- Billing Toggle -->
-                    <div class="text-center mb-4">
-                      <div class="d-inline-flex align-items-center">
-                        <span class="me-3">Monthly</span>
-                        <div class="form-check form-switch">
-                          <input class="form-check-input" type="checkbox" id="billingToggle">
-                          <label class="form-check-label" for="billingToggle"></label>
-                        </div>
-                        <span class="ms-3">Annual <span class="badge bg-success ms-1">Save 20%</span></span>
-                      </div>
-                    </div>
-
-                    <div class="row g-4" id="togglePricing">
-                      <!-- Freelancer Plan -->
-                      <div class="col-lg-4 col-md-6">
-                        <div class="card h-100 border border-2 border-primary">
-                          <div class="card-body text-center p-4">
-                            <div class="mb-3">
-                              <i class="fas fa-user-tie fa-3x text-primary"></i>
-                            </div>
-                            <h5 class="card-title">Freelancer</h5>
-                            <div class="pricing-display">
-                              <span class="h2 text-primary monthly-price">$15</span>
-                              <span class="h2 text-primary annual-price d-none">$12</span>
-                              <span class="text-muted">/month</span>
-                            </div>
-                            <p class="text-muted small">Perfect for individual professionals</p>
-                            <ul class="list-unstyled mt-4 mb-4">
-                              <li class="mb-2"><i class="fas fa-check text-success me-2"></i>5 projects</li>
-                              <li class="mb-2"><i class="fas fa-check text-success me-2"></i>50GB storage</li>
-                              <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Email support</li>
-                              <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Basic templates</li>
-                            </ul>
-                            <div class="d-grid">
-                              <button class="btn btn-primary">Start Free Trial</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <!-- Team Plan -->
-                      <div class="col-lg-4 col-md-6">
-                        <div class="card h-100 border border-2 border-warning position-relative">
-                          <div class="position-absolute top-0 start-50 translate-middle">
-                            <span class="badge bg-warning text-dark px-3 py-2">Recommended</span>
-                          </div>
-                          <div class="card-body text-center p-4">
-                            <div class="mb-3 mt-3">
-                              <i class="fas fa-users fa-3x text-warning"></i>
-                            </div>
-                            <h5 class="card-title">Team</h5>
-                            <div class="pricing-display">
-                              <span class="h2 text-warning monthly-price">$45</span>
-                              <span class="h2 text-warning annual-price d-none">$36</span>
-                              <span class="text-muted">/month</span>
-                            </div>
-                            <p class="text-muted small">Ideal for small to medium teams</p>
-                            <ul class="list-unstyled mt-4 mb-4">
-                              <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Unlimited projects</li>
-                              <li class="mb-2"><i class="fas fa-check text-success me-2"></i>500GB storage</li>
-                              <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Priority support</li>
-                              <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Premium templates</li>
-                            </ul>
-                            <div class="d-grid">
-                              <button class="btn btn-warning">Start Free Trial</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <!-- Agency Plan -->
-                      <div class="col-lg-4 col-md-6">
-                        <div class="card h-100 border border-2 border-danger">
-                          <div class="card-body text-center p-4">
-                            <div class="mb-3">
-                              <i class="fas fa-building fa-3x text-danger"></i>
-                            </div>
-                            <h5 class="card-title">Agency</h5>
-                            <div class="pricing-display">
-                              <span class="h2 text-danger monthly-price">$99</span>
-                              <span class="h2 text-danger annual-price d-none">$79</span>
-                              <span class="text-muted">/month</span>
-                            </div>
-                            <p class="text-muted small">For agencies and large teams</p>
-                            <ul class="list-unstyled mt-4 mb-4">
-                              <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Unlimited everything</li>
-                              <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Unlimited storage</li>
-                              <li class="mb-2"><i class="fas fa-check text-success me-2"></i>24/7 phone support</li>
-                              <li class="mb-2"><i class="fas fa-check text-success me-2"></i>White-label options</li>
-                            </ul>
-                            <div class="d-grid">
-                              <button class="btn btn-danger">Contact Sales</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- FAQ Section -->
-            <div class="row">
-              <div class="col-md-12">
-                <div class="card">
-                  <div class="card-header bg-secondary text-white">
-                    <h4 class="mb-0"><i class="fas fa-question-circle me-2"></i>Frequently Asked Questions</h4>
-                  </div>
-                  <div class="card-body">
-                    <div class="accordion" id="pricingFAQ">
-                      <div class="accordion-item">
-                        <h2 class="accordion-header">
-                          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
-                            Can I change my plan at any time?
-                          </button>
-                        </h4>
-                        <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#pricingFAQ">
-                          <div class="accordion-body">
-                            Yes! You can upgrade or downgrade your plan at any time. Changes take effect immediately and you'll be prorated for any differences.
-                          </div>
-                        </div>
-                      </div>
-                      
-                      <div class="accordion-item">
-                        <h2 class="accordion-header">
-                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
-                            Do you offer refunds?
-                          </button>
-                        </h4>
-                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#pricingFAQ">
-                          <div class="accordion-body">
-                            We offer a 30-day money-back guarantee for all paid plans. If you're not satisfied, contact our support team for a full refund.
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="accordion-item">
-                        <h2 class="accordion-header">
-                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
-                            Is there a free trial available?
-                          </button>
-                        </h4>
-                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#pricingFAQ">
-                          <div class="accordion-body">
-                            Yes! All paid plans come with a 14-day free trial. No credit card required to start your trial.
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- /page content -->
-
-        <!-- footer content -->
-        <footer>
-          <div class="float-end">
-            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
-          </div>
-          <div class="clearfix"></div>
-        </footer>
-        <!-- /footer content -->
       </div>
     </div>
-    
-    <!-- Pricing Toggle JavaScript -->
-    <script>
-      // Toggle between monthly and annual pricing
-      document.getElementById('billingToggle').addEventListener('change', function() {
-        const monthlyPrices = document.querySelectorAll('.monthly-price');
-        const annualPrices = document.querySelectorAll('.annual-price');
-        
-        if (this.checked) {
-          // Show annual prices
-          monthlyPrices.forEach(price => price.classList.add('d-none'));
-          annualPrices.forEach(price => price.classList.remove('d-none'));
-        } else {
-          // Show monthly prices
-          monthlyPrices.forEach(price => price.classList.remove('d-none'));
-          annualPrices.forEach(price => price.classList.add('d-none'));
-        }
-      });
-    </script>
+  </div>
 
-    <!-- Compiled JavaScript (Bootstrap and vendor scripts) -->
-  </body>
+  <div class="row col-3">
+    <div class="pricing-tier">
+      <div class="name">Starter</div>
+      <div><span class="price">$0</span><small>/month</small></div>
+      <div class="desc">Everything you need to evaluate the platform on a small project.</div>
+      <ul>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l3 3 7-8"/></svg> Up to 3 users</li>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l3 3 7-8"/></svg> 5 GB storage</li>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l3 3 7-8"/></svg> Community support</li>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l3 3 7-8"/></svg> Core dashboards</li>
+      </ul>
+      <button class="btn btn-outline" style="justify-content:center;height:36px">Get started</button>
+    </div>
+
+    <div class="pricing-tier popular">
+      <div class="name">Pro</div>
+      <div><span class="price">$29</span><small>/user / month</small></div>
+      <div class="desc">For growing teams that need more power, integrations, and reporting.</div>
+      <ul>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l3 3 7-8"/></svg> Unlimited users</li>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l3 3 7-8"/></svg> 100 GB storage</li>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l3 3 7-8"/></svg> Priority email support</li>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l3 3 7-8"/></svg> Advanced reporting</li>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l3 3 7-8"/></svg> 50+ integrations</li>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l3 3 7-8"/></svg> SSO via Google / GitHub</li>
+      </ul>
+      <button class="btn btn-primary" style="justify-content:center;height:36px">Start 14-day trial</button>
+    </div>
+
+    <div class="pricing-tier">
+      <div class="name">Enterprise</div>
+      <div><span class="price">Custom</span></div>
+      <div class="desc">Dedicated infrastructure, audit logs, and a named CSM.</div>
+      <ul>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l3 3 7-8"/></svg> Everything in Pro</li>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l3 3 7-8"/></svg> SAML / SCIM</li>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l3 3 7-8"/></svg> SOC 2 + DPA</li>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l3 3 7-8"/></svg> Dedicated success mgr</li>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l3 3 7-8"/></svg> 99.99% SLA</li>
+      </ul>
+      <button class="btn btn-outline" style="justify-content:center;height:36px">Talk to sales</button>
+    </div>
+  </div>
+
+</div>
+</main>
+
+</body>
 </html>

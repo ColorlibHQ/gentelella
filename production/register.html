@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign up | Gentelella 2026 v4</title>
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script type="module" src="/src/main-v4.js"></script>
+</head>
+<body>
+
+<div class="auth-page">
+  <div class="auth-card">
+    <div class="auth-brand">
+      <div class="brand-icon">G</div>
+      <div class="brand-name">Gentelella <small style="font-weight:400;color:var(--text-muted);font-size:13px;margin-left:2px">v4</small></div>
+    </div>
+
+    <div class="auth-title">Create your account</div>
+    <div class="auth-subtitle">Get started in less than a minute.</div>
+
+    <form onsubmit="event.preventDefault(); window.location.href='index.html';">
+      <div class="form-group">
+        <label class="form-label" for="name">Full name</label>
+        <div class="input-group">
+          <svg class="input-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="5" r="3"/><path d="M2 14a6 6 0 0112 0"/></svg>
+          <input type="text" id="name" class="form-control" placeholder="Aigars Silkalns" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="email">Email</label>
+        <div class="input-group">
+          <svg class="input-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="12" height="10" rx="1.5"/><path d="M2 5l6 4 6-4"/></svg>
+          <input type="email" id="email" class="form-control" placeholder="you@company.com" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="password">Password</label>
+        <div class="input-group">
+          <svg class="input-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="7" width="10" height="7" rx="1.5"/><path d="M5 7V5a3 3 0 016 0v2"/></svg>
+          <input type="password" id="password" class="form-control" placeholder="At least 8 characters" minlength="8" required>
+        </div>
+        <div class="form-hint">8+ characters, mixed case + a number</div>
+      </div>
+
+      <div class="auth-actions" style="justify-content:flex-start">
+        <label class="form-check">
+          <input type="checkbox" required> I agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a>
+        </label>
+      </div>
+
+      <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;height:38px">
+        Create account
+      </button>
+    </form>
+
+    <div class="auth-divider">or sign up with</div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+      <button class="btn btn-outline" style="justify-content:center">
+        <svg viewBox="0 0 16 16" fill="currentColor" style="color:#4285F4"><path d="M14.5 8.16c0-.5-.05-1-.13-1.5H8v2.83h3.65a3.13 3.13 0 01-1.36 2.05v1.7h2.2c1.28-1.18 2.01-2.92 2.01-5.08z"/><path d="M8 15c1.83 0 3.36-.6 4.49-1.65l-2.2-1.7c-.6.4-1.38.65-2.29.65-1.76 0-3.25-1.19-3.78-2.78H1.95v1.74A6.74 6.74 0 008 15z" fill="#34A853"/><path d="M4.22 9.52a4.07 4.07 0 010-2.59V5.19H1.95a6.74 6.74 0 000 5.62l2.27-1.29z" fill="#FBBC04"/><path d="M8 4.46c.99 0 1.88.34 2.59 1l1.94-1.94A6.74 6.74 0 008 1.5a6.74 6.74 0 00-6.05 3.69L4.22 6.93C4.75 5.34 6.24 4.46 8 4.46z" fill="#EA4335"/></svg>
+        Google
+      </button>
+      <button class="btn btn-outline" style="justify-content:center">
+        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0a8 8 0 00-2.53 15.59c.4.07.55-.17.55-.38v-1.34c-2.23.48-2.69-1.07-2.69-1.07-.36-.92-.89-1.16-.89-1.16-.73-.5.05-.49.05-.49.8.06 1.23.83 1.23.83.71 1.23 1.87.87 2.33.67.07-.52.28-.87.5-1.07-1.78-.2-3.64-.89-3.64-3.96 0-.87.31-1.59.83-2.15-.08-.2-.36-1.02.08-2.13 0 0 .67-.21 2.2.82a7.66 7.66 0 014 0c1.53-1.03 2.2-.82 2.2-.82.44 1.11.16 1.93.08 2.13.51.56.83 1.28.83 2.15 0 3.07-1.87 3.76-3.65 3.95.29.25.54.74.54 1.5v2.22c0 .21.14.46.55.38A8 8 0 008 0z"/></svg>
+        GitHub
+      </button>
+    </div>
+
+    <div class="auth-footer">
+      Already have an account? <a href="login.html">Sign in</a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

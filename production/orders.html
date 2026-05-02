@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orders | Gentelella 2026 v4</title>
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script type="module" src="/src/main-v4.js"></script>
+</head>
+<body data-shell="admin" data-page="orders" data-breadcrumb="Home > Shop > Orders">
+
+<main class="main">
+<div class="page-wrapper">
+
+  <div class="page-header">
+    <div class="page-header-row">
+      <div>
+        <div class="page-pretitle">Shop</div>
+        <div class="page-title">Orders</div>
+      </div>
+      <div class="page-actions">
+        <button class="btn btn-outline">Export CSV</button>
+        <button class="btn btn-primary">+ Manual order</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stat row -->
+  <div class="row col-3" style="margin-bottom:16px">
+    <div class="card"><div class="stat"><div class="stat-icon teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg></div><div class="stat-content"><div class="stat-label">Total orders</div><div class="stat-value-row"><span class="stat-value">1,240</span><span class="stat-change up">12%</span></div><div class="stat-subtext">78 today</div></div></div></div>
+    <div class="card"><div class="stat"><div class="stat-icon green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div><div class="stat-content"><div class="stat-label">Revenue</div><div class="stat-value-row"><span class="stat-value">$84,520</span><span class="stat-change up">18%</span></div><div class="stat-subtext">$3,218 today</div></div></div></div>
+    <div class="card"><div class="stat"><div class="stat-icon yellow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div class="stat-content"><div class="stat-label">Pending</div><div class="stat-value-row"><span class="stat-value">42</span><span class="stat-change down">3%</span></div><div class="stat-subtext">5 awaiting payment</div></div></div></div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="card-title">All orders</div>
+        <div class="card-subtitle">1,240 results</div>
+      </div>
+      <div class="card-options">
+        <select class="form-control" style="width:160px;height:32px">
+          <option>All statuses</option>
+          <option>Paid</option>
+          <option>Processing</option>
+          <option>Pending</option>
+          <option>Cancelled</option>
+        </select>
+      </div>
+    </div>
+    <div class="card-body p-0">
+      <div class="table-responsive">
+        <table class="table" data-datatable data-page-length="10" data-export="orders">
+          <thead>
+            <tr>
+              <th>Order</th>
+              <th>Customer</th>
+              <th>Items</th>
+              <th>Total</th>
+              <th>Status</th>
+              <th>Payment</th>
+              <th>Date</th>
+              <th data-orderable="false"></th>
+            </tr>
+          </thead>
+          <tbody id="orders-rows"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>
+</main>
+
+<script type="module">
+const ORDERS = [
+  ['#7841','John Doe',      'JD','primary',  3, 245,  'paid',       'Visa •••• 4242',     'Apr 28, 2026'],
+  ['#7840','Anna Smith',    'AS','azure',    1,  89,  'processing', 'Mastercard •••• 8841', 'Apr 28, 2026'],
+  ['#7839','Robert Jones',  'RJ','purple',   5, 490,  'paid',       'PayPal',             'Apr 28, 2026'],
+  ['#7838','Emily Wang',    'EW','yellow',   2, 125,  'pending',    'Stripe checkout',    'Apr 27, 2026'],
+  ['#7837','Mark Kim',      'MK','red',      1,  67,  'cancelled',  'Visa •••• 1234',     'Apr 27, 2026'],
+  ['#7836','Lina Park',     'LP','green',    4, 312,  'paid',       'Visa •••• 4242',     'Apr 27, 2026'],
+  ['#7835','Diego Reyes',   'DR','blue',     2, 178,  'paid',       'Apple Pay',          'Apr 26, 2026'],
+  ['#7834','Yuki Tanaka',   'YT','primary',  3, 234,  'processing', 'Mastercard •••• 7712', 'Apr 26, 2026'],
+  ['#7833','Sarah Kowalski','SK','primary',  6, 549,  'paid',       'Stripe checkout',    'Apr 26, 2026'],
+  ['#7832','Michael Reyes', 'MR','purple',   1,  45,  'pending',    'PayPal',             'Apr 25, 2026'],
+  ['#7831','Tom Hardy',     'TH','purple',   2, 195,  'paid',       'Visa •••• 4242',     'Apr 25, 2026'],
+  ['#7830','Anna Smith',    'AS','azure',    3, 220,  'paid',       'Mastercard •••• 8841', 'Apr 24, 2026'],
+  ['#7829','John Doe',      'JD','primary',  1,  79,  'paid',       'Apple Pay',          'Apr 24, 2026'],
+  ['#7828','Robert Jones',  'RJ','purple',   2, 168,  'cancelled',  'Visa •••• 5566',     'Apr 23, 2026'],
+  ['#7827','Emily Wang',    'EW','yellow',   4, 388,  'paid',       'Stripe checkout',    'Apr 23, 2026'],
+  ['#7826','Mark Kim',      'MK','red',      1, 112,  'paid',       'Google Pay',         'Apr 22, 2026'],
+  ['#7825','Diego Reyes',   'DR','blue',     2, 156,  'processing', 'PayPal',             'Apr 22, 2026'],
+  ['#7824','Lina Park',     'LP','green',    3, 247,  'paid',       'Visa •••• 4242',     'Apr 21, 2026'],
+  ['#7823','Yuki Tanaka',   'YT','primary',  1,  58,  'paid',       'Apple Pay',          'Apr 21, 2026'],
+  ['#7822','Sarah Kowalski','SK','primary',  2, 132,  'paid',       'Stripe checkout',    'Apr 20, 2026']
+];
+const colorMap = { primary:'var(--primary)', azure:'var(--azure)', purple:'var(--purple)', yellow:'var(--yellow)', red:'var(--red)', green:'var(--green)', blue:'var(--blue)' };
+const STATUS = { paid:'green', processing:'blue', pending:'yellow', cancelled:'red' };
+
+document.getElementById('orders-rows').innerHTML = ORDERS.map(([id, name, ini, col, items, total, status, pay, date]) => `
+  <tr>
+    <td class="cell-mono"><a href="order_detail.html" style="color:var(--primary);font-weight:var(--font-weight-medium)">${id}</a></td>
+    <td><div class="cell-customer"><div class="cell-avatar" style="background:${colorMap[col]}">${ini}</div><span class="cell-strong">${name}</span></div></td>
+    <td>${items}</td>
+    <td class="cell-strong">$${total}</td>
+    <td><span class="status status-${STATUS[status]}">${status[0].toUpperCase() + status.slice(1)}</span></td>
+    <td style="font-size:12px;color:var(--text-muted)">${pay}</td>
+    <td>${date}</td>
+    <td><button class="card-opt-btn" aria-label="More"><svg viewBox="0 0 16 16" fill="currentColor"><circle cx="8" cy="3" r="1.2"/><circle cx="8" cy="8" r="1.2"/><circle cx="8" cy="13" r="1.2"/></svg></button></td>
+  </tr>
+`).join('');
+</script>
+
+</body>
+</html>

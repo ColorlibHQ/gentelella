@@ -1,0 +1,349 @@
+// Dashboard widgets: stat cards, chart, activity, visitors, todo, donut, storage, versions, profile
+
+// ────────────────────────
+//  STAT CARDS (top row)
+// ────────────────────────
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+}
+.stat-icon {
+  width: 40px; height: 40px;
+  border-radius: var(--radius);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.stat-icon svg { width: 20px; height: 20px; }
+.stat-icon.teal { background: var(--primary-lt); color: var(--primary); }
+.stat-icon.blue { background: var(--blue-lt); color: var(--blue); }
+.stat-icon.green { background: var(--green-lt); color: var(--green); }
+.stat-icon.yellow { background: var(--yellow-lt); color: var(--yellow); }
+.stat-icon.red { background: var(--red-lt); color: var(--red); }
+.stat-icon.purple { background: var(--purple-lt); color: var(--purple); }
+
+.stat-content { flex: 1; min-width: 0; }
+.stat-label {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  line-height: 1.3;
+}
+.stat-value-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.stat-value {
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+}
+.stat-change {
+  font-size: 11px;
+  font-weight: var(--font-weight-bold);
+  display: inline-flex;
+  align-items: center;
+  gap: 1px;
+}
+.stat-change svg { width: 12px; height: 12px; }
+.stat-change.up { color: var(--green); }
+.stat-change.down { color: var(--red); }
+.stat-subtext {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+// Sparkline bar in stat
+.stat-spark {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 28px;
+  flex-shrink: 0;
+}
+.stat-spark .bar {
+  width: 4px;
+  border-radius: 2px;
+  background: var(--primary);
+  opacity: 0.25;
+  transition: height 0.3s ease;
+}
+.stat-spark .bar:nth-child(odd) { opacity: 0.4; }
+.stat-spark .bar:last-child { opacity: 0.8; }
+
+// ────────────────────────
+//  CHART CARD
+// ────────────────────────
+.chart-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 16px 16px 0;
+}
+.chart-header-left .chart-stat {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.chart-tabs {
+  display: flex;
+  gap: 0;
+  background: var(--body-bg);
+  border-radius: var(--radius-sm);
+  padding: 2px;
+}
+.chart-tab {
+  padding: 4px 10px;
+  font-size: 11.5px;
+  font-weight: var(--font-weight-medium);
+  color: var(--text-muted);
+  cursor: pointer;
+  border-radius: 3px;
+  border: none;
+  background: transparent;
+  transition: background 120ms, color 120ms;
+}
+.chart-tab.active {
+  background: var(--bg-surface);
+  color: var(--text);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+}
+.chart-tab:hover:not(.active) { color: var(--text-secondary); }
+
+.chart-area {
+  padding: 16px;
+  height: 200px;
+  position: relative;
+}
+.chart-area svg { width: 100%; height: 100%; display: block; }
+.chart-grid-line {
+  stroke: var(--border-color-light);
+  stroke-width: 1;
+  stroke-dasharray: 4 3;
+}
+.chart-label {
+  font-family: var(--font);
+  font-size: 10px;
+  fill: var(--text-muted);
+}
+.chart-path {
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.chart-fill { opacity: 0.04; }
+
+// ────────────────────────
+//  ACTIVITY LIST
+// ────────────────────────
+.activity-list { list-style: none; }
+.activity-item {
+  display: flex;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-color-light);
+}
+.activity-item:last-child { border-bottom: none; }
+.activity-avatar {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 600; color: #fff;
+  flex-shrink: 0;
+}
+.activity-body {
+  flex: 1;
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+.activity-body strong { color: var(--text); font-weight: var(--font-weight-medium); }
+.activity-time {
+  font-size: 11px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  margin-top: 1px;
+}
+
+// ────────────────────────
+//  VISITORS LIST
+// ────────────────────────
+.visitor-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--border-color-light);
+  font-size: 13px;
+}
+.visitor-row:last-child { border-bottom: none; }
+.visitor-flag { font-size: 16px; line-height: 1; }
+.visitor-name { flex: 1; color: var(--text); font-weight: var(--font-weight-normal); }
+.visitor-pct { font-weight: var(--font-weight-bold); color: var(--text); min-width: 32px; text-align: right; font-size: 12.5px; }
+.visitor-bar {
+  width: 80px;
+  height: 4px;
+  background: var(--border-color-light);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.visitor-bar .fill {
+  height: 100%;
+  background: var(--primary);
+  border-radius: 2px;
+}
+
+// ────────────────────────
+//  TODO LIST
+// ────────────────────────
+.todo-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--border-color-light);
+}
+.todo-row:last-child { border-bottom: none; }
+.todo-cb {
+  width: 16px; height: 16px;
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 120ms, border-color 120ms;
+  // Pure-CSS checkmark — appears whenever .done is set, regardless of whether
+  // any child SVG exists. This makes the click-to-toggle behavior look
+  // identical to pre-rendered done states.
+  position: relative;
+}
+.todo-cb svg { display: none; }     // legacy inline SVGs are hidden — ::after handles it
+.todo-cb::after {
+  content: '';
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 4px; height: 8px;
+  border: solid #fff;
+  border-width: 0 1.5px 1.5px 0;
+  transform: translate(-55%, -65%) rotate(45deg);
+  opacity: 0;
+  transition: opacity 100ms;
+}
+.todo-cb:hover { border-color: var(--primary); }
+.todo-cb.done {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+.todo-cb.done::after { opacity: 1; }
+.todo-text {
+  flex: 1;
+  font-size: 13px;
+  color: var(--text);
+}
+.todo-row.done .todo-text {
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+.todo-date {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+.todo-prio {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+// ────────────────────────
+//  DONUT (small)
+// ────────────────────────
+.donut-block { display: flex; align-items: center; gap: 16px; }
+.donut-svg { width: 110px; height: 110px; flex-shrink: 0; position: relative; }
+.donut-svg svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+.donut-center-label {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.donut-center-label .num { font-size: 18px; font-weight: 600; line-height: 1; }
+.donut-center-label .sub { font-size: 10px; color: var(--text-muted); }
+.donut-legend { flex: 1; }
+.donut-legend-item {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 12px; color: var(--text-secondary);
+  padding: 3px 0;
+}
+.donut-legend-item .dot { width: 8px; height: 8px; border-radius: 2px; flex-shrink: 0; }
+.donut-legend-item .pct { margin-left: auto; font-weight: var(--font-weight-bold); color: var(--text); font-size: 11.5px; }
+
+// ────────────────────────
+//  APP VERSIONS (progress)
+// ────────────────────────
+.version-row {
+  display: flex; align-items: center; gap: 10px;
+  padding: 6px 0;
+}
+.version-label { font-size: 12.5px; color: var(--text-secondary); width: 48px; font-weight: var(--font-weight-medium); }
+.version-bar { flex: 1; height: 4px; background: var(--border-color-light); border-radius: 2px; overflow: hidden; }
+.version-bar .fill { height: 100%; border-radius: 2px; }
+.version-pct { font-size: 12px; color: var(--text-muted); width: 30px; text-align: right; font-weight: var(--font-weight-medium); }
+
+// ────────────────────────
+//  STORAGE WIDGET
+// ────────────────────────
+.storage-bar {
+  display: flex;
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--border-color-light);
+  margin-bottom: 12px;
+}
+.storage-bar > div { height: 100%; }
+.storage-legend {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 16px;
+}
+.storage-legend-item {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 12px; color: var(--text-secondary);
+}
+.storage-legend-item .dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+.storage-legend-item .val { margin-left: auto; font-weight: var(--font-weight-medium); color: var(--text); }
+
+// ────────────────────────
+//  PROFILE COMPLETION
+// ────────────────────────
+.profile-ring-box { text-align: center; padding: 8px 0; }
+.profile-ring-box .ring-wrap {
+  width: 80px; height: 80px;
+  margin: 0 auto 8px;
+  position: relative;
+}
+.profile-ring-box .ring-wrap svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+.ring-bg { fill: none; stroke: var(--border-color-light); stroke-width: 5; }
+.ring-fill { fill: none; stroke: var(--primary); stroke-width: 5; stroke-linecap: round; stroke-dasharray: 213.6; }
+.profile-ring-box .ring-center {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  font-size: 18px; font-weight: 600;
+}
+.profile-ring-box .ring-center span { font-size: 10px; color: var(--text-muted); font-weight: 400; }
+.profile-ring-box .note { font-size: 12px; color: var(--text-muted); }
+.profile-ring-box .ring-link {
+  display: inline-block;
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--primary);
+  font-weight: var(--font-weight-medium);
+}

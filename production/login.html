@@ -1,273 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Security headers -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.googleapis.com; img-src 'self' data: https: blob:; font-src 'self' data: https://fonts.gstatic.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; connect-src 'self' ws: wss: http://localhost:* https://api.example.com https://*.googleapis.com; frame-src 'self' https://www.youtube.com https://player.vimeo.com; media-src 'self' https: blob:; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign in | Gentelella 2026 v4</title>
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script type="module" src="/src/main-v4.js"></script>
+</head>
+<body>
 
-    <!-- Favicons -->
-    <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
-    <link rel="icon" href="../images/favicon-32x32.svg" type="image/svg+xml" sizes="32x32">
-    <link rel="icon" href="../images/favicon-16x16.svg" type="image/svg+xml" sizes="16x16">
-    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="../images/apple-touch-icon.svg" sizes="180x180">
-    <link rel="manifest" href="../site.webmanifest">
-
-    <!-- Theme color -->
-    <meta name="theme-color" content="#2a3f54">
-    <meta name="msapplication-TileColor" content="#2a3f54">
-
-    <title>Login | Gentelella</title>    
-    
-    <!-- Vite Entry Point - will bundle all styles -->
-    <script type="module" src="/src/main-minimal.js"></script>
-    
-    <style>
-      .login-bg {
-        background: linear-gradient(135deg, #2A3F54 0%, #34495e 100%);
-        min-height: 100vh;
-      }
-      .brand-logo {
-        color: #1ABB9C;
-        border: 2px solid #1ABB9C;
-        padding: 8px 10px;
-        border-radius: 50%;
-        font-size: 1.2rem;
-        margin-right: 10px;
-      }
-      .login-input-group .form-control,
-      .login-input-group .input-group-text,
-      .login-input-group .btn {
-        height: 38px;
-        line-height: 1.5;
-      }
-      .login-input-group .form-control {
-        border-radius: 0;
-      }
-      .login-input-group .input-group-text {
-        border-radius: 0.375rem 0 0 0.375rem;
-      }
-      .login-input-group .btn {
-        border-radius: 0 0.375rem 0.375rem 0;
-        border-color: rgb(222, 226, 230) !important;
-      }
-      .login-input-group .btn:hover {
-        background: rgba(0,0,0,0.05) !important;
-      }
-      .login-input-group .form-control:focus {
-        box-shadow: none;
-        border-color: #86b7fe;
-      }
-      .login-input-group .form-control::placeholder {
-        padding-left: 8px;
-      }
-      .eye-btn {
-        border-color: rgb(222, 226, 230) !important;
-        color: rgb(222, 226, 230) !important;
-      }
-    </style>
-  </head>
-
-  <body class="login-bg">
-    <div class="container-fluid d-flex align-items-center justify-content-center min-vh-100">
-      <div class="row justify-content-center w-100">
-        <div class="col-xl-4 col-lg-5 col-md-6 col-sm-8 col-10">
-          
-          <!-- Login Form Card -->
-          <div class="card" id="loginCard">
-            <div class="card-body p-5">
-              <!-- Brand Header -->
-              <div class="text-center mb-4">
-                <div class="d-flex align-items-center justify-content-center mb-3">
-                  <span class="brand-mark me-2" aria-hidden="true"></span>
-                  <h3 class="mb-0 fw-bold text-dark">Gentelella</h3>
-                </div>
-                <p class="text-muted">Please sign in to your account</p>
-              </div>
-
-              <!-- Login Form -->
-              <form id="loginForm">
-                <div class="mb-3">
-                  <label for="username" class="form-label text-muted">Username</label>
-                  <div class="input-group login-input-group">
-                    <span class="input-group-text bg-light border-end-0">
-                      <i class="fas fa-user text-muted"></i>
-                    </span>
-                    <input type="text" class="form-control border-start-0 ps-0" id="username" placeholder="Enter your username" required>
-                  </div>
-                </div>
-
-                <div class="mb-3">
-                  <label for="password" class="form-label text-muted">Password</label>
-                  <div class="input-group login-input-group">
-                    <span class="input-group-text bg-light border-end-0">
-                      <i class="fas fa-lock text-muted"></i>
-                    </span>
-                    <input type="password" class="form-control border-start-0 ps-0" id="password" placeholder="Enter your password" required>
-                    <button class="btn btn-outline-secondary border-start-0" type="button" id="togglePassword">
-                      <i class="fas fa-eye" id="eyeIcon"></i>
-                    </button>
-                  </div>
-                </div>
-
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="rememberMe">
-                    <label class="form-check-label text-muted" for="rememberMe">
-                      Remember me
-                    </label>
-                  </div>
-                  <a href="#" class="text-decoration-none" id="forgotPasswordLink">Forgot password?</a>
-                </div>
-
-                <div class="d-grid mb-3">
-                  <button type="submit" class="btn btn-primary btn-lg">
-                    <i class="fas fa-sign-in-alt me-2"></i>Sign In
-                  </button>
-                </div>
-              </form>
-
-              <!-- Divider -->
-              <div class="text-center mb-3">
-                <span class="text-muted">Don't have an account?</span>
-                <a href="#" class="text-decoration-none ms-1" id="showRegisterForm">Create Account</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Registration Form Card (Hidden by default) -->
-          <div class="card d-none" id="registerCard">
-            <div class="card-body p-5">
-              <!-- Brand Header -->
-              <div class="text-center mb-4">
-                <div class="d-flex align-items-center justify-content-center mb-3">
-                  <span class="brand-mark me-2" aria-hidden="true"></span>
-                  <h3 class="mb-0 fw-bold text-dark">Gentelella</h3>
-                </div>
-                <p class="text-muted">Create your new account</p>
-              </div>
-
-              <!-- Registration Form -->
-              <form id="registerForm">
-                <div class="mb-3">
-                  <label for="regUsername" class="form-label text-muted">Username</label>
-                  <div class="input-group login-input-group">
-                    <span class="input-group-text bg-light border-end-0">
-                      <i class="fas fa-user text-muted"></i>
-                    </span>
-                    <input type="text" class="form-control border-start-0 ps-0" id="regUsername" placeholder="Choose a username" required>
-                  </div>
-                </div>
-
-                <div class="mb-3">
-                  <label for="regEmail" class="form-label text-muted">Email Address</label>
-                  <div class="input-group login-input-group">
-                    <span class="input-group-text bg-light border-end-0">
-                      <i class="fas fa-envelope text-muted"></i>
-                    </span>
-                    <input type="email" class="form-control border-start-0 ps-0" id="regEmail" placeholder="Enter your email" required>
-                  </div>
-                </div>
-
-                <div class="mb-3">
-                  <label for="regPassword" class="form-label text-muted">Password</label>
-                  <div class="input-group login-input-group">
-                    <span class="input-group-text bg-light border-end-0">
-                      <i class="fas fa-lock text-muted"></i>
-                    </span>
-                    <input type="password" class="form-control border-start-0 ps-0" id="regPassword" placeholder="Create a password" required>
-                  </div>
-                </div>
-
-                <div class="mb-4">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="agreeTerms" required>
-                    <label class="form-check-label text-muted" for="agreeTerms">
-                      I agree to the <a href="#" class="text-decoration-none">Terms of Service</a> and <a href="#" class="text-decoration-none">Privacy Policy</a>
-                    </label>
-                  </div>
-                </div>
-
-                <div class="d-grid mb-3">
-                  <button type="submit" class="btn btn-success btn-lg">
-                    <i class="fas fa-user-plus me-2"></i>Create Account
-                  </button>
-                </div>
-              </form>
-
-              <!-- Divider -->
-              <div class="text-center mb-3">
-                <span class="text-muted">Already have an account?</span>
-                <a href="#" class="text-decoration-none ms-1" id="showLoginForm">Sign In</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Footer -->
-          <div class="text-center mt-4">
-            <p class="text-light opacity-75 mb-2">
-              &copy; 2025 All Rights Reserved. Gentelella is a Bootstrap 5 template.
-            </p>
-            <div>
-              <a href="#" class="text-light text-decoration-none opacity-75 me-3">Privacy</a>
-              <a href="#" class="text-light text-decoration-none opacity-75 me-3">Terms</a>
-              <a href="#" class="text-light text-decoration-none opacity-75">Support</a>
-            </div>
-          </div>
-
-        </div>
-      </div>
+<div class="auth-page">
+  <div class="auth-card">
+    <div class="auth-brand">
+      <div class="brand-icon">G</div>
+      <div class="brand-name">Gentelella <small style="font-weight:400;color:var(--text-muted);font-size:13px;margin-left:2px">v4</small></div>
     </div>
 
-    <!-- JavaScript for form switching and password toggle -->
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const loginCard = document.getElementById('loginCard');
-        const registerCard = document.getElementById('registerCard');
-        const showRegisterForm = document.getElementById('showRegisterForm');
-        const showLoginForm = document.getElementById('showLoginForm');
-        const togglePassword = document.getElementById('togglePassword');
-        const passwordInput = document.getElementById('password');
-        const eyeIcon = document.getElementById('eyeIcon');
+    <div class="auth-title">Welcome back</div>
+    <div class="auth-subtitle">Sign in to continue to your dashboard.</div>
 
-        // Form switching
-        showRegisterForm.addEventListener('click', function(e) {
-          e.preventDefault();
-          loginCard.classList.add('d-none');
-          registerCard.classList.remove('d-none');
-        });
+    <form onsubmit="event.preventDefault(); window.location.href='index.html';">
+      <div class="form-group">
+        <label class="form-label" for="email">Email</label>
+        <div class="input-group">
+          <svg class="input-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="12" height="10" rx="1.5"/><path d="M2 5l6 4 6-4"/></svg>
+          <input type="email" id="email" class="form-control" placeholder="you@company.com" required>
+        </div>
+      </div>
 
-        showLoginForm.addEventListener('click', function(e) {
-          e.preventDefault();
-          registerCard.classList.add('d-none');
-          loginCard.classList.remove('d-none');
-        });
+      <div class="form-group">
+        <label class="form-label" for="password">Password</label>
+        <div class="input-group">
+          <svg class="input-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="7" width="10" height="7" rx="1.5"/><path d="M5 7V5a3 3 0 016 0v2"/></svg>
+          <input type="password" id="password" class="form-control" placeholder="••••••••" required>
+        </div>
+      </div>
 
-        // Password toggle
-        togglePassword.addEventListener('click', function() {
-          const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-          passwordInput.setAttribute('type', type);
-          eyeIcon.classList.toggle('fa-eye');
-          eyeIcon.classList.toggle('fa-eye-slash');
-        });
+      <div class="auth-actions">
+        <label class="form-check">
+          <input type="checkbox" checked> Remember me
+        </label>
+        <a href="forgot_password.html">Forgot password?</a>
+      </div>
 
-        // Form submissions (redirect to dashboard)
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-          e.preventDefault();
-          window.location.href = 'index.html';
-        });
+      <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;height:38px">
+        Sign in
+      </button>
+    </form>
 
-        document.getElementById('registerForm').addEventListener('submit', function(e) {
-          e.preventDefault();
-          window.location.href = 'index.html';
-        });
-      });
-    </script>
-  </body>
+    <div class="auth-divider">or continue with</div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+      <button class="btn btn-outline" style="justify-content:center">
+        <svg viewBox="0 0 16 16" fill="currentColor" style="color:#4285F4"><path d="M14.5 8.16c0-.5-.05-1-.13-1.5H8v2.83h3.65a3.13 3.13 0 01-1.36 2.05v1.7h2.2c1.28-1.18 2.01-2.92 2.01-5.08z"/><path d="M8 15c1.83 0 3.36-.6 4.49-1.65l-2.2-1.7c-.6.4-1.38.65-2.29.65-1.76 0-3.25-1.19-3.78-2.78H1.95v1.74A6.74 6.74 0 008 15z" fill="#34A853"/><path d="M4.22 9.52a4.07 4.07 0 010-2.59V5.19H1.95a6.74 6.74 0 000 5.62l2.27-1.29z" fill="#FBBC04"/><path d="M8 4.46c.99 0 1.88.34 2.59 1l1.94-1.94A6.74 6.74 0 008 1.5a6.74 6.74 0 00-6.05 3.69L4.22 6.93C4.75 5.34 6.24 4.46 8 4.46z" fill="#EA4335"/></svg>
+        Google
+      </button>
+      <button class="btn btn-outline" style="justify-content:center">
+        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0a8 8 0 00-2.53 15.59c.4.07.55-.17.55-.38v-1.34c-2.23.48-2.69-1.07-2.69-1.07-.36-.92-.89-1.16-.89-1.16-.73-.5.05-.49.05-.49.8.06 1.23.83 1.23.83.71 1.23 1.87.87 2.33.67.07-.52.28-.87.5-1.07-1.78-.2-3.64-.89-3.64-3.96 0-.87.31-1.59.83-2.15-.08-.2-.36-1.02.08-2.13 0 0 .67-.21 2.2.82a7.66 7.66 0 014 0c1.53-1.03 2.2-.82 2.2-.82.44 1.11.16 1.93.08 2.13.51.56.83 1.28.83 2.15 0 3.07-1.87 3.76-3.65 3.95.29.25.54.74.54 1.5v2.22c0 .21.14.46.55.38A8 8 0 008 0z"/></svg>
+        GitHub
+      </button>
+    </div>
+
+    <div class="auth-footer">
+      Don't have an account? <a href="register.html">Create one</a>
+    </div>
+  </div>
+</div>
+
+</body>
 </html>

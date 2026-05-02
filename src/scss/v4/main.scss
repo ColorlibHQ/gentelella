@@ -1,0 +1,12 @@
+// Gentelella 2026 v4 — main entry
+// Self-contained design system, no Bootstrap (uses own .row/.col-* grid).
+
+@use "tokens";
+@use "layout";
+@use "components";
+@use "forms";
+@use "widgets";
+@use "pages";
+@use "datatable";
+@use "auth";
+@use "apps";

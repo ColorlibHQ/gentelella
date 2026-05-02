@@ -1,0 +1,622 @@
+// Layout: sidebar, topbar, main, grid, footer, responsive
+
+// ────────────────────────
+//  SKIP LINK + FOCUS
+// ────────────────────────
+.skip-link {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 200;
+  padding: 8px 14px;
+  background: var(--primary);
+  color: #fff;
+  border-radius: var(--radius);
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+  transform: translateY(-200%);
+  transition: transform 150ms ease;
+}
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+// Single visible focus style for keyboard users. :focus-visible avoids
+// rings on mouse clicks while preserving the accessibility cue on Tab.
+:focus { outline: none; }
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+.nav-link:focus-visible { outline-color: var(--primary); outline-offset: -2px; }
+.search-box input:focus-visible { outline: none; } // input's own box-shadow handles it
+#main-content:focus { outline: none; } // programmatic focus target only
+
+// ────────────────────────
+//  SIDEBAR
+// ────────────────────────
+.sidebar {
+  position: fixed;
+  left: 0; top: 0; bottom: 0;
+  width: var(--sidebar-w);
+  background: var(--sidebar-bg);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  // Animate width changes when the rail-mode toggle fires; on mobile the
+  // sidebar uses a transform-based slide instead so this is harmless there.
+  transition: width 220ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+.sidebar-brand {
+  height: 56px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid var(--sidebar-border);
+  flex-shrink: 0;
+}
+.brand-icon {
+  width: 28px; height: 28px;
+  background: var(--primary);
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 13px;
+}
+.brand-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: -0.2px;
+}
+.brand-name small {
+  font-weight: 400;
+  color: var(--sidebar-text);
+  font-size: 13px;
+  margin-left: 2px;
+}
+
+.sidebar-nav {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px 0;
+}
+.sidebar-nav::-webkit-scrollbar { width: 3px; }
+.sidebar-nav::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); border-radius: 3px; }
+
+.nav-group { padding: 0 8px; margin-bottom: 2px; }
+.nav-label {
+  padding: 16px 12px 4px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: rgba(123,143,163,0.5);
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  color: var(--sidebar-text);
+  font-size: 13px;
+  font-weight: var(--font-weight-normal);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 120ms, color 120ms;
+  margin-bottom: 1px;
+  min-height: 32px;
+}
+.nav-link:hover {
+  color: var(--sidebar-text-hover);
+  background: var(--sidebar-hover);
+  text-decoration: none;
+}
+.nav-link.active {
+  color: var(--sidebar-text-active);
+  background: var(--sidebar-active);
+  font-weight: var(--font-weight-medium);
+}
+.nav-link .icon {
+  width: 18px; height: 18px;
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+.nav-link:hover .icon, .nav-link.active .icon { opacity: 0.85; }
+.nav-link .badge {
+  margin-left: auto;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 1px 6px;
+  border-radius: 3px;
+  line-height: 1.6;
+}
+.badge-red { background: rgba(214,57,57,0.15); color: #f87171; }
+.badge-teal { background: var(--primary-lt); color: var(--primary); }
+.badge-blue { background: rgba(66,153,225,0.12); color: #60a5fa; }
+
+// ────────────────────────
+//  SIDEBAR SUBMENU
+// ────────────────────────
+// Collapsed by default; only the group containing the active page auto-opens.
+// Click a parent to expand/collapse — accordion behavior: opening one closes
+// other open groups in the sidebar (one open at a time).
+.nav-tree { display: flex; flex-direction: column; }
+
+// Parent ("toggle") — same shape as a flat .nav-link, plus a chevron.
+.nav-toggle {
+  background: transparent;
+  border: 0;
+  font: inherit;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+}
+.nav-toggle .nav-text { flex: 1; }
+.nav-chev {
+  margin-left: auto;
+  opacity: 0.55;
+  transition: transform 200ms cubic-bezier(0.2, 0, 0, 1), opacity 120ms;
+  flex-shrink: 0;
+}
+.nav-toggle:hover .nav-chev { opacity: 0.9; }
+.nav-tree.open > .nav-toggle .nav-chev { transform: rotate(90deg); opacity: 1; }
+
+// When the active page lives inside a tree, give the parent a subtle accent
+// even when the tree is collapsed, so the user knows "they're in this group".
+.nav-tree.has-active > .nav-toggle {
+  color: var(--sidebar-text-hover);
+}
+.nav-tree.has-active > .nav-toggle .icon { opacity: 0.85; }
+
+// Smooth expand/collapse using grid-template-rows trick (no JS height calc).
+.nav-tree .nav-sub {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 220ms cubic-bezier(0.2, 0, 0, 1);
+}
+.nav-tree.open .nav-sub { grid-template-rows: 1fr; }
+.nav-tree .nav-sub > .nav-sub-inner {
+  overflow: hidden;
+  min-height: 0;
+  // Left guide rail that connects parent → children visually.
+  position: relative;
+  padding: 4px 0 4px 28px;
+}
+// Vertical guide line — sits flush with the icon column above.
+.nav-tree .nav-sub > .nav-sub-inner::before {
+  content: '';
+  position: absolute;
+  left: 19px;
+  top: 4px;
+  bottom: 4px;
+  width: 1px;
+  background: var(--sidebar-border);
+}
+.nav-tree.open .nav-sub > .nav-sub-inner::before {
+  background: rgba(255, 255, 255, 0.10);
+}
+
+.nav-sublink {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 12px;
+  font-size: 12.5px;
+  color: var(--sidebar-text);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  position: relative;
+  margin: 1px 0;
+  transition: background 120ms, color 120ms, transform 120ms;
+}
+// Tiny horizontal "tick" connecting the rail to the link — a subtle but
+// effective hierarchy cue without using bullets.
+.nav-sublink::before {
+  content: '';
+  position: absolute;
+  left: -9px;
+  top: 50%;
+  width: 8px;
+  height: 1px;
+  background: var(--sidebar-border);
+  transform: translateY(-50%);
+  transition: background 120ms, width 120ms;
+}
+.nav-sublink:hover {
+  color: var(--sidebar-text-hover);
+  background: var(--sidebar-hover);
+  text-decoration: none;
+}
+.nav-sublink:hover::before { background: rgba(255, 255, 255, 0.25); }
+.nav-sublink.active {
+  color: var(--sidebar-text-active);
+  background: var(--sidebar-active);
+  font-weight: var(--font-weight-medium);
+  // Active rail tick becomes primary teal and slightly bolder.
+  &::before { background: var(--primary); width: 12px; left: -13px; }
+}
+.nav-sublink .badge {
+  margin-left: auto;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 1px 6px;
+  border-radius: 3px;
+  line-height: 1.6;
+}
+
+// Sidebar footer / profile
+.sidebar-footer {
+  border-top: 1px solid var(--sidebar-border);
+  padding: 8px;
+  flex-shrink: 0;
+}
+.sidebar-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px;
+  border-radius: var(--radius-sm);
+  transition: background 120ms;
+  cursor: pointer;
+}
+.sidebar-user:hover { background: var(--sidebar-hover); }
+.sidebar-user .avatar {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dk));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 600; color: #fff;
+  flex-shrink: 0;
+  position: relative;
+}
+.sidebar-user .avatar .online {
+  position: absolute; bottom: -1px; right: -1px;
+  width: 8px; height: 8px;
+  background: var(--green);
+  border: 2px solid var(--sidebar-bg);
+  border-radius: 50%;
+}
+.sidebar-user-info { flex: 1; min-width: 0; }
+.sidebar-user-info .name {
+  color: #fff;
+  font-size: 12.5px;
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.sidebar-user-info .role {
+  color: var(--sidebar-text);
+  font-size: 11px;
+  line-height: 1.2;
+}
+.sidebar-user .more-btn {
+  width: 24px; height: 24px;
+  border: none; background: transparent;
+  color: var(--sidebar-text);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: var(--radius-sm);
+  opacity: 0;
+  transition: opacity 120ms;
+}
+.sidebar-user:hover .more-btn { opacity: 1; }
+
+// ────────────────────────
+//  TOPBAR
+// ────────────────────────
+.topbar {
+  position: fixed;
+  top: 0;
+  left: var(--sidebar-w);
+  right: 0;
+  height: 56px;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  z-index: 90;
+  transition: left 220ms cubic-bezier(0.2, 0, 0, 1);
+}
+.topbar-left { display: flex; align-items: center; gap: 12px; }
+
+// Sidebar toggle is now always visible — collapses to rail on desktop,
+// opens drawer on mobile. The legacy media-query that hid it is gone.
+.sidebar-toggle {
+  display: inline-flex;
+  width: 34px;
+  height: 34px;
+  border: none;
+  background: transparent;
+  border-radius: var(--radius-sm);
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: background 120ms, color 120ms;
+}
+.sidebar-toggle:hover { background: var(--body-bg); color: var(--text); }
+.sidebar-toggle svg { width: 18px; height: 18px; }
+
+.sidebar-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  z-index: 95;
+  opacity: 1;
+  transition: opacity 180ms ease;
+}
+.sidebar-backdrop[hidden] { display: none; }
+.breadcrumb {
+  display: flex; align-items: center; gap: 4px;
+  font-size: 13px; color: var(--text-muted);
+}
+.breadcrumb .current { color: var(--text); font-weight: var(--font-weight-medium); }
+.breadcrumb .sep { color: var(--text-disabled); }
+
+.search-box {
+  position: relative;
+  width: 240px;
+}
+.search-box input {
+  width: 100%;
+  height: 32px;
+  padding: 0 10px 0 32px;
+  background: var(--body-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  font: inherit;
+  font-size: 13px;
+  color: var(--text);
+  outline: none;
+  transition: border-color 150ms, box-shadow 150ms;
+}
+.search-box input::placeholder { color: var(--text-disabled); }
+.search-box input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-lt);
+}
+.search-box .s-icon {
+  position: absolute;
+  left: 9px; top: 50%;
+  transform: translateY(-50%);
+  width: 14px; height: 14px;
+  color: var(--text-muted);
+}
+.search-box kbd {
+  position: absolute;
+  right: 6px; top: 50%;
+  transform: translateY(-50%);
+  padding: 0 5px;
+  font-family: inherit;
+  font-size: 10px;
+  color: var(--text-muted);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 3px;
+  line-height: 18px;
+}
+
+.topbar-right { display: flex; align-items: center; gap: 2px; }
+.tb-btn {
+  width: 32px; height: 32px;
+  border: none; background: transparent;
+  border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: background 120ms, color 120ms;
+  position: relative;
+}
+.tb-btn:hover { background: var(--body-bg); color: var(--text); }
+.tb-btn svg { width: 18px; height: 18px; }
+.tb-btn .dot {
+  position: absolute; top: 6px; right: 6px;
+  width: 6px; height: 6px;
+  background: var(--red);
+  border: 1.5px solid white;
+  border-radius: 50%;
+}
+.tb-avatar {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dk));
+  display: flex; align-items: center; justify-content: center;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  color: white;
+  margin-left: 6px;
+  cursor: pointer;
+  padding: 0;
+  transition: transform 120ms;
+}
+.tb-avatar:hover { transform: scale(1.06); }
+
+// ────────────────────────
+//  MAIN LAYOUT
+// ────────────────────────
+.main {
+  margin-left: var(--sidebar-w);
+  padding-top: 56px;
+  min-height: 100vh;
+  transition: margin-left 220ms cubic-bezier(0.2, 0, 0, 1);
+}
+.page-wrapper { padding: 20px 24px 40px; }
+
+// Page header
+.page-header { margin-bottom: 20px; }
+.page-pretitle {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--text-muted);
+  margin-bottom: 2px;
+}
+.page-title {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--text);
+}
+.page-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.page-actions { display: flex; gap: 6px; }
+
+// ────────────────────────
+//  GRID
+// ────────────────────────
+.row { display: grid; gap: 16px; margin-bottom: 16px; }
+.row:last-child { margin-bottom: 0; }
+// minmax(0, …) lets wide intrinsic content (tables, charts, long text)
+// stay contained within its grid track instead of pushing the track wider
+// than its share. Critical for tables and chart cards.
+.col-4   { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.col-3   { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.col-2   { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.col-8-4 { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); }
+.col-4-8 { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); }
+.col-1   { grid-template-columns: 1fr; }
+
+// ────────────────────────
+//  FOOTER
+// ────────────────────────
+.footer {
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border-color-light);
+}
+.footer a { color: var(--primary); }
+
+// ────────────────────────
+//  RESPONSIVE
+// ────────────────────────
+// Asymmetric 8-4 / 4-8 splits stack first — the narrow column gets cramped
+// well before 3-col rows do (charts legend, sidebar widgets need ~340px).
+@media (max-width: 1100px) {
+  .col-8-4, .col-4-8 { grid-template-columns: 1fr; }
+}
+// col-4 → col-2 first since 4 wide tiles cramp earliest
+@media (max-width: 1200px) {
+  .col-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+// 3-col rows drop to 2 here — at this width with the sidebar visible the
+// content area is ~640px, so 3 cards (~210px each) become uncomfortably
+// narrow for stat sparklines + value rows.
+@media (max-width: 920px) {
+  .col-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+    transition: transform 220ms ease;
+    will-change: transform;
+  }
+  .sidebar.open { transform: translateX(0); }
+  .main { margin-left: 0; }
+  .topbar { left: 0; }
+  .col-4, .col-3, .col-2 { grid-template-columns: 1fr; }
+  .page-wrapper { padding: 12px; }
+  body.sidebar-open { overflow: hidden; }
+  // Mobile rail mode never applies — drawer handles narrow viewports.
+  body.sidebar-rail .sidebar { width: var(--sidebar-w); }
+}
+@media (min-width: 769px) {
+  .sidebar-backdrop { display: none !important; }
+}
+
+// ────────────────────────
+//  RAIL MODE (desktop sidebar collapsed to icons)
+// ────────────────────────
+// Activated by `body.sidebar-rail`. Shrinks the sidebar to a 64px icon column
+// while keeping all click targets reachable. Submenus collapse and re-open as
+// flyout menus (handled in shell.js). Only applies above 768px — mobile uses
+// the drawer instead.
+@media (min-width: 769px) {
+  body.sidebar-rail {
+    --sidebar-w: 64px;
+  }
+  body.sidebar-rail .sidebar { overflow: visible; }
+  body.sidebar-rail .sidebar-brand {
+    padding: 0;
+    justify-content: center;
+  }
+  body.sidebar-rail .brand-name { display: none; }
+  body.sidebar-rail .nav-group { padding: 0 8px; }
+  body.sidebar-rail .nav-label { display: none; }
+  body.sidebar-rail .nav-link {
+    justify-content: center;
+    gap: 0;
+    padding: 8px;
+    position: relative;
+  }
+  body.sidebar-rail .nav-link .nav-text,
+  body.sidebar-rail .nav-link .badge { display: none; }
+  body.sidebar-rail .nav-chev { display: none; }
+  // Submenu inline tree is hidden in rail mode — flyout takes over.
+  body.sidebar-rail .nav-tree .nav-sub { display: none; }
+  body.sidebar-rail .sidebar-user {
+    padding: 8px;
+    justify-content: center;
+  }
+  body.sidebar-rail .sidebar-user-info,
+  body.sidebar-rail .sidebar-user .more-btn { display: none; }
+
+  // Hover tooltip — uses ::after off the nav-link so we don't add markup.
+  // The tooltip text comes from a `data-rail-label` attribute that we set
+  // dynamically in shell.js when rail mode is enabled.
+  body.sidebar-rail .nav-link[data-rail-label]::after {
+    content: attr(data-rail-label);
+    position: absolute;
+    left: calc(100% + 12px);
+    top: 50%;
+    transform: translateY(-50%) translateX(-4px);
+    background: var(--text);
+    color: var(--bg-surface);
+    font-size: 11.5px;
+    font-weight: var(--font-weight-medium);
+    padding: 5px 9px;
+    border-radius: var(--radius-sm);
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 120ms, transform 120ms;
+    z-index: 110;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.18);
+  }
+  body.sidebar-rail .nav-link[data-rail-label]:hover::after,
+  body.sidebar-rail .nav-link[data-rail-label]:focus-visible::after {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
+
+  // Rotate the toggle icon when collapsed for visual affordance.
+  body.sidebar-rail .sidebar-toggle svg { transform: rotate(180deg); }
+  .sidebar-toggle svg { transition: transform 200ms ease; }
+}

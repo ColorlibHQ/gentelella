@@ -1,0 +1,178 @@
+// DataTables (v2) UI overrides — match v4 design system
+
+// Row selection — applied when any row checkbox is checked.
+table.has-selection tbody tr:has(input[type="checkbox"]:checked) {
+  background: var(--primary-lt);
+}
+.bulk-selection-count {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-right: 12px;
+}
+.btn-sm {
+  height: 28px;
+  padding: 0 10px;
+  font-size: 12px;
+}
+
+
+// DataTables wraps its rendered table in `.dt-container` and adds layout slots
+// `.dt-layout-row`, `.dt-search`, `.dt-info`, `.dt-paging`.
+.dt-container {
+  font-family: var(--font);
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+// Top toolbar (search + length)
+.dt-layout-row.dt-layout-table { padding: 0; }
+.dt-layout-row:not(.dt-layout-table) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  gap: 12px;
+}
+.dt-layout-row + .dt-layout-row.dt-layout-table { border-top: 1px solid var(--border-color-light); }
+.dt-layout-row.dt-layout-table + .dt-layout-row { border-top: 1px solid var(--border-color-light); }
+
+// Search input
+.dt-search {
+  position: relative;
+  width: 220px;
+}
+.dt-search label { display: none; }
+.dt-search input {
+  width: 100%;
+  height: 32px;
+  padding: 0 10px 0 32px;
+  background: var(--body-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  font: inherit;
+  font-size: 13px;
+  color: var(--text);
+  outline: none;
+  transition: border-color 150ms, box-shadow 150ms;
+}
+.dt-search::before {
+  content: '';
+  position: absolute;
+  left: 9px; top: 50%;
+  width: 14px; height: 14px;
+  transform: translateY(-50%);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%239ba5b1' stroke-width='1.5'%3E%3Ccircle cx='7' cy='7' r='5'/%3E%3Cpath d='M11 11l3.5 3.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+.dt-search input::placeholder { color: var(--text-disabled); }
+.dt-search input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-lt);
+}
+
+// Info text (Showing 1–10 of 100)
+.dt-info {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+// Pagination
+.dt-paging {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.dt-paging .dt-paging-button {
+  min-width: 28px;
+  height: 28px;
+  padding: 0 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: var(--font-weight-medium);
+  color: var(--text-secondary);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 100ms, color 100ms, border-color 100ms;
+}
+.dt-paging .dt-paging-button:hover:not(.disabled):not(.current) {
+  background: var(--bg-surface-secondary);
+  color: var(--text);
+}
+.dt-paging .dt-paging-button.current {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary-dk);
+}
+.dt-paging .dt-paging-button.disabled {
+  color: var(--text-disabled);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+.dt-paging .ellipsis { color: var(--text-disabled); padding: 0 4px; font-size: 12px; }
+
+// Table sort indicators — DataTables v2 emits <span class="dt-column-order">
+// inside <th><div class="dt-column-header">…</div></th>. We render a small
+// stacked-chevron icon there with three states: idle (both muted), asc (top
+// chevron in primary), desc (bottom chevron in primary).
+table.dataTable thead th {
+  position: relative;
+  user-select: none;
+}
+table.dataTable thead th .dt-column-header {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+table.dataTable thead th.dt-orderable-asc,
+table.dataTable thead th.dt-orderable-desc { cursor: pointer; }
+table.dataTable thead th[data-orderable="false"],
+table.dataTable thead th.dt-orderable-none { cursor: default; }
+table.dataTable thead th.dt-orderable-none .dt-column-order { display: none; }
+
+// The order indicator
+.dt-column-order {
+  display: inline-block;
+  width: 10px;
+  height: 14px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 10px 14px;
+  border-radius: 3px;
+  opacity: 0.7;
+  transition: opacity 120ms, background-color 120ms;
+  // Idle state: both chevrons muted.
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 14'%3E%3Cpath fill='%239ba5b1' d='M5 1L1 5h8z'/%3E%3Cpath fill='%239ba5b1' d='M5 13L1 9h8z'/%3E%3C/svg%3E");
+}
+table.dataTable thead th:hover .dt-column-order { opacity: 1; }
+
+// Active ascending
+table.dataTable thead th.dt-ordering-asc .dt-column-order {
+  opacity: 1;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 14'%3E%3Cpath fill='%231ABB9C' d='M5 1L1 5h8z'/%3E%3Cpath fill='%23d8dee5' d='M5 13L1 9h8z'/%3E%3C/svg%3E");
+}
+// Active descending
+table.dataTable thead th.dt-ordering-desc .dt-column-order {
+  opacity: 1;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 14'%3E%3Cpath fill='%23d8dee5' d='M5 1L1 5h8z'/%3E%3Cpath fill='%231ABB9C' d='M5 13L1 9h8z'/%3E%3C/svg%3E");
+}
+// Subtle bg + clear focus on the order span (it has tabindex=0)
+.dt-column-order:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+// Highlight active sort column header
+table.dataTable thead th.dt-ordering-asc .dt-column-title,
+table.dataTable thead th.dt-ordering-desc .dt-column-title { color: var(--text); }
+
+// "No matches found" empty row
+table.dataTable .dt-empty {
+  text-align: center;
+  padding: 32px 16px;
+  color: var(--text-muted);
+}

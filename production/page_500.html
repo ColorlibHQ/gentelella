@@ -1,158 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Security headers -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.googleapis.com; img-src 'self' data: https: blob:; font-src 'self' data: https://fonts.gstatic.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; connect-src 'self' ws: wss: http://localhost:* https://api.example.com https://*.googleapis.com; frame-src 'self' https://www.youtube.com https://player.vimeo.com; media-src 'self' https: blob:; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Server error | Gentelella 2026 v4</title>
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script type="module" src="/src/main-v4.js"></script>
+</head>
+<body>
 
-    <!-- Favicons -->
-    <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
-    <link rel="icon" href="../images/favicon-32x32.svg" type="image/svg+xml" sizes="32x32">
-    <link rel="icon" href="../images/favicon-16x16.svg" type="image/svg+xml" sizes="16x16">
-    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="../images/apple-touch-icon.svg" sizes="180x180">
-    <link rel="manifest" href="../site.webmanifest">
-
-    <!-- Theme color -->
-    <meta name="theme-color" content="#2a3f54">
-    <meta name="msapplication-TileColor" content="#2a3f54">
-
-    <title>500 Server Error | Gentelella</title>    
-    
-    <!-- Vite Entry Point - will bundle all styles -->
-    <script type="module" src="/src/main-minimal.js"></script>
-    
-    <style>
-      .error-bg {
-        background: linear-gradient(135deg, #2A3F54 0%, #34495e 100%);
-        min-height: 100vh;
-      }
-      .brand-logo {
-        color: #1ABB9C;
-        border: 2px solid #1ABB9C;
-        padding: 8px 10px;
-        border-radius: 50%;
-        font-size: 1.2rem;
-        margin-right: 10px;
-      }
-    </style>
-  </head>
-
-  <body class="error-bg">
-    <div class="container-fluid d-flex align-items-center justify-content-center min-vh-100">
-      <div class="row justify-content-center w-100">
-        <div class="col-lg-6 col-md-8 col-sm-10">
-          <div class="card">
-            <div class="card-body text-center p-5">
-              <!-- Brand Header -->
-              <div class="text-center mb-4">
-                <div class="d-flex align-items-center justify-content-center mb-3">
-                  <span class="brand-mark me-2" aria-hidden="true"></span>
-                  <h3 class="mb-0 fw-bold text-dark">Gentelella</h3>
-                </div>
-              </div>
-
-              <!-- Error Icon and Number -->
-              <div class="mb-4">
-                <i class="fas fa-times-circle text-danger mb-3" style="font-size: 6rem;"></i>
-                <h1 class="display-1 fw-bold text-danger mb-0">500</h1>
-              </div>
-              
-              <!-- Error Message -->
-              <div class="mb-4">
-                <h2 class="h3 text-dark mb-3">Internal Server Error</h2>
-                <p class="text-muted lead">Something went wrong on our end. We're working to fix this issue. Please try again later.</p>
-              </div>
-
-              <!-- Action Buttons -->
-              <div class="d-grid gap-2 d-md-block mb-4">
-                <a href="index.html" class="btn btn-primary btn-lg me-md-2">
-                  <i class="fas fa-home me-2"></i>Go Home
-                </a>
-                <button type="button" class="btn btn-outline-secondary btn-lg" onclick="location.reload()">
-                  <i class="fas fa-redo me-2"></i>Try Again
-                </button>
-              </div>
-
-              <!-- Status Info -->
-              <div class="border-top pt-4">
-                <div class="row text-center">
-                  <div class="col-md-4 mb-3">
-                    <div class="d-flex flex-column align-items-center">
-                      <i class="fas fa-tools text-info fs-1 mb-2"></i>
-                      <h6 class="text-dark">Fixing</h6>
-                      <small class="text-muted">Our team is on it</small>
-                    </div>
-                  </div>
-                  <div class="col-md-4 mb-3">
-                    <div class="d-flex flex-column align-items-center">
-                      <i class="fas fa-clock text-warning fs-1 mb-2"></i>
-                      <h6 class="text-dark">Please Wait</h6>
-                      <small class="text-muted">We'll be back soon</small>
-                    </div>
-                  </div>
-                  <div class="col-md-4 mb-3">
-                    <div class="d-flex flex-column align-items-center">
-                      <i class="fas fa-headset text-success fs-1 mb-2"></i>
-                      <h6 class="text-dark">Support</h6>
-                      <small class="text-muted">We're here to help</small>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Error Details -->
-              <div class="mt-4 p-3 bg-light rounded">
-                <div class="text-start">
-                  <h6 class="text-muted mb-2">Error Details:</h6>
-                  <small class="text-muted d-block">Error ID: ERR-500-<span id="errorId"></span></small>
-                  <small class="text-muted d-block">Timestamp: <span id="timestamp"></span></small>
-                </div>
-              </div>
-
-              <!-- Help Links -->
-              <div class="mt-4">
-                <small class="text-muted">
-                  Need immediate help? 
-                  <a href="#" class="text-decoration-none">Contact Support</a> | 
-                  <a href="#" class="text-decoration-none">Status Page</a> | 
-                  <a href="#" class="text-decoration-none">Report Issue</a>
-                </small>
-              </div>
-            </div>
-          </div>
-
-          <!-- Footer -->
-          <div class="text-center mt-4">
-            <p class="text-light opacity-75 mb-2">
-              &copy; 2025 All Rights Reserved. Gentelella is a Bootstrap 5 template.
-            </p>
-            <div>
-              <a href="#" class="text-light text-decoration-none opacity-75 me-3">Privacy</a>
-              <a href="#" class="text-light text-decoration-none opacity-75 me-3">Terms</a>
-              <a href="#" class="text-light text-decoration-none opacity-75">Support</a>
-            </div>
-          </div>
-
-        </div>
-      </div>
+<div class="error-page">
+  <div class="error-content">
+    <div class="error-code">500</div>
+    <div class="error-title">Something went wrong</div>
+    <div class="error-message">
+      We hit an unexpected error on our end. Our team has been notified.
+      Try refreshing the page in a moment, or head back to the dashboard.
     </div>
+    <div class="error-actions">
+      <a href="index.html" class="btn btn-primary">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2L2 7v7h12V7L8 2z"/><path d="M6 14V9h4v5"/></svg>
+        Back to dashboard
+      </a>
+      <a href="javascript:location.reload()" class="btn btn-outline">↻ Try again</a>
+    </div>
+  </div>
+</div>
 
-    <script>
-      // Generate random error ID and timestamp
-      document.addEventListener('DOMContentLoaded', function() {
-        const errorId = Math.random().toString(36).substr(2, 9).toUpperCase();
-        const timestamp = new Date().toLocaleString();
-        
-        document.getElementById('errorId').textContent = errorId;
-        document.getElementById('timestamp').textContent = timestamp;
-      });
-    </script>
-  </body>
+</body>
 </html>

@@ -1,759 +1,336 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profile | Gentelella 2026 v4</title>
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script type="module" src="/src/main-v4.js"></script>
+</head>
+<body data-shell="admin" data-page="profile" data-breadcrumb="Home > Profile">
 
-    <!-- Security headers -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.googleapis.com; img-src 'self' data: https: blob:; font-src 'self' data: https://fonts.gstatic.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; connect-src 'self' ws: wss: http://localhost:* https://api.example.com https://*.googleapis.com; frame-src 'self' https://www.youtube.com https://player.vimeo.com; media-src 'self' https: blob:; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
+<main class="main">
+<div class="page-wrapper">
 
-    <!-- Favicons -->
-    <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
-    <link rel="icon" href="../images/favicon-32x32.svg" type="image/svg+xml" sizes="32x32">
-    <link rel="icon" href="../images/favicon-16x16.svg" type="image/svg+xml" sizes="16x16">
-    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="../images/apple-touch-icon.svg" sizes="180x180">
-    <link rel="manifest" href="../site.webmanifest">
+  <div class="page-header">
+    <div class="page-header-row">
+      <div>
+        <div class="page-pretitle">Account</div>
+        <div class="page-title">Your profile</div>
+      </div>
+      <div class="page-actions">
+        <button class="btn btn-outline">Cancel</button>
+        <button class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
 
-    <!-- Theme color -->
-    <meta name="theme-color" content="#2a3f54">
-    <meta name="msapplication-TileColor" content="#2a3f54">
-
-    <title>User Profile | Gentelella</title>
-    <!-- Compiled CSS (includes Bootstrap, Font Awesome, and all vendor styles) -->
-    <script type="module" src="/src/main-minimal.js"></script>
-    
-    <style>
-      /* Minimal custom styles - mostly using Bootstrap 5 classes */
-      .profile-header {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        border-radius: 15px;
-      }
-      
-      .profile-avatar {
-        width: 150px;
-        height: 150px;
-        border: 5px solid white;
-        transition: transform 0.3s ease;
-      }
-      
-      .profile-avatar:hover {
-        transform: scale(1.05);
-      }
-      
-      .skill-progress .progress {
-        height: 8px;
-      }
-      
-      .activity-timeline::before {
-        content: '';
-        position: absolute;
-        left: 1rem;
-        top: 0;
-        bottom: 0;
-        width: 2px;
-        background: #e9ecef;
-      }
-      
-      .timeline-item::before {
-        content: '';
-        position: absolute;
-        left: -0.5rem;
-        top: 1.5rem;
-        width: 12px;
-        height: 12px;
-        background: #007bff;
-        border-radius: 50%;
-        border: 3px solid white;
-        box-shadow: 0 0 0 3px #e9ecef;
-      }
-    </style>
-  </head>
-
-  <body class="nav-md page-profile">
-    <div class="container body">
-      <div class="main_container">
-        <aside class="col-md-3 left_col" aria-label="Sidebar navigation">
-          <div class="left_col scroll-view">
-            <div class="navbar nav_title border-0">
-              <a href="index.html" class="site_title"><img src="../images/logo.svg" alt="Gentelella Admin" class="logo-full logo-main" loading="lazy"><img src="../images/logo-icon.svg" alt="Gentelella" class="logo-icon" loading="lazy"></a>
-            </div>
-
-            <div class="clearfix"></div>
-
-            <!-- menu profile quick info -->
-            <div class="profile clearfix">
-              <div class="profile_pic">
-                <img src="../images/img.jpg" alt="User profile photo" class="img-circle profile_img" loading="lazy">
-              </div>
-              <div class="profile_info">
-                <span>Welcome,</span>
-                <h4>John Doe</h4>
-              </div>
-            </div>
-            <!-- /menu profile quick info -->
-
-            <br />
-
-            <!-- sidebar menu -->
-            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-              <div class="menu_section">
-                <h3>General</h3>
-                <ul class="nav side-menu">
-                  <li><a href="https://dashboardpack.com/?utm_source=gentelella&utm_medium=sidebar&utm_campaign=premium" target="_blank"><i class="bi bi-stars"></i> Go Pro <span class="badge bg-warning">Pro</span></a></li>
-                  <li><a><i class="bi bi-house"></i> Home <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="index.html">Dashboard 1</a></li>
-                      <li><a href="index2.html">Dashboard 2</a></li>
-                      <li><a href="index3.html">Dashboard 3</a></li>
-                      <li><a href="index4.html">Dashboard 4</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="bi bi-pencil-square"></i> Forms <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="form.html">General Form</a></li>
-                      <li><a href="form_advanced.html">Advanced Components</a></li>
-                      <li><a href="form_validation.html">Form Validation</a></li>
-                      <li><a href="form_wizards.html">Form Wizard</a></li>
-                      <li><a href="form_upload.html">Form Upload</a></li>
-                      <li><a href="form_buttons.html">Form Buttons</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="bi bi-display"></i> UI Elements <span class="badge bg-danger">Hot</span> <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="general_elements.html">General Elements</a></li>
-                      <li><a href="media_gallery.html">Media Gallery</a></li>
-                      <li><a href="typography.html">Typography</a></li>
-                      <li><a href="icons.html">Icons</a></li>
-                      <li><a href="widgets.html">Widgets</a></li>
-                      <li><a href="invoice.html">Invoice</a></li>
-                      <li><a href="inbox.html">Inbox</a></li>
-                      <li><a href="calendar.html">Calendar</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="bi bi-table"></i> Tables <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="tables.html">Tables</a></li>
-                      <li><a href="tables_dynamic.html">Table Dynamic</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="bi bi-bar-chart"></i> Data Presentation <span class="badge bg-success">New</span> <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="chartjs.html">Chart.js</a></li>
-                      <li><a href="echarts.html">ECharts <span class="badge bg-info">Updated</span></a></li>
-                      <li><a href="other_charts.html">Other Charts</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="bi bi-layout-split"></i>Layouts <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="fixed_sidebar.html">Fixed Sidebar</a></li>
-                      <li><a href="fixed_footer.html">Fixed Footer</a></li>
-                    </ul>
-                  </li>
-                </ul>
-              </div>
-              <div class="menu_section">
-                <h3>Live On</h3>
-                <ul class="nav side-menu">
-                  <li><a><i class="bi bi-file-earmark-text"></i> Additional Pages <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="e_commerce.html">E-commerce</a></li>
-                      <li><a href="projects.html">Projects</a></li>
-                      <li><a href="project_detail.html">Project Detail</a></li>
-                      <li><a href="contacts.html">Contacts</a></li>
-                      <li><a href="profile.html">Profile</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="bi bi-window-stack"></i> Extras <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="page_403.html">403 Error</a></li>
-                      <li><a href="page_404.html">404 Error</a></li>
-                      <li><a href="page_500.html">500 Error</a></li>
-                      <li><a href="plain_page.html">Plain Page</a></li>
-                      <li><a href="login.html">Login Page</a></li>
-                      <li><a href="pricing_tables.html">Pricing Tables</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="bi bi-diagram-3"></i> Multilevel Menu <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                        <li><a href="#level1_1">Level One</a></li>
-                        <li><a>Level One<span class="bi bi-chevron-down"></span></a>
-                          <ul class="nav child_menu">
-                            <li class="sub_menu"><a href="level2.html">Level Two</a></li>
-                            <li><a href="#level2_1">Level Two</a></li>
-                            <li><a href="#level2_2">Level Two</a></li>
-                          </ul>
-                        </li>
-                        <li><a href="#level1_2">Level One</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="landing.html"><i class="bi bi-laptop"></i> Landing Page <span class="badge bg-info">Updated</span></a></li>
-                </ul>
-              </div>
-
-            </div>
-            <!-- /sidebar menu -->
-
-            <!-- /menu footer buttons -->
-            <div class="sidebar-footer hidden-small">
-              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Settings">
-                <span class="fas fa-cog" aria-hidden="true"></span>
-              </a>
-              <a data-bs-toggle="tooltip" data-bs-placement="top" title="FullScreen">
-                <span class="fas fa-expand" aria-hidden="true"></span>
-              </a>
-              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Lock">
-                <span class="fas fa-eye-slash" aria-hidden="true"></span>
-              </a>
-              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Logout" href="login.html">
-                <span class="fas fa-power-off" aria-hidden="true"></span>
-              </a>
-            </div>
-            <!-- /menu footer buttons -->
-          </div>
+  <div class="row col-4-8">
+    <!-- Profile summary -->
+    <div class="card">
+      <div class="card-body" style="text-align:center;padding:24px 16px">
+        <div style="width:96px;height:96px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--primary-dk));margin:0 auto 12px;display:flex;align-items:center;justify-content:center;color:white;font-size:32px;font-weight:600">A</div>
+        <div style="font-size:16px;font-weight:600;color:var(--text)">Aigars Silkalns</div>
+        <div style="font-size:12.5px;color:var(--text-muted);margin-top:2px">Admin · Latvia</div>
+        <div style="margin-top:14px;display:flex;gap:6px;justify-content:center">
+          <button class="btn btn-outline btn-sm">Change avatar</button>
         </div>
-
-        <!-- top navigation -->
-        <div class="top_nav">
-            <div class="nav_menu d-flex align-items-center justify-content-between">
-                <div class="nav toggle">
-                  <a id="menu_toggle"><i class="fas fa-bars"></i></a>
-                </div>
-                <nav class="nav navbar-nav ms-auto">
-                <ul class="navbar-right d-flex align-items-center gap-3 pe-3">
-                <li class="nav-item dropdown">
-                    <a href="#" role="button" class="dropdown-toggle info-number" id="navbarDropdown1" data-bs-toggle="dropdown" aria-expanded="false">
-                      <i class="fas fa-envelope"></i>
-                      <span class="badge bg-success">3</span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end list-unstyled msg_list dropdown-menu-lg" role="menu" aria-labelledby="navbarDropdown1">
-                      <li class="nav-item">
-                        <a class="dropdown-item">
-                          <span class="image"><img src="../images/img.jpg" alt="Profile Image" /></span>
-                          <span>
-                            <span>Sarah Johnson</span>
-                            <span class="time">2 mins ago</span>
-                          </span>
-                          <span class="message">
-                            Great work on the latest project! The client is very satisfied with the results...
-                          </span>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="dropdown-item">
-                          <span class="image"><img src="../images/img.jpg" alt="Profile Image" /></span>
-                          <span>
-                            <span>Michael Chen</span>
-                            <span class="time">15 mins ago</span>
-                          </span>
-                          <span class="message">
-                            The design review meeting has been scheduled for tomorrow at 2 PM...
-                          </span>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="dropdown-item">
-                          <span class="image"><img src="../images/img.jpg" alt="Profile Image" /></span>
-                          <span>
-                            <span>Emily Rodriguez</span>
-                            <span class="time">1 hour ago</span>
-                          </span>
-                          <span class="message">
-                            Please review the updated requirements document when you have a chance...
-                          </span>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <div class="text-center">
-                          <a class="dropdown-item">
-                            <strong>See All Messages</strong>
-                            <i class="fas fa-angle-right"></i>
-                          </a>
-                        </div>
-                      </li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a href="#" role="button" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                      <img src="../images/img.jpg" alt="">Alex Thompson
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-end dropdown-usermenu dropdown-menu-sm" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="#" role="button"> Profile</a>
-                        <a class="dropdown-item" href="#" role="button">
-                          <span class="badge bg-danger float-end">50%</span>
-                          <span>Settings</span>
-                        </a>
-                    <a class="dropdown-item" href="#" role="button">Help</a>
-                      <a class="dropdown-item" href="login.html"><i class="fas fa-sign-out-alt float-end"></i> Log Out</a>
-                    </div>
-                </li>
-              </ul>
-              </nav>
-            </div>
+      </div>
+      <div style="border-top:1px solid var(--border-color-light)">
+        <div class="profile-ring-box" style="padding:16px">
+          <div class="ring-wrap">
+            <svg viewBox="0 0 80 80">
+              <circle class="ring-bg" cx="40" cy="40" r="34"/>
+              <circle class="ring-fill" cx="40" cy="40" r="34" stroke-dashoffset="60"/>
+            </svg>
+            <div class="ring-center">72<span>%</span></div>
           </div>
-        <!-- /top navigation -->
-
-        <!-- page content -->
-        <main class="right_col" role="main" aria-label="Main content">
-          <div class="">
-            <div class="page-title">
-              <div class="title_left">
-                <h1 class="page-heading h3">User Profile <small>Professional Dashboard</small></h1>
-              </div>
-
-              <div class="title_right">
-                <div class="col-md-5 col-sm-5 mb-3 float-end top_search">
-                  <div class="input-group search-bar-fix">
-                    <input type="text" class="form-control" placeholder="Search profile...">
-                    <button class="btn btn-outline-secondary" type="button">
-                      <i class="fas fa-search"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="clearfix"></div>
-
-            <!-- Profile Header -->
-            <div class="profile-header text-white p-4 mb-4">
-              <div class="container-fluid">
-                <div class="row align-items-center">
-                  <div class="col-md-3 text-center">
-                    <img src="../images/picture.jpg" alt="Profile Picture" class="profile-avatar rounded-circle" loading="lazy">
-                  </div>
-                  <div class="col-md-6">
-                    <h2 class="mb-1">Alex Thompson</h4>
-                    <p class="lead mb-3">Senior Full Stack Developer</p>
-                    <span class="badge bg-warning text-dark px-3 py-2 me-2 mb-2 fs-6 rounded-pill">5+ Years Experience</span>
-                    <span class="badge bg-info text-white px-3 py-2 me-2 mb-2 fs-6 rounded-pill">Team Lead</span>
-                    <span class="badge bg-success text-white px-3 py-2 me-2 mb-2 fs-6 rounded-pill">AWS Certified</span>
-                  </div>
-                  <div class="col-md-3 text-center">
-                    <button class="btn btn-light btn-lg me-2 mb-2" onclick="editProfile()">
-                      <i class="bi bi-pencil-square"></i> Edit Profile
-                    </button>
-                    <button class="btn btn-outline-light btn-lg mb-2" onclick="shareProfile()">
-                      <i class="fas fa-share"></i> Share
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Statistics Cards -->
-            <div class="row mb-4">
-              <div class="col-md-3 col-sm-6 mb-3">
-                <div class="card text-center h-100">
-                  <div class="card-body">
-                    <div class="mb-3">
-                      <i class="fas fa-project-diagram fa-2x text-primary"></i>
-                    </div>
-                    <h3 class="text-primary">24</h3>
-                    <p class="text-muted mb-0">Projects Completed</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-3 col-sm-6 mb-3">
-                <div class="card text-center h-100">
-                  <div class="card-body">
-                    <div class="mb-3">
-                      <i class="fas fa-users fa-2x text-success"></i>
-                    </div>
-                    <h3 class="text-success">12</h3>
-                    <p class="text-muted mb-0">Team Members</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-3 col-sm-6 mb-3">
-                <div class="card text-center h-100">
-                  <div class="card-body">
-                    <div class="mb-3">
-                      <i class="fas fa-trophy fa-2x text-warning"></i>
-                    </div>
-                    <h3 class="text-warning">8</h3>
-                    <p class="text-muted mb-0">Awards Won</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-3 col-sm-6 mb-3">
-                <div class="card text-center h-100">
-                  <div class="card-body">
-                    <div class="mb-3">
-                      <i class="fas fa-clock fa-2x text-info"></i>
-                    </div>
-                    <h3 class="text-info">2,340</h3>
-                    <p class="text-muted mb-0">Hours Worked</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-4">
-                <!-- Contact Information -->
-                <div class="card mb-4">
-                  <div class="card-header">
-                    <h5 class="mb-0">Contact Information</h5>
-                  </div>
-                  <div class="card-body">
-                    <div class="mb-2">
-                      <i class="fas fa-envelope text-primary"></i>
-                      <span class="ms-2">alex.thompson@company.com</span>
-                    </div>
-                    <div class="mb-2">
-                      <i class="fas fa-phone text-primary"></i>
-                      <span class="ms-2">+1 (555) 123-4567</span>
-                    </div>
-                    <div class="mb-2">
-                      <i class="fas fa-map-marker-alt text-primary"></i>
-                      <span class="ms-2">San Francisco, CA, USA</span>
-                    </div>
-                    <div class="mb-2">
-                      <i class="fab fa-linkedin text-primary"></i>
-                      <span class="ms-2">linkedin.com/in/alexthompson</span>
-                    </div>
-                    <div class="mb-0">
-                      <i class="fas fa-globe text-primary"></i>
-                      <span class="ms-2">alexthompson.dev</span>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Skills Section -->
-                <div class="card mb-4">
-                  <div class="card-header">
-                    <h5 class="mb-0">Technical Skills</h5>
-                  </div>
-                  <div class="card-body">
-                    <div class="skill-progress mb-3">
-                      <div class="d-flex justify-content-between mb-1">
-                        <span>JavaScript / TypeScript</span>
-                        <span>95%</span>
-                      </div>
-                      <div class="progress">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 95%"></div>
-                      </div>
-                    </div>
-                    <div class="skill-progress mb-3">
-                      <div class="d-flex justify-content-between mb-1">
-                        <span>React / Next.js</span>
-                        <span>90%</span>
-                      </div>
-                      <div class="progress">
-                        <div class="progress-bar bg-success" role="progressbar" style="width: 90%"></div>
-                      </div>
-                    </div>
-                    <div class="skill-progress mb-3">
-                      <div class="d-flex justify-content-between mb-1">
-                        <span>Node.js / Express</span>
-                        <span>88%</span>
-                      </div>
-                      <div class="progress">
-                        <div class="progress-bar bg-info" role="progressbar" style="width: 88%"></div>
-                      </div>
-                    </div>
-                    <div class="skill-progress mb-3">
-                      <div class="d-flex justify-content-between mb-1">
-                        <span>Database Management</span>
-                        <span>85%</span>
-                      </div>
-                      <div class="progress">
-                        <div class="progress-bar bg-warning" role="progressbar" style="width: 85%"></div>
-                      </div>
-                    </div>
-                    <div class="skill-progress">
-                      <div class="d-flex justify-content-between mb-1">
-                        <span>Cloud Services (AWS)</span>
-                        <span>80%</span>
-                      </div>
-                      <div class="progress">
-                        <div class="progress-bar bg-danger" role="progressbar" style="width: 80%"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Recent Activity -->
-                <div class="card">
-                  <div class="card-header">
-                    <h5 class="mb-0">Recent Activity</h5>
-                  </div>
-                  <div class="card-body">
-                    <div class="activity-timeline position-relative ps-4">
-                      <div class="timeline-item position-relative bg-light p-3 rounded mb-3">
-                        <div class="d-flex justify-content-between mb-1">
-                          <strong>Completed E-commerce Project</strong>
-                          <small class="text-muted">2 hours ago</small>
-                        </div>
-                        <p class="mb-0 text-muted">Successfully deployed the new e-commerce platform with payment integration.</p>
-                      </div>
-                      <div class="timeline-item position-relative bg-light p-3 rounded mb-3">
-                        <div class="d-flex justify-content-between mb-1">
-                          <strong>Code Review Session</strong>
-                          <small class="text-muted">1 day ago</small>
-                        </div>
-                        <p class="mb-0 text-muted">Conducted code review for the mobile app authentication module.</p>
-                      </div>
-                      <div class="timeline-item position-relative bg-light p-3 rounded">
-                        <div class="d-flex justify-content-between mb-1">
-                          <strong>Team Meeting</strong>
-                          <small class="text-muted">3 days ago</small>
-                        </div>
-                        <p class="mb-0 text-muted">Attended sprint planning meeting for the upcoming product release.</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-8">
-                <div class="card">
-                  <div class="card-header">
-                    <div class="d-flex justify-content-between align-items-center">
-                      <h5 class="mb-0">Performance Dashboard</h5>
-                      <div class="btn-group" role="group">
-                        <input type="radio" class="btn-check" name="timeRange" id="week" autocomplete="off" checked>
-                        <label class="btn btn-outline-primary" for="week">Week</label>
-                        
-                        <input type="radio" class="btn-check" name="timeRange" id="month" autocomplete="off">
-                        <label class="btn btn-outline-primary" for="month">Month</label>
-                        
-                        <input type="radio" class="btn-check" name="timeRange" id="year" autocomplete="off">
-                        <label class="btn btn-outline-primary" for="year">Year</label>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card-body">
-                    <!-- Activity Chart Placeholder -->
-                    <div id="activityChart" class="bg-light rounded d-flex align-items-center justify-content-center mb-4" class="chart-height-md">
-                      <div class="text-center">
-                        <i class="fas fa-chart-line fa-3x text-muted mb-3"></i>
-                        <p class="text-muted">Activity Chart</p>
-                        <small class="text-muted">Interactive chart showing daily activity and productivity metrics</small>
-                      </div>
-                    </div>
-
-                    <!-- Tabs Section -->
-                    <ul class="nav nav-tabs justify-content-center mb-4" id="profileTabs" role="tablist">
-                      <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="projects-tab" data-bs-toggle="tab" data-bs-target="#projects" type="button" role="tab">Current Projects</button>
-                      <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="achievements-tab" data-bs-toggle="tab" data-bs-target="#achievements" type="button" role="tab">Achievements</button>
-                      <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="activity-tab" data-bs-toggle="tab" data-bs-target="#activity" type="button" role="tab">Activity Feed</button>
-                    </ul>
-                    
-                    <div class="tab-content" id="profileTabsContent">
-                      <div class="tab-pane fade show active" id="projects" role="tabpanel">
-                        <div class="row">
-                          <div class="col-md-6 mb-3">
-                            <div class="bg-light p-3 rounded">
-                              <div class="d-flex justify-content-between align-items-start mb-2">
-                                <h6 class="mb-0">E-Commerce Platform</h6>
-                                <span class="badge bg-success">Completed</span>
-                              </div>
-                              <p class="text-muted small mb-2">Full-stack e-commerce solution with React and Node.js</p>
-                              <div class="progress mb-2 progress-xs">
-                                <div class="progress-bar bg-success" style="width: 100%"></div>
-                              </div>
-                              <small class="text-muted">Client: TechCorp Industries</small>
-                            </div>
-                          </div>
-                          <div class="col-md-6 mb-3">
-                            <div class="bg-light p-3 rounded">
-                              <div class="d-flex justify-content-between align-items-start mb-2">
-                                <h6 class="mb-0">Mobile Banking App</h6>
-                                <span class="badge bg-warning">In Progress</span>
-                              </div>
-                              <p class="text-muted small mb-2">React Native app with biometric authentication</p>
-                              <div class="progress mb-2 progress-xs">
-                                <div class="progress-bar bg-warning" style="width: 75%"></div>
-                              </div>
-                              <small class="text-muted">Client: FinanceFirst Bank</small>
-                            </div>
-                          </div>
-                          <div class="col-md-6 mb-3">
-                            <div class="bg-light p-3 rounded">
-                              <div class="d-flex justify-content-between align-items-start mb-2">
-                                <h6 class="mb-0">Data Analytics Dashboard</h6>
-                                <span class="badge bg-info">Planning</span>
-                              </div>
-                              <p class="text-muted small mb-2">Real-time analytics with D3.js visualizations</p>
-                              <div class="progress mb-2 progress-xs">
-                                <div class="progress-bar bg-info" style="width: 25%"></div>
-                              </div>
-                              <small class="text-muted">Client: DataFlow Corp</small>
-                            </div>
-                          </div>
-                          <div class="col-md-6 mb-3">
-                            <div class="bg-light p-3 rounded">
-                              <div class="d-flex justify-content-between align-items-start mb-2">
-                                <h6 class="mb-0">CRM System Upgrade</h6>
-                                <span class="badge bg-primary">Active</span>
-                              </div>
-                              <p class="text-muted small mb-2">Modernizing legacy CRM with microservices</p>
-                              <div class="progress mb-2 progress-xs">
-                                <div class="progress-bar bg-primary" style="width: 60%"></div>
-                              </div>
-                              <small class="text-muted">Client: Global Sales Inc</small>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      
-                      <div class="tab-pane fade" id="achievements" role="tabpanel">
-                        <div class="row">
-                          <div class="col-md-6 mb-3">
-                            <div class="text-center p-4 bg-light rounded">
-                              <i class="fas fa-trophy fa-3x text-warning mb-3"></i>
-                              <h6>Employee of the Year 2024</h6>
-                              <p class="text-muted small">Recognized for outstanding performance and leadership</p>
-                              <small class="text-muted">Awarded: December 2024</small>
-                            </div>
-                          </div>
-                          <div class="col-md-6 mb-3">
-                            <div class="text-center p-4 bg-light rounded">
-                              <i class="fas fa-certificate fa-3x text-primary mb-3"></i>
-                              <h6>AWS Solutions Architect</h6>
-                              <p class="text-muted small">Professional certification in cloud architecture</p>
-                              <small class="text-muted">Certified: June 2024</small>
-                            </div>
-                          </div>
-                          <div class="col-md-6 mb-3">
-                            <div class="text-center p-4 bg-light rounded">
-                              <i class="fas fa-star fa-3x text-success mb-3"></i>
-                              <h6>Innovation Award</h6>
-                              <p class="text-muted small">For developing automated deployment pipeline</p>
-                              <small class="text-muted">Awarded: March 2024</small>
-                            </div>
-                          </div>
-                          <div class="col-md-6 mb-3">
-                            <div class="text-center p-4 bg-light rounded">
-                              <i class="fas fa-users fa-3x text-info mb-3"></i>
-                              <h6>Team Leadership</h6>
-                              <p class="text-muted small">Successfully led 5 cross-functional teams</p>
-                              <small class="text-muted">2023 - Present</small>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      
-                      <div class="tab-pane fade" id="activity" role="tabpanel">
-                        <div class="activity-timeline position-relative ps-4">
-                          <div class="timeline-item position-relative bg-light p-3 rounded mb-3">
-                            <div class="d-flex align-items-center mb-2">
-                              <img src="../images/img.jpg" alt="Alex" class="rounded-circle me-3" loading="lazy" width="40" height="40">
-                              <div class="flex-grow-1">
-                                <strong>Alex Thompson</strong>
-                                <small class="text-muted ms-2">completed project milestone</small>
-                              </div>
-                              <small class="text-muted">2 hours ago</small>
-                            </div>
-                            <p class="mb-0">Successfully deployed the e-commerce platform to production environment. All tests passed and client approval received.</p>
-                          </div>
-                          
-                          <div class="timeline-item position-relative bg-light p-3 rounded mb-3">
-                            <div class="d-flex align-items-center mb-2">
-                              <img src="../images/img.jpg" alt="Alex" class="rounded-circle me-3" loading="lazy" width="40" height="40">
-                              <div class="flex-grow-1">
-                                <strong>Alex Thompson</strong>
-                                <small class="text-muted ms-2">reviewed code changes</small>
-                              </div>
-                              <small class="text-muted">1 day ago</small>
-                            </div>
-                            <p class="mb-0">Reviewed and approved 12 pull requests from team members. Provided feedback on authentication module improvements.</p>
-                          </div>
-                          
-                          <div class="timeline-item position-relative bg-light p-3 rounded mb-3">
-                            <div class="d-flex align-items-center mb-2">
-                              <img src="../images/img.jpg" alt="Alex" class="rounded-circle me-3" loading="lazy" width="40" height="40">
-                              <div class="flex-grow-1">
-                                <strong>Alex Thompson</strong>
-                                <small class="text-muted ms-2">attended team meeting</small>
-                              </div>
-                              <small class="text-muted">3 days ago</small>
-                            </div>
-                            <p class="mb-0">Participated in sprint planning meeting. Estimated 15 user stories and assigned tasks to development team.</p>
-                          </div>
-                          
-                          <div class="timeline-item position-relative bg-light p-3 rounded">
-                            <div class="d-flex align-items-center mb-2">
-                              <img src="../images/img.jpg" alt="Alex" class="rounded-circle me-3" loading="lazy" width="40" height="40">
-                              <div class="flex-grow-1">
-                                <strong>Alex Thompson</strong>
-                                <small class="text-muted ms-2">earned certification</small>
-                              </div>
-                              <small class="text-muted">1 week ago</small>
-                            </div>
-                            <p class="mb-0">Completed AWS Solutions Architect Professional certification. Achieved score of 92% on the examination.</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <div class="note">Profile completion</div>
+          <a href="#" class="ring-link">Complete now →</a>
         </div>
-        <!-- /page content -->
-
-        <!-- footer content -->
-        <footer>
-          <div class="float-end">
-            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
-          </div>
-          <div class="clearfix"></div>
-        </footer>
-        <!-- /footer content -->
       </div>
     </div>
 
-    <script>
-      // Profile functionality
-      function editProfile() {
-        alert('Edit Profile functionality would open a modal or redirect to edit page');
-      }
-      
-      function shareProfile() {
-        if (navigator.share) {
-          navigator.share({
-            title: 'Alex Thompson - Profile',
-            text: 'Check out Alex Thompson\'s professional profile',
-            url: window.location.href,
-          });
-        } else {
-          // Fallback for browsers that don't support Web Share API
-          navigator.clipboard.writeText(window.location.href).then(() => {
-            alert('Profile link copied to clipboard!');
-          });
-        }
-      }
-      
-      // Animate progress bars on page load
-      document.addEventListener('DOMContentLoaded', function() {
-        const progressBars = document.querySelectorAll('.progress-bar');
-        progressBars.forEach(bar => {
-          const width = bar.style.width;
-          bar.style.width = '0%';
-          setTimeout(() => {
-            bar.style.width = width;
-          }, 500);
-        });
-      });
-      
-      // Time range filter functionality
-      document.querySelectorAll('input[name="timeRange"]').forEach(radio => {
-        radio.addEventListener('change', function() {
-          // Here you would update the chart data based on the selected time range
-        });
-      });
-    </script>
-  </body>
+    <!-- Profile form -->
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Personal information</div>
+          <div class="card-subtitle">Update your name, email, and contact details.</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="firstName">First name</label>
+            <input type="text" id="firstName" class="form-control" value="Aigars">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="lastName">Last name</label>
+            <input type="text" id="lastName" class="form-control" value="Silkalns">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="email2">Email <span class="required">*</span></label>
+            <input type="email" id="email2" class="form-control" value="aigars@colorlib.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="phone">Phone</label>
+            <input type="tel" id="phone" class="form-control" placeholder="+371 …">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="role">Role</label>
+          <select id="role" class="form-control">
+            <option>Administrator</option>
+            <option>Editor</option>
+            <option>Viewer</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="bio">Bio</label>
+          <textarea id="bio" class="form-control" placeholder="Tell us a bit about yourself…">Founder at Colorlib. Building admin templates since 2014.</textarea>
+          <div class="form-help">Brief description for your profile. URLs are hyperlinked.</div>
+        </div>
+
+        <div class="form-actions right">
+          <button class="btn btn-outline">Discard</button>
+          <button class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row col-2">
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Notifications</div>
+          <div class="card-subtitle">Choose how we contact you.</div>
+        </div>
+      </div>
+      <div class="card-body" style="padding:6px 16px">
+        <div class="toggle-row"><div><div class="label">Product updates</div><div class="desc">Get notified about new features and improvements.</div></div><div class="toggle on"></div></div>
+        <div class="toggle-row"><div><div class="label">Weekly digest</div><div class="desc">A summary of activity, every Monday.</div></div><div class="toggle on"></div></div>
+        <div class="toggle-row"><div><div class="label">Security alerts</div><div class="desc">Sign-ins from new devices and password changes.</div></div><div class="toggle on"></div></div>
+        <div class="toggle-row"><div><div class="label">Marketing emails</div><div class="desc">Tips, deals, and partner offers.</div></div><div class="toggle"></div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Sessions</div>
+          <div class="card-subtitle">Devices currently signed into your account.</div>
+        </div>
+        <button class="btn btn-outline btn-sm">Sign out all</button>
+      </div>
+      <div class="card-body p-0">
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr><th>Device</th><th>Location</th><th>Last seen</th><th></th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="cell-strong">MacBook Pro</span><div style="font-size:11px;color:var(--text-muted)">Chrome 120</div></td>
+                <td>Riga, LV</td>
+                <td><span class="status status-green">Active now</span></td>
+                <td style="text-align:right"></td>
+              </tr>
+              <tr>
+                <td><span class="cell-strong">iPhone 15</span><div style="font-size:11px;color:var(--text-muted)">Safari Mobile</div></td>
+                <td>Riga, LV</td>
+                <td>2 hours ago</td>
+                <td style="text-align:right"><button class="btn btn-outline btn-sm">Revoke</button></td>
+              </tr>
+              <tr>
+                <td><span class="cell-strong">Windows PC</span><div style="font-size:11px;color:var(--text-muted)">Edge 121</div></td>
+                <td>Tallinn, EE</td>
+                <td>5 days ago</td>
+                <td style="text-align:right"><button class="btn btn-outline btn-sm">Revoke</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Stats + Achievements row ── -->
+  <div class="row col-4-8">
+    <div class="card">
+      <div class="card-header"><div class="card-title">Account stats</div></div>
+      <div class="card-body" style="padding:0">
+        <div style="display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--border-color-light)">
+          <div style="padding:16px;border-right:1px solid var(--border-color-light);text-align:center">
+            <div style="font-size:22px;font-weight:600;color:var(--text)">142</div>
+            <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-top:2px">Projects</div>
+          </div>
+          <div style="padding:16px;text-align:center">
+            <div style="font-size:22px;font-weight:600;color:var(--text)">28</div>
+            <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-top:2px">Team</div>
+          </div>
+          <div style="padding:16px;border-top:1px solid var(--border-color-light);border-right:1px solid var(--border-color-light);text-align:center">
+            <div style="font-size:22px;font-weight:600;color:var(--text)">1.2k</div>
+            <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-top:2px">Commits</div>
+          </div>
+          <div style="padding:16px;border-top:1px solid var(--border-color-light);text-align:center">
+            <div style="font-size:22px;font-weight:600;color:var(--text)">4.9</div>
+            <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-top:2px">Rating</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Achievements</div>
+          <div class="card-subtitle">Earned badges across the workspace.</div>
+        </div>
+        <a href="#" style="font-size:12px">See all</a>
+      </div>
+      <div class="card-body">
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:12px">
+          <div style="text-align:center;padding:14px 8px;border:1px solid var(--border-color-light);border-radius:var(--radius);background:var(--primary-lt)">
+            <div style="width:44px;height:44px;border-radius:50%;background:var(--primary);color:white;display:flex;align-items:center;justify-content:center;margin:0 auto 8px">
+              <svg width="22" height="22" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1l2 5 5 .5-4 3.5 1 5-4-2.5-4 2.5 1-5-4-3.5 5-.5z"/></svg>
+            </div>
+            <div style="font-size:12px;font-weight:600;color:var(--text)">Top contributor</div>
+            <div style="font-size:10.5px;color:var(--text-muted);margin-top:2px">100+ PRs</div>
+          </div>
+          <div style="text-align:center;padding:14px 8px;border:1px solid var(--border-color-light);border-radius:var(--radius)">
+            <div style="width:44px;height:44px;border-radius:50%;background:var(--yellow-lt);color:var(--yellow);display:flex;align-items:center;justify-content:center;margin:0 auto 8px">
+              <svg width="22" height="22" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="9" r="5"/><path d="M8 14l-2 1 1-3"/></svg>
+            </div>
+            <div style="font-size:12px;font-weight:600;color:var(--text)">Reviewer</div>
+            <div style="font-size:10.5px;color:var(--text-muted);margin-top:2px">50+ reviews</div>
+          </div>
+          <div style="text-align:center;padding:14px 8px;border:1px solid var(--border-color-light);border-radius:var(--radius)">
+            <div style="width:44px;height:44px;border-radius:50%;background:var(--purple-lt);color:var(--purple);display:flex;align-items:center;justify-content:center;margin:0 auto 8px">
+              <svg width="22" height="22" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1l7 13H1L8 1z"/></svg>
+            </div>
+            <div style="font-size:12px;font-weight:600;color:var(--text)">Early adopter</div>
+            <div style="font-size:10.5px;color:var(--text-muted);margin-top:2px">Joined 2014</div>
+          </div>
+          <div style="text-align:center;padding:14px 8px;border:1px solid var(--border-color-light);border-radius:var(--radius)">
+            <div style="width:44px;height:44px;border-radius:50%;background:var(--blue-lt);color:var(--blue);display:flex;align-items:center;justify-content:center;margin:0 auto 8px">
+              <svg width="22" height="22" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6h10M3 10h10M3 14h6"/></svg>
+            </div>
+            <div style="font-size:12px;font-weight:600;color:var(--text)">Documenter</div>
+            <div style="font-size:10.5px;color:var(--text-muted);margin-top:2px">25+ articles</div>
+          </div>
+          <div style="text-align:center;padding:14px 8px;border:1px solid var(--border-color-light);border-radius:var(--radius)">
+            <div style="width:44px;height:44px;border-radius:50%;background:var(--green-lt);color:var(--green);display:flex;align-items:center;justify-content:center;margin:0 auto 8px">
+              <svg width="22" height="22" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8l3 3 7-7"/></svg>
+            </div>
+            <div style="font-size:12px;font-weight:600;color:var(--text)">Reliable</div>
+            <div style="font-size:10.5px;color:var(--text-muted);margin-top:2px">98% on-time</div>
+          </div>
+          <div style="text-align:center;padding:14px 8px;border:1px solid var(--border-color-light);border-radius:var(--radius);opacity:.5">
+            <div style="width:44px;height:44px;border-radius:50%;background:var(--bg-surface-secondary);color:var(--text-muted);display:flex;align-items:center;justify-content:center;margin:0 auto 8px">
+              <svg width="22" height="22" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="6" width="8" height="6" rx="1.5"/><path d="M6 6V4a2 2 0 014 0v2"/></svg>
+            </div>
+            <div style="font-size:12px;font-weight:600;color:var(--text)">Locked</div>
+            <div style="font-size:10.5px;color:var(--text-muted);margin-top:2px">200 PRs needed</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Connected accounts + Activity timeline ── -->
+  <div class="row col-2">
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Connected accounts</div>
+          <div class="card-subtitle">Sign in faster with these providers.</div>
+        </div>
+      </div>
+      <div class="card-body" style="display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;align-items:center;gap:12px;padding:12px;border:1px solid var(--border-color-light);border-radius:var(--radius)">
+          <div style="width:36px;height:36px;border-radius:8px;background:#0e1117;color:white;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px">GH</div>
+          <div style="flex:1">
+            <div style="font-size:13px;font-weight:600;color:var(--text)">GitHub</div>
+            <div style="font-size:11.5px;color:var(--text-muted)">@aigars · connected since 2014</div>
+          </div>
+          <span class="status status-green">Connected</span>
+          <button class="btn btn-outline btn-sm">Disconnect</button>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;padding:12px;border:1px solid var(--border-color-light);border-radius:var(--radius)">
+          <div style="width:36px;height:36px;border-radius:8px;background:#4285f4;color:white;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px">G</div>
+          <div style="flex:1">
+            <div style="font-size:13px;font-weight:600;color:var(--text)">Google</div>
+            <div style="font-size:11.5px;color:var(--text-muted)">aigars@example.com</div>
+          </div>
+          <span class="status status-green">Connected</span>
+          <button class="btn btn-outline btn-sm">Disconnect</button>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;padding:12px;border:1px solid var(--border-color-light);border-radius:var(--radius)">
+          <div style="width:36px;height:36px;border-radius:8px;background:#4a154b;color:white;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px">SL</div>
+          <div style="flex:1">
+            <div style="font-size:13px;font-weight:600;color:var(--text)">Slack</div>
+            <div style="font-size:11.5px;color:var(--text-muted)">colorlib workspace</div>
+          </div>
+          <button class="btn btn-primary btn-sm">Connect</button>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;padding:12px;border:1px solid var(--border-color-light);border-radius:var(--radius)">
+          <div style="width:36px;height:36px;border-radius:8px;background:#000;color:white;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px">𝕏</div>
+          <div style="flex:1">
+            <div style="font-size:13px;font-weight:600;color:var(--text)">X (Twitter)</div>
+            <div style="font-size:11.5px;color:var(--text-muted)">@aigars</div>
+          </div>
+          <button class="btn btn-primary btn-sm">Connect</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-title">Recent activity</div></div>
+      <div class="card-body">
+        <div class="timeline">
+          <div class="timeline-item is-primary">
+            <div class="ti-time">Just now</div>
+            <div class="ti-title">Profile photo updated</div>
+          </div>
+          <div class="timeline-item is-blue">
+            <div class="ti-time">2 hours ago</div>
+            <div class="ti-title">Signed in from <strong>iPhone 15</strong></div>
+            <div class="ti-desc">Riga, LV</div>
+          </div>
+          <div class="timeline-item is-green">
+            <div class="ti-time">Yesterday</div>
+            <div class="ti-title">Earned achievement: <strong>Reliable</strong></div>
+          </div>
+          <div class="timeline-item">
+            <div class="ti-time">3 days ago</div>
+            <div class="ti-title">Connected <strong>Google</strong> account</div>
+          </div>
+          <div class="timeline-item is-yellow">
+            <div class="ti-time">1 week ago</div>
+            <div class="ti-title">Two-factor authentication enabled</div>
+            <div class="ti-desc">Authenticator app · backup codes saved</div>
+          </div>
+          <div class="timeline-item">
+            <div class="ti-time">2 weeks ago</div>
+            <div class="ti-title">Joined team <strong>Colorlib</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</main>
+
+</body>
 </html>

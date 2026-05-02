@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AdminLTE Pro · Product | Gentelella 2026 v4</title>
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script type="module" src="/src/main-v4.js"></script>
+</head>
+<body data-shell="admin" data-page="product" data-breadcrumb="Home > Shop > Storefront > AdminLTE Pro">
+
+<main class="main">
+<div class="page-wrapper">
+
+  <div class="page-header">
+    <div class="page-header-row">
+      <div>
+        <div class="page-pretitle">Shop · <a href="e_commerce.html" style="color:var(--primary)">Storefront</a></div>
+        <div class="page-title">AdminLTE Pro</div>
+      </div>
+      <div class="page-actions">
+        <button class="btn btn-outline">← Back to catalog</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row col-2 product-detail-grid" style="grid-template-columns:5fr 4fr;align-items:flex-start">
+    <!-- Gallery -->
+    <div class="card">
+      <div class="card-body" style="padding:20px">
+        <div class="product-gallery">
+          <div class="gallery-main">
+            <div class="gallery-image" id="main-img">
+              <span class="gallery-badge">Best seller</span>
+              <div class="gallery-svg" id="gallery-svg" aria-label="Dashboard preview"></div>
+            </div>
+          </div>
+          <div class="gallery-thumbs" id="gallery-thumbs">
+            <button type="button" class="gallery-thumb active" data-view="overview"  aria-label="Overview"></button>
+            <button type="button" class="gallery-thumb" data-view="analytics" aria-label="Analytics"></button>
+            <button type="button" class="gallery-thumb" data-view="tables"    aria-label="Tables"></button>
+            <button type="button" class="gallery-thumb" data-view="dark"      aria-label="Dark mode"></button>
+            <button type="button" class="gallery-thumb" data-view="mobile"    aria-label="Mobile"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Info -->
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div class="card">
+        <div class="card-body" style="padding:20px">
+          <div class="product-meta">
+            <span class="chip chip-primary active" style="font-weight:var(--font-weight-medium)">Dashboard</span>
+            <span class="rating">★★★★<span style="color:var(--text-disabled)">★</span> <small>4.6 · 248 reviews</small></span>
+          </div>
+          <h1 class="product-title">AdminLTE Pro</h1>
+          <p class="product-tagline">A premium dashboard kit with 80+ pages, fully responsive, dark mode included.</p>
+
+          <div class="product-price-row">
+            <span class="price">$129</span>
+            <span class="price-old">$199</span>
+            <span class="price-discount">-35%</span>
+          </div>
+
+          <div class="product-option">
+            <div class="option-label">License</div>
+            <div class="option-values" data-group="license">
+              <button type="button" class="option-value active" data-val="single">Single project</button>
+              <button type="button" class="option-value" data-val="team">Team</button>
+              <button type="button" class="option-value" data-val="enterprise">Enterprise</button>
+            </div>
+          </div>
+
+          <div class="product-option">
+            <div class="option-label">Support</div>
+            <div class="option-values" data-group="support">
+              <button type="button" class="option-value active" data-val="6m">6 months</button>
+              <button type="button" class="option-value" data-val="12m">12 months</button>
+              <button type="button" class="option-value" data-val="lifetime">Lifetime</button>
+            </div>
+          </div>
+
+          <div class="product-quantity-row">
+            <div class="qty-label">Quantity</div>
+            <div class="qty-controls">
+              <button type="button" class="qty-btn" id="qty-dec" aria-label="Decrease">−</button>
+              <input type="number" id="qty" value="1" min="1" max="99">
+              <button type="button" class="qty-btn" id="qty-inc" aria-label="Increase">+</button>
+            </div>
+            <div class="stock-indicator"><span class="dot"></span> In stock — 142 available</div>
+          </div>
+
+          <div class="product-actions">
+            <button class="btn btn-outline" id="add-cart">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="14" r="1"/><circle cx="13" cy="14" r="1"/><path d="M2 2h2l1.5 8h9L16 4H5"/></svg>
+              Add to cart
+            </button>
+            <button class="btn btn-primary" id="buy-now">Buy now — $129</button>
+          </div>
+
+          <div class="product-perks">
+            <div class="perk"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8l3 3 9-9"/></svg> Instant download</div>
+            <div class="perk"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8l3 3 9-9"/></svg> 30-day money-back guarantee</div>
+            <div class="perk"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8l3 3 9-9"/></svg> Free updates for 6 months</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="card" style="margin-top:16px">
+    <div class="card-header" style="border-bottom:1px solid var(--border-color-light)">
+      <div class="chart-tabs product-tabs">
+        <button class="chart-tab active" data-tab="description">Description</button>
+        <button class="chart-tab" data-tab="specs">Specifications</button>
+        <button class="chart-tab" data-tab="reviews">Reviews <span style="opacity:.6;font-weight:normal">· 248</span></button>
+      </div>
+    </div>
+    <div class="card-body" style="padding:24px">
+      <div class="product-tab-panel" data-panel="description">
+        <p style="font-size:14px;color:var(--text-secondary);line-height:1.6;margin-bottom:14px">
+          AdminLTE Pro is the most popular open-source dashboard kit, now with 80+ production-ready pages, vanilla JS architecture, and zero jQuery. Built for engineers who want to ship faster without compromising on polish.
+        </p>
+        <p style="font-size:14px;color:var(--text-secondary);line-height:1.6;margin-bottom:18px">
+          Every page is responsive down to 320px, every component honors prefers-reduced-motion and prefers-color-scheme, and every interaction is keyboard-accessible.
+        </p>
+        <h4 style="font-size:13px;font-weight:var(--font-weight-bold);color:var(--text);text-transform:uppercase;letter-spacing:0.4px;margin-bottom:10px">What's included</h4>
+        <ul style="list-style:none;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:13px;color:var(--text-secondary)">
+          <li style="display:flex;gap:8px"><span style="color:var(--green)">✓</span> 80+ HTML pages</li>
+          <li style="display:flex;gap:8px"><span style="color:var(--green)">✓</span> Dark mode + theming tokens</li>
+          <li style="display:flex;gap:8px"><span style="color:var(--green)">✓</span> ECharts integration</li>
+          <li style="display:flex;gap:8px"><span style="color:var(--green)">✓</span> DataTables.net styling</li>
+          <li style="display:flex;gap:8px"><span style="color:var(--green)">✓</span> Lifetime SCSS source</li>
+          <li style="display:flex;gap:8px"><span style="color:var(--green)">✓</span> Vite build config</li>
+          <li style="display:flex;gap:8px"><span style="color:var(--green)">✓</span> Figma source files</li>
+          <li style="display:flex;gap:8px"><span style="color:var(--green)">✓</span> Email templates (HTML)</li>
+        </ul>
+      </div>
+
+      <div class="product-tab-panel" data-panel="specs" hidden>
+        <table class="table" style="margin:0">
+          <tbody>
+            <tr><td style="font-weight:var(--font-weight-medium);width:200px">Version</td><td>4.0.0-beta.1</td></tr>
+            <tr><td style="font-weight:var(--font-weight-medium)">Released</td><td>April 28, 2026</td></tr>
+            <tr><td style="font-weight:var(--font-weight-medium)">Updated</td><td>April 28, 2026</td></tr>
+            <tr><td style="font-weight:var(--font-weight-medium)">File size</td><td>4.2 MB compressed</td></tr>
+            <tr><td style="font-weight:var(--font-weight-medium)">Pages</td><td>80+ HTML pages</td></tr>
+            <tr><td style="font-weight:var(--font-weight-medium)">Build</td><td>Vite 8</td></tr>
+            <tr><td style="font-weight:var(--font-weight-medium)">Styling</td><td>SCSS with custom property tokens</td></tr>
+            <tr><td style="font-weight:var(--font-weight-medium)">Browser support</td><td>Last 2 versions of Chrome, Firefox, Safari, Edge</td></tr>
+            <tr><td style="font-weight:var(--font-weight-medium)">License</td><td>Single project · transferable to one URL</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="product-tab-panel" data-panel="reviews" hidden>
+        <div class="reviews-summary">
+          <div class="rating-big">
+            <div class="num">4.6</div>
+            <div class="stars">★★★★<span style="color:var(--text-disabled)">★</span></div>
+            <div class="meta">Based on 248 reviews</div>
+          </div>
+          <div class="rating-bars">
+            <div class="r-bar"><span class="lbl">5★</span><div class="bar"><div class="fill" style="width:72%;background:var(--green)"></div></div><span class="cnt">178</span></div>
+            <div class="r-bar"><span class="lbl">4★</span><div class="bar"><div class="fill" style="width:18%;background:var(--green)"></div></div><span class="cnt">45</span></div>
+            <div class="r-bar"><span class="lbl">3★</span><div class="bar"><div class="fill" style="width:6%;background:var(--yellow)"></div></div><span class="cnt">15</span></div>
+            <div class="r-bar"><span class="lbl">2★</span><div class="bar"><div class="fill" style="width:2%;background:var(--yellow)"></div></div><span class="cnt">6</span></div>
+            <div class="r-bar"><span class="lbl">1★</span><div class="bar"><div class="fill" style="width:2%;background:var(--red)"></div></div><span class="cnt">4</span></div>
+          </div>
+        </div>
+
+        <div class="reviews-list">
+          <div class="review">
+            <div class="review-head">
+              <div class="cell-customer"><div class="cell-avatar" style="background:var(--azure)">SK</div><div><div class="cell-strong">Sarah Kowalski</div><div style="font-size:11.5px;color:var(--text-muted)">Verified purchase · Apr 25, 2026</div></div></div>
+              <div class="stars">★★★★★</div>
+            </div>
+            <div class="review-body">Genuinely the best admin template I've bought in years. The token system makes theme customization a one-line change.</div>
+          </div>
+          <div class="review">
+            <div class="review-head">
+              <div class="cell-customer"><div class="cell-avatar" style="background:var(--purple)">MR</div><div><div class="cell-strong">Michael Reyes</div><div style="font-size:11.5px;color:var(--text-muted)">Verified purchase · Apr 22, 2026</div></div></div>
+              <div class="stars">★★★★★</div>
+            </div>
+            <div class="review-body">Documentation is thorough and the code style is consistent. Stripped jQuery from our project in a weekend using this as the reference.</div>
+          </div>
+          <div class="review">
+            <div class="review-head">
+              <div class="cell-customer"><div class="cell-avatar" style="background:var(--yellow)">EW</div><div><div class="cell-strong">Emily Wang</div><div style="font-size:11.5px;color:var(--text-muted)">Verified purchase · Apr 18, 2026</div></div></div>
+              <div class="stars">★★★★<span style="color:var(--text-disabled)">★</span></div>
+            </div>
+            <div class="review-body">Loved it overall. Small wish: more chart variants out of the box. Otherwise a great purchase.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Related -->
+  <div class="card" style="margin-top:16px">
+    <div class="card-header"><div class="card-title">Related products</div></div>
+    <div class="card-body">
+      <div class="related-grid">
+        <a class="related-card" href="#">
+          <div class="thumb" data-thumb="bars"></div>
+          <div class="title">Gentelella Theme</div>
+          <div class="meta">★★★★★ 4.8 · 1.2k</div>
+          <div class="price">$89</div>
+        </a>
+        <a class="related-card" href="#">
+          <div class="thumb" data-thumb="donut"></div>
+          <div class="title">Dashboard Pack</div>
+          <div class="meta">★★★★<span style="color:var(--text-disabled)">★</span> 4.4 · 380</div>
+          <div class="price">$67</div>
+        </a>
+        <a class="related-card" href="#">
+          <div class="thumb" data-thumb="table"></div>
+          <div class="title">Bootstrap Bundle</div>
+          <div class="meta">★★★★★ 4.7 · 920</div>
+          <div class="price">$49</div>
+        </a>
+        <a class="related-card" href="#">
+          <div class="thumb" data-thumb="forms"></div>
+          <div class="title">UI Kit Pro</div>
+          <div class="meta">★★★★<span style="color:var(--text-disabled)">★</span> 4.3 · 240</div>
+          <div class="price">$39</div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div>
+</main>
+
+<script type="module">
+import { showToast } from '/src/v4/toast.js';
+
+// Gallery — load SVG mockups + handle thumbnail switching
+import('/src/v4/product-mockups.js').then(({ MOCKUPS, RELATED }) => {
+  const main = document.getElementById('gallery-svg');
+  const thumbs = document.querySelectorAll('.gallery-thumb');
+
+  function setView(view) {
+    main.innerHTML = MOCKUPS[view] || '';
+  }
+  thumbs.forEach((b) => { b.innerHTML = MOCKUPS[b.dataset.view] || ''; });
+  setView('overview');
+
+  document.getElementById('gallery-thumbs').addEventListener('click', (e) => {
+    const t = e.target.closest('.gallery-thumb');
+    if (!t) return;
+    e.stopPropagation();
+    thumbs.forEach((b) => b.classList.remove('active'));
+    t.classList.add('active');
+    setView(t.dataset.view);
+  });
+
+  // Related-product thumbs use the smaller RELATED mockups.
+  document.querySelectorAll('.related-card .thumb[data-thumb]').forEach((el) => {
+    el.innerHTML = RELATED[el.dataset.thumb] || '';
+  });
+});
+
+// Variant toggles
+document.querySelectorAll('.option-values').forEach((group) => {
+  group.addEventListener('click', (e) => {
+    const v = e.target.closest('.option-value');
+    if (!v) return;
+    e.stopPropagation();
+    group.querySelectorAll('.option-value').forEach((b) => b.classList.remove('active'));
+    v.classList.add('active');
+  });
+});
+
+// Quantity steppers
+const qty = document.getElementById('qty');
+document.getElementById('qty-dec').addEventListener('click', (e) => { e.stopPropagation(); qty.value = Math.max(1, parseInt(qty.value, 10) - 1); });
+document.getElementById('qty-inc').addEventListener('click', (e) => { e.stopPropagation(); qty.value = Math.min(99, parseInt(qty.value, 10) + 1); });
+
+// Tab panels
+document.querySelector('.product-tabs').addEventListener('click', (e) => {
+  const tab = e.target.closest('.chart-tab');
+  if (!tab) return;
+  const target = tab.dataset.tab;
+  document.querySelectorAll('.product-tab-panel').forEach((p) => {
+    p.hidden = p.dataset.panel !== target;
+  });
+});
+
+// Cart actions
+document.getElementById('add-cart').addEventListener('click', (e) => {
+  e.stopPropagation();
+  showToast(`Added ${qty.value} × AdminLTE Pro to cart`, { variant: 'success' });
+});
+document.getElementById('buy-now').addEventListener('click', (e) => {
+  e.stopPropagation();
+  showToast('Redirecting to checkout…', { variant: 'success' });
+});
+</script>
+
+</body>
+</html>

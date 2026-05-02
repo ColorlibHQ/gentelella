@@ -1,512 +1,424 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Security headers -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.googleapis.com; img-src 'self' data: https: blob:; font-src 'self' data: https://fonts.gstatic.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; connect-src 'self' ws: wss: http://localhost:* https://api.example.com https://*.googleapis.com; frame-src 'self' https://www.youtube.com https://player.vimeo.com; media-src 'self' https: blob:; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Invoice | Gentelella 2026 v4</title>
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script type="module" src="/src/main-v4.js"></script>
+</head>
+<body data-shell="admin" data-page="invoice" data-breadcrumb="Home > Invoice">
 
-    <!-- Favicons -->
-    <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
-    <link rel="icon" href="../images/favicon-32x32.svg" type="image/svg+xml" sizes="32x32">
-    <link rel="icon" href="../images/favicon-16x16.svg" type="image/svg+xml" sizes="16x16">
-    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="../images/apple-touch-icon.svg" sizes="180x180">
-    <link rel="manifest" href="../site.webmanifest">
+<main class="main">
+<div class="page-wrapper">
 
-    <!-- Theme color -->
-    <meta name="theme-color" content="#2a3f54">
-    <meta name="msapplication-TileColor" content="#2a3f54">
-
-    <title>Invoice | Gentelella</title>
-
-    <!-- Vite Entry Point - will bundle all styles -->
-    <script type="module" src="/src/main-minimal.js"></script>
-  </head>
-
-  <body class="nav-md page-invoice">
-    <div class="container body">
-      <div class="main_container">
-        <aside class="col-md-3 left_col" aria-label="Sidebar navigation">
-          <div class="left_col scroll-view">
-            <div class="navbar nav_title border-0">
-              <a href="index.html" class="site_title"><img src="../images/logo.svg" alt="Gentelella Alela!" class="logo-full logo-main" loading="lazy"><img src="../images/logo-icon.svg" alt="Gentelella" class="logo-icon" loading="lazy"></a>
-            </div>
-
-            <div class="clearfix"></div>
-
-            <!-- menu profile quick info -->
-            <div class="profile clearfix">
-              <div class="profile_pic">
-                <img src="../images/img.jpg" alt="User profile photo" class="img-circle profile_img" loading="lazy">
-              </div>
-              <div class="profile_info">
-                <span>Welcome,</span>
-                <h4>John Doe</h4>
-              </div>
-            </div>
-            <!-- /menu profile quick info -->
-
-            <br />
-
-            <!-- sidebar menu -->
-            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-              <div class="menu_section">
-                <h3>General</h3>
-                <ul class="nav side-menu">
-                  <li><a href="https://dashboardpack.com/?utm_source=gentelella&utm_medium=sidebar&utm_campaign=premium" target="_blank"><i class="bi bi-stars"></i> Go Pro <span class="badge bg-warning">Pro</span></a></li>
-                  <li><a><i class="bi bi-house"></i> Home <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="index.html">Dashboard 1</a></li>
-                      <li><a href="index2.html">Dashboard 2</a></li>
-                      <li><a href="index3.html">Dashboard 3</a></li>
-                      <li><a href="index4.html">Dashboard 4</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="bi bi-pencil-square"></i> Forms <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="form.html">General Form</a></li>
-                      <li><a href="form_advanced.html">Advanced Components</a></li>
-                      <li><a href="form_validation.html">Form Validation</a></li>
-                      <li><a href="form_wizards.html">Form Wizard</a></li>
-                      <li><a href="form_upload.html">Form Upload</a></li>
-                      <li><a href="form_buttons.html">Form Buttons</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="bi bi-display"></i> UI Elements <span class="badge bg-danger">Hot</span> <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="general_elements.html">General Elements</a></li>
-                      <li><a href="media_gallery.html">Media Gallery</a></li>
-                      <li><a href="typography.html">Typography</a></li>
-                      <li><a href="icons.html">Icons</a></li>
-                      <li><a href="widgets.html">Widgets</a></li>
-                      <li><a href="invoice.html">Invoice</a></li>
-                      <li><a href="inbox.html">Inbox</a></li>
-                      <li><a href="calendar.html">Calendar</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="bi bi-table"></i> Tables <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="tables.html">Tables</a></li>
-                      <li><a href="tables_dynamic.html">Table Dynamic</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="bi bi-bar-chart"></i> Data Presentation <span class="badge bg-success">New</span> <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="chartjs.html">Chart.js</a></li>
-                      <li><a href="echarts.html">ECharts <span class="badge bg-info">Updated</span></a></li>
-                      <li><a href="other_charts.html">Other Charts</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="bi bi-layout-split"></i>Layouts <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="fixed_sidebar.html">Fixed Sidebar</a></li>
-                      <li><a href="fixed_footer.html">Fixed Footer</a></li>
-                    </ul>
-                  </li>
-                </ul>
-              </div>
-              <div class="menu_section">
-                <h3>Live On</h3>
-                <ul class="nav side-menu">
-                  <li><a><i class="bi bi-file-earmark-text"></i> Additional Pages <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="e_commerce.html">E-commerce</a></li>
-                      <li><a href="projects.html">Projects</a></li>
-                      <li><a href="project_detail.html">Project Detail</a></li>
-                      <li><a href="contacts.html">Contacts</a></li>
-                      <li><a href="profile.html">Profile</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="bi bi-window-stack"></i> Extras <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="page_403.html">403 Error</a></li>
-                      <li><a href="page_404.html">404 Error</a></li>
-                      <li><a href="page_500.html">500 Error</a></li>
-                      <li><a href="plain_page.html">Plain Page</a></li>
-                      <li><a href="login.html">Login Page</a></li>
-                      <li><a href="pricing_tables.html">Pricing Tables</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="bi bi-diagram-3"></i> Multilevel Menu <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                        <li><a href="#level1_1">Level One</a></li>
-                        <li><a>Level One<span class="bi bi-chevron-down"></span></a>
-                          <ul class="nav child_menu">
-                            <li class="sub_menu"><a href="level2.html">Level Two</a></li>
-                            <li><a href="#level2_1">Level Two</a></li>
-                            <li><a href="#level2_2">Level Two</a></li>
-                          </ul>
-                        </li>
-                        <li><a href="#level1_2">Level One</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="landing.html"><i class="bi bi-laptop"></i> Landing Page <span class="badge bg-info">Updated</span></a></li>
-                </ul>
-              </div>
-
-            </div>
-            <!-- /sidebar menu -->
-
-            <!-- /menu footer buttons -->
-            <div class="sidebar-footer hidden-small">
-              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Settings">
-                <span class="fas fa-cog" aria-hidden="true"></span>
-              </a>
-              <a data-bs-toggle="tooltip" data-bs-placement="top" title="FullScreen">
-                <span class="fas fa-expand" aria-hidden="true"></span>
-              </a>
-              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Lock">
-                <span class="fas fa-eye-slash" aria-hidden="true"></span>
-              </a>
-              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Logout" href="login.html">
-                <span class="fas fa-power-off" aria-hidden="true"></span>
-              </a>
-            </div>
-            <!-- /menu footer buttons -->
-          </div>
-        </div>
-
-        <!-- top navigation -->
-        <div class="top_nav">
-            <div class="nav_menu d-flex align-items-center justify-content-between">
-                <div class="nav toggle">
-                  <a id="menu_toggle"><i class="fas fa-bars"></i></a>
-                </div>
-                <nav class="nav navbar-nav ms-auto">
-                <ul class="navbar-right d-flex align-items-center gap-3 pe-3">
-                <li class="nav-item dropdown">
-                    <a href="#" role="button" class="dropdown-toggle info-number" id="navbarDropdown1" data-bs-toggle="dropdown" aria-expanded="false">
-                      <i class="fas fa-envelope"></i>
-                      <span class="badge bg-success">6</span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end list-unstyled msg_list dropdown-menu-lg" role="menu" aria-labelledby="navbarDropdown1">
-                      <li class="nav-item">
-                        <a class="dropdown-item">
-                          <span class="image"><img src="../images/img.jpg" alt="Profile Image" /></span>
-                          <span>
-                            <span>John Smith</span>
-                            <span class="time">3 mins ago</span>
-                          </span>
-                          <span class="message">
-                            Film festivals used to be do-or-die moments for movie makers. They were where...
-                          </span>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="dropdown-item">
-                          <span class="image"><img src="../images/img.jpg" alt="Profile Image" /></span>
-                          <span>
-                            <span>John Smith</span>
-                            <span class="time">3 mins ago</span>
-                          </span>
-                          <span class="message">
-                            Film festivals used to be do-or-die moments for movie makers. They were where...
-                          </span>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="dropdown-item">
-                          <span class="image"><img src="../images/img.jpg" alt="Profile Image" /></span>
-                          <span>
-                            <span>John Smith</span>
-                            <span class="time">3 mins ago</span>
-                          </span>
-                          <span class="message">
-                            Film festivals used to be do-or-die moments for movie makers. They were where...
-                          </span>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="dropdown-item">
-                          <span class="image"><img src="../images/img.jpg" alt="Profile Image" /></span>
-                          <span>
-                            <span>John Smith</span>
-                            <span class="time">3 mins ago</span>
-                          </span>
-                          <span class="message">
-                            Film festivals used to be do-or-die moments for movie makers. They were where...
-                          </span>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <div class="text-center">
-                          <a class="dropdown-item">
-                            <strong>See All Alerts</strong>
-                            <i class="fas fa-angle-right"></i>
-                          </a>
-                        </div>
-                      </li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a href="#" role="button" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                      <img src="../images/img.jpg" alt="">John Doe
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-end dropdown-usermenu dropdown-menu-sm" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item"  href="#" role="button"> Profile</a>
-                        <a class="dropdown-item"  href="#" role="button">
-                          <span class="badge bg-danger float-end">50%</span>
-                          <span>Settings</span>
-                        </a>
-                    <a class="dropdown-item"  href="#" role="button">Help</a>
-                      <a class="dropdown-item"  href="login.html"><i class="fas fa-sign-out-alt float-end"></i> Log Out</a>
-                    </div>
-                </li>
-              </ul>
-              </nav>
-            </div>
-          </div>
-        <!-- /top navigation -->
-
-        <!-- page content -->
-        <main class="right_col" role="main" aria-label="Main content">
-          <div class="">
-            <div class="page-title">
-              <div class="title_left">
-                <h1 class="page-heading h3">Invoice <small>Professional invoice template</small></h1>
-              </div>
-
-              <div class="title_right">
-                <div class="col-md-5 col-sm-5 mb-3 float-end top_search">
-                  <div class="input-group search-bar-fix">
-                    <input type="text" class="form-control" placeholder="Search for...">
-                    <button class="btn btn-outline-secondary" type="button">
-                      <i class="fas fa-search"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="clearfix"></div>
-
-            <div class="row">
-              <div class="col-md-12">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h4>Invoice Design <small>Professional invoice layout</small></h4>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Settings 1</a>
-                            <a class="dropdown-item" href="#">Settings 2</a>
-                          </div>
-                      <li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-
-                    <section class="content invoice">
-                      <!-- title row -->
-                      <div class="row">
-                        <div class="col-12">
-                          <div class="invoice-header">
-                            <h1>
-                              <i class="fas fa-globe"></i> Invoice.
-                              <small class="float-end">Date: 16/08/2032</small>
-                            </h1>
-                          </div>
-                        </div>
-                        <!-- /.col -->
-                      </div>
-                      <!-- info row -->
-                      <div class="row invoice-info">
-                        <div class="col-sm-4 invoice-col">
-                          <strong>From</strong>
-                          <address>
-                            <strong>Iron Admin, Inc.</strong><br>
-                            795 Freedom Ave, Suite 600<br>
-                            New York, CA 94107<br>
-                            <strong>Phone:</strong> 1 (804) 123-9876<br>
-                            <strong>Email:</strong> contact@ironadmin.com
-                          </address>
-                        </div>
-                        <!-- /.col -->
-                        <div class="col-sm-4 invoice-col">
-                          <strong>To</strong>
-                          <address>
-                            <strong>John Doe</strong><br>
-                            795 Freedom Ave, Suite 600<br>
-                            New York, CA 94107<br>
-                            <strong>Phone:</strong> 1 (804) 123-9876<br>
-                            <strong>Email:</strong> jon@ironadmin.com
-                          </address>
-                        </div>
-                        <!-- /.col -->
-                        <div class="col-sm-4 invoice-col">
-                          <b>Invoice #007612</b><br>
-                          <br>
-                          <b>Order ID:</b> 4F3S8J<br>
-                          <b>Payment Due:</b> 2/22/2032<br>
-                          <b>Account:</b> 968-34567
-                        </div>
-                        <!-- /.col -->
-                      </div>
-                      <!-- /.row -->
-
-                      <!-- Table row -->
-                      <div class="row">
-                        <div class="col-12">
-                          <div class="table-responsive">
-                            <table class="table table-striped">
-                              <thead>
-                                <tr>
-                                  <th>Qty</th>
-                                  <th>Product</th>
-                                  <th>Serial #</th>
-                                  <th>Description</th>
-                                  <th class="text-end">Subtotal</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr>
-                                  <td>1</td>
-                                  <td>Call of Duty</td>
-                                  <td>455-981-221</td>
-                                  <td>Premium gaming experience with advanced graphics and immersive gameplay featuring multiplayer campaigns and special editions</td>
-                                  <td class="text-end">$64.50</td>
-                                </tr>
-                                <tr>
-                                  <td>1</td>
-                                  <td>Need for Speed IV</td>
-                                  <td>247-925-726</td>
-                                  <td>High-speed racing simulation with realistic physics and stunning visual effects</td>
-                                  <td class="text-end">$50.00</td>
-                                </tr>
-                                <tr>
-                                  <td>1</td>
-                                  <td>Monsters DVD</td>
-                                  <td>735-845-642</td>
-                                  <td>Family entertainment collection featuring animated adventures and bonus content with director's commentary</td>
-                                  <td class="text-end">$10.70</td>
-                                </tr>
-                                <tr>
-                                  <td>1</td>
-                                  <td>Grown Ups Blue Ray</td>
-                                  <td>422-568-642</td>
-                                  <td>Comedy film collection in high-definition format with deleted scenes and behind-the-scenes footage</td>
-                                  <td class="text-end">$25.99</td>
-                                </tr>
-                              </tbody>
-                            </table>
-                          </div>
-                        </div>
-                        <!-- /.col -->
-                      </div>
-                      <!-- /.row -->
-
-                      <div class="row">
-                        <!-- accepted payments column -->
-                        <div class="col-md-6">
-                          <p class="lead">Payment Methods:</p>
-                          <div class="d-flex gap-2 mb-3">
-                            <img src="../images/visa.png" alt="Visa" class="payment-logo" loading="lazy">
-                            <img src="../images/mastercard.png" alt="Mastercard" class="payment-logo" loading="lazy">
-                            <img src="../images/american-express.png" alt="American Express" class="payment-logo" loading="lazy">
-                            <img src="../images/paypal.png" alt="Paypal" class="payment-logo" loading="lazy">
-                          </div>
-                          <div class="alert alert-info" role="alert">
-                            <p class="mb-0">We accept all major credit cards and PayPal. All transactions are secure and encrypted for your protection. Payment processing is handled by industry-leading security providers.</p>
-                          </div>
-                        </div>
-                        <!-- /.col -->
-                        <div class="col-md-6">
-                          <p class="lead">Amount Due 2/22/2032</p>
-                          <div class="table-responsive">
-                            <table class="table">
-                              <tbody>
-                                <tr>
-                                  <th style="width:50%">Subtotal:</th>
-                                  <td class="text-end">$151.19</td>
-                                </tr>
-                                <tr>
-                                  <th>Tax (9.3%):</th>
-                                  <td class="text-end">$14.06</td>
-                                </tr>
-                                <tr>
-                                  <th>Shipping:</th>
-                                  <td class="text-end">$5.80</td>
-                                </tr>
-                                <tr class="table-active">
-                                  <th><strong>Total:</strong></th>
-                                  <td class="text-end"><strong>$171.05</strong></td>
-                                </tr>
-                              </tbody>
-                            </table>
-                          </div>
-                        </div>
-                        <!-- /.col -->
-                      </div>
-                      <!-- /.row -->
-
-                      <!-- this row will not appear when printing -->
-                      <div class="row no-print mt-4">
-                        <div class="col-12">
-                          <div class="d-flex gap-2 justify-content-between flex-wrap">
-                            <button class="btn btn-outline-secondary" onclick="window.print();"><i class="fas fa-print"></i> Print</button>
-                            <div class="d-flex gap-2">
-                              <button class="btn btn-primary"><i class="fas fa-download"></i> Generate PDF</button>
-                              <button class="btn btn-success"><i class="fas fa-credit-card"></i> Submit Payment</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- /page content -->
-
-        <!-- footer content -->
-        <footer>
-          <div class="float-end">
-            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
-          </div>
-          <div class="clearfix"></div>
-        </footer>
-        <!-- /footer content -->
+  <div class="page-header">
+    <div class="page-header-row">
+      <div>
+        <div class="page-pretitle">Billing</div>
+        <div class="page-title">Invoice <span style="font-weight:500;color:var(--text-muted)">#INV-04812</span></div>
+      </div>
+      <div class="page-actions">
+        <span id="status-pill" class="status status-yellow" style="margin-right:8px">Pending</span>
+        <button class="btn btn-outline" id="mark-paid-btn">Mark as paid</button>
+        <button class="btn btn-outline" onclick="window.print()">Print</button>
+        <button class="btn btn-primary">Download PDF</button>
       </div>
     </div>
-    
-    <style>
-      .payment-logo {
-        height: 32px;
-        width: auto;
-        object-fit: contain;
-      }
-      
-      .invoice-header h1 {
-        margin-bottom: 20px;
-      }
-      
-      .invoice-col address {
-        line-height: 1.6;
-      }
-      
-      @media print {
-        .no-print {
-          display: none !important;
-        }
-        .sidebar-footer, .top_nav, .left_col {
-          display: none !important;
-        }
-        .right_col {
-          width: 100% !important;
-          margin-left: 0 !important;
-        }
-      }
-    </style>
-  </body>
+  </div>
+
+  <div class="card">
+    <div class="invoice" id="invoice-doc">
+      <div class="invoice-header">
+        <div>
+          <h1>Invoice</h1>
+          <div class="invoice-meta">
+            #INV-04812 · Issued <strong>Apr 24, 2026</strong> · Due <strong>May 24, 2026</strong>
+          </div>
+        </div>
+        <div style="text-align:right">
+          <div style="display:inline-flex;align-items:center;gap:8px">
+            <div class="brand-icon" style="width:32px;height:32px">G</div>
+            <div style="font-size:16px;font-weight:600;color:var(--text)">Gentelella Inc.</div>
+          </div>
+          <div style="font-size:11.5px;color:var(--text-muted);margin-top:6px">
+            123 Admin St, Suite 4<br>
+            Riga, LV-1010<br>
+            billing@gentelella.com
+          </div>
+        </div>
+      </div>
+
+      <div class="invoice-grid">
+        <div>
+          <h4>Billed to</h4>
+          <p>
+            <strong>Acme Corporation</strong><br>
+            Attn: John Doe<br>
+            456 Customer Ave<br>
+            San Francisco, CA 94105<br>
+            VAT: US-12345678
+          </p>
+        </div>
+        <div>
+          <h4>Pay to</h4>
+          <p>
+            <strong>Bank of Latvia</strong><br>
+            IBAN: LV80 BANK 1234 5678 9012 3<br>
+            SWIFT: BLATLV2X<br>
+            Reference: INV-04812
+          </p>
+        </div>
+      </div>
+
+      <!-- Editable line items -->
+      <div class="invoice-editor" id="invoice-editor">
+        <div class="invoice-editor-header">
+          <div>Description</div>
+          <div style="text-align:right">Qty</div>
+          <div style="text-align:right">Rate</div>
+          <div style="text-align:right">Amount</div>
+          <div></div>
+        </div>
+        <div id="line-items"></div>
+        <button type="button" class="btn btn-outline btn-sm" id="add-line" style="margin-top:10px">
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 4v8M4 8h8"/></svg>
+          Add line item
+        </button>
+      </div>
+
+      <!-- Totals (editable discount + tax) -->
+      <div class="invoice-totals invoice-totals-editable">
+        <table>
+          <tr>
+            <td>Subtotal</td>
+            <td id="t-subtotal">$0.00</td>
+          </tr>
+          <tr>
+            <td>
+              Discount
+              <input type="number" class="totals-input" id="t-discount" value="10" min="0" max="100" step="0.5">
+              <span style="color:var(--text-muted)">%</span>
+            </td>
+            <td id="t-discount-amount">−$0.00</td>
+          </tr>
+          <tr>
+            <td>
+              VAT
+              <input type="number" class="totals-input" id="t-tax" value="21" min="0" max="100" step="0.5">
+              <span style="color:var(--text-muted)">%</span>
+            </td>
+            <td id="t-tax-amount">$0.00</td>
+          </tr>
+          <tr class="grand">
+            <td>Total due</td>
+            <td id="t-grand">$0.00</td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Payment timeline -->
+      <div class="invoice-payment-status" id="payment-status">
+        <div class="ips-step done">
+          <div class="ips-dot"></div>
+          <div class="ips-label">
+            <div class="ips-title">Issued</div>
+            <div class="ips-time">Apr 24, 2026</div>
+          </div>
+        </div>
+        <div class="ips-step done">
+          <div class="ips-dot"></div>
+          <div class="ips-label">
+            <div class="ips-title">Sent to client</div>
+            <div class="ips-time">Apr 24, 2026 · 14:32</div>
+          </div>
+        </div>
+        <div class="ips-step active">
+          <div class="ips-dot"></div>
+          <div class="ips-label">
+            <div class="ips-title">Awaiting payment</div>
+            <div class="ips-time">Due May 24, 2026 · 21 days remaining</div>
+          </div>
+        </div>
+        <div class="ips-step" id="ips-paid">
+          <div class="ips-dot"></div>
+          <div class="ips-label">
+            <div class="ips-title">Paid</div>
+            <div class="ips-time">—</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:24px;padding-top:16px;border-top:1px solid var(--border-color-light);font-size:11.5px;color:var(--text-muted);line-height:1.5">
+        <strong style="color:var(--text)">Payment terms:</strong> Net 30. Late payments incur 1.5% monthly interest.<br>
+        Questions? Email <a href="mailto:billing@gentelella.com">billing@gentelella.com</a>.
+      </div>
+    </div>
+  </div>
+
+</div>
+</main>
+
+<style>
+.invoice-editor {
+  margin-top: 18px;
+  border-top: 1px solid var(--border-color-light);
+  padding-top: 12px;
+}
+.invoice-editor-header,
+.line-row {
+  display: grid;
+  grid-template-columns: 1fr 60px 90px 100px 28px;
+  gap: 10px;
+  align-items: center;
+  padding: 6px 0;
+  font-size: 11.5px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+.line-row {
+  font-size: 13px;
+  color: var(--text);
+  text-transform: none;
+  letter-spacing: 0;
+  border-top: 1px solid var(--border-color-light);
+  padding: 8px 0;
+}
+.line-row input[type="text"],
+.line-row input[type="number"] {
+  width: 100%;
+  border: 1px solid transparent;
+  background: transparent;
+  font: inherit;
+  font-size: 13px;
+  color: var(--text);
+  padding: 4px 6px;
+  border-radius: var(--radius-sm);
+  transition: border-color 100ms, background 100ms;
+}
+.line-row input[type="text"]:hover,
+.line-row input[type="number"]:hover { border-color: var(--border-color); }
+.line-row input[type="text"]:focus,
+.line-row input[type="number"]:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: var(--bg-surface);
+  box-shadow: 0 0 0 3px var(--primary-lt);
+}
+.line-row input[type="number"] { text-align: right; -moz-appearance: textfield; }
+.line-row input[type="number"]::-webkit-outer-spin-button,
+.line-row input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.line-row .desc-wrap input.desc-sub {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+.line-row .amount {
+  text-align: right;
+  font-weight: var(--font-weight-medium);
+  color: var(--text);
+}
+.line-row .remove-btn {
+  width: 24px; height: 24px;
+  border: 0;
+  background: transparent;
+  border-radius: 50%;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0;
+  transition: opacity 100ms, background 100ms, color 100ms;
+}
+.line-row:hover .remove-btn { opacity: 1; }
+.line-row .remove-btn:hover { background: var(--red-lt); color: var(--red); }
+
+.totals-input {
+  width: 50px;
+  margin: 0 4px;
+  padding: 1px 6px;
+  font: inherit;
+  font-size: 12.5px;
+  text-align: right;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface);
+  color: var(--text);
+  -moz-appearance: textfield;
+}
+.totals-input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 2px var(--primary-lt); }
+.totals-input::-webkit-outer-spin-button,
+.totals-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+
+.invoice-payment-status {
+  margin-top: 32px;
+  padding: 18px;
+  background: var(--bg-surface-secondary);
+  border-radius: var(--radius);
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  gap: 12px;
+}
+.invoice-payment-status::before {
+  content: '';
+  position: absolute;
+  left: 32px; right: 32px; top: 28px;
+  height: 2px;
+  background: var(--border-color);
+  z-index: 0;
+}
+.ips-step {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 6px;
+}
+.ips-dot {
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--bg-surface);
+  border: 2px solid var(--border-color);
+}
+.ips-step.done .ips-dot { background: var(--primary); border-color: var(--primary); }
+.ips-step.active .ips-dot {
+  background: var(--bg-surface);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px var(--primary-lt);
+}
+.ips-step.paid .ips-dot { background: var(--green); border-color: var(--green); }
+.ips-step .ips-title { font-size: 12.5px; font-weight: var(--font-weight-medium); color: var(--text); }
+.ips-step:not(.done):not(.active):not(.paid) .ips-title { color: var(--text-muted); }
+.ips-step .ips-time { font-size: 11px; color: var(--text-muted); }
+
+@media print {
+  .invoice-editor-header { display: none; }
+  .line-row .remove-btn,
+  #add-line,
+  .totals-input { display: none; }
+  .line-row input { border: 0; padding: 0; background: transparent; }
+  .invoice-payment-status { display: none; }
+}
+</style>
+
+<script type="module">
+import { showToast } from '/src/v4/toast.js';
+
+const seed = [
+  { desc: 'Gentelella Pro license', sub: 'Annual subscription · 50 seats', qty: 1, rate: 2499 },
+  { desc: 'Custom theme development', sub: 'Branded variant · 24h', qty: 24, rate: 120 },
+  { desc: 'Priority support', sub: '12 months · 4h response SLA', qty: 12, rate: 99 },
+  { desc: 'Onboarding workshop', sub: 'Half-day remote session', qty: 1, rate: 450 }
+];
+
+const fmt = (n) => '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const lines = document.getElementById('line-items');
+
+function rowHtml(item, i) {
+  return `
+    <div class="line-row" data-i="${i}">
+      <div class="desc-wrap">
+        <input type="text" class="desc" value="${item.desc.replace(/"/g, '&quot;')}" placeholder="Item description">
+        <input type="text" class="desc desc-sub" value="${item.sub.replace(/"/g, '&quot;')}" placeholder="Optional details">
+      </div>
+      <input type="number" class="qty" value="${item.qty}" min="0" step="1">
+      <input type="number" class="rate" value="${item.rate}" min="0" step="0.01">
+      <div class="amount">${fmt(item.qty * item.rate)}</div>
+      <button type="button" class="remove-btn" aria-label="Remove">
+        <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6h10M8 6V4a1.5 1.5 0 013 0v2"/><path d="M5 6l1 8.5h6L13 6"/></svg>
+      </button>
+    </div>
+  `;
+}
+
+function render() {
+  lines.innerHTML = seed.map(rowHtml).join('');
+  recompute();
+}
+
+function recompute() {
+  let subtotal = 0;
+  document.querySelectorAll('#line-items .line-row').forEach((row, idx) => {
+    const qty = parseFloat(row.querySelector('.qty').value) || 0;
+    const rate = parseFloat(row.querySelector('.rate').value) || 0;
+    const amount = qty * rate;
+    row.querySelector('.amount').textContent = fmt(amount);
+    subtotal += amount;
+    if (seed[idx]) {
+      seed[idx].qty = qty;
+      seed[idx].rate = rate;
+      seed[idx].desc = row.querySelector('.desc:not(.desc-sub)').value;
+      seed[idx].sub = row.querySelector('.desc-sub').value;
+    }
+  });
+
+  const dPct = parseFloat(document.getElementById('t-discount').value) || 0;
+  const tPct = parseFloat(document.getElementById('t-tax').value) || 0;
+  const dAmount = subtotal * dPct / 100;
+  const afterDiscount = subtotal - dAmount;
+  const tAmount = afterDiscount * tPct / 100;
+  const grand = afterDiscount + tAmount;
+
+  document.getElementById('t-subtotal').textContent = fmt(subtotal);
+  document.getElementById('t-discount-amount').textContent = '−' + fmt(dAmount);
+  document.getElementById('t-tax-amount').textContent = fmt(tAmount);
+  document.getElementById('t-grand').textContent = fmt(grand);
+}
+
+lines.addEventListener('input', recompute);
+lines.addEventListener('click', (e) => {
+  const btn = e.target.closest('.remove-btn');
+  if (!btn) return;
+  const row = btn.closest('.line-row');
+  const i = parseInt(row.dataset.i, 10);
+  seed.splice(i, 1);
+  render();
+});
+
+document.getElementById('add-line').addEventListener('click', () => {
+  seed.push({ desc: 'New item', sub: '', qty: 1, rate: 0 });
+  render();
+  // Focus the new row's description
+  const last = lines.querySelector('.line-row:last-child .desc');
+  if (last) { last.focus(); last.select(); }
+});
+
+document.getElementById('t-discount').addEventListener('input', recompute);
+document.getElementById('t-tax').addEventListener('input', recompute);
+
+// Mark as paid → flip status pill + advance the payment timeline
+const statusPill = document.getElementById('status-pill');
+const ipsPaid = document.getElementById('ips-paid');
+const paidBtn = document.getElementById('mark-paid-btn');
+let paid = false;
+paidBtn.addEventListener('click', () => {
+  paid = !paid;
+  if (paid) {
+    statusPill.className = 'status status-green';
+    statusPill.textContent = 'Paid';
+    ipsPaid.classList.add('paid');
+    ipsPaid.querySelector('.ips-time').textContent = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    paidBtn.textContent = 'Mark unpaid';
+    showToast('Marked as paid', { variant: 'success' });
+  } else {
+    statusPill.className = 'status status-yellow';
+    statusPill.textContent = 'Pending';
+    ipsPaid.classList.remove('paid');
+    ipsPaid.querySelector('.ips-time').textContent = '—';
+    paidBtn.textContent = 'Mark as paid';
+    showToast('Marked unpaid');
+  }
+});
+
+render();
+</script>
+
+</body>
 </html>

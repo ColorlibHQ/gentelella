@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User management | Gentelella 2026 v4</title>
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script type="module" src="/src/main-v4.js"></script>
+</head>
+<body data-shell="admin" data-page="user_management" data-breadcrumb="Home > Admin > Users">
+
+<main class="main">
+<div class="page-wrapper">
+
+  <div class="page-header">
+    <div class="page-header-row">
+      <div>
+        <div class="page-pretitle">Admin</div>
+        <div class="page-title">User management</div>
+      </div>
+      <div class="page-actions">
+        <button class="btn btn-outline">Export</button>
+        <button class="btn btn-primary" id="invite-btn">+ Invite user</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row col-3" style="margin-bottom:16px">
+    <div class="card"><div class="stat"><div class="stat-icon teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg></div><div class="stat-content"><div class="stat-label">Total users</div><div class="stat-value-row"><span class="stat-value">12</span></div><div class="stat-subtext">3 active right now</div></div></div></div>
+    <div class="card"><div class="stat"><div class="stat-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 1l3 6 6 .9-4.5 4.4 1 6.7L12 16l-5.5 3 1-6.7L3 7.9 9 7z"/></svg></div><div class="stat-content"><div class="stat-label">Admins</div><div class="stat-value-row"><span class="stat-value">2</span></div><div class="stat-subtext">Owner + 1 admin</div></div></div></div>
+    <div class="card"><div class="stat"><div class="stat-icon yellow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div><div class="stat-content"><div class="stat-label">Pending invites</div><div class="stat-value-row"><span class="stat-value">2</span></div><div class="stat-subtext">Awaiting acceptance</div></div></div></div>
+  </div>
+
+  <div class="card">
+    <div class="card-header" style="gap:12px;flex-wrap:wrap">
+      <div class="users-filters">
+        <div class="search-box" style="width:240px">
+          <svg class="s-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="7" r="5"/><path d="M11 11l3.5 3.5"/></svg>
+          <input type="text" id="users-search" placeholder="Search by name or email…">
+        </div>
+        <select class="form-control" id="filter-role" style="width:140px;height:32px">
+          <option value="">All roles</option>
+          <option value="Owner">Owner</option>
+          <option value="Admin">Admin</option>
+          <option value="Editor">Editor</option>
+          <option value="Viewer">Viewer</option>
+        </select>
+        <select class="form-control" id="filter-status" style="width:140px;height:32px">
+          <option value="">All statuses</option>
+          <option value="active">Active</option>
+          <option value="pending">Pending</option>
+          <option value="suspended">Suspended</option>
+        </select>
+      </div>
+    </div>
+    <div class="card-body p-0">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th style="width:40px"><input type="checkbox" id="select-all"></th>
+              <th>User</th>
+              <th>Role</th>
+              <th>Status</th>
+              <th>Last active</th>
+              <th>Joined</th>
+              <th data-orderable="false"></th>
+            </tr>
+          </thead>
+          <tbody id="users-rows"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>
+</main>
+
+<script type="module">
+import { showToast } from '/src/v4/toast.js';
+import { showModal } from '/src/v4/modal.js';
+import { openMenu } from '/src/v4/menus.js';
+
+const USERS = [
+  { name:'Aigars Silkalns',  email:'aigars@example.com',  ini:'A',  col:'primary', role:'Owner',  status:'active',    lastActive:'just now',     joined:'Mar 2024' },
+  { name:'Sarah Kowalski',   email:'sarah@example.com',   ini:'SK', col:'azure',   role:'Admin',  status:'active',    lastActive:'2 min ago',    joined:'Apr 2024' },
+  { name:'Michael Reyes',    email:'michael@example.com', ini:'MR', col:'purple',  role:'Editor', status:'active',    lastActive:'14 min ago',   joined:'May 2024' },
+  { name:'Emily Wang',       email:'emily@example.com',   ini:'EW', col:'yellow',  role:'Editor', status:'active',    lastActive:'1 hour ago',   joined:'Jun 2024' },
+  { name:'Mark Kim',         email:'mark@example.com',    ini:'MK', col:'red',     role:'Viewer', status:'active',    lastActive:'3 hours ago',  joined:'Jul 2024' },
+  { name:'Lina Park',        email:'lina@example.com',    ini:'LP', col:'green',   role:'Editor', status:'active',    lastActive:'Yesterday',    joined:'Sep 2024' },
+  { name:'Diego Reyes',      email:'diego@example.com',   ini:'DR', col:'blue',    role:'Editor', status:'active',    lastActive:'2 days ago',   joined:'Sep 2024' },
+  { name:'Yuki Tanaka',      email:'yuki@example.com',    ini:'YT', col:'primary', role:'Viewer', status:'active',    lastActive:'4 days ago',   joined:'Oct 2024' },
+  { name:'Tom Hardy',        email:'tom@example.com',     ini:'TH', col:'purple',  role:'Editor', status:'active',    lastActive:'1 week ago',   joined:'Nov 2024' },
+  { name:'Robert Jones',     email:'robert@example.com',  ini:'RJ', col:'red',     role:'Viewer', status:'suspended', lastActive:'2 weeks ago',  joined:'Dec 2024' },
+  { name:'invite@acme.com',  email:'invite@acme.com',     ini:'?',  col:'gray',    role:'Editor', status:'pending',   lastActive:'—',            joined:'Apr 28, 2026', pending:true },
+  { name:'newhire@team.io',  email:'newhire@team.io',     ini:'?',  col:'gray',    role:'Viewer', status:'pending',   lastActive:'—',            joined:'Apr 27, 2026', pending:true }
+];
+const COLORS = { primary:'var(--primary)', azure:'var(--azure)', purple:'var(--purple)', yellow:'var(--yellow)', red:'var(--red)', green:'var(--green)', blue:'var(--blue)', gray:'var(--text-disabled)' };
+const STATUS_CLS = { active:'green', pending:'yellow', suspended:'red' };
+const ROLE_CLS   = { Owner:'purple', Admin:'red', Editor:'blue', Viewer:'green' };
+const ROLES = ['Owner', 'Admin', 'Editor', 'Viewer'];
+
+let filterText = '', filterRole = '', filterStatus = '';
+
+function visible() {
+  const q = filterText.toLowerCase();
+  return USERS.filter((u) =>
+    (!q || u.name.toLowerCase().includes(q) || u.email.toLowerCase().includes(q)) &&
+    (!filterRole || u.role === filterRole) &&
+    (!filterStatus || u.status === filterStatus)
+  );
+}
+
+function render() {
+  const rows = document.getElementById('users-rows');
+  const items = visible();
+  rows.innerHTML = items.map((u, idx) => `
+    <tr data-email="${u.email}">
+      <td><input type="checkbox" class="row-cb"></td>
+      <td>
+        <div class="cell-customer">
+          <div class="cell-avatar${u.pending ? ' pending' : ''}" style="background:${u.pending ? 'var(--bg-surface-secondary)' : COLORS[u.col]};color:${u.pending ? 'var(--text-muted)' : 'white'}">${u.ini}</div>
+          <div>
+            <div class="cell-strong">${u.pending ? '<em style="font-style:normal;color:var(--text-muted)">Invited</em>' : u.name}</div>
+            <div style="font-size:11.5px;color:var(--text-muted)">${u.email}</div>
+          </div>
+        </div>
+      </td>
+      <td><button type="button" class="role-chip role-${ROLE_CLS[u.role]}" data-role-edit data-email="${u.email}">${u.role} <svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6l4 4 4-4"/></svg></button></td>
+      <td><span class="status status-${STATUS_CLS[u.status]}">${u.status[0].toUpperCase() + u.status.slice(1)}</span></td>
+      <td style="font-size:12.5px;color:var(--text-muted)">${u.lastActive}</td>
+      <td style="font-size:12.5px;color:var(--text-muted)">${u.joined}</td>
+      <td><button class="card-opt-btn" data-row-menu data-email="${u.email}" aria-label="More"><svg viewBox="0 0 16 16" fill="currentColor"><circle cx="8" cy="3" r="1.2"/><circle cx="8" cy="8" r="1.2"/><circle cx="8" cy="13" r="1.2"/></svg></button></td>
+    </tr>
+  `).join('');
+}
+
+document.getElementById('users-search').addEventListener('input', (e) => { filterText = e.target.value; render(); });
+document.getElementById('filter-role').addEventListener('change', (e) => { filterRole = e.target.value; render(); });
+document.getElementById('filter-status').addEventListener('change', (e) => { filterStatus = e.target.value; render(); });
+
+document.getElementById('select-all').addEventListener('change', (e) => {
+  document.querySelectorAll('#users-rows .row-cb').forEach((cb) => { cb.checked = e.target.checked; });
+});
+
+document.getElementById('users-rows').addEventListener('click', (e) => {
+  const roleBtn = e.target.closest('[data-role-edit]');
+  const moreBtn = e.target.closest('[data-row-menu]');
+  if (roleBtn) {
+    e.stopPropagation();
+    const email = roleBtn.dataset.email;
+    const u = USERS.find((x) => x.email === email);
+    if (!u) return;
+    openMenu(roleBtn, ROLES.map((r) => ({
+      label: r + (r === u.role ? ' ✓' : ''),
+      action: () => {
+        if (u.role === 'Owner' || r === 'Owner') {
+          showToast('Owner role cannot be changed inline', { variant: 'warning' });
+          return;
+        }
+        u.role = r;
+        render();
+        showToast(`${u.name}: role set to ${r}`, { variant: 'success' });
+      }
+    })));
+  } else if (moreBtn) {
+    e.stopPropagation();
+    const email = moreBtn.dataset.email;
+    const u = USERS.find((x) => x.email === email);
+    if (!u) return;
+    const items = [
+      { label: 'View profile',     action: () => showToast(`Profile: ${u.name}`) },
+      { label: 'Reset password',   action: () => showToast(`Reset link sent to ${u.email}`, { variant: 'success' }) },
+      { label: u.status === 'suspended' ? 'Reactivate' : 'Suspend', action: () => {
+          u.status = u.status === 'suspended' ? 'active' : 'suspended';
+          render();
+          showToast(`${u.name}: ${u.status}`);
+        }
+      },
+      '-',
+      { label: 'Remove from workspace', action: () => {
+          const i = USERS.indexOf(u);
+          if (i > -1) USERS.splice(i, 1);
+          render();
+          showToast(`Removed ${u.name}`);
+        }
+      }
+    ];
+    openMenu(moreBtn, items);
+  }
+});
+
+document.getElementById('invite-btn').addEventListener('click', (e) => {
+  e.stopPropagation();
+  showModal({
+    title: 'Invite a user',
+    body: `
+      <form class="modal-form" novalidate>
+        <div class="modal-form-row">
+          <label for="iv-email">Email address</label>
+          <input type="email" id="iv-email" name="email" placeholder="teammate@example.com" autocomplete="off" required>
+        </div>
+        <div class="modal-form-row">
+          <label for="iv-role">Role</label>
+          <select id="iv-role" name="role">
+            <option value="Viewer">Viewer — can only view</option>
+            <option value="Editor" selected>Editor — can view and edit</option>
+            <option value="Admin">Admin — can manage users</option>
+          </select>
+        </div>
+        <div class="modal-form-row">
+          <label for="iv-message">Personal message (optional)</label>
+          <textarea id="iv-message" name="message" rows="3" placeholder="Welcome to the team!"></textarea>
+        </div>
+      </form>
+    `,
+    actions: [
+      { label: 'Cancel', variant: 'outline' },
+      { label: 'Send invite', variant: 'primary', action: ({ body }) => {
+        const form = body.querySelector('form');
+        const fd = new FormData(form);
+        const email = (fd.get('email') || '').toString().trim();
+        const role = fd.get('role').toString();
+        if (!email) { showToast('Email is required', { variant: 'warning' }); return false; }
+        USERS.push({ name: email, email, ini: '?', col: 'gray', role, status: 'pending', lastActive: '—', joined: 'just now', pending: true });
+        render();
+        showToast(`Invite sent to ${email}`, { variant: 'success' });
+        return true;
+      } }
+    ]
+  });
+});
+
+render();
+</script>
+
+</body>
+</html>

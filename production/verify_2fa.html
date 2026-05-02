@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Two-factor verification | Gentelella 2026 v4</title>
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script type="module" src="/src/main-v4.js"></script>
+</head>
+<body>
+
+<div class="auth-page">
+  <div class="auth-card">
+    <div class="auth-brand">
+      <div class="brand-icon">G</div>
+      <div class="brand-name">Gentelella <small style="font-weight:400;color:var(--text-muted);font-size:13px;margin-left:2px">v4</small></div>
+    </div>
+
+    <div class="auth-title">Two-factor verification</div>
+    <div class="auth-subtitle">Enter the 6-digit code from your authenticator app to continue.</div>
+
+    <form id="otp-form">
+      <div class="otp-grid" role="group" aria-label="One-time password">
+        <input class="otp-input" type="text" inputmode="numeric" pattern="[0-9]" maxlength="1" autocomplete="one-time-code" autofocus required>
+        <input class="otp-input" type="text" inputmode="numeric" pattern="[0-9]" maxlength="1" autocomplete="off" required>
+        <input class="otp-input" type="text" inputmode="numeric" pattern="[0-9]" maxlength="1" autocomplete="off" required>
+        <input class="otp-input" type="text" inputmode="numeric" pattern="[0-9]" maxlength="1" autocomplete="off" required>
+        <input class="otp-input" type="text" inputmode="numeric" pattern="[0-9]" maxlength="1" autocomplete="off" required>
+        <input class="otp-input" type="text" inputmode="numeric" pattern="[0-9]" maxlength="1" autocomplete="off" required>
+      </div>
+
+      <div class="otp-meta">
+        <span>Didn't get a code? <a href="#" id="resend-code">Resend</a></span>
+        <span id="otp-timer">Expires in <strong>04:59</strong></span>
+      </div>
+
+      <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;height:38px">
+        Verify
+      </button>
+    </form>
+
+    <div class="auth-divider">or</div>
+
+    <div style="text-align:center;font-size:12.5px">
+      <a href="#">Use a backup code</a>
+    </div>
+
+    <div class="auth-footer">
+      <a href="login.html">← Back to sign in</a>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+const inputs = document.querySelectorAll('.otp-input');
+inputs.forEach((input, idx) => {
+  input.addEventListener('input', (e) => {
+    // Strip non-digits
+    e.target.value = e.target.value.replace(/\D/g, '').slice(0, 1);
+    if (e.target.value && idx < inputs.length - 1) inputs[idx + 1].focus();
+    // Auto-submit when all 6 digits entered
+    const code = Array.from(inputs).map((i) => i.value).join('');
+    if (code.length === 6) document.getElementById('otp-form').requestSubmit();
+  });
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Backspace' && !e.target.value && idx > 0) {
+      inputs[idx - 1].focus();
+      inputs[idx - 1].value = '';
+      e.preventDefault();
+    } else if (e.key === 'ArrowLeft' && idx > 0) {
+      inputs[idx - 1].focus();
+    } else if (e.key === 'ArrowRight' && idx < inputs.length - 1) {
+      inputs[idx + 1].focus();
+    }
+  });
+  input.addEventListener('paste', (e) => {
+    e.preventDefault();
+    const pasted = (e.clipboardData?.getData('text') || '').replace(/\D/g, '').slice(0, 6);
+    pasted.split('').forEach((c, i) => { if (inputs[i]) inputs[i].value = c; });
+    inputs[Math.min(pasted.length, inputs.length - 1)].focus();
+    if (pasted.length === 6) document.getElementById('otp-form').requestSubmit();
+  });
+});
+
+document.getElementById('otp-form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+  // Simulate success
+  window.location.href = 'index.html';
+});
+
+// Countdown timer
+let secs = 4 * 60 + 59;
+const timer = document.getElementById('otp-timer');
+const tick = setInterval(() => {
+  secs -= 1;
+  if (secs <= 0) {
+    clearInterval(tick);
+    timer.innerHTML = '<a href="#">Code expired — resend</a>';
+    return;
+  }
+  const m = String(Math.floor(secs / 60)).padStart(2, '0');
+  const s = String(secs % 60).padStart(2, '0');
+  timer.innerHTML = `Expires in <strong>${m}:${s}</strong>`;
+}, 1000);
+</script>
+
+</body>
+</html>

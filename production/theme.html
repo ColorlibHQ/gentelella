@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Theme generator | Gentelella 2026 v4</title>
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script type="module" src="/src/main-v4.js"></script>
+</head>
+<body data-shell="admin" data-page="theme" data-breadcrumb="Home > UI > Theme generator">
+
+<main class="main">
+<div class="page-wrapper">
+
+  <div class="page-header">
+    <div class="page-header-row">
+      <div>
+        <div class="page-pretitle">Customize</div>
+        <div class="page-title">Theme generator</div>
+      </div>
+      <div class="page-actions">
+        <button class="btn btn-outline" id="reset-theme">Reset</button>
+        <button class="btn btn-outline" id="copy-tokens">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="6" y="6" width="8" height="8" rx="1.5"/><path d="M3 10V3h7"/></svg>
+          Copy SCSS
+        </button>
+        <button class="btn btn-primary" id="download-tokens">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1v10M4 7l4 4 4-4M2 14h12"/></svg>
+          Download
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="banner banner-info">
+    <svg class="banner-icon" width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v.01M8 7v4"/></svg>
+    <div class="banner-body"><strong>Pick a primary color</strong> and watch the entire dashboard restyle live. When you're happy, copy the resulting <code>:root</code> block into <code>_tokens.scss</code> or download a ready-to-use partial.</div>
+  </div>
+
+  <div class="theme-layout">
+
+    <!-- Controls -->
+    <aside class="theme-controls">
+      <div class="card">
+        <div class="card-header"><div class="card-title">Primary color</div></div>
+        <div class="card-body">
+          <div class="theme-swatches" id="primary-swatches">
+            <button type="button" class="theme-swatch active" data-primary="#1ABB9C" data-primary-dk="#169f85" style="background:#1ABB9C" title="Teal (default)"></button>
+            <button type="button" class="theme-swatch" data-primary="#066fd1" data-primary-dk="#054ea0" style="background:#066fd1" title="Blue"></button>
+            <button type="button" class="theme-swatch" data-primary="#4263eb" data-primary-dk="#2747c4" style="background:#4263eb" title="Indigo"></button>
+            <button type="button" class="theme-swatch" data-primary="#ae3ec9" data-primary-dk="#8628a0" style="background:#ae3ec9" title="Purple"></button>
+            <button type="button" class="theme-swatch" data-primary="#d6336c" data-primary-dk="#a82054" style="background:#d6336c" title="Pink"></button>
+            <button type="button" class="theme-swatch" data-primary="#d63939" data-primary-dk="#a82b2b" style="background:#d63939" title="Red"></button>
+            <button type="button" class="theme-swatch" data-primary="#f76707" data-primary-dk="#c25204" style="background:#f76707" title="Orange"></button>
+            <button type="button" class="theme-swatch" data-primary="#f59f00" data-primary-dk="#c27d00" style="background:#f59f00" title="Yellow"></button>
+            <button type="button" class="theme-swatch" data-primary="#2fb344" data-primary-dk="#1f8a30" style="background:#2fb344" title="Green"></button>
+            <button type="button" class="theme-swatch" data-primary="#17a2b8" data-primary-dk="#107a8a" style="background:#17a2b8" title="Cyan"></button>
+            <button type="button" class="theme-swatch" data-primary="#0f1623" data-primary-dk="#000" style="background:#0f1623" title="Black"></button>
+          </div>
+          <div class="form-group" style="margin-top:14px;margin-bottom:0">
+            <label class="form-label" for="custom-color">Or enter your own</label>
+            <div style="display:flex;gap:8px">
+              <input type="color" id="custom-color-picker" value="#1ABB9C" style="width:42px;height:36px;padding:0;border:1px solid var(--border-color);border-radius:var(--radius-sm);cursor:pointer">
+              <input type="text" id="custom-color" class="form-control" value="#1ABB9C" style="flex:1;font-family:var(--font-mono);font-size:12.5px">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><div class="card-title">Sidebar</div></div>
+        <div class="card-body">
+          <label class="form-label">Style</label>
+          <div class="segmented" id="sidebar-style" role="radiogroup">
+            <label><input type="radio" name="sidebar-bg" value="#1a2332" checked><span>Dark</span></label>
+            <label><input type="radio" name="sidebar-bg" value="#0f1623"><span>Black</span></label>
+            <label><input type="radio" name="sidebar-bg" value="#ffffff"><span>Light</span></label>
+            <label><input type="radio" name="sidebar-bg" value="primary"><span>Brand</span></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><div class="card-title">Geometry</div></div>
+        <div class="card-body" style="display:flex;flex-direction:column;gap:14px">
+          <div>
+            <label class="form-label" style="display:flex;justify-content:space-between">Corner radius <span style="color:var(--text-muted)" id="radius-display">6 px</span></label>
+            <input type="range" id="radius-slider" class="slider" min="0" max="16" step="1" value="6">
+          </div>
+          <div>
+            <label class="form-label" style="display:flex;justify-content:space-between">Sidebar width <span style="color:var(--text-muted)" id="sidebar-w-display">252 px</span></label>
+            <input type="range" id="sidebar-w-slider" class="slider" min="200" max="320" step="4" value="252">
+          </div>
+          <div>
+            <label class="form-label" style="display:flex;justify-content:space-between">Body font size <span style="color:var(--text-muted)" id="font-size-display">14 px</span></label>
+            <input type="range" id="font-size-slider" class="slider" min="13" max="16" step="0.5" value="14">
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><div class="card-title">Mode</div></div>
+        <div class="card-body">
+          <div class="segmented" id="theme-mode" role="radiogroup">
+            <label><input type="radio" name="mode" value="light"><span>Light</span></label>
+            <label><input type="radio" name="mode" value="dark"><span>Dark</span></label>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Preview -->
+    <section class="theme-preview">
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">Live preview</div>
+            <div class="card-subtitle">Every change applies instantly across charts, buttons, badges, and links</div>
+          </div>
+        </div>
+        <div class="card-body" style="display:flex;flex-direction:column;gap:18px">
+
+          <!-- Buttons -->
+          <div>
+            <div class="theme-section-label">Buttons</div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px">
+              <button class="btn btn-primary">Primary</button>
+              <button class="btn btn-outline">Outline</button>
+              <button class="btn btn-ghost">Ghost</button>
+              <button class="btn btn-danger">Danger</button>
+            </div>
+          </div>
+
+          <!-- Status & chips -->
+          <div>
+            <div class="theme-section-label">Status</div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px">
+              <span class="status status-green">Active</span>
+              <span class="status status-yellow">Pending</span>
+              <span class="status status-red">Failed</span>
+              <span class="chip">Pro</span>
+              <span class="chip active">Selected</span>
+            </div>
+          </div>
+
+          <!-- Form sample -->
+          <div>
+            <div class="theme-section-label">Form</div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px">
+              <input class="form-control" placeholder="Text input" value="Hello">
+              <select class="form-control"><option>Dropdown</option></select>
+              <label class="switch"><input type="checkbox" checked><span class="track"></span><span class="switch-label">Toggle on</span></label>
+            </div>
+          </div>
+
+          <!-- Chart preview -->
+          <div>
+            <div class="theme-section-label">Chart</div>
+            <div class="chart-area" style="height:200px;border:1px solid var(--border-color-light);border-radius:var(--radius-sm);padding:8px">
+              <div data-chart="revenue-line" style="width:100%;height:100%"></div>
+            </div>
+          </div>
+
+          <!-- Stat tile -->
+          <div>
+            <div class="theme-section-label">Stat tile</div>
+            <div class="card" style="max-width:340px"><div class="stat">
+              <div class="stat-icon teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 1v22M5 8l7-7 7 7"/></svg></div>
+              <div class="stat-content">
+                <div class="stat-label">Active users</div>
+                <div class="stat-value-row"><span class="stat-value">8,432</span><span class="stat-change up">↑ 14%</span></div>
+                <div class="stat-subtext">vs last week</div>
+              </div>
+            </div></div>
+          </div>
+
+          <!-- Table -->
+          <div>
+            <div class="theme-section-label">Table</div>
+            <table class="table" style="border:1px solid var(--border-color-light);border-radius:var(--radius);overflow:hidden">
+              <thead><tr><th>Name</th><th>Plan</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr><td>Sarah K.</td><td><span class="chip">Pro</span></td><td><span class="status status-green">Active</span></td></tr>
+                <tr><td>Michael R.</td><td><span class="chip">Business</span></td><td><span class="status status-yellow">Pending</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Generated SCSS preview -->
+      <div class="card" style="margin-top:16px">
+        <div class="card-header">
+          <div class="card-title">Generated tokens</div>
+          <button type="button" class="btn btn-outline btn-sm" id="copy-tokens-2">Copy</button>
+        </div>
+        <pre class="pg-code" id="tokens-output" style="margin:0;border-top:1px solid var(--border-color-light);max-height:340px"></pre>
+      </div>
+    </section>
+
+  </div>
+
+</div>
+</main>
+
+<script type="module">
+import { showToast } from '/src/v4/toast.js';
+
+const STORAGE_KEY = 'gentelella:theme-overrides';
+
+const state = {
+  primary:    '#1ABB9C',
+  primaryDk:  '#169f85',
+  sidebarBg:  '#1a2332',
+  radius:     6,
+  sidebarW:   252,
+  fontSize:   14,
+  mode:       document.documentElement.getAttribute('data-theme') || 'light'
+};
+
+// Saved overrides (persist across reloads on this page only via the
+// window-scope inline rule below, not globally).
+function load() {
+  try { return JSON.parse(sessionStorage.getItem(STORAGE_KEY) || 'null') || {}; } catch (_e) { return {}; }
+}
+function save() {
+  try { sessionStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (_e) {}
+}
+Object.assign(state, load());
+
+// Build a <style> tag with our overrides — no global storage so the rest
+// of the template stays on the user's actual --primary outside this page.
+const styleTag = document.createElement('style');
+styleTag.id = 'theme-overrides';
+document.head.appendChild(styleTag);
+
+function applyOverrides() {
+  // Keep the primary translucent variant (--primary-lt) in sync with the
+  // chosen color so backgrounds for active states still look right.
+  const lt = hexToRgba(state.primary, 0.10);
+  styleTag.textContent = `
+    :root {
+      --primary: ${state.primary};
+      --primary-dk: ${state.primaryDk};
+      --primary-lt: ${lt};
+      --radius: ${state.radius}px;
+      --radius-sm: ${Math.max(0, state.radius - 2)}px;
+      --radius-lg: ${state.radius + 2}px;
+      --sidebar-w: ${state.sidebarW}px;
+      --font-size: ${state.fontSize / 16}rem;
+      ${state.sidebarBg === 'primary'
+        ? `--sidebar-bg: ${state.primary}; --sidebar-active: rgba(255,255,255,0.18); --sidebar-text: rgba(255,255,255,0.7); --sidebar-text-active: #fff; --sidebar-text-hover: #fff; --sidebar-hover: rgba(255,255,255,0.10); --sidebar-border: rgba(255,255,255,0.18);`
+        : state.sidebarBg === '#ffffff'
+          ? `--sidebar-bg: #ffffff; --sidebar-text: var(--text-secondary); --sidebar-text-active: var(--primary); --sidebar-text-hover: var(--text); --sidebar-hover: var(--bg-surface-secondary); --sidebar-active: var(--primary-lt); --sidebar-border: var(--border-color-light);`
+          : `--sidebar-bg: ${state.sidebarBg};`
+      }
+    }
+  `;
+  document.documentElement.setAttribute('data-theme', state.mode);
+  paintTokenOutput();
+  save();
+  // Re-init charts so they pick up the new tokens (mutation observer in
+  // charts.js handles data-theme changes; manually trigger by toggling).
+  document.documentElement.dispatchEvent(new CustomEvent('themechange'));
+}
+
+function hexToRgba(hex, alpha) {
+  const m = hex.replace('#', '').match(/^([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/i);
+  if (!m) return hex;
+  const r = parseInt(m[1], 16), g = parseInt(m[2], 16), b = parseInt(m[3], 16);
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}
+
+function paintTokenOutput() {
+  const out = `// Generated by Gentelella v4 theme generator
+// Paste into src/scss/v4/_tokens.scss
+:root {
+  --primary:    ${state.primary};
+  --primary-dk: ${state.primaryDk};
+  --primary-lt: ${hexToRgba(state.primary, 0.10)};
+
+  --radius:    ${state.radius}px;
+  --radius-sm: ${Math.max(0, state.radius - 2)}px;
+  --radius-lg: ${state.radius + 2}px;
+
+  --sidebar-bg: ${state.sidebarBg === 'primary' ? state.primary : state.sidebarBg};
+  --sidebar-w:  ${state.sidebarW}px;
+
+  --font-size:  ${state.fontSize / 16}rem;
+}`;
+  document.getElementById('tokens-output').textContent = out;
+}
+
+// ── Bind controls ──
+
+const swatches = document.querySelectorAll('.theme-swatch');
+swatches.forEach((sw) => {
+  if (sw.dataset.primary === state.primary) {sw.classList.add('active');} else {sw.classList.remove('active');}
+  sw.addEventListener('click', () => {
+    swatches.forEach((s) => s.classList.remove('active'));
+    sw.classList.add('active');
+    state.primary = sw.dataset.primary;
+    state.primaryDk = sw.dataset.primaryDk;
+    document.getElementById('custom-color').value = state.primary;
+    document.getElementById('custom-color-picker').value = state.primary;
+    applyOverrides();
+  });
+});
+
+const customInput = document.getElementById('custom-color');
+const customPicker = document.getElementById('custom-color-picker');
+const updateCustom = (val) => {
+  if (!/^#[0-9a-f]{6}$/i.test(val)) {return;}
+  state.primary = val;
+  state.primaryDk = darken(val, 0.12);
+  swatches.forEach((s) => s.classList.toggle('active', s.dataset.primary?.toLowerCase() === val.toLowerCase()));
+  applyOverrides();
+};
+customInput.addEventListener('change', (e) => updateCustom(e.target.value));
+customPicker.addEventListener('input', (e) => { customInput.value = e.target.value; updateCustom(e.target.value); });
+
+function darken(hex, amount) {
+  const m = hex.replace('#', '').match(/^([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/i);
+  if (!m) return hex;
+  const r = Math.max(0, Math.round(parseInt(m[1], 16) * (1 - amount)));
+  const g = Math.max(0, Math.round(parseInt(m[2], 16) * (1 - amount)));
+  const b = Math.max(0, Math.round(parseInt(m[3], 16) * (1 - amount)));
+  return '#' + [r, g, b].map((n) => n.toString(16).padStart(2, '0')).join('');
+}
+
+document.querySelectorAll('input[name="sidebar-bg"]').forEach((r) => {
+  if (r.value === state.sidebarBg) {r.checked = true;}
+  r.addEventListener('change', () => { if (r.checked) { state.sidebarBg = r.value; applyOverrides(); } });
+});
+
+const radiusSlider = document.getElementById('radius-slider');
+const radiusDisplay = document.getElementById('radius-display');
+radiusSlider.value = state.radius;
+radiusDisplay.textContent = `${state.radius} px`;
+radiusSlider.addEventListener('input', () => {
+  state.radius = parseInt(radiusSlider.value, 10);
+  radiusDisplay.textContent = `${state.radius} px`;
+  applyOverrides();
+});
+
+const sbSlider = document.getElementById('sidebar-w-slider');
+const sbDisplay = document.getElementById('sidebar-w-display');
+sbSlider.value = state.sidebarW;
+sbDisplay.textContent = `${state.sidebarW} px`;
+sbSlider.addEventListener('input', () => {
+  state.sidebarW = parseInt(sbSlider.value, 10);
+  sbDisplay.textContent = `${state.sidebarW} px`;
+  applyOverrides();
+});
+
+const fsSlider = document.getElementById('font-size-slider');
+const fsDisplay = document.getElementById('font-size-display');
+fsSlider.value = state.fontSize;
+fsDisplay.textContent = `${state.fontSize} px`;
+fsSlider.addEventListener('input', () => {
+  state.fontSize = parseFloat(fsSlider.value);
+  fsDisplay.textContent = `${state.fontSize} px`;
+  applyOverrides();
+});
+
+document.querySelectorAll('input[name="mode"]').forEach((r) => {
+  if (r.value === state.mode) {r.checked = true;}
+  r.addEventListener('change', () => { if (r.checked) { state.mode = r.value; applyOverrides(); } });
+});
+
+// Reset / copy / download
+document.getElementById('reset-theme').addEventListener('click', () => {
+  Object.assign(state, { primary: '#1ABB9C', primaryDk: '#169f85', sidebarBg: '#1a2332', radius: 6, sidebarW: 252, fontSize: 14, mode: 'light' });
+  swatches.forEach((s, i) => s.classList.toggle('active', i === 0));
+  customInput.value = state.primary;
+  customPicker.value = state.primary;
+  document.querySelectorAll('input[name="sidebar-bg"]').forEach((r) => { r.checked = r.value === state.sidebarBg; });
+  document.querySelectorAll('input[name="mode"]').forEach((r) => { r.checked = r.value === state.mode; });
+  radiusSlider.value = state.radius; radiusDisplay.textContent = `${state.radius} px`;
+  sbSlider.value = state.sidebarW; sbDisplay.textContent = `${state.sidebarW} px`;
+  fsSlider.value = state.fontSize; fsDisplay.textContent = `${state.fontSize} px`;
+  applyOverrides();
+  showToast('Theme reset');
+});
+
+const copy = async () => {
+  try { await navigator.clipboard.writeText(document.getElementById('tokens-output').textContent); showToast('SCSS copied', { variant: 'success' }); }
+  catch (_e) { showToast('Copy failed — select and Ctrl+C', { variant: 'error' }); }
+};
+document.getElementById('copy-tokens').addEventListener('click', copy);
+document.getElementById('copy-tokens-2').addEventListener('click', copy);
+
+document.getElementById('download-tokens').addEventListener('click', () => {
+  const content = document.getElementById('tokens-output').textContent;
+  const blob = new Blob([content], { type: 'text/x-scss' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = '_tokens-override.scss';
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 0);
+  showToast('Downloaded _tokens-override.scss', { variant: 'success' });
+});
+
+// Initial render
+applyOverrides();
+</script>
+
+<style>
+.theme-layout {
+  display: grid;
+  grid-template-columns: 320px minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+  margin-top: 16px;
+}
+.theme-controls { display: flex; flex-direction: column; gap: 14px; }
+.theme-section-label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+.theme-swatches {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(36px, 1fr));
+  gap: 8px;
+}
+.theme-swatch {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 100ms;
+  position: relative;
+}
+.theme-swatch:hover { transform: scale(1.08); }
+.theme-swatch.active {
+  border-color: var(--bg-surface);
+  box-shadow: 0 0 0 2px var(--text);
+}
+.theme-swatch.active::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 10px; height: 10px;
+  transform: translate(-50%, -55%) rotate(45deg);
+  border-right: 2px solid white;
+  border-bottom: 2px solid white;
+}
+@media (max-width: 1100px) {
+  .theme-layout { grid-template-columns: 1fr; }
+}
+</style>
+
+</body>
+</html>

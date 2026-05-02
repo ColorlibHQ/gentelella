@@ -1,1531 +1,438 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <!-- Security Headers -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.googleapis.com; img-src 'self' data: https: blob:; font-src 'self' data: https://fonts.gstatic.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; connect-src 'self' ws: wss: http://localhost:* https://api.example.com https://*.googleapis.com; frame-src 'self' https://www.youtube.com https://player.vimeo.com; media-src 'self' https: blob:; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
-	<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
-	<link rel="icon" href="../images/favicon-32x32.svg" type="image/svg+xml" sizes="32x32">
-	<link rel="icon" href="../images/favicon-16x16.svg" type="image/svg+xml" sizes="16x16">
-	<link rel="icon" href="../images/favicon.ico" type="image/x-icon">
-	
-	<!-- Apple Touch Icon -->
-	<link rel="apple-touch-icon" href="../images/apple-touch-icon.svg" sizes="180x180">
-	
-	<!-- Android/Chrome -->
-	<link rel="manifest" href="../site.webmanifest">
-	
-	<!-- Theme colors -->
-	<meta name="theme-color" content="rgb(42, 63, 84)">
-	<meta name="msapplication-TileColor" content="rgb(42, 63, 84)">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard | Gentelella 2026 v4</title>
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script type="module" src="/src/main-v4.js"></script>
+</head>
+<body data-shell="admin" data-page="dashboard" data-breadcrumb="Home > Dashboard">
 
-    <title>Dashboard 1 | Gentelella</title>
+<main class="main">
+<div class="page-wrapper">
 
+  <div class="page-header">
+    <div class="page-header-row">
+      <div>
+        <div class="page-pretitle">Overview</div>
+        <div class="page-title">Dashboard</div>
+      </div>
+      <div class="page-actions">
+        <button class="btn btn-outline">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2v12M2 8h12"/></svg>
+          New view
+        </button>
+        <button class="btn btn-primary">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 8h8M8 4v8"/></svg>
+          Create report
+        </button>
+      </div>
+    </div>
+  </div>
 
-
-    <!-- Vite Entry Point - will bundle all styles -->
-    <script type="module" src="/src/main-minimal.js"></script>
-  </head>
-
-  <body class="nav-md page-index">
-    <div class="container body">
-      <div class="main_container">
-        <aside class="col-md-3 left_col" aria-label="Sidebar navigation">
-          <div class="left_col scroll-view">
-            <div class="navbar nav_title border-0">
-              <a href="index.html" class="site_title"><img src="../images/logo.svg" alt="Gentelella Alela!" class="logo-full logo-main" loading="lazy"><img src="../images/logo-icon.svg" alt="Gentelella" class="logo-icon" loading="lazy"></a>
-            </div>
-
-            <div class="clearfix"></div>
-
-            <!-- menu profile quick info -->
-            <div class="profile clearfix">
-              <div class="profile_pic">
-                <img src="../images/img.jpg" alt="User profile photo" class="img-circle profile_img" loading="lazy">
-              </div>
-              <div class="profile_info">
-                <span>Welcome,</span>
-                <h4>John Doe</h4>
-              </div>
-            </div>
-            <!-- /menu profile quick info -->
-
-            <br />
-
-            <!-- sidebar menu -->
-            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-              <div class="menu_section">
-                <h3>General</h3>
-                <ul class="nav side-menu">
-                  <li><a href="https://dashboardpack.com/?utm_source=gentelella&utm_medium=sidebar&utm_campaign=premium" target="_blank"><i class="bi bi-stars"></i> Go Pro <span class="badge bg-warning">Pro</span></a></li>
-                  <li><a><i class="bi bi-house"></i> Home <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="index.html">Dashboard 1</a></li>
-                      <li><a href="index2.html">Dashboard 2</a></li>
-                      <li><a href="index3.html">Dashboard 3</a></li>
-                      <li><a href="index4.html">Dashboard 4</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="bi bi-pencil-square"></i> Forms <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="form.html">General Form</a></li>
-                      <li><a href="form_advanced.html">Advanced Components</a></li>
-                      <li><a href="form_validation.html">Form Validation</a></li>
-                      <li><a href="form_wizards.html">Form Wizard</a></li>
-                      <li><a href="form_upload.html">Form Upload</a></li>
-                      <li><a href="form_buttons.html">Form Buttons</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="bi bi-display"></i> UI Elements <span class="badge bg-danger">Hot</span> <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="general_elements.html">General Elements</a></li>
-                      <li><a href="media_gallery.html">Media Gallery</a></li>
-                      <li><a href="typography.html">Typography</a></li>
-                      <li><a href="icons.html">Icons</a></li>
-                      <li><a href="widgets.html">Widgets</a></li>
-                      <li><a href="invoice.html">Invoice</a></li>
-                      <li><a href="inbox.html">Inbox</a></li>
-                      <li><a href="calendar.html">Calendar</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="bi bi-table"></i> Tables <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="tables.html">Tables</a></li>
-                      <li><a href="tables_dynamic.html">Table Dynamic</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="bi bi-bar-chart"></i> Data Presentation <span class="badge bg-success">New</span> <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="chartjs.html">Chart.js</a></li>
-                      <li><a href="echarts.html">ECharts <span class="badge bg-info">Updated</span></a></li>
-                      <li><a href="other_charts.html">Other Charts</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="bi bi-layout-split"></i>Layouts <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="fixed_sidebar.html">Fixed Sidebar</a></li>
-                      <li><a href="fixed_footer.html">Fixed Footer</a></li>
-                    </ul>
-                  </li>
-                </ul>
-              </div>
-              <div class="menu_section">
-                <h3>Live On</h3>
-                <ul class="nav side-menu">
-                  <li><a><i class="bi bi-file-earmark-text"></i> Additional Pages <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="e_commerce.html">E-commerce</a></li>
-                      <li><a href="projects.html">Projects</a></li>
-                      <li><a href="project_detail.html">Project Detail</a></li>
-                      <li><a href="contacts.html">Contacts</a></li>
-                      <li><a href="profile.html">Profile</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="bi bi-window-stack"></i> Extras <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="page_403.html">403 Error</a></li>
-                      <li><a href="page_404.html">404 Error</a></li>
-                      <li><a href="page_500.html">500 Error</a></li>
-                      <li><a href="plain_page.html">Plain Page</a></li>
-                      <li><a href="login.html">Login Page</a></li>
-                      <li><a href="pricing_tables.html">Pricing Tables</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="bi bi-diagram-3"></i> Multilevel Menu <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                        <li><a href="#level1_1">Level One</a></li>
-                        <li><a>Level One<span class="bi bi-chevron-down"></span></a>
-                          <ul class="nav child_menu">
-                            <li class="sub_menu"><a href="level2.html">Level Two</a></li>
-                            <li><a href="#level2_1">Level Two</a></li>
-                            <li><a href="#level2_2">Level Two</a></li>
-                          </ul>
-                        </li>
-                        <li><a href="#level1_2">Level One</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="landing.html"><i class="bi bi-laptop"></i> Landing Page <span class="badge bg-info">Updated</span></a></li>
-                </ul>
-              </div>
-
-            </div>
-            <!-- /sidebar menu -->
-
-            <!-- /menu footer buttons -->
-            <div class="sidebar-footer hidden-small">
-              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Settings">
-                <span class="fas fa-cog" aria-hidden="true"></span>
-              </a>
-              <a data-bs-toggle="tooltip" data-bs-placement="top" title="FullScreen">
-                <span class="fas fa-expand" aria-hidden="true"></span>
-              </a>
-              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Lock">
-                <span class="fas fa-eye-slash" aria-hidden="true"></span>
-              </a>
-              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Logout" href="login.html">
-                <span class="fas fa-power-off" aria-hidden="true"></span>
-              </a>
-            </div>
-            <!-- /menu footer buttons -->
-          </div>
+  <!-- ── STAT CARDS ── -->
+  <div class="row col-3">
+    <div class="card">
+      <div class="stat">
+        <div class="stat-icon teal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
         </div>
-
-        <!-- top navigation -->
-        <div class="top_nav">
-          <div class="nav_menu d-flex align-items-center justify-content-between">
-              <div class="nav toggle">
-                <a id="menu_toggle"><i class="fas fa-bars"></i></a>
-              </div>
-              <nav class="nav navbar-nav ms-auto">
-              <ul class="navbar-right d-flex align-items-center gap-3 pe-3">
-                <li class="nav-item dropdown">
-                  <a href="#" role="button" class="dropdown-toggle info-number" id="navbarDropdown1" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fas fa-envelope"></i>
-                    <span class="badge bg-green">6</span>
-                  </a>
-                  <ul class="dropdown-menu dropdown-menu-end list-unstyled msg_list dropdown-menu-lg" role="menu" aria-labelledby="navbarDropdown1">
-                    <li class="nav-item">
-                      <a class="dropdown-item">
-                        <span class="image"><img src="../images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="dropdown-item">
-                        <span class="image"><img src="../images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="dropdown-item">
-                        <span class="image"><img src="../images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="dropdown-item">
-                        <span class="image"><img src="../images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <div class="text-center">
-                        <a class="dropdown-item">
-                          <strong>See All Alerts</strong>
-                          <i class="fas fa-angle-right"></i>
-                        </a>
-                      </div>
-                    </li>
-                  </ul>
-                </li>
-                <li class="nav-item dropdown">
-                  <a href="#" role="button" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="../images/img.jpg" alt="">John Doe
-                  </a>
-                  <div class="dropdown-menu dropdown-menu-end dropdown-usermenu dropdown-menu-sm" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#" role="button">Profile</a>
-                    <a class="dropdown-item" href="#" role="button">
-                      <span class="badge bg-red float-end">50%</span>
-                      <span>Settings</span>
-                    </a>
-                    <a class="dropdown-item" href="#" role="button">Help</a>
-                    <a class="dropdown-item" href="login.html"><i class="fas fa-sign-out-alt float-end"></i> Log Out</a>
-                  </div>
-                </li>
-              </ul>
-            </nav>
+        <div class="stat-content">
+          <div class="stat-label">Total Users</div>
+          <div class="stat-value-row">
+            <span class="stat-value">2,500</span>
+            <span class="stat-change up"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V3M3 6l3-3 3 3"/></svg>12%</span>
           </div>
+          <div class="stat-subtext">342 new this week</div>
         </div>
-        <!-- /top navigation -->
-
-        <!-- page content -->
-        <main class="right_col" role="main" aria-label="Main content">
-          <h1 class="visually-hidden">Dashboard Overview</h1>
-          <!-- top tiles -->
-          <div class="row gy-4 mb-4">
-            <div class="col-xl-2 col-md-4 col-sm-6">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center">
-                            <div class="flex-shrink-0 me-3">
-                                <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center avatar-lg">
-                                    <i class="fas fa-users fs-4"></i>
-                                </div>
-                            </div>
-                            <div class="flex-grow-1">
-                                <h6 class="text-muted text-uppercase mb-1 small">Total Users</h6>
-                                <h4 class="mb-0">2,500</h4>
-                            </div>
-                        </div>
-                        <div class="mt-2 pt-2 border-top">
-                            <small class="text-success me-1"><i class="fas fa-arrow-up"></i> 4%</small>
-                            <small class="text-muted">From last Week</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-xl-2 col-md-4 col-sm-6">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center">
-                            <div class="flex-shrink-0 me-3">
-                                <div class="bg-info text-white rounded-circle d-flex align-items-center justify-content-center avatar-lg">
-                                    <i class="fas fa-clock fs-4"></i>
-                                </div>
-                            </div>
-                            <div class="flex-grow-1">
-                                <h6 class="text-muted text-uppercase mb-1 small">Average Time</h6>
-                                <h4 class="mb-0">123.5<small>min</small></h4>
-                            </div>
-                        </div>
-                        <div class="mt-2 pt-2 border-top">
-                            <small class="text-info me-1"><i class="fas fa-arrow-up"></i> 2%</small>
-                            <small class="text-muted">From last Week</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-xl-2 col-md-4 col-sm-6">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center">
-                            <div class="flex-shrink-0 me-3">
-                                <div class="bg-warning text-white rounded-circle d-flex align-items-center justify-content-center avatar-lg">
-                                    <i class="fas fa-shopping-cart fs-4"></i>
-                                </div>
-                            </div>
-                            <div class="flex-grow-1">
-                                <h6 class="text-muted text-uppercase mb-1 small">Total Orders</h6>
-                                <h4 class="mb-0">1,240</h4>
-                            </div>
-                        </div>
-                        <div class="mt-2 pt-2 border-top">
-                            <small class="text-success me-1"><i class="fas fa-arrow-up"></i> 15%</small>
-                            <small class="text-muted">From last Week</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-xl-2 col-md-4 col-sm-6">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center">
-                            <div class="flex-shrink-0 me-3">
-                                <div class="bg-success text-white rounded-circle d-flex align-items-center justify-content-center avatar-lg">
-                                    <i class="fas fa-dollar-sign fs-4"></i>
-                                </div>
-                            </div>
-                            <div class="flex-grow-1">
-                                <h6 class="text-muted text-uppercase mb-1 small">Total Revenue</h6>
-                                <h4 class="mb-0">$24,567</h4>
-                            </div>
-                        </div>
-                        <div class="mt-2 pt-2 border-top">
-                            <small class="text-success me-1"><i class="fas fa-arrow-up"></i> 8%</small>
-                            <small class="text-muted">From last Week</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-xl-2 col-md-4 col-sm-6">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center">
-                            <div class="flex-shrink-0 me-3">
-                                <div class="bg-secondary text-white rounded-circle d-flex align-items-center justify-content-center avatar-lg">
-                                    <i class="fas fa-chart-line fs-4"></i>
-                                </div>
-                            </div>
-                            <div class="flex-grow-1">
-                                <h6 class="text-muted text-uppercase mb-1 small">Conversions</h6>
-                                <h4 class="mb-0">2,315</h4>
-                            </div>
-                        </div>
-                        <div class="mt-2 pt-2 border-top">
-                            <small class="text-success me-1"><i class="fas fa-arrow-up"></i> 12%</small>
-                            <small class="text-muted">From last Week</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-xl-2 col-md-4 col-sm-6">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center">
-                            <div class="flex-shrink-0 me-3">
-                                <div class="bg-teal text-white rounded-circle d-flex align-items-center justify-content-center avatar-lg" style="background-color: #1ABC9C !important;">
-                                    <i class="fas fa-eye fs-4"></i>
-                                </div>
-                            </div>
-                            <div class="flex-grow-1">
-                                <h6 class="text-muted text-uppercase mb-1 small">Page Views</h6>
-                                <h4 class="mb-0">47,325</h4>
-                            </div>
-                        </div>
-                        <div class="mt-2 pt-2 border-top">
-                            <small class="text-success me-1"><i class="fas fa-arrow-up"></i> 18%</small>
-                            <small class="text-muted">From last Week</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-          </div>
-          <!-- /top tiles -->
-
-          <div class="row">
-            <div class="col-md-12 col-sm-12">
-              <div class="dashboard_graph">
-
-                <div class="row x_title">
-                  <div class="col-md-6">
-                    <h3>Network Activities <small>Graph title sub-title</small></h3>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="filter d-flex align-items-center gap-2">
-                      <div class="input-group" id="startDatePicker" data-td-target-input="nearest" data-td-target-toggle="nearest" style="max-width: 160px;">
-                        <input type="text" class="form-control" id="startDateInput" data-td-target="#startDatePicker" placeholder="Start date" readonly />
-                        <span class="input-group-text" data-td-target="#startDatePicker" data-td-toggle="datetimepicker">
-                          <i class="fas fa-calendar"></i>
-                        </span>
-                      </div>
-                      <span class="mx-1">to</span>
-                      <div class="input-group" id="endDatePicker" data-td-target-input="nearest" data-td-target-toggle="nearest" style="max-width: 160px;">
-                        <input type="text" class="form-control" id="endDateInput" data-td-target="#endDatePicker" placeholder="End date" readonly />
-                        <span class="input-group-text" data-td-target="#endDatePicker" data-td-toggle="datetimepicker">
-                          <i class="fas fa-calendar"></i>
-                        </span>
-                      </div>
-    
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-md-9 col-sm-9">
-                  <div id="chart_plot_01" class="demo-placeholder"></div>
-                </div>
-                <div class="col-md-3 col-sm-3 bg-white">
-                  <div class="x_title">
-                    <h4>Top Campaign Performance</h4>
-                    <div class="clearfix"></div>
-                  </div>
-
-                  <div class="col-md-12 col-sm-12">
-                    <div>
-                      <p>Facebook Campaign</p>
-                      <div class="">
-                        <div class="progress progress_sm">
-                          <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="80" style="width: 80%;"></div>
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <p>Twitter Campaign</p>
-                      <div class="">
-                        <div class="progress progress_sm">
-                          <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="60" style="width: 60%;"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-12 col-sm-12">
-                    <div>
-                      <p>Conventional Media</p>
-                      <div class="">
-                        <div class="progress progress_sm">
-                          <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="40" style="width: 40%;"></div>
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <p>Bill boards</p>
-                      <div class="">
-                        <div class="progress progress_sm">
-                          <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="50" style="width: 50%;"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
-
-                <div class="clearfix"></div>
-              </div>
-            </div>
-
-          </div>
-
-          <div class="row">
-            <div class="col-md-4 col-sm-4">
-              <div class="x_panel tile fixed_height_320">
-                <div class="x_title">
-                  <h4>App Versions</h4>
-                  <ul class="nav navbar-right panel_toolbox">
-                    <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-                    <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="#">Settings 1</a>
-                          <a class="dropdown-item" href="#">Settings 2</a>
-                        </div>
-                    <li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a>
-                  </ul>
-                  <div class="clearfix"></div>
-                </div>
-                <div class="x_content">
-                                        <h6>App Usage across versions</h6>
-                  <div class="widget_summary">
-                    <div class="w_left w_25">
-                      <span>0.1.5.2</span>
-                    </div>
-                    <div class="w_center w_55">
-                      <div class="progress">
-                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 66%;">
-                          <span class="visually-hidden">60% Complete</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w_right w_20">
-                      <span>123k</span>
-                    </div>
-                    <div class="clearfix"></div>
-                  </div>
-
-                  <div class="widget_summary">
-                    <div class="w_left w_25">
-                      <span>0.1.5.3</span>
-                    </div>
-                    <div class="w_center w_55">
-                      <div class="progress">
-                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 45%;">
-                          <span class="visually-hidden">60% Complete</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w_right w_20">
-                      <span>53k</span>
-                    </div>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="widget_summary">
-                    <div class="w_left w_25">
-                      <span>0.1.5.4</span>
-                    </div>
-                    <div class="w_center w_55">
-                      <div class="progress">
-                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 25%;">
-                          <span class="visually-hidden">60% Complete</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w_right w_20">
-                      <span>23k</span>
-                    </div>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="widget_summary">
-                    <div class="w_left w_25">
-                      <span>0.1.5.5</span>
-                    </div>
-                    <div class="w_center w_55">
-                      <div class="progress">
-                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 5%;">
-                          <span class="visually-hidden">60% Complete</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w_right w_20">
-                      <span>3k</span>
-                    </div>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="widget_summary">
-                    <div class="w_left w_25">
-                      <span>0.1.5.6</span>
-                    </div>
-                    <div class="w_center w_55">
-                      <div class="progress">
-                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 2%;">
-                          <span class="visually-hidden">60% Complete</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w_right w_20">
-                      <span>1k</span>
-                    </div>
-                    <div class="clearfix"></div>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4 col-sm-4">
-              <div class="x_panel tile fixed_height_320 overflow_hidden">
-                <div class="x_title">
-                  <h4>Device Usage</h4>
-                  <ul class="nav navbar-right panel_toolbox">
-                    <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-                    <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="#">Settings 1</a>
-                          <a class="dropdown-item" href="#">Settings 2</a>
-                        </div>
-                    <li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a>
-                  </ul>
-                  <div class="clearfix"></div>
-                </div>
-                <div class="x_content">
-                  <table class="" style="width:100%">
-                    <tr>
-                      <th style="width:37%;">
-                        <p>Top 5</p>
-                      </th>
-                      <th>
-                        <div class="col-lg-7 col-md-7 col-sm-7">
-                          <p class="">Device</p>
-                        </div>
-                        <div class="col-lg-5 col-md-5 col-sm-5">
-                          <p class="">Progress</p>
-                        </div>
-                      </th>
-                    </tr>
-                    <tr>
-                      <td>
-                        <canvas class="canvasDoughnut" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>
-                      </td>
-                      <td>
-                        <table class="tile_info">
-                          <tr>
-                            <td>
-                              <p><i class="fas fa-square blue"></i>IOS </p>
-                            </td>
-                            <td>30%</td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <p><i class="fas fa-square green"></i>Android </p>
-                            </td>
-                            <td>10%</td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <p><i class="fas fa-square purple"></i>Blackberry </p>
-                            </td>
-                            <td>20%</td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <p><i class="fas fa-square aero"></i>Symbian </p>
-                            </td>
-                            <td>15%</td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <p><i class="fas fa-square red"></i>Others </p>
-                            </td>
-                            <td>30%</td>
-                          </tr>
-                        </table>
-                      </td>
-                    </tr>
-                  </table>
-                </div>
-              </div>
-            </div>
-
-
-            <div class="col-md-4 col-sm-4">
-              <div class="x_panel tile fixed_height_320">
-                <div class="x_title">
-                  <h4>Quick Settings</h4>
-                  <ul class="nav navbar-right panel_toolbox">
-                    <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-                    <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="#">Settings 1</a>
-                          <a class="dropdown-item" href="#">Settings 2</a>
-                        </div>
-                    <li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a>
-                  </ul>
-                  <div class="clearfix"></div>
-                </div>
-                <div class="x_content">
-                  <div class="dashboard-widget-content">
-                    <ul class="quick-list">
-                      <li><i class="fas fa-calendar"></i><a href="#">Settings</a>
-                      <li><i class="fas fa-bars"></i><a href="#">Subscription</a>
-                      <li><i class="bi bi-bar-chart"></i><a href="#">Auto Renewal</a> </li>
-                      <li><i class="fas fa-line-chart"></i><a href="#">Achievements</a>
-                      <li><i class="bi bi-bar-chart"></i><a href="#">Auto Renewal</a> </li>
-                      <li><i class="fas fa-line-chart"></i><a href="#">Achievements</a>
-                      <li><i class="fas fa-area-chart"></i><a href="#">Logout</a>
-                    </ul>
-
-                    <div class="sidebar-widget">
-                        <h6>Profile Completion</h6>
-                        <div id="profile_completion_gauge" style="width:160px;height:120px;margin:0 auto;"></div>
-                        <div class="goal-wrapper">
-                          <span class="goal-value float-start">67%</span>
-                          <span id="goal-text" class="goal-value float-end">100%</span>
-                        </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-
-          <div class="row">
-            <div class="col-md-4 col-sm-4">
-              <div class="x_panel">
-                <div class="x_title">
-                  <h4>Recent Activities <small>Sessions</small></h4>
-                  <ul class="nav navbar-right panel_toolbox">
-                    <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-                    <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="#">Settings 1</a>
-                          <a class="dropdown-item" href="#">Settings 2</a>
-                        </div>
-                    <li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a>
-                  </ul>
-                  <div class="clearfix"></div>
-                </div>
-                <div class="x_content">
-                  <div class="dashboard-widget-content">
-                    <div class="activities-scroll">
-                      <ul class="list-unstyled timeline widget">
-                      <li>
-                        <div class="block">
-                          <div class="block_content">
-                            <h5 class="title">
-                              <a><i class="fas fa-shopping-cart" style="color: #26B99A; margin-right: 8px;"></i>New Order Received</a>
-                            </h5>
-                            <div class="byline">
-                              <span>2 minutes ago</span> by <a>Customer #12455</a>
-                            </div>
-                            <p class="excerpt">Order #ORD-12455 for $2,350.00 has been placed. Customer ordered premium package with expedited shipping. <a>View Details</a>
-                            </p>
-                          </div>
-                        </div>
-                      <li>
-                        <div class="block">
-                          <div class="block_content">
-                            <h5 class="title">
-                              <a><i class="fas fa-user-plus" style="color: #3498DB; margin-right: 8px;"></i>New User Registration</a>
-                            </h5>
-                            <div class="byline">
-                              <span>15 minutes ago</span> by <a>john.doe@example.com</a>
-                            </div>
-                            <p class="excerpt">New user registered with premium membership. Account verified and welcome email sent successfully. <a>View Profile</a>
-                            </p>
-                          </div>
-                        </div>
-                      <li>
-                        <div class="block">
-                          <div class="block_content">
-                            <h5 class="title">
-                              <a><i class="fas fa-credit-card" style="color: #F39C12; margin-right: 8px;"></i>Payment Processed</a>
-                            </h5>
-                            <div class="byline">
-                              <span>32 minutes ago</span> by <a>Payment Gateway</a>
-                            </div>
-                            <p class="excerpt">Payment of $1,250.00 successfully processed for Order #ORD-12453. Funds have been deposited to merchant account. <a>View Transaction</a>
-                            </p>
-                          </div>
-                        </div>
-                      <li>
-                        <div class="block">
-                          <div class="block_content">
-                            <h5 class="title">
-                              <a><i class="fas fa-star" style="color: #E74C3C; margin-right: 8px;"></i>Product Review Submitted</a>
-                            </h5>
-                            <div class="byline">
-                              <span>1 hour ago</span> by <a>Sarah Johnson</a>
-                            </div>
-                            <p class="excerpt">5-star review submitted for "Premium Wireless Headphones". Customer praised excellent sound quality and fast delivery. <a>Read Review</a>
-                            </p>
-                          </div>
-                        </div>
-                      <li>
-                        <div class="block">
-                          <div class="block_content">
-                            <h5 class="title">
-                              <a><i class="fas fa-truck" style="color: #9B59B6; margin-right: 8px;"></i>Shipment Dispatched</a>
-                            </h5>
-                            <div class="byline">
-                              <span>2 hours ago</span> by <a>Logistics Team</a>
-                            </div>
-                            <p class="excerpt">Order #ORD-12448 has been shipped via Express Delivery. Tracking number: EX123456789. Expected delivery: Tomorrow. <a>Track Package</a>
-                            </p>
-                          </div>
-                        </div>
-                      <li>
-                        <div class="block">
-                          <div class="block_content">
-                            <h5 class="title">
-                              <a><i class="fas fa-chart-line" style="color: #2ECC71; margin-right: 8px;"></i>Sales Milestone Achieved</a>
-                            </h5>
-                            <div class="byline">
-                              <span>3 hours ago</span> by <a>System</a>
-                            </div>
-                            <p class="excerpt">Congratulations! Monthly sales target of $50,000 achieved with 5 days remaining. Current total: $52,450. <a>View Report</a>
-                            </p>
-                          </div>
-                        </div>
-                      <li>
-                        <div class="block">
-                          <div class="block_content">
-                            <h5 class="title">
-                              <a><i class="fas fa-exclamation-triangle" style="color: #E67E22; margin-right: 8px;"></i>Inventory Alert</a>
-                            </h5>
-                            <div class="byline">
-                              <span>4 hours ago</span> by <a>Inventory System</a>
-                            </div>
-                            <p class="excerpt">Low stock alert: "Wireless Mouse Model X" has only 5 units remaining. Consider reordering to avoid stockouts. <a>Reorder Now</a>
-                            </p>
-                          </div>
-                        </div>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Sales Statistics Widget -->
-              <div class="x_panel" style="min-height: 450px;">
-                <div class="x_title">
-                  <h4>Sales Statistics <small>Monthly overview</small></h4>
-                  <ul class="nav navbar-right panel_toolbox">
-                    <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-                    <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="#">Settings 1</a>
-                          <a class="dropdown-item" href="#">Settings 2</a>
-                        </div>
-                    <li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a>
-                  </ul>
-                  <div class="clearfix"></div>
-                </div>
-                <div class="x_content">
-                  
-                  <!-- Chart Area -->
-                  <div style="position: relative; height: 120px; margin-bottom: 20px;">
-                    <svg viewBox="0 0 280 80" style="width: 100%; height: 100%;">
-                      <defs>
-                        <linearGradient id="salesGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                          <stop offset="0%" style="stop-color:#26B99A;stop-opacity:0.3" />
-                          <stop offset="100%" style="stop-color:#26B99A;stop-opacity:0.05" />
-                        </linearGradient>
-                      </defs>
-                      <!-- Area under curve -->
-                      <path d="M 20 60 Q 70 40 120 30 T 260 20 L 260 70 L 20 70 Z" fill="url(#salesGradient)"/>
-                      <!-- Main line -->
-                      <path d="M 20 60 Q 70 40 120 30 T 260 20" stroke="#26B99A" stroke-width="2.5" fill="none"/>
-                      <!-- Data points -->
-                      <circle cx="20" cy="60" r="3" fill="#26B99A"/>
-                      <circle cx="70" cy="40" r="3" fill="#26B99A"/>
-                      <circle cx="120" cy="30" r="4" fill="#26B99A"/>
-                      <circle cx="180" cy="25" r="3" fill="#26B99A"/>
-                      <circle cx="260" cy="20" r="3" fill="#26B99A"/>
-                    </svg>
-                    
-                    <!-- Floating info card -->
-                    <div style="position: absolute; top: 5px; right: 10px; background: white; border: 1px solid #E6E9ED; border-radius: 5px; padding: 6px 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
-                      <div style="color: #73879C; font-size: 9px; margin-bottom: 2px;">March</div>
-                      <div style="color: #2A3F54; font-size: 11px; font-weight: 600;">$45k profit</div>
-                    </div>
-                  </div>
-
-                  <!-- Metrics Grid -->
-                  <div class="row">
-                    
-                    <!-- Weekly Sales -->
-                    <div class="col-md-6 col-sm-6" style="margin-bottom: 10px;">
-                      <div style="background: #f7f7f7; border: 1px solid #E6E9ED; border-radius: 3px; padding: 12px;">
-                        <div style="display: flex; align-items: center; margin-bottom: 6px;">
-                          <div style="display: flex; gap: 3px;">
-                            <div style="width: 5px; height: 5px; background: #26B99A; border-radius: 1px;"></div>
-                            <div style="width: 5px; height: 5px; background: #3498DB; border-radius: 1px;"></div>
-                            <div style="width: 5px; height: 5px; background: #E74C3C; border-radius: 1px;"></div>
-                          </div>
-                        </div>
-                        <h5 style="color: #2A3F54; font-size: 12px; font-weight: 600; margin: 0;">Weekly Sales</h5>
-                        <p style="color: #73879C; font-size: 10px; margin: 3px 0 0;">$12.4k this week</p>
-                      </div>
-                    </div>
-                    
-                    <!-- New Users -->
-                    <div class="col-md-6 col-sm-6" style="margin-bottom: 10px;">
-                      <div style="background: #f7f7f7; border: 1px solid #E6E9ED; border-radius: 3px; padding: 12px;">
-                        <div style="display: flex; align-items: center; margin-bottom: 6px;">
-                          <div style="width: 18px; height: 18px; background: rgba(52, 152, 219, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                            <i class="fas fa-user-plus" style="color: #3498DB; font-size: 8px;"></i>
-                          </div>
-                        </div>
-                        <h5 style="color: #2A3F54; font-size: 12px; font-weight: 600; margin: 0;">New Users</h5>
-                        <p style="color: #73879C; font-size: 10px; margin: 3px 0 0;">+245 this month</p>
-                      </div>
-                    </div>
-                    
-                    <!-- Item Orders -->
-                    <div class="col-md-6 col-sm-6" style="margin-bottom: 10px;">
-                      <div style="background: #f7f7f7; border: 1px solid #E6E9ED; border-radius: 3px; padding: 12px;">
-                        <div style="display: flex; align-items: center; margin-bottom: 6px;">
-                          <div style="width: 18px; height: 18px; background: rgba(243, 156, 18, 0.1); border-radius: 3px; display: flex; align-items: center; justify-content: center;">
-                            <i class="fas fa-shopping-bag" style="color: #F39C12; font-size: 8px;"></i>
-                          </div>
-                        </div>
-                        <h5 style="color: #2A3F54; font-size: 12px; font-weight: 600; margin: 0;">Item Orders</h5>
-                        <p style="color: #73879C; font-size: 10px; margin: 3px 0 0;">1,240 orders</p>
-                      </div>
-                    </div>
-                    
-                    <!-- Growth Rate -->
-                    <div class="col-md-6 col-sm-6" style="margin-bottom: 10px;">
-                      <div style="background: #f7f7f7; border: 1px solid #E6E9ED; border-radius: 3px; padding: 12px;">
-                        <div style="display: flex; align-items: center; margin-bottom: 6px;">
-                          <div style="width: 18px; height: 18px; background: rgba(38, 185, 154, 0.1); border-radius: 3px; display: flex; align-items: center; justify-content: center;">
-                            <i class="fas fa-chart-line" style="color: #26B99A; font-size: 8px;"></i>
-                          </div>
-                        </div>
-                        <h5 style="color: #2A3F54; font-size: 12px; font-weight: 600; margin: 0;">Growth Rate</h5>
-                        <p style="color: #73879C; font-size: 10px; margin: 3px 0 0;">+18.2% growth</p>
-                      </div>
-                    </div>
-                    
-                  </div>
-
-                </div>
-              </div>
-              <!-- End Sales Statistics Widget -->
-            </div>
-
-
-            <div class="col-md-8 col-sm-8">
-
-              <!-- Recent Orders Section -->
-              <div class="row">
-                <div class="col-md-12 col-sm-12">
-                  <div class="x_panel">
-                    <div class="x_title">
-                      <h4>Recent Orders <small>Latest transactions</small></h4>
-                      <ul class="nav navbar-right panel_toolbox">
-                        <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-                        <li class="dropdown">
-                          <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                              <a class="dropdown-item" href="#">Settings 1</a>
-                              <a class="dropdown-item" href="#">Settings 2</a>
-                            </div>
-                        <li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a>
-                      </ul>
-                      <div class="clearfix"></div>
-                    </div>
-                    <div class="x_content">
-                      <div class="recent-orders-scroll">
-                        <div class="table-responsive">
-                          <table class="table table-striped jambo_table bulk_action">
-                          <thead>
-                            <tr class="headings">
-                              <th class="column-title">Order ID</th>
-                              <th class="column-title">Customer</th>
-                              <th class="column-title">Product</th>
-                              <th class="column-title">Amount</th>
-                              <th class="column-title">Status</th>
-                              <th class="column-title">Date</th>
-                              <th class="column-title no-link last"><span class="nobr">Action</span></th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr class="even pointer">
-                              <td class=" "><strong>#ORD-12455</strong></td>
-                              <td class=" ">John Smith</td>
-                              <td class=" ">Premium Wireless Headphones</td>
-                              <td class=" "><strong>$299.99</strong></td>
-                              <td class=" "><span class="badge bg-success">Completed</span></td>
-                              <td class=" ">Jan 15, 2029</td>
-                              <td class=" last"><a href="#" class="btn btn-sm btn-primary">View</a></td>
-                            </tr>
-                            <tr class="odd pointer">
-                              <td class=" "><strong>#ORD-12454</strong></td>
-                              <td class=" ">Emily Johnson</td>
-                              <td class=" ">Smart Watch Pro</td>
-                              <td class=" "><strong>$899.99</strong></td>
-                              <td class=" "><span class="badge bg-warning text-dark">Processing</span></td>
-                              <td class=" ">Jan 15, 2029</td>
-                              <td class=" last"><a href="#" class="btn btn-sm btn-primary">View</a></td>
-                            </tr>
-                            <tr class="even pointer">
-                              <td class=" "><strong>#ORD-12453</strong></td>
-                              <td class=" ">Michael Chen</td>
-                              <td class=" ">Gaming Laptop Elite</td>
-                              <td class=" "><strong>$1,899.99</strong></td>
-                              <td class=" "><span class="badge bg-info">Shipped</span></td>
-                              <td class=" ">Jan 14, 2029</td>
-                              <td class=" last"><a href="#" class="btn btn-sm btn-primary">View</a></td>
-                            </tr>
-                            <tr class="odd pointer">
-                              <td class=" "><strong>#ORD-12452</strong></td>
-                              <td class=" ">Sarah Davis</td>
-                              <td class=" ">Wireless Mouse Deluxe</td>
-                              <td class=" "><strong>$79.99</strong></td>
-                              <td class=" "><span class="badge bg-success">Completed</span></td>
-                              <td class=" ">Jan 14, 2029</td>
-                              <td class=" last"><a href="#" class="btn btn-sm btn-primary">View</a></td>
-                            </tr>
-                            <tr class="even pointer">
-                              <td class=" "><strong>#ORD-12451</strong></td>
-                              <td class=" ">Robert Wilson</td>
-                              <td class=" ">4K Monitor Pro</td>
-                              <td class=" "><strong>$649.99</strong></td>
-                              <td class=" "><span class="badge bg-danger">Cancelled</span></td>
-                              <td class=" ">Jan 13, 2029</td>
-                              <td class=" last"><a href="#" class="btn btn-sm btn-primary">View</a></td>
-                            </tr>
-                            <tr class="odd pointer">
-                              <td class=" "><strong>#ORD-12450</strong></td>
-                              <td class=" ">Lisa Brown</td>
-                              <td class=" ">Bluetooth Speaker Premium</td>
-                              <td class=" "><strong>$199.99</strong></td>
-                              <td class=" "><span class="badge bg-success">Completed</span></td>
-                              <td class=" ">Jan 13, 2029</td>
-                              <td class=" last"><a href="#" class="btn btn-sm btn-primary">View</a></td>
-                            </tr>
-                            <tr class="even pointer">
-                              <td class=" "><strong>#ORD-12449</strong></td>
-                              <td class=" ">David Garcia</td>
-                              <td class=" ">Mechanical Keyboard RGB</td>
-                              <td class=" "><strong>$159.99</strong></td>
-                              <td class=" "><span class="badge bg-warning text-dark">Processing</span></td>
-                              <td class=" ">Jan 12, 2029</td>
-                              <td class=" last"><a href="#" class="btn btn-sm btn-primary">View</a></td>
-                            </tr>
-                            <tr class="odd pointer">
-                              <td class=" "><strong>#ORD-12448</strong></td>
-                              <td class=" ">Anna Martinez</td>
-                              <td class=" ">Tablet Pro 12-inch</td>
-                              <td class=" "><strong>$799.99</strong></td>
-                              <td class=" "><span class="badge bg-info">Shipped</span></td>
-                              <td class=" ">Jan 12, 2029</td>
-                              <td class=" last"><a href="#" class="btn btn-sm btn-primary">View</a></td>
-                            </tr>
-                          </tbody>
-                        </table>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- /Recent Orders Section -->
-
-              <div class="row">
-
-                <div class="col-md-12 col-sm-12">
-                  <div class="x_panel">
-                    <div class="x_title">
-                      <h4>Visitors location <small>geo-presentation</small></h4>
-                      <ul class="nav navbar-right panel_toolbox">
-                        <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-                        <li class="dropdown">
-                          <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                              <a class="dropdown-item" href="#">Settings 1</a>
-                              <a class="dropdown-item" href="#">Settings 2</a>
-                            </div>
-                        <li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a>
-                      </ul>
-                      <div class="clearfix"></div>
-                    </div>
-                    <div class="x_content">
-                      <div class="dashboard-widget-content">
-                        <div class="col-md-4 hidden-small">
-                          <h5 class="line_30">125.7k Views from 60 countries</h5>
-
-                          <table class="countries_list">
-                            <tbody>
-                              <tr>
-                                <td>United States</td>
-                                <td class="fs15 fw700 text-end">33%</td>
-                              </tr>
-                              <tr>
-                                <td>France</td>
-                                <td class="fs15 fw700 text-end">27%</td>
-                              </tr>
-                              <tr>
-                                <td>Germany</td>
-                                <td class="fs15 fw700 text-end">16%</td>
-                              </tr>
-                              <tr>
-                                <td>Spain</td>
-                                <td class="fs15 fw700 text-end">11%</td>
-                              </tr>
-                              <tr>
-                                <td>Britain</td>
-                                <td class="fs15 fw700 text-end">10%</td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                        <div id="world-map-gdp" class="col-md-8 col-sm-12" style="height:230px;"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-              <div class="row">
-
-
-                <!-- Start to do list -->
-                <div class="col-md-6 col-sm-6">
-                  <div class="x_panel">
-                    <div class="x_title">
-                      <h4>To Do List <small>Sample tasks</small></h4>
-                      <ul class="nav navbar-right panel_toolbox">
-                        <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-                        <li class="dropdown">
-                          <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                              <a class="dropdown-item" href="#">Settings 1</a>
-                              <a class="dropdown-item" href="#">Settings 2</a>
-                            </div>
-                        <li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a>
-                      </ul>
-                      <div class="clearfix"></div>
-                    </div>
-                    <div class="x_content">
-
-                      <div class="">
-                        <ul class="to_do">
-                          <li>
-                            <div class="form-check">
-                              <input type="checkbox" id="todo-item-1" class="form-check-input flat">
-                              <label for="todo-item-1" class="form-check-label">Schedule meeting with new client</label>
-                            </div>
-                          <li>
-                            <div class="form-check">
-                              <input type="checkbox" id="todo-item-2" class="form-check-input flat">
-                              <label for="todo-item-2" class="form-check-label">Create email address for new intern</label>
-                            </div>
-                          <li>
-                            <div class="form-check">
-                              <input type="checkbox" id="todo-item-3" class="form-check-input flat">
-                              <label for="todo-item-3" class="form-check-label">Have IT fix the network printer</label>
-                            </div>
-                          <li>
-                            <div class="form-check">
-                              <input type="checkbox" id="todo-item-4" class="form-check-input flat">
-                              <label for="todo-item-4" class="form-check-label">Copy backups to offsite location</label>
-                            </div>
-                          <li>
-                            <div class="form-check">
-                              <input type="checkbox" id="todo-item-5" class="form-check-input flat">
-                              <label for="todo-item-5" class="form-check-label">Food truck fixie locavors mcsweeney</label>
-                            </div>
-                          <li>
-                            <div class="form-check">
-                              <input type="checkbox" id="todo-item-6" class="form-check-input flat">
-                              <label for="todo-item-6" class="form-check-label">Create email address for new intern</label>
-                            </div>
-                          <li>
-                            <div class="form-check">
-                              <input type="checkbox" id="todo-item-7" class="form-check-input flat">
-                              <label for="todo-item-7" class="form-check-label">Have IT fix the network printer</label>
-                            </div>
-                          <li>
-                            <div class="form-check">
-                              <input type="checkbox" id="todo-item-8" class="form-check-input flat">
-                              <label for="todo-item-8" class="form-check-label">Copy backups to offsite location</label>
-                            </div>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- End to do list -->
-                
-                <!-- start of weather widget -->
-                <div class="col-md-6 col-sm-6">
-                  <div class="x_panel">
-                    <div class="x_title">
-                      <h4>Daily active users <small>Sessions</small></h4>
-                      <ul class="nav navbar-right panel_toolbox">
-                        <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-                        <li class="dropdown">
-                          <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                              <a class="dropdown-item" href="#">Settings 1</a>
-                              <a class="dropdown-item" href="#">Settings 2</a>
-                            </div>
-                        <li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a>
-                      </ul>
-                      <div class="clearfix"></div>
-                    </div>
-                    <div class="x_content">
-                      <div class="row">
-                        <div class="col-sm-12">
-                          <div class="temperature"><b>Monday</b>, 07:30 AM
-                            <span>F</span>
-                            <span><b>C</b></span>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-sm-4">
-                          <div class="weather-icon">
-                            <canvas height="84" width="84" id="partly-cloudy-day"></canvas>
-                          </div>
-                        </div>
-                        <div class="col-sm-8">
-                          <div class="weather-text">
-                            <h5>Texas <br><i>Partly Cloudy Day</i></h5>
-                          </div>
-                        </div>
-                      </div>
-                                              <div class="col-sm-12">
-                        <div class="weather-text float-end">
-                          <h4 class="degrees">23</h4>
-                        </div>
-                      </div>
-
-                      <div class="clearfix"></div>
-
-                      <div class="row weather-days">
-                        <div class="col-sm-2">
-                          <div class="daily-weather">
-                            <h6 class="day">Mon</h6>
-                            <h6 class="degrees">25</h6>
-                            <canvas id="clear-day" width="32" height="32"></canvas>
-                            <h5>15 <i>km/h</i></h5>
-                          </div>
-                        </div>
-                        <div class="col-sm-2">
-                          <div class="daily-weather">
-                            <h6 class="day">Tue</h6>
-                            <h6 class="degrees">25</h6>
-                            <canvas height="32" width="32" id="rain"></canvas>
-                            <h5>12 <i>km/h</i></h5>
-                          </div>
-                        </div>
-                        <div class="col-sm-2">
-                          <div class="daily-weather">
-                            <h6 class="day">Wed</h6>
-                            <h6 class="degrees">27</h6>
-                            <canvas height="32" width="32" id="snow"></canvas>
-                            <h5>14 <i>km/h</i></h5>
-                          </div>
-                        </div>
-                        <div class="col-sm-2">
-                          <div class="daily-weather">
-                            <h6 class="day">Thu</h6>
-                            <h6 class="degrees">28</h6>
-                            <canvas height="32" width="32" id="sleet"></canvas>
-                            <h5>15 <i>km/h</i></h5>
-                          </div>
-                        </div>
-                        <div class="col-sm-2">
-                          <div class="daily-weather">
-                            <h6 class="day">Fri</h6>
-                            <h6 class="degrees">28</h6>
-                            <canvas height="32" width="32" id="wind"></canvas>
-                            <h5>11 <i>km/h</i></h5>
-                          </div>
-                        </div>
-                        <div class="col-sm-2">
-                          <div class="daily-weather">
-                            <h6 class="day">Sat</h6>
-                            <h6 class="degrees">26</h6>
-                            <canvas height="32" width="32" id="cloudy"></canvas>
-                            <h5>10 <i>km/h</i></h5>
-                          </div>
-                        </div>
-                        <div class="clearfix"></div>
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
-                <!-- end of weather widget -->
-              </div>
-            </div>
-          </div>
+        <div class="stat-spark">
+          <div class="bar" style="height:40%"></div><div class="bar" style="height:55%"></div><div class="bar" style="height:45%"></div><div class="bar" style="height:60%"></div><div class="bar" style="height:50%"></div><div class="bar" style="height:70%"></div><div class="bar" style="height:65%"></div><div class="bar" style="height:80%"></div><div class="bar" style="height:75%"></div><div class="bar" style="height:90%"></div>
         </div>
-        <!-- /page content -->
-
-        <!-- footer content -->
-        <footer>
-          <div class="float-end">
-            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+      </div>
+    </div>
+    <div class="card">
+      <div class="stat">
+        <div class="stat-icon blue">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="stat-content">
+          <div class="stat-label">Avg Session</div>
+          <div class="stat-value-row">
+            <span class="stat-value">123.5<span style="font-size:12px;font-weight:400;color:var(--text-muted);margin-left:1px">min</span></span>
+            <span class="stat-change up"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V3M3 6l3-3 3 3"/></svg>8%</span>
           </div>
-          <div class="clearfix"></div>
-        </footer>
-        <!-- /footer content -->
+          <div class="stat-subtext">+14min from last week</div>
+        </div>
+        <div class="stat-spark">
+          <div class="bar" style="height:50%;background:var(--blue)"></div><div class="bar" style="height:40%;background:var(--blue)"></div><div class="bar" style="height:65%;background:var(--blue)"></div><div class="bar" style="height:55%;background:var(--blue)"></div><div class="bar" style="height:70%;background:var(--blue)"></div><div class="bar" style="height:60%;background:var(--blue)"></div><div class="bar" style="height:80%;background:var(--blue)"></div><div class="bar" style="height:75%;background:var(--blue)"></div><div class="bar" style="height:85%;background:var(--blue)"></div><div class="bar" style="height:90%;background:var(--blue)"></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="stat">
+        <div class="stat-icon yellow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        </div>
+        <div class="stat-content">
+          <div class="stat-label">Orders</div>
+          <div class="stat-value-row">
+            <span class="stat-value">1,240</span>
+            <span class="stat-change down"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3v6M3 6l3 3 3-3"/></svg>3%</span>
+          </div>
+          <div class="stat-subtext">78 shipped today</div>
+        </div>
+        <div class="stat-spark">
+          <div class="bar" style="height:80%;background:var(--yellow)"></div><div class="bar" style="height:70%;background:var(--yellow)"></div><div class="bar" style="height:75%;background:var(--yellow)"></div><div class="bar" style="height:60%;background:var(--yellow)"></div><div class="bar" style="height:65%;background:var(--yellow)"></div><div class="bar" style="height:50%;background:var(--yellow)"></div><div class="bar" style="height:55%;background:var(--yellow)"></div><div class="bar" style="height:45%;background:var(--yellow)"></div><div class="bar" style="height:40%;background:var(--yellow)"></div><div class="bar" style="height:35%;background:var(--yellow)"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row col-3">
+    <div class="card">
+      <div class="stat">
+        <div class="stat-icon green">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+        </div>
+        <div class="stat-content">
+          <div class="stat-label">Revenue</div>
+          <div class="stat-value-row">
+            <span class="stat-value">$24,567</span>
+            <span class="stat-change up"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V3M3 6l3-3 3 3"/></svg>18%</span>
+          </div>
+          <div class="stat-subtext">$3,218 today</div>
+        </div>
+      </div>
+      <div style="padding:0 16px 12px">
+        <div class="progress-thin"><div class="bar" style="width:75%;background:var(--green)"></div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="stat">
+        <div class="stat-icon red">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div class="stat-content">
+          <div class="stat-label">Conversions</div>
+          <div class="stat-value-row">
+            <span class="stat-value">2,315</span>
+            <span class="stat-change up"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V3M3 6l3-3 3 3"/></svg>5%</span>
+          </div>
+          <div class="stat-subtext">Rate: 4.2%</div>
+        </div>
+      </div>
+      <div style="padding:0 16px 12px">
+        <div class="progress-thin"><div class="bar" style="width:42%;background:var(--red)"></div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="stat">
+        <div class="stat-icon purple">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
+        <div class="stat-content">
+          <div class="stat-label">Page Views</div>
+          <div class="stat-value-row">
+            <span class="stat-value">47,325</span>
+            <span class="stat-change up"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V3M3 6l3-3 3 3"/></svg>22%</span>
+          </div>
+          <div class="stat-subtext">6,854 unique visitors</div>
+        </div>
+      </div>
+      <div style="padding:0 16px 12px">
+        <div class="progress-thin"><div class="bar" style="width:68%;background:var(--purple)"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CHART + ACTIVITY ROW ── -->
+  <div class="row col-8-4">
+    <div class="card">
+      <div class="chart-header">
+        <div class="chart-header-left">
+          <div class="card-title">Network Activities</div>
+          <div class="chart-stat" style="margin-top:8px">6,782 <span style="font-size:13px;font-weight:500;color:var(--green)">↑ 7%</span></div>
+          <div style="font-size:11.5px;color:var(--text-muted)">Total sessions this week</div>
+        </div>
+        <div class="chart-tabs">
+          <button class="chart-tab active">7 days</button>
+          <button class="chart-tab">30 days</button>
+          <button class="chart-tab">90 days</button>
+        </div>
+      </div>
+      <div class="chart-area">
+        <div data-chart="dashboard-network" style="width:100%;height:100%"></div>
+      </div>
+      <div class="card-footer" style="display:flex;gap:20px;font-size:11.5px;color:var(--text-muted)">
+        <span style="display:flex;align-items:center;gap:5px"><span style="width:10px;height:3px;background:var(--primary);border-radius:2px;display:inline-block"></span> Sessions</span>
+        <span style="display:flex;align-items:center;gap:5px"><span style="width:10px;height:3px;background:var(--azure);border-radius:2px;display:inline-block;opacity:.6"></span> Page views</span>
       </div>
     </div>
 
-    <!-- Date Range Picker Logic -->
-    <script type="text/javascript">
-    // Note: The "Uncaught (in promise) Error: A listener indicated an asynchronous response" 
-    // error is caused by browser extensions (like ad blockers) and can be safely ignored.
-    // It doesn't affect the functionality of our application.
-    
-    document.addEventListener('DOMContentLoaded', function() {
-      // Check if we have date picker elements
-      const startDatePicker = document.getElementById('startDatePicker');
-      const endDatePicker = document.getElementById('endDatePicker');
-      
-      if (startDatePicker && endDatePicker) {
-        try {
-          // TempusDominus is directly available in main-minimal.js
-          
-          const TempusDominus = window.TempusDominus || globalThis.TempusDominus;
-          const DateTime = window.DateTime || globalThis.DateTime;
-          
-          if (TempusDominus && DateTime) {
-            // Initialize the date pickers
-            const startPicker = new TempusDominus(startDatePicker, {
-              display: {
-                components: {
-                  clock: false,
-                  seconds: false
-                }
-              },
-              localization: {
-                format: 'MM/dd/yyyy',
-                hourCycle: 'h12'
-              }
-            });
-            
-            const endPicker = new TempusDominus(endDatePicker, {
-              display: {
-                components: {
-                  clock: false,
-                  seconds: false
-                }
-              },
-              localization: {
-                format: 'MM/dd/yyyy',
-                hourCycle: 'h12'
-              }
-            });
-            
-            // Set default dates (last 30 days)
-            try {
-              const today = new DateTime();
-              const thirtyDaysAgo = new DateTime().manipulate(-30, 'date');
-              
-              startPicker.dates.setValue(thirtyDaysAgo);
-              endPicker.dates.setValue(today);
-              
-            } catch (error) {
-            }
-            
-            // Link pickers
-            startDatePicker.addEventListener('change.td', function(e) {
-              endPicker.updateOptions({ restrictions: { maxDate: e.detail.date } });
-            });
-            
-            endDatePicker.addEventListener('change.td', function(e) {
-              startPicker.updateOptions({ restrictions: { minDate: e.detail.date } });
-            });
-            
-          } else {
-          }
-        } catch (error) {
-        }
-      }
-    });
+    <!-- Activity feed -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Recent Activity</div>
+        <div class="card-options">
+          <button class="card-opt-btn" aria-label="Card options"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7h8"/></svg></button>
+        </div>
+      </div>
+      <div class="card-body" style="padding:8px 16px">
+        <ul class="activity-list">
+          <li class="activity-item">
+            <div class="activity-avatar" style="background:linear-gradient(135deg,var(--primary),var(--primary-dk))">SK</div>
+            <div>
+              <div class="activity-body"><strong>Sarah K.</strong> placed a new order for $245.00</div>
+              <div class="activity-time">2 min ago</div>
+            </div>
+          </li>
+          <li class="activity-item">
+            <div class="activity-avatar" style="background:linear-gradient(135deg,var(--blue),#0550a0)">MR</div>
+            <div>
+              <div class="activity-body"><strong>Michael R.</strong> registered a new account</div>
+              <div class="activity-time">18 min ago</div>
+            </div>
+          </li>
+          <li class="activity-item">
+            <div class="activity-avatar" style="background:linear-gradient(135deg,var(--green),#1a8a32)">SY</div>
+            <div>
+              <div class="activity-body"><strong>Payment</strong> processed — Invoice #4521</div>
+              <div class="activity-time">45 min ago</div>
+            </div>
+          </li>
+          <li class="activity-item">
+            <div class="activity-avatar" style="background:linear-gradient(135deg,var(--yellow),#c97f00)">JL</div>
+            <div>
+              <div class="activity-body"><strong>Jeffie L.</strong> reviewed <strong>Dashboard Kit</strong></div>
+              <div class="activity-time">1 hour ago</div>
+            </div>
+          </li>
+          <li class="activity-item">
+            <div class="activity-avatar" style="background:linear-gradient(135deg,var(--purple),#8a2da0)">EL</div>
+            <div>
+              <div class="activity-body"><strong>Emmy L.</strong> created project <strong>Morning Clock</strong></div>
+              <div class="activity-time">4 hours ago</div>
+            </div>
+          </li>
+          <li class="activity-item">
+            <div class="activity-avatar" style="background:linear-gradient(135deg,var(--red),#a82b2b)">DS</div>
+            <div>
+              <div class="activity-body"><strong>Shipment</strong> dispatched — Order #3847</div>
+              <div class="activity-time">6 hours ago</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 
-    // Dashboard chart initialization - define functions first
-    function initializeDashboardChart() {
-      const container = document.getElementById('chart_plot_01');
-      if (!container) return;
-      
-      // Create canvas element
-      const canvas = document.createElement('canvas');
-      canvas.width = container.offsetWidth || 800;
-      canvas.height = 400;
-      container.innerHTML = ''; // Clear any existing content
-      container.appendChild(canvas);
-      
-      const ctx = canvas.getContext('2d');
-      if (!ctx) return;
+  <!-- ── TABLE + SIDEBAR WIDGETS ── -->
+  <div class="row col-8-4">
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Recent Orders</div>
+          <div class="card-subtitle">Latest 5 transactions</div>
+        </div>
+        <button class="btn btn-outline btn-sm">View All →</button>
+      </div>
+      <div class="card-body p-0">
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Order</th>
+                <th>Customer</th>
+                <th>Product</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="cell-mono">#7841</td>
+                <td><div class="cell-customer"><div class="cell-avatar" style="background:var(--primary)">JD</div><span class="cell-strong">John Doe</span></div></td>
+                <td>AdminLTE Pro</td>
+                <td class="cell-strong">$245</td>
+                <td><span class="status status-green">Paid</span></td>
+                <td>Feb 14</td>
+              </tr>
+              <tr>
+                <td class="cell-mono">#7840</td>
+                <td><div class="cell-customer"><div class="cell-avatar" style="background:var(--azure)">AS</div><span class="cell-strong">Anna Smith</span></div></td>
+                <td>Gentelella Theme</td>
+                <td class="cell-strong">$89</td>
+                <td><span class="status status-blue">Processing</span></td>
+                <td>Feb 13</td>
+              </tr>
+              <tr>
+                <td class="cell-mono">#7839</td>
+                <td><div class="cell-customer"><div class="cell-avatar" style="background:var(--purple)">RJ</div><span class="cell-strong">Robert Jones</span></div></td>
+                <td>Dashboard Pack</td>
+                <td class="cell-strong">$490</td>
+                <td><span class="status status-green">Paid</span></td>
+                <td>Feb 13</td>
+              </tr>
+              <tr>
+                <td class="cell-mono">#7838</td>
+                <td><div class="cell-customer"><div class="cell-avatar" style="background:var(--yellow)">EW</div><span class="cell-strong">Emily Wang</span></div></td>
+                <td>ArchitectUI</td>
+                <td class="cell-strong">$125</td>
+                <td><span class="status status-yellow">Pending</span></td>
+                <td>Feb 12</td>
+              </tr>
+              <tr>
+                <td class="cell-mono">#7837</td>
+                <td><div class="cell-customer"><div class="cell-avatar" style="background:var(--red)">MK</div><span class="cell-strong">Mark Kim</span></div></td>
+                <td>Bootstrap Bundle</td>
+                <td class="cell-strong">$67</td>
+                <td><span class="status status-red">Cancelled</span></td>
+                <td>Feb 11</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
 
-      // Sample data for the main dashboard chart
-      const chartData = {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-        datasets: [{
-          label: 'Revenue',
-          data: [12, 19, 8, 15, 22, 18, 25, 32, 28, 35, 30, 40],
-          borderColor: '#1ABB9C',
-          backgroundColor: 'rgba(26, 187, 156, 0.1)',
-          borderWidth: 2,
-          fill: true,
-          tension: 0.4
-        }, {
-          label: 'Expenses',
-          data: [8, 12, 6, 10, 15, 12, 18, 22, 20, 25, 22, 28],
-          borderColor: '#E74C3C',
-          backgroundColor: 'rgba(231, 76, 60, 0.1)',
-          borderWidth: 2,
-          fill: true,
-          tension: 0.4
-        }]
-      };
+    <!-- Storage + Device usage -->
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Storage</div>
+          <div class="card-subtitle">6.8 GB of 8 GB used</div>
+        </div>
+        <div class="card-body">
+          <div class="storage-bar">
+            <div style="width:42%;background:var(--primary)"></div>
+            <div style="width:18%;background:var(--azure)"></div>
+            <div style="width:12%;background:var(--yellow)"></div>
+            <div style="width:13%;background:var(--border-color)"></div>
+          </div>
+          <div class="storage-legend">
+            <div class="storage-legend-item"><span class="dot" style="background:var(--primary)"></span> Regular <span class="val">3.4 GB</span></div>
+            <div class="storage-legend-item"><span class="dot" style="background:var(--azure)"></span> System <span class="val">1.4 GB</span></div>
+            <div class="storage-legend-item"><span class="dot" style="background:var(--yellow)"></span> Shared <span class="val">1.0 GB</span></div>
+            <div class="storage-legend-item"><span class="dot" style="background:var(--border-color)"></span> Free <span class="val">1.2 GB</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">Device Usage</div></div>
+        <div class="card-body">
+          <div class="donut-block">
+            <div class="donut-svg">
+              <div data-chart="device-usage" style="width:100%;height:100%"></div>
+              <div class="donut-center-label">
+                <div class="num">8.4k</div>
+                <div class="sub">devices</div>
+              </div>
+            </div>
+            <div class="donut-legend">
+              <div class="donut-legend-item"><span class="dot" style="background:var(--primary)"></span> iOS <span class="pct">30%</span></div>
+              <div class="donut-legend-item"><span class="dot" style="background:var(--azure)"></span> Android <span class="pct">25%</span></div>
+              <div class="donut-legend-item"><span class="dot" style="background:var(--yellow)"></span> Desktop <span class="pct">20%</span></div>
+              <div class="donut-legend-item"><span class="dot" style="background:var(--purple)"></span> Tablet <span class="pct">15%</span></div>
+              <div class="donut-legend-item"><span class="dot" style="background:var(--border-color)"></span> Other <span class="pct">10%</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-      const config = {
-        type: 'line',
-        data: chartData,
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: {
-              position: 'top',
-            },
-            title: {
-              display: true,
-              text: 'Monthly Financial Overview'
-            }
-          },
-          scales: {
-            y: {
-              beginAtZero: true,
-              grid: {
-                color: 'rgba(0,0,0,0.1)'
-              }
-            },
-            x: {
-              grid: {
-                color: 'rgba(0,0,0,0.1)'
-              }
-            }
-          }
-        }
-      };
+  <!-- ── BOTTOM ROW ── -->
+  <div class="row col-3">
+    <!-- Visitors -->
+    <div class="card">
+      <div class="card-header"><div class="card-title">Visitors by Location</div></div>
+      <div class="card-body" style="padding:8px 16px">
+        <div class="visitor-row"><span class="visitor-flag">🇺🇸</span><span class="visitor-name">United States</span><span class="visitor-pct">33%</span><div class="visitor-bar"><div class="fill" style="width:33%"></div></div></div>
+        <div class="visitor-row"><span class="visitor-flag">🇫🇷</span><span class="visitor-name">France</span><span class="visitor-pct">27%</span><div class="visitor-bar"><div class="fill" style="width:27%"></div></div></div>
+        <div class="visitor-row"><span class="visitor-flag">🇩🇪</span><span class="visitor-name">Germany</span><span class="visitor-pct">16%</span><div class="visitor-bar"><div class="fill" style="width:16%"></div></div></div>
+        <div class="visitor-row"><span class="visitor-flag">🇪🇸</span><span class="visitor-name">Spain</span><span class="visitor-pct">11%</span><div class="visitor-bar"><div class="fill" style="width:11%"></div></div></div>
+        <div class="visitor-row"><span class="visitor-flag">🇬🇧</span><span class="visitor-name">United Kingdom</span><span class="visitor-pct">10%</span><div class="visitor-bar"><div class="fill" style="width:10%"></div></div></div>
+        <div class="visitor-row"><span class="visitor-flag">🇱🇻</span><span class="visitor-name">Latvia</span><span class="visitor-pct">3%</span><div class="visitor-bar"><div class="fill" style="width:3%"></div></div></div>
+      </div>
+    </div>
 
-      new Chart(ctx, config);
-    }
+    <!-- To-Do -->
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Tasks</div>
+          <div class="card-subtitle" data-todo-counter>4 of 6 remaining</div>
+        </div>
+      </div>
+      <div class="card-body" style="padding:8px 16px">
+        <div class="todo-row done">
+          <div class="todo-cb done"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2.5 6l2.5 3 5-6"/></svg></div>
+          <span class="todo-text">Review Q4 analytics report</span>
+          <span class="todo-date">Dec 08</span>
+        </div>
+        <div class="todo-row done">
+          <div class="todo-cb done"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2.5 6l2.5 3 5-6"/></svg></div>
+          <span class="todo-text">Send invoices to clients</span>
+          <span class="todo-date">Jan 01</span>
+        </div>
+        <div class="todo-row">
+          <div class="todo-cb"></div>
+          <span class="todo-text">Update user documentation</span>
+          <span class="todo-prio" style="background:var(--yellow)"></span>
+          <span class="todo-date">Jan 15</span>
+        </div>
+        <div class="todo-row">
+          <div class="todo-cb"></div>
+          <span class="todo-text">Deploy v3.2.1 to production</span>
+          <span class="todo-prio" style="background:var(--red)"></span>
+          <span class="todo-date">Feb 01</span>
+        </div>
+        <div class="todo-row">
+          <div class="todo-cb"></div>
+          <span class="todo-text">Fix sidebar responsive issues</span>
+          <span class="todo-prio" style="background:var(--yellow)"></span>
+          <span class="todo-date">Feb 14</span>
+        </div>
+        <div class="todo-row">
+          <div class="todo-cb"></div>
+          <span class="todo-text">Prepare team standup notes</span>
+          <span class="todo-prio" style="background:var(--green)"></span>
+          <span class="todo-date">Feb 15</span>
+        </div>
+      </div>
+    </div>
 
-    // Profile completion gauge
-    function initializeProfileGauge() {
-      const gaugeElement = document.getElementById('profile_completion_gauge');
-      if (!gaugeElement) return;
+    <!-- App Versions + Settings -->
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div class="card">
+        <div class="card-header"><div class="card-title">App Versions</div></div>
+        <div class="card-body" style="padding:10px 16px">
+          <div class="version-row"><span class="version-label">v3.2.1</span><div class="version-bar"><div class="fill" style="width:68%;background:var(--primary)"></div></div><span class="version-pct">68%</span></div>
+          <div class="version-row"><span class="version-label">v3.2.0</span><div class="version-bar"><div class="fill" style="width:52%;background:var(--azure)"></div></div><span class="version-pct">52%</span></div>
+          <div class="version-row"><span class="version-label">v3.1.9</span><div class="version-bar"><div class="fill" style="width:34%;background:var(--yellow)"></div></div><span class="version-pct">34%</span></div>
+          <div class="version-row"><span class="version-label">v3.1.8</span><div class="version-bar"><div class="fill" style="width:21%;background:var(--green)"></div></div><span class="version-pct">21%</span></div>
+          <div class="version-row"><span class="version-label">v3.1.7</span><div class="version-bar"><div class="fill" style="width:14%;background:var(--purple)"></div></div><span class="version-pct">14%</span></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">Quick Settings</div></div>
+        <div class="card-body" style="padding:6px 16px">
+          <div class="toggle-row"><div><div class="label">Email notifications</div></div><div class="toggle on"></div></div>
+          <div class="toggle-row"><div><div class="label">Two-factor auth</div></div><div class="toggle on"></div></div>
+          <div class="toggle-row"><div><div class="label">Dark mode</div></div><div class="toggle"></div></div>
+          <div class="toggle-row"><div><div class="label">Public profile</div></div><div class="toggle on"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-      // Create a simple donut chart for profile completion
-      const canvas = document.createElement('canvas');
-      canvas.width = 160;
-      canvas.height = 120;
-      gaugeElement.appendChild(canvas);
-      const ctx = canvas.getContext('2d');
+</div>
+</main>
 
-      const data = {
-        datasets: [{
-          data: [67, 33],
-          backgroundColor: ['#1ABB9C', '#ECF0F1'],
-          borderWidth: 0
-        }]
-      };
-
-      const config = {
-        type: 'doughnut',
-        data: data,
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          cutout: '75%',
-          plugins: {
-            legend: {
-              display: false
-            },
-            tooltip: {
-              enabled: false
-            }
-          }
-        }
-      };
-
-      new Chart(ctx, config);
-    }
-
-    // Initialize charts - Chart.js is directly available in main-minimal.js
-    document.addEventListener('DOMContentLoaded', function() {
-      
-      // Check if basic elements exist
-      const chartContainer = document.getElementById('chart_plot_01');
-      const collapseLinks = document.querySelectorAll('.collapse-link');
-      
-      if (chartContainer) {
-        // Wait for Chart.js to be available (from module)
-        function waitForChart() {
-          if (typeof window.Chart !== 'undefined') {
-            try {
-              
-              // Initialize main dashboard chart
-              initializeDashboardChart();
-              
-              // Initialize profile completion gauge
-              if (document.getElementById('profile_completion_gauge')) {
-                initializeProfileGauge();
-              }
-              
-            } catch (error) {
-            }
-          } else {
-            // Try again in 50ms
-            setTimeout(waitForChart, 50);
-          }
-        }
-        
-        // Start waiting
-        waitForChart();
-      } else {
-      }
-    });
-    </script>
-  </body>
+</body>
 </html>

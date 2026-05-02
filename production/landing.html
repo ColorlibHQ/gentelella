@@ -1,779 +1,303 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Gentelella - Free Bootstrap 5 Admin Template. Modern, responsive admin dashboard built with Vite, no jQuery dependency. 40+ pages, Chart.js, ECharts, DataTables included.">
-    <meta name="author" content="Colorlib">
-    <meta name="keywords" content="bootstrap 5, admin template, dashboard, vite, no jquery, free, open source, chart.js, echarts, datatables">    <!-- Security headers -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.googleapis.com; img-src 'self' data: https: blob:; font-src 'self' data: https://fonts.gstatic.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; connect-src 'self' ws: wss: http://localhost:* https://api.example.com https://*.googleapis.com; frame-src 'self' https://www.youtube.com https://player.vimeo.com; media-src 'self' https: blob:; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gentelella 2026 — Free admin template</title>
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script type="module" src="/src/main-v4.js"></script>
+</head>
+<body class="landing-body">
 
-    <!-- Favicons -->
-    <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
-    <link rel="icon" href="../images/favicon-32x32.svg" type="image/svg+xml" sizes="32x32">
-    <link rel="icon" href="../images/favicon-16x16.svg" type="image/svg+xml" sizes="16x16">
-    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="../images/apple-touch-icon.svg" sizes="180x180">
-    <link rel="manifest" href="../site.webmanifest">
+<header class="landing-nav">
+  <div class="brand">
+    <div class="brand-icon">G</div>
+    <div class="brand-name">Gentelella <small style="font-weight:400;color:var(--text-muted);font-size:13px;margin-left:2px">v4</small></div>
+  </div>
+  <nav>
+    <a href="#features">Features</a>
+    <a href="#showcase">Showcase</a>
+    <a href="#testimonials">Reviews</a>
+    <a href="pricing_tables.html">Pricing</a>
+    <a href="#faq">FAQ</a>
+    <a href="https://github.com/ColorlibHQ/gentelella" target="_blank" rel="noopener">GitHub</a>
+  </nav>
+  <div class="cta">
+    <a href="login.html" class="btn btn-outline">Sign in</a>
+    <a href="index.html" class="btn btn-primary">Try the demo</a>
+  </div>
+</header>
 
-    <!-- Theme color -->
-    <meta name="theme-color" content="#2a3f54">
-    <meta name="msapplication-TileColor" content="#2a3f54">
+<section class="hero">
+  <div style="display:inline-flex;align-items:center;gap:6px;padding:4px 12px;background:var(--primary-lt);color:var(--primary);border-radius:999px;font-size:12px;font-weight:600;margin-bottom:18px">
+    <span style="width:6px;height:6px;border-radius:50%;background:var(--primary)"></span>
+    v4.0 — fresh for 2026
+  </div>
+  <h1>The free Bootstrap admin template, <span>redesigned for 2026.</span></h1>
+  <p class="subhead">Fresh design system. Real ECharts. Real DataTables. Vite 8, vanilla JS, zero jQuery. Built by Colorlib.</p>
+  <div class="cta">
+    <a href="index.html" class="btn btn-primary" style="height:42px;padding:0 18px;font-size:14px">View live demo →</a>
+    <a href="https://github.com/ColorlibHQ/gentelella" target="_blank" rel="noopener" class="btn btn-outline" style="height:42px;padding:0 18px;font-size:14px">⭐ Star on GitHub</a>
+  </div>
+  <div style="margin-top:32px;display:flex;justify-content:center;gap:24px;flex-wrap:wrap;font-size:12px;color:var(--text-muted)">
+    <span>✓ MIT licensed</span>
+    <span>✓ No backend required</span>
+    <span>✓ Zero jQuery</span>
+    <span>✓ ~17 KB above-the-fold</span>
+  </div>
+</section>
 
-    <title>Landing | Gentelella</title>
+<!-- Stats band -->
+<section style="max-width:1100px;margin:0 auto;padding:0 32px 60px">
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:32px;text-align:center;border-top:1px solid var(--border-color-light);border-bottom:1px solid var(--border-color-light);padding:32px 0">
+    <div>
+      <div style="font-size:32px;font-weight:700;color:var(--text);letter-spacing:-1px">55+</div>
+      <div style="font-size:12px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-top:4px">Pages</div>
+    </div>
+    <div>
+      <div style="font-size:32px;font-weight:700;color:var(--text);letter-spacing:-1px">16</div>
+      <div style="font-size:12px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-top:4px">Chart types</div>
+    </div>
+    <div>
+      <div style="font-size:32px;font-weight:700;color:var(--text);letter-spacing:-1px">3</div>
+      <div style="font-size:12px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-top:4px">Prod deps</div>
+    </div>
+    <div>
+      <div style="font-size:32px;font-weight:700;color:var(--text);letter-spacing:-1px">5s</div>
+      <div style="font-size:12px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-top:4px">Build time</div>
+    </div>
+  </div>
+</section>
 
-    <!-- Vite Entry Point -->
-    <script type="module" src="/src/main-minimal.js"></script>
+<!-- Features grid -->
+<section class="features" id="features">
+  <div class="feature">
+    <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="4" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="10" width="7" height="11" rx="1.5"/></svg></div>
+    <h2>55+ pages</h2>
+    <p>Dashboards, forms, tables, charts, calendar, inbox, chat, kanban, file manager, e-commerce, admin — all designed in the same v4 system.</p>
+  </div>
+  <div class="feature">
+    <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19V5M8 19v-8M12 19V9M16 19v-5M20 19v-9"/></svg></div>
+    <h2>Real charts & tables</h2>
+    <p>Apache ECharts and DataTables wired in, styled to match the design system. 16 chart variants, sortable tables, CSV export — all working.</p>
+  </div>
+  <div class="feature">
+    <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h7l-1 8 11-12h-7z"/></svg></div>
+    <h2>Lean & modern</h2>
+    <p>Bootstrap 5 is gone — replaced with a self-contained design system in 10 SCSS partials. ~17 KB above-the-fold (gzipped). No jQuery.</p>
+  </div>
+  <div class="feature">
+    <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 3a14 14 0 010 18M12 3a14 14 0 000 18M3 12h18"/></svg></div>
+    <h2>Light & dark themes</h2>
+    <p>Pre-paint script reads <code style="font-family:var(--font-mono);font-size:11px;background:var(--bg-surface-secondary);padding:1px 4px;border-radius:3px">localStorage</code> and <code style="font-family:var(--font-mono);font-size:11px;background:var(--bg-surface-secondary);padding:1px 4px;border-radius:3px">prefers-color-scheme</code> — dark mode never flashes.</p>
+  </div>
+  <div class="feature">
+    <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3h6v6H9zM3 15h6v6H3zM15 15h6v6h-6z"/><path d="M12 9v6"/></svg></div>
+    <h2>Fully interactive</h2>
+    <p>Inbox sends emails. Kanban drags. Calendar adds events. Forms validate. Settings persist. Not just pretty — these pages actually work.</p>
+  </div>
+  <div class="feature">
+    <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 12l2 2 4-4"/></svg></div>
+    <h2>⌘K command palette</h2>
+    <p>Global fuzzy search across every page and action. Built-in keyboard shortcuts on the inbox (J/K/R/C). Modern admin UX out of the box.</p>
+  </div>
+</section>
 
-    <!-- Critical styles for sticky nav (must come after Vite to override SCSS) -->
-    <style>
-      body.landing-page .landing-nav.nav-scrolled {
-        background: #ffffff !important;
-        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1) !important;
-        padding: 12px 0 !important;
-      }
-      body.landing-page .landing-nav.nav-scrolled .nav-logo .logo-text,
-      body.landing-page .landing-nav.nav-scrolled .nav-links a {
-        color: #2A3F54 !important;
-      }
-      body.landing-page .landing-nav.nav-scrolled .nav-btn-outline {
-        border-color: #2A3F54 !important;
-        color: #2A3F54 !important;
-      }
-      body.landing-page .landing-nav.nav-scrolled .nav-btn-primary {
-        background: linear-gradient(135deg, #1ABB9C 0%, #16a085 100%) !important;
-        border-color: #1ABB9C !important;
-        color: white !important;
-      }
-    </style>
-  </head>
+<!-- Showcase strip -->
+<section id="showcase" style="background:var(--bg-surface-secondary);padding:80px 32px">
+  <div style="max-width:1100px;margin:0 auto">
+    <div style="text-align:center;margin-bottom:48px">
+      <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.6px;color:var(--primary);margin-bottom:8px">Every surface, designed</div>
+      <h2 style="font-size:36px;font-weight:700;letter-spacing:-1px;color:var(--text);margin-bottom:12px">Pages you'd actually want to ship</h2>
+      <p style="font-size:15px;color:var(--text-secondary);max-width:560px;margin:0 auto;line-height:1.5">Browse 55 production-ready pages. Each one uses the same components, the same tokens, the same design language.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px">
+      <a href="index.html" style="display:block;background:var(--bg-surface);border:1px solid var(--border-color);border-radius:var(--radius);padding:20px;text-decoration:none;color:var(--text);transition:border-color 150ms,transform 150ms">
+        <div style="font-size:14px;font-weight:600;margin-bottom:4px">Dashboard</div>
+        <div style="font-size:12px;color:var(--text-muted)">4 variants · stat tiles · charts · activity</div>
+      </a>
+      <a href="inbox.html" style="display:block;background:var(--bg-surface);border:1px solid var(--border-color);border-radius:var(--radius);padding:20px;text-decoration:none;color:var(--text)">
+        <div style="font-size:14px;font-weight:600;margin-bottom:4px">Inbox</div>
+        <div style="font-size:12px;color:var(--text-muted)">3-pane mail client · folders · compose</div>
+      </a>
+      <a href="kanban.html" style="display:block;background:var(--bg-surface);border:1px solid var(--border-color);border-radius:var(--radius);padding:20px;text-decoration:none;color:var(--text)">
+        <div style="font-size:14px;font-weight:600;margin-bottom:4px">Kanban</div>
+        <div style="font-size:12px;color:var(--text-muted)">HTML5 drag-drop · click to edit</div>
+      </a>
+      <a href="calendar.html" style="display:block;background:var(--bg-surface);border:1px solid var(--border-color);border-radius:var(--radius);padding:20px;text-decoration:none;color:var(--text)">
+        <div style="font-size:14px;font-weight:600;margin-bottom:4px">Calendar</div>
+        <div style="font-size:12px;color:var(--text-muted)">Month grid · full event CRUD</div>
+      </a>
+      <a href="chat.html" style="display:block;background:var(--bg-surface);border:1px solid var(--border-color);border-radius:var(--radius);padding:20px;text-decoration:none;color:var(--text)">
+        <div style="font-size:14px;font-weight:600;margin-bottom:4px">Chat</div>
+        <div style="font-size:12px;color:var(--text-muted)">8 conversations · sends real messages</div>
+      </a>
+      <a href="file_manager.html" style="display:block;background:var(--bg-surface);border:1px solid var(--border-color);border-radius:var(--radius);padding:20px;text-decoration:none;color:var(--text)">
+        <div style="font-size:14px;font-weight:600;margin-bottom:4px">File manager</div>
+        <div style="font-size:12px;color:var(--text-muted)">Tree · grid · breadcrumb nav</div>
+      </a>
+      <a href="chartjs.html" style="display:block;background:var(--bg-surface);border:1px solid var(--border-color);border-radius:var(--radius);padding:20px;text-decoration:none;color:var(--text)">
+        <div style="font-size:14px;font-weight:600;margin-bottom:4px">Charts</div>
+        <div style="font-size:12px;color:var(--text-muted)">16 chart types · token-driven colors</div>
+      </a>
+      <a href="form.html" style="display:block;background:var(--bg-surface);border:1px solid var(--border-color);border-radius:var(--radius);padding:20px;text-decoration:none;color:var(--text)">
+        <div style="font-size:14px;font-weight:600;margin-bottom:4px">Forms</div>
+        <div style="font-size:12px;color:var(--text-muted)">Tag input · sliders · OTP · validation</div>
+      </a>
+      <a href="tables.html" style="display:block;background:var(--bg-surface);border:1px solid var(--border-color);border-radius:var(--radius);padding:20px;text-decoration:none;color:var(--text)">
+        <div style="font-size:14px;font-weight:600;margin-bottom:4px">Tables</div>
+        <div style="font-size:12px;color:var(--text-muted)">DataTables · sort · search · CSV export</div>
+      </a>
+      <a href="e_commerce.html" style="display:block;background:var(--bg-surface);border:1px solid var(--border-color);border-radius:var(--radius);padding:20px;text-decoration:none;color:var(--text)">
+        <div style="font-size:14px;font-weight:600;margin-bottom:4px">E-commerce</div>
+        <div style="font-size:12px;color:var(--text-muted)">Storefront · product · orders · invoice</div>
+      </a>
+      <a href="settings.html" style="display:block;background:var(--bg-surface);border:1px solid var(--border-color);border-radius:var(--radius);padding:20px;text-decoration:none;color:var(--text)">
+        <div style="font-size:14px;font-weight:600;margin-bottom:4px">Settings</div>
+        <div style="font-size:12px;color:var(--text-muted)">Persisted toggles · integrations · team</div>
+      </a>
+      <a href="login.html" style="display:block;background:var(--bg-surface);border:1px solid var(--border-color);border-radius:var(--radius);padding:20px;text-decoration:none;color:var(--text)">
+        <div style="font-size:14px;font-weight:600;margin-bottom:4px">Auth</div>
+        <div style="font-size:12px;color:var(--text-muted)">Login · register · 2FA · lock screen</div>
+      </a>
+    </div>
+  </div>
+</section>
 
-  <body class="landing-page">
-    <!-- Navigation -->
-    <nav class="landing-nav" id="landingNav">
-      <div class="nav-container">
-        <a href="#" class="nav-logo">
-          <span class="logo-icon">G</span>
-          <span class="logo-text">Gentelella</span>
-        </a>
+<!-- Stack section -->
+<section style="max-width:1100px;margin:0 auto;padding:80px 32px;text-align:center">
+  <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.6px;color:var(--primary);margin-bottom:8px">Modern stack</div>
+  <h2 style="font-size:36px;font-weight:700;letter-spacing:-1px;color:var(--text);margin-bottom:32px">Built on what you already use</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px;max-width:880px;margin:0 auto">
+    <div style="padding:20px;border:1px solid var(--border-color);border-radius:var(--radius);background:var(--bg-surface)">
+      <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px">Vite 8</div>
+      <div style="font-size:11px;color:var(--text-muted)">Rolldown</div>
+    </div>
+    <div style="padding:20px;border:1px solid var(--border-color);border-radius:var(--radius);background:var(--bg-surface)">
+      <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px">SCSS modules</div>
+      <div style="font-size:11px;color:var(--text-muted)">@use partials</div>
+    </div>
+    <div style="padding:20px;border:1px solid var(--border-color);border-radius:var(--radius);background:var(--bg-surface)">
+      <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px">Vanilla ES2022</div>
+      <div style="font-size:11px;color:var(--text-muted)">No framework</div>
+    </div>
+    <div style="padding:20px;border:1px solid var(--border-color);border-radius:var(--radius);background:var(--bg-surface)">
+      <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px">Apache ECharts</div>
+      <div style="font-size:11px;color:var(--text-muted)">Lazy-loaded</div>
+    </div>
+    <div style="padding:20px;border:1px solid var(--border-color);border-radius:var(--radius);background:var(--bg-surface)">
+      <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px">DataTables 2</div>
+      <div style="font-size:11px;color:var(--text-muted)">Re-skinned</div>
+    </div>
+    <div style="padding:20px;border:1px solid var(--border-color);border-radius:var(--radius);background:var(--bg-surface)">
+      <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px">Leaflet 1.9</div>
+      <div style="font-size:11px;color:var(--text-muted)">Maps</div>
+    </div>
+    <div style="padding:20px;border:1px solid var(--border-color);border-radius:var(--radius);background:var(--bg-surface)">
+      <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px">Inter</div>
+      <div style="font-size:11px;color:var(--text-muted)">Google Fonts</div>
+    </div>
+    <div style="padding:20px;border:1px solid var(--border-color);border-radius:var(--radius);background:var(--bg-surface)">
+      <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px">MIT license</div>
+      <div style="font-size:11px;color:var(--text-muted)">Free forever</div>
+    </div>
+  </div>
+</section>
 
-        <div class="nav-links">
-          <a href="#features">Features</a>
-          <a href="#tech-stack">Tech Stack</a>
-          <a href="#pages">Pages</a>
-          <a href="#use-cases">Use Cases</a>
-        </div>
-
-        <div class="nav-actions">
-          <a href="https://github.com/ColorlibHQ/gentelella" class="nav-btn nav-btn-outline" target="_blank" rel="noopener">
-            <i class="fab fa-github"></i> GitHub
-          </a>
-          <a href="https://colorlib.com/polygon/gentelella/index.html" class="nav-btn nav-btn-primary" target="_blank" rel="noopener">
-            <i class="fas fa-play"></i> Live Demo
-          </a>
-        </div>
-
-        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      </div>
-    </nav>
-    <!-- Sticky Nav Script - Must be immediately after nav -->
-    <script>
-      (function() {
-        var nav = document.getElementById('landingNav');
-        if (!nav) return;
-
-        function getScrollTop() {
-          return Math.max(
-            window.scrollY || 0,
-            window.pageYOffset || 0,
-            document.documentElement.scrollTop || 0,
-            document.body.scrollTop || 0
-          );
-        }
-
-        function updateNav() {
-          var scrollY = getScrollTop();
-
-          if (scrollY > 50) {
-            nav.style.background = '#ffffff';
-            nav.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
-            nav.style.padding = '12px 0';
-            // Update text colors
-            var logoText = nav.querySelector('.logo-text');
-            var links = nav.querySelectorAll('.nav-links a');
-            var btnOutline = nav.querySelector('.nav-btn-outline');
-            if (logoText) logoText.style.color = '#2A3F54';
-            for (var i = 0; i < links.length; i++) {
-              links[i].style.color = '#2A3F54';
-            }
-            if (btnOutline) {
-              btnOutline.style.borderColor = '#2A3F54';
-              btnOutline.style.color = '#2A3F54';
-            }
-          } else {
-            nav.style.background = 'transparent';
-            nav.style.boxShadow = 'none';
-            nav.style.padding = '20px 0';
-            // Reset text colors
-            var logoText = nav.querySelector('.logo-text');
-            var links = nav.querySelectorAll('.nav-links a');
-            var btnOutline = nav.querySelector('.nav-btn-outline');
-            if (logoText) logoText.style.color = '';
-            for (var i = 0; i < links.length; i++) {
-              links[i].style.color = '';
-            }
-            if (btnOutline) {
-              btnOutline.style.borderColor = '';
-              btnOutline.style.color = '';
-            }
-          }
-        }
-
-        // Bind to multiple possible scroll sources
-        window.addEventListener('scroll', updateNav, { passive: true });
-        document.addEventListener('scroll', updateNav, { passive: true });
-        document.body.addEventListener('scroll', updateNav, { passive: true });
-        document.documentElement.addEventListener('scroll', updateNav, { passive: true });
-
-        // Run on load
-        updateNav();
-        setTimeout(updateNav, 100);
-
-        // Debug: Log scroll values on any interaction
-        window.addEventListener('wheel', function() {
-          console.log('Wheel event - scrollY:', getScrollTop());
-        }, { passive: true });
-      })();
-    </script>
-
-    <!-- Hero Section -->
-    <section class="hero" id="hero">
-      <div class="container container-custom">
-        <div class="hero-content">
-          <div class="hero-badges">
-            <span class="badge badge-bootstrap">
-              <i class="fab fa-bootstrap"></i> Bootstrap 5.3
-            </span>
-            <span class="badge badge-vite">
-              <i class="fas fa-bolt"></i> Vite Powered
-            </span>
-            <span class="badge badge-jquery">
-              <i class="fas fa-times-circle"></i> No jQuery
-            </span>
-          </div>
-
-          <h1>Gentelella</h1>
-          <p class="subtitle">Free Bootstrap 5 Admin Dashboard Template</p>
-          <p class="credit">by <a href="https://colorlib.com" target="_blank" rel="noopener">Colorlib</a></p>
-          <p class="description">
-            A modern, responsive admin template built with Bootstrap 5 and Vite.
-            Zero jQuery dependency, lightning-fast builds, and 40+ ready-to-use pages
-            for building professional dashboards and web applications.
-          </p>
-
-          <div class="cta-buttons">
-            <a href="https://colorlib.com/polygon/gentelella/index.html" class="btn-primary-custom" target="_blank" rel="noopener">
-              <i class="fas fa-chart-line"></i> Explore Dashboard
-            </a>
-            <a href="https://github.com/ColorlibHQ/gentelella" class="btn-outline-custom" target="_blank" rel="noopener">
-              <i class="fab fa-github"></i> View on GitHub
-            </a>
-          </div>
-
-          <div class="hero-trust">
-            <div class="trust-item">
-              <i class="fas fa-star"></i>
-              <span>21k+ GitHub Stars</span>
-            </div>
-            <div class="trust-item">
-              <i class="fas fa-download"></i>
-              <span>Millions of Downloads</span>
-            </div>
-            <div class="trust-item">
-              <i class="fas fa-code-branch"></i>
-              <span>Active Community</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="hero-wave">
-        <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
-          <path d="M0,64 C480,150 960,-20 1440,64 L1440,120 L0,120 Z" fill="white"/>
-        </svg>
-      </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="features" id="features">
-      <div class="container container-features">
-        <div class="section-title">
-          <span class="section-label">Why Choose Gentelella</span>
-          <h2>Powerful Features</h2>
-          <p>Everything you need to build modern admin dashboards and web applications</p>
-        </div>
-
-        <div class="features-grid">
-          <div class="feature-card" data-animate>
-            <div class="feature-icon">
-              <i class="fas fa-mobile-alt"></i>
-            </div>
-            <h4>Fully Responsive</h4>
-            <p>Works flawlessly on all devices with a mobile-first approach. Breakpoints optimized for desktop, tablet, and mobile screens.</p>
-          </div>
-
-          <div class="feature-card" data-animate>
-            <div class="feature-icon">
-              <i class="fas fa-chart-bar"></i>
-            </div>
-            <h4>Rich Components</h4>
-            <p>50+ UI components including interactive charts, data tables, forms, widgets, and modals ready for production use.</p>
-          </div>
-
-          <div class="feature-card" data-animate>
-            <div class="feature-icon">
-              <i class="fas fa-bolt"></i>
-            </div>
-            <h4>Vite Powered</h4>
-            <p>Lightning-fast development with Vite's instant HMR. Optimized production builds with automatic code splitting.</p>
-          </div>
-
-          <div class="feature-card" data-animate>
-            <div class="feature-icon">
-              <i class="fas fa-feather-alt"></i>
-            </div>
-            <h4>No jQuery</h4>
-            <p>Modern vanilla JavaScript throughout. Smaller bundle size, better performance, and cleaner code architecture.</p>
-          </div>
-
-          <div class="feature-card" data-animate>
-            <div class="feature-icon">
-              <i class="fas fa-palette"></i>
-            </div>
-            <h4>Modern Design</h4>
-            <p>Clean, professional aesthetics with consistent spacing, typography, and color system. Dark mode ready.</p>
-          </div>
-
-          <div class="feature-card" data-animate>
-            <div class="feature-icon">
-              <i class="fas fa-code"></i>
-            </div>
-            <h4>Developer Friendly</h4>
-            <p>ESLint + Prettier configured. Modular SCSS. Well-documented code that's easy to customize and extend.</p>
+<!-- Testimonials -->
+<section id="testimonials" style="background:var(--bg-surface-secondary);padding:80px 32px">
+  <div style="max-width:1100px;margin:0 auto">
+    <div style="text-align:center;margin-bottom:48px">
+      <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.6px;color:var(--primary);margin-bottom:8px">From the community</div>
+      <h2 style="font-size:36px;font-weight:700;letter-spacing:-1px;color:var(--text);margin-bottom:12px">Used by 22,000+ developers</h2>
+      <p style="font-size:15px;color:var(--text-secondary)">Since 2014, Gentelella has been one of the most-used free admin templates on GitHub.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px">
+      <div style="background:var(--bg-surface);border:1px solid var(--border-color);border-radius:var(--radius-lg);padding:24px">
+        <div style="display:flex;gap:2px;color:var(--yellow);margin-bottom:14px">★★★★★</div>
+        <p style="font-size:14px;color:var(--text);line-height:1.55;margin-bottom:18px">"Finally, an admin template that doesn't ship 600MB of node_modules. The token system is so clean — I changed --primary and the entire app rebranded.”</p>
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--primary-dk));color:white;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:13px">SK</div>
+          <div>
+            <div style="font-size:13px;font-weight:600;color:var(--text)">Sarah Kowalski</div>
+            <div style="font-size:11px;color:var(--text-muted)">Product designer · Acme Corp</div>
           </div>
         </div>
       </div>
-    </section>
-
-    <!-- Tech Stack Section -->
-    <section class="tech-stack" id="tech-stack">
-      <div class="container container-features">
-        <div class="section-title">
-          <span class="section-label">Built With</span>
-          <h2>Modern Technology Stack</h2>
-          <p>Powered by the latest tools and libraries for optimal performance</p>
-        </div>
-
-        <div class="tech-grid">
-          <div class="tech-card tech-card-featured" data-animate>
-            <div class="tech-icon tech-icon-bootstrap">
-              <i class="fab fa-bootstrap"></i>
-            </div>
-            <h4>Bootstrap 5.3</h4>
-            <p>Latest Bootstrap with no jQuery dependency. Full utility classes and component library.</p>
-            <span class="tech-tag">CSS Framework</span>
-          </div>
-
-          <div class="tech-card tech-card-featured" data-animate>
-            <div class="tech-icon tech-icon-vite">
-              <i class="fas fa-bolt"></i>
-            </div>
-            <h4>Vite</h4>
-            <p>Next-generation frontend tooling. Instant server start and lightning-fast HMR.</p>
-            <span class="tech-tag">Build Tool</span>
-          </div>
-
-          <div class="tech-card" data-animate>
-            <div class="tech-icon tech-icon-chartjs">
-              <i class="fas fa-chart-pie"></i>
-            </div>
-            <h4>Chart.js</h4>
-            <p>Simple yet flexible JavaScript charting for designers and developers.</p>
-            <span class="tech-tag">Charts</span>
-          </div>
-
-          <div class="tech-card" data-animate>
-            <div class="tech-icon tech-icon-echarts">
-              <i class="fas fa-chart-area"></i>
-            </div>
-            <h4>ECharts</h4>
-            <p>Powerful, interactive charting and visualization library by Apache.</p>
-            <span class="tech-tag">Charts</span>
-          </div>
-
-          <div class="tech-card" data-animate>
-            <div class="tech-icon tech-icon-datatables">
-              <i class="bi bi-table"></i>
-            </div>
-            <h4>DataTables</h4>
-            <p>Advanced interaction controls for HTML tables with sorting, filtering, and pagination.</p>
-            <span class="tech-tag">Tables</span>
-          </div>
-
-          <div class="tech-card" data-animate>
-            <div class="tech-icon tech-icon-dayjs">
-              <i class="fas fa-calendar-alt"></i>
-            </div>
-            <h4>Day.js</h4>
-            <p>2KB immutable date library. Fast alternative to Moment.js with same API.</p>
-            <span class="tech-tag">Dates</span>
-          </div>
-
-          <div class="tech-card" data-animate>
-            <div class="tech-icon tech-icon-choices">
-              <i class="fas fa-list-ul"></i>
-            </div>
-            <h4>Choices.js</h4>
-            <p>Lightweight, configurable select boxes, text inputs, and multi-select.</p>
-            <span class="tech-tag">Forms</span>
-          </div>
-
-          <div class="tech-card" data-animate>
-            <div class="tech-icon tech-icon-eslint">
-              <i class="fas fa-check-circle"></i>
-            </div>
-            <h4>ESLint + Prettier</h4>
-            <p>Code quality and formatting tools pre-configured for consistent codebase.</p>
-            <span class="tech-tag">Dev Tools</span>
-          </div>
-
-          <div class="tech-card" data-animate>
-            <div class="tech-icon tech-icon-fullcalendar">
-              <i class="fas fa-calendar-check"></i>
-            </div>
-            <h4>FullCalendar</h4>
-            <p>Full-featured event calendar with drag-and-drop, scheduling, and multiple views.</p>
-            <span class="tech-tag">Calendar</span>
-          </div>
-
-          <div class="tech-card" data-animate>
-            <div class="tech-icon tech-icon-leaflet">
-              <i class="fas fa-map-marked-alt"></i>
-            </div>
-            <h4>Leaflet</h4>
-            <p>Mobile-friendly interactive maps with markers, popups, and custom layers.</p>
-            <span class="tech-tag">Maps</span>
+      <div style="background:var(--bg-surface);border:1px solid var(--border-color);border-radius:var(--radius-lg);padding:24px">
+        <div style="display:flex;gap:2px;color:var(--yellow);margin-bottom:14px">★★★★★</div>
+        <p style="font-size:14px;color:var(--text);line-height:1.55;margin-bottom:18px">"Dropped this into my SaaS prototype on a Saturday and had it deployed by Sunday night. The DataTables and ECharts integration alone saved me a week.”</p>
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--blue),#0550a0);color:white;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:13px">MR</div>
+          <div>
+            <div style="font-size:13px;font-weight:600;color:var(--text)">Michael Reyes</div>
+            <div style="font-size:11px;color:var(--text-muted)">Engineering lead · Globex</div>
           </div>
         </div>
       </div>
-    </section>
-
-    <!-- Pages Showcase Section -->
-    <section class="pages-showcase" id="pages">
-      <div class="container container-features">
-        <div class="section-title">
-          <span class="section-label">40+ Pages Included</span>
-          <h2>Template Pages</h2>
-          <p>Ready-to-use pages for every admin dashboard need</p>
-        </div>
-
-        <div class="pages-grid">
-          <a href="https://colorlib.com/polygon/gentelella/index.html" class="page-card" target="_blank" rel="noopener" data-animate>
-            <div class="page-preview">
-              <div class="page-placeholder">
-                <i class="fas fa-tachometer-alt"></i>
-              </div>
-            </div>
-            <div class="page-info">
-              <h5>Main Dashboard</h5>
-              <p>Analytics overview with charts and widgets</p>
-            </div>
-          </a>
-
-          <a href="https://colorlib.com/polygon/gentelella/index2.html" class="page-card" target="_blank" rel="noopener" data-animate>
-            <div class="page-preview">
-              <div class="page-placeholder">
-                <i class="fas fa-chart-line"></i>
-              </div>
-            </div>
-            <div class="page-info">
-              <h5>Dashboard v2</h5>
-              <p>Alternative dashboard layout</p>
-            </div>
-          </a>
-
-          <a href="https://colorlib.com/polygon/gentelella/index3.html" class="page-card" target="_blank" rel="noopener" data-animate>
-            <div class="page-preview">
-              <div class="page-placeholder">
-                <i class="fas fa-chart-bar"></i>
-              </div>
-            </div>
-            <div class="page-info">
-              <h5>Dashboard v3</h5>
-              <p>Data-focused dashboard variant</p>
-            </div>
-          </a>
-
-          <a href="https://colorlib.com/polygon/gentelella/echarts.html" class="page-card" target="_blank" rel="noopener" data-animate>
-            <div class="page-preview">
-              <div class="page-placeholder">
-                <i class="fas fa-chart-area"></i>
-              </div>
-            </div>
-            <div class="page-info">
-              <h5>ECharts</h5>
-              <p>Interactive Apache ECharts demos</p>
-            </div>
-          </a>
-
-          <a href="https://colorlib.com/polygon/gentelella/chartjs.html" class="page-card" target="_blank" rel="noopener" data-animate>
-            <div class="page-preview">
-              <div class="page-placeholder">
-                <i class="fas fa-chart-pie"></i>
-              </div>
-            </div>
-            <div class="page-info">
-              <h5>Chart.js</h5>
-              <p>Beautiful Chart.js visualizations</p>
-            </div>
-          </a>
-
-          <a href="https://colorlib.com/polygon/gentelella/tables_dynamic.html" class="page-card" target="_blank" rel="noopener" data-animate>
-            <div class="page-preview">
-              <div class="page-placeholder">
-                <i class="bi bi-table"></i>
-              </div>
-            </div>
-            <div class="page-info">
-              <h5>DataTables</h5>
-              <p>Advanced sortable, filterable tables</p>
-            </div>
-          </a>
-
-          <a href="https://colorlib.com/polygon/gentelella/form_advanced.html" class="page-card" target="_blank" rel="noopener" data-animate>
-            <div class="page-preview">
-              <div class="page-placeholder">
-                <i class="bi bi-pencil-square"></i>
-              </div>
-            </div>
-            <div class="page-info">
-              <h5>Advanced Forms</h5>
-              <p>Date pickers, selects, sliders</p>
-            </div>
-          </a>
-
-          <a href="https://colorlib.com/polygon/gentelella/e_commerce.html" class="page-card" target="_blank" rel="noopener" data-animate>
-            <div class="page-preview">
-              <div class="page-placeholder">
-                <i class="fas fa-shopping-cart"></i>
-              </div>
-            </div>
-            <div class="page-info">
-              <h5>E-Commerce</h5>
-              <p>Product management dashboard</p>
-            </div>
-          </a>
-
-          <a href="https://colorlib.com/polygon/gentelella/calendar.html" class="page-card" target="_blank" rel="noopener" data-animate>
-            <div class="page-preview">
-              <div class="page-placeholder">
-                <i class="fas fa-calendar"></i>
-              </div>
-            </div>
-            <div class="page-info">
-              <h5>Calendar</h5>
-              <p>Event scheduling interface</p>
-            </div>
-          </a>
-
-          <a href="https://colorlib.com/polygon/gentelella/inbox.html" class="page-card" target="_blank" rel="noopener" data-animate>
-            <div class="page-preview">
-              <div class="page-placeholder">
-                <i class="fas fa-envelope"></i>
-              </div>
-            </div>
-            <div class="page-info">
-              <h5>Inbox</h5>
-              <p>Email client interface</p>
-            </div>
-          </a>
-
-          <a href="https://colorlib.com/polygon/gentelella/projects.html" class="page-card" target="_blank" rel="noopener" data-animate>
-            <div class="page-preview">
-              <div class="page-placeholder">
-                <i class="fas fa-project-diagram"></i>
-              </div>
-            </div>
-            <div class="page-info">
-              <h5>Projects</h5>
-              <p>Project management board</p>
-            </div>
-          </a>
-
-          <a href="https://colorlib.com/polygon/gentelella/contacts.html" class="page-card" target="_blank" rel="noopener" data-animate>
-            <div class="page-preview">
-              <div class="page-placeholder">
-                <i class="fas fa-address-book"></i>
-              </div>
-            </div>
-            <div class="page-info">
-              <h5>Contacts</h5>
-              <p>Contact directory with profiles</p>
-            </div>
-          </a>
-        </div>
-
-        <div class="pages-cta">
-          <a href="https://colorlib.com/polygon/gentelella/index.html" class="btn-secondary-custom" target="_blank" rel="noopener">
-            <i class="fas fa-th-large"></i> View All 40+ Pages
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Use Cases Section -->
-    <section class="use-cases" id="use-cases">
-      <div class="container container-features">
-        <div class="section-title section-title-light">
-          <span class="section-label">Perfect For</span>
-          <h2>Use Cases</h2>
-          <p>Gentelella adapts to any admin dashboard project</p>
-        </div>
-
-        <div class="use-cases-grid">
-          <div class="use-case-card" data-animate>
-            <div class="use-case-icon">
-              <i class="fas fa-cloud"></i>
-            </div>
-            <h4>SaaS Dashboards</h4>
-            <p>Build analytics and control panels for your SaaS products with comprehensive data visualization.</p>
-          </div>
-
-          <div class="use-case-card" data-animate>
-            <div class="use-case-icon">
-              <i class="fas fa-users-cog"></i>
-            </div>
-            <h4>Admin Panels</h4>
-            <p>Create powerful backend administration interfaces with user management and settings.</p>
-          </div>
-
-          <div class="use-case-card" data-animate>
-            <div class="use-case-icon">
-              <i class="fas fa-handshake"></i>
-            </div>
-            <h4>CRM Systems</h4>
-            <p>Manage customer relationships with contact directories, pipelines, and activity tracking.</p>
-          </div>
-
-          <div class="use-case-card" data-animate>
-            <div class="use-case-icon">
-              <i class="fas fa-chart-line"></i>
-            </div>
-            <h4>Analytics Platforms</h4>
-            <p>Display complex data with interactive charts, graphs, and real-time metrics dashboards.</p>
-          </div>
-
-          <div class="use-case-card" data-animate>
-            <div class="use-case-icon">
-              <i class="fas fa-store"></i>
-            </div>
-            <h4>E-Commerce Backends</h4>
-            <p>Manage products, orders, inventory, and customer data in a unified interface.</p>
-          </div>
-
-          <div class="use-case-card" data-animate>
-            <div class="use-case-icon">
-              <i class="fas fa-tasks"></i>
-            </div>
-            <h4>Project Management</h4>
-            <p>Track projects, tasks, timelines, and team collaboration with intuitive interfaces.</p>
+      <div style="background:var(--bg-surface);border:1px solid var(--border-color);border-radius:var(--radius-lg);padding:24px">
+        <div style="display:flex;gap:2px;color:var(--yellow);margin-bottom:14px">★★★★★</div>
+        <p style="font-size:14px;color:var(--text);line-height:1.55;margin-bottom:18px">"The dark mode is genuinely good — most templates make dark mode look like an afterthought. v4 nailed the color tokens for both modes.”</p>
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--purple),#7d2db1);color:white;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:13px">EW</div>
+          <div>
+            <div style="font-size:13px;font-weight:600;color:var(--text)">Emily Wang</div>
+            <div style="font-size:11px;color:var(--text-muted)">Frontend dev · Initech</div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <!-- Stats Section -->
-    <section class="stats-section">
-      <div class="container container-features">
-        <div class="stats-grid-main">
-          <div class="stat-item-main" data-animate>
-            <h3>40+</h3>
-            <p>Template Pages</p>
-          </div>
-          <div class="stat-item-main" data-animate>
-            <h3>50+</h3>
-            <p>UI Components</p>
-          </div>
-          <div class="stat-item-main" data-animate>
-            <h3>21k+</h3>
-            <p>GitHub Stars</p>
-          </div>
-          <div class="stat-item-main" data-animate>
-            <h3>MIT</h3>
-            <p>Open Source License</p>
-          </div>
-        </div>
-      </div>
-    </section>
+<!-- FAQ -->
+<section id="faq" style="max-width:760px;margin:0 auto;padding:80px 32px">
+  <div style="text-align:center;margin-bottom:48px">
+    <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.6px;color:var(--primary);margin-bottom:8px">Questions</div>
+    <h2 style="font-size:36px;font-weight:700;letter-spacing:-1px;color:var(--text);margin-bottom:12px">Frequently asked</h2>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:8px">
+    <details style="background:var(--bg-surface);border:1px solid var(--border-color);border-radius:var(--radius);padding:18px 20px" open>
+      <summary style="font-size:14px;font-weight:600;color:var(--text);cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center">Is it really free for commercial use? <span style="color:var(--text-muted)">+</span></summary>
+      <div style="font-size:13px;color:var(--text-secondary);line-height:1.6;margin-top:12px;padding-top:12px;border-top:1px solid var(--border-color-light)">Yes. MIT licensed since day one. Use it for client work, side projects, your own SaaS — no attribution required (though we always appreciate a star on GitHub).</div>
+    </details>
+    <details style="background:var(--bg-surface);border:1px solid var(--border-color);border-radius:var(--radius);padding:18px 20px">
+      <summary style="font-size:14px;font-weight:600;color:var(--text);cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center">Do I need a backend? <span style="color:var(--text-muted)">+</span></summary>
+      <div style="font-size:13px;color:var(--text-secondary);line-height:1.6;margin-top:12px;padding-top:12px;border-top:1px solid var(--border-color-light)">No. Gentelella v4 is a pure frontend template — static HTML/CSS/JS. Wire it up to whatever stack you like (Rails, Django, Express, Laravel, Supabase, anything).</div>
+    </details>
+    <details style="background:var(--bg-surface);border:1px solid var(--border-color);border-radius:var(--radius);padding:18px 20px">
+      <summary style="font-size:14px;font-weight:600;color:var(--text);cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center">Can I use it with React/Vue/Svelte? <span style="color:var(--text-muted)">+</span></summary>
+      <div style="font-size:13px;color:var(--text-secondary);line-height:1.6;margin-top:12px;padding-top:12px;border-top:1px solid var(--border-color-light)">The SCSS design system is framework-agnostic — drop the compiled CSS into any project. The HTML pages and shell rendering are vanilla JS, so port what you need.</div>
+    </details>
+    <details style="background:var(--bg-surface);border:1px solid var(--border-color);border-radius:var(--radius);padding:18px 20px">
+      <summary style="font-size:14px;font-weight:600;color:var(--text);cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center">How do I customize the colors? <span style="color:var(--text-muted)">+</span></summary>
+      <div style="font-size:13px;color:var(--text-secondary);line-height:1.6;margin-top:12px;padding-top:12px;border-top:1px solid var(--border-color-light)">Every color lives in <code style="font-family:var(--font-mono);font-size:11.5px;background:var(--bg-surface-secondary);padding:1px 5px;border-radius:3px">_tokens.scss</code> as a CSS custom property. Change <code style="font-family:var(--font-mono);font-size:11.5px;background:var(--bg-surface-secondary);padding:1px 5px;border-radius:3px">--primary</code> and every chart, button, badge, and link updates.</div>
+    </details>
+    <details style="background:var(--bg-surface);border:1px solid var(--border-color);border-radius:var(--radius);padding:18px 20px">
+      <summary style="font-size:14px;font-weight:600;color:var(--text);cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center">What changed in v4? <span style="color:var(--text-muted)">+</span></summary>
+      <div style="font-size:13px;color:var(--text-secondary);line-height:1.6;margin-top:12px;padding-top:12px;border-top:1px solid var(--border-color-light)">Bootstrap and jQuery are gone. The design system is custom SCSS. ECharts replaced Chart.js. DataTables replaced jQuery DataTables. node_modules dropped from ~600 MB to 138 MB. See the <a href="https://github.com/ColorlibHQ/gentelella/blob/master/CHANGELOG.md">changelog</a> for the full diff.</div>
+    </details>
+    <details style="background:var(--bg-surface);border:1px solid var(--border-color);border-radius:var(--radius);padding:18px 20px">
+      <summary style="font-size:14px;font-weight:600;color:var(--text);cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center">Where can I get help? <span style="color:var(--text-muted)">+</span></summary>
+      <div style="font-size:13px;color:var(--text-secondary);line-height:1.6;margin-top:12px;padding-top:12px;border-top:1px solid var(--border-color-light)">Open an issue on <a href="https://github.com/ColorlibHQ/gentelella/issues">GitHub</a> or read the <a href="faq.html">help center</a>. The repo also has a CONTRIBUTING.md if you want to send a PR.</div>
+    </details>
+  </div>
+</section>
 
-    <!-- Community Section -->
-    <section class="community-section" id="community">
-      <div class="container container-custom">
-        <div class="community-content">
-          <div class="community-badge">
-            <i class="fas fa-heart"></i>
-          </div>
-          <h2>Open Source & Free Forever</h2>
-          <p>
-            Gentelella is released under the MIT license. Use it for personal projects,
-            client work, or commercial products. No attribution required, though always appreciated.
-          </p>
-          <div class="community-links">
-            <a href="https://github.com/ColorlibHQ/gentelella" class="community-link" target="_blank" rel="noopener">
-              <i class="fab fa-github"></i>
-              <span>Star on GitHub</span>
-            </a>
-            <a href="https://github.com/ColorlibHQ/gentelella/issues" class="community-link" target="_blank" rel="noopener">
-              <i class="bi bi-file-earmark-text"></i>
-              <span>Report Issues</span>
-            </a>
-            <a href="https://github.com/ColorlibHQ/gentelella/fork" class="community-link" target="_blank" rel="noopener">
-              <i class="fas fa-code-branch"></i>
-              <span>Fork Project</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
+<!-- CTA band -->
+<section class="cta-band">
+  <h2>Free for personal & commercial use</h2>
+  <p>MIT licensed. Use it for client work, side projects, anything. The dashboard you saw above is the live demo — every page works.</p>
+  <a href="index.html" class="btn btn-outline" style="height:42px;padding:0 18px;font-size:14px;background:white;color:var(--primary);border-color:white">Open the dashboard</a>
+</section>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
-      <div class="container container-custom">
-        <h2>Ready to Build Something Amazing?</h2>
-        <p>Start building your next admin dashboard with Gentelella today</p>
-        <div class="cta-buttons">
-          <a href="https://colorlib.com/polygon/gentelella/index.html" class="btn-primary-custom" target="_blank" rel="noopener">
-            <i class="fas fa-rocket"></i> Get Started
-          </a>
-          <a href="https://github.com/ColorlibHQ/gentelella" class="btn-outline-custom" target="_blank" rel="noopener">
-            <i class="fab fa-github"></i> Download Free
-          </a>
-        </div>
-      </div>
-    </section>
+<footer class="landing-footer">
+  <span>Gentelella v4 · made by <a href="https://colorlib.com" style="color:var(--primary)">Colorlib</a> · MIT</span>
+  <span>© 2026</span>
+</footer>
 
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="container container-features">
-        <div class="footer-grid">
-          <div class="footer-brand">
-            <div class="footer-logo">
-              <span class="logo-icon">G</span>
-              <span class="logo-text">Gentelella</span>
-            </div>
-            <p>Free Bootstrap 5 admin template by Colorlib. Built with modern tools for modern developers.</p>
-          </div>
-
-          <div class="footer-links">
-            <h5>Demo Pages</h5>
-            <ul>
-              <li><a href="https://colorlib.com/polygon/gentelella/index.html" target="_blank" rel="noopener">Dashboard</a></li>
-              <li><a href="https://colorlib.com/polygon/gentelella/chartjs.html" target="_blank" rel="noopener">Charts</a></li>
-              <li><a href="https://colorlib.com/polygon/gentelella/tables_dynamic.html" target="_blank" rel="noopener">Tables</a></li>
-              <li><a href="https://colorlib.com/polygon/gentelella/form_advanced.html" target="_blank" rel="noopener">Forms</a></li>
-            </ul>
-          </div>
-
-          <div class="footer-links">
-            <h5>Resources</h5>
-            <ul>
-              <li><a href="https://github.com/ColorlibHQ/gentelella" target="_blank" rel="noopener">GitHub</a></li>
-              <li><a href="https://github.com/ColorlibHQ/gentelella/issues" target="_blank" rel="noopener">Issues</a></li>
-              <li><a href="https://colorlib.com" target="_blank" rel="noopener">Colorlib</a></li>
-            </ul>
-          </div>
-
-          <div class="footer-links">
-            <h5>Legal</h5>
-            <ul>
-              <li><a href="https://github.com/ColorlibHQ/gentelella/blob/master/LICENSE" target="_blank" rel="noopener">MIT License</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="footer-bottom">
-          <p>&copy; 2025 Gentelella. Made with <i class="fas fa-heart" style="color: #e74c3c;"></i> by <a href="https://colorlib.com" target="_blank" rel="noopener">Colorlib</a></p>
-        </div>
-      </div>
-    </footer>
-
-    <!-- Smooth Scroll & Animations Script -->
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const nav = document.getElementById('landingNav');
-
-        // Mobile Navigation Toggle
-        const navToggle = document.getElementById('navToggle');
-        const navLinks = document.querySelector('.nav-links');
-        const navActions = document.querySelector('.nav-actions');
-
-        if (navToggle) {
-          navToggle.addEventListener('click', function() {
-            navToggle.classList.toggle('active');
-            navLinks.classList.toggle('active');
-            navActions.classList.toggle('active');
-          });
-        }
-
-        // Smooth Scroll for Anchor Links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-          anchor.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            if (href === '#') return;
-
-            e.preventDefault();
-            const target = document.querySelector(href);
-            if (target) {
-              const navHeight = nav.offsetHeight;
-              const targetPosition = target.offsetTop - navHeight;
-
-              window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
-              });
-
-              // Close mobile menu if open
-              navToggle.classList.remove('active');
-              navLinks.classList.remove('active');
-              navActions.classList.remove('active');
-            }
-          });
-        });
-
-        // Intersection Observer for Animations
-        const animateElements = document.querySelectorAll('[data-animate]');
-
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('animate-in');
-              observer.unobserve(entry.target);
-            }
-          });
-        }, {
-          threshold: 0.1,
-          rootMargin: '0px 0px -50px 0px'
-        });
-
-        animateElements.forEach(el => observer.observe(el));
-      });
-    </script>
-  </body>
+</body>
 </html>

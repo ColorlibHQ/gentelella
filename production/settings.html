@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Settings | Gentelella 2026 v4</title>
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script type="module" src="/src/main-v4.js"></script>
+</head>
+<body data-shell="admin" data-page="settings" data-breadcrumb="Home > Settings">
+
+<main class="main">
+<div class="page-wrapper">
+
+  <div class="page-header">
+    <div class="page-header-row">
+      <div>
+        <div class="page-pretitle">Workspace</div>
+        <div class="page-title">Settings</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="settings-layout">
+    <!-- ── SECTION NAV ── -->
+    <aside class="settings-nav">
+      <a class="settings-nav-link active" href="#account"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="5" r="3"/><path d="M2 14a6 6 0 0112 0"/></svg> Account</a>
+      <a class="settings-nav-link" href="#notifications"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2a4 4 0 00-4 4c0 4-2 5-2 5h12s-2-1-2-5a4 4 0 00-4-4z"/><path d="M7 14a1 1 0 002 0"/></svg> Notifications</a>
+      <a class="settings-nav-link" href="#privacy"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1l6 2v4c0 4-3 7-6 8-3-1-6-4-6-8V3l6-2z"/></svg> Privacy & security</a>
+      <a class="settings-nav-link" href="#appearance"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="3"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.2 3.2l1.4 1.4M11.4 11.4l1.4 1.4M3.2 12.8l1.4-1.4M11.4 4.6l1.4-1.4"/></svg> Appearance</a>
+      <a class="settings-nav-link" href="#integrations"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="5" height="5" rx="1"/><rect x="9" y="2" width="5" height="5" rx="1"/><rect x="2" y="9" width="5" height="5" rx="1"/><rect x="9" y="9" width="5" height="5" rx="1"/></svg> Integrations</a>
+      <a class="settings-nav-link" href="#billing"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="4" width="14" height="9" rx="1.5"/><path d="M1 7h14"/></svg> Billing</a>
+      <a class="settings-nav-link" href="#team"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="2.5"/><circle cx="11" cy="6" r="2"/><path d="M1 14a5 5 0 0110 0M11 9a4 4 0 014 5"/></svg> Team</a>
+      <div class="settings-nav-sep"></div>
+      <a class="settings-nav-link danger" href="#danger"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1l7 13H1L8 1z"/><path d="M8 6v4M8 12h.01"/></svg> Danger zone</a>
+    </aside>
+
+    <!-- ── SECTIONS ── -->
+    <div class="settings-content">
+      <!-- ACCOUNT -->
+      <section class="settings-section" id="account">
+        <h2 class="settings-section-title">Account</h2>
+        <p class="settings-section-desc">Update your personal information and profile details.</p>
+        <form class="settings-form">
+          <div class="settings-row">
+            <label>Profile picture</label>
+            <div class="settings-control profile-control">
+              <div class="profile-preview" style="background:linear-gradient(135deg,var(--primary),var(--primary-dk))">A</div>
+              <div>
+                <button type="button" class="btn btn-outline btn-sm">Upload new</button>
+                <button type="button" class="btn btn-outline btn-sm">Remove</button>
+                <div class="settings-hint">JPG, PNG, or GIF. Max 2 MB.</div>
+              </div>
+            </div>
+          </div>
+          <div class="settings-row">
+            <label for="full-name">Full name</label>
+            <input class="form-control" id="full-name" type="text" value="Aigars Silkalns" required>
+          </div>
+          <div class="settings-row">
+            <label for="email">Email address</label>
+            <input class="form-control" id="email" type="email" value="aigars@example.com" required>
+          </div>
+          <div class="settings-row">
+            <label for="role">Role</label>
+            <input class="form-control" id="role" type="text" value="Administrator">
+          </div>
+          <div class="settings-row">
+            <label for="timezone">Timezone</label>
+            <select class="form-control" id="timezone">
+              <option>(UTC+02:00) Riga</option>
+              <option>(UTC+00:00) London</option>
+              <option>(UTC-05:00) New York</option>
+              <option>(UTC-08:00) Los Angeles</option>
+            </select>
+          </div>
+          <div class="settings-actions">
+            <button type="reset" class="btn btn-outline">Cancel</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- NOTIFICATIONS -->
+      <section class="settings-section" id="notifications">
+        <h2 class="settings-section-title">Notifications</h2>
+        <p class="settings-section-desc">Choose what you want to be notified about.</p>
+        <div class="settings-toggle-list">
+          <div class="settings-toggle-row">
+            <div><div class="label">Email digest</div><div class="desc">Daily summary of your activity</div></div>
+            <div class="toggle on"></div>
+          </div>
+          <div class="settings-toggle-row">
+            <div><div class="label">Project updates</div><div class="desc">When projects you're on change status</div></div>
+            <div class="toggle on"></div>
+          </div>
+          <div class="settings-toggle-row">
+            <div><div class="label">@mentions</div><div class="desc">Push when someone mentions you in a comment</div></div>
+            <div class="toggle on"></div>
+          </div>
+          <div class="settings-toggle-row">
+            <div><div class="label">Marketing emails</div><div class="desc">Product news and newsletters</div></div>
+            <div class="toggle"></div>
+          </div>
+          <div class="settings-toggle-row">
+            <div><div class="label">Weekly report</div><div class="desc">Performance metrics every Monday</div></div>
+            <div class="toggle on"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PRIVACY -->
+      <section class="settings-section" id="privacy">
+        <h2 class="settings-section-title">Privacy & security</h2>
+        <p class="settings-section-desc">Manage how your account is secured.</p>
+        <div class="settings-toggle-list">
+          <div class="settings-toggle-row">
+            <div><div class="label">Two-factor authentication</div><div class="desc">Add a second factor to every login</div></div>
+            <div class="toggle on"></div>
+          </div>
+          <div class="settings-toggle-row">
+            <div><div class="label">Public profile</div><div class="desc">Allow your profile to be searchable</div></div>
+            <div class="toggle on"></div>
+          </div>
+          <div class="settings-toggle-row">
+            <div><div class="label">Activity tracking</div><div class="desc">Share usage data to improve the product</div></div>
+            <div class="toggle"></div>
+          </div>
+        </div>
+        <div class="settings-row" style="margin-top:16px">
+          <label>Active sessions</label>
+          <div class="settings-control session-list">
+            <div class="session-row">
+              <div><div class="device">MacBook Pro · Safari</div><div class="meta">Riga, LV · current session</div></div>
+              <span class="status status-green">Active</span>
+            </div>
+            <div class="session-row">
+              <div><div class="device">iPhone 15 · Mobile Safari</div><div class="meta">Riga, LV · 2h ago</div></div>
+              <button class="btn btn-outline btn-sm">Revoke</button>
+            </div>
+            <div class="session-row">
+              <div><div class="device">Chrome · Linux</div><div class="meta">London, UK · 3 days ago</div></div>
+              <button class="btn btn-outline btn-sm">Revoke</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- APPEARANCE -->
+      <section class="settings-section" id="appearance">
+        <h2 class="settings-section-title">Appearance</h2>
+        <p class="settings-section-desc">Make the dashboard match your aesthetic.</p>
+        <div class="settings-row">
+          <label>Theme</label>
+          <div class="settings-control theme-options">
+            <label class="theme-option"><input type="radio" name="theme" value="light"><span>Light</span></label>
+            <label class="theme-option"><input type="radio" name="theme" value="dark"><span>Dark</span></label>
+            <label class="theme-option"><input type="radio" name="theme" value="system" checked><span>System</span></label>
+          </div>
+        </div>
+        <div class="settings-row">
+          <label>Density</label>
+          <div class="settings-control theme-options">
+            <label class="theme-option"><input type="radio" name="density" value="comfortable" checked><span>Comfortable</span></label>
+            <label class="theme-option"><input type="radio" name="density" value="compact"><span>Compact</span></label>
+          </div>
+        </div>
+      </section>
+
+      <!-- INTEGRATIONS -->
+      <section class="settings-section" id="integrations">
+        <h2 class="settings-section-title">Integrations</h2>
+        <p class="settings-section-desc">Connect Gentelella with the tools you already use.</p>
+        <div class="integrations-grid">
+          <div class="integration">
+            <div class="integration-head"><div class="logo" style="background:#0e1117;color:#fff">GH</div><div><div class="title">GitHub</div><div class="desc">Sync issues and PRs</div></div></div>
+            <button class="btn btn-outline btn-sm">Connected ✓</button>
+          </div>
+          <div class="integration">
+            <div class="integration-head"><div class="logo" style="background:#4a154b;color:#fff">SL</div><div><div class="title">Slack</div><div class="desc">Send notifications to a channel</div></div></div>
+            <button class="btn btn-outline btn-sm">Connected ✓</button>
+          </div>
+          <div class="integration">
+            <div class="integration-head"><div class="logo" style="background:#000;color:#fff">VC</div><div><div class="title">Vercel</div><div class="desc">Deployment status alerts</div></div></div>
+            <button class="btn btn-primary btn-sm">Connect</button>
+          </div>
+          <div class="integration">
+            <div class="integration-head"><div class="logo" style="background:#5e6ad2;color:#fff">LN</div><div><div class="title">Linear</div><div class="desc">Issue tracking sync</div></div></div>
+            <button class="btn btn-primary btn-sm">Connect</button>
+          </div>
+          <div class="integration">
+            <div class="integration-head"><div class="logo" style="background:#000;color:#fff">N</div><div><div class="title">Notion</div><div class="desc">Embed pages and databases</div></div></div>
+            <button class="btn btn-primary btn-sm">Connect</button>
+          </div>
+          <div class="integration">
+            <div class="integration-head"><div class="logo" style="background:#635bff;color:#fff">S</div><div><div class="title">Stripe</div><div class="desc">Payment events and invoices</div></div></div>
+            <button class="btn btn-outline btn-sm">Connected ✓</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- BILLING -->
+      <section class="settings-section" id="billing">
+        <h2 class="settings-section-title">Billing</h2>
+        <p class="settings-section-desc">Manage your subscription and payment method.</p>
+        <div class="billing-current">
+          <div>
+            <div class="plan-name">Pro plan</div>
+            <div class="plan-meta">$29 / month · renews May 28, 2026</div>
+          </div>
+          <div style="display:flex;gap:6px">
+            <button class="btn btn-outline">Change plan</button>
+            <button class="btn btn-outline">Cancel</button>
+          </div>
+        </div>
+        <div class="settings-row">
+          <label>Payment method</label>
+          <div class="settings-control session-list">
+            <div class="session-row">
+              <div><div class="device">Visa •••• 4242</div><div class="meta">Expires 12/28</div></div>
+              <button class="btn btn-outline btn-sm">Update</button>
+            </div>
+          </div>
+        </div>
+        <div class="settings-row">
+          <label>Recent invoices</label>
+          <div class="settings-control session-list">
+            <div class="session-row"><div><div class="device">Apr 28, 2026</div><div class="meta">$29.00 · Paid</div></div><a href="#" class="btn btn-outline btn-sm">Download</a></div>
+            <div class="session-row"><div><div class="device">Mar 28, 2026</div><div class="meta">$29.00 · Paid</div></div><a href="#" class="btn btn-outline btn-sm">Download</a></div>
+            <div class="session-row"><div><div class="device">Feb 28, 2026</div><div class="meta">$29.00 · Paid</div></div><a href="#" class="btn btn-outline btn-sm">Download</a></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TEAM -->
+      <section class="settings-section" id="team">
+        <h2 class="settings-section-title">Team</h2>
+        <p class="settings-section-desc">Manage who can access this workspace.</p>
+        <div class="settings-actions" style="justify-content:flex-start;margin-bottom:12px">
+          <button class="btn btn-primary">+ Invite member</button>
+        </div>
+        <div class="session-list">
+          <div class="session-row">
+            <div style="display:flex;align-items:center;gap:10px"><div class="cell-avatar" style="background:linear-gradient(135deg,var(--primary),var(--primary-dk))">A</div><div><div class="device">Aigars Silkalns</div><div class="meta">aigars@example.com · Owner</div></div></div>
+            <span class="status status-green">Owner</span>
+          </div>
+          <div class="session-row">
+            <div style="display:flex;align-items:center;gap:10px"><div class="cell-avatar" style="background:var(--azure)">SK</div><div><div class="device">Sarah Kowalski</div><div class="meta">sarah@example.com · Designer</div></div></div>
+            <button class="btn btn-outline btn-sm">Manage</button>
+          </div>
+          <div class="session-row">
+            <div style="display:flex;align-items:center;gap:10px"><div class="cell-avatar" style="background:var(--purple)">MR</div><div><div class="device">Michael Reyes</div><div class="meta">michael@example.com · Engineer</div></div></div>
+            <button class="btn btn-outline btn-sm">Manage</button>
+          </div>
+          <div class="session-row">
+            <div style="display:flex;align-items:center;gap:10px"><div class="cell-avatar" style="background:var(--yellow)">EW</div><div><div class="device">Emily Wang</div><div class="meta">emily@example.com · PM</div></div></div>
+            <button class="btn btn-outline btn-sm">Manage</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- DANGER -->
+      <section class="settings-section" id="danger">
+        <h2 class="settings-section-title">Danger zone</h2>
+        <p class="settings-section-desc">Irreversible actions. Be careful.</p>
+        <div class="danger-row">
+          <div><div class="label">Export all data</div><div class="desc">Download a JSON archive of everything in this workspace</div></div>
+          <button class="btn btn-outline">Export</button>
+        </div>
+        <div class="danger-row">
+          <div><div class="label">Transfer ownership</div><div class="desc">Hand this workspace over to another member</div></div>
+          <button class="btn btn-outline">Transfer</button>
+        </div>
+        <div class="danger-row danger-critical">
+          <div><div class="label">Delete account</div><div class="desc">Permanently delete this account and all associated data</div></div>
+          <button class="btn btn-outline" style="color:var(--red);border-color:var(--red)">Delete</button>
+        </div>
+      </section>
+    </div>
+  </div>
+
+</div>
+</main>
+
+<script type="module">
+// Section nav: scroll to anchor + set active.
+const navLinks = document.querySelectorAll('.settings-nav-link');
+navLinks.forEach((a) => {
+  a.addEventListener('click', (e) => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      navLinks.forEach((l) => l.classList.remove('active'));
+      a.classList.add('active');
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// Auto-highlight nav link based on scroll position.
+const sections = document.querySelectorAll('.settings-section');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      navLinks.forEach((l) => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
+    }
+  });
+}, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
+sections.forEach((s) => observer.observe(s));
+</script>
+
+</body>
+</html>

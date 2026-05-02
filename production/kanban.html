@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kanban | Gentelella 2026 v4</title>
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script type="module" src="/src/main-v4.js"></script>
+</head>
+<body data-shell="admin" data-page="kanban" data-breadcrumb="Home > Apps > Kanban">
+
+<main class="main">
+<div class="page-wrapper kanban-page">
+
+  <div class="page-header">
+    <div class="page-header-row">
+      <div>
+        <div class="page-pretitle">Apps</div>
+        <div class="page-title">Kanban board</div>
+      </div>
+      <div class="page-actions">
+        <div class="search-box" style="width:220px">
+          <svg class="s-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="7" r="5"/><path d="M11 11l3.5 3.5"/></svg>
+          <input type="text" id="kanban-filter" placeholder="Filter cards…">
+        </div>
+        <button class="btn btn-outline">Filters</button>
+        <button class="btn btn-primary" id="kanban-add-btn">+ New card</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="kanban-board" class="kanban-board"></div>
+
+</div>
+</main>
+
+<script type="module">
+import('/src/v4/kanban.js').then(({ initKanban }) => {
+  initKanban();
+  // Wire the page-action New card button to open the editor with no preset.
+  document.getElementById('kanban-add-btn').addEventListener('click', (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+    document.querySelector('.kanban-add[data-add-col="todo"]')?.click();
+  });
+});
+</script>
+
+</body>
+</html>

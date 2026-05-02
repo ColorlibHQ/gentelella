@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Help center | Gentelella 2026 v4</title>
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script type="module" src="/src/main-v4.js"></script>
+</head>
+<body data-shell="admin" data-page="faq" data-breadcrumb="Home > Help center">
+
+<main class="main">
+<div class="page-wrapper">
+
+  <div class="page-header">
+    <div class="page-header-row">
+      <div>
+        <div class="page-pretitle">Support</div>
+        <div class="page-title">Help center</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card faq-hero">
+    <div class="faq-hero-inner">
+      <h2>How can we help?</h2>
+      <p>Search our documentation or browse frequently asked questions.</p>
+      <div class="faq-search">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="7" r="5"/><path d="M11 11l3.5 3.5"/></svg>
+        <input type="text" id="faq-search" placeholder="Search articles, e.g. 'reset password'…" aria-label="Search FAQ">
+      </div>
+    </div>
+  </div>
+
+  <div class="row col-3 faq-quick">
+    <a class="card faq-card" href="#getting-started">
+      <div class="faq-card-icon" style="background:var(--primary-lt);color:var(--primary)">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M2 12h20"/></svg>
+      </div>
+      <div class="title">Getting started</div>
+      <div class="desc">Set up your workspace and invite your team.</div>
+    </a>
+    <a class="card faq-card" href="#billing">
+      <div class="faq-card-icon" style="background:var(--blue-lt);color:var(--blue)">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+      </div>
+      <div class="title">Billing & plans</div>
+      <div class="desc">Subscriptions, invoices, and payment methods.</div>
+    </a>
+    <a class="card faq-card" href="#security">
+      <div class="faq-card-icon" style="background:var(--green-lt);color:var(--green)">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l8 4v6c0 5-4 9-8 10-4-1-8-5-8-10V6l8-4z"/></svg>
+      </div>
+      <div class="title">Privacy & security</div>
+      <div class="desc">2FA, SSO, audit logs, and data exports.</div>
+    </a>
+  </div>
+
+  <div class="row col-8-4">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Frequently asked questions</div>
+      </div>
+      <div class="card-body" style="padding:0 16px 12px">
+        <div class="faq-categories" id="faq-cats">
+          <button class="chip active" data-cat="all">All</button>
+          <button class="chip" data-cat="getting-started">Getting started</button>
+          <button class="chip" data-cat="billing">Billing</button>
+          <button class="chip" data-cat="security">Security</button>
+          <button class="chip" data-cat="api">API</button>
+          <button class="chip" data-cat="account">Account</button>
+        </div>
+
+        <div class="faq-list" id="faq-list"></div>
+        <div class="faq-empty" id="faq-empty" hidden>
+          <div class="title">No matches</div>
+          <div class="desc">Try different keywords or browse a category.</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Still need help?</div>
+        </div>
+        <div class="card-body">
+          <p style="font-size:13px;color:var(--text-secondary);line-height:1.5;margin-bottom:14px">
+            Our support team typically responds within 4 hours during business days.
+          </p>
+          <form id="contact-form">
+            <div class="form-group">
+              <label class="form-label" for="contact-subject">Subject</label>
+              <input class="form-control" id="contact-subject" type="text" placeholder="Briefly describe the issue" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="contact-message">Message</label>
+              <textarea class="form-control" id="contact-message" rows="5" placeholder="Provide as much detail as you can…" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Send message</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><div class="card-title">Other ways to reach us</div></div>
+        <div class="card-body" style="padding:8px 16px">
+          <a href="mailto:support@example.com" class="contact-channel">
+            <div class="ch-icon" style="background:var(--blue-lt);color:var(--blue)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 6 10-6"/></svg></div>
+            <div><div class="title">Email</div><div class="meta">support@example.com</div></div>
+          </a>
+          <a href="#" class="contact-channel">
+            <div class="ch-icon" style="background:var(--purple-lt);color:var(--purple)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg></div>
+            <div><div class="title">Live chat</div><div class="meta">Mon–Fri · 9:00–18:00 UTC</div></div>
+          </a>
+          <a href="#" class="contact-channel">
+            <div class="ch-icon" style="background:var(--yellow-lt);color:var(--yellow)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+            <div><div class="title">Phone</div><div class="meta">+1 (555) 010-2026</div></div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</main>
+
+<script type="module">
+const FAQ = [
+  { cat: 'getting-started', q: 'How do I create a new workspace?',                a: 'Click your avatar in the top right, choose <strong>Account settings</strong>, then <strong>Workspaces → New workspace</strong>. You can be a member of multiple workspaces.' },
+  { cat: 'getting-started', q: 'How do I invite team members?',                   a: 'Go to <strong>Settings → Team → + Invite member</strong>. You can invite by email or share a workspace invite link.' },
+  { cat: 'getting-started', q: 'What\'s the difference between a project and a board?', a: 'A <strong>project</strong> is a long-lived workspace for a body of work. A <strong>board</strong> is a Kanban view inside a project. One project can have multiple boards.' },
+  { cat: 'billing',         q: 'How do I change my billing plan?',                a: 'Go to <strong>Settings → Billing → Change plan</strong>. Upgrades are prorated to the current cycle; downgrades take effect at the next renewal.' },
+  { cat: 'billing',         q: 'Can I get an invoice for past months?',           a: 'Yes — under <strong>Settings → Billing → Recent invoices</strong> there\'s a Download button next to every paid invoice.' },
+  { cat: 'billing',         q: 'Do you support purchase orders?',                 a: 'Annual plans on the Enterprise tier support PO billing. <a href="mailto:sales@example.com">Contact sales</a> to set this up.' },
+  { cat: 'security',        q: 'How do I enable two-factor authentication?',     a: 'Go to <strong>Settings → Privacy & security</strong> and toggle <strong>Two-factor authentication</strong> on. We support TOTP apps like 1Password, Authy, and Google Authenticator.' },
+  { cat: 'security',        q: 'Where can I see my active sessions?',             a: 'Under <strong>Settings → Privacy & security → Active sessions</strong> you can see every signed-in device and revoke access to any of them.' },
+  { cat: 'security',        q: 'Do you support SSO / SAML?',                      a: 'SSO is included on the Enterprise plan with SAML 2.0 support for Okta, Google Workspace, Azure AD, and JumpCloud.' },
+  { cat: 'api',             q: 'Where do I find my API key?',                     a: 'Go to <strong>Settings → API keys</strong> to create new keys. Each key is shown once at creation time and not stored anywhere we can retrieve later.' },
+  { cat: 'api',             q: 'What are the API rate limits?',                   a: 'Free: 60 req/min · Pro: 600 req/min · Enterprise: custom. Burst limits apply per endpoint.' },
+  { cat: 'api',             q: 'Do you have webhooks?',                           a: 'Yes — configure them under <strong>Settings → Integrations → Webhooks</strong>. We sign every payload with HMAC-SHA256.' },
+  { cat: 'account',         q: 'How do I change my email address?',               a: 'In <strong>Settings → Account</strong> change the email field and save. We\'ll send a confirmation link to the new address.' },
+  { cat: 'account',         q: 'How do I delete my account?',                     a: 'Settings → Danger zone → Delete account. This is irreversible and removes all your data after a 30-day grace period.' },
+  { cat: 'account',         q: 'Can I transfer workspace ownership?',             a: 'Yes — Settings → Danger zone → Transfer ownership. The new owner must already be a member of the workspace.' }
+];
+
+let activeCat = 'all';
+let openIdx = -1;
+
+function escapeHtml(s) { return String(s).replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+function render() {
+  const q = document.getElementById('faq-search').value.trim().toLowerCase();
+  const filtered = FAQ
+    .map((item, idx) => ({ ...item, idx }))
+    .filter((item) => activeCat === 'all' || item.cat === activeCat)
+    .filter((item) => !q || item.q.toLowerCase().includes(q) || item.a.toLowerCase().includes(q));
+
+  const list = document.getElementById('faq-list');
+  const empty = document.getElementById('faq-empty');
+  if (!filtered.length) {
+    list.innerHTML = '';
+    empty.hidden = false;
+  } else {
+    empty.hidden = true;
+    list.innerHTML = filtered.map((item) => `
+      <div class="faq-item${item.idx === openIdx ? ' open' : ''}" data-idx="${item.idx}">
+        <button type="button" class="faq-q" aria-expanded="${item.idx === openIdx}">
+          <span>${escapeHtml(item.q)}</span>
+          <svg class="faq-chev" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6l4 4 4-4"/></svg>
+        </button>
+        <div class="faq-a">${item.a}</div>
+      </div>
+    `).join('');
+  }
+}
+
+document.getElementById('faq-cats').addEventListener('click', (e) => {
+  const btn = e.target.closest('.chip');
+  if (!btn) return;
+  e.stopPropagation();
+  document.querySelectorAll('#faq-cats .chip').forEach((b) => b.classList.remove('active'));
+  btn.classList.add('active');
+  activeCat = btn.dataset.cat;
+  openIdx = -1;
+  render();
+});
+
+document.getElementById('faq-list').addEventListener('click', (e) => {
+  const item = e.target.closest('.faq-item');
+  if (!item) return;
+  const idx = parseInt(item.dataset.idx, 10);
+  openIdx = openIdx === idx ? -1 : idx;
+  render();
+});
+
+let searchTimer;
+document.getElementById('faq-search').addEventListener('input', () => {
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(render, 120);
+});
+
+render();
+</script>
+
+</body>
+</html>

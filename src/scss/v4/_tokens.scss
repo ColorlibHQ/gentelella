@@ -1,0 +1,150 @@
+// Gentelella 2026 v4 — Design tokens
+// DNA: Dark sidebar · Teal #1ABB9C · Light #f9fafb
+// Font: Inter · 14px base · line-height 1.4286
+// Radius: 4/6/8 · Shadows: near-invisible
+
+:root {
+  --sidebar-bg: #1a2332;
+  --sidebar-hover: rgba(255,255,255,0.04);
+  --sidebar-active: rgba(26,187,156,0.08);
+  --sidebar-text: #7b8fa3;
+  --sidebar-text-hover: #c5d0dc;
+  --sidebar-text-active: #ffffff;
+  --sidebar-border: rgba(255,255,255,0.06);
+  --sidebar-w: 252px;
+
+  --primary: #1ABB9C;
+  --primary-lt: rgba(26,187,156,0.06);
+  --primary-dk: #169f85;
+
+  --body-bg: #f5f7fb;
+  --bg-surface: #ffffff;
+  --bg-surface-secondary: #f9fafb;
+
+  --border-color: #e6e7eb;
+  --border-color-light: #eff0f3;
+  --border-translucent: rgba(4,32,69,0.08);
+
+  --text: #1e2633;
+  --text-secondary: #626d7d;
+  --text-muted: #7e8896;
+  --text-disabled: #c0c7cf;
+
+  --blue: #066fd1;
+  --azure: #4299e1;
+  --green: #2fb344;
+  --lime: #74b816;
+  --yellow: #f59f00;
+  --orange: #f76707;
+  --red: #d63939;
+  --pink: #d6336c;
+  --purple: #ae3ec9;
+  --indigo: #4263eb;
+  --cyan: #17a2b8;
+
+  --green-lt: rgba(47,179,68,0.06);
+  --red-lt: rgba(214,57,57,0.06);
+  --yellow-lt: rgba(245,159,0,0.06);
+  --blue-lt: rgba(6,111,209,0.06);
+  --azure-lt: rgba(66,153,225,0.06);
+  --purple-lt: rgba(174,62,201,0.06);
+  --cyan-lt: rgba(23,162,184,0.06);
+
+  --radius: 6px;
+  --radius-sm: 4px;
+  --radius-lg: 8px;
+
+  --shadow: rgba(30,38,51,0.04) 0 2px 4px 0;
+  --shadow-card: 0 0 0 1px var(--border-translucent), rgba(30,38,51,0.04) 0 2px 4px 0;
+
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'SF Mono', Monaco, Consolas, 'Liberation Mono', monospace;
+  --font-size: 0.875rem;
+  --line-height: 1.4286;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 600;
+}
+
+// Dark theme — applied via `<html data-theme="dark">`. The pre-paint script
+// in vite.config.js reads localStorage('theme') / prefers-color-scheme and
+// sets this attribute before <body> renders so dark mode never flashes.
+[data-theme="dark"] {
+  --body-bg: #0f1623;
+  --bg-surface: #1a2332;
+  --bg-surface-secondary: #141d2b;
+
+  --border-color: rgba(255,255,255,0.08);
+  --border-color-light: rgba(255,255,255,0.05);
+  --border-translucent: rgba(255,255,255,0.08);
+
+  --text: #e6ebf2;
+  --text-secondary: #b3bccb;
+  --text-muted: #8a93a3;
+  --text-disabled: #5a6473;
+
+  --primary-lt: rgba(26,187,156,0.14);
+  --green-lt: rgba(47,179,68,0.16);
+  --red-lt: rgba(214,57,57,0.16);
+  --yellow-lt: rgba(245,159,0,0.16);
+  --blue-lt: rgba(6,111,209,0.18);
+  --azure-lt: rgba(66,153,225,0.16);
+  --purple-lt: rgba(174,62,201,0.16);
+  --cyan-lt: rgba(23,162,184,0.16);
+
+  --shadow: rgba(0,0,0,0.4) 0 2px 4px 0;
+  --shadow-card: 0 0 0 1px var(--border-translucent), rgba(0,0,0,0.3) 0 2px 4px 0;
+}
+[data-theme="dark"] ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); }
+[data-theme="dark"] .topbar { background: rgba(20,29,43,0.85); }
+[data-theme="dark"] .tb-btn .dot { border-color: var(--bg-surface); }
+[data-theme="dark"] .sidebar-user .avatar .online { border-color: var(--sidebar-bg); }
+// Theme toggle: show only the icon for the *next* state
+.theme-toggle .theme-icon-light { display: none; }
+.theme-toggle .theme-icon-dark { display: block; }
+[data-theme="dark"] .theme-toggle .theme-icon-light { display: block; }
+[data-theme="dark"] .theme-toggle .theme-icon-dark { display: none; }
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: var(--font);
+  font-size: var(--font-size);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height);
+  color: var(--text);
+  background: var(--body-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.1); border-radius: 3px; }
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+// Inline SVG icons in HTML pages don't always have width/height attributes.
+// Without them, browsers render unsized SVGs at the default 300×150 — which
+// causes a giant-icon flash during navigation in dev (CSS injected via JS)
+// and on slow networks. Default unsized SVGs to 1em so they render close to
+// their final size on first paint. Specific .icon / .tb-btn svg / etc. rules
+// have higher specificity and override this.
+// :where() keeps the rule but drops it to 0-specificity so any class-based
+// override (.icon-cell svg, .feature .icon svg, etc.) wins cleanly.
+:where(svg):not([width]):not([height]) { width: 1em; height: 1em; }
+
+// Cross-document view transitions: smooth cross-fade between same-origin
+// pages in Chrome 126+. Other browsers ignore the at-rule. The default
+// transition duration (250ms) feels slightly heavy; trim to 180ms.
+@view-transition { navigation: auto; }
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 180ms;
+  animation-timing-function: cubic-bezier(0.2, 0, 0, 1);
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) { animation-duration: 0s; }
+}

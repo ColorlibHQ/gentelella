@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Playground | Gentelella 2026 v4</title>
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script type="module" src="/src/main-v4.js"></script>
+</head>
+<body data-shell="admin" data-page="playground" data-breadcrumb="Home > UI > Playground">
+
+<main class="main">
+<div class="page-wrapper">
+
+  <div class="page-header">
+    <div class="page-header-row">
+      <div>
+        <div class="page-pretitle">Developer</div>
+        <div class="page-title">Component playground</div>
+      </div>
+      <div class="page-actions">
+        <a class="btn btn-outline" href="general_elements.html">All UI</a>
+        <a class="btn btn-outline" href="form.html">Forms</a>
+        <a class="btn btn-outline" href="theme.html">Theme generator</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="banner banner-info">
+    <svg class="banner-icon" width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v.01M8 7v4"/></svg>
+    <div class="banner-body"><strong>Click "Copy" on any component</strong> to grab its exact HTML — paste straight into your own page. Every component uses the v4 design tokens, so it'll match your theme out of the box.</div>
+  </div>
+
+  <div class="playground-layout">
+    <!-- Left rail: jump nav -->
+    <aside class="pg-nav">
+      <div class="pg-nav-label">Components</div>
+      <a class="pg-nav-link active" href="#buttons">Buttons</a>
+      <a class="pg-nav-link" href="#status">Status & badges</a>
+      <a class="pg-nav-link" href="#alerts">Alerts</a>
+      <a class="pg-nav-link" href="#cards">Cards</a>
+      <a class="pg-nav-link" href="#forms-basic">Form inputs</a>
+      <a class="pg-nav-link" href="#forms-advanced">Advanced forms</a>
+      <a class="pg-nav-link" href="#tables">Tables</a>
+      <a class="pg-nav-link" href="#tabs">Tabs</a>
+      <a class="pg-nav-link" href="#progress">Progress</a>
+      <a class="pg-nav-link" href="#stats">Stat tiles</a>
+      <a class="pg-nav-link" href="#timeline">Timeline</a>
+      <a class="pg-nav-link" href="#accordion">Accordion</a>
+      <a class="pg-nav-link" href="#empty">Empty state</a>
+    </aside>
+
+    <div class="pg-content" id="pg-content">
+
+      <!-- Buttons -->
+      <section class="pg-block" id="buttons">
+        <h2>Buttons</h2>
+        <div class="pg-card" data-source>
+          <div class="pg-preview" data-preview>
+            <button class="btn btn-primary">Primary</button>
+            <button class="btn btn-outline">Outline</button>
+            <button class="btn btn-ghost">Ghost</button>
+            <button class="btn btn-danger">Danger</button>
+            <button class="btn btn-primary btn-sm">Small</button>
+            <button class="btn btn-primary" disabled>Disabled</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Status -->
+      <section class="pg-block" id="status">
+        <h2>Status & badges</h2>
+        <div class="pg-card" data-source>
+          <div class="pg-preview" data-preview>
+            <span class="status status-green">Active</span>
+            <span class="status status-yellow">Pending</span>
+            <span class="status status-red">Failed</span>
+            <span class="status status-blue">Info</span>
+            <span class="chip">Tag</span>
+            <span class="chip">Removable<button class="chip-close" aria-label="Remove">×</button></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Alerts -->
+      <section class="pg-block" id="alerts">
+        <h2>Alerts</h2>
+        <div class="pg-card" data-source>
+          <div class="pg-preview" data-preview style="display:flex;flex-direction:column;gap:10px;align-items:stretch">
+            <div class="alert alert-success">
+              <svg class="alert-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M5 8l2 2 4-4"/></svg>
+              <div class="alert-body"><strong>Saved!</strong> Changes have been published.</div>
+            </div>
+            <div class="alert alert-warning">
+              <svg class="alert-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2L1 14h14L8 2z"/><path d="M8 6v3M8 11v.01"/></svg>
+              <div class="alert-body"><strong>Heads up.</strong> API quota at 87%.</div>
+            </div>
+            <div class="alert alert-danger">
+              <svg class="alert-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M5 5l6 6M11 5l-6 6"/></svg>
+              <div class="alert-body"><strong>Payment failed.</strong> Retry to continue.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Cards -->
+      <section class="pg-block" id="cards">
+        <h2>Cards</h2>
+        <div class="pg-card" data-source>
+          <div class="pg-preview" data-preview style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px">
+            <div class="card">
+              <div class="card-header"><div class="card-title">Plain card</div></div>
+              <div class="card-body" style="font-size:13px;color:var(--text-secondary);line-height:1.5">A simple card with header and body. The most common building block.</div>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <div class="card-title">With subtitle</div>
+                  <div class="card-subtitle">Plus an action</div>
+                </div>
+                <button class="btn btn-outline btn-sm">Action</button>
+              </div>
+              <div class="card-body" style="font-size:13px;color:var(--text-secondary);line-height:1.5">Header has room for actions on the right.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Form inputs -->
+      <section class="pg-block" id="forms-basic">
+        <h2>Form inputs</h2>
+        <div class="pg-card" data-source>
+          <div class="pg-preview" data-preview style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px">
+            <div class="form-group">
+              <label class="form-label" for="pg-text">Text</label>
+              <input id="pg-text" class="form-control" type="text" placeholder="Type here…">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="pg-select">Select</label>
+              <select id="pg-select" class="form-control">
+                <option>Option A</option>
+                <option>Option B</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Switch</label>
+              <label class="switch"><input type="checkbox" checked><span class="track"></span><span class="switch-label">Enabled</span></label>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Segmented</label>
+              <div class="segmented">
+                <label><input type="radio" name="pg-seg" checked><span>Day</span></label>
+                <label><input type="radio" name="pg-seg"><span>Week</span></label>
+                <label><input type="radio" name="pg-seg"><span>Month</span></label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Advanced forms -->
+      <section class="pg-block" id="forms-advanced">
+        <h2>Advanced form controls</h2>
+
+        <div class="pg-card" data-source data-source-label="Date-range picker">
+          <div class="pg-preview" data-preview style="max-width:340px">
+            <div class="date-range" data-date-range>
+              <input class="form-control" placeholder="Pick a date range">
+            </div>
+          </div>
+        </div>
+
+        <div class="pg-card" data-source data-source-label="Multi-select">
+          <div class="pg-preview" data-preview style="max-width:480px">
+            <div class="multi-select" data-multi-select data-options="Design,Engineering,Product,Marketing,Support,Sales,Operations,Legal,Finance,HR">
+              <select multiple hidden>
+                <option value="Design" selected>Design</option>
+                <option value="Engineering" selected>Engineering</option>
+                <option value="Product">Product</option>
+                <option value="Marketing">Marketing</option>
+                <option value="Support">Support</option>
+                <option value="Sales">Sales</option>
+                <option value="Operations">Operations</option>
+                <option value="Legal">Legal</option>
+                <option value="Finance">Finance</option>
+                <option value="HR">HR</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="pg-card" data-source data-source-label="Rich text editor">
+          <div class="pg-preview" data-preview>
+            <div class="rich-text" data-rich-text>
+              <textarea hidden>&lt;p&gt;Click any button in the toolbar — &lt;strong&gt;bold&lt;/strong&gt;, &lt;em&gt;italic&lt;/em&gt;, lists, links, code blocks. Try &lt;kbd&gt;⌘B&lt;/kbd&gt; / &lt;kbd&gt;⌘I&lt;/kbd&gt; / &lt;kbd&gt;⌘K&lt;/kbd&gt;.&lt;/p&gt;</textarea>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tables -->
+      <section class="pg-block" id="tables">
+        <h2>Tables</h2>
+        <div class="pg-card" data-source>
+          <div class="pg-preview" data-preview>
+            <table class="table">
+              <thead><tr><th>Name</th><th>Plan</th><th>Status</th><th style="text-align:right">MRR</th></tr></thead>
+              <tbody>
+                <tr><td><div class="cell-customer"><div class="cell-avatar" style="background:var(--primary)">SK</div><span class="cell-strong">Sarah K.</span></div></td><td><span class="chip">Pro</span></td><td><span class="status status-green">Active</span></td><td class="cell-strong" style="text-align:right">$199</td></tr>
+                <tr><td><div class="cell-customer"><div class="cell-avatar" style="background:var(--azure)">MR</div><span class="cell-strong">Michael R.</span></div></td><td><span class="chip">Business</span></td><td><span class="status status-green">Active</span></td><td class="cell-strong" style="text-align:right">$499</td></tr>
+                <tr><td><div class="cell-customer"><div class="cell-avatar" style="background:var(--yellow)">EW</div><span class="cell-strong">Emily W.</span></div></td><td><span class="chip">Starter</span></td><td><span class="status status-yellow">Pending</span></td><td class="cell-strong" style="text-align:right">$49</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tabs -->
+      <section class="pg-block" id="tabs">
+        <h2>Tabs</h2>
+        <div class="pg-card" data-source>
+          <div class="pg-preview" data-preview>
+            <div class="chart-tabs">
+              <button class="chart-tab active">Overview</button>
+              <button class="chart-tab">Activity</button>
+              <button class="chart-tab">Settings</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Progress -->
+      <section class="pg-block" id="progress">
+        <h2>Progress</h2>
+        <div class="pg-card" data-source>
+          <div class="pg-preview" data-preview style="display:flex;flex-direction:column;gap:14px;align-items:stretch">
+            <div>
+              <div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:4px"><span>Storage</span><span style="color:var(--text-muted)">62 / 100 GB</span></div>
+              <div class="progress-thin"><div class="bar" style="width:62%;background:var(--primary)"></div></div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:4px"><span>API quota</span><span style="color:var(--text-muted)">87,400 / 100,000</span></div>
+              <div class="progress-thin"><div class="bar" style="width:87%;background:var(--yellow)"></div></div>
+            </div>
+            <div class="loading-bar" style="height:3px;background:var(--bg-surface-secondary);border-radius:3px;overflow:hidden"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Stat tiles -->
+      <section class="pg-block" id="stats">
+        <h2>Stat tiles</h2>
+        <div class="pg-card" data-source>
+          <div class="pg-preview" data-preview style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px">
+            <div class="card"><div class="stat">
+              <div class="stat-icon teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 1v22M5 8l7-7 7 7"/></svg></div>
+              <div class="stat-content">
+                <div class="stat-label">Active users</div>
+                <div class="stat-value-row"><span class="stat-value">8,432</span><span class="stat-change up">↑ 14%</span></div>
+                <div class="stat-subtext">vs last week</div>
+              </div>
+            </div></div>
+            <div class="card"><div class="stat">
+              <div class="stat-icon red"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18"/><path d="M19 9l-5 5-4-4-3 3"/></svg></div>
+              <div class="stat-content">
+                <div class="stat-label">Churn</div>
+                <div class="stat-value-row"><span class="stat-value">2.4%</span><span class="stat-change down">↓ 0.4pp</span></div>
+                <div class="stat-subtext">improving</div>
+              </div>
+            </div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Timeline -->
+      <section class="pg-block" id="timeline">
+        <h2>Timeline</h2>
+        <div class="pg-card" data-source>
+          <div class="pg-preview" data-preview>
+            <div class="timeline">
+              <div class="timeline-item is-primary">
+                <div class="ti-time">Just now</div>
+                <div class="ti-title">Deployment succeeded</div>
+                <div class="ti-desc">v4.0.2 in production · 28s</div>
+              </div>
+              <div class="timeline-item is-blue">
+                <div class="ti-time">14 min ago</div>
+                <div class="ti-title">PR #248 merged</div>
+              </div>
+              <div class="timeline-item is-yellow">
+                <div class="ti-time">3 hours ago</div>
+                <div class="ti-title">Review requested</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Accordion -->
+      <section class="pg-block" id="accordion">
+        <h2>Accordion</h2>
+        <div class="pg-card" data-source>
+          <div class="pg-preview" data-preview>
+            <div class="accordion">
+              <details class="accordion-item" open>
+                <summary class="accordion-summary">First panel
+                  <svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6l4 4 4-4"/></svg>
+                </summary>
+                <div class="accordion-content">Content for the first panel goes here.</div>
+              </details>
+              <details class="accordion-item">
+                <summary class="accordion-summary">Second panel
+                  <svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6l4 4 4-4"/></svg>
+                </summary>
+                <div class="accordion-content">Click the chevron to expand.</div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Empty state -->
+      <section class="pg-block" id="empty">
+        <h2>Empty state</h2>
+        <div class="pg-card" data-source>
+          <div class="pg-preview" data-preview>
+            <div class="empty-state">
+              <div class="empty-state-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 8l9 6 9-6"/></svg>
+              </div>
+              <div class="empty-state-title">No messages yet</div>
+              <div class="empty-state-text">When you receive messages, they'll show up here.</div>
+              <div class="empty-state-actions">
+                <button class="btn btn-primary btn-sm">Compose</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+</div>
+</main>
+
+<script type="module">
+import { showToast } from '/src/v4/toast.js';
+
+// Build a code-source row under each [data-source] card.
+function indent(html) {
+  // Lightly format the HTML for display: collapse whitespace + indent.
+  // (Production HTML is already nicely indented in the source — but we
+  // capture from the live DOM, so re-format for readability.)
+  return html
+    .replace(/></g, '>\n<')
+    .split('\n')
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .join('\n');
+}
+
+document.querySelectorAll('[data-source]').forEach((card) => {
+  const preview = card.querySelector('[data-preview]');
+  if (!preview) return;
+
+  const label = card.dataset.sourceLabel || '';
+  const code = indent(preview.innerHTML.trim());
+  const block = document.createElement('div');
+  block.className = 'pg-source';
+  block.innerHTML = `
+    <div class="pg-source-head">
+      <span class="pg-source-label">${label || 'HTML'}</span>
+      <button type="button" class="btn btn-outline btn-sm pg-copy">
+        <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="6" y="6" width="8" height="8" rx="1.5"/><path d="M3 10V3h7"/></svg>
+        Copy
+      </button>
+    </div>
+    <pre class="pg-code"><code></code></pre>
+  `;
+  block.querySelector('code').textContent = code;
+  card.appendChild(block);
+
+  block.querySelector('.pg-copy').addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(code);
+      showToast('Copied to clipboard', { variant: 'success' });
+    } catch (_e) {
+      showToast('Copy failed — select and Ctrl+C', { variant: 'error' });
+    }
+  });
+});
+
+// Scrollspy for the left rail.
+const links = [...document.querySelectorAll('.pg-nav-link')];
+const sections = [...document.querySelectorAll('.pg-block')];
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      links.forEach((l) => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
+    }
+  });
+}, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
+sections.forEach((s) => observer.observe(s));
+
+// Smooth scroll
+links.forEach((a) => a.addEventListener('click', (e) => {
+  e.preventDefault();
+  const t = document.querySelector(a.getAttribute('href'));
+  if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}));
+</script>
+
+<style>
+.playground-layout {
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+  margin-top: 16px;
+}
+.pg-nav {
+  position: sticky;
+  top: 76px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.pg-nav-label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+  padding: 4px 12px 8px;
+}
+.pg-nav-link {
+  display: block;
+  padding: 6px 12px;
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: background 100ms, color 100ms;
+}
+.pg-nav-link:hover { background: var(--bg-surface-secondary); color: var(--text); text-decoration: none; }
+.pg-nav-link.active {
+  background: var(--primary-lt);
+  color: var(--primary);
+  font-weight: var(--font-weight-medium);
+}
+.pg-content { display: flex; flex-direction: column; gap: 28px; }
+.pg-block h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 12px;
+  letter-spacing: -0.2px;
+}
+.pg-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.pg-preview {
+  padding: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  background: var(--bg-surface-secondary);
+}
+.pg-source {
+  border-top: 1px solid var(--border-color-light);
+  background: var(--bg-surface);
+}
+.pg-source-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 14px;
+  border-bottom: 1px solid var(--border-color-light);
+}
+.pg-source-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+}
+.pg-code {
+  margin: 0;
+  padding: 14px 16px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  line-height: 1.55;
+  color: var(--text);
+  background: var(--bg-surface);
+  overflow-x: auto;
+  max-height: 320px;
+  overflow-y: auto;
+  white-space: pre;
+}
+.pg-card + .pg-card { margin-top: 14px; }
+@media (max-width: 900px) {
+  .playground-layout { grid-template-columns: 1fr; }
+  .pg-nav { position: static; flex-direction: row; flex-wrap: wrap; }
+  .pg-nav-label { width: 100%; padding: 0 0 4px; }
+  .pg-nav-link { padding: 5px 10px; font-size: 12px; }
+}
+</style>
+
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chat | Gentelella 2026 v4</title>
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script type="module" src="/src/main-v4.js"></script>
+</head>
+<body data-shell="admin" data-page="chat" data-breadcrumb="Home > Chat">
+
+<main class="main">
+<div class="page-wrapper">
+
+  <div class="page-header">
+    <div class="page-header-row">
+      <div>
+        <div class="page-pretitle">Apps</div>
+        <div class="page-title">Chat</div>
+      </div>
+      <div class="page-actions">
+        <button class="btn btn-outline">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="7" r="5"/><path d="M11 11l3.5 3.5"/></svg>
+          Search messages
+        </button>
+        <button class="btn btn-primary">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2v12M2 8h12"/></svg>
+          New chat
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card chat-card">
+    <div class="chat-layout">
+      <!-- ── CONVERSATION RAIL ── -->
+      <aside class="chat-rail">
+        <div class="chat-rail-search">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="7" r="5"/><path d="M11 11l3.5 3.5"/></svg>
+          <input type="text" placeholder="Search conversations…" aria-label="Search conversations">
+        </div>
+        <div class="chat-rail-tabs">
+          <button class="chart-tab active">All</button>
+          <button class="chart-tab">Unread</button>
+          <button class="chart-tab">Groups</button>
+        </div>
+        <div class="chat-conversations" id="chat-conversations">
+          <!-- rendered by inline script -->
+        </div>
+      </aside>
+
+      <!-- ── ACTIVE THREAD ── -->
+      <section class="chat-thread">
+        <header class="chat-thread-head">
+          <div class="chat-thread-peer">
+            <div class="av" id="thread-avatar" style="background:linear-gradient(135deg,var(--primary),var(--primary-dk))">SK</div>
+            <div>
+              <div class="name" id="thread-name">Sarah Kowalski</div>
+              <div class="presence"><span class="dot"></span> Online · last active 2m ago</div>
+            </div>
+          </div>
+          <div class="chat-thread-actions">
+            <button class="tb-btn" aria-label="Voice call"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg></button>
+            <button class="tb-btn" aria-label="Video call"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></button>
+            <button class="card-opt-btn" aria-label="More options"><svg viewBox="0 0 16 16" fill="currentColor"><circle cx="8" cy="3" r="1.2"/><circle cx="8" cy="8" r="1.2"/><circle cx="8" cy="13" r="1.2"/></svg></button>
+          </div>
+        </header>
+
+        <div class="chat-messages" id="chat-messages">
+          <!-- rendered by inline script -->
+        </div>
+
+        <form class="chat-composer" id="chat-composer" data-reset-on-submit="false">
+          <button type="button" class="composer-btn" aria-label="Attach"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66L9.41 17.41a2 2 0 01-2.83-2.83l8.49-8.48"/></svg></button>
+          <input type="text" id="chat-input" placeholder="Write a message…" autocomplete="off" required>
+          <button type="button" class="composer-btn" aria-label="Emoji"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg></button>
+          <button type="submit" class="btn btn-primary composer-send" aria-label="Send">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2L7 9M14 2l-5 13-2-6-6-2 13-5z"/></svg>
+            Send
+          </button>
+        </form>
+      </section>
+    </div>
+  </div>
+
+</div>
+</main>
+
+<script type="module">
+const conversations = [
+  { id: 1, name: 'Sarah Kowalski', initials: 'SK', color: 'primary',  preview: 'Can you take a look at the design?', time: '4m', unread: 2,  online: true  },
+  { id: 2, name: 'Michael Reyes',  initials: 'MR', color: 'blue',     preview: 'Lunch tomorrow at noon?',           time: '32m', unread: 1, online: true  },
+  { id: 3, name: 'Design Team',    initials: 'DT', color: 'purple',   preview: 'Emily: Updated the timeline',        time: '1h', unread: 0,  online: false, group: true },
+  { id: 4, name: 'Emily Wang',     initials: 'EW', color: 'yellow',   preview: 'Sprint retro notes posted',          time: '2h', unread: 0,  online: false },
+  { id: 5, name: 'Diego Reyes',    initials: 'DR', color: 'green',    preview: 'Customer feedback summary ready',    time: 'Mon', unread: 0, online: true  },
+  { id: 6, name: 'Mark Kim',       initials: 'MK', color: 'red',      preview: 'PR #248 ready for review',           time: 'Mon', unread: 0, online: false },
+  { id: 7, name: 'Lina Park',      initials: 'LP', color: 'cyan',     preview: 'Campaign metrics for Q1',            time: 'Sun', unread: 0, online: false },
+  { id: 8, name: 'Yuki Tanaka',    initials: 'YT', color: 'azure',    preview: 'Translation files ready',            time: 'Fri', unread: 0, online: true  }
+];
+
+const colorVar = { primary:'var(--primary)', azure:'var(--azure)', blue:'var(--blue)', purple:'var(--purple)', yellow:'var(--yellow)', red:'var(--red)', green:'var(--green)', cyan:'var(--cyan)' };
+
+const threads = {
+  1: [
+    { from: 'them', text: 'Hey! Just shared the latest design exploration in Figma — can you take a look?', time: 'Today · 9:42' },
+    { from: 'them', text: 'Specifically interested in your take on the dashboard density.', time: 'Today · 9:42' },
+    { from: 'me',   text: 'On it — opening now.', time: 'Today · 9:48' },
+    { from: 'me',   text: 'I think the stat cards are a bit dense at 768px. Want to try a 2-up layout there instead of 3?', time: 'Today · 9:51' },
+    { from: 'them', text: 'Yes good call. I\'ll push an update later today.', time: 'Today · 9:53' },
+    { from: 'them', text: 'Can you take a look at the design?', time: 'Today · 11:14' }
+  ],
+  2: [
+    { from: 'them', text: 'Lunch tomorrow at noon?', time: 'Today · 10:32' }
+  ],
+  3: [
+    { from: 'them', text: 'Emily: Updated the timeline based on the dependencies discussion', time: 'Today · 8:30' },
+    { from: 'them', text: 'Sarah: Looks good — I added the design review milestones', time: 'Today · 8:45' }
+  ],
+  4: [
+    { from: 'them', text: 'Sprint retro notes posted in Notion', time: 'Today · 7:20' }
+  ],
+  5: [
+    { from: 'them', text: 'Compiled the customer feedback summary — top 10 feature requests', time: 'Mon · 16:00' },
+    { from: 'me',   text: 'Excellent, will read tonight.', time: 'Mon · 17:12' }
+  ],
+  6: [{ from: 'them', text: 'PR #248 ready for review when you have a moment.', time: 'Mon · 14:00' }],
+  7: [{ from: 'them', text: 'Q1 campaign metrics summary attached.', time: 'Sun · 19:30' }],
+  8: [{ from: 'them', text: 'Translation files ready for the new locale.', time: 'Fri · 15:45' }]
+};
+
+let activeId = 1;
+
+function renderRail() {
+  const list = document.getElementById('chat-conversations');
+  list.innerHTML = conversations.map((c) => `
+    <button type="button" class="chat-conversation${c.id === activeId ? ' active' : ''}" data-id="${c.id}">
+      <span class="av" style="background:${colorVar[c.color]}">${c.initials}${c.online ? '<span class="online"></span>' : ''}</span>
+      <span class="info">
+        <span class="row"><span class="name">${c.name}${c.group ? ' <small>(group)</small>' : ''}</span><span class="time">${c.time}</span></span>
+        <span class="preview-row"><span class="preview">${c.preview}</span>${c.unread ? `<span class="unread">${c.unread}</span>` : ''}</span>
+      </span>
+    </button>
+  `).join('');
+}
+
+function renderThread() {
+  const conv = conversations.find((c) => c.id === activeId);
+  if (!conv) return;
+  document.getElementById('thread-name').textContent = conv.name;
+  const av = document.getElementById('thread-avatar');
+  av.textContent = conv.initials;
+  av.style.background = colorVar[conv.color];
+  const presenceText = conv.online ? 'Online · last active 2m ago' : 'Offline';
+  document.querySelector('.chat-thread-head .presence').innerHTML = `<span class="dot${conv.online ? '' : ' off'}"></span> ${presenceText}`;
+  const msgs = threads[activeId] || [];
+  const messagesEl = document.getElementById('chat-messages');
+  messagesEl.innerHTML = msgs.map((m) => `
+    <div class="chat-bubble ${m.from === 'me' ? 'mine' : 'theirs'}">
+      <div class="bubble">${m.text}</div>
+      <div class="meta">${m.time}</div>
+    </div>
+  `).join('');
+  messagesEl.scrollTop = messagesEl.scrollHeight;
+}
+
+renderRail();
+renderThread();
+
+document.getElementById('chat-conversations').addEventListener('click', (e) => {
+  const btn = e.target.closest('.chat-conversation');
+  if (!btn) return;
+  activeId = parseInt(btn.dataset.id, 10);
+  // Mark read
+  const conv = conversations.find((c) => c.id === activeId);
+  if (conv) conv.unread = 0;
+  renderRail();
+  renderThread();
+});
+
+document.getElementById('chat-composer').addEventListener('submit', (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+  const input = document.getElementById('chat-input');
+  const text = input.value.trim();
+  if (!text) return;
+  if (!threads[activeId]) threads[activeId] = [];
+  const now = new Date();
+  const time = `Today · ${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}`;
+  threads[activeId].push({ from: 'me', text, time });
+  input.value = '';
+  renderThread();
+  // Fake reply after 1.5s
+  setTimeout(() => {
+    if (activeId !== activeId) return;
+    threads[activeId].push({ from: 'them', text: 'Thanks — got it 👍', time });
+    renderThread();
+  }, 1400);
+});
+</script>
+
+</body>
+</html>

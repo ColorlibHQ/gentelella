@@ -1,686 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Typography | Gentelella 2026 v4</title>
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script type="module" src="/src/main-v4.js"></script>
+</head>
+<body data-shell="admin" data-page="typography" data-breadcrumb="Home > UI > Typography">
 
-    <!-- Security headers -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.googleapis.com; img-src 'self' data: https: blob:; font-src 'self' data: https://fonts.gstatic.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; connect-src 'self' ws: wss: http://localhost:* https://api.example.com https://*.googleapis.com; frame-src 'self' https://www.youtube.com https://player.vimeo.com; media-src 'self' https: blob:; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
+<main class="main">
+<div class="page-wrapper">
 
-    <!-- Favicons -->
-    <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
-    <link rel="icon" href="../images/favicon-32x32.svg" type="image/svg+xml" sizes="32x32">
-    <link rel="icon" href="../images/favicon-16x16.svg" type="image/svg+xml" sizes="16x16">
-    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="../images/apple-touch-icon.svg" sizes="180x180">
-    <link rel="manifest" href="../site.webmanifest">
-
-    <!-- Theme color -->
-    <meta name="theme-color" content="#2a3f54">
-    <meta name="msapplication-TileColor" content="#2a3f54">
-
-    <title>Typography | Gentelella</title>
-
-    <!-- Bootstrap -->
-    <!-- Font Awesome -->
-    <!-- NProgress -->
-    <!-- Custom styling plus plugins -->
-    <script type="module" src="/src/main-minimal.js"></script>
-  </head>
-
-  <body class="nav-md page-typography">
-    <div class="container body">
-      <div class="main_container">
-        <aside class="col-md-3 left_col" aria-label="Sidebar navigation">
-          <div class="left_col scroll-view">
-            <div class="navbar nav_title border-0">
-              <a href="index.html" class="site_title"><img src="../images/logo.svg" alt="Gentelella Alela!" class="logo-full logo-main" loading="lazy"><img src="../images/logo-icon.svg" alt="Gentelella" class="logo-icon" loading="lazy"></a>
-            </div>
-
-            <div class="clearfix"></div>
-
-            <!-- menu profile quick info -->
-            <div class="profile clearfix">
-              <div class="profile_pic">
-                <img src="../images/img.jpg" alt="User profile photo" class="img-circle profile_img" loading="lazy">
-              </div>
-              <div class="profile_info">
-                <span>Welcome,</span>
-                <h4>John Doe</h4>
-              </div>
-            </div>
-            <!-- /menu profile quick info -->
-
-            <br />
-
-            <!-- sidebar menu -->
-            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-              <div class="menu_section">
-                <h3>General</h3>
-                <ul class="nav side-menu">
-                  <li><a href="https://dashboardpack.com/?utm_source=gentelella&utm_medium=sidebar&utm_campaign=premium" target="_blank"><i class="bi bi-stars"></i> Go Pro <span class="badge bg-warning">Pro</span></a></li>
-                  <li><a><i class="bi bi-house"></i> Home <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="index.html">Dashboard 1</a></li>
-                      <li><a href="index2.html">Dashboard 2</a></li>
-                      <li><a href="index3.html">Dashboard 3</a></li>
-                      <li><a href="index4.html">Dashboard 4</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="bi bi-pencil-square"></i> Forms <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="form.html">General Form</a></li>
-                      <li><a href="form_advanced.html">Advanced Components</a></li>
-                      <li><a href="form_validation.html">Form Validation</a></li>
-                      <li><a href="form_wizards.html">Form Wizard</a></li>
-                      <li><a href="form_upload.html">Form Upload</a></li>
-                      <li><a href="form_buttons.html">Form Buttons</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="bi bi-display"></i> UI Elements <span class="badge bg-danger">Hot</span> <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="general_elements.html">General Elements</a></li>
-                      <li><a href="media_gallery.html">Media Gallery</a></li>
-                      <li><a href="typography.html">Typography</a></li>
-                      <li><a href="icons.html">Icons</a></li>
-                      <li><a href="widgets.html">Widgets</a></li>
-                      <li><a href="invoice.html">Invoice</a></li>
-                      <li><a href="inbox.html">Inbox</a></li>
-                      <li><a href="calendar.html">Calendar</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="bi bi-table"></i> Tables <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="tables.html">Tables</a></li>
-                      <li><a href="tables_dynamic.html">Table Dynamic</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="bi bi-bar-chart"></i> Data Presentation <span class="badge bg-success">New</span> <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="chartjs.html">Chart.js</a></li>
-                      <li><a href="echarts.html">ECharts <span class="badge bg-info">Updated</span></a></li>
-                      <li><a href="other_charts.html">Other Charts</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="bi bi-layout-split"></i>Layouts <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="fixed_sidebar.html">Fixed Sidebar</a></li>
-                      <li><a href="fixed_footer.html">Fixed Footer</a></li>
-                    </ul>
-                  </li>
-                </ul>
-              </div>
-              <div class="menu_section">
-                <h3>Live On</h3>
-                <ul class="nav side-menu">
-                  <li><a><i class="bi bi-file-earmark-text"></i> Additional Pages <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="e_commerce.html">E-commerce</a></li>
-                      <li><a href="projects.html">Projects</a></li>
-                      <li><a href="project_detail.html">Project Detail</a></li>
-                      <li><a href="contacts.html">Contacts</a></li>
-                      <li><a href="profile.html">Profile</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="bi bi-window-stack"></i> Extras <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="page_403.html">403 Error</a></li>
-                      <li><a href="page_404.html">404 Error</a></li>
-                      <li><a href="page_500.html">500 Error</a></li>
-                      <li><a href="plain_page.html">Plain Page</a></li>
-                      <li><a href="login.html">Login Page</a></li>
-                      <li><a href="pricing_tables.html">Pricing Tables</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="bi bi-diagram-3"></i> Multilevel Menu <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                        <li><a href="#level1_1">Level One</a></li>
-                        <li><a>Level One<span class="bi bi-chevron-down"></span></a>
-                          <ul class="nav child_menu">
-                            <li class="sub_menu"><a href="level2.html">Level Two</a></li>
-                            <li><a href="#level2_1">Level Two</a></li>
-                            <li><a href="#level2_2">Level Two</a></li>
-                          </ul>
-                        </li>
-                        <li><a href="#level1_2">Level One</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="landing.html"><i class="bi bi-laptop"></i> Landing Page <span class="badge bg-info">Updated</span></a></li>
-                </ul>
-              </div>
-
-            </div>
-            <!-- /sidebar menu -->
-
-            <!-- /menu footer buttons -->
-            <div class="sidebar-footer hidden-small">
-              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Settings">
-                <span class="fas fa-cog" aria-hidden="true"></span>
-              </a>
-              <a data-bs-toggle="tooltip" data-bs-placement="top" title="FullScreen">
-                <span class="fas fa-expand" aria-hidden="true"></span>
-              </a>
-              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Lock">
-                <span class="fas fa-eye-slash" aria-hidden="true"></span>
-              </a>
-              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Logout" href="login.html">
-                <span class="fas fa-power-off" aria-hidden="true"></span>
-              </a>
-            </div>
-            <!-- /menu footer buttons -->
-          </div>
-        </div>
-
-        <!-- top navigation -->
-        <div class="top_nav">
-            <div class="nav_menu d-flex align-items-center justify-content-between">
-                <div class="nav toggle">
-                  <a id="menu_toggle"><i class="fas fa-bars"></i></a>
-                </div>
-                <nav class="nav navbar-nav ms-auto">
-                <ul class="navbar-right d-flex align-items-center gap-3 pe-3">
-                <li class="nav-item dropdown">
-                    <a href="#" role="button" class="dropdown-toggle info-number" id="navbarDropdown1" data-bs-toggle="dropdown" aria-expanded="false">
-                      <i class="fas fa-envelope"></i>
-                      <span class="badge bg-green">6</span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end list-unstyled msg_list dropdown-menu-lg" role="menu" aria-labelledby="navbarDropdown1">
-                      <li class="nav-item">
-                        <a class="dropdown-item">
-                          <span class="image"><img src="../images/img.jpg" alt="Profile Image" /></span>
-                          <span>
-                            <span>John Smith</span>
-                            <span class="time">3 mins ago</span>
-                          </span>
-                          <span class="message">
-                            Film festivals used to be do-or-die moments for movie makers. They were where...
-                          </span>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="dropdown-item">
-                          <span class="image"><img src="../images/img.jpg" alt="Profile Image" /></span>
-                          <span>
-                            <span>John Smith</span>
-                            <span class="time">3 mins ago</span>
-                          </span>
-                          <span class="message">
-                            Film festivals used to be do-or-die moments for movie makers. They were where...
-                          </span>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="dropdown-item">
-                          <span class="image"><img src="../images/img.jpg" alt="Profile Image" /></span>
-                          <span>
-                            <span>John Smith</span>
-                            <span class="time">3 mins ago</span>
-                          </span>
-                          <span class="message">
-                            Film festivals used to be do-or-die moments for movie makers. They were where...
-                          </span>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="dropdown-item">
-                          <span class="image"><img src="../images/img.jpg" alt="Profile Image" /></span>
-                          <span>
-                            <span>John Smith</span>
-                            <span class="time">3 mins ago</span>
-                          </span>
-                          <span class="message">
-                            Film festivals used to be do-or-die moments for movie makers. They were where...
-                          </span>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <div class="text-center">
-                          <a class="dropdown-item">
-                            <strong>See All Alerts</strong>
-                            <i class="fas fa-angle-right"></i>
-                          </a>
-                        </div>
-                      </li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a href="#" role="button" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                      <img src="../images/img.jpg" alt="">John Doe
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-end dropdown-usermenu dropdown-menu-sm" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item"  href="#" role="button"> Profile</a>
-                        <a class="dropdown-item"  href="#" role="button">
-                          <span class="badge bg-red float-end">50%</span>
-                          <span>Settings</span>
-                        </a>
-                    <a class="dropdown-item"  href="#" role="button">Help</a>
-                      <a class="dropdown-item"  href="login.html"><i class="fas fa-sign-out-alt float-end"></i> Log Out</a>
-                    </div>
-                </li>
-              </ul>
-              </nav>
-            </div>
-          </div>
-        <!-- /top navigation -->
-
-        <!-- page content -->
-        <main class="right_col" role="main" aria-label="Main content">
-          <div class="">
-            <div class="page-title">
-              <div class="title_left">
-                <h1 class="page-heading h3">Typography</h1>
-              </div>
-
-              <div class="title_right">
-                <div class="col-md-5 col-sm-5 mb-3 float-end top_search">
-                  <div class="input-group search-bar-fix">
-                    <input type="text" class="form-control" placeholder="Search typography...">
-                    <button class="btn btn-outline-secondary" type="button">
-                      <i class="fas fa-search"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="clearfix"></div>
-
-            <!-- Headings Section -->
-            <div class="row mb-4">
-              <div class="col-md-12">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h4>Headings <small>HTML heading elements with Bootstrap 5 utilities</small></h4>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a></li>
-                      <li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a></li>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                    <div class="row">
-                      <div class="col-md-6">
-                        <h1>h1. Bootstrap heading <small class="text-muted">Secondary text</small></h1>
-                        <h4>h2. Bootstrap heading <small class="text-muted">Secondary text</small></h4>
-                        <h3>h3. Bootstrap heading <small class="text-muted">Secondary text</small></h3>
-                        <h4>h4. Bootstrap heading <small class="text-muted">Secondary text</small></h4>
-                        <h5>h5. Bootstrap heading <small class="text-muted">Secondary text</small></h5>
-                        <h6>h6. Bootstrap heading <small class="text-muted">Secondary text</small></h6>
-                      </div>
-                      <div class="col-md-6">
-                        <h3>Display Headings <small class="text-muted">For dramatic impact</small></h3>
-                        <p class="text-muted small mb-3">Display headings are extra-large headings designed for hero sections and prominent titles.</p>
-                        <div class="display-examples">
-                          <h1 class="display-1">HERO TITLE</h1>
-                          <p class="text-muted small">display-1 • 6rem (96px) • For main landing pages</p>
-                          
-                          <h1 class="display-2 mt-4">Feature Launch</h1>
-                          <p class="text-muted small">display-2 • 5.5rem (88px) • For major announcements</p>
-                          
-                          <h1 class="display-3 mt-4">Section Header</h1>
-                          <p class="text-muted small">display-3 • 4.5rem (72px) • For prominent sections</p>
-                          
-                          <h1 class="display-4 mt-4">Product Title</h1>
-                          <p class="text-muted small">display-4 • 3.5rem (56px) • For product features</p>
-                          
-                          <h1 class="display-5 mt-4">Call to Action</h1>
-                          <p class="text-muted small">display-5 • 3rem (48px) • For marketing CTAs</p>
-                          
-                          <h1 class="display-6 mt-4">Subtitle</h1>
-                          <p class="text-muted small">display-6 • 2.5rem (40px) • For large subtitles</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Text Elements Section -->
-            <div class="row mb-4">
-              <div class="col-md-6">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h4>Text Elements <small>Inline text elements</small></h4>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a></li>
-                      <li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a></li>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                    <p class="lead">This is a lead paragraph. It stands out from regular paragraphs.</p>
-                    
-                    <p>You can use the mark tag to <mark>highlight</mark> text.</p>
-                    <p><del>This line of text is meant to be treated as deleted text.</del></p>
-                    <p><s>This line of text is meant to be treated as no longer accurate.</s></p>
-                    <p><ins>This line of text is meant to be treated as an addition to the document.</ins></p>
-                    <p><u>This line of text will render as underlined.</u></p>
-                    <p><small>This line of text is meant to be treated as fine print.</small></p>
-                    <p><strong>This line rendered as bold text.</strong></p>
-                    <p><em>This line rendered as italicized text.</em></p>
-                    
-                    <h5>Abbreviations</h5>
-                    <p><abbr title="attribute">attr</abbr></p>
-                    <p><abbr title="HyperText Markup Language" class="initialism">HTML</abbr></p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-6">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h4>Text Utilities <small>Bootstrap 5 text classes</small></h4>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a></li>
-                      <li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a></li>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                    <h5>Text Colors</h5>
-                    <p class="text-primary">Primary text color</p>
-                    <p class="text-secondary">Secondary text color</p>
-                    <p class="text-success">Success text color</p>
-                    <p class="text-danger">Danger text color</p>
-                    <p class="text-warning">Warning text color</p>
-                    <p class="text-info">Info text color</p>
-                    <p class="text-light bg-dark p-2">Light text color</p>
-                    <p class="text-dark">Dark text color</p>
-                    <p class="text-muted">Muted text color</p>
-
-                    <h5>Text Alignment</h5>
-                    <p class="text-start">Left aligned text on all viewport sizes.</p>
-                    <p class="text-center">Center aligned text on all viewport sizes.</p>
-                    <p class="text-end">Right aligned text on all viewport sizes.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Typography Examples Section -->
-            <div class="row mb-4">
-              <div class="col-md-12">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h4>Real-World Typography Examples <small>Practical usage demonstrations</small></h4>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a></li>
-                      <li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a></li>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                    <div class="row">
-                      <div class="col-md-8">
-                        <!-- Article Example -->
-                        <article class="mb-5">
-                          <header class="mb-4">
-                            <h1 class="display-4">The Future of Web Design</h1>
-                            <p class="lead text-muted">Exploring modern trends and best practices in contemporary web development</p>
-                            <div class="d-flex align-items-center text-muted small">
-                              <span class="me-3"><i class="fas fa-user me-1"></i> By Sarah Johnson</span>
-                              <span class="me-3"><i class="fas fa-calendar me-1"></i> March 15, 2032</span>
-                              <span><i class="fas fa-clock me-1"></i> 8 min read</span>
-                            </div>
-                          </header>
-
-                          <div class="article-content">
-                            <p class="lead">In the rapidly evolving landscape of web design, staying current with the latest trends and technologies is essential for creating engaging, accessible, and performant user experiences.</p>
-
-                            <h4>Design Principles That Matter</h4>
-                            <p>Modern web design is built on several foundational principles that guide successful projects. These include <strong>user-centered design</strong>, <em>accessibility-first thinking</em>, and <mark>performance optimization</mark>.</p>
-
-                            <h3>Key Considerations</h3>
-                            <ul class="list-unstyled">
-                              <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Mobile-first responsive design</li>
-                              <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Semantic HTML structure</li>
-                                                             <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Progressive enhancement</li>
-                              <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Performance budgets</li>
-                            </ul>
-
-                            <blockquote class="blockquote border-start border-4 border-primary ps-4 py-2 my-4">
-                              <p class="mb-2">"Design is not just what it looks like and feels like. Design is how it works."</p>
-                              <footer class="blockquote-footer">Steve Jobs</footer>
-                            </blockquote>
-
-                            <h3>Implementation Strategy</h3>
-                            <p>When implementing these principles, consider the following workflow:</p>
-                            <ol>
-                              <li><strong>Research and Discovery:</strong> Understanding user needs and business requirements</li>
-                              <li><strong>Design and Prototyping:</strong> Creating wireframes and interactive prototypes</li>
-                              <li><strong>Development:</strong> Building with modern frameworks and tools</li>
-                              <li><strong>Testing and Optimization:</strong> Continuous improvement based on user feedback</li>
-                            </ol>
-                          </div>
-                        </article>
-                      </div>
-
-                      <div class="col-md-4">
-                        <!-- Sidebar Example -->
-                        <aside>
-                          <div class="card mb-4">
-                            <div class="card-header">
-                              <h5 class="card-title mb-0">Quick Stats</h5>
-                            </div>
-                            <div class="card-body">
-                              <div class="mb-3">
-                                <div class="d-flex justify-content-between">
-                                  <span class="fw-semibold">Mobile Users</span>
-                                  <span class="badge bg-primary">68%</span>
-                                </div>
-                              </div>
-                              <div class="mb-3">
-                                <div class="d-flex justify-content-between">
-                                  <span class="fw-semibold">Page Load Time</span>
-                                  <span class="badge bg-success">2.3s</span>
-                                </div>
-                              </div>
-                              <div class="mb-3">
-                                <div class="d-flex justify-content-between">
-                                  <span class="fw-semibold">Accessibility Score</span>
-                                  <span class="badge bg-info">95/100</span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-
-                          <div class="card">
-                            <div class="card-header">
-                              <h5 class="card-title mb-0">Related Resources</h5>
-                            </div>
-                            <div class="card-body">
-                              <ul class="list-unstyled mb-0">
-                                <li class="mb-2">
-                                  <a href="#" class="text-decoration-none">
-                                    <i class="fas fa-book me-2 text-primary"></i>
-                                    Web Design Best Practices
-                                  </a>
-                                <li class="mb-2">
-                                  <a href="#" class="text-decoration-none">
-                                    <i class="fas fa-code me-2 text-success"></i>
-                                    CSS Grid and Flexbox Guide
-                                  </a>
-                                <li class="mb-2">
-                                  <a href="#" class="text-decoration-none">
-                                    <i class="fas fa-mobile-alt me-2 text-warning"></i>
-                                    Mobile-First Design Patterns
-                                  </a>
-                                <li>
-                                  <a href="#" class="text-decoration-none">
-                                    <i class="fas fa-universal-access me-2 text-info"></i>
-                                    Accessibility Guidelines
-                                  </a>
-                              </ul>
-                            </div>
-                          </div>
-                        </aside>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Components Section -->
-            <div class="row mb-4">
-              <div class="col-md-6">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h4>Badges & Labels <small>Status indicators and tags</small></h4>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a></li>
-                      <li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a></li>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                    <h5>Standard Badges</h5>
-                    <div class="mb-3">
-                      <span class="badge bg-primary me-2">Primary</span>
-                      <span class="badge bg-secondary me-2">Secondary</span>
-                      <span class="badge bg-success me-2">Success</span>
-                      <span class="badge bg-danger me-2">Danger</span>
-                      <span class="badge bg-warning text-dark me-2">Warning</span>
-                      <span class="badge bg-info me-2">Info</span>
-                      <span class="badge bg-light text-dark me-2">Light</span>
-                      <span class="badge bg-dark">Dark</span>
-                    </div>
-
-                    <h5>Rounded Pill Badges</h5>
-                    <div class="mb-3">
-                      <span class="badge rounded-pill bg-primary me-2">Primary</span>
-                      <span class="badge rounded-pill bg-success me-2">Success</span>
-                      <span class="badge rounded-pill bg-warning text-dark me-2">Warning</span>
-                      <span class="badge rounded-pill bg-danger">Danger</span>
-                    </div>
-
-                    <h5>Contextual Usage</h5>
-                    <div class="mb-3">
-                      <h6>Messages <span class="badge bg-secondary">4</span></h6>
-                      <h6>Notifications <span class="badge bg-danger">12</span></h6>
-                      <h6>Tasks <span class="badge bg-success">8</span></h6>
-                    </div>
-
-                    <h5>Status Indicators</h5>
-                    <div>
-                      <p class="mb-1">
-                        <span class="badge bg-success me-2">Online</span> System operational
-                      </p>
-                      <p class="mb-1">
-                        <span class="badge bg-warning text-dark me-2">Maintenance</span> Scheduled downtime
-                      </p>
-                      <p class="mb-1">
-                        <span class="badge bg-danger me-2">Offline</span> Service unavailable
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-6">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h4>Lists & Content <small>Structured content examples</small></h4>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a></li>
-                      <li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a></li>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                    <h5>Definition Lists</h5>
-                    <dl class="row">
-                      <dt class="col-sm-3">Frontend</dt>
-                      <dd class="col-sm-9">The user-facing part of a website or application</dd>
-                      
-                      <dt class="col-sm-3">Backend</dt>
-                      <dd class="col-sm-9">Server-side logic and database management</dd>
-                      
-                      <dt class="col-sm-3">API</dt>
-                      <dd class="col-sm-9">Application Programming Interface for data exchange</dd>
-                    </dl>
-
-                    <h5>Feature List</h5>
-                    <ul class="list-group list-group-flush">
-                      <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Responsive Design
-                        <span class="badge bg-primary rounded-pill">✓</span>
-                      <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Cross-browser Support
-                        <span class="badge bg-primary rounded-pill">✓</span>
-                      <li class="list-group-item d-flex justify-content-between align-items-center">
-                        SEO Optimized
-                        <span class="badge bg-success rounded-pill">✓</span>
-                      <li class="list-group-item d-flex justify-content-between align-items-center">
-                        PWA Ready
-                        <span class="badge bg-warning rounded-pill">Soon</span>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Code and Preformatted Text -->
-            <div class="row mb-4">
-              <div class="col-md-12">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h4>Code Examples <small>Inline and block code formatting</small></h4>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a></li>
-                      <li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a></li>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                    <div class="row">
-                      <div class="col-md-6">
-                        <h5>Inline Code</h5>
-                        
-                        <h5>Keyboard Input</h5>
-                        <p>Press <kbd>Ctrl</kbd> + <kbd>C</kbd> to copy and <kbd>Ctrl</kbd> + <kbd>V</kbd> to paste.</p>
-                        
-                        <h5>Sample Output</h5>
-                        <samp>This text is meant to be treated as sample output from a computer program.</samp>
-                      </div>
-                      <div class="col-md-6">
-                        <h5>Code Block</h5>
-                        <pre><code>function greetUser(name) {
-  if (!name) {
-    throw new Error('Name is required');
-  }
-  
-  return `Hello, ${name}! Welcome to our application.`;
-}
-
-// Usage example
-const message = greetUser('John Doe');
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- /page content -->
-
-        <!-- footer content -->
-        <footer>
-          <div class="float-end">
-            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
-          </div>
-          <div class="clearfix"></div>
-        </footer>
-        <!-- /footer content -->
+  <div class="page-header">
+    <div class="page-header-row">
+      <div>
+        <div class="page-pretitle">Foundations</div>
+        <div class="page-title">Typography</div>
       </div>
-    </div>    <!-- Compiled JavaScript (Bootstrap and vendor scripts) -->
-    
-  </body>
+    </div>
+  </div>
+
+  <!-- ── Display + Type scale ── -->
+  <div class="row col-1">
+    <div class="card">
+      <div class="card-header"><div class="card-title">Display sizes</div></div>
+      <div class="card-body">
+        <div class="type-row"><div class="type-label">56px / 700 / -2px</div><div style="font-size:56px;font-weight:700;letter-spacing:-2px;line-height:1.05;color:var(--text)">Built to ship.</div></div>
+        <div class="type-row"><div class="type-label">42px / 700 / -1.4px</div><div style="font-size:42px;font-weight:700;letter-spacing:-1.4px;line-height:1.1;color:var(--text)">A free admin template, redesigned.</div></div>
+        <div class="type-row"><div class="type-label">32px / 700 / -1px</div><div style="font-size:32px;font-weight:700;letter-spacing:-1px;line-height:1.15;color:var(--text)">Real charts, real tables, real fast.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row col-1">
+    <div class="card">
+      <div class="card-header"><div class="card-title">Heading scale</div></div>
+      <div class="card-body">
+        <div class="type-row"><div class="type-label">28px / 700 — H1</div><h1 style="font-size:28px;font-weight:700;letter-spacing:-0.5px;color:var(--text);line-height:1.2;margin:0">The quick brown fox jumps over the lazy dog</h1></div>
+        <div class="type-row"><div class="type-label">22px / 600 — H2</div><h2 style="font-size:22px;font-weight:600;letter-spacing:-0.4px;color:var(--text);line-height:1.25;margin:0">The quick brown fox jumps over the lazy dog</h2></div>
+        <div class="type-row"><div class="type-label">18px / 600 — H3</div><h3 style="font-size:18px;font-weight:600;color:var(--text);line-height:1.3;margin:0">The quick brown fox jumps over the lazy dog</h3></div>
+        <div class="type-row"><div class="type-label">15px / 600 — H4</div><h4 style="font-size:15px;font-weight:600;color:var(--text);margin:0">The quick brown fox jumps over the lazy dog</h4></div>
+        <div class="type-row"><div class="type-label">14px / 400 — body</div><div style="font-size:14px;font-weight:400;color:var(--text)">Body copy at 14/1.43. The quick brown fox jumps over the lazy dog. Use this size for paragraph text and most UI labels.</div></div>
+        <div class="type-row"><div class="type-label">13px / 400 — secondary</div><div style="font-size:13px;font-weight:400;color:var(--text-secondary)">Secondary text at 13px in <code>--text-secondary</code> for descriptions, captions and tertiary copy.</div></div>
+        <div class="type-row"><div class="type-label">12px / 500 — helper</div><div style="font-size:12px;font-weight:500;color:var(--text-muted)">Helper text at 12px in <code>--text-muted</code>. Use sparingly for inline metadata.</div></div>
+        <div class="type-row"><div class="type-label">11px / 600 caps</div><div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.4px;color:var(--text-muted)">Eyebrow / pretitle</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Inline + Block ── -->
+  <div class="row col-2">
+    <div class="card">
+      <div class="card-header"><div class="card-title">Inline text</div></div>
+      <div class="card-body" style="font-size:13px;line-height:1.65;color:var(--text-secondary)">
+        <p style="margin-bottom:10px">Bold uses <strong>medium 500</strong> by default. Italic <em>looks like this</em>. A <a href="#">hyperlink</a> uses the primary teal. Inline <code style="font-family:var(--font-mono);font-size:12px;background:var(--bg-surface-secondary);padding:1px 5px;border-radius:3px">code</code> sits at 12px. Use <kbd style="font-family:inherit;font-size:11px;background:var(--bg-surface-secondary);border:1px solid var(--border-color);padding:1px 5px;border-radius:3px">⌘K</kbd> to open the search.</p>
+        <p style="margin-bottom:10px">You can <mark style="background:var(--yellow-lt);color:var(--text);padding:0 2px;border-radius:2px">highlight</mark> or strike <s>old text</s>. Footnotes use <sup style="font-size:10px">superscript</sup> or <sub style="font-size:10px">subscript</sub>. Abbreviations like <abbr title="Cascading Style Sheets" style="border-bottom:1px dotted var(--text-muted);cursor:help">CSS</abbr> use a dotted underline.</p>
+        <p>Use <small style="font-size:11px;color:var(--text-muted)">small caps</small> for compact metadata.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-title">Block elements</div></div>
+      <div class="card-body">
+        <blockquote style="border-left:3px solid var(--primary);padding:4px 14px;font-size:14px;color:var(--text);margin-bottom:14px;line-height:1.55">
+          “Design is not just what it looks like and feels like. Design is how it works.”
+          <footer style="font-size:12px;color:var(--text-muted);margin-top:6px">— Steve Jobs</footer>
+        </blockquote>
+        <ul style="font-size:13px;color:var(--text-secondary);padding-left:20px;line-height:1.6;margin-bottom:12px">
+          <li>Concise list items at 13px</li>
+          <li>Comfortable line-height of 1.6</li>
+          <li>Bullet color matches body text</li>
+        </ul>
+        <ol style="font-size:13px;color:var(--text-secondary);padding-left:20px;line-height:1.6;margin-bottom:12px">
+          <li>First step in the sequence</li>
+          <li>Second step continues from above</li>
+          <li>Third step closes the loop</li>
+        </ol>
+        <dl style="font-size:13px;display:grid;grid-template-columns:120px 1fr;gap:6px 14px;color:var(--text-secondary)">
+          <dt style="color:var(--text);font-weight:600">Plan</dt><dd style="margin:0">Business</dd>
+          <dt style="color:var(--text);font-weight:600">Seats</dt><dd style="margin:0">12 of 25 used</dd>
+          <dt style="color:var(--text);font-weight:600">Renewal</dt><dd style="margin:0">May 28, 2026</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Lead paragraph + reading copy ── -->
+  <div class="row col-1">
+    <div class="card">
+      <div class="card-header"><div class="card-title">Reading copy</div></div>
+      <div class="card-body" style="max-width:680px">
+        <p style="font-size:16px;color:var(--text);line-height:1.65;margin-bottom:14px"><strong style="font-weight:500">Lead paragraph</strong> at 16/1.65 for product copy, blog intros, and onboarding screens. Keeps lines around 65–80 characters for comfortable reading.</p>
+        <p style="font-size:14px;color:var(--text-secondary);line-height:1.7;margin-bottom:12px">Body paragraphs continue at 14/1.7 with secondary color. Notice how the spacing between paragraphs gives the eye a place to rest. Long-form articles can run to ~75 characters per line and stay readable on most desktop breakpoints.</p>
+        <p style="font-size:14px;color:var(--text-secondary);line-height:1.7;margin-bottom:12px">Inline emphasis like <a href="#">links</a>, <strong style="color:var(--text)">bold accents</strong>, and <em>italics</em> all share the body line-height so vertical rhythm is preserved across the whole block.</p>
+        <hr style="border:0;border-top:1px solid var(--border-color-light);margin:18px 0">
+        <p style="font-size:12.5px;color:var(--text-muted);line-height:1.55"><strong style="color:var(--text);font-weight:600">Footnote.</strong> Smaller meta text (12.5/1.55) sits comfortably below dividers. Use this for source attributions, timestamps, and disclaimers.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Code blocks ── -->
+  <div class="row col-2">
+    <div class="card">
+      <div class="card-header"><div class="card-title">Code block</div></div>
+      <div class="card-body">
+        <pre style="background:var(--bg-surface-secondary);border:1px solid var(--border-color-light);border-radius:var(--radius);padding:14px 16px;font-family:var(--font-mono);font-size:12.5px;line-height:1.6;color:var(--text);overflow-x:auto;margin:0">// Add a chart factory to charts.js
+function myChart(echarts, el, t) {
+  const chart = echarts.init(el);
+  chart.setOption({
+    series: [{ type: 'line', data: [12, 18, 24, 30] }]
+  });
+  return chart;
+}</pre>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header"><div class="card-title">Terminal</div></div>
+      <div class="card-body">
+        <pre style="background:#0f1623;color:#e6ebf2;border-radius:var(--radius);padding:14px 16px;font-family:var(--font-mono);font-size:12.5px;line-height:1.6;overflow-x:auto;margin:0"><span style="color:#7e8896">$</span> npm run build
+<span style="color:#1ABB9C">✓</span> built in 4.9s
+<span style="color:#7e8896">$</span> npm run preview
+  <span style="color:#7e8896">➜  Local:</span> http://localhost:4173/
+<span style="color:#7e8896">$</span> █</pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Numerals + alignment ── -->
+  <div class="row col-2">
+    <div class="card">
+      <div class="card-header"><div class="card-title">Numerals</div></div>
+      <div class="card-body">
+        <div class="type-row">
+          <div class="type-label">Default</div>
+          <div style="font-size:18px;color:var(--text);font-weight:500">$28,401.50 · 99.9%</div>
+        </div>
+        <div class="type-row">
+          <div class="type-label">Tabular</div>
+          <div style="font-size:18px;color:var(--text);font-weight:500;font-variant-numeric:tabular-nums">$28,401.50 · 99.9%</div>
+        </div>
+        <div class="type-row">
+          <div class="type-label">Display</div>
+          <div style="font-size:36px;color:var(--text);font-weight:700;letter-spacing:-1px;line-height:1">$28,401</div>
+        </div>
+        <div class="type-row" style="border-bottom:none">
+          <div class="type-label">Mono</div>
+          <div style="font-size:14px;color:var(--text);font-family:var(--font-mono)">acct_8f3k29df3lkj</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-title">Truncation</div></div>
+      <div class="card-body">
+        <div style="margin-bottom:14px">
+          <div style="font-size:11px;color:var(--text-muted);margin-bottom:4px">Single-line truncate</div>
+          <div style="font-size:13px;color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:340px;border:1px dashed var(--border-color);padding:8px;border-radius:4px">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</div>
+        </div>
+        <div>
+          <div style="font-size:11px;color:var(--text-muted);margin-bottom:4px">Multi-line clamp (3 lines)</div>
+          <div style="font-size:13px;color:var(--text-secondary);line-height:1.55;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;border:1px dashed var(--border-color);padding:8px;border-radius:4px">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</main>
+
+</body>
 </html>

@@ -1,1113 +1,820 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UI Elements | Gentelella 2026 v4</title>
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script type="module" src="/src/main-v4.js"></script>
+</head>
+<body data-shell="admin" data-page="ui" data-breadcrumb="Home > UI Elements">
 
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<main class="main">
+<div class="page-wrapper">
 
-    <!-- Security headers -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.googleapis.com; img-src 'self' data: https: blob:; font-src 'self' data: https://fonts.gstatic.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; connect-src 'self' ws: wss: http://localhost:* https://api.example.com https://*.googleapis.com; frame-src 'self' https://www.youtube.com https://player.vimeo.com; media-src 'self' https: blob:; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
-
-    <!-- Favicons -->
-    <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
-    <link rel="icon" href="../images/favicon-32x32.svg" type="image/svg+xml" sizes="32x32">
-    <link rel="icon" href="../images/favicon-16x16.svg" type="image/svg+xml" sizes="16x16">
-    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="../images/apple-touch-icon.svg" sizes="180x180">
-    <link rel="manifest" href="../site.webmanifest">
-
-    <!-- Theme color -->
-    <meta name="theme-color" content="#2a3f54">
-    <meta name="msapplication-TileColor" content="#2a3f54">
-
-    <title>General Elements | Gentelella</title>    <!-- Compiled CSS (includes Bootstrap, Font Awesome, and all vendor styles) -->
-    <script type="module" src="/src/main-minimal.js"></script>
-  </head>
-
-  <body class="nav-md page-general-elements">
-    <div class="container body">
-      <div class="main_container">
-        <aside class="col-md-3 left_col" aria-label="Sidebar navigation">
-          <div class="left_col scroll-view">
-            <div class="navbar nav_title border-0">
-              <a href="index.html" class="site_title"><img src="../images/logo.svg" alt="Gentelella Alela!" class="logo-full logo-main" loading="lazy"><img src="../images/logo-icon.svg" alt="Gentelella" class="logo-icon" loading="lazy"></a>
-            </div>
-
-            <div class="clearfix"></div>
-
-            <!-- menu profile quick info -->
-            <div class="profile clearfix">
-              <div class="profile_pic">
-                <img src="../images/img.jpg" alt="User profile photo" class="img-circle profile_img" loading="lazy">
-              </div>
-              <div class="profile_info">
-                <span>Welcome,</span>
-                <h4>John Doe</h4>
-              </div>
-            </div>
-            <!-- /menu profile quick info -->
-
-            <br />
-
-            <!-- sidebar menu -->
-            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-              <div class="menu_section">
-                <h3>General</h3>
-                <ul class="nav side-menu">
-                  <li><a href="https://dashboardpack.com/?utm_source=gentelella&utm_medium=sidebar&utm_campaign=premium" target="_blank"><i class="bi bi-stars"></i> Go Pro <span class="badge bg-warning">Pro</span></a></li>
-                  <li><a><i class="bi bi-house"></i> Home <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="index.html">Dashboard 1</a></li>
-                      <li><a href="index2.html">Dashboard 2</a></li>
-                      <li><a href="index3.html">Dashboard 3</a></li>
-                      <li><a href="index4.html">Dashboard 4</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="bi bi-pencil-square"></i> Forms <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="form.html">General Form</a></li>
-                      <li><a href="form_advanced.html">Advanced Components</a></li>
-                      <li><a href="form_validation.html">Form Validation</a></li>
-                      <li><a href="form_wizards.html">Form Wizard</a></li>
-                      <li><a href="form_upload.html">Form Upload</a></li>
-                      <li><a href="form_buttons.html">Form Buttons</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="bi bi-display"></i> UI Elements <span class="badge bg-danger">Hot</span> <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="general_elements.html">General Elements</a></li>
-                      <li><a href="media_gallery.html">Media Gallery</a></li>
-                      <li><a href="typography.html">Typography</a></li>
-                      <li><a href="icons.html">Icons</a></li>
-                      <li><a href="widgets.html">Widgets</a></li>
-                      <li><a href="invoice.html">Invoice</a></li>
-                      <li><a href="inbox.html">Inbox</a></li>
-                      <li><a href="calendar.html">Calendar</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="bi bi-table"></i> Tables <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="tables.html">Tables</a></li>
-                      <li><a href="tables_dynamic.html">Table Dynamic</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="bi bi-bar-chart"></i> Data Presentation <span class="badge bg-success">New</span> <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="chartjs.html">Chart.js</a></li>
-                      <li><a href="echarts.html">ECharts <span class="badge bg-info">Updated</span></a></li>
-                      <li><a href="other_charts.html">Other Charts</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="bi bi-layout-split"></i>Layouts <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="fixed_sidebar.html">Fixed Sidebar</a></li>
-                      <li><a href="fixed_footer.html">Fixed Footer</a></li>
-                    </ul>
-                  </li>
-                </ul>
-              </div>
-              <div class="menu_section">
-                <h3>Live On</h3>
-                <ul class="nav side-menu">
-                  <li><a><i class="bi bi-file-earmark-text"></i> Additional Pages <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="e_commerce.html">E-commerce</a></li>
-                      <li><a href="projects.html">Projects</a></li>
-                      <li><a href="project_detail.html">Project Detail</a></li>
-                      <li><a href="contacts.html">Contacts</a></li>
-                      <li><a href="profile.html">Profile</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="bi bi-window-stack"></i> Extras <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="page_403.html">403 Error</a></li>
-                      <li><a href="page_404.html">404 Error</a></li>
-                      <li><a href="page_500.html">500 Error</a></li>
-                      <li><a href="plain_page.html">Plain Page</a></li>
-                      <li><a href="login.html">Login Page</a></li>
-                      <li><a href="pricing_tables.html">Pricing Tables</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="bi bi-diagram-3"></i> Multilevel Menu <span class="bi bi-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                        <li><a href="#level1_1">Level One</a></li>
-                        <li><a>Level One<span class="bi bi-chevron-down"></span></a>
-                          <ul class="nav child_menu">
-                            <li class="sub_menu"><a href="level2.html">Level Two</a></li>
-                            <li><a href="#level2_1">Level Two</a></li>
-                            <li><a href="#level2_2">Level Two</a></li>
-                          </ul>
-                        </li>
-                        <li><a href="#level1_2">Level One</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="landing.html"><i class="bi bi-laptop"></i> Landing Page <span class="badge bg-info">Updated</span></a></li>
-                </ul>
-              </div>
-
-            </div>
-            <!-- /sidebar menu -->
-
-            <!-- /menu footer buttons -->
-            <div class="sidebar-footer hidden-small">
-              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Settings">
-                <span class="fas fa-cog" aria-hidden="true"></span>
-              </a>
-              <a data-bs-toggle="tooltip" data-bs-placement="top" title="FullScreen">
-                <span class="fas fa-expand" aria-hidden="true"></span>
-              </a>
-              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Lock">
-                <span class="fas fa-eye-slash" aria-hidden="true"></span>
-              </a>
-              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Logout" href="login.html">
-                <span class="fas fa-power-off" aria-hidden="true"></span>
-              </a>
-            </div>
-            <!-- /menu footer buttons -->
-          </div>
-        </div>
-
-        <!-- top navigation -->
-        <div class="top_nav">
-            <div class="nav_menu d-flex align-items-center justify-content-between">
-                <div class="nav toggle">
-                  <a id="menu_toggle"><i class="fas fa-bars"></i></a>
-                </div>
-                <nav class="nav navbar-nav ms-auto">
-                <ul class="navbar-right d-flex align-items-center gap-3 pe-3">
-                <li class="nav-item dropdown">
-                    <a href="#" role="button" class="dropdown-toggle info-number" id="navbarDropdown1" data-bs-toggle="dropdown" aria-expanded="false">
-                      <i class="fas fa-envelope"></i>
-                      <span class="badge bg-green">6</span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end list-unstyled msg_list dropdown-menu-lg" role="menu" aria-labelledby="navbarDropdown1">
-                      <li class="nav-item">
-                        <a class="dropdown-item">
-                          <span class="image"><img src="../images/img.jpg" alt="Profile Image" /></span>
-                          <span>
-                            <span>John Smith</span>
-                            <span class="time">3 mins ago</span>
-                          </span>
-                          <span class="message">
-                            Film festivals used to be do-or-die moments for movie makers. They were where...
-                          </span>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="dropdown-item">
-                          <span class="image"><img src="../images/img.jpg" alt="Profile Image" /></span>
-                          <span>
-                            <span>John Smith</span>
-                            <span class="time">3 mins ago</span>
-                          </span>
-                          <span class="message">
-                            Film festivals used to be do-or-die moments for movie makers. They were where...
-                          </span>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="dropdown-item">
-                          <span class="image"><img src="../images/img.jpg" alt="Profile Image" /></span>
-                          <span>
-                            <span>John Smith</span>
-                            <span class="time">3 mins ago</span>
-                          </span>
-                          <span class="message">
-                            Film festivals used to be do-or-die moments for movie makers. They were where...
-                          </span>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="dropdown-item">
-                          <span class="image"><img src="../images/img.jpg" alt="Profile Image" /></span>
-                          <span>
-                            <span>John Smith</span>
-                            <span class="time">3 mins ago</span>
-                          </span>
-                          <span class="message">
-                            Film festivals used to be do-or-die moments for movie makers. They were where...
-                          </span>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <div class="text-center">
-                          <a class="dropdown-item">
-                            <strong>See All Alerts</strong>
-                            <i class="fas fa-angle-right"></i>
-                          </a>
-                        </div>
-                      </li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a href="#" role="button" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                      <img src="../images/img.jpg" alt="">John Doe
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-end dropdown-usermenu dropdown-menu-sm" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item"  href="#" role="button"> Profile</a>
-                        <a class="dropdown-item"  href="#" role="button">
-                          <span class="badge bg-red float-end">50%</span>
-                          <span>Settings</span>
-                        </a>
-                    <a class="dropdown-item"  href="#" role="button">Help</a>
-                      <a class="dropdown-item"  href="login.html"><i class="fas fa-sign-out-alt float-end"></i> Log Out</a>
-                    </div>
-                </li>
-              </ul>
-              </nav>
-            </div>
-          </div>
-        <!-- /top navigation -->
-
-        <!-- page content -->
-        <main class="right_col" role="main" aria-label="Main content">
-          <div class="">
-            <div class="page-title">
-              <div class="title_left">
-                <h1 class="page-heading h3">General Elements</h1>
-              </div>
-
-              					<div class="title_right">
-						          <div class="col-md-5 col-sm-5 mb-3 float-end top_search">
-            <div class="input-group search-bar-fix">
-              <input type="text" class="form-control" placeholder="Search for...">
-              <button class="btn btn-outline-secondary" type="button">
-                <i class="fas fa-search"></i>
-              </button>
-            </div>
-          </div>
-					</div>
-            </div>
-
-            <div class="clearfix"></div>
-
-            <div class="">
-              <div class="col-md-6 col-sm-6">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h2><i class="fas fa-bars"></i> Tabs <small>Float left</small></h4>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Settings 1</a>
-                            <a class="dropdown-item" href="#">Settings 2</a>
-                          </div>
-                      <li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-
-                    <ul class="nav nav-tabs bar_tabs" id="myTab" role="tablist">
-                      <li class="nav-item">
-                        <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
-                      <li class="nav-item">
-                        <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
-                      <li class="nav-item">
-                        <a class="nav-link" id="contact-tab" data-bs-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
-                    </ul>
-                    <div class="tab-content" id="myTabContent">
-                      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                        Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher
-                            synth. Cosby sweater eu banh mi, qui irure terr.
-                      </div>
-                      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                        Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo
-                            booth letterpress, commodo enim craft beer mlkshk aliquip
-                      </div>
-                      <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                        xxFood truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo
-                            booth letterpress, commodo enim craft beer mlkshk 
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-
-              <div class="col-md-6 col-sm-6">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h2><i class="fas fa-bars"></i> Tabs <small>Float right</small></h4>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Settings 1</a>
-                            <a class="dropdown-item" href="#">Settings 2</a>
-                          </div>
-                      <li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-
-                    <ul class="nav nav-tabs justify-content-end bar_tabs" id="myTab" role="tablist">
-                      <li class="nav-item">
-                        <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#home1" role="tab" aria-controls="home" aria-selected="true">Home</a>
-                      <li class="nav-item">
-                        <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#profile1" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
-                      <li class="nav-item">
-                        <a class="nav-link" id="contact-tab" data-bs-toggle="tab" href="#contact1" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
-                    </ul>
-                    <div class="tab-content" id="myTabContent">
-                      <div class="tab-pane fade show active" id="home1" role="tabpanel" aria-labelledby="home-tab">
-                        Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher
-                            synth. Cosby sweater eu banh mi, qui irure terr.
-                      </div>
-                      <div class="tab-pane fade" id="profile1" role="tabpanel" aria-labelledby="profile-tab">
-                        Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo
-                            booth letterpress, commodo enim craft beer mlkshk aliquip
-                      </div>
-                      <div class="tab-pane fade" id="contact1" role="tabpanel" aria-labelledby="contact-tab">
-                        xxFood truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo
-                            booth letterpress, commodo enim craft beer mlkshk 
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-              <div class="clearfix"></div>
-
-
-              <div class="col-md-6 col-sm-6">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h2><i class="fas fa-bars"></i> Vertical Tabs <small>Float left</small></h4>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Settings 1</a>
-                            <a class="dropdown-item" href="#">Settings 2</a>
-                          </div>
-                      <li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-
-                    <div class="col-xs-3">
-                      <!-- required for floating -->
-                      <!-- Nav tabs -->
-                      <div class="nav nav-tabs flex-column bar_tabs" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                        <a class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
-                        <a class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</a>
-                        <a class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</a>
-                        <a class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>
-                      </div>
-            
-                    </div>
-
-                    <div class="col-xs-9">
-                      <!-- Tab panes -->
-                     
-                      <div class="tab-content" id="v-pills-tabContent">
-                        <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">Home Tab</div>
-                        <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">... content</div>
-                        <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">...content</div>
-                        <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...content</div>
-                      </div>
-                    </div>
-
-                    <div class="clearfix"></div>
-
-                  </div>
-                </div>
-              </div><div class="col-md-6 col-sm-6">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h2><i class="fas fa-bars"></i> Vertical Tabs <small>Float left</small></h4>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Settings 1</a>
-                            <a class="dropdown-item" href="#">Settings 2</a>
-                          </div>
-                      <li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-
-                    <div class="col-xs-3">
-                      <!-- required for floating -->
-                      <!-- Nav tabs -->
-                      <div class="nav nav-tabs flex-column bar_tabs" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                        <a class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" href="#v-pills-home1" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
-                        <a class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" href="#v-pills-profile1" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</a>
-                        <a class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" href="#v-pills-messages1" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</a>
-                        <a class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" href="#v-pills-settings1" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>
-                      </div>
-            
-                    </div>
-
-                    <div class="col-xs-9">
-                      <!-- Tab panes -->
-                     
-                      <div class="tab-content" id="v-pills-tabContent">
-                        <div class="tab-pane fade show active" id="v-pills-home1" role="tabpanel" aria-labelledby="v-pills-home-tab">Home Tab</div>
-                        <div class="tab-pane fade" id="v-pills-profile1" role="tabpanel" aria-labelledby="v-pills-profile-tab">... content</div>
-                        <div class="tab-pane fade" id="v-pills-messages1" role="tabpanel" aria-labelledby="v-pills-messages-tab">...content</div>
-                        <div class="tab-pane fade" id="v-pills-settings1" role="tabpanel" aria-labelledby="v-pills-settings-tab">...content</div>
-                      </div>
-                    </div>
-
-                    <div class="clearfix"></div>
-
-                  </div>
-                </div>
-              </div>
-
-              <div class="clearfix"></div>
-
-
-              <div class="col-md-6 col-sm-6">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h2><i class="fas fa-align-left"></i> Collapsible / Accordion <small>Sessions</small></h4>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Settings 1</a>
-                            <a class="dropdown-item" href="#">Settings 2</a>
-                          </div>
-                      <li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-
-                    <!-- start accordion -->
-                    <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
-                      <div class="panel">
-                        <a class="panel-heading" role="tab" id="headingOne" data-bs-toggle="collapse" data-bs-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                          <h4 class="panel-title">Collapsible Group Items #1</h4>
-                        </a>
-                        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                          <div class="panel-body">
-                            <table class="table table-bordered">
-                              <thead>
-                                <tr>
-                                  <th>#</th>
-                                  <th>First Name</th>
-                                  <th>Last Name</th>
-                                  <th>Username</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr>
-                                  <th scope="row">1</th>
-                                  <td>Mark</td>
-                                  <td>Otto</td>
-                                  <td>@mdo</td>
-                                </tr>
-                                <tr>
-                                  <th scope="row">2</th>
-                                  <td>Jacob</td>
-                                  <td>Thornton</td>
-                                  <td>@fat</td>
-                                </tr>
-                                <tr>
-                                  <th scope="row">3</th>
-                                  <td>Larry</td>
-                                  <td>the Bird</td>
-                                  <td>@twitter</td>
-                                </tr>
-                              </tbody>
-                            </table>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="panel">
-                        <a class="panel-heading collapsed" role="tab" id="headingTwo" data-bs-toggle="collapse" data-bs-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                          <h4 class="panel-title">Collapsible Group Items #2</h4>
-                        </a>
-                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                          <div class="panel-body">
-                            <p><strong>Collapsible Item 2 data</strong>
-                            </p>
-                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
-                          </div>
-                        </div>
-                      </div>
-                      <div class="panel">
-                        <a class="panel-heading collapsed" role="tab" id="headingThree" data-bs-toggle="collapse" data-bs-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                          <h4 class="panel-title">Collapsible Group Items #3</h4>
-                        </a>
-                        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                          <div class="panel-body">
-                            <p><strong>Collapsible Item 3 data</strong>
-                            </p>
-                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- end of accordion -->
-
-
-                  </div>
-                </div>
-              </div>
-
-
-              <div class="col-md-6 col-sm-6">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h2><i class="fas fa-align-left"></i> Collapsible / Accordion <small>Sessions</small></h4>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Settings 1</a>
-                            <a class="dropdown-item" href="#">Settings 2</a>
-                          </div>
-                      <li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-
-                    <!-- start accordion -->
-                    <div class="accordion" id="accordion1" role="tablist" aria-multiselectable="true">
-                      <div class="panel">
-                        <a class="panel-heading" role="tab" id="headingOne1" data-bs-toggle="collapse" data-bs-parent="#accordion1" href="#collapseOne1" aria-expanded="true" aria-controls="collapseOne">
-                          <h4 class="panel-title">Collapsible Group Item #1</h4>
-                        </a>
-                        <div id="collapseOne1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                          <div class="panel-body">
-                            <table class="table table-striped">
-                              <thead>
-                                <tr>
-                                  <th>#</th>
-                                  <th>First Name</th>
-                                  <th>Last Name</th>
-                                  <th>Username</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr>
-                                  <th scope="row">1</th>
-                                  <td>Mark</td>
-                                  <td>Otto</td>
-                                  <td>@mdo</td>
-                                </tr>
-                                <tr>
-                                  <th scope="row">2</th>
-                                  <td>Jacob</td>
-                                  <td>Thornton</td>
-                                  <td>@fat</td>
-                                </tr>
-                                <tr>
-                                  <th scope="row">3</th>
-                                  <td>Larry</td>
-                                  <td>the Bird</td>
-                                  <td>@twitter</td>
-                                </tr>
-                              </tbody>
-                            </table>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="panel">
-                        <a class="panel-heading collapsed" role="tab" id="headingTwo1" data-bs-toggle="collapse" data-bs-parent="#accordion1" href="#collapseTwo1" aria-expanded="false" aria-controls="collapseTwo">
-                          <h4 class="panel-title">Collapsible Group Item #2</h4>
-                        </a>
-                        <div id="collapseTwo1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                          <div class="panel-body">
-                            <p><strong>Collapsible Item 2 data</strong>
-                            </p>
-                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
-                          </div>
-                        </div>
-                      </div>
-                      <div class="panel">
-                        <a class="panel-heading collapsed" role="tab" id="headingThree1" data-bs-toggle="collapse" data-bs-parent="#accordion1" href="#collapseThree1" aria-expanded="false" aria-controls="collapseThree">
-                          <h4 class="panel-title">Collapsible Group Item #3</h4>
-                        </a>
-                        <div id="collapseThree1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                          <div class="panel-body">
-                            <p><strong>Collapsible Item 3 data</strong>
-                            </p>
-                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- end of accordion -->
-
-
-                  </div>
-                </div>
-              </div>
-
-            </div>
-            <div class="clearfix"></div>
-
-            <div class="">
-
-              <div class="col-md-6 col-sm-6">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h4>Tooltips <small>Hover to view</small></h4>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Settings 1</a>
-                            <a class="dropdown-item" href="#">Settings 2</a>
-                          </div>
-                      <li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-
-                    <p>Add small overlays of content for housing secondary information.</p>
-                    <!-- start pop-over -->
-                    <div class="bs-example-popovers">
-                      <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="left" title="Tooltip on left">Left</button>
-                      <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">Top</button>
-                      <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">Bottom</button>
-                      <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="right" title="Tooltip on right">Right</button>
-                    </div>
-                    <!-- end pop-over -->
-
-                  </div>
-                </div>
-              </div>
-
-
-
-              <div class="col-md-6 col-sm-6">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h4>Tooltips <small>Hover to view</small></h4>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Settings 1</a>
-                            <a class="dropdown-item" href="#">Settings 2</a>
-                          </div>
-                      <li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-
-                    <p>Hover over the links below to see tooltips:</p>
-
-                    <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="left" title="Tooltip on left">Tooltip left</button>
-
-                    <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">Tooltip top</button>
-
-                    <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">Tooltip bottom</button>
-
-                    <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="right" title="Tooltip on right">Tooltip right</button>
-
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-6 col-sm-6">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h4>Toast Notifications <small>Click to demo</small></h4>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Settings 1</a>
-                            <a class="dropdown-item" href="#">Settings 2</a>
-                          </div>
-                      <li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                    <p>Click the buttons below to display Bootstrap 5 toast notifications:</p>
-                    <div class="row">
-                      <div class="col-md-6 mb-2">
-                        <button type="button" id="toast-success-btn" class="btn btn-success btn-sm w-100">
-                          <i class="fas fa-check"></i> Success Toast
-                        </button>
-                      </div>
-                      <div class="col-md-6 mb-2">
-                        <button type="button" id="toast-error-btn" class="btn btn-danger btn-sm w-100">
-                          <i class="fas fa-times"></i> Error Toast
-                        </button>
-                      </div>
-                      <div class="col-md-6 mb-2">
-                        <button type="button" id="toast-info-btn" class="btn btn-info btn-sm w-100">
-                          <i class="fas fa-info"></i> Info Toast
-                        </button>
-                      </div>
-                      <div class="col-md-6 mb-2">
-                        <button type="button" id="toast-warning-btn" class="btn btn-warning btn-sm w-100">
-                          <i class="fas fa-exclamation-triangle"></i> Warning Toast
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-6 col-sm-6">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h4>Modals <small>Click to demo</small></h4>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Settings 1</a>
-                            <a class="dropdown-item" href="#">Settings 2</a>
-                          </div>
-                      <li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                    <p>Click the buttons below to launch Bootstrap 5 modals:</p>
-                    <div class="row">
-                      <div class="col-md-6 mb-2">
-                        <button type="button" class="btn btn-primary btn-sm w-100" data-bs-toggle="modal" data-bs-target="#demoModal">
-                          <i class="fas fa-window-maximize"></i> Standard Modal
-                        </button>
-                      </div>
-                      <div class="col-md-6 mb-2">
-                        <button type="button" class="btn btn-secondary btn-sm w-100" data-bs-toggle="modal" data-bs-target="#largeDemoModal">
-                          <i class="fas fa-expand"></i> Large Modal
-                        </button>
-                      </div>
-                      <div class="col-md-6 mb-2">
-                        <button type="button" class="btn btn-outline-primary btn-sm w-100" data-bs-toggle="modal" data-bs-target="#smallDemoModal">
-                          <i class="fas fa-compress"></i> Small Modal
-                        </button>
-                      </div>
-                      <div class="col-md-6 mb-2">
-                        <button type="button" class="btn btn-outline-secondary btn-sm w-100" data-bs-toggle="popover" data-bs-placement="top" title="Popover Title" data-bs-content="This is a sample popover content triggered by clicking this button.">
-                          <i class="fas fa-comment"></i> Popover Demo
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-6 col-sm-6">
-              <div class="x_panel">
-                <div class="x_title">
-                  <h4>Daily active users <small>Sessions</small></h4>
-                  <ul class="nav navbar-right panel_toolbox">
-                    <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-                    <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="#">Settings 1</a>
-                          <a class="dropdown-item" href="#">Settings 2</a>
-                        </div>
-                    <li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a>
-                  </ul>
-                  <div class="clearfix"></div>
-                </div>
-                <div class="x_content">
-                  <ul class="list-unstyled timeline">
-                    <li>
-                      <div class="block">
-                        <div class="tags">
-                          <a href="" class="tag">
-                            <span>Entertainment</span>
-                          </a>
-                        </div>
-                        <div class="block_content">
-                          <h2 class="title">
-                                          <a>Who Needs Sundance When You've Got&nbsp;Crowdfunding?</a>
-                                      </h4>
-                          <div class="byline">
-                            <span>13 hours ago</span> by <a>Jane Smith</a>
-                          </div>
-                          <p class="excerpt">Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they'd pay to Fast-forward and… <a>Read&nbsp;More</a>
-                          </p>
-                        </div>
-                      </div>
-                    <li>
-                      <div class="block">
-                        <div class="tags">
-                          <a href="" class="tag">
-                            <span>Entertainment</span>
-                          </a>
-                        </div>
-                        <div class="block_content">
-                          <h2 class="title">
-                                          <a>Who Needs Sundance When You've Got&nbsp;Crowdfunding?</a>
-                                      </h4>
-                          <div class="byline">
-                            <span>13 hours ago</span> by <a>Jane Smith</a>
-                          </div>
-                          <p class="excerpt">Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they'd pay to Fast-forward and… <a>Read&nbsp;More</a>
-                          </p>
-                        </div>
-                      </div>
-                    <li>
-                      <div class="block">
-                        <div class="tags">
-                          <a href="" class="tag">
-                            <span>Entertainment</span>
-                          </a>
-                        </div>
-                        <div class="block_content">
-                          <h2 class="title">
-                                          <a>Who Needs Sundance When You've Got&nbsp;Crowdfunding?</a>
-                                      </h4>
-                          <div class="byline">
-                            <span>13 hours ago</span> by <a>Jane Smith</a>
-                          </div>
-                          <p class="excerpt">Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they'd pay to Fast-forward and… <a>Read&nbsp;More</a>
-                          </p>
-                        </div>
-                      </div>
-                  </ul>
-
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-6 col-sm-6">
-              <div class="x_panel">
-                <div class="x_title">
-                  <h4>Daily active users <small>Sessions</small></h4>
-                  <ul class="nav navbar-right panel_toolbox">
-                    <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a>
-                    <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-wrench"></i></a>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="#">Settings 1</a>
-                          <a class="dropdown-item" href="#">Settings 2</a>
-                        </div>
-                    <li><a class="btn-btn-close-link"><i class="fas fa-times"></i></a>
-                  </ul>
-                  <div class="clearfix"></div>
-                </div>
-                <div class="x_content">
-                  <ul class="list-unstyled msg_list">
-                    <li>
-                      <a>
-                        <span class="image">
-                          <img src="../images/img.jpg" alt="img" />
-                        </span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that
-                        </span>
-                      </a>
-                    <li>
-                      <a>
-                        <span class="image">
-                          <img src="../images/img.jpg" alt="img" />
-                        </span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that
-                        </span>
-                      </a>
-                    <li>
-                      <a>
-                        <span class="image">
-                          <img src="../images/img.jpg" alt="img" />
-                        </span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that
-                        </span>
-                      </a>
-                    <li>
-                      <a>
-                        <span class="image">
-                          <img src="../images/img.jpg" alt="img" />
-                        </span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that
-                        </span>
-                      </a>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="clearfix"></div>
-        </div>
-        <!-- /page content -->
-
-        <!-- footer content -->
-        <footer>
-          <div class="float-end">
-            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
-          </div>
-          <div class="clearfix"></div>
-        </footer>
-        <!-- /footer content -->
+  <div class="page-header">
+    <div class="page-header-row">
+      <div>
+        <div class="page-pretitle">Components</div>
+        <div class="page-title">UI Elements</div>
+      </div>
+      <div class="page-actions">
+        <a href="#buttons" class="btn btn-outline btn-sm">Jump to ↓</a>
       </div>
     </div>
+  </div>
 
-    <!-- Demo Modals -->
-    <!-- Standard Modal -->
-    <div class="modal fade" id="demoModal" tabindex="-1" aria-labelledby="demoModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="demoModalLabel">Demo Modal</h5>
-            <button type="button" class="btn-btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  <!-- ── BUTTONS ── -->
+  <div class="row col-1" id="buttons">
+    <div class="card">
+      <div class="card-header"><div class="card-title">Buttons</div><div class="card-subtitle">Variants, sizes, states, groups, dropdowns</div></div>
+      <div class="card-body" style="display:flex;flex-direction:column;gap:18px">
+        <div>
+          <div class="divider-label">Variants</div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px">
+            <button class="btn btn-primary">Primary</button>
+            <button class="btn btn-outline">Outline</button>
+            <button class="btn btn-success">Success</button>
+            <button class="btn btn-warning">Warning</button>
+            <button class="btn btn-danger">Danger</button>
+            <button class="btn btn-ghost">Ghost</button>
           </div>
-          <div class="modal-body">
-            <p>This is a standard Bootstrap 5 modal example. You can include any content here including forms, images, or other components.</p>
-            <p>Modal content is fully responsive and will adapt to different screen sizes.</p>
+        </div>
+
+        <div>
+          <div class="divider-label">Sizes</div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;align-items:center">
+            <button class="btn btn-primary btn-sm">Small</button>
+            <button class="btn btn-primary">Default</button>
+            <button class="btn btn-primary btn-lg">Large</button>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+
+        <div>
+          <div class="divider-label">With icon · Icon only · Loading</div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;align-items:center">
+            <button class="btn btn-primary"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 8h8M8 4v8"/></svg> Create</button>
+            <button class="btn btn-outline"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 11v3H2v-3"/><path d="M11 6L8 3 5 6"/><line x1="8" y1="3" x2="8" y2="11"/></svg> Upload</button>
+            <button class="btn btn-outline btn-icon" data-tooltip="Edit" aria-label="Edit"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11 2l3 3-9 9H2v-3l9-9z"/></svg></button>
+            <button class="btn btn-outline btn-icon" data-tooltip="Refresh" aria-label="Refresh"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2v4h-4M2 14v-4h4"/><path d="M14 6a6 6 0 00-10-2M2 10a6 6 0 0010 2"/></svg></button>
+            <button class="btn btn-outline btn-icon" data-tooltip="Delete" aria-label="Delete"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 4h10M6 4V2h4v2M5 4l1 9h4l1-9"/></svg></button>
+            <button class="btn btn-primary" id="loading-btn"><span class="btn-spinner" hidden></span><span>Save</span></button>
+            <button class="btn btn-outline" disabled>Disabled</button>
+          </div>
+        </div>
+
+        <div>
+          <div class="divider-label">Button group · Dropdown</div>
+          <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
+            <div class="btn-group" role="group">
+              <button class="btn btn-outline active">Day</button>
+              <button class="btn btn-outline">Week</button>
+              <button class="btn btn-outline">Month</button>
+              <button class="btn btn-outline">Year</button>
+            </div>
+            <button class="btn btn-outline" id="dropdown-btn">Actions <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6l4 4 4-4"/></svg></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── AVATARS · STATUS · CHIPS ── -->
+  <div class="row col-2">
+    <div class="card">
+      <div class="card-header"><div class="card-title">Avatars</div></div>
+      <div class="card-body" style="display:flex;flex-direction:column;gap:16px">
+        <div>
+          <div class="divider-label">Sizes</div>
+          <div style="display:flex;align-items:center;gap:10px">
+            <span class="avatar avatar-xs">A</span>
+            <span class="avatar avatar-sm">SK</span>
+            <span class="avatar avatar-md">MR</span>
+            <span class="avatar avatar-lg">EW</span>
+            <span class="avatar avatar-xl" style="background:linear-gradient(135deg,var(--azure),#1d6fa5)">DR</span>
+            <span class="avatar avatar-xxl" style="background:linear-gradient(135deg,var(--purple),#8a2da0)">YT</span>
+          </div>
+        </div>
+        <div>
+          <div class="divider-label">With status</div>
+          <div style="display:flex;align-items:center;gap:14px">
+            <span class="avatar avatar-lg">SK<span class="avatar-status"></span></span>
+            <span class="avatar avatar-lg" style="background:linear-gradient(135deg,var(--azure),#1d6fa5)">MR<span class="avatar-status away"></span></span>
+            <span class="avatar avatar-lg" style="background:linear-gradient(135deg,var(--purple),#8a2da0)">EW<span class="avatar-status busy"></span></span>
+            <span class="avatar avatar-lg" style="background:linear-gradient(135deg,var(--yellow),#c97f00)">DR<span class="avatar-status offline"></span></span>
+          </div>
+        </div>
+        <div>
+          <div class="divider-label">Stack</div>
+          <div class="avatar-stack">
+            <span class="avatar avatar-md" style="background:linear-gradient(135deg,var(--primary),var(--primary-dk))">A</span>
+            <span class="avatar avatar-md" style="background:linear-gradient(135deg,var(--azure),#1d6fa5)">SK</span>
+            <span class="avatar avatar-md" style="background:linear-gradient(135deg,var(--purple),#8a2da0)">MR</span>
+            <span class="avatar avatar-md" style="background:linear-gradient(135deg,var(--yellow),#c97f00)">EW</span>
+            <span class="avatar avatar-md more">+5</span>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Large Modal -->
-    <div class="modal fade" id="largeDemoModal" tabindex="-1" aria-labelledby="largeDemoModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="largeDemoModalLabel">Large Modal</h5>
-            <button type="button" class="btn-btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <div class="card">
+      <div class="card-header"><div class="card-title">Status & chips</div></div>
+      <div class="card-body" style="display:flex;flex-direction:column;gap:14px">
+        <div style="display:flex;flex-wrap:wrap;gap:14px">
+          <span class="status status-green">Paid</span>
+          <span class="status status-blue">Processing</span>
+          <span class="status status-yellow">Pending</span>
+          <span class="status status-red">Failed</span>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px">
+          <span class="chip">Default</span>
+          <span class="chip chip-primary">Primary</span>
+          <span class="chip chip-blue">Info</span>
+          <span class="chip chip-green">Success</span>
+          <span class="chip chip-yellow">Warning</span>
+          <span class="chip chip-red">Error</span>
+          <span class="chip chip-purple">Premium</span>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px">
+          <span class="chip chip-primary active">React<button type="button" class="chip-close" aria-label="Remove">×</button></span>
+          <span class="chip chip-blue active">TypeScript<button type="button" class="chip-close" aria-label="Remove">×</button></span>
+          <span class="chip chip-purple active">Tailwind<button type="button" class="chip-close" aria-label="Remove">×</button></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── ALERTS ── -->
+  <div class="row col-1">
+    <div class="card">
+      <div class="card-header"><div class="card-title">Alerts</div></div>
+      <div class="card-body">
+        <div class="alert alert-info"><svg class="alert-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v.01M8 7v4"/></svg><div class="alert-body"><strong>Heads up.</strong> This is an informational alert with extra context.</div></div>
+        <div class="alert alert-success"><svg class="alert-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M5 8l2 2 4-4"/></svg><div class="alert-body"><strong>Saved.</strong> Your changes have been applied.</div></div>
+        <div class="alert alert-warning"><svg class="alert-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2L1 14h14L8 2z"/><path d="M8 6v3M8 11v.01"/></svg><div class="alert-body"><strong>Careful.</strong> This action will affect 28 users.</div></div>
+        <div class="alert alert-error"><svg class="alert-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 4v5M8 11v.01"/></svg><div class="alert-body"><strong>Couldn't save.</strong> The server returned a 503 — please retry in a moment.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SPINNERS · SKELETONS ── -->
+  <div class="row col-2">
+    <div class="card">
+      <div class="card-header"><div class="card-title">Spinners & loaders</div></div>
+      <div class="card-body" style="display:flex;flex-direction:column;gap:18px">
+        <div>
+          <div class="divider-label">Circular</div>
+          <div style="display:flex;align-items:center;gap:18px">
+            <span class="spinner spinner-sm"></span>
+            <span class="spinner"></span>
+            <span class="spinner spinner-lg"></span>
+            <span class="spinner spinner-azure"></span>
+            <span class="spinner spinner-yellow"></span>
+            <span class="spinner spinner-red"></span>
           </div>
-          <div class="modal-body">
-            <div class="row">
-              <div class="col-md-6">
-                <h6>Left Column</h6>
-                <p>This is a large modal that provides more space for content. You can use the grid system inside modals.</p>
-                <ul>
-                  <li>More content space</li>
-                  <li>Better for complex forms</li>
-                  <li>Responsive design</li>
-                </ul>
-              </div>
-              <div class="col-md-6">
-                <h6>Right Column</h6>
-                <p>The large modal is perfect for displaying detailed information or more complex interfaces.</p>
-                <div class="mb-3">
-                  <label for="exampleInput">Example Input</label>
-                  <input type="text" class="form-control" id="exampleInput" placeholder="Example input">
-                </div>
-              </div>
-            </div>
+        </div>
+        <div>
+          <div class="divider-label">Dots</div>
+          <span class="spinner-dots"><span></span><span></span><span></span></span>
+        </div>
+        <div>
+          <div class="divider-label">Indeterminate progress</div>
+          <div class="loading-bar"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-title">Skeleton loading</div></div>
+      <div class="card-body" style="display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;gap:12px;align-items:flex-start">
+          <span class="skeleton skeleton-circle" style="width:40px;height:40px;flex-shrink:0"></span>
+          <div style="flex:1">
+            <span class="skeleton skeleton-text-lg" style="width:50%"></span>
+            <span class="skeleton skeleton-text" style="width:80%"></span>
+            <span class="skeleton skeleton-text" style="width:65%"></span>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-            <button type="button" class="btn btn-primary">Confirm</button>
+        </div>
+        <span class="skeleton skeleton-rect" style="width:100%;height:120px"></span>
+        <div>
+          <span class="skeleton skeleton-text-lg" style="width:35%"></span>
+          <span class="skeleton skeleton-text" style="width:90%"></span>
+          <span class="skeleton skeleton-text" style="width:75%"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── TABS ── -->
+  <div class="row col-1">
+    <div class="card">
+      <div class="card-header"><div class="card-title">Tabs</div><div class="card-subtitle">Pill, underlined, segmented</div></div>
+      <div class="card-body" style="display:flex;flex-direction:column;gap:18px">
+        <div>
+          <div class="divider-label">Pill</div>
+          <div class="tabs-pill" role="tablist">
+            <button class="tab active" role="tab">Overview</button>
+            <button class="tab" role="tab">Activity</button>
+            <button class="tab" role="tab">Settings</button>
+            <button class="tab" role="tab">Billing</button>
+          </div>
+        </div>
+        <div>
+          <div class="divider-label">Underlined</div>
+          <div class="tabs-underline" role="tablist">
+            <button class="tab active" role="tab">Profile</button>
+            <button class="tab" role="tab">Notifications</button>
+            <button class="tab" role="tab">Integrations</button>
+            <button class="tab" role="tab">Team</button>
+            <button class="tab" role="tab">Danger zone</button>
+          </div>
+        </div>
+        <div>
+          <div class="divider-label">Segmented (chart-tab)</div>
+          <div class="chart-tabs">
+            <button class="chart-tab active">7 days</button>
+            <button class="chart-tab">30 days</button>
+            <button class="chart-tab">90 days</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PAGINATION · BREADCRUMBS ── -->
+  <div class="row col-2">
+    <div class="card">
+      <div class="card-header"><div class="card-title">Pagination</div></div>
+      <div class="card-body" style="display:flex;flex-direction:column;gap:14px">
+        <div class="pagination" id="demo-pagination">
+          <button class="page-btn" data-page="prev" disabled aria-label="Previous"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 4l-4 4 4 4"/></svg></button>
+          <button class="page-btn active" data-page="1">1</button>
+          <button class="page-btn" data-page="2">2</button>
+          <button class="page-btn" data-page="3">3</button>
+          <span class="page-ellipsis">…</span>
+          <button class="page-btn" data-page="12">12</button>
+          <button class="page-btn" data-page="next" aria-label="Next"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4l4 4-4 4"/></svg></button>
+        </div>
+        <div style="font-size:12px;color:var(--text-muted)">Showing 1–10 of 124 results</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-title">Breadcrumbs</div></div>
+      <div class="card-body" style="display:flex;flex-direction:column;gap:14px">
+        <nav class="breadcrumbs" aria-label="Path">
+          <a href="#">Home</a>
+          <span class="sep">/</span>
+          <a href="#">Projects</a>
+          <span class="sep">/</span>
+          <a href="#">Q2 Marketing</a>
+          <span class="sep">/</span>
+          <span class="current">Tasks</span>
+        </nav>
+        <nav class="breadcrumbs" aria-label="Path">
+          <a href="#">Workspace</a>
+          <span class="sep">›</span>
+          <a href="#">Settings</a>
+          <span class="sep">›</span>
+          <span class="current">Billing</span>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── STEPPER ── -->
+  <div class="row col-1">
+    <div class="card">
+      <div class="card-header"><div class="card-title">Stepper</div><div class="card-subtitle">Horizontal step indicator</div></div>
+      <div class="card-body" style="padding:24px 16px">
+        <div class="stepper">
+          <div class="step done"><div class="num"><span>1</span></div><div class="label">Account</div></div>
+          <div class="line done"></div>
+          <div class="step done"><div class="num"><span>2</span></div><div class="label">Workspace</div></div>
+          <div class="line done"></div>
+          <div class="step active"><div class="num"><span>3</span></div><div class="label">Team</div></div>
+          <div class="line"></div>
+          <div class="step"><div class="num"><span>4</span></div><div class="label">Integrations</div></div>
+          <div class="line"></div>
+          <div class="step"><div class="num"><span>5</span></div><div class="label">Done</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── TOOLTIPS · TRIGGERS ── -->
+  <div class="row col-2">
+    <div class="card">
+      <div class="card-header"><div class="card-title">Tooltips</div><div class="card-subtitle">Hover or focus to reveal</div></div>
+      <div class="card-body" style="display:flex;flex-wrap:wrap;gap:10px;align-items:center">
+        <button class="btn btn-outline" data-tooltip="Refresh the data">Top</button>
+        <button class="btn btn-outline" data-tooltip="Open in a new tab" data-tooltip-pos="bottom">Bottom</button>
+        <button class="btn btn-outline btn-icon" data-tooltip="Settings" aria-label="Settings"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="2"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2"/></svg></button>
+        <span class="status status-green" data-tooltip="Last checked 2 minutes ago" tabindex="0">Live</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-title">Interactive triggers</div></div>
+      <div class="card-body" style="display:flex;flex-wrap:wrap;gap:8px;align-items:center">
+        <button class="btn btn-primary" id="open-modal-demo">Open modal</button>
+        <button class="btn btn-outline" id="show-toast-demo">Show toast</button>
+        <button class="btn btn-outline" id="show-toast-success">Success toast</button>
+        <button class="btn btn-outline" id="show-toast-error">Error toast</button>
+        <button class="btn btn-outline" id="open-dropdown-demo">Dropdown menu <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6l4 4 4-4"/></svg></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── TOGGLES · PROGRESS ── -->
+  <div class="row col-2">
+    <div class="card">
+      <div class="card-header"><div class="card-title">Toggles</div></div>
+      <div class="card-body" style="padding:6px 16px">
+        <div class="toggle-row"><div><div class="label">Enabled</div></div><div class="toggle on"></div></div>
+        <div class="toggle-row"><div><div class="label">Disabled</div></div><div class="toggle"></div></div>
+        <div class="toggle-row"><div><div class="label">With description</div><div class="desc">Smaller helper text below the label.</div></div><div class="toggle on"></div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-title">Progress</div></div>
+      <div class="card-body" style="display:flex;flex-direction:column;gap:14px">
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-muted);margin-bottom:4px"><span>Storage</span><span class="cell-strong">68%</span></div>
+          <div class="progress-thin"><div class="bar" style="width:68%;background:var(--primary)"></div></div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-muted);margin-bottom:4px"><span>Bandwidth</span><span class="cell-strong">42%</span></div>
+          <div class="progress-thin"><div class="bar" style="width:42%;background:var(--azure)"></div></div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-muted);margin-bottom:4px"><span>Quota</span><span class="cell-strong">91%</span></div>
+          <div class="progress-thin"><div class="bar" style="width:91%;background:var(--red)"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── LIST GROUP · RATING · EMPTY ── -->
+  <div class="row col-3">
+    <div class="card">
+      <div class="card-header"><div class="card-title">List group</div></div>
+      <div class="card-body" style="padding:12px">
+        <div class="list-group">
+          <button type="button" class="list-group-item active">Inbox <span class="meta">14</span></button>
+          <button type="button" class="list-group-item">Starred <span class="meta">2</span></button>
+          <button type="button" class="list-group-item">Snoozed <span class="meta">8</span></button>
+          <button type="button" class="list-group-item">Sent <span class="meta">—</span></button>
+          <button type="button" class="list-group-item">Trash <span class="meta">3</span></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-title">Rating</div></div>
+      <div class="card-body" style="display:flex;flex-direction:column;gap:14px;align-items:center;justify-content:center;padding:24px">
+        <div class="rating-stars" id="rating-demo" data-value="3" role="radiogroup" aria-label="Rate this">
+          <button type="button" data-i="1" aria-label="1 star"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 1l2 5 5 .5-4 3.5 1 5-4-2.5-4 2.5 1-5-4-3.5 5-.5z"/></svg></button>
+          <button type="button" data-i="2" aria-label="2 stars"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 1l2 5 5 .5-4 3.5 1 5-4-2.5-4 2.5 1-5-4-3.5 5-.5z"/></svg></button>
+          <button type="button" data-i="3" aria-label="3 stars"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 1l2 5 5 .5-4 3.5 1 5-4-2.5-4 2.5 1-5-4-3.5 5-.5z"/></svg></button>
+          <button type="button" data-i="4" aria-label="4 stars"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 1l2 5 5 .5-4 3.5 1 5-4-2.5-4 2.5 1-5-4-3.5 5-.5z"/></svg></button>
+          <button type="button" data-i="5" aria-label="5 stars"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 1l2 5 5 .5-4 3.5 1 5-4-2.5-4 2.5 1-5-4-3.5 5-.5z"/></svg></button>
+        </div>
+        <div style="font-size:12px;color:var(--text-muted)" id="rating-label">3 of 5 stars</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-title">Empty state</div></div>
+      <div class="card-body" style="padding:0">
+        <div class="empty-state">
+          <div class="empty-state-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7a2 2 0 012-2h4l2 2h7a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"/></svg>
+          </div>
+          <div class="empty-state-title">No items yet</div>
+          <div class="empty-state-desc">Create your first project to get started.</div>
+          <button class="btn btn-primary btn-sm">+ Create project</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CODE · KBD · BLOCKQUOTE ── -->
+  <div class="row col-2">
+    <div class="card">
+      <div class="card-header"><div class="card-title">Code & keyboard</div></div>
+      <div class="card-body" style="display:flex;flex-direction:column;gap:14px">
+        <div style="font-size:13px;color:var(--text-secondary);line-height:1.6">
+          Run <code>npm install</code> to install dependencies, then <code>npm run dev</code> to start the local server.
+        </div>
+        <pre><code>function greet(name) {
+  return `Hello, ${name}!`;
+}
+
+greet('Gentelella');
+// → "Hello, Gentelella!"</code></pre>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:13px;color:var(--text-secondary)">
+          Quick actions: <kbd>⌘</kbd> + <kbd>K</kbd> to search, <kbd>?</kbd> for shortcuts, <kbd>Esc</kbd> to close.
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-title">Blockquote & dividers</div></div>
+      <div class="card-body" style="display:flex;flex-direction:column;gap:18px">
+        <blockquote>
+          The best way to predict the future is to invent it. Real artists ship.
+          <footer>— <cite>Alan Kay</cite>, computer scientist</footer>
+        </blockquote>
+        <hr class="divider-plain">
+        <div class="divider-label">Or continue with</div>
+        <hr class="divider-dashed">
+      </div>
+    </div>
+  </div>
+
+  <!-- ── New section: Banners ── -->
+  <div class="row col-1">
+    <div class="card">
+      <div class="card-header"><div class="card-title">Banners</div><div class="card-subtitle">Colored callouts with optional actions</div></div>
+      <div class="card-body" style="display:flex;flex-direction:column;gap:10px">
+        <div class="banner">
+          <svg class="banner-icon" width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1l7 13H1L8 1z"/><path d="M8 6v4"/></svg>
+          <div class="banner-body"><strong>New release available.</strong> v4.0.0-beta.2 ships fixes for inbox, settings persistence, and 16 chart variants.</div>
+          <div class="banner-actions">
+            <button class="btn btn-outline btn-sm">Dismiss</button>
+            <button class="btn btn-primary btn-sm">View notes</button>
+          </div>
+        </div>
+        <div class="banner banner-warning">
+          <svg class="banner-icon" width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1l7 13H1L8 1z"/><path d="M8 6v4M8 12h.01"/></svg>
+          <div class="banner-body"><strong>API quota at 87%.</strong> You'll hit the monthly limit by Friday at the current rate.</div>
+        </div>
+        <div class="banner banner-danger">
+          <svg class="banner-icon" width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M5 5l6 6M11 5l-6 6"/></svg>
+          <div class="banner-body"><strong>Payment failed.</strong> Your subscription renewal couldn't be processed. Update your payment method to avoid service interruption.</div>
+          <div class="banner-actions"><button class="btn btn-outline btn-sm">Update payment</button></div>
+        </div>
+        <div class="banner banner-info">
+          <svg class="banner-icon" width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v.01M8 7v4"/></svg>
+          <div class="banner-body"><strong>Maintenance window</strong> scheduled for Friday April 30, 02:00–04:00 UTC. Some features may be temporarily unavailable.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── New section: Accordion + Drawer + Popover ── -->
+  <div class="row col-3">
+    <div class="card">
+      <div class="card-header"><div class="card-title">Accordion</div><div class="card-subtitle">Native &lt;details&gt; with token styling</div></div>
+      <div class="card-body">
+        <div class="accordion">
+          <details class="accordion-item" open>
+            <summary class="accordion-summary">
+              What's included
+              <svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6l4 4 4-4"/></svg>
+            </summary>
+            <div class="accordion-content">55+ pages, 16 chart variants, fully interactive inbox, kanban, calendar, and settings — all token-driven.</div>
+          </details>
+          <details class="accordion-item">
+            <summary class="accordion-summary">
+              How do I customize the colors?
+              <svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6l4 4 4-4"/></svg>
+            </summary>
+            <div class="accordion-content">Every color is a CSS custom property in <code>_tokens.scss</code>. Change <code>--primary</code> and the entire UI restyles.</div>
+          </details>
+          <details class="accordion-item">
+            <summary class="accordion-summary">
+              Is it really free?
+              <svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6l4 4 4-4"/></svg>
+            </summary>
+            <div class="accordion-content">MIT licensed since 2014. Use it for client work, side projects, your own SaaS — no attribution required.</div>
+          </details>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-title">Drawer</div><div class="card-subtitle">Slide-in side panel</div></div>
+      <div class="card-body">
+        <p style="font-size:12.5px;color:var(--text-secondary);line-height:1.55;margin-bottom:14px">Off-canvas panel for filters, settings, or secondary navigation. Click outside or press Escape to close.</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button class="btn btn-primary btn-sm" id="open-drawer-right">Open right</button>
+          <button class="btn btn-outline btn-sm" id="open-drawer-left">Open left</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-title">Popovers</div><div class="card-subtitle">Hover or focus for rich content</div></div>
+      <div class="card-body" style="display:flex;flex-wrap:wrap;gap:24px;align-items:center">
+        <span class="popover-trigger" tabindex="0">
+          <button class="btn btn-outline btn-sm">Hover me</button>
+          <span class="popover-content">
+            <div class="popover-title">Did you know?</div>
+            <div class="popover-text">Popovers can hold rich content — links, multiple paragraphs, even small forms. They're keyboard-focusable too.</div>
+          </span>
+        </span>
+        <span class="popover-trigger" tabindex="0">
+          <span class="status status-yellow" style="cursor:help">Pending review</span>
+          <span class="popover-content">
+            <div class="popover-title">Awaiting approval</div>
+            <div class="popover-text">2 reviewers needed. Sarah K. has approved. Waiting on Michael R.</div>
+          </span>
+        </span>
+        <span class="popover-trigger" tabindex="0">
+          <button type="button" class="card-opt-btn" aria-label="Help">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M6 6a2 2 0 014 0c0 1-2 1.5-2 3"/><circle cx="8" cy="12" r="0.5" fill="currentColor"/></svg>
+          </button>
+          <span class="popover-content">
+            <div class="popover-title">Need help?</div>
+            <div class="popover-text">Press <kbd style="font-family:var(--font-mono);font-size:10.5px;background:var(--bg-surface-secondary);padding:1px 4px;border-radius:3px">⌘K</kbd> to open the command palette and search every page.</div>
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── New section: Timeline ── -->
+  <div class="row col-2">
+    <div class="card">
+      <div class="card-header"><div class="card-title">Timeline</div><div class="card-subtitle">Event log with status colors</div></div>
+      <div class="card-body">
+        <div class="timeline">
+          <div class="timeline-item is-primary">
+            <div class="ti-time">Just now</div>
+            <div class="ti-title">Deployment succeeded</div>
+            <div class="ti-desc">v4.0.0-beta.2 deployed to production in 28s.</div>
+          </div>
+          <div class="timeline-item is-green">
+            <div class="ti-time">14 minutes ago</div>
+            <div class="ti-title">Tests passed</div>
+            <div class="ti-desc">All 142 tests green across 12 suites.</div>
+          </div>
+          <div class="timeline-item is-blue">
+            <div class="ti-time">1 hour ago</div>
+            <div class="ti-title">Pull request #248 merged</div>
+            <div class="ti-desc">feat(inbox): full mail client with reader pane and compose.</div>
+          </div>
+          <div class="timeline-item is-yellow">
+            <div class="ti-time">3 hours ago</div>
+            <div class="ti-title">Review requested</div>
+            <div class="ti-desc">Sarah K. requested review on PR #248.</div>
+          </div>
+          <div class="timeline-item is-red">
+            <div class="ti-time">Yesterday</div>
+            <div class="ti-title">Build failed on staging</div>
+            <div class="ti-desc">Lint errors in product-mockups.js. Auto-fix resolved them.</div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Small Modal -->
-    <div class="modal fade" id="smallDemoModal" tabindex="-1" aria-labelledby="smallDemoModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="smallDemoModalLabel">Small Modal</h5>
-            <button type="button" class="btn-btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <div class="card">
+      <div class="card-header"><div class="card-title">Activity timeline</div><div class="card-subtitle">User actions over time</div></div>
+      <div class="card-body">
+        <div class="timeline">
+          <div class="timeline-item is-primary">
+            <div class="ti-time">2:14 PM · Today</div>
+            <div class="ti-title"><strong>Aigars</strong> created project "Q2 redesign"</div>
           </div>
-          <div class="modal-body">
-            <p>This is a small modal for quick confirmations or simple messages.</p>
+          <div class="timeline-item is-blue">
+            <div class="ti-time">11:42 AM · Today</div>
+            <div class="ti-title"><strong>Sarah K.</strong> uploaded 3 design files</div>
+            <div class="ti-desc">hero-v3.fig, mobile-shell.fig, type-scale.fig</div>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">No</button>
-            <button type="button" class="btn btn-sm btn-primary">Yes</button>
+          <div class="timeline-item is-green">
+            <div class="ti-time">9:30 AM · Today</div>
+            <div class="ti-title"><strong>Michael R.</strong> closed 4 issues</div>
+          </div>
+          <div class="timeline-item">
+            <div class="ti-time">Yesterday</div>
+            <div class="ti-title"><strong>Emily W.</strong> added 2 team members</div>
+          </div>
+          <div class="timeline-item">
+            <div class="ti-time">2 days ago</div>
+            <div class="ti-title"><strong>Tom H.</strong> joined the workspace</div>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- Toast Container -->
-    <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1080">
-      <!-- Toasts will be appended here -->
+</div>
+</main>
+
+<!-- Drawer markup (right) -->
+<div class="drawer-backdrop" id="demo-drawer-backdrop"></div>
+<aside class="drawer" id="demo-drawer-right" aria-hidden="true">
+  <div class="drawer-header">
+    <span class="drawer-title">Filter results</span>
+    <button class="drawer-close" data-drawer-close aria-label="Close"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3l8 8M11 3l-8 8"/></svg></button>
+  </div>
+  <div class="drawer-body">
+    <div class="form-group">
+      <label class="form-label">Plan</label>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <label class="form-check"><input type="checkbox" checked> Pro</label>
+        <label class="form-check"><input type="checkbox" checked> Business</label>
+        <label class="form-check"><input type="checkbox"> Starter</label>
+      </div>
     </div>
+    <div class="form-group">
+      <label class="form-label">Status</label>
+      <div class="segmented">
+        <label><input type="radio" name="d-status" checked><span>Active</span></label>
+        <label><input type="radio" name="d-status"><span>Pending</span></label>
+        <label><input type="radio" name="d-status"><span>Suspended</span></label>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">MRR range</label>
+      <div class="slider-row">
+        <input type="range" class="slider" min="0" max="1000" value="200">
+        <span class="slider-value">$200</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Tags</label>
+      <div class="tag-input">
+        <span class="tag-pill">SaaS<button type="button" aria-label="Remove">×</button></span>
+        <span class="tag-pill">Q2<button type="button" aria-label="Remove">×</button></span>
+        <input type="text" placeholder="Add…">
+      </div>
+    </div>
+  </div>
+  <div class="drawer-footer">
+    <button class="btn btn-outline" data-drawer-close>Cancel</button>
+    <button class="btn btn-primary" data-drawer-close>Apply filters</button>
+  </div>
+</aside>
 
-    <div id="custom_notifications" class="custom-notifications dsp_none">
-      <ul class="list-unstyled notifications clearfix" data-tabbed_notifications="notif-group">
-      </ul>
-      <div class="clearfix"></div>
-      <div id="notif-group" class="tabbed_notifications"></div>
-    </div>    <!-- Compiled JavaScript (Bootstrap and vendor scripts) -->
-    
-	
-  </body>
-</html>
+<aside class="drawer left" id="demo-drawer-left" aria-hidden="true">
+  <div class="drawer-header">
+    <span class="drawer-title">Notes</span>
+    <button class="drawer-close" data-drawer-close aria-label="Close"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3l8 8M11 3l-8 8"/></svg></button>
+  </div>
+  <div class="drawer-body">
+    <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;margin-bottom:14px">A drawer is great for secondary content that doesn't deserve a full modal — filters, notes, comments, settings.</p>
+    <textarea class="form-control" placeholder="Type a note…">v4 launch checklist:
+- [x] Inbox is fully interactive
+- [x] Settings persist
+- [x] 16 chart variants
+- [ ] Final QA pass</textarea>
+  </div>
+  <div class="drawer-footer">
+    <button class="btn btn-primary" data-drawer-close>Save</button>
+  </div>
+</aside>
 
 <script type="module">
-  document.addEventListener('DOMContentLoaded', () => {
-    // Enable tooltips
-    const tooltipTriggerList = Array.from(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-    tooltipTriggerList.forEach(el => new bootstrap.Tooltip(el));
+import { showToast } from '/src/v4/toast.js';
+import { showModal } from '/src/v4/modal.js';
+import { openMenu } from '/src/v4/menus.js';
 
-    // Enable popovers
-    const popoverTriggerList = Array.from(document.querySelectorAll('[data-bs-toggle="popover"]'));
-    popoverTriggerList.forEach(el => new bootstrap.Popover(el));
+// Generic .tab handler — pill + underlined variants
+document.addEventListener('click', (e) => {
+  const tab = e.target.closest('.tab');
+  if (!tab) return;
+  tab.parentElement.querySelectorAll('.tab').forEach((t) => t.classList.remove('active'));
+  tab.classList.add('active');
+});
 
-    // Toast factory
-    const toastContainer = document.querySelector('.toast-container');
-    const showToast = (variant, message) => {
-      const toastEl = document.createElement('div');
-      toastEl.className = `toast align-items-center text-bg-${variant} border-0`;
-      toastEl.role = 'alert';
-      toastEl.innerHTML = `
-        <div class="d-flex">
-          <div class="toast-body">${message}</div>
-          <button type="button" class="btn-btn-close btn-btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-        </div>`;
-      toastContainer.appendChild(toastEl);
-      const toastObj = new bootstrap.Toast(toastEl, { delay: 3000 });
-      toastObj.show();
-      toastEl.addEventListener('hidden.bs.toast', () => toastEl.remove());
-    };
-
-    document.getElementById('toast-success-btn')?.addEventListener('click', () => showToast('success', 'Success toast'));
-    document.getElementById('toast-error-btn')?.addEventListener('click', () => showToast('danger', 'Error toast'));
-    document.getElementById('toast-info-btn')?.addEventListener('click', () => showToast('info', 'Info toast'));
-    document.getElementById('toast-warning-btn')?.addEventListener('click', () => showToast('warning', 'Warning toast'));
+// Pagination demo
+const pag = document.getElementById('demo-pagination');
+if (pag) {
+  pag.addEventListener('click', (e) => {
+    const btn = e.target.closest('.page-btn');
+    if (!btn || btn.disabled) return;
+    e.stopPropagation();
+    e.preventDefault();
+    const allPages = pag.querySelectorAll('.page-btn[data-page]:not([data-page="prev"]):not([data-page="next"])');
+    let activeIdx = Array.from(allPages).findIndex((b) => b.classList.contains('active'));
+    if (btn.dataset.page === 'prev') activeIdx = Math.max(0, activeIdx - 1);
+    else if (btn.dataset.page === 'next') activeIdx = Math.min(allPages.length - 1, activeIdx + 1);
+    else activeIdx = Array.from(allPages).indexOf(btn);
+    allPages.forEach((b) => b.classList.remove('active'));
+    if (allPages[activeIdx]) allPages[activeIdx].classList.add('active');
+    // Update prev/next disabled
+    pag.querySelector('[data-page="prev"]').disabled = activeIdx === 0;
+    pag.querySelector('[data-page="next"]').disabled = activeIdx === allPages.length - 1;
   });
+}
+
+// Rating stars
+const rating = document.getElementById('rating-demo');
+const ratingLabel = document.getElementById('rating-label');
+function renderRating(value) {
+  rating.dataset.value = value;
+  rating.querySelectorAll('button').forEach((b) => {
+    b.classList.toggle('on', parseInt(b.dataset.i, 10) <= value);
+  });
+  if (ratingLabel) ratingLabel.textContent = `${value} of 5 stars`;
+}
+renderRating(parseInt(rating.dataset.value, 10));
+rating.addEventListener('click', (e) => {
+  const btn = e.target.closest('button');
+  if (!btn) return;
+  e.stopPropagation();
+  renderRating(parseInt(btn.dataset.i, 10));
+});
+
+// Loading button — toggle spinner for 1.6s
+document.getElementById('loading-btn').addEventListener('click', (e) => {
+  e.stopPropagation();
+  const btn = e.currentTarget;
+  if (btn.getAttribute('aria-busy') === 'true') return;
+  const spinner = btn.querySelector('.btn-spinner');
+  const label = btn.querySelector('span:not(.btn-spinner)');
+  btn.setAttribute('aria-busy', 'true');
+  spinner.hidden = false;
+  const original = label.textContent;
+  label.textContent = 'Saving…';
+  setTimeout(() => {
+    btn.setAttribute('aria-busy', 'false');
+    spinner.hidden = true;
+    label.textContent = original;
+    showToast('Saved ✓', { variant: 'success' });
+  }, 1600);
+});
+
+// Dropdown buttons (two — same target)
+['dropdown-btn', 'open-dropdown-demo'].forEach((id) => {
+  document.getElementById(id).addEventListener('click', (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+    openMenu(e.currentTarget, [
+      { label: 'Edit',     action: () => showToast('Edit') },
+      { label: 'Duplicate', action: () => showToast('Duplicated') },
+      { label: 'Archive',  action: () => showToast('Archived') },
+      '-',
+      { label: 'Delete',   action: () => showToast('Deleted', { variant: 'error' }) }
+    ]);
+  });
+});
+
+// Toast & modal demos
+document.getElementById('show-toast-demo').addEventListener('click', (e) => {
+  e.stopPropagation();
+  showToast('Hello! This is a default toast.');
+});
+document.getElementById('show-toast-success').addEventListener('click', (e) => {
+  e.stopPropagation();
+  showToast('Saved successfully', { variant: 'success' });
+});
+document.getElementById('show-toast-error').addEventListener('click', (e) => {
+  e.stopPropagation();
+  showToast('Something went wrong', { variant: 'error' });
+});
+document.getElementById('open-modal-demo').addEventListener('click', (e) => {
+  e.stopPropagation();
+  showModal({
+    title: 'Confirm action',
+    body: '<p style="font-size:13px;color:var(--text-secondary);line-height:1.6;margin:0">Modals support <strong>any HTML</strong>, focus trap, click-outside dismiss, Escape to close, and reduced-motion preferences. Try Tab and Shift+Tab to see focus stay inside.</p>',
+    actions: [
+      { label: 'Cancel', variant: 'outline' },
+      { label: 'Confirm', variant: 'primary', action: () => showToast('Confirmed', { variant: 'success' }) }
+    ]
+  });
+});
+
+// Drawer demo
+const backdrop = document.getElementById('demo-drawer-backdrop');
+const drawerRight = document.getElementById('demo-drawer-right');
+const drawerLeft  = document.getElementById('demo-drawer-left');
+const openDrawer = (drawer) => {
+  drawer.classList.add('open');
+  drawer.setAttribute('aria-hidden', 'false');
+  backdrop.classList.add('open');
+};
+const closeDrawer = () => {
+  [drawerRight, drawerLeft].forEach((d) => { d.classList.remove('open'); d.setAttribute('aria-hidden', 'true'); });
+  backdrop.classList.remove('open');
+};
+document.getElementById('open-drawer-right').addEventListener('click', (e) => { e.stopPropagation(); openDrawer(drawerRight); });
+document.getElementById('open-drawer-left').addEventListener('click',  (e) => { e.stopPropagation(); openDrawer(drawerLeft);  });
+backdrop.addEventListener('click', closeDrawer);
+document.addEventListener('click', (e) => {
+  if (e.target.closest('[data-drawer-close]')) closeDrawer();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && (drawerRight.classList.contains('open') || drawerLeft.classList.contains('open'))) closeDrawer();
+});
+
+// Tag input + segmented inside drawers (lightweight)
+document.querySelectorAll('.drawer .tag-input').forEach((wrap) => {
+  const input = wrap.querySelector('input');
+  wrap.addEventListener('click', (e) => {
+    if (e.target === wrap) input.focus();
+    const close = e.target.closest('.tag-pill button');
+    if (close) close.closest('.tag-pill').remove();
+  });
+});
 </script>
+
+</body>
+</html>

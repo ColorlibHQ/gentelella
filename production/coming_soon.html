@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coming soon | Gentelella 2026 v4</title>
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script type="module" src="/src/main-v4.js"></script>
+</head>
+<body>
+
+<div class="error-page">
+  <div class="error-content" style="max-width:560px">
+    <div class="status-page-icon">
+      <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <circle cx="12" cy="12" r="10"/>
+        <path d="M12 6v6l4 2"/>
+      </svg>
+    </div>
+    <div class="error-title">Coming soon</div>
+    <div class="error-message">
+      Something exciting is on the way. We're putting the finishing touches on a brand-new
+      Gentelella v4 — sign up below and we'll let you know the moment it's ready.
+    </div>
+
+    <div class="countdown" id="countdown">
+      <div class="countdown-cell"><div class="num" id="cd-days">00</div><div class="lbl">Days</div></div>
+      <div class="countdown-cell"><div class="num" id="cd-hours">00</div><div class="lbl">Hours</div></div>
+      <div class="countdown-cell"><div class="num" id="cd-mins">00</div><div class="lbl">Minutes</div></div>
+      <div class="countdown-cell"><div class="num" id="cd-secs">00</div><div class="lbl">Seconds</div></div>
+    </div>
+
+    <form class="coming-soon-form" id="notify-form" data-reset-on-submit="false">
+      <div class="input-group" style="flex:1">
+        <svg class="input-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="12" height="10" rx="1.5"/><path d="M2 5l6 4 6-4"/></svg>
+        <input type="email" id="notify-email" class="form-control" placeholder="Get notified — your@email.com" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Notify me</button>
+    </form>
+
+    <div class="coming-soon-success" id="notify-success" hidden>
+      ✓ Thanks — we'll send you an email when we launch.
+    </div>
+  </div>
+</div>
+
+<script type="module">
+// Countdown to a fixed launch date 14 days out — purely demonstrative.
+const target = new Date(Date.now() + 14 * 24 * 60 * 60 * 1000);
+function tick() {
+  const diff = Math.max(0, target.getTime() - Date.now());
+  const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  const s = Math.floor((diff % (1000 * 60)) / 1000);
+  document.getElementById('cd-days').textContent  = String(d).padStart(2, '0');
+  document.getElementById('cd-hours').textContent = String(h).padStart(2, '0');
+  document.getElementById('cd-mins').textContent  = String(m).padStart(2, '0');
+  document.getElementById('cd-secs').textContent  = String(s).padStart(2, '0');
+}
+tick();
+setInterval(tick, 1000);
+
+document.getElementById('notify-form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+  document.getElementById('notify-form').hidden = true;
+  document.getElementById('notify-success').hidden = false;
+});
+</script>
+
+</body>
+</html>

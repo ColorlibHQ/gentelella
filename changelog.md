@@ -1,573 +1,214 @@
-# Gentelella Changelog
-
-## 2.2.0 - 23.04.2026
-
-**Fresh for 2026 — Dependency Refresh + HTML Validity + Sidebar Persistence + Senior-Dev Polish**
-
-### Performance & competitive parity
-
-- **ECharts tree-shaken: -32% bundle size.** Switched both `main-minimal.js` and `main-form-basic.js` from `import * as echarts from 'echarts'` (the umbrella entry that ships every chart, every component, every renderer) to a tree-shaken bundle in [src/lib/echarts.js](src/lib/echarts.js) that registers only the charts and components Gentelella actually uses (Bar, Line, Pie, Scatter, Gauge, Radar, Funnel + the standard component set + CanvasRenderer). Audited the codebase first to confirm `MapChart`, `GeoComponent` and `CustomChart` weren't actually used. Result: `vendor-echarts` chunk dropped from **1,108 kB → 752 kB** (363 kB → 250 kB gzipped) — the biggest single first-paint win available.
-- **Stopped placeholder `<a href="#">` jump-to-top.** Added a one-shot delegated click handler in [src/js/init.js](src/js/init.js) that calls `preventDefault()` on any `<a href="#">` click. Skips elements with `data-bs-toggle` since Bootstrap handles those. Fixes ~108 placeholder links across the template without touching any markup, idempotent for any future additions.
-- **Fixed broken inline JS in [projects.html](production/projects.html).** The "save project" handler had a bare object literal (`name: projectName, …`) with no enclosing `const projectData = {…}` declaration. Threw `Unexpected token ':'` on every page load. Now logs the demo payload to console.
-- **Reduced `!important` from 152 → 137** in `custom.scss`. Removed 6 from the `#sidebar-menu .badge` block (selector specificity already wins over Bootstrap's `.badge`), 3 from `.jqstooltip`, and 6 from legacy DataTables 1.x selectors (`.dataTables_paginate a`, `.paging_full_numbers`, `.DTTT_button`) which no longer match anything in DataTables 2.x markup but were left in place for now to avoid scope creep.
-- **Replaced Lorem ipsum on [widgets.html](production/widgets.html)** with realistic dashboard copy ("+12% vs last week", "34 awaiting reply", "$48.2K this month", "92% on-time delivery").
-
-### Senior-dev polish pass
-
-- **Auth / error pages rebranded.** `login.html`, `page_403.html`, `page_404.html`, `page_500.html` used the sidebar-tinted `logo.svg` (white fill) on a white card, so the wordmark was nearly invisible and the adjacent `<h3>Gentelella</h3>` created an overlapping ghost. Replaced the image with a new `.brand-mark` CSS badge (a 9-cell grid icon in the brand navy) rendered via `background-image` gradients — no SVG asset required, scales at any size, no color fights.
-- **Fixed broken `<h2 class="h3">…</h4>` tags** on `page_403.html`, `page_404.html`, `page_500.html`. Opens as h2, closes as h4 — browsers autocorrect, validators don't.
-- **Promoted every page-title `<h3>` to `<h1>`** across 31 dashboard pages. Kept the `.h3` Bootstrap utility class so the visual size is identical. Added a `visually-hidden` `<h1>` to the 4 `index*.html` dashboards (Dashboard Overview / Analytics / Sales Analytics / Operations) so every page now has exactly one document-level heading.
-- **Standardised `<head>` across all 40 pages.** Every page now ships the same security headers (CSP, X-Content-Type-Options, Referrer-Policy, Permissions-Policy), the full favicon set (SVG + 32×32 + 16×16 + ICO + Apple Touch Icon + Web App Manifest), and theme colors (`theme-color: #2a3f54`, `msapplication-TileColor`). Previously only `landing.html` and `index.html` had this.
-- **Normalised `<title>` tags.** 35 pages updated to the consistent `{Page} | Gentelella` pattern. Fixed three pages whose titles read `Alela! | Gentelella` (indexing artifact from an earlier regex pass) and three error-page titles that were just `"404 | Gentelella"` etc. — now `"404 Page Not Found | Gentelella"`.
-- **Expanded token usage.** Added `--gt-surface-muted: #f2f5f7` to `_variables.scss` and replaced the four hardcoded occurrences; replaced `#e4e4e4` and `#f4f4f4` in `.autocomplete-suggestions` with `--gt-border-color` and `--gt-gray-50`.
-- **Deleted `_variables-modern.scss`.** Alternate theme file that was never imported and only referenced by a commented-out `@use` line in `main.scss`. Simplified the "theme selection" comment in `main.scss` to the single active entry.
-
-### Dependencies
-
-### Dependencies
-
-Bumped every direct dependency to its latest release (as of 2026-04-23). Every non-major was pulled via `npm update`; majors were migrated individually with a build/test verification at each step.
-
-**Major version upgrades:**
-
-- **Vite 7 → 8.0.10** — now bundled with Rolldown instead of Rollup. Required rewriting `manualChunks` in `vite.config.js` from the object form to a function (Rolldown only supports the function form) and teaching `assetFileNames` to read the new `assetInfo.names` array. Production build is ~35% faster (22.9s → 13.8s).
-- **ESLint 9 → 10.2.1** (and `@eslint/js` → 10.0.1) — flat config carries over unchanged.
-- **Uppy 4 → 5** (`@uppy/core`, `@uppy/dashboard`, `@uppy/xhr-upload`) — CSS import path changed from `@uppy/*/dist/style.min.css` to `@uppy/*/css/style.min.css` (Uppy now uses `exports` conditions).
-- **jsdom 27 → 29** — no code change, test suite passes.
-- **rollup-plugin-visualizer 6 → 7** — no config change, `npm run analyze` still emits `dist/stats.html`.
-
-**Minor/patch bumps:** `@fortawesome/fontawesome-free`, `@vitest/coverage-v8`, `choices.js`, `cropperjs`, all `datatables.net-*`, `dayjs`, `dompurify`, `glob`, `prettier`, `sass`, `terser`, `vitest`.
-
-**Known advisory:** `quill@2.0.3` carries advisory GHSA-v3m3-f69x-jf25 (XSS via HTML export). No patched version exists upstream; template already sanitises Quill output via `window.sanitizeHtml` (DOMPurify). Re-evaluate when Quill ships a fix.
-
-### Lint config
-
-ESLint passes with zero errors. Two policy tweaks, both justified:
-
-- `no-unused-vars` is now a **warning** (was error), with `varsIgnorePattern` / `caughtErrorsIgnorePattern` set to `^_`. Rationale: this is a template — consumers routinely declare state for features they'll wire up next.
-- `no-empty` now allows empty catch blocks. Rationale: the chart init modules use empty catches as a defensive skip when a charting library isn't present on the page — intentional, not a missed `console.error`.
-
-Added `File` to the browser-globals list so `validation.test.js` recognises it.
-
-### HTML Validity
-
-- **Closed unclosed `<li>` tags across 34 pages**: every parent `<li>` that wraps a `<ul class="nav child_menu">` in the sidebar now has a matching `</li>`. Same fix applied to the `<li class="sub_menu">` items inside the multilevel demo and to every `<li class="nav-item">` inside the top-nav `msg_list` dropdowns. ~600 closing tags inserted.
-
-### Sidebar
-
-- **Persisted collapsed/expanded state across page navigations** via `localStorage` key `gentelella:sidebar-collapsed`. Storage access is wrapped in `try/catch` so Safari private mode and disabled-storage environments degrade gracefully (state is just ephemeral). Refactored the toggle handler into `collapseSidebar()` / `expandSidebar()` helpers used by both the click handler and the on-load restore path.
-- **Skip forcing submenus open** in the current-page highlight when the sidebar loads in collapsed mode — avoids a visible flash of an open submenu.
-
-### Charts (ECharts + Chart.js)
-
-- **`window.echarts` consistency**: `getInstanceByDom` calls in `echarts.js` now use `window.echarts` like the rest of the file, removing two implicit-global references.
-- **Debounced ECharts resize handler** (150 ms) prevents resize storms when dragging window edges.
-- **Pause real-time chart updates while the tab is hidden** via `document.hidden` checks in network/gauge/weekly-summary intervals. No `beforeunload` cleanup added — that pattern disables back/forward cache and is unnecessary for a multi-page app.
-
-### Styles & Design Polish
-
-- **Fixed broken asset paths** in all 40 production HTML files (370 attribute rewrites). Images and `site.webmanifest` now use `../images/` and `../site.webmanifest` — paths resolve correctly from `production/*.html` in both dev (`base: /`) and prod (`base: /polygon/gentelella/`). Previously they 404'd because bare `images/…` resolved to `/production/images/…`.
-- **Unified card / panel / tile styling** under new design tokens in `_variables.scss`: `--gt-radius-card` (8px), `--gt-shadow-card`, `--gt-shadow-card-hover`, `--gt-card-border`, `--gt-card-border-hover`. Every card-like container now pulls from these tokens instead of hard-coded values.
-- **Removed duplicate `.x_panel` rule** in `custom.scss` (the second copy at the end of the file was silently overriding the first via the cascade).
-- **Removed conflicting `.x_panel` override** in `index2.scss` that was setting a different radius (5px) and shadow than the main stylesheet.
-- **Migrated** `.x_panel`, `.dashboard_graph`, `.tile-stats`, `.top_tiles .tile`, `.pie_bg`, `.demo-container`, **and Bootstrap's `.card`** to the new tokens. Before: radii ranged 3px–10px and shadows had four distinct definitions; the top-row dashboard tiles (which used `.card shadow-sm border-0`) rendered with different borders and shadows than the `.x_panel` cards below them. After: one radius and one shadow for every raised surface, with one consistent hover elevation — regardless of whether the markup uses `.x_panel` or Bootstrap `.card`.
-- **Stripped `shadow-sm` / `shadow` / `shadow-lg` / `border-0` Bootstrap utility classes** from `.card` elements across 9 HTML files (66 removals). These utilities were fighting the unified `.card` rule via `!important` and producing mismatched tiles. The unified `.card` SCSS now owns border + shadow via design tokens, so the utilities are redundant.
-- **Scoped `transition` properties** on card hovers to `box-shadow`, `border-color`, `transform` instead of `all` — keeps interactions snappy and avoids animating every paintable property.
-- Replaced remaining hard-coded `#fff` card backgrounds with `var(--gt-panel-bg)`, and `#ddd` / `#e4e4e4` borders with the new `--gt-card-border-hover` and `--gt-card-border` tokens.
-- Removed a duplicated `.container { width: 100%; padding: 0; max-width: 100%; }` block in `custom.scss`.
-- Removed a self-duplicated selector in `.navbar-nav > li > a, .navbar-brand, .navbar-nav > li > a`.
-
-### Dev server
-
-- **Fixed dev server 404 on root URL**: `vite.config.js` now uses the function form of `defineConfig` so `base` is `/polygon/gentelella/` only in production builds; in dev the base is `/`. `server.open` points at `/production/index.html` (the actual entry) instead of the non-existent `/index.html` at the project root.
-
-### Verification
-
-- `npm run build` — passes, 13.9s
-- `npm test` — 126/126 passing
-- `npm run lint` — 0 errors, 79 warnings (all `no-console` in logger/console modules, which is expected)
-- Dev server smoke-tested: all key pages render with correct images and uniform card styling
-
-### HTML Validity
-
-- **Closed unclosed `<li>` tags across 34 pages**: every parent `<li>` that wraps a `<ul class="nav child_menu">` in the sidebar now has a matching `</li>`. Same fix applied to the `<li class="sub_menu">` items inside the multilevel demo and to every `<li class="nav-item">` inside the top-nav `msg_list` dropdowns. Net of ~600 inserted closing tags.
-
-### Sidebar
-
-- **Persisted collapsed/expanded state across page navigations** via `localStorage` key `gentelella:sidebar-collapsed`. Storage access is wrapped in `try/catch` so Safari private mode and disabled-storage environments degrade gracefully (state is just ephemeral). Refactored the toggle handler into `collapseSidebar()` / `expandSidebar()` helpers used by both the click handler and the on-load restore path.
-- **Skip forcing submenus open** in the current-page highlight when the sidebar loads in collapsed mode — avoids a visible flash of an open submenu.
-
-### Charts (ECharts + Chart.js)
-
-- **`window.echarts` consistency**: `getInstanceByDom` calls in `echarts.js` now use `window.echarts` like the rest of the file, removing two implicit-global references.
-- **Debounced ECharts resize handler** (150 ms) prevents resize storms when dragging window edges.
-- **Pause real-time chart updates while the tab is hidden** via `document.hidden` checks in network/gauge/weekly-summary intervals. No `beforeunload` cleanup added — that pattern disables back/forward cache and is unnecessary for a multi-page app.
-
-### Styles
-
-- Removed a duplicated `.container { width: 100%; padding: 0; max-width: 100%; }` block (already declared near the top of `custom.scss`).
-- Removed a self-duplicated selector in `.navbar-nav > li > a, .navbar-brand, .navbar-nav > li > a`.
-
----
-
-## 2.1.5 - 15.02.2026
-
-**Documentation Overhaul & jQuery Cleanup Release**
-
-### Documentation Site Fixes
-
-- **GitHub Pages Deployment**: Fixed broken Jekyll documentation site at colorlibhq.github.io/gentelella
-  - Rewrote GitHub Actions workflow to build from `docs/` directory instead of repo root
-  - Bumped Ruby from 3.1 to 3.3 to resolve Bundler compatibility failure
-  - Fixed base URL from `puikinsh.github.io` to `colorlibhq.github.io`
-  - Removed orphaned `docs/.github/workflows/pages.yml` (GitHub only discovers workflows at repo root)
-
-- **Fixed All Broken Documentation Links**: Resolved 17 broken cross-links across 6 documentation files
-  - Removed incorrect `/docs/` prefix from internal links site-wide
-  - Replaced references to non-existent pages (security.md, testing.md, monitoring.md, examples.md) with valid targets
-
-- **New Documentation Pages**:
-  - Created `docs/performance.md` - Performance optimization guide with code splitting strategy and bundle analysis
-  - Added Jekyll front matter to `bundle-analysis.md`, `jquery-elimination-complete.md`, `security-headers.md`
-
-### Documentation Content Updates
-
-- **Updated All Dependency Versions**: Aligned documentation with actual package.json versions
-  - Vite 6.3.5 → 7.3.1, Bootstrap 5.3.7 → 5.3.8, Node.js v16 → v18
-  - Removed references to eliminated libraries: jQuery, Morris.js, Select2, jVectorMap, Gauge.js, Ion.RangeSlider
-  - Updated code examples: Select2 → Choices.js, Morris.js → ECharts, jVectorMap → Leaflet
-  - Corrected `manualChunks` configuration examples in configuration.md and deployment.md
-
-### jQuery Reference Cleanup
-
-- **Removed All Stale jQuery References**: Template is fully jQuery-free
-  - Updated HTML comments in 17 production files: "includes jQuery, Bootstrap, and all vendor scripts" → "Bootstrap and vendor scripts"
-  - Fixed outdated `$().DataTable()` reference in tables_dynamic.html to modern `new DataTable('#myTable')`
-  - Renamed "jQuery Smart Wizard" SCSS section comments to "Smart Wizard"
-
-### Page Identifiers
-
-- **Added `page-*` Body Classes**: All 24 pages missing identifiers now have proper `page-*` body classes for CSS targeting
-  - Enables page-specific styling via `body.page-calendar`, `body.page-form-wizards`, etc.
-  - Documented complete reference table in CLAUDE.md
-
-### Cleanup
-
-- Deleted orphaned documentation files: `BOOTSTRAP_MIGRATION_GUIDE.md`, `daterangepicker-fix.md`
-- Deleted stale release files: `JQUERY_ELIMINATION_PLAN.md`, `RELEASE_v2.1.4.md`
-
----
-
-## 2.1.4 - 13.01.2026
-
-**UI Polish & Navigation Enhancement Release**
-
-### New Features
-
-- **Go Pro Sidebar Link**: Added prominent "Go Pro" menu item linking to DashboardPack premium templates
-  - Positioned at top of sidebar for visibility
-  - Includes UTM tracking for analytics
-  - Opens in new tab for seamless user experience
-
-- **Sidebar Badge System**: Introduced colorful badges throughout sidebar navigation
-  - "Pro" badge (yellow) on Go Pro link
-  - "Hot" badge (red) on UI Elements menu
-  - "New" badge (green) on Data Presentation menu
-  - "Updated" badge (blue) on ECharts and Landing Page items
-  - Consistent 52px width across all badges with right alignment
-
-### UI/UX Improvements
-
-- **Avatar/Profile Thumbnails**: Redesigned profile icons in activity feeds
-  - Colorful circular backgrounds (aero, green, blue, purple, orange, red)
-  - White icons for better contrast and modern look
-  - Flexbox centering for perfect alignment
-
-- **Progress Bar Fixes**: Fixed invisible progress bars across dashboard pages
-  - Added proper background color to `.progress` container
-  - Removed conflicting CSS variable override that was zeroing out widths
-  - Consistent 8px height with rounded corners
-
-- **Spacing Consistency**: Removed extra `<br>` tag causing uneven card spacing on index.html
-
-### File Upload Modernization
-
-- **Uppy Integration**: Replaced legacy Dropzone.js with modern Uppy file uploader
-  - Drag & drop support with visual feedback
-  - Image preview thumbnails
-  - Progress indicators for uploads
-  - Cleaner, more maintainable codebase
-
-### Cross-Page Consistency
-
-- **Unified Sidebar Menu**: All 33 HTML template pages now share identical sidebar navigation
-  - Consistent menu structure and badges across all pages
-  - Improved user experience when navigating between pages
-
-### Code Quality
-
-- **Removed Inline CSS**: Cleaned up inline styles, moved to proper SCSS files
-- **SCSS Organization**: Consolidated badge and progress bar styles
-
----
-
-## 2.1.3 - 12.01.2026
-
-**Code Quality, Naming Standardization & UI Modernization Release**
-
-### UI Modernization
-
-- **Bootstrap Icons Integration**: Added Bootstrap Icons as alternative to Font Awesome
-  - Installed `bootstrap-icons` package (v1.13.1)
-  - Sidebar navigation now uses thinner, more modern Bootstrap Icons
-  - Icon mappings: `fa-home` → `bi-house`, `fa-edit` → `bi-pencil-square`, `fa-desktop` → `bi-display`, etc.
-  - All 35 HTML files updated with new icon classes
-
-- **Header Navigation Fixes**: Rebuilt top navigation using proper Bootstrap 5 flexbox utilities
-  - Uses `d-flex`, `align-items-center`, `justify-content-between`, `ms-auto`, `gap-3` classes
-  - Dropdown order corrected: notifications first, then user profile
-  - Dropdown menus widened (320px for notifications, 200px for user profile)
-  - Proper `dropdown-menu-end` alignment for right-side dropdowns
-
-- **Sidebar Improvements**:
-  - Hamburger menu properly positioned for both expanded (230px) and collapsed (70px) sidebar states
-  - Logo icon centered in collapsed sidebar mode using flexbox
-  - Chevron arrows positioned to right side of menu items with `margin-left: auto`
-
-### Code Cleanup
-
-- **Removed Legacy Files**: Deleted orphaned jQuery-based files no longer in use
-  - `src/js/examples.js` - Legacy jQuery popover and Flot chart examples
-  - `src/js/form-validation-init.js` - Unused validation demo file
-  - `src/main.js` - Legacy full jQuery bundle
-  - `src/main-minimal.js` (old) - Legacy jQuery minimal bundle
-  - `src/main-form-advanced.js` - Unreferenced form entry point
-  - `src/main-form-basic-simple.js` - Orphaned stub file
-  - `src/js/require-shim.js` - Legacy CommonJS shim
-
-### Naming Standardization
-
-- **Removed "-modern" suffixes**: Standardized file naming throughout the codebase
-  - `dom-modern.js` → `dom.js`
-  - `sidebar-modern.js` → `sidebar.js`
-  - `init-modern.js` → `init.js`
-  - `smartresize-modern.js` → `smartresize.js`
-  - `tables-modern.js` → `tables.js`
-  - `echarts-modern.js` → `echarts.js`
-  - `main-minimal-modern.js` → `main-minimal.js`
-
-### New Features
-
-- **Test Suite**: Added comprehensive unit testing infrastructure
-  - Vitest testing framework with JSDOM environment
-  - 126 unit tests covering all utility modules
-  - Test coverage for security.js, validation.js, dom.js, logger.js
-  - New npm scripts: `test`, `test:watch`, `test:coverage`
-
-- **Logger Utility**: Added centralized development-only logging (`src/utils/logger.js`)
-  - Wraps console methods with environment checks
-  - Automatic suppression in production builds
-  - Group logging support for better debugging
-
-- **CSS Variables System**: Added comprehensive CSS custom properties (`src/scss/_variables.scss`)
-  - Brand colors, semantic colors, neutral palette
-  - Spacing, typography, shadows, transitions
-  - Z-index scale and border radius tokens
-
-### Bundle Optimization
-
-- **Removed Unused Dependencies**: Eliminated dead weight from bundle
-  - Removed `flot` (4.2 MB package, never imported)
-  - Removed `moment` (67 KB, dayjs already used as lightweight alternative)
-
-- **Smart Chunk Splitting**: Optimized vendor chunks for better caching
-  - Split Chart.js (203 KB) and ECharts (1,109 KB) into separate chunks
-  - Pages using only Chart.js now save ~1 MB vs loading both
-  - Added `vendor-calendar` chunk for FullCalendar (256 KB)
-  - Extended `vendor-tables-ext` to include all DataTables extensions
-
-- **Production Build Optimization**
-  - Disabled CSS source maps in production (saves ~8 MB build size)
-  - Enhanced Terser compression with `pure_getters`, `reduce_vars`, `collapse_vars`
-  - 3-pass minification for additional size reduction
-
-### SCSS Improvements
-
-- **Fixed Color Inconsistencies**: Resolved `.aero` color class conflict between files
-- **Improved Organization**: Added table of contents to custom.scss for navigation
-
-### Bootstrap 5 Consolidation (Migration Phase 1-3)
-
-- **CSS Variables Integration**: Replaced ~90 hardcoded color values with CSS custom properties
-  - Primary colors (#1abb9c, #2a3f54, #e74c3c, etc.) now use `var(--gt-*)` references
-  - Enables easier theming and dark mode support
-
-- **Reduced !important Declarations**: Cut from 278 to 138 (50% reduction)
-  - Sidebar toggle states now use `body.nav-md`/`body.nav-sm` for specificity
-  - Typography hierarchy uses body prefix instead of !important
-  - Profile and panel sections modernized
-
-- **Bootstrap Collapse Integration**: Panel toolbox now uses Bootstrap 5's Collapse API
-  - Collapse/expand functionality leverages native Bootstrap component
-  - Automatic icon rotation via collapse events
-  - Removed dependency on custom slideUp/slideDown for panels
-
-- **Float to Flexbox Conversion**: Modernized key layout sections
-  - `.profile` section uses flexbox instead of float
-  - `.x_title` panel header uses flexbox for title/filter alignment
-  - `.nav_menu` converted to flexbox layout
-  - Removed float from `.x_content`
-
-- **Color Utility Documentation**: Added migration guide comments for legacy color classes
-  - Documents Bootstrap equivalents (.blue → .text-info, .bg-green → .bg-success)
-  - Classes kept for backward compatibility with existing HTML
-
-### Documentation Updates
-
-- Updated CLAUDE.md with new file structure and renamed modules
-- Updated directory layout to reflect cleaned-up architecture
-
----
-
-## 2.1.2 - 12.01.2026
-
-Maintenance Release - Comprehensive Dependency Updates
-
-### Dependency Updates
-
-All dependencies updated to their latest versions for improved security, performance, and compatibility.
-
-#### Dev Dependencies
-
-- **Vite** 7.1.5 → 7.3.1 (build system improvements)
-- **ESLint** 9.35.0 → 9.39.2 (linting engine)
-- **@eslint/js** 9.35.0 → 9.39.2
-- **@typescript-eslint/eslint-plugin** 8.43.0 → 8.52.0
-- **@typescript-eslint/parser** 8.43.0 → 8.52.0
-- **TypeScript** 5.9.2 → 5.9.3
-- **Prettier** 3.6.2 → 3.7.4 (code formatter)
-- **SASS** 1.92.1 → 1.97.2 (CSS preprocessor)
-- **Terser** 5.44.0 → 5.44.1 (JS minifier)
-- **glob** 11.0.3 → 13.0.0 (major version upgrade)
-- **rollup-plugin-visualizer** 6.0.3 → 6.0.5
-
-#### Runtime Dependencies
-
-- **Font Awesome** 7.0.1 → 7.1.0 (icon library)
-- **FullCalendar** 6.1.19 → 6.1.20 (all packages)
-- **Chart.js** 4.5.0 → 4.5.1
-- **CropperJS** 2.0.1 → 2.1.0
-- **DataTables** 2.3.4 → 2.3.6 (core and BS5 styling)
-- **DataTables Buttons** 3.2.5 → 3.2.6
-- **DataTables FixedHeader** 4.0.3 → 4.0.5
-- **DataTables KeyTable** 2.12.1 → 2.12.2
-- **DataTables Responsive** 3.0.6 → 3.0.7
-- **Day.js** 1.11.18 → 1.11.19
-- **DOMPurify** 3.2.6 → 3.3.1 (security library)
-
-### Code Quality Improvements
-
-- **ESLint Configuration**: Added comprehensive browser globals to eliminate false-positive errors
-  - Added all standard browser APIs (setTimeout, fetch, localStorage, etc.)
-  - Added DOM interfaces (HTMLElement, Event, CustomEvent, etc.)
-  - Added library globals (TempusDominus, Skycons, DataTable, etc.)
-- **Bug Fix**: Fixed parsing error in main-form-advanced.js (incomplete console statement)
-
-### Known Issues
-
-- Sass deprecation warnings in build output are from Bootstrap's internal SCSS files and will be resolved in future Bootstrap releases
-- All functionality tested and verified working with updated dependencies
-
----
-
-## 2.1.1 - 11.09.2025
-
-**Maintenance Release - Dependency Updates, Chart Fixes & UI Improvements**
-
-### Dependency Updates
-- **Latest Dependencies**: All dependencies updated to latest versions for security and performance
-  - Vite 7.1.4 → 7.1.5
-  - Bootstrap 5.3.6 → 5.3.8
-  - ECharts 5.6.0 → 6.0.0 (major version upgrade)
-  - Chart.js 4.4.2 → 4.5.0
-  - jQuery 3.6.1 → 3.7.1
-  - TypeScript 5.8.3 → 5.9.2
-  - ESLint 9.34.0 → 9.35.0
-  - SASS 1.92.0 → 1.92.1
-  - DataTables 2.3.3 → 2.3.4 with all related packages
-  - Font Awesome 7.0.0 → 7.0.1
-- **Security Updates**: Ruby 3.3.9 and Nokogiri 1.18.9 resolve all CVE vulnerabilities
-
-### Chart & Widget Improvements
-- **ECharts Functionality**: Fixed all missing charts on echarts.html page
-  - Added missing pyramid sales funnel chart with improved readability
-  - Fixed world map visualization
-  - Enhanced chart sizing and positioning
-- **Widget System Enhancement**: Improved content density in widgets.html
-  - Enhanced metric cards with additional context information
-  - Added growth indicators and supplementary metrics
-  - Professional styling with hover effects and better typography
-- **Chart Color Consistency**: Fixed Device Usage chart colors to match label indicators
-- **Interactive Maps**: Fixed visitors location map and skycons weather icons on index.html
-
-### UI/UX Improvements
-- **Sidebar Profile Enhancement**: Improved sidebar name section for better scalability
-  - Reduced font size from default h4 to 14px for optimal space utilization
-  - Added proper typography with font-weight 400 and line-height 1.2
-  - Enhanced profile_info container with flexbox layout for better vertical centering
-  - Added word-wrapping and break-word support for long names
-  - Limited to 2.4em max-height to prevent sidebar expansion while allowing up to 2 lines
-  - Gracefully handles both short names and longer names without breaking layout
-
-### Developer Experience
-- **Dev Server Stability**: Fixed development server crashes with auto-restart capability
-  - Enhanced Vite configuration for better stability
-  - Added dev:watch script for automatic server restart
-  - Improved file watching and HMR reliability
-- **Console Log Cleanup**: Production builds now clean with comprehensive console statement removal
-  - Enhanced Terser configuration for complete console removal
-  - Development-only console logging with environment checks
-- **Build Optimization**: Enhanced production build configuration
-  - Better chunk splitting and manual chunks optimization
-  - Improved Terser settings with additional compression options
-
-### Technical Enhancements
-- **ES Module Support**: Added "type": "module" to package.json for modern JavaScript
-- **Code Quality**: Enhanced ESLint and Prettier configurations
-- **Bundle Analysis**: Improved build analysis tools and documentation
-
-## 2.1.0 - 28.07.2025
-
-**Enhancement Release - jQuery-Free Core System & Brand Refresh**
-
-### New Features
-- **jQuery-Free Core System**: Complete main-core.js modernization with vanilla JavaScript
-  - Dynamic module loading with caching and performance monitoring  
-  - Loading states and visual indicators for better UX
-  - Enhanced error handling and development debugging tools
-- **Brand-Consistent Favicon Suite**: Modern favicon system with complete browser support
-  - SVG-first approach for sharp display across all devices
-  - Apple Touch Icon, Android Chrome icons, and PWA manifest
-  - Modern standard implementation with proper fallbacks
-
-### UI/UX Improvements  
-- **Top Navigation Alignment**: Perfect vertical centering of user profile and notification elements
-- **Modern DOM Utilities**: Comprehensive jQuery-free DOM manipulation library
-  - Slide animations, fade effects, and smooth transitions
-  - Event handling and element manipulation without jQuery dependency
-- **Enhanced Visual Consistency**: Improved spacing and alignment throughout interface
-
-### Technical Enhancements
-- **Console Log Cleanup**: Production-ready code with clean, professional output
-  - Development-only logging wrapped in environment checks
-  - Removed verbose initialization messages and debug output
-- **Code Quality**: Streamlined codebase with reduced development artifacts
-- **Performance Optimizations**: Further improvements to module loading system
-
-### Bug Fixes
-- Fixed loadModule reference errors when using main-minimal.js
-- Resolved favicon display issues in legacy browsers  
-- Corrected navigation element positioning and alignment
-- Eliminated development console noise in production builds
-
-### File Structure
-- Added centralized DOM utilities (`src/utils/dom-modern.js`)
-- Updated favicon implementation with proper size variants
-- Cleaned development files and reduced repository size
-
-### Developer Experience
-- Improved error boundaries and debugging capabilities
-- Enhanced module performance monitoring and statistics
-- Better development vs production environment handling
-
-## 2.0.0 - 20.06.2025 🎉
-
-**Major Stable Release - Bootstrap 5 with Modern Build System**
-
-### 🚀 New Features
-- **Vite Build System**: Lightning-fast development with hot-reload and optimized production builds
-- **Bootstrap 5.3.7**: Complete migration to latest Bootstrap with modern design system
-- **Smart Code Splitting**: 90% smaller initial bundle (79KB vs 779KB) with conditional module loading
-- **Modern JavaScript**: ES6+ modules with dynamic imports and tree shaking
-- **Performance Optimized**: 40-70% faster page loads with intelligent caching
-
-### 🔧 Major Improvements
-- **Morris.js Complete Removal**: Replaced with modern Chart.js implementation
-  - Renamed `morisjs.html` → `chart3.html` with updated navigation
-  - Removed all Morris.js CSS and JavaScript code
-  - Updated 35+ HTML files with new Chart.js references
-- **jQuery Easing Fixes**: Resolved all `TypeError: jQuery.easing[this.easing] is not a function` errors
-  - Added jQuery UI easing effects with fallback functions
-  - Fixed EasyPieChart and progress bar animations
-- **Enhanced Navigation**: Consistent search bar implementation across all pages
-- **Error Page Redesign**: Modern 403, 404, 500 pages with consistent branding
-
-### 🎨 UI/UX Enhancements
-- **Responsive Design**: Mobile-first approach with optimized touch interfaces
-- **Login Page**: Complete redesign with modern card layout and form validation
-- **Pricing Tables**: Pure Bootstrap 5 implementation with interactive features
-- **Fixed Sidebar/Footer**: Proper Bootstrap 5 compatibility and positioning
-
-### 🛠️ Technical Updates
-- **Dependencies**: Updated all packages to latest stable versions
-- **SASS Structure**: Organized and optimized stylesheet architecture
-- **TypeScript Ready**: Full TypeScript support available
-- **Cross-Browser**: Tested compatibility with modern browsers
-
-### 📦 Bundle Optimization
-- **Core Bundle**: 79KB essential libraries
-- **Chart Module**: 219KB (loads only on chart pages)
-- **Form Module**: 200KB (loads only on form pages)
-- **Table Module**: DataTables functionality on demand
-- **Dashboard Module**: Dashboard-specific widgets
-
-### 🐛 Bug Fixes
-- Fixed all reported Bootstrap 4 to 5 migration issues
-- Resolved SASS deprecation warnings
-- Fixed dropdown functionality across all pages
-- Corrected responsive behavior on mobile devices
-- Eliminated JavaScript console errors
-
-### 💻 Developer Experience
-- Hot-reload development server
-- Optimized build process with cache-busting
-- Smart asset optimization
-- Improved documentation and examples
-
-### Note
-
-Earlier there were no changelog at all and we have introduced one now and we will start from version 1.0.0. However, keep in mind that this is far from being first version as there have been dozens of commits.
-
-### 1.0.0 - 25.03.2016
-
-* Fixed dataTables
-* Added new dataTable variations
-
-### 1.1.0 - 26.04.2016
-
-* Add multilevel menu
-* Mobile comptibility enhancement
-
-### 1.2.0 - 19.05.2016
-
-* Fix menu not become active if url contains parameters
-* Fix form upload form not adjust on large number of files
-* Remove invalid css
-* Add compose message functionalities
-* Add fixed sidebar functionalities
-
-### 1.3.0 - 01.06.2016
-
-* Fix menu not become active if url contains parameters
-* Fix form upload form not adjust on large number of files
-* Remove invalid css
-* Add compose message functionalities
-* Add fixed footer functionalities
-
-### Gentelella 2.0-beta1
-
-* Updated Bootstrap to 4.3.1
-* Updated all dependencies
-* Fixed all reported bugs
-
-This version is tested but we would recommend not to use it in production right away. Please install it for testing purposes and report back if there are any problems to be fixed.
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+## [4.0.0-rc.1] - 2026-05-01
+
+Release candidate. Massive expansion since beta.2 — 60 pages, 20 chart variants, full mail client, live theme generator, component playground, PWA, sidebar rail mode. The published `latest` tag still points at the v2.x line; v4 ships under the `next` distribution tag until 4.0.0 stable.
+
+### Added
+
+#### New top-level features
+- **Live theme generator** ([production/theme.html](production/theme.html)) — pick a primary color from 11 swatches or a hex input; tune corner radius, sidebar width, body font size; switch sidebar style (Dark / Black / Light / Brand); flip light/dark mode. Every chart, button, badge, card and link restyles in real time. Generated SCSS preview is copyable and downloadable as `_tokens-override.scss`.
+- **Component playground** ([production/playground.html](production/playground.html)) — every reusable component on a single scrolling page, side-by-side with its **exact HTML** and a "Copy" button. Sticky left rail with scrollspy nav, 13 sections covering buttons, status, alerts, cards, forms, tables, tabs, progress, stats, timeline, accordion, empty state.
+- **Command palette** (⌘K / Ctrl+K) — fuzzy search across all 60 pages and inline actions (toggle theme, open profile, sign out, etc.). Built-in matcher with subsequence + word-boundary scoring. Topbar search input now opens the palette on focus.
+- **PWA** — full `site.webmanifest` with shortcuts, service worker (network-first HTML, cache-first assets, offline fallback), apple-touch-icon, theme-color metas (light + dark). Installable on macOS / Windows / mobile.
+- **Sidebar rail mode** — desktop hamburger collapses sidebar from 252px → 64px showing icons only. Tooltip on hover via `data-rail-label`. Submenu groups become click-to-flyout when collapsed. Persists in localStorage. Same hamburger toggles drawer on mobile.
+
+#### New pages (8)
+- `production/theme.html` — theme generator
+- `production/playground.html` — component playground
+- `production/offline.html` — PWA offline fallback
+- `production/chat.html` — fully interactive 8-conversation chat
+- `production/kanban.html` — HTML5 drag-drop kanban with edit modals
+- `production/file_manager.html` — tree + grid file browser with breadcrumbs
+- `production/notifications.html` — filterable notifications page
+- `production/settings.html` — persisted settings with 8 sections
+
+#### New chart factories (added to [src/v4/charts.js](src/v4/charts.js); 20 total now)
+- `stacked-area` · multi-series stacked area with smooth fills
+- `horizontal-bar` · top categories ranked
+- `mixed-bar-line` · bars + secondary-axis trend line
+- `radar` · 6-axis comparison
+- `gauge` · single-KPI progress arc
+- `scatter` · bubble plot with size encoding
+- `heatmap` · week × hour activity
+- `funnel` · conversion stages
+- `candlestick` · OHLC market data
+- `polar-bar` · circular bar chart
+- `treemap` · proportional cells
+- `sankey` · flow diagram
+- `calendar-heatmap` · GitHub-contribution-style 12-month grid
+- `gantt` · project timeline using `custom` series
+
+#### New form components ([src/v4/form-controls.js](src/v4/form-controls.js))
+- **Date-range picker** — two-month grid, 6 presets (Today / Last 7 days / Last 30 days / This month / Last month / This year), hover preview, Monday-first weeks. No library.
+- **Rich text editor** — toolbar (bold / italic / underline / H2 / blockquote / lists / link / code / clear), keyboard shortcuts (⌘B/I/U/K), syncs to a hidden textarea for form submission.
+- **Multi-select with chips** — autocomplete on type, ↑/↓/Enter keyboard nav, Backspace removes last chip, binds to a real `<select multiple>`.
+
+#### New SCSS primitives in [_components.scss](src/scss/v4/_components.scss) and [_forms.scss](src/scss/v4/_forms.scss)
+- `.accordion` — native `<details>` styled with primary border on open
+- `.drawer` / `.drawer-backdrop` — slide-in left/right side panel
+- `.timeline` — color-coded event timeline with vertical guide rail
+- `.banner` — info / warning / danger / success callouts with action buttons
+- `.popover-trigger` — hover/focus rich-content popovers
+- `.empty-state` — generic centered icon + title + text + actions block
+- `.card.is-refreshing` — sweep animation on card refresh
+- `.input-affix` — input with prefix/suffix segments
+- `.segmented` — compact tab-like radio
+- `.switch` — iOS-style toggle
+- `.color-grid` — color swatch picker
+- `.tag-input` — chip input with × removal
+- `.rating` — star rating
+- `.search-suggest` — autocomplete dropdown
+- `.password-strength` — 4-segment meter
+- `.otp-grid` — 6-box one-time-code input
+- `.file-input` — compact file picker with filename echo
+- `.avatar-upload` — circular avatar with hover overlay
+- `.stepper` — number stepper with +/− buttons
+
+#### Real interactivity replacing demo toasts
+- **Inbox** ([src/v4/inbox.js](src/v4/inbox.js)) — full mail client: 5 folders + 4 labels, click-to-read pane, compose modal, reply / forward (prefilled), star, trash / restore / delete-forever, edit drafts, mark-all-read, per-folder search, J/K/R/S/#/C keyboard shortcuts.
+- **Settings** ([src/v4/settings.js](src/v4/settings.js)) — every toggle persists to localStorage, profile form has dirty-state with Save/Cancel rollback, theme/density radios persist and apply, integration cards toggle Connect ↔ Disconnect, Revoke session opens confirm modal, Danger zone has real export download / transfer / delete-account flows, team Invite + Manage modals.
+- **Topbar dropdowns** — clicking a notification or message row opens a real **detail modal** with kind icon, body, and action buttons (Dismiss / View all / Open in inbox / Send reply).
+- **User avatar menu** — entries route to real pages (Profile / Settings / Theme generator / FAQ / Lock screen) or open modals (Keyboard shortcuts grid, Sign out confirm).
+- **Card 3-dot menu** — Refresh adds shimmer + repaints chart; Move up / Move down reorder siblings; Hide card has 5-second clickable undo toast.
+- **Page-actions** ([src/v4/page-actions.js](src/v4/page-actions.js)) — Print / Export / Refresh / Share / Compose / `New {anything}` / Invite buttons routed to real handlers across the whole template (window.print, download blob, navigator.share, modals).
+- **Invoice** — editable line items (description / sub / qty / rate), Add / Remove rows, editable discount + VAT %, live total recompute, Mark-as-paid flips status pill and advances payment timeline.
+- **DataTables** — `data-selectable` enables row selection (header checkbox = select all), `data-export="filename"` adds CSV export button.
+
+#### Sidebar rebuild
+- 7 nav groups with submenu support: General (Dashboards × 4, Forms × 6, Tables × 2, Charts × 3, + Calendar / Map), Apps (5), E-commerce (5 incl. Orders × 2), Projects (2), UI library (7 incl. Playground / Theme / Typography / Icons), Admin (5), Layouts (4)
+- **Accordion behavior** — opening one group closes others; chosen state persists in `sessionStorage` so navigation doesn't snap it shut
+- **Visual redesign** — vertical guide rail, colored connector tick on active sublink (primary teal), parent stays subtly highlighted when a child is current, smoother chevron rotation
+- Every page reachable from the sidebar (was 22 of 43; now all 60)
+
+#### Dashboards expanded (3 thin → comprehensive)
+- **index2.html** (Analytics) — 6 rows / 18 cards: KPI sparklines, live counter, stacked-area, conversion funnel, activity heatmap, top pages / countries / referrers, goals, top searches, cohort retention matrix
+- **index3.html** (Sales) — 6 rows / 14 cards: pipeline KPIs, quarterly target gauge, mixed bar/line, pipeline by stage, lead-sources donut, quota attainment, activity radar, top reps, won-this-week, deals at risk, lost reasons
+- **index4.html** (Operations) — 5 rows / 18 cards: maintenance banner, 4 KPIs, 6-bar resource usage, API endpoint stats, cache-hit gauge, service status, incident timeline, background jobs, deployment history, recent errors
+
+#### Page expansion
+- **icons.html** — 120+ icons in **14 categories** (was 44 flat), live search filter, click to copy name, 48px icon size, 180px cells
+- **general_elements.html** — added Banners / Accordion / Drawer / Popover / Timeline sections
+- **profile.html** — added stats grid, achievements row (6 badges), connected accounts (GitHub / Google / Slack / X), recent activity timeline
+- **chartjs.html** — 16 chart variant cards organized into themed rows
+- **echarts.html** — full 16-chart gallery
+- **typography.html** — 6 sections (display, heading scale, inline, block, code, terminal, numerals, truncation)
+- **form.html** — 4 sections, 25+ field variants (advanced controls section showcasing date-range / multi-select / rich-text)
+- **widgets.html** — 18 widget variants in 6 rows
+- **landing.html** — eyebrow pill, stats band, expanded features (3 → 6), showcase section linking to 12 demos, stack section, 3 testimonials, 6-question FAQ accordion
+
+#### Tooling & DX
+- **Playwright screenshot pipeline** ([scripts/screenshots.mjs](scripts/screenshots.mjs)) — `npm run screenshots` boots `vite preview` and captures **22 pages × light + dark = 44 PNGs** at 1440×900 @ 2x. Outputs to `docs/screenshots/{light,dark}/` plus a `manifest.json`.
+- **Random-collision ports** — dev defaults to **9173**, preview to **9174** (was 3000/4173). Override via `PORT` / `PREVIEW_PORT` env.
+- **CONTRIBUTING.md** — add-a-page / add-a-chart / add-a-table flows, what we don't accept.
+- **Public API JSDoc** — `mountShell`, `initCharts`, `initTables`, `showToast`, `openMenu`, `openPanel`, `showModal`, `initCommandPalette`. IntelliSense in VS Code without TypeScript.
+- **Print stylesheet** — `@media print` block strips chrome (sidebar, topbar, footer, action bars), expands link URLs, page-break-inside avoid on rows.
+- **Deploy-Pages CI** — replaces the dead Jekyll workflow with a real Vite build + Pages deploy on push to master.
+
+### Changed
+
+- Hamburger sidebar toggle is now **always visible** (no longer mobile-only). Click on desktop collapses to rail; click on mobile opens drawer.
+- Service worker cache key bumped to `gentelella-v4-r2` to invalidate old caches on the next visit.
+- Page count: 55 → **60** (added theme, playground, offline, plus several new app pages registered in vite.config).
+- ECharts vendor chunk grew slightly (~360 KB gz) to include the 4 new chart constructors and Calendar / VisualMap / Polar components.
+- Chart factories now repaint on a `themechange` custom event in addition to `data-theme` mutations — used by the theme generator for live preview.
+- Global `:where(svg):not([width]):not([height])` rule replaces the higher-specificity rule that was forcing inline SVGs to 1em even when classes set explicit sizes.
+
+### Fixed
+
+- File manager card grid was stretching to fill viewport height — `align-content: start` + `grid-auto-rows: max-content` on `.fm-grid.view-grid`.
+- Icons.html cells were rendering at ~12px because the global SVG-size rule out-specificity'd `.icon-cell svg`. Fixed via `:where()` neutralization plus larger 48px / 180px cell sizing.
+- 25 page `data-page` keys updated to match the new submenu structure so the right group auto-opens.
+- Deprecated demo toast pattern: removed the catch-all `.btn` toast fallback in [main-v4.js](src/main-v4.js); buttons now route through [page-actions.js](src/v4/page-actions.js) to real handlers (modals, downloads, navigation) or do nothing rather than spamming.
+
+### Numbers (rc.1 vs beta.1)
+
+| Metric | beta.1 | rc.1 |
+|---|---|---|
+| Pages | 39 | **60** |
+| Chart variants | 4 | **20** |
+| Interactive surfaces | dashboard widgets | dashboard, inbox, kanban, calendar, chat, file manager, settings, notifications, invoice, theme generator, playground, command palette |
+| Form components | inputs, selects, textareas | + tag input, sliders, OTP, password strength, file upload, avatar upload, stepper, color picker, segmented, switch, **date-range, rich-text, multi-select** |
+| Toast occurrences | "any unhandled .btn shows toast" | only on real confirmations |
+| Build time | 4.81s | ~5s |
+| Above-the-fold gz | ~17 KB | ~17 KB (entry stayed tiny) |
+| node_modules | 138 MB | 178 MB (+ Playwright) |
+
+### Known limitations
+
+- Image assets in `public/images/` aren't optimized yet (~290 KB media.jpg, ~157 KB cropper.jpg). Lossy compression / AVIF conversion is on the rc.2 docket.
+- No formal accessibility audit. Skip-link, focus rings, ARIA labels and landmarks are wired, but no systematic screen-reader testing.
+- ECharts vendor chunk is the dominant bundle weight (~360 KB gz). Per-page tree-shaking of chart-type constructors could shave ~30%.
+- All forms post to `#` and don't persist outside `localStorage`. This is a UI template; bring your own backend.
+
+## [4.0.0-beta.2] - 2026-04-29
+
+Audit pass: bring docs and code up to par with the actual feature set. No breaking changes.
+
+### Added
+
+- Vite + GitHub Pages deploy workflow ([.github/workflows/deploy-pages.yml](.github/workflows/deploy-pages.yml)) — replaces the dead Jekyll workflow.
+- `.nvmrc` pinning Node 20.
+- 6 page-scoped sections moved into [`_pages.scss`](src/scss/v4/_pages.scss): fixed-footer, dropzone, wizard, media gallery, pricing, landing.
+
+### Fixed
+
+- Lint: 12 ESLint errors and 24 warnings cleared via `npm run lint:fix`.
+- `profile.html` had `data-page="profile"` (no matching nav key); now empty since profile is reached from the topbar avatar menu.
+- `landing.html` had an `h1 → h3` heading-order skip; features now use `<h2>`.
+- 6 inline `<style>` blocks removed from `production/*.html` — styles belong in SCSS per project conventions.
+- README and CHANGELOG no longer claim missing features (mobile drawer, dark-mode skin, skip link) that are actually implemented.
+
+## [4.0.0-beta.1] - 2026-04-28
+
+First release of the v4 redesign. Bootstrap 5 and jQuery are gone; the entire design system is custom SCSS. Major version bump from v2.x because there is no markup overlap with prior releases.
+
+### Added
+
+- **Design system** — 10 SCSS partials (`_tokens`, `_layout`, `_components`, `_forms`, `_widgets`, `_pages`, `_datatable`, `_auth`, `_apps`, `main`) all consumable via CSS custom properties on `:root`.
+- **Layout shell** — sidebar + topbar + footer rendered both at build time (Vite plugin, no FOUC) and at runtime (`mountShell()` fallback). Driven by `body[data-shell="admin"]`, `data-page`, `data-breadcrumb` attributes. Pure renderers in [`src/v4/shell-render.js`](src/v4/shell-render.js); runtime wiring in [`src/v4/shell.js`](src/v4/shell.js).
+- **Mobile drawer** — sidebar slides in below 768px with backdrop, ESC-to-close, viewport-resize-to-close.
+- **Light/dark theme toggle** — pre-paint script reads `localStorage('theme')` / `prefers-color-scheme` and sets `data-theme` on `<html>` before body renders, so dark mode never flashes.
+- **Cross-document view transitions** — smooth cross-fade between same-origin pages on supporting browsers.
+- **Skip-to-content link** — injected on every shell page for keyboard users.
+- **55 pages** spanning dashboards, auth, forms, tables, charts, app pages (chat, kanban, file manager, calendar, inbox, settings, notifications), e-commerce, admin, marketing, and UI library.
+- **Real ECharts** (6 chart instances across 5 pages) — modular import (line/bar/pie + canvas renderer), lazy-loaded, colors driven by design tokens.
+- **Real DataTables** — sortable, searchable, paginated, fully styled to match the v4 design system from scratch (no Bootstrap-bs5 styling dependency).
+- **Leaflet** — lazy-imported on the map page only, with circle markers driven by per-city customer counts.
+- **`BASE_PATH` env var** — `BASE_PATH=/admin/ npm run build` for subpath deployments.
+- **Bundle analyzer** — `npm run analyze` for the rollup-plugin-visualizer treemap.
+
+### Changed
+
+- Vite multi-page input list cut from 42 entries to 39 — `theme-comparison` and `index-legacy` removed.
+- `manualChunks` simplified to 3 chunks (`vendor-echarts`, `vendor-tables`, `vendor-maps`) — was 11.
+- `optimizeDeps.include` reduced to `[echarts, datatables.net, leaflet]` from `[bootstrap, @popperjs/core, dayjs, @simonwep/pickr]`.
+
+### Removed
+
+- **Bootstrap 5** + Bootstrap Icons + Tempus Dominus + Choices.js + nouislider + FontAwesome + Pickr + Uppy + Chart.js + FullCalendar + Cropper + Quill + Inputmask + JSZip + Skycons + DOMPurify + dayjs — 30+ deps gone.
+- Legacy SCSS — `_color-schemes`, `_variables`, `custom`, `index2`, `index4`, `landing`, `font-optimization`, `daterangepicker`.
+- Legacy entry scripts — `main-minimal`, `main-core`, `main-calendar`, `main-form-basic`, `main-inbox`, `main-tables`, `main-upload`, `init`, `chart-initializer`.
+- Legacy modules and utils — `src/modules/`, `src/lib/`, `src/js/`, `src/utils/`, `src/test/`.
+- Vitest test harness and 4 legacy unit-test files.
+- Jekyll-based `docs/` site, `README_CN.md`, original `screenshots/` (those were screenshots of other Colorlib templates, not Gentelella).
+
+### Numbers
+
+| Metric | Before (v2.2.0) | After (v4.0.0-beta.1) |
+|---|---|---|
+| Production deps | 28 | **3** |
+| Dev deps | 14 | **8** |
+| `node_modules` | ~600 MB | **138 MB** |
+| Files in `src/` | 30+ JS + 9 SCSS + tests | **13** |
+| Above-the-fold deploy (gzipped) | ~107 KB (init.css alone) | **~17 KB** total |
+| Total deploy size | 6.2 MB | **3.0 MB** |
+| Build time | 7.42s | **4.81s** |
+
+### Known limitations
+
+- No formal accessibility audit. Skip-link, focus rings, ARIA labels and landmarks are wired, but no systematic screen-reader testing.
+- All forms post to `#` and don't persist. This is a UI template; bring your own backend.
+- ECharts vendor chunk is the dominant bundle weight (~350 KB gzipped). Future optimization: scope chart-type imports per page rather than blanket-loading line + bar + pie.
