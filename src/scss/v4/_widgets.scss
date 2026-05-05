@@ -35,7 +35,7 @@
 .stat-value-row {
   display: flex;
   align-items: baseline;
-  gap: 8px;
+  gap: var(--space-2);
 }
 .stat-value {
   font-size: 22px;
@@ -117,6 +117,11 @@
   box-shadow: 0 1px 2px rgba(0,0,0,0.06);
 }
 .chart-tab:hover:not(.active) { color: var(--text-secondary); }
+// On touch devices the segmented chip is too small to hit reliably; pad it
+// vertically so the row reaches ~28px without making the desktop UI shouty.
+@media (pointer: coarse) {
+  .chart-tab { padding: 6px 12px; font-size: 12px; }
+}
 
 .chart-area {
   padding: 16px;
@@ -266,7 +271,7 @@
 // ────────────────────────
 //  DONUT (small)
 // ────────────────────────
-.donut-block { display: flex; align-items: center; gap: 16px; }
+.donut-block { display: flex; align-items: center; gap: var(--space-4); }
 .donut-svg { width: 110px; height: 110px; flex-shrink: 0; position: relative; }
 .donut-svg svg { width: 100%; height: 100%; transform: rotate(-90deg); }
 .donut-center-label {

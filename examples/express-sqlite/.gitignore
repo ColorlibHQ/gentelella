@@ -1,0 +1,5 @@
+node_modules/
+data.sqlite
+data.sqlite-journal
+data.sqlite-shm
+data.sqlite-wal

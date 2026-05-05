@@ -19,7 +19,7 @@
     <div class="page-header-row">
       <div>
         <div class="page-pretitle">Forms</div>
-        <div class="page-title">Onboarding wizard</div>
+        <h1 class="page-title">Onboarding wizard</h1>
       </div>
     </div>
   </div>
@@ -35,14 +35,14 @@
 
       <div class="wizard-panel active" data-panel="0">
         <div class="form-row">
-          <div class="form-group"><label class="form-label">First name</label><input class="form-control"></div>
-          <div class="form-group"><label class="form-label">Last name</label><input class="form-control"></div>
+          <div class="form-group"><label class="form-label">First name</label><input class="form-control" aria-label="First name"></div>
+          <div class="form-group"><label class="form-label">Last name</label><input class="form-control" aria-label="Last name"></div>
         </div>
-        <div class="form-group"><label class="form-label">Email</label><input class="form-control" type="email" placeholder="you@company.com"></div>
-        <div class="form-group"><label class="form-label">Password</label><input class="form-control" type="password" placeholder="Min 8 characters"></div>
+        <div class="form-group"><label class="form-label">Email</label><input class="form-control" type="email" placeholder="you@company.com" aria-label="Email"></div>
+        <div class="form-group"><label class="form-label">Password</label><input class="form-control" type="password" placeholder="Min 8 characters" aria-label="Password"></div>
       </div>
       <div class="wizard-panel" data-panel="1">
-        <div class="form-group"><label class="form-label">Workspace name</label><input class="form-control" placeholder="e.g. Acme Corp"></div>
+        <div class="form-group"><label class="form-label">Workspace name</label><input class="form-control" placeholder="e.g. Acme Corp" aria-label="Workspace name"></div>
         <div class="form-group"><label class="form-label">Plan</label>
           <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
             <label class="form-check" style="border:1px solid var(--border-color);padding:12px;border-radius:var(--radius-sm)"><input type="radio" name="plan"> <span><strong>Starter</strong><br><span style="color:var(--text-muted);font-size:11.5px">$0/mo</span></span></label>
@@ -53,7 +53,7 @@
       </div>
       <div class="wizard-panel" data-panel="2">
         <div class="form-group"><label class="form-label">Invite by email (one per line)</label>
-          <textarea class="form-control" rows="6" placeholder="sarah@company.com&#10;michael@company.com"></textarea>
+          <textarea class="form-control" rows="6" placeholder="sarah@company.com&#10;michael@company.com" aria-label="Team member emails"></textarea>
         </div>
         <div class="form-help">You can also skip and invite teammates later from settings.</div>
       </div>

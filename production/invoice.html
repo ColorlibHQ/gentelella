@@ -19,7 +19,7 @@
     <div class="page-header-row">
       <div>
         <div class="page-pretitle">Billing</div>
-        <div class="page-title">Invoice <span style="font-weight:500;color:var(--text-muted)">#INV-04812</span></div>
+        <h1 class="page-title">Invoice <span style="font-weight:500;color:var(--text-muted)">#INV-04812</span></h1>
       </div>
       <div class="page-actions">
         <span id="status-pill" class="status status-yellow" style="margin-right:8px">Pending</span>
@@ -34,7 +34,7 @@
     <div class="invoice" id="invoice-doc">
       <div class="invoice-header">
         <div>
-          <h1>Invoice</h1>
+          <h2>Invoice</h2>
           <div class="invoice-meta">
             #INV-04812 · Issued <strong>Apr 24, 2026</strong> · Due <strong>May 24, 2026</strong>
           </div>
@@ -100,7 +100,7 @@
           <tr>
             <td>
               Discount
-              <input type="number" class="totals-input" id="t-discount" value="10" min="0" max="100" step="0.5">
+              <input type="number" class="totals-input" id="t-discount" aria-label="Discount percent" value="10" min="0" max="100" step="0.5">
               <span style="color:var(--text-muted)">%</span>
             </td>
             <td id="t-discount-amount">−$0.00</td>
@@ -108,7 +108,7 @@
           <tr>
             <td>
               VAT
-              <input type="number" class="totals-input" id="t-tax" value="21" min="0" max="100" step="0.5">
+              <input type="number" class="totals-input" id="t-tax" aria-label="Tax percent" value="21" min="0" max="100" step="0.5">
               <span style="color:var(--text-muted)">%</span>
             </td>
             <td id="t-tax-amount">$0.00</td>
@@ -162,152 +162,6 @@
 </div>
 </main>
 
-<style>
-.invoice-editor {
-  margin-top: 18px;
-  border-top: 1px solid var(--border-color-light);
-  padding-top: 12px;
-}
-.invoice-editor-header,
-.line-row {
-  display: grid;
-  grid-template-columns: 1fr 60px 90px 100px 28px;
-  gap: 10px;
-  align-items: center;
-  padding: 6px 0;
-  font-size: 11.5px;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.4px;
-}
-.line-row {
-  font-size: 13px;
-  color: var(--text);
-  text-transform: none;
-  letter-spacing: 0;
-  border-top: 1px solid var(--border-color-light);
-  padding: 8px 0;
-}
-.line-row input[type="text"],
-.line-row input[type="number"] {
-  width: 100%;
-  border: 1px solid transparent;
-  background: transparent;
-  font: inherit;
-  font-size: 13px;
-  color: var(--text);
-  padding: 4px 6px;
-  border-radius: var(--radius-sm);
-  transition: border-color 100ms, background 100ms;
-}
-.line-row input[type="text"]:hover,
-.line-row input[type="number"]:hover { border-color: var(--border-color); }
-.line-row input[type="text"]:focus,
-.line-row input[type="number"]:focus {
-  outline: none;
-  border-color: var(--primary);
-  background: var(--bg-surface);
-  box-shadow: 0 0 0 3px var(--primary-lt);
-}
-.line-row input[type="number"] { text-align: right; -moz-appearance: textfield; }
-.line-row input[type="number"]::-webkit-outer-spin-button,
-.line-row input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
-.line-row .desc-wrap input.desc-sub {
-  font-size: 11.5px;
-  color: var(--text-muted);
-  margin-top: 2px;
-}
-.line-row .amount {
-  text-align: right;
-  font-weight: var(--font-weight-medium);
-  color: var(--text);
-}
-.line-row .remove-btn {
-  width: 24px; height: 24px;
-  border: 0;
-  background: transparent;
-  border-radius: 50%;
-  color: var(--text-muted);
-  cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  opacity: 0;
-  transition: opacity 100ms, background 100ms, color 100ms;
-}
-.line-row:hover .remove-btn { opacity: 1; }
-.line-row .remove-btn:hover { background: var(--red-lt); color: var(--red); }
-
-.totals-input {
-  width: 50px;
-  margin: 0 4px;
-  padding: 1px 6px;
-  font: inherit;
-  font-size: 12.5px;
-  text-align: right;
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-sm);
-  background: var(--bg-surface);
-  color: var(--text);
-  -moz-appearance: textfield;
-}
-.totals-input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 2px var(--primary-lt); }
-.totals-input::-webkit-outer-spin-button,
-.totals-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
-
-.invoice-payment-status {
-  margin-top: 32px;
-  padding: 18px;
-  background: var(--bg-surface-secondary);
-  border-radius: var(--radius);
-  display: flex;
-  justify-content: space-between;
-  position: relative;
-  gap: 12px;
-}
-.invoice-payment-status::before {
-  content: '';
-  position: absolute;
-  left: 32px; right: 32px; top: 28px;
-  height: 2px;
-  background: var(--border-color);
-  z-index: 0;
-}
-.ips-step {
-  position: relative;
-  z-index: 1;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 6px;
-}
-.ips-dot {
-  width: 20px; height: 20px;
-  border-radius: 50%;
-  background: var(--bg-surface);
-  border: 2px solid var(--border-color);
-}
-.ips-step.done .ips-dot { background: var(--primary); border-color: var(--primary); }
-.ips-step.active .ips-dot {
-  background: var(--bg-surface);
-  border-color: var(--primary);
-  box-shadow: 0 0 0 4px var(--primary-lt);
-}
-.ips-step.paid .ips-dot { background: var(--green); border-color: var(--green); }
-.ips-step .ips-title { font-size: 12.5px; font-weight: var(--font-weight-medium); color: var(--text); }
-.ips-step:not(.done):not(.active):not(.paid) .ips-title { color: var(--text-muted); }
-.ips-step .ips-time { font-size: 11px; color: var(--text-muted); }
-
-@media print {
-  .invoice-editor-header { display: none; }
-  .line-row .remove-btn,
-  #add-line,
-  .totals-input { display: none; }
-  .line-row input { border: 0; padding: 0; background: transparent; }
-  .invoice-payment-status { display: none; }
-}
-</style>
-
 <script type="module">
 import { showToast } from '/src/v4/toast.js';
 
@@ -325,11 +179,11 @@ function rowHtml(item, i) {
   return `
     <div class="line-row" data-i="${i}">
       <div class="desc-wrap">
-        <input type="text" class="desc" value="${item.desc.replace(/"/g, '&quot;')}" placeholder="Item description">
-        <input type="text" class="desc desc-sub" value="${item.sub.replace(/"/g, '&quot;')}" placeholder="Optional details">
+        <input type="text" class="desc" value="${item.desc.replace(/"/g, '&quot;')}" placeholder="Item description" aria-label="Item description">
+        <input type="text" class="desc desc-sub" value="${item.sub.replace(/"/g, '&quot;')}" placeholder="Optional details" aria-label="Item details">
       </div>
-      <input type="number" class="qty" value="${item.qty}" min="0" step="1">
-      <input type="number" class="rate" value="${item.rate}" min="0" step="0.01">
+      <input type="number" class="qty" aria-label="Quantity" value="${item.qty}" min="0" step="1">
+      <input type="number" class="rate" aria-label="Rate" value="${item.rate}" min="0" step="0.01">
       <div class="amount">${fmt(item.qty * item.rate)}</div>
       <button type="button" class="remove-btn" aria-label="Remove">
         <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6h10M8 6V4a1.5 1.5 0 013 0v2"/><path d="M5 6l1 8.5h6L13 6"/></svg>

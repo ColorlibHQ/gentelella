@@ -31,7 +31,7 @@ table.has-selection tbody tr:has(input[type="checkbox"]:checked) {
   align-items: center;
   justify-content: space-between;
   padding: 12px 16px;
-  gap: 12px;
+  gap: var(--space-3);
 }
 .dt-layout-row + .dt-layout-row.dt-layout-table { border-top: 1px solid var(--border-color-light); }
 .dt-layout-row.dt-layout-table + .dt-layout-row { border-top: 1px solid var(--border-color-light); }
@@ -81,7 +81,7 @@ table.has-selection tbody tr:has(input[type="checkbox"]:checked) {
 .dt-paging {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: var(--space-1);
 }
 .dt-paging .dt-paging-button {
   min-width: 28px;

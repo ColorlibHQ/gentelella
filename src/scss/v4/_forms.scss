@@ -78,7 +78,7 @@ select.form-control {
 .form-check {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--space-2);
   font-size: 13px;
   color: var(--text);
   cursor: pointer;
@@ -155,7 +155,7 @@ select.form-control {
 .form-actions {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--space-2);
   margin-top: 20px;
   padding-top: 16px;
   border-top: 1px solid var(--border-color-light);
@@ -272,7 +272,7 @@ select.form-control {
 .slider-row {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: var(--space-3);
 }
 .slider-row .slider-value {
   font-size: 12.5px;
@@ -319,7 +319,7 @@ input[type="range"].slider:focus-visible {
 .color-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: var(--space-2);
 }
 .color-swatch {
   width: 28px;
@@ -359,7 +359,7 @@ input[type="range"].slider:focus-visible {
 .tag-input .tag-pill {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: var(--space-1);
   padding: 2px 4px 2px 8px;
   background: var(--primary-lt);
   color: var(--primary);
@@ -397,7 +397,7 @@ input[type="range"].slider:focus-visible {
 // ────────────────────────
 .rating {
   display: inline-flex;
-  gap: 4px;
+  gap: var(--space-1);
 }
 .rating button {
   background: transparent;
@@ -454,7 +454,7 @@ input[type="range"].slider:focus-visible {
 // ────────────────────────
 .password-strength {
   display: flex;
-  gap: 4px;
+  gap: var(--space-1);
   margin-top: 6px;
 }
 .password-strength .seg {
@@ -483,7 +483,7 @@ input[type="range"].slider:focus-visible {
 // ────────────────────────
 .otp-grid {
   display: flex;
-  gap: 8px;
+  gap: var(--space-2);
 }
 .otp-input {
   width: 44px;
@@ -728,13 +728,13 @@ input[type="range"].slider:focus-visible {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
+  gap: var(--space-2);
 }
 .dr-summary { font-size: 12px; color: var(--text-secondary); font-variant-numeric: tabular-nums; }
 @media (max-width: 600px) {
   .dr-popover { flex-direction: column; }
   .dr-presets { flex-direction: row; flex-wrap: wrap; min-width: 0; border-right: 0; border-bottom: 1px solid var(--border-color-light); padding: 10px; }
-  .dr-months { flex-direction: column; gap: 16px; }
+  .dr-months { flex-direction: column; gap: var(--space-4); }
 }
 
 // ────────────────────────
@@ -822,7 +822,7 @@ input[type="range"].slider:focus-visible {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 4px;
+  gap: var(--space-1);
   padding: 4px 8px 4px 4px;
   min-height: 36px;
   background: var(--bg-surface);
@@ -836,11 +836,11 @@ input[type="range"].slider:focus-visible {
   border-color: var(--primary);
   box-shadow: 0 0 0 3px var(--primary-lt);
 }
-.ms-chips { display: flex; flex-wrap: wrap; gap: 4px; }
+.ms-chips { display: flex; flex-wrap: wrap; gap: var(--space-1); }
 .ms-chip {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: var(--space-1);
   padding: 2px 4px 2px 8px;
   background: var(--primary-lt);
   color: var(--primary);

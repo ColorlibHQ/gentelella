@@ -2,6 +2,47 @@
 
 All notable changes to this project will be documented in this file.
 
+## [4.0.0-rc.2] - 2026-05-05
+
+Polish pass on top of rc.1: a real mobile responsive sweep, npm-package-ready distribution metadata with TypeScript declarations, a page generator script, an optional API-hydration data adapter, and quality-of-life fixes.
+
+### Added
+
+- **`npm run new`** — page generator ([scripts/new-page.mjs](scripts/new-page.mjs)). One command stamps out a `production/*.html` from the standard skeleton and (with `--nav-group`) wires the entry into the `NAV` array in [src/v4/shell-render.js](src/v4/shell-render.js). Flags: `--title`, `--pretitle`, `--breadcrumb`, `--nav-group`, `--icon`, `--dry-run`. Run `npm run new -- --help` for the full list.
+- **TypeScript declarations** — [types/gentelella.d.ts](types/gentelella.d.ts) typed-up the public JS surface (`mountShell`, `showModal`, `showToast`, `openMenu`, chart/table init, the `NAV` schema, `seedAdapter` / `httpAdapter`). Wired up via `types` field in [package.json](package.json) so VS Code IntelliSense resolves automatically — no `tsconfig` required.
+- **npm package metadata** — `exports`, `files`, and `types` fields added. The package is now consumable as `import { mountShell } from "gentelella"`. Subpath exports (`gentelella/v4/*`, `gentelella/scss/*`) for granular imports.
+- **Markup helpers** — [src/v4/markup.js](src/v4/markup.js) docs added to README and Playground. `statTile()`, `statusBadge()`, `customerCell()`, `activityItem()`, `visitorRow()`, `emptyState()`, `banner()`, `skeletonRows()`, `escapeHtml()`. For JS-rendered content (orders rows, inbox threads, kanban cards) where boilerplate adds up.
+- **Data adapter** ([src/v4/data-adapter.js](src/v4/data-adapter.js)) — `seedAdapter()` for in-memory demo state; `httpAdapter(url)` for REST. Add `?api=1` to a page URL to hydrate from a real backend.
+- **Inbox API mode** — append `?api=1` to [inbox.html](production/inbox.html) and the inbox loads its initial messages from `/api/messages` instead of the seed. Mutations stay client-side in the demo; extend the adapter to PATCH them back.
+- **Playground** — new sections for async/loading patterns (skeleton table, skeleton tiles, list lifecycle, submit spinner, banners) and `markup.js` helper examples with copy-pasteable HTML output.
+
+### Changed
+
+- **Vite config auto-discovers entries** — replaces the hand-maintained 60-entry `rollupOptions.input` list. Adding a new page is now just dropping a file into [production/](production/); Vite picks it up. [vite.config.js](vite.config.js).
+- **Semantic `<h1>` page titles** — every page's `<div class="page-title">` is now `<h1 class="page-title">`. Improves landmark navigation for screen readers and SEO. ~60 pages updated.
+- **DataTables search input** gains an `aria-label="Search table"` since DataTables 2 emits it nameless. [src/v4/tables.js](src/v4/tables.js).
+- **Table row checkboxes** gain `aria-label="Select row"` / `"Select all rows"`.
+- **SCSS spacing tokens** — replaced ad-hoc `4px` / `12px` / `16px` `gap` values with `var(--space-1)` / `--space-3` / `--space-4` across pagination, chip, calendar toolbar, and other components. Now responds to the theme generator.
+
+### Fixed
+
+- **Mobile responsive pass.** Every page renders at native pixel scale on iPhone SE / iPhone 13 / Pixel without the browser shrink-to-fit zooming the layout. Audited 22 pages × 3 viewports (320 / 375 / 390 px); 0 overflows on mainstream sizes.
+  - **Topbar** ([src/scss/v4/_layout.scss](src/scss/v4/_layout.scss)) — at ≤768 px the breadcrumb, 240 px search box, notifications and messages buttons hide; theme toggle + avatar (now 32×32) remain. The shell no longer pushes layout viewport to ~540 px on phones.
+  - **Grid `minmax(0, 1fr)` bug.** Four spots in the grid system (`.col-1`, `.col-8-4`/`.col-4-8` ≤1100 px collapse, `.col-4`/`.col-3`/`.col-2` ≤768 px collapse) used `1fr` without `minmax(0, …)`. Wide intrinsic content (tables, code blocks, long unbreakable text) inside those columns pushed the column past viewport, triggering Chromium's shrink-to-fit on phones. All four now use `minmax(0, 1fr)`.
+  - **Form wizard steps** stack vertically below 600 px ([src/scss/v4/_pages.scss](src/scss/v4/_pages.scss)) — connector lines and sub-labels suppressed.
+  - **Invoice page** — header and 2-col billed-to / pay-to grid stack below 768 px; padding reduces from 32 px to 16 px.
+  - **Invoice line-row** reflows to a 2-row layout (description above, qty / rate / amount below) below 600 px.
+  - **Typography showcase** type-rows stack below 600 px, with `overflow-wrap: anywhere` so 56 px display words can break.
+  - **Settings layout** stacking on mobile uses `minmax(0, 1fr)` ([src/scss/v4/_apps.scss](src/scss/v4/_apps.scss)).
+  - **Calendar grid** scrolls horizontally with scroll-snap below 700 px instead of collapsing day cells.
+  - **Chart-tab segmented controls** get larger padding on coarse pointers (touch devices) for hit-target compliance ([src/scss/v4/_widgets.scss](src/scss/v4/_widgets.scss)).
+
+### Known limitations
+
+- Connected-account rows on [profile.html](production/profile.html) overflow ~42 px at exactly 320 px viewport (Galaxy Fold cover screen). Mainstream 360+ phones unaffected.
+- Image assets in `public/images/` aren't optimized — AVIF conversion is on the rc.3 docket.
+- ECharts vendor chunk is still ~360 KB gz; per-page chart-type tree-shaking deferred.
+
 ## [4.0.0-rc.1] - 2026-05-01
 
 Release candidate. Massive expansion since beta.2 — 60 pages, 20 chart variants, full mail client, live theme generator, component playground, PWA, sidebar rail mode. The published `latest` tag still points at the v2.x line; v4 ships under the `next` distribution tag until 4.0.0 stable.

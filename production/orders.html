@@ -19,7 +19,7 @@
     <div class="page-header-row">
       <div>
         <div class="page-pretitle">Shop</div>
-        <div class="page-title">Orders</div>
+        <h1 class="page-title">Orders</h1>
       </div>
       <div class="page-actions">
         <button class="btn btn-outline">Export CSV</button>
@@ -42,7 +42,8 @@
         <div class="card-subtitle">1,240 results</div>
       </div>
       <div class="card-options">
-        <select class="form-control" style="width:160px;height:32px">
+        <label style="font-size:11.5px;color:var(--text-muted);margin-right:6px">Status</label>
+        <select class="form-control" style="width:170px;height:32px" aria-label="Filter by status">
           <option>All statuses</option>
           <option>Paid</option>
           <option>Processing</option>
@@ -76,43 +77,87 @@
 </main>
 
 <script type="module">
-const ORDERS = [
-  ['#7841','John Doe',      'JD','primary',  3, 245,  'paid',       'Visa •••• 4242',     'Apr 28, 2026'],
-  ['#7840','Anna Smith',    'AS','azure',    1,  89,  'processing', 'Mastercard •••• 8841', 'Apr 28, 2026'],
-  ['#7839','Robert Jones',  'RJ','purple',   5, 490,  'paid',       'PayPal',             'Apr 28, 2026'],
-  ['#7838','Emily Wang',    'EW','yellow',   2, 125,  'pending',    'Stripe checkout',    'Apr 27, 2026'],
-  ['#7837','Mark Kim',      'MK','red',      1,  67,  'cancelled',  'Visa •••• 1234',     'Apr 27, 2026'],
-  ['#7836','Lina Park',     'LP','green',    4, 312,  'paid',       'Visa •••• 4242',     'Apr 27, 2026'],
-  ['#7835','Diego Reyes',   'DR','blue',     2, 178,  'paid',       'Apple Pay',          'Apr 26, 2026'],
-  ['#7834','Yuki Tanaka',   'YT','primary',  3, 234,  'processing', 'Mastercard •••• 7712', 'Apr 26, 2026'],
-  ['#7833','Sarah Kowalski','SK','primary',  6, 549,  'paid',       'Stripe checkout',    'Apr 26, 2026'],
-  ['#7832','Michael Reyes', 'MR','purple',   1,  45,  'pending',    'PayPal',             'Apr 25, 2026'],
-  ['#7831','Tom Hardy',     'TH','purple',   2, 195,  'paid',       'Visa •••• 4242',     'Apr 25, 2026'],
-  ['#7830','Anna Smith',    'AS','azure',    3, 220,  'paid',       'Mastercard •••• 8841', 'Apr 24, 2026'],
-  ['#7829','John Doe',      'JD','primary',  1,  79,  'paid',       'Apple Pay',          'Apr 24, 2026'],
-  ['#7828','Robert Jones',  'RJ','purple',   2, 168,  'cancelled',  'Visa •••• 5566',     'Apr 23, 2026'],
-  ['#7827','Emily Wang',    'EW','yellow',   4, 388,  'paid',       'Stripe checkout',    'Apr 23, 2026'],
-  ['#7826','Mark Kim',      'MK','red',      1, 112,  'paid',       'Google Pay',         'Apr 22, 2026'],
-  ['#7825','Diego Reyes',   'DR','blue',     2, 156,  'processing', 'PayPal',             'Apr 22, 2026'],
-  ['#7824','Lina Park',     'LP','green',    3, 247,  'paid',       'Visa •••• 4242',     'Apr 21, 2026'],
-  ['#7823','Yuki Tanaka',   'YT','primary',  1,  58,  'paid',       'Apple Pay',          'Apr 21, 2026'],
-  ['#7822','Sarah Kowalski','SK','primary',  2, 132,  'paid',       'Stripe checkout',    'Apr 20, 2026']
+// This page demonstrates the data-adapter pattern. By default it uses
+// a hardcoded SEED array — the standard "self-contained demo" mode.
+// Add `?api=1` to the URL to fetch from /api/orders instead. Run the
+// example backend in `examples/express-sqlite/` to see it in action.
+import { useApiMode, seedAdapter, httpAdapter } from '/src/v4/data-adapter.js';
+
+const SEED = [
+  { id:'#7841', customer:'John Doe',      initials:'JD', avatarColor:'primary',  items:3, total:245, status:'paid',       payment:'Visa •••• 4242',       createdAt:'Apr 28, 2026' },
+  { id:'#7840', customer:'Anna Smith',    initials:'AS', avatarColor:'azure',    items:1, total: 89, status:'processing', payment:'Mastercard •••• 8841', createdAt:'Apr 28, 2026' },
+  { id:'#7839', customer:'Robert Jones',  initials:'RJ', avatarColor:'purple',   items:5, total:490, status:'paid',       payment:'PayPal',               createdAt:'Apr 28, 2026' },
+  { id:'#7838', customer:'Emily Wang',    initials:'EW', avatarColor:'yellow',   items:2, total:125, status:'pending',    payment:'Stripe checkout',      createdAt:'Apr 27, 2026' },
+  { id:'#7837', customer:'Mark Kim',      initials:'MK', avatarColor:'red',      items:1, total: 67, status:'cancelled',  payment:'Visa •••• 1234',       createdAt:'Apr 27, 2026' },
+  { id:'#7836', customer:'Lina Park',     initials:'LP', avatarColor:'green',    items:4, total:312, status:'paid',       payment:'Visa •••• 4242',       createdAt:'Apr 27, 2026' },
+  { id:'#7835', customer:'Diego Reyes',   initials:'DR', avatarColor:'blue',     items:2, total:178, status:'paid',       payment:'Apple Pay',            createdAt:'Apr 26, 2026' },
+  { id:'#7834', customer:'Yuki Tanaka',   initials:'YT', avatarColor:'primary',  items:3, total:234, status:'processing', payment:'Mastercard •••• 7712', createdAt:'Apr 26, 2026' },
+  { id:'#7833', customer:'Sarah Kowalski',initials:'SK', avatarColor:'primary',  items:6, total:549, status:'paid',       payment:'Stripe checkout',      createdAt:'Apr 26, 2026' },
+  { id:'#7832', customer:'Michael Reyes', initials:'MR', avatarColor:'purple',   items:1, total: 45, status:'pending',    payment:'PayPal',               createdAt:'Apr 25, 2026' },
+  { id:'#7831', customer:'Tom Hardy',     initials:'TH', avatarColor:'purple',   items:2, total:195, status:'paid',       payment:'Visa •••• 4242',       createdAt:'Apr 25, 2026' },
+  { id:'#7830', customer:'Anna Smith',    initials:'AS', avatarColor:'azure',    items:3, total:220, status:'paid',       payment:'Mastercard •••• 8841', createdAt:'Apr 24, 2026' },
+  { id:'#7829', customer:'John Doe',      initials:'JD', avatarColor:'primary',  items:1, total: 79, status:'paid',       payment:'Apple Pay',            createdAt:'Apr 24, 2026' },
+  { id:'#7828', customer:'Robert Jones',  initials:'RJ', avatarColor:'purple',   items:2, total:168, status:'cancelled',  payment:'Visa •••• 5566',       createdAt:'Apr 23, 2026' },
+  { id:'#7827', customer:'Emily Wang',    initials:'EW', avatarColor:'yellow',   items:4, total:388, status:'paid',       payment:'Stripe checkout',      createdAt:'Apr 23, 2026' },
+  { id:'#7826', customer:'Mark Kim',      initials:'MK', avatarColor:'red',      items:1, total:112, status:'paid',       payment:'Google Pay',           createdAt:'Apr 22, 2026' },
+  { id:'#7825', customer:'Diego Reyes',   initials:'DR', avatarColor:'blue',     items:2, total:156, status:'processing', payment:'PayPal',               createdAt:'Apr 22, 2026' },
+  { id:'#7824', customer:'Lina Park',     initials:'LP', avatarColor:'green',    items:3, total:247, status:'paid',       payment:'Visa •••• 4242',       createdAt:'Apr 21, 2026' },
+  { id:'#7823', customer:'Yuki Tanaka',   initials:'YT', avatarColor:'primary',  items:1, total: 58, status:'paid',       payment:'Apple Pay',            createdAt:'Apr 21, 2026' },
+  { id:'#7822', customer:'Sarah Kowalski',initials:'SK', avatarColor:'primary',  items:2, total:132, status:'paid',       payment:'Stripe checkout',      createdAt:'Apr 20, 2026' }
 ];
+
 const colorMap = { primary:'var(--primary)', azure:'var(--azure)', purple:'var(--purple)', yellow:'var(--yellow)', red:'var(--red)', green:'var(--green)', blue:'var(--blue)' };
 const STATUS = { paid:'green', processing:'blue', pending:'yellow', cancelled:'red' };
 
-document.getElementById('orders-rows').innerHTML = ORDERS.map(([id, name, ini, col, items, total, status, pay, date]) => `
-  <tr>
-    <td class="cell-mono"><a href="order_detail.html" style="color:var(--primary);font-weight:var(--font-weight-medium)">${id}</a></td>
-    <td><div class="cell-customer"><div class="cell-avatar" style="background:${colorMap[col]}">${ini}</div><span class="cell-strong">${name}</span></div></td>
-    <td>${items}</td>
-    <td class="cell-strong">$${total}</td>
-    <td><span class="status status-${STATUS[status]}">${status[0].toUpperCase() + status.slice(1)}</span></td>
-    <td style="font-size:12px;color:var(--text-muted)">${pay}</td>
-    <td>${date}</td>
-    <td><button class="card-opt-btn" aria-label="More"><svg viewBox="0 0 16 16" fill="currentColor"><circle cx="8" cy="3" r="1.2"/><circle cx="8" cy="8" r="1.2"/><circle cx="8" cy="13" r="1.2"/></svg></button></td>
-  </tr>
-`).join('');
+const adapter = useApiMode()
+  ? httpAdapter('/api/orders', { listKey: 'orders' })
+  : seedAdapter(SEED);
+
+const tbody = document.getElementById('orders-rows');
+
+function rowHtml(o) {
+  return `
+    <tr>
+      <td class="cell-mono"><a href="order_detail.html" style="color:var(--primary);font-weight:var(--font-weight-medium)">${o.id}</a></td>
+      <td><div class="cell-customer"><div class="cell-avatar" style="background:${colorMap[o.avatarColor] || 'var(--primary)'}">${o.initials}</div><span class="cell-strong">${o.customer}</span></div></td>
+      <td>${o.items}</td>
+      <td class="cell-strong">$${o.total}</td>
+      <td><span class="status status-${STATUS[o.status]}">${o.status[0].toUpperCase() + o.status.slice(1)}</span></td>
+      <td style="font-size:12px;color:var(--text-muted)">${o.payment}</td>
+      <td>${o.createdAt}</td>
+      <td><button class="card-opt-btn" aria-label="More"><svg viewBox="0 0 16 16" fill="currentColor"><circle cx="8" cy="3" r="1.2"/><circle cx="8" cy="8" r="1.2"/><circle cx="8" cy="13" r="1.2"/></svg></button></td>
+    </tr>`;
+}
+
+// Loading state during fetch — emit 5 skeleton rows so the table looks "alive"
+// while the network request resolves. In seed mode this flashes briefly.
+function skeletonRows(n = 5) {
+  const cell = '<td><span class="skeleton skeleton-text" style="width:80%"></span></td>';
+  return Array.from({ length: n }, () => `<tr>${cell.repeat(8)}</tr>`).join('');
+}
+
+async function load() {
+  tbody.innerHTML = skeletonRows();
+  try {
+    const orders = await adapter.list();
+    if (!orders.length) {
+      tbody.innerHTML = `<tr><td colspan="8" style="padding:40px;text-align:center;color:var(--text-muted)">No orders yet.</td></tr>`;
+      return;
+    }
+    tbody.innerHTML = orders.map(rowHtml).join('');
+  } catch (err) {
+    tbody.innerHTML = `
+      <tr><td colspan="8" style="padding:24px">
+        <div class="banner banner-danger">
+          <svg class="banner-icon" width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M5 5l6 6M11 5l-6 6"/></svg>
+          <div class="banner-body"><strong>Failed to load orders.</strong> ${err.message || err}</div>
+          <div class="banner-actions"><button class="btn btn-outline btn-sm" id="orders-retry">Retry</button></div>
+        </div>
+      </td></tr>`;
+    document.getElementById('orders-retry')?.addEventListener('click', load);
+  }
+}
+load();
 </script>
 
 </body>

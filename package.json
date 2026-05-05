@@ -1,6 +1,6 @@
 {
   "name": "gentelella",
-  "version": "4.0.0-rc.1",
+  "version": "4.0.0-rc.2",
   "type": "module",
   "description": "Gentelella v4 — free admin template. 60 pages, 20 chart variants, fully interactive inbox & kanban, live theme generator, component playground, PWA-ready. Vite 8, vanilla JS, no Bootstrap, no jQuery.",
   "scripts": {
@@ -13,6 +13,7 @@
     "format": "prettier --write src/",
     "format:check": "prettier --check src/",
     "analyze": "npm run build && open dist/stats.html",
+    "new": "node scripts/new-page.mjs",
     "screenshots": "node scripts/screenshots.mjs",
     "smoke": "node scripts/smoke.mjs",
     "deploy:preview": "bash scripts/deploy-preview.sh"
@@ -41,6 +42,20 @@
   "author": "Aigars Silkalns",
   "license": "MIT",
   "main": "src/main-v4.js",
+  "types": "types/gentelella.d.ts",
+  "exports": {
+    ".": "./src/main-v4.js",
+    "./v4/*": "./src/v4/*.js",
+    "./scss/*": "./src/scss/*",
+    "./types": "./types/gentelella.d.ts",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "src",
+    "production",
+    "types",
+    "vite.config.js"
+  ],
   "bugs": {
     "url": "https://github.com/ColorlibHQ/gentelella/issues"
   },

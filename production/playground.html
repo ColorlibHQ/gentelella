@@ -19,7 +19,7 @@
     <div class="page-header-row">
       <div>
         <div class="page-pretitle">Developer</div>
-        <div class="page-title">Component playground</div>
+        <h1 class="page-title">Component playground</h1>
       </div>
       <div class="page-actions">
         <a class="btn btn-outline" href="general_elements.html">All UI</a>
@@ -31,7 +31,7 @@
 
   <div class="banner banner-info">
     <svg class="banner-icon" width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v.01M8 7v4"/></svg>
-    <div class="banner-body"><strong>Click "Copy" on any component</strong> to grab its exact HTML — paste straight into your own page. Every component uses the v4 design tokens, so it'll match your theme out of the box.</div>
+    <div class="banner-body"><strong>Edit any code block live</strong> — type into it and the preview above updates in real time. Or click <strong>Copy</strong> to grab the HTML for your own page. Every component uses the v4 design tokens, so it'll match your theme out of the box.</div>
   </div>
 
   <div class="playground-layout">
@@ -51,6 +51,20 @@
       <a class="pg-nav-link" href="#timeline">Timeline</a>
       <a class="pg-nav-link" href="#accordion">Accordion</a>
       <a class="pg-nav-link" href="#empty">Empty state</a>
+      <div class="pg-nav-label" style="margin-top:14px">Async patterns</div>
+      <a class="pg-nav-link" href="#skeleton-table">Skeleton table</a>
+      <a class="pg-nav-link" href="#skeleton-tiles">Skeleton tiles</a>
+      <a class="pg-nav-link" href="#async-list">List lifecycle</a>
+      <a class="pg-nav-link" href="#submit-spinner">Submit spinner</a>
+      <a class="pg-nav-link" href="#banners">Banners</a>
+      <div class="pg-nav-label" style="margin-top:14px">Markup helpers</div>
+      <a class="pg-nav-link" href="#helpers-intro">Overview</a>
+      <a class="pg-nav-link" href="#helpers-stat">statTile()</a>
+      <a class="pg-nav-link" href="#helpers-status">statusBadge()</a>
+      <a class="pg-nav-link" href="#helpers-customer">customerCell()</a>
+      <a class="pg-nav-link" href="#helpers-activity">activityItem()</a>
+      <a class="pg-nav-link" href="#helpers-visitor">visitorRow()</a>
+      <a class="pg-nav-link" href="#helpers-empty">emptyState()</a>
     </aside>
 
     <div class="pg-content" id="pg-content">
@@ -168,7 +182,7 @@
         <div class="pg-card" data-source data-source-label="Date-range picker">
           <div class="pg-preview" data-preview style="max-width:340px">
             <div class="date-range" data-date-range>
-              <input class="form-control" placeholder="Pick a date range">
+              <input class="form-control" placeholder="Pick a date range" aria-label="Date range">
             </div>
           </div>
         </div>
@@ -341,6 +355,185 @@
         </div>
       </section>
 
+      <!-- ── Async patterns ──────────────────────────────────────────── -->
+
+      <section class="pg-block" id="async-intro">
+        <div class="banner banner-info" style="margin-bottom:14px">
+          <svg class="banner-icon" width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v.01M8 7v4"/></svg>
+          <div class="banner-body"><strong>Async patterns.</strong> The four states every list/grid passes through: <em>loading → loaded</em>, or <em>loading → empty</em>, or <em>loading → error</em>. Wire all four and your app feels solid even on flaky networks. The data-adapter pattern in <code>src/v4/data-adapter.js</code> hands you the data; the components below are what you render in each state.</div>
+        </div>
+      </section>
+
+      <section class="pg-block" id="skeleton-table">
+        <h2>Skeleton table</h2>
+        <p style="font-size:13px;color:var(--text-secondary);margin:0 0 12px;line-height:1.55">Render placeholder rows while data loads. Width variation across columns prevents the "jelly bean" look. Fades in via the <code>.skeleton</code> shimmer animation defined in <code>_components.scss</code>.</p>
+        <div class="pg-card" data-source>
+          <div class="pg-preview" data-preview>
+            <table class="table" style="width:100%">
+              <thead><tr><th>Customer</th><th>Plan</th><th>Status</th><th style="text-align:right">MRR</th></tr></thead>
+              <tbody>
+                <tr><td><span class="skeleton skeleton-text" style="width:65%"></span></td><td><span class="skeleton skeleton-text" style="width:50%"></span></td><td><span class="skeleton skeleton-text" style="width:40%"></span></td><td><span class="skeleton skeleton-text" style="width:30%;display:inline-block"></span></td></tr>
+                <tr><td><span class="skeleton skeleton-text" style="width:80%"></span></td><td><span class="skeleton skeleton-text" style="width:45%"></span></td><td><span class="skeleton skeleton-text" style="width:55%"></span></td><td><span class="skeleton skeleton-text" style="width:35%;display:inline-block"></span></td></tr>
+                <tr><td><span class="skeleton skeleton-text" style="width:55%"></span></td><td><span class="skeleton skeleton-text" style="width:60%"></span></td><td><span class="skeleton skeleton-text" style="width:50%"></span></td><td><span class="skeleton skeleton-text" style="width:40%;display:inline-block"></span></td></tr>
+                <tr><td><span class="skeleton skeleton-text" style="width:70%"></span></td><td><span class="skeleton skeleton-text" style="width:55%"></span></td><td><span class="skeleton skeleton-text" style="width:42%"></span></td><td><span class="skeleton skeleton-text" style="width:32%;display:inline-block"></span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="pg-block" id="skeleton-tiles">
+        <h2>Skeleton tiles</h2>
+        <p style="font-size:13px;color:var(--text-secondary);margin:0 0 12px;line-height:1.55">Use for card grids — dashboards, file managers, product galleries. Avatar circle + headline + 2 lines is the canonical shape.</p>
+        <div class="pg-card" data-source>
+          <div class="pg-preview" data-preview style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px">
+            <div class="card" style="padding:16px">
+              <span class="skeleton skeleton-circle" style="width:32px;height:32px;margin-bottom:10px"></span>
+              <span class="skeleton skeleton-text skeleton-text-lg" style="width:60%"></span>
+              <span class="skeleton skeleton-text" style="width:90%"></span>
+              <span class="skeleton skeleton-text" style="width:75%;margin-bottom:0"></span>
+            </div>
+            <div class="card" style="padding:16px">
+              <span class="skeleton skeleton-circle" style="width:32px;height:32px;margin-bottom:10px"></span>
+              <span class="skeleton skeleton-text skeleton-text-lg" style="width:50%"></span>
+              <span class="skeleton skeleton-text" style="width:85%"></span>
+              <span class="skeleton skeleton-text" style="width:65%;margin-bottom:0"></span>
+            </div>
+            <div class="card" style="padding:16px">
+              <span class="skeleton skeleton-circle" style="width:32px;height:32px;margin-bottom:10px"></span>
+              <span class="skeleton skeleton-text skeleton-text-lg" style="width:70%"></span>
+              <span class="skeleton skeleton-text" style="width:80%"></span>
+              <span class="skeleton skeleton-text" style="width:55%;margin-bottom:0"></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="pg-block" id="async-list">
+        <h2>List lifecycle — interactive</h2>
+        <p style="font-size:13px;color:var(--text-secondary);margin:0 0 12px;line-height:1.55">Click a button below to simulate each state. This is exactly what <a href="orders.html?api=1">orders.html</a> and the inbox use under the hood.</p>
+        <div class="pg-card">
+          <div class="pg-preview" data-preview style="flex-direction:column;align-items:stretch;gap:0;padding:0">
+            <div style="display:flex;gap:6px;padding:14px 16px;border-bottom:1px solid var(--border-color-light);flex-wrap:wrap">
+              <button class="btn btn-outline btn-sm" data-lifecycle="success">Loading → success</button>
+              <button class="btn btn-outline btn-sm" data-lifecycle="empty">Loading → empty</button>
+              <button class="btn btn-outline btn-sm" data-lifecycle="error">Loading → error</button>
+              <button class="btn btn-ghost btn-sm" data-lifecycle="reset">Reset</button>
+            </div>
+            <div id="async-list-host" style="padding:14px 16px;min-height:200px"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="pg-block" id="submit-spinner">
+        <h2>Submit spinner</h2>
+        <p style="font-size:13px;color:var(--text-secondary);margin:0 0 12px;line-height:1.55">Disable the button + swap label for a spinner during the request. Re-enable + restore label when it resolves. Click below to simulate a 1.5s submit.</p>
+        <div class="pg-card" data-source>
+          <div class="pg-preview" data-preview>
+            <form id="submit-spinner-form" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap" onsubmit="return false">
+              <input class="form-control" placeholder="Type something" style="width:260px" aria-label="Sample input" required>
+              <button type="submit" class="btn btn-primary" data-pg-submit>
+                <span class="btn-spinner spinner spinner-sm" hidden style="border-top-color:#fff;margin-right:6px"></span>
+                <span data-pg-submit-label>Save</span>
+              </button>
+              <span style="font-size:12px;color:var(--text-muted)">↑ Click "Save"</span>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section class="pg-block" id="banners">
+        <h2>Banners — feedback at the page level</h2>
+        <p style="font-size:13px;color:var(--text-secondary);margin:0 0 12px;line-height:1.55">For things the user needs to see and may want to act on (failed payment, quota near limit). For ephemeral feedback (saved, copied, deleted) use a toast instead — see <a href="general_elements.html#toasts">general elements</a>.</p>
+        <div class="pg-card" data-source>
+          <div class="pg-preview" data-preview style="flex-direction:column;align-items:stretch;gap:10px">
+            <div class="banner">
+              <svg class="banner-icon" width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M5 8l2 2 4-4"/></svg>
+              <div class="banner-body"><strong>Saved.</strong> Changes are live.</div>
+            </div>
+            <div class="banner banner-info">
+              <svg class="banner-icon" width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v.01M8 7v4"/></svg>
+              <div class="banner-body"><strong>Heads up.</strong> Maintenance window scheduled for Friday 02:00 UTC.</div>
+            </div>
+            <div class="banner banner-warning">
+              <svg class="banner-icon" width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1l7 13H1L8 1z"/><path d="M8 6v4"/></svg>
+              <div class="banner-body"><strong>API quota at 87%.</strong> You'll hit the cap by Friday.</div>
+              <div class="banner-actions"><button class="btn btn-outline btn-sm">Upgrade plan</button></div>
+            </div>
+            <div class="banner banner-danger">
+              <svg class="banner-icon" width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M5 5l6 6M11 5l-6 6"/></svg>
+              <div class="banner-body"><strong>Payment failed.</strong> Update your card to keep your subscription active.</div>
+              <div class="banner-actions"><button class="btn btn-outline btn-sm">Update card</button></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="pg-block" id="helpers-intro">
+        <h2>Markup helpers — stop hand-writing scaffolds</h2>
+        <p style="font-size:13px;color:var(--text-secondary);margin:0 0 8px;line-height:1.55">For pages that build content from data (orders, inbox threads, kanban cards…) the boilerplate adds up. <code>src/v4/markup.js</code> exposes pure functions that return HTML strings — no framework, no virtual DOM. Auto-escapes user content. Drop the result into <code>innerHTML</code> or interpolate into a template literal.</p>
+        <p style="font-size:13px;color:var(--text-secondary);margin:0 0 12px;line-height:1.55">Each helper below shows the call site (top) and the rendered output (bottom).</p>
+      </section>
+
+      <section class="pg-block" id="helpers-stat">
+        <h3 style="margin:0 0 10px;font-size:15px">statTile()</h3>
+        <pre class="pg-code" style="margin-bottom:12px"><code>import { statTile } from '/src/v4/markup.js';
+
+document.querySelector('#stats').innerHTML = [
+  statTile({ label: 'Revenue', value: '$84,520', color: 'green',
+             change: { pct: '+18%', direction: 'up' }, subtext: '$3,218 today' }),
+  statTile({ label: 'Pending', value: '42', color: 'yellow',
+             change: { pct: '-3%', direction: 'down' }, subtext: '5 awaiting payment' })
+].join('');</code></pre>
+        <div id="helpers-stat-host" class="row col-2" style="gap:12px"></div>
+      </section>
+
+      <section class="pg-block" id="helpers-status">
+        <h3 style="margin:0 0 10px;font-size:15px">statusBadge()</h3>
+        <pre class="pg-code" style="margin-bottom:12px"><code>statusBadge('Paid', 'green')
+statusBadge('Pending', 'yellow')
+statusBadge('Failed', 'red')</code></pre>
+        <div id="helpers-status-host" style="display:flex;gap:8px;flex-wrap:wrap"></div>
+      </section>
+
+      <section class="pg-block" id="helpers-customer">
+        <h3 style="margin:0 0 10px;font-size:15px">customerCell() — table cell with avatar + name</h3>
+        <pre class="pg-code" style="margin-bottom:12px"><code>tbody.innerHTML = orders.map((o) =&gt;
+  `&lt;tr&gt;&lt;td&gt;${customerCell({ name: o.name, avatarColor: o.color })}&lt;/td&gt;&lt;/tr&gt;`
+).join('');</code></pre>
+        <table class="table" style="max-width:340px"><tbody id="helpers-customer-host"></tbody></table>
+      </section>
+
+      <section class="pg-block" id="helpers-activity">
+        <h3 style="margin:0 0 10px;font-size:15px">activityItem() — feeds, audit logs</h3>
+        <pre class="pg-code" style="margin-bottom:12px"><code>const html = items.map((i) =&gt; activityItem({
+  initials: i.initials, avatarBg: i.bg,
+  bodyHtml: `&lt;strong&gt;${escapeHtml(i.user)}&lt;/strong&gt; ${escapeHtml(i.text)}`,
+  time: i.time
+})).join('');
+container.innerHTML = `&lt;ul class="activity-list"&gt;${html}&lt;/ul&gt;`;</code></pre>
+        <ul class="activity-list" id="helpers-activity-host" style="max-width:420px"></ul>
+      </section>
+
+      <section class="pg-block" id="helpers-visitor">
+        <h3 style="margin:0 0 10px;font-size:15px">visitorRow() — distribution bars</h3>
+        <pre class="pg-code" style="margin-bottom:12px"><code>const html = data.map((d) =&gt;
+  visitorRow({ name: d.country, pct: d.pct, flag: d.flag })
+).join('');</code></pre>
+        <div id="helpers-visitor-host" style="max-width:420px"></div>
+      </section>
+
+      <section class="pg-block" id="helpers-empty">
+        <h3 style="margin:0 0 10px;font-size:15px">emptyState() — fallback for no results</h3>
+        <pre class="pg-code" style="margin-bottom:12px"><code>container.innerHTML = emptyState({
+  title: 'No orders yet',
+  desc: "Orders will appear here once your first customer checks out.",
+  iconHtml: '&lt;svg ...&gt;&lt;/svg&gt;',
+  actionHtml: '&lt;button class="btn btn-primary"&gt;Create test order&lt;/button&gt;'
+});</code></pre>
+        <div class="card"><div class="card-body" id="helpers-empty-host"></div></div>
+      </section>
+
     </div>
   </div>
 
@@ -349,6 +542,7 @@
 
 <script type="module">
 import { showToast } from '/src/v4/toast.js';
+import { statTile, statusBadge, customerCell, activityItem, visitorRow, emptyState, escapeHtml } from '/src/v4/markup.js';
 
 // Build a code-source row under each [data-source] card.
 function indent(html) {
@@ -367,26 +561,49 @@ document.querySelectorAll('[data-source]').forEach((card) => {
   const preview = card.querySelector('[data-preview]');
   if (!preview) return;
 
+  const originalHtml = preview.innerHTML.trim();
   const label = card.dataset.sourceLabel || '';
-  const code = indent(preview.innerHTML.trim());
+  const code = indent(originalHtml);
   const block = document.createElement('div');
   block.className = 'pg-source';
   block.innerHTML = `
     <div class="pg-source-head">
-      <span class="pg-source-label">${label || 'HTML'}</span>
-      <button type="button" class="btn btn-outline btn-sm pg-copy">
-        <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="6" y="6" width="8" height="8" rx="1.5"/><path d="M3 10V3h7"/></svg>
-        Copy
-      </button>
+      <span class="pg-source-label">${label || 'HTML'} <span class="pg-edit-hint">— edit to preview</span></span>
+      <div style="display:flex;gap:6px">
+        <button type="button" class="btn btn-outline btn-sm pg-reset" hidden>↺ Reset</button>
+        <button type="button" class="btn btn-outline btn-sm pg-copy" aria-label="Copy code">
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="6" y="6" width="8" height="8" rx="1.5"/><path d="M3 10V3h7"/></svg>
+          Copy
+        </button>
+      </div>
     </div>
-    <pre class="pg-code"><code></code></pre>
+    <pre class="pg-code pg-code-edit" contenteditable="plaintext-only" spellcheck="false" aria-label="HTML source — edit to update preview"></pre>
   `;
-  block.querySelector('code').textContent = code;
+  const codeEl = block.querySelector('.pg-code');
+  const resetBtn = block.querySelector('.pg-reset');
+  codeEl.textContent = code;
   card.appendChild(block);
+
+  // Live edit: debounce 250ms, set preview.innerHTML from textContent.
+  // Browser auto-corrects malformed HTML — we don't try to validate.
+  let editTimer;
+  codeEl.addEventListener('input', () => {
+    clearTimeout(editTimer);
+    editTimer = setTimeout(() => {
+      preview.innerHTML = codeEl.textContent;
+      resetBtn.hidden = false;
+    }, 250);
+  });
+
+  resetBtn.addEventListener('click', () => {
+    preview.innerHTML = originalHtml;
+    codeEl.textContent = indent(originalHtml);
+    resetBtn.hidden = true;
+  });
 
   block.querySelector('.pg-copy').addEventListener('click', async () => {
     try {
-      await navigator.clipboard.writeText(code);
+      await navigator.clipboard.writeText(codeEl.textContent);
       showToast('Copied to clipboard', { variant: 'success' });
     } catch (_e) {
       showToast('Copy failed — select and Ctrl+C', { variant: 'error' });
@@ -413,6 +630,193 @@ links.forEach((a) => a.addEventListener('click', (e) => {
   const t = document.querySelector(a.getAttribute('href'));
   if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }));
+
+// ── Async list lifecycle simulator ───────────────────────────────────
+// Demonstrates the four states a real list goes through: loading → loaded /
+// empty / error. Buttons let viewers trigger each transition.
+const lifecycleHost = document.getElementById('async-list-host');
+if (lifecycleHost) {
+  const SAMPLE = [
+    { name: 'Sarah K.',      plan: 'Pro',      status: 'Active',  mrr: '$199' },
+    { name: 'Michael R.',    plan: 'Business', status: 'Active',  mrr: '$499' },
+    { name: 'Emily W.',      plan: 'Starter',  status: 'Pending', mrr: '$49'  },
+    { name: 'Diego R.',      plan: 'Pro',      status: 'Active',  mrr: '$199' }
+  ];
+  const renderIdle = () => {
+    lifecycleHost.innerHTML = `<div style="text-align:center;color:var(--text-muted);font-size:13px;padding:60px 0">Click a button above to simulate a state.</div>`;
+  };
+  const renderLoading = () => {
+    const row = `<tr>${'<td><span class="skeleton skeleton-text" style="width:70%"></span></td>'.repeat(4)}</tr>`;
+    lifecycleHost.innerHTML = `
+      <table class="table" style="width:100%">
+        <thead><tr><th>Customer</th><th>Plan</th><th>Status</th><th style="text-align:right">MRR</th></tr></thead>
+        <tbody>${row.repeat(4)}</tbody>
+      </table>`;
+  };
+  const renderLoaded = () => {
+    lifecycleHost.innerHTML = `
+      <table class="table" style="width:100%">
+        <thead><tr><th>Customer</th><th>Plan</th><th>Status</th><th style="text-align:right">MRR</th></tr></thead>
+        <tbody>${SAMPLE.map((r) => `
+          <tr>
+            <td class="cell-strong">${r.name}</td>
+            <td><span class="chip">${r.plan}</span></td>
+            <td><span class="status status-${r.status === 'Active' ? 'green' : 'yellow'}">${r.status}</span></td>
+            <td class="cell-strong" style="text-align:right">${r.mrr}</td>
+          </tr>`).join('')}
+        </tbody>
+      </table>`;
+  };
+  const renderEmpty = () => {
+    lifecycleHost.innerHTML = `
+      <div class="empty-state" style="padding:32px 24px">
+        <div class="empty-state-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="M16 16l4 4"/></svg>
+        </div>
+        <div class="empty-state-title">No customers found</div>
+        <div class="empty-state-text">Try changing your filters, or create your first customer to get started.</div>
+        <div class="empty-state-actions">
+          <button class="btn btn-primary btn-sm">+ New customer</button>
+        </div>
+      </div>`;
+  };
+  const renderError = (retry) => {
+    lifecycleHost.innerHTML = `
+      <div class="banner banner-danger">
+        <svg class="banner-icon" width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M5 5l6 6M11 5l-6 6"/></svg>
+        <div class="banner-body"><strong>Couldn't load customers.</strong> Check your network connection and try again.</div>
+        <div class="banner-actions"><button class="btn btn-outline btn-sm" id="lifecycle-retry">Retry</button></div>
+      </div>`;
+    document.getElementById('lifecycle-retry')?.addEventListener('click', retry);
+  };
+
+  renderIdle();
+
+  document.querySelectorAll('[data-lifecycle]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const state = btn.dataset.lifecycle;
+      if (state === 'reset') { renderIdle(); return; }
+      renderLoading();
+      // Real fetch latency simulation. Devs reading this should note the
+      // pattern: render skeleton synchronously, then resolve the data, then
+      // render the final state. Never go from idle straight to loaded.
+      setTimeout(() => {
+        if (state === 'success') renderLoaded();
+        else if (state === 'empty') renderEmpty();
+        else if (state === 'error') {
+          renderError(() => {
+            renderLoading();
+            setTimeout(renderLoaded, 700); // retry "succeeds"
+          });
+        }
+      }, 700);
+    });
+  });
+}
+
+// ── Submit-spinner pattern ───────────────────────────────────────────
+// Disable the button and swap the label for a spinner during the request,
+// then restore on resolve. Keeps the user from double-submitting and gives
+// clear "something is happening" feedback.
+const submitForm = document.getElementById('submit-spinner-form');
+if (submitForm) {
+  submitForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = submitForm.querySelector('[data-pg-submit]');
+    const spinner = btn.querySelector('.btn-spinner');
+    const label = btn.querySelector('[data-pg-submit-label]');
+    const original = label.textContent;
+    btn.disabled = true;
+    spinner.hidden = false;
+    label.textContent = 'Saving…';
+    try {
+      // Simulate a 1.5s API call. Replace with await fetch(...)
+      await new Promise((r) => setTimeout(r, 1500));
+      showToast('Saved ✓', { variant: 'success' });
+      submitForm.reset();
+    } catch (err) {
+      showToast('Failed to save', { variant: 'error' });
+    } finally {
+      btn.disabled = false;
+      spinner.hidden = true;
+      label.textContent = original;
+    }
+  });
+}
+
+// ── Markup helpers — populate the live previews ──────────────────────
+const ICON_REVENUE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>';
+const ICON_CLOCK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>';
+
+const statHost = document.getElementById('helpers-stat-host');
+if (statHost) {
+  statHost.innerHTML = [
+    statTile({ label: 'Revenue', value: '$84,520', color: 'green', iconHtml: ICON_REVENUE,
+               change: { pct: '+18%', direction: 'up' }, subtext: '$3,218 today' }),
+    statTile({ label: 'Pending', value: '42', color: 'yellow', iconHtml: ICON_CLOCK,
+               change: { pct: '-3%', direction: 'down' }, subtext: '5 awaiting payment' })
+  ].join('');
+}
+
+const statusHost = document.getElementById('helpers-status-host');
+if (statusHost) {
+  statusHost.innerHTML = [
+    statusBadge('Paid', 'green'),
+    statusBadge('Processing', 'blue'),
+    statusBadge('Pending', 'yellow'),
+    statusBadge('Failed', 'red'),
+    statusBadge('Archived', 'gray')
+  ].join('');
+}
+
+const customerHost = document.getElementById('helpers-customer-host');
+if (customerHost) {
+  const orders = [
+    { name: 'Sarah Klein',   color: 'var(--primary)' },
+    { name: 'Michael Reese', color: 'var(--blue)' },
+    { name: 'Emily Wang',    color: 'var(--yellow)' }
+  ];
+  customerHost.innerHTML = orders.map((o) =>
+    `<tr><td>${customerCell({ name: o.name, avatarColor: o.color })}</td></tr>`
+  ).join('');
+}
+
+const activityHost = document.getElementById('helpers-activity-host');
+if (activityHost) {
+  const items = [
+    { user: 'Sarah K.',  text: 'placed a new order for $245.00', initials: 'SK', bg: 'linear-gradient(135deg,var(--primary),var(--primary-dk))', time: '2 min ago' },
+    { user: 'Michael R.', text: 'registered a new account',       initials: 'MR', bg: 'linear-gradient(135deg,var(--blue),#0550a0)',           time: '18 min ago' },
+    { user: 'Payment',    text: 'processed — Invoice #4521',      initials: 'PA', bg: 'linear-gradient(135deg,var(--green),#1a8a32)',          time: '45 min ago' }
+  ];
+  activityHost.innerHTML = items.map((i) => activityItem({
+    initials: i.initials, avatarBg: i.bg,
+    bodyHtml: `<strong>${escapeHtml(i.user)}</strong> ${escapeHtml(i.text)}`,
+    time: i.time
+  })).join('');
+}
+
+const visitorHost = document.getElementById('helpers-visitor-host');
+if (visitorHost) {
+  const data = [
+    { flag: '🇺🇸', country: 'United States', pct: 33 },
+    { flag: '🇫🇷', country: 'France',        pct: 27 },
+    { flag: '🇩🇪', country: 'Germany',       pct: 16 },
+    { flag: '🇪🇸', country: 'Spain',         pct: 11 }
+  ];
+  visitorHost.innerHTML = data.map((d) =>
+    visitorRow({ name: d.country, pct: d.pct, flag: d.flag })
+  ).join('');
+}
+
+const emptyHost = document.getElementById('helpers-empty-host');
+if (emptyHost) {
+  emptyHost.innerHTML = emptyState({
+    title: 'No orders yet',
+    desc: "Orders will appear here once your first customer checks out.",
+    iconHtml: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>',
+    actionHtml: '<button class="btn btn-primary btn-sm">Create test order</button>'
+  });
+}
 </script>
 
 <style>
@@ -505,6 +909,23 @@ links.forEach((a) => a.addEventListener('click', (e) => {
   max-height: 320px;
   overflow-y: auto;
   white-space: pre;
+}
+.pg-code-edit {
+  cursor: text;
+  outline: none;
+  transition: background 120ms;
+}
+.pg-code-edit:hover { background: var(--bg-surface-secondary); }
+.pg-code-edit:focus {
+  background: var(--bg-surface-secondary);
+  box-shadow: inset 3px 0 0 var(--primary);
+}
+.pg-edit-hint {
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--text-disabled);
+  margin-left: 4px;
 }
 .pg-card + .pg-card { margin-top: 14px; }
 @media (max-width: 900px) {

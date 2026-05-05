@@ -1,0 +1,19 @@
+{
+  "name": "gentelella-example-express-sqlite",
+  "version": "0.1.0",
+  "description": "Tiny Express + SQLite backend for the Gentelella v4 admin template. Demonstrates the data-adapter pattern by serving real /api/orders and /api/messages endpoints that the inbox and orders pages can be repointed at.",
+  "type": "module",
+  "private": true,
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "reset": "rm -f data.sqlite && node seed.js",
+    "seed": "node seed.js"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.3.0",
+    "cors": "^2.8.5",
+    "express": "^5.0.0"
+  }
+}

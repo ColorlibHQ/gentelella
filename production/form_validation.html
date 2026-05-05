@@ -19,7 +19,7 @@
     <div class="page-header-row">
       <div>
         <div class="page-pretitle">Forms</div>
-        <div class="page-title">Validation states</div>
+        <h1 class="page-title">Validation states</h1>
       </div>
     </div>
   </div>
@@ -59,25 +59,25 @@
       <div class="card-body">
         <div class="form-group">
           <label class="form-label">Default</label>
-          <input class="form-control" placeholder="Untouched">
+          <input class="form-control" placeholder="Untouched" aria-label="Default state">
         </div>
         <div class="form-group">
           <label class="form-label">Valid</label>
-          <input class="form-control" value="aigars@colorlib.com" style="border-color:var(--green);box-shadow:0 0 0 3px var(--green-lt)">
+          <input class="form-control" aria-label="Valid state" value="aigars@colorlib.com" style="border-color:var(--green);box-shadow:0 0 0 3px var(--green-lt)">
           <div class="form-help" style="color:var(--green)">Looks good.</div>
         </div>
         <div class="form-group">
           <label class="form-label">Invalid</label>
-          <input class="form-control is-invalid" value="not-an-email">
+          <input class="form-control is-invalid" value="not-an-email" aria-label="Invalid state">
           <div class="form-error">Please enter a valid email.</div>
         </div>
         <div class="form-group">
           <label class="form-label">Disabled</label>
-          <input class="form-control" disabled value="Read-only field">
+          <input class="form-control" disabled value="Read-only field" aria-label="Disabled field">
         </div>
         <div class="form-group">
           <label class="form-label">With helper</label>
-          <input class="form-control" placeholder="Enter slug">
+          <input class="form-control" placeholder="Enter slug" aria-label="With helper">
           <div class="form-help">Lowercase letters, numbers, and hyphens only.</div>
         </div>
       </div>

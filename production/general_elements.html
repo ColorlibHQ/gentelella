@@ -19,7 +19,7 @@
     <div class="page-header-row">
       <div>
         <div class="page-pretitle">Components</div>
-        <div class="page-title">UI Elements</div>
+        <h1 class="page-title">UI Elements</h1>
       </div>
       <div class="page-actions">
         <a href="#buttons" class="btn btn-outline btn-sm">Jump to ↓</a>
@@ -634,7 +634,7 @@ greet('Gentelella');
     <div class="form-group">
       <label class="form-label">MRR range</label>
       <div class="slider-row">
-        <input type="range" class="slider" min="0" max="1000" value="200">
+        <input type="range" class="slider" min="0" max="1000" value="200" aria-label="Slider sample">
         <span class="slider-value">$200</span>
       </div>
     </div>
@@ -643,7 +643,7 @@ greet('Gentelella');
       <div class="tag-input">
         <span class="tag-pill">SaaS<button type="button" aria-label="Remove">×</button></span>
         <span class="tag-pill">Q2<button type="button" aria-label="Remove">×</button></span>
-        <input type="text" placeholder="Add…">
+        <input type="text" placeholder="Add…" aria-label="Add chip">
       </div>
     </div>
   </div>
@@ -660,7 +660,7 @@ greet('Gentelella');
   </div>
   <div class="drawer-body">
     <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;margin-bottom:14px">A drawer is great for secondary content that doesn't deserve a full modal — filters, notes, comments, settings.</p>
-    <textarea class="form-control" placeholder="Type a note…">v4 launch checklist:
+    <textarea class="form-control" placeholder="Type a note…" aria-label="Note">v4 launch checklist:
 - [x] Inbox is fully interactive
 - [x] Settings persist
 - [x] 16 chart variants

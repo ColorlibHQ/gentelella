@@ -14,6 +14,7 @@
 
 import { showToast } from './toast.js';
 import { showModal } from './modal.js';
+import { useApiMode, httpAdapter } from './data-adapter.js';
 
 // ────────────────────────
 //  SEED DATA
@@ -658,12 +659,73 @@ function bindEvents(root) {
 /**
  * Mount the interactive inbox into `#inbox-root`. Idempotent — if there's
  * already a list inside the root, we re-render in place.
+ *
+ * Add `?api=1` to the URL to pull initial messages from /api/messages
+ * instead of using seed. Mutations (star, trash, send) still happen
+ * client-side in the demo; extend `data-adapter.js` to PATCH/POST them
+ * back to the server in your own app.
  */
-export function initInbox() {
+export async function initInbox() {
   const root = document.getElementById('inbox-root');
   if (!root) {return;}
   renderShell(root);
   bindEvents(root);
   renderAll();
   syncTopbarUnread();
+
+  if (useApiMode()) {await hydrateFromApi(root);}
+}
+
+async function hydrateFromApi(root) {
+  // Show loading state in the list pane.
+  const list = root.querySelector('#inbox-list');
+  if (list) {
+    list.innerHTML = `
+      <div class="empty-state inbox-loading">
+        <div class="empty-state-icon">
+          <span class="spinner-dots" aria-hidden="true"><span></span><span></span><span></span></span>
+        </div>
+        <div class="empty-state-title">Loading messages…</div>
+      </div>`;
+  }
+  const adapter = httpAdapter('/api/messages', { listKey: 'messages' });
+  try {
+    const apiMessages = await adapter.list({ folder: state.view });
+    // Replace seed with the API payload, mapping field names to the shape
+    // our internal state expects.
+    state.messages = apiMessages.map((m) => ({
+      id: `api-${m.id}`,
+      folder: m.folder,
+      trashed: m.folder === 'trash',
+      unread: !!m.unread,
+      starred: !!m.starred,
+      label: m.label || null,
+      from: m.fromName,
+      fromEmail: m.fromEmail || '',
+      to: m.toEmail || '',
+      subject: m.subject,
+      preview: m.preview || '',
+      body: m.body || '',
+      time: m.createdAt ? new Date(m.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : ''
+    }));
+    renderAll();
+    syncTopbarUnread();
+    showToast(`Loaded ${apiMessages.length} from API`, { variant: 'success' });
+  } catch (err) {
+    if (list) {
+      list.innerHTML = `
+        <div style="padding:16px">
+          <div class="banner banner-danger">
+            <svg class="banner-icon" width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M5 5l6 6M11 5l-6 6"/></svg>
+            <div class="banner-body"><strong>Couldn't load messages.</strong> ${err.message || err}</div>
+            <div class="banner-actions">
+              <button class="btn btn-outline btn-sm" id="inbox-retry">Retry</button>
+              <button class="btn btn-ghost btn-sm" id="inbox-fallback">Use seed</button>
+            </div>
+          </div>
+        </div>`;
+      document.getElementById('inbox-retry')?.addEventListener('click', () => hydrateFromApi(root));
+      document.getElementById('inbox-fallback')?.addEventListener('click', () => renderAll());
+    }
+  }
 }

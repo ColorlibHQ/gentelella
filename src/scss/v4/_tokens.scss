@@ -54,6 +54,20 @@
   --radius-sm: 4px;
   --radius-lg: 8px;
 
+  // Spacing scale — 4px base, matches Tailwind's mental model (var(--space-4)
+  // is 16px just like Tailwind's `p-4` is 16px). Use these instead of raw
+  // pixel values for paddings, margins, and grid gaps. Going off-scale is
+  // sometimes correct (e.g. 14px between two specific labels) but should be
+  // the exception. Six steps cover ~95% of UI needs.
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+
   --shadow: rgba(30,38,51,0.04) 0 2px 4px 0;
   --shadow-card: 0 0 0 1px var(--border-translucent), rgba(30,38,51,0.04) 0 2px 4px 0;
 

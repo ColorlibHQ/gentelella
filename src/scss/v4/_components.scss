@@ -67,6 +67,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  // Always keep at least 16px between the title group and any right-side
+  // controls (dropdowns, action buttons, "View all" links). Without this,
+  // wider title blocks could end up flush against the controls when
+  // space-between has nothing left to distribute.
+  gap: var(--space-4);
   padding: 12px 16px;
   border-bottom: 1px solid var(--border-color-light);
   min-height: 44px;
@@ -138,7 +143,7 @@ table.table tbody tr:hover { background: var(--bg-surface-secondary); }
   font-weight: var(--font-weight-medium);
 }
 .cell-customer {
-  display: flex; align-items: center; gap: 8px;
+  display: flex; align-items: center; gap: var(--space-2);
 }
 .cell-avatar {
   width: 24px; height: 24px;
@@ -152,7 +157,7 @@ table.table tbody tr:hover { background: var(--bg-surface-secondary); }
 .status {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: var(--space-1);
   font-size: 11.5px;
   font-weight: var(--font-weight-medium);
 }
@@ -171,17 +176,38 @@ table.table tbody tr:hover { background: var(--bg-surface-secondary); }
 .status-red { color: var(--red); }
 .status-red::before { background: var(--red); }
 
-// Progress bar (inline)
+// Progress bar (inline) — used in stat tiles, plan/quota progress, KPI rows.
 .progress-thin {
-  height: 4px;
-  background: var(--border-color-light);
-  border-radius: 2px;
+  height: 5px;
+  background: var(--bg-surface-secondary);
+  border-radius: 3px;
   overflow: hidden;
 }
 .progress-thin .bar {
   height: 100%;
-  border-radius: 2px;
-  transition: width 0.6s ease;
+  border-radius: 3px;
+  transition: width 200ms ease;
+}
+
+// Pulsing dot — for "LIVE" / "online" / "active" indicators. Used inline:
+//   <span class="live-pulse"></span>
+// or with a custom color via a wrapping span style background. The animation
+// is a soft expanding-ring shadow.
+.live-pulse {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: pulse-dot 2s infinite;
+}
+@keyframes pulse-dot {
+  0%   { box-shadow: 0 0 0 0 rgba(47, 179, 68, 0.5); }
+  70%  { box-shadow: 0 0 0 6px rgba(47, 179, 68, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(47, 179, 68, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .live-pulse { animation: none; }
 }
 
 // Toggle switch
@@ -228,7 +254,7 @@ table.table tbody tr:hover { background: var(--bg-surface-secondary); }
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 8px;
+  gap: var(--space-2);
   pointer-events: none;
 }
 .toast {
@@ -306,7 +332,7 @@ table.table tbody tr:hover { background: var(--bg-surface-secondary); }
 .menu-panel .panel-header {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--space-2);
   padding: 12px 14px;
   border-bottom: 1px solid var(--border-color-light);
   flex-shrink: 0;
@@ -489,6 +515,16 @@ body.modal-open { overflow: hidden; }
 .modal-sm { max-width: 360px; }
 .modal-lg { max-width: 720px; }
 
+@media (max-width: 480px) {
+  .modal-backdrop { padding: var(--space-3); }
+  .modal-dialog,
+  .modal-sm,
+  .modal-lg { max-width: calc(100vw - var(--space-5)); }
+  .modal-header { padding: var(--space-3) var(--space-4); }
+  .modal-body { padding: var(--space-3) var(--space-4); }
+  .modal-footer { padding: var(--space-3) var(--space-4); flex-wrap: wrap; }
+}
+
 .modal-header {
   display: flex;
   align-items: center;
@@ -527,7 +563,7 @@ body.modal-open { overflow: hidden; }
 .modal-footer {
   display: flex;
   justify-content: flex-end;
-  gap: 8px;
+  gap: var(--space-2);
   padding: 12px 18px;
   border-top: 1px solid var(--border-color-light);
   flex-shrink: 0;
@@ -574,7 +610,7 @@ body.modal-open { overflow: hidden; }
 // Color swatch radio group
 .color-swatches {
   display: flex;
-  gap: 8px;
+  gap: var(--space-2);
   align-items: center;
 }
 .color-swatches input[type="radio"] { position: absolute; opacity: 0; pointer-events: none; }
@@ -602,7 +638,7 @@ body.modal-open { overflow: hidden; }
 .modal-events-list {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: var(--space-1);
   margin-bottom: 14px;
 }
 .modal-events-list:empty { display: none; }
@@ -792,7 +828,7 @@ body.modal-open { overflow: hidden; }
 
 .spinner-dots {
   display: inline-flex;
-  gap: 4px;
+  gap: var(--space-1);
   align-items: center;
 }
 .spinner-dots span {
@@ -940,7 +976,7 @@ body.modal-open { overflow: hidden; }
 .tabs-underline {
   display: flex;
   border-bottom: 1px solid var(--border-color-light);
-  gap: 4px;
+  gap: var(--space-1);
 }
 .tabs-underline .tab {
   padding: 9px 14px 11px;
@@ -1151,7 +1187,7 @@ body.modal-open { overflow: hidden; }
 .list-group-item {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: var(--space-3);
   padding: 10px 14px;
   background: var(--bg-surface);
   border: none;
@@ -1256,7 +1292,7 @@ blockquote footer cite {
 .divider-label {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: var(--space-3);
   font-size: 11px;
   font-weight: var(--font-weight-bold);
   color: var(--text-muted);
@@ -1441,7 +1477,7 @@ body.cmdk-open { overflow: hidden; }
 .accordion-summary {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: var(--space-3);
   padding: 14px 16px;
   cursor: pointer;
   font-size: 13.5px;
@@ -1517,7 +1553,7 @@ body.cmdk-open { overflow: hidden; }
 }
 .drawer-close:hover { background: var(--bg-surface-secondary); color: var(--text); }
 .drawer-body { flex: 1; overflow-y: auto; padding: 16px; }
-.drawer-footer { padding: 12px 16px; border-top: 1px solid var(--border-color-light); display: flex; gap: 8px; justify-content: flex-end; }
+.drawer-footer { padding: 12px 16px; border-top: 1px solid var(--border-color-light); display: flex; gap: var(--space-2); justify-content: flex-end; }
 
 // ────────────────────────
 //  TIMELINE
@@ -1665,6 +1701,6 @@ body.cmdk-open { overflow: hidden; }
 .empty-state .empty-state-actions {
   margin-top: 12px;
   display: flex;
-  gap: 8px;
+  gap: var(--space-2);
 }
 

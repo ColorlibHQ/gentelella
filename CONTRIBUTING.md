@@ -28,7 +28,7 @@ CI runs the same three steps on every push. There is no test harness — this is
 
 - **No framework, no SPA.** Every page in `production/` is its own HTML entry. They all load `/src/main-v4.js`, which mounts a shell, initializes ECharts/DataTables, and registers delegated event handlers for chips/toggles/tabs.
 - **Page-specific behavior is data-driven**, not entry-script-driven. You set `data-shell="admin"`, `data-page="key"`, and `data-breadcrumb="A > B"` on `<body>` and the same shared entry handles the rest.
-- **Tokens-first SCSS.** Every color, radius, sidebar dimension lives in `_tokens.scss` as a CSS custom property. No hardcoded colors anywhere else.
+- **Tokens-first SCSS.** Every color, radius, sidebar dimension, **and spacing step** lives in `_tokens.scss` as a CSS custom property. Use `var(--space-1)` … `var(--space-6)` (4 / 8 / 12 / 16 / 24 / 32 px — same scale as Tailwind's spacing) for paddings, margins, and gaps. Going off-scale is sometimes correct (e.g. 14px between two specific labels) but should be the exception.
 - **Lazy imports for heavy libs.** `echarts`, `datatables.net`, and `leaflet` only load on pages where their host elements exist.
 
 If this is unclear, read [CLAUDE.md](CLAUDE.md) — it's the architecture brief.

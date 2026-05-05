@@ -19,7 +19,7 @@
     <div class="page-header-row">
       <div>
         <div class="page-pretitle">Customize</div>
-        <div class="page-title">Theme generator</div>
+        <h1 class="page-title">Theme generator</h1>
       </div>
       <div class="page-actions">
         <button class="btn btn-outline" id="reset-theme">Reset</button>
@@ -63,7 +63,7 @@
           <div class="form-group" style="margin-top:14px;margin-bottom:0">
             <label class="form-label" for="custom-color">Or enter your own</label>
             <div style="display:flex;gap:8px">
-              <input type="color" id="custom-color-picker" value="#1ABB9C" style="width:42px;height:36px;padding:0;border:1px solid var(--border-color);border-radius:var(--radius-sm);cursor:pointer">
+              <input type="color" id="custom-color-picker" value="#1ABB9C" aria-label="Custom primary color" style="width:42px;height:36px;padding:0;border:1px solid var(--border-color);border-radius:var(--radius-sm);cursor:pointer">
               <input type="text" id="custom-color" class="form-control" value="#1ABB9C" style="flex:1;font-family:var(--font-mono);font-size:12.5px">
             </div>
           </div>
@@ -88,15 +88,15 @@
         <div class="card-body" style="display:flex;flex-direction:column;gap:14px">
           <div>
             <label class="form-label" style="display:flex;justify-content:space-between">Corner radius <span style="color:var(--text-muted)" id="radius-display">6 px</span></label>
-            <input type="range" id="radius-slider" class="slider" min="0" max="16" step="1" value="6">
+            <input type="range" id="radius-slider" class="slider" min="0" max="16" step="1" value="6" aria-label="Border radius">
           </div>
           <div>
             <label class="form-label" style="display:flex;justify-content:space-between">Sidebar width <span style="color:var(--text-muted)" id="sidebar-w-display">252 px</span></label>
-            <input type="range" id="sidebar-w-slider" class="slider" min="200" max="320" step="4" value="252">
+            <input type="range" id="sidebar-w-slider" class="slider" min="200" max="320" step="4" value="252" aria-label="Sidebar width">
           </div>
           <div>
             <label class="form-label" style="display:flex;justify-content:space-between">Body font size <span style="color:var(--text-muted)" id="font-size-display">14 px</span></label>
-            <input type="range" id="font-size-slider" class="slider" min="13" max="16" step="0.5" value="14">
+            <input type="range" id="font-size-slider" class="slider" min="13" max="16" step="0.5" value="14" aria-label="Base font size">
           </div>
         </div>
       </div>
@@ -150,8 +150,8 @@
           <div>
             <div class="theme-section-label">Form</div>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px">
-              <input class="form-control" placeholder="Text input" value="Hello">
-              <select class="form-control"><option>Dropdown</option></select>
+              <input class="form-control" placeholder="Text input" value="Hello" aria-label="Text input sample">
+              <select class="form-control" aria-label="Dropdown sample"><option>Dropdown</option></select>
               <label class="switch"><input type="checkbox" checked><span class="track"></span><span class="switch-label">Toggle on</span></label>
             </div>
           </div>

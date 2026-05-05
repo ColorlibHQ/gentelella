@@ -6,7 +6,7 @@
 .pagination {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: var(--space-1);
   list-style: none;
   padding: 12px 16px;
   border-top: 1px solid var(--border-color-light);
@@ -68,7 +68,7 @@
 .chip {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: var(--space-1);
   height: 22px;
   padding: 0 8px;
   font-size: 11.5px;
@@ -92,7 +92,7 @@
 .calendar-toolbar {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: var(--space-3);
   padding: 12px 16px;
   border-bottom: 1px solid var(--border-color-light);
 }
@@ -101,7 +101,7 @@
   font-weight: var(--font-weight-bold);
   color: var(--text);
 }
-.calendar-toolbar .nav-btns { display: flex; gap: 4px; }
+.calendar-toolbar .nav-btns { display: flex; gap: var(--space-1); }
 .calendar-toolbar .spacer { flex: 1; }
 
 .calendar-grid {
@@ -167,6 +167,20 @@
 .calendar-event.red    { background: var(--red-lt);    color: var(--red); }
 .calendar-event.purple { background: var(--purple-lt); color: var(--purple); }
 
+@media (max-width: 700px) {
+  .calendar-grid {
+    grid-template-columns: repeat(7, minmax(72px, 1fr));
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+  }
+  .calendar-grid > * { scroll-snap-align: start; }
+  .calendar-day { min-height: 70px; padding: 4px 6px; }
+  .calendar-event {
+    font-size: 10px;
+    padding: 1px 4px;
+  }
+}
+
 // ────────────────────────
 //  INBOX
 // ────────────────────────
@@ -193,7 +207,7 @@
 .inbox-folder {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--space-2);
   padding: 6px 10px;
   font-size: 12.5px;
   border-radius: var(--radius-sm);
@@ -233,7 +247,7 @@
 }
 .inbox-list-toolbar {
   display: flex;
-  gap: 8px;
+  gap: var(--space-2);
   align-items: center;
   padding: 10px 12px;
   border-bottom: 1px solid var(--border-color-light);
@@ -258,7 +272,7 @@
 .inbox-item {
   display: grid;
   grid-template-columns: 26px 1fr auto;
-  gap: 8px;
+  gap: var(--space-2);
   padding: 10px 12px;
   border-bottom: 1px solid var(--border-color-light);
   cursor: pointer;
@@ -369,7 +383,7 @@
 .inbox-reader-meta {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: var(--space-3);
   padding: 0 0 18px;
   border-bottom: 1px solid var(--border-color-light);
   margin-bottom: 18px;
@@ -449,7 +463,7 @@
 .invoice-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 24px;
+  gap: var(--space-5);
   margin-bottom: 28px;
 }
 .invoice-grid h4 {
@@ -462,6 +476,15 @@
 }
 .invoice-grid p { font-size: 13px; line-height: 1.5; color: var(--text-secondary); }
 .invoice-grid p strong { color: var(--text); font-weight: var(--font-weight-medium); }
+
+// Invoice ships a 32px padded paper-style block with a 2-col header and
+// 2-col billed-to/pay-to grid. None of that fits a phone — stack and
+// shrink the padding so the long IBAN / address blocks have room.
+@media (max-width: 768px) {
+  .invoice { padding: 16px; }
+  .invoice-header { flex-direction: column; gap: var(--space-3); margin-bottom: 20px; }
+  .invoice-grid { grid-template-columns: 1fr; gap: var(--space-3); margin-bottom: 20px; }
+}
 
 .invoice-totals {
   margin-top: 16px;
@@ -477,6 +500,175 @@
   font-size: 16px;
   font-weight: 600;
   color: var(--text);
+}
+
+// ── Invoice line-item editor ──────────────────────────────────────────
+// Used on invoice.html for the editable items table + payment status row.
+.invoice-editor {
+  margin-top: 18px;
+  border-top: 1px solid var(--border-color-light);
+  padding-top: var(--space-3);
+}
+.invoice-editor-header,
+.line-row {
+  display: grid;
+  grid-template-columns: 1fr 60px 90px 100px 28px;
+  gap: 10px;
+  align-items: center;
+  padding: 6px 0;
+  font-size: 11.5px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+.line-row {
+  font-size: 13px;
+  color: var(--text);
+  text-transform: none;
+  letter-spacing: 0;
+  border-top: 1px solid var(--border-color-light);
+  padding: var(--space-2) 0;
+}
+.line-row input[type="text"],
+.line-row input[type="number"] {
+  width: 100%;
+  border: 1px solid transparent;
+  background: transparent;
+  font: inherit;
+  font-size: 13px;
+  color: var(--text);
+  padding: var(--space-1) 6px;
+  border-radius: var(--radius-sm);
+  transition: border-color 100ms, background 100ms;
+}
+.line-row input[type="text"]:hover,
+.line-row input[type="number"]:hover { border-color: var(--border-color); }
+.line-row input[type="text"]:focus,
+.line-row input[type="number"]:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: var(--bg-surface);
+  box-shadow: 0 0 0 3px var(--primary-lt);
+}
+.line-row input[type="number"] { text-align: right; -moz-appearance: textfield; }
+.line-row input[type="number"]::-webkit-outer-spin-button,
+.line-row input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.line-row .desc-wrap input.desc-sub {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+.line-row .amount {
+  text-align: right;
+  font-weight: var(--font-weight-medium);
+  color: var(--text);
+}
+.line-row .remove-btn {
+  width: 24px; height: 24px;
+  border: 0;
+  background: transparent;
+  border-radius: 50%;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0;
+  transition: opacity 100ms, background 100ms, color 100ms;
+}
+.line-row:hover .remove-btn { opacity: 1; }
+.line-row .remove-btn:hover { background: var(--red-lt); color: var(--red); }
+
+// The 5-col grid (1fr 60 90 100 28 + 4×10gap = 1fr + 318px) needs at least
+// 318px just for fixed columns, which doesn't leave room for the description
+// on a 375px phone. Drop the column header and stack qty/rate/amount on a
+// second visual row with the description spanning above.
+@media (max-width: 600px) {
+  .invoice-editor-header { display: none; }
+  .line-row {
+    grid-template-columns: 1fr 60px 90px 28px;
+    grid-template-areas:
+      "desc desc desc remove"
+      "qty rate amount amount";
+    row-gap: 6px;
+  }
+  .line-row .desc-wrap   { grid-area: desc; }
+  .line-row .qty         { grid-area: qty; }
+  .line-row .rate        { grid-area: rate; }
+  .line-row .amount      { grid-area: amount; }
+  .line-row .remove-btn  { grid-area: remove; opacity: 1; }
+}
+
+.totals-input {
+  width: 50px;
+  margin: 0 var(--space-1);
+  padding: 1px 6px;
+  font: inherit;
+  font-size: 12.5px;
+  text-align: right;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface);
+  color: var(--text);
+  -moz-appearance: textfield;
+}
+.totals-input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 2px var(--primary-lt); }
+.totals-input::-webkit-outer-spin-button,
+.totals-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+
+// ── Invoice payment status (horizontal step indicator) ────────────────
+.invoice-payment-status {
+  margin-top: var(--space-6);
+  padding: 18px;
+  background: var(--bg-surface-secondary);
+  border-radius: var(--radius);
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  gap: var(--space-3);
+}
+.invoice-payment-status::before {
+  content: '';
+  position: absolute;
+  left: 32px; right: 32px; top: 28px;
+  height: 2px;
+  background: var(--border-color);
+  z-index: 0;
+}
+.ips-step {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 6px;
+}
+.ips-dot {
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--bg-surface);
+  border: 2px solid var(--border-color);
+}
+.ips-step.done .ips-dot { background: var(--primary); border-color: var(--primary); }
+.ips-step.active .ips-dot {
+  background: var(--bg-surface);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px var(--primary-lt);
+}
+.ips-step.paid .ips-dot { background: var(--green); border-color: var(--green); }
+.ips-step .ips-title { font-size: 12.5px; font-weight: var(--font-weight-medium); color: var(--text); }
+.ips-step:not(.done):not(.active):not(.paid) .ips-title { color: var(--text-muted); }
+.ips-step .ips-time { font-size: 11px; color: var(--text-muted); }
+
+// Strip editor chrome from the printed invoice — keeps it looking like a
+// finished document instead of an in-progress form.
+@media print {
+  .invoice-editor-header { display: none; }
+  .line-row .remove-btn,
+  #add-line,
+  .totals-input { display: none; }
+  .line-row input { border: 0; padding: 0; background: transparent; }
+  .invoice-payment-status { display: none; }
 }
 
 // ────────────────────────
@@ -583,7 +775,7 @@
 .contact-card .stats {
   display: flex;
   justify-content: center;
-  gap: 16px;
+  gap: var(--space-4);
   padding-top: 12px;
   border-top: 1px solid var(--border-color-light);
   font-size: 11px;
@@ -597,7 +789,7 @@
 .icon-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 12px;
+  gap: var(--space-3);
 }
 .icon-category {
   font-size: 12px;
@@ -667,12 +859,18 @@
 .type-row {
   display: grid;
   grid-template-columns: 100px 1fr;
-  gap: 16px;
+  gap: var(--space-4);
   padding: 12px 0;
   border-bottom: 1px solid var(--border-color-light);
 }
 .type-row:last-child { border-bottom: none; }
 .type-label { font-size: 11px; color: var(--text-muted); padding-top: 4px; font-family: var(--font-mono); }
+// Display samples (56px / 42px headlines) blow past a ~250px column on
+// phones; stack the spec label above the sample and let long words break.
+.type-row .type-sample, .type-row > :last-child { min-width: 0; overflow-wrap: anywhere; }
+@media (max-width: 600px) {
+  .type-row { grid-template-columns: 1fr; gap: var(--space-1); }
+}
 
 
 // ────────────────────────
@@ -685,7 +883,7 @@
 }
 .detail-project .detail-header {
   display: flex;
-  gap: 16px;
+  gap: var(--space-4);
   justify-content: space-between;
   align-items: flex-start;
 }
@@ -704,7 +902,7 @@
 .detail-stats {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 12px;
+  gap: var(--space-3);
   padding: 14px 0;
   border-top: 1px solid var(--border-color-light);
   border-bottom: 1px solid var(--border-color-light);
@@ -736,7 +934,7 @@
 .detail-members {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 8px;
+  gap: var(--space-2);
 }
 .detail-member {
   display: flex;
@@ -761,7 +959,7 @@
 .detail-member .name { font-size: 12.5px; font-weight: var(--font-weight-medium); color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .detail-member .role { font-size: 11px; color: var(--text-muted); }
 
-.detail-tasks { display: flex; flex-direction: column; gap: 4px; }
+.detail-tasks { display: flex; flex-direction: column; gap: var(--space-1); }
 .detail-task {
   display: flex;
   align-items: center;
@@ -786,7 +984,7 @@
 }
 .detail-task.done .task-title { color: var(--text-muted); text-decoration: line-through; }
 
-.detail-activity { display: flex; flex-direction: column; gap: 8px; }
+.detail-activity { display: flex; flex-direction: column; gap: var(--space-2); }
 .detail-activity-item {
   display: flex;
   gap: 10px;
@@ -810,7 +1008,7 @@
 .detail-contact-head {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: var(--space-4);
 }
 .detail-contact-head .big-av {
   width: 64px; height: 64px;
@@ -848,7 +1046,7 @@
 .detail-contact-stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
+  gap: var(--space-3);
   text-align: center;
 }
 .detail-contact-stats > div {
@@ -923,7 +1121,7 @@ button.project-card:hover { border-color: var(--primary); }
 .upload-row {
   display: grid;
   grid-template-columns: 32px 1fr auto auto;
-  gap: 12px;
+  gap: var(--space-3);
   align-items: center;
   padding: 10px 0;
   border-bottom: 1px solid var(--border-color-light);
@@ -999,6 +1197,17 @@ button.project-card:hover { border-color: var(--primary); }
   align-self: center;
 }
 .wizard-panel { display: none; padding: 20px; }
+
+// Step row stays on one line by default; under 600px it stacks the steps
+// vertically — connector line and the secondary "sub" label add width that
+// causes the row to overflow on phones.
+@media (max-width: 600px) {
+  .wizard-steps { flex-direction: column; align-items: flex-start; gap: 10px; padding: 12px; }
+  .wizard-step { flex: none; width: 100%; }
+  .wizard-step .sub { display: none; }
+  .wizard-step + .wizard-step::before { display: none; }
+  .wizard-panel { padding: 14px; }
+}
 .wizard-panel.active { display: block; }
 
 // ────────────────────────
@@ -1007,7 +1216,7 @@ button.project-card:hover { border-color: var(--primary); }
 .media-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 12px;
+  gap: var(--space-3);
 }
 .media-tile {
   aspect-ratio: 1;
@@ -1047,7 +1256,7 @@ button.project-card:hover { border-color: var(--primary); }
   padding: 24px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: var(--space-3);
 }
 .pricing-tier.popular {
   border-color: var(--primary);
@@ -1095,13 +1304,13 @@ button.project-card:hover { border-color: var(--primary); }
   margin: 8px 0;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--space-2);
 }
 .pricing-tier ul li {
   font-size: 13px;
   color: var(--text-secondary);
   display: flex;
-  gap: 8px;
+  gap: var(--space-2);
   align-items: flex-start;
 }
 .pricing-tier ul li svg {
@@ -1151,13 +1360,13 @@ button.project-card:hover { border-color: var(--primary); }
 }
 .landing-nav nav {
   display: flex;
-  gap: 24px;
+  gap: var(--space-5);
   margin-left: 32px;
   font-size: 13px;
 }
 .landing-nav nav a { color: var(--text-secondary); }
 .landing-nav nav a:hover { color: var(--text); text-decoration: none; }
-.landing-nav .cta { margin-left: auto; display: flex; gap: 8px; }
+.landing-nav .cta { margin-left: auto; display: flex; gap: var(--space-2); }
 
 .hero {
   padding: 80px 32px 60px;
@@ -1196,7 +1405,7 @@ button.project-card:hover { border-color: var(--primary); }
   padding: 60px 32px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
+  gap: var(--space-6);
 }
 .feature .icon {
   width: 44px;

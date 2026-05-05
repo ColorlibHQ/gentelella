@@ -61,7 +61,7 @@
 }
 .auth-actions a { color: var(--primary); font-weight: var(--font-weight-medium); }
 .auth-divider {
-  display: flex; align-items: center; gap: 12px;
+  display: flex; align-items: center; gap: var(--space-3);
   margin: 20px 0;
   color: var(--text-muted);
   font-size: 11.5px;
@@ -116,7 +116,7 @@
 }
 .error-actions {
   display: flex;
-  gap: 8px;
+  gap: var(--space-2);
   justify-content: center;
 }
 
@@ -148,7 +148,7 @@
 .status-page-meta {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  gap: var(--space-3);
   margin: 20px 0 24px;
   text-align: left;
   background: var(--bg-surface);
@@ -173,7 +173,7 @@
 .countdown {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
+  gap: var(--space-2);
   margin: 24px 0;
 }
 .countdown-cell {
@@ -204,7 +204,7 @@
 
 .coming-soon-form {
   display: flex;
-  gap: 8px;
+  gap: var(--space-2);
   align-items: stretch;
 }
 .coming-soon-form .input-group { flex: 1; }

@@ -1,6 +1,6 @@
 # Gentelella v4
 
-> **`4.0.0-rc.1`** — release candidate. The v4 line ships under the `next` distribution tag while v2.x remains `latest`. [→ Changelog](CHANGELOG.md)
+> **`4.0.0-rc.2`** — release candidate. The v4 line ships under the `next` distribution tag while v2.x remains `latest`. [→ Changelog](CHANGELOG.md)
 
 A modern admin dashboard template — **60 pages**, **20 chart variants**, fully interactive inbox / kanban / calendar / settings, **live theme generator**, **component playground**, **command palette** (⌘K), **PWA-ready**. Vanilla JavaScript, no Bootstrap, no jQuery.
 
@@ -148,11 +148,21 @@ Want a different brand color? Change `--primary` and `--primary-dk`. Every chart
 
 ### Adding a page
 
+The fast way:
+
+```sh
+npm run new -- reports --title "Reports" --pretitle "Admin" \
+  --breadcrumb "Home > Admin > Reports" --nav-group "Admin" --icon "profile"
+```
+
+This creates `production/reports.html` with the standard skeleton and (with `--nav-group`) inserts a sidebar entry into the `NAV` array of [`src/v4/shell-render.js`](src/v4/shell-render.js). Vite auto-discovers the new entry — no config change needed. Run `npm run new -- --help` for all options, or use `--dry-run` to preview without writing.
+
+The manual way:
+
 1. Copy any existing page in `production/` (e.g. `profile.html`) as your starting point.
 2. Update the `<title>`, `data-page`, and `data-breadcrumb` attributes.
 3. Replace the `<main>` content with your markup using the v4 components.
-4. Register the new entry in `vite.config.js` `rollupOptions.input`.
-5. Optionally add a new sidebar item by editing the `NAV` array in [`src/v4/shell-render.js`](src/v4/shell-render.js).
+4. Optionally add a new sidebar item by editing the `NAV` array in [`src/v4/shell-render.js`](src/v4/shell-render.js).
 
 The shell auto-marks the matching nav item active based on `data-page`.
 
@@ -167,6 +177,14 @@ Mark up a regular `<table class="table" data-datatable>` with `<thead>` and `<tb
 ### Sidebar navigation
 
 The sidebar is rendered from a single source — the `NAV` array in [`src/v4/shell-render.js`](src/v4/shell-render.js). Edit there, every page updates.
+
+### TypeScript / IntelliSense
+
+Type declarations for the public JS surface ship in [`types/gentelella.d.ts`](types/gentelella.d.ts) and are wired up via the `types` field in `package.json`. VS Code resolves IntelliSense automatically — no `tsconfig` required, no rewrite. Covers `mountShell`, `showModal`, `showToast`, `openMenu`, `seedAdapter`/`httpAdapter`, chart/table init, and the `NAV` schema.
+
+### Markup helpers
+
+For pages that build content from data (orders rows, inbox threads, kanban cards), [`src/v4/markup.js`](src/v4/markup.js) exposes pure string-returning helpers — `statTile()`, `statusBadge()`, `customerCell()`, `activityItem()`, `visitorRow()`, `emptyState()`, `banner()`, `skeletonRows()`, plus `escapeHtml()`. Live examples on the [Playground](https://preview.colorlib.com/theme/gentelella-v4-rc1/playground.html#helpers-intro). Static pages keep their hand-written HTML — these are for JS-driven content where the boilerplate adds up.
 
 ## Deployment
 
@@ -199,7 +217,6 @@ Shipped in `4.0.0-rc.1` — full list in [`CHANGELOG.md`](CHANGELOG.md). Still p
 - **Lighthouse audit** + tuning to 95+ Performance / 100 A11y / 100 SEO / 100 PWA
 - **Per-page chart-type tree-shaking** to slim the ECharts vendor chunk
 - **RTL support** (logical-properties pass)
-- **TypeScript declaration files** (`.d.ts` only — no rewrite)
 - **i18n extraction pattern**
 
 Want any of these prioritized? Open an issue.

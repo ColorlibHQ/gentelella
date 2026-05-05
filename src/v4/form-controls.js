@@ -288,7 +288,7 @@ function initMultiSelect(wrap) {
   wrap.innerHTML = `
     <div class="ms-input" tabindex="0">
       <div class="ms-chips"></div>
-      <input type="text" class="ms-search" placeholder="Type to search…" autocomplete="off">
+      <input type="text" class="ms-search" placeholder="Type to search…" aria-label="Search options" autocomplete="off">
       <svg class="ms-chev" width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6l4 4 4-4"/></svg>
     </div>
     <div class="ms-menu" hidden role="listbox"></div>

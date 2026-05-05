@@ -19,7 +19,7 @@
     <div class="page-header-row">
       <div>
         <div class="page-pretitle">Admin</div>
-        <div class="page-title">User management</div>
+        <h1 class="page-title">User management</h1>
       </div>
       <div class="page-actions">
         <button class="btn btn-outline">Export</button>
@@ -39,16 +39,16 @@
       <div class="users-filters">
         <div class="search-box" style="width:240px">
           <svg class="s-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="7" r="5"/><path d="M11 11l3.5 3.5"/></svg>
-          <input type="text" id="users-search" placeholder="Search by name or email…">
+          <input type="text" id="users-search" placeholder="Search by name or email…" aria-label="Search users">
         </div>
-        <select class="form-control" id="filter-role" style="width:140px;height:32px">
+        <select class="form-control" id="filter-role" style="width:140px;height:32px" aria-label="Filter by role">
           <option value="">All roles</option>
           <option value="Owner">Owner</option>
           <option value="Admin">Admin</option>
           <option value="Editor">Editor</option>
           <option value="Viewer">Viewer</option>
         </select>
-        <select class="form-control" id="filter-status" style="width:140px;height:32px">
+        <select class="form-control" id="filter-status" style="width:140px;height:32px" aria-label="Filter by status">
           <option value="">All statuses</option>
           <option value="active">Active</option>
           <option value="pending">Pending</option>
@@ -61,7 +61,7 @@
         <table class="table">
           <thead>
             <tr>
-              <th style="width:40px"><input type="checkbox" id="select-all"></th>
+              <th style="width:40px"><input type="checkbox" id="select-all" aria-label="Select all rows"></th>
               <th>User</th>
               <th>Role</th>
               <th>Status</th>
@@ -119,7 +119,7 @@ function render() {
   const items = visible();
   rows.innerHTML = items.map((u, idx) => `
     <tr data-email="${u.email}">
-      <td><input type="checkbox" class="row-cb"></td>
+      <td><input type="checkbox" class="row-cb" aria-label="Select row"></td>
       <td>
         <div class="cell-customer">
           <div class="cell-avatar${u.pending ? ' pending' : ''}" style="background:${u.pending ? 'var(--bg-surface-secondary)' : COLORS[u.col]};color:${u.pending ? 'var(--text-muted)' : 'white'}">${u.ini}</div>

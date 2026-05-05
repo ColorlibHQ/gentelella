@@ -1,6 +1,25 @@
 import { defineConfig } from 'vite';
 import { visualizer } from 'rollup-plugin-visualizer';
 import { renderShell, parseShellAttrs } from './src/v4/shell-render.js';
+import { readdirSync } from 'node:fs';
+import { resolve } from 'node:path';
+
+// Auto-detect every entry HTML in production/ and register it as a Rollup
+// input. Replaces the old hand-maintained 60-entry list — adding a new page
+// is now just dropping a file into production/.
+function discoverEntries() {
+  const dir = resolve(import.meta.dirname, 'production');
+  const out = {};
+  for (const file of readdirSync(dir)) {
+    if (!file.endsWith('.html')) continue;
+    // Vite wants a unique chunk name per entry. `index.html` is special:
+    // historical name was `main` so we keep that for the dashboard chunk;
+    // everything else uses the filename stem.
+    const stem = file === 'index.html' ? 'main' : file.replace(/\.html$/, '');
+    out[stem] = `production/${file}`;
+  }
+  return out;
+}
 
 // Inject sidebar/topbar/footer into pages with body[data-shell="admin"] at
 // dev/build time so the shell paints on the first frame (no FOUC). The
@@ -135,79 +154,9 @@ export default defineConfig(({ command }) => ({
         chunkFileNames: 'js/[name]-[hash].js',
         entryFileNames: 'js/[name]-[hash].js'
       },
-      input: {
-        // Dashboards
-        main:   'production/index.html',
-        index2: 'production/index2.html',
-        index3: 'production/index3.html',
-        index4: 'production/index4.html',
-
-        // Forms
-        form:            'production/form.html',
-        form_advanced:   'production/form_advanced.html',
-        form_buttons:    'production/form_buttons.html',
-        form_upload:     'production/form_upload.html',
-        form_validation: 'production/form_validation.html',
-        form_wizards:    'production/form_wizards.html',
-
-        // Tables & charts
-        tables:         'production/tables.html',
-        tables_dynamic: 'production/tables_dynamic.html',
-        chartjs:        'production/chartjs.html',
-        echarts:        'production/echarts.html',
-        other_charts:   'production/other_charts.html',
-
-        // UI library
-        general_elements: 'production/general_elements.html',
-        widgets:          'production/widgets.html',
-        media_gallery:    'production/media_gallery.html',
-        typography:       'production/typography.html',
-        icons:            'production/icons.html',
-
-        // App pages
-        calendar:       'production/calendar.html',
-        inbox:          'production/inbox.html',
-        invoice:        'production/invoice.html',
-        e_commerce:     'production/e_commerce.html',
-        projects:       'production/projects.html',
-        project_detail: 'production/project_detail.html',
-        contacts:       'production/contacts.html',
-        profile:        'production/profile.html',
-        map:            'production/map.html',
-
-        // Auth + utility + layouts
-        login:           'production/login.html',
-        register:        'production/register.html',
-        forgot_password: 'production/forgot_password.html',
-        page_403:        'production/page_403.html',
-        page_404:        'production/page_404.html',
-        page_500:        'production/page_500.html',
-        maintenance:     'production/maintenance.html',
-        coming_soon:     'production/coming_soon.html',
-        plain_page:      'production/plain_page.html',
-        pricing_tables:  'production/pricing_tables.html',
-        level2:          'production/level2.html',
-        fixed_sidebar:   'production/fixed_sidebar.html',
-        fixed_footer:    'production/fixed_footer.html',
-        landing:         'production/landing.html',
-
-        // Beyond-parity app pages
-        chat:             'production/chat.html',
-        settings:         'production/settings.html',
-        notifications:    'production/notifications.html',
-        kanban:           'production/kanban.html',
-        file_manager:     'production/file_manager.html',
-        product_detail:   'production/product_detail.html',
-        orders:           'production/orders.html',
-        order_detail:     'production/order_detail.html',
-        user_management:  'production/user_management.html',
-        faq:              'production/faq.html',
-        lock_screen:      'production/lock_screen.html',
-        verify_2fa:       'production/verify_2fa.html',
-        offline:          'production/offline.html',
-        playground:       'production/playground.html',
-        theme:            'production/theme.html'
-      }
+      // Auto-discovered from production/*.html. Add a new page by just
+      // dropping the file in — no config edit needed.
+      input: discoverEntries()
     },
     minify: 'terser',
     terserOptions: {
@@ -241,10 +190,19 @@ export default defineConfig(({ command }) => ({
     open: '/production/index.html',
     port: Number(process.env.PORT) || 9173,
     host: true,
+    // /api/* → examples/express-sqlite (when running). Falls through 404 if
+    // the example backend isn't up — frontend pages stay on seed data.
+    // Override the target with API_URL if your backend lives elsewhere.
+    proxy: {
+      '/api': {
+        target: process.env.API_URL || 'http://localhost:8080',
+        changeOrigin: true
+      }
+    },
     watch: {
       usePolling: false,
       interval: 100,
-      ignored: ['**/node_modules/**', '**/dist/**']
+      ignored: ['**/node_modules/**', '**/dist/**', '**/examples/**']
     },
     hmr: {
       overlay: false

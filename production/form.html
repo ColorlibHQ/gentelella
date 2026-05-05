@@ -19,7 +19,7 @@
     <div class="page-header-row">
       <div>
         <div class="page-pretitle">UI</div>
-        <div class="page-title">Forms</div>
+        <h1 class="page-title">Forms</h1>
       </div>
       <div class="page-actions">
         <a class="btn btn-outline" href="form_advanced.html">Advanced</a>
@@ -100,7 +100,7 @@
               <span class="tag-pill">Web<button type="button" aria-label="Remove">×</button></span>
               <span class="tag-pill">Design<button type="button" aria-label="Remove">×</button></span>
               <span class="tag-pill">Q2<button type="button" aria-label="Remove">×</button></span>
-              <input type="text" placeholder="Add tag…">
+              <input type="text" placeholder="Add tag…" aria-label="Add tag">
             </div>
             <div class="form-help">Press Enter to add a tag.</div>
           </div>
@@ -217,12 +217,12 @@
         <div class="form-group">
           <label class="form-label">Verify with one-time code</label>
           <div class="otp-grid">
-            <input class="otp-input" type="text" inputmode="numeric" pattern="[0-9]" maxlength="1" placeholder="·">
-            <input class="otp-input" type="text" inputmode="numeric" pattern="[0-9]" maxlength="1" placeholder="·">
-            <input class="otp-input" type="text" inputmode="numeric" pattern="[0-9]" maxlength="1" placeholder="·">
-            <input class="otp-input" type="text" inputmode="numeric" pattern="[0-9]" maxlength="1" placeholder="·">
-            <input class="otp-input" type="text" inputmode="numeric" pattern="[0-9]" maxlength="1" placeholder="·">
-            <input class="otp-input" type="text" inputmode="numeric" pattern="[0-9]" maxlength="1" placeholder="·">
+            <input class="otp-input" aria-label="Digit 1 of 6" type="text" inputmode="numeric" pattern="[0-9]" maxlength="1" placeholder="·">
+            <input class="otp-input" aria-label="Digit 2 of 6" type="text" inputmode="numeric" pattern="[0-9]" maxlength="1" placeholder="·">
+            <input class="otp-input" aria-label="Digit 3 of 6" type="text" inputmode="numeric" pattern="[0-9]" maxlength="1" placeholder="·">
+            <input class="otp-input" aria-label="Digit 4 of 6" type="text" inputmode="numeric" pattern="[0-9]" maxlength="1" placeholder="·">
+            <input class="otp-input" aria-label="Digit 5 of 6" type="text" inputmode="numeric" pattern="[0-9]" maxlength="1" placeholder="·">
+            <input class="otp-input" aria-label="Digit 6 of 6" type="text" inputmode="numeric" pattern="[0-9]" maxlength="1" placeholder="·">
           </div>
         </div>
       </div>
@@ -314,7 +314,7 @@
           <label class="form-label">Team size</label>
           <div class="stepper">
             <button type="button" data-step="-1">−</button>
-            <input type="number" value="6" min="1" max="50">
+            <input type="number" value="6" min="1" max="50" aria-label="Team size">
             <button type="button" data-step="1">+</button>
           </div>
         </div>
@@ -410,7 +410,7 @@
         <div class="form-group">
           <label class="form-label" for="dr-input">Report period</label>
           <div class="date-range" data-date-range>
-            <input id="dr-input" class="form-control" placeholder="Pick a date range">
+            <input id="dr-input" class="form-control" placeholder="Pick a date range" aria-label="Date range">
           </div>
           <div class="form-help">Click the input to open the picker. Built from scratch — no library.</div>
         </div>
