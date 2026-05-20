@@ -24,7 +24,7 @@
 
 set -euo pipefail
 
-SLUG="${PREVIEW_SLUG:-gentelella-v4-rc1}"
+SLUG="${PREVIEW_SLUG:-gentelella}"
 BUCKET="r2pro:colorlib-preview/theme/$SLUG"
 
 echo "→ Building with BASE_PATH=/theme/$SLUG/"
