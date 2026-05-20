@@ -1,0 +1,120 @@
+---
+description: Gentelella v4 — project conventions, recipes, anti-patterns
+globs:
+  - "**/*.js"
+  - "**/*.scss"
+  - "**/*.html"
+  - "**/*.css"
+alwaysApply: true
+---
+
+# Gentelella v4 (`4.0.0`)
+
+Admin dashboard template by Colorlib. 58 server-rendered HTML pages in [production/](mdc:production), built with **Vite 8** (Rolldown). **Vanilla ES2022**, no Bootstrap, no jQuery, no SPA framework. SCSS only. Heavyweight deps (**ECharts 6**, **DataTables.net 2**, **Leaflet 1.9**) are lazy-imported per page.
+
+Full reference: [CLAUDE.md](mdc:CLAUDE.md). The rules below are the load-bearing ones — apply them by default.
+
+## Hard rules
+
+- **Vanilla DOM only.** `querySelector`, `classList`, `addEventListener`. Never add jQuery, Bootstrap JS, or an SPA framework.
+- **Single entry**: [src/main-v4.js](mdc:src/main-v4.js). Every page loads it. Page-specific modules are lazy-imported inside `main-v4.js` guarded by DOM presence — match that pattern, don't add new `<script>` tags per page.
+- **Pages are auto-discovered.** Drop `production/<slug>.html` in and `discoverEntries()` in [vite.config.js](mdc:vite.config.js) picks it up. Don't edit `rollupOptions.input`.
+- **Shell opt-in via body attributes**: `<body data-shell="admin" data-page="<key>" data-breadcrumb="Home > …">`. The Vite plugin (`shellInjectionPlugin` in [vite.config.js](mdc:vite.config.js)) inlines sidebar/topbar/footer at build time so the shell paints on the first frame.
+- **NAV is one constant**: `NAV` in [src/v4/shell-render.js](mdc:src/v4/shell-render.js), 7 groups. Match leaf `key` to `data-page`. New icons go in the `ICONS` object in the same file (inline SVG, `currentColor` stroke).
+- **Overlays go through helpers**: `showModal()` ([src/v4/modal.js](mdc:src/v4/modal.js)), `showToast()` ([src/v4/toast.js](mdc:src/v4/toast.js)), `openMenu()` / `openPanel()` ([src/v4/menus.js](mdc:src/v4/menus.js)). Never hand-roll a backdrop, escape handler, or focus-return loop.
+- **CSS custom properties for colors**, never hex literals in components. Tokens in [src/scss/v4/_tokens.scss](mdc:src/scss/v4/_tokens.scss). Charts read them via `getComputedStyle(document.documentElement).getPropertyValue('--…')` — that's how dark-mode redraw stays automatic.
+- **Lazy ECharts imports.** Match the modular import pattern in [src/v4/charts.js](mdc:src/v4/charts.js). Don't `import * as echarts`.
+- **Subpath-safe URLs.** `import.meta.env.BASE_URL` in JS, `${base}` in the Vite plugin, relative paths inside `production/*.html`. Never hard-code a leading `/`.
+- **Idempotent `init<Name>()` exports.** Every module in `src/v4/` exposes a single `init*()` that is safe to call when its root element is absent and safe to call twice.
+- **No `console.*` in shipped code.** Terser drops them in production but ESLint flags them earlier.
+- **Service worker only in prod.** Skip the registration when `import.meta.env.DEV` — see the guard in [src/main-v4.js](mdc:src/main-v4.js).
+
+## File layout
+
+- [src/main-v4.js](mdc:src/main-v4.js) — entry; mounts shell, lazy-loads page modules
+- [src/scss/v4/](mdc:src/scss/v4) — 10 SCSS partials, `main.scss` is the entry
+- [src/v4/shell.js](mdc:src/v4/shell.js) — `mountShell()` runtime behavior (sidebar accordion, theme toggle, mobile drawer)
+- [src/v4/shell-render.js](mdc:src/v4/shell-render.js) — `NAV`, `ICONS`, pure renderers (also imported by the Vite plugin)
+- [src/v4/charts.js](mdc:src/v4/charts.js) — `initCharts()` + ECharts factories
+- [src/v4/tables.js](mdc:src/v4/tables.js) — `initTables()` + DataTables init
+- [src/v4/command-palette.js](mdc:src/v4/command-palette.js) — ⌘K
+- [src/v4/modal.js](mdc:src/v4/modal.js), [src/v4/toast.js](mdc:src/v4/toast.js), [src/v4/menus.js](mdc:src/v4/menus.js) — overlay helpers
+- [src/v4/inbox.js](mdc:src/v4/inbox.js), [kanban.js](mdc:src/v4/kanban.js), [calendar.js](mdc:src/v4/calendar.js), [settings.js](mdc:src/v4/settings.js), [file-manager.js](mdc:src/v4/file-manager.js) — page modules, lazy-loaded
+- [src/v4/form-controls.js](mdc:src/v4/form-controls.js) — date range, multi-select, rich text
+- [production/](mdc:production) — 58 HTML entry pages
+- [types/gentelella.d.ts](mdc:types/gentelella.d.ts) — TypeScript declarations for the public JS surface
+- [scripts/new-page.mjs](mdc:scripts/new-page.mjs) — page scaffolder
+- [scripts/deploy-preview.sh](mdc:scripts/deploy-preview.sh) — R2 deploy with cache headers
+
+## Anti-patterns
+
+- Don't add jQuery, Bootstrap, or a SPA framework.
+- Don't write Vite entry input lists by hand — drop the file in `production/`, it's auto-discovered.
+- Don't add `<script>` tags to individual `production/*.html` files for new modules — lazy-import from `src/main-v4.js` instead.
+- Don't bypass `mountShell()` to render your own sidebar/topbar.
+- Don't `new bootstrap.Modal(...)` — there is no Bootstrap.
+- Don't hard-code paths beginning with `/` in JS or HTML — use `BASE_URL` / relative paths.
+- Don't edit `dist/`, `node_modules/`, or `docs/screenshots/`.
+- Don't introduce PostCSS, Tailwind, or any pipeline besides Vite.
+- Don't import all of ECharts — match the modular pattern in [src/v4/charts.js](mdc:src/v4/charts.js).
+- Don't use hex colors in components — refer to CSS custom properties.
+
+## Recipe: new page
+
+```bash
+npm run new -- reports --title "Reports" --nav-group "Admin"
+```
+
+Or by hand: drop `production/<slug>.html` with `<body data-shell="admin" data-page="<slug>" data-breadcrumb="Home > …">` + `<script type="module" src="/src/main-v4.js"></script>`. Then append a leaf to `NAV` in [src/v4/shell-render.js](mdc:src/v4/shell-render.js) (`key` matches `data-page`).
+
+## Recipe: new chart
+
+1. Markup: `<div class="card chart-card"><div class="chart" data-chart="<id>"></div></div>` in the page.
+2. `case '<id>':` in `initCharts()` in [src/v4/charts.js](mdc:src/v4/charts.js) returning the ECharts `option`.
+3. Read tokens via `getComputedStyle(document.documentElement).getPropertyValue('--token')` for colors.
+
+## Recipe: new page module
+
+In `src/main-v4.js`, add:
+
+```js
+if (document.querySelector('.reports-root')) {
+  import('./v4/reports.js').then((m) => m.initReports());
+}
+```
+
+Export a single idempotent `initReports()` from `src/v4/reports.js`.
+
+## Recipe: modal / toast
+
+```js
+import { showModal } from './v4/modal.js';
+showModal({
+  title: 'Delete project?',
+  body: 'This cannot be undone.',
+  actions: [
+    { text: 'Cancel', variant: 'ghost' },
+    { text: 'Delete', variant: 'danger', onClick: () => { /* … */ } }
+  ]
+});
+
+import { showToast } from './v4/toast.js';
+showToast({ text: 'Saved', variant: 'success' });
+```
+
+## Commands
+
+```bash
+npm run dev                # Vite dev server on :9173
+npm run build              # Production build → dist/
+npm run preview            # Serve built dist/ on :9174
+npm run lint               # ESLint over src/
+npm run format             # Prettier write
+npm run new -- <slug>      # Scaffold a page
+npm run screenshots        # Playwright capture (22 pages × light+dark)
+npm run smoke              # Hit every page, assert 200
+npm run analyze            # Build + open dist/stats.html
+npm run deploy:preview     # Build + R2 sync
+```
+
+Override the dev port with `PORT=…`. Build under a subpath with `BASE_PATH=/foo/ npm run build`.
