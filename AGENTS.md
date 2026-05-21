@@ -121,13 +121,13 @@ showModal({
   title: 'Delete project?',
   body: 'This cannot be undone.',
   actions: [
-    { text: 'Cancel', variant: 'ghost' },
-    { text: 'Delete', variant: 'danger', onClick: () => { /* … */ } }
+    { label: 'Cancel', variant: 'ghost' },
+    { label: 'Delete', variant: 'danger', action: () => { /* … */ } }
   ]
 });
 
 import { showToast } from './v4/toast.js';
-showToast({ text: 'Saved', variant: 'success' });
+showToast('Saved', { variant: 'success' });
 ```
 
 ### Add a page-local module

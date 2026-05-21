@@ -83,6 +83,31 @@ Plus: 10 SCSS partials · build-time + runtime shell (no FOUC) · `data-page` at
 
 3 production deps, 9 dev deps, **~178 MB `node_modules`** (was ~600 MB on the old Gentelella).
 
+## Documentation
+
+Comprehensive docs in [`docs/`](docs/) covering every part of v4:
+
+| Topic | Doc |
+| --- | --- |
+| Setup, build, deploy | [getting-started](docs/getting-started.md) |
+| Directory layout | [project-structure](docs/project-structure.md) |
+| Shell injection + lazy modules | [architecture](docs/architecture.md) |
+| Tokens, dark mode, theme generator | [theming](docs/theming.md) |
+| Adding pages + sidebar entries | [pages](docs/pages.md) |
+| Buttons, cards, badges, grids | [components](docs/components.md) |
+| ECharts factories | [charts](docs/charts.md) |
+| DataTables, row selection, CSV | [tables](docs/tables.md) |
+| Inputs, validation, custom controls | [forms](docs/forms.md) |
+| `showModal`, `showToast`, `openMenu` | [overlays](docs/overlays.md) |
+| ⌘K | [command-palette](docs/command-palette.md) |
+| Inbox / kanban / calendar / files / settings | [app-modules](docs/app-modules.md) |
+| Service worker, manifest, offline | [pwa](docs/pwa.md) |
+| Hosts, subpath, cache headers | [deployment](docs/deployment.md) |
+| IntelliSense via `.d.ts` | [typescript](docs/typescript.md) |
+| Seed vs HTTP backend (`?api=1`) | [data-adapter](docs/data-adapter.md) |
+| Coming from old Gentelella | [migration-v2](docs/migration-v2.md) |
+| Common questions | [FAQ](docs/faq.md) |
+
 ## Quick start
 
 ```bash

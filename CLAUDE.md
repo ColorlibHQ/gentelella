@@ -191,12 +191,12 @@ Registered only in `import.meta.env.PROD` (skips dev so HMR isn't fighting cache
 ```js
 import { showModal } from './v4/modal.js';
 showModal({ title: 'Delete project?', body: 'This can\'t be undone.', actions: [
-  { text: 'Cancel', variant: 'ghost' },
-  { text: 'Delete', variant: 'danger', onClick: () => { /* … */ } }
+  { label: 'Cancel', variant: 'ghost' },
+  { label: 'Delete', variant: 'danger', action: () => { /* … */ } }
 ]});
 
 import { showToast } from './v4/toast.js';
-showToast({ text: 'Saved', variant: 'success' });
+showToast('Saved', { variant: 'success' });
 ```
 
 ### Wire up keyboard shortcuts
