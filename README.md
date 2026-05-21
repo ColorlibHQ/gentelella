@@ -77,22 +77,22 @@ Need advanced features, dedicated support, and production-ready code? Explore ou
 <table>
   <tr>
     <td align="center" width="50%">
-      <a href="https://dashboardpack.com/theme-details/apex-nextjs/?utm_source=github&utm_medium=readme&utm_campaign=gentelella">
-        <img src="docs/screenshots/dashboardpack/apex.png" alt="Apex — premium Next.js admin dashboard with 50+ pages" width="100%">
+      <a href="https://dashboardpack.com/theme-details/apex-dashboard-nextjs/?utm_source=github&utm_medium=readme&utm_campaign=gentelella">
+        <img src="docs/screenshots/dashboardpack/apex.png" alt="Apex Dashboard — Next.js 16 admin template with shadcn/ui" width="100%">
       </a>
       <br>
-      <a href="https://dashboardpack.com/theme-details/apex-nextjs/?utm_source=github&utm_medium=readme&utm_campaign=gentelella"><strong>Apex</strong></a>
+      <a href="https://dashboardpack.com/theme-details/apex-dashboard-nextjs/?utm_source=github&utm_medium=readme&utm_campaign=gentelella"><strong>Apex Dashboard</strong></a>
       <br>
-      <sub>Next.js 16 + React 19 + Tailwind CSS v4. 50+ pages, full CRUD, live theme customizer, 5 dashboard variants.</sub>
+      <sub>Next.js 16 + React 19 + Tailwind CSS v4 + shadcn/ui. 5 dashboard variants, 20+ app pages, 125+ routes, full CRUD.</sub>
     </td>
     <td align="center" width="50%">
-      <a href="https://dashboardpack.com/theme-details/zenith-nextjs/?utm_source=github&utm_medium=readme&utm_campaign=gentelella">
-        <img src="docs/screenshots/dashboardpack/zenith.png" alt="Zenith — achromatic Next.js admin dashboard with clean minimal design" width="100%">
+      <a href="https://dashboardpack.com/theme-details/zenith-shadcn/?utm_source=github&utm_medium=readme&utm_campaign=gentelella">
+        <img src="docs/screenshots/dashboardpack/zenith.png" alt="Zenith — ultra-minimal Next.js admin dashboard with shadcn/ui" width="100%">
       </a>
       <br>
-      <a href="https://dashboardpack.com/theme-details/zenith-nextjs/?utm_source=github&utm_medium=readme&utm_campaign=gentelella"><strong>Zenith</strong></a>
+      <a href="https://dashboardpack.com/theme-details/zenith-shadcn/?utm_source=github&utm_medium=readme&utm_campaign=gentelella"><strong>Zenith Dashboard</strong></a>
       <br>
-      <sub>Next.js 16 + React 19 + Tailwind CSS v4. Achromatic design, drag-and-drop kanban, i18n, RTL support.</sub>
+      <sub>Next.js 16 + React 19 + Tailwind CSS v4 + shadcn/ui. Achromatic design, 50+ pages, 6 dashboards, live theme customizer.</sub>
     </td>
   </tr>
   <tr>
