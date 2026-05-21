@@ -77,6 +77,35 @@ Need advanced features, dedicated support, and production-ready code? Explore ou
 <table>
   <tr>
     <td align="center" width="50%">
+      <a href="https://dashboardpack.com/theme-details/apex-nextjs/?utm_source=github&utm_medium=readme&utm_campaign=gentelella">
+        <img src="docs/screenshots/dashboardpack/apex.png" alt="Apex — premium Next.js admin dashboard with 50+ pages" width="100%">
+      </a>
+      <br>
+      <a href="https://dashboardpack.com/theme-details/apex-nextjs/?utm_source=github&utm_medium=readme&utm_campaign=gentelella"><strong>Apex</strong></a>
+      <br>
+      <sub>Next.js 16 + React 19 + Tailwind CSS v4. 50+ pages, full CRUD, live theme customizer, 5 dashboard variants.</sub>
+    </td>
+    <td align="center" width="50%">
+      <a href="https://dashboardpack.com/theme-details/zenith-nextjs/?utm_source=github&utm_medium=readme&utm_campaign=gentelella">
+        <img src="docs/screenshots/dashboardpack/zenith.png" alt="Zenith — achromatic Next.js admin dashboard with clean minimal design" width="100%">
+      </a>
+      <br>
+      <a href="https://dashboardpack.com/theme-details/zenith-nextjs/?utm_source=github&utm_medium=readme&utm_campaign=gentelella"><strong>Zenith</strong></a>
+      <br>
+      <sub>Next.js 16 + React 19 + Tailwind CSS v4. Achromatic design, drag-and-drop kanban, i18n, RTL support.</sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="50%">
+      <a href="https://dashboardpack.com/theme-details/haze-dashboard-nuxt/?utm_source=github&utm_medium=readme&utm_campaign=gentelella">
+        <img src="docs/screenshots/dashboardpack/haze.png" alt="Haze — Nuxt 4 admin dashboard with 92+ pages and 5 dashboards" width="100%">
+      </a>
+      <br>
+      <a href="https://dashboardpack.com/theme-details/haze-dashboard-nuxt/?utm_source=github&utm_medium=readme&utm_campaign=gentelella"><strong>Haze</strong></a>
+      <br>
+      <sub>Nuxt 4 + Nuxt UI v4 + Tailwind CSS v4. 92+ pages, 7 layouts, 5 dashboards, RTL, i18n, mock API layer.</sub>
+    </td>
+    <td align="center" width="50%">
       <a href="https://dashboardpack.com/theme-details/tailpanel/?utm_source=github&utm_medium=readme&utm_campaign=gentelella">
         <img src="docs/screenshots/dashboardpack/tailpanel.png" alt="TailPanel — modern React and Tailwind CSS admin panel" width="100%">
       </a>
@@ -85,6 +114,8 @@ Need advanced features, dedicated support, and production-ready code? Explore ou
       <br>
       <sub>React + TypeScript + Tailwind CSS + Vite. 9 dashboard designs, dark and light themes.</sub>
     </td>
+  </tr>
+  <tr>
     <td align="center" width="50%">
       <a href="https://dashboardpack.com/theme-details/admindek-html/?utm_source=github&utm_medium=readme&utm_campaign=gentelella">
         <img src="docs/screenshots/dashboardpack/admindek.png" alt="Admindek — feature-rich Bootstrap 5 dashboard with dark mode" width="100%">
@@ -94,45 +125,14 @@ Need advanced features, dedicated support, and production-ready code? Explore ou
       <br>
       <sub>Bootstrap 5 + vanilla JS. 100+ components, dark/light modes, RTL support, 10 color presets.</sub>
     </td>
-  </tr>
-  <tr>
     <td align="center" width="50%">
-      <a href="https://dashboardpack.com/theme-details/adminty-html-dashboard/?utm_source=github&utm_medium=readme&utm_campaign=gentelella">
-        <img src="docs/screenshots/dashboardpack/adminty.png" alt="Adminty — Bootstrap 5 admin template with 160+ pages" width="100%">
+      <a href="https://dashboardpack.com/theme-details/svelteforge-premium/?utm_source=github&utm_medium=readme&utm_campaign=gentelella">
+        <img src="docs/screenshots/dashboardpack/svelteforge.png" alt="SvelteForge Premium — SvelteKit admin dashboard with multi-tenant support" width="100%">
       </a>
       <br>
-      <a href="https://dashboardpack.com/theme-details/adminty-html-dashboard/?utm_source=github&utm_medium=readme&utm_campaign=gentelella"><strong>Adminty</strong></a>
+      <a href="https://dashboardpack.com/theme-details/svelteforge-premium/?utm_source=github&utm_medium=readme&utm_campaign=gentelella"><strong>SvelteForge Premium</strong></a>
       <br>
-      <sub>Bootstrap 5. 160+ ready-made pages, full UI component library for rapid development.</sub>
-    </td>
-    <td align="center" width="50%">
-      <a href="https://dashboardpack.com/theme-details/architectui-dashboard-html-pro/?utm_source=github&utm_medium=readme&utm_campaign=gentelella">
-        <img src="docs/screenshots/dashboardpack/architectui.png" alt="ArchitectUI — modular Bootstrap admin with 250+ widgets" width="100%">
-      </a>
-      <br>
-      <a href="https://dashboardpack.com/theme-details/architectui-dashboard-html-pro/?utm_source=github&utm_medium=readme&utm_campaign=gentelella"><strong>ArchitectUI</strong></a>
-      <br>
-      <sub>Bootstrap 5. 250+ components, modular architecture, 9 unique dashboard layouts.</sub>
-    </td>
-  </tr>
-  <tr>
-    <td align="center" width="50%">
-      <a href="https://dashboardpack.com/theme-details/kero-jquery-html-dashboard-pro/?utm_source=github&utm_medium=readme&utm_campaign=gentelella">
-        <img src="docs/screenshots/dashboardpack/kero.png" alt="Kero — Bootstrap 5 dashboard with horizontal and sidebar layouts" width="100%">
-      </a>
-      <br>
-      <a href="https://dashboardpack.com/theme-details/kero-jquery-html-dashboard-pro/?utm_source=github&utm_medium=readme&utm_campaign=gentelella"><strong>Kero</strong></a>
-      <br>
-      <sub>Bootstrap 5 + Webpack. Dual layout system (horizontal + sidebar), SASS theming.</sub>
-    </td>
-    <td align="center" width="50%">
-      <a href="https://dashboardpack.com/theme-details/cryptocurrency-dashboard/?utm_source=github&utm_medium=readme&utm_campaign=gentelella">
-        <img src="docs/screenshots/dashboardpack/cryptocurrency.png" alt="Cryptocurrency Dashboard — ICO and Bitcoin admin panel" width="100%">
-      </a>
-      <br>
-      <a href="https://dashboardpack.com/theme-details/cryptocurrency-dashboard/?utm_source=github&utm_medium=readme&utm_campaign=gentelella"><strong>Cryptocurrency Dashboard</strong></a>
-      <br>
-      <sub>Bootstrap. Built specifically for ICO platforms, Bitcoin tracking, and crypto portfolios.</sub>
+      <sub>SvelteKit + Tailwind CSS v4. 30+ wired-up modules, multi-tenant from row zero, dark/light/system mode.</sub>
     </td>
   </tr>
 </table>
