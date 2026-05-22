@@ -13,15 +13,25 @@
 Built for 2026 by [Colorlib](https://colorlib.com). **[Live demo →](https://preview.colorlib.com/theme/gentelella/)**
 
 <p align="center">
-  <img alt="Gentelella v4 admin dashboard preview — light theme" src="docs/screenshots/light/dashboard.png" width="49%">
-  <img alt="Gentelella v4 admin dashboard preview — dark theme" src="docs/screenshots/dark/dashboard.png" width="49%">
+  <a href="https://preview.colorlib.com/theme/gentelella/production/index.html">
+    <img alt="Gentelella v4 admin dashboard preview — light theme" src="docs/screenshots/light/dashboard.png" width="49%">
+  </a>
+  <a href="https://preview.colorlib.com/theme/gentelella/production/index.html">
+    <img alt="Gentelella v4 admin dashboard preview — dark theme" src="docs/screenshots/dark/dashboard.png" width="49%">
+  </a>
 </p>
 
 <p align="center">
   <em>Inbox · Kanban · Theme generator</em><br>
-  <img alt="Inbox client with folders, reader pane, and compose modal" src="docs/screenshots/light/inbox.png" width="32%">
-  <img alt="Kanban board with drag-and-drop task management" src="docs/screenshots/light/kanban.png" width="32%">
-  <img alt="Live theme generator with real-time color customization" src="docs/screenshots/light/theme.png" width="32%">
+  <a href="https://preview.colorlib.com/theme/gentelella/production/inbox.html">
+    <img alt="Inbox client with folders, reader pane, and compose modal" src="docs/screenshots/light/inbox.png" width="32%">
+  </a>
+  <a href="https://preview.colorlib.com/theme/gentelella/production/kanban.html">
+    <img alt="Kanban board with drag-and-drop task management" src="docs/screenshots/light/kanban.png" width="32%">
+  </a>
+  <a href="https://preview.colorlib.com/theme/gentelella/production/theme.html">
+    <img alt="Live theme generator with real-time color customization" src="docs/screenshots/light/theme.png" width="32%">
+  </a>
 </p>
 
 > **Generate your own screenshots** — `npm run build && npm run screenshots` boots Playwright and captures 22 key pages × light + dark = 44 PNGs to `docs/screenshots/`.
