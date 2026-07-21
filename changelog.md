@@ -15,7 +15,7 @@ Dependency refresh. Toolchain bumps to latest minor/patch; no source or API chan
   - `sass`: 1.101.0 → 1.101.3
   - `terser`: 5.48.0 → 5.49.0
   - `vite`: 8.0.16 → 8.1.5
-- **`brace-expansion`** (transitive) 5.0.6 → 5.0.7 — the update Dependabot proposed in #996, folded into the lockfile refresh. The `npm update` pass also cleared a high-severity transitive advisory that a plain install left behind; `npm audit` now reports 0 vulnerabilities.
+- **`brace-expansion`** (transitive) 5.0.6 → 5.0.7 — the bump Dependabot proposed in #996, folded into the lockfile refresh. This resolves Dependabot alert #85, a **high-severity** DoS advisory (exponential-time expansion of consecutive non-expanding `{}` groups) affecting `brace-expansion < 5.0.7`. `npm audit` now reports 0 vulnerabilities.
 - Runtime dependencies (`datatables.net` 2.3.8, `echarts` 6.1.0, `leaflet` 1.9.4) and the remaining dev deps (`@eslint/js` 10.0.1, `eslint-config-prettier` 10.1.8, `rollup-plugin-visualizer` 7.0.1) were already at their latest published versions — no change.
 
 ## [4.0.2] - 2026-06-17
