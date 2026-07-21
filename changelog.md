@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
+## [4.0.3] - 2026-07-21
+
+Dependency refresh. Toolchain bumps to latest minor/patch; no source or API changes. Build verified (~8 s, identical chunk layout), `eslint src/` clean, `npm audit` reports 0 vulnerabilities.
+
+### Changed
+
+- **Dev dependencies** bumped to latest:
+  - `@playwright/test`, `playwright`: 1.61.0 → 1.61.1
+  - `eslint`: 10.5.0 → 10.7.0
+  - `prettier`: 3.8.4 → 3.9.6
+  - `sass`: 1.101.0 → 1.101.3
+  - `terser`: 5.48.0 → 5.49.0
+  - `vite`: 8.0.16 → 8.1.5
+- **`brace-expansion`** (transitive) 5.0.6 → 5.0.7 — the update Dependabot proposed in #996, folded into the lockfile refresh. The `npm update` pass also cleared a high-severity transitive advisory that a plain install left behind; `npm audit` now reports 0 vulnerabilities.
+- Runtime dependencies (`datatables.net` 2.3.8, `echarts` 6.1.0, `leaflet` 1.9.4) and the remaining dev deps (`@eslint/js` 10.0.1, `eslint-config-prettier` 10.1.8, `rollup-plugin-visualizer` 7.0.1) were already at their latest published versions — no change.
+
 ## [4.0.2] - 2026-06-17
 
 Dependency refresh. Toolchain bumps to latest minor/patch; no source or API changes. Build verified (5 s, identical chunk layout), `eslint src/` clean, `npm audit` reports 0 vulnerabilities.
