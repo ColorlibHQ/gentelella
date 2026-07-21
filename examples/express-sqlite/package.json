@@ -12,8 +12,8 @@
     "seed": "node seed.js"
   },
   "dependencies": {
-    "better-sqlite3": "^11.3.0",
-    "cors": "^2.8.5",
-    "express": "^5.0.0"
+    "better-sqlite3": "^13.0.1",
+    "cors": "^2.8.6",
+    "express": "^5.2.1"
   }
 }
