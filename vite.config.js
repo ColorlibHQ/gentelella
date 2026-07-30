@@ -78,7 +78,9 @@ function shellInjectionPlugin() {
         out = out.replace(/<\/head>/i, `${prePaint}\n</head>`);
 
         // Admin-shell injection only fires for pages with body[data-shell="admin"].
-        const bodyTag = /<body\b([^>]*)>/i.exec(out);
+        // Quote-aware match: data-breadcrumb values contain a literal ">"
+        // ("Home > Dashboard"), so a naive [^>]* would truncate mid-attribute.
+        const bodyTag = /<body\b((?:"[^"]*"|'[^']*'|[^>"'])*)>/i.exec(out);
         if (!bodyTag) return out;
         const parsed = parseShellAttrs(bodyTag[1]);
         if (!parsed) return out;
