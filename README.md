@@ -17,27 +17,27 @@ Built for 2026 by [Colorlib](https://colorlib.com). **[Live demo →](https://pr
 
 <p align="center">
   <a href="https://preview.colorlib.com/theme/gentelella/production/index.html">
-    <img alt="Gentelella v4 admin dashboard preview — light theme" src="docs/screenshots/light/dashboard.png" width="49%">
+    <img alt="Gentelella v4 admin dashboard preview — light theme" src="docs/screenshots/readme/dashboard-light.webp" width="49%">
   </a>
   <a href="https://preview.colorlib.com/theme/gentelella/production/index.html">
-    <img alt="Gentelella v4 admin dashboard preview — dark theme" src="docs/screenshots/dark/dashboard.png" width="49%">
+    <img alt="Gentelella v4 admin dashboard preview — dark theme" src="docs/screenshots/readme/dashboard-dark.webp" width="49%">
   </a>
 </p>
 
 <p align="center">
   <em>Inbox · Kanban · Theme generator</em><br>
   <a href="https://preview.colorlib.com/theme/gentelella/production/inbox.html">
-    <img alt="Inbox client with folders, reader pane, and compose modal" src="docs/screenshots/light/inbox.png" width="32%">
+    <img alt="Inbox client with folders, reader pane, and compose modal" src="docs/screenshots/readme/inbox.webp" width="32%">
   </a>
   <a href="https://preview.colorlib.com/theme/gentelella/production/kanban.html">
-    <img alt="Kanban board with drag-and-drop task management" src="docs/screenshots/light/kanban.png" width="32%">
+    <img alt="Kanban board with drag-and-drop task management" src="docs/screenshots/readme/kanban.webp" width="32%">
   </a>
   <a href="https://preview.colorlib.com/theme/gentelella/production/theme.html">
-    <img alt="Live theme generator with real-time color customization" src="docs/screenshots/light/theme.png" width="32%">
+    <img alt="Live theme generator with real-time color customization" src="docs/screenshots/readme/theme.webp" width="32%">
   </a>
 </p>
 
-> **Generate your own screenshots** — `npm run build && npm run screenshots` boots Playwright and captures 22 key pages × light + dark = 44 PNGs to `docs/screenshots/`.
+> **Generate your own screenshots** — `npm run build && npm run screenshots` boots Playwright and captures 22 key pages × light + dark = 44 PNGs to `docs/screenshots/`, plus downscaled WebP hero shots for this README (needs `cwebp` — `brew install webp`).
 
 ---
 
@@ -91,7 +91,7 @@ Need advanced features, dedicated support, and production-ready code? Explore ou
   <tr>
     <td align="center" width="50%">
       <a href="https://dashboardpack.com/theme-details/apex-dashboard-nextjs/?utm_source=github&utm_medium=readme&utm_campaign=gentelella">
-        <img src="docs/screenshots/dashboardpack/apex.png" alt="Apex Dashboard — Next.js 16 admin template with shadcn/ui" width="100%">
+        <img src="docs/screenshots/dashboardpack/apex.webp" alt="Apex Dashboard — Next.js 16 admin template with shadcn/ui" width="100%">
       </a>
       <br>
       <a href="https://dashboardpack.com/theme-details/apex-dashboard-nextjs/?utm_source=github&utm_medium=readme&utm_campaign=gentelella"><strong>Apex Dashboard</strong></a>
@@ -100,7 +100,7 @@ Need advanced features, dedicated support, and production-ready code? Explore ou
     </td>
     <td align="center" width="50%">
       <a href="https://dashboardpack.com/theme-details/zenith-shadcn/?utm_source=github&utm_medium=readme&utm_campaign=gentelella">
-        <img src="docs/screenshots/dashboardpack/zenith.png" alt="Zenith — ultra-minimal Next.js admin dashboard with shadcn/ui" width="100%">
+        <img src="docs/screenshots/dashboardpack/zenith.webp" alt="Zenith — ultra-minimal Next.js admin dashboard with shadcn/ui" width="100%">
       </a>
       <br>
       <a href="https://dashboardpack.com/theme-details/zenith-shadcn/?utm_source=github&utm_medium=readme&utm_campaign=gentelella"><strong>Zenith Dashboard</strong></a>
@@ -111,7 +111,7 @@ Need advanced features, dedicated support, and production-ready code? Explore ou
   <tr>
     <td align="center" width="50%">
       <a href="https://dashboardpack.com/theme-details/haze-dashboard-nuxt/?utm_source=github&utm_medium=readme&utm_campaign=gentelella">
-        <img src="docs/screenshots/dashboardpack/haze.png" alt="Haze — Nuxt 4 admin dashboard with 92+ pages and 5 dashboards" width="100%">
+        <img src="docs/screenshots/dashboardpack/haze.webp" alt="Haze — Nuxt 4 admin dashboard with 92+ pages and 5 dashboards" width="100%">
       </a>
       <br>
       <a href="https://dashboardpack.com/theme-details/haze-dashboard-nuxt/?utm_source=github&utm_medium=readme&utm_campaign=gentelella"><strong>Haze</strong></a>
@@ -120,7 +120,7 @@ Need advanced features, dedicated support, and production-ready code? Explore ou
     </td>
     <td align="center" width="50%">
       <a href="https://dashboardpack.com/theme-details/tailpanel/?utm_source=github&utm_medium=readme&utm_campaign=gentelella">
-        <img src="docs/screenshots/dashboardpack/tailpanel.png" alt="TailPanel — modern React and Tailwind CSS admin panel" width="100%">
+        <img src="docs/screenshots/dashboardpack/tailpanel.webp" alt="TailPanel — modern React and Tailwind CSS admin panel" width="100%">
       </a>
       <br>
       <a href="https://dashboardpack.com/theme-details/tailpanel/?utm_source=github&utm_medium=readme&utm_campaign=gentelella"><strong>TailPanel</strong></a>
@@ -131,7 +131,7 @@ Need advanced features, dedicated support, and production-ready code? Explore ou
   <tr>
     <td align="center" width="50%">
       <a href="https://dashboardpack.com/theme-details/admindek-html/?utm_source=github&utm_medium=readme&utm_campaign=gentelella">
-        <img src="docs/screenshots/dashboardpack/admindek.png" alt="Admindek — feature-rich Bootstrap 5 dashboard with dark mode" width="100%">
+        <img src="docs/screenshots/dashboardpack/admindek.webp" alt="Admindek — feature-rich Bootstrap 5 dashboard with dark mode" width="100%">
       </a>
       <br>
       <a href="https://dashboardpack.com/theme-details/admindek-html/?utm_source=github&utm_medium=readme&utm_campaign=gentelella"><strong>Admindek</strong></a>
@@ -140,7 +140,7 @@ Need advanced features, dedicated support, and production-ready code? Explore ou
     </td>
     <td align="center" width="50%">
       <a href="https://dashboardpack.com/theme-details/svelteforge-premium/?utm_source=github&utm_medium=readme&utm_campaign=gentelella">
-        <img src="docs/screenshots/dashboardpack/svelteforge.png" alt="SvelteForge Premium — SvelteKit admin dashboard with multi-tenant support" width="100%">
+        <img src="docs/screenshots/dashboardpack/svelteforge.webp" alt="SvelteForge Premium — SvelteKit admin dashboard with multi-tenant support" width="100%">
       </a>
       <br>
       <a href="https://dashboardpack.com/theme-details/svelteforge-premium/?utm_source=github&utm_medium=readme&utm_campaign=gentelella"><strong>SvelteForge Premium</strong></a>
