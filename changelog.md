@@ -2,6 +2,46 @@
 
 All notable changes to this project will be documented in this file.
 
+## [4.1.0] - 2026-08-06
+
+Breadcrumbs become navigable, plus a dependency refresh that includes the DataTables 3 major.
+
+### Added
+
+- **Linked breadcrumbs** — every segment except the current page is now a link when it has somewhere to go ([#999](https://github.com/ColorlibHQ/gentelella/issues/999)). Three resolution tiers, in order:
+  1. **Explicit target** — `data-breadcrumb="Home > Projects|projects.html > Acme Redesign"`; everything after `|` is the href.
+  2. **NAV label match** — `CRUMB_HREFS` in [src/v4/shell-render.js](src/v4/shell-render.js) is derived from `NAV` at module load, so a segment whose text matches a sidebar entry links to it automatically. A parent group resolves to its first child. `Home` → `index.html` is the one hand-seeded entry.
+  3. **Neither** — plain text, byte-identical to the previous output.
+
+  The last segment stays `aria-current="page"` and is never a link. Links are emitted by the build-time shell injector alongside the rest of the topbar, so they are present in the served HTML on the first frame, work with JavaScript disabled, and never hydrate in after paint. Crumb hrefs are attribute-escaped on the way out.
+
+  No visual change at rest: crumb links inherit `--text-muted` and pick up `--primary` plus an underline on hover, with the existing global `:focus-visible` ring for keyboard users.
+
+### Changed
+
+- **Breadcrumb trails rewritten on 12 pages** so no trail contains a dead level. Segments that were pure sidebar groupings with no landing page (`Apps`, `Layouts`, `Admin`, `UI`, `Shop`, `E-commerce`) are gone — `Home > Kanban`, not `Home > Apps > Kanban`. 61 of 63 non-current segments across the 46 shell pages now link; the two exceptions are on [production/level2.html](production/level2.html), which deliberately demonstrates unlinked segments and now documents the syntax on-page.
+- **`datatables.net`** 2.3.8 → **3.0.1** (major). Our integration is narrow — `new DataTable(el, opts)`, `columns().every()`, `rows({search,order}).indexes()`, `row(i).node()` — and all of it is unchanged in 3.0. The generated markup our `_datatable.scss` re-skin targets (`.dt-container`, `.dt-search`, `.dt-paging-button`, `.dt-column-header`, `.dt-orderable-*`, `.dt-layout-row`) is identical, so the theme needed no changes. Verified on both table pages: same DOM structure, pixel-identical rendering in light and dark, no console errors, and CSV export still honours the applied sort and filter.
+- **Dev dependencies** bumped to latest:
+  - `@playwright/test`, `playwright`: 1.61.1 → 1.62.1
+  - `eslint`: 10.7.0 → 10.8.0
+  - `sass`: 1.101.3 → 1.102.0
+  - `terser`: 5.49.0 → 5.49.2
+  - `vite`: 8.1.5 → 8.2.0
+- Runtime deps `echarts` 6.1.0 and `leaflet` 1.9.4, and dev deps `@eslint/js` 10.0.1, `eslint-config-prettier` 10.1.8, `prettier` 3.9.6, `rollup-plugin-visualizer` 7.0.1 were already at their latest published versions — no change.
+- Docs updated for the new breadcrumb contract: [CLAUDE.md](CLAUDE.md), [AGENTS.md](AGENTS.md), [.cursor/rules/project.mdc](.cursor/rules/project.mdc), [.github/copilot-instructions.md](.github/copilot-instructions.md), [README.md](README.md), [types/gentelella.d.ts](types/gentelella.d.ts), and `--breadcrumb` help in [scripts/new-page.mjs](scripts/new-page.mjs).
+- **ESLint `ecmaVersion`** 2022 → 2025, so the parser accepts the import attribute below. Emitted code is unchanged: `build.target` still pins ES2022.
+
+### Fixed
+
+- **Admin footer no longer claims to be a Bootstrap template.** The shell footer read "Gentelella — A free Bootstrap admin template by Colorlib" on all 46 shell pages, contradicting v4's entire premise (and its own landing page, which says "Bootstrap 5 is gone"). Now: "Gentelella — free admin dashboard template by Colorlib". The marketing copy on [landing.html](production/landing.html) keeps the historical phrasing deliberately.
+- **Footer version no longer drifts.** The right-hand side read a hand-written `v4.0 Concept · 2026`, stale since v4 shipped. It now renders `v4.1.0 · MIT`, with the version imported from `package.json` at build time (`import pkg from '../../package.json' with { type: 'json' }`) so a release bump carries through automatically. Rolldown narrows the import to the single string — verified that no other `package.json` content reaches the bundle. `MIT` links to `LICENSE.txt`.
+
+### Security
+
+- **`brace-expansion`** (transitive, via `eslint` → `minimatch`) 5.0.7 → 5.0.9. Resolves two new **high-severity** DoS advisories affecting `< 5.0.9`: [GHSA-mh99-v99m-4gvg](https://github.com/advisories/GHSA-mh99-v99m-4gvg) (unbounded expansion length → OOM crash) and [GHSA-rgw5-rvv9-x895](https://github.com/advisories/GHSA-rgw5-rvv9-x895) (unbounded intermediate arrays, bypassing the CVE-2026-14257 mitigation that 5.0.7 introduced). `npm audit` reports 0 vulnerabilities.
+
+Build verified (5.2 s, identical chunk layout), `eslint src/` clean, `npm run smoke` passes all 58 pages.
+
 ## [4.0.3] - 2026-07-21
 
 Dependency refresh. Toolchain bumps to latest minor/patch; no source or API changes. Build verified (~8 s, identical chunk layout), `eslint src/` clean, `npm audit` reports 0 vulnerabilities.

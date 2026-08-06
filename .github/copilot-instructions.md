@@ -1,6 +1,6 @@
 # GitHub Copilot Instructions — Gentelella v4
 
-Admin dashboard template (`4.0.0`) by Colorlib. 58 server-rendered HTML pages in `production/`, built with **Vite 8** (Rolldown). **Vanilla ES2022**, no Bootstrap, no jQuery, no SPA framework. SCSS only. Heavyweight deps — **ECharts 6**, **DataTables.net 2**, **Leaflet 1.9** — are lazy-imported per page. Full reference: `CLAUDE.md`.
+Admin dashboard template (`4.1.0`) by Colorlib. 58 server-rendered HTML pages in `production/`, built with **Vite 8** (Rolldown). **Vanilla ES2022**, no Bootstrap, no jQuery, no SPA framework. SCSS only. Heavyweight deps — **ECharts 6**, **DataTables.net 3**, **Leaflet 1.9** — are lazy-imported per page. Full reference: `CLAUDE.md`.
 
 ## Hard rules
 
@@ -8,6 +8,7 @@ Admin dashboard template (`4.0.0`) by Colorlib. 58 server-rendered HTML pages in
 - **Single entry**: `src/main-v4.js`. Page-specific modules are lazy-imported inside it, guarded by DOM presence. Don't add `<script>` tags per page.
 - **Pages auto-discover.** Drop `production/<slug>.html` and `discoverEntries()` in `vite.config.js` picks it up — never edit `rollupOptions.input`.
 - **Shell opt-in**: `<body data-shell="admin" data-page="<key>" data-breadcrumb="Home > …">`. The Vite plugin inlines sidebar/topbar/footer at build/dev time (no FOUC).
+- **Breadcrumbs link themselves.** A segment matching a `NAV` item's text becomes a link (`Forms` → `form.html`; a parent resolves to its first child). Override with a pipe: `data-breadcrumb="Home > Projects|projects.html > Acme Redesign"`. The last segment is the current page and never links; untargeted segments stay plain text.
 - **NAV is one constant** — `NAV` in `src/v4/shell-render.js`, 7 groups. `key` matches `data-page`. New icons go in the `ICONS` object in the same file.
 - **Overlays go through helpers**: `showModal()`/`showToast()`/`openMenu()`/`openPanel()` from `src/v4/{modal,toast,menus}.js`. Never hand-roll a backdrop, escape handler, or focus return.
 - **CSS custom properties for colors.** Tokens in `src/scss/v4/_tokens.scss` under `:root` and `[data-theme="dark"]`. Charts read them via `getComputedStyle(document.documentElement).getPropertyValue('--…')` so dark-mode redraw is automatic.

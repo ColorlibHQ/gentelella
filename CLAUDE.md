@@ -4,7 +4,7 @@ Guidance for Claude Code (claude.ai/code) when working in this repository. Cross
 
 ## What this is
 
-Gentelella v4 (`4.0.0`) — free admin dashboard template by Colorlib. **58 production HTML pages** under [production/](production/), built with Vite 8 (Rolldown). Vanilla ES2022, no Bootstrap, no jQuery, no SPA framework. SCSS-only styling. ECharts 6, DataTables.net 2, and Leaflet 1.9 are the only heavyweight runtime deps — all lazy-imported per page.
+Gentelella v4 (`4.1.0`) — free admin dashboard template by Colorlib. **58 production HTML pages** under [production/](production/), built with Vite 8 (Rolldown). Vanilla ES2022, no Bootstrap, no jQuery, no SPA framework. SCSS-only styling. ECharts 6, DataTables.net 3, and Leaflet 1.9 are the only heavyweight runtime deps — all lazy-imported per page.
 
 Live preview: <https://preview.colorlib.com/theme/gentelella/>.
 
@@ -111,7 +111,8 @@ Use the scaffolder — it writes the HTML, sets the body attributes correctly, a
 ```bash
 npm run new -- reports --title "Reports" --nav-group "Admin"
 npm run new -- user-roles --title "User roles" \
-  --breadcrumb "Home > Admin > Roles" --nav-group "Admin" --icon profile
+  --breadcrumb "Home > User management|user_management.html > Roles" \
+  --nav-group "Admin" --icon profile
 ```
 
 If you write the file by hand instead, the contract is:
@@ -126,6 +127,18 @@ If you write the file by hand instead, the contract is:
 Single source of truth: `NAV` in [src/v4/shell-render.js](src/v4/shell-render.js). 7 groups (General, Apps, E-commerce, Projects, UI library, Admin, Layouts). Items are either flat leaves `{ key, href, text, icon, badge? }` or parents with a `children: []` array — the parent stays expanded if any child matches the page's `data-page`.
 
 Icons are inline SVG strings in the `ICONS` object in the same file. Use a `data-page` whose `icon:` matches a key; add new icons by appending to `ICONS` (one SVG per entry, currentColor stroke).
+
+### Breadcrumbs
+
+`data-breadcrumb="Home > Forms > Advanced"` — split on `>`, rendered by `renderTopbar()` in [src/v4/shell-render.js](src/v4/shell-render.js). The last segment is the current page: never a link, always `aria-current="page"`. Every earlier segment resolves to a link in this order:
+
+1. **Explicit target** — `data-breadcrumb="Home > Projects|projects.html > Acme Redesign"`. Everything after `|` is the href.
+2. **NAV label match** — `CRUMB_HREFS` is built from `NAV` at module load, so a segment whose text exactly matches a nav item links to it. A parent group resolves to its first child. `Home` → `index.html` is the one hand-seeded entry.
+3. **Neither** — plain text, no link.
+
+Links are server-rendered by the Vite plugin along with the rest of the shell, so they work with JS disabled and never hydrate in after paint.
+
+Prefer a crumb level that points somewhere. If a segment is a pure sidebar grouping with no landing page (`Apps`, `Layouts`, `Admin`), drop the level rather than shipping a dead crumb — `Home > Kanban`, not `Home > Apps > Kanban`. [production/level2.html](production/level2.html) is the deliberate exception; it demonstrates unlinked segments.
 
 ### Theming
 

@@ -4,7 +4,7 @@ Cross-tool agent instructions for Gentelella v4. Read by Aider, Cline, Codex, Co
 
 ## What this is
 
-Gentelella v4 (`4.0.0`) — free admin dashboard template by Colorlib. 58 server-rendered HTML pages in [production/](production/), built with **Vite 8** (Rolldown). **Vanilla ES2022**, no Bootstrap, no jQuery, no SPA framework. SCSS only. Heavyweight runtime deps are limited to **ECharts 6**, **DataTables.net 2**, and **Leaflet 1.9** — all lazy-imported per page.
+Gentelella v4 (`4.1.0`) — free admin dashboard template by Colorlib. 58 server-rendered HTML pages in [production/](production/), built with **Vite 8** (Rolldown). **Vanilla ES2022**, no Bootstrap, no jQuery, no SPA framework. SCSS only. Heavyweight runtime deps are limited to **ECharts 6**, **DataTables.net 3**, and **Leaflet 1.9** — all lazy-imported per page.
 
 Live preview: <https://preview.colorlib.com/theme/gentelella/>.
 
@@ -98,7 +98,8 @@ Preferred — scaffolder writes the HTML, body attributes, and (optionally) the 
 ```bash
 npm run new -- reports --title "Reports" --nav-group "Admin"
 npm run new -- user-roles --title "User roles" \
-  --breadcrumb "Home > Admin > Roles" --nav-group "Admin" --icon profile
+  --breadcrumb "Home > User management|user_management.html > Roles" \
+  --nav-group "Admin" --icon profile
 ```
 
 By hand:
@@ -106,6 +107,8 @@ By hand:
 1. `production/<slug>.html` with `<body data-shell="admin" data-page="<slug>" data-breadcrumb="Home > …">` and a `<script type="module" src="/src/main-v4.js"></script>` in `<head>`.
 2. Append to the right group in `NAV` in [src/v4/shell-render.js](src/v4/shell-render.js). `key` matches `data-page`.
 3. New icon? Add to `ICONS` in the same file (inline SVG, `currentColor` stroke).
+
+Breadcrumb segments link automatically when their text matches a NAV item (`Forms` → `form.html`; a parent group resolves to its first child). Point anywhere else with a pipe — `data-breadcrumb="Home > Projects|projects.html > Acme Redesign"`. The last segment is the current page and is never a link. A segment with no match and no explicit target renders as plain text, so drop grouping-only levels (`Apps`, `Layouts`) rather than shipping a dead crumb.
 
 ### Add a chart
 

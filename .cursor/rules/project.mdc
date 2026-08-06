@@ -8,9 +8,9 @@ globs:
 alwaysApply: true
 ---
 
-# Gentelella v4 (`4.0.0`)
+# Gentelella v4 (`4.1.0`)
 
-Admin dashboard template by Colorlib. 58 server-rendered HTML pages in [production/](mdc:production), built with **Vite 8** (Rolldown). **Vanilla ES2022**, no Bootstrap, no jQuery, no SPA framework. SCSS only. Heavyweight deps (**ECharts 6**, **DataTables.net 2**, **Leaflet 1.9**) are lazy-imported per page.
+Admin dashboard template by Colorlib. 58 server-rendered HTML pages in [production/](mdc:production), built with **Vite 8** (Rolldown). **Vanilla ES2022**, no Bootstrap, no jQuery, no SPA framework. SCSS only. Heavyweight deps (**ECharts 6**, **DataTables.net 3**, **Leaflet 1.9**) are lazy-imported per page.
 
 Full reference: [CLAUDE.md](mdc:CLAUDE.md). The rules below are the load-bearing ones — apply them by default.
 
@@ -20,6 +20,7 @@ Full reference: [CLAUDE.md](mdc:CLAUDE.md). The rules below are the load-bearing
 - **Single entry**: [src/main-v4.js](mdc:src/main-v4.js). Every page loads it. Page-specific modules are lazy-imported inside `main-v4.js` guarded by DOM presence — match that pattern, don't add new `<script>` tags per page.
 - **Pages are auto-discovered.** Drop `production/<slug>.html` in and `discoverEntries()` in [vite.config.js](mdc:vite.config.js) picks it up. Don't edit `rollupOptions.input`.
 - **Shell opt-in via body attributes**: `<body data-shell="admin" data-page="<key>" data-breadcrumb="Home > …">`. The Vite plugin (`shellInjectionPlugin` in [vite.config.js](mdc:vite.config.js)) inlines sidebar/topbar/footer at build time so the shell paints on the first frame.
+- **Breadcrumb segments link themselves.** A segment whose text matches a `NAV` item becomes a link (`Forms` → `form.html`; a parent resolves to its first child). Override with a pipe — `data-breadcrumb="Home > Projects|projects.html > Acme Redesign"`. The last segment is the current page and never links; a segment with no target stays plain text, so drop grouping-only levels instead of shipping a dead crumb.
 - **NAV is one constant**: `NAV` in [src/v4/shell-render.js](mdc:src/v4/shell-render.js), 7 groups. Match leaf `key` to `data-page`. New icons go in the `ICONS` object in the same file (inline SVG, `currentColor` stroke).
 - **Overlays go through helpers**: `showModal()` ([src/v4/modal.js](mdc:src/v4/modal.js)), `showToast()` ([src/v4/toast.js](mdc:src/v4/toast.js)), `openMenu()` / `openPanel()` ([src/v4/menus.js](mdc:src/v4/menus.js)). Never hand-roll a backdrop, escape handler, or focus-return loop.
 - **CSS custom properties for colors**, never hex literals in components. Tokens in [src/scss/v4/_tokens.scss](mdc:src/scss/v4/_tokens.scss). Charts read them via `getComputedStyle(document.documentElement).getPropertyValue('--…')` — that's how dark-mode redraw stays automatic.

@@ -160,7 +160,7 @@ Need advanced features, dedicated support, and production-ready code? Explore ou
 - **SCSS** with `@use` modules — no Bootstrap, no framework
 - **Vanilla ES2022** — no jQuery, no SPA framework, no build-time JSX
 - **Apache ECharts 6** — lazy-imported, modular (only chart types actually used)
-- **DataTables.net 2** core — re-skinned from scratch to match the design system
+- **DataTables.net 3** core — re-skinned from scratch to match the design system
 - **Leaflet 1.9** — lazy-imported on the map page only
 - **Inter** font from Google Fonts
 - **Playwright** (devDep) — for the screenshot pipeline and smoke tests
@@ -345,7 +345,8 @@ The fast way:
 
 ```sh
 npm run new -- reports --title "Reports" --pretitle "Admin" \
-  --breadcrumb "Home > Admin > Reports" --nav-group "Admin" --icon "profile"
+  --breadcrumb "Home > User management|user_management.html > Reports" \
+  --nav-group "Admin" --icon "profile"
 ```
 
 This creates `production/reports.html` with the standard skeleton and (with `--nav-group`) inserts a sidebar entry into the `NAV` array of [`src/v4/shell-render.js`](src/v4/shell-render.js). Vite auto-discovers the new entry — no config change needed. Run `npm run new -- --help` for all options, or use `--dry-run` to preview without writing.
@@ -353,7 +354,7 @@ This creates `production/reports.html` with the standard skeleton and (with `--n
 The manual way:
 
 1. Copy any existing page in `production/` (e.g. `profile.html`) as your starting point.
-2. Update the `<title>`, `data-page`, and `data-breadcrumb` attributes.
+2. Update the `<title>`, `data-page`, and `data-breadcrumb` attributes. Breadcrumb segments become links automatically when their text matches a sidebar entry (`Forms` → `form.html`); point one anywhere else with a pipe, e.g. `data-breadcrumb="Home > Projects|projects.html > Acme Redesign"`. The final segment is the current page and is never a link.
 3. Replace the `<main>` content with your markup using the v4 components.
 4. Optionally add a new sidebar item by editing the `NAV` array in [`src/v4/shell-render.js`](src/v4/shell-render.js).
 
