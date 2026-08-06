@@ -53,7 +53,7 @@ export async function initTables() {
       wireCsvExport(table, dt);
     }
 
-    // DataTables 2 emits its search input without an accessible name.
+    // DataTables emits its search input without an accessible name.
     const searchInput = table.closest('.dt-container')?.querySelector('.dt-search input');
     if (searchInput && !searchInput.hasAttribute('aria-label')) {
       searchInput.setAttribute('aria-label', 'Search table');

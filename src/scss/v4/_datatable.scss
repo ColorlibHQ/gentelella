@@ -116,7 +116,7 @@ table.has-selection tbody tr:has(input[type="checkbox"]:checked) {
 }
 .dt-paging .ellipsis { color: var(--text-disabled); padding: 0 4px; font-size: 12px; }
 
-// Table sort indicators — DataTables v2 emits <span class="dt-column-order">
+// Table sort indicators — DataTables emits <span class="dt-column-order">
 // inside <th><div class="dt-column-header">…</div></th>. We render a small
 // stacked-chevron icon there with three states: idle (both muted), asc (top
 // chevron in primary), desc (bottom chevron in primary).
