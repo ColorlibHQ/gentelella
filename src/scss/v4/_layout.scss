@@ -371,6 +371,12 @@
 }
 .breadcrumb .current { color: var(--text); font-weight: var(--font-weight-medium); }
 .breadcrumb .sep { color: var(--text-disabled); }
+.breadcrumb a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 100ms;
+}
+.breadcrumb a:hover { color: var(--primary); text-decoration: underline; text-underline-offset: 2px; }
 
 .search-box {
   position: relative;

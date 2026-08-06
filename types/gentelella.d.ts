@@ -19,7 +19,7 @@ declare module 'gentelella/v4/shell' {
    * Reads body data attributes:
    *   `data-shell="admin"` — opt-in (no-op without it)
    *   `data-page="key"`     — matches a NAV item to highlight
-   *   `data-breadcrumb="A > B > C"` — `>`-separated breadcrumb
+   *   `data-breadcrumb="A > B|b.html > C"` — `>`-separated breadcrumb; see `renderTopbar`
    * Idempotent: skips re-rendering if the build-time plugin already injected the shell.
    */
   export function mountShell(): void;
@@ -66,6 +66,13 @@ declare module 'gentelella/v4/shell-render' {
 
   export function renderShell(opts?: ShellRenderOptions): ShellHtml;
   export function renderSidebar(activeKey: string): string;
+  /**
+   * Render the topbar. Each breadcrumb entry is `"Label"` or `"Label|href"`.
+   * The last entry is the current page — rendered as `aria-current="page"`,
+   * never a link. Earlier entries link to their explicit `|href`, or to a
+   * `NAV` item whose text matches the label (a parent resolves to its first
+   * child), or render as plain text when neither applies.
+   */
   export function renderTopbar(breadcrumb: string[]): string;
   export function renderFooter(): string;
 

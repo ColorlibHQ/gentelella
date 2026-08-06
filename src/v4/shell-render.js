@@ -213,10 +213,46 @@ export function renderSidebar(activeKey) {
   `;
 }
 
+// Label → href lookup for breadcrumb crumbs, derived from NAV so the two can't
+// drift. A parent resolves to its first child — the page the sidebar opens when
+// you click the group. "Home" is the only hand-seeded entry.
+const CRUMB_HREFS = (() => {
+  const map = new Map([['Home', 'index.html']]);
+  for (const group of NAV) {
+    for (const item of group.items) {
+      const href = item.href || (item.children && item.children[0].href);
+      if (href && !map.has(item.text)) {map.set(item.text, href);}
+      for (const child of item.children || []) {
+        if (!map.has(child.text)) {map.set(child.text, child.href);}
+      }
+    }
+  }
+  return map;
+})();
+
+const escapeAttr = (s) => String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+
+// Every crumb but the last resolves to a link, in this order:
+//   1. explicit target in the page's data-breadcrumb — "Forms|form.html"
+//   2. exact label match against NAV (see CRUMB_HREFS above)
+//   3. no match → plain text, exactly as before
+// The last crumb is the current page: never a link, always aria-current.
+function resolveCrumb(raw) {
+  const s = String(raw);
+  const bar = s.indexOf('|');
+  const text = (bar === -1 ? s : s.slice(0, bar)).trim();
+  return { text, href: bar === -1 ? CRUMB_HREFS.get(text) : s.slice(bar + 1).trim() };
+}
+
 export function renderTopbar(breadcrumb) {
-  const crumbs = (breadcrumb || ['Home']).map((c, i, arr) => {
+  const crumbs = (breadcrumb && breadcrumb.length ? breadcrumb : ['Home']).map((c, i, arr) => {
+    const { text, href } = resolveCrumb(c);
+    const sep = i > 0 ? '<span class="sep" aria-hidden="true">›</span>' : '';
     const isLast = i === arr.length - 1;
-    return `${i > 0 ? '<span class="sep" aria-hidden="true">›</span>' : ''}<span${isLast ? ' class="current" aria-current="page"' : ''}>${c}</span>`;
+    const crumb = !isLast && href
+      ? `<a href="${escapeAttr(href)}">${text}</a>`
+      : `<span${isLast ? ' class="current" aria-current="page"' : ''}>${text}</span>`;
+    return sep + crumb;
   }).join('');
 
   return `

@@ -58,7 +58,10 @@ function shellInjectionPlugin() {
           const titleMatch = /<title>([^<]+)<\/title>/i.exec(out);
           const title = titleMatch ? titleMatch[1].replace(/\s+\|\s+.*$/, '').trim() : 'Gentelella v4';
           const bcMatch = /data-breadcrumb=["']([^"']+)["']/i.exec(out);
-          const breadcrumb = bcMatch ? bcMatch[1].replace(/^Home\s*>\s*/, '').trim() : '';
+          // Strip any "|href" targets — the description wants labels only.
+          const breadcrumb = bcMatch
+            ? bcMatch[1].replace(/\|[^>]*/g, '').replace(/^Home\s*>\s*/, '').replace(/\s*>\s*/g, ' > ').trim()
+            : '';
           const desc = breadcrumb
             ? `${title} — ${breadcrumb}. Free admin template by Colorlib. 60 pages, 20 chart variants, dark mode, PWA-ready.`
             : 'Gentelella v4 — free admin dashboard template. 60 pages, 20 chart variants, vanilla JS, no Bootstrap, no jQuery. By Colorlib.';

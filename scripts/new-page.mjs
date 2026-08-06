@@ -13,6 +13,8 @@
 //   --title <text>     Page title. Defaults to title-cased slug.
 //   --pretitle <text>  Section label above the title. Optional.
 //   --breadcrumb <text>  Full breadcrumb. Defaults to "Home > <Title>".
+//                      Segments matching a NAV label link automatically;
+//                      use "Label|href.html" to target anything else.
 //   --nav-group <name>   Add to a NAV group (e.g. "Apps", "Admin"). Case-insensitive.
 //   --icon <name>      Sidebar icon. Default: "pages". See ICONS in shell-render.js.
 //   --force            Overwrite if production/<slug>.html exists.
@@ -22,7 +24,7 @@
 // Examples:
 //   node scripts/new-page.mjs reports --title "Reports" --nav-group "Admin"
 //   node scripts/new-page.mjs user-roles --title "User roles" --pretitle "Admin" \
-//     --breadcrumb "Home > Admin > Roles" --nav-group "Admin" --icon profile
+//     --breadcrumb "Home > Contacts|contacts.html > Roles" --nav-group "Admin" --icon profile
 //
 // The page is auto-discovered by Vite's `discoverEntries()` — no config update needed.
 //
