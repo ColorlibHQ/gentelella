@@ -4,6 +4,14 @@
 //   1. The Vite plugin (vite.config.js) to inject shell HTML at build/dev time.
 //   2. src/v4/shell.js as a runtime fallback for pages that bypass the plugin.
 
+// The footer version comes straight from package.json so it can't drift from
+// the released version. Default import (Node's JSON modules expose no named
+// exports) — Rolldown narrows it to the one string it sees used, so the rest
+// of package.json never reaches the bundle.
+import pkg from '../../package.json' with { type: 'json' };
+
+const VERSION = pkg.version;
+
 // NAV items are either flat — { key, href, text, icon, badge? } —
 // or a parent with `children: [{ key, href, text, badge? }]` for a submenu.
 // The parent is `key`-less; its children carry their own keys for the
@@ -293,8 +301,8 @@ export function renderTopbar(breadcrumb) {
 export function renderFooter() {
   return `
     <footer class="footer">
-      <span>Gentelella — A free Bootstrap admin template by <a href="https://colorlib.com">Colorlib</a></span>
-      <span>v4.0 Concept · 2026</span>
+      <span>Gentelella — free admin dashboard template by <a href="https://colorlib.com">Colorlib</a></span>
+      <span>v${VERSION} · <a href="https://github.com/ColorlibHQ/gentelella/blob/master/LICENSE.txt" target="_blank" rel="noopener">MIT</a></span>
     </footer>
   `;
 }

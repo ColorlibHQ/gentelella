@@ -7,7 +7,10 @@ export default [
   {
     files: ['**/*.js', '**/*.mjs', '**/*.jsx'],
     languageOptions: {
-      ecmaVersion: 2022,
+      // 2025 for import attributes (`with { type: 'json' }` in shell-render.js).
+      // Emitted code is still ES2022 — `build.target` in vite.config.js governs
+      // that, and the JSON import is inlined as a string literal at build time.
+      ecmaVersion: 2025,
       sourceType: 'module',
       globals: {
         // Browser globals
