@@ -1,6 +1,6 @@
 {
   "name": "gentelella",
-  "version": "4.1.0",
+  "version": "4.1.1",
   "type": "module",
   "description": "Gentelella v4 — free admin template. 60 pages, 20 chart variants, fully interactive inbox & kanban, live theme generator, component playground, PWA-ready. Vite 8, vanilla JS, no Bootstrap, no jQuery.",
   "scripts": {

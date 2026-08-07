@@ -1,6 +1,6 @@
 # GitHub Copilot Instructions — Gentelella v4
 
-Admin dashboard template (`4.1.0`) by Colorlib. 58 server-rendered HTML pages in `production/`, built with **Vite 8** (Rolldown). **Vanilla ES2022**, no Bootstrap, no jQuery, no SPA framework. SCSS only. Heavyweight deps — **ECharts 6**, **DataTables.net 3**, **Leaflet 1.9** — are lazy-imported per page. Full reference: `CLAUDE.md`.
+Admin dashboard template (`4.1.1`) by Colorlib. 58 server-rendered HTML pages in `production/`, built with **Vite 8** (Rolldown). **Vanilla ES2022**, no Bootstrap, no jQuery, no SPA framework. SCSS only. Heavyweight deps — **ECharts 6**, **DataTables.net 3**, **Leaflet 1.9** — are lazy-imported per page. Full reference: `CLAUDE.md`.
 
 ## Hard rules
 

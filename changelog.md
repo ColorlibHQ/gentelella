@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [4.1.1] - 2026-08-07
+
+Link fix. 4.1.0 was tagged and released on GitHub but never published to npm — this is the first 4.1.x on the registry, and it carries everything in 4.1.0 plus the fix below.
+
+### Fixed
+
+- **The landing page's changelog link 404'd.** It pointed at `blob/master/CHANGELOG.md`; the file is `changelog.md` and GitHub blob URLs are case-sensitive. The same mistake was in the docs site footer (fixed separately at <https://gentelella.colorlib.com/docs/>).
+
+  The filename stays lowercase rather than being renamed to match convention: it has been `changelog.md` for its entire history, and the 4.0.2, 4.0.3 and 4.1.0 release notes all link to that name and resolve. Renaming would have fixed two links and broken three.
+
 ## [4.1.0] - 2026-08-06
 
 Breadcrumbs become navigable, plus a dependency refresh that includes the DataTables 3 major.

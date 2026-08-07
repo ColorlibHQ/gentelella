@@ -4,7 +4,7 @@ Guidance for Claude Code (claude.ai/code) when working in this repository. Cross
 
 ## What this is
 
-Gentelella v4 (`4.1.0`) — free admin dashboard template by Colorlib. **58 production HTML pages** under [production/](production/), built with Vite 8 (Rolldown). Vanilla ES2022, no Bootstrap, no jQuery, no SPA framework. SCSS-only styling. ECharts 6, DataTables.net 3, and Leaflet 1.9 are the only heavyweight runtime deps — all lazy-imported per page.
+Gentelella v4 (`4.1.1`) — free admin dashboard template by Colorlib. **58 production HTML pages** under [production/](production/), built with Vite 8 (Rolldown). Vanilla ES2022, no Bootstrap, no jQuery, no SPA framework. SCSS-only styling. ECharts 6, DataTables.net 3, and Leaflet 1.9 are the only heavyweight runtime deps — all lazy-imported per page.
 
 Live preview: <https://preview.colorlib.com/theme/gentelella/>.
 

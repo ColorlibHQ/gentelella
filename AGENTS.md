@@ -4,7 +4,7 @@ Cross-tool agent instructions for Gentelella v4. Read by Aider, Cline, Codex, Co
 
 ## What this is
 
-Gentelella v4 (`4.1.0`) — free admin dashboard template by Colorlib. 58 server-rendered HTML pages in [production/](production/), built with **Vite 8** (Rolldown). **Vanilla ES2022**, no Bootstrap, no jQuery, no SPA framework. SCSS only. Heavyweight runtime deps are limited to **ECharts 6**, **DataTables.net 3**, and **Leaflet 1.9** — all lazy-imported per page.
+Gentelella v4 (`4.1.1`) — free admin dashboard template by Colorlib. 58 server-rendered HTML pages in [production/](production/), built with **Vite 8** (Rolldown). **Vanilla ES2022**, no Bootstrap, no jQuery, no SPA framework. SCSS only. Heavyweight runtime deps are limited to **ECharts 6**, **DataTables.net 3**, and **Leaflet 1.9** — all lazy-imported per page.
 
 Live preview: <https://preview.colorlib.com/theme/gentelella/>.
 
