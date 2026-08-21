@@ -10,3 +10,6 @@
 @use "datatable";
 @use "auth";
 @use "apps";
+// Last: RTL overrides only fix what logical properties can't express
+// (transforms, background-position, box-shadow), so they must win the cascade.
+@use "rtl";

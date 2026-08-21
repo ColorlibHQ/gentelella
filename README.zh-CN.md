@@ -64,6 +64,7 @@
 - **📱 PWA** — 可安装到 macOS / Windows / iOS / Android，支持离线外壳与 Service Worker
 - **↔️ 侧边栏图标模式** — 桌面端点击汉堡按钮可将侧边栏收起为纯图标，悬停显示提示，点击弹出子菜单
 - **🌗 深色模式** — 自动识别 `prefers-color-scheme`，前置脚本消除闪烁，手动切换结果保存在 `localStorage`
+- **↔️ RTL 支持** — 通过 `<html dir="rtl">` 支持阿拉伯语 / 希伯来语 / 波斯语布局，基于 CSS 逻辑属性实现（无需维护镜像样式表）。详见 [docs/rtl.md](docs/rtl.md)
 - **♿ 无障碍** — 跳转链接、键盘焦点样式、交互控件的 ARIA 标签、语义化地标区域，以及对屏幕阅读器友好的 DataTables
 
 ## 包含内容
@@ -366,7 +367,6 @@ npm run new -- reports --title "Reports" --pretitle "Admin" \
 - 落地页与营销页的 **JSON-LD 结构化数据**
 - **`sitemap.xml`** 生成器（依据 `production/*.html` 自动生成）
 - **按页面对图表类型做 tree-shaking**，进一步精简 ECharts 依赖块
-- **RTL 支持**（逻辑属性改造）
 - **i18n 文案提取方案**
 
 希望优先实现其中某一项？欢迎[提交 issue](https://github.com/ColorlibHQ/gentelella/issues)。

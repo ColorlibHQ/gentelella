@@ -11,7 +11,7 @@
   color: var(--text);
   margin-bottom: 6px;
 }
-.form-label .required { color: var(--red); margin-left: 2px; }
+.form-label .required { color: var(--red); margin-inline-start: 2px; }
 .form-help {
   font-size: 11.5px;
   color: var(--text-muted);
@@ -67,7 +67,7 @@ textarea.form-control {
 select.form-control {
   appearance: none;
   -webkit-appearance: none;
-  padding-right: 32px;
+  padding-inline-end: 32px;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none' stroke='%239ba5b1' stroke-width='1.5'%3E%3Cpath d='M3 5l3 3 3-3'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 10px center;
@@ -110,7 +110,7 @@ select.form-control {
   top: 50%; left: 50%;
   transform: translate(-50%, -55%) rotate(45deg);
   width: 4px; height: 8px;
-  border-right: 1.5px solid white;
+  border-inline-end: 1.5px solid white;
   border-bottom: 1.5px solid white;
 }
 .form-check input[type="radio"]:checked::after {
@@ -141,10 +141,10 @@ select.form-control {
 .input-group {
   position: relative;
 }
-.input-group .form-control { padding-left: 36px; }
+.input-group .form-control { padding-inline-start: 36px; }
 .input-group .input-icon {
   position: absolute;
-  left: 11px; top: 50%;
+  inset-inline-start: 11px; top: 50%;
   transform: translateY(-50%);
   width: 14px; height: 14px;
   color: var(--text-muted);
@@ -192,11 +192,11 @@ select.form-control {
   color: var(--text-muted);
   background: var(--bg-surface-secondary);
   white-space: nowrap;
-  border-left: 1px solid var(--border-color);
+  border-inline-start: 1px solid var(--border-color);
 }
 .input-affix .affix.prefix {
-  border-left: 0;
-  border-right: 1px solid var(--border-color);
+  border-inline-start: 0;
+  border-inline-end: 1px solid var(--border-color);
 }
 
 // ────────────────────────
@@ -251,7 +251,7 @@ select.form-control {
 .switch .track::before {
   content: '';
   position: absolute;
-  left: 2px; top: 2px;
+  inset-inline-start: 2px; top: 2px;
   width: 16px; height: 16px;
   background: white;
   border-radius: 50%;
@@ -279,7 +279,7 @@ select.form-control {
   color: var(--text);
   font-weight: var(--font-weight-medium);
   min-width: 40px;
-  text-align: right;
+  text-align: end;
   font-variant-numeric: tabular-nums;
 }
 input[type="range"].slider {
@@ -441,7 +441,7 @@ input[type="range"].slider:focus-visible {
 }
 .search-suggest-row:last-child { border-bottom: 0; }
 .search-suggest-row:hover { background: var(--bg-surface-secondary); }
-.search-suggest-row .meta { margin-left: auto; font-size: 11px; color: var(--text-muted); }
+.search-suggest-row .meta { margin-inline-start: auto; font-size: 11px; color: var(--text-muted); }
 .search-suggest-row mark {
   background: var(--yellow-lt);
   color: var(--text);
@@ -524,7 +524,7 @@ input[type="range"].slider:focus-visible {
   font-weight: var(--font-weight-medium);
   color: var(--text);
   background: var(--bg-surface-secondary);
-  border-right: 1px solid var(--border-color);
+  border-inline-end: 1px solid var(--border-color);
   cursor: pointer;
 }
 .file-input-name {
@@ -623,7 +623,7 @@ input[type="range"].slider:focus-visible {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%237e8896' stroke-width='1.5'%3E%3Crect x='3' y='4' width='18' height='16' rx='2'/%3E%3Cpath d='M3 10h18M8 4v6M16 4v6'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 12px center;
-  padding-right: 36px;
+  padding-inline-end: 36px;
 }
 .dr-popover {
   background: var(--bg-surface);
@@ -640,7 +640,7 @@ input[type="range"].slider:focus-visible {
   flex-direction: column;
   gap: 2px;
   padding: 14px 8px 14px 14px;
-  border-right: 1px solid var(--border-color-light);
+  border-inline-end: 1px solid var(--border-color-light);
   background: var(--bg-surface-secondary);
   min-width: 140px;
 }
@@ -651,7 +651,7 @@ input[type="range"].slider:focus-visible {
   font: inherit;
   font-size: 12.5px;
   color: var(--text-secondary);
-  text-align: left;
+  text-align: start;
   border-radius: var(--radius-sm);
   cursor: pointer;
 }
@@ -719,8 +719,8 @@ input[type="range"].slider:focus-visible {
   font-weight: 600;
   border-radius: 50%;
 }
-.dr-cell.range-start { border-top-right-radius: 0; border-bottom-right-radius: 0; }
-.dr-cell.range-end   { border-top-left-radius: 0;  border-bottom-left-radius: 0; }
+.dr-cell.range-start { border-start-end-radius: 0; border-end-end-radius: 0; }
+.dr-cell.range-end   { border-start-start-radius: 0;  border-end-start-radius: 0; }
 .dr-footer {
   margin-top: 12px;
   padding-top: 12px;
@@ -733,7 +733,7 @@ input[type="range"].slider:focus-visible {
 .dr-summary { font-size: 12px; color: var(--text-secondary); font-variant-numeric: tabular-nums; }
 @media (max-width: 600px) {
   .dr-popover { flex-direction: column; }
-  .dr-presets { flex-direction: row; flex-wrap: wrap; min-width: 0; border-right: 0; border-bottom: 1px solid var(--border-color-light); padding: 10px; }
+  .dr-presets { flex-direction: row; flex-wrap: wrap; min-width: 0; border-inline-end: 0; border-bottom: 1px solid var(--border-color-light); padding: 10px; }
   .dr-months { flex-direction: column; gap: var(--space-4); }
 }
 
@@ -796,8 +796,8 @@ input[type="range"].slider:focus-visible {
 }
 .rt-editor h2 { font-size: 17px; font-weight: 600; margin: 12px 0 6px; }
 .rt-editor blockquote {
-  border-left: 3px solid var(--primary);
-  padding-left: 12px;
+  border-inline-start: 3px solid var(--primary);
+  padding-inline-start: 12px;
   margin: 8px 0;
   color: var(--text-secondary);
 }
@@ -811,7 +811,7 @@ input[type="range"].slider:focus-visible {
   margin: 8px 0;
   overflow-x: auto;
 }
-.rt-editor ul, .rt-editor ol { padding-left: 22px; margin: 6px 0; }
+.rt-editor ul, .rt-editor ol { padding-inline-start: 22px; margin: 6px 0; }
 .rt-editor a { color: var(--primary); text-decoration: underline; }
 
 // ────────────────────────
@@ -874,7 +874,7 @@ input[type="range"].slider:focus-visible {
   padding: 4px 6px;
 }
 .ms-chev {
-  margin-left: auto;
+  margin-inline-start: auto;
   color: var(--text-muted);
   flex-shrink: 0;
   transition: transform 150ms;
@@ -883,8 +883,8 @@ input[type="range"].slider:focus-visible {
 .ms-menu {
   position: absolute;
   top: calc(100% + 4px);
-  left: 0;
-  right: 0;
+  inset-inline-start: 0;
+  inset-inline-end: 0;
   z-index: 50;
   max-height: 220px;
   overflow-y: auto;
@@ -897,7 +897,7 @@ input[type="range"].slider:focus-visible {
 .ms-option {
   display: block;
   width: 100%;
-  text-align: left;
+  text-align: start;
   padding: 7px 10px;
   background: transparent;
   border: 0;

@@ -6,7 +6,7 @@
 .skip-link {
   position: fixed;
   top: 8px;
-  left: 8px;
+  inset-inline-start: 8px;
   z-index: 200;
   padding: 8px 14px;
   background: var(--primary);
@@ -41,7 +41,7 @@
 // ────────────────────────
 .sidebar {
   position: fixed;
-  left: 0; top: 0; bottom: 0;
+  inset-inline-start: 0; top: 0; bottom: 0;
   width: var(--sidebar-w);
   background: var(--sidebar-bg);
   z-index: 100;
@@ -81,7 +81,7 @@
   font-weight: 400;
   color: var(--sidebar-text);
   font-size: 13px;
-  margin-left: 2px;
+  margin-inline-start: 2px;
 }
 
 .sidebar-nav {
@@ -134,7 +134,7 @@
 }
 .nav-link:hover .icon, .nav-link.active .icon { opacity: 0.85; }
 .nav-link .badge {
-  margin-left: auto;
+  margin-inline-start: auto;
   font-size: 10px;
   font-weight: 600;
   padding: 1px 6px;
@@ -159,12 +159,12 @@
   border: 0;
   font: inherit;
   width: 100%;
-  text-align: left;
+  text-align: start;
   cursor: pointer;
 }
 .nav-toggle .nav-text { flex: 1; }
 .nav-chev {
-  margin-left: auto;
+  margin-inline-start: auto;
   opacity: 0.55;
   transition: transform 200ms cubic-bezier(0.2, 0, 0, 1), opacity 120ms;
   flex-shrink: 0;
@@ -197,7 +197,7 @@
 .nav-tree .nav-sub > .nav-sub-inner::before {
   content: '';
   position: absolute;
-  left: 19px;
+  inset-inline-start: 19px;
   top: 4px;
   bottom: 4px;
   width: 1px;
@@ -225,7 +225,7 @@
 .nav-sublink::before {
   content: '';
   position: absolute;
-  left: -9px;
+  inset-inline-start: -9px;
   top: 50%;
   width: 8px;
   height: 1px;
@@ -244,10 +244,10 @@
   background: var(--sidebar-active);
   font-weight: var(--font-weight-medium);
   // Active rail tick becomes primary teal and slightly bolder.
-  &::before { background: var(--primary); width: 12px; left: -13px; }
+  &::before { background: var(--primary); width: 12px; inset-inline-start: -13px; }
 }
 .nav-sublink .badge {
-  margin-left: auto;
+  margin-inline-start: auto;
   font-size: 10px;
   font-weight: 600;
   padding: 1px 6px;
@@ -281,7 +281,7 @@
   position: relative;
 }
 .sidebar-user .avatar .online {
-  position: absolute; bottom: -1px; right: -1px;
+  position: absolute; bottom: -1px; inset-inline-end: -1px;
   width: 8px; height: 8px;
   background: var(--green);
   border: 2px solid var(--sidebar-bg);
@@ -320,8 +320,8 @@
 .topbar {
   position: fixed;
   top: 0;
-  left: var(--sidebar-w);
-  right: 0;
+  inset-inline-start: var(--sidebar-w);
+  inset-inline-end: 0;
   height: 56px;
   background: rgba(255,255,255,0.85);
   backdrop-filter: blur(12px);
@@ -402,14 +402,14 @@
 }
 .search-box .s-icon {
   position: absolute;
-  left: 9px; top: 50%;
+  inset-inline-start: 9px; top: 50%;
   transform: translateY(-50%);
   width: 14px; height: 14px;
   color: var(--text-muted);
 }
 .search-box kbd {
   position: absolute;
-  right: 6px; top: 50%;
+  inset-inline-end: 6px; top: 50%;
   transform: translateY(-50%);
   padding: 0 5px;
   font-family: inherit;
@@ -438,7 +438,7 @@
   width: auto; height: 32px;
   padding: 0 12px;
   gap: 6px;
-  margin-right: 6px;
+  margin-inline-end: 6px;
   font-size: 13px; font-weight: 500;
   text-decoration: none;
   color: var(--primary);
@@ -451,7 +451,7 @@
 }
 .tb-btn.tb-docs svg { width: 15px; height: 15px; }
 .tb-btn .dot {
-  position: absolute; top: 6px; right: 6px;
+  position: absolute; top: 6px; inset-inline-end: 6px;
   width: 6px; height: 6px;
   background: var(--red);
   border: 1.5px solid white;
@@ -467,7 +467,7 @@
   font-size: 11px;
   font-weight: 600;
   color: white;
-  margin-left: 6px;
+  margin-inline-start: 6px;
   cursor: pointer;
   padding: 0;
   transition: transform 120ms;
@@ -478,7 +478,7 @@
 //  MAIN LAYOUT
 // ────────────────────────
 .main {
-  margin-left: var(--sidebar-w);
+  margin-inline-start: var(--sidebar-w);
   padding-top: 56px;
   min-height: 100vh;
   transition: margin-left 220ms cubic-bezier(0.2, 0, 0, 1);
@@ -564,8 +564,8 @@
     will-change: transform;
   }
   .sidebar.open { transform: translateX(0); }
-  .main { margin-left: 0; }
-  .topbar { left: 0; padding: 0 12px; }
+  .main { margin-inline-start: 0; }
+  .topbar { inset-inline-start: 0; padding: 0 12px; }
   // The 240px search box, breadcrumb, and notification/message buttons can't
   // coexist with a 32px avatar inside a 375px viewport without forcing the
   // layout viewport to scale. Drop the wide pieces; cmd-K still works for
@@ -632,7 +632,7 @@
   body.sidebar-rail .nav-link[data-rail-label]::after {
     content: attr(data-rail-label);
     position: absolute;
-    left: calc(100% + 12px);
+    inset-inline-start: calc(100% + 12px);
     top: 50%;
     transform: translateY(-50%) translateX(-4px);
     background: var(--text);

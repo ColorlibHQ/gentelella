@@ -12,7 +12,7 @@
   border-top: 1px solid var(--border-color-light);
 }
 .pagination .page-info {
-  margin-right: auto;
+  margin-inline-end: auto;
   font-size: 12px;
   color: var(--text-muted);
 }
@@ -192,7 +192,7 @@
   position: relative;
 }
 .inbox-sidebar {
-  border-right: 1px solid var(--border-color-light);
+  border-inline-end: 1px solid var(--border-color-light);
   padding: 12px 8px;
   overflow-y: auto;
 }
@@ -220,7 +220,7 @@
 .inbox-folder:hover { background: var(--bg-surface-secondary); color: var(--text); text-decoration: none; }
 .inbox-folder.active { background: var(--primary-lt); color: var(--primary); font-weight: var(--font-weight-medium); }
 .inbox-folder .count {
-  margin-left: auto;
+  margin-inline-start: auto;
   font-size: 11px;
   color: var(--text-muted);
   background: var(--bg-surface-secondary);
@@ -240,7 +240,7 @@
 
 // List pane (middle column)
 .inbox-list-pane {
-  border-right: 1px solid var(--border-color-light);
+  border-inline-end: 1px solid var(--border-color-light);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -286,8 +286,8 @@
 .inbox-item.unread .subject { color: var(--text); font-weight: var(--font-weight-bold); }
 .inbox-item.selected {
   background: var(--primary-lt);
-  border-left: 2px solid var(--primary);
-  padding-left: 10px;
+  border-inline-start: 2px solid var(--primary);
+  padding-inline-start: 10px;
 }
 .inbox-item-body { min-width: 0; }
 .inbox-item .sender { font-size: 12.5px; font-weight: var(--font-weight-medium); color: var(--text-secondary); margin-bottom: 1px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -309,7 +309,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.inbox-item .meta { text-align: right; font-size: 11px; color: var(--text-muted); white-space: nowrap; padding-top: 2px; }
+.inbox-item .meta { text-align: end; font-size: 11px; color: var(--text-muted); white-space: nowrap; padding-top: 2px; }
 .inbox-star-btn {
   width: 22px;
   height: 22px;
@@ -493,7 +493,7 @@
 }
 .invoice-totals table { font-size: 13px; }
 .invoice-totals td { padding: 4px 16px 4px 0; color: var(--text-secondary); }
-.invoice-totals td:last-child { text-align: right; padding-right: 0; min-width: 100px; color: var(--text); font-weight: var(--font-weight-medium); }
+.invoice-totals td:last-child { text-align: end; padding-inline-end: 0; min-width: 100px; color: var(--text); font-weight: var(--font-weight-medium); }
 .invoice-totals tr.grand td {
   border-top: 2px solid var(--border-color);
   padding-top: 8px;
@@ -550,7 +550,7 @@
   background: var(--bg-surface);
   box-shadow: 0 0 0 3px var(--primary-lt);
 }
-.line-row input[type="number"] { text-align: right; -moz-appearance: textfield; }
+.line-row input[type="number"] { text-align: end; -moz-appearance: textfield; }
 .line-row input[type="number"]::-webkit-outer-spin-button,
 .line-row input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
 .line-row .desc-wrap input.desc-sub {
@@ -559,7 +559,7 @@
   margin-top: 2px;
 }
 .line-row .amount {
-  text-align: right;
+  text-align: end;
   font-weight: var(--font-weight-medium);
   color: var(--text);
 }
@@ -603,7 +603,7 @@
   padding: 1px 6px;
   font: inherit;
   font-size: 12.5px;
-  text-align: right;
+  text-align: end;
   border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
   background: var(--bg-surface);
@@ -628,7 +628,7 @@
 .invoice-payment-status::before {
   content: '';
   position: absolute;
-  left: 32px; right: 32px; top: 28px;
+  inset-inline-start: 32px; inset-inline-end: 32px; top: 28px;
   height: 2px;
   background: var(--border-color);
   z-index: 0;
@@ -709,9 +709,9 @@
   border: 2px solid var(--bg-surface);
   display: flex; align-items: center; justify-content: center;
   font-size: 9px; font-weight: 600; color: white;
-  margin-left: -4px;
+  margin-inline-start: -4px;
 }
-.project-card .avatars .av:first-child { margin-left: 0; }
+.project-card .avatars .av:first-child { margin-inline-start: 0; }
 
 // ────────────────────────
 //  PRODUCT CARD (e-commerce)
@@ -741,7 +741,7 @@
 .product-thumb svg { display: block; width: 100%; height: 100%; }
 .product-thumb .product-badge {
   position: absolute;
-  top: 8px; left: 8px;
+  top: 8px; inset-inline-start: 8px;
 }
 .product-info { padding: 12px; }
 .product-info .name { font-size: 13px; font-weight: var(--font-weight-medium); color: var(--text); margin-bottom: 2px; }
@@ -1068,7 +1068,7 @@ button.project-card {
   appearance: none;
   border: 1px solid var(--border-color);
   background: var(--bg-surface);
-  text-align: left;
+  text-align: start;
   font: inherit;
   color: inherit;
   cursor: pointer;
@@ -1081,8 +1081,8 @@ button.project-card:hover { border-color: var(--primary); }
 // ────────────────────────
 .page-fixed-footer .footer {
   position: fixed;
-  left: var(--sidebar-w);
-  right: 0;
+  inset-inline-start: var(--sidebar-w);
+  inset-inline-end: 0;
   bottom: 0;
   background: var(--bg-surface);
   border-top: 1px solid var(--border-color);
@@ -1090,7 +1090,7 @@ button.project-card:hover { border-color: var(--primary); }
 }
 .page-fixed-footer .page-wrapper { padding-bottom: 80px; }
 @media (max-width: 768px) {
-  .page-fixed-footer .footer { left: 0; }
+  .page-fixed-footer .footer { inset-inline-start: 0; }
 }
 
 // ────────────────────────
@@ -1238,8 +1238,8 @@ button.project-card:hover { border-color: var(--primary); }
 }
 .media-tile .meta {
   position: absolute;
-  left: 0;
-  right: 0;
+  inset-inline-start: 0;
+  inset-inline-end: 0;
   bottom: 0;
   padding: 8px 10px;
   background: linear-gradient(transparent, rgba(0, 0, 0, 0.55));
@@ -1272,7 +1272,7 @@ button.project-card:hover { border-color: var(--primary); }
   content: 'Most popular';
   position: absolute;
   top: -10px;
-  right: 16px;
+  inset-inline-end: 16px;
   background: var(--primary);
   color: white;
   font-size: 10px;
@@ -1300,7 +1300,7 @@ button.project-card:hover { border-color: var(--primary); }
   font-size: 12px;
   color: var(--text-muted);
   font-weight: 400;
-  margin-left: 4px;
+  margin-inline-start: 4px;
 }
 .pricing-tier .desc { font-size: 12.5px; color: var(--text-muted); line-height: 1.5; }
 .pricing-tier ul {
@@ -1366,12 +1366,12 @@ button.project-card:hover { border-color: var(--primary); }
 .landing-nav nav {
   display: flex;
   gap: var(--space-5);
-  margin-left: 32px;
+  margin-inline-start: 32px;
   font-size: 13px;
 }
 .landing-nav nav a { color: var(--text-secondary); }
 .landing-nav nav a:hover { color: var(--text); text-decoration: none; }
-.landing-nav .cta { margin-left: auto; display: flex; gap: var(--space-2); }
+.landing-nav .cta { margin-inline-start: auto; display: flex; gap: var(--space-2); }
 
 .hero {
   padding: 80px 32px 60px;
@@ -1488,7 +1488,7 @@ button.project-card:hover { border-color: var(--primary); }
   .breadcrumb,
   .card-opt-btn { display: none !important; }
 
-  .main { margin-left: 0 !important; padding: 0 !important; }
+  .main { margin-inline-start: 0 !important; padding: 0 !important; }
   .page-wrapper { padding: 0 !important; max-width: none !important; }
   .card,
   .invoice {
