@@ -47,7 +47,7 @@
 
 初代 Gentelella 自 2014 年起就是一套免费的 Bootstrap 后台模板，累计**下载量超过 300 万次**，[GitHub Star 超过 21k](https://github.com/ColorlibHQ/gentelella)。v4 是一次彻底的重构：
 
-- **不依赖 Bootstrap，不依赖 jQuery** — 纯原生 JavaScript + SCSS。`node_modules` 约 178 MB（v2 时约为 600 MB）。
+- **不依赖 Bootstrap，不依赖 jQuery** — 纯原生 JavaScript + SCSS。`node_modules` 约 165 MB（v2 时约为 600 MB）。
 - **Vite 8 构建系统** — 即时 HMR、多页面应用、入口自动发现、资源文件名哈希。
 - **浅色 + 深色主题**，自动识别 `prefers-color-scheme`，并通过首屏前置脚本消除主题闪烁。
 - **PWA 就绪** — 可安装到桌面和移动端，支持离线外壳与 Service Worker。
@@ -109,7 +109,7 @@
 - 来自 Google Fonts 的 **Inter** 字体
 - **Playwright**（开发依赖）— 用于截图流水线和冒烟测试
 
-3 个生产依赖，10 个开发依赖，`node_modules` 约 **178 MB**（旧版 Gentelella 约 600 MB）。
+3 个生产依赖，10 个开发依赖，`node_modules` 约 **165 MB**（旧版 Gentelella 约 600 MB）。
 
 ## 文档
 
@@ -332,6 +332,8 @@ npm run new -- reports --title "Reports" --pretitle "Admin" \
 - **逐页 `<meta description>`**，自动由面包屑推导
 - **Open Graph + Twitter Card** 标签在构建时注入
 - **PWA manifest** 与 theme-color（浅色/深色两套）
+- 构建时依据已发现的页面生成 **`sitemap.xml`**，自动排除登录与错误页（通过 `SITE_URL=https://example.com/ npm run build` 启用）
+- 落地页的 **JSON-LD 结构化数据** —— `SoftwareApplication`，以及构建时从页面自身 FAQ 解析出的 `FAQPage`，确保结构化数据与可见内容始终一致
 - **主题前置脚本** — 消除加载时的主题闪烁
 - **跳转到主内容链接** + ARIA 地标，便于屏幕阅读器导航
 - **区分缓存策略的部署脚本**（[`scripts/deploy-preview.sh`](scripts/deploy-preview.sh)）— 哈希资源长缓存，HTML 短缓存，Service Worker 不缓存
@@ -364,8 +366,6 @@ npm run new -- reports --title "Reports" --pretitle "Admin" \
 
 - **图片优化** — 压缩 `public/images/*.jpg`，并提供 AVIF + JPG 回退
 - **Lighthouse 审计**与调优，目标 95+ 性能 / 100 无障碍 / 100 SEO / 100 PWA
-- 落地页与营销页的 **JSON-LD 结构化数据**
-- **`sitemap.xml`** 生成器（依据 `production/*.html` 自动生成）
 - **按页面对图表类型做 tree-shaking**，进一步精简 ECharts 依赖块
 - **i18n 文案提取方案**
 

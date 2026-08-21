@@ -47,7 +47,7 @@ Built for 2026 by [Colorlib](https://colorlib.com). **[Live demo →](https://pr
 
 The original Gentelella has been a free Bootstrap admin template since 2014 — **3M+ downloads**, [21k+ GitHub stars](https://github.com/ColorlibHQ/gentelella). v4 is a ground-up redesign:
 
-- **No Bootstrap, no jQuery** — vanilla JavaScript + SCSS. ~178 MB `node_modules` (down from ~600 MB on v2).
+- **No Bootstrap, no jQuery** — vanilla JavaScript + SCSS. ~165 MB `node_modules` (down from ~600 MB on v2).
 - **Vite 8 build system** — instant HMR, multi-page app with auto-discovered entry points, hashed assets.
 - **Light + dark mode** with `prefers-color-scheme` detection and pre-paint script (no flash of incorrect theme).
 - **PWA-ready** — installable on desktop and mobile, offline shell, service worker.
@@ -168,7 +168,7 @@ Need advanced features, dedicated support, and production-ready code? Explore ou
 - **Inter** font from Google Fonts
 - **Playwright** (devDep) — for the screenshot pipeline and smoke tests
 
-3 production deps, 10 dev deps, **~178 MB `node_modules`** (was ~600 MB on the old Gentelella).
+3 production deps, 10 dev deps, **~165 MB `node_modules`** (was ~600 MB on the old Gentelella).
 
 ## Documentation
 
@@ -391,6 +391,8 @@ Every page is built with SEO in mind:
 - **Per-page `<meta description>`** auto-derived from the breadcrumb
 - **Open Graph + Twitter Card** tags injected at build time
 - **PWA manifest** + theme-color (light + dark variants)
+- **`sitemap.xml`** generated at build time from the discovered pages, excluding auth/error screens (opt in with `SITE_URL=https://example.com/ npm run build`)
+- **JSON-LD structured data** on the landing page — `SoftwareApplication` plus a `FAQPage` parsed from the page's own FAQ at build time, so the markup can't drift from the visible answers
 - **Pre-paint theme script** — eliminates flash of incorrect theme on load
 - **Skip-to-content link** + ARIA landmarks for screen reader navigation
 - **`Cache-Control`-aware deploy** ([`scripts/deploy-preview.sh`](scripts/deploy-preview.sh)) — long-cache for hashed assets, short-cache for HTML, no-cache for service worker
@@ -423,8 +425,6 @@ Shipped in `4.0.0` — full list in [`changelog.md`](changelog.md). Still planne
 
 - **Image optimization** — compress `public/images/*.jpg` and ship AVIF + JPG fallback
 - **Lighthouse audit** + tuning to 95+ Performance / 100 A11y / 100 SEO / 100 PWA
-- **JSON-LD structured data** on landing + marketing pages
-- **`sitemap.xml`** generator (auto-built from `production/*.html`)
 - **Per-page chart-type tree-shaking** to slim the ECharts vendor chunk
 - **i18n extraction pattern**
 

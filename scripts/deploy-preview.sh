@@ -28,7 +28,8 @@ SLUG="${PREVIEW_SLUG:-gentelella}"
 BUCKET="r2pro:colorlib-preview/theme/$SLUG"
 
 echo "→ Building with BASE_PATH=/theme/$SLUG/"
-BASE_PATH="/theme/$SLUG/" npm run build
+# SITE_URL makes the build emit sitemap.xml with absolute URLs for this host.
+BASE_PATH="/theme/$SLUG/" SITE_URL="https://preview.colorlib.com/theme/$SLUG/" npm run build
 
 # Strip dev artifacts.
 rm -f dist/stats.html
@@ -58,6 +59,7 @@ echo "→ Pass 2/3: re-upload HTML pages + llms.txt with short cache"
 rclone copy dist/ "$BUCKET/" \
   --include "*.html" \
   --include "llms.txt" \
+  --include "sitemap.xml" \
   --header-upload "$SHORT_CACHE" \
   --ignore-times \
   --progress

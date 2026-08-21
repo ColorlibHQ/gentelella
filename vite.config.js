@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 import { visualizer } from 'rollup-plugin-visualizer';
 import { renderShell, parseShellAttrs } from './src/v4/shell-render.js';
-import { readdirSync } from 'node:fs';
+import { readdirSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 // Auto-detect every entry HTML in production/ and register it as a Rollup
@@ -19,6 +19,124 @@ function discoverEntries() {
     out[stem] = `production/${file}`;
   }
   return out;
+}
+
+// JSON-LD structured data for the marketing landing page.
+//
+// The FAQ entries are parsed out of the page's own <details>/<summary> markup
+// at build time rather than hand-maintained here. Google requires FAQ markup to
+// match the visible answers exactly, and a hand-copied block silently drifts the
+// first time someone edits the page — this can't.
+//
+// Deliberately NO aggregateRating/Review: the testimonials on the landing page
+// are placeholder demo content, and emitting review markup for invented praise
+// is both dishonest and a structured-data violation.
+function structuredDataPlugin() {
+  const pkg = JSON.parse(readFileSync(resolve(import.meta.dirname, 'package.json'), 'utf8'));
+  const SITE = 'https://gentelella.colorlib.com/';
+  const ENTITIES = {
+    '&amp;': '&', '&lt;': '<', '&gt;': '>', '&quot;': '"', '&#39;': "'",
+    '&mdash;': '\u2014', '&ndash;': '\u2013', '&nbsp;': ' ', '&hellip;': '\u2026'
+  };
+  const plain = (frag) =>
+    frag
+      .replace(/<[^>]+>/g, ' ')
+      .replace(/&[a-z#0-9]+;/gi, (e) => ENTITIES[e] ?? e)
+      .replace(/\s+/g, ' ')
+      .trim();
+
+  return {
+    name: 'gentelella-structured-data',
+    transformIndexHtml: {
+      order: 'post',
+      handler(html, ctx) {
+        if (!/landing\.html$/.test(ctx?.filename || ctx?.path || '')) return html;
+
+        const faq = [];
+        const blocks = /<details[^>]*>([\s\S]*?)<\/details>/g;
+        let block;
+        while ((block = blocks.exec(html)) !== null) {
+          const summary = /<summary[^>]*>([\s\S]*?)<\/summary>/.exec(block[1]);
+          if (!summary) continue;
+          // Trailing "+" is the open/close affordance, not part of the question.
+          const question = plain(summary[1]).replace(/\s*\+$/, '');
+          const answer = plain(block[1].slice(summary.index + summary[0].length));
+          if (question && answer) {
+            faq.push({
+              '@type': 'Question',
+              name: question,
+              acceptedAnswer: { '@type': 'Answer', text: answer }
+            });
+          }
+        }
+
+        const graph = [
+          {
+            '@type': 'SoftwareApplication',
+            name: 'Gentelella',
+            applicationCategory: 'DeveloperApplication',
+            operatingSystem: 'Any',
+            softwareVersion: pkg.version,
+            url: SITE,
+            description: pkg.description,
+            license: 'https://opensource.org/licenses/MIT',
+            offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+            author: { '@type': 'Organization', name: 'Colorlib', url: 'https://colorlib.com' }
+          }
+        ];
+        if (faq.length) graph.push({ '@type': 'FAQPage', mainEntity: faq });
+
+        const json = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph })
+          .replace(/</g, '\\u003c'); // never let a "</script>" escape the block
+        return html.replace(
+          /<\/head>/i,
+          `<script type="application/ld+json">${json}</script>\n</head>`
+        );
+      }
+    }
+  };
+}
+
+// Emit sitemap.xml from the discovered entry pages. Opt-in via SITE_URL,
+// because a sitemap has to carry absolute URLs and guessing the deploy host
+// would ship a file pointing at somewhere the site isn't. No SITE_URL, no
+// sitemap — better than a confidently wrong one.
+//
+//   SITE_URL=https://example.com/ npm run build
+//
+// Pages that shouldn't be indexed (auth, error, and placeholder screens) are
+// excluded — they're real pages in the template, but nobody wants a login
+// form or a 404 mockup as a search result.
+const SITEMAP_EXCLUDE = new Set([
+  'coming_soon', 'forgot_password', 'lock_screen', 'login', 'maintenance',
+  'offline', 'page_403', 'page_404', 'page_500', 'register', 'verify_2fa'
+]);
+
+function sitemapPlugin() {
+  return {
+    name: 'gentelella-sitemap',
+    apply: 'build',
+    generateBundle() {
+      const site = process.env.SITE_URL;
+      if (!site) return;
+      const origin = site.endsWith('/') ? site : `${site}/`;
+      const urls = Object.keys(discoverEntries())
+        .map((stem) => (stem === 'main' ? 'index' : stem))
+        .filter((stem) => !SITEMAP_EXCLUDE.has(stem))
+        .sort()
+        // index.html is the site root; the rest keep their filename.
+        .map((stem) => (stem === 'index' ? origin : `${origin}production/${stem}.html`));
+
+      const body = urls
+        .map((loc) => `  <url><loc>${loc.replace(/&/g, '&amp;')}</loc></url>`)
+        .join('\n');
+      this.emitFile({
+        type: 'asset',
+        fileName: 'sitemap.xml',
+        source: `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${body}\n</urlset>\n`
+      });
+    }
+  };
 }
 
 // Emit a root index.html that forwards to the dashboard. Entry pages all live
@@ -138,7 +256,7 @@ export default defineConfig(({ command }) => ({
   root: '.',
   base: command === 'serve' ? '/' : (process.env.BASE_PATH ?? '/'),
   publicDir: 'public',
-  plugins: [shellInjectionPlugin(), rootRedirectPlugin()],
+  plugins: [shellInjectionPlugin(), rootRedirectPlugin(), sitemapPlugin(), structuredDataPlugin()],
   logLevel: 'info',
   clearScreen: false,
   build: {
