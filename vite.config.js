@@ -21,6 +21,31 @@ function discoverEntries() {
   return out;
 }
 
+// Emit a root index.html that forwards to the dashboard. Entry pages all live
+// under production/, so without this the bare deploy root (GitHub Pages, R2,
+// `npm run preview`) has no front door and 404s. The redirect target is
+// relative, so it resolves the same whether the site is served from / or from
+// a subpath like /gentelella/ or /theme/gentelella/.
+function rootRedirectPlugin() {
+  return {
+    name: 'gentelella-root-redirect',
+    apply: 'build',
+    generateBundle() {
+      this.emitFile({
+        type: 'asset',
+        fileName: 'index.html',
+        source: [
+          '<!DOCTYPE html>',
+          '<meta http-equiv="refresh" content="0;url=production/index.html">',
+          '<link rel="canonical" href="production/index.html">',
+          '<title>Gentelella v4</title>',
+          ''
+        ].join('\n')
+      });
+    }
+  };
+}
+
 // Inject sidebar/topbar/footer into pages with body[data-shell="admin"] at
 // dev/build time so the shell paints on the first frame (no FOUC). The
 // runtime mountShell() detects already-injected shells and skips re-rendering;
@@ -112,7 +137,7 @@ export default defineConfig(({ command }) => ({
   root: '.',
   base: command === 'serve' ? '/' : (process.env.BASE_PATH ?? '/'),
   publicDir: 'public',
-  plugins: [shellInjectionPlugin()],
+  plugins: [shellInjectionPlugin(), rootRedirectPlugin()],
   logLevel: 'info',
   clearScreen: false,
   build: {

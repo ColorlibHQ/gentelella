@@ -33,13 +33,9 @@ BASE_PATH="/theme/$SLUG/" npm run build
 # Strip dev artifacts.
 rm -f dist/stats.html
 
-# Root redirect so the bare slug URL navigates to the dashboard.
-cat > dist/index.html <<'EOF'
-<!DOCTYPE html>
-<meta http-equiv="refresh" content="0;url=production/index.html">
-<link rel="canonical" href="production/index.html">
-<title>Gentelella v4</title>
-EOF
+# The root redirect (dist/index.html -> production/index.html) is emitted by
+# rootRedirectPlugin in vite.config.js, so every consumer of dist/ gets a front
+# door — this bucket, GitHub Pages, and `npm run preview` alike.
 
 LONG_CACHE='Cache-Control: public, max-age=31536000, immutable'
 SHORT_CACHE='Cache-Control: public, max-age=60, must-revalidate'
