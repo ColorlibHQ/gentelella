@@ -544,6 +544,11 @@ container.innerHTML = `&lt;ul class="activity-list"&gt;${html}&lt;/ul&gt;`;</cod
 import { showToast } from '/src/v4/toast.js';
 import { statTile, statusBadge, customerCell, activityItem, visitorRow, emptyState, escapeHtml } from '/src/v4/markup.js';
 
+// Syntax highlighting is playground-only: dynamically imported so it lands in
+// its own chunk and adds nothing to the bundle every other page loads.
+const hl = import('/src/v4/highlight.js');
+const paint = (el) => hl.then((m) => m.paintBlock(el)).catch(() => {});
+
 // Build a code-source row under each [data-source] card.
 function indent(html) {
   // Lightly format the HTML for display: collapse whitespace + indent.
@@ -583,6 +588,7 @@ document.querySelectorAll('[data-source]').forEach((card) => {
   const resetBtn = block.querySelector('.pg-reset');
   codeEl.textContent = code;
   card.appendChild(block);
+  paint(codeEl);
 
   // Live edit: debounce 250ms, set preview.innerHTML from textContent.
   // Browser auto-corrects malformed HTML — we don't try to validate.
@@ -592,6 +598,7 @@ document.querySelectorAll('[data-source]').forEach((card) => {
     editTimer = setTimeout(() => {
       preview.innerHTML = codeEl.textContent;
       resetBtn.hidden = false;
+      paint(codeEl);
     }, 250);
   });
 
@@ -599,6 +606,7 @@ document.querySelectorAll('[data-source]').forEach((card) => {
     preview.innerHTML = originalHtml;
     codeEl.textContent = indent(originalHtml);
     resetBtn.hidden = true;
+    paint(codeEl);
   });
 
   block.querySelector('.pg-copy').addEventListener('click', async () => {
@@ -610,6 +618,9 @@ document.querySelectorAll('[data-source]').forEach((card) => {
     }
   });
 });
+
+// Static (non-editable) samples elsewhere on the page.
+hl.then((m) => document.querySelectorAll('.pg-code:not(.pg-code-edit)').forEach(m.paintBlock)).catch(() => {});
 
 // Scrollspy for the left rail.
 const links = [...document.querySelectorAll('.pg-nav-link')];
@@ -898,6 +909,10 @@ if (emptyHost) {
   color: var(--text-muted);
 }
 .pg-code {
+  /* Source code always reads left-to-right, even when the page is dir="rtl" —
+     otherwise the lines right-align and the bracket order reads backwards. */
+  direction: ltr;
+  text-align: left;
   margin: 0;
   padding: 14px 16px;
   font-family: var(--font-mono);
@@ -920,6 +935,25 @@ if (emptyHost) {
   background: var(--bg-surface-secondary);
   box-shadow: inset 3px 0 0 var(--primary);
 }
+/* Syntax highlighting tokens — scoped to this page so the shared stylesheet
+   (loaded on all 58 pages) stays exactly the size it was. */
+.pg-code {
+  --tok-tag: #1f6f9f;
+  --tok-attr: #7a45b8;
+  --tok-value: #167f57;
+  --tok-comment: var(--text-muted);
+  --tok-punct: var(--text-disabled);
+}
+[data-theme="dark"] .pg-code {
+  --tok-tag: #79b8e3;
+  --tok-attr: #c4a2f5;
+  --tok-value: #5ac9a0;
+}
+.pg-code .tok-tag { color: var(--tok-tag); }
+.pg-code .tok-attr { color: var(--tok-attr); }
+.pg-code .tok-value { color: var(--tok-value); }
+.pg-code .tok-comment { color: var(--tok-comment); font-style: italic; }
+.pg-code .tok-punct { color: var(--tok-punct); }
 .pg-edit-hint {
   font-weight: 400;
   text-transform: none;

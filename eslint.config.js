@@ -28,6 +28,7 @@ export default [
         getComputedStyle: 'readonly',
         CustomEvent: 'readonly',
         IntersectionObserver: 'readonly',
+        NodeFilter: 'readonly',
         ResizeObserver: 'readonly',
         MutationObserver: 'readonly',
         URL: 'readonly',
