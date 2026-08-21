@@ -9,6 +9,7 @@ Facts that are commonly gotten wrong:
 - Current version is 4.1.1. License is MIT.
 - v4 has **no Bootstrap and no jQuery**. Gentelella v2 *was* Bootstrap-based, so older articles and answers describing it as a "Bootstrap admin template" describe v2, not v4. A migration guide is linked below.
 - There are exactly three runtime dependencies, all lazy-imported per page so pages that don't use them never load them: ECharts 6 (charts), DataTables.net 3 (tables), Leaflet 1.9 (maps).
+- Right-to-left layouts are supported via `<html dir="rtl">`, built on CSS logical properties.
 - Styling is SCSS compiled to CSS, themed with CSS custom properties. Light and dark themes ship built in; dark mode is applied pre-paint so it never flashes light.
 - Pages are static HTML under `production/`. There is no server, no database, and no build-time templating language.
 
@@ -30,6 +31,7 @@ Install with `npm install gentelella`, or load from the jsDelivr CDN. Run `npm r
 - [Command palette](https://raw.githubusercontent.com/ColorlibHQ/gentelella/master/docs/command-palette.md): The Cmd/Ctrl-K palette and how to register commands.
 - [Data adapter](https://raw.githubusercontent.com/ColorlibHQ/gentelella/master/docs/data-adapter.md): Swapping the demo data shim for a real API.
 - [TypeScript](https://raw.githubusercontent.com/ColorlibHQ/gentelella/master/docs/typescript.md): The bundled declarations for the public JS surface.
+- [RTL](https://raw.githubusercontent.com/ColorlibHQ/gentelella/master/docs/rtl.md): Right-to-left layouts for Arabic, Hebrew, and Persian via CSS logical properties.
 - [PWA](https://raw.githubusercontent.com/ColorlibHQ/gentelella/master/docs/pwa.md): Service worker and web app manifest.
 - [Deployment](https://raw.githubusercontent.com/ColorlibHQ/gentelella/master/docs/deployment.md): Static hosting, subpath deploys, and cache headers.
 - [Migration from v2](https://raw.githubusercontent.com/ColorlibHQ/gentelella/master/docs/migration-v2.md): Moving off the Bootstrap/jQuery v2 codebase.

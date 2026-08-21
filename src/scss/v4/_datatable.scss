@@ -7,7 +7,7 @@ table.has-selection tbody tr:has(input[type="checkbox"]:checked) {
 .bulk-selection-count {
   font-size: 12px;
   color: var(--text-muted);
-  margin-right: 12px;
+  margin-inline-end: 12px;
 }
 .btn-sm {
   height: 28px;
@@ -58,7 +58,7 @@ table.has-selection tbody tr:has(input[type="checkbox"]:checked) {
 .dt-search::before {
   content: '';
   position: absolute;
-  left: 9px; top: 50%;
+  inset-inline-start: 9px; top: 50%;
   width: 14px; height: 14px;
   transform: translateY(-50%);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%239ba5b1' stroke-width='1.5'%3E%3Ccircle cx='7' cy='7' r='5'/%3E%3Cpath d='M11 11l3.5 3.5'/%3E%3C/svg%3E");

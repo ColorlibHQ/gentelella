@@ -100,9 +100,10 @@ function shellInjectionPlugin() {
           out = out.replace(/<\/head>/i, `${seo}\n</head>`);
         }
 
-        // Pre-paint theme script: read stored theme and apply data-theme to <html>
-        // before the body renders so dark mode never flashes light.
-        const prePaint = `<script>(function(){try{var t=localStorage.getItem('theme');var d=window.matchMedia('(prefers-color-scheme: dark)').matches;var theme=t||(d?'dark':'light');document.documentElement.setAttribute('data-theme',theme);}catch(e){}})();</script>`;
+        // Pre-paint theme + direction script: read stored theme and text
+        // direction and apply them to <html> before the body renders, so
+        // neither dark mode nor RTL flashes the wrong way round.
+        const prePaint = `<script>(function(){try{var t=localStorage.getItem('theme');var d=window.matchMedia('(prefers-color-scheme: dark)').matches;var theme=t||(d?'dark':'light');document.documentElement.setAttribute('data-theme',theme);var dir=localStorage.getItem('dir');if(dir==='rtl'||dir==='ltr'){document.documentElement.setAttribute('dir',dir);}}catch(e){}})();</script>`;
         out = out.replace(/<\/head>/i, `${prePaint}\n</head>`);
 
         // Admin-shell injection only fires for pages with body[data-shell="admin"].

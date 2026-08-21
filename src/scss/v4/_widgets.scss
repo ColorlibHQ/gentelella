@@ -193,7 +193,7 @@
 .visitor-row:last-child { border-bottom: none; }
 .visitor-flag { font-size: 16px; line-height: 1; }
 .visitor-name { flex: 1; color: var(--text); font-weight: var(--font-weight-normal); }
-.visitor-pct { font-weight: var(--font-weight-bold); color: var(--text); min-width: 32px; text-align: right; font-size: 12.5px; }
+.visitor-pct { font-weight: var(--font-weight-bold); color: var(--text); min-width: 32px; text-align: end; font-size: 12.5px; }
 .visitor-bar {
   width: 80px;
   height: 4px;
@@ -289,7 +289,7 @@
   padding: 3px 0;
 }
 .donut-legend-item .dot { width: 8px; height: 8px; border-radius: 2px; flex-shrink: 0; }
-.donut-legend-item .pct { margin-left: auto; font-weight: var(--font-weight-bold); color: var(--text); font-size: 11.5px; }
+.donut-legend-item .pct { margin-inline-start: auto; font-weight: var(--font-weight-bold); color: var(--text); font-size: 11.5px; }
 
 // ────────────────────────
 //  APP VERSIONS (progress)
@@ -301,7 +301,7 @@
 .version-label { font-size: 12.5px; color: var(--text-secondary); width: 48px; font-weight: var(--font-weight-medium); }
 .version-bar { flex: 1; height: 4px; background: var(--border-color-light); border-radius: 2px; overflow: hidden; }
 .version-bar .fill { height: 100%; border-radius: 2px; }
-.version-pct { font-size: 12px; color: var(--text-muted); width: 30px; text-align: right; font-weight: var(--font-weight-medium); }
+.version-pct { font-size: 12px; color: var(--text-muted); width: 30px; text-align: end; font-weight: var(--font-weight-medium); }
 
 // ────────────────────────
 //  STORAGE WIDGET
@@ -325,7 +325,7 @@
   font-size: 12px; color: var(--text-secondary);
 }
 .storage-legend-item .dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
-.storage-legend-item .val { margin-left: auto; font-weight: var(--font-weight-medium); color: var(--text); }
+.storage-legend-item .val { margin-inline-start: auto; font-weight: var(--font-weight-medium); color: var(--text); }
 
 // ────────────────────────
 //  PROFILE COMPLETION

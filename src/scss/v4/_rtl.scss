@@ -1,0 +1,100 @@
+// RTL overrides.
+//
+// The bulk of right-to-left support comes from logical properties
+// (margin-inline-*, padding-inline-*, inset-inline-*, border-inline-*,
+// text-align: start/end) used throughout the other partials — those flip on
+// their own and need nothing here.
+//
+// This file covers only what has no logical equivalent:
+//   1. translateX() — transforms are physical by definition
+//   2. background-position — no logical keyword with usable support
+//   3. box-shadow offsets — physical x/y
+//   4. Chevrons that point along the inline axis
+//
+// Anything centred with `left: 50%` + `translateX(-50%)` is deliberately NOT
+// here: that pattern is direction-neutral and already correct in both modes.
+
+// ---------------------------------------------------------------------------
+// 1. Sidebar mobile drawer — slides in from the inline-start edge
+// ---------------------------------------------------------------------------
+@media (max-width: 768px) {
+  [dir='rtl'] .sidebar {
+    transform: translateX(100%);
+  }
+
+  [dir='rtl'] .sidebar.open {
+    transform: translateX(0);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 2. Rail-mode flyout label — nudges away from the rail, so it mirrors
+// ---------------------------------------------------------------------------
+[dir='rtl'] body.sidebar-rail .nav-link[data-rail-label]::after {
+  transform: translateY(-50%) translateX(4px);
+}
+
+[dir='rtl'] body.sidebar-rail .nav-link[data-rail-label]:hover::after,
+[dir='rtl'] body.sidebar-rail .nav-link[data-rail-label]:focus-visible::after {
+  transform: translateY(-50%) translateX(0);
+}
+
+// The rail collapse chevron points along the inline axis.
+[dir='rtl'] body.sidebar-rail .sidebar-toggle svg {
+  transform: rotate(0deg);
+}
+
+[dir='rtl'] .sidebar-toggle svg {
+  transform: rotate(180deg);
+}
+
+// ---------------------------------------------------------------------------
+// 3. Slide-out drawer — default edge is inline-end, `.left` is inline-start
+// ---------------------------------------------------------------------------
+[dir='rtl'] .drawer {
+  transform: translateX(-100%);
+  box-shadow: 10px 0 30px rgba(0, 0, 0, 0.12);
+}
+
+[dir='rtl'] .drawer.open {
+  transform: translateX(0);
+}
+
+[dir='rtl'] .drawer.left {
+  transform: translateX(100%);
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.12);
+}
+
+[dir='rtl'] .drawer.left.open {
+  transform: translateX(0);
+}
+
+// ---------------------------------------------------------------------------
+// 4. Switch + toggle knobs travel along the inline axis
+// ---------------------------------------------------------------------------
+[dir='rtl'] .switch input:checked + .track::before,
+[dir='rtl'] .toggle.on::after {
+  transform: translateX(-16px);
+}
+
+// ---------------------------------------------------------------------------
+// 5. Native select arrow — background-position has no logical form
+// ---------------------------------------------------------------------------
+[dir='rtl'] select.input,
+[dir='rtl'] .input select,
+[dir='rtl'] select.form-control {
+  background-position: left 10px center;
+}
+
+// ---------------------------------------------------------------------------
+// 6. Sidebar accordion chevron — points inline-end when closed, down when open
+// ---------------------------------------------------------------------------
+// Only the closed state is mirrored. The open state points *down*, which is
+// direction-neutral, and the base `.nav-tree.open > .nav-toggle .nav-chev`
+// rule (4 classes) already outranks this one (1 attribute + 1 class) — so it
+// keeps winning for open groups without an override here. Adding one is how
+// this got broken the first time: `scaleX(-1) rotate(-90deg)` applies the
+// rotation first and lands on "up".
+[dir='rtl'] .nav-chev {
+  transform: scaleX(-1);
+}

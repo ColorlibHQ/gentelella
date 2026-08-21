@@ -64,6 +64,7 @@ Perfect for: **SaaS dashboards**, **CRM**, **ERP**, **internal admin panels**, *
 - **📱 PWA** — installable on macOS / Windows / iOS / Android, offline shell, service worker
 - **↔️ Sidebar rail mode** — desktop hamburger collapses sidebar to icon-only with hover tooltips and click-to-flyout submenus
 - **🌗 Dark mode** — `prefers-color-scheme` aware, pre-paint script prevents flash, manual toggle persists in `localStorage`
+- **↔️ RTL support** — Arabic / Hebrew / Persian layouts via `<html dir="rtl">`, built on CSS logical properties (no mirrored stylesheet to maintain). See [docs/rtl.md](docs/rtl.md)
 - **♿ Accessibility** — skip-link, keyboard focus rings, ARIA labels on interactive controls, semantic landmarks, screen-reader-friendly DataTables
 
 ## What you get
@@ -425,7 +426,6 @@ Shipped in `4.0.0` — full list in [`changelog.md`](changelog.md). Still planne
 - **JSON-LD structured data** on landing + marketing pages
 - **`sitemap.xml`** generator (auto-built from `production/*.html`)
 - **Per-page chart-type tree-shaking** to slim the ECharts vendor chunk
-- **RTL support** (logical-properties pass)
 - **i18n extraction pattern**
 
 Want any of these prioritized? [Open an issue](https://github.com/ColorlibHQ/gentelella/issues).

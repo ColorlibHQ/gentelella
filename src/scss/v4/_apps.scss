@@ -14,7 +14,7 @@
 }
 
 .chat-rail {
-  border-right: 1px solid var(--border-color-light);
+  border-inline-end: 1px solid var(--border-color-light);
   display: flex;
   flex-direction: column;
   min-height: 0;
@@ -61,7 +61,7 @@
   border: none;
   border-bottom: 1px solid var(--border-color-light);
   cursor: pointer;
-  text-align: left;
+  text-align: start;
   font: inherit;
   transition: background 100ms;
 }
@@ -80,7 +80,7 @@
   position: relative;
 }
 .chat-conversation .av .online {
-  position: absolute; bottom: -1px; right: -1px;
+  position: absolute; bottom: -1px; inset-inline-end: -1px;
   width: 9px; height: 9px;
   background: var(--green);
   border: 2px solid var(--bg-surface);
@@ -192,12 +192,12 @@
   background: var(--bg-surface);
   color: var(--text);
   border: 1px solid var(--border-color);
-  border-bottom-left-radius: 4px;
+  border-end-start-radius: 4px;
 }
 .chat-bubble.mine .bubble {
   background: var(--primary);
   color: white;
-  border-bottom-right-radius: 4px;
+  border-end-end-radius: 4px;
 }
 .chat-bubble .meta {
   font-size: 10.5px;
@@ -470,7 +470,7 @@
 // ────────────────────────
 .notif-tabs .notif-tab-count {
   display: inline-block;
-  margin-left: 4px;
+  margin-inline-start: 4px;
   padding: 0 6px;
   background: var(--primary-lt);
   color: var(--primary);
@@ -490,7 +490,7 @@
   border: none;
   border-bottom: 1px solid var(--border-color-light);
   cursor: pointer;
-  text-align: left;
+  text-align: start;
   font: inherit;
   transition: background 100ms;
   position: relative;
@@ -500,7 +500,7 @@
 .notification-row.unread::before {
   content: '';
   position: absolute;
-  left: 8px; top: 22px;
+  inset-inline-start: 8px; top: 22px;
   width: 6px; height: 6px;
   border-radius: 50%;
   background: var(--primary);
@@ -569,7 +569,7 @@
 }
 .lock-icon {
   position: absolute;
-  bottom: -2px; right: -4px;
+  bottom: -2px; inset-inline-end: -4px;
   width: 26px; height: 26px;
   background: var(--bg-surface);
   border: 2px solid var(--bg-surface);
@@ -711,7 +711,7 @@
   font-size: 13.5px;
   font-weight: var(--font-weight-medium);
   color: var(--text);
-  text-align: left;
+  text-align: start;
   cursor: pointer;
 }
 .faq-q:hover { color: var(--primary); }
@@ -770,8 +770,8 @@
   content: '';
   position: absolute;
   top: 12px;
-  left: 12px;
-  right: 12px;
+  inset-inline-start: 12px;
+  inset-inline-end: 12px;
   height: 2px;
   background: var(--border-color-light);
   z-index: 0;
@@ -821,7 +821,7 @@
   gap: var(--space-3);
 }
 .order-info-row .label { color: var(--text-muted); }
-.order-info-row .value { color: var(--text); font-weight: var(--font-weight-medium); text-align: right; }
+.order-info-row .value { color: var(--text); font-weight: var(--font-weight-medium); text-align: end; }
 
 // ────────────────────────
 //  USER MANAGEMENT
@@ -879,7 +879,7 @@
 .gallery-svg svg { display: block; }
 .gallery-badge {
   position: absolute;
-  top: 12px; left: 12px;
+  top: 12px; inset-inline-start: 12px;
   padding: 3px 9px;
   background: var(--primary);
   color: white;
@@ -927,7 +927,7 @@
   margin-bottom: 6px;
 }
 .product-meta .rating { font-size: 12px; color: var(--yellow); font-weight: var(--font-weight-medium); }
-.product-meta .rating small { color: var(--text-muted); font-weight: normal; margin-left: 4px; }
+.product-meta .rating small { color: var(--text-muted); font-weight: normal; margin-inline-start: 4px; }
 
 .product-title {
   font-size: 22px;
@@ -1034,8 +1034,8 @@
   height: 34px;
   text-align: center;
   border: none;
-  border-left: 1px solid var(--border-color);
-  border-right: 1px solid var(--border-color);
+  border-inline-start: 1px solid var(--border-color);
+  border-inline-end: 1px solid var(--border-color);
   font: inherit;
   font-size: 13px;
   font-variant-numeric: tabular-nums;
@@ -1114,7 +1114,7 @@
   overflow: hidden;
 }
 .r-bar .fill { height: 100%; }
-.r-bar .cnt { text-align: right; }
+.r-bar .cnt { text-align: end; }
 
 .reviews-list { display: flex; flex-direction: column; gap: 18px; }
 .review { padding-bottom: 16px; border-bottom: 1px solid var(--border-color-light); }
@@ -1181,7 +1181,7 @@
   max-height: 800px;
 }
 .fm-tree-wrap {
-  border-right: 1px solid var(--border-color-light);
+  border-inline-end: 1px solid var(--border-color-light);
   display: flex;
   flex-direction: column;
   padding: 8px;
@@ -1203,7 +1203,7 @@
   font: inherit;
   font-size: 13px;
   color: var(--text-secondary);
-  text-align: left;
+  text-align: start;
   cursor: pointer;
   transition: background 100ms, color 100ms;
 }
@@ -1211,8 +1211,8 @@
 .tree-link.active { background: var(--primary-lt); color: var(--primary); font-weight: var(--font-weight-medium); }
 .tree-link svg { color: var(--text-muted); flex-shrink: 0; }
 .tree-link.active svg { color: var(--primary); }
-.tree-sub { padding-left: 24px; }
-.tree-sub-sub { padding-left: 40px; }
+.tree-sub { padding-inline-start: 24px; }
+.tree-sub-sub { padding-inline-start: 40px; }
 
 .fm-storage {
   margin-top: auto;
@@ -1301,7 +1301,7 @@
   border-radius: var(--radius);
   cursor: pointer;
   font: inherit;
-  text-align: left;
+  text-align: start;
   transition: border-color 120ms, transform 120ms, box-shadow 120ms;
 }
 .fm-grid.view-grid .fm-item {
@@ -1354,7 +1354,7 @@
 .fm-star {
   position: absolute;
   top: 6px;
-  right: 6px;
+  inset-inline-end: 6px;
   width: 22px; height: 22px;
   display: flex;
   align-items: center;
@@ -1374,7 +1374,7 @@
 .fm-item-menu {
   position: absolute;
   bottom: 6px;
-  right: 6px;
+  inset-inline-end: 6px;
   width: 22px;
   height: 22px;
   border: none;
@@ -1470,7 +1470,7 @@
   font-weight: var(--font-weight-medium);
 }
 .kanban-add {
-  margin-left: auto;
+  margin-inline-start: auto;
   width: 22px; height: 22px;
   border: none;
   background: transparent;
@@ -1509,7 +1509,7 @@
   font-size: 12.5px;
   color: var(--text-muted);
   cursor: pointer;
-  text-align: left;
+  text-align: start;
   transition: background 100ms, color 100ms;
 }
 .kanban-column-foot:hover { background: var(--bg-surface); color: var(--text); }
@@ -1603,7 +1603,7 @@
   border: 2px solid var(--bg-surface);
   flex-shrink: 0;
 }
-.kanban-avatar + .kanban-avatar { margin-left: -6px; }
+.kanban-avatar + .kanban-avatar { margin-inline-start: -6px; }
 
 .kanban-chip-group {
   display: flex;
