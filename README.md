@@ -55,8 +55,8 @@ Perfect for: **SaaS dashboards**, **CRM**, **ERP**, **internal admin panels**, *
 
 ## Features
 
-- **🎨 Live theme generator** — pick a primary color, watch every chart, button, badge, and link restyle in real time. Copy or download the generated SCSS tokens. Demo: [theme.html](https://preview.colorlib.com/theme/gentelella/theme.html)
-- **🧪 Component playground** — every reusable component on one page, side-by-side with its **exact HTML** and a Copy button. Demo: [playground.html](https://preview.colorlib.com/theme/gentelella/playground.html)
+- **🎨 Live theme generator** — pick a primary color, watch every chart, button, badge, and link restyle in real time. Copy or download the generated SCSS tokens. Demo: [theme.html](https://preview.colorlib.com/theme/gentelella/production/theme.html)
+- **🧪 Component playground** — every reusable component on one page, side-by-side with its **exact HTML** and a Copy button. Demo: [playground.html](https://preview.colorlib.com/theme/gentelella/production/playground.html)
 - **⌘K command palette** — fuzzy search across all 58 pages and inline actions
 - **📬 Real inbox client** — folders, reader pane, compose modal, reply/forward, J/K/R/S/# keyboard shortcuts, search across the active folder
 - **📱 PWA** — installable on macOS / Windows / iOS / Android, offline shell, service worker
@@ -378,7 +378,7 @@ Type declarations for the public JS surface ship in [`types/gentelella.d.ts`](ty
 
 ### Markup helpers
 
-For pages that build content from data (orders rows, inbox threads, kanban cards), [`src/v4/markup.js`](src/v4/markup.js) exposes pure string-returning helpers — `statTile()`, `statusBadge()`, `customerCell()`, `activityItem()`, `visitorRow()`, `emptyState()`, `banner()`, `skeletonRows()`, plus `escapeHtml()`. Live examples on the [Playground](https://preview.colorlib.com/theme/gentelella/playground.html#helpers-intro). Static pages keep their hand-written HTML — these are for JS-driven content where the boilerplate adds up.
+For pages that build content from data (orders rows, inbox threads, kanban cards), [`src/v4/markup.js`](src/v4/markup.js) exposes pure string-returning helpers — `statTile()`, `statusBadge()`, `customerCell()`, `activityItem()`, `visitorRow()`, `emptyState()`, `banner()`, `skeletonRows()`, plus `escapeHtml()`. Live examples on the [Playground](https://preview.colorlib.com/theme/gentelella/production/playground.html#helpers-intro). Static pages keep their hand-written HTML — these are for JS-driven content where the boilerplate adds up.
 
 ## SEO and metadata
 
