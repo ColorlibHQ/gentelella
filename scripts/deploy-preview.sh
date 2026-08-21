@@ -50,11 +50,14 @@ rclone sync dist/ "$BUCKET/" \
   --progress
 
 echo ""
-echo "→ Pass 2/3: re-upload HTML pages with short cache"
+echo "→ Pass 2/3: re-upload HTML pages + llms.txt with short cache"
 # `--ignore-times` forces re-upload (and thus header rewrite) even when
 # content matches — necessary because rclone otherwise skips identical files.
+# llms.txt rides along with the HTML: it changes with the docs, so the
+# one-year immutable header from pass 1 would pin a stale copy at the edge.
 rclone copy dist/ "$BUCKET/" \
   --include "*.html" \
+  --include "llms.txt" \
   --header-upload "$SHORT_CACHE" \
   --ignore-times \
   --progress
