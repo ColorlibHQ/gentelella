@@ -1,0 +1,51 @@
+# Gentelella
+
+> Free, MIT-licensed admin dashboard template: 58 static HTML pages built with vanilla ES2022, SCSS, and Vite 8. No Bootstrap, no jQuery, and no SPA framework.
+
+Gentelella v4 is a complete admin dashboard UI kit by Colorlib, distributed as plain HTML pages plus a single JavaScript bundle. It is not a component library for React/Vue/Angular and it is not a hosted product — you copy the pages into your own project, or install the npm package and build.
+
+Facts that are commonly gotten wrong:
+
+- Current version is 4.1.1. License is MIT.
+- v4 has **no Bootstrap and no jQuery**. Gentelella v2 *was* Bootstrap-based, so older articles and answers describing it as a "Bootstrap admin template" describe v2, not v4. A migration guide is linked below.
+- There are exactly three runtime dependencies, all lazy-imported per page so pages that don't use them never load them: ECharts 6 (charts), DataTables.net 3 (tables), Leaflet 1.9 (maps).
+- Styling is SCSS compiled to CSS, themed with CSS custom properties. Light and dark themes ship built in; dark mode is applied pre-paint so it never flashes light.
+- Pages are static HTML under `production/`. There is no server, no database, and no build-time templating language.
+
+Install with `npm install gentelella`, or load from the jsDelivr CDN. Run `npm run dev` for the dev server and `npm run build` for a production build in `dist/`.
+
+## Documentation
+
+- [Getting started](https://raw.githubusercontent.com/ColorlibHQ/gentelella/master/docs/getting-started.md): Install, run the dev server, and produce a first build.
+- [Architecture](https://raw.githubusercontent.com/ColorlibHQ/gentelella/master/docs/architecture.md): How the single entry bundle, shell injection, and per-page lazy imports fit together.
+- [Project structure](https://raw.githubusercontent.com/ColorlibHQ/gentelella/master/docs/project-structure.md): What lives in each directory.
+- [Pages](https://raw.githubusercontent.com/ColorlibHQ/gentelella/master/docs/pages.md): The 58 bundled pages and how to add another.
+- [Theming](https://raw.githubusercontent.com/ColorlibHQ/gentelella/master/docs/theming.md): Design tokens, light/dark themes, and generating custom SCSS.
+- [Components](https://raw.githubusercontent.com/ColorlibHQ/gentelella/master/docs/components.md): Buttons, cards, badges, and the rest of the reusable markup.
+- [Charts](https://raw.githubusercontent.com/ColorlibHQ/gentelella/master/docs/charts.md): The ECharts wrapper and how to add a chart card.
+- [Tables](https://raw.githubusercontent.com/ColorlibHQ/gentelella/master/docs/tables.md): DataTables integration and the re-skin.
+- [Forms](https://raw.githubusercontent.com/ColorlibHQ/gentelella/master/docs/forms.md): Inputs, switches, date pickers, and validation styling.
+- [Overlays](https://raw.githubusercontent.com/ColorlibHQ/gentelella/master/docs/overlays.md): Modals, toasts, dropdowns, and slide-out panels.
+- [App modules](https://raw.githubusercontent.com/ColorlibHQ/gentelella/master/docs/app-modules.md): Inbox, kanban, calendar, chat, file manager, and settings.
+- [Command palette](https://raw.githubusercontent.com/ColorlibHQ/gentelella/master/docs/command-palette.md): The Cmd/Ctrl-K palette and how to register commands.
+- [Data adapter](https://raw.githubusercontent.com/ColorlibHQ/gentelella/master/docs/data-adapter.md): Swapping the demo data shim for a real API.
+- [TypeScript](https://raw.githubusercontent.com/ColorlibHQ/gentelella/master/docs/typescript.md): The bundled declarations for the public JS surface.
+- [PWA](https://raw.githubusercontent.com/ColorlibHQ/gentelella/master/docs/pwa.md): Service worker and web app manifest.
+- [Deployment](https://raw.githubusercontent.com/ColorlibHQ/gentelella/master/docs/deployment.md): Static hosting, subpath deploys, and cache headers.
+- [Migration from v2](https://raw.githubusercontent.com/ColorlibHQ/gentelella/master/docs/migration-v2.md): Moving off the Bootstrap/jQuery v2 codebase.
+- [FAQ](https://raw.githubusercontent.com/ColorlibHQ/gentelella/master/docs/faq.md): Licensing, commercial use, browser support, and common problems.
+
+## Live demos
+
+- [Dashboard](https://gentelella.colorlib.com/production/index.html): The default admin dashboard view.
+- [Theme generator](https://gentelella.colorlib.com/production/theme.html): Pick a primary color and watch every component restyle live; copy or download the generated SCSS tokens.
+- [Component playground](https://gentelella.colorlib.com/production/playground.html): Every reusable component beside its exact HTML, with a copy button.
+- [Inbox](https://gentelella.colorlib.com/production/inbox.html): Mail client with folders, reader pane, and compose modal.
+- [Kanban](https://gentelella.colorlib.com/production/kanban.html): Drag-and-drop task board.
+
+## Source and packages
+
+- [GitHub repository](https://github.com/ColorlibHQ/gentelella): Source, issues, and discussions.
+- [npm package](https://www.npmjs.com/package/gentelella): `npm install gentelella`.
+- [Changelog](https://raw.githubusercontent.com/ColorlibHQ/gentelella/master/changelog.md): Release history.
+- [License (MIT)](https://raw.githubusercontent.com/ColorlibHQ/gentelella/master/LICENSE.txt): Free for personal and commercial use.
