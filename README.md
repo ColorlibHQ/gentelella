@@ -1,5 +1,7 @@
 # Gentelella v4 — Free Admin Dashboard Template
 
+**English** | [简体中文](README.zh-CN.md)
+
 [![npm version](https://img.shields.io/npm/v/gentelella.svg?logo=npm&label=npm)](https://www.npmjs.com/package/gentelella)
 [![npm downloads](https://img.shields.io/npm/dw/gentelella.svg?logo=npm&label=downloads)](https://www.npmjs.com/package/gentelella)
 [![jsDelivr](https://img.shields.io/jsdelivr/npm/hw/gentelella.svg?logo=jsdelivr&label=jsDelivr)](https://www.jsdelivr.com/package/npm/gentelella)
@@ -43,7 +45,7 @@ Built for 2026 by [Colorlib](https://colorlib.com). **[Live demo →](https://pr
 
 ## Why Gentelella v4
 
-The original Gentelella has been a free Bootstrap admin template since 2014 — **3M+ downloads**, [4.5k+ GitHub stars](https://github.com/ColorlibHQ/gentelella). v4 is a ground-up redesign:
+The original Gentelella has been a free Bootstrap admin template since 2014 — **3M+ downloads**, [21k+ GitHub stars](https://github.com/ColorlibHQ/gentelella). v4 is a ground-up redesign:
 
 - **No Bootstrap, no jQuery** — vanilla JavaScript + SCSS. ~178 MB `node_modules` (down from ~600 MB on v2).
 - **Vite 8 build system** — instant HMR, multi-page app with auto-discovered entry points, hashed assets.
