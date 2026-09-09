@@ -135,6 +135,16 @@ document.addEventListener('click', (e) => {
 document.addEventListener('submit', (e) => {
   const form = e.target;
   if (!(form instanceof HTMLFormElement)) {return;}
+
+  // Only this template's own demo forms are faked. A form that says where it
+  // posts is a real one, and swallowing its submit would break every form in a
+  // server-rendered app — sign-in, registration, and every create or edit
+  // screen. None of the demo forms here carries an action, so the distinction
+  // costs nothing. `data-demo-submit="false"` opts a form out explicitly.
+  const action = (form.getAttribute('action') || '').trim();
+  if (action !== '' && action !== '#') {return;}
+  if (form.dataset.demoSubmit === 'false') {return;}
+
   // Native :invalid forms still get the browser's validation UI before we
   // see the submit event, so reaching here means the form is already valid.
   e.preventDefault();
