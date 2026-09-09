@@ -7,6 +7,7 @@
 
 import { renderShell } from './shell-render.js';
 import { openPanel, openMenu } from './menus.js';
+import { shellLink, shellList, signOut } from './shell-config.js';
 import { showToast } from './toast.js';
 import { showModal } from './modal.js';
 
@@ -237,7 +238,9 @@ function bindThemeToggle() {
 //  TOPBAR DROPDOWNS
 // ────────────────────────
 
-const NOTIFICATIONS = [
+// Demo data. A server-rendered host supplies its own through the shell config
+// island; without one these are what the static template shows.
+const DEMO_NOTIFICATIONS = [
   { kind: 'info',   from: 'Stripe',  text: 'Payment of $499.00 received', time: '2m', unread: true },
   { kind: 'task',   from: 'GitHub',  text: 'PR #248 ready for review',     time: '14m', unread: true },
   { kind: 'alert',  from: 'Linear',  text: 'GEN-128 marked as urgent',     time: '1h', unread: true },
@@ -245,12 +248,15 @@ const NOTIFICATIONS = [
   { kind: 'info',   from: 'Notion',  text: 'You were mentioned in Q2 OKRs', time: 'Yesterday', unread: false }
 ];
 
-const MESSAGES = [
+const DEMO_MESSAGES = [
   { from: 'Sarah K.',     text: 'Can you take a look at the design?', initials: 'SK', color: 'var(--primary)',  time: '4m', unread: true },
   { from: 'Michael R.',   text: 'Lunch tomorrow at noon?',            initials: 'MR', color: 'var(--blue)',     time: '32m', unread: true },
   { from: 'Emily W.',     text: 'Sprint retro notes posted',          initials: 'EW', color: 'var(--purple)',   time: '2h', unread: false },
   { from: 'Diego R.',     text: 'Customer feedback summary ready',    initials: 'DR', color: 'var(--yellow)',   time: 'Mon', unread: false }
 ];
+
+const notifications = () => shellList('notifications') ?? DEMO_NOTIFICATIONS;
+const messages = () => shellList('messages') ?? DEMO_MESSAGES;
 
 function openShortcutsModal() {
   const row = (k, label) => `<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border-color-light);font-size:13px"><span style="color:var(--text)">${label}</span><span>${k.split('+').map((key) => `<kbd style="font-family:var(--font);font-size:11px;background:var(--bg-surface-secondary);border:1px solid var(--border-color);border-radius:3px;padding:2px 6px;margin-left:3px">${key}</kbd>`).join('')}</span></div>`;
@@ -300,26 +306,33 @@ function openSignOutModal() {
         variant: 'primary',
         action: () => {
           showToast('Signed out', { variant: 'success' });
-          setTimeout(() => { window.location.href = 'login.html'; }, 600);
+          setTimeout(() => signOut('login.html'), 600);
         }
       }
     ]
   });
 }
 
-const USER_MENU = [
-  { label: 'Profile',            action: () => { window.location.href = 'profile.html'; } },
-  { label: 'Account settings',   action: () => { window.location.href = 'settings.html'; } },
-  { label: 'Theme generator',    action: () => { window.location.href = 'theme.html'; } },
-  { label: 'Keyboard shortcuts', action: openShortcutsModal },
-  '-',
-  { label: 'Help & support',     action: () => { window.location.href = 'faq.html'; } },
-  { label: 'Lock screen',        action: () => { window.location.href = 'lock_screen.html'; } },
-  { label: 'Sign out',           action: openSignOutModal }
-];
+// Built per open rather than once at module load, so a host's links are read
+// after its config island has parsed. Each target falls back to the static
+// template's own page.
+function userMenu() {
+  const go = (href) => () => { window.location.href = href; };
+
+  return [
+    { label: 'Profile',            action: go(shellLink('profile', 'profile.html')) },
+    { label: 'Account settings',   action: go(shellLink('settings', 'settings.html')) },
+    { label: 'Theme generator',    action: go(shellLink('theme', 'theme.html')) },
+    { label: 'Keyboard shortcuts', action: openShortcutsModal },
+    '-',
+    { label: 'Help & support',     action: go(shellLink('help', 'faq.html')) },
+    { label: 'Lock screen',        action: go(shellLink('lock', 'lock_screen.html')) },
+    { label: 'Sign out',           action: openSignOutModal }
+  ];
+}
 
 function buildNotificationsPanel() {
-  const unreadCount = NOTIFICATIONS.filter((n) => n.unread).length;
+  const unreadCount = notifications().filter((n) => n.unread).length;
   const wrap = document.createElement('div');
   wrap.className = 'panel-content';
   wrap.innerHTML = `
@@ -329,7 +342,7 @@ function buildNotificationsPanel() {
       <button type="button" class="panel-action" data-action="mark-all">Mark all read</button>
     </div>
     <div class="panel-list">
-      ${NOTIFICATIONS.map((n, i) => `
+      ${notifications().map((n, i) => `
         <button type="button" class="panel-row${n.unread ? ' unread' : ''}" data-i="${i}">
           <span class="panel-icon panel-icon-${n.kind}" aria-hidden="true">
             ${n.kind === 'alert' ? '<svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1l7 13H1L8 1z"/><path d="M8 6v4"/><circle cx="8" cy="12" r="0.5"/></svg>'
@@ -352,7 +365,7 @@ function buildNotificationsPanel() {
 }
 
 function buildMessagesPanel() {
-  const unreadCount = MESSAGES.filter((m) => m.unread).length;
+  const unreadCount = messages().filter((m) => m.unread).length;
   const wrap = document.createElement('div');
   wrap.className = 'panel-content';
   wrap.innerHTML = `
@@ -362,7 +375,7 @@ function buildMessagesPanel() {
       <a href="inbox.html" class="panel-action">Open inbox</a>
     </div>
     <div class="panel-list">
-      ${MESSAGES.map((m, i) => `
+      ${messages().map((m, i) => `
         <button type="button" class="panel-row${m.unread ? ' unread' : ''}" data-i="${i}">
           <span class="panel-avatar" style="background:${m.color}">${m.initials}</span>
           <span class="panel-body">
@@ -437,7 +450,7 @@ function bindTopbarPanels() {
         const markAll = ev.target.closest('[data-action="mark-all"]');
         if (markAll) {
           ev.stopPropagation();
-          NOTIFICATIONS.forEach((n) => { n.unread = false; });
+          notifications().forEach((n) => { n.unread = false; });
           panel.querySelectorAll('.panel-row.unread').forEach((r) => r.classList.remove('unread'));
           panel.querySelector('.panel-badge')?.remove();
           bell.querySelector('.dot')?.style.setProperty('display', 'none');
@@ -448,11 +461,11 @@ function bindTopbarPanels() {
         if (row) {
           ev.stopPropagation();
           const i = parseInt(row.dataset.i, 10);
-          NOTIFICATIONS[i].unread = false;
+          notifications()[i].unread = false;
           row.classList.remove('unread');
           // Close the panel before opening the modal so they don't fight.
           row.closest('.menu-popover')?.remove();
-          openNotificationDetail(NOTIFICATIONS[i]);
+          openNotificationDetail(notifications()[i]);
         }
       });
       openPanel(bell, panel, { className: 'panel-notifications', width: 360 });
@@ -469,10 +482,10 @@ function bindTopbarPanels() {
         if (row) {
           ev.stopPropagation();
           const i = parseInt(row.dataset.i, 10);
-          MESSAGES[i].unread = false;
+          messages()[i].unread = false;
           row.classList.remove('unread');
           row.closest('.menu-popover')?.remove();
-          openMessageDetail(MESSAGES[i]);
+          openMessageDetail(messages()[i]);
         }
       });
       openPanel(msg, panel, { className: 'panel-messages', width: 360 });
@@ -483,7 +496,7 @@ function bindTopbarPanels() {
   if (avatar) {
     avatar.addEventListener('click', (e) => {
       e.preventDefault(); e.stopPropagation();
-      openMenu(avatar, USER_MENU);
+      openMenu(avatar, userMenu());
     });
   }
 
@@ -491,7 +504,7 @@ function bindTopbarPanels() {
   if (sidebarMore) {
     sidebarMore.addEventListener('click', (e) => {
       e.preventDefault(); e.stopPropagation();
-      openMenu(sidebarMore, USER_MENU);
+      openMenu(sidebarMore, userMenu());
     });
   }
 }

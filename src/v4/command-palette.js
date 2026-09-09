@@ -3,8 +3,13 @@
 // curated list of inline actions (theme toggle, sign out, etc.). No external
 // fuzzy-search library; the matcher is a small subsequence + word-boundary
 // scorer that's good enough for ~50 items.
+//
+// A server-rendered host owns its own menu, so it supplies the pages and the
+// action targets through the shell config island instead — otherwise the
+// palette would offer this template's demo pages, and every result would 404.
 
 import { NAV } from './shell-render.js';
+import { shellLink, shellList, signOut } from './shell-config.js';
 import { showToast } from './toast.js';
 import { showModal } from './modal.js';
 
@@ -15,9 +20,23 @@ let items = [];
 let filtered = [];
 let activeIndex = 0;
 
-function buildItems() {
+/** Pages the host supplied, or the template's own NAV when it supplied none. */
+function buildPages() {
+  const supplied = shellList('pages');
+
+  if (supplied) {
+    return supplied
+      .filter((p) => p && p.label && p.href)
+      .map((p) => ({
+        kind: 'page',
+        label: String(p.label),
+        section: String(p.section || ''),
+        href: String(p.href),
+        keywords: `${p.label} ${p.section || ''}`.toLowerCase()
+      }));
+  }
+
   const out = [];
-  // Pages from NAV
   NAV.forEach((group) => {
     group.items.forEach((it) => {
       out.push({
@@ -29,13 +48,21 @@ function buildItems() {
       });
     });
   });
-  // Inline actions
+  return out;
+}
+
+function buildItems() {
+  const out = buildPages();
+  const go = (href) => () => { window.location.href = href; };
+
+  // Inline actions. Each target falls back to the static template's own page,
+  // so a host that names none behaves exactly as before.
   const actions = [
     { label: 'Toggle theme', keywords: 'theme dark light mode toggle', action: toggleTheme },
-    { label: 'Open profile', keywords: 'profile account user me', action: () => { window.location.href = 'profile.html'; } },
-    { label: 'Open settings', keywords: 'settings preferences config', action: () => { window.location.href = 'settings.html'; } },
-    { label: 'Theme generator', keywords: 'theme color customize brand', action: () => { window.location.href = 'theme.html'; } },
-    { label: 'Help & support', keywords: 'help faq support docs', action: () => { window.location.href = 'faq.html'; } },
+    { label: 'Open profile', keywords: 'profile account user me', action: go(shellLink('profile', 'profile.html')) },
+    { label: 'Open settings', keywords: 'settings preferences config', action: go(shellLink('settings', 'settings.html')) },
+    { label: 'Theme generator', keywords: 'theme color customize brand', action: go(shellLink('theme', 'theme.html')) },
+    { label: 'Help & support', keywords: 'help faq support docs', action: go(shellLink('help', 'faq.html')) },
     {
       label: 'Sign out',
       keywords: 'sign out logout exit',
@@ -47,7 +74,7 @@ function buildItems() {
           { label: 'Cancel', variant: 'ghost' },
           { label: 'Sign out', variant: 'primary', action: () => {
             showToast('Signed out', { variant: 'success' });
-            setTimeout(() => { window.location.href = 'login.html'; }, 600);
+            setTimeout(() => signOut('login.html'), 600);
           } }
         ]
       })
