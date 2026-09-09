@@ -18,7 +18,13 @@ initPageActions();
 // Service worker — only in production builds (skip on dev so HMR isn't fought
 // by the cache). Path uses Vite's BASE_URL so subpath deploys (e.g.
 // preview.colorlib.com/theme/foo/) register the SW at the right scope.
-if ('serviceWorker' in navigator && import.meta.env.PROD) {
+//
+// A host that bundles this entry without shipping sw.js — a Laravel or Django
+// app serving the design system from node_modules, say — opts out with
+// <html data-sw="off">, so it doesn't take a 404 on every page load for a
+// file it never had.
+if ('serviceWorker' in navigator && import.meta.env.PROD
+    && document.documentElement.dataset.sw !== 'off') {
   window.addEventListener('load', () => {
     const swPath = `${import.meta.env.BASE_URL}sw.js`;
     navigator.serviceWorker.register(swPath).catch(() => { /* ignore */ });
