@@ -17,6 +17,19 @@
 
 由 [Colorlib](https://colorlib.com) 为 2026 年打造。**[在线演示 →](https://preview.colorlib.com/theme/gentelella/)**
 
+## 也提供其他技术栈版本
+
+同一套后台模板，适配你熟悉的框架 —— 当前为 **HTML** 版本：
+
+<!-- GENTELELLA-ECOSYSTEM:START -->
+<div align="center">
+  <a href="https://github.com/ColorlibHQ/gentelella"><img height="36" alt="HTML" src="https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=html5&logoColor=white"></a>
+  <a href="https://github.com/ColorlibHQ/gentelella-laravel"><img height="36" alt="Laravel" src="https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white"></a>
+</div>
+<!-- GENTELELLA-ECOSYSTEM:END -->
+
+**Laravel 版本**是一个 Composer 包：相同的界面框架以 Blade 布局提供，包含 25 个组件、带服务端表格的 CRUD 引擎、登录注册页面，以及作为演示内置的全部 58 个页面。
+
 <p align="center">
   <a href="https://preview.colorlib.com/theme/gentelella/production/index.html">
     <img alt="Gentelella v4 后台管理模板预览 — 浅色主题" src="docs/screenshots/readme/dashboard-light.webp" width="49%">
