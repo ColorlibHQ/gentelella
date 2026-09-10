@@ -18,7 +18,13 @@ initPageActions();
 // Service worker — only in production builds (skip on dev so HMR isn't fought
 // by the cache). Path uses Vite's BASE_URL so subpath deploys (e.g.
 // preview.colorlib.com/theme/foo/) register the SW at the right scope.
-if ('serviceWorker' in navigator && import.meta.env.PROD) {
+//
+// A host that bundles this entry without shipping sw.js — a Laravel or Django
+// app serving the design system from node_modules, say — opts out with
+// <html data-sw="off">, so it doesn't take a 404 on every page load for a
+// file it never had.
+if ('serviceWorker' in navigator && import.meta.env.PROD
+    && document.documentElement.dataset.sw !== 'off') {
   window.addEventListener('load', () => {
     const swPath = `${import.meta.env.BASE_URL}sw.js`;
     navigator.serviceWorker.register(swPath).catch(() => { /* ignore */ });
@@ -129,6 +135,16 @@ document.addEventListener('click', (e) => {
 document.addEventListener('submit', (e) => {
   const form = e.target;
   if (!(form instanceof HTMLFormElement)) {return;}
+
+  // Only this template's own demo forms are faked. A form that says where it
+  // posts is a real one, and swallowing its submit would break every form in a
+  // server-rendered app — sign-in, registration, and every create or edit
+  // screen. None of the demo forms here carries an action, so the distinction
+  // costs nothing. `data-demo-submit="false"` opts a form out explicitly.
+  const action = (form.getAttribute('action') || '').trim();
+  if (action !== '' && action !== '#') {return;}
+  if (form.dataset.demoSubmit === 'false') {return;}
+
   // Native :invalid forms still get the browser's validation UI before we
   // see the submit event, so reaching here means the form is already valid.
   e.preventDefault();

@@ -14,6 +14,8 @@
     "format:check": "prettier --check src/",
     "analyze": "npm run build && open dist/stats.html",
     "new": "node scripts/new-page.mjs",
+    "export:php": "node scripts/export-php-nav.mjs",
+    "export:demo": "node scripts/export-demo-views.mjs",
     "screenshots": "node scripts/screenshots.mjs",
     "smoke": "node scripts/smoke.mjs",
     "deploy:preview": "bash scripts/deploy-preview.sh",

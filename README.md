@@ -17,6 +17,20 @@
 
 Built for 2026 by [Colorlib](https://colorlib.com). **[Live demo →](https://preview.colorlib.com/theme/gentelella/)**
 
+## Also available for your stack
+
+The same dashboard, in the framework you already use — you're looking at the **HTML** edition:
+
+<!-- GENTELELLA-ECOSYSTEM:START -->
+<div align="center">
+  <a href="https://github.com/ColorlibHQ/gentelella"><img height="36" alt="HTML" src="https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=html5&logoColor=white"></a>
+  <a href="https://github.com/ColorlibHQ/gentelella-laravel"><img height="36" alt="Laravel" src="https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white"></a>
+</div>
+<!-- GENTELELLA-ECOSYSTEM:END -->
+
+The **Laravel edition** is a Composer package: the same shell as Blade layouts, 25 components, a
+CRUD engine with server-side tables, auth screens, and all 58 pages as a bundled demo.
+
 <p align="center">
   <a href="https://preview.colorlib.com/theme/gentelella/production/index.html">
     <img alt="Gentelella v4 admin dashboard preview — light theme" src="docs/screenshots/readme/dashboard-light.webp" width="49%">

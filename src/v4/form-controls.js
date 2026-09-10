@@ -10,6 +10,11 @@
 //     <input type="text" class="form-control" placeholder="Pick a date range" readonly>
 //   </div>
 // Public events: emits 'change' on the wrapper with detail { from, to }.
+//
+// The visible input is a readonly label, so it is no use to a form. Add
+// `data-date-range-name="dates"` and the picker also maintains hidden
+// dates[from] / dates[to] inputs carrying ISO dates, which is what a server
+// needs on submit.
 
 const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June',
   'July', 'August', 'September', 'October', 'November', 'December'];
@@ -18,6 +23,33 @@ const DOW = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
 function fmt(d) {
   if (!d) {return '';}
   return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+}
+
+/**
+ * Keep hidden <name>[from]/<name>[to] inputs in step with the picker.
+ *
+ * The visible field is readonly display text; without these a form submits
+ * nothing usable. Opt in with data-date-range-name on the wrapper.
+ */
+function syncHiddenRange(wrap, from, to) {
+  const name = wrap.dataset.dateRangeName;
+  if (!name) {return;}
+
+  const iso = (d) => (d ? new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 10) : '');
+
+  [['from', from], ['to', to]].forEach(([part, value]) => {
+    const field = `${name}[${part}]`;
+    let input = wrap.querySelector(`input[type="hidden"][name="${field}"]`);
+
+    if (!input) {
+      input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = field;
+      wrap.appendChild(input);
+    }
+
+    input.value = iso(value);
+  });
 }
 
 function isoDay(d) {
@@ -156,6 +188,7 @@ function initDateRange(wrap) {
     else if (e.target.closest('[data-action="clear"]')) { state.from = state.to = null; render(); }
     else if (e.target.closest('[data-action="apply"]')) {
       input.value = state.from ? `${fmt(state.from)} → ${fmt(state.to || state.from)}` : '';
+      syncHiddenRange(wrap, state.from, state.to || state.from);
       wrap.dispatchEvent(new CustomEvent('change', { detail: { from: state.from, to: state.to || state.from } }));
       close();
     }
