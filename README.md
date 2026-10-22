@@ -418,6 +418,7 @@ Static template — deploy `dist/` anywhere that serves files.
 | Host | Notes |
 | --- | --- |
 | **Netlify / Vercel / Cloudflare Pages** | Drop in, no config needed. Set `BASE_PATH=/` (default). |
+| **Wasmer Edge** | [![Deploy to Wasmer](https://img.shields.io/badge/Deploy%20to-Wasmer-171717?logo=wasmer&logoColor=white)](https://wasmer.io/apps/create?github=ColorlibHQ%2Fgentelella) Imports this repository; use the default `BASE_PATH=/`. To customize the template and redeploy on push, import your own fork. |
 | **GitHub Pages** | `BASE_PATH=/your-repo/ npm run build`, push `dist/` to `gh-pages`. |
 | **S3 / CloudFront** | Upload `dist/`. Set the bucket as a static site, point CloudFront at it. |
 | **Any nginx / Apache** | `cp -r dist/* /var/www/html/`. |
