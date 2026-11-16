@@ -1,6 +1,6 @@
 {
   "name": "gentelella",
-  "version": "4.2.0",
+  "version": "4.2.1",
   "type": "module",
   "description": "Gentelella v4 — free admin template. 58 pages, 20 chart variants, fully interactive inbox & kanban, live theme generator, component playground, PWA-ready. Vite 8, vanilla JS, no Bootstrap, no jQuery.",
   "scripts": {
@@ -66,18 +66,18 @@
   "homepage": "https://github.com/ColorlibHQ/gentelella#readme",
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@playwright/test": "^1.63.0",
-    "eslint": "^10.10.0",
+    "@playwright/test": "^1.65.1",
+    "eslint": "^10.15.0",
     "eslint-config-prettier": "^10.1.8",
-    "playwright": "^1.63.0",
-    "prettier": "^3.9.7",
-    "rollup-plugin-visualizer": "^7.1.1",
-    "sass": "^1.104.1",
+    "playwright": "^1.65.1",
+    "prettier": "^3.10.1",
+    "rollup-plugin-visualizer": "^7.1.3",
+    "sass": "^1.108.2",
     "terser": "^5.51.2",
-    "vite": "^8.3.0"
+    "vite": "^8.3.8"
   },
   "dependencies": {
-    "datatables.net": "^3.0.4",
+    "datatables.net": "^3.1.5",
     "echarts": "^6.1.0",
     "leaflet": "^1.9.4"
   }
