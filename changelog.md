@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [4.2.2] - 2026-11-17
+
+### Fixed
+
+- **Relative-base builds (`BASE_PATH=./`) had broken paths.** The web manifest, apple-touch-icon, og:image and service worker were emitted as `./...`, which 404s from the pages in `production/`. They are now resolved per page (`../` for nested pages), and the service-worker registration reads the site root from a `gentelella-base` meta tag the build adds only for relative bases. The default `/` build and absolute subpath builds (`/theme/gentelella/`) produce the same HTML as before. A `BASE_PATH=./` build now serves correctly from any folder, with a service worker registered, on all 58 pages.
+
 ## [4.2.1] - 2026-11-16
 
 A dependency refresh and a mobile layout fix. No public API changed.

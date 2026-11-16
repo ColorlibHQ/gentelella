@@ -26,7 +26,11 @@ initPageActions();
 if ('serviceWorker' in navigator && import.meta.env.PROD
     && document.documentElement.dataset.sw !== 'off') {
   window.addEventListener('load', () => {
-    const swPath = `${import.meta.env.BASE_URL}sw.js`;
+    // Relative builds (BASE_PATH=./) get a per-page site root from a <meta>
+    // tag the Vite plugin emits; absolute bases use BASE_URL directly.
+    const root = document.querySelector('meta[name="gentelella-base"]')?.content
+      ?? import.meta.env.BASE_URL;
+    const swPath = `${root}sw.js`;
     navigator.serviceWorker.register(swPath).catch(() => { /* ignore */ });
   });
 }

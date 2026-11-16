@@ -175,8 +175,17 @@ function shellInjectionPlugin() {
     configResolved(config) { base = config.base || '/'; },
     transformIndexHtml: {
       order: 'pre',
-      handler(html) {
+      handler(html, ctx) {
         let out = html;
+
+        // A relative base ('./' or '') is resolved against each page, not the
+        // site root: dist/index.html needs './', dist/production/*.html needs
+        // '../'. Absolute bases ('/' or '/subpath/') are used unchanged.
+        let pageBase = base;
+        if (base === '' || base.startsWith('.')) {
+          const depth = Math.max(0, (ctx?.path || '/index.html').split('/').filter(Boolean).length - 1);
+          pageBase = depth ? '../'.repeat(depth) : './';
+        }
 
         // PWA + meta tags for every page (admin-shell or not).
         // Asset URLs are prefixed with the resolved base so deploys under a
@@ -184,14 +193,17 @@ function shellInjectionPlugin() {
         // Both the modern `mobile-web-app-capable` and the older
         // `apple-mobile-web-app-capable` are emitted for max compatibility —
         // newer Chrome/Edge prefer the unprefixed name.
-        const metaPwa = `<link rel="manifest" href="${base}site.webmanifest">
+        const metaPwa = `<link rel="manifest" href="${pageBase}site.webmanifest">
 <meta name="theme-color" content="#1ABB9C" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#1a2332" media="(prefers-color-scheme: dark)">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<link rel="apple-touch-icon" href="${base}images/apple-touch-icon.svg">`;
-        out = out.replace(/<\/head>/i, `${metaPwa}\n</head>`);
+<link rel="apple-touch-icon" href="${pageBase}images/apple-touch-icon.svg">`;
+        // Relative builds tell the runtime where the site root is, because
+        // BASE_URL ("./") alone cannot be resolved from a nested page.
+        const metaRoot = pageBase !== base ? `\n<meta name="gentelella-base" content="${pageBase}">` : '';
+        out = out.replace(/<\/head>/i, `${metaPwa}${metaRoot}\n</head>`);
 
         // SEO + Open Graph meta. Skip if the page already declares a
         // description (page-specific copy wins). Title falls back to "Gentelella v4"
@@ -212,7 +224,7 @@ function shellInjectionPlugin() {
 <meta property="og:type" content="website">
 <meta property="og:title" content="${title.replace(/"/g, '&quot;')}">
 <meta property="og:description" content="${desc.replace(/"/g, '&quot;')}">
-<meta property="og:image" content="${base}images/android-chrome-512x512.svg">
+<meta property="og:image" content="${pageBase}images/android-chrome-512x512.svg">
 <meta property="og:site_name" content="Gentelella v4">
 <meta name="twitter:card" content="summary_large_image">`;
           out = out.replace(/<\/head>/i, `${seo}\n</head>`);
