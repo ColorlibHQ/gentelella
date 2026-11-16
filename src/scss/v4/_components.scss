@@ -72,6 +72,9 @@
   // wider title blocks could end up flush against the controls when
   // space-between has nothing left to distribute.
   gap: var(--space-4);
+  // Let the title group and controls wrap on narrow screens instead of
+  // pushing the page wider than the viewport.
+  flex-wrap: wrap;
   padding: 12px 16px;
   border-bottom: 1px solid var(--border-color-light);
   min-height: 44px;
@@ -949,6 +952,8 @@ body.modal-open { overflow: hidden; }
 // ────────────────────────
 .tabs-pill {
   display: inline-flex;
+  max-width: 100%;
+  overflow-x: auto;
   background: var(--bg-surface-secondary);
   padding: 3px;
   border-radius: var(--radius);
@@ -975,6 +980,9 @@ body.modal-open { overflow: hidden; }
 
 .tabs-underline {
   display: flex;
+  // wrap, not scroll: the active tab's underline overlaps the container's
+  // border by 1px and overflow clipping would cut it off.
+  flex-wrap: wrap;
   border-bottom: 1px solid var(--border-color-light);
   gap: var(--space-1);
 }
@@ -1061,6 +1069,7 @@ body.modal-open { overflow: hidden; }
   display: flex;
   align-items: flex-start;
   width: 100%;
+  overflow-x: auto;
   gap: 0;
 }
 .stepper .step {

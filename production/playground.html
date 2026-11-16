@@ -963,7 +963,7 @@ if (emptyHost) {
 }
 .pg-card + .pg-card { margin-top: 14px; }
 @media (max-width: 900px) {
-  .playground-layout { grid-template-columns: 1fr; }
+  .playground-layout { grid-template-columns: minmax(0, 1fr); }
   .pg-nav { position: static; flex-direction: row; flex-wrap: wrap; }
   .pg-nav-label { width: 100%; padding: 0 0 4px; }
   .pg-nav-link { padding: 5px 10px; font-size: 12px; }
