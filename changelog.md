@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file.
 
+## [4.2.1] - 2026-11-16
+
+A dependency refresh and a mobile layout fix. No public API changed.
+
+### Changed
+
+- **Runtime dependency:** `datatables.net` 3.0.4 → **3.1.5**. The markup that `_datatable.scss` targets is unchanged, and the table pages (`tables`, `tables_dynamic`, `orders`, `user_management`) render pixel-identically.
+- **Dev dependencies** bumped to latest: `vite` 8.3.8, `sass` 1.108.2, `eslint` 10.15.0, `prettier` 3.10.1, `@playwright/test` and `playwright` 1.65.1, `rollup-plugin-visualizer` 7.1.3. `echarts` 6.1.0 and `leaflet` 1.9.4 are already at their latest (Leaflet 2.0 is still a pre-release).
+- **`examples/express-sqlite`:** `express` 5.3, `better-sqlite3` 13.2, plus `body-parser` and `qs` security fixes.
+
+### Fixed
+
+- **Horizontal page scroll at 390 px** on `orders.html`, `playground.html` and `general_elements.html`. Card headers now wrap, the pill tabs and stepper scroll inside their own box, the underline tabs wrap, and the playground layout uses `minmax(0, 1fr)` so wide code blocks cannot widen the page. Desktop rendering is unchanged.
+
+### Security
+
+- `npm audit` is clean in both the root package and the Express example (the previous `minimatch` and `source-map-js` advisories in the dev tree are resolved by the refreshed lockfile).
+
+Verified: `eslint src/` is clean, the build succeeds, and all 58 pages load with no console errors or failed requests in light and dark at 1440 px and 390 px. Desktop screenshots are pixel-identical to 4.2.0.
+
 ## [4.2.0] - 2026-09-16
 
 RTL layouts, a build-time sitemap and JSON-LD, the hooks the [Laravel edition](https://github.com/ColorlibHQ/gentelella-laravel) depends on, and a dependency refresh. Nothing is removed and no public API changed shape. The one behaviour change is under **Changed**: the demo form handler no longer swallows forms that post somewhere.
