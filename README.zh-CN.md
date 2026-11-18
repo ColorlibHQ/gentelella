@@ -358,6 +358,7 @@ npm run new -- reports --title "Reports" --pretitle "Admin" \
 | 托管平台 | 说明 |
 | --- | --- |
 | **Netlify / Vercel / Cloudflare Pages** | 直接拖入即可，无需配置。使用默认的 `BASE_PATH=/`。 |
+| **Wasmer Edge** | [![Deploy to Wasmer](https://img.shields.io/badge/Deploy%20to-Wasmer-171717?logo=wasmer&logoColor=white)](https://wasmer.io/apps/create?github=ColorlibHQ%2Fgentelella) 导入本仓库，使用默认的 `BASE_PATH=/`。如需自定义模板并在推送后自动重新部署，请导入你自己的 fork。 |
 | **GitHub Pages** | 执行 `BASE_PATH=/your-repo/ npm run build`，再把 `dist/` 推送到 `gh-pages`。 |
 | **S3 / CloudFront** | 上传 `dist/`，将存储桶设为静态站点，并让 CloudFront 指向它。 |
 | **任意 nginx / Apache** | `cp -r dist/* /var/www/html/`。 |
